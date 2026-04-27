@@ -50,7 +50,7 @@ Another correspondence is the Mean Value Theorem:
   $ integral_a^b f(x) dif x = f(xi)(b - a). $
 ]
 
-A curve is a one-dimensional manifold embedded within a higher dimensional space. They can be parameterized with a vector $bold(F)(t) = (P(t), Q(t), R(t))$ of one parameter. In the complex plane, a curve is a complex-valued function $gamma(t)$ for a real parameter $alpha <= t <= beta$. A curve is _closed_ if $gamma(alpha) = gamma(beta)$. It is _smooth_ if it is continuously differentiable, and its direction is defined to be the direction as $t$ increases. If it is smooth everywhere except at a finite number of points, it is _piecewise smooth_. If it is of finite length, then the curve is said to be _rectifiable_. Piecewise smooth curves are rectifiable. A curve is _simple_ if it is simple (non-self-intersecting), or if $gamma(t_1) = gamma(t_2)$ implies that $t_1 = t_2$. A simple closed curve is also called a _Jordan curve_.
+A curve is a one-dimensional manifold embedded within a higher dimensional space. They can be parameterized with a vector $vb(F)(t) = (P(t), Q(t), R(t))$ of one parameter. In the complex plane, a curve is a complex-valued function $gamma(t)$ for a real parameter $alpha <= t <= beta$. A curve is _closed_ if $gamma(alpha) = gamma(beta)$. It is _smooth_ if it is continuously differentiable, and its direction is defined to be the direction as $t$ increases. If it is smooth everywhere except at a finite number of points, it is _piecewise smooth_. If it is of finite length, then the curve is said to be _rectifiable_. Piecewise smooth curves are rectifiable. A curve is _simple_ if it is simple (non-self-intersecting), or if $gamma(t_1) = gamma(t_2)$ implies that $t_1 = t_2$. A simple closed curve is also called a _Jordan curve_.
 
 #theorem("Jordan Curve Theorem")[
   Let $gamma$ be a Jordan curve in $RR^2$. Then the set $RR^2 without gamma$ consists of exactly two connected subsets. One of them is the interior, denoted by $op("int")(gamma)$, and is a bounded set, while the other is the exterior, denoted by $op("ext")(gamma)$, which is unbounded. Both of the two sets share the common boundary $gamma$.
@@ -76,21 +76,21 @@ Four main classical theorems exist, relating a function and its line integral in
 
 #theorem("Green's Theorem")[
   Let $U$ be a positively oriented, multiply connected subset of $RR^2$ with a piecewise smooth oriented boundary $partial U$. Suppose that $P(x, y), Q(x, y) in C^1(overline(U))$. Then,
-  $ integral.cont_(partial U) P dif x + Q dif y = integral.double_U (dvp(Q, x) - dvp(P, y)) dif x dif y. $
+  $ integral.cont_(partial U) P dif x + Q dif y = integral.double_U (dvp(Q, x) - dvp(P, y)) dd(x, y). $
 ] <thm:realgreen>
 
 #theorem("Stokes' Theorem")[
   Suppose that $S subset RR^3$ is a positively oriented surface with a positively oriented, piecewise smooth boundary curve $partial S$. Suppose that $P(x, y, z), Q(x, y, z), R(x, y, z) in C^1(overline(S))$. Then,
   $
     integral.cont_(partial S) P dif x + Q dif y + R dif z \
-    = integral.double_S (dvp(R, y) - dvp(Q, z)) dif y dif z + (dvp(P, z) - dvp(R, x)) dif z dif x + (dvp(Q, x) - dvp(P, y)) dif x dif y.
+    = integral.double_S (dvp(R, y) - dvp(Q, z)) dif y dif z + (dvp(P, z) - dvp(R, x)) dif z dif x + (dvp(Q, x) - dvp(P, y)) dd(x, y).
   $
 ] <thm:kelvinstokes>
 
 #theorem("Gauss' Theorem")[
   Suppose that $V subset RR^3$ is a positively oriented region with a positively oriented, piecewise smooth boundary surface $partial V$. Suppose that $P(x, y, z), Q(x, y, z), R(x, y, z) in C^1(overline(V))$. Then,
   $
-    integral.surf_(partial V) P dif y dif z + Q dif z dif x + R dif x dif y = integral.triple_V (dvp(P, x) + dvp(Q, y) + dvp(R, z)) dif x dif y dif z.
+    integral.surf_(partial V) P dif y dif z + Q dif z dif x + R dif x dif y = integral.triple_V (dvp(P, x) + dvp(Q, y) + dvp(R, z)) dd(x, y, z).
   $
 ] <thm:divergencegauss>
 
@@ -107,20 +107,20 @@ $
   &= (dvp(P, x) dif x + dvp(P, y) dif y + dvp(P, z) dif z) and dif x \
   &quad + (dvp(Q, x) dif x + dvp(Q, y) dif y + dvp(Q, z) dif z) and dif y \
   &wide + (dvp(R, x) dif x + dvp(R, y) dif y + dvp(R, z) dif z) and dif z \
-  &= (dvp(R, y) - dvp(Q, z)) dif y and dif z + (dvp(P, z) - dvp(R, x)) dif z and dif x + (dvp(Q, x) - dvp(P, y)) dif x and dif y.
+  &= (dvp(R, y) - dvp(Q, z)) dd(y, z, prod: and) + (dvp(P, z) - dvp(R, x)) dd(z, x, prod: and) + (dvp(Q, x) - dvp(P, y)) dd(x, y, prod: and).
 $
 
-Similarly, we can differentiate a 2-form $omega = P dif y and dif z + Q dif z and dif x + R dif x and dif y$ to get:
-$ (dvp(P, x) + dvp(Q, y) + dvp(R, z)) dif x and dif y and dif z. $
+Similarly, we can differentiate a 2-form $omega = P dd(y, z, prod: and) + Q dd(z, x, prod: and) + R dd(x, y, prod: and)$ to get:
+$ (dvp(P, x) + dvp(Q, y) + dvp(R, z)) dd(x, y, z, prod: and). $
 The two results above resemble the curl and divergence of $(P, Q, R)$. A differential form $omega$ is _closed_ if $dif omega = 0$, and is _exact_ if there exists $eta$ such that $omega = dif eta$.
 
 #lemma("Poincaré")[
   For any differential form $omega$ on an open, contractible set $U subset.eq RR^n$, if $omega$ is closed, then it is also exact.
 ] <lem:poincare>
 
-It is true that for any set $U subset.eq RR^n$, regardless of contractibility, that for a differential form $omega$ defined on $U$, $dif dif omega = 0$. In other words, all exact differential forms are closed. (For a region $U$, we have $partial partial U = nothing$. This is one of many reasons for which the boundary operator is denoted by $partial$, in analogy to $dif$.)
+It is true that for any set $U subset.eq RR^n$, regardless of contractibility, that for a differential form $omega$ defined on $U$, $dif(dif omega) = 0$. In other words, all exact differential forms are closed. (For a region $U$, we have $partial partial U = nothing$. This is one of many reasons for which the boundary operator is denoted by $partial$, in analogy to $dif$.)
 
-The implications of this are important: if $omega$ is a 0-form, then $op("curl")(op("grad") omega) = 0$, and if $omega$ is a 1-form, $op("div")(op("curl") bold(v)) = 0$, where $bold(v)$ is the vector of the coefficients of the basis differential forms of $omega$ (there are no correlations for higher degree forms since in 3-dimensional space, the highest degree possible for any differential form is 3).
+The implications of this are important: if $omega$ is a 0-form, then $curl(grad omega) = 0$, and if $omega$ is a 1-form, $div(curl vb(v)) = 0$, where $vb(v)$ is the vector of the coefficients of the basis differential forms of $omega$ (there are no correlations for higher degree forms since in 3-dimensional space, the highest degree possible for any differential form is 3).
 
 Then, the Fundamental Theorem of Calculus, the Gradient Theorem, Green's, Stokes', and Gauss' Theorems can be generalized into:
 
@@ -153,7 +153,7 @@ We also have the definition of the limit of a sequence:
   Assume ${a_n}$ is convergent. Then $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$, $abs(a_n - a_infinity) < epsilon / 2$ and $abs(a_m - a_infinity) < epsilon / 2$ for some $a_infinity in RR$. It follows that
   $ abs(a_n - a_m) <= abs(a_n - a_infinity) + abs(a_m - a_infinity) = epsilon. $
 
-  Conversely, ${a_n}$ is bounded (fixing $N$, $forall n > N$, $abs(a_n - a_(N+1)) < epsilon$). By the Bolzano--Weierstrass Theorem (\@thm:bolzanoweierstrass), ${a_n}_(n in NN)$ has a subsequence ${a_(n_k)}_(k in NN)$ that converges to $a_infinity$. Therefore, $forall epsilon > 0$, $exists N in NN$ and $exists M in NN$ such that $forall k > M$, $n_k > N$, and $forall n > N$, $abs(a_n - a_(n_k)) < epsilon / 2$ and $abs(a_(n_k) - a_infinity) < epsilon / 2$. Then
+  Conversely, ${a_n}$ is bounded (fixing $N$, $forall n > N$, $abs(a_n - a_(N+1)) < epsilon$). By the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), ${a_n}_(n in NN)$ has a subsequence ${a_(n_k)}_(k in NN)$ that converges to $a_infinity$. Therefore, $forall epsilon > 0$, $exists N in NN$ and $exists M in NN$ such that $forall k > M$, $n_k > N$, and $forall n > N$, $abs(a_n - a_(n_k)) < epsilon / 2$ and $abs(a_(n_k) - a_infinity) < epsilon / 2$. Then
   $ abs(a_n - a_infinity) <= abs(a_n - a_(n_k)) + abs(a_(n_k) - a_infinity) < epsilon. $
   Hence, ${a_n}$ converges to $a_infinity$.
 ]
@@ -211,7 +211,7 @@ $
 ] <thm:continuousfunctionboundedoncompact>
 
 #proof[
-  Suppose for the sake of contradiction that $f : U -> RR$ is continuous and unbounded on compact $K$. Then for each $n in NN$, there exists $x_n in K$ such that $|f(x_n)| > n$. The sequence ${x_n}$ lies in $K$, which is compact, so by the Bolzano--Weierstrass Theorem (\@thm:bolzanoweierstrass), ${x_n}$ has an accumulation point in $K$. In other words, there exists a convergent subsequence ${x_(n_k)}$ with $lim_(k -> oo) x_(n_k) in K$.
+  Suppose for the sake of contradiction that $f : U -> RR$ is continuous and unbounded on compact $K$. Then for each $n in NN$, there exists $x_n in K$ such that $|f(x_n)| > n$. The sequence ${x_n}$ lies in $K$, which is compact, so by the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), ${x_n}$ has an accumulation point in $K$. In other words, there exists a convergent subsequence ${x_(n_k)}$ with $lim_(k -> oo) x_(n_k) in K$.
 
   Since $f$ is continuous, $lim_(k -> oo) f(x_(n_k)) = f(lim_(k -> oo) x_(n_k))$, which is well-defined because $lim_(k -> oo) x_(n_k) in K$. However, this contradicts $abs(f(x_(n_k))) > n_k -> oo$, hence $f$ must be bounded on $K$.
 ]
@@ -252,7 +252,7 @@ $
   Fix $x in K$. Since $f$ is continuous at $x$, for every $epsilon > 0$ there exists $delta_x > 0$ such that for all $zeta in D(x, delta_x) inter K$,
   $ abs(f(zeta) - f(x)) < epsilon / 2. $ <eq:heinecantorpointwise>
 
-  The collection of open balls ${D(x, delta_x / 2)}_(x in K)$ forms an open cover of the compact set $K$. By Heine--Borel (\@thm:heineborel), there is a finite subcover
+  The collection of open balls ${D(x, delta_x / 2)}_(x in K)$ forms an open cover of the compact set $K$. By Heine--Borel (@thm:heineborel), there is a finite subcover
   $ {D(x_k, delta_(x_k) / 2)}_(k=1)^n. $
   Set
   $ delta = min_(1 <= k <= n) delta_(x_k) / 2. $

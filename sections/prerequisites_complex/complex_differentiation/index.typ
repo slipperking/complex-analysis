@@ -1,4 +1,4 @@
-// sections/prerequisites_complex/complex_differentiation/index.typ
-#import "../../../lib.typ": *
+#import "/lib.typ": *
+== Complex Differentiation
 
 #include "wirtinger_derivatives/index.typ"

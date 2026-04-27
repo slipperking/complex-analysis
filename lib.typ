@@ -1,9 +1,15 @@
-#import "@preview/physica:0.9.8": *
 #import "@preview/ctheorems:1.1.3": *
 #import "@preview/diverential:0.3.0": *
 #import "@preview/cetz:0.4.2": *
+#import "@preview/physica:0.9.8": *
+#import "@preview/physica:0.9.8": vb as _vb
 #import "@preview/headcount:0.1.0": *
 #import sym: *;
+
+// use the non-abbreviated terms for no upright.
+#let vb(x) = _vb(math.upright(x))
+#let vu(x) = _vu(math.upright(x))
+#let va(x) = _va(math.upright(x))
 
 #let theorem = thmplain(
   "theorem",
@@ -62,6 +68,8 @@
 #let Re = math.op($frak(R) e$)
 #let Im = math.op($frak(I) m$)
 #let extcomplex = $hat(CC)$
+#let length = $op("length")$
+
 
 #let ee = $upright(e)$
 #let ii = $upright(i)$
