@@ -1,4 +1,4 @@
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 == The Riemann $zeta$-Function
 The $zeta$-function was first studied by Euler in the 18th century, who investigated its values at positive integers and informally discovered its connection to prime numbers through what is currently known as the _Euler Product Formula_. In the 19th century, Bernhard Riemann extended the function to complex arguments. Riemann also primarily used the related $Pi(z)=Gamma(z+1)$ and $xi(z)$-functions, to express the $zeta$-function's analytic continuation and functional equation more elegantly. While his original notations have largely been deprecated, his contributions are a fundamental part of analytic number theory.
@@ -111,39 +111,39 @@ $ Gamma(s)zeta(s)=integral_0^infinity x^{s-1}sum_{n=1}^infinity ee^{-xn}ddx=inte
     \end{minipage}
 \end{figure}Now consider the _Hankel contour_, which consists of an arc and two rays oriented as in @fig:hankelcontour (note that this contour is not actually closed):
 
-$ C_{epsilon.alt}={epsilon.alt ee^{ii theta} | \asin((delta)/(epsilon.alt))lt.eq theta lt.eq2 pi-\asin((delta)/(epsilon.alt))}, overset(plus.minus, Gamma)_epsilon.alt={x plus.minus ii delta | sqrt(epsilon.alt^2-delta^2)lt.eq x<infinity}. $
+$ C_{epsilon}={epsilon ee^{ii theta} | \asin((delta)/(epsilon))lt.eq theta lt.eq2 pi-\asin((delta)/(epsilon))}, overset(plus.minus, Gamma)_epsilon.alt={x plus.minus ii delta | sqrt(epsilon^2-delta^2)lt.eq x<infinity}. $
 
 Define the auxiliary function 
-$ F_{epsilon.alt,delta}(s)=integral_{C_epsilon.alt union {overset(plus.minus, Gamma)_epsilon.alt}}((-z)^{s-1})/(ee^z-1)ddz=(integral_{C_epsilon.alt}+integral_{\overset+Gamma_epsilon.alt}+integral_{\overset-Gamma_epsilon.alt})((-z)^{s-1})/(ee^z-1)ddz, Re(s)>1 $
+$ F_{epsilon,delta}(s)=integral_{C_epsilon.alt union {overset(plus.minus, Gamma)_epsilon.alt}}((-z)^{s-1})/(ee^z-1)ddz=(integral_{C_epsilon.alt}+integral_{\overset+Gamma_epsilon.alt}+integral_{\overset-Gamma_epsilon.alt})((-z)^{s-1})/(ee^z-1)ddz, Re(s)>1 $
  where the branch cut of the power function lies on the negative real axis. It
-is important to note that $F_{epsilon.alt,delta}$ is independent of
-$epsilon.alt gt.eq delta$. To see this, suppose that
+is important to note that $F_{epsilon,delta}$ is independent of
+$epsilon gt.eq delta$. To see this, suppose that
 $delta lt.eq epsilon.alt_1<epsilon.alt_2<2 pi$ is arbitrarily chosen. Then we
 have
 
 $
 F_{epsilon.alt_2,delta}(s)-F_{epsilon.alt_1,delta}(s) & =(integral_{\mathmakebox[0.5em][l]{C_{epsilon.alt_2}}}-integral_{\mathmakebox[0.5em][l]{C_{epsilon.alt_1}}}+integral_{\mathmakebox[0.5em][l]{\overset+Gamma_{epsilon.alt_2}}}+integral_{\mathmakebox[0.5em][l]{\overset-Gamma_{epsilon.alt_2}}}-integral_{\mathmakebox[0.5em][l]{\overset+Gamma_{epsilon.alt_1}}}-integral_{\overset-Gamma_{epsilon.alt_1}})((-z)^{s-1}ddz)/(ee^{z}-1)=oint.cont_{gamma}((-z)^{s-1}ddz)/(ee^z-1),
 $
- where $gamma$ is a closed _keyhole countour_ (@fig:keyholecontour) around the positive real axis. Since $((-z)^{s-1})/(ee^z-1)$ is holomorphic on and inside $gamma$, Cauchy--Goursat (@thm:cauchygoursattheorem) implies that $oint.cont_{gamma}((-z)^{s-1})/(ee^z-1)=0$. Therefore, $F_{epsilon.alt_2,delta}(s)=F_{epsilon.alt_1,delta}(s)$. Now we define $F_{epsilon.alt}=\lim_{delta ->0^+}F_{epsilon.alt,delta}$.
+ where $gamma$ is a closed _keyhole countour_ (@fig:keyholecontour) around the positive real axis. Since $((-z)^{s-1})/(ee^z-1)$ is holomorphic on and inside $gamma$, Cauchy--Goursat (@thm:cauchygoursattheorem) implies that $oint.cont_{gamma}((-z)^{s-1})/(ee^z-1)=0$. Therefore, $F_{epsilon.alt_2,delta}(s)=F_{epsilon.alt_1,delta}(s)$. Now we define $F_{epsilon}=\lim_{delta ->0^+}F_{epsilon,delta}$.
 
-For brevity, let $theta.alt=\asin(\frac delta epsilon.alt)$ and let
-$tilde(delta)=sqrt(epsilon.alt^2-delta^2)$. Then
-$F_{epsilon.alt,delta}$ can be expanded as
+For brevity, let $theta.alt=\asin(\frac delta epsilon)$ and let
+$tilde(delta)=sqrt(epsilon^2-delta^2)$. Then
+$F_{epsilon,delta}$ can be expanded as
 
 $
-F_{epsilon.alt,delta}(s) & =integral_{theta.alt}^{2 pi-theta.alt}\frac{(-epsilon.alt ee^{ii theta})^{s-1}}{ee^{epsilon.alt ee^{ii theta}}-1}epsilon.alt ii ee^{ii theta}dif theta+integral_{tilde(delta)}^infinity ((ii delta-x)^{s-1})/(ee^{-ii delta+x}-1)ddx-integral_{tilde(delta)}^infinity ((-ii delta-x)^{s-1})/(ee^{ii delta+x}-1)ddx \\ & = upright("I") + \mathrm{I\!I} + \mathrm{I\!I\!I}.
+F_{epsilon,delta}(s) & =integral_{theta.alt}^{2 pi-theta.alt}\frac{(-epsilon ee^{ii theta})^{s-1}}{ee^{epsilon ee^{ii theta}}-1}epsilon ii ee^{ii theta}dif theta+integral_{tilde(delta)}^infinity ((ii delta-x)^{s-1})/(ee^{-ii delta+x}-1)ddx-integral_{tilde(delta)}^infinity ((-ii delta-x)^{s-1})/(ee^{ii delta+x}-1)ddx \\ & = upright("I") + \mathrm{I\!I} + \mathrm{I\!I\!I}.
 $ <eq:riemannzetafunction_remainingthreeintegralshankelcontour>
 
-By the Maclaurin expansion with respect to $epsilon.alt ee^{ii theta}$, we have 
-$ ee^{epsilon.alt ee^{ii theta}}-1=epsilon.alt ee^{ii theta}+((epsilon.alt ee^{ii theta})^2)/(2!)+dots.c=epsilon.alt ee^{ii theta}+R(epsilon.alt,theta) $
- (where we have $|R(epsilon.alt,theta)|=cal(O)(epsilon.alt^2)< c epsilon.alt^2$, where $c>0$ is independent of $theta$) by absolute convergence, which implies that for $epsilon.alt<\frac1{c}$ (so that $epsilon.alt-|R(epsilon.alt,theta)|>0$), 
-$ \abs{ee^{epsilon.alt ee^{ii theta}}-1}=|epsilon.alt ee^{ii theta}+R(epsilon.alt,theta)|gt.eq epsilon.alt-|R(epsilon.alt,theta)|>epsilon.alt-c epsilon.alt^2>0. $
+By the Maclaurin expansion with respect to $epsilon ee^{ii theta}$, we have 
+$ ee^{epsilon ee^{ii theta}}-1=epsilon ee^{ii theta}+((epsilon ee^{ii theta})^2)/(2!)+dots.c=epsilon ee^{ii theta}+R(epsilon,theta) $
+ (where we have $|R(epsilon,theta)|=cal(O)(epsilon^2)< c epsilon^2$, where $c>0$ is independent of $theta$) by absolute convergence, which implies that for $epsilon<\frac1{c}$ (so that $epsilon-|R(epsilon,theta)|>0$), 
+$ \abs{ee^{epsilon ee^{ii theta}}-1}=|epsilon ee^{ii theta}+R(epsilon,theta)|gt.eq epsilon-|R(epsilon,theta)|>epsilon-c epsilon^2>0. $
 
-Then for $epsilon.alt<(1)/(2c)$, we have that
-$c<(1)/(2 epsilon.alt)$, and thus $\abs{ee^{epsilon.alt ee^{ii theta}}-1}>(epsilon.alt)/(2)$. Therefore,
+Then for $epsilon<(1)/(2c)$, we have that
+$c<(1)/(2 epsilon)$, and thus $\abs{ee^{epsilon ee^{ii theta}}-1}>(epsilon)/(2)$. Therefore,
 
 $
-|upright("I")| & lt.eq epsilon.alt integral_theta.alt^{2 pi-theta.alt}\abs{\frac{(epsilon.alt ee^{ii theta})^{s-1}}{ee^{epsilon.alt ee^{ii theta}}-1}}dif thetalt.eq2 pi epsilon.alt^{Re(s)}sup_{theta.alt lt.eq theta lt.eq2 pi-theta.alt}\frac{|ee^{ii theta(s-1)}|}{\frac{epsilon.alt}2} \\ & =4 pi epsilon.alt^{Re(s)-1}sup_theta |ee^{theta(ii (Re(s)-1)-Im(s))}|=4 pi epsilon.alt^{Re(s)-1}sup_theta ee^{-theta Im(s)} \\ & lt.eq4 pi epsilon.alt^{Re(s)-1}ee^{2 pi |Im(s)|}->0 \qq{as}epsilon.alt -> 0.
+|upright("I")| & lt.eq epsilon integral_theta.alt^{2 pi-theta.alt}\abs{\frac{(epsilon ee^{ii theta})^{s-1}}{ee^{epsilon ee^{ii theta}}-1}}dif thetalt.eq2 pi epsilon^{Re(s)}sup_{theta.alt lt.eq theta lt.eq2 pi-theta.alt}\frac{|ee^{ii theta(s-1)}|}{\frac{epsilon}2} \\ & =4 pi epsilon^{Re(s)-1}sup_theta |ee^{theta(ii (Re(s)-1)-Im(s))}|=4 pi epsilon^{Re(s)-1}sup_theta ee^{-theta Im(s)} \\ & lt.eq4 pi epsilon^{Re(s)-1}ee^{2 pi |Im(s)|}->0 \qq{as}epsilon -> 0.
 $
 
 On the contrary,
@@ -157,15 +157,15 @@ $
 \mathrm{I\!I}+\mathrm{I\!I\!I} & -> integral_{tilde(delta)}^infinity (ee^{(s-1)[log (x)+ii pi]})/(ee^x-1)ddx-integral_{tilde(delta)}^infinity (ee^{(s-1)[log(x)-ii pi]})/(ee^x-1)ddx \\ & =integral_{tilde(delta)}^infinity (x^{s-1}ee^{ii pi(s-1)})/(ee^x-1)ddx-integral_{tilde(delta)}^infinity (x^{s-1}ee^{-ii pi(s-1)})/(ee^x-1)ddx \\ & =(ee^{-ii pi s}-ee^{ii pi s})integral_{tilde(delta)}^infinity (x^{s-1}ddx)/(ee^x-1)=-2 ii sin (pi s)integral_{tilde(delta)}^infinity (x^{s-1}ddx)/(ee^x-1).
 $ <eq:riemannzetafunction_remainingtwointegralslimit>
 
-Now under the limiting operations $delta -> 0^+$ and $epsilon.alt ->0^+$, we have
+Now under the limiting operations $delta -> 0^+$ and $epsilon ->0^+$, we have
 
-$ F(s)=F_epsilon.alt(s)(forall epsilon.alt<2 pi)=\lim_{epsilon.alt -> 0^+}F_epsilon.alt(s)=\lim_{epsilon.alt -> 0}\lim_{delta ->0}upright("I")+\mathrm{I\!I}+\mathrm{I\!I\!I}=-2 ii sin (pi s)Gamma(s)zeta(s) $ <eq:riemannzetafunctionthreeintegralslimit>
- by virtue of @thm:riemannzetafunctiongammaintegral. The integral $upright("I")+\mathrm{I\!I}+\mathrm{I\!I\!I}$ for any $epsilon.alt$ and $delta$ defines an entire function of $s$---by expressing each integral in its parametric form as in @eq:riemannzetafunction_remainingthreeintegralshankelcontour, a simple calculation yields that $dv(F_epsilon.alt(s), overline(s))equiv 0$ (either through differentiation under the integral sign, or by Lebesgue's Dominated Convergence) and hence the entireness of each $F_epsilon.alt$ follows.
+$ F(s)=F_epsilon.alt(s)(forall epsilon<2 pi)=\lim_{epsilon -> 0^+}F_epsilon.alt(s)=\lim_{epsilon -> 0}\lim_{delta ->0}upright("I")+\mathrm{I\!I}+\mathrm{I\!I\!I}=-2 ii sin (pi s)Gamma(s)zeta(s) $ <eq:riemannzetafunctionthreeintegralslimit>
+ by virtue of @thm:riemannzetafunctiongammaintegral. The integral $upright("I")+\mathrm{I\!I}+\mathrm{I\!I\!I}$ for any $epsilon$ and $delta$ defines an entire function of $s$---by expressing each integral in its parametric form as in @eq:riemannzetafunction_remainingthreeintegralshankelcontour, a simple calculation yields that $dv(F_epsilon.alt(s), overline(s))equiv 0$ (either through differentiation under the integral sign, or by Lebesgue's Dominated Convergence) and hence the entireness of each $F_epsilon.alt$ follows.
 
 Thus @eq:riemannzetafunctionthreeintegralslimit defines an analytic
 continuation of $zeta(s)$ by
 
-$ zeta(s)=(\lim_{epsilon.alt -> 0^+}F_epsilon.alt(s))/(-2 ii sin(pi s)Gamma(s)), $ <eq:riemannzetafunction_analyticcontinuationcontourintegral>
+$ zeta(s)=(\lim_{epsilon -> 0^+}F_epsilon.alt(s))/(-2 ii sin(pi s)Gamma(s)), $ <eq:riemannzetafunction_analyticcontinuationcontourintegral>
  whose singularities lie within $ZZ$ (the $Gamma$-function never vanishes since $\frac1 Gamma$ is entire by its Weierstrass factorization in @thm:gammafunction_weierstrassformula). By the series definition, the singularities at $s in NN_{gt.eq2}$ are removable and hence unimportant to our consideration, while the simple zeros of the $sin(pi s)$ function at each $s in ZZ_{lt.eq0}$ cancel with the simple poles of the $Gamma$-function and hence those are removable singularities of $zeta$ as well. Our final consideration is of the singularity at $s=1$:
 
 #theorem[The Riemann $zeta$-function is holomorphic on $CCwithout \cbraces{1}$. The singularity at $s=1$ is a simple pole with a residue of $1$.]
@@ -175,7 +175,7 @@ $ zeta(s)=(\lim_{epsilon.alt -> 0^+}F_epsilon.alt(s))/(-2 ii sin(pi s)Gamma(s)),
     The $\mathrm{I\!I}$ and $\mathrm{I\!I\!I}$ integrals vanish at $s=1$
     since $sin(pi)=0$ (in
     @eq:riemannzetafunction_remainingtwointegralslimit). Now because 
-$ upright("I")-> oint.cont_{partial D (0,epsilon.alt)}(ddz)/(ee^z-1)=2 pi ii limits(Res){z=0}(\frac1{ee^z-1}) $
+$ upright("I")-> oint.cont_{partial D (0,epsilon)}(ddz)/(ee^z-1)=2 pi ii limits(Res){z=0}(\frac1{ee^z-1}) $
  as $delta -> 0^+$, the integrand has a simple pole at $z=0$. Its residue,
     calculated via @eq:residueatpole, is equal to 
 $ limits(Res){z=0}(\frac1{ee^z-1})=\lim_{z -> 0}(z)/(ee^z-1)=\lim_{z -> 0}(1)/(ee^z)=1. $
@@ -199,9 +199,9 @@ $ zeta(1-s)=2 zeta(s)Gamma(s)cos(\frac pi2s)(2 pi)^{-s}. $ <eq:riemannzetafuncti
 
     Suppose that $Re s<0$. Now the Residue Theorem (@thm:residuethm) gives
     that 
-$ F_{(2n+1)pi}(s)-F_{epsilon.alt}(s)=2 pi ii sum_{\mathclap{\substack{z in2 pi ii ZZ\\z in " contour"}}}limits(Res)z ((-z)^{s-1})/(ee^z-1), epsilon.alt<2 pi $
+$ F_{(2n+1)pi}(s)-F_{epsilon}(s)=2 pi ii sum_{\mathclap{\substack{z in2 pi ii ZZ\\z in " contour"}}}limits(Res)z ((-z)^{s-1})/(ee^z-1), epsilon<2 pi $
  where the contour is the keyhole contour in @fig:keyholecontour with a
-    larger radius of $(2n+1)pi$ and a smaller one of $epsilon.alt$. Then we
+    larger radius of $(2n+1)pi$ and a smaller one of $epsilon$. Then we
     have, by virtue of @eq:residueatpole:
     
 $
@@ -322,10 +322,10 @@ $ Phi'(s)=n(s-a)^{n-1}phi.alt(s)+(s-a)^n phi.alt'(s)=> Re \qty((Phi'(s))/(Phi(s)
 
 #proof[Without loss of generality, we restrict our consideration to the line $Re s=1$ (the other line follows from the functional equation). Suppose that there exists some $a=1+ii t$ for $t in RRwithout \cbraces{0}$ such that $zeta(a)=0$.
 
-    By @prop:positivelogarithmicderivativerealpart, $exists epsilon.alt>0$
+    By @prop:positivelogarithmicderivativerealpart, $exists epsilon>0$
     such that
     
-$ Re \qty((Phi'(sigma))/(Phi(sigma)))>0, forall 1<sigma<1+epsilon.alt, $ <eq:riemannzetafunction_nolinesofzeros_reallinepositivity>
+$ Re \qty((Phi'(sigma))/(Phi(sigma)))>0, forall 1<sigma<1+epsilon, $ <eq:riemannzetafunction_nolinesofzeros_reallinepositivity>
  where we define $Phi(s)$ to be holomorphic on the real line (dependent on $t$) via 
 $ Phi(s)=zeta^3(s)zeta^4 (s+ii t)zeta(s+2 ii t), $
  since the triple pole at $s=1$ of $zeta^3$ is cancelled by the (at least)

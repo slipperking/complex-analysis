@@ -1,4 +1,4 @@
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 == Zeros of a Holomorphic Function
 For a region $U subset.eq CC$ and a holomorphic function $f:U -> CC$, a point $z_0 in U$ is a _zero_ of $f$ iff $f (z_0)=0$. Furthermore, if $f$ has the Taylor expansion at $z_0$ of 
@@ -13,15 +13,15 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
 
 #theorem[Let $U subset.eq CC$ be open and connected, and $f:U -> CC$ be holomorphic over $U$. Then if the set defined by $S={z in U | f(z)=0}$ has an accumulation point in $U$, then $f equiv0$ over $U$.] <thm:identityaccumulationofzeros>
 
-#proof[Let $\cbraces{z_n}_{n in NN}$ be a subset of $S$ and assume it has an accumulation point $z_infinity$ in $U$. Since $f$ is holomorphic over $U$, $exists epsilon.alt>0$ such that $f$ is holomorphic over $D (z_infinity,epsilon.alt)subset.eq U$. Then over this disk, $f$ has the Taylor expansion
+#proof[Let $\cbraces{z_n}_{n in NN}$ be a subset of $S$ and assume it has an accumulation point $z_infinity$ in $U$. Since $f$ is holomorphic over $U$, $exists epsilon>0$ such that $f$ is holomorphic over $D (z_infinity,epsilon)subset.eq U$. Then over this disk, $f$ has the Taylor expansion
     
 $ f(z)=sum_{n=0}^infinity a_n (z-z_infinity)^n. $ <eq:identityaccumulationofzeros_taylorexpansion>
 
-    By @def:accumulationpoint, $exists N in NN$ such that $forall n>N$, $z_n in D (z_infinity,epsilon.alt)$. Since $z_n$ is a zero of $f$, $f (z_n)=0$. Then, by the continuity of $f$, 
+    By @def:accumulationpoint, $exists N in NN$ such that $forall n>N$, $z_n in D (z_infinity,epsilon)$. Since $z_n$ is a zero of $f$, $f (z_n)=0$. Then, by the continuity of $f$, 
 $ \lim_{n -> infinity} f (z_n)=f (\lim_{n -> infinity}z_n)=f (z_infinity)=0. $
  Using this result in comparison to @eq:identityaccumulationofzeros_taylorexpansion, we get that $a_0=0$.
 
-    The function $f_1(z)=(f(z))/(z-z_infinity)$ has a Taylor expansion over $D (z_0,epsilon.alt)$ of
+    The function $f_1(z)=(f(z))/(z-z_infinity)$ has a Taylor expansion over $D (z_0,epsilon)$ of
     
 $ f_1(z)=sum_{n=0}^infinity a_{n+1}(z-z_infinity)^n. $
 
@@ -31,9 +31,9 @@ $ 0=a_1+cal(O)(z_n-z_infinity). $
     Letting $n -> infinity$, $z_n -> z_infinity$, and $a_1=0$. Define $f_2(z)=(f_1(z))/(z-z_infinity)$. Then, 
 $ f_2(z)=sum_{n=0}^infinity a_{n+2}(z-z_infinity)^n. $
 
-    Similarly, $a_2=0$. Letting $f_n(z)=(f(z))/((z-z_infinity)^n)$, the sequence $\cbraces{a_n}_{n in ZZ_{gt.eq0}}$ vanishes, and $f equiv 0$ on $D (z_infinity,epsilon.alt)$.
+    Similarly, $a_2=0$. Letting $f_n(z)=(f(z))/((z-z_infinity)^n)$, the sequence $\cbraces{a_n}_{n in ZZ_{gt.eq0}}$ vanishes, and $f equiv 0$ on $D (z_infinity,epsilon)$.
 
-    Let $tilde(S)={z in U | forall n in ZZ_{gt.eq0}, f^{(n)}(z)=0}$.\ $forall z in D (z_infinity,epsilon.alt)$, since $f(z)$ locally vanishes (and has vanishing derivatives as a consequence), $D (z_infinity,epsilon.alt)subset.eq tilde(S)$. Furthermore, $forall z'in tilde(S)$, $exists epsilon.alt'>0$ such that $f(z)$ has a convergent Taylor series with vanishing coefficients on $D(z',epsilon.alt')subset.eq U$. Then $f equiv0$ on $D (z',epsilon.alt')$. Then $forall z in D(z',epsilon.alt')$, since $f$ is constant at $z$, it also has vanishing derivatives. It follows that $D(z',epsilon.alt')subset.eq tilde(S)$. Since every point in $tilde(S)$ has an open neighborhood also in $tilde(S)$, $tilde(S)$ is open.
+    Let $tilde(S)={z in U | forall n in ZZ_{gt.eq0}, f^{(n)}(z)=0}$.\ $forall z in D (z_infinity,epsilon)$, since $f(z)$ locally vanishes (and has vanishing derivatives as a consequence), $D (z_infinity,epsilon)subset.eq tilde(S)$. Furthermore, $forall z'in tilde(S)$, $exists epsilon'>0$ such that $f(z)$ has a convergent Taylor series with vanishing coefficients on $D(z',epsilon')subset.eq U$. Then $f equiv0$ on $D (z',epsilon')$. Then $forall z in D(z',epsilon')$, since $f$ is constant at $z$, it also has vanishing derivatives. It follows that $D(z',epsilon')subset.eq tilde(S)$. Since every point in $tilde(S)$ has an open neighborhood also in $tilde(S)$, $tilde(S)$ is open.
 
     It is evident that $forall k in ZZ_{gt.eq0}$, $f^{(k)}$ is continuous in $U$ by the holomorphy of $f$. Let $S_k={z in U | f^{(k)}(z)=0}$. For any sequence $\cbraces{tilde(z)_n}in S_k$ converging to some $tilde(z)_infinity in U$, by the continuity of $f$, 
 $ \lim_{n -> infinity} f^{(k)}(tilde(z)_n)=f^{(k)}(\lim_{n -> infinity}tilde(z)_n)=f^{(k)}(z'_infinity)=0, $

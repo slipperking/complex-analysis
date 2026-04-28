@@ -1,4 +1,4 @@
-#import "../../../../lib.typ": *
+#import "/lib.typ": *
 
 === In Harmonic Analysis
 Consider $R=1$, $zeta=ee^{ii tau}$, and $z=rho ee^{ii theta}$ in @eq:poissonintegralformula2:
@@ -43,9 +43,9 @@ Thus, for any continuous function $u$ on $partial bb(D)$, its Fourier series is 
 
 We now establish that real-valued continuous functions satisfying the mean-value property are harmonic.
 
-#theorem[Let $U subset.eq CC$ be open and $f:U -> RR$ continuous. Suppose for every $z_0 in U$, there exists $lambda>0$ with $overline(D (z_0,lambda))subset.eq U$ such that for all $0<epsilon.alt lt.eq lambda$,
+#theorem[Let $U subset.eq CC$ be open and $f:U -> RR$ continuous. Suppose for every $z_0 in U$, there exists $lambda>0$ with $overline(D (z_0,lambda))subset.eq U$ such that for all $0<epsilon lt.eq lambda$,
     
-$ f (z_0)=(1)/(2 pi)integral_0^{2 pi} f (z_0+epsilon.alt ee^{ii t})dif t. $
+$ f (z_0)=(1)/(2 pi)integral_0^{2 pi} f (z_0+epsilon ee^{ii t})dif t. $
 
     Then $f$ is harmonic on $U$.] <thm:meanvaluepropertysolutionsareharmonic>
 

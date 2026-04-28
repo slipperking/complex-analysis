@@ -1,20 +1,20 @@
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 == Further Properties of Holomorphic Functions
 A useful corollary of @thm:cauchygoursatformula is the Maximum Modulus Principle.
 
 Before the theorem, we first introduce the mean-value property of holomorphic functions.
 
-#lemma[Let $U subset.eq CC$ be open and simply connected, and let $f:U -> CC$ be holomorphic. Then $forall z in U$ and $forall epsilon.alt>0$ such that $overline(D(z,epsilon.alt))subset U$, $f(z)$ is the average of $f(zeta)$ where $zeta in D(z,epsilon.alt)$ is uniform. In other words, 
-$ f(z)=(1)/(2 pi epsilon.alt)oint.cont_{partial D(z,epsilon.alt)}f(zeta)|dif zeta|. $] <lem:holomorphicmeanvalueproperty>
+#lemma[Let $U subset.eq CC$ be open and simply connected, and let $f:U -> CC$ be holomorphic. Then $forall z in U$ and $forall epsilon>0$ such that $overline(D(z,epsilon))subset U$, $f(z)$ is the average of $f(zeta)$ where $zeta in D(z,epsilon)$ is uniform. In other words, 
+$ f(z)=(1)/(2 pi epsilon)oint.cont_{partial D(z,epsilon)}f(zeta)|dif zeta|. $] <lem:holomorphicmeanvalueproperty>
 
 #proof[By the Cauchy--Goursat Formula (@thm:cauchygoursatformula), 
-$ f(z)=(1)/(2 pi ii)oint.cont_{partial D(z,epsilon.alt)}(f(zeta))/(zeta-z)ddzeta=(1)/(2 pi)integral_0^{2 pi}f (z+epsilon.alt ee^{ii t})dif t. $
+$ f(z)=(1)/(2 pi ii)oint.cont_{partial D(z,epsilon)}(f(zeta))/(zeta-z)ddzeta=(1)/(2 pi)integral_0^{2 pi}f (z+epsilon ee^{ii t})dif t. $
 
     Observe that
     
 $
-f(z)=(1)/(2 pi epsilon.alt)oint.cont_{partial D(z,epsilon.alt)}f(zeta)|dif zeta| & =(1)/(2 pi epsilon.alt)integral_{0}^{2 pi}f (z+epsilon.alt ee^{ii t})|ii epsilon.alt ee^{ii t}dif t| \\ & =(1)/(2 pi)integral_{0}^{2 pi}f (z+epsilon.alt ee^{ii t})dif t,
+f(z)=(1)/(2 pi epsilon)oint.cont_{partial D(z,epsilon)}f(zeta)|dif zeta| & =(1)/(2 pi epsilon)integral_{0}^{2 pi}f (z+epsilon ee^{ii t})|ii epsilon ee^{ii t}dif t| \\ & =(1)/(2 pi)integral_{0}^{2 pi}f (z+epsilon ee^{ii t})dif t,
 $
 
     and the conclusion follows.]
@@ -32,19 +32,19 @@ $ S={z | f(z)=f (z_0),z in V} $
 $ \lim_{n -> infinity} f (z_n)=f (\lim_{n -> infinity}z_n)=f (z_infinity)=0, $
  and $z_infinity in S$. Thus, $S$ contains all of its accumulation points in $V$ and is therefore closed (if $z_infinity in.not V$, then it is no longer relevant; we are concerned with its relative closedness in $V$).
 
-    Since $S subset.eq V$ and $V$ are both open, $forall z in S$, $exists lambda>0$ such that $D(z,lambda)subset.eq V$. By @lem:holomorphicmeanvalueproperty, $forall 0<epsilon.alt<lambda$,
+    Since $S subset.eq V$ and $V$ are both open, $forall z in S$, $exists lambda>0$ such that $D(z,lambda)subset.eq V$. By @lem:holomorphicmeanvalueproperty, $forall 0<epsilon<lambda$,
     
 $
-|f(z)| & =\abs{(1)/(2 pi)integral_0^{2 pi}f (z+epsilon.alt ee^{ii t})dif t}lt.eq (1)/(2 pi)integral_0^{2 pi}\abs{f (z+epsilon.alt ee^{ii t})}dif t \\ & lt.eq (1)/(2 pi)integral_0^{2 pi}|f(z)|dif t=|f(z)|.
+|f(z)| & =\abs{(1)/(2 pi)integral_0^{2 pi}f (z+epsilon ee^{ii t})dif t}lt.eq (1)/(2 pi)integral_0^{2 pi}\abs{f (z+epsilon ee^{ii t})}dif t \\ & lt.eq (1)/(2 pi)integral_0^{2 pi}|f(z)|dif t=|f(z)|.
 $
 
     It follows that all inequalities above are equalities, or that
     
 $
-|f(z)| & =\abs{(1)/(2 pi)integral_0^{2 pi}f (z+epsilon.alt ee^{ii t})dif t}=(1)/(2 pi)integral_0^{2 pi}\abs{f (z+epsilon.alt ee^{ii t})}dif t \\ & =(1)/(2 pi)integral_0^{2 pi}|f(z)|dif t=|f(z)|.
+|f(z)| & =\abs{(1)/(2 pi)integral_0^{2 pi}f (z+epsilon ee^{ii t})dif t}=(1)/(2 pi)integral_0^{2 pi}\abs{f (z+epsilon ee^{ii t})}dif t \\ & =(1)/(2 pi)integral_0^{2 pi}|f(z)|dif t=|f(z)|.
 $
 
-    From the equality of the last two integrals, $integral_{0}^{2 pi}(|f(z)|-\abs{f (z+epsilon.alt ee^{ii t})})dif t=0$. Since this integrand is strictly non-negative, we have equality. Thus, $forall z in S$, $exists lambda>0$ such that $D (z,lambda)subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$. Therefore, $S$ is open and $S=V$ as it is a nonempty clopen subset. Since $V$ is nonempty and open, it has an accumulation point in $U$. It follows that $f(z)equiv f (z_0)$ over $U$ by the Identity Theorem (@thm:identity).]
+    From the equality of the last two integrals, $integral_{0}^{2 pi}(|f(z)|-\abs{f (z+epsilon ee^{ii t})})dif t=0$. Since this integrand is strictly non-negative, we have equality. Thus, $forall z in S$, $exists lambda>0$ such that $D (z,lambda)subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$. Therefore, $S$ is open and $S=V$ as it is a nonempty clopen subset. Since $V$ is nonempty and open, it has an accumulation point in $U$. It follows that $f(z)equiv f (z_0)$ over $U$ by the Identity Theorem (@thm:identity).]
 
 #remark[If $f$ is holomorphic and non-constant on an open region $U subset.eq CC$, then for any compact set $K subset U$, the maximum of $f$ in $K$ lies on $partial K$. Otherwise, $f$ would attain a maximum at some $z in integral erior{K}$, and contradict the statement of @thm:maximummodulus under the assumption of being non-constant.]
 
@@ -68,9 +68,9 @@ $ |f(z)|lt.eq |z|, |f'(0)|lt.eq 1. $
 $ g(z)= cases((f(z))/(z) & \qif* z eq.not0, ,
  f'(0) & \qif* z=0.) $
 
-    Because $\lim_{z ->0}(f(z))/(z)=f'(0)$, $g(z)$ is holomorphic on $bb(D)$. Since $f$ is an automorphism on the open disk, $forall |z|<1$, $|f(z)|<1$. By the Maximum Modulus Principle @thm:maximummodulus, $forall0<epsilon.alt<1$, $forall z in D(0,epsilon.alt)$, 
-$ |g(z)|lt.eq max_{z_epsilon.alt in partial D(0,epsilon.alt)}\frac{|f (z_epsilon.alt)|}{epsilon.alt}<(1)/(epsilon.alt). $
- As $epsilon.alt -> 1^-$, we obtain that $forall z in bb(D)$, $|g(z)|lt.eq 1$, or that $|f(z)|lt.eq |z|$. Let $z=0$. Then we get $|g(0)|=f'(0)lt.eq 1$.
+    Because $\lim_{z ->0}(f(z))/(z)=f'(0)$, $g(z)$ is holomorphic on $bb(D)$. Since $f$ is an automorphism on the open disk, $forall |z|<1$, $|f(z)|<1$. By the Maximum Modulus Principle @thm:maximummodulus, $forall0<epsilon<1$, $forall z in D(0,epsilon)$, 
+$ |g(z)|lt.eq max_{z_epsilon.alt in partial D(0,epsilon)}\frac{|f (z_epsilon.alt)|}{epsilon}<(1)/(epsilon). $
+ As $epsilon -> 1^-$, we obtain that $forall z in bb(D)$, $|g(z)|lt.eq 1$, or that $|f(z)|lt.eq |z|$. Let $z=0$. Then we get $|g(0)|=f'(0)lt.eq 1$.
 
     For the sake of the equality condition, assume $|f(z)|=|z|$. Then $|g(z)|equiv 1$ on the unit open disk. By @thm:maximummodulus, $g(z)=exp(ii tau)$ where $tau in RR$ and $f(z)=z exp(ii tau)$ on $bb(D)$.
 

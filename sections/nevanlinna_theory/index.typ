@@ -1,5 +1,5 @@
 // sections/nevanlinna_theory/index.typ
-#import "../../lib.typ": *
+#import "/lib.typ": *
 
 #include "nevanlinna_functions/index.typ"
 #include "properties_of_characteristic/index.typ"

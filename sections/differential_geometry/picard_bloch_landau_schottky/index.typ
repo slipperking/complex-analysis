@@ -1,4 +1,4 @@
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 == The Great Picard, Bloch, Landau, and Schottky Theorems
 Recall the Casorati--Weierstrass Theorem, one of the earliest results on the value distribution near essential singularities: \getkeytheorem{thm:casoratiweierstrass} We will now prove a more advanced characterization of this distribution by methods of differential geometry.
@@ -20,11 +20,11 @@ $ |f (\frac z{n_k})|=|f_{n_k}(z)|<M forall z in partial D (0,\frac delta2),\ k i
 $ cup_{k in NN}overline(D (0,(delta)/(2n_k)))without D (0,(delta)/(2n_{k+1}))=overline(D (0,\frac delta{2n_1}))without \cbraces{0}, $
 
               it follows that $f$ is bounded on $D^*(0,\frac delta2)$. By Riemann's Removable Singularity Theorem (@thm:riemannremovablesingularities), $f$ therefore extends holomorphically to $0$.
-+ Suppose $\cbraces{f_{n_k}}_{k in NN}$ converges locally uniformly to $infinity$ on $D^*(0,delta)$. Then, for every $epsilon.alt>0$, there exists $N in NN$ such that, for all $k>N$,
++ Suppose $\cbraces{f_{n_k}}_{k in NN}$ converges locally uniformly to $infinity$ on $D^*(0,delta)$. Then, for every $epsilon>0$, there exists $N in NN$ such that, for all $k>N$,
               
-$ |(1)/(f ((z)/(n_k)))|=\abs{\frac1{f_{n_k}(z)}}<epsilon.alt forall z in partial D (0,\frac delta2). $
+$ |(1)/(f ((z)/(n_k)))|=\abs{\frac1{f_{n_k}(z)}}<epsilon forall z in partial D (0,\frac delta2). $
 
-              By the same reasoning as in the previous case, $|\frac1f|<epsilon.alt$ on
+              By the same reasoning as in the previous case, $|\frac1f|<epsilon$ on
               
 $ cup_{k>N}overline(D (0,(delta)/(2n_k)))without D (0,(delta)/(2n_{k+1}))supset D^*(0,(delta)/(2n_{N+1})). $
 

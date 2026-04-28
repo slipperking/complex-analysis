@@ -1,4 +1,4 @@
-#import "../../../../lib.typ": *
+#import "/lib.typ": *
 
 === Solution to the Dirichlet Problem on a Disk
 A fundamental problem in the theory of partial differential equations is to find a function $u$ that is continuous on the closed disk $overline(D(0,R))$, harmonic on the open disk $D(0,R)$, and identically equal to a given boundary function on $partial D(0,R)$. This is known as the _Dirichlet problem_ (for Laplace's equation) on a disk.
@@ -25,14 +25,14 @@ $ |phi.alt(xi)-u(z)|=|phi.alt (R ee^{ii theta.alt})-u (rho ee^{ii theta})|=|phi.
     For a constant harmonic function identically equal to 1, we get $integral_0^{2 pi}P(zeta,z)dif tau=1$ from @eq:poissonintegralformula2. Hence, 
 $ |phi.alt(xi)-u(z)|=|integral_0^{2 pi}P(zeta,z)(phi.alt \qty(R ee^{ii theta.alt})-phi.alt(zeta))dif tau|. $
 
-    By the continuity of $phi.alt$, $forall epsilon.alt>0$, $exists delta>0$ such that $forall \qty|theta.alt-tau|<delta<(pi)/(2)$, we have that $|phi.alt(R ee^{ii theta.alt})-phi.alt(zeta)|<epsilon.alt$. Therefore,
+    By the continuity of $phi.alt$, $forall epsilon>0$, $exists delta>0$ such that $forall \qty|theta.alt-tau|<delta<(pi)/(2)$, we have that $|phi.alt(R ee^{ii theta.alt})-phi.alt(zeta)|<epsilon$. Therefore,
     
 $
 |phi.alt(xi)-u(z)| & =\abs{(integral_{|theta.alt-tau|<delta}+integral_{|theta.alt-tau|>delta})P(zeta,z)(phi.alt (R ee^{ii theta.alt})-phi.alt(zeta))dif tau} \\&=|I_1+I_2|lt.eq |I_1|+|I_2|.
 $
 
     Since the Poisson kernel is non-negative, 
-$ \qty|I_1|<epsilon.alt integral_{|theta.alt-tau|<delta}P(zeta,z)dif tau<epsilon.alt. $
+$ \qty|I_1|<epsilon integral_{|theta.alt-tau|<delta}P(zeta,z)dif tau<epsilon. $
 
     \begin{figure}
         \centering
@@ -85,16 +85,16 @@ $ rho>(R)/(2)==> eta lt.eq (R)/(2) $ <eq:dirichletproblemwithlaplaceequationsolu
  (these can be arbitrarily chosen for different resulting bounds) as in @fig:dirichletproblemwithlaplaceequationsolution_secondintegral. Then, 
 $ |zeta-z|^2>4 rho^2 sin[2]((delta)/(4))>(1)/(2)R^2 \qty(1-cos((delta)/(2))). $
 
-    We aim to prove that $|I_2|<epsilon.alt$. Since $|phi.alt (R ee^{ii theta.alt})-phi.alt(zeta)|<2M$, the condition is satisfied if $integral_{|theta.alt-tau|>delta}(R^2-rho^2)/(pi R^2 \qty(1-cos((delta)/(2))))dif tau<2 (R^2-rho^2)/(R^2 \qty(1-cos((delta)/(2))))<(epsilon.alt)/(2M)$, and from rearrangement, we can tighten the constraint with:
+    We aim to prove that $|I_2|<epsilon$. Since $|phi.alt (R ee^{ii theta.alt})-phi.alt(zeta)|<2M$, the condition is satisfied if $integral_{|theta.alt-tau|>delta}(R^2-rho^2)/(pi R^2 \qty(1-cos((delta)/(2))))dif tau<2 (R^2-rho^2)/(R^2 \qty(1-cos((delta)/(2))))<(epsilon)/(2M)$, and from rearrangement, we can tighten the constraint with:
     
-$ R^2-rho^2<(epsilon.alt)/(4M)R^2 (1-cos((delta)/(2)))\Longleftarrow R-rho<(epsilon.alt)/(8M)R (1-cos((delta)/(2))). $ <eq:dirichletproblemwithlaplaceequationsolution_constraint3>
+$ R^2-rho^2<(epsilon)/(4M)R^2 (1-cos((delta)/(2)))\Longleftarrow R-rho<(epsilon)/(8M)R (1-cos((delta)/(2))). $ <eq:dirichletproblemwithlaplaceequationsolution_constraint3>
 
     From @fig:dirichletproblemwithlaplaceequationsolution_secondintegral, it is evident that $R-rho<|xi-z|<eta$. In order for @eq:dirichletproblemwithlaplaceequationsolution_constraint1 to be true, we can enforce that $|theta.alt-theta|<(delta)/(2)$. In other words $|xi-z|^2<R^2+rho^2-2R rho cos((delta)/(2))$.
 
     Obviously, this is satisfied if $|xi-z|^2<(R^2)/(2)(1-cos((delta)/(2)))<2 rho^2 \qty(1-cos((delta)/(2)))$. This can be rearranged into $|xi-z|<(R sqrt(2))/(2)sqrt(1-cos((delta)/(2)))=R sin ((delta)/(4))$. Therefore, we can choose 
-$ eta=min [(epsilon.alt)/(8M)R (1-cos((delta)/(2))),R sin ((delta)/(4)),(R)/(2)]>0, $
+$ eta=min [(epsilon)/(8M)R (1-cos((delta)/(2))),R sin ((delta)/(4)),(R)/(2)]>0, $
  under which @eq:dirichletproblemwithlaplaceequationsolution_constraint1, @eq:dirichletproblemwithlaplaceequationsolution_constraint2, @eq:dirichletproblemwithlaplaceequationsolution_constraint3 are satisfied.
 
-    Hence, $forall epsilon.alt>0$, $exists eta>0$ such that $forall z$ with $0<|xi-z|<eta$, we have $|phi.alt(xi)-u(z)|<2 epsilon.alt$. Then @eq:dirichletproblemwithlaplaceequationsolution_limittoboundary follows.
+    Hence, $forall epsilon>0$, $exists eta>0$ such that $forall z$ with $0<|xi-z|<eta$, we have $|phi.alt(xi)-u(z)|<2 epsilon$. Then @eq:dirichletproblemwithlaplaceequationsolution_limittoboundary follows.
 
     We will now show that $u(z)$ is unique. Assume that $v \not equiv u$ on $overline(D(0,R))$ also solves the problem. Then $u-v$ is harmonic and vanishes on $partial D(0,R)$. By the Poisson Integral Formula (@eq:poissonintegralformula2), $u(z)-v(z)=integral_0^{2 pi}P(zeta,z)[u(zeta)-v(zeta)]dif tau=0$ for all $z in D(0,R)$. Since $u-v$ vanishes, we have a contradiction.] <fig:dirichletproblemwithlaplaceequationsolution_secondintegral>

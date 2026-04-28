@@ -1,4 +1,4 @@
-#import "../../lib.typ": *
+#import "/lib.typ": *
 
 = Differential Geometry<sec:differentialgeometry>
 // include gaussian_curvature_of_surface/index.tex

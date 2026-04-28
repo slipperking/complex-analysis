@@ -1,5 +1,5 @@
 // sections/weierstrass_theory/properties_of_entire_meromorphic/index.typ
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 #include "complex_plane_holomorphic_automorphisms/index.typ"
 #include "construction_of_entire_and_meromorphic/index.typ"

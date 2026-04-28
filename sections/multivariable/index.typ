@@ -1,5 +1,5 @@
 // sections/multivariable/index.typ
-#import "../../lib.typ": *
+#import "/lib.typ": *
 
 #include "ball_polydisk_holomorphic_automorphisms/index.typ"
 #include "hartogs_phenomenon/index.typ"

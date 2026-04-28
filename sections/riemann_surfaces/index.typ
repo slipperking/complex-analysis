@@ -1,5 +1,5 @@
 // sections/riemann_surfaces/index.typ
-#import "../../lib.typ": *
+#import "/lib.typ": *
 
 #include "analytic_continuation/index.typ"
 #include "continuation_along_curves/index.typ"

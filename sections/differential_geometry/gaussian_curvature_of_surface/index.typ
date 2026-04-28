@@ -1,4 +1,4 @@
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 == Gaussian Curvature of a Surface<sec:gaussiancurvatureofsurface>
 We will give a brief introduction to the curvature of a surface for heuristic intuition.

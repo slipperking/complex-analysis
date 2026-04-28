@@ -1,4 +1,4 @@
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 == Alternative Integral Formulas
 As in the Cauchy Integral Formula (@thm:cauchygoursatformula), we can write holomorphic functions in terms of an integral representation. We define the _Cauchy kernel_ to be equal to
@@ -13,10 +13,10 @@ $ f(z)=oint.cont_{partial U}f(zeta)H(zeta,z)ddzeta. $
 Let $z in bb(D)$ and notice that $phi.alt_z(zeta)=(zeta-z)/(1-overline(z)zeta)in Aut(bb(D))$ maps $partial bb(D)$ to $partial bb(D)$ bijectively. Let $Phi:bb(D)-> RR$ be harmonic such that $Phi$ is continuous on $overline(bb(D))$. By the mean-value property introduced in @lem:holomorphicmeanvalueproperty, we have 
 $ Phi (0)=(1)/(2 pi rho)integral_0^{2 pi}Phi (rho ee^{ii psi})dif psi, $
 
-where $0<rho<1$. By the uniform continuity of $Phi$ on $overline(bb(D))$ (@thm:heinecantor), $forall epsilon.alt>0$, $exists delta>0$ such that $forall rho in ((1)/(2),1)$ satisfying $1-rho<delta$ and $forall psi in[0,2 pi]$, 
-$ |Phi (ee^{ii psi})-Phi (rho ee^{ii psi})|<epsilon.alt. $
+where $0<rho<1$. By the uniform continuity of $Phi$ on $overline(bb(D))$ (@thm:heinecantor), $forall epsilon>0$, $exists delta>0$ such that $forall rho in ((1)/(2),1)$ satisfying $1-rho<delta$ and $forall psi in[0,2 pi]$, 
+$ |Phi (ee^{ii psi})-Phi (rho ee^{ii psi})|<epsilon. $
  It then follows that 
-$ |(1)/(2 pi rho)integral_0^{2 pi}Phi (ee^{ii psi})dif psi-(1)/(2 pi rho)integral_0^{2 pi}Phi (rho ee^{ii psi})dif psi|<(epsilon.alt)/(rho)<2 epsilon.alt. $
+$ |(1)/(2 pi rho)integral_0^{2 pi}Phi (ee^{ii psi})dif psi-(1)/(2 pi rho)integral_0^{2 pi}Phi (rho ee^{ii psi})dif psi|<(epsilon)/(rho)<2 epsilon. $
 
 Hence,
 

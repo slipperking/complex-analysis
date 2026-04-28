@@ -1,4 +1,4 @@
-#import "../../../../lib.typ": *
+#import "/lib.typ": *
 
 === The Wiener--Ikehara Theorem
 Previously we have seen the subtle relation between $zeta$ and $psi$. Given the properties of the Laplace transform of $psi compose exp$ and certain conditions established above, we apply now prove what is known as a _Tauberian_ theorem to extract sufficient information (such as convergence) of the function itself.
@@ -80,8 +80,8 @@ $ I= cases(0 & x<-2 lambda, ,
 
 #definition[A function $f:RR-> RR$ is said to be _slowly decreasing_ if 
 $ \liminf_{delta ->0^+}\liminf_{x ->+infinity}[f(x+delta)-f(x)]gt.eq 0, $
- or equivalently, for every $epsilon.alt>0$, $exists x_0$, $exists delta>0$ such that 
-$ forall x,y>x_0, 0<y-x<delta => f(y)-f(x)>-epsilon.alt. $]
+ or equivalently, for every $epsilon>0$, $exists x_0$, $exists delta>0$ such that 
+$ forall x,y>x_0, 0<y-x<delta => f(y)-f(x)>-epsilon. $]
 
 #proof("Proof of equivalence")[]
 
@@ -89,14 +89,14 @@ $ forall x,y>x_0, 0<y-x<delta => f(y)-f(x)>-epsilon.alt. $]
 $ L equiv \lim_{x ->+infinity}(f*k_lambda)(x)=\lim_{x ->+infinity}\frac1{sqrt(2 pi)}integral_{-infinity}^infinity f(t)k_lambda(x-t)ddt $
  is independent of $lambda>0$, then $\lim_{x ->+infinity}f(x)=L$.] <prop:wienerikehara_intermediatetauberiantheorem>
 
-#proof[Let $epsilon.alt>0$ be arbitrary. Assume, for the sake of contradiction, that $f \not -> L$ as $x -> infinity$. Then there exists some sequence $\cbraces{x_n}_{n in NN}$ such that $|f(x_n)-L|>epsilon.alt$ for all $n$. From here, we may extract an infinite subsequence (continued to be denoted by $\cbraces{x_n}$) such that one of the two cases is assumed:
+#proof[Let $epsilon>0$ be arbitrary. Assume, for the sake of contradiction, that $f \not -> L$ as $x -> infinity$. Then there exists some sequence $\cbraces{x_n}_{n in NN}$ such that $|f(x_n)-L|>epsilon$ for all $n$. From here, we may extract an infinite subsequence (continued to be denoted by $\cbraces{x_n}$) such that one of the two cases is assumed:
     
-+ $f(x_n)-L>epsilon.alt$ for all $n in NN$. By the slow decrease of $f$, there exist $delta>0$ and $N in NN$ such that 
-$ f(y)>f (x_n)-(epsilon.alt)/(2)>L+\frac epsilon.alt2 $
++ $f(x_n)-L>epsilon$ for all $n in NN$. By the slow decrease of $f$, there exist $delta>0$ and $N in NN$ such that 
+$ f(y)>f (x_n)-(epsilon)/(2)>L+\frac epsilon.alt2 $
  for any $n>N$ and $0<y-x_n<2 delta$. Then we have
             
 $
-(f*k_lambda)(x+delta) & =\frac1{sqrt(2 pi)}integral_{-infinity}^infinity f(t)k_lambda (x+delta-t)ddt \\ & =\frac1{sqrt(2 pi)}(integral_x^{x+2 delta}+integral_{-infinity}^x+integral_{x+2 delta}^infinity)f(t)k_lambda (x+delta-t)ddt \\ & >(1)/(sqrt(2 pi))integral_x^{x+2 delta}(L+\frac{epsilon.alt}2)k_lambda (x+delta-t)ddt \\ & -\frac M{sqrt(2 pi)}(integral_{-infinity}^x+integral_{x+2 delta}^infinity)k_lambda (x+delta-t)ddt \\ & >(2L+epsilon.alt)/(2 sqrt(2 pi))integral_x^{x+2 delta}k_lambda (x+delta-t)ddt-\frac M{sqrt(2 pi)}(integral_delta^infinity+integral_{-infinity}^{-delta})k_lambda(u)dif u.
+(f*k_lambda)(x+delta) & =\frac1{sqrt(2 pi)}integral_{-infinity}^infinity f(t)k_lambda (x+delta-t)ddt \\ & =\frac1{sqrt(2 pi)}(integral_x^{x+2 delta}+integral_{-infinity}^x+integral_{x+2 delta}^infinity)f(t)k_lambda (x+delta-t)ddt \\ & >(1)/(sqrt(2 pi))integral_x^{x+2 delta}(L+\frac{epsilon}2)k_lambda (x+delta-t)ddt \\ & -\frac M{sqrt(2 pi)}(integral_{-infinity}^x+integral_{x+2 delta}^infinity)k_lambda (x+delta-t)ddt \\ & >(2L+epsilon)/(2 sqrt(2 pi))integral_x^{x+2 delta}k_lambda (x+delta-t)ddt-\frac M{sqrt(2 pi)}(integral_delta^infinity+integral_{-infinity}^{-delta})k_lambda(u)dif u.
 $
 
             Because
@@ -106,22 +106,22 @@ $
 $
 
             we then have for any $n>N$, that 
-$ \lim_{n -> infinity}(f*k_lambda)(x_n+delta)gt.eq (2L+epsilon.alt)/(2 sqrt(2 pi))integral_{-delta}^{delta}(2 lambda)/(sqrt(2 pi))\qty((sin (lambda u))/(lambda u))^2 dif u-(2M)/(pi)integral_{delta lambda}^infinity ((sin t)/(t))^2 ddt. $
+$ \lim_{n -> infinity}(f*k_lambda)(x_n+delta)gt.eq (2L+epsilon)/(2 sqrt(2 pi))integral_{-delta}^{delta}(2 lambda)/(sqrt(2 pi))\qty((sin (lambda u))/(lambda u))^2 dif u-(2M)/(pi)integral_{delta lambda}^infinity ((sin t)/(t))^2 ddt. $
 
             Letting $lambda -> infinity$, we have 
-$ (2L+epsilon.alt)/(2 pi)integral_{-delta lambda}^{delta lambda}\mathmakebox[\widthof{\(((sin t)/(t))\)}][l]{((sin t)/(t))^2}ddt-(2M)/(pi)integral_{delta lambda}^infinity \mathmakebox[\widthof{\(((sin t)/(t))\)}][l]{((sin t)/(t))^2}ddt -> (2L+epsilon.alt)/(2 pi)integral_{RR}\mathmakebox[\widthof{\(((sin t)/(t))\)}][l]{((sin t)/(t))^2}ddt=L+(epsilon.alt)/(2). $
+$ (2L+epsilon)/(2 pi)integral_{-delta lambda}^{delta lambda}\mathmakebox[\widthof{\(((sin t)/(t))\)}][l]{((sin t)/(t))^2}ddt-(2M)/(pi)integral_{delta lambda}^infinity \mathmakebox[\widthof{\(((sin t)/(t))\)}][l]{((sin t)/(t))^2}ddt -> (2L+epsilon)/(2 pi)integral_{RR}\mathmakebox[\widthof{\(((sin t)/(t))\)}][l]{((sin t)/(t))^2}ddt=L+(epsilon)/(2). $
 
             Because $\lim_{n -> infinity}(f*k_lambda)(x_n+delta)=L gt.eq L+\frac epsilon.alt2$, we reach a contradiction.
-+ $f(x_n)-L<-epsilon.alt$. Then there exist $delta>0$, $N in NN$ such that 
++ $f(x_n)-L<-epsilon$. Then there exist $delta>0$, $N in NN$ such that 
 $ f (x_n)-f(y)>-\frac epsilon.alt2 => f(y)<f (x_n)+\frac epsilon.alt2<L-\frac epsilon.alt2 $
  for any $n>N$ and $0<x_n-y<2 delta$. Splitting the convolution integral into $integral_infinity^{x_n-2 delta}$, $integral_{x_n-2 delta}^{x_n}$, and $integral_{x_n}^infinity$, we have
             
 $
-(f*k_lambda)(x_n-delta) & =\frac1{sqrt(2 pi)}integral_{-infinity}^infinity f(t)k_lambda (x_n-delta-t)ddt \\ & =\frac1{sqrt(2 pi)}(integral_{-infinity}^{x_n-2 delta}+integral_{x_n-2 delta}^{x_n}+integral_{x_n}^infinity)f(t)k_lambda (x_n-delta-t)ddt \\ & <\frac M{sqrt(2 pi)}(integral_{-infinity}^{x_n-2 delta}+integral_{x_n}^infinity)k_lambda (x_n-delta-t)ddt \\ & +(1)/(sqrt(2 pi))integral_{x_n-2 delta}^{x_n}(L-\frac{epsilon.alt}2)k_lambda (x_n-delta-t)ddt \\ & <\frac M{sqrt(2 pi)}(integral_{-infinity}^{-delta}+integral_{delta}^infinity)k_lambda(u)dif u+(2L-epsilon.alt)/(2 sqrt(2 pi))integral_{-delta}^{delta}k_lambda(u)dif u.
+(f*k_lambda)(x_n-delta) & =\frac1{sqrt(2 pi)}integral_{-infinity}^infinity f(t)k_lambda (x_n-delta-t)ddt \\ & =\frac1{sqrt(2 pi)}(integral_{-infinity}^{x_n-2 delta}+integral_{x_n-2 delta}^{x_n}+integral_{x_n}^infinity)f(t)k_lambda (x_n-delta-t)ddt \\ & <\frac M{sqrt(2 pi)}(integral_{-infinity}^{x_n-2 delta}+integral_{x_n}^infinity)k_lambda (x_n-delta-t)ddt \\ & +(1)/(sqrt(2 pi))integral_{x_n-2 delta}^{x_n}(L-\frac{epsilon}2)k_lambda (x_n-delta-t)ddt \\ & <\frac M{sqrt(2 pi)}(integral_{-infinity}^{-delta}+integral_{delta}^infinity)k_lambda(u)dif u+(2L-epsilon)/(2 sqrt(2 pi))integral_{-delta}^{delta}k_lambda(u)dif u.
 $
 
             Letting $lambda -> infinity$, we have similarly that 
-$ \lim_{n -> infinity}(f*k_lambda)(x_n-delta)lt.eq L-\frac{epsilon.alt}2, $
+$ \lim_{n -> infinity}(f*k_lambda)(x_n-delta)lt.eq L-\frac{epsilon}2, $
  contradicting $\lim_{n -> infinity}(f*k_lambda)(x_n-delta)=L$.
 
     Hence, no such sequence exists in either case, and $\lim_{x ->+infinity}f(x)=L$.]
@@ -142,29 +142,29 @@ $ a(t)= cases(f(t)ee^{-t} & t gt.eq 0, ,
  0 & t<0,)\qand A(t)= cases(c & t gt.eq 0, ,
  0 & t<0.) $
 
-    The convergence of @eq:wienerikehara_laplacetransform implies that for $epsilon.alt,lambda>0$, the convolution 
-$ I_{lambda,epsilon.alt}=\frac1{sqrt(2 pi)}integral_{-infinity}^infinity k_lambda(x-t)\qty((a(t)-A(t))/(ee^{epsilon.alt t}))ddt $
+    The convergence of @eq:wienerikehara_laplacetransform implies that for $epsilon,lambda>0$, the convolution 
+$ I_{lambda,epsilon}=\frac1{sqrt(2 pi)}integral_{-infinity}^infinity k_lambda(x-t)\qty((a(t)-A(t))/(ee^{epsilon t}))ddt $
  converges. Since 
-$ integral_{-infinity}^infinity (a(t)-A(t))/(ee^{(epsilon.alt+ii y)t})ddt $
+$ integral_{-infinity}^infinity (a(t)-A(t))/(ee^{(epsilon+ii y)t})ddt $
  converges uniformly for $|y|<2 lambda$, we have by virtue of @lem:wienerikehara_kernels_fouriertransform, that
     
 $
-I_{lambda,epsilon.alt}(x) & =(1)/(2 pi)integral_{-infinity}^infinity (a(t)-A(t))/(ee^{epsilon.alt t})integral_{-2 lambda}^{2 lambda}K_lambda(y)ee^{ii(x-t)y}ddy ddt \\ & =(1)/(2 pi)integral_{-2 lambda}^{2 lambda}K_lambda(y)ee^{ii xy}integral_0^infinity (a(t)-A(t))/(ee^{(epsilon.alt+ii y)t})ddt ddy \\ & =(1)/(2 pi)integral_{-2 lambda}^{2 lambda}K_lambda(y)ee^{ii xy}[cal(L)\cbraces{f}(1+epsilon.alt+ii y)-\frac c{epsilon.alt+ii y}]ddy.
+I_{lambda,epsilon}(x) & =(1)/(2 pi)integral_{-infinity}^infinity (a(t)-A(t))/(ee^{epsilon t})integral_{-2 lambda}^{2 lambda}K_lambda(y)ee^{ii(x-t)y}ddy ddt \\ & =(1)/(2 pi)integral_{-2 lambda}^{2 lambda}K_lambda(y)ee^{ii xy}integral_0^infinity (a(t)-A(t))/(ee^{(epsilon+ii y)t})ddt ddy \\ & =(1)/(2 pi)integral_{-2 lambda}^{2 lambda}K_lambda(y)ee^{ii xy}[cal(L)\cbraces{f}(1+epsilon+ii y)-\frac c{epsilon+ii y}]ddy.
 $
 
-    Now $forall epsilon.alt'>0$, by the local uniform convergence of $g$ in @eq:wienerikehara_gfunction, there exists some $delta>0$ such that 
-$ forall |y|<2 lambda, |cal(L)\cbraces{f}(1+epsilon.alt+ii y)-\frac c{epsilon.alt+ii y}-g(y)|<(pi epsilon.alt')/(lambda). $
+    Now $forall epsilon'>0$, by the local uniform convergence of $g$ in @eq:wienerikehara_gfunction, there exists some $delta>0$ such that 
+$ forall |y|<2 lambda, |cal(L)\cbraces{f}(1+epsilon+ii y)-\frac c{epsilon+ii y}-g(y)|<(pi epsilon')/(lambda). $
  Hence, we have that 
-$ |I_{lambda,epsilon.alt}(x)-\frac1{2 pi}integral_{-2 lambda}^{2 lambda}K_lambda(y)ee^{ii xy}g(y)ddy|lt.eq (1)/(2 pi)integral_{-2 lambda}^{2 lambda}K_lambda(y)(pi epsilon.alt')/(lambda)ddy=epsilon.alt'. $
+$ |I_{lambda,epsilon}(x)-\frac1{2 pi}integral_{-2 lambda}^{2 lambda}K_lambda(y)ee^{ii xy}g(y)ddy|lt.eq (1)/(2 pi)integral_{-2 lambda}^{2 lambda}K_lambda(y)(pi epsilon')/(lambda)ddy=epsilon'. $
  Therefore, 
-$ \lim_{epsilon.alt -> 0^+}I_{lambda,epsilon.alt}(x)=\frac1{2 pi}integral_{-2 lambda}^{2 lambda} K_lambda(y)ee^{ii xy}g(y)ddy, $
+$ \lim_{epsilon -> 0^+}I_{lambda,epsilon}(x)=\frac1{2 pi}integral_{-2 lambda}^{2 lambda} K_lambda(y)ee^{ii xy}g(y)ddy, $
  or when the limit is exchanged with the integral. By parts, we have that 
-$ \lim_{epsilon.alt ->0^+}I_{lambda,epsilon.alt}(x)=(1)/(2 pi)(\eval{K_lambda(y)g(y)(ee^{ii x y})/(ii x)}_{-2 lambda}^{2 lambda}-(1)/(ii x)integral_{-2 lambda}^{2 lambda}\qty(K_lambda g)'(y)ee^{ii xy}ddy). $
+$ \lim_{epsilon ->0^+}I_{lambda,epsilon}(x)=(1)/(2 pi)(\eval{K_lambda(y)g(y)(ee^{ii x y})/(ii x)}_{-2 lambda}^{2 lambda}-(1)/(ii x)integral_{-2 lambda}^{2 lambda}\qty(K_lambda g)'(y)ee^{ii xy}ddy). $
 
-    This implies that $\lim_{x ->+infinity}\lim_{epsilon.alt ->0^+}I_{lambda,epsilon.alt}(x)equiv 0$. On the other hand, manual calculation yields 
-$ \lim_{epsilon.alt ->0^+}I_{lambda,epsilon.alt}(x)=\lim_{epsilon.alt ->0^+}\frac1{sqrt(2 pi)}(integral_0^infinity k_lambda(x-t)a(t)ee^{-epsilon.alt t}ddt-integral_0^infinity k_lambda(x-t)A(t)ee^{-epsilon.alt t}ddt). $
+    This implies that $\lim_{x ->+infinity}\lim_{epsilon ->0^+}I_{lambda,epsilon}(x)equiv 0$. On the other hand, manual calculation yields 
+$ \lim_{epsilon ->0^+}I_{lambda,epsilon}(x)=\lim_{epsilon ->0^+}\frac1{sqrt(2 pi)}(integral_0^infinity k_lambda(x-t)a(t)ee^{-epsilon t}ddt-integral_0^infinity k_lambda(x-t)A(t)ee^{-epsilon t}ddt). $
  The Lebesgue's Dominated Convergence Theorem then gives 
-$ \lim_{epsilon.alt ->0^+}I_{lambda,epsilon.alt}(x)=\frac1{sqrt(2 pi)}integral_0^infinity k_lambda(x-t)(a(t)-A(t))ddt=(a*k_lambda-A*k_lambda)(x)->0 $
+$ \lim_{epsilon ->0^+}I_{lambda,epsilon}(x)=\frac1{sqrt(2 pi)}integral_0^infinity k_lambda(x-t)(a(t)-A(t))ddt=(a*k_lambda-A*k_lambda)(x)->0 $
  as $x ->+infinity$. Since $(A*k_lambda)(x)=c$ for all $x$, we have that
     
 $ \lim_{x ->+infinity}(a*k_lambda)(x)=c. $ <eq:wienerikehara_convolutionlimit>
@@ -182,14 +182,14 @@ $ integral_{-sqrt(lambda)}^{sqrt(lambda)}(\frac{sin t}t)^2 ee^{(t-2 sqrt(lambda)
 
     which is satisfied for all $lambda>0$ and $x>x_0$. Letting $lambda -> infinity$, we have that $a(x)<c+1$. Compactness shows that $a$ is bounded on $[0,x_0]$ (@thm:continuousfunctionboundedoncompact). Hence, $a$ is bounded (above) on $RR$ by some $M>0$.
 
-    The final hypothesis required is the slow decrease of $a$: for any $epsilon.alt>0$, $exists delta>0$ such that $forall x,y>0$ with $0<y-x<delta$, we have
+    The final hypothesis required is the slow decrease of $a$: for any $epsilon>0$, $exists delta>0$ such that $forall x,y>0$ with $0<y-x<delta$, we have
     
 $
 a(y)-a(x) & =ee^{-x}(ee^{x-y}f(y)-f(x))>ee^{-x}f(x)(ee^{-delta}-1) \\ & =a(x)(ee^{-delta}-1)>M (ee^{-delta}-1).
 $
 
-    If $delta$ is chosen so that $M (1-ee^{-delta})<epsilon.alt$, namely
-    $0<delta<ln (\frac M{M-epsilon.alt})$, then $a(y)-a(x)>-epsilon.alt$,
+    If $delta$ is chosen so that $M (1-ee^{-delta})<epsilon$, namely
+    $0<delta<ln (\frac M{M-epsilon})$, then $a(y)-a(x)>-epsilon$,
     and $a$ then exhibits slow decrease.
 
     The slow decrease, boundedness, and the condition in @eq:wienerikehara_convolutionlimit are sufficient by @prop:wienerikehara_intermediatetauberiantheorem, to show that $\lim_{x ->+infinity}a(x)=c$, or equivalently, $\lim_{x ->+infinity}(f(x))/(ee^x)=c$.]

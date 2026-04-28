@@ -69,7 +69,7 @@
 #let Im = math.op($frak(I) m$)
 #let extcomplex = $hat(CC)$
 #let length = $op("length")$
-
+#let uppi = $upright(pi)$
 
 #let ee = $upright(e)$
 #let ii = $upright(i)$
@@ -79,4 +79,12 @@
 #let interior(x) = $attach(limits(#x), t: circle)$
 
 #let doubletilde(x) = $tilde(tilde(#x))$
+
+#let halflength-arrow(start, end, ..args) = {
+  draw.line(
+    (start, 0.25, end),
+    (start, 0.75, end),
+    ..args,
+  )
+}
 

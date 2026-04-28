@@ -135,26 +135,26 @@ Lastly, the sufficient criteria to pass a limit through an integral:
 
 #theorem[
   Let $gamma$ be a rectifiable curve on which the function sequence ${f_n}_(n in NN)$ is continuous. If ${f_n (z)}$ uniformly converges to $f$, then
-  $ lim_(n -> infinity) integral_gamma f_n (z) dif z = integral_gamma f(z) dif z. $
+  $ lim_(n -> infinity) integral_gamma f_n (z) dz = integral_gamma f(z) dz. $
 ] <thm:limitintegralswitch>
 
 #proof[
   Since ${f_n (z)}$ uniformly converges to $f(z)$ on $gamma$, $forall epsilon > 0$, there exists $N in NN$ such that for all $n > N$,
   $ abs(f_n (z) - f(z)) < epsilon / (length(gamma)), quad forall z in gamma. $
 
-  Since each $f_n$ is continuous and $gamma$ is rectifiable, each integral $integral_gamma f_n (z) dif z$ is convergent and well-defined.
+  Since each $f_n$ is continuous and $gamma$ is rectifiable, each integral $integral_gamma f_n (z) dz$ is convergent and well-defined.
 
   Then $forall n > N$,
   $
-    abs(integral_gamma f_n (z) dif z - integral_gamma f(z) dif z) &= abs(integral_gamma (f_n (z) - f(z)) dif z) \
-    &<= integral_gamma abs(f_n (z) - f(z)) abs(dif z) \
-    &< integral_gamma epsilon / length(gamma) abs(dif z) = epsilon.
+    abs(integral_gamma f_n (z) dz - integral_gamma f(z) dz) &= abs(integral_gamma (f_n (z) - f(z)) dz) \
+    &<= integral_gamma abs(f_n (z) - f(z)) abs(dz) \
+    &< integral_gamma epsilon / length(gamma) abs(dz) = epsilon.
   $
   Therefore,
-  $ lim_(n -> infinity) integral_gamma f_n (z) dif z = integral_gamma f(z) dif z. #h(1fr) qedhere $
+  $ lim_(n -> infinity) integral_gamma f_n (z) dz = integral_gamma f(z) dz. qedhere $
 ]
 
 #remark[
   For a uniformly convergent series $sum_(n = 1)^infinity f_n (z)$, the commutation between the limit and the integral becomes a summation-integral switch:
-  $ sum_(n = 1)^infinity integral_gamma f_n (z) dif z = integral_gamma sum_(n = 1)^infinity f_n (z) dif z. $
+  $ sum_(n = 1)^infinity integral_gamma f_n (z) dz = integral_gamma sum_(n = 1)^infinity f_n (z) dz. $
 ]

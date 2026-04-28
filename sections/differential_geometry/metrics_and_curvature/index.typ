@@ -1,4 +1,4 @@
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 == Conformal Metrics and Curvature
 Let $Omega subset.eq CC$ be a region and let $rho in C^0(Omega)$ be a positive function. The _conformal metric_ (in the following chapters when we refer to _metric_ we mean conformal) induced by $rho$ is given by 

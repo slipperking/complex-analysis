@@ -1,4 +1,4 @@
-#import "../../lib.typ": *
+#import "/lib.typ": *
 
 = Harmonic Functions
 == Subharmonic Functions
@@ -79,7 +79,7 @@ The Perron solution is harmonic on $U$, but it need not extend continuously to t
 
 #theorem[A boundary point $zeta_0 in partial U$ is regular if and only if there exists a _barrier_ at $zeta_0$: a superharmonic function $w:U ->(0,infinity)$ satisfying $\lim_{z -> zeta_0}w(z)=0$.] <thm:barriercharacterisation>
 
-#proof[The necessity is straightforward: set $w(z)=u(z)-phi(zeta_0)$ for an appropriate $phi$. For sufficiency, given $epsilon.alt>0$, the barrier $w$ can be used to construct sub- and super-solutions squeezing $u$ between $phi(zeta_0)-epsilon.alt$ and $phi(zeta_0)+epsilon.alt$ near $zeta_0$, using the continuity of $phi$ and the properties of $w$. The details are a standard argument in potential theory.]
+#proof[The necessity is straightforward: set $w(z)=u(z)-phi(zeta_0)$ for an appropriate $phi$. For sufficiency, given $epsilon>0$, the barrier $w$ can be used to construct sub- and super-solutions squeezing $u$ between $phi(zeta_0)-epsilon$ and $phi(zeta_0)+epsilon$ near $zeta_0$, using the continuity of $phi$ and the properties of $w$. The details are a standard argument in potential theory.]
 
 #remark[A sufficient condition for $zeta_0$ to be regular is that $zeta_0$ be accessible by an exterior cone: $exists r>0$ and a cone $C$ with vertex $zeta_0$ such that $C sect D(zeta_0,r)subset.eq CCwithout U$. In particular, every boundary point of a domain with $C^1$ boundary is regular.]
 

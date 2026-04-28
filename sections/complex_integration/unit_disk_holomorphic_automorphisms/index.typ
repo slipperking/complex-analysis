@@ -1,4 +1,4 @@
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 == The Group of Holomorphic Automorphisms on the Unit Disk
 The following important result can be directly obtained from the Maximum Modulus Principle.
@@ -12,9 +12,9 @@ $ |f(z)|lt.eq |z|, |f'(0)|lt.eq 1. $
 $ g(z)= cases((f(z))/(z) & \qif* z eq.not0, ,
  f'(0) & \qif* z=0.) $
 
-    Because $\lim_{z ->0}(f(z))/(z)=f'(0)$, $g(z)$ is holomorphic on $bb(D)$. Since $f$ is an automorphism on the open disk, $forall |z|<1$, $|f(z)|<1$. By the Maximum Modulus Principle @thm:maximummodulus, $forall0<epsilon.alt<1$, $forall z in D(0,epsilon.alt)$, 
-$ |g(z)|lt.eq max_{z_epsilon.alt in partial D(0,epsilon.alt)}\frac{|f (z_epsilon.alt)|}{epsilon.alt}<(1)/(epsilon.alt). $
- As $epsilon.alt -> 1^-$, we obtain that $forall z in bb(D)$, $|g(z)|lt.eq 1$, or that $|f(z)|lt.eq |z|$. Let $z=0$. Then we get $|g(0)|=f'(0)lt.eq 1$.
+    Because $\lim_{z ->0}(f(z))/(z)=f'(0)$, $g(z)$ is holomorphic on $bb(D)$. Since $f$ is an automorphism on the open disk, $forall |z|<1$, $|f(z)|<1$. By the Maximum Modulus Principle @thm:maximummodulus, $forall0<epsilon<1$, $forall z in D(0,epsilon)$, 
+$ |g(z)|lt.eq max_{z_epsilon.alt in partial D(0,epsilon)}\frac{|f (z_epsilon.alt)|}{epsilon}<(1)/(epsilon). $
+ As $epsilon -> 1^-$, we obtain that $forall z in bb(D)$, $|g(z)|lt.eq 1$, or that $|f(z)|lt.eq |z|$. Let $z=0$. Then we get $|g(0)|=f'(0)lt.eq 1$.
 
     For the sake of the equality condition, assume $|f(z)|=|z|$. Then $|g(z)|equiv 1$ on the unit open disk. By @thm:maximummodulus, $g(z)=exp(ii tau)$ where $tau in RR$ and $f(z)=z exp(ii tau)$ on $bb(D)$.
 

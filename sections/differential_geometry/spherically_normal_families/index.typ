@@ -1,15 +1,15 @@
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 == A Spherical Generalization of Normal Families<sec:sphericalgeneralizationofnormalfamilies>
 Picard's Great Theorem requires a more profound concept by generalizing normal families in the one-point compactification of $CC$.
 
 #definition[Let $\cbraces{f_n(z)}$ be a (not necessarily analytic) complex function sequence on a connected set $Omega subset.eq CC$. If $forall K subset Omega$ compact, $forall R>0$, $exists N in NN$ such that $forall n>N$, $forall z in K$, $|f_n(z)|>R$, then _$f_n -> infinity$ locally uniformly spherically on $Omega$_.]
 
-When the ``locally uniform limit'' is taken to be $infinity$, the condition of $epsilon.alt$-closeness is instead replaced by the requirement that the values eventually leave every fixed compact subset of $CC$ (the given definition is equivalent to: $forall K subset Omega$ compact, $forall L subset CC$ compact, $exists N in NN$ such that $forall n>N$, $forall z in K$, $f_n(z)in.not L$). In this way, convergence to infinity is treated symmetrically with convergence to finite values by working in the Riemann sphere $hat(CC)$, where $infinity$ is simply another accumulation point.
+When the ``locally uniform limit'' is taken to be $infinity$, the condition of $epsilon$-closeness is instead replaced by the requirement that the values eventually leave every fixed compact subset of $CC$ (the given definition is equivalent to: $forall K subset Omega$ compact, $forall L subset CC$ compact, $exists N in NN$ such that $forall n>N$, $forall z in K$, $f_n(z)in.not L$). In this way, convergence to infinity is treated symmetrically with convergence to finite values by working in the Riemann sphere $hat(CC)$, where $infinity$ is simply another accumulation point.
 
 By equipping the extended complex plane $hat(CC)$ with the spherical metric instead of the Euclidean metric, convergence to $infinity$ can be treated like convergence to any finite point. In this setting, $infinity$ is simply another accumulation point, so there is no need to handle it differently from other values.
 
-Let $\cbraces{a_n}_{n in NN}subset hat(CC)$ be a sequence. Then we say $a_n -> a_infinity$ _spherically_ iff $forall epsilon.alt>0$, $exists N in NN$ such that $forall n>N$, $d_sigma (a_n,a_infinity)<epsilon.alt$, where $d_sigma$ is the spherical distance.
+Let $\cbraces{a_n}_{n in NN}subset hat(CC)$ be a sequence. Then we say $a_n -> a_infinity$ _spherically_ iff $forall epsilon>0$, $exists N in NN$ such that $forall n>N$, $d_sigma (a_n,a_infinity)<epsilon$, where $d_sigma$ is the spherical distance.
 
 #definition[A family of meromorphic functions $cal(F)$ on some $Omega subset.eq CC$ is said to be _spherically normal_ iff every sequence has a locally uniformly spherically convergent subsequence on $Omega$.]
 
@@ -33,8 +33,8 @@ $ d_sigma (w_1,w_2)=inf_{gamma}integral_gamma psi^\sharp(z)|ddz|=inf_{gamma}inte
 $ d_sigma (w_1,w_2)lt.eq integral_{gamma'}(2 |ad-bc|)/(|cz+d|^2+|az+b|^2)|ddz|. $
  Since $(2 |ad-bc|)/(|cz+d|^2+|az+b|^2)-> 0$ as $z -> infinity$ and $z |-> (2 |ad-bc|)/(|cz+d|^2+|az+b|^2)in C^0(CC)$, it is bounded by some constant $M$ on $CC$. Hence, we have 
 $ d_sigma (w_1,w_2)lt.eq M |z_1-z_2|. $
- Hence, $forall epsilon.alt>0$, $forall |z_1-z_2|<(epsilon.alt)/(M)$, 
-$ d_sigma (psi \qty(z_1),psi \qty(z_2))<epsilon.alt. $]
+ Hence, $forall epsilon>0$, $forall |z_1-z_2|<(epsilon)/(M)$, 
+$ d_sigma (psi \qty(z_1),psi \qty(z_2))<epsilon. $]
 
 #proposition[Let $\cbraces{f_n}_{n in NN}$ be a sequence of holomorphic functions on a domain $Omega subset.eq CC$. If $f_n -> f$ locally uniformly spherically, then $f$ is either holomorphic on $Omega$ or identically $infinity$.] <prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniformlimit>
 
@@ -80,7 +80,7 @@ $ {f^\sharp | f in cal(F)}, $
 $ (2 |f'(z)|)/(1+|f(z)|^2)lt.eq M forall f in cal(F) $
  for all compact $K subset Omega$, $forall z in K$, where $M$ depends only on $K$. Under the assumption that this holds, then 
 $ d_sigma (f \qty(z_1),f \qty(z_2))=inf_gamma integral_{gamma}dif s_{sigma}lt.eq M |z_2-z_1| forall f in cal(F) $
- where $gamma$ joins $f (z_1)$ and $f (z_2)$ where $z_1,z_2 in K$. Hence, $forall epsilon.alt>0$, $forall z_1,z_2 in K$ such that $|z_1-z_2|<(epsilon.alt)/(M)$, $d_sigma (f \qty(z_1),f \qty(z_2))<epsilon.alt$, and hence $cal(F)$ is _uniformly spherically equicontinuous_. Since $d_sigma lt.eq pi$ for any two points by geometry of $S^2$, $cal(F)$ is also _uniformly spherically bounded_ (the compactness of $S^2$). Then the Arzelà--Ascoli Theorem (@thm:arzelaascoli) under the spherical metric gives that $cal(F)$ is a normal family.
+ where $gamma$ joins $f (z_1)$ and $f (z_2)$ where $z_1,z_2 in K$. Hence, $forall epsilon>0$, $forall z_1,z_2 in K$ such that $|z_1-z_2|<(epsilon)/(M)$, $d_sigma (f \qty(z_1),f \qty(z_2))<epsilon$, and hence $cal(F)$ is _uniformly spherically equicontinuous_. Since $d_sigma lt.eq pi$ for any two points by geometry of $S^2$, $cal(F)$ is also _uniformly spherically bounded_ (the compactness of $S^2$). Then the Arzelà--Ascoli Theorem (@thm:arzelaascoli) under the spherical metric gives that $cal(F)$ is a normal family.
 
     Conversely, assume for the sake of contradiction that $cal(F)$ is a normal family such that conclusion is not satisfied. Then, $exists K subset Omega$ compact and a sequence $\cbraces{f_n}_{n in NN}subset.eq cal(F)$ such that the sequence 
 $ \cbraces{sup_{z in K}f^\sharp_n(z)}_{n in NN} $
@@ -172,12 +172,12 @@ $ M_K=max {(8M)/(3r_{zeta_k}) | 1 lt.eq k lt.eq n} $
 $ tilde(cal(F))={phi.alt compose f | f in cal(F)} $
  omits $0$, $1$, and $infinity$ (and hence each function is holomorphic). By the Fundamental Holomorphic Normality Test (@thm:fundamentalnormalitytest), $tilde(cal(F))$ is normal.
 
-    By @prop:linearfractionaltransformationuniformlysphericallycontinuous, $forall epsilon.alt>0$, $exists delta>0$ such that $forall |w_1-w_2|<delta$ in $CC$, 
-$ d_sigma (phi.alt^{-1}\qty(w_1),phi.alt^{-1}\qty(w_2))<epsilon.alt. $
+    By @prop:linearfractionaltransformationuniformlysphericallycontinuous, $forall epsilon>0$, $exists delta>0$ such that $forall |w_1-w_2|<delta$ in $CC$, 
+$ d_sigma (phi.alt^{-1}\qty(w_1),phi.alt^{-1}\qty(w_2))<epsilon. $
 
     Let $\cbraces{tilde(f)_n}_{n in NN}$ be any function sequence in $cal(F)$ and let $\cbraces{tilde(f)_{n_k}}_{k in NN}$ be locally uniformly convergent to $tilde(f)$ on a compact set $K subset Omega$. Then $exists N in NN$ such that $forall k>N$, 
 $ |tilde(f)_{n_k}(z)-tilde(f)(z)|<delta forall z in K. $
 
     Therefore, $forall z in K$, $k>N$, we have 
-$ d_sigma (phi.alt^{-1}compose tilde(f)_{n_k}(z),phi.alt^{-1}compose tilde(f)(z))=d_sigma (f_{n_k}(z),f(z))<epsilon.alt. $
+$ d_sigma (phi.alt^{-1}compose tilde(f)_{n_k}(z),phi.alt^{-1}compose tilde(f)(z))=d_sigma (f_{n_k}(z),f(z))<epsilon. $
  Hence, every sequence $f_n$ has a locally uniformly spherically convergent subsequence, and the normality of $cal(F)$ follows.]

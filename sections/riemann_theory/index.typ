@@ -1,5 +1,5 @@
 // sections/riemann_theory/index.typ
-#import "../../lib.typ": *
+#import "/lib.typ": *
 
 #include "biholomorphy/index.typ"
 #include "normal_families/index.typ"

@@ -2,7 +2,7 @@
 
 #include "prerequisites_calc_top/index.typ"
 #include "prerequisites_complex/index.typ"
-// #include "complex_integration/index.typ"
+#include "complex_integration/index.typ"
 // include weierstrass_theory/index.typ
 // include riemann_theory/index.typ
 // include rational_approximation_theory/index.typ

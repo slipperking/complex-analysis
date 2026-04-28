@@ -1,4 +1,4 @@
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 == The $Gamma$-Function<sec:gammafunction>
 

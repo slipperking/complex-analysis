@@ -1,5 +1,5 @@
 // sections/weierstrass_theory/index.typ
-#import "../../lib.typ": *
+#import "/lib.typ": *
 
 #include "isolated_singularities/index.typ"
 #include "laurent_series/index.typ"

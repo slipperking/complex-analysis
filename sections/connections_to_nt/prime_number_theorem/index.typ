@@ -1,4 +1,4 @@
-#import "../../../lib.typ": *
+#import "/lib.typ": *
 
 == Prime Number Theorem
 Prime numbers have been a central object of study in number theory since antiquity. From the times of Euclid, it was known that there were infinitely many primes. The _prime counting function_ $pi(n)$ is defined to be the number of primes not exceeding $n$. The _Prime Number Theorem_ states formally that \getkeytheorem{thm:primenumber} This result was first conjectured by Gauss and Legendre in the late 18th century based on empirical evidence, while early results given by P. L. Chebyshev and J. J. Sylvester proved that the ratio $(log(n)pi(n))/(n)$ is bounded between two positive constants for large $n$. The full asymtotic relation was finally proven independently by Hadamard and de la Vallée Poussin in 1896 using complex analysis and properties of the Riemann $zeta$-function.
@@ -74,10 +74,10 @@ $ zeta(s)=(1)/(s-1)+l(s) $
 $ (zeta'(s))/(zeta(s))+\frac1{s-1}=(zeta'(s)(s-1)+zeta(s))/(zeta(s)(s-1))=(\dv{s}(zeta(s)(s-1)))/(1+(s-1)l(s))=(l'(s)(s-1)+l(s))/(1+(s-1)l(s)) $
  and @eq:primenumbertheorem_laplacetransformchebyshevfunction_gfunction define holomorphic functions on $Re s gt.eq1$ (observe that the numerator is entire).
 
-    For a compact subset $I subset RR$, the complex rectangle $K equiv {x+ii y | 1 lt.eq x lt.eq 2,y in I}$ is compact in $CC$. Thus, by uniform continuity (given by @thm:heinecantor), $forall epsilon.alt>0$, $exists delta>0$ such that 
-$ s_1=sigma_1+ii t_1,s_2=sigma_2+ii t_2 in K:|s_1-s_2|<delta => |f(s_1)-\frac1{s_1-1}-f(s_2)+\frac1{s_2-1}|<epsilon.alt. $
+    For a compact subset $I subset RR$, the complex rectangle $K equiv {x+ii y | 1 lt.eq x lt.eq 2,y in I}$ is compact in $CC$. Thus, by uniform continuity (given by @thm:heinecantor), $forall epsilon>0$, $exists delta>0$ such that 
+$ s_1=sigma_1+ii t_1,s_2=sigma_2+ii t_2 in K:|s_1-s_2|<delta => |f(s_1)-\frac1{s_1-1}-f(s_2)+\frac1{s_2-1}|<epsilon. $
  In particular, for $sigma_1=1$ such that $t_2=t_1(=t)$, we have 
-$ s=sigma+ii t in K:|sigma-1|<delta => |f (1+ii t)-\frac1{ii t}-f (s)+\frac1{s-1}|<epsilon.alt, $
+$ s=sigma+ii t in K:|sigma-1|<delta => |f (1+ii t)-\frac1{ii t}-f (s)+\frac1{s-1}|<epsilon, $
  where $delta$ is chosen independently of $t$. Therefore, $g(t)$ converges uniformly on compact subsets of $RR$ and is continuously differentiable thereon.]
 
 // include wiener_ikehara_theorem/index.tex
