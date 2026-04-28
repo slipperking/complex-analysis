@@ -27,6 +27,8 @@
 
 #show heading: reset-counter(counter(math.equation), levels: 2)
 #show: thmrules.with(qed-symbol: $square$)
+#show figure: set figure(placement: alignment.top)
+
 #align(center)[
   #v(2cm)
   #text(size: 24pt, weight: "bold")[Notes on Complex Analysis]

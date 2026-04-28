@@ -69,6 +69,8 @@
 #let Im = math.op($frak(I) m$)
 #let extcomplex = $hat(CC)$
 #let length = $op("length")$
+#let jinterior = $op("int")$
+#let jexterior = $op("ext")$
 #let uppi = $upright(pi)$
 
 #let ee = $upright(e)$
@@ -80,11 +82,20 @@
 
 #let doubletilde(x) = $tilde(tilde(#x))$
 
-#let halflength-arrow(start, end, ..args) = {
+#let halflength-arrow(start, end, scalar: 0, ..args) = {
+  let diff = vector.scale(vector.norm(vector.sub(start, end)), scalar)
+  let offset = matrix.mul-vec(((0, 1), (-1, 0)), diff)
+
+  let pstart = vector.add(start, offset)
+  let pend = vector.add(end, offset)
   draw.line(
-    (start, 0.25, end),
-    (start, 0.75, end),
+    (pstart, 25%, pend),
+    (pstart, 75%, pend),
     ..args,
+    mark: (end: ">>", fill: black)
   )
 }
 
+#let add-vectors(..vectors) = {    
+  vectors.pos().fold((0, 0, 0), vector.add)    
+}

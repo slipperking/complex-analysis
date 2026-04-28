@@ -311,31 +311,31 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
     grid.cell([
       #figure(
         canvas({
-          let A = (0, 1.702125)
-          let B = (2.122875, 0)
-          let C = (3.4, 1.275)
-          let D = (2.976125, 3.4)
-          let E = (1.275, 3.4)
+          let A = (0, 2)
+          let B = (2.3, 0)
+          let C = (4, 1)
+          let D = (5, 3.5)
+          let E = (2, 4)
 
-          draw.line(A, B, C, D, E, A, stroke: 1pt)
+          draw.line(A, B, C, D, E, stroke: 1pt, close: true)
           draw.line(B, E, stroke: 1pt)
           draw.line(C, E, stroke: 1pt)
 
-          halflength-arrow(B, E)
-          halflength-arrow(E, B)
-          halflength-arrow(E, A)
-          halflength-arrow(B, C)
-          halflength-arrow(A, B)
-          halflength-arrow(C, E)
-          halflength-arrow(E, C)
-          halflength-arrow(D, E)
-          halflength-arrow(C, D)
+          halflength-arrow(B, E, scalar: 0.15)
+          halflength-arrow(E, B, scalar: 0.15)
+          halflength-arrow(E, A, scalar: 0.15)
+          halflength-arrow(B, C, scalar: 0.15)
+          halflength-arrow(A, B, scalar: 0.15)
+          halflength-arrow(C, E, scalar: 0.15)
+          halflength-arrow(E, C, scalar: 0.15)
+          halflength-arrow(D, E, scalar: 0.15)
+          halflength-arrow(C, D, scalar: 0.15)
 
-          draw.content(A, [$A$], anchor: "east")
-          draw.content(B, [$B$], anchor: "north")
-          draw.content(C, [$C$], anchor: "west")
-          draw.content(D, [$D$], anchor: "south")
-          draw.content(E, [$E$], anchor: "south")
+          draw.content(A, [$A$], anchor: "east", padding: .15)
+          draw.content(B, [$B$], anchor: "north", padding: .15)
+          draw.content(C, [$C$], anchor: "west", padding: .15)
+          draw.content(D, [$D$], anchor: "south", padding: .15)
+          draw.content(E, [$E$], anchor: "south", padding: .15)
         }),
         caption: [Closed triangulated polygonal chain],
       ) <fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation>
@@ -345,45 +345,55 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
       #figure(
         canvas({
           let A = (0, 0)
-          let D = (4.14375, 1.59375)
-          let F = (1.59375, 1.59375)
-          let C = (5.1, 0)
-          let B = (3.1875, 3.1875)
-          let E = (2.55, 0)
+          let E = (2.7, 0)
+          let F = (1.8, 2)
+          let C = vector.add(E, vector.sub(E, A))
+          let D = vector.add(F, vector.sub(E, A))
+          let B = vector.add(F, vector.sub(F, A))
 
-          draw.line(A, F, E, A, stroke: 1pt)
-          draw.line(B, D, F, B, stroke: 1pt)
-          draw.line(C, D, E, C, stroke: 1pt)
+          draw.line(A, F, E, stroke: 1pt, close: true)
+          draw.line(B, D, F, stroke: 1pt, close: true)
+          draw.line(C, D, E, stroke: 1pt, close: true)
 
-          // Arrows
-          halflength-arrow(F, A)
-          halflength-arrow(B, F)
-          halflength-arrow(D, E)
-          halflength-arrow(E, D)
-          halflength-arrow(E, F)
-          halflength-arrow(D, B)
-          halflength-arrow(C, D)
-          halflength-arrow(F, E)
-          halflength-arrow(A, E)
-          halflength-arrow(E, C)
-          halflength-arrow(F, D)
-          halflength-arrow(D, F)
+          for (i, points) in ((A, F, E), (B, D, F), (C, D, E), (F, D, E)).enumerate(start: 1) {
+            let result = vector.scale(points.fold((0, 0), vector.add), 1 / (points.len()))
+            draw.content(result, [$Delta_#i$], anchor: "center")
+          }
 
-          // midpoints
+          halflength-arrow(F, A, scalar: 0.15)
+          halflength-arrow(B, F, scalar: 0.15)
+          halflength-arrow(D, E, scalar: 0.15)
+          halflength-arrow(E, D, scalar: 0.15)
+          halflength-arrow(E, F, scalar: 0.15)
+          halflength-arrow(D, B, scalar: 0.15)
+          halflength-arrow(C, D, scalar: 0.15)
+          halflength-arrow(F, E, scalar: 0.15)
+          halflength-arrow(A, E, scalar: 0.15)
+          halflength-arrow(E, C, scalar: 0.15)
+          halflength-arrow(F, D, scalar: 0.15)
+          halflength-arrow(D, F, scalar: 0.15)
+
           let AE = (A, .5, E)
           let AF = (A, .5, F)
           let FD = (F, .5, D)
           let BF = (B, .5, F)
           let EC = (E, .5, C)
+
+          // draw.content(A, [$A$], anchor: "east", padding: .15)
+          // draw.content(B, [$B$], anchor: "south", padding: .15)
+          // draw.content(C, [$C$], anchor: "west", padding: .15)
+          // draw.content(D, [$D$], anchor: "west", padding: .15)
+          // draw.content(E, [$E$], anchor: "north", padding: .15)
+          // draw.content(F, [$F$], anchor: "east", padding: .15)
         }),
-        caption: [Quadrisection of $integral Delta$],
+        caption: [Quadrisection of $jinterior Delta$],
       )<fig:cauchyintegraltheoremoversimplyconnectedset_trianglequadrisection>
     ]),
   )
-  Since $P$ is a closed polygonal chain, we can triangulate the interior. For example, consider @ fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation. Then,
+  Since $P$ is a closed polygonal chain, we can triangulate the interior. For example, consider @fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation. Then,
 
   $
-    integral_(A B C D E) f(z) dz & =(integral_arrow(A B) + integral_arrow(B C) + integral_arrow(C D) + integral_arrow(D E) + integral_arrow(E A))) f(z) dz \
+    integral_(A B C D E) f(z) dz & =(integral_arrow(A B) + integral_arrow(B C) + integral_arrow(C D) + integral_arrow(D E) + integral_arrow(E A)) f(z) dz \
     & +(integral_arrow(B E) + integral_arrow(E B) + integral_arrow(C E) + integral_arrow(E C)) f(z) dz \
     & =integral_(Delta A B E) f(z) dz + integral_(Delta B C E) f(z) dz + integral_(Delta C D E) f(z) dz.
   $
@@ -422,7 +432,8 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
   Comparing the above equation with @eq:cauchyintegraltheoremoversimplyconnectedset_trianglelowerbound,
   $ M / 4^n < epsilon L / 4^n, quad M < epsilon L. $
-  Since $Delta$ is rectifiable, $L$ is finite, and letting $epsilon ->0$, we find that $M ->0$. Then, for every triangle in $U$, the integral vanishes, and @eq:cauchyintegraltheoremoversimplyconnectedset_chainvanishingstatement, @eq:cauchyintegraltheoremoversimplyconnectedset_chaindefinition follow.] <fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation>
+  Since $Delta$ is rectifiable, $L$ is finite, and letting $epsilon ->0$, we find that $M ->0$. Then, for every triangle in $U$, the integral vanishes, and @eq:cauchyintegraltheoremoversimplyconnectedset_chainvanishingstatement, @eq:cauchyintegraltheoremoversimplyconnectedset_chaindefinition follow.
+]
 
 #theorem(
   "Cauchy--Goursat",
