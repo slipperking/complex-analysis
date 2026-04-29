@@ -27,7 +27,7 @@ $ f^\sharp(z)=\lim_{zeta -> z}f^\sharp(zeta) $
 $ psi'(z)=(ad-bc)/((cz+d)^2). $
 
     The spherical distance between two points $w_1=psi (z_1),w_2=psi (z_2)$ is given by 
-$ d_sigma (w_1,w_2)=inf_{gamma}integral_gamma psi^\sharp(z)|ddz|=inf_{gamma}integral_gamma (2 |(ad-bc)/((cz+d)^2)|)/(1+|(az+b)/(cz+d)|^2)|ddz| $
+$ d_sigma (w_1,w_2)=inf_Gamma integral_gamma psi^\sharp(z)|ddz|=inf_Gamma integral_gamma (2 |(ad-bc)/((cz+d)^2)|)/(1+|(az+b)/(cz+d)|^2)|ddz| $
  where $gamma$ joins $z_1$ and $z_2$. The spherical distance is bounded by the integral over the Euclidean straight line $gamma'$ joining $z_1$ and $z_2$:
     
 $ d_sigma (w_1,w_2)lt.eq integral_{gamma'}(2 |ad-bc|)/(|cz+d|^2+|az+b|^2)|ddz|. $
@@ -43,12 +43,12 @@ $ d_sigma (psi \qty(z_1),psi \qty(z_2))<epsilon. $]
 + If $f(z)eq.not infinity$, then by spherical continuity, $exists delta>0$ such that $forall zeta in D(z,delta)$, 
 $ d_sigma (f(zeta),f(z))<\frac12d_sigma (infinity, f(z)). $
  Similarly, $exists N in NN$ such that $forall n>N$, 
-$ d_sigma (f(zeta),f_{n}(zeta))<\frac12d_sigma (infinity, f(z)). $
+$ d_sigma (f(zeta),f_n (zeta))<\frac12d_sigma (infinity, f(z)). $
 
             Hence, we have 
-$ d_sigma (infinity,f(z))-d_sigma (f(z),f_{n}(zeta))>0. $
+$ d_sigma (infinity,f(z))-d_sigma (f(z),f_n (zeta))>0. $
  By the reverse triangle inequality, we have 
-$ d_sigma (infinity,f_{n}(zeta))>0. $
+$ d_sigma (infinity,f_n (zeta))>0. $
 
             By Weierstrass (@thm:weierstrassconvergence), $f$ is holomorphic on $D(z,delta)$.
 + Consider $f(z)=infinity$. Assume, for the sake of contradiction, $z$ is an isolated pole of $f$. Hence, $exists delta$ such that $f$ is holomorphic on $D^*(z,delta)$.
@@ -79,7 +79,7 @@ $ {f^\sharp | f in cal(F)}, $
 #proof[The condition is equivalent to that of 
 $ (2 |f'(z)|)/(1+|f(z)|^2)lt.eq M forall f in cal(F) $
  for all compact $K subset Omega$, $forall z in K$, where $M$ depends only on $K$. Under the assumption that this holds, then 
-$ d_sigma (f \qty(z_1),f \qty(z_2))=inf_gamma integral_{gamma}dif s_{sigma}lt.eq M |z_2-z_1| forall f in cal(F) $
+$ d_sigma (f \qty(z_1),f \qty(z_2))=inf_gamma integral_Gamma dif s_{sigma}lt.eq M |z_2-z_1| forall f in cal(F) $
  where $gamma$ joins $f (z_1)$ and $f (z_2)$ where $z_1,z_2 in K$. Hence, $forall epsilon>0$, $forall z_1,z_2 in K$ such that $|z_1-z_2|<(epsilon)/(M)$, $d_sigma (f \qty(z_1),f \qty(z_2))<epsilon$, and hence $cal(F)$ is _uniformly spherically equicontinuous_. Since $d_sigma lt.eq pi$ for any two points by geometry of $S^2$, $cal(F)$ is also _uniformly spherically bounded_ (the compactness of $S^2$). Then the Arzelà--Ascoli Theorem (@thm:arzelaascoli) under the spherical metric gives that $cal(F)$ is a normal family.
 
     Conversely, assume for the sake of contradiction that $cal(F)$ is a normal family such that conclusion is not satisfied. Then, $exists K subset Omega$ compact and a sequence $\cbraces{f_n}_{n in NN}subset.eq cal(F)$ such that the sequence 

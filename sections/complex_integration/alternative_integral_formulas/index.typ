@@ -7,7 +7,7 @@ $ H(zeta,z)=(1)/(2 pi ii (zeta-z)). $
 
 Then @eq:cauchygoursatformula can be written as:
 
-$ f(z)=oint.cont_{partial U}f(zeta)H(zeta,z)ddzeta. $
+$ f(z)=oint.cont_(partial U)f(zeta)H(zeta,z)ddzeta. $
  There also exist other integral formulas for functions, varying in the kernel of the expression.
 
 Let $z in bb(D)$ and notice that $phi.alt_z(zeta)=(zeta-z)/(1-overline(z)zeta)in Aut(bb(D))$ maps $partial bb(D)$ to $partial bb(D)$ bijectively. Let $Phi:bb(D)-> RR$ be harmonic such that $Phi$ is continuous on $overline(bb(D))$. By the mean-value property introduced in @lem:holomorphicmeanvalueproperty, we have 

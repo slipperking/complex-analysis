@@ -29,7 +29,7 @@ $
 By letting $infinity$ correspond to $(0, 0, 1)$, the bijection is complete. The sphere $S^2$ is also called the _Riemann sphere_. The region given by the disk $abs(z) < 1$ corresponds to $x_3 < 0$, and the region $abs(z) > 1$ corresponds to $x_3 > 0$.
 
 We will now give a geometric visualization of this projection. Let $z = x + ii y$. Then we obtain
-$ x = x_1 / (1 - x_3) quad and quad y = x_2 / (1 - x_3). $
+$ x = x_1 / (1 - x_3) quad "and" quad y = x_2 / (1 - x_3). $
 Therefore,
 $ x : y : 1 = x_1 : x_2 : 1 - x_3. $
 It follows that the points $(0, 0, 0)$, $(x, y, 1)$, and $(x_1, x_2, 1 - x_3)$ are collinear in $RR^3$. Under the linear map

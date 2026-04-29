@@ -61,7 +61,7 @@ $ g(t)=\lim_{sigma -> 1^+}[f(s)-\frac1{s-1}], s=sigma+ii t $
 #proof[Let $u=ee^t$, $dif u=ee^t ddt$. Then we obtain
     
 $
-f(s) & =integral_1^infinity psi(u)u^{-s-1}dif u=sum_{n=1}^infinity integral_n^{n+1}psi(u)u^{-s-1}dif u \\ & =sum_{n=1}^infinity psi(n)integral_n^{n+1}u^{-s-1}dif u=sum_{n=1}^infinity sum_{m=1}^n Lambda(m)\eval{(u^{-s})/(-s)}_{n}^{n+1} \\ & =\frac1s sum_{n=1}^infinity sum_{m=1}^n Lambda(m)[n^{-s}-(n+1)^{-s}]=\frac1s sum_{m=1}^infinity Lambda(m)sum_{n=m}^infinity [n^{-s}-(n+1)^{-s}] \\ & =\frac1s sum_{m=1}^infinity Lambda(m)m^{-s}=\frac1s sum_{n=1}^infinity (Lambda(n))/(n^{-s})
+f(s) & =integral_1^infinity psi(u)u^{-s-1}dif u=sum_{n=1}^infinity integral_n^{n+1}psi(u)u^{-s-1}dif u \\ & =sum_{n=1}^infinity psi(n)integral_n^{n+1}u^{-s-1}dif u=sum_{n=1}^infinity sum_{m=1}^n Lambda(m)\eval{(u^{-s})/(-s)}_n ^{n+1} \\ & =\frac1s sum_{n=1}^infinity sum_{m=1}^n Lambda(m)[n^{-s}-(n+1)^{-s}]=\frac1s sum_{m=1}^infinity Lambda(m)sum_{n=m}^infinity [n^{-s}-(n+1)^{-s}] \\ & =\frac1s sum_{m=1}^infinity Lambda(m)m^{-s}=\frac1s sum_{n=1}^infinity (Lambda(n))/(n^{-s})
 $
 
     by absolute convergence and the fact that the inner summation ``telescopes.'' By @prop:riemannzetafunction_logarithmicderivativezetavonmangoldt, we have that for $Re s>1$,

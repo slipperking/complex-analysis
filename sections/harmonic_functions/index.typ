@@ -67,7 +67,7 @@ $ u(z)=sup_{v in cal(P)_phi}v(z), z in U. $] <def:perronclass>
 
 #theorem("Perron")[Let $U subset.eq CC$ be a bounded open set and $phi:partial U -> RR$ be continuous. Then the Perron solution $u$ is harmonic on $U$.] <thm:perron>
 
-#proof[The class $cal(P)_phi$ is non-empty (the constant function $min_{partial U}phi$ belongs to it) and bounded above by $max_{partial U}phi$ by the maximum principle (@thm:maximumprinciplesubharmonic), so $u$ is well-defined and finite.
+#proof[The class $cal(P)_phi$ is non-empty (the constant function $min_(partial U)phi$ belongs to it) and bounded above by $max_(partial U)phi$ by the maximum principle (@thm:maximumprinciplesubharmonic), so $u$ is well-defined and finite.
 
     Fix $z_0 in U$ and choose $r>0$ with $overline(D(z_0,r))subset.eq U$. There exists a sequence ${v_n}subset.eq cal(P)_phi$ with $v_n(z_0)eq.not arrow u(z_0)$. Replacing each $v_n$ by $max{v_1,dots,v_n}in cal(P)_phi$, we may assume ${v_n}$ is non-decreasing. Define the _Poisson modification_ of $v_n$ on $D(z_0,r)$: let $tilde(v)_n$ equal $v_n$ outside $D(z_0,r)$ and equal the Poisson integral of $v_n|_{partial D(z_0,r)}$ inside. Then $tilde(v)_n$ is subharmonic on $U$, agrees with $v_n$ on $partial D(z_0,r)$, and is harmonic on $D(z_0,r)$. In particular $tilde(v)_n in cal(P)_phi$ and $tilde(v)_n gt.eq v_n$.
 

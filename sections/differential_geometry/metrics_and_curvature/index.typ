@@ -18,7 +18,7 @@ The three following metrics are of particular interest in complex differential g
 + Perhaps the most trivial metric is the _Euclidean metric_ (also known as the _parabolic metric_) on $CC$, and is given by 
 $ rho=1, dif s^2=|ddz|^2. $
  The _Euclidean distance_ between two points $z_1,z_2 in CC$ is 
-$ inf_{gamma}integral_gamma |ddz|=|z_2-z_1| $
+$ inf_Gamma integral_gamma |ddz|=|z_2-z_1| $
  is the length of the straight line segment connecting $z_1$ and $z_2$. The group formed by all transformations in the form of $z |-> ee^{ii theta}z+a$ (where $a in CC$ and $theta in RR$) is known as _the group of rigid motions_, or more abstractly, the _special Euclidean group_ of order 2, denoted by $upright("SE")(2)<Aut(CC)$, intuitively consists of all rotations and translations and their compositions, while the _Euclidean_ group $upright("E")(2)>upright("SE")(2)$ consists of reflections in the form of $z |-> ee^{ii theta}overline(z)+a$. Obviously, the Euclidean metric is invariant under both groups.
 
         From @eq:curvatureofmetric, we find that Euclidean metric has curvature $K=0$.
@@ -45,7 +45,7 @@ $ d (0,R)=d (0,R ee^{ii theta})=log((1+R)/(1-R)) $
 $ phi.alt_{z_1}(z)=(z-z_1)/(1-overline(z_1)z) $
 
         maps $z_1$ to $0$ and maps $z_2$ to $(z_2-z_1)/(1-overline(z_1)z_2)$. Hence, we have 
-$ d (z_1,z_2)=d \qty(0,(z_2-z_1)/(1-overline(z_1)z_2))=log [\frac{1+|(z_2-z_1)/(1-overline(z_1)z_2)|}{1-|(z_2-z_1)/(1-overline(z_1)z_2)|}]=inf_{gamma}integral_gamma dif s, $
+$ d (z_1,z_2)=d \qty(0,(z_2-z_1)/(1-overline(z_1)z_2))=log [\frac{1+|(z_2-z_1)/(1-overline(z_1)z_2)|}{1-|(z_2-z_1)/(1-overline(z_1)z_2)|}]=inf_Gamma integral_gamma dif s, $
  which is the Poincaré distance (or _hyperbolic distance_) between $z_1$ and $z_2$. The infimum is attained along the geodesic curve $gamma$ parameterized by
         
 $ z(t)=(phi.alt_{z_1})^{-1}\qty((z_2-z_1)/(1-overline(z_1)z_2)t) $
@@ -85,7 +85,7 @@ $ \lim_{Delta z -> 0}|(d (z,z+Delta z))/(Delta z)|=(2)/(|z|^2+1), $
  the metric as defined in @eq:sphericalmetricdefinition has a clear geometric meaning: the distance between two points $z$ and $tilde(z)$ under the metric in @eq:sphericalmetricdefinition is the shortest distance between the corresponding points in $S^2$, or their spherical distance.
 
         Thus, if curve $gamma$ joins $z$ and $tilde(z)$, we have 
-$ d (z,tilde(z))=inf_{gamma}integral_gamma sigma(z)|ddz|, $
+$ d (z,tilde(z))=inf_Gamma integral_gamma sigma(z)|ddz|, $
  which attains its infimum when the inverse stereographic projection of $gamma$ is a great circle of $S^2$. Thus, $sigma$ is known as the spherical metric.
 
         The corresponding curvature is given by

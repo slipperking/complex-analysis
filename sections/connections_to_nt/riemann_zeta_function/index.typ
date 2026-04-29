@@ -122,9 +122,9 @@ $delta lt.eq epsilon.alt_1<epsilon.alt_2<2 pi$ is arbitrarily chosen. Then we
 have
 
 $
-F_{epsilon.alt_2,delta}(s)-F_{epsilon.alt_1,delta}(s) & =(integral_{\mathmakebox[0.5em][l]{C_{epsilon.alt_2}}}-integral_{\mathmakebox[0.5em][l]{C_{epsilon.alt_1}}}+integral_{\mathmakebox[0.5em][l]{\overset+Gamma_{epsilon.alt_2}}}+integral_{\mathmakebox[0.5em][l]{\overset-Gamma_{epsilon.alt_2}}}-integral_{\mathmakebox[0.5em][l]{\overset+Gamma_{epsilon.alt_1}}}-integral_{\overset-Gamma_{epsilon.alt_1}})((-z)^{s-1}ddz)/(ee^{z}-1)=oint.cont_{gamma}((-z)^{s-1}ddz)/(ee^z-1),
+F_{epsilon.alt_2,delta}(s)-F_{epsilon.alt_1,delta}(s) & =(integral_{\mathmakebox[0.5em][l]{C_{epsilon.alt_2}}}-integral_{\mathmakebox[0.5em][l]{C_{epsilon.alt_1}}}+integral_{\mathmakebox[0.5em][l]{\overset+Gamma_{epsilon.alt_2}}}+integral_{\mathmakebox[0.5em][l]{\overset-Gamma_{epsilon.alt_2}}}-integral_{\mathmakebox[0.5em][l]{\overset+Gamma_{epsilon.alt_1}}}-integral_{\overset-Gamma_{epsilon.alt_1}})((-z)^{s-1}ddz)/(ee^{z}-1)=oint.cont_Gamma ((-z)^{s-1}ddz)/(ee^z-1),
 $
- where $gamma$ is a closed _keyhole countour_ (@fig:keyholecontour) around the positive real axis. Since $((-z)^{s-1})/(ee^z-1)$ is holomorphic on and inside $gamma$, Cauchy--Goursat (@thm:cauchygoursattheorem) implies that $oint.cont_{gamma}((-z)^{s-1})/(ee^z-1)=0$. Therefore, $F_{epsilon.alt_2,delta}(s)=F_{epsilon.alt_1,delta}(s)$. Now we define $F_{epsilon}=\lim_{delta ->0^+}F_{epsilon,delta}$.
+ where $gamma$ is a closed _keyhole countour_ (@fig:keyholecontour) around the positive real axis. Since $((-z)^{s-1})/(ee^z-1)$ is holomorphic on and inside $gamma$, Cauchy--Goursat (@thm:cauchygoursattheorem) implies that $oint.cont_Gamma ((-z)^{s-1})/(ee^z-1)=0$. Therefore, $F_{epsilon.alt_2,delta}(s)=F_{epsilon.alt_1,delta}(s)$. Now we define $F_{epsilon}=\lim_{delta ->0^+}F_{epsilon,delta}$.
 
 For brevity, let $theta.alt=\asin(\frac delta epsilon)$ and let
 $tilde(delta)=sqrt(epsilon^2-delta^2)$. Then
@@ -315,7 +315,7 @@ $ Re \qty((Phi'(s))/(Phi(s)))>0 $
 $ Phi(s)=(s-a)^n phi.alt(s) $
  for some $n in NN$ and holomorphic $phi.alt$ (non-vanishing near
     $a$). Hence 
-$ Phi'(s)=n(s-a)^{n-1}phi.alt(s)+(s-a)^n phi.alt'(s)=> Re \qty((Phi'(s))/(Phi(s)))=Re \qty((n)/(s-a)+(phi.alt'(s))/(phi.alt(s)))>0 $
+$ Phi'(s)=n(s-a)^(n-1)phi.alt(s)+(s-a)^n phi.alt'(s)=> Re \qty((Phi'(s))/(Phi(s)))=Re \qty((n)/(s-a)+(phi.alt'(s))/(phi.alt(s)))>0 $
  for $s>a$ sufficiently close to $a$.]
 
 #theorem[The Riemann $zeta$-function has no zeros on the lines defined by $Re s=0$ and $Re s=1$.] <thm:riemannzetafunction_nozerosoncriticalstripboundary>

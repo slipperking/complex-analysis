@@ -1,6 +1,7 @@
 #import "@preview/ctheorems:1.1.3": *
 #import "@preview/diverential:0.3.0": *
 #import "@preview/cetz:0.4.2": *
+#import "@preview/cetz-plot:0.1.3": *
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": vb as _vb
 #import "@preview/headcount:0.1.0": *
@@ -92,10 +93,20 @@
     (pstart, 25%, pend),
     (pstart, 75%, pend),
     ..args,
-    mark: (end: ">>", fill: black)
+    mark: (end: ">>", fill: black),
   )
 }
 
-#let add-vectors(..vectors) = {    
-  vectors.pos().fold((0, 0, 0), vector.add)    
+#let add-vectors(..vectors) = {
+  vectors.pos().fold((0, 0, 0), vector.add)
+}
+
+#let directional_points(offset: (0, 0), angle: 0, length: .2, n: 10) = {
+  let vec = vector.rotate-z((length, 0), angle)
+  let out = ()
+
+  for i in range(n + 1) {
+    out.push(vector.add(vector.scale(vec, i / n), offset))
+  }
+  out
 }

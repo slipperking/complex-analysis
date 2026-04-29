@@ -15,9 +15,9 @@ $ cal(F)={z |-> f (\frac zn) | n in NN} $
               
 $ |f (\frac z{n_k})|=|f_{n_k}(z)|<M forall z in partial D (0,\frac delta2),\ k in NN. $
 
-              In other words, $f$ is bounded by $M$ on every circle $partial D (0,(delta)/(2n_k))$ for $k in NN$. By the Maximum Modulus Principle (@thm:maximummodulus), $f$ is then bounded by $M$ on each annulus $overline(D (0,(delta)/(2n_k)))without D (0,(delta)/(2n_{k+1}))$ for $k in NN$. As
+              In other words, $f$ is bounded by $M$ on every circle $partial D (0,(delta)/(2n_k))$ for $k in NN$. By the Maximum Modulus Principle (@thm:maximummodulus), $f$ is then bounded by $M$ on each annulus $overline(D (0,(delta)/(2n_k)))without D (0,(delta)/(2n_(k + 1)))$ for $k in NN$. As
               
-$ cup_{k in NN}overline(D (0,(delta)/(2n_k)))without D (0,(delta)/(2n_{k+1}))=overline(D (0,\frac delta{2n_1}))without \cbraces{0}, $
+$ cup_{k in NN}overline(D (0,(delta)/(2n_k)))without D (0,(delta)/(2n_(k + 1)))=overline(D (0,\frac delta{2n_1}))without \cbraces{0}, $
 
               it follows that $f$ is bounded on $D^*(0,\frac delta2)$. By Riemann's Removable Singularity Theorem (@thm:riemannremovablesingularities), $f$ therefore extends holomorphically to $0$.
 + Suppose $\cbraces{f_{n_k}}_{k in NN}$ converges locally uniformly to $infinity$ on $D^*(0,delta)$. Then, for every $epsilon>0$, there exists $N in NN$ such that, for all $k>N$,
@@ -26,7 +26,7 @@ $ |(1)/(f ((z)/(n_k)))|=\abs{\frac1{f_{n_k}(z)}}<epsilon forall z in partial D (
 
               By the same reasoning as in the previous case, $|\frac1f|<epsilon$ on
               
-$ cup_{k>N}overline(D (0,(delta)/(2n_k)))without D (0,(delta)/(2n_{k+1}))supset D^*(0,(delta)/(2n_{N+1})). $
+$ cup_{k>N}overline(D (0,(delta)/(2n_k)))without D (0,(delta)/(2n_(k + 1)))supset D^*(0,(delta)/(2n_{N+1})). $
 
               Thus, by the definition of the limit, $\lim_{z -> 0}1/f(z)=0$, so $f$ has a pole at $0$.
 

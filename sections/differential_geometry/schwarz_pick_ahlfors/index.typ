@@ -32,7 +32,7 @@ $ <eq:schwarzahlforspick_curvaturenumeratoratmaximum>
 $ f^*rho (tau_r)^2-lambda_r (tau_r)^2 lt.eq 0 <=> M_r lt.eq 1. $
  Now let $r -> 1^-$, and it follows that $M_r -> sup_{z in bb(D)}(f^*rho(z))/(lambda(z))lt.eq 1$.]
 
-#theorem[Let $f:bb(D)-> U subset.eq CC$ be holomorphic. Let $dif s=rho(w)|dif w|$ (where $rho:U -> RR_{>0}$) define a regular metric such that at every point $w in U$, either
+#theorem[Let $f:bb(D)-> U subset.eq CC$ be holomorphic. Let $dif s=rho(w)|dif w|$ (where $rho:U -> RR_(>0)$) define a regular metric such that at every point $w in U$, either
     
 + The second derivatives of $log lambda$ are continuous ($C^2$) and 
 $ \laplacian (log lambda)(w)gt.eq lambda^2 $
@@ -54,7 +54,7 @@ $ \nabla_{\vu{n}'}(log f^*rho)(tau_r)+\nabla_{\vu{n}''}(log f^*rho)(tau_r)lt.eq 
  by the symmetry of the hyperbolic metric and the fact that the two directions are opposite to each other. Pulling back to $rho$ contradicts with @eq:schwarzahlforspickextension1_directionalderivatives. Thus, $tau_r$ cannot both simultaneously be the location of a maximum while satisfying said inequality; therefore the theorem follows.]
 
 #theorem[Let $f:bb(D)-> U$ be holomorphic. Let 
-$ rho:U subset.eq CC-> RR_{>0},dif s_rho=rho(w)|dif w| $
+$ rho:U subset.eq CC-> RR_(>0),dif s_rho=rho(w)|dif w| $
  be a continuous conformal metric (but not necessarily $C^2$) such that at each point $w$, there exists a neighborhood $V_w \ni w$ in $U$ and a regular metric $rho_w$ thereon such that $rho_w(w)=rho(w)$ and $rho_w lt.eq rho$ everywhere else (referred to as a ``supporting metric''). If each $K_{rho_w}lt.eq-1$ everywhere, then the conclusion of @thm:schwarzahlforspick continues to hold.] <thm:schwarzahlforspicksupportingmetric>
 
 #proof[By assumption, we have 

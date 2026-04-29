@@ -49,7 +49,7 @@ $ \lim_{n -> infinity} f^{(k)}(tilde(z)_n)=f^{(k)}(\lim_{n -> infinity}tilde(z)_
 
 #theorem("Holomorphic Argument Principle")[Let $U subset.eq CC$ be a region and $f:U -> CC$ be holomorphic. Let $gamma subset U$ be a simple, closed, positively oriented curve that is null-homotopic in $U$. If $f$ has no zeros on $gamma$, then $f$ has finitely many zeros in the region bounded by $gamma$, and this number, counting multiplicities, is given by
     
-$ k=(1)/(2 pi ii)oint.cont_{gamma}(f'(z))/(f(z))ddz. $
+$ k=(1)/(2 pi ii)oint.cont_Gamma (f'(z))/(f(z))ddz. $
 
     Let $Gamma$ be the image of $gamma$ under the map $w=f(z)$. Then $k=(1)/(2 pi)Delta_Gamma \arg(w)$, where $Delta_Gamma \arg(w)$ denotes the total change in argument of $w$ as it traverses $Gamma$.] <thm:argumentprincipleholomorphic>
 
@@ -84,23 +84,23 @@ $ oint.cont_{partial D (z_j,epsilon.alt_j)}(k_j)/(z-z_j)ddz=2 pi ii k_j. $
 
     Combining results,
     
-$ oint.cont_{gamma}(f'(z))/(f(z))ddz=sum_{j=1}^n2 pi ii k_j=2 pi ii k. $
+$ oint.cont_Gamma (f'(z))/(f(z))ddz=sum_{j=1}^n2 pi ii k_j=2 pi ii k. $
 
     Finally, parameterize $Gamma$ by $w=f(z)$. Then $dif w=f'(z)ddz$, and
     
-$ k=(1)/(2 pi ii)oint.cont_{Gamma}(dif w)/(w)=(1)/(2 pi ii)Delta_Gamma log(w)=(1)/(2 pi)Delta_Gamma \arg(w), $
+$ k=(1)/(2 pi ii)oint.cont_Gamma (dif w)/(w)=(1)/(2 pi ii)Delta_Gamma log(w)=(1)/(2 pi)Delta_Gamma \arg(w), $
  which proves the result.]
 
 Thus, one defines the _winding index_ to quantify how many times a closed curve winds counterclockwise around a given point in the complex plane. Formally, if $gamma=gamma([0,1])$ is a counterclockwise-oriented closed curve and $z$ is a point satisfying $z in.not gamma$, then 
-$ upright("Ind")_{gamma}(z)=(1)/(2 pi ii)integral_gamma (ddzeta)/(zeta-z)=(1)/(2 pi ii)integral_0^1 (gamma'(t)ddt)/(gamma(t)-z). $
+$ upright("Ind")_Gamma (z)=(1)/(2 pi ii)integral_gamma (ddzeta)/(zeta-z)=(1)/(2 pi ii)integral_0^1 (gamma'(t)ddt)/(gamma(t)-z). $
 
 #theorem[Let $\cbraces{f_n(z)}$ be a sequence of holomorphic functions on the open set $U subset.eq CC$ that uniformly converges to $f(z)$ on every compact subset of $U$. If $forall n in NN$, $f_n(z)$ has no zeros in $U$, then $f$ is either identically 0 or has no zeros in $U$.] <thm:hurwitzsimplecase>
 
 #proof[By the holomorphy of $f_n(z)$, for any simple closed rectifiable curve $gamma subset U$ (whose interior is a subset of $U$), by the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem), 
-$ oint.cont_{gamma}f_n(zeta)ddzeta=0. $
+$ oint.cont_Gamma f_n(zeta)ddzeta=0. $
  Since $gamma$ is a subset of any compact subset of $U$, $\cbraces{f_n(zeta)}$ uniformly converges on $gamma$, and by @thm:limitintegralswitch,
     
-$ \lim_{n -> infinity}oint.cont_{gamma}f_n(zeta)ddzeta=oint.cont_{gamma}\lim_{n -> infinity}f_n(zeta)ddzeta=oint.cont_{gamma}f(zeta)ddzeta=0. $ <eq:hurwitzsimplecase_integrallimitswitchforholomorphy>
+$ \lim_{n -> infinity}oint.cont_Gamma f_n(zeta)ddzeta=oint.cont_Gamma \lim_{n -> infinity}f_n(zeta)ddzeta=oint.cont_Gamma f(zeta)ddzeta=0. $ <eq:hurwitzsimplecase_integrallimitswitchforholomorphy>
 
     Then by Morera's Theorem (@thm:morera), $f(z)$ is holomorphic, and $f'(z)$ is holomorphic. We aim to show that $f'_n(z)rightarrows f'(z)$.
 
@@ -111,7 +111,7 @@ $ \lim_{n -> infinity}sup_{z in K}|f'_n(z)-f'(z)|lt.eq c \lim_{n -> infinity}sup
 
     Through the proof of @thm:identityaccumulationofzeros, if $f \not equiv0$ over $U$, then the zeros of $f$ do not have an accumulation point in $U$ and are therefore discrete. In this case, let $gamma subset U$ be a curve that does not pass through the zeros of $f$. Since each function in the sequence $f_n$ does not contain zeros in $U$, by the Argument Principle, (@thm:argumentprincipleholomorphic),
     
-$ \lim_{n -> infinity}oint.cont_{gamma}(f_n'(z))/(f_n(z))ddz=0. $ <eq:hurwitzsimplecase_argumentprinciple>
+$ \lim_{n -> infinity}oint.cont_Gamma (f_n'(z))/(f_n(z))ddz=0. $ <eq:hurwitzsimplecase_argumentprinciple>
 
     Since $f$ and $f'$ are holomorphic over $gamma$, by @thm:continuousfunctionboundedoncompact, there exists a finite value $M>0$ such that $forall z in gamma$, $max \cbraces{|f(z)|,|f'(z)|}<M$.
 
@@ -143,7 +143,7 @@ $ |f(z)-g(z)|<|f(z)|. $ <eq:rouche>
     Let $k_f$ and $k_g$ denote the number of zeros of $f$ and $g$ enclosed by $gamma$, respectively. By the Argument Principle (@thm:argumentprincipleholomorphic),
     
 $
-k_g-k_f & =integral_{gamma}(g'(z))/(g(z))ddz-integral_gamma (f'(z))/(f(z))ddz \\ & =integral_gamma (g'(z)f(z)-f'(z)g(z))/(g(z)f(z))ddz=integral_gamma (\qty((g(z))/(f(z)))')/((g(z))/(f(z)))ddz.
+k_g-k_f & =integral_Gamma (g'(z))/(g(z))ddz-integral_gamma (f'(z))/(f(z))ddz \\ & =integral_gamma (g'(z)f(z)-f'(z)g(z))/(g(z)f(z))ddz=integral_gamma (\qty((g(z))/(f(z)))')/((g(z))/(f(z)))ddz.
 $
 
     Let $w=h(z)=(g(z))/(f(z))$ with $Gamma=h(gamma)$. Then, 
@@ -153,7 +153,7 @@ $ k_g-k_f=integral_Gamma (dif w)/(w). $
 $ k_g-k_f=integral_Gamma (dif w)/(w)=0, $
  as desired.]
 
-By the Fundamental Theorem of Algebra (@thm:fundamentaltheoremofalgebra), any polynomial in the form $p(z)=sum_{k=0}^n a_kz^k$ ($n in NN$, $a_n eq.not 0$, $a_k in CC$ where $k=1,dots n$) has at least one complex zero. Consider the function $q(z)=a_nz^n$, with a zero at $z=0$ with multiplicity $n$. By Rouché's Theorem (@thm:rouche), since $exists R in RR$ such that $|q(z)-p(z)|=|sum_{k=0}^{n-1}a_k z^k|<|a_n z^n|$ over $|z|=R$, $p$ and $q$ have the same number of zeros, counting multiplicity.
+By the Fundamental Theorem of Algebra (@thm:fundamentaltheoremofalgebra), any polynomial in the form $p(z)=sum_(k=0)^n a_kz^k$ ($n in NN$, $a_n eq.not 0$, $a_k in CC$ where $k=1,dots n$) has at least one complex zero. Consider the function $q(z)=a_nz^n$, with a zero at $z=0$ with multiplicity $n$. By Rouché's Theorem (@thm:rouche), since $exists R in RR$ such that $|q(z)-p(z)|=|sum_(k=0)^(n-1)a_k z^k|<|a_n z^n|$ over $|z|=R$, $p$ and $q$ have the same number of zeros, counting multiplicity.
 
 #theorem[Let $U subset.eq CC$ be open and connected, and $f(z)$ be holomorphic and non-constant on $U$.
 
