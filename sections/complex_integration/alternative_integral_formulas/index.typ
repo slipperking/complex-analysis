@@ -3,7 +3,7 @@
 == Alternative Integral Formulas
 As in the Cauchy Integral Formula (@thm:cauchygoursatformula), we can write holomorphic functions in terms of an integral representation. We define the _Cauchy kernel_ to be equal to
 
-$ H(zeta,z)=(1)/(2 pi ii (zeta-z)). $
+$ H(zeta,z)=(1)/(taui (zeta-z)). $
 
 Then @eq:cauchygoursatformula can be written as:
 
@@ -60,19 +60,19 @@ Thus, @eq:poissonintegralformula2 is equivalent to:
 $ u(z)=(1)/(2 pi)integral_0^{2 pi}u(zeta)Re ((zeta+z)/(zeta-z))dif tau. $
 
 Since $ddzeta=ii R ee^{ii tau}dif tau$, $dif tau=(ddzeta)/(ii zeta)$, and 
-$ u(z)=(1)/(2 pi ii)integral_{partial D(0,R)}(u(zeta))/(zeta)Re ((zeta+z)/(zeta-z))ddzeta=Re [(1)/(2 pi ii)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)(zeta+z)/(zeta-z)ddzeta], $
+$ u(z)=(1)/(taui)integral_{partial D(0,R)}(u(zeta))/(zeta)Re ((zeta+z)/(zeta-z))ddzeta=Re [(1)/(taui)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)(zeta+z)/(zeta-z)ddzeta], $
 
 where $z in D(0,R)$. Since $R>0$ and $zeta-z eq.not0$, the function 
-$ (1)/(2 pi ii)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)(zeta+z)/(zeta-z)ddzeta $
+$ (1)/(taui)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)(zeta+z)/(zeta-z)ddzeta $
  // TODO: provide more justification on holomorphy
-is holomorphic on $D(0,R)$. Therefore, $u(z)$ is the real part of a holomorphic function $f(z)=(1)/(2 pi ii)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)(zeta+z)/(zeta-z)ddzeta+ii c$, where $c in RR$. Since $c in RR$ is holomorphic, by @prop:realvaluedholomorphicfunctionconstant, $c$ is constant. For $f(z)=u(z)+ii v(z)$,
+is holomorphic on $D(0,R)$. Therefore, $u(z)$ is the real part of a holomorphic function $f(z)=(1)/(taui)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)(zeta+z)/(zeta-z)ddzeta+ii c$, where $c in RR$. Since $c in RR$ is holomorphic, by @prop:realvaluedholomorphicfunctionconstant, $c$ is constant. For $f(z)=u(z)+ii v(z)$,
 
-$ v(z)=c+(1)/(2 pi ii)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)Im ((zeta+z)/(zeta-z))ddzeta. $ <eq:schwarzintegralformulaimaginarypart>
+$ v(z)=c+(1)/(taui)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)Im ((zeta+z)/(zeta-z))ddzeta. $ <eq:schwarzintegralformulaimaginarypart>
 
 Letting $z=0$, the integral vanishes, and we obtain $c=v(0)=Im(f(0))$.
 
 Define the _Schwarz kernel_ to be 
-$ S(zeta,z)=(zeta+z)/(2 pi ii(zeta-z)zeta). $
+$ S(zeta,z)=(zeta+z)/(taui(zeta-z)zeta). $
 
 Then for a holomorphic function $f$ on $D(0,R)$ that is continuous on $overline(D(0,R))$, we obtain the _Schwarz Integral Formula_:
 

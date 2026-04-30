@@ -5,7 +5,7 @@
 The following definitions are subject to the assumption where the topological space is defined to be $X = CC^n$. This is satisfactory to the main purpose of our proceeding passage, but it is noteworthy that it can be generalized to more abstract sets.
 
 #definition("Accumulation Point")[
-  A point $z in CC^n$ is an _accumulation point_ of $X$ if for any open set $U$ containing $z$, $lr((U without {z})) inter X eq.not emptyset$
+  A point $z in CC^n$ is an _accumulation point_ of $X$ if for any open set $U$ containing $z$, $(U without {z}) inter X eq.not emptyset$
 ] <def:accumulationpoint>
 
 #definition("Closure")[
@@ -81,9 +81,9 @@ The following definitions are subject to the assumption where the topological sp
 ]
 
 #definition("Support of a Function")[
-  For a set $X$ and a function $f : X -> CC$, the _support_, denoted by $supp (f) = overline(lr({z in X | f(z) eq.not 0}))$, is the closure of the set for which $f$ is nonzero.
+  For a set $X$ and a function $f : X -> CC$, the _support_, denoted by $supp (f) = overline({z in X | f(z) eq.not 0})$, is the closure of the set for which $f$ is nonzero.
 ] <def:support>
 
 #remark[
-  A notable classification of functions comes from the compactness of support---more specifically, its boundedness. Compactly supported functions in $C^infinity$ are commonly referred to as _bump functions_ (see \@sec:partitionsofunity).
+  A notable classification of functions comes from the compactness of support---more specifically, its boundedness. Compactly supported functions in $C^infinity$ are commonly referred to as _bump functions_ (see @ sec:partitionsofunity).
 ]

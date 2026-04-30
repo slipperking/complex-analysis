@@ -56,12 +56,12 @@ $
 $
 
 Then, 
-$ |a|^2 (z_2-z_1)=z_2-z_1.<=> (|a|^2-1)(z_2-z_1)=0. $
+$ |a|^2 (z_2-z_1)=z_2-z_1.<==> (|a|^2-1)(z_2-z_1)=0. $
  Since $|a|<1$, then $|a|^2-1 eq.not0$, and we get $z_2-z_2=0$. This proves the univalence of $phi.alt_a(z)$.
 
 Next, we will solve for the inverse of $phi.alt_a$. Let $z=phi.alt_a(w)=(w-a)/(1-overline(a)w)$. Then,
 
-$ z-overline(a)zw=w-a <=> w=(z+a)/(1+overline(a)z). $ <eq:inversemobiustransformation>
+$ z-overline(a)zw=w-a <==> w=(z+a)/(1+overline(a)z). $ <eq:inversemobiustransformation>
 
 It follows that $phi.alt_{-a}=(phi.alt_a)^{-1}$. Thus $phi.alt_a$ is surjective and a bijective automorphism. It follows that @eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement is true. Functions in the form of $phi.alt_a$ (where $a in bb(D)$) are known as _Möbius transformations_, and the group of all such transformations is known as the _Möbius transformation group on the unit disk_, which is a subgroup of $Aut(bb(D))$. Functions in the form of $rho_tau(z)=z exp(ii tau)$, where $tau in RR$ is constant, form a group known as the _rotation group_, which is also a subgroup of $Aut(bb(D))$.
 
@@ -92,7 +92,7 @@ $ phi.alt_{-z_1}(z)=(z+z_1)/(1+overline(z_1)z)in Aut(bb(D)), phi.alt_{w_1}(z)=(z
 
     It follows that $phi.alt_{w_1}compose f compose phi.alt_{-z_1}(0)=phi.alt_{w_1}(w_1)=0$. Then by the Schwarz Lemma (@lem:schwarz), for $z in bb(D)$, 
 $ |phi.alt_{w_1}compose f compose phi.alt_{-z_1}(z)|lt.eq |z|. $
- Let $z_2=phi.alt_{-z_1}(z)$. Then, $|phi.alt_{w_1}compose f (z_2)|lt.eq |phi.alt_{z_1}(z_2)|<=> |phi.alt_{w_1}(w_2)|lt.eq |phi.alt_{z_1}(z_2)|$, confirming @eq:schwarzpick_statement1. By the second statement of the Schwarz Lemma (@lem:schwarz), $|(phi.alt_{w_1}compose f compose phi.alt_{-z_1})'(0)|lt.eq1$.
+ Let $z_2=phi.alt_{-z_1}(z)$. Then, $|phi.alt_{w_1}compose f (z_2)|lt.eq |phi.alt_{z_1}(z_2)|<==> |phi.alt_{w_1}(w_2)|lt.eq |phi.alt_{z_1}(z_2)|$, confirming @eq:schwarzpick_statement1. By the second statement of the Schwarz Lemma (@lem:schwarz), $|(phi.alt_{w_1}compose f compose phi.alt_{-z_1})'(0)|lt.eq1$.
 
     By the chain rule, $|phi.alt_{w_1}'(w_1)f'(z_1)phi.alt_{-z_1}'(0)|lt.eq1$. Let us now calculate the derivatives of $phi.alt_{w_1}$ and $phi.alt_{-z_1}$. By the quotient rule, 
 $ phi.alt'_{w_1}(z)=\frac{1-overline(w_1)w_1}{(1-overline(w_1)z)^2}, phi.alt'_{w_1}(w_1)=(1)/(1-overline(w_1)w_1), $
@@ -103,7 +103,7 @@ $ phi.alt'_{-z_1}(z)=(1-overline(z_1)z_1)/((1+overline(z_1)z)^2), phi.alt'_{-z_1
 
     Since both derivatives are positive, $|f'(z_1)|lt.eq (1-overline(w_1)w_1)/(1-overline(z_1)z_1)$. Since $z_1 in bb(D)$ is arbitrary, it follows that
     
-$ |dv(w, z)|lt.eq (1-overline(w)w)/(1-overline(z)z)<=> \frac{|dif w|}{1-overline(w)w}lt.eq (|ddz|)/(1-overline(z)z). $ <eq:schwarzpick_nonincreasingmetric>
+$ |dv(w, z)|lt.eq (1-overline(w)w)/(1-overline(z)z)<==> \frac{|dif w|}{1-overline(w)w}lt.eq (|ddz|)/(1-overline(z)z). $ <eq:schwarzpick_nonincreasingmetric>
 
     By the Schwarz Lemma (@lem:schwarz), under the equality condition that 
 $ |phi.alt_{w_1}'(w_1)f'(z_1)phi.alt_{-z_1}'(0)|=1, $

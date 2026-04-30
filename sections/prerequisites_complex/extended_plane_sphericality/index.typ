@@ -9,7 +9,7 @@ $ extcomplex = CC union {infinity}. $
 The following arithmetic operations are defined: for all $a in CC$,
 $ a + infinity = infinity + a = infinity, $
 and for all $b in CC without {0}$,
-$ b infinity = infinity b = infinity, quad a / infinity = 0. $
+$ b dot.c infinity = infinity dot.c b = infinity, quad a / infinity = 0. $
 
 Let
 $ S^2 = {(x_1, x_2, x_3) in RR^3 | x_1^2 + x_2^2 + x_3^2 = 1}. $

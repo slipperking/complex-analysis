@@ -71,7 +71,7 @@ Four main classical theorems exist, relating a function and its line integral in
 
 #theorem("Gradient Theorem")[
   Let $C$ be an oriented smooth curve in $RR^3$ with boundary points $A$ to $B$. Then
-  $ lr((evaluated(f)_(partial C)))= f(B) - f(A) = integral_C dvp(f, x) dif x + dvp(f, y) dif y + dvp(f, z) dif z. $
+  $ evaluated(f)_(partial C)= f(B) - f(A) = integral_C dvp(f, x) dif x + dvp(f, y) dif y + dvp(f, z) dif z. $
 ] <thm:gradient>
 
 #theorem("Green's Theorem")[
@@ -181,7 +181,7 @@ We also have the definition of the limit of a sequence:
 #proof[
   We first prove that $a = lim_(n -> oo) a_n$ implies $limsup_(n -> oo) a_n = liminf_(n -> oo) a_n = a$.
   By @def:epsilonn, $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$,
-  $ abs(a_n - a) < epsilon <=> a - epsilon < a_n < a + epsilon. $
+  $ abs(a_n - a) < epsilon <==> a - epsilon < a_n < a + epsilon. $
   Then from @def:limsup and @def:liminf, we have that $limsup_(n -> oo) a_n >= a$ and $liminf_(n -> oo) a_n <= a$. By the second conditions, we get $limsup_(n -> oo) a_n <= a$ and $liminf_(n -> oo) a_n >= a$. Therefore,
   $ limsup_(n -> oo) a_n = liminf_(n -> oo) a_n. $
 

@@ -17,15 +17,15 @@ Power series in real analysis can be generalized into complex series. Particular
 ]
 
 #theorem("Cauchy Criterion")[
-  For a set $U subset.eq CC$, a function sequence ${f_n (z)}$ uniformly converges to a function $f(z)$ iff $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$, $forall z in U$, $abs(f_n (z) - f_m(z)) < epsilon$.
+  For a set $U subset.eq CC$, a function sequence ${f_n (z)}$ uniformly converges to a function $f(z)$ iff $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$, $forall z in U$, $abs(f_n (z) - f_m (z)) < epsilon$.
 ] <thm:cauchycriterionuniformconvergence>
 
 #proof[
   If $f_n (z)$ uniformly converges to $f(z)$, then for $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$ and $forall z in U$,
-  $ abs(f_m(z) - f(z)) < epsilon / 2, quad abs(f_n (z) - f(z)) < epsilon / 2. $
+  $ abs(f_m (z) - f(z)) < epsilon / 2, quad abs(f_n (z) - f(z)) < epsilon / 2. $
 
   Then,
-  $ abs(f_m(z) - f_n (z)) <= abs(f_n (z) - f(z)) + abs(f_m(z) - f(z)) < epsilon. $
+  $ abs(f_m (z) - f_n (z)) <= abs(f_n (z) - f(z)) + abs(f_m (z) - f(z)) < epsilon. $
 
   For the converse, refer to the analogous proof in @thm:cauchycriterionsequenceconvergence.
 ]
@@ -44,7 +44,7 @@ Function series are defined to be a sequence formed by the partial sums of funct
 
   Since $M_j$ bounds $f_j(z)$, it follows that
   $
-    abs(f_m(z) + f_(m - 1)(z) + dots + f_(n + 1)(z)) <= abs(M_m + M_(m - 1) + dots + M_(n + 1)) < epsilon,
+    abs(f_m (z) + f_(m - 1)(z) + dots + f_(n + 1)(z)) <= abs(M_m + M_(m - 1) + dots + M_(n + 1)) < epsilon,
   $
   and the result follows from @thm:cauchycriterionuniformconvergence.
 ]

@@ -2,19 +2,19 @@
 == Complex Differentiation
 
 For $U subset.eq CC$ and a complex function $f: U -> CC$, $f(z)$ is _complex differentiable_ at $z in U$ if the following limit exists, regardless of the direction $Delta z$ approaches $0$ from:
-$ lim_(Delta z -> 0) (f(z + Delta z) - f(z)) / Delta z. $
+$ lim_(Delta z -> 0) (f(z + Delta z) - f(z)) / (Delta z). $
 
 We can consider $f(z)$ to be a bivariate function $f(x, y)$ for $z = x + ii y$. Two main cases we are concerned with are when $Delta z$ approaches $0$ from the real and imaginary axes:
 $
-  lim_(Delta z -> 0, Delta z in RR) (f(z + Delta z) - f(z)) / Delta z
+  lim_(Delta z -> 0, Delta z in RR) (f(z + Delta z) - f(z)) / (Delta z)
   =
   lim_(Delta z -> 0, Delta z in RR) (f(z + ii Delta z) - f(z)) / (ii Delta z).
 $
 Expressing $f(z)$ as $f(x, y) = u(x, y) + ii v(x, y)$,
 $
-  lim_(Delta z -> 0, Delta z in RR) (f(z + Delta z) - f(z)) / Delta z
+  lim_(Delta z -> 0, Delta z in RR) (f(z + Delta z) - f(z)) / (Delta z)
   =
-  lim_(Delta z -> 0, Delta z in RR) (f(x + Delta z, y) - f(x, y)) / Delta z
+  lim_(Delta z -> 0, Delta z in RR) (f(x + Delta z, y) - f(x, y)) / (Delta z)
   =
   pdv(u, x) + ii pdv(v, x),
 $
@@ -22,7 +22,7 @@ and
 $
   lim_(Delta z -> 0, Delta z in RR) (f(z + ii Delta z) - f(z)) / (ii Delta z)
   =
-  -ii lim_(Delta z -> 0, Delta z in RR) (f(x, y + Delta z) - f(x, y)) / Delta z
+  -ii lim_(Delta z -> 0, Delta z in RR) (f(x, y + Delta z) - f(x, y)) / (Delta z)
   =
   pdv(v, y) - ii pdv(u, y).
 $
@@ -88,9 +88,9 @@ For the purpose of the following contents, a _region_ or _domain_ will denote a 
   $
     (f(z) - f(z_0)) / (z - z_0)
     =
-    alpha + ii beta + [epsilon_u(Delta x, Delta y) + ii epsilon_v(Delta x, Delta y)] (abs(Delta z) / Delta z).
+    alpha + ii beta + [epsilon_u(Delta x, Delta y) + ii epsilon_v(Delta x, Delta y)] (abs(Delta z) / (Delta z)).
   $
-  Taking the limit as $Delta z -> 0$, the last term vanishes because $abs(abs(Delta z) / Delta z) = 1$. Hence
+  Taking the limit as $Delta z -> 0$, the last term vanishes because $abs(abs(Delta z) / (Delta z)) = 1$. Hence
   $ lim_(Delta z -> 0) (f(z) - f(z_0)) / (z - z_0) = alpha + ii beta. qedhere $
 ]
 

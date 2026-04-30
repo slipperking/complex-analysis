@@ -175,18 +175,18 @@ $ zeta(s)=(\lim_{epsilon -> 0^+}F_epsilon.alt(s))/(-2 ii sin(pi s)Gamma(s)), $ <
     The $\mathrm{I\!I}$ and $\mathrm{I\!I\!I}$ integrals vanish at $s=1$
     since $sin(pi)=0$ (in
     @eq:riemannzetafunction_remainingtwointegralslimit). Now because 
-$ upright("I")-> oint.cont_{partial D (0,epsilon)}(ddz)/(ee^z-1)=2 pi ii limits(Res){z=0}(\frac1{ee^z-1}) $
+$ upright("I")-> oint.cont_{partial D (0,epsilon)}(ddz)/(ee^z-1)=taui limits(Res){z=0}(\frac1{ee^z-1}) $
  as $delta -> 0^+$, the integrand has a simple pole at $z=0$. Its residue,
     calculated via @eq:residueatpole, is equal to 
 $ limits(Res){z=0}(\frac1{ee^z-1})=\lim_{z -> 0}(z)/(ee^z-1)=\lim_{z -> 0}(1)/(ee^z)=1. $
 
-    Hence, $F(1)=2 pi ii$. Now the expression
+    Hence, $F(1)=taui$. Now the expression
     $zeta(1)=-(pi)/(sin(pi)Gamma(1))$ shows that the singularity at
     $s=1$ is a simple pole (contributed from the simple zero of $sin$). By
     @eq:residueatpole once more, the residue at $s=1$ is equal to
     
 $
-limits(Res){s=1}zeta(s) & =\lim_{s -> 1}(s-1)zeta(s)=\lim_{s -> 1}(1-s)\qty((F_epsilon.alt(s))/(2 ii sin(pi s)Gamma(s))) \\ & =(2 pi ii)/(2 ii Gamma(1))\lim_{s -> 1}(1-s)/(sin(pi s))=-pi \lim_{s ->1}(1)/(pi cos(pi s))=1.
+limits(Res){s=1}zeta(s) & =\lim_{s -> 1}(s-1)zeta(s)=\lim_{s -> 1}(1-s)\qty((F_epsilon.alt(s))/(2 ii sin(pi s)Gamma(s))) \\ & =(taui)/(2 ii Gamma(1))\lim_{s -> 1}(1-s)/(sin(pi s))=-pi \lim_{s ->1}(1)/(pi cos(pi s))=1.
 $]
 
 The functional equation as provided by Riemann in his original paper gives a more advanced characterization of the $zeta$-function's continuation:
@@ -199,19 +199,19 @@ $ zeta(1-s)=2 zeta(s)Gamma(s)cos(\frac pi2s)(2 pi)^{-s}. $ <eq:riemannzetafuncti
 
     Suppose that $Re s<0$. Now the Residue Theorem (@thm:residuethm) gives
     that 
-$ F_{(2n+1)pi}(s)-F_{epsilon}(s)=2 pi ii sum_{\mathclap{\substack{z in2 pi ii ZZ\\z in " contour"}}}limits(Res)z ((-z)^{s-1})/(ee^z-1), epsilon<2 pi $
+$ F_{(2n+1)pi}(s)-F_{epsilon}(s)=taui sum_{\mathclap{\substack{z in2 pi ii ZZ\\z in " contour"}}}limits(Res)z ((-z)^{s-1})/(ee^z-1), epsilon<2 pi $
  where the contour is the keyhole contour in @fig:keyholecontour with a
     larger radius of $(2n+1)pi$ and a smaller one of $epsilon$. Then we
     have, by virtue of @eq:residueatpole:
     
 $
-\frac1{2 pi ii}(F_{(2n+1)pi}(s)-F_epsilon.alt(s))=sum_{\substack{k=-n\\k eq.not 0}}^{n}\lim_{zeta ->2 pi ii k}((zeta-2 pi ii k)(-zeta)^{s-1})/(ee^zeta-1)\\ =sum_{\substack{k=-n\\k eq.not 0}}^n \lim_{zeta -> 2 pi ii k}(2 pi ii k(s-1)(-zeta)^{s-2}+s(-zeta)^{s-1})/(ee^zeta)\\ =sum_{\substack{k=-n\\k eq.not0}}^n [2 pi ii k(s-1)(-2 pi ii k)^{s-2}+s(-2 pi ii k)^{s-1}]=sum_{\substack{k=-n\\k eq.not0}}^n(-2 pi ii k)^{s-1},
+\frac1{taui}(F_{(2n+1)pi}(s)-F_epsilon.alt(s))=sum_{\substack{k=-n\\k eq.not 0}}^{n}\lim_{zeta ->taui k}((zeta-taui k)(-zeta)^{s-1})/(ee^zeta-1)\\ =sum_{\substack{k=-n\\k eq.not 0}}^n \lim_{zeta -> taui k}(taui k(s-1)(-zeta)^{s-2}+s(-zeta)^{s-1})/(ee^zeta)\\ =sum_{\substack{k=-n\\k eq.not0}}^n [taui k(s-1)(-taui k)^{s-2}+s(-taui k)^{s-1}]=sum_{\substack{k=-n\\k eq.not0}}^n(-taui k)^{s-1},
 $
 
     where we utilize the principal branch logarithm:
     
 $
-F_{(2n+1)pi}(s)-F_epsilon.alt(s) & =2 pi ii sum_{k=1}^n [ee^{Log(2 pi ii k)(s-1)}+ee^{Log(-2 pi ii k)(s-1)}] \\ & =2 pi ii sum_{k=1}^n [ee^{Log(2 pi k)(s-1)}ee^{Log(ii)(s-1)}+ee^{Log(2 pi k)(s-1)}ee^{Log(-ii)(s-1)}] \\ & =2 pi ii sum_{k=1}^n(2 pi k)^{s-1}[ee^{ii (pi)/(2)(s-1)}+ee^{-ii (pi)/(2)(s-1)}] \\ & =4 pi ii cos (\frac pi2(s-1))sum_{k=1}^n(2 pi k)^{s-1}.
+F_{(2n+1)pi}(s)-F_epsilon.alt(s) & =taui sum_{k=1}^n [ee^{Log(taui k)(s-1)}+ee^{Log(-taui k)(s-1)}] \\ & =taui sum_{k=1}^n [ee^{Log(2 pi k)(s-1)}ee^{Log(ii)(s-1)}+ee^{Log(2 pi k)(s-1)}ee^{Log(-ii)(s-1)}] \\ & =taui sum_{k=1}^n(2 pi k)^{s-1}[ee^{ii (pi)/(2)(s-1)}+ee^{-ii (pi)/(2)(s-1)}] \\ & =4 pi ii cos (\frac pi2(s-1))sum_{k=1}^n(2 pi k)^{s-1}.
 $
 
     Now as $n -> infinity$,

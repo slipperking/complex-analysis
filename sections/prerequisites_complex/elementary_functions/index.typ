@@ -42,7 +42,7 @@ We can also define the power function for non-integer powers with $w = z^alpha =
 Since all elementary functions can be written in terms of exponential functions and complex logarithms, we will first study the exponential function.
 
 1. The exponential function $ee^z$ never vanishes as $abs(ee^z) = ee^x > 0$.
-2. Since $ee^(2 uppi ii) = 1$, it is periodic over $2 uppi ii$.
+2. Since $ee^(taui) = 1$, it is periodic over $taui$.
 3. It is also an entire function with $(ee^z)' = ee^z$.
 
 Write $ee^z = ee^(x + ii y) = ee^x (cos(y) + ii sin(y))$ where $x, y in RR$. Let $u(x, y) = Re(ee^z) = ee^x cos(y)$ and $v(x, y) = Im(ee^z) = ee^x sin(y)$. The first order derivatives are respectively
@@ -89,7 +89,7 @@ $ xi(z) = ii z, quad zeta(xi) = ee^xi, quad w(zeta) = (zeta + 1 / zeta) / 2. $
 Then
 $ cos(z) = (w compose zeta compose xi)(z). $
 
-$xi$ is clearly univalent on $CC$, as it is a linear map, specifically, a rotation by $uppi / 2$ radians followed by scaling. The function $zeta$ is univalent on any domain $U subset.eq CC$ such that for all $xi_1, xi_2 in U$, $xi_1 - xi_2 != 2 uppi ii k$ for any $k in ZZ$. If $xi_1 = ii z_1$ and $xi_2 = ii z_2$, then this translates to $z_1 - z_2 != 2 uppi k$ for $k in ZZ$. The function
+$xi$ is clearly univalent on $CC$, as it is a linear map, specifically, a rotation by $uppi / 2$ radians followed by scaling. The function $zeta$ is univalent on any domain $U subset.eq CC$ such that for all $xi_1, xi_2 in U$, $xi_1 - xi_2 != taui k$ for any $k in ZZ$. If $xi_1 = ii z_1$ and $xi_2 = ii z_2$, then this translates to $z_1 - z_2 != 2 uppi k$ for $k in ZZ$. The function
 $ w(zeta) = (zeta + 1 / zeta) / 2 $
 is univalent on regions excluding pairs $(zeta_1, zeta_2)$ such that $zeta_1 = 1 / zeta_2$. In terms of $z$, this condition becomes $ee^(ii z_1) ee^(ii z_2) != 1$, or equivalently, $z_1 + z_2 != 2 uppi k$ for any $k in ZZ$.
 
@@ -137,7 +137,7 @@ Doing casework on $alpha$,
    $ z^alpha = abs(z)^(p / q) exp(ii (p / q) (Arg(z) + 2 uppi k)) = abs(z)^(p / q) exp(ii (p / q) Arg(z)) exp(2 ii (p / q) uppi k), $
    for $k in ZZ$. These values are periodic with period $q$, since
    $ exp(2 ii (p / q) uppi (k + q)) = exp(2 ii (p / q) uppi k) exp(2 ii uppi p) = exp(2 ii (p / q) uppi k), $
-   as $exp(2 uppi ii p) = 1$ for integer $p$. To prove there are exactly $q$ distinct values, consider $k = 0, 1, dots, q - 1$. The exponential factors are $exp(2 ii (p / q) uppi k)$. These are distinct if, for $0 <= j < k <= q - 1$,
+   as $exp(taui p) = 1$ for integer $p$. To prove there are exactly $q$ distinct values, consider $k = 0, 1, dots, q - 1$. The exponential factors are $exp(2 ii (p / q) uppi k)$. These are distinct if, for $0 <= j < k <= q - 1$,
    $ exp(2 ii (p / q) uppi j) != exp(2 ii (p / q) uppi k), $
    which holds unless $(p / q) (k - j) in ZZ$, or equivalently unless $q$ divides $p(k - j)$. Since $gcd(p, q) = 1$, $q$ must divide $k - j$, but $abs(k - j) < q$ and $k - j != 0$, a contradiction. Thus, $z^alpha$ has exactly $q$ distinct values.
 3. If $alpha = u in RR without QQ$, then $z^alpha$ is infinite-valued.

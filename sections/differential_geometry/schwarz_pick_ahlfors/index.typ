@@ -29,7 +29,7 @@ $
 $ <eq:schwarzahlforspick_curvaturenumeratoratmaximum>
 
     By assumption, we have $-K_{f^*rho}(tau_r)gt.eq 1$. Hence, $(\laplacian{log(u_r)})(tau_r)gt.eq f^*rho (tau_r)^2-lambda_r (tau_r)^2$. Since $log$ is increasing in $RR$, $tau_r$ is a local maximum of $log compose u_r$ and hence $(\laplacian{log(u_r)})(tau_r)lt.eq 0$. Thus, we have 
-$ f^*rho (tau_r)^2-lambda_r (tau_r)^2 lt.eq 0 <=> M_r lt.eq 1. $
+$ f^*rho (tau_r)^2-lambda_r (tau_r)^2 lt.eq 0 <==> M_r lt.eq 1. $
  Now let $r -> 1^-$, and it follows that $M_r -> sup_{z in bb(D)}(f^*rho(z))/(lambda(z))lt.eq 1$.]
 
 #theorem[Let $f:bb(D)-> U subset.eq CC$ be holomorphic. Let $dif s=rho(w)|dif w|$ (where $rho:U -> RR_(>0)$) define a regular metric such that at every point $w in U$, either

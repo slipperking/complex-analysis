@@ -1,11 +1,11 @@
+#import sym: *
 #import "@preview/ctheorems:1.1.3": *
 #import "@preview/diverential:0.3.0": *
-#import "@preview/cetz:0.4.2": *
+#import "@preview/cetz:0.5.0": *
 #import "@preview/cetz-plot:0.1.3": *
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": vb as _vb
 #import "@preview/headcount:0.1.0": *
-#import sym: *;
 
 // use the non-abbreviated terms for no upright.
 #let vb(x) = _vb(math.upright(x))
@@ -59,6 +59,7 @@
 #let dzeta = $dif zeta$
 #let dt = $dif t$
 #let dr = $dif r$
+
 #let supp = math.op("supp")
 #let diam = math.op("diam")
 #let Log = math.op("Log")
@@ -68,6 +69,8 @@
 #let Res = math.op("Res", limits: true)
 #let Re = math.op($frak(R) e$)
 #let Im = math.op($frak(I) m$)
+#let oint = $integral.cont$
+
 #let extcomplex = $hat(CC)$
 #let length = $op("length")$
 #let jinterior = $op("int")$
@@ -76,6 +79,7 @@
 
 #let ee = $upright(e)$
 #let ii = $upright(i)$
+#let taui = $2 uppi ii$
 
 #let ceil(x) = $lr(⌈ #x ⌉)$
 #let floor(x) = $lr(⌊ #x ⌋)$
@@ -102,7 +106,7 @@
 }
 
 #let directional_points(offset: (0, 0), angle: 0, length: .2, n: 10) = {
-  let vec = vector.rotate-z((length, 0), angle)
+  let vec = matrix.mul4x4-vec3(matrix.transform-rotate-z(angle), (length, 0, 0)).slice(0, 2)
   let out = ()
 
   for i in range(n + 1) {

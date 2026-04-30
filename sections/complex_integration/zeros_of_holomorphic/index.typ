@@ -49,7 +49,7 @@ $ \lim_{n -> infinity} f^{(k)}(tilde(z)_n)=f^{(k)}(\lim_{n -> infinity}tilde(z)_
 
 #theorem("Holomorphic Argument Principle")[Let $U subset.eq CC$ be a region and $f:U -> CC$ be holomorphic. Let $gamma subset U$ be a simple, closed, positively oriented curve that is null-homotopic in $U$. If $f$ has no zeros on $gamma$, then $f$ has finitely many zeros in the region bounded by $gamma$, and this number, counting multiplicities, is given by
     
-$ k=(1)/(2 pi ii)oint.cont_Gamma (f'(z))/(f(z))ddz. $
+$ k=(1)/(taui)oint.cont_Gamma (f'(z))/(f(z))ddz. $
 
     Let $Gamma$ be the image of $gamma$ under the map $w=f(z)$. Then $k=(1)/(2 pi)Delta_Gamma \arg(w)$, where $Delta_Gamma \arg(w)$ denotes the total change in argument of $w$ as it traverses $Gamma$.] <thm:argumentprincipleholomorphic>
 
@@ -80,19 +80,19 @@ $ oint.cont_{partial D (z_j,epsilon.alt_j)}(h_j'(z))/(h_j(z))ddz=0. $
 
     The Cauchy--Goursat Formula (@thm:cauchygoursatformula) gives
     
-$ oint.cont_{partial D (z_j,epsilon.alt_j)}(k_j)/(z-z_j)ddz=2 pi ii k_j. $
+$ oint.cont_{partial D (z_j,epsilon.alt_j)}(k_j)/(z-z_j)ddz=taui k_j. $
 
     Combining results,
     
-$ oint.cont_Gamma (f'(z))/(f(z))ddz=sum_{j=1}^n2 pi ii k_j=2 pi ii k. $
+$ oint.cont_Gamma (f'(z))/(f(z))ddz=sum_{j=1}^n2 pi ii k_j=taui k. $
 
     Finally, parameterize $Gamma$ by $w=f(z)$. Then $dif w=f'(z)ddz$, and
     
-$ k=(1)/(2 pi ii)oint.cont_Gamma (dif w)/(w)=(1)/(2 pi ii)Delta_Gamma log(w)=(1)/(2 pi)Delta_Gamma \arg(w), $
+$ k=(1)/(taui)oint.cont_Gamma (dif w)/(w)=(1)/(taui)Delta_Gamma log(w)=(1)/(2 pi)Delta_Gamma \arg(w), $
  which proves the result.]
 
 Thus, one defines the _winding index_ to quantify how many times a closed curve winds counterclockwise around a given point in the complex plane. Formally, if $gamma=gamma([0,1])$ is a counterclockwise-oriented closed curve and $z$ is a point satisfying $z in.not gamma$, then 
-$ upright("Ind")_Gamma (z)=(1)/(2 pi ii)integral_gamma (ddzeta)/(zeta-z)=(1)/(2 pi ii)integral_0^1 (gamma'(t)ddt)/(gamma(t)-z). $
+$ upright("Ind")_Gamma (z)=(1)/(taui)integral_gamma (ddzeta)/(zeta-z)=(1)/(taui)integral_0^1 (gamma'(t)ddt)/(gamma(t)-z). $
 
 #theorem[Let $\cbraces{f_n(z)}$ be a sequence of holomorphic functions on the open set $U subset.eq CC$ that uniformly converges to $f(z)$ on every compact subset of $U$. If $forall n in NN$, $f_n(z)$ has no zeros in $U$, then $f$ is either identically 0 or has no zeros in $U$.] <thm:hurwitzsimplecase>
 
