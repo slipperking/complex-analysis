@@ -105,7 +105,7 @@
   vectors.pos().fold((0, 0, 0), vector.add)
 }
 
-#let directional_points(offset: (0, 0), angle: 0, length: .2, n: 10) = {
+#let directional_points(offset: (0, 0), angle: 0, length: 1e-6, n: 10) = {
   let vec = matrix.mul4x4-vec3(matrix.transform-rotate-z(angle), (length, 0, 0)).slice(0, 2)
   let out = ()
 
@@ -113,4 +113,28 @@
     out.push(vector.add(vector.scale(vec, i / n), offset))
   }
   out
+}
+
+#let quick-plot(body, extra-plot: none, canvas-args: none, ..args) = {
+  canvas(..canvas-args, {
+    import draw: *
+    plot.plot(
+      size: (6, 6),
+      axis-style: "school-book",
+      x-min: -1,
+      x-max: 6,
+      y-min: -1,
+      y-max: 6,
+      x-tick-step: none,
+      y-tick-step: none,
+      ..args.named(),
+      {
+        plot.add(x => 0, domain: (0, 0))
+        extra-plot
+        plot.annotate({
+          body
+        })
+      },
+    )
+  })
 }

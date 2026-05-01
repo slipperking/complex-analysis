@@ -302,9 +302,105 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
   $
     integral_Gamma f(zeta)dzeta=0.
-  $ <eq:cauchyintegraltheoremoversimplyconnectedset_statement>] <lem:cauchyintegraltheoremoversimplyconnectedset>
+  $ <eq:cauchyintegraltheoremoversimplyconnectedset_statement>
+] <lem:cauchyintegraltheoremoversimplyconnectedset>
 
-#proof[By @lem:integralpiecewisesmoothtopolygonalchain, $forall epsilon > 0$, there is a polygonal chain $P$ where
+
+#figure(grid(
+  columns: 2,
+  inset: 0.5em,
+  grid.cell([
+    #figure(
+      canvas({
+        import draw: *
+        let A = (0, 2)
+        let B = (2.3, 0)
+        let C = (4, 1)
+        let D = (5, 3.5)
+        let E = (2, 4)
+
+        draw.line(A, B, C, D, E, stroke: 1pt, close: true)
+        draw.line(B, E, stroke: 1pt)
+        draw.line(C, E, stroke: 1pt)
+
+        for pts in (
+          (B, E),
+          (E, B),
+          (E, A),
+          (B, C),
+          (A, B),
+          (C, E),
+          (E, C),
+          (D, E),
+          (C, D),
+        ) {
+          halflength-arrow(
+            ..pts,
+            scalar: 0.15,
+          )
+        }
+
+        content(A, [$A$], anchor: "east", padding: .15cm)
+        content(B, [$B$], anchor: "north", padding: .15cm)
+        content(C, [$C$], anchor: "west", padding: .15cm)
+        content(D, [$D$], anchor: "south", padding: .15cm)
+        content(E, [$E$], anchor: "south", padding: .15cm)
+      }),
+      caption: [Closed triangulated polygonal chain],
+    ) <fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation>
+  ]),
+
+  grid.cell([
+    #figure(
+      canvas({
+        let A = (0, 0)
+        let E = (2.7, 0)
+        let F = (1.8, 2)
+        let C = vector.add(E, vector.sub(E, A))
+        let D = vector.add(F, vector.sub(E, A))
+        let B = vector.add(F, vector.sub(F, A))
+
+        draw.line(A, F, E, stroke: 1pt, close: true)
+        draw.line(B, D, F, stroke: 1pt, close: true)
+        draw.line(C, D, E, stroke: 1pt, close: true)
+
+        for (i, points) in ((A, F, E), (B, D, F), (C, D, E), (F, D, E)).enumerate(start: 1) {
+          let result = vector.scale(points.fold((0, 0), vector.add), 1 / (points.len()))
+          draw.content(result, [$Delta_#i$], anchor: "center")
+        }
+
+        for pts in (
+          (F, A),
+          (B, F),
+          (D, E),
+          (E, D),
+          (E, F),
+          (D, B),
+          (C, D),
+          (F, E),
+          (A, E),
+          (E, C),
+          (F, D),
+          (D, F),
+        ) {
+          halflength-arrow(
+            ..pts,
+            scalar: 0.15,
+          )
+        }
+
+        let AE = (A, .5, E)
+        let AF = (A, .5, F)
+        let FD = (F, .5, D)
+        let BF = (B, .5, F)
+        let EC = (E, .5, C)
+      }),
+      caption: [Quadrisection of $jinterior Delta$],
+    )<fig:cauchy_integral_theorem_over_simply_connected_set_triangle_quadrisection>
+  ]),
+))
+#proof[
+  By @lem:integralpiecewisesmoothtopolygonalchain, $forall epsilon > 0$, there is a polygonal chain $P$ where
 
   $
     abs(integral_Gamma f(z) dz - integral_P f(z) dz) < epsilon.
@@ -312,98 +408,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   The statement we aim to prove is equivalent to proving that
 
   $ integral_P f(z)dz=0. $ <eq:cauchyintegraltheoremoversimplyconnectedset_chainvanishingstatement>
-  #grid(
-    columns: 2,
-    inset: 0.5em,
-    grid.cell([
-      #figure(
-        canvas({
-          let A = (0, 2)
-          let B = (2.3, 0)
-          let C = (4, 1)
-          let D = (5, 3.5)
-          let E = (2, 4)
 
-          draw.line(A, B, C, D, E, stroke: 1pt, close: true)
-          draw.line(B, E, stroke: 1pt)
-          draw.line(C, E, stroke: 1pt)
-
-          for pts in (
-            (B, E),
-            (E, B),
-            (E, A),
-            (B, C),
-            (A, B),
-            (C, E),
-            (E, C),
-            (D, E),
-            (C, D),
-          ) {
-            halflength-arrow(
-              ..pts,
-              scalar: 0.15,
-            )
-          }
-
-          draw.content(A, [$A$], anchor: "east", padding: .15)
-          draw.content(B, [$B$], anchor: "north", padding: .15)
-          draw.content(C, [$C$], anchor: "west", padding: .15)
-          draw.content(D, [$D$], anchor: "south", padding: .15)
-          draw.content(E, [$E$], anchor: "south", padding: .15)
-        }),
-        caption: [Closed triangulated polygonal chain],
-      ) <fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation>
-    ]),
-
-    grid.cell([
-      #figure(
-        canvas({
-          let A = (0, 0)
-          let E = (2.7, 0)
-          let F = (1.8, 2)
-          let C = vector.add(E, vector.sub(E, A))
-          let D = vector.add(F, vector.sub(E, A))
-          let B = vector.add(F, vector.sub(F, A))
-
-          draw.line(A, F, E, stroke: 1pt, close: true)
-          draw.line(B, D, F, stroke: 1pt, close: true)
-          draw.line(C, D, E, stroke: 1pt, close: true)
-
-          for (i, points) in ((A, F, E), (B, D, F), (C, D, E), (F, D, E)).enumerate(start: 1) {
-            let result = vector.scale(points.fold((0, 0), vector.add), 1 / (points.len()))
-            draw.content(result, [$Delta_#i$], anchor: "center")
-          }
-
-          for pts in (
-            (F, A),
-            (B, F),
-            (D, E),
-            (E, D),
-            (E, F),
-            (D, B),
-            (C, D),
-            (F, E),
-            (A, E),
-            (E, C),
-            (F, D),
-            (D, F),
-          ) {
-            halflength-arrow(
-              ..pts,
-              scalar: 0.15,
-            )
-          }
-
-          let AE = (A, .5, E)
-          let AF = (A, .5, F)
-          let FD = (F, .5, D)
-          let BF = (B, .5, F)
-          let EC = (E, .5, C)
-        }),
-        caption: [Quadrisection of $jinterior Delta$],
-      )<fig:cauchy_integral_theorem_over_simply_connected_set_triangle_quadrisection>
-    ]),
-  )
   Since $P$ is a closed polygonal chain, we can triangulate the interior. For example, consider @fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation, where
   $
     integral.cont_(penta A B C D E) f(z) dz & =(integral_arrow(A B) + integral_arrow(B C) + integral_arrow(C D) + integral_arrow(D E) + integral_arrow(E A)) f(z) dz \
@@ -451,83 +456,124 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 #theorem(
   "Cauchy" + dash.en + "Goursat",
 )[Let $U subset CC$ be an open region bounded with boundary $partial U$. Let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then,
-  $ integral.cont_(partial U) f(zeta) dzeta = 0. $] <thm:cauchygoursattheorem>
+  $ integral.cont_(partial U) f(zeta) dzeta = 0. $
+] <thm:cauchygoursattheorem>
+#figure(
+  {
+    import draw: *
+    let maxx = 6
+    let maxy = 6
+    let width = 4
+    let height = 3
+    let slantoffset = 0.7
+    let primeoffset = 0.7
+    let numoffset = 0.9
 
-#proof[Since $partial U inter U=emptyset$ and $f(z)$ is not necessarily holomorphic over $overline(U)$, we cannot directly apply @lem:cauchyintegraltheoremoversimplyconnectedset.
+    let M = (1, 1.5)
+    let P = vector.add(M, (0, height))
+    let N = vector.add(M, (width, slantoffset))
+    let Q = vector.add(N, (0, height))
+    let (Mp, Np) = (M, N).map(point => vector.add(point, (0, primeoffset)))
+    let (Pp, Qp) = (P, Q).map(point => vector.add(point, (0, -primeoffset)))
 
-  #figure(
-    [
-      #canvas({
-        import draw: *
-        let maxx = 6.2
-        let maxy = 5.7
-        let width = 4
-        let height = 3
-        let slantoffset = 0.7
-        let primeoffset = 0.7
-        let numoffset = 0.9
+    quick-plot(size: (8, 8), {
+      line(P, M)
+      line(N, Q)
 
-        let M = (1, 1.2)
-        let P = vector.add(M, (0, height))
-        let N = vector.add(M, (width, slantoffset))
-        let Q = vector.add(N, (0, height))
-        let (Mp, Np) = (M, N).map(point => vector.add(point, (0, primeoffset)))
-        let (Pp, Qp) = (P, Q).map(point => vector.add(point, (0, -primeoffset)))
+      let MNpoints = offset => {
+        (
+          ..directional_points(angle: -90deg),
+          (width * .25, slantoffset * .3),
+          (width * .4, -slantoffset * .2),
+          (width * .7, slantoffset * .2),
+          (width * .9, slantoffset * .1),
+          ..directional_points(offset: (width, slantoffset), angle: -90deg).rev(),
+        ).map(point => vector.add(offset, point))
+      }
 
-        line((-0.5, 0), (maxx, 0), stroke: 1.2pt, mark: (end: ">>", fill: black))
-        line((0, -0.5), (0, maxy), stroke: 1.2pt, mark: (end: ">>", fill: black))
+      let PQpoints = offset => {
+        (
+          ..directional_points(angle: 90deg),
+          (width * .25, slantoffset * .2),
+          (width * .4, slantoffset * .2),
+          (width * .6, slantoffset * 1.2),
+          (width * .8, slantoffset * 1.1),
+          ..directional_points(offset: (width, slantoffset), angle: 90deg).rev(),
+        ).map(point => vector.add(offset, point))
+      }
 
-        line(P, M)
-        line(N, Q)
-        line(M, (M.at(0), 0))
-        line(N, (N.at(0), 0))
+      hobby(..MNpoints(M), name: "MN")
+      hobby(..MNpoints(Mp), stroke: 0.5pt, name: "M'N'")
+      hobby(..PQpoints(P), name: "PQ")
+      hobby(..PQpoints(Pp), stroke: 0.5pt, name: "P'Q'")
 
-        let MNpoints = offset => {
-          (
-            ..directional_points(angle: -90deg),
-            (width * .25, slantoffset * .3),
-            (width * .4, -slantoffset * .2),
-            (width * .7, slantoffset * .1),
-            (width * .9, -slantoffset * .3),
-            ..directional_points(offset: (width, slantoffset), angle: -90deg).rev(),
-          ).map(point => vector.add(offset, point))
-        }
-
-        let PQpoints = offset => {
-          (
-            ..directional_points(angle: 90deg),
-            (width * .25, slantoffset * .2),
-            (width * .4, slantoffset * .2),
-            (width * .6, slantoffset * 1.2),
-            (width * .8, slantoffset * 1.1),
-            ..directional_points(offset: (width, slantoffset), angle: 90deg).rev(),
-          ).map(point => vector.add(offset, point))
-        }
-
-        hobby(..MNpoints(M), name: "MN")
-        hobby(..MNpoints(Mp), stroke: 0.5pt, name: "M'N'")
-        hobby(..PQpoints(P), name: "PQ")
-        hobby(..PQpoints(Pp), stroke: 0.5pt, name: "P'Q'")
-
-        line((M.at(0) + numoffset, 0), (M.at(0) + numoffset, maxy), name: "lvertical_test_line")
-        line((N.at(0) - numoffset, 0), (N.at(0) - numoffset, maxy), name: "rvertical_test_line")
-
-        let M1 = (0, 0)
-        intersections("lvertical_intersections", "lvertical_test_line", "MN")
-        for-each-anchor("lvertical_intersections", name => {
-          let anchor_name = "lvertical_intersections." + name
-        })
-
-        content((M.at(0), 0), [$a$], anchor: "north", padding: .1)
-        content((N.at(0), 0), [$b$], anchor: "north", padding: .1)
-        content((M.at(0) + numoffset, 0), [$a+epsilon$], anchor: "north", padding: .1)
-        content((N.at(0) - numoffset, 0), [$b-epsilon$], anchor: "north", padding: .1)
-        content((maxx, 0), [$x$], anchor: "west", padding: .1)
-        content((0, maxy), [$y$], anchor: "south", padding: .1)
+      hide({
+        line((M.at(0) + numoffset, 0), (M.at(0) + numoffset, maxy), name: "left_vertical_test_line")
+        line((N.at(0) - numoffset, 0), (N.at(0) - numoffset, maxy), name: "right_vertical_test_line")
       })
-    ],
-    caption: [A simplified region containing two vertical lines and two continuous, rectifiable curves.],
-  ) <fig:cauchy_goursat_theorem_simplified_region>
+      let sort = (ctx, intersections) => {
+        let new_intersections = intersections
+          .map(intersection => {
+            if (0 < intersection.at(1) and intersection.at(1) < maxy) {
+              return intersection
+            }
+            return
+          })
+          .filter(element => element != none)
+        return new_intersections
+      }
+
+      intersections("left_vertical_intersections_MN", "left_vertical_test_line", "MN", sort: sort)
+      intersections("right_vertical_intersections_MN", "right_vertical_test_line", "MN", sort: sort)
+      intersections("left_vertical_intersections_PQ", "left_vertical_test_line", "PQ", sort: sort)
+      intersections("right_vertical_intersections_PQ", "right_vertical_test_line", "PQ", sort: sort)
+
+      get-ctx(ctx => {
+        let (ctx, M1, N1, P1, Q1) = coordinate.resolve(
+          ctx,
+          "left_vertical_intersections_MN.0",
+          "right_vertical_intersections_MN.0",
+          "left_vertical_intersections_PQ.0",
+          "right_vertical_intersections_PQ.0",
+        )
+
+        let M1p = vector.add(M1, (0, primeoffset))
+        let N1p = vector.add(N1, (0, primeoffset))
+        let P1p = vector.add(P1, (0, -primeoffset))
+        let Q1p = vector.add(Q1, (0, -primeoffset))
+
+        line((M1.at(0), 0), M1, stroke: (thickness: 0.5pt, dash: "dashed"))
+        line((N1.at(0), 0), N1, stroke: (thickness: 0.5pt, dash: "dashed"))
+        line(M1, P1, stroke: 0.5pt)
+        line(Q1, N1, stroke: 0.5pt)
+        line(M, (M.at(0), 0), stroke: (thickness: 0.5pt, dash: "dashed"))
+        line(N, (N.at(0), 0), stroke: (thickness: 0.5pt, dash: "dashed"))
+
+        let content_groups = (
+          ((M, M1, N1, N), ([$M$], [$M_1$], [$N_1$], [$N$]), 135deg),
+          ((Mp, M1p, N1p, Np), ([$M$], [$M_1$], [$N_1$], [$N$]), 135deg),
+          ((P, P1, Q1, Q), ([$P$], [$P_1$], [$Q_1$], [$Q$]), 210deg),
+          ((Pp, P1p, Q1p, Qp), ([$P$], [$P_1$], [$Q_1$], [$Q$]), 210deg),
+        )
+        let anchors_list = ("east", none, "north-east", "west")
+        for (vars, labels, second_anchor) in content_groups {
+          for i in range(4) {
+            let anchor = if i == 1 { second_anchor } else { anchors_list.at(i) }
+            content(vars.at(i), labels.at(i), anchor: anchor, padding: .1cm)
+          }
+        }
+      })
+
+      content((M.at(0), 0), [$a$], anchor: "north", padding: .1cm)
+      content((N.at(0), 0), [$b$], anchor: "north", padding: .1cm)
+      content((M.at(0) + numoffset, 0), [$a+epsilon$], anchor: "north", padding: .1cm)
+      content((N.at(0) - numoffset, 0), [$b-epsilon$], anchor: "north", padding: .1cm)
+    })
+  },
+  caption: [A simplified region containing two vertical lines and two continuous, rectifiable curves.],
+) <fig:cauchy_goursat_theorem_simplified_region>
+#proof[
+  Since $partial U inter U=emptyset$ and $f(z)$ is not necessarily holomorphic over $overline(U)$, we cannot directly apply @lem:cauchyintegraltheoremoversimplyconnectedset.
 
   First assume $U$ has the shape of $M N Q P$ in @fig:cauchy_goursat_theorem_simplified_region. That is, $U$ consists of $x = a$, $x = b$ for $a < b$, and two rectifiable $C^0$ curves $arrow(M N): y = phi.alt(x)$ and $arrow(Q P): y = psi(x)$ such that $phi.alt(x) < psi(x)$, $forall a <= x <= b$.
 
@@ -596,7 +642,8 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
   Additionally, if $U subset CC$ is simply connected and $f$ is holomorphic on $U$, then for any two points $z,z_0 in U$, the integral
   $ integral_(z_0)^z f(zeta)dzeta $
-  is well-defined and independent of the path taken from $z_0$ to $z$. In this sense, a holomorphic function behaves analogously to a potential field.]
+  is well-defined and independent of the path taken from $z_0$ to $z$. In this sense, holomorphic functions behave analogously to potential fields.
+]
 
 #theorem(
   "Cauchy" + dash.en + "Goursat",
@@ -613,13 +660,13 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
   From rearrangement,
   $
-    integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta = taui f(z) + ii integral_0^(2 uppi) (f (z + epsilon ee^(ii t)) - f(z)) dt.
+    integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta = taui f(z) + ii integral_0^(2 uppi) [f (z + epsilon ee^(ii t)) - f(z)] dt.
   $
 
   Since $f in C^0(partial D(z,epsilon))$, as $epsilon ->0$,
 
   $
-    abs(integral_0^(2 uppi) (f (z + epsilon ee^(ii t)) - f(z)) dt) & <= integral_0^(2 uppi) abs(f (z + epsilon ee^(ii t)) - f(z)) dt \
+    abs(integral_0^(2 uppi) [f (z + epsilon ee^(ii t)) - f(z)] dt) & <= integral_0^(2 uppi) abs(f (z + epsilon ee^(ii t)) - f(z)) dt \
     & <= 2 uppi max_(t in [0, 2 uppi]) abs(f (z + epsilon ee^(ii t)) - f(z)) -> 0.
   $
 
@@ -685,75 +732,76 @@ We have also already seen the utility of parameterization via a polar transforma
 )[
   Let $gamma subset CC$ be a simple closed curve, and suppose that $f:jexterior(gamma)-> CC$ is holomorphic and continuous on $overline(jexterior(gamma))=CC without jinterior(gamma)$, where $jinterior$ and $jexterior$ respectively denote the interior and exterior as in @thm:jordancurve.
 
-  1. If $f$ has a removable singularity at $infinity$, or if $w = lim_(z -> infinity) f(z)$ exists and is finite, then $forall z in CC without gamma$,
-  $
-    1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = cases(
-      w & text("if") z in jinterior(gamma)\,,
-      w - f(z) & text("if") z in jexterior(gamma).
-    )
-  $
-  2. If $gamma$ encloses the origin, then $forall z in CC without gamma$,
+  + If $f$ has a removable singularity at $infinity$, or if $w = lim_(z -> infinity) f(z)$ exists and is finite, then $forall z in CC without gamma$,
+    $
+      1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = cases(
+        w & text("if") z in jinterior(gamma)\,,
+        w - f(z) & text("if") z in jexterior(gamma).
+      )
+    $
+  + If $gamma$ encloses the origin, then $forall z in CC without gamma$,
 
-  $
-    1 / (taui) integral.cont_gamma z f(zeta) / (z zeta - zeta^2) dzeta = cases(
-      0 & text("if") z in jinterior(gamma)\,,
-      f(z) & text("if") z in jexterior(gamma).
-    )
-  $ <eq:cauchy_goursat_formula_exterior_part2_statement>
+    $
+      1 / (taui) integral.cont_gamma z f(zeta) / (z zeta - zeta^2) dzeta = cases(
+        0 & text("if") z in jinterior(gamma)\,,
+        f(z) & text("if") z in jexterior(gamma).
+      )
+    $ <eq:cauchy_goursat_formula_exterior_part2_statement>
 ] <ex:cauchygoursatformulaexterior>
 
 #proof[
-  1. By the compactness of $gamma$, it can be completely contained within a sufficiently large disk centered at the origin ($gamma subset D(0,R)$). Then by applying @thm:cauchygoursatformula or @thm:cauchygoursattheorem on the set $D(0,R)inter jexterior(gamma)=D(0,R)without overline(jinterior(gamma))$, we get that
-  $
-    1 / (taui) integral.cont_(partial D(0, R)) (f(zeta)) / (zeta - z) dzeta = 1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta + cases(
-      0 & "if" z in jinterior(gamma)\,,
-      f(z) & "if" z in D(0, R) inter jexterior(gamma).
-    )
-  $
+  + By the compactness of $gamma$, it can be completely contained within a sufficiently large disk centered at the origin ($gamma subset D(0,R)$). Then by applying @thm:cauchygoursatformula or @thm:cauchygoursattheorem on the set $D(0,R)inter jexterior(gamma)=D(0,R)without overline(jinterior(gamma))$, we get that
+    $
+      1 / (taui) integral.cont_(partial D(0, R)) (f(zeta)) / (zeta - z) dzeta = 1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta + cases(
+        0 & "if" z in jinterior(gamma)\,,
+        f(z) & "if" z in D(0, R) inter jexterior(gamma).
+      )
+    $
 
-  By letting $R -> infinity$ and letting $zeta = R ee^(ii theta)$, we get that
-  $
-    1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = 1 / (2 uppi) lim_(R -> infinity) integral_0^(2 uppi) (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta))) dif theta - cases(
-      0 & text("if") z in jinterior(gamma)\,,
-      f(z) & text("if") z in jexterior(gamma).
-    )
-  $
+    By letting $R -> infinity$ and letting $zeta = R ee^(ii theta)$, we get that
+    $
+      1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = 1 / (2 uppi) lim_(R -> infinity) integral_0^(2 uppi) (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta))) dif theta - cases(
+        0 & text("if") z in jinterior(gamma)\,,
+        f(z) & text("if") z in jexterior(gamma).
+      )
+    $
 
-  By the continuity of $f$ on $partial D(0, R)$, it attains its maximum $M$. For sufficiently large $R$, $abs(1 - z / (R ee^(ii theta)))$ attains a positive minimum. Then the integrand is uniformly bounded in $R$ and $theta$, and hence the order of the limit and the integral may be exchanged. Hence,
+    By the continuity of $f$ on $partial D(0, R)$, it attains its maximum $M$. For sufficiently large $R$, $abs(1 - z / (R ee^(ii theta)))$ attains a positive minimum. Then the integrand is uniformly bounded in $R$ and $theta$, and hence the order of the limit and the integral may be exchanged. Hence,
 
-  $
-    1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta & = 1 / (2 uppi) integral_0^(2 uppi) w / (1 - lim_(R -> infinity) z / (R ee^(ii theta))) dif theta - cases(
-                                                                    0 & text("if") z in jinterior(gamma)\,,
-                                                                    f(z) & text("if") z in jexterior(gamma),
-                                                                  ) \
-                                                                & = cases(
-                                                                    w & text("if") z in jinterior(gamma)\,,
-                                                                    w - f(z) & text("if") z in jexterior(gamma),
-                                                                  )
-  $
-  as expected.
-  1. Under the partial fraction decomposition of @eq:cauchy_goursat_formula_exterior_part2_statement, we get that
+    $
+      1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta & = 1 / (2 uppi) integral_0^(2 uppi) w / (1 - lim_(R -> infinity) z / (R ee^(ii theta))) dif theta - cases(
+                                                                      0 & text("if") z in jinterior(gamma)\,,
+                                                                      f(z) & text("if") z in jexterior(gamma),
+                                                                    ) \
+                                                                  & = cases(
+                                                                      w & text("if") z in jinterior(gamma)\,,
+                                                                      w - f(z) & text("if") z in jexterior(gamma),
+                                                                    )
+    $
+    as expected.
+  + Under the partial fraction decomposition of @eq:cauchy_goursat_formula_exterior_part2_statement, we get that
 
-  $
-    I & = integral.cont_gamma z f(zeta) / (z zeta - zeta^2) dzeta = integral.cont_gamma ((f(zeta)) / zeta - (f(zeta)) / (zeta - z)) dzeta \
-    & = integral_0^(2 uppi) (f (R ee^(ii theta)) - (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta)))) dif theta + cases(
-      0 & text("if") z in jinterior(gamma)\,,
-      taui f(z) & text("if") z in jexterior(gamma) inter D(0, R),
-    )
-  $ <eq:cauchy_goursat_formula_exterior_part2_pre_limit_integral>
-  when $gamma subset D(0,R)$.
-  We will analyze the first integral as $R -> infinity$. By the triangle and reverse triangle inequalities,
+    $
+      I & = integral.cont_gamma z f(zeta) / (z zeta - zeta^2) dzeta = integral.cont_gamma ((f(zeta)) / zeta - (f(zeta)) / (zeta - z)) dzeta \
+      & = integral_0^(2 uppi) (f (R ee^(ii theta)) - (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta)))) dif theta + cases(
+        0 & text("if") z in jinterior(gamma)\,,
+        taui f(z) & text("if") z in jexterior(gamma) inter D(0, R),
+      )
+    $ <eq:cauchy_goursat_formula_exterior_part2_pre_limit_integral>
+    when $gamma subset D(0,R)$.
+    We will analyze the first integral as $R -> infinity$. By the triangle and reverse triangle inequalities,
 
-  $
-    abs(integral_0^(2 uppi) (f (R ee^(ii theta)) - (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta)))) dif theta) & <= integral_0^(2 uppi) abs(z / (R ee^(ii theta) - z)) dif theta \
-    & <= integral_0^(2 uppi) abs(z) / (R - abs(z)) dif theta = (2 uppi abs(z)) / (R - abs(z)) -> 0.
-  $
+    $
+      abs(integral_0^(2 uppi) (f (R ee^(ii theta)) - (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta)))) dif theta) & <= integral_0^(2 uppi) abs(z / (R ee^(ii theta) - z)) dif theta \
+      & <= integral_0^(2 uppi) abs(z) / (R - abs(z)) dif theta = (2 uppi abs(z)) / (R - abs(z)) -> 0.
+    $
 
-  By substituting the result into @eq:cauchy_goursat_formula_exterior_part2_pre_limit_integral, and letting $R -> infinity$, we get that
-  $
-    1 / (taui) integral.cont_gamma z f(zeta) / (z zeta - zeta^2) dzeta = cases(
-      0 & "if" z in jinterior(gamma)\,,
-      f(z) & "if" z in jexterior(gamma),
-    )
-  $
-  as desired.]
+    By substituting the result into @eq:cauchy_goursat_formula_exterior_part2_pre_limit_integral, and letting $R -> infinity$, we get that
+    $
+      1 / (taui) integral.cont_gamma z f(zeta) / (z zeta - zeta^2) dzeta = cases(
+        0 & "if" z in jinterior(gamma)\,,
+        f(z) & "if" z in jexterior(gamma),
+      )
+    $
+    as desired. #qedhere
+]

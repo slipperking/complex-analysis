@@ -105,9 +105,7 @@ Thus, the composition $cos(z) = w compose zeta compose xi$ is univalent on the s
 $ {z in CC | 0 < Re(z) < uppi}, $
 and the image of this strip under $cos$ is
 $ CC without ((-infinity, -1] union [1, infinity)). $
-We will now analyze the inverse cosine function, denoted $arccos(z)$.
-
-Consider
+We will now analyze the inverse cosine function, denoted $arccos(z)$. Consider
 $ z = (ee^(ii w) + ee^(-ii w)) / 2. $
 Then
 $
