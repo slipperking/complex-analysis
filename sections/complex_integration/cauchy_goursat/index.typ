@@ -19,7 +19,8 @@ Analogous to the real case, a 0-form is defined as a scalar-valued function in t
 )[For a region $U subset CC$ and $f:U -> CC$ univalent, the area of the image $f(U)$ is equal to
   $ integral_U abs(f'(z))^2 dif A. $] <thm:lusinarea>
 
-#proof[We aim to find
+#proof[
+  We aim to find
   $ integral_(f(U)) dif A. $
 
   By the properties above,
@@ -29,46 +30,48 @@ Analogous to the real case, a 0-form is defined as a scalar-valued function in t
     & =(ii) / 2 integral_U [f'(z) dz] and [overline(f'(z)) dif overline(z)] = integral_U abs(f'(z))^2 dx and dy,
   $
 
-  as desired.]
+  as desired.
+]
 
 #remark[
   The Jacobian determinant of $u,v$ with respect to $x,y$, for a holomorphic function $f(z)=u(x,y)+ii v(x,y)$ is equal to
   $
     mat(delim: "|", u'_x, u'_y; v'_x, v'_y) = pdv(u, x) pdv(v, y) - pdv(u, y) pdv(v, x) = pdv(u, x)^2 + pdv(u, y)^2 = abs(f'(z))^2
   $
-  by @eq:holomorphicderivativedecomposition.
+  by @eq:holomorphic_derivative_decomposition.
 ]
 #theorem(
   "Green's Theorem, Complex Form",
 )[
   Let $U subset CC$ be bounded with a piecewise smooth boundary $partial U$. For two scalar functions $omega_1=omega_1 (z,overline(z))$ and $omega_2=omega_2 (z,overline(z))$ satisfying $omega_1,omega_2 in C^1 (overline(U))$, define the 1-form $omega=omega_1 dz + omega_2 dif overline(z)$. Then,
 
-  $ integral_(partial U)omega=integral_U dif omega. $ <eq:complexgreen>
-] <thm:complexgreen>
+  $ integral_(partial U)omega=integral_U dif omega. $ <eq:complex_green>
+] <thm:complex_green>
 
-#proof[For real-valued functions $xi_1,xi_2,eta_1,eta_2$, let
+#proof[
+  For real-valued functions $xi_1,xi_2,eta_1,eta_2$, let
   $ omega_1=xi_1+ii eta_1 space.quad text("and let") space.quad omega_2=xi_2+ii eta_2. $
 
   Then,
 
   $
-    omega & =(xi_1 + ii eta_1) dz + (xi_2 + ii eta_2) dif overline(z) \
-          & =(xi_1 + ii eta_1) (dx + ii dy) + (xi_2 + ii eta_2) (dx - ii dy) \
-          & =xi_1 dx + ii eta_1 dx + ii xi_1 dy - eta_1 dy + xi_2 dx + ii eta_2 dx - ii xi_2 dy + eta_2 dy \
-          & =[(xi_1 + xi_2) dx + (eta_2 - eta_1) dy] + ii [(eta_1 + eta_2) dx + (xi_1 - xi_2) dy]
-  $ <eq:complexgreen_omegaexpansionintermediate>
+    omega & =(xi_1 + ii eta_1) dz + (xi_2 + ii eta_2) dif overline(z) #<eq:complex_green_omega_expansion_intermediate>\
+    & =(xi_1 + ii eta_1) (dx + ii dy) + (xi_2 + ii eta_2) (dx - ii dy) \
+    & =xi_1 dx + ii eta_1 dx + ii xi_1 dy - eta_1 dy + xi_2 dx + ii eta_2 dx - ii xi_2 dy + eta_2 dy \
+    & =[(xi_1 + xi_2) dx + (eta_2 - eta_1) dy] + ii [(eta_1 + eta_2) dx + (xi_1 - xi_2) dy]#<eq:complex_green_real_and_complex_dx_dy_intermediate>
+  $
 
-  Each of $xi_1, xi_2, eta_1, eta_2$ are real-valued functions that can be represented with a domain of $RR^2$. We then apply the $dif = partial + overline(partial)$ definition of the exterior derivative and relate it to @eq:complexgreen. Starting with @eq:complexgreen_omegaexpansionintermediate,
+  Each of $xi_1, xi_2, eta_1, eta_2$ are real-valued functions that can be represented with a domain of $RR^2$. We then apply the $dif = partial + overline(partial)$ definition of the exterior derivative and relate it to @eq:complex_green. Starting from @eq:complex_green_omega_expansion_intermediate,
 
   $
     dif omega & =(partial + overline(partial)) (xi_1 + ii eta_1) dz + (partial + overline(partial)) (xi_2 + ii eta_2) dif overline(z) \
     & =(pdv(xi_1, overline(z)) + ii pdv(eta_1, overline(z))) dif overline(z) and dz + (pdv(xi_2, z) + ii pdv(eta_2, z)) dz and dif overline(z) \
     & =2 (ii pdv(xi_1, overline(z)) - pdv(eta_1, overline(z)) - ii pdv(xi_2, z) + pdv(eta_2, z)) dx and dy \
     & =(ii pdv(xi_1, x) - pdv(xi_1, y) - pdv(eta_1, x) - ii pdv(eta_1, y) - ii pdv(xi_2, x) - pdv(xi_2, y) + pdv(eta_2, x) - ii pdv(eta_2, y)) dx and dy \
-    & =(pdv(eta_2, x) - pdv(xi_1, y) - pdv(eta_1, x) - pdv(xi_2, y)) dif A + ii (pdv(xi_1, x) - pdv(eta_1, y) - pdv(xi_2, x) - pdv(eta_2, y)) dif A.
-  $ <eq:complexgreen_exteriorderivativeresult>
+    & =(pdv(eta_2, x) - pdv(xi_1, y) - pdv(eta_1, x) - pdv(xi_2, y)) dif A + ii (pdv(xi_1, x) - pdv(eta_1, y) - pdv(xi_2, x) - pdv(eta_2, y)) dif A. #<eq:complex_green_exterior_derivative_result>
+  $
 
-  From @ eq:complexgreen_realandcomplexdxdyintermediate, we can apply @thm:realgreen. For the real component of $omega$, we obtain
+  From @eq:complex_green_real_and_complex_dx_dy_intermediate, we can apply @thm:real_green. For the real component of $omega$, we obtain
 
   $
     oint_(partial U)(xi_1+xi_2)dx+(eta_2-eta_1)dy=integral.double_U (pdv(eta_2, x)-pdv(xi_1, y)-pdv(eta_1, x)-pdv(xi_2, y))dx dy,
@@ -80,7 +83,8 @@ Analogous to the real case, a 0-form is defined as a scalar-valued function in t
     oint_(partial U)(eta_1+eta_2)dx+(xi_1-xi_2)dy=integral.double_U (pdv(xi_1, x)-pdv(eta_1, y)-pdv(xi_2, x)-pdv(eta_2, y))dx dy,
   $
 
-  and the integrands on the right side both match those of @eq:complexgreen_exteriorderivativeresult.]
+  and the integrands on the right side both match those of @eq:complex_green_exterior_derivative_result.
+]
 
 The theorem above is only a specific case of the Stokes-Cartan Theorem (@thm:stokescartan). However, it proves the validity of the treatment of the $partial$ and $overline(partial)$ operators, and the generalization to forms with basis $dz$ and $dif overline(z)$.
 
@@ -97,7 +101,7 @@ The theorem above is only a specific case of the Stokes-Cartan Theorem (@thm:sto
   Since $z in U without partial U$, $exists epsilon>0$ such that $D(z,epsilon)subset U$. Consider the complex differential form
   $ (f(zeta)dzeta)/(zeta-z) $
 
-  with a singularity at $zeta=z$. Consider the region $U without D(z,epsilon)$. Since $f in C^1 (overline(U))$, by applying Green's Theorem (@thm:complexgreen),
+  with a singularity at $zeta=z$. Consider the region $U without D(z,epsilon)$. Since $f in C^1 (overline(U))$, by applying Green's Theorem (@thm:complex_green),
 
   $
     integral_(U without D(z, epsilon)) dif ((f(zeta) dzeta) / (zeta - z)) = oint_(partial U) (f(zeta) dzeta) / (zeta - z) - oint_(partial D(z, epsilon)) (f(zeta) dzeta) / (zeta - z).
@@ -155,7 +159,7 @@ The theorem above is only a specific case of the Stokes-Cartan Theorem (@thm:sto
     M' lim_(epsilon -> 0) abs(integral_(D(z, epsilon)) (2 ii) / (ee^(ii theta)) dr and dif theta) & = 2 M' lim_(epsilon -> 0) abs(integral_(D(z, epsilon)) 1 / (ee^(ii theta)) dr and dif theta) \
     & = 2 M' lim_(epsilon -> 0) abs(integral_0^(2 uppi) integral_0^epsilon ee^(-ii theta) dr dif theta) \
     & = 0.
-  $ <eq:pompeiu_weaksingularityvanishes>
+  $
 
   Then from rearranging @eq:pompeiu_epsilonlimitintermediate, we obtain:
 
@@ -200,7 +204,7 @@ From the above result, we can directly obtain the following theorem:
     0 = 1 / (taui) integral.cont_(partial U) (psi(zeta)) / zeta dzeta = 1 / (taui) integral.cont_(partial U) f (zeta) dzeta.
   $
 
-  Alternatively, we can use Green's Theorem (@thm:complexgreen) with $omega=f(zeta)dzeta$:
+  Alternatively, we can use Green's Theorem (@thm:complex_green) with $omega=f(zeta)dzeta$:
 
   $
     integral.cont_(partial U) f(zeta) dzeta = integral.cont_(partial U) omega = integral_U dif omega = integral_U pdv(f, overline(zeta)) dif overline(zeta) and dzeta = 0. qedhere
@@ -477,16 +481,13 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
     let (Pp, Qp) = (P, Q).map(point => vector.add(point, (0, -primeoffset)))
 
     quick-plot(size: (8, 8), {
-      line(P, M)
-      line(N, Q)
-
       let MNpoints = offset => {
         (
           ..directional_points(angle: -90deg),
           (width * .25, slantoffset * .3),
           (width * .4, -slantoffset * .2),
           (width * .7, slantoffset * .2),
-          (width * .9, slantoffset * .1),
+          (width * .85, slantoffset * .1),
           ..directional_points(offset: (width, slantoffset), angle: -90deg).rev(),
         ).map(point => vector.add(offset, point))
       }
@@ -502,10 +503,16 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
         ).map(point => vector.add(offset, point))
       }
 
-      hobby(..MNpoints(M), name: "MN")
-      hobby(..MNpoints(Mp), stroke: 0.5pt, name: "M'N'")
-      hobby(..PQpoints(P), name: "PQ")
-      hobby(..PQpoints(Pp), stroke: 0.5pt, name: "P'Q'")
+      let arrowed_mark_start = (start: (symbol: ">>", pos: 50%, shorten-to: none, fill: black))
+      let arrowed_mark_end = (end: (symbol: ">>", pos: 50%, shorten-to: none, fill: black))
+
+      line(M, P, mark: arrowed_mark_start)
+      line(N, Q, mark: arrowed_mark_end)
+      hobby(..MNpoints(M), name: "MN", mark: arrowed_mark_end)
+      hobby(..PQpoints(P), name: "PQ", mark: arrowed_mark_start)
+
+      hobby(..MNpoints(Mp), stroke: 0.5pt, name: "M'N'", mark: arrowed_mark_end)
+      hobby(..PQpoints(Pp), stroke: 0.5pt, name: "P'Q'", mark: arrowed_mark_start)
 
       hide({
         line((M.at(0) + numoffset, 0), (M.at(0) + numoffset, maxy), name: "left_vertical_test_line")
@@ -544,23 +551,31 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
         line((M1.at(0), 0), M1, stroke: (thickness: 0.5pt, dash: "dashed"))
         line((N1.at(0), 0), N1, stroke: (thickness: 0.5pt, dash: "dashed"))
-        line(M1, P1, stroke: 0.5pt)
-        line(Q1, N1, stroke: 0.5pt)
+
+        line(M1, P1, stroke: 0.5pt, mark: arrowed_mark_start)
+        line(N1, Q1, stroke: 0.5pt, mark: arrowed_mark_end)
+
         line(M, (M.at(0), 0), stroke: (thickness: 0.5pt, dash: "dashed"))
         line(N, (N.at(0), 0), stroke: (thickness: 0.5pt, dash: "dashed"))
 
         let content_groups = (
-          ((M, M1, N1, N), ([$M$], [$M_1$], [$N_1$], [$N$]), 135deg),
-          ((Mp, M1p, N1p, Np), ([$M$], [$M_1$], [$N_1$], [$N$]), 135deg),
+          ((M, M1, N1, N), ([$M$], [$M_1$], [$N_1$], [$N$]), 215deg),
+          ((Mp, M1p, N1p, Np), ([$M'$], [$M'_1$], [$N'_1$], [$N'$]), 215deg),
           ((P, P1, Q1, Q), ([$P$], [$P_1$], [$Q_1$], [$Q$]), 210deg),
-          ((Pp, P1p, Q1p, Qp), ([$P$], [$P_1$], [$Q_1$], [$Q$]), 210deg),
+          ((Pp, P1p, Q1p, Qp), ([$P'$], [$P'_1$], [$Q'_1$], [$Q'$]), 210deg),
         )
         let anchors_list = ("east", none, "north-east", "west")
         for (vars, labels, second_anchor) in content_groups {
           for i in range(4) {
             let anchor = if i == 1 { second_anchor } else { anchors_list.at(i) }
-            content(vars.at(i), labels.at(i), anchor: anchor, padding: .1cm)
+            content(vars.at(i), labels.at(i), anchor: anchor, padding: .05cm)
+            for j in range(4) {
+              circle(vars.at(j), radius: 0.04cm, fill: black)
+            }
           }
+        }
+        for vars in ((M, Mp, "east"), (N, Np, "west"), (P, Pp, "east"), (Q, Qp, "west")) {
+          content((vars.at(0), 50%, vars.at(1)), [$eta$], anchor: vars.at(2), padding: .05cm)
         }
       })
 
@@ -673,7 +688,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   By rearrangement,
   $ f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta. qedhere $]
 
-#remark[In the proof of @thm:pompeiu, we used Lipschitz continuity for a smooth function, which was a stronger condition than necessary. The true necessity of smoothness was to be able to apply Green's Theorem (@thm:complexgreen).]
+#remark[In the proof of @thm:pompeiu, we used Lipschitz continuity for a smooth function, which was a stronger condition than necessary. The true necessity of smoothness was to be able to apply Green's Theorem (@thm:complex_green).]
 
 This profound theorem is extremely important and helpful in complex integration and essential in the evaluation of integrals, as demonstrated below.
 

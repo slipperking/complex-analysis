@@ -96,8 +96,8 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
   By analyzing the difference,
   $
     (f(z) - f(z_0)) / (z - z_0) - f_1(z) & = [(S_n (z) - S_n (z_0)) / (z - z_0) - S'_n (z)] \
-                                         & + S'_n (z) - f_1(z) + (R_n (z) - R_n (z_0)) / (z - z_0).
-  $ <eq:abelradius_differentiationintermediate>
+                                         & + S'_n (z) - f_1(z) + (R_n (z) - R_n (z_0)) / (z - z_0). #<eq:abelradius_differentiationintermediate>
+  $
 
   Since $S'_n (z) -> f_1(z)$ as $n -> infinity$, it follows that $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $abs(S'_n (z) - f_1(z)) < epsilon / 3$. Since
   $

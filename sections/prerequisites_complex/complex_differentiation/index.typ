@@ -114,8 +114,8 @@ $
   &= pdv(, x)(x / r pdv(, r) - y / r^2 pdv(, theta)) + pdv(, y)(y / r pdv(, r) + x / r^2 pdv(, theta)) \
   &= (cos theta pdv(, r) - sin theta / r pdv(, theta))(cos theta pdv(, r) - sin theta / r pdv(, theta)) \
   &+ (sin theta pdv(, r) + cos theta / r pdv(, theta))(sin theta pdv(, r) + cos theta / r pdv(, theta)) \
-  &= pdv(, r, 2) + 1 / r pdv(, r) + 1 / r^2 pdv(, theta, 2).
-$ <eq:laplacianpolarform>
+  &= pdv(, r, 2) + 1 / r pdv(, r) + 1 / r^2 pdv(, theta, 2). #<eq:laplacianpolarform>
+$
 
 #proposition[
   Let $U subset.eq CC$ be open and connected and let $f: U -> RR$ be holomorphic. Then $f$ is constant over $U$.

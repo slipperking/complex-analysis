@@ -6,6 +6,7 @@
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": vb as _vb
 #import "@preview/headcount:0.1.0": *
+#import "@preview/equate:0.3.2": equate
 
 // use the non-abbreviated terms for no upright.
 #let vb(x) = _vb(math.upright(x))
