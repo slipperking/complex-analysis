@@ -10,12 +10,12 @@ Univariate functions formed by compositions, sums, products, and powers of finit
 
 Power functions are easily extendable to the complex plane by simply changing the real variable to a complex variable. The other two classes of functions have to be redefined and reinterpreted for the complex plane. It is well known that the exponential function can be expanded as
 $
-  ee^x &= x^0 / 0! + x^1 / 1! + x^2 / 2! + x^3 / 3! + dots \
-       &= x^0 / (0! ii^0) + ii x^1 / (1! ii^1) - x^2 / (2! ii^2) - ii x^3 / (3! ii^3) + dots \
-       &= cos(x / ii) + ii sin(x / ii).
-$ 
+  ee^x & = x^0 / 0! + x^1 / 1! + x^2 / 2! + x^3 / 3! + dots \
+       & = x^0 / (0! ii^0) + ii x^1 / (1! ii^1) - x^2 / (2! ii^2) - ii x^3 / (3! ii^3) + dots \
+       & = cos(x / ii) + ii sin(x / ii).
+$
 This is better written as
-$ ee^(ii x) = cos(x) + ii sin(x), $ <eq:eulersformula>
+$ ee^(ii x) = cos(x) + ii sin(x), $ <eq:eulers_formula>
 which is the famous _Euler formula_. Then for any complex number $z = x + ii y$,
 $ ee^z = ee^(x + ii y) = ee^x (cos(y) + ii sin(y)). $
 Then trigonometric functions and exponential functions can be written in terms of each other:
@@ -32,12 +32,12 @@ $ sin(z) = -ii sinh(ii z), quad cos(z) = cosh(ii z), quad tan(z) = -ii tanh(ii z
 
 The complex logarithm, denoted $w = log(z)$, is the solution to $z = ee^w$. We can then define the inverse trigonometric and hyperbolic functions.
 
-We can also define the power function for non-integer powers with $w = z^alpha = ee^(alpha log(z))$. Then power functions can all be written in terms of exponential functions and logarithms. Letting $x = uppi$ in @eq:eulersformula yields $ee^(ii uppi) = -1$. Furthermore, we can see that exponentiation with an imaginary number is a rotation:
+We can also define the power function for non-integer powers with $w = z^alpha = ee^(alpha log(z))$. Then power functions can all be written in terms of exponential functions and logarithms. Letting $x = uppi$ in @eq:eulers_formula yields $ee^(ii uppi) = -1$. Furthermore, we can see that exponentiation with an imaginary number is a rotation:
 
 #theorem("De Moivre")[
   $forall x in RR$, $forall n in NN$,
   $ (cos(x) + ii sin(x))^n = cos(n x) + ii sin(n x). $
-] <thm:demoivre>
+] <thm:de_moivre>
 
 Since all elementary functions can be written in terms of exponential functions and complex logarithms, we will first study the exponential function.
 
@@ -49,7 +49,7 @@ Write $ee^z = ee^(x + ii y) = ee^x (cos(y) + ii sin(y))$ where $x, y in RR$. Let
 $ pdv(u, x) = ee^x cos(y), quad pdv(u, y) = -ee^x sin(y), $
 and
 $ pdv(v, x) = ee^x sin(y), quad pdv(v, y) = ee^x cos(y), $
-and indeed, the condition described by @thm:holomorphycondition is satisfied.
+and indeed, the condition described by @thm:holomorphy_condition is satisfied.
 
 4. For any two complex numbers $z_1$ and $z_2$, $ee^(z_1) ee^(z_2) = ee^(z_1 + z_2)$.
 
@@ -69,14 +69,14 @@ Next we examine the complex logarithm.
 
 1. From the periodicity of $z = ee^w$, $log$ is a multi-valued function.
 2. Let $z = r ee^(ii theta)$ and $w = u + ii v$, where $r, theta, u, v in RR$. Then
-   $ r ee^(ii theta) = ee^(u + ii v), $
-   and $ee^u = r$, meaning that $u = log(r)$ and $v = theta + 2 uppi k$, where $k in ZZ$. Then
-   $ w = log(r) + ii (theta + 2 uppi k), $
-   and using modulus-argument notation,
-   $ log(z) = log abs(z) + ii arg(z), $
-   where $arg(z)$ is the multi-valued argument function. We denote the principal branch of the argument function by
-   $ Arg: CC without {0} -> (-uppi, uppi]. $
-   The principal branch of $log(z)$, or $Log(z)$, can be defined such that $Im(Log(z)) in (-uppi, uppi]$.
+  $ r ee^(ii theta) = ee^(u + ii v), $
+  and $ee^u = r$, meaning that $u = log(r)$ and $v = theta + 2 uppi k$, where $k in ZZ$. Then
+  $ w = log(r) + ii (theta + 2 uppi k), $
+  and using modulus-argument notation,
+  $ log(z) = log abs(z) + ii arg(z), $
+  where $arg(z)$ is the multi-valued argument function. We denote the principal branch of the argument function by
+  $ Arg: CC without {0} -> (-uppi, uppi]. $
+  The principal branch of $log(z)$, or $Log(z)$, can be defined such that $Im(Log(z)) in (-uppi, uppi]$.
 
 The functions $sin$ and $cos$, through their exponential form, still satisfy the familiar properties such as their derivatives, periodicity of $2 uppi$, parity, sum and difference formulas, and the fundamental identities
 $ sin^2(z) + cos^2(z) = 1, quad sin(z) = cos(uppi / 2 - z). $
@@ -109,9 +109,9 @@ We will now analyze the inverse cosine function, denoted $arccos(z)$. Consider
 $ z = (ee^(ii w) + ee^(-ii w)) / 2. $
 Then
 $
-  (ee^(ii w))^2 + 1 &= 2 z ee^(ii w) \
-  ee^(ii w) &= (2 z plus.minus sqrt(4 z^2 - 4)) / 2 \
-  w &= -ii log(z plus.minus sqrt(z^2 - 1)).
+  (ee^(ii w))^2 + 1 & = 2 z ee^(ii w) \
+          ee^(ii w) & = (2 z plus.minus sqrt(4 z^2 - 4)) / 2 \
+                  w & = -ii log(z plus.minus sqrt(z^2 - 1)).
 $
 Then $arccos$ is also a multi-valued function. We can also define
 $ arcsin(z) = uppi / 2 - arccos(z). $
@@ -132,12 +132,14 @@ Doing casework on $alpha$,
 
 1. If $alpha = u in ZZ$, then $u$ can be absorbed into $k$, and $z^alpha$ is single-valued.
 2. If $alpha = u in QQ$ with reduced fractional form $p / q$, where $p, q in ZZ$, $q > 0$, and $gcd(p, q) = 1$, then the multi-valued function $z^alpha$ is given by
-   $ z^alpha = abs(z)^(p / q) exp(ii (p / q) (Arg(z) + 2 uppi k)) = abs(z)^(p / q) exp(ii (p / q) Arg(z)) exp(2 ii (p / q) uppi k), $
-   for $k in ZZ$. These values are periodic with period $q$, since
-   $ exp(2 ii (p / q) uppi (k + q)) = exp(2 ii (p / q) uppi k) exp(2 ii uppi p) = exp(2 ii (p / q) uppi k), $
-   as $exp(taui p) = 1$ for integer $p$. To prove there are exactly $q$ distinct values, consider $k = 0, 1, dots, q - 1$. The exponential factors are $exp(2 ii (p / q) uppi k)$. These are distinct if, for $0 <= j < k <= q - 1$,
-   $ exp(2 ii (p / q) uppi j) != exp(2 ii (p / q) uppi k), $
-   which holds unless $(p / q) (k - j) in ZZ$, or equivalently unless $q$ divides $p(k - j)$. Since $gcd(p, q) = 1$, $q$ must divide $k - j$, but $abs(k - j) < q$ and $k - j != 0$, a contradiction. Thus, $z^alpha$ has exactly $q$ distinct values.
-3. If $alpha = u in RR without QQ$, then $z^alpha$ is infinite-valued.
+  $
+    z^alpha = abs(z)^(p / q) exp(ii (p / q) (Arg(z) + 2 uppi k)) = abs(z)^(p / q) exp(ii (p / q) Arg(z)) exp(taui (p / q) k),
+  $
+  for $k in ZZ$. These values are periodic with period $q$, since
+  $ exp(taui (p / q) (k + q)) = exp(taui (p / q) k) exp(taui p) = exp(taui (p / q) k), $
+  as $exp(taui p) = 1$ for integer $p$. To prove there are exactly $q$ distinct values, consider $k = 0, 1, dots, q - 1$. The exponential factors are $exp(taui (p / q) k)$. These are distinct if, for $0 <= j < k <= q - 1$,
+  $ exp(taui (p / q) j) != exp(taui (p / q) k), $
+  which holds unless $(p / q) (k - j) in ZZ$, or equivalently unless $q$ divides $p(k - j)$. Since $gcd(p, q) = 1$, $q$ must divide $k - j$, but $abs(k - j) < q$ and $k - j != 0$, a contradiction. Thus, $z^alpha$ has exactly $q$ distinct values.
+1. If $alpha = u in RR without QQ$, then $z^alpha$ is infinite-valued.
 
 Lastly, there exist series representations of functions using power functions, namely Taylor series, and trigonometric functions, namely Fourier series. There does not exist another distinct representation using exponential functions, as trigonometric functions can be written in terms of them.

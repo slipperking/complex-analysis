@@ -92,7 +92,7 @@ $ L equiv \lim_{x ->+infinity}(f*k_lambda)(x)=\lim_{x ->+infinity}\frac1{sqrt(2 
 #proof[Let $epsilon>0$ be arbitrary. Assume, for the sake of contradiction, that $f \not -> L$ as $x -> infinity$. Then there exists some sequence $\cbraces{x_n}_{n in NN}$ such that $|f(x_n)-L|>epsilon$ for all $n$. From here, we may extract an infinite subsequence (continued to be denoted by $\cbraces{x_n}$) such that one of the two cases is assumed:
     
 + $f(x_n)-L>epsilon$ for all $n in NN$. By the slow decrease of $f$, there exist $delta>0$ and $N in NN$ such that 
-$ f(y)>f (x_n)-(epsilon)/(2)>L+\frac epsilon.alt2 $
+$ f(y)>f (x_n)-(epsilon)/(2)>L+\frac epsilon2 $
  for any $n>N$ and $0<y-x_n<2 delta$. Then we have
             
 $
@@ -111,9 +111,9 @@ $ \lim_{n -> infinity}(f*k_lambda)(x_n+delta)gt.eq (2L+epsilon)/(2 sqrt(2 pi))in
             Letting $lambda -> infinity$, we have 
 $ (2L+epsilon)/(2 pi)integral_{-delta lambda}^{delta lambda}\mathmakebox[\widthof{\(((sin t)/(t))\)}][l]{((sin t)/(t))^2}ddt-(2M)/(pi)integral_{delta lambda}^infinity \mathmakebox[\widthof{\(((sin t)/(t))\)}][l]{((sin t)/(t))^2}ddt -> (2L+epsilon)/(2 pi)integral_{RR}\mathmakebox[\widthof{\(((sin t)/(t))\)}][l]{((sin t)/(t))^2}ddt=L+(epsilon)/(2). $
 
-            Because $\lim_{n -> infinity}(f*k_lambda)(x_n+delta)=L gt.eq L+\frac epsilon.alt2$, we reach a contradiction.
+            Because $\lim_{n -> infinity}(f*k_lambda)(x_n+delta)=L gt.eq L+\frac epsilon2$, we reach a contradiction.
 + $f(x_n)-L<-epsilon$. Then there exist $delta>0$, $N in NN$ such that 
-$ f (x_n)-f(y)>-\frac epsilon.alt2 => f(y)<f (x_n)+\frac epsilon.alt2<L-\frac epsilon.alt2 $
+$ f (x_n)-f(y)>-\frac epsilon2 => f(y)<f (x_n)+\frac epsilon2<L-\frac epsilon2 $
  for any $n>N$ and $0<x_n-y<2 delta$. Splitting the convolution integral into $integral_infinity^{x_n-2 delta}$, $integral_{x_n-2 delta}^{x_n}$, and $integral_{x_n}^infinity$, we have
             
 $
@@ -180,7 +180,7 @@ $ integral_{-sqrt(lambda)}^{sqrt(lambda)}(\frac{sin t}t)^2 exp \qty((t-2 sqrt(la
  implying that 
 $ integral_{-sqrt(lambda)}^{sqrt(lambda)}(\frac{sin t}t)^2 ee^{(t-2 sqrt(lambda))/(lambda)}a (x)ddt<pi (c+1)=> a(x)ee^{-(3)/(sqrt(lambda))}integral_{-sqrt(lambda)}^{sqrt(lambda)}(\frac{sin t}t)^2 ddt<pi(c+1), $
 
-    which is satisfied for all $lambda>0$ and $x>x_0$. Letting $lambda -> infinity$, we have that $a(x)<c+1$. Compactness shows that $a$ is bounded on $[0,x_0]$ (@thm:continuousfunctionboundedoncompact). Hence, $a$ is bounded (above) on $RR$ by some $M>0$.
+    which is satisfied for all $lambda>0$ and $x>x_0$. Letting $lambda -> infinity$, we have that $a(x)<c+1$. Compactness shows that $a$ is bounded on $[0,x_0]$ (@thm:continuous_function_bounded_on_compact). Hence, $a$ is bounded (above) on $RR$ by some $M>0$.
 
     The final hypothesis required is the slow decrease of $a$: for any $epsilon>0$, $exists delta>0$ such that $forall x,y>0$ with $0<y-x<delta$, we have
     

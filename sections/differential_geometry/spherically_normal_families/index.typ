@@ -149,7 +149,7 @@ $ (sigma(w))/(mu(w))=\frac{(2)/(1+|w|^2)}{\frac{sqrt(1+|w|^{\frac13})sqrt(1+|w-1
  0 & \qq*{as}w -> 1, ,
  (2 |w|^{-2})/(|w|^{-\frac43})->0 & \qq*{as}w -> infinity.) $
 
-    Hence, there exist open neighborhoods $U_0,U_1,U_infinity$ of $0,1,infinity$ respectively on which $\frac sigma mu<1$. Since $(sigma)/(mu)in C^0(CC)$, by @thm:continuousfunctionboundedoncompact, $exists M'>0$ such that $(sigma)/(mu)<M'$ on $CCwithout (U_0 union U_1 union U_infinity)$. Let $M=max \cbraces{M',1}$, and 
+    Hence, there exist open neighborhoods $U_0,U_1,U_infinity$ of $0,1,infinity$ respectively on which $\frac sigma mu<1$. Since $(sigma)/(mu)in C^0(CC)$, by @thm:continuous_function_bounded_on_compact, $exists M'>0$ such that $(sigma)/(mu)<M'$ on $CCwithout (U_0 union U_1 union U_infinity)$. Let $M=max \cbraces{M',1}$, and 
 $ \therefore sigma lt.eq M mu \qq{on}CCwithout \cbraces{0,1}. $
 
     Hence, $forall f in tilde(cal(F))$, we have by virtue of @eq:fundamentalnormalitytest_f_mu_pullback_inequality, 

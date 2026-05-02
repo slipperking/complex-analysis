@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-== The $Gamma$-Function<sec:gammafunction>
+== The $Gamma$-Function<sec:gamma_function>
 
 #definition[The Gamma function is defined by
     
@@ -173,7 +173,7 @@ $ op("B")(z_1,z_2)=(Gamma (z_1)Gamma (z_2))/(Gamma (z_1+z_2)). $] <thm:betagamma
     
 $
 Gamma (z_1)Gamma (z_2) & =integral_0^infinity ee^{-s}s^{z_2-1}[integral_0^infinity ee^{-t} t^{z_1-1}ddt]dif s \\ & =integral_0^infinity u^{z_2-1}[integral_0^infinity ee^{-v}((v)/(u+1))^{z_1+z_2-1}\dd((v)/(u+1))]dif u. \\ & =integral_0^infinity (u^{z_2-1})/((u+1)^{z_1+z_2})[integral_0^infinity ee^{-v}v^{z_1+z_2-1}dif v]dif u.
-$ <eq:betagammafunctionrelationship_intermediate>
+$ <eq:beta_gamma_function_relationship_intermediate>
 
     Let $r=(u)/(u+1)$, $u=(r)/(1-r)$, and $dif u=(1)/((1-r)^2)$. Then we have 
 $ Gamma (z_1)Gamma (z_2)=Gamma (z_1+z_2)integral_0^1 r^{z_2-1}(1-r)^{z_1-1}dif r=Gamma (z_1+z_2)op("B")(z_1,z_2). $]
@@ -187,7 +187,7 @@ $
 I=integral_0^{(pi)/(2)}(root(3, tan(x)))/((sin(x)+cos(x))^2)ddx & =integral_0^infinity (u^{(1)/(3)}sec[2](x)ddx)/((u+1)^2) \\ & =integral_0^infinity (u^{(1)/(3)}dif u)/((u+1)^2) \\ & =op("B")((4)/(3),(2)/(3)),
 $
 
-    where the last step recognizes the form of @eq:betagammafunctionrelationship_intermediate. @thm:betagammafunctionrelationship then gives 
+    where the last step recognizes the form of @eq:beta_gamma_function_relationship_intermediate. @thm:betagammafunctionrelationship then gives 
 $ I=(Gamma ((2)/(3))Gamma ((4)/(3)))/(Gamma(2))=(1)/(3)Gamma ((1)/(3))Gamma ((2)/(3)). $
  Lastly, the Reflection Formula (@thm:gammafunction_eulerreflection) gives that 
 $ I=(pi)/(3 sin((pi)/(3)))=(2 pi sqrt(3))/(9). $]

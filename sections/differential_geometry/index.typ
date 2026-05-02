@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-= Differential Geometry<sec:differentialgeometry>
+= Differential Geometry <sec:differential_geometry>
 // include gaussian_curvature_of_surface/index.tex
 // include metrics_and_curvature/index.tex
 // include schwarz_pick_ahlfors/index.tex

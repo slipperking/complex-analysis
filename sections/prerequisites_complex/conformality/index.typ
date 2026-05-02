@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-== The Conformality of Holomorphic Maps <sec:conformalityintroduction>
+== The Conformality of Holomorphic Maps <sec:conformality_introduction>
 
 Let $f: U -> CC$ be a holomorphic function defined on an open and connected subset $U subset.eq CC$, and let $z_0 in U$ be a point such that $f' (z_0) != 0$. Consider a differentiable curve $gamma in C^1([0, 1])$ with $gamma(0) = z_0$. The direction of the curve at $z_0$ is given by the argument of its derivative, namely $Arg(gamma'(0))$.
 

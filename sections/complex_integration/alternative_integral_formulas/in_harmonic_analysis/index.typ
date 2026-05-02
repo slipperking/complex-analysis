@@ -11,7 +11,7 @@ Since $u (z)$ is continuous on $partial bb(D)$ and $u compose exp(ii theta)$ is 
 
 $ u (ee^{ii theta})tilde.op sum_{n=-infinity}^infinity a_n ee^{ii n theta}, a_n=(1)/(2 pi)integral_0^{2 pi} u (ee^{ii tau})ee^{-ii n tau}dif tau. $ <eq:poissonintegralformulafourierseries>
 
-This series may diverge. Observe that continuity of $u$ on the compact set $partial bb(D)$ implies uniform boundedness: $exists M>0$ such that $|u (ee^{ii theta})|lt.eq M$ for all $theta$ (@thm:continuousfunctionboundedoncompact). Consequently, $|a_n|lt.eq M$. Introducing factors $rho^{|n|}$ with $|rho|<1$ yields a convergent series:
+This series may diverge. Observe that continuity of $u$ on the compact set $partial bb(D)$ implies uniform boundedness: $exists M>0$ such that $|u (ee^{ii theta})|lt.eq M$ for all $theta$ (@thm:continuous_function_bounded_on_compact). Consequently, $|a_n|lt.eq M$. Introducing factors $rho^{|n|}$ with $|rho|<1$ yields a convergent series:
 
 $ sum_{n=-infinity}^infinity a_n ee^{ii n theta}rho^{|n|}, \abs{sum_{n=-infinity}^infinity a_n ee^{ii n theta}rho^{|n|}}lt.eq sum_{n=-infinity}^infinity |a_n|rho^{|n|}lt.eq M (1+|rho|)/(1-|rho|). $
 

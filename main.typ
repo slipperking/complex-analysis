@@ -4,10 +4,13 @@
 #set heading(numbering: "1.1")
 
 #show: equate.with(number-mode: "label")
-#set math.equation(numbering: dependent-numbering("(1.1)", levels: 2))
+#set math.equation(supplement: none, numbering: dependent-numbering("(1.1)", levels: 2))
 #show heading: reset-counter(counter(math.equation), levels: 2)
 #show: thmrules.with(qed-symbol: $square$)
 #set figure(placement: alignment.top)
+#show figure.caption: it => context [
+  *#it.supplement~#it.counter.display()#it.separator*#it.body
+]
 
 #align(center)[
   #v(2cm)

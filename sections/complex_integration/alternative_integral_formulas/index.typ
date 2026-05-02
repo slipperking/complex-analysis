@@ -1,94 +1,165 @@
 #import "/lib.typ": *
 
 == Alternative Integral Formulas
-As in the Cauchy Integral Formula (@thm:cauchygoursatformula), we can write holomorphic functions in terms of an integral representation. We define the _Cauchy kernel_ to be equal to
 
-$ H(zeta,z)=(1)/(taui (zeta-z)). $
+As in the Cauchy Integral Formula (@thm:cauchygoursatformula), we can write holomorphic functions in terms of an integral representation. We define the _Cauchy kernel_ to be
 
-Then @eq:cauchygoursatformula can be written as:
+$ H(zeta, z) = 1 / (2 uppi ii (zeta - z)). $
 
-$ f(z)=oint.cont_(partial U)f(zeta)H(zeta,z)ddzeta. $
- There also exist other integral formulas for functions, varying in the kernel of the expression.
+Then @thm:cauchygoursatformula can be written as
 
-Let $z in bb(D)$ and notice that $phi.alt_z(zeta)=(zeta-z)/(1-overline(z)zeta)in Aut(bb(D))$ maps $partial bb(D)$ to $partial bb(D)$ bijectively. Let $Phi:bb(D)-> RR$ be harmonic such that $Phi$ is continuous on $overline(bb(D))$. By the mean-value property introduced in @lem:holomorphicmeanvalueproperty, we have 
-$ Phi (0)=(1)/(2 pi rho)integral_0^{2 pi}Phi (rho ee^{ii psi})dif psi, $
+$ f(z) = oint_(partial U) f(zeta) H(zeta, z) dzeta. $
 
-where $0<rho<1$. By the uniform continuity of $Phi$ on $overline(bb(D))$ (@thm:heinecantor), $forall epsilon>0$, $exists delta>0$ such that $forall rho in ((1)/(2),1)$ satisfying $1-rho<delta$ and $forall psi in[0,2 pi]$, 
-$ |Phi (ee^{ii psi})-Phi (rho ee^{ii psi})|<epsilon. $
- It then follows that 
-$ |(1)/(2 pi rho)integral_0^{2 pi}Phi (ee^{ii psi})dif psi-(1)/(2 pi rho)integral_0^{2 pi}Phi (rho ee^{ii psi})dif psi|<(epsilon)/(rho)<2 epsilon. $
+There also exist other integral formulas for functions, varying in the kernel of the expression.
+
+Let $Phi:DD -> RR$ be harmonic such that $Phi$ is continuous on $overline(DD)$. By the mean-value property introduced in @lem:holomorphicmeanvalueproperty, we have
+
+$ Phi(0) = (1) / (2 uppi) integral_0^(2 uppi) Phi(rho ee^(ii t)) dt, $
+
+where $0 < rho < 1$. By the uniform continuity of $Phi$ on $overline(DD)$ (@thm:heinecantor), $forall epsilon > 0$, $exists delta > 0$ such that for all $rho in ((1)/(2), 1)$ satisfying $1 - rho < delta$ and all $t in [0, 2 uppi]$,
+
+$ abs(Phi(ee^(ii t)) - Phi(rho ee^(ii t))) < epsilon. $
+
+It then follows that
+
+$
+  abs((1) / (2 uppi) integral_0^(2 uppi) Phi(ee^(ii t)) dt - (1) / (2 uppi) integral_0^(2 uppi) Phi(rho ee^(ii t)) dt) < epsilon.
+$
 
 Hence,
 
-$ \lim_{rho ->1^-}(1)/(2 pi rho)integral_0^{2 pi}Phi (rho ee^{ii psi})dif psi=(1)/(2 pi)integral_0^{2 pi}Phi (ee^{ii psi})dif psi=Phi(0). $ <eq:harmonicfunctionmeanvalueoverboundaryofunitdisk>
+$
+  lim_(rho -> 1^-) (1) / (2 uppi) integral_0^(2 uppi) Phi(rho ee^(ii t)) dt = (1) / (2 uppi) integral_0^(2 uppi) Phi(ee^(ii t)) dt = Phi(0).
+$ <eq:harmonicfunctionmeanvalueoverboundaryofunitdisk>
 
-Let $u(zeta)=Phi compose phi.alt_z(zeta)$, which is also harmonic on $bb(D)$. By the univalence of $phi.alt_z$, let $ee^{ii psi}=phi.alt_z (ee^{ii tau})$. It follows that
+Let $z in DD$ and notice that
+
+$ phi_z (zeta) = (zeta - z) / (1 - overline(z) zeta) in Aut(DD) $
+
+maps $partial DD$ to $partial DD$ bijectively. Let $u$ be harmonic on $DD$ and continuous on $overline(DD)$. Then $u compose phi_(-z)$ is also harmonic on $DD$, and by @eq:harmonicfunctionmeanvalueoverboundaryofunitdisk,
+
+$ u(z) = u compose phi_(-z) (0) = (1) / (2 uppi) integral_0^(2 uppi) u compose phi_(-z) (ee^(ii psi)) dif psi. $
+
+By the univalence of $phi_z$, let $ee^(ii psi) = phi_z (ee^(ii t))$. It follows that
 
 $
-ii ee^{ii psi}dif psi=ii (1-overline(z)z)/((1-overline(z)ee^{ii tau})^2)ee^{ii tau}dif tau,\\ dif psi=(1-overline(z)z)/((1-overline(z)ee^{ii tau})^2)(1-overline(z)ee^{ii tau})/(ee^{ii tau}-z)ee^{ii tau}dif tau=\frac{1-|z|^2}{|1-overline(z)ee^{ii tau}|^2}dif tau.
+  ii ee^(ii psi) dif psi & = ii (1 - overline(z) z) / ((1 - overline(z) ee^(ii t))^2) ee^(ii t) dt \
+  dif psi & = (1 - overline(z) z) / ((1 - overline(z) ee^(ii t))^2) (1 - overline(z) ee^(ii t)) / (ee^(ii t) - z) ee^(ii t) dt \
+  & = (1 - abs(z)^2) / abs(1 - overline(z) ee^(ii t))^2 dt.
+$ <eq:poissonintegralformula_differentialcomputation>
+
+Then from @eq:harmonicfunctionmeanvalueoverboundaryofunitdisk,
+
+$
+  u(z) = (1) / (2 uppi) integral_0^(2 uppi) u(ee^(ii t)) (1 - abs(z)^2) / abs(1 - overline(z) ee^(ii t))^2 dt.
 $
 
-Then from @eq:harmonicfunctionmeanvalueoverboundaryofunitdisk, since $Phi(0)=u compose phi.alt_{-z}(0)=u(z)$, 
-$ Phi(0)=(1)/(2 pi)integral_0^{2 pi}u (ee^{ii tau})\frac{1-|z|^2}{|1-overline(z)ee^{ii tau}|^2}dif tau=u(z). $
+Let
 
-Let $P(zeta,z)=(1-|z|^2)/(2 pi \qty|1-overline(z)zeta|^2)=(1-|z|^2)/(2 pi |zeta-z|^2)$, known as the _Poisson kernel_. Then,
+$ P(zeta, z) = (1 - abs(z)^2) / (2 uppi abs(1 - overline(z) zeta)^2) = (1 - abs(z)^2) / (2 uppi abs(zeta - z)^2), $
 
-$ u(z)=integral_0^{2 pi}u (zeta)P(zeta,z)dif tau, $ <eq:poissonintegralformula>
+known as the _Poisson kernel_. Then,
 
-where $zeta=ee^{ii tau}$. @eq:poissonintegralformula is also known as the _Poisson Integral Formula_.
-$forall z in D(0,R)$, $forall R>0$, we can apply the transformation $tilde(phi.alt)_z (zeta)=R phi.alt_{\flatfrac{z}{R}}((zeta)/(R))$ to extend the automorphism to $D(0,R)$. Let $Phi$ instead be harmonic on $D(0,R)$ and continuous on $overline(D(0,R))$. Then, 
-$ Phi(0)=(1)/(2 pi)integral_0^{2 pi}Phi (R ee^{ii psi})dif psi. $
+$ u(z) = integral_0^(2 uppi) u(zeta) P(zeta, z) dt, $ <eq:poissonintegralformula>
 
-It follows that $u=Phi compose tilde(phi.alt)_z$ is also harmonic on $D(0,R)$ with $Phi(0)=u compose tilde(phi.alt)_{-z}(0)=u(z)$, and from the bijectivity of $R ee^{ii psi}=tilde(phi.alt)_z (R ee^{ii tau})$,
+where $zeta = ee^(ii t)$. @eq:poissonintegralformula is also known as the _Poisson Integral Formula_.
 
-$ dif psi=\frac{1-(|z|^2)/(R^2)}{(1-(overline(z))/(R)ee^{ii tau})^2}ee^{ii tau}ee^{-ii psi}dif tau=\frac{1-(|z|^2)/(R^2)}{(1-(overline(z))/(R)ee^{ii tau})^2}(1-(overline(z))/(R)ee^{ii tau})/(1-(z)/(R)ee^{-ii tau})dif tau=\frac{R^2-|z|^2}{|R ee^{ii tau}-z|^2}dif tau. $ <eq:poissonintegralformula2_differentialcomputation>
+For all $z in D(0, R)$, where $R > 0$, we can apply the transformation
 
-Then because $tilde(phi.alt)_z^{-1}(zeta)=R phi.alt_{-\flatfrac{z}{R}}((zeta)/(R))$,
+$ tilde(phi)_z (zeta) = R phi_((z)/(R)) ((zeta)/(R)) $
 
-$ u(z)=(1)/(2 pi)integral_0^{2 pi}u (R ee^{ii tau})\frac{R^2-|z|^2}{|R ee^{ii tau}-z|^2}dif tau. $
+to extend the automorphism to $D(0, R)$. Let $u$ instead be harmonic on $D(0, R)$ and continuous on $overline(D(0, R))$. Then,
 
-The expression $P(zeta,z)=(|zeta|^2-|z|^2)/(2 pi |zeta-z|^2)$ is a general form of the Poisson kernel. Then with $zeta=R ee^{ii tau}$,
+$ u(0) = (1) / (2 uppi) integral_0^(2 uppi) u(R ee^(ii psi)) dif psi. $
 
-$ u(z)=integral_0^{2 pi}u(zeta)P(zeta,z)dif tau. $ <eq:poissonintegralformula2>
+It follows that $u compose tilde(phi)_(-z)$ is also harmonic on $D(0, R)$ with
+
+$ u(z) = u compose tilde(phi)_(-z) (0), $
+
+and from the bijectivity of $R ee^(ii psi) = tilde(phi)_z (R ee^(ii t))$,
+
+$
+  dif psi & = (1 - (abs(z)^2)/(R^2)) / (1 - (overline(z))/(R) ee^(ii t))^2 ee^(ii t) ee^(-ii psi) dt \
+  & = (1 - (abs(z)^2)/(R^2)) / (1 - (overline(z))/(R) ee^(ii t))^2 (1 - (overline(z))/(R) ee^(ii t)) / (1 - (z)/(R) ee^(-ii t)) dt \
+  & = (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 dt.
+$ <eq:poissonintegralformula2_differentialcomputation>
+
+Then because $tilde(phi)_z^(-1) = tilde(phi)_(-z)$,
+
+$
+  u(z) = (1) / (2 uppi) integral_0^(2 uppi) u(R ee^(ii t)) (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 dt.
+$
+
+The expression
+
+$ P(zeta, z) = (abs(zeta)^2 - abs(z)^2) / (2 uppi abs(zeta - z)^2) $
+
+is a general form of the Poisson kernel. Then with $zeta = R ee^(ii t)$,
+
+$ u(z) = integral_0^(2 uppi) u(zeta) P(zeta, z) dt. $ <eq:poissonintegralformula2>
 
 The Poisson kernel can also be rewritten as
 
-$ P(zeta,z)=\frac{|zeta|^2-|z|^2}{2 pi (zeta-z)(overline(zeta)-overline(z))}=(1)/(4 pi)((zeta+z)/(zeta-z)+(overline(zeta)+overline(z))/(overline(zeta)-overline(z)))=(1)/(2 pi)Re ((zeta+z)/(zeta-z)). $ <eq:poissonkernelgeneralform>
+$
+  P(zeta, z) & = (abs(zeta)^2 - abs(z)^2) / (2 uppi (zeta - z) (overline(zeta) - overline(z))) \
+  & = (1) / (4 uppi) ((zeta + z) / (zeta - z) + (overline(zeta) + overline(z)) / (overline(zeta) - overline(z))) \
+  & = (1) / (2 uppi) Re((zeta + z) / (zeta - z)).
+$ <eq:poissonkernelgeneralform>
 
-Thus, @eq:poissonintegralformula2 is equivalent to:
+Thus, @eq:poissonintegralformula2 is equivalent to
 
-$ u(z)=(1)/(2 pi)integral_0^{2 pi}u(zeta)Re ((zeta+z)/(zeta-z))dif tau. $
+$ u(z) = (1) / (2 uppi) integral_0^(2 uppi) u(zeta) Re((zeta + z) / (zeta - z)) dt. $
 
-Since $ddzeta=ii R ee^{ii tau}dif tau$, $dif tau=(ddzeta)/(ii zeta)$, and 
-$ u(z)=(1)/(taui)integral_{partial D(0,R)}(u(zeta))/(zeta)Re ((zeta+z)/(zeta-z))ddzeta=Re [(1)/(taui)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)(zeta+z)/(zeta-z)ddzeta], $
+Since $dzeta = ii zeta dt$, $dt = dzeta / (ii zeta)$, and
 
-where $z in D(0,R)$. Since $R>0$ and $zeta-z eq.not0$, the function 
-$ (1)/(taui)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)(zeta+z)/(zeta-z)ddzeta $
- // TODO: provide more justification on holomorphy
-is holomorphic on $D(0,R)$. Therefore, $u(z)$ is the real part of a holomorphic function $f(z)=(1)/(taui)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)(zeta+z)/(zeta-z)ddzeta+ii c$, where $c in RR$. Since $c in RR$ is holomorphic, by @prop:realvaluedholomorphicfunctionconstant, $c$ is constant. For $f(z)=u(z)+ii v(z)$,
+$
+  u(z) = (1) / (2 uppi ii) oint_(partial D(0, R)) (u(zeta)) / zeta Re((zeta + z) / (zeta - z)) dzeta
+  = Re((1) / (2 uppi ii) oint_(partial D(0, R)) (u(zeta)) / zeta (zeta + z) / (zeta - z) dzeta),
+$
 
-$ v(z)=c+(1)/(taui)oint.cont_{partial D(0,R)}(u(zeta))/(zeta)Im ((zeta+z)/(zeta-z))ddzeta. $ <eq:schwarzintegralformulaimaginarypart>
+where $z in D(0, R)$. Since $R > 0$ and $zeta - z != 0$ for all $zeta in partial D(0, R)$ and $z in D(0, R)$, the function
 
-Letting $z=0$, the integral vanishes, and we obtain $c=v(0)=Im(f(0))$.
+$ F(z) = (1) / (2 uppi ii) oint_(partial D(0, R)) (u(zeta)) / zeta (zeta + z) / (zeta - z) dzeta $
 
-Define the _Schwarz kernel_ to be 
-$ S(zeta,z)=(zeta+z)/(taui(zeta-z)zeta). $
+is holomorphic on $D(0, R)$: for each fixed $zeta in partial D(0, R)$, the integrand is holomorphic in $z$, and on compact subsets of $D(0, R)$ we may differentiate under the integral sign. Therefore, $u(z)$ is the real part of a holomorphic function
 
-Then for a holomorphic function $f$ on $D(0,R)$ that is continuous on $overline(D(0,R))$, we obtain the _Schwarz Integral Formula_:
+$ f(z) = (1) / (2 uppi ii) oint_(partial D(0, R)) (u(zeta)) / zeta (zeta + z) / (zeta - z) dzeta + ii c, $
 
-$ f(z)=oint.cont_{partial D(0,R)}Re (f(zeta))S(zeta,z)ddzeta+ii Im (f(0)). $ <eq:schwarzintegralformula>
+where $c in RR$. Since $c in RR$ is holomorphic, by @prop:realvaluedholomorphicfunctionconstant, $c$ is constant. For $f(z) = u(z) + ii v(z)$,
+
+$ v(z) = c + (1) / (2 uppi) integral_0^(2 uppi) u(zeta) Im((zeta + z) / (zeta - z)) dt. $ <eq:schwarzintegralformulaimaginarypart>
+
+Letting $z = 0$, the integral vanishes, and we obtain $c = v(0) = Im(f(0))$.
+
+Define the _Schwarz kernel_ to be
+
+$ S(zeta, z) = (zeta + z) / (2 uppi ii (zeta - z) zeta). $
+
+Then for a holomorphic function $f$ on $D(0, R)$ that is continuous on $overline(D(0, R))$, we obtain the _Schwarz Integral Formula_:
+
+$ f(z) = oint_(partial D(0, R)) Re(f(zeta)) S(zeta, z) dzeta + ii Im(f(0)). $ <eq:schwarzintegralformula>
 
 The significance of this alternative formula implies that a holomorphic function can be recovered from the real part on the boundary of a disk and the imaginary part at a single point.
 
-From @eq:schwarzintegralformulaimaginarypart, we can rewrite 
-$ Im ((zeta+z)/(zeta-z))=Im (1+(2z)/(zeta-z))=Im (\frac{2z (overline(zeta)-overline(z))}{|zeta-z|^2})=(2 Im (z overline(zeta)))/(|zeta-z|^2). $
+From @eq:schwarzintegralformulaimaginarypart, we can rewrite
 
-Let $Q(zeta,z)=(Im (z overline(zeta)))/(pi |zeta-z|^2)$, which is known as the _conjugate Poisson kernel_. Then @eq:schwarzintegralformulaimaginarypart yields yet another integral representation of harmonic functions:
+$
+  Im((zeta + z) / (zeta - z)) & = Im(1 + (2 z) / (zeta - z)) \
+  & = Im((2 z (overline(zeta) - overline(z))) / abs(zeta - z)^2) \
+  & = (2 Im(z overline(zeta))) / abs(zeta - z)^2.
+$ <eq:harmonicconjugate>
 
-$ v(z)=v(0)+integral_0^{2 pi}u(zeta)Q(zeta,z)dif tau, $
+Let
 
-where $zeta=R ee^{ii tau}$. Two harmonic functions are said to be _conjugate_ if they are the real and imaginary parts of a holomorphic function. As seen above, on open disks, any harmonic function will admit a unique conjugate, (up to an additive constant $v(0)$). For a harmonic function $u$, we can construct its harmonic conjugate from @eq:harmonicconjugate.
+$ Q(zeta, z) = Im(z overline(zeta)) / (uppi abs(zeta - z)^2), $
+
+which is known as the _conjugate Poisson kernel_. Then @eq:schwarzintegralformulaimaginarypart yields yet another integral representation of harmonic functions:
+
+$ v(z) = v(0) + integral_0^(2 uppi) u(zeta) Q(zeta, z) dt. $
+
+where $zeta = R ee^(ii t)$. Two harmonic functions are said to be _conjugate_ if they are the real and imaginary parts of a holomorphic function. As seen above, on open disks, any harmonic function will admit a unique conjugate, up to an additive constant $v(0)$. For a harmonic function $u$, we can construct its harmonic conjugate from @eq:harmonicconjugate.
 
 The Poisson kernel is important in many branches of mathematics. We will introduce two of the important uses below.
-// include solution_to_dirichlet_problem_on_disk/index.tex
-// include in_harmonic_analysis/index.tex
+
+//#include "solution_to_dirichlet_problem_on_disk/index.typ"
+//#include "in_harmonic_analysis/index.typ"

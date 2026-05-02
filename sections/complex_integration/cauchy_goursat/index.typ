@@ -126,7 +126,7 @@ The theorem above is only a specific case of the Stokes-Cartan Theorem (@thm:sto
     &=ii integral_0^(2 uppi) (f (z + epsilon ee^(ii t)) - f(z)) dt + ii integral_0^(2 uppi) f(z) dt.
   $
 
-  Because $f in C^1 (overline(U))$, by @prop:c1lipschitz, $f$ is Lipschitz continuous on $overline(U)$, and $exists M in RR_(>0)$ such that $forall z_0, z_1 in overline(U)$, $abs(f(z_1) - f(z_0)) <= M abs(z_1 - z_0)$. On $partial D(z,epsilon)$, we get that $abs(f(z + epsilon ee^(ii t)) - f(z)) <= M epsilon$. Therefore,
+  Because $f in C^1 (overline(U))$, by @prop:c1_lipschitz, $f$ is Lipschitz continuous on $overline(U)$, and $exists M in RR_(>0)$ such that $forall z_0, z_1 in overline(U)$, $abs(f(z_1) - f(z_0)) <= M abs(z_1 - z_0)$. On $partial D(z,epsilon)$, we get that $abs(f(z + epsilon ee^(ii t)) - f(z)) <= M epsilon$. Therefore,
   $
     abs(integral_0^(2 uppi) (f(z + epsilon ee^(ii t)) - f(z)) dt) <= integral_0^(2 uppi) abs(f(z + epsilon ee^(ii t)) - f(z)) dt <= 2 M uppi epsilon,
   $
@@ -142,7 +142,7 @@ The theorem above is only a specific case of the Stokes-Cartan Theorem (@thm:sto
     lim_(epsilon -> 0) integral_(D(z, epsilon)) pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z) = 0.
   $ <eq:pompeiu_areadiskstatement>
 
-  Notice that since $f in C^1 (overline(U))$, by @thm:continuousfunctionboundedoncompact, $exists M' in RR_(>0)$ such that $forall zeta in overline(U)$, $abs(pdv(f, overline(zeta))) <= M'$. Then,
+  Notice that since $f in C^1 (overline(U))$, by @thm:continuous_function_bounded_on_compact, $exists M' in RR_(>0)$ such that $forall zeta in overline(U)$, $abs(pdv(f, overline(zeta))) <= M'$. Then,
 
   $
     lim_(epsilon -> 0) abs(integral_(D(z, epsilon)) pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z)) <= M' lim_(epsilon -> 0) abs(integral_(D(z, epsilon)) 1 / (zeta - z) dif overline(zeta) and dzeta).
@@ -220,7 +220,7 @@ From the above result, we can directly obtain the following theorem:
 
 #proof[Split $CC$ into $CC without D (z, epsilon)$ and $overline(D (z, epsilon))$. For all $epsilon > 0$, the integral
   $ -1 / (taui) integral_(CC without D (z, epsilon)) (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta $
-  is continuous. Since $psi(zeta)$ is compactly supported over $CC$ and continuous, by @thm:continuousfunctionboundedoncompact, it is bounded. Then the limit
+  is continuous. Since $psi(zeta)$ is compactly supported over $CC$ and continuous, by @thm:continuous_function_bounded_on_compact, it is bounded. Then the limit
   $
     lim_(epsilon -> 0) (-1 / (taui) integral_(D(z, epsilon)) (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta) = 0.
   $
@@ -235,7 +235,7 @@ From the above result, we can directly obtain the following theorem:
 
   For a fixed $z$, the value of
   $ (psi(zeta + z + Delta z) - psi (zeta + z)) / (Delta z) $
-  tends to $pdv(psi (zeta + z), zeta)$ as $Delta z -> 0$. Because $psi(zeta) = psi (zeta + z)$ has compact support and is $C^1$, by @prop:c1lipschitz, it is Lipschitz continuous for a constant $M$. Let $abs(Delta z) < 1$ and let $K = {w in CC : inf_(zeta in op("supp") phi.alt) abs(w - zeta) <= 1}$. Then,
+  tends to $pdv(psi (zeta + z), zeta)$ as $Delta z -> 0$. Because $psi(zeta) = psi (zeta + z)$ has compact support and is $C^1$, by @prop:c1_lipschitz, it is Lipschitz continuous for a constant $M$. Let $abs(Delta z) < 1$ and let $K = {w in CC : inf_(zeta in op("supp") phi.alt) abs(w - zeta) <= 1}$. Then,
   $ abs((psi(zeta + z + Delta z) - psi(zeta + z)) / (Delta z)) <= M, $
   and specifically, when $zeta + z not in K$,
   $ (psi(zeta+z+Delta z)-psi (zeta+z))/(Delta z)=0. $
@@ -297,8 +297,9 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   $
   where $length(Gamma)$ is the length of $Gamma$ and $length(P)$ is the length of $P$. Then,
   $
-    abs(integral_Gamma f(z) dz - integral_P f(z) dz) <= abs(integral_Gamma f(z) dz - S) + abs(integral_P f(z) dz - S) <= 2 epsilon dot length(Gamma).
-  $]
+    abs(integral_Gamma f(z) dz - integral_P f(z) dz) <= abs(integral_Gamma f(z) dz - S) + abs(integral_P f(z) dz - S) <= 2 epsilon dot length(Gamma). qedhere
+  $
+]
 
 #lemma(
   "Goursat",

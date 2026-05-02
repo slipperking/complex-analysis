@@ -208,7 +208,7 @@ $
 
 #theorem[
   Any continuous function on a compact set $K$ is bounded on $K$.
-] <thm:continuousfunctionboundedoncompact>
+] <thm:continuous_function_bounded_on_compact>
 
 #proof[
   Suppose for the sake of contradiction that $f : U -> RR$ is continuous and unbounded on compact $K$. Then for each $n in NN$, there exists $x_n in K$ such that $|f(x_n)| > n$. The sequence ${x_n}$ lies in $K$, which is compact, so by the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), ${x_n}$ has an accumulation point in $K$. In other words, there exists a convergent subsequence ${x_(n_k)}$ with $lim_(k -> oo) x_(n_k) in K$.
@@ -221,9 +221,9 @@ $
 ] <thm:extremevalue>
 
 #proof[
-  Assume that $f$ never attains its supremum $M$. Then, $f(x) < M$. Define the auxiliary function $psi(x) = 1 / (M - f(x))$, which is strictly positive and continuous as the denominator never reaches $0$. By @thm:continuousfunctionboundedoncompact, $psi(x)$ is bounded with some value of $mu > 0$ satisfying $psi(x) <= mu$. $f(x)$ also has the representation $M - 1 / (psi(x))$, and therefore,
+  Assume that $f$ never attains its supremum $M$. Then, $f(x) < M$. Define the auxiliary function $psi(x) = 1 / (M - f(x))$, which is strictly positive and continuous as the denominator never reaches $0$. By @thm:continuous_function_bounded_on_compact, $psi(x)$ is bounded with some value of $mu > 0$ satisfying $psi(x) <= mu$. $f(x)$ also has the representation $M - 1 / (psi(x))$, and therefore,
   $ f(x) <= M - 1 / mu, $
-  which means that $M$ is not the supremum. Similarly, assume that $f$ never attains its infimum $m$. Then $f(x) > m$. Let $psi(x) = 1 / (f(x) - m)$, which is strictly positive and continuous as the denominator never reaches $0$. By @thm:continuousfunctionboundedoncompact, $psi(x)$ is bounded with some value of $mu > 0$ satisfying $psi(x) <= mu$. $f(x)$ also has the representation $m + 1 / (psi(x))$, and therefore,
+  which means that $M$ is not the supremum. Similarly, assume that $f$ never attains its infimum $m$. Then $f(x) > m$. Let $psi(x) = 1 / (f(x) - m)$, which is strictly positive and continuous as the denominator never reaches $0$. By @thm:continuous_function_bounded_on_compact, $psi(x)$ is bounded with some value of $mu > 0$ satisfying $psi(x) <= mu$. $f(x)$ also has the representation $m + 1 / (psi(x))$, and therefore,
   $ f(x) >= m + 1 / mu, $
   which means that $m$ is not the infimum.
 ]
@@ -244,13 +244,13 @@ $
   Then $forall delta > 0$, $exists n > 1$ where $abs(x - y) < delta$, since $lim_(n -> oo) abs(x - y) = 0$. Additionally, $abs(f(x) - f(y)) = 1 >= epsilon$. This satisfies the negation, and thus, $f(x) = 1 / x$ is not uniformly continuous over $(0, 1)$.
 ]
 
-#theorem("Heine–Cantor")[
+#theorem("Heine" + dash.en + "Cantor")[
   A continuous function on a compact set $K$ is uniformly continuous on $K$.
 ] <thm:heinecantor>
 
 #proof[
   Fix $x in K$. Since $f$ is continuous at $x$, for every $epsilon > 0$ there exists $delta_x > 0$ such that for all $zeta in D(x, delta_x) inter K$,
-  $ abs(f(zeta) - f(x)) < epsilon / 2. $ <eq:heinecantorpointwise>
+  $ abs(f(zeta) - f(x)) < epsilon / 2. $ <eq:heine_cantor_pointwise>
 
   The collection of open balls ${D(x, delta_x / 2)}_(x in K)$ forms an open cover of the compact set $K$. By Heine--Borel (@thm:heineborel), there is a finite subcover
   $ {D(x_k, delta_(x_k) / 2)}_(k=1)^n. $
@@ -258,7 +258,7 @@ $
   $ delta = min_(1 <= k <= n) delta_(x_k) / 2. $
   Now let $x, y in K$ satisfy $abs(x - y) < delta$. Then there exists an index $j in {1, dots.c, n}$ such that $x in D(x_j, delta_(x_j) / 2)$. Consequently,
   $ abs(x_j - y) <= abs(x_j - x) + abs(x - y) < delta_(x_j) / 2 + delta <= delta_(x_j). $
-  Applying @eq:heinecantorpointwise to the points $x$ and $y$ through $x_j$, we obtain
+  Applying @eq:heine_cantor_pointwise to the points $x$ and $y$ through $x_j$, we obtain
   $ abs(f(x_j) - f(x)) < epsilon / 2, quad abs(f(x_j) - f(y)) < epsilon / 2. $
   Therefore,
   $ abs(f(x) - f(y)) <= abs(f(x) - f(x_j)) + abs(f(x_j) - f(y)) < epsilon. $
@@ -281,10 +281,10 @@ Lipschitz continuity is an important concept in real analysis and the theory of 
 
 #proposition[
   A $C^1$ function on a compact set $K$ is Lipschitz continuous on $K$.
-] <prop:c1lipschitz>
+] <prop:c1_lipschitz>
 
 #proof[
-  Let $f : K -> RR$ be $C^1$. By @thm:continuousfunctionboundedoncompact, since $K$ is compact and $f'$ is continuous, $exists M > 0$ such that $forall x in K$, $|f'(x)| <= M$.
+  Let $f : K -> RR$ be $C^1$. By @thm:continuous_function_bounded_on_compact, since $K$ is compact and $f'$ is continuous, $exists M > 0$ such that $forall x in K$, $|f'(x)| <= M$.
 
   By the Mean Value Theorem, $forall x, y in K$, $exists c$ between $x$ and $y$ such that $f(x) - f(y) = f'(c)(x - y)$. Then, $|f(x) - f(y)| = |f'(c)||x - y| <= M|x - y|$, which means $f$ is Lipschitz continuous with Lipschitz constant less than or equal to $M$.
 ]

@@ -60,7 +60,7 @@ For the purpose of the following contents, a _region_ or _domain_ will denote a 
 
 #theorem[
   Let $U subset.eq CC$ be open, and let $f: U -> CC$ be a function. Then $f$ is holomorphic on $U$ iff $f in C^1(U)$ and satisfies the Cauchy--Riemann equations.
-] <thm:holomorphycondition>
+] <thm:holomorphy_condition>
 
 #proof[
   The first part is to prove that any holomorphic function on $U$ has continuous first-order partial derivatives in $U$. This requires an argument that will be covered later, specifically in @ sec:analyticityandholomorphy, which states that the complex derivative of any holomorphic function is also holomorphic over the region.

@@ -65,6 +65,7 @@
 #let diam = math.op("diam")
 #let Log = math.op("Log")
 #let logp = math.op($log^+$)
+#let arg = math.op("arg")
 #let Arg = math.op("Arg")
 #let Aut = math.op("Aut")
 #let Res = math.op("Res", limits: true)
@@ -82,6 +83,7 @@
 #let ii = $upright(i)$
 #let taui = $2 uppi ii$
 
+#let abs(x) = $lr(| #x |)$
 #let ceil(x) = $lr(⌈ #x ⌉)$
 #let floor(x) = $lr(⌊ #x ⌋)$
 #let interior(x) = $attach(limits(#x), t: circle)$
@@ -128,7 +130,7 @@
       y-max: 6,
       x-tick-step: none,
       y-tick-step: none,
-      ..args.named(),
+      ..args.named(), // can override defaults
       {
         plot.add(x => 0, domain: (0, 0))
         extra-plot
