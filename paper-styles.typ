@@ -17,7 +17,7 @@
 
 #let html-show-rules(doc) = {
   show heading: it => context {
-    if target() != "html" { return it }
+    if _is-html != true { return it }
     let level = calc.min(it.level, 4)
     let tag = ("h1", "h2", "h3", "h4").at(level - 1)
     let num-display = if it.numbering != none {
@@ -40,7 +40,7 @@
   }
 
   show math.equation.where(block: false): it => context {
-    if target() == "html" {
+    if _is-html == true {
       box(html.frame(it))
     } else {
       it
@@ -48,7 +48,7 @@
   }
 
   show math.equation.where(block: true): it => context {
-    if target() == "html" {
+    if _is-html == true {
       html.frame(it)
     } else {
       it
@@ -56,7 +56,7 @@
   }
 
   show grid: it => context {
-    if target() == "html" {
+    if _is-html == true {
       html.frame(block(width: 42em, it))
     } else {
       it
@@ -64,7 +64,7 @@
   }
 
   show place: it => context {
-    if target() == "html" {
+    if _is-html == true {
       html.frame(block(it))
     } else {
       it
@@ -75,7 +75,7 @@
 }
 
 #let chapter-section(id, body) = context {
-  if target() == "html" {
+  if _is-html == true {
     html.elem("section", attrs: (class: "chapter", id: id), body)
   } else {
     body
@@ -83,7 +83,7 @@
 }
 
 #let part-marker(id, title) = context {
-  if target() == "html" {
+  if _is-html == true {
     html.elem("section", attrs: (class: "part", id: id), {
       html.elem("h1", attrs: (class: "part-title"), title)
     })

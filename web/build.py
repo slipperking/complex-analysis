@@ -80,7 +80,7 @@ def compile_typst() -> Path:
         "--format", "html",
         "--input", f"lang={LANG}",
         "--input", "html=true",
-        str(ROOT / "main-html.typ"),
+        str(ROOT / "main.typ"),
         str(full_html),
     ]
     print(f"  Compiling HTML ({LANG}): {' '.join(cmd[-3:])}")
