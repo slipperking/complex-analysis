@@ -17,7 +17,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
 
 #definition("Spherical Derivative")[Let $Omega subset.eq CC$ be an open region or domain. Suppose $f:Omega -> hat(CC)$ is meromorphic. Then the _spherical derivative_ of $f$ is given by 
 $ f^\sharp(z)=f^*sigma(z)=(2 |f'(z)|)/(1+|f(z)|^2) $
- for $f(z)eq.not infinity$ and 
+ for $f(z)eq.in.notfinity$ and 
 $ f^\sharp(z)=\lim_{zeta -> z}f^\sharp(zeta) $
  otherwise.] <def:sphericalderivative>
 
@@ -40,7 +40,7 @@ $ d_sigma (psi \qty(z_1),psi \qty(z_2))<epsilon. $]
 
 #proof[A result analogous to @thm:uniformlimit can be used to show that $f$ is spherically continuous. Let $z in Omega$ be arbitrary.
     
-+ If $f(z)eq.not infinity$, then by spherical continuity, $exists delta>0$ such that $forall zeta in D(z,delta)$, 
++ If $f(z)eq.in.notfinity$, then by spherical continuity, $exists delta>0$ such that $forall zeta in D(z,delta)$, 
 $ d_sigma (f(zeta),f(z))<\frac12d_sigma (infinity, f(z)). $
  Similarly, $exists N in NN$ such that $forall n>N$, 
 $ d_sigma (f(zeta),f_n (zeta))<\frac12d_sigma (infinity, f(z)). $
@@ -86,7 +86,7 @@ $ d_sigma (f \qty(z_1),f \qty(z_2))=inf_gamma integral_Gamma dif s_{sigma}lt.eq 
 $ \cbraces{sup_{z in K}f^\sharp_n(z)}_{n in NN} $
  tends to $infinity$ (specifically, suppose that $forall n in NN$, $sup_{z in K}f_n^\sharp(z)>n$). By normality, we may extract a locally uniformly spherically convergent subsequence $\cbraces{f_{n_k}}_{k in NN}subset.eq \cbraces{f_n}_{n in NN}$. By @thm:uniformlimit under the spherical metric, the uniform spherical limit of $\cbraces{f_{n_k}}_{k in NN}$, $f$, is spherically continuous on $Omega$. For every point $z in Omega$, there are two possibilities:
     
-+ If $f(z)eq.not infinity$, then by continuity, $exists delta>0$ such that $forall zeta in D(z,delta)$, 
++ If $f(z)eq.in.notfinity$, then by continuity, $exists delta>0$ such that $forall zeta in D(z,delta)$, 
 $ d_sigma (f(zeta),f(z))<\frac12d_sigma (infinity, f(z)). $
  Similarly, $exists N in NN$ such that $forall k>N$, 
 $ d_sigma (f(zeta),f_{n_k}(zeta))<\frac12d_sigma (infinity, f(z)). $

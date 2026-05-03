@@ -5,7 +5,7 @@ While Schwarz Lemma in @lem:schwarz concerns self-maps of $bb(D)$ with a fixed p
 
 In 1938, Lars Ahlfors provided a further generalization by curvature, prompting the study of complex functions from a differential-geometric approach.
 
-The hyperbolic metric $lambda$ in @eq:poincaremetricdefinition does not increase under any holomorphic $f:bb(D)-> bb(D)$. It was realized that this was a consequence of the constant negative curvature $-1$ of $lambda$. The results we now provide are simplifications of those from~@ahlforsanextensionofschwarzlemma.
+The hyperbolic metric $lambda$ in @eq:poincaremetricdefinition does in.notcrease under any holomorphic $f:bb(D)-> bb(D)$. It was realized that this was a consequence of the constant negative curvature $-1$ of $lambda$. The results we now provide are simplifications of those from~@ahlforsanextensionofschwarzlemma.
 
 #theorem("#smallcaps[Schwarz--Ahlfors--Pick]")[Let $f$ be holomorphic on $bb(D)$. Suppose that $rho$ is a regular metric defined on an open neighborhood $U supset.eq f(bb(D))$, where $dif s^2_rho=rho^2(w)|dif w|^2$ and $K_rho(w)lt.eq -1$ for all $w in U$. Then 
 $ f^*rho(z)lt.eq lambda(z) forall z in bb(D), $

@@ -94,7 +94,7 @@ It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bije
 
 As a direct consequence of @thm:holomorphicautomorphismgrouponunitdisk, we have the following result:
 
-#lemma("Schwarz" + dash.en + "Pick")[
+#lemma("Schwarz" + sym.dash.en + "Pick")[
   Let $f:DD -> DD$ be holomorphic. For all $z_1, z_2 in DD$, let $w_1 = f(z_1)$ and $w_2 = f(z_2)$. Then,
 
   $
@@ -146,5 +146,5 @@ As a direct consequence of @thm:holomorphicautomorphismgrouponunitdisk, we have 
 #remark[
   In @ sec:differentialgeometry, we will introduce the _hyperbolic metric_ on $DD$, defined as
   $ dif s^2 = (4 abs(dz)^2) / ((1 - abs(z)^2)^2). $
-  From @eq:schwarzpick_nonincreasingmetric, we get that the hyperbolic metric does not increase under a holomorphic mapping of $DD$ to itself. This metric is invariant (the equality condition) under all functions in $Aut(DD)$. This gives a geometric explanation for @lem:schwarz.
+  From @eq:schwarzpick_nonincreasingmetric, we get that the hyperbolic metric does in.notcrease under a holomorphic mapping of $DD$ to itself. This metric is invariant (the equality condition) under all functions in $Aut(DD)$. This gives a geometric explanation for @lem:schwarz.
 ]

@@ -4,7 +4,7 @@
 
 The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can be generalized into a result that directly relates complex integration and differentiation.
 
-#theorem("Cauchy" + dash.en + "Goursat")[
+#theorem("Cauchy" + sym.dash.en + "Goursat")[
   Let $U subset CC$ be an open region bounded by a simple closed boundary $partial U$, and let $f:U -> CC$ be holomorphic and continuous on $overline(U)$. Then for every $z in U$ and every $n in NN$,
   $ f^(n)(z) = (n!) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z)^(n + 1)) dzeta. $ <eq:cauchydifferentiationformula_statement>
 

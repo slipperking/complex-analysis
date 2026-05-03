@@ -137,7 +137,7 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   which proves the result.
 ]
 
-Thus, one defines the _winding index_ to quantify how many times a closed curve winds counterclockwise around a given point in the complex plane. Formally, if $gamma = gamma([0, 1])$ is a counterclockwise-oriented closed curve and $z$ is a point satisfying $z not in gamma$, then
+Thus, one defines the _winding index_ to quantify how many times a closed curve winds counterclockwise around a given point in the complex plane. Formally, if $gamma = gamma([0, 1])$ is a counterclockwise-oriented closed curve and $z$ is a point satisfying $z in.not gamma$, then
 $ upright("Ind")_Gamma (z) = (1) / (taui) integral.cont_gamma dzeta / (zeta - z) = (1) / (taui) integral_0^1 (gamma'(t) dt) / (gamma(t) - z). $
 
 #theorem[
@@ -158,7 +158,7 @@ $ upright("Ind")_Gamma (z) = (1) / (taui) integral.cont_gamma dzeta / (zeta - z)
 
   By the definition of uniform convergence, the right-hand side approaches $0$, and ${f'_n (z)}$ is then uniformly convergent to $f'(z)$ by the same reasoning.
 
-  Through the proof of @thm:identityaccumulationofzeros, if $f not equiv 0$ over $U$, then the zeros of $f$ do not have an accumulation point in $U$ and are therefore discrete. In this case, let $gamma subset U$ be a curve that does not pass through the zeros of $f$. Since each function in the sequence $f_n$ does not contain zeros in $U$, by the Argument Principle (@thm:argumentprincipleholomorphic),
+  Through the proof of @thm:identityaccumulationofzeros, if $f equiv.not 0$ over $U$, then the zeros of $f$ do not have an accumulation point in $U$ and are therefore discrete. In this case, let $gamma subset U$ be a curve that does not pass through the zeros of $f$. Since each function in the sequence $f_n$ does not contain zeros in $U$, by the Argument Principle (@thm:argumentprincipleholomorphic),
 
   $ lim_(n -> infinity) integral.cont_Gamma (f'_n (z)) / (f_n (z)) dz = 0. $ <eq:hurwitzsimplecase_argumentprinciple>
 

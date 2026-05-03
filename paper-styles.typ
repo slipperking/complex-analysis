@@ -24,7 +24,7 @@
     let tag = ("h1", "h2", "h3", "h4").at(level - 1)
     let num-display = if it.numbering != none {
       if level == 1 {
-        [Chapter ] + counter(heading).display() + [ — ]
+        [Chapter ] + counter(heading).display() + [: ]
       } else if level <= 3 {
         counter(heading).display() + [ ]
       }

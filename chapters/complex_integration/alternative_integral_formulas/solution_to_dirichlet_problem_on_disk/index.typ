@@ -55,57 +55,53 @@ A fundamental problem in the theory of partial differential equations is to find
   $ abs(I_1) < epsilon integral_(abs(theta.alt - tau) < delta) P(zeta, z) dif tau < epsilon. $
 
   #figure(
-    canvas({
-      import draw: *
+    cetz.canvas({
+      import cetz.draw: *
 
-      let O = (0, 0)
-      let Rr = 4.4
-      let xi = (Rr * calc.cos(80deg), Rr * calc.sin(80deg))
-      let zeta = (Rr * calc.cos(10deg), Rr * calc.sin(10deg))
-      let z = (2.0, 3.5)
-      let aux = vector.scale(zeta, 0.95)
+      let var-zeta = (4.924, 0.868)
+      let var-z = (2.2, 4.2)
+      let var-xi = (0.868, 4.924)
+      let auxiliary1 = (4.667952, 0.822864)
 
-      circle(O, radius: Rr, stroke: 0.8pt)
-      line((-0.5, 0), (5.3, 0), stroke: 0.8pt, mark: (end: ">"))
-      line((0, -0.5), (0, 5.3), stroke: 0.8pt, mark: (end: ">"))
+      line((-0.5, 0), (5.5, 0), mark: (end: "stealth"), stroke: .8pt)
+      line((0, -0.5), (0, 5.5), mark: (end: "stealth"), stroke: .8pt)
 
-      line(O, zeta, stroke: 0.8pt)
-      line(O, xi, stroke: 0.8pt)
-      line(O, z, stroke: 0.8pt)
-      line(z, xi, stroke: 0.8pt)
-      line(z, aux, stroke: 0.8pt)
-      line(z, zeta, stroke: (thickness: 0.7pt, dash: "dashed"))
+      arc-center((0, 0), start: 0deg, stop: 90deg, radius: 5, stroke: .5pt)
 
-      content(zeta, [$zeta$], anchor: "west", padding: 0.1cm)
-      content(z, [$z$], anchor: "south", padding: 0.1cm)
-      content(xi, [$xi$], anchor: "south", padding: 0.1cm)
-      content(vector.scale(xi, 0.5), [$R$], anchor: "west", padding: 0.05cm)
-      content(vector.scale(z, 0.5), [$rho$], anchor: "west", padding: 0.05cm)
-      content(vector.scale(zeta, 0.47), [$tau$], anchor: "south", padding: 0.05cm)
-      content(vector.scale(xi, 0.2), [$theta.alt$], anchor: "south", padding: 0.05cm)
-      content(vector.scale(vector.add(z, xi), 0.5), [$eta^-$], anchor: "south", padding: 0.05cm)
-      content(vector.scale(vector.add(z, zeta), 0.5), [$abs(zeta - z)^-$], anchor: "east", padding: 0.05cm)
+      line((0, 0), var-zeta, stroke: .5pt)
+      line((0, 0), var-xi, stroke: .5pt)
+      line((0, 0), var-z, stroke: .5pt)
+      line(var-z, var-xi, stroke: .5pt)
+      line(var-z, auxiliary1, stroke: .5pt)
+      line(var-z, var-zeta, stroke: (paint: black, thickness: .5pt, dash: "dashed"))
+
+      arc-center((0, 0), start: 10deg, stop: 62.35deg, radius: 0.4, stroke: .5pt)
+      arc-center((0, 0), start: 10deg, stop: 80deg, radius: 1.5, stroke: .5pt)
+      arc-center((0, 0), start: 0deg, stop: 10deg, radius: 2, stroke: .5pt)
+      arc-center((0, 0), start: 0deg, stop: 80deg, radius: 1, stroke: .5pt)
+
+      arc(var-z, start: -27.65deg, stop: -100deg, radius: 1.516, stroke: (paint: black, thickness: .5pt, dash: "dashed"))
+      arc(var-z, start: 62.35deg, stop: 80deg, radius: 4.741, stroke: (paint: black, thickness: .5pt, dash: "dotted"))
+
+      content((5.03, 0.87), anchor: "west", [$zeta$])
+      content((2.2, 4.08), anchor: "north", [$z$])
+      content((0.87, 5.02), anchor: "south", [$xi$])
+
+      content((2.462, 0.434), anchor: "south", [$rho$])
+      content((1.534, 4.562), anchor: "north", [#text(8pt, $eta^-$)])
+      content((0.434, 2.462), anchor: "west", [$R$])
+      content((1.1, 2.1), anchor: "west", [$rho$])
+
+      content((0.57, 0.75), anchor: "north", [#text(8pt, $frac(delta, 2)^+$)])
+      content((0.95, 0.95), anchor: "north", [#text(8pt, $theta.alt$)])
+      content((1.25, 1.55), anchor: "north", [#text(8pt, $delta^+$)])
+      content((2.2, 0.4), anchor: "north", [$tau$])
+
+      content((3.35, 2.48), anchor: "east", [#text(8pt, $|zeta - z|^-$)])
     }),
     caption: [$zeta$, $xi$, and $z$ when $abs(theta.alt - tau) > delta$, with distances marked. The use of $+$ and $-$ denote a value more or less (respectively) than the preceding value.],
   ) <fig:dirichletproblemwithlaplaceequationsolution_secondintegral>
 
-  // Raw TikZ placeholder preserved for later manual conversion if desired:
-  // \begin{tikzpicture}
-  //     \coordinate (zeta) at (4.924, 0.868);
-  //     \coordinate (z) at (2.2, 4.2);
-  //     \coordinate (xi) at (0.868, 4.924);
-  //     \coordinate (auxiliary1) at ($(0,0)!0.948!(zeta)$);
-  //
-  //     \draw[-{Stealth}, thick] (-0.5, 0) -- (5.5, 0);
-  //     \draw[-{Stealth}, thick] (0, -0.5) -- (0, 5.5);
-  //     \draw[thin] (5,0) arc[start angle=0, end angle=90, radius=5];
-  //     \draw[thin] (0, 0) -- (zeta);
-  //     \draw[thin] (0, 0) -- (xi);
-  //     \draw[thin] (0, 0) -- (z);
-  //     \draw[thin] (z) -- (xi);
-  //     \draw[thin] (z) -- (auxiliary1);
-  //     \draw[dashed, thin] (z) -- (zeta);
-  // \end{tikzpicture}
 
   By continuity of $phi$ on the compact set $partial D(0, R)$, by @thm:heinecantor, it is bounded and $M = sup_(abs(zeta) = R) abs(phi(zeta))$ is finite. The Poisson kernel can be rewritten as
   $ P(zeta, z) = (R^2 - rho^2) / (2 uppi abs(zeta - z)^2), $

@@ -67,7 +67,7 @@ Let $D(a, r) = B^1(a, r) = {z in CC | abs(z - a) < r}$ denote the _open disk_ ce
 
 The disk $abs(z) < R$ is known as the _disk of convergence_, a direct generalization of the _interval of convergence_ for real series. There are many ways to determine the radius of convergence:
 
-#theorem("Cauchy" + dash.en + "Hadamard")[
+#theorem("Cauchy" + sym.dash.en + "Hadamard")[
   The radius of convergence of the power series in the form $sum_(n = 0)^infinity a_n z^n$ can be determined by
   $ R = 1 / op("lim sup")_(n -> infinity) root(n, abs(a_n)). $ <eq:cauchyhadamard>
 ] <thm:cauchyhadamard>

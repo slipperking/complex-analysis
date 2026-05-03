@@ -1,12 +1,14 @@
-#import sym: *
 #import "@preview/ctheorems:1.1.3": *
 #import "@preview/diverential:0.3.0": *
-#import "@preview/cetz:0.5.0": *
+#import "@preview/cetz:0.5.0"
 #import "@preview/cetz-plot:0.1.3": *
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": vb as _vb
 #import "@preview/headcount:0.1.0": *
 #import "@preview/equate:0.3.2": equate
+
+#let cvector = cetz.vector
+#let cmatrix = cetz.matrix
 
 #let _is-html = sys.inputs.at("html", default: "false") == "true"
 
@@ -64,7 +66,7 @@
     html.elem("div", attrs: (class: "thm-proof"), {
       html.elem("p", attrs: (class: "proof-head"), html.elem("em", [#head.]))
       body
-      html.elem("p", attrs: (class: "qed"), [□])
+      html.elem("p", attrs: (class: "qed"), [$square$])
     })
   }
 }
@@ -164,17 +166,17 @@
 #let abs(x) = $lr(| #x |)$
 #let ceil(x) = $lr(⌈ #x ⌉)$
 #let floor(x) = $lr(⌊ #x ⌋)$
-#let interior(x) = $attach(limits(#x), t: circle)$
+#let interior(x) = $attach(limits(#x), t: circle.small)$
 
 #let doubletilde(x) = $tilde(tilde(#x))$
 
 #let halflength-arrow(start, end, scalar: 0, ..args) = {
-  let diff = vector.scale(vector.norm(vector.sub(start, end)), scalar)
-  let offset = matrix.mul-vec(((0, 1), (-1, 0)), diff)
+  let diff = cvector.scale(cvector.norm(cvector.sub(start, end)), scalar)
+  let offset = cmatrix.mul-vec(((0, 1), (-1, 0)), diff)
 
-  let pstart = vector.add(start, offset)
-  let pend = vector.add(end, offset)
-  draw.line(
+  let pstart = cvector.add(start, offset)
+  let pend = cvector.add(end, offset)
+  cetz.draw.line(
     (pstart, 25%, pend),
     (pstart, 75%, pend),
     ..args,
@@ -183,22 +185,22 @@
 }
 
 #let add-vectors(..vectors) = {
-  vectors.pos().fold((0, 0, 0), vector.add)
+  vectors.pos().fold((0, 0, 0), cvector.add)
 }
 
 #let directional_points(offset: (0, 0), angle: 0, length: 1e-6, n: 10) = {
-  let vec = matrix.mul4x4-vec3(matrix.transform-rotate-z(angle), (length, 0, 0)).slice(0, 2)
+  let vec = cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(angle), (length, 0, 0)).slice(0, 2)
   let out = ()
 
   for i in range(n + 1) {
-    out.push(vector.add(vector.scale(vec, i / n), offset))
+    out.push(cvector.add(cvector.scale(vec, i / n), offset))
   }
   out
 }
 
 #let quick-plot(body, extra-plot: none, canvas-args: none, ..args) = {
-  canvas(..canvas-args, {
-    import draw: *
+  cetz.canvas(..canvas-args, {
+    import cetz.draw: *
     plot.plot(
       size: (6, 6),
       axis-style: "school-book",
@@ -239,4 +241,42 @@
       body,
     )
   }
+}
+
+#let dot-tiling(pattern_dist: 2pt, radius: 0.4pt) = tiling(
+  size: (pattern_dist, pattern_dist),
+  relative: "parent",
+  place(
+    circle(
+      radius: radius,
+      fill: black,
+    ),
+  ),
+)
+
+#let arc-center(
+  center,
+  ..args,
+) = {
+  let start = args.at("start", default: auto)
+  let start-angle = if start == auto {
+    let stop = args.at("stop", default: auto)
+    let delta = args.at("delta", default: auto)
+    if stop != auto and delta != auto { stop - delta } else { 0deg }
+  } else { start }
+
+  let radius = args.at("radius", default: 1)
+  let (rx, ry) = if type(radius) == array { radius } else { (radius, radius) }
+  let (cx, cy, cz) = if center.len() == 2 {
+    center.push(0)
+    center
+  } else { center }
+
+  let start-pos = (
+    cx + rx * calc.cos(start-angle),
+    cy + ry * calc.sin(start-angle),
+    cz,
+  )
+
+  cetz.draw.arc(start-pos, ..args)
 }

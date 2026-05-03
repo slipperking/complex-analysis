@@ -244,7 +244,7 @@ $
   Then $forall delta > 0$, $exists n > 1$ where $abs(x - y) < delta$, since $lim_(n -> oo) abs(x - y) = 0$. Additionally, $abs(f(x) - f(y)) = 1 >= epsilon$. This satisfies the negation, and thus, $f(x) = 1 / x$ is not uniformly continuous over $(0, 1)$.
 ]
 
-#theorem("Heine" + dash.en + "Cantor")[
+#theorem("Heine" + sym.dash.en + "Cantor")[
   A continuous function on a compact set $K$ is uniformly continuous on $K$.
 ] <thm:heinecantor>
 

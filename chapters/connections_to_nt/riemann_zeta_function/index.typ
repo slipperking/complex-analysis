@@ -268,7 +268,7 @@ $ xi(s)=\frac12s(s-1)pi^{-\frac s2}Gamma (\frac s2)zeta(s). $
 
     Then the functional equation can simply be rewritten as $xi(1-s)=xi(s)$.]
 
-#proposition[The only zeros of the Riemann $zeta$-function not in the set defined by ${z in CC | 0 lt.eq Re z lt.eq 1}$ occur at the negative even integers $-2,-4,-6,dots$.] <prop:riemannzetafunction_trivialzeros>
+#proposition[The only zeros of the Riemann $zeta$-function in.not the set defined by ${z in CC | 0 lt.eq Re z lt.eq 1}$ occur at the negative even integers $-2,-4,-6,dots$.] <prop:riemannzetafunction_trivialzeros>
 
 #proof[By the Euler Product Formula (@thm:riemannzetafunction_infiniteproduct), $zeta$ has no zeros for $Re s>1$. Now by the functional equation
     (@thm:riemannzetafunction_functionalequation), we have that
@@ -307,7 +307,7 @@ $
 
     where the interchange of the order of summation is justified by the absolute convergence of the series for $Re s>1$.]
 
-#proposition[If $Phi$ is holomorphic on a neighborhood of a point $a in RR$ on which $Phi \not equiv 0$ such that $Phi(a)=0$, then 
+#proposition[If $Phi$ is holomorphic on a neighborhood of a point $a in RR$ on which $Phi equiv.not 0$ such that $Phi(a)=0$, then 
 $ Re \qty((Phi'(s))/(Phi(s)))>0 $
  for $s in RR_{>a}$ near $a$.] <prop:positivelogarithmicderivativerealpart>
 
