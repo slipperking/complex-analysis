@@ -23,5 +23,5 @@
   `Source: https://github.com/slipperking/complex-analysis-latex`
 ]
 #outline()
-#include "sections/index.typ"
+#include "chapters/index.typ"
 #bibliography("references.bib", full: true)
