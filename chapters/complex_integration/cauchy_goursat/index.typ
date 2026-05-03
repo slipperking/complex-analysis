@@ -311,99 +311,104 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 ] <lem:cauchyintegraltheoremoversimplyconnectedset>
 
 
-#figure(grid(
-  columns: 2,
-  inset: 0.5em,
-  grid.cell([
-    #figure(
-      canvas({
-        import draw: *
-        let A = (0, 2)
-        let B = (2.3, 0)
-        let C = (4, 1)
-        let D = (5, 3.5)
-        let E = (2, 4)
+#place(
+  alignment.top,
+  scope: "parent",
+  float: true,
+  grid(
+    columns: 2,
+    inset: 0.5em,
+    grid.cell([
+      #figure(
+        canvas({
+          import draw: *
+          let A = (0, 2)
+          let B = (2.3, 0)
+          let C = (4, 1)
+          let D = (5, 3.5)
+          let E = (2, 4)
 
-        draw.line(A, B, C, D, E, stroke: 1pt, close: true)
-        draw.line(B, E, stroke: 1pt)
-        draw.line(C, E, stroke: 1pt)
+          draw.line(A, B, C, D, E, stroke: 1pt, close: true)
+          draw.line(B, E, stroke: 1pt)
+          draw.line(C, E, stroke: 1pt)
 
-        for pts in (
-          (B, E),
-          (E, B),
-          (E, A),
-          (B, C),
-          (A, B),
-          (C, E),
-          (E, C),
-          (D, E),
-          (C, D),
-        ) {
-          halflength-arrow(
-            ..pts,
-            scalar: 0.15,
-          )
-        }
+          for pts in (
+            (B, E),
+            (E, B),
+            (E, A),
+            (B, C),
+            (A, B),
+            (C, E),
+            (E, C),
+            (D, E),
+            (C, D),
+          ) {
+            halflength-arrow(
+              ..pts,
+              scalar: 0.15,
+            )
+          }
 
-        content(A, [$A$], anchor: "east", padding: .15cm)
-        content(B, [$B$], anchor: "north", padding: .15cm)
-        content(C, [$C$], anchor: "west", padding: .15cm)
-        content(D, [$D$], anchor: "south", padding: .15cm)
-        content(E, [$E$], anchor: "south", padding: .15cm)
-      }),
-      caption: [Closed triangulated polygonal chain],
-    ) <fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation>
-  ]),
+          content(A, [$A$], anchor: "east", padding: .15cm)
+          content(B, [$B$], anchor: "north", padding: .15cm)
+          content(C, [$C$], anchor: "west", padding: .15cm)
+          content(D, [$D$], anchor: "south", padding: .15cm)
+          content(E, [$E$], anchor: "south", padding: .15cm)
+        }),
+        caption: [Closed triangulated polygonal chain],
+      ) <fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation>
+    ]),
 
-  grid.cell([
-    #figure(
-      canvas({
-        let A = (0, 0)
-        let E = (2.7, 0)
-        let F = (1.8, 2)
-        let C = vector.add(E, vector.sub(E, A))
-        let D = vector.add(F, vector.sub(E, A))
-        let B = vector.add(F, vector.sub(F, A))
+    grid.cell([
+      #figure(
+        canvas({
+          let A = (0, 0)
+          let E = (2.7, 0)
+          let F = (1.8, 2)
+          let C = vector.add(E, vector.sub(E, A))
+          let D = vector.add(F, vector.sub(E, A))
+          let B = vector.add(F, vector.sub(F, A))
 
-        draw.line(A, F, E, stroke: 1pt, close: true)
-        draw.line(B, D, F, stroke: 1pt, close: true)
-        draw.line(C, D, E, stroke: 1pt, close: true)
+          draw.line(A, F, E, stroke: 1pt, close: true)
+          draw.line(B, D, F, stroke: 1pt, close: true)
+          draw.line(C, D, E, stroke: 1pt, close: true)
 
-        for (i, points) in ((A, F, E), (B, D, F), (C, D, E), (F, D, E)).enumerate(start: 1) {
-          let result = vector.scale(points.fold((0, 0), vector.add), 1 / (points.len()))
-          draw.content(result, [$Delta_#i$], anchor: "center")
-        }
+          for (i, points) in ((A, F, E), (B, D, F), (C, D, E), (F, D, E)).enumerate(start: 1) {
+            let result = vector.scale(points.fold((0, 0), vector.add), 1 / (points.len()))
+            draw.content(result, [$Delta_#i$], anchor: "center")
+          }
 
-        for pts in (
-          (F, A),
-          (B, F),
-          (D, E),
-          (E, D),
-          (E, F),
-          (D, B),
-          (C, D),
-          (F, E),
-          (A, E),
-          (E, C),
-          (F, D),
-          (D, F),
-        ) {
-          halflength-arrow(
-            ..pts,
-            scalar: 0.15,
-          )
-        }
+          for pts in (
+            (F, A),
+            (B, F),
+            (D, E),
+            (E, D),
+            (E, F),
+            (D, B),
+            (C, D),
+            (F, E),
+            (A, E),
+            (E, C),
+            (F, D),
+            (D, F),
+          ) {
+            halflength-arrow(
+              ..pts,
+              scalar: 0.15,
+            )
+          }
 
-        let AE = (A, .5, E)
-        let AF = (A, .5, F)
-        let FD = (F, .5, D)
-        let BF = (B, .5, F)
-        let EC = (E, .5, C)
-      }),
-      caption: [Quadrisection of $jinterior Delta$],
-    )<fig:cauchy_integral_theorem_over_simply_connected_set_triangle_quadrisection>
-  ]),
-))
+          let AE = (A, .5, E)
+          let AF = (A, .5, F)
+          let FD = (F, .5, D)
+          let BF = (B, .5, F)
+          let EC = (E, .5, C)
+        }),
+        caption: [Quadrisection of $jinterior Delta$],
+      )<fig:cauchy_integral_theorem_over_simply_connected_set_triangle_quadrisection>
+    ]),
+  ),
+)
 #proof[
   By @lem:integralpiecewisesmoothtopolygonalchain, $forall epsilon > 0$, there is a polygonal chain $P$ where
 
