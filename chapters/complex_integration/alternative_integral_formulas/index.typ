@@ -81,8 +81,8 @@ and from the bijectivity of $R ee^(ii psi) = tilde(phi)_z (R ee^(ii t))$,
 $
   dif psi & = (1 - (abs(z)^2)/(R^2)) / (1 - (overline(z))/(R) ee^(ii t))^2 ee^(ii t) ee^(-ii psi) dt \
   & = (1 - (abs(z)^2)/(R^2)) / (1 - (overline(z))/(R) ee^(ii t))^2 (1 - (overline(z))/(R) ee^(ii t)) / (1 - (z)/(R) ee^(-ii t)) dt \
-  & = (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 dt.
-$ <eq:poissonintegralformula2_differentialcomputation>
+  & = (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 dt. #<eq:poissonintegralformula2_differentialcomputation>
+$
 
 Then because $tilde(phi)_z^(-1) = tilde(phi)_(-z)$,
 
@@ -103,8 +103,8 @@ The Poisson kernel can also be rewritten as
 $
   P(zeta, z) & = (abs(zeta)^2 - abs(z)^2) / (2 uppi (zeta - z) (overline(zeta) - overline(z))) \
   & = (1) / (4 uppi) ((zeta + z) / (zeta - z) + (overline(zeta) + overline(z)) / (overline(zeta) - overline(z))) \
-  & = (1) / (2 uppi) Re((zeta + z) / (zeta - z)).
-$ <eq:poissonkernelgeneralform>
+  & = (1) / (2 uppi) Re((zeta + z) / (zeta - z)). #<eq:poissonkernelgeneralform>
+$
 
 Thus, @eq:poissonintegralformula2 is equivalent to
 
@@ -127,7 +127,9 @@ $ f(z) = (1) / (2 uppi ii) oint_(partial D(0, R)) (u(zeta)) / zeta (zeta + z) / 
 
 where $c in RR$. Since $c in RR$ is holomorphic, by @prop:realvaluedholomorphicfunctionconstant, $c$ is constant. For $f(z) = u(z) + ii v(z)$,
 
-$ v(z) = c + (1) / (2 uppi) integral_0^(2 uppi) u(zeta) Im((zeta + z) / (zeta - z)) dt. $ <eq:schwarzintegralformulaimaginarypart>
+$
+  v(z) = c + (1) / (2 uppi) integral_0^(2 uppi) u(zeta) Im((zeta + z) / (zeta - z)) dt.
+$ <eq:schwarzintegralformulaimaginarypart>
 
 Letting $z = 0$, the integral vanishes, and we obtain $c = v(0) = Im(f(0))$.
 
@@ -145,8 +147,8 @@ From @eq:schwarzintegralformulaimaginarypart, we can rewrite
 
 $
   Im((zeta + z) / (zeta - z)) & = Im(1 + (2 z) / (zeta - z)) \
-  & = Im((2 z (overline(zeta) - overline(z))) / abs(zeta - z)^2) \
-  & = (2 Im(z overline(zeta))) / abs(zeta - z)^2.
+                              & = Im((2 z (overline(zeta) - overline(z))) / abs(zeta - z)^2) \
+                              & = (2 Im(z overline(zeta))) / abs(zeta - z)^2.
 $ <eq:harmonicconjugate>
 
 Let
@@ -161,5 +163,5 @@ where $zeta = R ee^(ii t)$. Two harmonic functions are said to be _conjugate_ if
 
 The Poisson kernel is important in many branches of mathematics. We will introduce two of the important uses below.
 
-//#include "solution_to_dirichlet_problem_on_disk/index.typ"
+#include "solution_to_dirichlet_problem_on_disk/index.typ"
 //#include "in_harmonic_analysis/index.typ"

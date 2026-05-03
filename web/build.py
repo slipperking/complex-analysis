@@ -52,7 +52,7 @@ PARTS = [
 
 THESIS_TITLE = "Notes on Complex Analysis"
 
-GITHUB_URL = "https://github.com/slipperking/complex-analysis-latex"
+GITHUB_URL = "https://github.com/slipperking/complex-analysis"
 BASE_URL = "/"  # Overridden by --base-url CLI arg
 
 # ---------------------------------------------------------------------------

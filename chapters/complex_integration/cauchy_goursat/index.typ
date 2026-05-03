@@ -297,7 +297,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   $
   where $length(Gamma)$ is the length of $Gamma$ and $length(P)$ is the length of $P$. Then,
   $
-    abs(integral_Gamma f(z) dz - integral_P f(z) dz) <= abs(integral_Gamma f(z) dz - S) + abs(integral_P f(z) dz - S) <= 2 epsilon dot length(Gamma). qedhere
+    abs(integral_Gamma f(z) dz - integral_P f(z) dz) &<= abs(integral_Gamma f(z) dz - S) + abs(integral_P f(z) dz - S) \ &<= 2 epsilon dot length(Gamma). #qedhere
   $
 ]
 
