@@ -1,16 +1,6 @@
 #import "/lib.typ": *
-
-#set par(justify: true)
-#set heading(numbering: "1.1")
-
-#show: equate.with(number-mode: "label")
-#set math.equation(supplement: none, numbering: dependent-numbering("(1.1)", levels: 2))
-#show heading: reset-counter(counter(math.equation), levels: 2)
-#show: thmrules.with(qed-symbol: $square$)
-#set figure(placement: alignment.top)
-#show figure.caption: it => context [
-  *#it.supplement~#it.counter.display()#it.separator*#it.body
-]
+#import "paper-styles.typ": paper-styles
+#show: paper-styles
 
 #align(center)[
   #v(2cm)

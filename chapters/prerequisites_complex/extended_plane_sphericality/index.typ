@@ -40,7 +40,5 @@ It is worth noting that in several geometric contexts, an alternative paradigm e
 $
   x_1 = Re(z) / (abs(z)^2 + 1), quad x_2 = Im(z) / (abs(z)^2 + 1), quad x_3 = abs(z)^2 / (abs(z)^2 + 1).
 $
-The forward projection remains unchanged.
-
-Lastly, we define the upper half-plane; for the following sections, let
+The forward projection remains unchanged. Lastly, we define the upper half-plane; for the following sections, let
 $ HH^+ = {z in CC | Im(z) > 0} $

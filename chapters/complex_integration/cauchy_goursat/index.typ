@@ -3,7 +3,7 @@
 == The Cauchy--Goursat Theorem
 It is important to know the differential 2-forms even for a single variable complex function. Consider $z=x+ii y$ and $overline(z)=x-ii y$. We can then define their corresponding differentials:
 
-$ dz = dx + ii dy, dif overline(z) = dx - ii dy. $
+$ dz = dx + ii dy, quad dif overline(z) = dx - ii dy. $
 
 The antisymmetric properties of differential forms still hold in complex space. By taking the wedge product of the two basis complex differential forms, we get
 
@@ -180,7 +180,7 @@ The theorem above is only a specific case of the Stokes-Cartan Theorem (@thm:sto
 
   Then the proof is complete given that $f$ vanishes on $partial D(0,R)$ and by letting $R -> infinity$.]
 
-In complex analysis, when integrating over a region that contains a singularity, it is common to exclude a small disk of radius $epsilon$ around the singularity, perform the integration over the punctured region, and then take the limit as $epsilon ->0$. As in the proof above, the steps calculating the integral over the removed disk as in @eq:pompeiu_areadiskstatement are still necessary in confirmation, although they are typically tacitly elided.
+In complex analysis, when integrating over a region that contains a singularity, it is common to exclude a small disk of radius $epsilon$ around the singularity, perform the integration over the punctured region, and then take the limit as $epsilon ->0$. As in the proof above, the displayed estimate for the integral over the removed disk is still necessary in confirmation, although it is typically tacitly elided.
 
 From the above result, we can directly obtain the following theorem:
 
@@ -423,7 +423,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   Thus, if the integral over every triangle in $U$ vanishes, then @eq:cauchyintegraltheoremoversimplyconnectedset_statement follows. Consider a triangle in $U$ with boundary $Delta$. Then define $M$ to be
   $ M = abs(integral.cont_(Delta) f(z) dz). $
 
-  We can quadriinter the triangle bounded by $Delta$ into four triangles with boundaries $Delta_1,Delta_2,Delta_3,Delta_4$ as in @fig:cauchy_integral_theorem_over_simply_connected_set_triangle_quadrisection. Then one of $Delta_1$, $Delta_2$, $Delta_3$, or $Delta_4$ (denote this to be $Delta^1$) satisfy
+  We can quadrisect the triangle bounded by $Delta$ into four triangles with boundaries $Delta_1,Delta_2,Delta_3,Delta_4$ as in @fig:cauchy_integral_theorem_over_simply_connected_set_triangle_quadrisection. Then one of $Delta_1$, $Delta_2$, $Delta_3$, or $Delta_4$ (denote this to be $Delta^1$) satisfy
 
   $ abs(integral.cont_(Delta^1) f(z) dz) >= M / 4, $
 

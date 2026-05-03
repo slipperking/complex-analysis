@@ -27,7 +27,7 @@ $
   pdv(v, y) - ii pdv(u, y).
 $
 By comparing the real and imaginary parts, we obtain necessary conditions for complex differentiability:
-$ pdv(u, x) = pdv(v, y) quad and quad pdv(v, x) = -pdv(u, y) $ <eq:cauchyriemanneqs1>
+$ pdv(u, x) = pdv(v, y) quad "and" quad pdv(v, x) = -pdv(u, y) $ <eq:cauchyriemanneqs1>
 By multiplying the second equation by $ii$ and adding it to the first, we obtain the equivalent form
 $ pdv(f, x) = -ii pdv(f, y). $ <eq:cauchyriemanneqs2>
 The identities @eq:cauchyriemanneqs1 and @eq:cauchyriemanneqs2 are known as the _Cauchy--Riemann equations_.
