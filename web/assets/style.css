@@ -503,6 +503,7 @@ sup {
 
 /* PDF download button */
 .pdf-download {
+  text-align: center;
   margin-top: 1.5rem;
 }
 

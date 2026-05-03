@@ -23,63 +23,27 @@
     outline()
   } else {
     chapter-section("cover")[
-      #include "/chapters/cover.typ"
+      #html.elem("header", attrs: (class: "paper-header"))[
+        #html.elem("h1", attrs: (class: "paper-title"))[
+          Notes on Complex Analysis
+        ]
+        #html.elem("p", attrs: (class: "author"))[by #smallcaps[Slipper King]]
+        #html.elem("p", attrs: (class: "date"))[Original LaTeX Version - May 15, 2025]
+        #html.elem("p", attrs: (class: "paper-misc"))[
+          Original LaTeX Source: https://github.com/slipperking/complex-analysis-latex
+        ]
+        #html.elem("p", attrs: (class: "paper-misc"))[
+          Typst Source: https://github.com/slipperking/complex-analysis
+        ]
+        #html.elem("p", attrs: (class: "pdf-download"))[
+          #html.elem("a", attrs: (href: "../pdf/notes.pdf", class: "btn-pdf"))[
+            Download PDF
+          ]
+        ]
+      ]
+      //#outline()
     ]
   }
 }
 
-#chapter-section("prerequisites")[
-  #include "/chapters/prerequisites_calc_top/index.typ"
-]
-
-#chapter-section("complex-prerequisites")[
-  #include "/chapters/prerequisites_complex/index.typ"
-]
-
-#chapter-section("complex-integration")[
-  #include "/chapters/complex_integration/index.typ"
-]
-
-// #chapter-section("weierstrass-theory")[
-//   #include "/chapters/weierstrass_theory/index.typ"
-// ]
-
-// #chapter-section("riemann-theory")[
-//   #include "/chapters/riemann_theory/index.typ"
-// ]
-
-// #chapter-section("rational-approximation")[
-//   #include "/chapters/rational_approximation_theory/index.typ"
-// ]
-
-// #chapter-section("harmonic-functions")[
-//   #include "/chapters/harmonic_functions/index.typ"
-// ]
-
-// #chapter-section("differential-geometry")[
-//   #include "/chapters/differential_geometry/index.typ"
-// ]
-
-// #chapter-section("multivariable")[
-//   #include "/chapters/multivariable/index.typ"
-// ]
-
-// #chapter-section("special-classes")[
-//   #include "/chapters/special_classes_holomorphic/index.typ"
-// ]
-
-// #chapter-section("connections-nt")[
-//   #include "/chapters/connections_to_nt/index.typ"
-// ]
-
-// #chapter-section("riemann-surfaces")[
-//   #include "/chapters/riemann_surfaces/index.typ"
-// ]
-
-// #chapter-section("nevanlinna-theory")[
-//   #include "/chapters/nevanlinna_theory/index.typ"
-// ]
-
-#chapter-section("bibliography")[
-  #bibliography("/references.bib", full: true)
-]
+#include "chapters/index.typ"

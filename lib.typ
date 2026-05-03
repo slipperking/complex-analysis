@@ -147,8 +147,8 @@
 #let Arg = math.op("Arg")
 #let Aut = math.op("Aut")
 #let Res = math.op("Res", limits: true)
-#let Re = math.op($frak(R) e$)
-#let Im = math.op($frak(I) m$)
+#let Re = math.op($frak(Re)$)
+#let Im = math.op($frak(Im)$)
 #let oint = $integral.cont$
 
 #let extcomplex = $hat(CC)$
@@ -235,7 +235,6 @@
   } else {
     place(
       alignment.top,
-      scope: "parent",
       float: true,
       body,
     )

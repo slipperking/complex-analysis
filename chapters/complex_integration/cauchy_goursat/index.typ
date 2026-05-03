@@ -301,6 +301,14 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   $
 ]
 
+#lemma(
+  "Goursat",
+)[Given a holomorphic function $f(z)$ on a simply connected region $U subset.eq CC$, for any piecewise $C^1$ closed curve $Gamma subset U$,
+
+  $
+    integral_Gamma f(zeta)dzeta=0.
+  $ <eq:cauchyintegraltheoremoversimplyconnectedset_statement>
+] <lem:cauchyintegraltheoremoversimplyconnectedset>
 #figure-wrapper(
   [
     #figure(
@@ -379,14 +387,6 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
     )<fig:cauchy_integral_theorem_over_simply_connected_set_triangle_quadrisection>
   ],
 )
-#lemma(
-  "Goursat",
-)[Given a holomorphic function $f(z)$ on a simply connected region $U subset.eq CC$, for any piecewise $C^1$ closed curve $Gamma subset U$,
-
-  $
-    integral_Gamma f(zeta)dzeta=0.
-  $ <eq:cauchyintegraltheoremoversimplyconnectedset_statement>
-] <lem:cauchyintegraltheoremoversimplyconnectedset>
 #proof[
   By @lem:integralpiecewisesmoothtopolygonalchain, $forall epsilon > 0$, there is a polygonal chain $P$ where
 
