@@ -63,9 +63,9 @@
     }
   }
 
-  show figure.where(kind: "algorithm"): it => context {
+  show place: it => context {
     if target() == "html" {
-      html.frame(block(width: 38em, it))
+      html.frame(block(it))
     } else {
       it
     }

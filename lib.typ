@@ -12,9 +12,6 @@
 
 #let reset-chapter-counters(include-theorems: false) = {
   counter(footnote).update(0)
-  counter(figure.where(kind: image)).update(0)
-  counter(figure.where(kind: table)).update(0)
-  counter(figure.where(kind: "algorithm")).update(0)
   counter(math.equation).update(0)
   if include-theorems {
     for id in (
@@ -221,4 +218,21 @@
       },
     )
   })
+}
+
+// this must be used around any normal figure to show in html
+#let figure-wrapper(..items, columns: auto, inset: 0em) = {
+  let figures = items.pos()
+  let column-count = if columns == auto { figures.len() } else { columns }
+
+  place(
+    alignment.top,
+    scope: "parent",
+    float: true,
+    grid(
+      columns: column-count,
+      inset: inset,
+      ..figures.map(item => grid.cell([#item])),
+    ),
+  )
 }
