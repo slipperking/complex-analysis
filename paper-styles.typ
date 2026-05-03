@@ -63,14 +63,6 @@
     }
   }
 
-  show place: it => context {
-    if _is-html == true {
-      html.frame(block(it))
-    } else {
-      it
-    }
-  }
-
   doc
 }
 

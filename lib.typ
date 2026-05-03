@@ -221,18 +221,23 @@
 }
 
 // this must be used around any normal figure to show in html
-#let figure-wrapper(..items, columns: auto, inset: 0em) = {
+#let figure-wrapper(..items, columns: auto) = {
   let figures = items.pos()
   let column-count = if columns == auto { figures.len() } else { columns }
-
-  place(
-    alignment.top,
-    scope: "parent",
-    float: true,
-    grid(
-      columns: column-count,
-      inset: inset,
-      ..figures.map(item => grid.cell([#item])),
-    ),
+  let body = grid(
+    columns: column-count, gutter: 1fr,
+    inset: 1em,
+    ..figures.map(item => grid.cell([#item])),
   )
+
+  if _is-html {
+    body
+  } else {
+    place(
+      alignment.top,
+      scope: "parent",
+      float: true,
+      body,
+    )
+  }
 }
