@@ -4,7 +4,6 @@
 #import "@preview/cetz-plot:0.1.3": *
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": vb as _vb
-#import "@preview/headcount:0.1.0": *
 #import "@preview/equate:0.3.2": equate
 
 #let cvector = cetz.vector
@@ -12,22 +11,46 @@
 
 #let _is-html = sys.inputs.at("html", default: "false") == "true"
 
-#let reset-chapter-counters(include-theorems: false) = {
+#let theorem-kinds = (
+  "theorem",
+  "lemma",
+  "proposition",
+  "corollary",
+  "definition",
+  "remark",
+  "example",
+)
+
+#let section-numbering-depth = 2
+
+#let _heading-numbers(depth: section-numbering-depth) = {
+  counter(heading).get().slice(0, depth)
+}
+
+#let _scoped-number(value, depth: section-numbering-depth) = {
+  let nums = _heading-numbers(depth: depth)
+  let scoped = nums + (value,)
+  scoped.map(str).join(".")
+}
+
+#let reset-theorem-counters() = {
+  for id in theorem-kinds {
+    counter(figure.where(kind: "thm-" + id)).update(0)
+  }
+}
+
+#let reset-heading-scoped-counters(include-theorems: true) = {
   counter(footnote).update(0)
   counter(math.equation).update(0)
   if include-theorems {
-    for id in (
-      "theorem",
-      "lemma",
-      "proposition",
-      "corollary",
-      "definition",
-      "remark",
-      "example",
-    ) {
-      counter(figure.where(kind: "thm-" + id)).update(0)
-    }
+    reset-theorem-counters()
   }
+}
+
+#let scoped-equation-numbering(..args) = [(#_scoped-number(args.at(0)))]
+
+#let on-heading(it) = {
+  reset-heading-scoped-counters()
 }
 
 // use the non-abbreviated terms for no upright.
@@ -35,12 +58,11 @@
 #let vu(x) = _vu(math.upright(x))
 #let va(x) = _va(math.upright(x))
 
-#let _html-thm(identifier, head, css-class) = {
+#let _html-thm(identifier, head, css-class, numbered: true) = {
   let thm-kind = "thm-" + identifier
   let fmt-num() = context {
-    let chap = counter(heading).get().at(0)
     let n = counter(figure.where(kind: thm-kind)).get().first()
-    str(chap) + "." + str(n)
+    if numbered { _scoped-number(n) } else { none }
   }
   (..args, body) => {
     let name = if args.pos().len() > 0 { args.pos().first() } else { none }
@@ -48,10 +70,10 @@
       kind: thm-kind,
       supplement: head,
       outlined: false,
-      numbering: (..nums) => [#counter(heading).get().at(0).#nums.at(0)],
+      numbering: if numbered { (..nums) => [#_scoped-number(nums.at(0))] } else { none },
       html.elem("div", attrs: (class: "thm-box " + css-class), {
         html.elem("p", attrs: (class: "thm-head"), {
-          html.elem("strong", [#head #fmt-num()])
+          html.elem("strong", if numbered { [#head #fmt-num()] } else { [#head] })
           if name != none [ (#name)]
           [.]
         })
@@ -115,7 +137,7 @@
 }
 
 #let remark = if _is-html {
-  _html-thm("remark", "Remark", "thm-remark")
+  _html-thm("remark", "Remark", "thm-remark", numbered: false)
 } else {
   thmplain("remark", "Remark", inset: (top: 0em, left: 0em, right: 0em)).with(numbering: none)
 }

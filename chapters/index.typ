@@ -1,4 +1,4 @@
-#import "/paper-styles.typ": chapter-section, html-show-rules, paper-styles
+#import "/paper-styles.typ": chapter-section, paper-styles
 
 #chapter-section("prerequisites")[
   #include "/chapters/prerequisites_calc_top/index.typ"

@@ -6,19 +6,17 @@
   set page(numbering: "1", margin: 1.75in)
 
   show: equate.with(number-mode: "label")
-  set math.equation(supplement: none, numbering: dependent-numbering("(1.1)", levels: 2))
-  show heading: reset-counter(counter(math.equation), levels: 2)
+
+  set math.equation(numbering: scoped-equation-numbering)
+
   show: thmrules.with(qed-symbol: $square$)
 
   set figure(placement: alignment.top)
   show figure.caption: it => context [
     *#it.supplement~#it.counter.display()#it.separator*#it.body
   ]
-  doc
-}
-
-#let html-show-rules(doc) = {
   show heading: it => context {
+    on-heading(it)
     if _is-html != true { return it }
     let level = calc.min(it.level, 4)
     let tag = ("h1", "h2", "h3", "h4").at(level - 1)
@@ -35,9 +33,6 @@
       html.elem(tag, attrs: (id: label-id), content)
     } else {
       html.elem(tag, content)
-    }
-    if level == 1 {
-      reset-chapter-counters(include-theorems: true)
     }
   }
 

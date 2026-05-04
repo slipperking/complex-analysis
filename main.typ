@@ -1,15 +1,14 @@
 #import "/lib.typ": *
-#import "paper-styles.typ": chapter-section, html-show-rules, paper-styles
+#import "paper-styles.typ": chapter-section, paper-styles
 
 #show: paper-styles
-#show: html-show-rules
 
 #set document(
   title: "Notes on Complex Analysis",
   author: "Slipper King",
 )
 #{
-  if not _is-html {
+  if not _is-html { 
     align(center)[
       #v(2cm)
       #text(size: 24pt, weight: "bold")[Notes on Complex Analysis]
