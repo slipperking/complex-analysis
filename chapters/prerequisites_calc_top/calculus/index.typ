@@ -63,7 +63,7 @@ Generalizations of the differential and integral exist for multivariate function
 #theorem("Leibniz Integral Rule")[
   Let $f(x, u)$ be continuous on $a <= x <= b$, $c <= u <= d$, and suppose $a <= alpha(u), beta(u) <= b$ are differentiable functions of $c <= u <= d$. If $f$ is continuously differentiable with respect to $u$, then
   $
-    dv(, u) (integral_(alpha(u))^(beta(u)) f(x, u) dif x) = integral_(alpha(u))^(beta(u)) dvp(f, u) (x, u) dif x + dv(beta, u) f(beta(u), u) - dv(alpha, u) f(alpha(u), u).
+    dv(, u) (integral_(alpha(u))^(beta(u)) f(x, u) dif x) &= integral_(alpha(u))^(beta(u)) dvp(f, u) (x, u) dif x \ & quad ""+ dv(beta, u) f(beta(u), u) - dv(alpha, u) f(alpha(u), u).
   $
 ] <thm:leibnizintegralrule>
 
@@ -103,11 +103,12 @@ We can generalize the operator $dif$ to increase the degree of a differential fo
 $ dif f = dvp(f, x) dif x + dvp(f, y) dif y + dvp(f, z) dif z, $
 which is the definition of the total differential. For a 1-form in 3-dimensional space, $omega_1 = P dif x + Q dif y + R dif z$, we can define the exterior derivative in a similar way:
 $
-  dif omega_1 &= dif P and dif x + dif Q and dif y + dif R and dif z \
-  &= (dvp(P, x) dif x + dvp(P, y) dif y + dvp(P, z) dif z) and dif x \
-  &quad + (dvp(Q, x) dif x + dvp(Q, y) dif y + dvp(Q, z) dif z) and dif y \
-  &wide + (dvp(R, x) dif x + dvp(R, y) dif y + dvp(R, z) dif z) and dif z \
-  &= (dvp(R, y) - dvp(Q, z)) dd(y, z, prod: and) + (dvp(P, z) - dvp(R, x)) dd(z, x, prod: and) + (dvp(Q, x) - dvp(P, y)) dd(x, y, prod: and).
+  dif omega_1 & = dif P and dif x + dif Q and dif y + dif R and dif z \
+              & = (dvp(P, x) dif x + dvp(P, y) dif y + dvp(P, z) dif z) and dif x \
+              & quad + (dvp(Q, x) dif x + dvp(Q, y) dif y + dvp(Q, z) dif z) and dif y \
+              & wide + (dvp(R, x) dif x + dvp(R, y) dif y + dvp(R, z) dif z) and dif z \
+              & = (dvp(R, y) - dvp(Q, z)) dd(y, z, prod: and) + (dvp(P, z) - dvp(R, x)) dd(z, x, prod: and) \
+              & quad ""+ (dvp(Q, x) - dvp(P, y)) dd(x, y, prod: and).
 $
 
 Similarly, we can differentiate a 2-form $omega = P dd(y, z, prod: and) + Q dd(z, x, prod: and) + R dd(x, y, prod: and)$ to get:

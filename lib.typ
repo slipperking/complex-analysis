@@ -95,7 +95,7 @@
   }
 }
 
-#let scoped-theorem-numbering(..nums) = [(#_scoped-number(nums.at(0)))]
+#let scoped-theorem-numbering(..nums) = [#_scoped-number(nums.at(0))]
 
 #let theorem = if _is-html {
   _html-thm("theorem", "Theorem", "thm-theorem")

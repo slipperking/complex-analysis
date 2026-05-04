@@ -57,8 +57,10 @@ Under this definition, we can derive the chain rule:
 
   Then by substitution,
   $
-    pdv(h, z) &= 1/2 [(pdv(f, w) + pdv(f, overline(w)))(pdv(xi, x) - ii pdv(xi, y)) + ii (pdv(f, w) - pdv(f, overline(w)))(pdv(eta, x) - ii pdv(eta, y))] \
-    &= pdv(f, w) 1/2 [(pdv(xi, x) - ii pdv(xi, y)) + ii (pdv(eta, x) - ii pdv(eta, y))] + pdv(f, overline(w)) 1/2 [(pdv(xi, x) - ii pdv(xi, y)) - ii (pdv(eta, x) - ii pdv(eta, y))].
+    pdv(h, z) & = 1/2 [(pdv(f, w) + pdv(f, overline(w)))(pdv(xi, x) - ii pdv(xi, y)) \
+              & quad ""+ ii (pdv(f, w) - pdv(f, overline(w)))(pdv(eta, x) - ii pdv(eta, y))] \
+              & = pdv(f, w) 1/2 [(pdv(xi, x) - ii pdv(xi, y)) + ii (pdv(eta, x) - ii pdv(eta, y))] \
+              & quad ""+ pdv(f, overline(w)) 1/2 [(pdv(xi, x) - ii pdv(xi, y)) - ii (pdv(eta, x) - ii pdv(eta, y))].
   $
 
   The terms in brackets equal $pdv(g, z)$ and $pdv(overline(g), z)$. Thus,

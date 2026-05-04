@@ -23,10 +23,6 @@ except ImportError:
     print("Error: beautifulsoup4 required. Run with: uv run web/build.py")
     sys.exit(1)
 
-# ---------------------------------------------------------------------------
-# Configuration  # TODO: adapt this entire section to your thesis
-# ---------------------------------------------------------------------------
-
 ROOT = Path(__file__).resolve().parent.parent
 WEB_DIR = ROOT / "web"
 DIST_DIR = WEB_DIR / "dist"
@@ -34,30 +30,11 @@ ASSETS_SRC = WEB_DIR / "assets"
 
 LANG = "en"
 
-CHAPTERS = [
-    ("cover", "index.html", "Home"),
-    ("prerequisites", "prerequisites.html", "Prerequisites"),
-    ("complex-prerequisites", "complex-prerequisites.html", "Complex Prerequisites"),
-    ("complex-integration", "complex-integration.html", "Complex Integration"),
-    ("bibliography", "bibliography.html", "Bibliography"),
-]
-
-# Sub-level items: rendered indented and smaller in the sidebar
-# TODO: adapt — list section_ids that should appear as sub-items (e.g. sub-sections of a chapter)
-SUB_CHAPTERS: set[str] = set()
-
-PARTS = [
-    (None, ["cover", "prerequisites", "complex-prerequisites", "complex-integration", "bibliography"]),
-]
-
 THESIS_TITLE = "Notes on Complex Analysis"
 
 GITHUB_URL = "https://github.com/slipperking/complex-analysis"
-BASE_URL = "/"  # Overridden by --base-url CLI arg
+BASE_URL = "/"  # overridden by --base-url CLI arg
 
-# ---------------------------------------------------------------------------
-# SVG Icons (inline, no external dependency)
-# ---------------------------------------------------------------------------
 
 ICON_HAMBURGER = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h14M3 10h14M3 15h14"/></svg>'
 ICON_SEARCH = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>'
@@ -146,23 +123,63 @@ def extract_local_toc(section: Tag) -> list[dict]:
     return toc
 
 
-def build_global_nav(chapters: list[tuple], parts: list[tuple], current_id: str) -> str:
+def section_filename(section_id: str) -> str:
+    """Map a top-level section id to its output filename."""
+    return "index.html" if section_id == "cover" else f"{section_id}.html"
+
+
+def clean_nav_title(text: str) -> str:
+    """Remove displayed numbering prefixes from navigation labels."""
+    text = " ".join(text.split())
+    text = re.sub(r"^Chapter\s+\d+:\s*", "", text)
+    text = re.sub(r"^\d+(?:\.\d+)*\s+", "", text)
+    return text.strip()
+
+
+def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str]], set[str], list[tuple[str | None, list[str]]]]:
+    """Discover pages and navigation entries from chapter-section blocks."""
+    pages: list[tuple[str, str, str]] = []
+    nav_items: list[tuple[str, str, str]] = []
+    sub_chapters: set[str] = set()
+
+    for section in soup.find_all("section", class_="chapter"):
+        sid = section.get("id", "")
+        if not sid:
+            continue
+
+        depth = len(section.find_parents("section", class_="chapter"))
+        title_heading = section.find(["h1", "h2", "h3"])
+        page_title = clean_nav_title(title_heading.get_text(" ", strip=True)) if title_heading else sid.replace("-", " ").title()
+        if sid == "cover":
+            page_title = "Home"
+
+        filename = section_filename(sid)
+        pages.append((sid, filename, page_title))
+        nav_items.append((sid, filename, page_title))
+        if depth > 0:
+            sub_chapters.add(sid)
+
+    parts = [(None, [sid for sid, _href, _title in nav_items])]
+    return pages, nav_items, sub_chapters, parts
+
+
+def build_global_nav(nav_items: list[tuple[str, str, str]], parts: list[tuple], current_id: str, sub_chapters: set[str]) -> str:
     """Build the global navigation sidebar HTML."""
-    chapter_map = {sid: (fname, title) for sid, fname, title in chapters}
+    chapter_map = {sid: (href, title) for sid, href, title in nav_items}
     lines = ['<nav class="global-nav" aria-label="Global navigation">']
     for part_title, section_ids in parts:
         if part_title:
             lines.append(f'  <div class="nav-part">{part_title}</div>')
         lines.append("  <ul>")
         for sid in section_ids:
-            fname, title = chapter_map[sid]
+            href, title = chapter_map[sid]
             classes = []
             if sid == current_id:
                 classes.append("active")
-            if sid in SUB_CHAPTERS:
+            if sid in sub_chapters:
                 classes.append("nav-sub")
             cls = f' class="{" ".join(classes)}"' if classes else ""
-            lines.append(f'    <li{cls}><a href="{fname}">{title}</a></li>')
+            lines.append(f'    <li{cls}><a href="{href}">{title}</a></li>')
         lines.append("  </ul>")
     lines.append("</nav>")
     return "\n".join(lines)
@@ -265,8 +282,6 @@ def build_page(
 
 def split_and_generate(full_html: Path):
     """Parse the full HTML, split by sections, generate individual pages."""
-    chapters = CHAPTERS
-    parts = PARTS
     thesis_title = THESIS_TITLE
     lang = LANG
     out_dir = DIST_DIR / lang
@@ -274,9 +289,10 @@ def split_and_generate(full_html: Path):
 
     print(f"  Parsing HTML ({lang})...")
     soup = BeautifulSoup(full_html.read_text(encoding="utf-8"), "html.parser")
+    pages, nav_items, sub_chapters, parts = discover_structure(soup)
 
     # Find all chapter sections
-    chapter_map = {sid: (fname, title) for sid, fname, title in chapters}
+    chapter_map = {sid: (fname, title) for sid, fname, title in pages}
     sections: dict[str, Tag] = {}
 
     for section in soup.find_all("section", class_="chapter"):
@@ -296,7 +312,7 @@ def split_and_generate(full_html: Path):
 
     # Build id -> filename map for cross-chapter link rewriting
     id_to_file: dict[str, str] = {}
-    for sid, fname, _title in chapters:
+    for sid, fname, _title in pages:
         if sid not in sections:
             continue
         id_to_file[sid] = fname
@@ -305,7 +321,7 @@ def split_and_generate(full_html: Path):
 
     # Map footnote IDs to chapter files
     if footnote_map:
-        for sid, fname, _title in chapters:
+        for sid, fname, _title in pages:
             if sid not in sections:
                 continue
             for ref_a in sections[sid].find_all("a", attrs={"role": "doc-noteref"}):
@@ -316,22 +332,32 @@ def split_and_generate(full_html: Path):
     cross_links_total = 0
 
     # Generate each page
-    for i, (sid, fname, title) in enumerate(chapters):
+    for i, (sid, fname, title) in enumerate(pages):
         if sid not in sections:
             print(f"    WARNING: section '{sid}' not found, skipping")
             continue
 
         section = sections[sid]
-        local_toc = extract_local_toc(section)
-        global_nav = build_global_nav(chapters, parts, sid)
+        page_section = BeautifulSoup(str(section), "html.parser").find("section")
+        if page_section is None:
+            print(f"    WARNING: section '{sid}' could not be cloned, skipping")
+            continue
+
+        # Parent chapter pages should not inline the full bodies of nested chapter-section pages.
+        # Those nested sections get their own generated pages and nav entries.
+        for nested in page_section.find_all("section", class_="chapter"):
+            nested.decompose()
+
+        local_toc = extract_local_toc(page_section)
+        global_nav = build_global_nav(nav_items, parts, sid, sub_chapters)
         local_toc_html = build_local_toc(local_toc, lang)
 
-        prev_link = (chapters[i - 1][1], chapters[i - 1][2]) if i > 0 else None
-        next_link = (chapters[i + 1][1], chapters[i + 1][2]) if i < len(chapters) - 1 else None
+        prev_link = (pages[i - 1][1], pages[i - 1][2]) if i > 0 else None
+        next_link = (pages[i + 1][1], pages[i + 1][2]) if i < len(pages) - 1 else None
 
         # Rewrite cross-chapter href="#id" to href="other-file.html#id"
         cross_links = 0
-        for a_tag in section.find_all("a", href=True):
+        for a_tag in page_section.find_all("a", href=True):
             href = a_tag["href"]
             if href.startswith("#"):
                 target_id = href[1:]
@@ -343,7 +369,7 @@ def split_and_generate(full_html: Path):
         # Collect footnotes for this chapter
         footnotes_html = ""
         if footnote_map:
-            noterefs = section.find_all("a", attrs={"role": "doc-noteref"})
+            noterefs = page_section.find_all("a", attrs={"role": "doc-noteref"})
             chapter_footnotes = []
             for ref_a in noterefs:
                 target_id = ref_a.get("href", "").lstrip("#")
@@ -366,7 +392,7 @@ def split_and_generate(full_html: Path):
                     f'\n</section>'
                 )
 
-        section_html = section.decode_contents() + footnotes_html
+        section_html = page_section.decode_contents() + footnotes_html
 
         page = build_page(
             section_html=section_html,

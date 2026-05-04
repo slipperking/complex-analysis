@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 == Complex Power Series
 
-Power series in real analysis can be generalized into complex series. Particularly, concepts such as uniform convergence are the same in complex analysis:
+Power series in real analysis can be generalized into complex series. Particularly, concepts such as uniform convergence are analogous to those in real analysis:
 
 #definition("Uniform Convergence")[
   For a set $U subset.eq CC$, a function sequence ${f_n (z)}$ _uniformly converges_ to a function $f(z)$ on $U$ iff $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $forall z in U$, $abs(f_n (z) - f(z)) < epsilon$.

@@ -286,6 +286,16 @@ svg {
   color: var(--color-nav-part);
 }
 
+.global-nav li:not(.nav-sub)>a {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.global-nav li.nav-sub a {
+  padding-left: 2rem;
+  font-size: 0.85em;
+}
+
 /* ---------------------------------------------------------------------------
    Main Content
    --------------------------------------------------------------------------- */

@@ -8,7 +8,7 @@
   author: "Slipper King",
 )
 #{
-  if not _is-html { 
+  if not _is-html {
     align(center)[
       #v(2cm)
       #text(size: 24pt, weight: "bold")[Notes on Complex Analysis]

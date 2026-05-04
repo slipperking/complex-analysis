@@ -163,4 +163,4 @@ where $zeta = R ee^(ii t)$. Two harmonic functions are said to be _conjugate_ if
 The Poisson kernel is important in many branches of mathematics. We will introduce two of the important uses below.
 
 #include "solution_to_dirichlet_problem_on_disk/index.typ"
-//#include "in_harmonic_analysis/index.typ"
+#include "in_harmonic_analysis/index.typ"

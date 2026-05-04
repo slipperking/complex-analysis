@@ -6,31 +6,31 @@ $ lim_(Delta z -> 0) (f(z + Delta z) - f(z)) / (Delta z). $
 
 We can consider $f(z)$ to be a bivariate function $f(x, y)$ for $z = x + ii y$. Two main cases we are concerned with are when $Delta z$ approaches $0$ from the real and imaginary axes:
 $
-  lim_(Delta z -> 0, Delta z in RR) (f(z + Delta z) - f(z)) / (Delta z)
+  lim_(Delta z -> 0\ Delta z in RR) (f(z + Delta z) - f(z)) / (Delta z)
   =
-  lim_(Delta z -> 0, Delta z in RR) (f(z + ii Delta z) - f(z)) / (ii Delta z).
+  lim_(Delta z -> 0\ Delta z in RR) (f(z + ii Delta z) - f(z)) / (ii Delta z).
 $
 Expressing $f(z)$ as $f(x, y) = u(x, y) + ii v(x, y)$,
 $
-  lim_(Delta z -> 0, Delta z in RR) (f(z + Delta z) - f(z)) / (Delta z)
+  lim_(Delta z -> 0\ Delta z in RR) (f(z + Delta z) - f(z)) / (Delta z)
   =
-  lim_(Delta z -> 0, Delta z in RR) (f(x + Delta z, y) - f(x, y)) / (Delta z)
+  lim_(Delta z -> 0\ Delta z in RR) (f(x + Delta z, y) - f(x, y)) / (Delta z)
   =
   pdv(u, x) + ii pdv(v, x),
 $
 and
 $
-  lim_(Delta z -> 0, Delta z in RR) (f(z + ii Delta z) - f(z)) / (ii Delta z)
+  lim_(Delta z -> 0\ Delta z in RR) (f(z + ii Delta z) - f(z)) / (ii Delta z)
   =
-  -ii lim_(Delta z -> 0, Delta z in RR) (f(x, y + Delta z) - f(x, y)) / (Delta z)
+  -ii lim_(Delta z -> 0\ Delta z in RR) (f(x, y + Delta z) - f(x, y)) / (Delta z)
   =
   pdv(v, y) - ii pdv(u, y).
 $
 By comparing the real and imaginary parts, we obtain necessary conditions for complex differentiability:
-$ pdv(u, x) = pdv(v, y) quad "and" quad pdv(v, x) = -pdv(u, y) $ <eq:cauchyriemanneqs1>
+$ pdv(u, x) = pdv(v, y) quad "and" quad pdv(v, x) = -pdv(u, y) $ <eq:cauchy_riemann_eqs_1>
 By multiplying the second equation by $ii$ and adding it to the first, we obtain the equivalent form
-$ pdv(f, x) = -ii pdv(f, y). $ <eq:cauchyriemanneqs2>
-The identities @eq:cauchyriemanneqs1 and @eq:cauchyriemanneqs2 are known as the _Cauchy--Riemann equations_.
+$ pdv(f, x) = -ii pdv(f, y). $ <eq:cauchy_riemann_eqs_2>
+The identities @eq:cauchy_riemann_eqs_1 and @eq:cauchy_riemann_eqs_2 are known as the _Cauchy--Riemann equations_.
 
 Although this condition is necessary, it is not sufficient. Consider the function
 $ f(z) = sqrt(abs(Re(z) Im(z))). $
@@ -94,7 +94,7 @@ For the purpose of the following contents, a _region_ or _domain_ will denote a 
   $ lim_(Delta z -> 0) (f(z) - f(z_0)) / (z - z_0) = alpha + ii beta. qedhere $
 ]
 
-We will prove later in @ sec:analyticity_and_holomorphy that the complex derivative of a holomorphic function $f(z) = u(z) + ii v(z)$ is holomorphic. Under this assumption, $f(z)$ has continuous second-order partial derivatives, and therefore
+We will prove later in @sec:analyticity_and_holomorphy that the complex derivative of a holomorphic function $f(z) = u(z) + ii v(z)$ is holomorphic. Under this assumption, $f(z)$ has continuous second-order partial derivatives, and therefore
 $ pdv(u, x, y) = pdv(u, y, x), quad pdv(v, x, y) = pdv(v, y, x), $
 and by the Cauchy--Riemann equations,
 $ pdv(u, x, x) = pdv(v, y, x), quad pdv(u, y, y) = -pdv(v, x, y), $
