@@ -14,48 +14,7 @@ A fundamental problem in the theory of partial differential equations is to find
   $ u(z) = integral_0^(2 uppi) phi(zeta) P(zeta, z) dif tau, $ <eq:dirichletproblemwithlaplaceequationsolution>
   where $zeta = R ee^(ii tau)$.
 ] <thm:dirichletproblemwithlaplaceequationsolution>
-
-#proof[
-  Since
-  $
-    P(zeta, z) = 1 / (4 uppi) ((zeta + z) / (zeta - z) + (overline(zeta) + overline(z)) / (overline(zeta) - overline(z))),
-  $
-  from @eq:laplaciancomplexform, we have that $Delta_z P(zeta, z) = 4 pdv(P(zeta, z), z, overline(z)) = 0$ (since each term is independent of either $z$ or $overline(z)$). Moreover, by @thm:leibnizintegralrule, @eq:dirichletproblemwithlaplaceequationsolution gives that
-  $
-    Delta u(z)
-    = Delta integral_0^(2 uppi) phi(zeta) P(zeta, z) dif tau
-    = integral_0^(2 uppi) Delta [phi(zeta) P(zeta, z)] dif tau
-    = 0.
-  $
-
-  Our goal is to show that for fixed $xi = R ee^(ii theta.alt) in partial D(0, R)$,
-  $ lim_(z -> xi \ z in D(0, R)) u(z) = phi(xi). $ <eq:dirichletproblemwithlaplaceequationsolution_limittoboundary>
-
-  Let $R/2 < rho < R$ and $z = rho ee^(ii theta)$. Then with $zeta = R ee^(ii tau)$,
-  $
-    abs(phi(xi) - u(z))
-    = abs(phi(R ee^(ii theta.alt)) - u(rho ee^(ii theta)))
-    = abs(phi(R ee^(ii theta.alt)) - integral_0^(2 uppi) P(zeta, z) phi(zeta) dif tau).
-  $
-
-  For a constant harmonic function identically equal to $1$, we get $integral_0^(2 uppi) P(zeta, z) dif tau = 1$ from @eq:poissonintegralformula2. Hence,
-  $
-    abs(phi(xi) - u(z))
-    = abs(integral_0^(2 uppi) P(zeta, z) (phi(R ee^(ii theta.alt)) - phi(zeta)) dif tau).
-  $
-
-  By the continuity of $phi$, $forall epsilon > 0$, $exists delta > 0$ such that $forall abs(theta.alt - tau) < delta < uppi / 2$, we have that $abs(phi(R ee^(ii theta.alt)) - phi(zeta)) < epsilon$. Therefore,
-  $
-    abs(phi(xi) - u(z))
-    &= abs((integral_(abs(theta.alt - tau) < delta) + integral_(abs(theta.alt - tau) > delta)) P(zeta, z) (phi(R ee^(ii theta.alt)) - phi(zeta)) dif tau) \
-    &= abs(I_1 + I_2) <= abs(I_1) + abs(I_2).
-  $
-
-  Since the Poisson kernel is non-negative,
-  $
-    abs(I_1) < integral_(abs(theta.alt - tau) < delta) epsilon P(zeta, z) dif tau < epsilon integral_0^(2 uppi) P(zeta,z) dif tau = epsilon.
-  $
-
+#figure-wrapper([
   #figure(
     {
       let radius = 5
@@ -166,7 +125,47 @@ A fundamental problem in the theory of partial differential equations is to find
     },
     caption: [$zeta$, $xi$, and $z$ when $abs(theta.alt - tau) > delta$, with distances marked. The use of $+$ and $-$ denote a value more or less (respectively) than the preceding value.],
   ) <fig:dirichletproblemwithlaplaceequationsolution_secondintegral>
+])
+#proof[
+  Since
+  $
+    P(zeta, z) = 1 / (4 uppi) ((zeta + z) / (zeta - z) + (overline(zeta) + overline(z)) / (overline(zeta) - overline(z))),
+  $
+  from @eq:laplaciancomplexform, we have that $Delta_z P(zeta, z) = 4 pdv(P(zeta, z), z, overline(z)) = 0$ (since each term is independent of either $z$ or $overline(z)$). Moreover, by @thm:leibnizintegralrule, @eq:dirichletproblemwithlaplaceequationsolution gives that
+  $
+    Delta u(z)
+    = Delta integral_0^(2 uppi) phi(zeta) P(zeta, z) dif tau
+    = integral_0^(2 uppi) Delta [phi(zeta) P(zeta, z)] dif tau
+    = 0.
+  $
 
+  Our goal is to show that for fixed $xi = R ee^(ii theta.alt) in partial D(0, R)$,
+  $ lim_(z -> xi \ z in D(0, R)) u(z) = phi(xi). $ <eq:dirichletproblemwithlaplaceequationsolution_limittoboundary>
+
+  Let $R/2 < rho < R$ and $z = rho ee^(ii theta)$. Then with $zeta = R ee^(ii tau)$,
+  $
+    abs(phi(xi) - u(z))
+    = abs(phi(R ee^(ii theta.alt)) - u(rho ee^(ii theta)))
+    = abs(phi(R ee^(ii theta.alt)) - integral_0^(2 uppi) P(zeta, z) phi(zeta) dif tau).
+  $
+
+  For a constant harmonic function identically equal to $1$, we get $integral_0^(2 uppi) P(zeta, z) dif tau = 1$ from @eq:poissonintegralformula2. Hence,
+  $
+    abs(phi(xi) - u(z))
+    = abs(integral_0^(2 uppi) P(zeta, z) (phi(R ee^(ii theta.alt)) - phi(zeta)) dif tau).
+  $
+
+  By the continuity of $phi$, $forall epsilon > 0$, $exists delta > 0$ such that $forall abs(theta.alt - tau) < delta < uppi / 2$, we have that $abs(phi(R ee^(ii theta.alt)) - phi(zeta)) < epsilon$. Therefore,
+  $
+    abs(phi(xi) - u(z))
+    &= abs((integral_(abs(theta.alt - tau) < delta) + integral_(abs(theta.alt - tau) > delta)) P(zeta, z) (phi(R ee^(ii theta.alt)) - phi(zeta)) dif tau) \
+    &= abs(I_1 + I_2) <= abs(I_1) + abs(I_2).
+  $
+
+  Since the Poisson kernel is non-negative,
+  $
+    abs(I_1) < integral_(abs(theta.alt - tau) < delta) epsilon P(zeta, z) dif tau < epsilon integral_0^(2 uppi) P(zeta,z) dif tau = epsilon.
+  $
 
   By continuity of $phi$ on the compact set $partial D(0, R)$, by @thm:heinecantor, it is bounded and $M = sup_(abs(zeta) = R) abs(phi(zeta))$ is finite. The Poisson kernel can be rewritten as
   $ P(zeta, z) = (R^2 - rho^2) / (2 uppi abs(zeta - z)^2), $
