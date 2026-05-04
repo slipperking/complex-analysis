@@ -187,7 +187,7 @@ We now justify a claim whose triviality we have taken for granted.
   We first imply that topological continuity implies epsilon--delta continuity. For any $x in X$, $forall epsilon > 0$, the ball $B(f(x), epsilon)$ is an open set (it is in the basis) in $Y$. By 3 of @prop:topologicalcontinuityequivalents, there is some open neighborhood $U$ of $x$ in $X$ such that $f(U) subset B(f(x), epsilon)$. By the previous proposition, there is a ball $B(x, delta) subset.eq U$. This is equivalent to
   $ epsilon > 0, x in X => exists delta = delta_x > 0: y in B(x, delta) => f(y) in B(f(x), epsilon). $
 
-  Conversely, assume $f$ is epsilon--delta continuous. Let $V subset.eq Y$ be open and $x in f^(-1)(V)$. Since $V$ is open in the metric topology, there exists $epsilon > 0$ such that
+  Conversely, assume $f$ is $epsilon$--$delta$ continuous. Let $V subset.eq Y$ be open and $x in f^(-1)(V)$. Since $V$ is open in the metric topology, there exists $epsilon > 0$ such that
   $ B(f(x), epsilon) subset.eq V. $
   By epsilon--delta continuity, there exists $delta > 0$ such that
   $ d_x(x, y) < delta => d_y(f(x), f(y)) < epsilon, $

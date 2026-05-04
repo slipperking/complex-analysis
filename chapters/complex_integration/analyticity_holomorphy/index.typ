@@ -1,18 +1,22 @@
 #import "/lib.typ": *
 
-== Analyticity and Holomorphy
+== Analyticity and Holomorphy<sec:analyticity_and_holomorphy>
 
 The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can be generalized into a result that directly relates complex integration and differentiation.
 
 #theorem("Cauchy" + sym.dash.en + "Goursat")[
   Let $U subset CC$ be an open region bounded by a simple closed boundary $partial U$, and let $f:U -> CC$ be holomorphic and continuous on $overline(U)$. Then for every $z in U$ and every $n in NN$,
-  $ f^(n)(z) = (n!) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z)^(n + 1)) dzeta. $ <eq:cauchydifferentiationformula_statement>
+  $
+    f^(n)(z) = (n!) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z)^(n + 1)) dzeta.
+  $ <eq:cauchy_differentiation_formula_statement>
 
   Additionally, since $U$ is open, for every $z_0 in U$ and every $r > 0$ such that $overline(D(z_0, r)) subset U$, $f$ has the uniformly and absolutely convergent Taylor expansion
-  $ f(z) = sum_(j = 0)^infinity a_j (z - z_0)^j, $ <eq:cauchydifferentiationformula_taylorseries>
+  $ f(z) = sum_(j = 0)^infinity a_j (z - z_0)^j, $ <eq:cauchy_differentiation_formula_taylorseries>
 
   where
-  $ a_j = (1) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z_0)^(j + 1)) dzeta $ <eq:cauchydifferentiationformula_taylorseriescoefficients>
+  $
+    a_j = (1) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z_0)^(j + 1)) dzeta
+  $ <eq:cauchy_differentiation_formula_taylorseriescoefficients>
   on $overline(D(z_0, r))$.
 ] <thm:cauchydifferentiationformula>
 
@@ -46,8 +50,8 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can be generalized into 
   $ f^(k)(z) = (k!) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z)^(k + 1)) dzeta $
   for some $k in NN$. Since $abs(z - z_0) < abs(zeta - z_0)$ for $z in D(z_0, r)$ and $zeta in partial U$, we have the kernel expansion
   $
-    1 / (zeta - z) &= 1 / (zeta - z_0) dot (1) / (1 - (z - z_0) / (zeta - z_0)) \
-    &= 1 / (zeta - z_0) sum_(j = 0)^infinity ((z - z_0) / (zeta - z_0))^j.
+    1 / (zeta - z) & = 1 / (zeta - z_0) dot (1) / (1 - (z - z_0) / (zeta - z_0)) \
+                   & = 1 / (zeta - z_0) sum_(j = 0)^infinity ((z - z_0) / (zeta - z_0))^j.
   $ <eq:cauchydifferentiationformula_kernelexpansion>
 
   Substituting into the inductive formula gives
@@ -59,12 +63,14 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can be generalized into 
   $
 
   Therefore,
-  $ (f^(k)(z) - f^(k)(z_0)) / (z - z_0) = ((k + 1)!) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z_0)^(k + 2)) dzeta + Order(abs(z - z_0)). $
+  $
+    (f^(k)(z) - f^(k)(z_0)) / (z - z_0) = ((k + 1)!) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z_0)^(k + 2)) dzeta + Order(abs(z - z_0)).
+  $
 
   Letting $z -> z_0$, we obtain
   $ f^((k + 1))(z_0) = ((k + 1)!) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z_0)^(k + 2)) dzeta. $
 
-  By induction, @eq:cauchydifferentiationformula_statement is valid for all $n in NN$.
+  By induction, @eq:cauchy_differentiation_formula_statement is valid for all $n in NN$.
 
   For the Taylor expansion, substitute @eq:cauchydifferentiationformula_kernelexpansion into @thm:cauchygoursatformula:
   $
@@ -85,7 +91,7 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can be generalized into 
     &= sum_(j = 0)^infinity a_j (z - z_0)^j.
   $
 
-  This proves @eq:cauchydifferentiationformula_taylorseries and @eq:cauchydifferentiationformula_taylorseriescoefficients.
+  This proves @eq:cauchy_differentiation_formula_taylorseries and @eq:cauchy_differentiation_formula_taylorseriescoefficients.
 ]
 
 #remark[
@@ -107,7 +113,9 @@ The differentiation formula above can be viewed as a higher-order version of @th
 
 #proof[
   Apply @thm:cauchydifferentiationformula to the polynomial $(z^2 - 1)^n$. Then
-  $ P_n(z) = (1) / (2^n n!) dot (n!) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / ((zeta - z)^(n + 1)) dzeta = (1) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / (2^n (zeta - z)^(n + 1)) dzeta. qedhere $
+  $
+    P_n(z) = (1) / (2^n n!) dot (n!) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / ((zeta - z)^(n + 1)) dzeta = (1) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / (2^n (zeta - z)^(n + 1)) dzeta. qedhere
+  $
 ]
 
 #theorem("Cauchy's Estimate")[
@@ -180,7 +188,9 @@ The relationship between a holomorphic function and its derivatives is one of th
   $
 
   Applying @thm:cauchygoursatformula to the two small circles yields
-  $ integral.cont_(partial D(0, R)) f(z) / ((z - a)(z - b)) dz = taui ((f(a)) / (a - b) + (f(b)) / (b - a)) = taui (f(a) - f(b)) / (a - b). $
+  $
+    integral.cont_(partial D(0, R)) f(z) / ((z - a)(z - b)) dz = taui ((f(a)) / (a - b) + (f(b)) / (b - a)) = taui (f(a) - f(b)) / (a - b).
+  $
 
   On the other hand, if $abs(z) = R$, then $abs(z - a) >= R - abs(a)$ and $abs(z - b) >= R - abs(b)$. Hence
   $
@@ -246,16 +256,22 @@ The relationship between a holomorphic function and its derivatives is one of th
   $ pdv(f(zeta) phi(zeta), overline(zeta)) = pdv(phi(zeta), overline(zeta)) f(zeta). $
 
   Therefore,
-  $ f(z) phi(z) = -(1) / (taui) integral_U pdv(phi(zeta), overline(zeta)) f(zeta) dot (dif overline(zeta) and dzeta) / (zeta - z). $
+  $
+    f(z) phi(z) = -(1) / (taui) integral_U pdv(phi(zeta), overline(zeta)) f(zeta) dot (dif overline(zeta) and dzeta) / (zeta - z).
+  $
 
   Let $K_1 = supp(pdv(phi, overline(z)))$. For $z in K$, we have $phi(z) = 1$, so
-  $ f(z) = (1) / (taui) integral_(K_1) f(zeta) pdv(phi(zeta), overline(zeta)) (dzeta and dif overline(zeta)) / (zeta - z). $
+  $
+    f(z) = (1) / (taui) integral_(K_1) f(zeta) pdv(phi(zeta), overline(zeta)) (dzeta and dif overline(zeta)) / (zeta - z).
+  $
 
   Since $K subset W$ and $K_1 inter W = emptyset$, the distance between $K$ and $K_1$ is positive. Hence there exists a constant $M > 0$ such that
   $ (1) / (abs(zeta - z)) <= M, quad forall z in K, zeta in K_1. $
 
   Differentiating under the integral sign is therefore justified, and for every $n in NN$,
-  $ f^(n)(z) = (n!) / (taui) integral_(K_1) f(zeta) pdv(phi(zeta), overline(zeta)) (dzeta and dif overline(zeta)) / ((zeta - z)^(n + 1)). $
+  $
+    f^(n)(z) = (n!) / (taui) integral_(K_1) f(zeta) pdv(phi(zeta), overline(zeta)) (dzeta and dif overline(zeta)) / ((zeta - z)^(n + 1)).
+  $
 
   Taking absolute values gives
   $
@@ -269,7 +285,9 @@ The relationship between a holomorphic function and its derivatives is one of th
   $ abs(dzeta and dif overline(zeta)) = 2 abs(dx and dy). $
 
   Thus
-  $ abs(f^(n)(z)) <= (n! c'_n) / uppi integral_(K_1) abs(f(zeta)) abs(dx and dy) <= (n! c'_n) / uppi integral_V abs(f(zeta)) abs(dx and dy). $
+  $
+    abs(f^(n)(z)) <= (n! c'_n) / uppi integral_(K_1) abs(f(zeta)) abs(dx and dy) <= (n! c'_n) / uppi integral_V abs(f(zeta)) abs(dx and dy).
+  $
 
   Defining $c_n = n! c'_n / uppi$ proves @eq:nthderivativeboundedl1norm_statement.
 
@@ -286,7 +304,9 @@ The relationship between a holomorphic function and its derivatives is one of th
   $ sup_(z in K) abs(f^(n)(z)) <= c_n norm(f)_(L^1(V)). $
 
   Since
-  $ norm(f)_(L^1(V)) <= integral_V sup_(z in V) abs(f(z)) abs(dx and dy) = (integral_V abs(dx and dy)) sup_(z in V) abs(f(z)), $
+  $
+    norm(f)_(L^1(V)) <= integral_V sup_(z in V) abs(f(z)) abs(dx and dy) = (integral_V abs(dx and dy)) sup_(z in V) abs(f(z)),
+  $
   the result follows after absorbing $integral_V abs(dx and dy)$ into the constant.
 ]
 

@@ -20,7 +20,7 @@ A fundamental problem in the theory of partial differential equations is to find
   $
     P(zeta, z) = 1 / (4 uppi) ((zeta + z) / (zeta - z) + (overline(zeta) + overline(z)) / (overline(zeta) - overline(z))),
   $
-  from @eq:laplaciancomplexform, we have that $Delta_z P(zeta, z) = 4 pdv(P(zeta, z), z, overline(z)) = 0$ (since each term is independent of either $z$ or $overline(z)$). Then by @thm:leibnizintegralrule, @eq:dirichletproblemwithlaplaceequationsolution becomes
+  from @eq:laplaciancomplexform, we have that $Delta_z P(zeta, z) = 4 pdv(P(zeta, z), z, overline(z)) = 0$ (since each term is independent of either $z$ or $overline(z)$). Moreover, by @thm:leibnizintegralrule, @eq:dirichletproblemwithlaplaceequationsolution gives that
   $
     Delta u(z)
     = Delta integral_0^(2 uppi) phi(zeta) P(zeta, z) dif tau
@@ -29,9 +29,9 @@ A fundamental problem in the theory of partial differential equations is to find
   $
 
   Our goal is to show that for fixed $xi = R ee^(ii theta.alt) in partial D(0, R)$,
-  $ lim_(z -> xi, z in D(0, R)) u(z) = phi(xi). $ <eq:dirichletproblemwithlaplaceequationsolution_limittoboundary>
+  $ lim_(z -> xi \ z in D(0, R)) u(z) = phi(xi). $ <eq:dirichletproblemwithlaplaceequationsolution_limittoboundary>
 
-  Let $0 < rho < R$ and $z = rho ee^(ii theta)$. Then,
+  Let $R/2 < rho < R$ and $z = rho ee^(ii theta)$. Then with $zeta = R ee^(ii tau)$,
   $
     abs(phi(xi) - u(z))
     = abs(phi(R ee^(ii theta.alt)) - u(rho ee^(ii theta)))
@@ -52,64 +52,129 @@ A fundamental problem in the theory of partial differential equations is to find
   $
 
   Since the Poisson kernel is non-negative,
-  $ abs(I_1) < epsilon integral_(abs(theta.alt - tau) < delta) P(zeta, z) dif tau < epsilon. $
+  $
+    abs(I_1) < integral_(abs(theta.alt - tau) < delta) epsilon P(zeta, z) dif tau < epsilon integral_0^(2 uppi) P(zeta,z) dif tau = epsilon.
+  $
 
   #figure(
-    cetz.canvas({
-      import cetz.draw: *
+    {
+      let radius = 5
+      quick-plot(size: (8, 8), x-max: radius + .5, y-max: radius + .5, {
+        import cetz.draw: *
 
-      let var-zeta = (4.924, 0.868)
-      let var-z = (2.2, 4.2)
-      let var-xi = (0.868, 4.924)
-      let auxiliary1 = (4.667952, 0.822864)
+        let zeta-angle = 10deg
+        let xi-angle = 80deg
+        let z-angle = 60deg
+        let z-radius = 4.75
+        let var-zeta = cvector.scale(cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(zeta-angle), (1, 0)), radius)
+        let var-xi = cvector.scale(cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(xi-angle), (1, 0)), radius)
+        let var-z = cvector.scale(cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(z-angle), (1, 0)), z-radius)
+        let auxiliary1 = cvector.scale(cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(zeta-angle), (1, 0)), z-radius)
 
-      line((-0.5, 0), (5.5, 0), mark: (end: "stealth"), stroke: .8pt)
-      line((0, -0.5), (0, 5.5), mark: (end: "stealth"), stroke: .8pt)
+        arc-center((0, 0), start: 0deg, stop: 90deg, radius: 5, stroke: .7pt)
 
-      arc-center((0, 0), start: 0deg, stop: 90deg, radius: 5, stroke: .5pt)
+        line((0, 0), var-zeta)
+        line((0, 0), var-xi)
+        line((0, 0), var-z)
+        line(var-z, var-xi)
+        line(var-z, auxiliary1)
+        line(var-z, var-zeta, stroke: (thickness: .7pt, dash: "dotted"))
 
-      line((0, 0), var-zeta, stroke: .5pt)
-      line((0, 0), var-xi, stroke: .5pt)
-      line((0, 0), var-z, stroke: .5pt)
-      line(var-z, var-xi, stroke: .5pt)
-      line(var-z, auxiliary1, stroke: .5pt)
-      line(var-z, var-zeta, stroke: (paint: black, thickness: .5pt, dash: "dashed"))
+        arc-center(
+          (0, 0),
+          start: zeta-angle,
+          stop: z-angle,
+          radius: 0.4,
+          stroke: (thickness: .7pt, dash: "dotted"),
+          name: "arc-greater-than-delta/2",
+        )
+        arc-center(
+          (0, 0),
+          start: zeta-angle,
+          stop: xi-angle,
+          radius: 1.5,
+          stroke: (thickness: .7pt, dash: "dotted"),
+          name: "arc-greater-than-delta",
+        )
+        arc-center(
+          (0, 0),
+          start: 0deg,
+          stop: zeta-angle,
+          radius: 2,
+          stroke: (thickness: .7pt, dash: "dotted"),
+          name: "arc-tau",
+        )
+        arc-center(
+          (0, 0),
+          start: 0deg,
+          stop: xi-angle,
+          radius: 1,
+          stroke: (thickness: .7pt, dash: "dotted"),
+          name: "arc-theta-alt",
+        )
 
-      arc-center((0, 0), start: 10deg, stop: 62.35deg, radius: 0.4, stroke: .5pt)
-      arc-center((0, 0), start: 10deg, stop: 80deg, radius: 1.5, stroke: .5pt)
-      arc-center((0, 0), start: 0deg, stop: 10deg, radius: 2, stroke: .5pt)
-      arc-center((0, 0), start: 0deg, stop: 80deg, radius: 1, stroke: .5pt)
+        arc(
+          var-z,
+          start: cvector.angle2((0, 0), cvector.sub(var-z, var-xi)),
+          stop: xi-angle - 180deg,
+          radius: cvector.len(cvector.sub(var-z, var-xi)),
+          stroke: (
+            dash: "dotted",
+            thickness: .7pt,
+          ),
+        )
+        arc(
+          var-z,
+          start: z-angle,
+          stop: xi-angle,
+          radius: cvector.len(var-z),
+          stroke: (
+            dash: "dotted",
+            thickness: .7pt,
+          ),
+          name: "z-radius-arc",
+        )
 
-      arc(var-z, start: -27.65deg, stop: -100deg, radius: 1.516, stroke: (paint: black, thickness: .5pt, dash: "dashed"))
-      arc(var-z, start: 62.35deg, stop: 80deg, radius: 4.741, stroke: (paint: black, thickness: .5pt, dash: "dotted"))
+        content(var-zeta, anchor: "west", [$zeta$], padding: .1cm)
+        content(var-z, anchor: "east", [$z$], padding: .1cm)
+        content(var-xi, anchor: "south", [$xi$], padding: .1cm)
 
-      content((5.03, 0.87), anchor: "west", [$zeta$])
-      content((2.2, 4.08), anchor: "north", [$z$])
-      content((0.87, 5.02), anchor: "south", [$xi$])
+        content((auxiliary1, 50%, (0, 0)), anchor: "south", [$rho$])
+        content((var-z, 50%, var-xi), anchor: "south", [
+          #text(10pt, box(
+            outset: 1pt,
+            fill: luma(100%, 80%),
+            math.equation(numbering: none, block: true, $ inline(eta^-) $),
+          ))
+        ])
+        content((var-xi, 50%, (0, 0)), anchor: "west", [$R$])
+        content((var-z, 50%, (0, 0)), anchor: "west", [$rho>R/2$])
 
-      content((2.462, 0.434), anchor: "south", [$rho$])
-      content((1.534, 4.562), anchor: "north", [#text(8pt, $eta^-$)])
-      content((0.434, 2.462), anchor: "west", [$R$])
-      content((1.1, 2.1), anchor: "west", [$rho$])
+        content("arc-greater-than-delta/2.arc-center", anchor: "south-west", [#text(10pt, $frac(delta, 2)^+$)])
+        content("arc-theta-alt.arc-center", anchor: "south-west", [#text(10pt, $theta.alt$)])
+        content("arc-greater-than-delta.arc-center", anchor: "south-west", [#text(10pt, $delta^+$)])
+        content("arc-tau.arc-center", anchor: "west", [$tau$])
 
-      content((0.57, 0.75), anchor: "north", [#text(8pt, $frac(delta, 2)^+$)])
-      content((0.95, 0.95), anchor: "north", [#text(8pt, $theta.alt$)])
-      content((1.25, 1.55), anchor: "north", [#text(8pt, $delta^+$)])
-      content((2.2, 0.4), anchor: "north", [$tau$])
-
-      content((3.35, 2.48), anchor: "east", [#text(8pt, $|zeta - z|^-$)])
-    }),
+        content((var-z, 50%, var-zeta), anchor: "east", [
+          #text(10pt, box(
+            outset: 1pt,
+            fill: luma(100%, 80%),
+            math.equation(numbering: none, block: true, $ inline(abs(zeta - z)^-) $),
+          ))
+        ])
+      })
+    },
     caption: [$zeta$, $xi$, and $z$ when $abs(theta.alt - tau) > delta$, with distances marked. The use of $+$ and $-$ denote a value more or less (respectively) than the preceding value.],
   ) <fig:dirichletproblemwithlaplaceequationsolution_secondintegral>
 
 
   By continuity of $phi$ on the compact set $partial D(0, R)$, by @thm:heinecantor, it is bounded and $M = sup_(abs(zeta) = R) abs(phi(zeta))$ is finite. The Poisson kernel can be rewritten as
   $ P(zeta, z) = (R^2 - rho^2) / (2 uppi abs(zeta - z)^2), $
-  where $zeta = R ee^(ii tau)$ and $z = rho ee^(ii theta)$, with $abs(theta.alt - tau) > delta$. Then $exists eta > 0$ such that $forall z$ with $abs(xi - z) < eta$,
+  where $zeta = R ee^(ii tau)$ and $z = rho ee^(ii theta)$, with $abs(theta.alt - tau) > delta$. Then $exists eta > 0$ such that $forall z$ with $abs(xi - z) < eta$ (small enough so that $abs(theta.alt - theta)< delta/2$),
   $ abs(theta - tau) > delta / 2 $ <eq:dirichletproblemwithlaplaceequationsolution_constraint1>
   and
-  $ rho > R / 2 quad "and" quad eta <= R / 2 $ <eq:dirichletproblemwithlaplaceequationsolution_constraint2>
-  (these can be arbitrarily chosen for different resulting bounds) as in @fig:dirichletproblemwithlaplaceequationsolution_secondintegral. Then,
+  $ (rho > R / 2) quad "and" quad eta <= R / 2 $ <eq:dirichletproblemwithlaplaceequationsolution_constraint2>
+  as in @fig:dirichletproblemwithlaplaceequationsolution_secondintegral. Then,
   $
     abs(zeta - z)^2 > 4 rho^2 sin(delta / 4)^2 > 1 / 2 R^2 (1 - cos(delta / 2)).
   $
@@ -129,11 +194,11 @@ A fundamental problem in the theory of partial differential equations is to find
     R - rho < epsilon / (8 M) R (1 - cos(delta / 2)).
   $ <eq:dirichletproblemwithlaplaceequationsolution_constraint3>
 
-  From @fig:dirichletproblemwithlaplaceequationsolution_secondintegral, it is evident that $R - rho < abs(xi - z) < eta$. In order for @eq:dirichletproblemwithlaplaceequationsolution_constraint1 to be true, we can enforce that $abs(theta.alt - theta) < delta / 2$. In other words
+  From @fig:dirichletproblemwithlaplaceequationsolution_secondintegral, it is evident that $R - rho < abs(xi - z) < eta$. For @eq:dirichletproblemwithlaplaceequationsolution_constraint1 to be true, we previously had that $abs(theta.alt - theta) < delta / 2$. In other words
   $ abs(xi - z)^2 < R^2 + rho^2 - 2 R rho cos(delta / 2). $
 
   Obviously, this is satisfied if $abs(xi - z)^2 < R^2 / 2 (1 - cos(delta / 2)) < 2 rho^2 (1 - cos(delta / 2))$. This can be rearranged into
-  $ abs(xi - z) < R sqrt(2) / 2 sqrt(1 - cos(delta / 2)) = R sin(delta / 4). $
+  $ abs(xi - z) < R sqrt((1 - cos(delta / 2))/2) = R sin(delta / 4). $
   Therefore, we can choose
   $
     eta = min(

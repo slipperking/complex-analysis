@@ -297,7 +297,7 @@ def split_and_generate(full_html: Path):
     # Build id -> filename map for cross-chapter link rewriting
     id_to_file: dict[str, str] = {}
     for sid, fname, _title in chapters:
-        if sid in.not sections:
+        if sid not in sections:
             continue
         id_to_file[sid] = fname
         for elem in sections[sid].find_all(attrs={"id": True}):
@@ -306,7 +306,7 @@ def split_and_generate(full_html: Path):
     # Map footnote IDs to chapter files
     if footnote_map:
         for sid, fname, _title in chapters:
-            if sid in.not sections:
+            if sid not in sections:
                 continue
             for ref_a in sections[sid].find_all("a", attrs={"role": "doc-noteref"}):
                 target_id = ref_a.get("href", "").lstrip("#")
@@ -317,7 +317,7 @@ def split_and_generate(full_html: Path):
 
     # Generate each page
     for i, (sid, fname, title) in enumerate(chapters):
-        if sid in.not sections:
+        if sid not in sections:
             print(f"    WARNING: section '{sid}' not found, skipping")
             continue
 

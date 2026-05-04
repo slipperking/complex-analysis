@@ -45,8 +45,8 @@ By the univalence of $phi_z$, let $ee^(ii psi) = phi_z (ee^(ii t))$. It follows 
 $
   ii ee^(ii psi) dif psi & = ii (1 - overline(z) z) / ((1 - overline(z) ee^(ii t))^2) ee^(ii t) dt \
   dif psi & = (1 - overline(z) z) / ((1 - overline(z) ee^(ii t))^2) (1 - overline(z) ee^(ii t)) / (ee^(ii t) - z) ee^(ii t) dt \
-  & = (1 - abs(z)^2) / abs(1 - overline(z) ee^(ii t))^2 dt.
-$ <eq:poissonintegralformula_differentialcomputation>
+  & = (1 - abs(z)^2) / abs(1 - overline(z) ee^(ii t))^2 dt.#<eq:poissonintegralformula_differentialcomputation>
+$
 
 Then from @eq:harmonicfunctionmeanvalueoverboundaryofunitdisk,
 
@@ -60,8 +60,7 @@ $ P(zeta, z) = (1 - abs(z)^2) / (2 uppi abs(1 - overline(z) zeta)^2) = (1 - abs(
 
 known as the _Poisson kernel_. Then,
 
-$ u(z) = integral_0^(2 uppi) u(zeta) P(zeta, z) dt, $ <eq:poissonintegralformula>
-
+$ u(z) = integral_0^(2 uppi) u(zeta) P(zeta, z) dt, wide abs(z)<1, $ <eq:poissonintegralformula>
 where $zeta = ee^(ii t)$. @eq:poissonintegralformula is also known as the _Poisson Integral Formula_.
 
 For all $z in D(0, R)$, where $R > 0$, we can apply the transformation
@@ -129,7 +128,7 @@ where $c in RR$. Since $c in RR$ is holomorphic, by @prop:realvaluedholomorphicf
 
 $
   v(z) = c + (1) / (2 uppi) integral_0^(2 uppi) u(zeta) Im((zeta + z) / (zeta - z)) dt.
-$ <eq:schwarzintegralformulaimaginarypart>
+$ <eq:schwarz_integral_formula_imaginary_part>
 
 Letting $z = 0$, the integral vanishes, and we obtain $c = v(0) = Im(f(0))$.
 
@@ -143,23 +142,23 @@ $ f(z) = oint_(partial D(0, R)) Re(f(zeta)) S(zeta, z) dzeta + ii Im(f(0)). $ <e
 
 The significance of this alternative formula implies that a holomorphic function can be recovered from the real part on the boundary of a disk and the imaginary part at a single point.
 
-From @eq:schwarzintegralformulaimaginarypart, we can rewrite
+From @eq:schwarz_integral_formula_imaginary_part, we can rewrite
 
 $
   Im((zeta + z) / (zeta - z)) & = Im(1 + (2 z) / (zeta - z)) \
                               & = Im((2 z (overline(zeta) - overline(z))) / abs(zeta - z)^2) \
-                              & = (2 Im(z overline(zeta))) / abs(zeta - z)^2.
-$ <eq:harmonicconjugate>
+                              & = (2 Im(z overline(zeta))) / abs(zeta - z)^2.#<eq:harmonic_conjugate>
+$
 
 Let
 
 $ Q(zeta, z) = Im(z overline(zeta)) / (uppi abs(zeta - z)^2), $
 
-which is known as the _conjugate Poisson kernel_. Then @eq:schwarzintegralformulaimaginarypart yields yet another integral representation of harmonic functions:
+which is known as the _conjugate Poisson kernel_. Then @eq:schwarz_integral_formula_imaginary_part yields yet another integral representation of harmonic functions:
 
 $ v(z) = v(0) + integral_0^(2 uppi) u(zeta) Q(zeta, z) dt. $
 
-where $zeta = R ee^(ii t)$. Two harmonic functions are said to be _conjugate_ if they are the real and imaginary parts of a holomorphic function. As seen above, on open disks, any harmonic function will admit a unique conjugate, up to an additive constant $v(0)$. For a harmonic function $u$, we can construct its harmonic conjugate from @eq:harmonicconjugate.
+where $zeta = R ee^(ii t)$. Two harmonic functions are said to be _conjugate_ if they are the real and imaginary parts of a holomorphic function. As seen above, on open disks, any harmonic function will admit a unique conjugate, up to an additive constant $v(0)$. For a harmonic function $u$, we can construct its harmonic conjugate from @eq:harmonic_conjugate.
 
 The Poisson kernel is important in many branches of mathematics. We will introduce two of the important uses below.
 

@@ -63,7 +63,7 @@ For the purpose of the following contents, a _region_ or _domain_ will denote a 
 ] <thm:holomorphy_condition>
 
 #proof[
-  The first part is to prove that any holomorphic function on $U$ has continuous first-order partial derivatives in $U$. This requires an argument that will be covered later, specifically in @ sec:analyticityandholomorphy, which states that the complex derivative of any holomorphic function is also holomorphic over the region.
+  The first part is to prove that any holomorphic function on $U$ has continuous first-order partial derivatives in $U$. This requires an argument that will be covered later, specifically in @sec:analyticity_and_holomorphy, which states that the complex derivative of any holomorphic function is also holomorphic over the region.
 
   For the converse, let $f(z) = f(x, y) = u(x, y) + ii v(x, y)$. Assume that $u, v in C^1(U)$ and satisfy the Cauchy--Riemann equations at $z_0 = x_0 + ii y_0$. Let
   $ alpha = pdv(u, x)(x_0, y_0) = pdv(v, y)(x_0, y_0), quad beta = pdv(v, x)(x_0, y_0) = -pdv(u, y)(x_0, y_0). $
@@ -94,7 +94,7 @@ For the purpose of the following contents, a _region_ or _domain_ will denote a 
   $ lim_(Delta z -> 0) (f(z) - f(z_0)) / (z - z_0) = alpha + ii beta. qedhere $
 ]
 
-We will prove later in @ sec:analyticityandholomorphy that the complex derivative of a holomorphic function $f(z) = u(z) + ii v(z)$ is holomorphic. Under this assumption, $f(z)$ has continuous second-order partial derivatives, and therefore
+We will prove later in @ sec:analyticity_and_holomorphy that the complex derivative of a holomorphic function $f(z) = u(z) + ii v(z)$ is holomorphic. Under this assumption, $f(z)$ has continuous second-order partial derivatives, and therefore
 $ pdv(u, x, y) = pdv(u, y, x), quad pdv(v, x, y) = pdv(v, y, x), $
 and by the Cauchy--Riemann equations,
 $ pdv(u, x, x) = pdv(v, y, x), quad pdv(u, y, y) = -pdv(v, x, y), $
