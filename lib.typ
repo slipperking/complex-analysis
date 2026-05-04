@@ -49,7 +49,7 @@
 
 #let scoped-equation-numbering(..args) = [(#_scoped-number(args.at(0)))]
 
-#let on-heading(it) = {
+#let heading-reset-marker(level) = context if level <= section-numbering-depth {
   reset-heading-scoped-counters()
 }
 
@@ -60,9 +60,11 @@
 
 #let _html-thm(identifier, head, css-class, numbered: true) = {
   let thm-kind = "thm-" + identifier
-  let fmt-num() = context {
+  let fmt-num() = context if numbered {
     let n = counter(figure.where(kind: thm-kind)).get().first()
-    if numbered { _scoped-number(n) } else { none }
+    _scoped-number(n)
+  } else {
+    none
   }
   (..args, body) => {
     let name = if args.pos().len() > 0 { args.pos().first() } else { none }
@@ -93,28 +95,42 @@
   }
 }
 
+#let scoped-theorem-numbering(..nums) = [(#_scoped-number(nums.at(0)))]
+
 #let theorem = if _is-html {
   _html-thm("theorem", "Theorem", "thm-theorem")
 } else {
-  thmplain("theorem", "Theorem", titlefmt: strong, inset: (top: 0em, left: 0em, right: 0em), namefmt: x => emph(
-    smallcaps([(#x)]),
-  ))
+  thmplain(
+    "theorem",
+    "Theorem",
+    titlefmt: strong,
+    inset: (top: 0em, left: 0em, right: 0em),
+    namefmt: x => emph(smallcaps([(#x)])),
+  ).with(numbering: scoped-theorem-numbering)
 }
 
 #let lemma = if _is-html {
   _html-thm("lemma", "Lemma", "thm-lemma")
 } else {
-  thmplain("lemma", "Lemma", titlefmt: strong, inset: (top: 0em, left: 0em, right: 0em), namefmt: x => emph(smallcaps(
-    [(#x)],
-  )))
+  thmplain(
+    "lemma",
+    "Lemma",
+    titlefmt: strong,
+    inset: (top: 0em, left: 0em, right: 0em),
+    namefmt: x => emph(smallcaps([(#x)])),
+  ).with(numbering: scoped-theorem-numbering)
 }
 
 #let proposition = if _is-html {
   _html-thm("proposition", "Proposition", "thm-proposition")
 } else {
-  thmplain("proposition", "Proposition", titlefmt: strong, inset: (top: 0em, left: 0em, right: 0em), namefmt: x => emph(
-    smallcaps([(#x)]),
-  ))
+  thmplain(
+    "proposition",
+    "Proposition",
+    titlefmt: strong,
+    inset: (top: 0em, left: 0em, right: 0em),
+    namefmt: x => emph(smallcaps([(#x)])),
+  ).with(numbering: scoped-theorem-numbering)
 }
 
 #let corollary = if _is-html {
@@ -127,13 +143,18 @@
     titlefmt: strong,
     inset: (top: 0em, left: 0em, right: 0em),
     namefmt: x => emph(smallcaps([(#x)])),
-  )
+  ).with(numbering: scoped-theorem-numbering)
 }
 
 #let definition = if _is-html {
   _html-thm("definition", "Definition", "thm-definition")
 } else {
-  thmplain("definition", "Definition", titlefmt: strong, inset: (top: 0em, left: 0em, right: 0em))
+  thmplain(
+    "definition",
+    "Definition",
+    titlefmt: strong,
+    inset: (top: 0em, left: 0em, right: 0em),
+  ).with(numbering: scoped-theorem-numbering)
 }
 
 #let remark = if _is-html {
@@ -145,9 +166,13 @@
 #let example = if _is-html {
   _html-thm("example", "Example", "thm-example")
 } else {
-  thmplain("example", "Example", titlefmt: strong, inset: (top: 0em, left: 0em, right: 0em), namefmt: x => emph(
-    smallcaps([(#x)]),
-  ))
+  thmplain(
+    "example",
+    "Example",
+    titlefmt: strong,
+    inset: (top: 0em, left: 0em, right: 0em),
+    namefmt: x => emph(smallcaps([(#x)])),
+  ).with(numbering: scoped-theorem-numbering)
 }
 
 #let proof = if _is-html {

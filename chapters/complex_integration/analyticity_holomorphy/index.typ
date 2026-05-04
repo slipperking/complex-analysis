@@ -291,7 +291,7 @@ The relationship between a holomorphic function and its derivatives is one of th
 
   Defining $c_n = n! c'_n / uppi$ proves @eq:nthderivativeboundedl1norm_statement.
 
-  The remaining issue is the existence of such a cutoff function $phi$, which will be supplied later by @ thm:bumpfunctionexistence.
+  The remaining issue is the existence of such a cutoff function $phi$, which will be supplied later by @thm:bumpfunctionexistence.
 ]
 
 #corollary[
