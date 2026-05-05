@@ -140,7 +140,7 @@ As a direct consequence of @thm:holomorphicautomorphismgrouponunitdisk, we have 
   we have that
   $ phi_(w_1) compose f compose phi_(-z_1) = ee^(ii tau), $
   where $tau in RR$ is constant. It follows that
-  $ f = phi_(-w_1) compose ee^(ii tau) compose phi_(z_1) in Aut(DD). qedhere $
+  $ f = phi_(-w_1) compose ee^(ii tau) compose phi_(z_1) in Aut(DD). #qedhere $
 ]
 
 #remark[

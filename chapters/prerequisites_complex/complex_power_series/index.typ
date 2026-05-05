@@ -151,7 +151,7 @@ Lastly, the sufficient criteria to pass a limit through an integral:
     &< integral_gamma epsilon / length(gamma) abs(dz) = epsilon.
   $
   Therefore,
-  $ lim_(n -> infinity) integral_gamma f_n (z) dz = integral_gamma f(z) dz. qedhere $
+  $ lim_(n -> infinity) integral_gamma f_n (z) dz = integral_gamma f(z) dz. #qedhere $
 ]
 
 #remark[

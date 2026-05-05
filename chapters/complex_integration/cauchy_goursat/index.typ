@@ -164,7 +164,7 @@ The theorem above is only a specific case of the Stokes-Cartan Theorem (@thm:sto
   Then from rearranging @eq:pompeiu_epsilonlimitintermediate, we obtain:
 
   $
-    f(z) = 1 / (taui) (oint_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z)). qedhere
+    f(z) = 1 / (taui) (oint_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z)). #qedhere
   $
 ]
 
@@ -207,7 +207,7 @@ From the above result, we can directly obtain the following theorem:
   Alternatively, we can use Green's Theorem (@thm:complex_green) with $omega=f(zeta)dzeta$:
 
   $
-    integral.cont_(partial U) f(zeta) dzeta = integral.cont_(partial U) omega = integral_U dif omega = integral_U pdv(f, overline(zeta)) dif overline(zeta) and dzeta = 0. qedhere
+    integral.cont_(partial U) f(zeta) dzeta = integral.cont_(partial U) omega = integral_U dif omega = integral_U pdv(f, overline(zeta)) dif overline(zeta) and dzeta = 0. #qedhere
   $]
 
 #theorem[For a compactly supported function $psi(z)in C^1 (CC)$, a solution satisfying $u(z)in C^1 (CC)$ to the non-homogeneous Cauchy--Riemann equation
@@ -258,7 +258,7 @@ From the above result, we can directly obtain the following theorem:
   $
 
   By @cor:pompeiuwithoutcauchyterm,
-  $ pdv(u, overline(z))=psi(z). qedhere $
+  $ pdv(u, overline(z))=psi(z). #qedhere $
 ]
 
 #remark[In the first part, we established that a function $psi(z)in C^0(CC)$ with compact support satisfies
@@ -297,7 +297,8 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   $
   where $length(Gamma)$ is the length of $Gamma$ and $length(P)$ is the length of $P$. Then,
   $
-    abs(integral_Gamma f(z) dz - integral_P f(z) dz) &<= abs(integral_Gamma f(z) dz - S) + abs(integral_P f(z) dz - S) \ &<= 2 epsilon dot length(Gamma). #qedhere
+    abs(integral_Gamma f(z) dz - integral_P f(z) dz) & <= abs(integral_Gamma f(z) dz - S) + abs(integral_P f(z) dz - S) \
+                                                     & <= 2 epsilon dot length(Gamma). #qedhere
   $
 ]
 
@@ -433,7 +434,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
   Because the distance between any two points in the interior of a triangle is always less than its perimeter, using the triangle inequality for complex integrals,
   $
-    abs(integral.cont_(Delta^n) [f(z) - f (z_0) - f'(z_0) (z - z_0)] dz) <= epsilon integral.cont_(Delta^n) abs(z - z_0) abs(dz) = (epsilon L) / 2^n integral.cont_(Delta^n) abs(dz) = (epsilon L^2) / 4^n.
+    abs(integral.cont_(Delta^n) [f(z) - f (z_0) - f'(z_0) (z - z_0)] dz) &<= epsilon integral.cont_(Delta^n) abs(z - z_0) abs(dz) \ &= (epsilon L) / 2^n integral.cont_(Delta^n) abs(dz) = (epsilon L^2) / 4^n.
   $
 
   Comparing the above equation with @eq:cauchyintegraltheoremoversimplyconnectedset_trianglelowerbound,
@@ -670,7 +671,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   $
 
   By rearrangement,
-  $ f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta. qedhere $]
+  $ f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta. #qedhere $]
 
 #remark[In the proof of @thm:pompeiu, we used Lipschitz continuity for a smooth function, which was a stronger condition than necessary. The true necessity of smoothness was to be able to apply Green's Theorem (@thm:complex_green).]
 
@@ -688,7 +689,7 @@ This profound theorem is extremely important and helpful in complex integration 
   $ sum_(k = 0)^(n - 1) integral.cont_(partial D(0, 2)) (c_k) / (z - omega_k) dz = taui sum_(k = 0)^(n - 1) c_k. $
 
   Observe that $sum_(k = 0)^(n - 1) c_k = lim_(z -> infinity) sum_(k = 0)^(n - 1) (z c_k) / (z - omega_k) = lim_(z -> infinity) z / (z^n - 1) = 0$ since $n >= 2$. Therefore,
-  $ integral.cont_(partial D(0, 2)) dz / (z^n - 1) = 0.qedhere $
+  $ integral.cont_(partial D(0, 2)) dz / (z^n - 1) = 0. #qedhere $
 ]
 
 We have also already seen the utility of parameterization via a polar transformation. Many useful identities in classical calculus can also be derived from concepts in its generalization:
@@ -724,7 +725,7 @@ We have also already seen the utility of parameterization via a polar transforma
   $
 
   From simple cancellation, we then have
-  $ 2 uppi product_(k = 1)^n (2k - 1) / product_(k = 1)^n (2k) = 2 uppi product_(k = 1)^n (2k - 1) / (2k). qedhere $]
+  $ 2 uppi product_(k = 1)^n (2k - 1) / product_(k = 1)^n (2k) = 2 uppi product_(k = 1)^n (2k - 1) / (2k). #qedhere $]
 
 #example(
   "Cauchy" + sym.dash.en + "Goursat Formula on the Exterior",

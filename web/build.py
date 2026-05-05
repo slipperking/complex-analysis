@@ -11,11 +11,12 @@ Usage:
 """
 
 import argparse
+import posixpath
 import re
 import shutil
 import subprocess
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 try:
     from bs4 import BeautifulSoup, Tag
@@ -125,7 +126,24 @@ def extract_local_toc(section: Tag) -> list[dict]:
 
 def section_filename(section_id: str) -> str:
     """Map a top-level section id to its output filename."""
-    return "index.html" if section_id == "cover" else f"{section_id}.html"
+    return "index.html" if section_id == "cover" else f"{section_id}/index.html"
+
+
+def relative_href(current_file: str, target_file: str, anchor: str | None = None) -> str:
+    """Build a relative link from one generated page to another."""
+    current_dir = PurePosixPath(current_file).parent.as_posix()
+    rel = posixpath.relpath(target_file, current_dir if current_dir != "." else ".")
+    if rel == "index.html":
+        rel = "./"
+    elif rel.endswith("/index.html"):
+        rel = rel[: -len("index.html")]
+    return f"{rel}#{anchor}" if anchor else rel
+
+
+def asset_href(current_file: str, asset_path: str) -> str:
+    """Build a relative link from a generated page to a shared asset."""
+    current_dir = (PurePosixPath(LANG) / PurePosixPath(current_file)).parent.as_posix()
+    return posixpath.relpath(asset_path, current_dir if current_dir != "." else ".")
 
 
 def clean_nav_title(text: str) -> str:
@@ -148,7 +166,7 @@ def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]],
             continue
 
         depth = len(section.find_parents("section", class_="chapter"))
-        title_heading = section.find(["h1", "h2", "h3"])
+        title_heading = section.find(["h1", "h2", "h3"], recursive=False)
         page_title = clean_nav_title(title_heading.get_text(" ", strip=True)) if title_heading else sid.replace("-", " ").title()
         if sid == "cover":
             page_title = "Home"
@@ -163,7 +181,13 @@ def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]],
     return pages, nav_items, sub_chapters, parts
 
 
-def build_global_nav(nav_items: list[tuple[str, str, str]], parts: list[tuple], current_id: str, sub_chapters: set[str]) -> str:
+def build_global_nav(
+    nav_items: list[tuple[str, str, str]],
+    parts: list[tuple],
+    current_id: str,
+    sub_chapters: set[str],
+    current_file: str,
+) -> str:
     """Build the global navigation sidebar HTML."""
     chapter_map = {sid: (href, title) for sid, href, title in nav_items}
     lines = ['<nav class="global-nav" aria-label="Global navigation">']
@@ -172,13 +196,14 @@ def build_global_nav(nav_items: list[tuple[str, str, str]], parts: list[tuple], 
             lines.append(f'  <div class="nav-part">{part_title}</div>')
         lines.append("  <ul>")
         for sid in section_ids:
-            href, title = chapter_map[sid]
+            target_file, title = chapter_map[sid]
             classes = []
             if sid == current_id:
                 classes.append("active")
             if sid in sub_chapters:
                 classes.append("nav-sub")
             cls = f' class="{" ".join(classes)}"' if classes else ""
+            href = relative_href(current_file, target_file)
             lines.append(f'    <li{cls}><a href="{href}">{title}</a></li>')
         lines.append("  </ul>")
     lines.append("</nav>")
@@ -214,10 +239,14 @@ def build_page(
     current_file: str,
 ) -> str:
     """Assemble a complete HTML page with topbar."""
-    prev_btn = f'<a href="{prev_link[0]}" class="nav-prev">&larr; {prev_link[1]}</a>' if prev_link else '<span></span>'
-    next_btn = f'<a href="{next_link[0]}" class="nav-next">{next_link[1]} &rarr;</a>' if next_link else '<span></span>'
+    prev_btn = f'<a href="{relative_href(current_file, prev_link[0])}" class="nav-prev">&larr; {prev_link[1]}</a>' if prev_link else '<span></span>'
+    next_btn = f'<a href="{relative_href(current_file, next_link[0])}" class="nav-next">{next_link[1]} &rarr;</a>' if next_link else '<span></span>'
 
     search_label = "Search"
+    home_href = relative_href(current_file, "index.html")
+    favicon_href = asset_href(current_file, "assets/favicon.svg")
+    stylesheet_href = asset_href(current_file, "assets/style.css")
+    nav_script_href = asset_href(current_file, "assets/nav.js")
 
     return f"""<!DOCTYPE html>
 <html lang="{lang}" data-theme="light">
@@ -227,8 +256,8 @@ def build_page(
   <title>{title} — {thesis_title}</title>
   <meta name="author" content="Fabien Mathieu">
   <meta name="pagefind-base" content="{BASE_URL}">
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="icon" href="{favicon_href}" type="image/svg+xml">
+  <link rel="stylesheet" href="{stylesheet_href}">
   <script>
     (function(){{
       var t=localStorage.getItem("theme")||"auto";
@@ -241,7 +270,7 @@ def build_page(
   <header class="topbar" data-pagefind-ignore>
     <div class="topbar-left">
       <button class="sidebar-toggle-btn" id="sidebar-toggle-left" aria-label="Menu">{ICON_HAMBURGER}</button>
-      <a href="index.html" class="topbar-title">{thesis_title}</a>
+      <a href="{home_href}" class="topbar-title">{thesis_title}</a>
     </div>
     <div class="topbar-right">
       <button class="search-trigger" aria-label="{search_label} (Ctrl+K)">{ICON_SEARCH} <kbd>Ctrl+K</kbd></button>
@@ -275,7 +304,7 @@ def build_page(
       <div class="search-results" id="search-results"></div>
     </div>
   </div>
-  <script type="module" src="../assets/nav.js"></script>
+  <script type="module" src="{nav_script_href}"></script>
 </body>
 </html>"""
 
@@ -349,7 +378,7 @@ def split_and_generate(full_html: Path):
             nested.decompose()
 
         local_toc = extract_local_toc(page_section)
-        global_nav = build_global_nav(nav_items, parts, sid, sub_chapters)
+        global_nav = build_global_nav(nav_items, parts, sid, sub_chapters, fname)
         local_toc_html = build_local_toc(local_toc, lang)
 
         prev_link = (pages[i - 1][1], pages[i - 1][2]) if i > 0 else None
@@ -363,7 +392,7 @@ def split_and_generate(full_html: Path):
                 target_id = href[1:]
                 target_file = id_to_file.get(target_id)
                 if target_file and target_file != fname:
-                    a_tag["href"] = f"{target_file}#{target_id}"
+                    a_tag["href"] = relative_href(fname, target_file, target_id)
                     cross_links += 1
 
         # Collect footnotes for this chapter
@@ -383,7 +412,7 @@ def split_and_generate(full_html: Path):
                             tid = href[1:]
                             target_file = id_to_file.get(tid)
                             if target_file and target_file != fname:
-                                a_tag["href"] = f"{target_file}#{tid}"
+                                a_tag["href"] = relative_href(fname, target_file, tid)
                                 cross_links += 1
                 items = "\n".join(fn.decode() for fn in chapter_footnotes)
                 footnotes_html = (
@@ -408,8 +437,9 @@ def split_and_generate(full_html: Path):
 
         cross_links_total += cross_links
         out_path = out_dir / fname
+        out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(page, encoding="utf-8")
-        print(f"    -> {lang}/{out_path.name} ({len(local_toc)} TOC, {cross_links} xlinks)")
+        print(f"    -> {lang}/{out_path.relative_to(out_dir).as_posix()} ({len(local_toc)} TOC, {cross_links} xlinks)")
 
     print(f"    Total cross-chapter links rewritten: {cross_links_total}")
 

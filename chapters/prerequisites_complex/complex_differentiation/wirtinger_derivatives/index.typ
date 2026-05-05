@@ -92,5 +92,5 @@ Last we have taking derivatives of conjugates:
   while
   $ pdv(f, z) = 1/2 (pdv(, x) - ii pdv(, y))(u + ii v) = 1/2 (u'_x + v'_y + ii (v'_x - u'_y)). $
   Taking complex conjugates gives
-  $ overline(pdv(f, z)) = 1/2 (u'_x + v'_y + ii (u'_y - v'_x)) = pdv(overline(f), overline(z)). #h(1fr) qedhere $
+  $ overline(pdv(f, z)) = 1/2 (u'_x + v'_y + ii (u'_y - v'_x)) = pdv(overline(f), overline(z)). #h(1fr) #qedhere $
 ]

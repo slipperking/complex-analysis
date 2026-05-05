@@ -114,7 +114,7 @@ The differentiation formula above can be viewed as a higher-order version of @th
 #proof[
   Apply @thm:cauchydifferentiationformula to the polynomial $(z^2 - 1)^n$. Then
   $
-    P_n(z) = (1) / (2^n n!) dot (n!) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / ((zeta - z)^(n + 1)) dzeta = (1) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / (2^n (zeta - z)^(n + 1)) dzeta. qedhere
+    P_n(z) = (1) / (2^n n!) dot (n!) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / ((zeta - z)^(n + 1)) dzeta = (1) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / (2^n (zeta - z)^(n + 1)) dzeta. #qedhere
   $
 ]
 
@@ -134,7 +134,7 @@ The differentiation formula above can be viewed as a higher-order version of @th
     abs(f^(n)(z_0))
     &<= (n!) / (2 uppi) integral_0^(2 uppi) M / abs((R ee^(ii theta))^(n + 1)) abs(ii R ee^(ii theta)) dif theta \
     &= (n! M) / (2 uppi) integral_0^(2 uppi) (1) / (R^n) dif theta \
-    &= (n! M) / (R^n). qedhere
+    &= (n! M) / (R^n). #qedhere
   $
 ]
 

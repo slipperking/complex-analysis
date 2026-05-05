@@ -12,9 +12,9 @@
   #include "/chapters/complex_integration/index.typ"
 ]
 
-// #chapter-section("weierstrass-theory")[
-//   #include "/chapters/weierstrass_theory/index.typ"
-// ]
+#chapter-section("weierstrass-theory")[
+  #include "/chapters/weierstrass_theory/index.typ"
+]
 
 // #chapter-section("riemann-theory")[
 //   #include "/chapters/riemann_theory/index.typ"

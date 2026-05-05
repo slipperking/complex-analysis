@@ -103,30 +103,29 @@ The function $f:[0, 2 uppi) -> S^1$ with $f(t) = (cos(t), sin(t))$ is indeed con
 #proposition[
   Let $(X, tau_1), (Y, tau_2)$ be two topological spaces. Then for $f:X -> Y$, the following conditions are equivalent:
 
-  1. $f$ is continuous.
-  2. If $A subset.eq Y$ is closed, then the pre-image $f^(-1)(A)$ is closed.
-  3. If $a in X$ and $A in tau_2$ is an open neighborhood of $f(a)$ in $Y$, then there is some $U in tau_1$ that is a neighborhood of $a$ such that $f(U) subset.eq A$.
+  1. $f$ is continuous.<itm:topologicalcontinuityequivalents_cont>
+  2. If $A subset.eq Y$ is closed, then the pre-image $f^(-1)(A)$ is closed.<itm:topologicalcontinuityequivalents_closed>
+  3. If $a in X$ and $A in tau_2$ is an open neighborhood of $f(a)$ in $Y$, then there is some $U in tau_1$ that is a neighborhood of $a$ such that $f(U) subset.eq A$.<itm:topologicalcontinuityequivalents_fitopenset>
 ] <prop:topologicalcontinuityequivalents>
 
 #proof[
-  We first show that 1 implies 2. By continuity, for $A subset.eq Y$ closed, $Y without A in tau_2$, then
+  We first show that @itm:topologicalcontinuityequivalents_cont implies @itm:topologicalcontinuityequivalents_closed. By continuity, for $A subset.eq Y$ closed, $Y without A in tau_2$, then
   $ f^(-1)(Y without A) = {x in X | f(x) in Y without A} = X without f^(-1)(A). $
 
-  Assume the conditions of 2 for the converse. Let $U in tau_2$ be open, $Y without U$ closed, then $f^(-1)(Y without U)$ is closed. Similar logic shows
+  Assume the conditions of @itm:topologicalcontinuityequivalents_closed for the converse. Let $U in tau_2$ be open, $Y without U$ closed, then $f^(-1)(Y without U)$ is closed. Similar logic shows
   $ f^(-1)(Y without U) = X without f^(-1)(U), $
   which implies $f^(-1)(U)$ is open.
 
-  Next we aim to show that continuity implies 3. By assumption, the pre-image of any open $A subset.eq Y$ is $f^(-1)(A)$ and open and $a in f^(-1)(A)$. The property is complete under $U = f^(-1)(A)$.
+  Next we aim to show that continuity implies @itm:topologicalcontinuityequivalents_fitopenset. By assumption, the pre-image of any open $A subset.eq Y$ is $f^(-1)(A)$ and open and $a in f^(-1)(A)$. The property is complete under $U = f^(-1)(A)$.
 
-  Assume the conditions of 3 for the converse. Let $A in tau_2$ be arbitrary. We aim to show that $f^(-1)(A) in tau_1$. If $f^(-1)(A) = emptyset$, then the conclusion is satisfied trivially. Hence, assume that $exists a in f^(-1)(A)$. For any such $a$, there exists a neighborhood $U_a in tau_1$ such that $f(U_a) subset.eq A$. Hence $U_a subset.eq f^(-1)(A)$ for any $a in f^(-1)(A)$. Therefore, we obtain
+  Assume the conditions of @itm:topologicalcontinuityequivalents_fitopenset for the converse. Let $A in tau_2$ be arbitrary. We aim to show that $f^(-1)(A) in tau_1$. If $f^(-1)(A) = emptyset$, then the conclusion is satisfied trivially. Hence, assume that $exists a in f^(-1)(A)$. For any such $a$, there exists a neighborhood $U_a in tau_1$ such that $f(U_a) subset.eq A$. Hence $U_a subset.eq f^(-1)(A)$ for any $a in f^(-1)(A)$. Therefore, we obtain
   $
-    union.big_(a in f^(-1)(A)) U_a subset.eq f^(-1)(A),
-    quad
+    union.big_(a in f^(-1)(A)) U_a subset.eq f^(-1)(A),\
     union.big_(a in f^(-1)(A)) U_a supset.eq union.big_(a in f^(-1)(A)) {a} = f^(-1)(A)
     => union.big_(a in f^(-1)(A)) U_a = f^(-1)(A).
   $
   By the definition of topologies,
-  $ union.big_(a in f^(-1)(A)) U_a in tau_1. qedhere $
+  $ union.big_(a in f^(-1)(A)) U_a in tau_1. #qedhere $
 ]
 
 #definition("Basis for a Topology")[
@@ -184,7 +183,7 @@ We now justify a claim whose triviality we have taken for granted.
 ]
 
 #proof[
-  We first imply that topological continuity implies epsilon--delta continuity. For any $x in X$, $forall epsilon > 0$, the ball $B(f(x), epsilon)$ is an open set (it is in the basis) in $Y$. By 3 of @prop:topologicalcontinuityequivalents, there is some open neighborhood $U$ of $x$ in $X$ such that $f(U) subset B(f(x), epsilon)$. By the previous proposition, there is a ball $B(x, delta) subset.eq U$. This is equivalent to
+  We first imply that topological continuity implies epsilon--delta continuity. For any $x in X$, $forall epsilon > 0$, the ball $B(f(x), epsilon)$ is an open set (it is in the basis) in $Y$. By @itm:topologicalcontinuityequivalents_fitopenset of @prop:topologicalcontinuityequivalents, there is some open neighborhood $U$ of $x$ in $X$ such that $f(U) subset B(f(x), epsilon)$. By the previous proposition, there is a ball $B(x, delta) subset.eq U$. This is equivalent to
   $ epsilon > 0, x in X => exists delta = delta_x > 0: y in B(x, delta) => f(y) in B(f(x), epsilon). $
 
   Conversely, assume $f$ is $epsilon$--$delta$ continuous. Let $V subset.eq Y$ be open and $x in f^(-1)(V)$. Since $V$ is open in the metric topology, there exists $epsilon > 0$ such that
@@ -313,9 +312,9 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
 #lemma[
   Let $Omega subset.eq CC$ be an open set and let $frak(B)$ be a basis for the topology on $Omega$. Then there exists a collection of sets ${U_n}_(n in NN) subset.eq frak(B)$ such that
 
-  1. $union.big_(n in NN) U_n = Omega$.
-  2. For every compact $K subset Omega$, $K$ intersects only finitely many sets in ${U_n}_(n in NN)$.
-] <lem:locallyfiniteopencoverexistence>
+  1. $union.big_(n in NN) U_n = Omega$.<itm:locally_finite_open_cover_existence_cover>
+  2. For every compact $K subset Omega$, $K$ intersects only finitely many sets in ${U_n}_(n in NN)$.<itm:locally_finite_open_cover_existence_localfiniteness>
+] <lem:locally_finite_open_cover_existence>
 
 #proof[
   Let ${K_n}_(n in NN) subset Omega$ be an exhaustion by compact sets with $K_0 = emptyset$ and $K_n subset.eq interior(K_(n + 1))$ for all $n in NN$. For each $n in NN$, define
@@ -331,7 +330,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   $ V_n subset union.big_(i = 1)^(k_n) U_(z_(n, i), n) subset.eq W_n. $
   Enumerate all such $U_(z_(n, i), n)$ over $n in NN$ and $i = 1, dots, k_n$ to obtain a countable collection ${U_j}_(j in NN) subset.eq frak(B)$. Then
   $ union.big_(j in NN) U_j = Omega, $
-  proving 1.
+  proving @itm:locally_finite_open_cover_existence_cover.
 
   For 2, let $K subset Omega$ be compact. There exists $N in NN$ such that
   $ K subset interior(K_N), $
@@ -474,31 +473,31 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
       )))
     }),
     caption: [Geometry of the finite subcover of $V_n subset W_n$ for some $n in NN$.],
-  ) <fig:locallyfiniteopencoverexistence>
+  ) <fig:locally_finite_open_cover_existence>
 ])
 #remark[
   The property of local finiteness of an open collection $S$ in $Omega$ is commonly stated as: for every $z in Omega$, there exists an open neighborhood of $z$ that intersects only finitely many sets in $S$.
 
-  This is equivalent to 2 in @lem:locallyfiniteopencoverexistence. Indeed, if every point has such a neighborhood, then any compact $K subset Omega$ admits a finite subcover of these neighborhoods by Heine--Borel (@thm:heineborel), so $K$ intersects finitely many sets in $S$. Conversely, for any $z in Omega$, take an open neighborhood $V$ with $z in V$ and with relatively compact closure in $Omega$; then $overline(V)$ intersects finitely many sets in $S$, and so does $V$.
+  This is equivalent to @itm:locally_finite_open_cover_existence_localfiniteness in @lem:locally_finite_open_cover_existence. Indeed, if every point has such a neighborhood, then any compact $K subset Omega$ admits a finite subcover of these neighborhoods by Heine--Borel (@thm:heineborel), so $K$ intersects finitely many sets in $S$. Conversely, for any $z in Omega$, take an open neighborhood $V$ with $z in V$ and with relatively compact closure in $Omega$; then $overline(V)$ intersects finitely many sets in $S$, and so does $V$.
 ]
 
 #theorem("Partition of Unity")[
   Let $Omega subset.eq CC$ be a nonempty open set and let ${Omega_k}_(k in NN)$ be an open cover of $Omega$. Then there exists a collection of bump functions ${alpha_j}_(j in NN) subset.eq C^infinity(CC)$, each with compact support in $Omega$, satisfying:
 
-  1. For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.
-  2. The collection ${supp(alpha_j)}_(j in NN)$ is locally finite.
-  3. For each $j in NN$, $0 <= alpha_j <= 1$.
-  4. $sum_(j = 1)^infinity alpha_j equiv 1$ on $Omega$.
+  1. For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.<itm:partition_of_unity_subordinate>
+  2. The collection ${supp(alpha_j)}_(j in NN)$ is locally finite.<itm:partition_of_unity_local_finiteness>
+  3. For each $j in NN$, $0 <= alpha_j <= 1$.<itm:partition_of_unity_nonnegativity>
+  4. $sum_(j = 1)^infinity alpha_j equiv 1$ on $Omega$.<itm:partition_of_unity_partition_of_unity>
 
   Then ${alpha_j}_(j in NN)$ is called a $C^infinity$ partition of unity subordinate to ${Omega_k}_(k in NN)$.
-] <thm:partitionofunity>
+] <thm:partition_of_unity>
 
 #proof[
   For each $z in Omega$ there exists $r_z > 0$ and $k_z in NN$ such that
   $ overline(D(z, r_z)) subset Omega_(k_z). $
   The collection
   $ {D(z, r) | z in Omega and 0 < r < r_z} $
-  is an open basis for $Omega$. By @lem:locallyfiniteopencoverexistence there exists a locally finite open cover
+  is an open basis for $Omega$. By @lem:locally_finite_open_cover_existence there exists a locally finite open cover
   $ {D(z_j, r_(z_j))}_(j in NN) subset.eq frak(B) $
   of $Omega$ with
   $ D(z_j, r_(z_j)) subset overline(D(z_j, r_(z_j))) subset Omega_(k_(z_j)), quad forall j in NN. $
@@ -541,7 +540,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   $ Omega_1 = V(K, 2 epsilon), quad Omega_2 = CC without overline(V(K, epsilon)). $
   Then ${Omega_1, Omega_2}$ is an open cover of $CC$.
 
-  By the Partition of Unity Theorem (@thm:partitionofunity), there exist compactly supported functions ${alpha_j}_(j in NN) subset.eq C^infinity(CC)$ forming a partition of unity subordinate to this cover. That is,
+  By the Partition of Unity Theorem (@thm:partition_of_unity), there exist compactly supported functions ${alpha_j}_(j in NN) subset.eq C^infinity(CC)$ forming a partition of unity subordinate to this cover. That is,
   $
     0 <= alpha_j <= 1, quad supp(alpha_j) subset.eq Omega_(i_j) " for some " i_j in {1, 2}, quad sum_(j = 1)^infinity alpha_j equiv 1 quad "on" CC.
   $

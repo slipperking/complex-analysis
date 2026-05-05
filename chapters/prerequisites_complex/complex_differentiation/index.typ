@@ -91,7 +91,7 @@ For the purpose of the following contents, a _region_ or _domain_ will denote a 
     alpha + ii beta + [epsilon_u(Delta x, Delta y) + ii epsilon_v(Delta x, Delta y)] (abs(Delta z) / (Delta z)).
   $
   Taking the limit as $Delta z -> 0$, the last term vanishes because $abs(abs(Delta z) / (Delta z)) = 1$. Hence
-  $ lim_(Delta z -> 0) (f(z) - f(z_0)) / (z - z_0) = alpha + ii beta. qedhere $
+  $ lim_(Delta z -> 0) (f(z) - f(z_0)) / (z - z_0) = alpha + ii beta. #qedhere $
 ]
 
 We will prove later in @sec:analyticity_and_holomorphy that the complex derivative of a holomorphic function $f(z) = u(z) + ii v(z)$ is holomorphic. Under this assumption, $f(z)$ has continuous second-order partial derivatives, and therefore
