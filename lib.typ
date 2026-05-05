@@ -277,6 +277,7 @@
   let body = grid(
     columns: column-count, gutter: 1fr,
     inset: 1em,
+    align: alignment.center,
     ..figures.map(item => grid.cell([#item])),
   )
 
@@ -284,7 +285,7 @@
     body
   } else {
     place(
-      alignment.top,
+      alignment.top + alignment.center,
       float: true,
       body,
     )
@@ -327,4 +328,14 @@
   )
 
   cetz.draw.arc(start-pos, ..args)
+}
+
+
+#let math-rect(snippet, ..args) = {
+  box(
+    math.equation(numbering: none, block: true, $ inline(snippet) $),
+    outset: 1pt,
+    fill: luma(100%, 80%),
+    ..args,
+  )
 }

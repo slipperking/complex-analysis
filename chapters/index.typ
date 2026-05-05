@@ -4,15 +4,15 @@
   #include "/chapters/prerequisites_calc_top/index.typ"
 ]
 
-#chapter-section("complex-prerequisites")[
+#chapter-section("complex_prerequisites")[
   #include "/chapters/prerequisites_complex/index.typ"
 ]
 
-#chapter-section("complex-integration")[
+#chapter-section("complex_integration")[
   #include "/chapters/complex_integration/index.typ"
 ]
 
-#chapter-section("weierstrass-theory")[
+#chapter-section("weierstrass_theory")[
   #include "/chapters/weierstrass_theory/index.typ"
 ]
 

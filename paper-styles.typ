@@ -54,7 +54,7 @@
 
   show grid: it => context {
     if _is-html == true {
-      html.frame(block(width: 42em, it))
+      html.frame(block(it))
     } else {
       it
     }

@@ -11,6 +11,11 @@ To classify the behavior of non-removable singularities, mathematicians generali
 #chapter-section("isolated_singularities")[
   #include "isolated_singularities/index.typ"
 ]
-// #include "residue_theorem/index.typ"
-// #include "entireness_meromorphy/index.typ"
+#chapter-section("entireness_meromorphy")[
+  #include "entireness_meromorphy/index.typ"
+]
+
 // #include "properties_of_entire_meromorphic/index.typ"
+// #chapter-section("residue_theorem")[
+//   #include "residue_theorem/index.typ"
+// ]
