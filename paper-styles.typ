@@ -36,6 +36,7 @@
     [#rendered#heading-reset-marker(it.level)]
   }
 
+  // todo: implement some method to maintain its text for search, etc.
   show math.equation.where(block: false): it => context {
     if _is-html == true {
       box(html.frame(it))
@@ -54,7 +55,12 @@
 
   show grid: it => context {
     if _is-html == true {
-      html.frame(block(it))
+      if (measure(it).width <= 480pt) {
+        // to maintain centering
+        html.frame(block(it))
+      } else {
+        html.frame(block(width: 480pt, it))
+      }
     } else {
       it
     }
