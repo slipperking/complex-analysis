@@ -41,7 +41,7 @@ ICON_HAMBURGER = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" st
 ICON_SEARCH = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>'
 ICON_GITHUB = '<svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>'
 ICON_TOC = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h14M3 8h10M3 12h12M3 16h8"/></svg>'
-ICON_THEME_LIGHT = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+ICON_THEME_LIGHT = '<svg viewBox="0 0 512 512" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path></svg>'
 
 
 # ---------------------------------------------------------------------------
@@ -146,18 +146,33 @@ def asset_href(current_file: str, asset_path: str) -> str:
     return posixpath.relpath(asset_path, current_dir if current_dir != "." else ".")
 
 
-def clean_nav_title(text: str) -> str:
-    """Remove displayed numbering prefixes from navigation labels."""
+def clean_nav_title_text(text: str) -> str:
+    """Remove displayed numbering prefixes from plain-text navigation labels."""
     text = " ".join(text.split())
     text = re.sub(r"^Chapter\s+\d+:\s*", "", text)
     text = re.sub(r"^\d+(?:\.\d+)*\s+", "", text)
     return text.strip()
 
 
-def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str]], dict[str, int], list[tuple[str | None, list[str]]]]:
+def clean_nav_title_html(heading: Tag) -> str:
+    """Remove displayed numbering prefixes from a heading while preserving inline HTML."""
+    cloned = BeautifulSoup(str(heading), "html.parser").find(heading.name)
+    if cloned is None:
+        return ""
+
+    first_text = cloned.find(string=True)
+    if first_text is not None:
+        cleaned = re.sub(r"^\s*Chapter\s+\d+:\s*", "", str(first_text))
+        cleaned = re.sub(r"^\s*\d+(?:\.\d+)*\s+", "", cleaned)
+        first_text.replace_with(cleaned)
+
+    return cloned.decode_contents().strip()
+
+
+def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str, str]], dict[str, int], list[tuple[str | None, list[str]]]]:
     """Discover pages and navigation entries from chapter-section blocks."""
     pages: list[tuple[str, str, str]] = []
-    nav_items: list[tuple[str, str, str]] = []
+    nav_items: list[tuple[str, str, str, str]] = []
     nav_depths: dict[str, int] = {}
 
     for section in soup.find_all("section", class_="chapter"):
@@ -177,35 +192,37 @@ def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]],
                     depth = len(section.find_parents("section", class_="chapter"))
             else:
                 depth = len(section.find_parents("section", class_="chapter"))
-        page_title = clean_nav_title(title_heading.get_text(" ", strip=True)) if title_heading else sid.replace("-", " ").title()
+        page_title = clean_nav_title_text(title_heading.get_text(" ", strip=True)) if title_heading else sid.replace("-", " ").title()
+        nav_title_html = clean_nav_title_html(title_heading) if title_heading else page_title
         if sid == "cover":
             page_title = "Home"
+            nav_title_html = "Home"
 
         filename = section_filename(sid)
         pages.append((sid, filename, page_title))
-        nav_items.append((sid, filename, page_title))
+        nav_items.append((sid, filename, page_title, nav_title_html))
         nav_depths[sid] = depth
 
-    parts = [(None, [sid for sid, _href, _title in nav_items])]
+    parts = [(None, [sid for sid, _href, _title, _nav_html in nav_items])]
     return pages, nav_items, nav_depths, parts
 
 
 def build_global_nav(
-    nav_items: list[tuple[str, str, str]],
+    nav_items: list[tuple[str, str, str, str]],
     parts: list[tuple],
     current_id: str,
     nav_depths: dict[str, int],
     current_file: str,
 ) -> str:
     """Build the global navigation sidebar HTML."""
-    chapter_map = {sid: (href, title) for sid, href, title in nav_items}
+    chapter_map = {sid: (href, title, nav_title_html) for sid, href, title, nav_title_html in nav_items}
     lines = ['<nav class="global-nav" aria-label="Global navigation">']
     for part_title, section_ids in parts:
         if part_title:
             lines.append(f'  <div class="nav-part">{part_title}</div>')
         lines.append("  <ul>")
         for sid in section_ids:
-            target_file, title = chapter_map[sid]
+            target_file, _title, nav_title_html = chapter_map[sid]
             classes = []
             if sid == current_id:
                 classes.append("active")
@@ -215,7 +232,7 @@ def build_global_nav(
                 classes.append(f"nav-depth-{depth}")
             cls = f' class="{" ".join(classes)}"' if classes else ""
             href = relative_href(current_file, target_file)
-            lines.append(f'    <li{cls}><a href="{href}">{title}</a></li>')
+            lines.append(f'    <li{cls}><a href="{href}">{nav_title_html}</a></li>')
         lines.append("  </ul>")
     lines.append("</nav>")
     return "\n".join(lines)
@@ -244,8 +261,8 @@ def build_page(
     local_toc: str,
     title: str,
     thesis_title: str,
-    prev_link: tuple | None,
-    next_link: tuple | None,
+    prev_link: tuple[str, str] | None,
+    next_link: tuple[str, str] | None,
     lang: str,
     current_file: str,
 ) -> str:
@@ -392,8 +409,8 @@ def split_and_generate(full_html: Path):
         global_nav = build_global_nav(nav_items, parts, sid, nav_depths, fname)
         local_toc_html = build_local_toc(local_toc, lang)
 
-        prev_link = (pages[i - 1][1], pages[i - 1][2]) if i > 0 else None
-        next_link = (pages[i + 1][1], pages[i + 1][2]) if i < len(pages) - 1 else None
+        prev_link = (nav_items[i - 1][1], nav_items[i - 1][3]) if i > 0 else None
+        next_link = (nav_items[i + 1][1], nav_items[i + 1][3]) if i < len(pages) - 1 else None
 
         # Rewrite cross-chapter href="#id" to href="other-file.html#id"
         cross_links = 0
