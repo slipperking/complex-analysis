@@ -1,6 +1,11 @@
 (function () {
   "use strict";
 
+  var currentScript = document.currentScript;
+  var navScriptUrl = currentScript && currentScript.src
+    ? new URL(currentScript.src, window.location.href)
+    : new URL(window.location.href);
+
   // =========================================================================
   // 1. Theme toggle (light → dark → auto → light)
   // =========================================================================
@@ -109,7 +114,104 @@
   });
 
   // =========================================================================
-  // 3. Search modal (Pagefind lazy-load)
+  // 3. Collapsible global navigation
+  // =========================================================================
+
+  var navCollapseButtons = document.querySelectorAll(".nav-collapse-toggle");
+  var navStateStorageKey = "global-nav-collapsed";
+
+  function readNavCollapseState() {
+    try {
+      return JSON.parse(sessionStorage.getItem(navStateStorageKey) || "{}");
+    } catch (_err) {
+      return {};
+    }
+  }
+
+  function writeNavCollapseState(state) {
+    try {
+      sessionStorage.setItem(navStateStorageKey, JSON.stringify(state));
+    } catch (_err) {
+      // Ignore storage failures and keep the nav usable.
+    }
+  }
+
+  var navCollapseState = readNavCollapseState();
+
+  function getNavCollapsedStyleTag() {
+    var styleTag = document.getElementById("nav-collapsed-state");
+    if (!styleTag) {
+      styleTag = document.createElement("style");
+      styleTag.id = "nav-collapsed-state";
+      document.head.appendChild(styleTag);
+    }
+    return styleTag;
+  }
+
+  function syncNavCollapsedStyle() {
+    var styleTag = getNavCollapsedStyleTag();
+    var ids = Object.keys(navCollapseState).filter(function (id) {
+      return navCollapseState[id];
+    });
+    styleTag.textContent = ids.map(function (id) {
+      return "#" + id + "{display:none;}";
+    }).join("");
+  }
+
+  function isActiveBranch(listItem) {
+    return !!(listItem && (listItem.classList.contains("active") || listItem.querySelector("li.active")));
+  }
+
+  function shouldCollapseNavGroup(button) {
+    var listItem = button.closest("li");
+    if (!listItem) return false;
+
+    var containerId = button.getAttribute("aria-controls");
+    if (!containerId) return false;
+
+    if (isActiveBranch(listItem)) {
+      return false;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(navCollapseState, containerId)) {
+      return !!navCollapseState[containerId];
+    }
+
+    var nestedGroup = !!listItem.parentElement.closest(".nav-children");
+    return nestedGroup;
+  }
+
+  function setNavCollapsed(button, collapsed) {
+    var containerId = button.getAttribute("aria-controls");
+    if (!containerId) return;
+
+    var container = document.getElementById(containerId);
+    if (!container) return;
+
+    button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    button.setAttribute("aria-label", collapsed ? "Expand subsection" : "Collapse subsection");
+    container.hidden = collapsed;
+
+    var listItem = button.closest("li");
+    if (listItem) {
+      listItem.classList.toggle("collapsed", collapsed);
+    }
+
+    navCollapseState[containerId] = collapsed;
+    syncNavCollapsedStyle();
+    writeNavCollapseState(navCollapseState);
+  }
+
+  navCollapseButtons.forEach(function (button) {
+    setNavCollapsed(button, shouldCollapseNavGroup(button));
+    button.addEventListener("click", function () {
+      var expanded = button.getAttribute("aria-expanded") !== "false";
+      setNavCollapsed(button, expanded);
+    });
+  });
+
+  // =========================================================================
+  // 4. Search modal (Pagefind lazy-load)
   // =========================================================================
 
   var searchOverlay = document.getElementById("search-overlay");
@@ -137,9 +239,7 @@
   async function loadPagefind() {
     if (pagefind) return;
     try {
-      // Dynamic import resolves relative to this module's URL (assets/nav.js)
-      // so ./pagefind/pagefind.js -> assets/pagefind/pagefind.js
-      pagefind = await import("./pagefind/pagefind.js");
+      pagefind = await import(new URL("./pagefind/pagefind.js", navScriptUrl).href);
       var baseMeta = document.querySelector('meta[name="pagefind-base"]');
       var baseUrl = baseMeta ? baseMeta.getAttribute("content") : "/";
       await pagefind.options({ baseUrl: baseUrl });
@@ -237,7 +337,7 @@
   }
 
   // =========================================================================
-  // 4. Keyboard shortcuts
+  // 5. Keyboard shortcuts
   // =========================================================================
 
   document.addEventListener("keydown", function (e) {

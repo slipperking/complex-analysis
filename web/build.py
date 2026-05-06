@@ -11,6 +11,7 @@ Usage:
 """
 
 import argparse
+import json
 import posixpath
 import re
 import shutil
@@ -120,6 +121,7 @@ def extract_local_toc(section: Tag) -> list[dict]:
             "level": int(heading.name[1]),
             "id": heading_id,
             "text": heading.get_text(strip=True),
+            "html": heading_inner_html(heading),
         })
     return toc
 
@@ -169,6 +171,14 @@ def clean_nav_title_html(heading: Tag) -> str:
     return cloned.decode_contents().strip()
 
 
+def heading_inner_html(heading: Tag) -> str:
+    """Preserve a heading's inline HTML exactly as rendered."""
+    cloned = BeautifulSoup(str(heading), "html.parser").find(heading.name)
+    if cloned is None:
+        return ""
+    return cloned.decode_contents().strip()
+
+
 def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str, str]], dict[str, int], list[tuple[str | None, list[str]]]]:
     """Discover pages and navigation entries from chapter-section blocks."""
     pages: list[tuple[str, str, str]] = []
@@ -213,29 +223,94 @@ def build_global_nav(
     current_id: str,
     nav_depths: dict[str, int],
     current_file: str,
-) -> str:
+) -> tuple[str, list[str]]:
     """Build the global navigation sidebar HTML."""
     chapter_map = {sid: (href, title, nav_title_html) for sid, href, title, nav_title_html in nav_items}
-    lines = ['<nav class="global-nav" aria-label="Global navigation">']
-    for part_title, section_ids in parts:
-        if part_title:
-            lines.append(f'  <div class="nav-part">{part_title}</div>')
-        lines.append("  <ul>")
+
+    def build_nav_tree(section_ids: list[str]) -> list[dict]:
+        roots: list[dict] = []
+        stack: list[tuple[int, dict]] = []
+
         for sid in section_ids:
-            target_file, _title, nav_title_html = chapter_map[sid]
-            classes = []
-            if sid == current_id:
-                classes.append("active")
             depth = nav_depths.get(sid, 0)
+            node = {"sid": sid, "depth": depth, "children": []}
+
+            while stack and stack[-1][0] >= depth:
+                stack.pop()
+
+            if stack:
+                stack[-1][1]["children"].append(node)
+            else:
+                roots.append(node)
+
+            stack.append((depth, node))
+
+        return roots
+
+    def render_nodes(nodes: list[dict], level: int = 0) -> tuple[list[str], bool, list[str]]:
+        indent = "  " * level
+        lines = [f"{indent}<ul>"]
+        contains_active = False
+        active_group_ids: list[str] = []
+
+        for node in nodes:
+            sid = node["sid"]
+            target_file, _title, nav_title_html = chapter_map[sid]
+            depth = node["depth"]
+            node_is_active = sid == current_id
+            classes = []
+            if node_is_active:
+                classes.append("active")
             if depth > 0:
                 classes.append("nav-sub")
                 classes.append(f"nav-depth-{depth}")
+            if node["children"]:
+                classes.append("nav-parent")
+
             cls = f' class="{" ".join(classes)}"' if classes else ""
             href = relative_href(current_file, target_file)
-            lines.append(f'    <li{cls}><a href="{href}">{nav_title_html}</a></li>')
-        lines.append("  </ul>")
+            lines.append(f"{indent}  <li{cls}>")
+
+            if node["children"]:
+                controls_id = f"nav-group-{sid}"
+                child_lines, child_contains_active, child_active_group_ids = render_nodes(node["children"], level + 3)
+                node_contains_active = node_is_active or child_contains_active
+                lines.append(f'{indent}    <div class="nav-item-row">')
+                lines.append(
+                    f'{indent}      <a href="{href}">{nav_title_html}</a>'
+                )
+                lines.append(
+                    f'{indent}      <button class="nav-collapse-toggle" type="button" '
+                    f'aria-expanded="true" aria-label="Collapse subsection" '
+                    f'aria-controls="{controls_id}"></button>'
+                )
+                lines.append(f"{indent}    </div>")
+                lines.append(f'{indent}    <div class="nav-children" id="{controls_id}">')
+                lines.extend(child_lines)
+                lines.append(f"{indent}    </div>")
+                if node_contains_active:
+                    active_group_ids.append(controls_id)
+                active_group_ids.extend(child_active_group_ids)
+                contains_active = contains_active or node_contains_active
+            else:
+                lines.append(f'{indent}    <a href="{href}">{nav_title_html}</a>')
+                contains_active = contains_active or node_is_active
+
+            lines.append(f"{indent}  </li>")
+
+        lines.append(f"{indent}</ul>")
+        return lines, contains_active, active_group_ids
+
+    lines = ['<nav class="global-nav" aria-label="Global navigation">']
+    active_nav_groups: list[str] = []
+    for part_title, section_ids in parts:
+        if part_title:
+            lines.append(f'  <div class="nav-part">{part_title}</div>')
+        part_lines, _part_contains_active, part_active_groups = render_nodes(build_nav_tree(section_ids), 1)
+        lines.extend(part_lines)
+        active_nav_groups.extend(part_active_groups)
     lines.append("</nav>")
-    return "\n".join(lines)
+    return "\n".join(lines), active_nav_groups
 
 
 def build_local_toc(toc: list[dict], lang: str) -> str:
@@ -249,7 +324,8 @@ def build_local_toc(toc: list[dict], lang: str) -> str:
     for item in toc:
         indent = "    " if item["level"] == 2 else "      "
         cls = "" if item["level"] == 2 else ' class="toc-l3"'
-        lines.append(f'{indent}<li{cls}><a href="#{item["id"]}">{item["text"]}</a></li>')
+        label_html = item.get("html") or item["text"]
+        lines.append(f'{indent}<li{cls}><a href="#{item["id"]}">{label_html}</a></li>')
     lines.append("  </ul>")
     lines.append("</nav>")
     return "\n".join(lines)
@@ -258,6 +334,7 @@ def build_local_toc(toc: list[dict], lang: str) -> str:
 def build_page(
     section_html: str,
     global_nav: str,
+    active_nav_groups: list[str],
     local_toc: str,
     title: str,
     thesis_title: str,
@@ -275,6 +352,7 @@ def build_page(
     favicon_href = asset_href(current_file, "assets/favicon.svg")
     stylesheet_href = asset_href(current_file, "assets/style.css")
     nav_script_href = asset_href(current_file, "assets/nav.js")
+    active_nav_groups_json = json.dumps(active_nav_groups)
 
     return f"""<!DOCTYPE html>
 <html lang="{lang}" data-theme="light">
@@ -291,6 +369,28 @@ def build_page(
       var t=localStorage.getItem("theme")||"auto";
       if(t==="auto")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";
       document.documentElement.dataset.theme=t;
+    }})();
+  </script>
+  <script>
+    (function(){{
+      var activeNavGroups = {active_nav_groups_json};
+      var collapsed = {{}};
+      try {{
+        collapsed = JSON.parse(sessionStorage.getItem("global-nav-collapsed") || "{{}}") || {{}};
+      }} catch (_err) {{
+        collapsed = {{}};
+      }}
+      for (var i = 0; i < activeNavGroups.length; i++) {{
+        delete collapsed[activeNavGroups[i]];
+      }}
+      var ids = Object.keys(collapsed).filter(function(id) {{ return collapsed[id]; }});
+      if (!ids.length) return;
+      var style = document.createElement("style");
+      style.id = "nav-collapsed-state";
+      style.textContent = ids.map(function(id) {{
+        return "#" + id + "{{display:none;}}";
+      }}).join("");
+      document.head.appendChild(style);
     }})();
   </script>
 </head>
@@ -332,7 +432,7 @@ def build_page(
       <div class="search-results" id="search-results"></div>
     </div>
   </div>
-  <script type="module" src="{nav_script_href}"></script>
+  <script src="{nav_script_href}"></script>
 </body>
 </html>"""
 
@@ -406,7 +506,7 @@ def split_and_generate(full_html: Path):
             nested.decompose()
 
         local_toc = extract_local_toc(page_section)
-        global_nav = build_global_nav(nav_items, parts, sid, nav_depths, fname)
+        global_nav, active_nav_groups = build_global_nav(nav_items, parts, sid, nav_depths, fname)
         local_toc_html = build_local_toc(local_toc, lang)
 
         prev_link = (nav_items[i - 1][1], nav_items[i - 1][3]) if i > 0 else None
@@ -454,6 +554,7 @@ def split_and_generate(full_html: Path):
         page = build_page(
             section_html=section_html,
             global_nav=global_nav,
+            active_nav_groups=active_nav_groups,
             local_toc=local_toc_html,
             title=title,
             thesis_title=thesis_title,
@@ -573,7 +674,12 @@ def main():
     # Step 2: Split and generate pages
     print("\n[2/5] Splitting into chapter pages")
     split_and_generate(full_html)
-    full_html.unlink()
+    try:
+        full_html.unlink()
+    except FileNotFoundError:
+        pass
+    except PermissionError:
+        print(f"  Warning: could not remove temporary file {full_html.name} because it is still in use.")
 
     # Step 3: Compile PDFs
     if not args.skip_pdf:
