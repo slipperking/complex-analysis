@@ -47,7 +47,7 @@
 
   show math.equation.where(block: true): it => context {
     if _is-html == true {
-      html.frame(html.elem("div", it, attrs: (alt: "to be continued")))
+      html.frame(it)
     } else {
       it
     }
