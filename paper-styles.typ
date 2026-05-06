@@ -4,8 +4,6 @@
   set par(justify: true)
   set heading(numbering: "1.1")
   set page(numbering: "1", margin: 1.75in)
-  show: itemize.default-enum-list
-  show: itemize.config.ref.with(supplement: "Part")
 
   show: equate.with(number-mode: "label")
   set math.equation(numbering: scoped-equation-numbering)
@@ -65,6 +63,9 @@
       it
     }
   }
+
+  set enum(full: true)
+  show: enable-referable-enums
 
   doc
 }

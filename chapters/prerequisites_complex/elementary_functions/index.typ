@@ -2,7 +2,7 @@
 
 == Elementary Functions
 
-Univariate functions formed by compositions, sums, products, and powers of finitely many functions of the following form are known as _elementary functions_:
+Functions of one complex variable that are formed by compositions, sums, products, and powers of finitely many functions of the following form are known as _elementary functions_:
 
 1. Power functions including polynomials, rational functions, and their inverses.
 2. Trigonometric functions, hyperbolic functions, and their inverses.

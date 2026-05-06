@@ -4,57 +4,59 @@
 
 An _isolated singularity_ of a complex function is a point $a in CC$ where a function $f$ is holomorphic on some open punctured neighborhood of $a$ (namely, for some $r > 0$, the punctured disk $D^*(a, r)$), but not necessarily defined or holomorphic at $a$ itself. The nature of this isolated singularity is characterized by the principal part $psi(z)$ (let $phi(z)$ be the holomorphic part) of the Laurent series of $f$ at the point $a$. Specifically, we can analyze the behavior of $f(z)$ as $z -> a$.
 
-1. If $lim_(z -> a) f(z)$ exists and is finite, then $z = a$ is a removable singularity and can be analytically continued to $D(a, r)$ by @thm:riemannremovablesingularities. Consequently, $f(z)$ has a convergent Taylor expansion and the principal part of its Laurent expansion vanishes, and $f(z) = phi(z)$. <itm:isolatedsingularities_removable>
-2. If $lim_(z -> a) f(z) = infinity$, then $z = a$ is a _pole_ of $f$ (from the stereographic projection and the Riemann sphere, the $infinity$ is a single point in $extcomplex$, and approaching $infinity$ does not distinguish between different directions, unlike the use of $+infinity$ and $-infinity$). <itm:isolatedsingularities_pole>
+#referable-enum[
+  + If $lim_(z -> a) f(z)$ exists and is finite, then $z = a$ is a removable singularity and can be analytically continued to $D(a, r)$ by @thm:riemannremovablesingularities. Consequently, $f(z)$ has a convergent Taylor expansion and the principal part of its Laurent expansion vanishes, and $f(z) = phi(z)$. <itm:isolatedsingularities_removable>
+  + If $lim_(z -> a) f(z) = infinity$, then $z = a$ is a _pole_ of $f$ (from the stereographic projection and the Riemann sphere, the $infinity$ is a single point in $extcomplex$, and approaching $infinity$ does not distinguish between different directions, unlike the use of $+infinity$ and $-infinity$). <itm:isolatedsingularities_pole>
 
-  #theorem[
-    The condition $lim_(z -> a) f(z) = infinity$ is equivalent to there being a finite number of nonzero $c_(-n)$'s, where $n in NN$.
-  ] <thm:isolatedsingularities_pole_laurentexpansion>
+    #theorem[
+      The condition $lim_(z -> a) f(z) = infinity$ is equivalent to there being a finite number of nonzero $c_(-n)$'s, where $n in NN$.
+    ] <thm:isolatedsingularities_pole_laurentexpansion>
 
-  In other words the principal part of $f$ is equal to
-  $ psi(z) = c_(-1) / (z - a) + dots.c + c_(-m) / (z - a)^m, quad c_(-m) eq.not 0 $
-  for some $m in NN$. Therefore,
-  $ f(z) = phi(z) + psi(z) = sum_(n = -m)^infinity c_n (z - a)^n = g(z) / (z - a)^m $
-  on the punctured disk $D^*(a, r)$, where
-  $ g(z) = sum_(n = 0)^infinity c_(n - m) (z - a)^n $
-  is holomorphic on $D(a, r)$ and does not attain a zero at $z = a$. Then $f(z)$ has a pole at $z = a$ with order $m$. If $m = 1$, the pole is also called a _simple pole_.
+    In other words the principal part of $f$ is equal to
+    $ psi(z) = c_(-1) / (z - a) + dots.c + c_(-m) / (z - a)^m, quad c_(-m) eq.not 0 $
+    for some $m in NN$. Therefore,
+    $ f(z) = phi(z) + psi(z) = sum_(n = -m)^infinity c_n (z - a)^n = g(z) / (z - a)^m $
+    on the punctured disk $D^*(a, r)$, where
+    $ g(z) = sum_(n = 0)^infinity c_(n - m) (z - a)^n $
+    is holomorphic on $D(a, r)$ and does not attain a zero at $z = a$. Then $f(z)$ has a pole at $z = a$ with order $m$. If $m = 1$, the pole is also called a _simple pole_.
 
-  #proof[
-    Obviously, under the assumption of a finite, nonempty number of nonzero terms in the principal part of the Laurent expansion coefficients, $lim_(z -> a) f(z) = infinity$. Now we will prove the converse. Let
-    $ g(z) = 1 / f(z). $
-    Then $lim_(z -> a) g(z) = 0$. There exists a $delta > 0$ such that $f$ is nonzero on $D^*(a, delta)$. Then $g(z)$ is holomorphic on $D^*(a, delta)$ and has a removable singularity at $z = a$. By @thm:riemannremovablesingularities, $g$ can be analytically continued to $D(a, delta)$. Let the multiplicity of the zero at $z = a$ be $m$. Then
-    $ g(z) = phi(z) (z - a)^m, $
-    where $phi(z)$ is holomorphic and nonzero at $z = a$. Then there exists a $delta' > 0$ such that $phi$ is nonzero on $D(a, delta')$. It follows that $(1) / (phi)$ is holomorphic and nonzero on $D(a, delta')$. We can then write its Taylor expansion as
-    $ 1 / (phi(z)) = c_(-m) + c_(1 - m) (z - a) + dots.c, $
-    where $c_(-m) eq.not 0$. It follows that
-    $
-      f(z) = 1 / (g(z)) = (z - a)^(-m) / (phi(z)) = c_(-m) (z - a)^(-m) + dots.c + c_0 + dots.c.
-    $
-    By the uniqueness of the Laurent series, the conclusion follows.
-  ]
-3. If $lim_(z -> a) f(z)$ is nonexistent, then $a$ is known as an _essential singularity_. <itm:isolatedsingularities_essential>
+    #proof[
+      Obviously, under the assumption of a finite, nonempty number of nonzero terms in the principal part of the Laurent expansion coefficients, $lim_(z -> a) f(z) = infinity$. Now we will prove the converse. Let
+      $ g(z) = 1 / f(z). $
+      Then $lim_(z -> a) g(z) = 0$. There exists a $delta > 0$ such that $f$ is nonzero on $D^*(a, delta)$. Then $g(z)$ is holomorphic on $D^*(a, delta)$ and has a removable singularity at $z = a$. By @thm:riemannremovablesingularities, $g$ can be analytically continued to $D(a, delta)$. Let the multiplicity of the zero at $z = a$ be $m$. Then
+      $ g(z) = phi(z) (z - a)^m, $
+      where $phi(z)$ is holomorphic and nonzero at $z = a$. Then there exists a $delta' > 0$ such that $phi$ is nonzero on $D(a, delta')$. It follows that $(1) / (phi)$ is holomorphic and nonzero on $D(a, delta')$. We can then write its Taylor expansion as
+      $ 1 / (phi(z)) = c_(-m) + c_(1 - m) (z - a) + dots.c, $
+      where $c_(-m) eq.not 0$. It follows that
+      $
+        f(z) = 1 / (g(z)) = (z - a)^(-m) / (phi(z)) = c_(-m) (z - a)^(-m) + dots.c + c_0 + dots.c.
+      $
+      By the uniqueness of the Laurent series, the conclusion follows.
+    ]
+  + If $lim_(z -> a) f(z)$ is nonexistent, then $a$ is known as an _essential singularity_. <itm:isolatedsingularities_essential>
+]
 
-  #example[
-    The function $ee^((1) / (z))$ has an essential singularity at $z = 0$.
-  ] <ex:isolatedsingularities_essential_exp1z>
+#example[
+  The function $ee^((1) / (z))$ has an essential singularity at $z = 0$.
+] <ex:isolatedsingularities_essential_exp1z>
 
-  #proof[
-    Observe that $lim_(x -> 0^+) ee^((1) / (x)) = infinity$. Similarly, $lim_(x -> 0^-) ee^((1) / (x)) = 0$, and for $z = ii y$ with $y -> 0^+$,
-    $ ee^((1) / (z)) = ee^(-ii / y), $
-    which is divergent. Therefore, the limit does not exist.
-  ]
+#proof[
+  Observe that $lim_(x -> 0^+) ee^((1) / (x)) = infinity$. Similarly, $lim_(x -> 0^-) ee^((1) / (x)) = 0$, and for $z = ii y$ with $y -> 0^+$,
+  $ ee^((1) / (z)) = ee^(-ii / y), $
+  which is divergent. Therefore, the limit does not exist.
+]
 
-  The implication on its Laurent expansion at $a$ is:
+The implication on its Laurent expansion at $a$ is:
 
-  #theorem[
-    The necessary and sufficient condition for $lim_(z -> a) f(z)$ to not exist is that infinitely many of $c_(-n)$ (where $n in NN$) are nonzero.
-  ]
+#theorem[
+  The necessary and sufficient condition for $lim_(z -> a) f(z)$ to not exist is that infinitely many of $c_(-n)$ (where $n in NN$) are nonzero.
+]
 
-  This follows by elimination from the established trichotomy; if the limit as $z -> a$ does not exist, then the singularity is neither removable nor a pole (results from @itm:isolatedsingularities_removable and @itm:isolatedsingularities_pole). Similar logic can be applied to the coefficients of the Laurent expansion.
+This follows by elimination from the established trichotomy; if the limit as $z -> a$ does not exist, then the singularity is neither removable nor a pole (results from @itm:isolatedsingularities_removable and @itm:isolatedsingularities_pole). Similar logic can be applied to the coefficients of the Laurent expansion.
 
-  Indeed, in @ex:isolatedsingularities_essential_exp1z, the Laurent expansion is equal to:
-  $ ee^((1) / (z)) = sum_(n = 0)^infinity z^(-n) / (n!), $
-  which has infinitely many nonzero coefficients of negative powers.
+Indeed, in @ex:isolatedsingularities_essential_exp1z, the Laurent expansion is equal to:
+$ ee^((1) / (z)) = sum_(n = 0)^infinity z^(-n) / (n!), $
+which has infinitely many nonzero coefficients of negative powers.
 
 A function with an essential singularity exhibits striking behavior. We will first introduce the following famous result.
 
