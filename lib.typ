@@ -199,6 +199,7 @@
 #let Res = math.op("Res", limits: true)
 #let Re = math.op($frak(Re)$)
 #let Im = math.op($frak(Im)$)
+#let Ind = math.op("Ind")
 #let oint = $integral.cont$
 
 #let extcomplex = $hat(CC)$

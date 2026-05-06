@@ -291,9 +291,21 @@ svg {
   color: var(--color-text);
 }
 
+.global-nav li.nav-depth-1 {
+  margin-left: 0.9rem;
+}
+
+.global-nav li.nav-depth-2 {
+  margin-left: 1.8rem;
+}
+
 .global-nav li.nav-sub a {
-  padding-left: 2rem;
+  padding-left: 1rem;
   font-size: 0.85em;
+}
+
+.global-nav li.nav-depth-2 a {
+  font-size: 0.8em;
 }
 
 /* ---------------------------------------------------------------------------

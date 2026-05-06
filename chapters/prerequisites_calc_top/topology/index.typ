@@ -85,5 +85,5 @@ The following definitions are subject to the assumption where the topological sp
 ] <def:support>
 
 #remark[
-  A notable classification of functions comes from the compactness of support---more specifically, its boundedness. Compactly supported functions in $C^infinity$ are commonly referred to as _bump functions_ (see @ sec:partitionsofunity).
+  A notable classification of functions comes from the compactness of support---more specifically, its boundedness. Compactly supported functions in $C^infinity$ are commonly referred to as _bump functions_ (see @sec:partitions_of_unity).
 ]

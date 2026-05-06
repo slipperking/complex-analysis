@@ -154,19 +154,29 @@ def clean_nav_title(text: str) -> str:
     return text.strip()
 
 
-def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str]], set[str], list[tuple[str | None, list[str]]]]:
+def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str]], dict[str, int], list[tuple[str | None, list[str]]]]:
     """Discover pages and navigation entries from chapter-section blocks."""
     pages: list[tuple[str, str, str]] = []
     nav_items: list[tuple[str, str, str]] = []
-    sub_chapters: set[str] = set()
+    nav_depths: dict[str, int] = {}
 
     for section in soup.find_all("section", class_="chapter"):
         sid = section.get("id", "")
         if not sid:
             continue
 
-        depth = len(section.find_parents("section", class_="chapter"))
         title_heading = section.find(["h1", "h2", "h3"], recursive=False)
+        if title_heading is not None and title_heading.name.startswith("h"):
+            depth = max(0, int(title_heading.name[1]) - 1)
+        else:
+            attr_depth = section.get("data-nav-depth")
+            if attr_depth is not None:
+                try:
+                    depth = max(0, int(attr_depth))
+                except ValueError:
+                    depth = len(section.find_parents("section", class_="chapter"))
+            else:
+                depth = len(section.find_parents("section", class_="chapter"))
         page_title = clean_nav_title(title_heading.get_text(" ", strip=True)) if title_heading else sid.replace("-", " ").title()
         if sid == "cover":
             page_title = "Home"
@@ -174,18 +184,17 @@ def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]],
         filename = section_filename(sid)
         pages.append((sid, filename, page_title))
         nav_items.append((sid, filename, page_title))
-        if depth > 0:
-            sub_chapters.add(sid)
+        nav_depths[sid] = depth
 
     parts = [(None, [sid for sid, _href, _title in nav_items])]
-    return pages, nav_items, sub_chapters, parts
+    return pages, nav_items, nav_depths, parts
 
 
 def build_global_nav(
     nav_items: list[tuple[str, str, str]],
     parts: list[tuple],
     current_id: str,
-    sub_chapters: set[str],
+    nav_depths: dict[str, int],
     current_file: str,
 ) -> str:
     """Build the global navigation sidebar HTML."""
@@ -200,8 +209,10 @@ def build_global_nav(
             classes = []
             if sid == current_id:
                 classes.append("active")
-            if sid in sub_chapters:
+            depth = nav_depths.get(sid, 0)
+            if depth > 0:
                 classes.append("nav-sub")
+                classes.append(f"nav-depth-{depth}")
             cls = f' class="{" ".join(classes)}"' if classes else ""
             href = relative_href(current_file, target_file)
             lines.append(f'    <li{cls}><a href="{href}">{title}</a></li>')
@@ -318,7 +329,7 @@ def split_and_generate(full_html: Path):
 
     print(f"  Parsing HTML ({lang})...")
     soup = BeautifulSoup(full_html.read_text(encoding="utf-8"), "html.parser")
-    pages, nav_items, sub_chapters, parts = discover_structure(soup)
+    pages, nav_items, nav_depths, parts = discover_structure(soup)
 
     # Find all chapter sections
     chapter_map = {sid: (fname, title) for sid, fname, title in pages}
@@ -378,7 +389,7 @@ def split_and_generate(full_html: Path):
             nested.decompose()
 
         local_toc = extract_local_toc(page_section)
-        global_nav = build_global_nav(nav_items, parts, sid, sub_chapters, fname)
+        global_nav = build_global_nav(nav_items, parts, sid, nav_depths, fname)
         local_toc_html = build_local_toc(local_toc, lang)
 
         prev_link = (pages[i - 1][1], pages[i - 1][2]) if i > 0 else None

@@ -105,7 +105,9 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
 
   which rearranges to
 
-  $ integral.cont_(gamma^+) (f'(z)) / (f(z)) dz = sum_(j = 1)^n integral.cont_(partial D(z_j, epsilon_j)^+) (f'(z)) / (f(z)) dz. $
+  $
+    integral.cont_(gamma^+) (f'(z)) / (f(z)) dz = sum_(j = 1)^n integral.cont_(partial D(z_j, epsilon_j)^+) (f'(z)) / (f(z)) dz.
+  $
 
   Near each $z_j$, express
   $ f(z) = (z - z_j)^(k_j) h_j(z) $
@@ -133,12 +135,16 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
 
   Finally, parameterize $Gamma$ by $w = f(z)$. Then $dif w = f'(z) dz$, and
 
-  $ k = (1) / (taui) integral.cont_Gamma (dif w) / (w) = (1) / (taui) Delta_Gamma log(w) = (1) / (2 uppi) Delta_Gamma arg(w), $
+  $
+    k = (1) / (taui) integral.cont_Gamma (dif w) / (w) = (1) / (taui) Delta_Gamma log(w) = (1) / (2 uppi) Delta_Gamma arg(w),
+  $
   which proves the result.
 ]
 
-Thus, one defines the _winding index_ to quantify how many times a closed curve winds counterclockwise around a given point in the complex plane. Formally, if $gamma = gamma([0, 1])$ is a counterclockwise-oriented closed curve and $z$ is a point satisfying $z in.not gamma$, then
-$ upright("Ind")_Gamma (z) = (1) / (taui) integral.cont_gamma dzeta / (zeta - z) = (1) / (taui) integral_0^1 (gamma'(t) dt) / (gamma(t) - z). $
+Thus, one defines the _winding index_ ($Ind$) to quantify how many times a closed curve winds counterclockwise around a given point in the complex plane. Formally, if $gamma = gamma([0, 1])$ is a counterclockwise-oriented closed curve and $z$ is a point satisfying $z in.not gamma$, then
+$
+  Ind_Gamma (z) = (1) / (taui) integral.cont_gamma dzeta / (zeta - z) = (1) / (taui) integral_0^1 (gamma'(t) dt) / (gamma(t) - z).
+$
 
 #theorem[
   Let ${f_n (z)}$ be a sequence of holomorphic functions on the open set $U subset.eq CC$ that uniformly converges to $f(z)$ on every compact subset of $U$. If $forall n in NN$, $f_n (z)$ has no zeros in $U$, then $f$ is either identically $0$ or has no zeros in $U$.
@@ -149,12 +155,16 @@ $ upright("Ind")_Gamma (z) = (1) / (taui) integral.cont_gamma dzeta / (zeta - z)
   $ integral.cont_Gamma f_n (zeta) dzeta = 0. $
   Since $gamma$ is a subset of any compact subset of $U$, ${f_n (zeta)}$ uniformly converges on $gamma$, and by @thm:limitintegralswitch,
 
-  $ lim_(n -> infinity) integral.cont_Gamma f_n (zeta) dzeta = integral.cont_Gamma lim_(n -> infinity) f_n (zeta) dzeta = integral.cont_Gamma f(zeta) dzeta = 0. $ <eq:hurwitzsimplecase_integrallimitswitchforholomorphy>
+  $
+    lim_(n -> infinity) integral.cont_Gamma f_n (zeta) dzeta = integral.cont_Gamma lim_(n -> infinity) f_n (zeta) dzeta = integral.cont_Gamma f(zeta) dzeta = 0.
+  $ <eq:hurwitzsimplecase_integrallimitswitchforholomorphy>
 
   Then by Morera's Theorem (@thm:morera), $f(z)$ is holomorphic, and $f'(z)$ is holomorphic. We aim to show that $f'_n (z) arrows.rr f'(z)$.
 
   Let $K subset U$ be arbitrary and compact and $V supset K$ be open and relatively compact in $U$. Since ${f'_n (z)}$ is holomorphic, by @cor:nthderivativeboundedsupremum, there exists a finite constant $c > 0$ such that
-  $ lim_(n -> infinity) sup_(z in K) abs(f'_n (z) - f'(z)) lt.eq c lim_(n -> infinity) sup_(z in V) abs(f_n (z) - f(z)). $
+  $
+    lim_(n -> infinity) sup_(z in K) abs(f'_n (z) - f'(z)) lt.eq c lim_(n -> infinity) sup_(z in V) abs(f_n (z) - f(z)).
+  $
 
   By the definition of uniform convergence, the right-hand side approaches $0$, and ${f'_n (z)}$ is then uniformly convergent to $f'(z)$ by the same reasoning.
 
@@ -169,12 +179,14 @@ $ upright("Ind")_Gamma (z) = (1) / (taui) integral.cont_gamma dzeta / (zeta - z)
   $ abs(f_n (z) - f(z)) < lambda / 2, quad forall n > N, forall z in gamma. $
 
   Then $abs(f_n (z)) > lambda / 2$ on $gamma$. Hence, $(1) / (f_n (z))$ and its limit are uniformly bounded;
-  $ abs((1) / (f(z))) < (1) / (lambda), quad abs((1) / (f_n (z))) < (2) / (lambda), quad forall z in gamma, forall n > N. $
+  $
+    abs((1) / (f(z))) < (1) / (lambda), quad abs((1) / (f_n (z))) < (2) / (lambda), quad forall z in gamma, forall n > N.
+  $
 
   $
     abs((f') / (f) - (f'_n) / (f_n)) & = abs((f' f_n - f'_n f) / (f_n f)) \
-    & < 2 (abs(f' f_n - f' f) + abs(f' f - f'_n f)) / (lambda^2) \
-    & < (2 M) / (lambda^2) dot (abs(f_n - f) + abs(f' - f'_n)).
+                                     & < 2 (abs(f' f_n - f' f) + abs(f' f - f'_n f)) / (lambda^2) \
+                                     & < (2 M) / (lambda^2) dot (abs(f_n - f) + abs(f' - f'_n)).
   $
 
   $

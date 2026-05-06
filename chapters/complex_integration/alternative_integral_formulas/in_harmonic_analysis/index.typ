@@ -73,7 +73,7 @@ We now establish that real-valued continuous functions satisfying the mean-value
   Let $U subset.eq CC$ be open and $f:U -> RR$ continuous. Suppose for every $z_0 in U$, there exists $lambda > 0$ with $overline(D(z_0, lambda)) subset.eq U$ such that for all $0 < epsilon <= lambda$,
   $ f(z_0) = (1) / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii t)) dt. $
   Then $f$ is harmonic on $U$.
-] <thm:meanvaluepropertysolutionsareharmonic>
+] <thm:mean_value_property_solutions_are_harmonic>
 
 #proof[
   Fix $z_0 in U$ arbitrarily and choose $lambda > 0$ such that $overline(D(z_0, lambda)) subset.eq U$. Because $f in C^0(partial D(z_0, lambda))$, @thm:dirichletproblemwithlaplaceequationsolution guarantees the existence of a unique harmonic function $u$ on $D(z_0, lambda)$ satisfying

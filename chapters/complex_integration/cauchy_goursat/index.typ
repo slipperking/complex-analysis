@@ -86,7 +86,7 @@ Analogous to the real case, a 0-form is defined as a scalar-valued function in t
   and the integrands on the right side both match those of @eq:complex_green_exterior_derivative_result.
 ]
 
-The theorem above is only a specific case of the Stokes-Cartan Theorem (@thm:stokescartan). However, it proves the validity of the treatment of the $partial$ and $overline(partial)$ operators, and the generalization to forms with basis $dz$ and $dif overline(z)$.
+The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:stokescartan). However, it proves the validity of the treatment of the $partial$ and $overline(partial)$ operators, and the generalization to forms with basis $dz$ and $dif overline(z)$.
 
 #theorem(
   "Cauchy" + sym.dash.en + "Pompeiu",

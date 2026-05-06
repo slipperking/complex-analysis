@@ -69,9 +69,15 @@
   doc
 }
 
-#let chapter-section(id, body) = context {
+#let chapter-section(id, depth: auto, body) = context {
   if _is-html == true {
-    html.elem("section", attrs: (class: "chapter", id: id), body)
+    let nav-depth = if depth == auto { none } else { str(depth) }
+    let attrs = if nav-depth == none {
+      (class: "chapter", id: id)
+    } else {
+      (class: "chapter", id: id, "data-nav-depth": nav-depth)
+    }
+    html.elem("section", attrs: attrs, body)
   } else {
     body
   }

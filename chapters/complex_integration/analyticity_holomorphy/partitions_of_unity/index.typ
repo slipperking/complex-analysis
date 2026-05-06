@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-=== Topology, Partitions of Unity, and the Existence of Bump Functions <sec:partitionsofunity>
+=== Topology, Partitions of Unity, and the Existence of Bump Functions <sec:partitions_of_unity>
 
 #definition("Topological Space")[
   A _topological space_ is a pair $(X, tau)$, where $X$ is a set and $tau$ is a collection of subsets of $X$ satisfying the following properties:
