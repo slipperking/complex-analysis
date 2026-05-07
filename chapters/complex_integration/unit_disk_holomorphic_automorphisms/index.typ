@@ -28,10 +28,10 @@ To discuss the main topic of this section, we will first introduce the concept o
 #definition("Group")[
   A group is a nonempty set $G$ and a binary operation (we will denote this as $*$) satisfying the four _group axioms_:
 
-  1. Closure: $forall a, b in G$, $a * b in G$.
-  2. Associativity: $forall a, b, c in G$, $(a * b) * c = a * (b * c)$.
-  3. Identity Element: $exists e in G$ such that $forall a in G$, $a * e = e * a = a$. Note that $e$ is unique; if $e, f in G$ were both identity elements, then $e * f = f * e = e = f$, and are equal.
-  4. Inverse Element: $forall a in G$, $exists a^(-1) in G$ such that $a * a^(-1) = e = a^(-1) * a$, where $e$ is the identity element. Note that $a^(-1)$ is unique. Assume $b, c$ were both inverses of $a$. Then, $b = b * e = b * (a * c) = (b * a) * c = c$, and are equal.
+  - _Closure_: $forall a, b in G$, $a * b in G$.
+  - _Associativity_: $forall a, b, c in G$, $(a * b) * c = a * (b * c)$.
+  - _Identity Element_: $exists e in G$ such that $forall a in G$, $a * e = e * a = a$. Note that $e$ is unique; if $e, f in G$ were both identity elements, then $e * f = f * e = e = f$, and are equal.
+  - _Inverse Element_: $forall a in G$, $exists a^(-1) in G$ such that $a * a^(-1) = e = a^(-1) * a$, where $e$ is the identity element. Note that $a^(-1)$ is unique. Assume $b, c$ were both inverses of $a$. Then, $b = b * e = b * (a * c) = (b * a) * c = c$, and are equal.
 
   A _subgroup_ $H$ of $G$ is a subset of $G$ that is also a group under the same operation as $G$. This relationship is denoted by $H <= G$ or $H < G$ for _proper subgroups_.
 ] <def:group>

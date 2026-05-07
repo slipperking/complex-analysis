@@ -66,6 +66,7 @@
 
   show: itemize.default-enum-list
   show: itemize.config.ref.with(supplement: "Part")
+  set enum(numbering: "(1)")
 
   doc
 }

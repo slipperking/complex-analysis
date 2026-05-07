@@ -10,7 +10,7 @@
 #let cvector = cetz.vector
 #let cmatrix = cetz.matrix
 
-#let _is-html = sys.inputs.at("html", default: "false") == "true"
+#let _is-html = sys.inputs.at("html", default: "false") == "true" // target() == "html"
 
 #let theorem-kinds = (
   "theorem",

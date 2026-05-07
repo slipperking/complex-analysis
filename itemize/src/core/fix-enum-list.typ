@@ -820,204 +820,235 @@ Helper methods for fixing and enhancing enum and list functionality.
     let len = numbers.len()
 
     // each item
-    let body = for i in range(len) {
-      let child = it.children.at(i)
-      let index = if it.reversed { len - i - 1 } else { i }
+    if target() == "html" {
+      html.elem(
+        "ul",
+        for i in range(len) {
+          let child = it.children.at(i)
+          let index = if it.reversed { len - i - 1 } else { i }
+          let child-number = numbers.at(index)
 
-      let child-number = numbers.at(index)
-      let curr-width = numbers-width.at(index)
+          let bullet-str = {
+            let n = std.numbering(it.numbering, child-number)
+            if type(n) == str { n } else if n.has("text") { n.text } else if n.has("children") {
+              n.children.map(c => if c.has("text") { c.text } else { "" }).join()
+            } else { str(child-number) }
+          }
 
-      let styled-child-number = styled-numbers.at(index)
+          html.elem("li", attrs: (data-marker: bullet-str, class: "data-marker-item"), {
+            curr-parent-level.update(push(child-number))
+            if auto-base-level {
+              curr-base-parent-level.update(push(child-number))
+            }
+            next-show(child.body)
+            curr-parent-level.update(pop)
+            if auto-base-level {
+              curr-base-parent-level.update(pop)
+            }
+          })
+        },
+        attrs: (class: "itemize-ul-list"),
+      )
+    } else {
+      let body = for i in range(len) {
+        let child = it.children.at(i)
+        let index = if it.reversed { len - i - 1 } else { i }
 
-      // update: parent-level
-      curr-parent-level.update(push(child-number))
+        let child-number = numbers.at(index)
+        let curr-width = numbers-width.at(index)
 
-      if auto-base-level {
-        curr-base-parent-level.update(push(child-number))
-      }
+        let styled-child-number = styled-numbers.at(index)
 
+        // update: parent-level
+        curr-parent-level.update(push(child-number))
 
-      let (amount, style) = curr-label-width(i)
-
-      let max-width = if amount == auto { curr-width } else { amount }
-      let width = (max-width + curr-indent(i) + curr-body-indent(i)).to-absolute()
-
-
-      /* enum'number (label) */
-      let number-width = if style == "native" {
-        number-max-width
-      } else if amount != auto {
-        if style == "default" {
-          if curr-width <= amount.to-absolute() { amount } else { curr-width }
-        } else if style == "constant" {
-          amount
-        } else if style == "auto" {
-          curr-width
+        if auto-base-level {
+          curr-base-parent-level.update(push(child-number))
         }
-      } else { max-width }
 
-      let curr-text-style = (curr-body-style)(i)
 
-      let curr-text-size = {
-        if curr-text-style != none {
-          let size = curr-text-style.at("size", default: none)
-          if size != none {
-            (size: size)
+        let (amount, style) = curr-label-width(i)
+
+        let max-width = if amount == auto { curr-width } else { amount }
+        let width = (max-width + curr-indent(i) + curr-body-indent(i)).to-absolute()
+
+
+        /* enum'number (label) */
+        let number-width = if style == "native" {
+          number-max-width
+        } else if amount != auto {
+          if style == "default" {
+            if curr-width <= amount.to-absolute() { amount } else { curr-width }
+          } else if style == "constant" {
+            amount
+          } else if style == "auto" {
+            curr-width
+          }
+        } else { max-width }
+
+        let curr-text-style = (curr-body-style)(i)
+
+        let curr-text-size = {
+          if curr-text-style != none {
+            let size = curr-text-style.at("size", default: none)
+            if size != none {
+              (size: size)
+            }
+          }
+          (:)
+        }
+
+
+        let outer-left-inset = get-block-left-inset(curr-text-size, (curr-body-border.outer)(i))
+
+        let outer = (curr-body-border.outer)(i)
+
+        let outer-inset = if outer != none {
+          outer.remove("inset", default: (:))
+        } else {
+          0pt
+        }
+        let outer-inset-without-left = parse-inset-without-left(outer-inset)
+
+        // in fact, rtl is not supported yet.
+        let inset = if text.dir == rtl { (right: width) } else {
+          (left: width + outer-left-inset) + outer-inset-without-left
+        }
+
+
+        // display content
+        let layout-block = get_layout-block(
+          i,
+          len,
+          inset,
+          enum-below-spacing,
+          enum-above-spacing,
+          curr-item-spacing(i),
+          enum-width(i),
+          ..outer,
+        )
+
+        let inner-box = make-format-box.with(width: enum-width(i), format-args: (curr-body-border.inner)(i))
+
+        // the item's content to display
+        let item-content(body, number-body: none) = (curr-item-format.outer)(i)(layout-block(
+          (curr-item-format.inner)(i)(inner-box(
+            if number-body == none {
+              [#next-show(show-text((curr-body-style)(i), body))]
+            } else {
+              [
+
+                #fix-first-line#number-body#h(0em, weak: true)#next-show(show-text((curr-body-style)(i), body))
+              ]
+            },
+          )),
+        ))
+
+
+        /*label baseline*/
+        let (curr-baseline, same-line-style, base-align, is-alone, label-height) = parse-baseline(
+          curr-label-baseline(i),
+          styled-child-number,
+          curr-text-style,
+        )
+
+        let pre-inset = h(
+          -max-width.to-absolute() - curr-body-indent(i).to-absolute() + curr-label-indent(i).to-absolute(),
+        )
+        let body-inset = h(curr-body-indent(i).to-absolute())
+        let box-width = number-width.to-absolute()
+
+        /* current label */
+        let number-box(baseline: 0pt, alone: true) = label-box(
+          styled-child-number,
+          box-width,
+          curr-baseline,
+          pre-inset: pre-inset,
+          body-inset: body-inset,
+          label-align: curr-label-align(i),
+          alone: alone,
+          baseline: baseline,
+        )
+
+        let inner-left-inset = get-block-left-inset(curr-text-size, (curr-body-border.inner)(i))
+
+        let label-inset = (
+          width + get-block-left-inset(curr-text-size, (curr-body-border.whole)(i)) + outer-left-inset
+        )
+
+        /* hanging-indent, first-line-indent */
+        set par(
+          hanging-indent: curr-hanging-indent(i).to-absolute(),
+          first-line-indent: (amount: curr-line-indent(i).to-absolute(), all: true),
+        ) if hanging-type == "classic"
+
+        set par(
+          hanging-indent: (-max-width - curr-body-indent(i) + curr-hanging-indent(i) - inner-left-inset).to-absolute(),
+          first-line-indent: (
+            amount: (-max-width - curr-body-indent(i) + curr-line-indent(i) - inner-left-inset).to-absolute(),
+            all: true,
+          ),
+        ) if hanging-type == "paragraph"
+
+        // all the number
+        let the-number = if i == 0 {
+          display-label(
+            number-box,
+            label-inset,
+            inner-left-inset,
+            same-line-style,
+            label-height,
+            curr-baseline,
+          )
+        } else {
+          [#h(-inner-left-inset)#number-box(baseline: curr-baseline)#h(inner-left-inset)#h(0em, weak: true)]
+        }
+
+        // parse body (in order to determine how to display label)
+        let new-body = rebuild_block-level-elem(
+          parse-formatted-body(child.body),
+          the-number,
+          alignment: base-align,
+          auto-margin: enum-width(i) == auto,
+          text-size: curr-text-size,
+        )
+
+        // record the left inset of the current block-level elems
+        parent-item-inset.update(push(inner-left-inset))
+
+        // [#repr(new-body)]
+        if new-body.inline == none {
+          // hold on displaying number
+          let item-inset = parent-item-inset.get()
+          parent-number-box.update(push((
+            body: number-box.with(alone: is-alone),
+            label-inset: label-inset,
+            label-height: label-height,
+            item-inset: item-inset,
+          )))
+          item-content(new-body.body)
+          // [||||#parent-item-inset.get()!!!]
+        } else {
+          parent-number-box.update(())
+          parent-item-inset.update(())
+          if new-body.inline == true {
+            item-content(new-body.body, number-body: the-number)
+          } else {
+            item-content(new-body.body)
           }
         }
-        (:)
-      }
 
+        curr-parent-level.update(pop)
 
-      let outer-left-inset = get-block-left-inset(curr-text-size, (curr-body-border.outer)(i))
-
-      let outer = (curr-body-border.outer)(i)
-
-      let outer-inset = if outer != none {
-        outer.remove("inset", default: (:))
-      } else {
-        0pt
-      }
-      let outer-inset-without-left = parse-inset-without-left(outer-inset)
-
-      // in fact, rtl is not supported yet.
-      let inset = if text.dir == rtl { (right: width) } else {
-        (left: width + outer-left-inset) + outer-inset-without-left
-      }
-
-
-      // display content
-      let layout-block = get_layout-block(
-        i,
-        len,
-        inset,
-        enum-below-spacing,
-        enum-above-spacing,
-        curr-item-spacing(i),
-        enum-width(i),
-        ..outer,
-      )
-
-      let inner-box = make-format-box.with(width: enum-width(i), format-args: (curr-body-border.inner)(i))
-
-      // the item's content to display
-      let item-content(body, number-body: none) = (curr-item-format.outer)(i)(layout-block(
-        (curr-item-format.inner)(i)(inner-box(
-          if number-body == none {
-            [#next-show(show-text((curr-body-style)(i), body))]
-          } else {
-            [
-
-              #fix-first-line#number-body#h(0em, weak: true)#next-show(show-text((curr-body-style)(i), body))
-            ]
-          },
-        )),
-      ))
-
-
-      /*label baseline*/
-      let (curr-baseline, same-line-style, base-align, is-alone, label-height) = parse-baseline(
-        curr-label-baseline(i),
-        styled-child-number,
-        curr-text-style,
-      )
-
-      let pre-inset = h(
-        -max-width.to-absolute() - curr-body-indent(i).to-absolute() + curr-label-indent(i).to-absolute(),
-      )
-      let body-inset = h(curr-body-indent(i).to-absolute())
-      let box-width = number-width.to-absolute()
-
-      /* current label */
-      let number-box(baseline: 0pt, alone: true) = label-box(
-        styled-child-number,
-        box-width,
-        curr-baseline,
-        pre-inset: pre-inset,
-        body-inset: body-inset,
-        label-align: curr-label-align(i),
-        alone: alone,
-        baseline: baseline,
-      )
-
-      let inner-left-inset = get-block-left-inset(curr-text-size, (curr-body-border.inner)(i))
-
-      let label-inset = (
-        width + get-block-left-inset(curr-text-size, (curr-body-border.whole)(i)) + outer-left-inset
-      )
-
-      /* hanging-indent, first-line-indent */
-      set par(
-        hanging-indent: curr-hanging-indent(i).to-absolute(),
-        first-line-indent: (amount: curr-line-indent(i).to-absolute(), all: true),
-      ) if hanging-type == "classic"
-
-      set par(
-        hanging-indent: (-max-width - curr-body-indent(i) + curr-hanging-indent(i) - inner-left-inset).to-absolute(),
-        first-line-indent: (
-          amount: (-max-width - curr-body-indent(i) + curr-line-indent(i) - inner-left-inset).to-absolute(),
-          all: true,
-        ),
-      ) if hanging-type == "paragraph"
-
-      // all the number
-      let the-number = if i == 0 {
-        display-label(
-          number-box,
-          label-inset,
-          inner-left-inset,
-          same-line-style,
-          label-height,
-          curr-baseline,
-        )
-      } else {
-        [#h(-inner-left-inset)#number-box(baseline: curr-baseline)#h(inner-left-inset)#h(0em, weak: true)]
-      }
-
-      // parse body (in order to determine how to display label)
-      let new-body = rebuild_block-level-elem(
-        parse-formatted-body(child.body),
-        the-number,
-        alignment: base-align,
-        auto-margin: enum-width(i) == auto,
-        text-size: curr-text-size,
-      )
-
-      // record the left inset of the current block-level elems
-      parent-item-inset.update(push(inner-left-inset))
-
-      // [#repr(new-body)]
-      if new-body.inline == none {
-        // hold on displaying number
-        let item-inset = parent-item-inset.get()
-        parent-number-box.update(push((
-          body: number-box.with(alone: is-alone),
-          label-inset: label-inset,
-          label-height: label-height,
-          item-inset: item-inset,
-        )))
-        item-content(new-body.body)
-        // [||||#parent-item-inset.get()!!!]
-      } else {
-        parent-number-box.update(())
-        parent-item-inset.update(())
-        if new-body.inline == true {
-          item-content(new-body.body, number-body: the-number)
-        } else {
-          item-content(new-body.body)
+        if auto-base-level {
+          curr-base-parent-level.update(pop)
         }
       }
 
-      curr-parent-level.update(pop)
-
-      if auto-base-level {
-        curr-base-parent-level.update(pop)
-      }
+      let whole-block = make-format-box.with(format-args: (curr-body-border.whole)(0))
+      // body
+      (curr-item-format.whole)(0)(whole-block(body))
     }
-
-    let whole-block = make-format-box.with(format-args: (curr-body-border.whole)(0))
-    // body
-    (curr-item-format.whole)(0)(whole-block(body))
   }
 
   label-width-enum.update(pop)

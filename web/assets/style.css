@@ -275,7 +275,7 @@ svg {
   text-decoration: none;
 }
 
-.global-nav li.active > a {
+.global-nav li.active>a {
   color: var(--color-sidebar-active);
   font-weight: 600;
   border-left-color: var(--color-sidebar-active);
@@ -289,7 +289,7 @@ svg {
   transition: background 0.15s, border-color 0.15s;
 }
 
-.global-nav .nav-item-row > a {
+.global-nav .nav-item-row>a {
   flex: 1;
   min-width: 0;
   border-left: none;
@@ -322,24 +322,24 @@ svg {
   color: var(--color-text);
 }
 
-.global-nav li.active > .nav-item-row {
+.global-nav li.active>.nav-item-row {
   background: var(--color-sidebar-active-bg);
   border-left-color: var(--color-sidebar-active);
 }
 
-.global-nav li.active > .nav-item-row > a {
+.global-nav li.active>.nav-item-row>a {
   color: var(--color-sidebar-active);
   font-weight: 600;
   background: transparent;
   border-left-color: transparent;
 }
 
-.global-nav li.active > .nav-item-row > .nav-collapse-toggle {
+.global-nav li.active>.nav-item-row>.nav-collapse-toggle {
   background: transparent;
   color: var(--color-sidebar-active);
 }
 
-.global-nav li.collapsed > .nav-item-row .nav-collapse-toggle::before {
+.global-nav li.collapsed>.nav-item-row .nav-collapse-toggle::before {
   transform: rotate(45deg);
 }
 
@@ -361,16 +361,16 @@ svg {
   color: var(--color-text);
 }
 
-.global-nav li:not(.nav-sub) > .nav-item-row > a {
+.global-nav li:not(.nav-sub)>.nav-item-row>a {
   font-weight: 600;
   color: var(--color-text);
 }
 
-.global-nav .nav-children > ul {
+.global-nav .nav-children>ul {
   margin-left: 0.9rem;
 }
 
-.global-nav .nav-children .nav-children > ul {
+.global-nav .nav-children .nav-children>ul {
   margin-left: 0.9rem;
 }
 
@@ -663,6 +663,14 @@ svg.typst-frame {
 /* These are black-on-transparent diagrams that need the same treatment */
 [data-theme="dark"] figure img[src^="data:image/svg+xml"] {
   filter: invert(1) hue-rotate(180deg);
+}
+
+ul.itemize-ul-list {
+  list-style: none;
+}
+
+.data-marker-item::marker {
+  content: attr(data-marker) " ";
 }
 
 /* ---------------------------------------------------------------------------
