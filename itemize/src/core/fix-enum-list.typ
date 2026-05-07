@@ -1573,229 +1573,236 @@ Helper methods for fixing and enhancing enum and list functionality.
 
     let len = it.children.len()
 
-    // label-align
-    let curr-label-align = parse-general-args-with-level-n(
-      label-align,
-      rel-level,
-      list-config-args.label-align,
-      curr-list-level,
-      right,
-      n-last: it.children.len(),
-    )
-    // label-baseline
-    let curr-label-baseline = parse-general-args-with-level-n(
-      label-baseline,
-      rel-level,
-      list-config-args.label-baseline,
-      curr-list-level,
-      0pt,
-      n-last: it.children.len(),
-    )
-
-    let body = for i in range(len) {
-      let child = it.children.at(i)
-      let curr-marker = styled-markers.at(i)
-      let curr-width = markers-width.at(i)
-
-      let (amount, style) = curr-label-width(i)
-
-      let max-width = if amount == auto { curr-width } else { amount }
-      let width = (max-width + curr-indent(i) + curr-body-indent(i)).to-absolute()
-
-      /* list'marker (label) */
-      let marker-width = if style == "native" {
-        marker-max-width
-      } else if amount != auto {
-        if style == "default" {
-          if curr-width <= amount.to-absolute() { amount } else { curr-width }
-        } else if style == "constant" {
-          amount
-        } else if style == "auto" {
-          curr-width //- body-indent
-        }
-      } else { max-width }
-
-      let curr-text-style = (curr-body-style)(i)
-
-      let curr-text-size = {
-        if curr-text-style != none {
-          let size = curr-text-style.at("size", default: none)
-          if size != none {
-            (size: size)
-          }
-        }
-        (:)
-      }
-
-      let outer-left-inset = get-block-left-inset(curr-text-size, (curr-body-border.outer)(i))
-
-      let outer = (curr-body-border.outer)(i)
-
-      let outer-inset = if outer != none {
-        outer.remove("inset", default: (:))
-      } else {
-        0pt
-      }
-      let outer-inset-without-left = parse-inset-without-left(outer-inset)
-
-      // in fact, ltl is not supported yet.
-      let inset = if text.dir == rtl { (right: width) } else {
-        (left: width + outer-left-inset) + outer-inset-without-left
-      }
-
-      // display content
-      let layout-block = get_layout-block(
-        i,
-        len,
-        inset,
-        enum-below-spacing,
-        enum-above-spacing,
-        curr-item-spacing(i),
-        enum-width(i),
-        ..outer,
+    if target() == "html" {
+      html.elem("ul", for i in range(len) {
+        let child = it.children.at(i)
+        html.elem("li", next-show(child.body))
+      })
+    } else {
+      // label-align
+      let curr-label-align = parse-general-args-with-level-n(
+        label-align,
+        rel-level,
+        list-config-args.label-align,
+        curr-list-level,
+        right,
+        n-last: it.children.len(),
+      )
+      // label-baseline
+      let curr-label-baseline = parse-general-args-with-level-n(
+        label-baseline,
+        rel-level,
+        list-config-args.label-baseline,
+        curr-list-level,
+        0pt,
+        n-last: it.children.len(),
       )
 
-      let inner-box = make-format-box.with(width: enum-width(i), format-args: (curr-body-border.inner)(i))
+      let body = for i in range(len) {
+        let child = it.children.at(i)
+        let curr-marker = styled-markers.at(i)
+        let curr-width = markers-width.at(i)
 
-      // the item's content to display
-      let item-content(body, number-body: none) = (curr-item-format.outer)(i)(layout-block(
-        (curr-item-format.inner)(i)(inner-box(
-          if number-body == none {
-            show-text((curr-body-style)(i), next-show(body))
-          } else {
-            [
+        let (amount, style) = curr-label-width(i)
 
-              #fix-first-line#number-body#h(0em, weak: true)#show-text((curr-body-style)(i), next-show(body))
-            ]
-          },
-        )),
-      ))
+        let max-width = if amount == auto { curr-width } else { amount }
+        let width = (max-width + curr-indent(i) + curr-body-indent(i)).to-absolute()
 
-      let curr-checklist-label-baseline = auto
-      // re-parse body to support checklist
-      let child-body = if curr-checklist {
-        let format = checklist-body.at(i)
-        if format != false {
-          curr-checklist-label-baseline = checklist-label-baseline
-          assert(
-            curr-checklist-label-baseline in ("center", "top", "bottom", auto),
-            message: "The `baseline` of checklist should be: \"center\", \"top\", \"baseline\", or `auto`",
-          )
-          let func = child.body.func()
-          if func == func-styled {
-            if format != true {
-              format(func(child.body.child.children.slice(3).sum(default: []), child.body.styles))
-            } else {
-              func(child.body.child.children.slice(3).sum(default: []), child.body.styles)
-            }
-          } else {
-            if format != true {
-              format(child.body.children.slice(3).sum(default: []))
-            } else {
-              child.body.children.slice(3).sum(default: [])
+        /* list'marker (label) */
+        let marker-width = if style == "native" {
+          marker-max-width
+        } else if amount != auto {
+          if style == "default" {
+            if curr-width <= amount.to-absolute() { amount } else { curr-width }
+          } else if style == "constant" {
+            amount
+          } else if style == "auto" {
+            curr-width //- body-indent
+          }
+        } else { max-width }
+
+        let curr-text-style = (curr-body-style)(i)
+
+        let curr-text-size = {
+          if curr-text-style != none {
+            let size = curr-text-style.at("size", default: none)
+            if size != none {
+              (size: size)
             }
           }
-        } else { child.body }
-      } else { child.body }
+          (:)
+        }
 
-      /*label baseline*/
-      let (curr-baseline, same-line-style, base-align, is-alone, label-height) = parse-baseline(
-        if curr-checklist-label-baseline != auto { curr-checklist-label-baseline } else { curr-label-baseline(i) },
-        curr-marker,
-        curr-text-style,
-      )
+        let outer-left-inset = get-block-left-inset(curr-text-size, (curr-body-border.outer)(i))
 
+        let outer = (curr-body-border.outer)(i)
 
-      let pre-inset = h(
-        -max-width.to-absolute() - curr-body-indent(i).to-absolute() + curr-label-indent(i).to-absolute(),
-      )
-      let body-inset = h(curr-body-indent(i).to-absolute())
-      let box-width = marker-width.to-absolute()
-      /* current label */
-      let marker-box(baseline: 0pt, alone: true) = label-box(
-        curr-marker,
-        box-width,
-        curr-baseline,
-        pre-inset: pre-inset,
-        body-inset: body-inset,
-        label-align: curr-label-align(i),
-        alone: alone,
-        baseline: baseline,
-      )
-
-
-      let inner-left-inset = get-block-left-inset(curr-text-size, (curr-body-border.inner)(i))
-
-      let label-inset = (
-        width + get-block-left-inset(curr-text-size, (curr-body-border.whole)(i)) + outer-left-inset
-      )
-
-      /*hanging-indent, first-line-indent*/
-      set par(
-        hanging-indent: curr-hanging-indent(i).to-absolute(),
-        first-line-indent: (amount: curr-line-indent(i).to-absolute(), all: true),
-      ) if hanging-type == "classic"
-
-      set par(
-        hanging-indent: (-max-width - curr-body-indent(i) + curr-hanging-indent(i) - inner-left-inset).to-absolute(),
-        first-line-indent: (
-          amount: (-max-width - curr-body-indent(i) + curr-line-indent(i) - inner-left-inset).to-absolute(),
-          all: true,
-        ),
-      ) if hanging-type == "paragraph"
-
-      // all the label
-
-      let the-number = if i == 0 {
-        display-label(
-          marker-box,
-          label-inset,
-          inner-left-inset,
-          same-line-style,
-          label-height,
-          curr-baseline,
-        )
-      } else {
-        [#h(-inner-left-inset)#marker-box(baseline: curr-baseline)#h(inner-left-inset)#h(0em, weak: true)]
-      }
-
-
-      // parse body (in order to determine how to display label)
-      let new-body = rebuild_block-level-elem(
-        parse-formatted-body(child-body),
-        the-number,
-        alignment: base-align,
-        auto-margin: enum-width(i) == auto,
-        text-size: curr-text-size,
-      )
-
-      // record the left inset of the current block-level elems
-      parent-item-inset.update(push(inner-left-inset))
-      if new-body.inline == none {
-        // hold on displaying marker
-        let item-inset = parent-item-inset.get()
-        parent-number-box.update(push((
-          body: marker-box.with(alone: is-alone),
-          label-inset: label-inset,
-          label-height: label-height,
-          item-inset: item-inset,
-        )))
-
-        item-content(new-body.body)
-        // [||||#parent-item-inset.get()!!!]
-      } else {
-        parent-number-box.update(())
-        parent-item-inset.update(())
-        if new-body.inline == true {
-          item-content(new-body.body, number-body: [#the-number])
+        let outer-inset = if outer != none {
+          outer.remove("inset", default: (:))
         } else {
+          0pt
+        }
+        let outer-inset-without-left = parse-inset-without-left(outer-inset)
+
+        // in fact, ltl is not supported yet.
+        let inset = if text.dir == rtl { (right: width) } else {
+          (left: width + outer-left-inset) + outer-inset-without-left
+        }
+
+        // display content
+        let layout-block = get_layout-block(
+          i,
+          len,
+          inset,
+          enum-below-spacing,
+          enum-above-spacing,
+          curr-item-spacing(i),
+          enum-width(i),
+          ..outer,
+        )
+
+        let inner-box = make-format-box.with(width: enum-width(i), format-args: (curr-body-border.inner)(i))
+
+        // the item's content to display
+        let item-content(body, number-body: none) = (curr-item-format.outer)(i)(layout-block(
+          (curr-item-format.inner)(i)(inner-box(
+            if number-body == none {
+              show-text((curr-body-style)(i), next-show(body))
+            } else {
+              [
+
+                #fix-first-line#number-body#h(0em, weak: true)#show-text((curr-body-style)(i), next-show(body))
+              ]
+            },
+          )),
+        ))
+
+        let curr-checklist-label-baseline = auto
+        // re-parse body to support checklist
+        let child-body = if curr-checklist {
+          let format = checklist-body.at(i)
+          if format != false {
+            curr-checklist-label-baseline = checklist-label-baseline
+            assert(
+              curr-checklist-label-baseline in ("center", "top", "bottom", auto),
+              message: "The `baseline` of checklist should be: \"center\", \"top\", \"baseline\", or `auto`",
+            )
+            let func = child.body.func()
+            if func == func-styled {
+              if format != true {
+                format(func(child.body.child.children.slice(3).sum(default: []), child.body.styles))
+              } else {
+                func(child.body.child.children.slice(3).sum(default: []), child.body.styles)
+              }
+            } else {
+              if format != true {
+                format(child.body.children.slice(3).sum(default: []))
+              } else {
+                child.body.children.slice(3).sum(default: [])
+              }
+            }
+          } else { child.body }
+        } else { child.body }
+
+        /*label baseline*/
+        let (curr-baseline, same-line-style, base-align, is-alone, label-height) = parse-baseline(
+          if curr-checklist-label-baseline != auto { curr-checklist-label-baseline } else { curr-label-baseline(i) },
+          curr-marker,
+          curr-text-style,
+        )
+
+
+        let pre-inset = h(
+          -max-width.to-absolute() - curr-body-indent(i).to-absolute() + curr-label-indent(i).to-absolute(),
+        )
+        let body-inset = h(curr-body-indent(i).to-absolute())
+        let box-width = marker-width.to-absolute()
+        /* current label */
+        let marker-box(baseline: 0pt, alone: true) = label-box(
+          curr-marker,
+          box-width,
+          curr-baseline,
+          pre-inset: pre-inset,
+          body-inset: body-inset,
+          label-align: curr-label-align(i),
+          alone: alone,
+          baseline: baseline,
+        )
+
+
+        let inner-left-inset = get-block-left-inset(curr-text-size, (curr-body-border.inner)(i))
+
+        let label-inset = (
+          width + get-block-left-inset(curr-text-size, (curr-body-border.whole)(i)) + outer-left-inset
+        )
+
+        /*hanging-indent, first-line-indent*/
+        set par(
+          hanging-indent: curr-hanging-indent(i).to-absolute(),
+          first-line-indent: (amount: curr-line-indent(i).to-absolute(), all: true),
+        ) if hanging-type == "classic"
+
+        set par(
+          hanging-indent: (-max-width - curr-body-indent(i) + curr-hanging-indent(i) - inner-left-inset).to-absolute(),
+          first-line-indent: (
+            amount: (-max-width - curr-body-indent(i) + curr-line-indent(i) - inner-left-inset).to-absolute(),
+            all: true,
+          ),
+        ) if hanging-type == "paragraph"
+
+        // all the label
+
+        let the-number = if i == 0 {
+          display-label(
+            marker-box,
+            label-inset,
+            inner-left-inset,
+            same-line-style,
+            label-height,
+            curr-baseline,
+          )
+        } else {
+          [#h(-inner-left-inset)#marker-box(baseline: curr-baseline)#h(inner-left-inset)#h(0em, weak: true)]
+        }
+
+
+        // parse body (in order to determine how to display label)
+        let new-body = rebuild_block-level-elem(
+          parse-formatted-body(child-body),
+          the-number,
+          alignment: base-align,
+          auto-margin: enum-width(i) == auto,
+          text-size: curr-text-size,
+        )
+
+        // record the left inset of the current block-level elems
+        parent-item-inset.update(push(inner-left-inset))
+        if new-body.inline == none {
+          // hold on displaying marker
+          let item-inset = parent-item-inset.get()
+          parent-number-box.update(push((
+            body: marker-box.with(alone: is-alone),
+            label-inset: label-inset,
+            label-height: label-height,
+            item-inset: item-inset,
+          )))
+
           item-content(new-body.body)
+          // [||||#parent-item-inset.get()!!!]
+        } else {
+          parent-number-box.update(())
+          parent-item-inset.update(())
+          if new-body.inline == true {
+            item-content(new-body.body, number-body: [#the-number])
+          } else {
+            item-content(new-body.body)
+          }
         }
       }
+      let whole-block = make-format-box.with(format-args: (curr-body-border.whole)(0))
+      // body
+      (curr-item-format.whole)(0)(whole-block(body))
     }
-    let whole-block = make-format-box.with(format-args: (curr-body-border.whole)(0))
-    // body
-    (curr-item-format.whole)(0)(whole-block(body))
   }
 
   label-width-list.update(pop)
