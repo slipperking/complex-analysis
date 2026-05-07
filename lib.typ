@@ -340,3 +340,7 @@
     ..args,
   )
 }
+
+#if _is-html {
+  qedhere = none
+}

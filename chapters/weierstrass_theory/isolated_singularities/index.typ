@@ -34,27 +34,27 @@ An _isolated singularity_ of a complex function is a point $a in CC$ where a fun
   ]
 + If $lim_(z -> a) f(z)$ is nonexistent, then $a$ is known as an _essential singularity_. <itm:isolatedsingularities_essential>
 
-#example[
-  The function $ee^((1) / (z))$ has an essential singularity at $z = 0$.
-] <ex:isolatedsingularities_essential_exp1z>
+  #example[
+    The function $ee^((1) / (z))$ has an essential singularity at $z = 0$.
+  ] <ex:isolatedsingularities_essential_exp1z>
 
-#proof[
-  Observe that $lim_(x -> 0^+) ee^((1) / (x)) = infinity$. Similarly, $lim_(x -> 0^-) ee^((1) / (x)) = 0$, and for $z = ii y$ with $y -> 0^+$,
-  $ ee^((1) / (z)) = ee^(-ii / y), $
-  which is divergent. Therefore, the limit does not exist.
-]
+  #proof[
+    Observe that $lim_(x -> 0^+) ee^((1) / (x)) = infinity$. Similarly, $lim_(x -> 0^-) ee^((1) / (x)) = 0$, and for $z = ii y$ with $y -> 0^+$,
+    $ ee^((1) / (z)) = ee^(-ii / y), $
+    which is divergent. Therefore, the limit does not exist.
+  ]
 
-The implication on its Laurent expansion at $a$ is:
+  The implication on its Laurent expansion at $a$ is:
 
-#theorem[
-  The necessary and sufficient condition for $lim_(z -> a) f(z)$ to not exist is that infinitely many of $c_(-n)$ (where $n in NN$) are nonzero.
-]
+  #theorem[
+    The necessary and sufficient condition for $lim_(z -> a) f(z)$ to not exist is that infinitely many of $c_(-n)$ (where $n in NN$) are nonzero.
+  ]
 
-This follows by elimination from the established trichotomy; if the limit as $z -> a$ does not exist, then the singularity is neither removable nor a pole (results from @itm:isolatedsingularities_removable and @itm:isolatedsingularities_pole). Similar logic can be applied to the coefficients of the Laurent expansion.
+  This follows by elimination from the established trichotomy; if the limit as $z -> a$ does not exist, then the singularity is neither removable nor a pole (results from @itm:isolatedsingularities_removable and @itm:isolatedsingularities_pole). Similar logic can be applied to the coefficients of the Laurent expansion.
 
-Indeed, in @ex:isolatedsingularities_essential_exp1z, the Laurent expansion is equal to:
-$ ee^((1) / (z)) = sum_(n = 0)^infinity z^(-n) / (n!), $
-which has infinitely many nonzero coefficients of negative powers.
+  Indeed, in @ex:isolatedsingularities_essential_exp1z, the Laurent expansion is equal to:
+  $ ee^((1) / (z)) = sum_(n = 0)^infinity z^(-n) / (n!), $
+  which has infinitely many nonzero coefficients of negative powers.
 
 A function with an essential singularity exhibits striking behavior. We will first introduce the following famous result.
 

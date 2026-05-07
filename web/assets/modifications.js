@@ -38,8 +38,8 @@
       themeBtn.innerHTML = THEME_ICONS[mode] || THEME_ICONS.auto;
       themeBtn.title =
         mode === "light" ? "Theme: Light" :
-        mode === "dark"  ? "Theme: Dark" :
-                           "Theme: Auto";
+          mode === "dark" ? "Theme: Dark" :
+            "Theme: Auto";
       themeBtn.setAttribute("aria-label", themeBtn.title);
     }
   }
@@ -408,4 +408,37 @@
     updateSpy();
   }
 
+  document.querySelectorAll('.thm-proof').forEach(proof => {
+    const qedPara = proof.querySelector('p.qed');
+    if (!qedPara) return;
+
+    // Only move the QED marker to the immediately preceding element.
+    const prev = qedPara.previousElementSibling;
+    if (!prev || !(prev.tagName === 'P' || prev.tagName === 'SVG')) return;
+    const target = prev;
+
+    const qedContent = qedPara.querySelector('span, svg');
+    if (qedContent) {
+      const wrapper = document.createElement('span');
+      wrapper.style.cssText = 'float:right; margin-left:0.5em; line-height:1;';
+      wrapper.appendChild(qedContent.cloneNode(true));
+      target.appendChild(wrapper);
+    }
+    qedPara.remove();
+  });
+
+  document.querySelectorAll('ul.itemize-ul-list').forEach(ul => {
+    const temp = document.createElement('span');
+    temp.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;';
+    document.body.appendChild(temp);
+
+    let maxWidth = 0;
+    ul.querySelectorAll('.data-marker-item').forEach(li => {
+      temp.textContent = li.dataset.marker ?? '';
+      maxWidth = Math.max(maxWidth, temp.offsetWidth);
+    });
+
+    document.body.removeChild(temp);
+    ul.style.setProperty('--marker-slot', `${maxWidth + 20}px`);
+  });
 })();

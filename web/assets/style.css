@@ -667,10 +667,20 @@ svg.typst-frame {
 
 ul.itemize-ul-list {
   list-style: none;
+  padding-left: var(--marker-slot, 2.5em);
 }
 
-.data-marker-item::marker {
-  content: attr(data-marker) " ";
+.data-marker-item {
+  position: relative;
+}
+
+.data-marker-item::before {
+  content: attr(data-marker);
+  position: absolute;
+  left: calc(-1 * var(--marker-slot, 2.5em));
+  width: calc(var(--marker-slot, 2.5em) - 8px);
+  text-align: right;
+  top: 0;
 }
 
 /* ---------------------------------------------------------------------------

@@ -351,7 +351,7 @@ def build_page(
     home_href = relative_href(current_file, "index.html")
     favicon_href = asset_href(current_file, "assets/favicon.svg")
     stylesheet_href = asset_href(current_file, "assets/style.css")
-    nav_script_href = asset_href(current_file, "assets/nav.js")
+    modifications_script_href = asset_href(current_file, "assets/modifications.js")
     active_nav_groups_json = json.dumps(active_nav_groups)
 
     return f"""<!DOCTYPE html>
@@ -432,7 +432,7 @@ def build_page(
       <div class="search-results" id="search-results"></div>
     </div>
   </div>
-  <script src="{nav_script_href}"></script>
+  <script src="{modifications_script_href}"></script>
 </body>
 </html>"""
 
