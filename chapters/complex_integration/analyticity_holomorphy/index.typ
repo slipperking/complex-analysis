@@ -1,4 +1,5 @@
 #import "/lib.typ": *
+#import "/paper-styles.typ": chapter-section
 
 == Analyticity and Holomorphy<sec:analyticity_and_holomorphy>
 
@@ -346,4 +347,7 @@ The concept of analytic continuation and its consequences will be studied in mor
   Therefore $f$ extends holomorphically to $D(z_0, r)$.
 ]
 
-#include "partitions_of_unity/index.typ"
+#chapter-section("partitions_of_unity")[
+  #include "partitions_of_unity/index.typ"
+]
+

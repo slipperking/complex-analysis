@@ -1,4 +1,5 @@
 #import "/lib.typ": *
+#import "/paper-styles.typ": chapter-section
 
 == Alternative Integral Formulas
 
@@ -162,5 +163,9 @@ where $zeta = R ee^(ii t)$. Two harmonic functions are said to be _conjugate_ if
 
 The Poisson kernel is important in many branches of mathematics. We will introduce two of the important uses below.
 
-#include "solution_to_dirichlet_problem_on_disk/index.typ"
-#include "in_harmonic_analysis/index.typ"
+#chapter-section("solution_to_dirichlet_problem_on_disk")[
+  #include "solution_to_dirichlet_problem_on_disk/index.typ"
+]
+#chapter-section("in_harmonic_analysis")[
+  #include "in_harmonic_analysis/index.typ"
+]
