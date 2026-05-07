@@ -1,4 +1,5 @@
 #import "@preview/ctheorems:1.1.3": *
+#import "/itemize/lib.typ" as itemize
 #import "@preview/diverential:0.3.0": *
 #import "@preview/cetz:0.5.0"
 #import "@preview/cetz-plot:0.1.3": *
@@ -338,59 +339,4 @@
     fill: luma(100%, 80%),
     ..args,
   )
-}
-
-#let _state-referable-enum = state("--state-referable-enum", none)
-#let _counter-referable-enum = counter("--counter-referable-enum")
-
-#let _get-greatest-suffix(sample1, sample2) = {
-  let suffix = ("",)
-  for (c1, c2) in sample1.rev().split("").zip(sample2.rev().split("")) {
-    if c1 == c2 {
-      suffix.push(c1)
-    } else {
-      break
-    }
-  }
-  suffix.rev().join("")
-}
-#let _remove-suffix(x, suffix) = {
-  assert(x.ends-with(suffix))
-  x.slice(0, x.len() - suffix.len())
-}
-#let referable-enum(supplement: "Part", doc) = context {
-  let current-numbering = enum.numbering
-  assert(enum.full, message: "Only `enum.full = true` is supported right now. Add `#set enum(full: true)`.")
-  let wrap-numbering(..it) = {
-    _counter-referable-enum.update(it.pos())
-    numbering(current-numbering, ..it)
-  }
-  set enum(numbering: wrap-numbering)
-
-  let sample1 = numbering(current-numbering, 1)
-  let sample2 = numbering(current-numbering, 2)
-  let suffix = _get-greatest-suffix(sample1, sample2)
-
-  _state-referable-enum.update((supplement, suffix, current-numbering))
-  doc
-}
-
-
-/// Referable enums.
-/// Use as e.g. `#show: enable-referable-enums`
-#let enable-referable-enums(doc) = {
-  show ref: it => {
-    let el = it.element
-    let loc = el.location()
-    if el != none and el.func() == text and _state-referable-enum.at(loc) != none {
-      let (supplement, suffix, current-numbering) = _state-referable-enum.at(loc)
-      let numbers = numbering(current-numbering, .._counter-referable-enum.at(loc))
-      // Override enum references.
-      link(loc, supplement + " " + _remove-suffix(numbers, suffix))
-    } else {
-      // Other references as usual.
-      it
-    }
-  }
-  doc
 }

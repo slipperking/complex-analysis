@@ -103,11 +103,10 @@ The function $f:[0, 2 uppi) -> S^1$ with $f(t) = (cos(t), sin(t))$ is indeed con
 #proposition[
   Let $(X, tau_1), (Y, tau_2)$ be two topological spaces. Then for $f:X -> Y$, the following conditions are equivalent:
 
-  #referable-enum[
-    + $f$ is continuous.<itm:topologicalcontinuityequivalents_cont>
-    + If $A subset.eq Y$ is closed, then the pre-image $f^(-1)(A)$ is closed.<itm:topologicalcontinuityequivalents_closed>
-    + If $a in X$ and $A in tau_2$ is an open neighborhood of $f(a)$ in $Y$, then there is some $U in tau_1$ that is a neighborhood of $a$ such that $f(U) subset.eq A$.<itm:topologicalcontinuityequivalents_fitopenset>
-  ]
+  + $f$ is continuous.<itm:topologicalcontinuityequivalents_cont>
+  + If $A subset.eq Y$ is closed, then the pre-image $f^(-1)(A)$ is closed.<itm:topologicalcontinuityequivalents_closed>
+  + If $a in X$ and $A in tau_2$ is an open neighborhood of $f(a)$ in $Y$, then there is some $U in tau_1$ that is a neighborhood of $a$ such that $f(U) subset.eq A$.<itm:topologicalcontinuityequivalents_fitopenset>
+
 ] <prop:topologicalcontinuityequivalents>
 
 #proof[
@@ -314,10 +313,9 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
 #lemma[
   Let $Omega subset.eq CC$ be an open set and let $frak(B)$ be a basis for the topology on $Omega$. Then there exists a collection of sets ${U_n}_(n in NN) subset.eq frak(B)$ such that
 
-  #referable-enum[
-    + $union.big_(n in NN) U_n = Omega$.<itm:locally_finite_open_cover_existence_cover>
-    + For every compact $K subset Omega$, $K$ intersects only finitely many sets in ${U_n}_(n in NN)$.<itm:locally_finite_open_cover_existence_localfiniteness>
-  ]
+  + $union.big_(n in NN) U_n = Omega$.<itm:locally_finite_open_cover_existence_cover>
+  + For every compact $K subset Omega$, $K$ intersects only finitely many sets in ${U_n}_(n in NN)$.<itm:locally_finite_open_cover_existence_localfiniteness>
+
 ] <lem:locally_finite_open_cover_existence>
 
 #proof[
@@ -487,12 +485,12 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
 
 #theorem("Partition of Unity")[
   Let $Omega subset.eq CC$ be a nonempty open set and let ${Omega_k}_(k in NN)$ be an open cover of $Omega$. Then there exists a collection of bump functions ${alpha_j}_(j in NN) subset.eq C^infinity(CC)$, each with compact support in $Omega$, satisfying:
-  #referable-enum[
+
     + For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.<itm:partition_of_unity_subordinate>
     + The collection ${supp(alpha_j)}_(j in NN)$ is locally finite.<itm:partition_of_unity_local_finiteness>
     + For each $j in NN$, $0 <= alpha_j <= 1$.<itm:partition_of_unity_nonnegativity>
     + $sum_(j = 1)^infinity alpha_j equiv 1$ on $Omega$.<itm:partition_of_unity_partition_of_unity>
-  ]
+  
   Then ${alpha_j}_(j in NN)$ is called a $C^infinity$ partition of unity subordinate to ${Omega_k}_(k in NN)$.
 ] <thm:partition_of_unity>
 

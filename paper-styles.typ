@@ -64,8 +64,8 @@
     }
   }
 
-  set enum(full: true)
-  show: enable-referable-enums
+  show: itemize.default-enum-list
+  show: itemize.config.ref.with(supplement: "Part")
 
   doc
 }
