@@ -12,7 +12,7 @@ and for all $b in CC without {0}$,
 $ b dot.c infinity = infinity dot.c b = infinity, quad a / infinity = 0. $
 
 Let
-$ S^2 = {(x_1, x_2, x_3) in RR^3 | x_1^2 + x_2^2 + x_3^2 = 1}. $
+$ S^2 = {(x_1, x_2, x_3) in RR^3 : x_1^2 + x_2^2 + x_3^2 = 1}. $
 There exists a _stereographic projection_ of $S^2$ onto $extcomplex$. For every point other than $(0, 0, 1)$, there is a corresponding complex number
 $ z = (x_1 + ii x_2) / (1 - x_3). $ <eq:extcomplexformula1>
 This correspondence between $CC$ and $S^2 without {(0, 0, 1)}$ is injective. In fact, the inverse can be solved for:
@@ -41,4 +41,4 @@ $
   x_1 = Re(z) / (abs(z)^2 + 1), quad x_2 = Im(z) / (abs(z)^2 + 1), quad x_3 = abs(z)^2 / (abs(z)^2 + 1).
 $
 The forward projection remains unchanged. Lastly, we define the upper half-plane; for the following sections, let
-$ HH^+ = {z in CC | Im(z) > 0} $
+$ HH^+ = {z in CC : Im(z) > 0} $

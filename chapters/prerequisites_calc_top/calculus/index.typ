@@ -212,7 +212,7 @@ $
 ] <thm:continuous_function_bounded_on_compact>
 
 #proof[
-  Suppose for the sake of contradiction that $f : U -> RR$ is continuous and unbounded on compact $K$. Then for each $n in NN$, there exists $x_n in K$ such that $|f(x_n)| > n$. The sequence ${x_n}$ lies in $K$, which is compact, so by the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), ${x_n}$ has an accumulation point in $K$. In other words, there exists a convergent subsequence ${x_(n_k)}$ with $lim_(k -> oo) x_(n_k) in K$.
+  Suppose for the sake of contradiction that $f : U -> RR$ is continuous and unbounded on compact $K$. Then for each $n in NN$, there exists $x_n in K$ such that $abs(f(x_n)) > n$. The sequence ${x_n}$ lies in $K$, which is compact, so by the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), ${x_n}$ has an accumulation point in $K$. In other words, there exists a convergent subsequence ${x_(n_k)}$ with $lim_(k -> oo) x_(n_k) in K$.
 
   Since $f$ is continuous, $lim_(k -> oo) f(x_(n_k)) = f(lim_(k -> oo) x_(n_k))$, which is well-defined because $lim_(k -> oo) x_(n_k) in K$. However, this contradicts $abs(f(x_(n_k))) > n_k -> oo$, hence $f$ must be bounded on $K$.
 ]
@@ -230,7 +230,7 @@ $
 ]
 
 #definition("Uniform Continuity")[
-  A function $f : U -> RR$, defined on a set $U subset.eq RR$, is uniformly continuous iff $forall epsilon > 0$, $exists delta > 0$ such that $forall x, y in U$ where $|x - y| < delta$, $abs(f(x) - f(y)) < epsilon$.
+  A function $f : U -> RR$, defined on a set $U subset.eq RR$, is uniformly continuous iff $forall epsilon > 0$, $exists delta > 0$ such that $forall x, y in U$ where $abs(x - y) < delta$, $abs(f(x) - f(y)) < epsilon$.
 ] <def:uniformcontinuity>
 
 #example[
@@ -238,7 +238,7 @@ $
 ]
 
 #proof[
-  If $exists epsilon > 0$ such that $forall delta > 0$, $exists x, y in (0, 1)$ satisfying both $|x - y| < delta$ and $abs(f(x) - f(y)) >= epsilon$, then $f$ is not uniformly continuous over $(0, 1)$.
+  If $exists epsilon > 0$ such that $forall delta > 0$, $exists x, y in (0, 1)$ satisfying both $abs(x - y) < delta$ and $abs(f(x) - f(y)) >= epsilon$, then $f$ is not uniformly continuous over $(0, 1)$.
 
   Let $epsilon = 1$ and
   $ x = 1 / n, quad y = 1 / (n + 1). $
@@ -285,7 +285,7 @@ Lipschitz continuity is an important concept in real analysis and the theory of 
 ] <prop:c1_lipschitz>
 
 #proof[
-  Let $f : K -> RR$ be $C^1$. By @thm:continuous_function_bounded_on_compact, since $K$ is compact and $f'$ is continuous, $exists M > 0$ such that $forall x in K$, $|f'(x)| <= M$.
+  Let $f : K -> RR$ be $C^1$. By @thm:continuous_function_bounded_on_compact, since $K$ is compact and $f'$ is continuous, $exists M > 0$ such that $forall x in K$, $abs(f'(x)) <= M$.
 
-  By the Mean Value Theorem, $forall x, y in K$, $exists c$ between $x$ and $y$ such that $f(x) - f(y) = f'(c)(x - y)$. Then, $|f(x) - f(y)| = |f'(c)||x - y| <= M|x - y|$, which means $f$ is Lipschitz continuous with Lipschitz constant less than or equal to $M$.
+  By the Mean Value Theorem, $forall x, y in K$, $exists c$ between $x$ and $y$ such that $f(x) - f(y) = f'(c)(x - y)$. Then, $abs(f(x) - f(y)) = abs(f'(c))abs(x - y) <= M abs(x - y)$, which means $f$ is Lipschitz continuous with Lipschitz constant less than or equal to $M$.
 ]

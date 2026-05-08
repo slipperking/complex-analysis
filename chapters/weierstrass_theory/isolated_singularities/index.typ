@@ -24,7 +24,7 @@ An _isolated singularity_ of a complex function is a point $a in CC$ where a fun
     $ g(z) = 1 / f(z). $
     Then $lim_(z -> a) g(z) = 0$. There exists a $delta > 0$ such that $f$ is nonzero on $D^*(a, delta)$. Then $g(z)$ is holomorphic on $D^*(a, delta)$ and has a removable singularity at $z = a$. By @thm:riemannremovablesingularities, $g$ can be analytically continued to $D(a, delta)$. Let the multiplicity of the zero at $z = a$ be $m$. Then
     $ g(z) = phi(z) (z - a)^m, $
-    where $phi(z)$ is holomorphic and nonzero at $z = a$. Then there exists a $delta' > 0$ such that $phi$ is nonzero on $D(a, delta')$. It follows that $(1) / (phi)$ is holomorphic and nonzero on $D(a, delta')$. We can then write its Taylor expansion as
+    where $phi(z)$ is holomorphic and nonzero at $z = a$. Then there exists a $delta' > 0$ such that $phi$ is nonzero on $D(a, delta')$. It follows that $1 / (phi)$ is holomorphic and nonzero on $D(a, delta')$. We can then write its Taylor expansion as
     $ 1 / (phi(z)) = c_(-m) + c_(1 - m) (z - a) + dots.c, $
     where $c_(-m) eq.not 0$. It follows that
     $
@@ -35,12 +35,12 @@ An _isolated singularity_ of a complex function is a point $a in CC$ where a fun
 + If $lim_(z -> a) f(z)$ is nonexistent, then $a$ is known as an _essential singularity_. <itm:isolatedsingularities_essential>
 
   #example[
-    The function $ee^((1) / (z))$ has an essential singularity at $z = 0$.
+    The function $ee^(1 / (z))$ has an essential singularity at $z = 0$.
   ] <ex:isolatedsingularities_essential_exp1z>
 
   #proof[
-    Observe that $lim_(x -> 0^+) ee^((1) / (x)) = infinity$. Similarly, $lim_(x -> 0^-) ee^((1) / (x)) = 0$, and for $z = ii y$ with $y -> 0^+$,
-    $ ee^((1) / (z)) = ee^(-ii / y), $
+    Observe that $lim_(x -> 0^+) ee^(1 / (x)) = infinity$. Similarly, $lim_(x -> 0^-) ee^(1 / (x)) = 0$, and for $z = ii y$ with $y -> 0^+$,
+    $ ee^(1 / (z)) = ee^(-ii / y), $
     which is divergent. Therefore, the limit does not exist.
   ]
 
@@ -53,7 +53,7 @@ An _isolated singularity_ of a complex function is a point $a in CC$ where a fun
   This follows by elimination from the established trichotomy; if the limit as $z -> a$ does not exist, then the singularity is neither removable nor a pole (results from @itm:isolatedsingularities_removable and @itm:isolatedsingularities_pole). Similar logic can be applied to the coefficients of the Laurent expansion.
 
   Indeed, in @ex:isolatedsingularities_essential_exp1z, the Laurent expansion is equal to:
-  $ ee^((1) / (z)) = sum_(n = 0)^infinity z^(-n) / (n!), $
+  $ ee^(1 / (z)) = sum_(n = 0)^infinity z^(-n) / (n!), $
   which has infinitely many nonzero coefficients of negative powers.
 
 A function with an essential singularity exhibits striking behavior. We will first introduce the following famous result.

@@ -17,7 +17,7 @@
 
       #text(size: 11pt)[May 15, 2025]
 
-      `Source: https://github.com/slipperking/complex-analysis-latex`
+      `Source: https://github.com/slipperking/complex-analysis`
     ]
     outline()
   } else {

@@ -93,9 +93,9 @@ $
 converges (conditionally) on all of $partial DD without {1}$ and diverges at $z = 1$. If $r > R$, then the series is divergent on all of $CC$. The region $D(a, R) without overline(D(a, r))$ is known as the _annulus of convergence_. $f(z)$ in @eq:laurentseries is holomorphic over this annulus. The series $phi(z)$ is known as the _holomorphic part_ of $f(z)$, and $psi(z)$ is known as the _principal part_ of the Laurent series. The properties of the convergence disk in Abel's Theorem (@thm:abelradius) can be generalized to Laurent series. In other words, $f$ is absolutely convergent on the annulus and is uniformly convergent on every compact subset of it.
 
 #theorem[
-  Let $V = {z in CC | r < abs(z - a) < R}$ for some $0 <= r < R <= infinity$. Let $f$ be holomorphic on $V$. Then $f$ has the unique _Laurent expansion_
+  Let $V = {z in CC : r < abs(z - a) < R}$ for some $0 <= r < R <= infinity$. Let $f$ be holomorphic on $V$. Then $f$ has the unique _Laurent expansion_
   $
-    f(z) = sum_(n = -infinity)^infinity c_n (z - a)^n, quad c_n = (1) / (2 uppi ii) integral.cont_gamma (f(zeta) dzeta) / ((zeta - a)^(n + 1)), quad z in V,
+    f(z) = sum_(n = -infinity)^infinity c_n (z - a)^n, quad c_n = 1 / (2 uppi ii) integral.cont_gamma (f(zeta) dzeta) / ((zeta - a)^(n + 1)), quad z in V,
   $ <eq:laurentexpansionofholomorphicfunction_statement>
   for any simple closed curve $gamma subset V$ enclosing $a$. Moreover, the series converges absolutely on $V$ and uniformly on all compact subsets of $V$.
 ] <thm:laurentexpansionofholomorphicfunction>
@@ -154,24 +154,24 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
 ])
 
 #proof[
-  By the openness of $V$, there exist two circles $gamma_1 subset V$ with radius $r'$ and $gamma_2 subset V$ with radius $R'$ centered at $a$ such that $gamma$ encloses $gamma_1$ and $gamma_2$ encloses $gamma$ both without intersection. Let $W = {z in V | r' < abs(z - a) < R'}$ and let $z in W$ be arbitrary. By the Cauchy--Goursat Formula (@thm:cauchygoursatformula),
+  By the openness of $V$, there exist two circles $gamma_1 subset V$ with radius $r'$ and $gamma_2 subset V$ with radius $R'$ centered at $a$ such that $gamma$ encloses $gamma_1$ and $gamma_2$ encloses $gamma$ both without intersection. Let $W = {z in V : r' < abs(z - a) < R'}$ and let $z in W$ be arbitrary. By the Cauchy--Goursat Formula (@thm:cauchygoursatformula),
   $
-    f(z) = (1) / (taui) (integral.cont_(gamma_2) (f(zeta)) / (zeta - z) dzeta - integral.cont_(gamma_1) (f(zeta)) / (zeta - z) dzeta).
+    f(z) = 1 / (taui) (integral.cont_(gamma_2) (f(zeta)) / (zeta - z) dzeta - integral.cont_(gamma_1) (f(zeta)) / (zeta - z) dzeta).
   $
 
   For all $zeta in gamma_1$ (or $abs(zeta - a) = r'$), $abs(zeta - a) < abs(z - a)$ and therefore, $(abs(zeta - a)) / (abs(z - a)) < 1$. It follows that
   $
-    1 / (zeta - z) = -(1) / ((z - a) (1 - (zeta - a) / (z - a))) = -sum_(n = 0)^infinity (zeta - a)^n / (z - a)^(n + 1)
+    1 / (zeta - z) = -1 / ((z - a) (1 - (zeta - a) / (z - a))) = -sum_(n = 0)^infinity (zeta - a)^n / (z - a)^(n + 1)
   $ <eq:laurentexpansionofholomorphicfunction_kernelexpansioninside>
   is uniformly convergent with respect to $zeta$. Similarly, for all $zeta in gamma_2$,
   $ abs(zeta - a) > abs(z - a) <=> (abs(z - a)) / (abs(zeta - a)) < 1, $
   and it follows that
   $
-    1 / (zeta - z) = (1) / ((zeta - a) (1 - (z - a) / (zeta - a))) = sum_(n = 0)^infinity (z - a)^n / (zeta - a)^(n + 1)
+    1 / (zeta - z) = 1 / ((zeta - a) (1 - (z - a) / (zeta - a))) = sum_(n = 0)^infinity (z - a)^n / (zeta - a)^(n + 1)
   $ <eq:laurentexpansionofholomorphicfunction_kernelexpansionoutside>
   is uniformly convergent with respect to $zeta$. By the boundedness of $f$ on $gamma_1$ and $gamma_2$ from holomorphy on a compact set, the uniform convergence from the Weierstrass $M$-Test (@thm:weierstrassmtest), gives that
   $
-    f(z) = (1) / (taui) (sum_(n = 0)^infinity integral.cont_(gamma_2) ((z - a)^n) / ((zeta - a)^(n + 1)) f(zeta) dzeta + sum_(n = 1)^infinity integral.cont_(gamma_1) ((zeta - a)^(n - 1)) / ((z - a)^n) f(zeta) dzeta).
+    f(z) = 1 / (taui) (sum_(n = 0)^infinity integral.cont_(gamma_2) ((z - a)^n) / ((zeta - a)^(n + 1)) f(zeta) dzeta + sum_(n = 1)^infinity integral.cont_(gamma_1) ((zeta - a)^(n - 1)) / ((z - a)^n) f(zeta) dzeta).
   $ <eq:laurentexpansionofholomorphicfunction_finalstep>
 
   By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem), for a given $n$,

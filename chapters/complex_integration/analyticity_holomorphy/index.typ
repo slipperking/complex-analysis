@@ -16,7 +16,7 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can be generalized into 
 
   where
   $
-    a_j = (1) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z_0)^(j + 1)) dzeta
+    a_j = 1 / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z_0)^(j + 1)) dzeta
   $ <eq:cauchy_differentiation_formula_taylorseriescoefficients>
   on $overline(D(z_0, r))$.
 ] <thm:cauchydifferentiationformula>
@@ -24,17 +24,17 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can be generalized into 
 #proof[
   Fix $z_0 in U$, and choose $r > 0$ such that $overline(D(z_0, r)) subset U$. For $z in D(z_0, r)$, by @thm:cauchygoursatformula,
   $
-    f(z) - f(z_0) &= (1) / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta - (1) / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z_0) dzeta \
+    f(z) - f(z_0) &= 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta - 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z_0) dzeta \
     &= (z - z_0) / (taui) integral.cont_(partial U) f(zeta) / ((zeta - z)(zeta - z_0)) dzeta.
   $
 
   Dividing by $z - z_0$, we obtain
-  $ (f(z) - f(z_0)) / (z - z_0) = (1) / (taui) integral.cont_(partial U) f(zeta) / ((zeta - z)(zeta - z_0)) dzeta. $
+  $ (f(z) - f(z_0)) / (z - z_0) = 1 / (taui) integral.cont_(partial U) f(zeta) / ((zeta - z)(zeta - z_0)) dzeta. $
 
   Hence,
   $
-    (f(z) - f(z_0)) / (z - z_0) - (1) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z_0)^2) dzeta
-    &= (1) / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z_0) ((1) / (zeta - z) - (1) / (zeta - z_0)) dzeta \
+    (f(z) - f(z_0)) / (z - z_0) - 1 / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z_0)^2) dzeta
+    &= 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z_0) (1 / (zeta - z) - 1 / (zeta - z_0)) dzeta \
     &= (z - z_0) / (taui) integral.cont_(partial U) f(zeta) / ((zeta - z)(zeta - z_0)^2) dzeta.
   $ <eq:cauchydifferentiationformula_differenceoffirstorderdifferences>
 
@@ -45,13 +45,13 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can be generalized into 
   $
 
   As $z -> z_0$, the right-hand side tends to $0$. Thus,
-  $ f'(z_0) = (1) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z_0)^2) dzeta. $
+  $ f'(z_0) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z_0)^2) dzeta. $
 
   Now suppose
   $ f^(k)(z) = (k!) / (taui) integral.cont_(partial U) (f(zeta)) / ((zeta - z)^(k + 1)) dzeta $
   for some $k in NN$. Since $abs(z - z_0) < abs(zeta - z_0)$ for $z in D(z_0, r)$ and $zeta in partial U$, we have the kernel expansion
   $
-    1 / (zeta - z) & = 1 / (zeta - z_0) dot (1) / (1 - (z - z_0) / (zeta - z_0)) \
+    1 / (zeta - z) & = 1 / (zeta - z_0) dot 1 / (1 - (z - z_0) / (zeta - z_0)) \
                    & = 1 / (zeta - z_0) sum_(j = 0)^infinity ((z - z_0) / (zeta - z_0))^j.
   $ <eq:cauchydifferentiationformula_kernelexpansion>
 
@@ -76,8 +76,8 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can be generalized into 
   For the Taylor expansion, substitute @eq:cauchydifferentiationformula_kernelexpansion into @thm:cauchygoursatformula:
   $
     f(z)
-    &= (1) / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z_0) sum_(j = 0)^infinity ((z - z_0) / (zeta - z_0))^j dzeta \
-    &= (1) / (taui) integral.cont_(partial U) sum_(j = 0)^infinity (z - z_0)^j (f(zeta)) / ((zeta - z_0)^(j + 1)) dzeta.
+    &= 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z_0) sum_(j = 0)^infinity ((z - z_0) / (zeta - z_0))^j dzeta \
+    &= 1 / (taui) integral.cont_(partial U) sum_(j = 0)^infinity (z - z_0)^j (f(zeta)) / ((zeta - z_0)^(j + 1)) dzeta.
   $
 
   Since $f$ is continuous on $partial U$, it is bounded there by some constant $M$. Also, for $z in overline(D(z_0, r))$ and $zeta in partial U$,
@@ -87,8 +87,8 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can be generalized into 
   $ sum_(j = 0)^infinity (M r^j) / (inf_(xi in partial U) abs(xi - z_0)^(j + 1)) $
   converges, so by the Weierstrass $M$-Test (@thm:weierstrassmtest), the series is uniformly convergent. Hence we may interchange summation and integration:
   $
-    (1) / (taui) integral.cont_(partial U) sum_(j = 0)^infinity (z - z_0)^j (f(zeta)) / ((zeta - z_0)^(j + 1)) dzeta
-    &= (1) / (taui) sum_(j = 0)^infinity integral.cont_(partial U) (z - z_0)^j (f(zeta)) / ((zeta - z_0)^(j + 1)) dzeta \
+    1 / (taui) integral.cont_(partial U) sum_(j = 0)^infinity (z - z_0)^j (f(zeta)) / ((zeta - z_0)^(j + 1)) dzeta
+    &= 1 / (taui) sum_(j = 0)^infinity integral.cont_(partial U) (z - z_0)^j (f(zeta)) / ((zeta - z_0)^(j + 1)) dzeta \
     &= sum_(j = 0)^infinity a_j (z - z_0)^j.
   $
 
@@ -105,17 +105,17 @@ The differentiation formula above can be viewed as a higher-order version of @th
 
 #example[
   A _Legendre polynomial_ is defined by
-  $ P_n(z) = (1) / (2^n n!) dv((z^2 - 1)^n, z, n). $ <eq:legendrepolynomialintegralformula_rodriguesformula>
+  $ P_n(z) = 1 / (2^n n!) dv((z^2 - 1)^n, z, n). $ <eq:legendrepolynomialintegralformula_rodriguesformula>
 
   Prove the integral representation
-  $ P_n(z) = (1) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / (2^n (zeta - z)^(n + 1)) dzeta, $
+  $ P_n(z) = 1 / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / (2^n (zeta - z)^(n + 1)) dzeta, $
   where $gamma$ is a simple closed curve enclosing $z$.
 ] <ex:legendrepolynomialintegralformula>
 
 #proof[
   Apply @thm:cauchydifferentiationformula to the polynomial $(z^2 - 1)^n$. Then
   $
-    P_n(z) = (1) / (2^n n!) dot (n!) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / ((zeta - z)^(n + 1)) dzeta = (1) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / (2^n (zeta - z)^(n + 1)) dzeta. #qedhere
+    P_n(z) = 1 / (2^n n!) dot (n!) / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / ((zeta - z)^(n + 1)) dzeta = 1 / (taui) integral.cont_gamma ((zeta^2 - 1)^n) / (2^n (zeta - z)^(n + 1)) dzeta. #qedhere
   $
 ]
 
@@ -134,7 +134,7 @@ The differentiation formula above can be viewed as a higher-order version of @th
   $
     abs(f^(n)(z_0))
     &<= (n!) / (2 uppi) integral_0^(2 uppi) M / abs((R ee^(ii theta))^(n + 1)) abs(ii R ee^(ii theta)) dif theta \
-    &= (n! M) / (2 uppi) integral_0^(2 uppi) (1) / (R^n) dif theta \
+    &= (n! M) / (2 uppi) integral_0^(2 uppi) 1 / (R^n) dif theta \
     &= (n! M) / (R^n). #qedhere
   $
 ]
@@ -158,7 +158,7 @@ The relationship between a holomorphic function and its derivatives is one of th
   This is in fact the optimal choice of $R$. If $phi(R) = M n! ee^R / R^n$, then
   $ phi'(R) = M n! (ee^R R^n - n ee^R R^(n - 1)) / (R^(2 n)) = 0 $
   if and only if $R = n$. Moreover,
-  $ phi''(R) = M n! ee^R ((1) / (R^n) - (2 n) / (R^(n + 1)) + (n (n + 1)) / (R^(n + 2))) $
+  $ phi''(R) = M n! ee^R (1 / (R^n) - (2 n) / (R^(n + 1)) + (n (n + 1)) / (R^(n + 2))) $
   so that
   $ phi''(n) = M (n - 1)! (ee^n) / (n^n) > 0. $
 
@@ -176,10 +176,8 @@ The relationship between a holomorphic function and its derivatives is one of th
 
   Letting $R -> infinity$, we obtain $f'(z_0) = 0$. Since $z_0$ was arbitrary, $f' equiv 0$ on $CC$, so $f$ is constant.
 ]
-
+We provide an alternative proof:
 #proof[
-  Alternative proof.
-
   Let $a, b in CC$ be distinct. Since $f$ is entire, for any $R > max(abs(a), abs(b))$, the function
   $ z |-> f(z) / ((z - a)(z - b)) $
   is holomorphic on the annular region between $partial D(0, R)$ and the two small circles $partial D(a, epsilon)$ and $partial D(b, epsilon)$, where $epsilon > 0$ is chosen so that the closed disks around $a$ and $b$ are disjoint. By @thm:cauchygoursattheorem,
@@ -223,7 +221,7 @@ The relationship between a holomorphic function and its derivatives is one of th
   Hence
   $
     (F(z + Delta z) - F(z)) / (Delta z) - f(z)
-    = (1) / (Delta z) integral_z^(z + Delta z) (f(zeta) - f(z)) dzeta.
+    = 1 / (Delta z) integral_z^(z + Delta z) (f(zeta) - f(z)) dzeta.
   $
 
   By continuity of $f$ at $z$, for every $epsilon > 0$ there exists $delta > 0$ such that
@@ -231,8 +229,8 @@ The relationship between a holomorphic function and its derivatives is one of th
 
   Therefore, whenever $abs(Delta z) < delta$,
   $
-    abs((1) / (Delta z) integral_z^(z + Delta z) (f(zeta) - f(z)) dzeta)
-    <= (1) / (abs(Delta z)) integral_z^(z + Delta z) epsilon abs(dzeta)
+    abs(1 / (Delta z) integral_z^(z + Delta z) (f(zeta) - f(z)) dzeta)
+    <= 1 / (abs(Delta z)) integral_z^(z + Delta z) epsilon abs(dzeta)
     = epsilon.
   $
 
@@ -250,7 +248,7 @@ The relationship between a holomorphic function and its derivatives is one of th
   Let $phi in C^infinity(CC)$ satisfy $supp(phi) subset V$ and suppose that $phi equiv 1$ on an open neighborhood $W$ of $K$ with $overline(W) subset V$. Since $f in C^infinity(U)$, apply the Cauchy--Pompeiu Theorem (@thm:pompeiu) to $f(z) phi(z)$:
   $
     f(z) phi(z)
-    = (1) / (taui) (integral.cont_(partial U) (f(zeta) phi(zeta)) / (zeta - z) dzeta - integral_U pdv(f(zeta) phi(zeta), overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z)).
+    = 1 / (taui) (integral.cont_(partial U) (f(zeta) phi(zeta)) / (zeta - z) dzeta - integral_U pdv(f(zeta) phi(zeta), overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z)).
   $
 
   Since $supp(phi) subset V subset U$, the boundary term vanishes. Because $f$ is holomorphic,
@@ -258,16 +256,16 @@ The relationship between a holomorphic function and its derivatives is one of th
 
   Therefore,
   $
-    f(z) phi(z) = -(1) / (taui) integral_U pdv(phi(zeta), overline(zeta)) f(zeta) dot (dif overline(zeta) and dzeta) / (zeta - z).
+    f(z) phi(z) = -1 / (taui) integral_U pdv(phi(zeta), overline(zeta)) f(zeta) dot (dif overline(zeta) and dzeta) / (zeta - z).
   $
 
   Let $K_1 = supp(pdv(phi, overline(z)))$. For $z in K$, we have $phi(z) = 1$, so
   $
-    f(z) = (1) / (taui) integral_(K_1) f(zeta) pdv(phi(zeta), overline(zeta)) (dzeta and dif overline(zeta)) / (zeta - z).
+    f(z) = 1 / (taui) integral_(K_1) f(zeta) pdv(phi(zeta), overline(zeta)) (dzeta and dif overline(zeta)) / (zeta - z).
   $
 
   Since $K subset W$ and $K_1 inter W = emptyset$, the distance between $K$ and $K_1$ is positive. Hence there exists a constant $M > 0$ such that
-  $ (1) / (abs(zeta - z)) <= M, quad forall z in K, zeta in K_1. $
+  $ 1 / (abs(zeta - z)) <= M, quad forall z in K, zeta in K_1. $
 
   Differentiating under the integral sign is therefore justified, and for every $n in NN$,
   $

@@ -8,17 +8,17 @@ Before the theorem, we first introduce the mean-value property of holomorphic fu
 
 #lemma[
   Let $U subset.eq CC$ be open and simply connected, and let $f:U -> CC$ be holomorphic. Then $forall z in U$ and $forall epsilon > 0$ such that $overline(D(z, epsilon)) subset U$, $f(z)$ is the average of $f(zeta)$ where $zeta in D(z, epsilon)$ is uniform. In other words,
-  $ f(z) = (1) / (2 uppi epsilon) integral.cont_(partial D(z, epsilon)) f(zeta) abs(dzeta). $
+  $ f(z) = 1 / (2 uppi epsilon) integral.cont_(partial D(z, epsilon)) f(zeta) abs(dzeta). $
 ] <lem:holomorphicmeanvalueproperty>
 
 #proof[
   By the Cauchy--Goursat Formula (@thm:cauchygoursatformula),
-  $ f(z) = (1) / (taui) integral.cont_(partial D(z, epsilon)) (f(zeta)) / (zeta - z) dzeta = (1) / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt. $
+  $ f(z) = 1 / (taui) integral.cont_(partial D(z, epsilon)) (f(zeta)) / (zeta - z) dzeta = 1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt. $
 
   Observe that
   $
-    f(z) = (1) / (2 uppi epsilon) integral.cont_(partial D(z, epsilon)) f(zeta)abs(dzeta) & = (1) / (2 uppi epsilon) integral_0^(2 uppi) f(z + epsilon ee^(ii t))abs(ii epsilon ee^(ii t) dt) \
-    & = (1) / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt,
+    f(z) = 1 / (2 uppi epsilon) integral.cont_(partial D(z, epsilon)) f(zeta)abs(dzeta) & = 1 / (2 uppi epsilon) integral_0^(2 uppi) f(z + epsilon ee^(ii t))abs(ii epsilon ee^(ii t) dt) \
+    & = 1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt,
   $
   and the conclusion follows.
 ]
@@ -31,7 +31,7 @@ Since the real and imaginary parts of holomorphic functions are real-valued harm
 
 #proof[
   Assume that $z_0$ exists. We will first prove that the set
-  $ S = {z | f(z) = f(z_0), z in V} $
+  $ S = {z : f(z) = f(z_0), z in V} $
   is all of $V$. This is equivalent to proving that $S$ is nonempty, open, and closed in $V$.
 
   Since $z_0 in S$, the first condition is satisfied (nonemptiness). For any sequence ${z_n} in S$ converging to some $z_infinity in V$, by the continuity of $f$,
@@ -40,13 +40,13 @@ Since the real and imaginary parts of holomorphic functions are real-valued harm
 
   Since $S subset.eq V$ and $V$ are both open, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq V$. By @lem:holomorphicmeanvalueproperty, $forall 0 < epsilon < lambda$,
   $
-    abs(f(z)) & = abs((1) / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt) <= (1) / (2 uppi) integral_0^(2 uppi) abs(f(z + epsilon ee^(ii t))) dt \
-    & <= (1) / (2 uppi) integral_0^(2 uppi) abs(f(z)) dt = abs(f(z)).
+    abs(f(z)) & = abs(1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt) <= 1 / (2 uppi) integral_0^(2 uppi) abs(f(z + epsilon ee^(ii t))) dt \
+    & <= 1 / (2 uppi) integral_0^(2 uppi) abs(f(z)) dt = abs(f(z)).
   $
   It follows that all inequalities above are equalities, or that
   $
-    abs(f(z)) & = abs((1) / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt) = (1) / (2 uppi) integral_0^(2 uppi) abs(f(z + epsilon ee^(ii t))) dt \
-    & = (1) / (2 uppi) integral_0^(2 uppi) abs(f(z)) dt = abs(f(z)).
+    abs(f(z)) & = abs(1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt) = 1 / (2 uppi) integral_0^(2 uppi) abs(f(z + epsilon ee^(ii t))) dt \
+    & = 1 / (2 uppi) integral_0^(2 uppi) abs(f(z)) dt = abs(f(z)).
   $
   From the equality of the last two integrals,
   $ integral_0^(2 uppi) [abs(f(z)) - abs(f(z + epsilon ee^(ii t)))] dt = 0. $

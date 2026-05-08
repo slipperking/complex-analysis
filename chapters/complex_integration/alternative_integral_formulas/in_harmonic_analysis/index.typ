@@ -6,15 +6,15 @@ Consider $R = 1$, $zeta = ee^(ii tau)$, and $z = rho ee^(ii theta)$ in @eq:poiss
 
 $
   u(z)
-  &= (1) / (2 uppi) integral_0^(2 uppi) u(zeta) (1 - abs(z)^2) / abs(zeta - z)^2 dif tau \
-  &= (1) / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau)) dif tau) / ((ee^(ii tau) - rho ee^(ii theta)) (ee^(-ii tau) - rho ee^(-ii theta))) \
-  &= (1) / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau)) dif tau) / (1 + rho^2 - 2 rho cos(theta - tau)). #<eq:poissonintegralformulatrigonometricsubstitution>
+  &= 1 / (2 uppi) integral_0^(2 uppi) u(zeta) (1 - abs(z)^2) / abs(zeta - z)^2 dif tau \
+  &= 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau)) dif tau) / ((ee^(ii tau) - rho ee^(ii theta)) (ee^(-ii tau) - rho ee^(-ii theta))) \
+  &= 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau)) dif tau) / (1 + rho^2 - 2 rho cos(theta - tau)). #<eq:poissonintegralformulatrigonometricsubstitution>
 $
 
 Since $u(z)$ is continuous on $partial DD$ and $u(ee^(ii theta))$ is periodic with period $2 uppi$, it admits a Fourier series representation with coefficients
 
 $
-  a_n = (1) / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) ee^(-ii n tau) dif tau,
+  a_n = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) ee^(-ii n tau) dif tau,
 $ <eq:poissonintegralformulafourierseries>
 
 so that the corresponding Fourier series is
@@ -33,15 +33,15 @@ Substituting the coefficients gives
 
 $
   sum_(n = -infinity)^infinity a_n ee^(ii n theta) rho^(abs(n))
-  &= sum_(n = -infinity)^infinity ((1) / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) ee^(-ii n tau) dif tau) ee^(ii n theta) rho^(abs(n)) \
-  &= (1) / (2 uppi) sum_(n = -infinity)^infinity integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau.
+  &= sum_(n = -infinity)^infinity (1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) ee^(-ii n tau) dif tau) ee^(ii n theta) rho^(abs(n)) \
+  &= 1 / (2 uppi) sum_(n = -infinity)^infinity integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau.
 $
 
 By @thm:weierstrassmtest and @thm:limitintegralswitch,
 
 $
-  (1) / (2 uppi) sum_(n = -infinity)^infinity integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau
-  = (1) / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) sum_(n = -infinity)^infinity rho^(abs(n)) ee^(ii n (theta - tau)) dif tau. #<eq:poissonintegralformulafourierseriespostintegralsummationswitch>
+  1 / (2 uppi) sum_(n = -infinity)^infinity integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau
+  = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) sum_(n = -infinity)^infinity rho^(abs(n)) ee^(ii n (theta - tau)) dif tau. #<eq:poissonintegralformulafourierseriespostintegralsummationswitch>
 $
 
 The summation simplifies as follows:
@@ -58,7 +58,7 @@ $
 Substituting into @eq:poissonintegralformulafourierseriespostintegralsummationswitch yields
 
 $
-  sum_(n = -infinity)^infinity a_n ee^(ii n theta) rho^(abs(n)) = (1) / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau))) / (1 + rho^2 - 2 rho cos(theta - tau)) dif tau = u(rho ee^(ii theta)).
+  sum_(n = -infinity)^infinity a_n ee^(ii n theta) rho^(abs(n)) = 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau))) / (1 + rho^2 - 2 rho cos(theta - tau)) dif tau = u(rho ee^(ii theta)).
 $
 
 Furthermore, by the proof of @thm:dirichletproblemwithlaplaceequationsolution (specifically @eq:dirichletproblemwithlaplaceequationsolution_limittoboundary),
@@ -71,7 +71,7 @@ We now establish that real-valued continuous functions satisfying the mean-value
 
 #theorem[
   Let $U subset.eq CC$ be open and $f:U -> RR$ continuous. Suppose for every $z_0 in U$, there exists $lambda > 0$ with $overline(D(z_0, lambda)) subset.eq U$ such that for all $0 < epsilon <= lambda$,
-  $ f(z_0) = (1) / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii t)) dt. $
+  $ f(z_0) = 1 / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii t)) dt. $
   Then $f$ is harmonic on $U$.
 ] <thm:mean_value_property_solutions_are_harmonic>
 

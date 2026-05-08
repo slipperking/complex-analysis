@@ -11,7 +11,7 @@ We have previously defined the concept of an entire function in the chapter on c
   ] <prop:removablesingularityatinftyentireconstant>
 
   #proof[
-    Let $z = 1 / zeta$, and let $g(zeta) = f((1) / (zeta))$, which has a removable singularity at $zeta = 0$. By @thm:riemannremovablesingularities, $g$ can be analytically continued to all of $CC$, especially at $zeta = 0$. Let $w = g(0)$. Then, $forall epsilon > 0$, $exists delta > 0$ such that $forall zeta in D(0, delta)$, $abs(g(zeta) - w) < epsilon$. It follows that $forall abs(z) > 1 / delta$, $abs(f(z)) < abs(w) + epsilon$, and is bounded. For the complement, $forall z in overline(D((0, 1 / delta)))$, $f(z)$ is continuous on a compact set, and by @thm:continuous_function_bounded_on_compact, is also bounded.
+    Let $z = 1 / zeta$, and let $g(zeta) = f(1 / (zeta))$, which has a removable singularity at $zeta = 0$. By @thm:riemannremovablesingularities, $g$ can be analytically continued to all of $CC$, especially at $zeta = 0$. Let $w = g(0)$. Then, $forall epsilon > 0$, $exists delta > 0$ such that $forall zeta in D(0, delta)$, $abs(g(zeta) - w) < epsilon$. It follows that $forall abs(z) > 1 / delta$, $abs(f(z)) < abs(w) + epsilon$, and is bounded. For the complement, $forall z in overline(D((0, 1 / delta)))$, $f(z)$ is continuous on a compact set, and by @thm:continuous_function_bounded_on_compact, is also bounded.
 
     Then by Liouville's Theorem (@thm:liouville), $f$ is constant.
   ]
@@ -69,7 +69,7 @@ Conversely, we have:
 ] <thm:rationalmeromorphicfunctions>
 
 #proof[
-  Since $f$ is meromorphic on $CC$, its singularities are isolated poles. The assumption that $f$ has either a pole or a removable singularity at $infinity$ implies that this singularity is also isolated. Thus, there exists some $R > 0$ such that $f$ is holomorphic on the punctured neighborhood ${z in CC | R < abs(z) < infinity}$ of $infinity$.
+  Since $f$ is meromorphic on $CC$, its singularities are isolated poles. The assumption that $f$ has either a pole or a removable singularity at $infinity$ implies that this singularity is also isolated. Thus, there exists some $R > 0$ such that $f$ is holomorphic on the punctured neighborhood ${z in CC : R < abs(z) < infinity}$ of $infinity$.
 
   Consider the Laurent expansion of $f$ at $infinity$, obtained by substituting $w = 1 / z$ and expanding around $w = 0$:
   $
@@ -81,7 +81,7 @@ Conversely, we have:
   $
   which is a polynomial (identically zero if degree is $0$).
 
-  Next, observe that $f$ has only finitely many poles in the closed disk $overline(D(0, R)) = {z | abs(z) <= R}$. Suppose otherwise. Then the set of poles in $overline(D(0, R))$ would be infinite. By Bolzano--Weierstrass (@thm:bolzanoweierstrass), this set would have an accumulation point in $overline(D(0, R))$. At such an accumulation point, $f$ would have a non-isolated singularity, a contradiction of the meromorphy of $f$ on $CC$.
+  Next, observe that $f$ has only finitely many poles in the closed disk $overline(D(0, R)) = {z : abs(z) <= R}$. Suppose otherwise. Then the set of poles in $overline(D(0, R))$ would be infinite. By Bolzano--Weierstrass (@thm:bolzanoweierstrass), this set would have an accumulation point in $overline(D(0, R))$. At such an accumulation point, $f$ would have a non-isolated singularity, a contradiction of the meromorphy of $f$ on $CC$.
 
   Let $z_1, dots, z_n$ denote these finitely many poles in $overline(D(0, R))$. For each $k = 1, dots, n$, the Laurent expansion of $f$ at $z_k$ has principal part
   $
@@ -93,7 +93,7 @@ Conversely, we have:
   $
   which is meromorphic on $CC$, with potential singularities only at $z_1, dots, z_n$ and $infinity$.
 
-  We now show that each of these singularities is removable. First, fix $j in {1, dots, n}$ arbitrarily. Since the poles are isolated, there exists $epsilon_j > 0$ such that the punctured disk $D^*(z_j, epsilon_j) = {z | 0 < abs(z - z_j) < epsilon_j}$ contains no other poles $z_k$ for $k != j$.
+  We now show that each of these singularities is removable. First, fix $j in {1, dots, n}$ arbitrarily. Since the poles are isolated, there exists $epsilon_j > 0$ such that the punctured disk $D^*(z_j, epsilon_j) = {z : 0 < abs(z - z_j) < epsilon_j}$ contains no other poles $z_k$ for $k != j$.
 
   1. Since $f(z) - psi_j(z)$ is the holomorphic part of the Laurent expansion at $z_j$, it is holomorphic on $D(z_j, epsilon_j)$ (including at $z_j$).
   2. $sum_(k != j) psi_k(z)$ is holomorphic on $D(z_j, epsilon_j)$, as each $psi_k$ has its singularity elsewhere.

@@ -18,7 +18,7 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
 
 #theorem[
   Let $U subset.eq CC$ be open and connected, and $f:U -> CC$ be holomorphic over $U$. Then if the set defined by
-  $ S = {z in U | f(z) = 0} $
+  $ S = {z in U : f(z) = 0} $
   has an accumulation point in $U$, then $f equiv 0$ over $U$.
 ] <thm:identityaccumulationofzeros>
 
@@ -50,7 +50,7 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   the sequence ${a_n}_(n in ZZ_(gt.eq 0))$ vanishes, and $f equiv 0$ on $D(z_infinity, epsilon)$.
 
   Let
-  $ tilde(S) = {z in U | forall n in ZZ_(gt.eq 0), f^(n)(z) = 0}. $
+  $ tilde(S) = {z in U : forall n in ZZ_(gt.eq 0), f^(n)(z) = 0}. $
   For all $z in D(z_infinity, epsilon)$, since $f(z)$ locally vanishes (and has vanishing derivatives as a consequence),
   $ D(z_infinity, epsilon) subset.eq tilde(S). $
   Furthermore, for all $z' in tilde(S)$, $exists epsilon' > 0$ such that $f(z)$ has a convergent Taylor series with vanishing coefficients on $D(z', epsilon') subset.eq U$. Then $f equiv 0$ on $D(z', epsilon')$. Then for all $z in D(z', epsilon')$, since $f$ is constant at $z$, it also has vanishing derivatives. It follows that
@@ -58,7 +58,7 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   Since every point in $tilde(S)$ has an open neighborhood also in $tilde(S)$, $tilde(S)$ is open.
 
   It is evident that for all $k in ZZ_(gt.eq 0)$, $f^(k)$ is continuous in $U$ by the holomorphy of $f$. Let
-  $ S_k = {z in U | f^(k)(z) = 0}. $
+  $ S_k = {z in U : f^(k)(z) = 0}. $
   For any sequence ${tilde(z)_n} in S_k$ converging to some $tilde(z)_infinity in U$, by the continuity of $f$,
   $ lim_(n -> infinity) f^(k)(tilde(z)_n) = f^(k)(lim_(n -> infinity) tilde(z)_n) = f^(k)(tilde(z)_infinity) = 0, $
   and therefore $tilde(z)_infinity in S_k$. Thus, $S_k$ contains all of its accumulation points in $U$ and is therefore closed in $U$ (if $tilde(z)_infinity in.not U$, then it is no longer relevant; we are concerned about it being closed within $U$). Since
@@ -83,10 +83,10 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
 #theorem("Holomorphic Argument Principle")[
   Let $U subset.eq CC$ be a region and $f:U -> CC$ be holomorphic. Let $gamma subset U$ be a simple, closed, positively oriented curve that is null-homotopic in $U$. If $f$ has no zeros on $gamma$, then $f$ has finitely many zeros in the region bounded by $gamma$, and this number, counting multiplicities, is given by
 
-  $ k = (1) / (taui) integral.cont_Gamma (f'(z)) / (f(z)) dz. $
+  $ k = 1 / (taui) integral.cont_Gamma (f'(z)) / (f(z)) dz. $
 
   Let $Gamma$ be the image of $gamma$ under the map $w = f(z)$. Then
-  $ k = (1) / (2 uppi) Delta_Gamma arg(w), $
+  $ k = 1 / (2 uppi) Delta_Gamma arg(w), $
   where $Delta_Gamma arg(w)$ denotes the total change in argument of $w$ as it traverses $Gamma$.
 ] <thm:argumentprincipleholomorphic>
 
@@ -136,14 +136,14 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   Finally, parameterize $Gamma$ by $w = f(z)$. Then $dif w = f'(z) dz$, and
 
   $
-    k = (1) / (taui) integral.cont_Gamma (dif w) / (w) = (1) / (taui) Delta_Gamma log(w) = (1) / (2 uppi) Delta_Gamma arg(w),
+    k = 1 / (taui) integral.cont_Gamma (dif w) / (w) = 1 / (taui) Delta_Gamma log(w) = 1 / (2 uppi) Delta_Gamma arg(w),
   $
   which proves the result.
 ]
 
 Thus, one defines the _winding index_ ($Ind$) to quantify how many times a closed curve winds counterclockwise around a given point in the complex plane. Formally, if $gamma = gamma([0, 1])$ is a counterclockwise-oriented closed curve and $z$ is a point satisfying $z in.not gamma$, then
 $
-  Ind_Gamma (z) = (1) / (taui) integral.cont_gamma dzeta / (zeta - z) = (1) / (taui) integral_0^1 (gamma'(t) dt) / (gamma(t) - z).
+  Ind_Gamma (z) = 1 / (taui) integral.cont_gamma dzeta / (zeta - z) = 1 / (taui) integral_0^1 (gamma'(t) dt) / (gamma(t) - z).
 $
 
 #theorem[
@@ -178,9 +178,9 @@ $
 
   $ abs(f_n (z) - f(z)) < lambda / 2, quad forall n > N, forall z in gamma. $
 
-  Then $abs(f_n (z)) > lambda / 2$ on $gamma$. Hence, $(1) / (f_n (z))$ and its limit are uniformly bounded;
+  Then $abs(f_n (z)) > lambda / 2$ on $gamma$. Hence, $1 / (f_n (z))$ and its limit are uniformly bounded;
   $
-    abs((1) / (f(z))) < (1) / (lambda), quad abs((1) / (f_n (z))) < (2) / (lambda), quad forall z in gamma, forall n > N.
+    abs(1 / (f(z))) < 1 / (lambda), quad abs(1 / (f_n (z))) < (2) / (lambda), quad forall z in gamma, forall n > N.
   $
 
   $

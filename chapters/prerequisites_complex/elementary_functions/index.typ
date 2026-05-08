@@ -94,15 +94,15 @@ $ w(zeta) = (zeta + 1 / zeta) / 2 $
 is univalent on regions excluding pairs $(zeta_1, zeta_2)$ such that $zeta_1 = 1 / zeta_2$. In terms of $z$, this condition becomes $ee^(ii z_1) ee^(ii z_2) != 1$, or equivalently, $z_1 + z_2 != 2 uppi k$ for any $k in ZZ$.
 
 Combining these constraints, we conclude that $cos(z)$ is univalent on any vertical strip in the complex plane of width $uppi$, such as a region of the form
-$ {z in CC | k uppi < Re(z) < (k + 1) uppi, k in ZZ}. $
-Let us now consider the specific region $ {z in CC | 0 < Re(z) < uppi}, $ and analyze how it is mapped under $cos(z)$.
+$ {z in CC : k uppi < Re(z) < (k + 1) uppi, k in ZZ}. $
+Let us now consider the specific region $ {z in CC : 0 < Re(z) < uppi}, $ and analyze how it is mapped under $cos(z)$.
 
-1. $xi(z) = ii z$ maps the region ${z in CC | 0 < Re(z) < uppi}$ to ${xi in CC | 0 < Im(xi) < uppi}$.
+1. $xi(z) = ii z$ maps the region ${z in CC : 0 < Re(z) < uppi}$ to ${xi in CC : 0 < Im(xi) < uppi}$.
 2. $zeta(xi) = ee^xi$ maps this region to the upper half-plane $Im(zeta) > 0$ since $0 < Arg(zeta) < uppi$ and $0 < abs(zeta)$.
 3. $w(zeta) = (zeta + 1 / zeta) / 2$ maps $Im(zeta) > 0$ to $CC without ((-infinity, -1] union [1, infinity))$.
 
 Thus, the composition $cos(z) = w compose zeta compose xi$ is univalent on the strip
-$ {z in CC | 0 < Re(z) < uppi}, $
+$ {z in CC : 0 < Re(z) < uppi}, $
 and the image of this strip under $cos$ is
 $ CC without ((-infinity, -1] union [1, infinity)). $
 We will now analyze the inverse cosine function, denoted $arccos(z)$. Consider
