@@ -108,21 +108,71 @@ def compile_pdfs():
 # Step 3: Parse and split into chapters
 # ---------------------------------------------------------------------------
 
+def ensure_anchor_id(node: Tag, fallback_text: str) -> str:
+    """Ensure a node has an anchor id, generating one from text if needed."""
+    node_id = node.get("id", "")
+    if node_id:
+        return node_id
+    node_id = re.sub(r"[^\w-]", "-", fallback_text.lower())[:60].strip("-")
+    if not node_id:
+        node_id = "section"
+    node["id"] = node_id
+    return node_id
+
+
+def theorem_toc_entry(theorem_box: Tag, section: Tag, level: int) -> dict | None:
+    """Build a local TOC entry for theorem-like blocks."""
+    classes = theorem_box.get("class", [])
+    if "thm-box" not in classes or "thm-remark" in classes:
+        return None
+
+    head = theorem_box.find("p", class_="thm-head")
+    if head is None:
+        return None
+
+    text = " ".join(head.get_text(" ", strip=True).split())
+    if not text:
+        return None
+
+    anchor = theorem_box
+    while isinstance(anchor.parent, Tag) and anchor.parent is not section and not anchor.get("id"):
+        anchor = anchor.parent
+    anchor_id = ensure_anchor_id(anchor, text)
+
+    return {
+        "level": level,
+        "kind": "theorem",
+        "id": anchor_id,
+        "text": text,
+        "html": head.decode_contents().strip(),
+    }
+
+
 def extract_local_toc(section: Tag) -> list[dict]:
-    """Extract h2/h3 headings from a section for the local TOC."""
+    """Extract h2/h3 headings and theorem-like blocks from a section for the local TOC."""
     toc = []
-    for heading in section.find_all(["h2", "h3"]):
-        heading_id = heading.get("id", "")
-        if not heading_id:
-            text = heading.get_text(strip=True)
-            heading_id = re.sub(r"[^\w-]", "-", text.lower())[:60]
-            heading["id"] = heading_id
-        toc.append({
-            "level": int(heading.name[1]),
-            "id": heading_id,
-            "text": heading.get_text(strip=True),
-            "html": heading_inner_html(heading),
-        })
+    current_heading_level = 2
+
+    for node in section.descendants:
+        if not isinstance(node, Tag):
+            continue
+
+        if node.name in {"h2", "h3"}:
+            heading_id = ensure_anchor_id(node, node.get_text(strip=True))
+            current_heading_level = int(node.name[1])
+            toc.append({
+                "level": current_heading_level,
+                "kind": "heading",
+                "id": heading_id,
+                "text": node.get_text(strip=True),
+                "html": heading_inner_html(node),
+            })
+            continue
+
+        entry = theorem_toc_entry(node, section, level=current_heading_level + 1)
+        if entry is not None:
+            toc.append(entry)
+
     return toc
 
 
@@ -323,7 +373,14 @@ def build_local_toc(toc: list[dict], lang: str) -> str:
     lines.append("  <ul>")
     for item in toc:
         indent = "    " if item["level"] == 2 else "      "
-        cls = "" if item["level"] == 2 else ' class="toc-l3"'
+        classes = []
+        if item["level"] >= 3:
+            classes.append(f'toc-l{item["level"]}')
+        if item.get("kind") == "heading":
+            classes.append("toc-page")
+        elif item.get("kind") == "theorem":
+            classes.append("toc-theorem")
+        cls = f' class="{" ".join(classes)}"' if classes else ""
         label_html = item.get("html") or item["text"]
         lines.append(f'{indent}<li{cls}><a href="#{item["id"]}">{label_html}</a></li>')
     lines.append("  </ul>")

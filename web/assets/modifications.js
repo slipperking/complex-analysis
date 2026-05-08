@@ -367,7 +367,18 @@
   var tocLinks = document.querySelectorAll(".local-toc a");
   if (tocLinks.length > 0) {
     var topbar = document.querySelector(".topbar");
-    var offset = (topbar ? topbar.offsetHeight : 56) + 16;
+    function getOffset() {
+      var rootStyles = window.getComputedStyle(document.documentElement);
+      var scrollPaddingTop = parseFloat(rootStyles.scrollPaddingTop || "0");
+      if (!Number.isNaN(scrollPaddingTop) && scrollPaddingTop > 0) {
+        return scrollPaddingTop;
+      }
+      return (topbar ? topbar.offsetHeight : 56) + 16;
+    }
+
+    var hashActivationSlack = 48;
+    var pendingTargetId = null;
+    var pendingTargetUntil = 0;
     var headingEls = [];
     var headingMap = {};
 
@@ -386,10 +397,60 @@
     function updateSpy() {
       ticking = false;
       var current = null;
-      for (var i = 0; i < headingEls.length; i++) {
-        if (headingEls[i].getBoundingClientRect().top <= offset) {
-          current = headingEls[i];
+      var offset = getOffset();
+      var now = (window.performance && typeof window.performance.now === "function")
+        ? window.performance.now()
+        : Date.now();
+
+      if (pendingTargetId && now <= pendingTargetUntil) {
+        var pendingTarget = document.getElementById(pendingTargetId);
+        if (pendingTarget && headingMap[pendingTarget.id]) {
+          var pendingRect = pendingTarget.getBoundingClientRect();
+          if (pendingRect.bottom > 0 && pendingRect.top < window.innerHeight) {
+            current = pendingTarget;
+            if (Math.abs(pendingRect.top - offset) <= hashActivationSlack + 8) {
+              pendingTargetId = null;
+              pendingTargetUntil = 0;
+            }
+          }
         }
+      } else if (pendingTargetId) {
+        pendingTargetId = null;
+        pendingTargetUntil = 0;
+      }
+
+      var hash = window.location.hash;
+      if (!current && hash && hash.length > 1) {
+        var hashTarget = document.getElementById(hash.slice(1));
+        if (hashTarget && headingMap[hashTarget.id]) {
+          var targetRect = hashTarget.getBoundingClientRect();
+          if (targetRect.top <= offset + hashActivationSlack && targetRect.bottom > 0) {
+            current = hashTarget;
+          }
+        }
+      }
+
+      if (!current) {
+        var best = null;
+        var bestScore = Infinity;
+        for (var i = 0; i < headingEls.length; i++) {
+          var rect = headingEls[i].getBoundingClientRect();
+          if (rect.bottom <= 0) {
+            continue;
+          }
+
+          var score = Math.abs(rect.top - offset);
+
+          if (rect.top < offset) {
+            score += 12;
+          }
+
+          if (score < bestScore) {
+            best = headingEls[i];
+            bestScore = score;
+          }
+        }
+        current = best;
       }
       tocLinks.forEach(function (l) { l.classList.remove("active"); });
       if (current && headingMap[current.id]) {
@@ -402,6 +463,32 @@
         requestAnimationFrame(updateSpy);
         ticking = true;
       }
+    });
+
+    window.addEventListener("hashchange", function () {
+      var hash = window.location.hash;
+      pendingTargetId = hash && hash.length > 1 ? hash.slice(1) : null;
+      pendingTargetUntil = pendingTargetId ? (
+        ((window.performance && typeof window.performance.now === "function")
+          ? window.performance.now()
+          : Date.now()) + 1200
+      ) : 0;
+      requestAnimationFrame(updateSpy);
+    });
+
+    tocLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        var href = link.getAttribute("href");
+        pendingTargetId = href && href.startsWith("#") ? href.slice(1) : null;
+        pendingTargetUntil = pendingTargetId ? (
+          ((window.performance && typeof window.performance.now === "function")
+            ? window.performance.now()
+            : Date.now()) + 1200
+        ) : 0;
+        requestAnimationFrame(function () {
+          requestAnimationFrame(updateSpy);
+        });
+      });
     });
 
     // Initial highlight
