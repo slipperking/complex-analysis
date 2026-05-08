@@ -35,7 +35,7 @@ Since the real and imaginary parts of holomorphic functions are real-valued harm
   is all of $V$. This is equivalent to proving that $S$ is nonempty, open, and closed in $V$.
 
   Since $z_0 in S$, the first condition is satisfied (nonemptiness). For any sequence ${z_n} in S$ converging to some $z_infinity in V$, by the continuity of $f$,
-  $ lim_(n -> infinity) f(z_n) = f(lim_(n -> infinity) z_n) = f(z_infinity) = f(z_0), $
+  $ lim_(n -> oo) f(z_n) = f(lim_(n -> oo) z_n) = f(z_infinity) = f(z_0), $
   and $z_infinity in S$. Thus, $S$ contains all of its accumulation points in $V$ and is therefore closed (if $z_infinity in.not V$, then it is no longer relevant; we are concerned with its relative closedness in $V$).
 
   Since $S subset.eq V$ and $V$ are both open, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq V$. By @lem:holomorphicmeanvalueproperty, $forall 0 < epsilon < lambda$,

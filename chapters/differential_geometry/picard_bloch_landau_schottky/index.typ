@@ -9,7 +9,7 @@ Recall the Casorati--Weierstrass Theorem, one of the earliest results on the val
     
 $ cal(F)={z |-> f (\frac zn) | n in NN} $
 
-    of holomorphic functions on $D^*(0,delta)$. Since $f$ omits $0$ and $1$, each element of $cal(F)$ does as well. By the Fundamental Normality Test (@thm:fundamentalnormalitytest), $cal(F)$ is spherically normal. Thus, there exists a subsequence $\cbraces{f_{n_k}}_{k in NN}subset.eq cal(F)$ that converges locally uniformly on $D^*(0,delta)$ in the spherical metric. By @prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniformlimit, this subsequence converges locally uniformly either to a holomorphic function on $D^*(0,delta)$ or to $infinity$ thereon.
+    of holomorphic functions on $D^*(0,delta)$. Since $f$ omits $0$ and $1$, each element of $cal(F)$ does as well. By the Fundamental Normality Test (@thm:fundamentalnormalitytest), $cal(F)$ is spherically normal. Thus, there exists a subsequence $\cbraces{f_{n_k}}_{k in NN}subset.eq cal(F)$ that converges locally uniformly on $D^*(0,delta)$ in the spherical metric. By @prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniformlimit, this subsequence converges locally uniformly either to a holomorphic function on $D^*(0,delta)$ or to $oo$ thereon.
     
 + Suppose $\cbraces{f_{n_k}}_{k in NN}$ converges locally uniformly to a holomorphic function on $D^*(0,delta)$. Then $\cbraces{f_{n_k}}_{k in NN}$ is uniformly bounded on $partial D (0,\frac delta2)$. Hence, there exists $M>0$ such that
               
@@ -20,7 +20,7 @@ $ |f (\frac z{n_k})|=|f_{n_k}(z)|<M forall z in partial D (0,\frac delta2),\ k i
 $ cup_{k in NN}overline(D (0,(delta)/(2n_k)))without D (0,(delta)/(2n_(k + 1)))=overline(D (0,\frac delta{2n_1}))without \cbraces{0}, $
 
               it follows that $f$ is bounded on $D^*(0,\frac delta2)$. By Riemann's Removable Singularity Theorem (@thm:riemannremovablesingularities), $f$ therefore extends holomorphically to $0$.
-+ Suppose $\cbraces{f_{n_k}}_{k in NN}$ converges locally uniformly to $infinity$ on $D^*(0,delta)$. Then, for every $epsilon>0$, there exists $N in NN$ such that, for all $k>N$,
++ Suppose $\cbraces{f_{n_k}}_{k in NN}$ converges locally uniformly to $oo$ on $D^*(0,delta)$. Then, for every $epsilon>0$, there exists $N in NN$ such that, for all $k>N$,
               
 $ |(1)/(f ((z)/(n_k)))|=\abs{\frac1{f_{n_k}(z)}}<epsilon forall z in partial D (0,\frac delta2). $
 
@@ -34,16 +34,16 @@ $ cup_{k>N}overline(D (0,(delta)/(2n_k)))without D (0,(delta)/(2n_(k + 1)))supse
 
 #corollary("store=cor:greatpicardmeromorphic")[Suppose that $f$ is meromorphic on a punctured neighborhood $D^*(z_0,delta)$ of $z_0$. If $f (D^*\qty(z_0,delta))$ omits at least three different values of $hat(CC)$, then $f$ has a meromorphic continuation to $z_0$.] <cor:greatpicardmeromorphic>
 
-#proof[A linear fractional transformation maps the omitted values to $0,1,infinity$, mapping $f$ so that it exhibits holomorphy. Similar to @cor:montelcaratheodory, the preceding result is preserved under the inverse linear fractional transformation.]
+#proof[A linear fractional transformation maps the omitted values to $0,1,oo$, mapping $f$ so that it exhibits holomorphy. Similar to @cor:montelcaratheodory, the preceding result is preserved under the inverse linear fractional transformation.]
 
 #remark[An accumulation point of poles is an essential singularity on the Riemann sphere.]
 
 Picard's Great Theorem is also a generalization of Picard's Little Theorem (@thm:littlepicard):
 \getkeytheorem{thm:littlepicard}
 
-#proof[Let $g(z)=f (\frac 1z)$ with an isolated singularity at 0 and a removable singularity at $infinity$. By Picard's Great Theorem (@thm:greatpicard), $g(z)$ has a meromorphic extension to $z=0$. If $z=0$ is removable, by virtue of @prop:removablesingularityatinftyentireconstant, @thm:liouville, the constancy of $g$ and $f$ follows.
+#proof[Let $g(z)=f (\frac 1z)$ with an isolated singularity at 0 and a removable singularity at $oo$. By Picard's Great Theorem (@thm:greatpicard), $g(z)$ has a meromorphic extension to $z=0$. If $z=0$ is removable, by virtue of @prop:removablesingularityatinftyentireconstant, @thm:liouville, the constancy of $g$ and $f$ follows.
 
-    If instead $z=0$ is a pole of $g$, then $z=infinity$ is a pole of $f$, and hence $f$ is a polynomial. Assume, for the sake of contradiction that $f$ is non-constant. Then $forall w in CC$, the Fundamental Theorem of Algebra (@thm:fundamentaltheoremofalgebra) gives the existence of some $z in CC$ such that $f(z)=w$. Hence, $f$ attains every value $w in CC$. This contradicts the statement and hence $f$ is constant.]
+    If instead $z=0$ is a pole of $g$, then $z=oo$ is a pole of $f$, and hence $f$ is a polynomial. Assume, for the sake of contradiction that $f$ is non-constant. Then $forall w in CC$, the Fundamental Theorem of Algebra (@thm:fundamentaltheoremofalgebra) gives the existence of some $z in CC$ such that $f(z)=w$. Hence, $f$ attains every value $w in CC$. This contradicts the statement and hence $f$ is constant.]
 
 The efforts of many mathematicians resulted in several alternative proofs following that of Picard; the geometric realization of Ahlfors (@thm:schwarzahlforspick) was followed by results discovered by R. M. Robinson. Other approaches from Nevanlinna theory appeared later in the 20th century.
 
@@ -101,13 +101,13 @@ $ A^2 lt.eq 4 sup_{w}phi(w)(A^2-sup_{w}phi(w))^2 \xRightarrow[\flatfrac{A^2}3 ->
 
 It is however notable that the proof follows similarly for general functions, but now we consider functions $f:bb(D)-> W$, where $W$ is a Riemann surface and the ``singularities'' are not only boundary points but also algebraic branch points (where $f'=0$).
 
-#theorem("#smallcaps[Landau--Carathéodory]")[Let $f(z)=sum_{n=0}^infinity a_n z^n$ such that $a_1 eq.not0$ and $f$ is holomorphic on $D(0,r)$. If $f$ omits 0 and 1, then $exists R$ dependent only on $a_0$ and $a_1$ such that $r lt.eq R$.]
+#theorem("#smallcaps[Landau--Carathéodory]")[Let $f(z)=sum_{n=0}^oo a_n z^n$ such that $a_1 eq.not0$ and $f$ is holomorphic on $D(0,r)$. If $f$ omits 0 and 1, then $exists R$ dependent only on $a_0$ and $a_1$ such that $r lt.eq R$.]
 
 #theorem("#smallcaps[Schottky]")[Suppose that $f:bb(D)-> CC$ is holomorphic and omits 0 and 1. Then 
 $ log |f(z)|<(1+|z|)/(1-|z|)(7+op("log+") |f(0)|), $
  where $op("log+") (x)=max \cbraces{0,log x}$ (common notation in Nevanlinna theory).]
 
-#proof[Consider conformal map $zeta_1(w):CCwithout[0,1]-> CCwithout overline(bb(D))$, which extends to 0, 1, and $infinity$ continuously such that $zeta_1(infinity)=infinity$, $zeta_1(1)=1$, $zeta_1(0)=-1$. Explicitly, we have the relationship 
+#proof[Consider conformal map $zeta_1(w):CCwithout[0,1]-> CCwithout overline(bb(D))$, which extends to 0, 1, and $oo$ continuously such that $zeta_1(oo)=oo$, $zeta_1(1)=1$, $zeta_1(0)=-1$. Explicitly, we have the relationship 
 $ zeta_1+\frac1{zeta_1}=4w-2 $
  as an affine transformation of the inverse _Joukowski transform_ (inverse of $z |-> z+z^{-1}$). We then obtain 
 $ zeta_1(w)=2w-1 plus.minus2 sqrt(w^2-w) $

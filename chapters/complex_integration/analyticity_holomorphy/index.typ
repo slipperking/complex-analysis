@@ -4,17 +4,17 @@
 
 The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized into a result that equates complex integration and differentiation:
 
-#theorem("Cauchy--Goursat")[
-  Let $U subset CC$ be an open region bounded by a simple closed boundary $partial U$, and let $f:U -> CC$ be holomorphic and continuous over $overline(U)$. Then $forall z in U$, $forall n in NN$, $f^(n) (z)$ exists, and
+#theorem("Cauchy" + sym.dash.en + "Goursat")[
+  Let $U subset CC$ be an open region bounded by a simple closed boundary $partial U$, and let $f:U -> CC$ be holomorphic and continuous over $overline(U)$. Then $forall z in U$, $forall n in NN$, $f^((n)) (z)$ exists, and
 
   $
-    f^(n) (z)= (n!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(n+1)) dzeta.
+    f^((n)) (z)= (n!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(n+1)) dzeta.
   $ <eq:cauchydifferentiationformula_statement>
 
   Additionally, since $U$ is open, $forall a in U$, $forall r > 0$ such that the closed disk $overline(D(a, r)) subset U$, $f$ has the uniformly and absolutely convergent Taylor expansion
 
   $
-    f(zeta)=sum_(j = 0)^infinity a_j (z-a)^j,
+    f(zeta)=sum_(j = 0)^oo a_j (z-a)^j,
   $ <eq:cauchydifferentiationformula_taylorseries>
 
   where
@@ -31,7 +31,7 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
 
   $
     f(z)-f(a) & = 1 / taui integral.cont_(partial U) ((f(zeta)) / (zeta-z) - (f(zeta)) / (zeta-a)) dzeta \
-                & = (z-a) / taui integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-z)(zeta-a)),
+              & = (z-a) / taui integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-z)(zeta-a)),
   $
 
   and dividing by $z-a$, the above is equal to
@@ -62,22 +62,23 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
   Now inductively assume that @eq:cauchydifferentiationformula_statement is true for a given $n=k in NN$, or
 
   $
-    f^(k) (z)= (k!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(k+1)) dzeta.
+    f^((k)) (z)= (k!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(k+1)) dzeta.
   $
 
   Notice the expansion of the kernel, convergent since $abs(z-z_0) < abs(zeta-a)$:
 
   $
-    1 / (zeta-z)&=1 / (zeta-a) dot (zeta-a) / (zeta-a+a-z)=1 / (zeta-a) dot 1 / (1 - (z-a) / (zeta-a))\ &=1 / (zeta-a) sum_(j = 0)^infinity ((z-a) / (zeta-a))^j.#<eq:cauchydifferentiationformula_kernelexpansion>
+    1 / (zeta-z) & =1 / (zeta-a) dot (zeta-a) / (zeta-a+a-z)=1 / (zeta-a) dot 1 / (1 - (z-a) / (zeta-a)) \
+                 & =1 / (zeta-a) sum_(j = 0)^oo ((z-a) / (zeta-a))^j.#<eq:cauchydifferentiationformula_kernelexpansion>
   $
 
   Then,
 
   $
-    f^(k) (z) & = (k!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(k+1)) dzeta \
-    & = (k!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-a)^(k+1)) (sum_(j = 0)^infinity ((z-a) / (zeta - a))^j)^(k+1) dzeta \
-    & = f^(k) (z_0) + (k!(k+1) (z-a)) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta - a)^(k+2)) dzeta \
-    & quad + Order(abs(z-a)^2),
+    f^((k)) (z) & = (k!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(k+1)) dzeta \
+    & = (k!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-a)^(k+1)) (sum_(j = 0)^oo ((z-a) / (zeta - a))^j)^(k+1) dzeta \
+    & = f^((k)) (z_0) + (k!(k+1) (z-a)) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta - a)^(k+2)) dzeta \
+    & quad ""+ Order(abs(z-a)^2),
   $
 
   where the remainder terms $Order(abs(z-a)^2)$ resemble
@@ -89,39 +90,40 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
   The difference quotient is equal to
 
   $
-    (f^(k) (z) - f^(k) (a)) / (z - a)=((k+1)!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta - a)^(k+2)) dzeta + Order(abs(z - a)).
+    (f^((k)) (z) - f^((k)) (a)) / (z - a)=((k+1)!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta - a)^(k+2)) dzeta + Order(abs(z - a)).
   $
 
   As $z -> a$, the remainder terms vanish, and
 
   $
-    f^(k+1) (a)=((k+1)!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta - a)^(k+2)) dzeta.
+    f^((k+1)) (a)=((k+1)!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta - a)^(k+2)) dzeta.
   $
 
   By induction, @eq:cauchydifferentiationformula_statement is valid. By substituting @eq:cauchydifferentiationformula_kernelexpansion into @thm:cauchygoursatformula, we obtain
 
   $
-    f(z)&=1 / taui integral.cont_(partial U) (f(zeta)) / (zeta - a) sum_(j = 0)^infinity ((z - a) / (zeta - a))^j dzeta \ &= 1 / taui integral.cont_(partial U) sum_(j = 0)^infinity (z - a)^j (f(zeta) dzeta) / ((zeta - a)^(j+1)).
+    f(z) & =1 / taui integral.cont_(partial U) (f(zeta)) / (zeta - a) sum_(j = 0)^oo ((z - a) / (zeta - a))^j dzeta \
+         & = 1 / taui integral.cont_(partial U) sum_(j = 0)^oo (z - a)^j (f(zeta) dzeta) / ((zeta - a)^(j+1)).
   $
 
   Because $f(zeta)$ is continuous over $partial U$, it is bounded by a constant $M$. Additionally, since $abs(z - a) < r < abs(zeta - a)$ and consequently $c=abs((z-a)/(zeta-a))<1$, the sum is termwise uniformly bounded by the convergent series
 
   $
-    sum_(j = 0)^infinity M c^j / r.
+    sum_(j = 0)^oo M c^j / r.
   $
 
   By the Weierstrass $M$--Test (@thm:weierstrassmtest), the integrand uniformly converges, and we can justify
 
   $
-    1 / (2 uppi ii) integral.cont_(partial U) sum_(j = 0)^infinity (z-z_0)^j (f(zeta)) / ((zeta-z_0)^(j+1)) dzeta &= 1 / (2 uppi ii) sum_(j = 0)^infinity integral.cont_(partial U) (z-z_0)^j (f(zeta)) / ((zeta-z_0)^(j+1)) dzeta \
-    &= sum_(j = 0)^infinity a_j (z-z_0)^j,
+    1 / (2 uppi ii) integral.cont_(partial U) sum_(j = 0)^oo (z-z_0)^j (f(zeta)) / ((zeta-z_0)^(j+1)) dzeta &= 1 / (2 uppi ii) sum_(j = 0)^oo integral.cont_(partial U) (z-z_0)^j (f(zeta)) / ((zeta-z_0)^(j+1)) dzeta \
+    &= sum_(j = 0)^oo a_j (z-z_0)^j,
   $
 
   which verifies @eq:cauchydifferentiationformula_taylorseries and @eq:cauchydifferentiationformula_taylorseriescoefficients.
 ]
 
 #remark[
-  By induction, we have shown that assuming the existence of the first order derivative of a holomorphic function $f$, the $n$-th order derivative of $f$ exists $forall n in NN$ and is holomorphic over the same region as $f^(n-1)$. Furthermore, if $f$ is holomorphic, then $forall z in U$, there exists an open disk enclosing $z$ such that $f$ has a convergent Taylor series expansion. This property is known as _analyticity_, and @thm:cauchydifferentiationformula tells us that all holomorphic functions are analytic. Analytic functions can be expanded into power series, which are termwise differentiable, and therefore complex differentiable. Thus, analyticity and holomorphy are logically equivalent, which is a fundamental difference between real and complex functions.
+  By induction, we have shown that assuming the existence of the first order derivative of a holomorphic function $f$, the $n$-th order derivative of $f$ exists $forall n in NN$ and is holomorphic over the same region as $f^((n-1))$. Furthermore, if $f$ is holomorphic, then $forall z in U$, there exists an open disk enclosing $z$ such that $f$ has a convergent Taylor series expansion. This property is known as _analyticity_, and @thm:cauchydifferentiationformula tells us that all holomorphic functions are analytic. Analytic functions can be expanded into power series, which are termwise differentiable, and therefore complex differentiable. Thus, analyticity and holomorphy are logically equivalent, which is a fundamental difference between real and complex functions.
 ]
 
 The differentiation formula above can be thought of as a generalization of @thm:cauchygoursatformula, and provides similar utility in the evaluation of integrals:
@@ -156,7 +158,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
   For a function $f:U -> CC$ holomorphic over $U subset.eq CC$ and $forall z_0 in U$ and $forall R > 0$ such that $overline(D(z_0, R)) subset.eq U$, $forall n in NN$,
 
   $
-    abs(f^(n) (z_0)) <= (n! M) / (R^n),
+    abs(f^((n)) (z_0)) <= (n! M) / (R^n),
   $
 
   where
@@ -170,13 +172,13 @@ The differentiation formula above can be thought of as a generalization of @thm:
   By the Differentiation Formula (@thm:cauchydifferentiationformula), $forall n in NN$,
 
   $
-    f^(n) (z_0)= (n!) / (2 uppi ii) integral.cont_(partial D(z_0, R)) (f(zeta)) / ((zeta-z_0)^(n+1)) dzeta.
+    f^((n)) (z_0)= (n!) / (2 uppi ii) integral.cont_(partial D(z_0, R)) (f(zeta)) / ((zeta-z_0)^(n+1)) dzeta.
   $
 
   Because $f(z)$ is continuous over the boundary $partial D(z_0, R)$, it is bounded by $M$. Thus,
 
   $
-    abs(f^(n) (z_0)) <= (n!) / (2 uppi) integral_0^(2 uppi) M / ((ee^(ii theta) R)^(n+1)) ee^(ii theta) R dif theta = (n! M) / (R^n),
+    abs(f^((n)) (z_0)) <= (n!) / (2 uppi) integral_0^(2 uppi) M / ((ee^(ii theta) R)^(n+1)) ee^(ii theta) R dif theta = (n! M) / (R^n),
   $
 
   as desired.
@@ -188,7 +190,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
   Let $f$ be entire and $forall z in CC$, $abs(f(z)) <= M ee^(abs(z))$. Prove that $forall n in NN$, $abs(f(0)) <= M$ and
 
   $
-    abs(f^(n) (0)) <= M n! (ee / n)^n.
+    abs(f^((n)) (0)) <= M n! (ee / n)^n.
   $
 ]
 
@@ -196,7 +198,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
   $abs(f(0)) <= M$ is obviously true by letting $z=0$. Then $forall R > 0$, by Cauchy's Estimate (@thm:cauchysestimate),
 
   $
-    abs(f^(n) (0)) <= M n! (ee^R) / (R^n).
+    abs(f^((n)) (0)) <= M n! (ee^R) / (R^n).
   $
 
   By letting $R=n$, the conclusion follows. In fact, this is the tightest possible inequality. Consider $phi(R)=M n! (ee^R) / (R^n)$ to be a function of $R$. It attains its minimum as its derivative vanishes:
@@ -227,7 +229,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
     abs(f'(z_0)) <= M / R,
   $
 
-  where $M=sup_(z in CC) abs(f(z))$. By letting $R -> infinity$, $f'(z_0)$ where $z_0$ is any arbitrary value in $CC$. Therefore, $f(z)$ is constant.
+  where $M=sup_(z in CC) abs(f(z))$. By letting $R -> oo$, $f'(z_0)$ where $z_0$ is any arbitrary value in $CC$. Therefore, $f(z)$ is constant.
 ]
 
 #proof("Alternative Proof")[
@@ -248,7 +250,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   $
     abs((integral.cont_(partial D(a, epsilon)) + integral.cont_(partial D(b, epsilon))) (f(z)) / ((z-a)(z-b)) dz) & <= M integral.cont_(partial D(0, R)) abs(dz) / (abs(z-a) abs(z-b)) \
     & = (2 uppi M R) / ((R-a)(R-b)) \
-    & -> 0 quad "as" quad R -> infinity.
+    & -> 0 quad "as" quad R -> oo.
   $
 
   We conclude that
@@ -302,7 +304,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   Let $U subset.eq CC$ be open, let $K subset U$ be compact and $V supset K$ be open such that $overline(V) subset U$ is compact ($V supset.eq K$ is relatively compact in $U$). Let $f(z)$ be holomorphic in $U$. Then there exists a sequence ${c_n} subset RR$ dependent only on $K$ and $V$ (independent of $f$ and $z$) such that $forall n in NN$,
 
   $
-    sup_(z in K) abs(f^(n) (z)) <= c_n norm(f)_(L^1(V)),
+    sup_(z in K) abs(f^((n)) (z)) <= c_n norm(f)_(L^1(V)),
   $ <eq:nthderivativeboundedl1norm_statement>
 
   where $norm(f)_(L^p(V))$ denotes
@@ -313,7 +315,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 ] <thm:nthderivativeboundedl1norm>
 
 #proof[
-  Let $phi in C^infinity (CC)$ satisfy $supp(phi) subset V$ and be identically equal to $1$ over some open neighborhood $W$ of $K$ relatively compact in $V$. Since $f in C^oo (U)$, by the Cauchy--Pompeiu Theorem (@thm:pompeiu) on $f(z) phi(z) in C^infinity (overline(U))$,
+  Let $phi in C^oo (CC)$ satisfy $supp(phi) subset V$ and be identically equal to $1$ over some open neighborhood $W$ of $K$ relatively compact in $V$. Since $f in C^oo (U)$, by the Cauchy--Pompeiu Theorem (@thm:pompeiu) on $f(z) phi(z) in C^oo (overline(U))$,
 
   $
     f(z) phi(z)=1 / (2 uppi ii) (integral.cont_(partial U) (f(zeta) phi(zeta)) / (zeta-z) dzeta - integral_U pdv(f(zeta) phi(zeta), overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta-z)).
@@ -337,16 +339,16 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
     f(z)=1 / (2 uppi ii) integral_(K_1) f(zeta) dot pdv(phi(zeta), overline(zeta)) dot (dzeta and dif overline(zeta)) / (zeta-z).
   $
 
-  We can differentiate within the integral as $f(zeta) dot pdv(phi(zeta), overline(zeta))$ is $C^infinity$ and bounded over $K_1$, and thus the integrand is uniformly bounded by an integrable function independent of $zeta$:
+  We can differentiate within the integral as $f(zeta) dot pdv(phi(zeta), overline(zeta))$ is $C^oo$ and bounded over $K_1$, and thus the integrand is uniformly bounded by an integrable function independent of $zeta$:
 
   $
-    f^(n) (z)= (n!) / (2 uppi ii) integral_(K_1) f(zeta) dot pdv(phi(zeta), overline(zeta)) dot (dzeta and dif overline(zeta)) / ((zeta-z)^(n+1)),
+    f^((n)) (z)= (n!) / (2 uppi ii) integral_(K_1) f(zeta) dot pdv(phi(zeta), overline(zeta)) dot (dzeta and dif overline(zeta)) / ((zeta-z)^(n+1)),
   $
 
   and by the triangle inequality,
 
   $
-    abs(f^(n) (z)) <= (n!) / (2 uppi) integral_(K_1) abs(f(zeta)) abs(pdv(phi(zeta), overline(zeta))) abs(dzeta and dif overline(zeta)) / (abs(zeta-z)^(n+1)).
+    abs(f^((n)) (z)) <= (n!) / (2 uppi) integral_(K_1) abs(f(zeta)) abs(pdv(phi(zeta), overline(zeta))) abs(dzeta and dif overline(zeta)) / (abs(zeta-z)^(n+1)).
   $
 
   Notice that over $W$, $phi=1$, $phi'=0$, and is disjoint from $K_1$ (or that $W inter K_1 = emptyset$). Then, the distance between $W$ and $K$ is positive and the two are disjoint. Therefore, $exists M > 0$ such that
@@ -364,13 +366,13 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   can be bounded by a sequence ${c'_n}$, independent of $f$ and dependent only on $n$ and the sets $K$ and $V$. Then,
 
   $
-    abs(f^(n) (z)) <= (n!) / (2 uppi) integral_(K_1) c'_n abs(f(zeta)) abs(dzeta and dif overline(zeta)) = (n!) / uppi integral_(K_1) c'_n abs(f(zeta)) abs(dx and dy).
+    abs(f^((n)) (z)) <= (n!) / (2 uppi) integral_(K_1) c'_n abs(f(zeta)) abs(dzeta and dif overline(zeta)) = (n!) / uppi integral_(K_1) c'_n abs(f(zeta)) abs(dx and dy).
   $
 
   Because $K_1$ is compact, it has a finite area $op("area")(K_1)$, and we can define a new sequence $c_n=frac(n! c'_n op("area")(K_1), uppi, style: "horizontal")$ to find that
 
   $
-    abs(f^(n) (z)) <= c_n integral_(K_1) abs(f(zeta)) abs(dx and dy) <= c_n integral_V abs(f(zeta)) abs(dx and dy).
+    abs(f^((n)) (z)) <= c_n integral_(K_1) abs(f(zeta)) abs(dx and dy) <= c_n integral_V abs(f(zeta)) abs(dx and dy).
   $
 
   The problem now stands to prove that $phi(z)$ exists in the first place, which requires a topological argument to be later discussed in @thm:bumpfunctionexistence.
@@ -380,7 +382,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   Let $U subset.eq CC$ be open, let $K subset U$ be compact and $V supset K$ be open such that $overline(V) subset U$. For any holomorphic function $f(z)$ in $U$, there exist constants (independent of $z$ and $f$) ${c_n}$ such that
 
   $
-    sup_(z in K) abs(f^(n) (z)) <= c_n sup_(z in V) abs(f(z)).
+    sup_(z in K) abs(f^((n)) (z)) <= c_n sup_(z in V) abs(f(z)).
   $
 ] <cor:nthderivativeboundedsupremum>
 
@@ -398,11 +400,11 @@ For the next theorem we will briefly introduce the concept of _analytic continua
 
 #definition("Analytic Continuation")[
   Let $U subset.eq CC$ be open, and let $f:U -> CC$ be holomorphic. Let $V subset.eq CC$ be open with $U subset.eq V$. A function
-  $ F:U inter V -> CC $
+  $ F : V -> CC $
   is an _analytic continuation_ of $f$ to $V$ if:
 
-  1. $F$ is holomorphic on $V$, and
-  2. $F equiv f$ on $U$.
+  + $F$ is holomorphic on $V$, and
+  + $F equiv f$ on $U$.
 ] <def:analyticcontinuation>
 
 The concept of analytic continuation and its consequent problems and properties will be discussed in detail in a later chapter. For now, we will prove a theorem that is a direct consequence of the Cauchy--Goursat Differentiation Formula (@thm:cauchydifferentiationformula) and the existence of holomorphic functions with removable singularities.
@@ -433,13 +435,13 @@ The concept of analytic continuation and its consequent problems and properties 
   As $z -> z_0$, $phi(z) -> 0$, meaning that $phi$ is holomorphic over $D(z_0, r)$. By @thm:cauchydifferentiationformula,
 
   $
-    phi(z)=sum_(j = 2)^infinity a_j (z-z_0)^j,
+    phi(z)=sum_(j = 2)^oo a_j (z-z_0)^j,
   $
 
   which is convergent over $D(z_0, r)$. Then we can define
 
   $
-    tilde(f)(z)=phi(z) / ((z-z_0)^2)=sum_(j = 0)^infinity a_(j+2) (z-z_0)^j
+    tilde(f)(z)=phi(z) / ((z-z_0)^2)=sum_(j = 0)^oo a_(j+2) (z-z_0)^j
   $
 
   over the same disk of convergence. Over the punctured disk, $tilde(f)(z)=f(z)$, and therefore $tilde(f)$ is an analytic continuation of $f$.

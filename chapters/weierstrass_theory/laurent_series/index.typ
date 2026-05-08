@@ -7,7 +7,7 @@ The Laurent series generalizes the Taylor series to holomorphic functions with i
 We now introduce a fundamental result in complex analysis due to Weierstrass, which formalizes the conditions under which the limit of a sequence of holomorphic functions is itself holomorphic. This theorem not only guarantees the holomorphy of the limit function but also the uniform convergence of its derivatives (its statement was used in the proof of @thm:hurwitzsimplecase).
 
 #theorem("Weierstrass")[
-  Let ${f_n (z)}_(n in NN)$ be a sequence of holomorphic functions on an open region $U subset.eq CC$ that converges uniformly to $f(z)$ on every compact subset of $U$. Then $f(z)$ is holomorphic on $U$, and $forall k in NN$, the sequence ${f_n^(k) (z)}_(n in NN)$ uniformly converges to $f^(k) (z)$ on all compact subsets of $U$.
+  Let ${f_n (z)}_(n in NN)$ be a sequence of holomorphic functions on an open region $U subset.eq CC$ that converges uniformly to $f(z)$ on every compact subset of $U$. Then $f(z)$ is holomorphic on $U$, and $forall k in NN$, the sequence ${f_n^(k) (z)}_(n in NN)$ uniformly converges to $f^((k)) (z)$ on all compact subsets of $U$.
 ] <thm:weierstrassconvergence>
 
 #proof[
@@ -15,13 +15,13 @@ We now introduce a fundamental result in complex analysis due to Weierstrass, wh
 
   Following the same logic, by @cor:nthderivativeboundedsupremum, $forall k in NN$ and for all compact $K subset U$ and open $V supset K$ relatively compact in $U$ there exists a finite constant $c_k > 0$ such that
   $
-    lim_(n -> infinity) sup_(z in K) abs(f_n^(k) (z) - f^(k) (z)) <= c_k lim_(n -> infinity) sup_(z in V) abs(f_n (z) - f(z)).
+    lim_(n -> oo) sup_(z in K) abs(f_n^((k)) (z) - f^((k)) (z)) <= c_k lim_(n -> oo) sup_(z in V) abs(f_n (z) - f(z)).
   $
   Since ${f_n (z)}$ is uniformly convergent, the limit on the right-hand side vanishes. Then,
   $
-    lim_(n -> infinity) sup_(z in K) abs(f_n^(k) (z) - f^(k) (z)) = 0,
+    lim_(n -> oo) sup_(z in K) abs(f_n^((k)) (z) - f^((k)) (z)) = 0,
   $
-  and therefore ${f_n^(k) (z)}_(n in NN)$ uniformly converges on all compact subsets of $U$.
+  and therefore ${f_n^((k)) (z)}_(n in NN)$ uniformly converges on all compact subsets of $U$.
 ]
 
 The condition of uniform convergence on every compact subset can also be significantly loosened, by the fact demonstrated below:
@@ -50,52 +50,52 @@ The condition of uniform convergence on every compact subset can also be signifi
 
 We will now study Laurent series. Let $a in CC$ and ${c_n}_(n in ZZ) subset CC$ be constants. A series in the form of
 $
-  f(z) = sum_(n = -infinity)^infinity c_n (z - a)^n
+  f(z) = sum_(n = -oo)^oo c_n (z - a)^n
 $ <eq:laurentseries>
 is a Laurent series at the point $a$. The series can be separated into a power series with non-negative exponents,
 $
-  phi(z) = sum_(n = 0)^infinity c_n (z - a)^n,
+  phi(z) = sum_(n = 0)^oo c_n (z - a)^n,
 $ <eq:laurentseriesnonnegativeexponents>
 and a power series with negative exponents,
 $
-  psi(z) = sum_(n = 1)^infinity c_(-n) (z - a)^(-n).
+  psi(z) = sum_(n = 1)^oo c_(-n) (z - a)^(-n).
 $ <eq:laurentseriesnegativeexponents>
 @eq:laurentseries is said to be convergent at $z = z_0$ if the two power series are both convergent. Let the convergence radius of @eq:laurentseriesnonnegativeexponents be
 $
-  R = 1 / op("lim sup")_(n -> infinity) root(n, abs(c_n))
+  R = 1 / op("lim sup")_(n -> oo) root(n, abs(c_n))
 $
 by the Cauchy--Hadamard Theorem (@thm:cauchyhadamard). It follows that $phi$ is holomorphic on $D(a, R)$. Let $zeta = (z - a)^(-1)$. Then @eq:laurentseriesnegativeexponents becomes
 $
-  sum_(n = 1)^infinity c_(-n) zeta^n.
+  sum_(n = 1)^oo c_(-n) zeta^n.
 $
 This series converges when
 $
-  abs(zeta) < 1 / op("lim sup")_(n -> infinity) root(n, abs(c_(-n))) = lambda.
+  abs(zeta) < 1 / op("lim sup")_(n -> oo) root(n, abs(c_(-n))) = lambda.
 $
 Let $r = 1 / lambda$. Then $psi(z)$ converges when
 $
-  abs(z - a) > op("lim sup")_(n -> infinity) root(n, abs(c_(-n))),
+  abs(z - a) > op("lim sup")_(n -> oo) root(n, abs(c_(-n))),
 $
 or when $z in CC without overline(D(a, r))$.
 
 If $R > r$, then $f$ is convergent on the annulus $D(a, R) without overline(D(a, r))$ and divergent on $(CC without overline(D(a, R))) union D(a, r)$. If $r = R$, the series diverges possibly everywhere but on $partial D(a, r)$. Similar to power series with positive exponents, the convergence on the boundary varies. For example,
 $
-  sum_(n = -infinity \ n != 0)^infinity z^n / n^2,
+  sum_(n = -oo \ n != 0)^oo z^n / n^2,
 $
 where $R = r = 1$, converges (absolutely) on $partial DD$, whereas
 $
-  sum_(n = -infinity)^infinity z^n
+  sum_(n = -oo)^oo z^n
 $
 diverges on all of $partial DD$, while
 $
-  sum_(n = -infinity \ n != 0)^infinity z^n / n
+  sum_(n = -oo \ n != 0)^oo z^n / n
 $
 converges (conditionally) on all of $partial DD without {1}$ and diverges at $z = 1$. If $r > R$, then the series is divergent on all of $CC$. The region $D(a, R) without overline(D(a, r))$ is known as the _annulus of convergence_. $f(z)$ in @eq:laurentseries is holomorphic over this annulus. The series $phi(z)$ is known as the _holomorphic part_ of $f(z)$, and $psi(z)$ is known as the _principal part_ of the Laurent series. The properties of the convergence disk in Abel's Theorem (@thm:abelradius) can be generalized to Laurent series. In other words, $f$ is absolutely convergent on the annulus and is uniformly convergent on every compact subset of it.
 
 #theorem[
-  Let $V = {z in CC : r < abs(z - a) < R}$ for some $0 <= r < R <= infinity$. Let $f$ be holomorphic on $V$. Then $f$ has the unique _Laurent expansion_
+  Let $V = {z in CC : r < abs(z - a) < R}$ for some $0 <= r < R <= oo$. Let $f$ be holomorphic on $V$. Then $f$ has the unique _Laurent expansion_
   $
-    f(z) = sum_(n = -infinity)^infinity c_n (z - a)^n, quad c_n = 1 / (2 uppi ii) integral.cont_gamma (f(zeta) dzeta) / ((zeta - a)^(n + 1)), quad z in V,
+    f(z) = sum_(n = -oo)^oo c_n (z - a)^n, quad c_n = 1 / (2 uppi ii) integral.cont_gamma (f(zeta) dzeta) / ((zeta - a)^(n + 1)), quad z in V,
   $ <eq:laurentexpansionofholomorphicfunction_statement>
   for any simple closed curve $gamma subset V$ enclosing $a$. Moreover, the series converges absolutely on $V$ and uniformly on all compact subsets of $V$.
 ] <thm:laurentexpansionofholomorphicfunction>
@@ -161,17 +161,17 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
 
   For all $zeta in gamma_1$ (or $abs(zeta - a) = r'$), $abs(zeta - a) < abs(z - a)$ and therefore, $(abs(zeta - a)) / (abs(z - a)) < 1$. It follows that
   $
-    1 / (zeta - z) = -1 / ((z - a) (1 - (zeta - a) / (z - a))) = -sum_(n = 0)^infinity (zeta - a)^n / (z - a)^(n + 1)
+    1 / (zeta - z) = -1 / ((z - a) (1 - (zeta - a) / (z - a))) = -sum_(n = 0)^oo (zeta - a)^n / (z - a)^(n + 1)
   $ <eq:laurentexpansionofholomorphicfunction_kernelexpansioninside>
   is uniformly convergent with respect to $zeta$. Similarly, for all $zeta in gamma_2$,
   $ abs(zeta - a) > abs(z - a) <=> (abs(z - a)) / (abs(zeta - a)) < 1, $
   and it follows that
   $
-    1 / (zeta - z) = 1 / ((zeta - a) (1 - (z - a) / (zeta - a))) = sum_(n = 0)^infinity (z - a)^n / (zeta - a)^(n + 1)
+    1 / (zeta - z) = 1 / ((zeta - a) (1 - (z - a) / (zeta - a))) = sum_(n = 0)^oo (z - a)^n / (zeta - a)^(n + 1)
   $ <eq:laurentexpansionofholomorphicfunction_kernelexpansionoutside>
   is uniformly convergent with respect to $zeta$. By the boundedness of $f$ on $gamma_1$ and $gamma_2$ from holomorphy on a compact set, the uniform convergence from the Weierstrass $M$-Test (@thm:weierstrassmtest), gives that
   $
-    f(z) = 1 / (taui) (sum_(n = 0)^infinity integral.cont_(gamma_2) ((z - a)^n) / ((zeta - a)^(n + 1)) f(zeta) dzeta + sum_(n = 1)^infinity integral.cont_(gamma_1) ((zeta - a)^(n - 1)) / ((z - a)^n) f(zeta) dzeta).
+    f(z) = 1 / (taui) (sum_(n = 0)^oo integral.cont_(gamma_2) ((z - a)^n) / ((zeta - a)^(n + 1)) f(zeta) dzeta + sum_(n = 1)^oo integral.cont_(gamma_1) ((zeta - a)^(n - 1)) / ((z - a)^n) f(zeta) dzeta).
   $ <eq:laurentexpansionofholomorphicfunction_finalstep>
 
   By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem), for a given $n$,
@@ -180,11 +180,11 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
   $
   In other words, the integrals in @eq:laurentexpansionofholomorphicfunction_finalstep are the same as on $gamma$. Hence, we obtain the absolutely convergent expansion
   $
-    f(z) = sum_(n = 0)^infinity c_n (z - a)^n + sum_(n = 1)^infinity c_(-n) (z - a)^(-n) = sum_(n = -infinity)^infinity c_n (z - a)^n
+    f(z) = sum_(n = 0)^oo c_n (z - a)^n + sum_(n = 1)^oo c_(-n) (z - a)^(-n) = sum_(n = -oo)^oo c_n (z - a)^n
   $
   which converges uniformly on compact sets of $V$. The constants ${c_n}_(n in ZZ)$ are also unique in the expansion. For the sake of contradiction, assume there exists another set of constants ${c'_n}_(n in ZZ)$ such that
   $
-    f(z) = sum_(n = -infinity)^infinity c'_n (z - a)^n,
+    f(z) = sum_(n = -oo)^oo c'_n (z - a)^n,
   $ <eq:laurentexpansionofholomorphicfunction_uniquenessstatement>
   where $z in V$ and the series is uniformly convergent on $gamma$. Let $m in ZZ$ be arbitrary. By Cauchy--Goursat (@thm:cauchydifferentiationformula),
   $
@@ -201,11 +201,11 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
   $
   Multiplying @eq:laurentexpansionofholomorphicfunction_uniquenessstatement by $(z - a)^(-m - 1)$ and from integrating over $gamma$, we get that
   $
-    integral.cont_gamma (f(z) dz) / ((z - a)^(m + 1)) = integral.cont_gamma sum_(n = -infinity)^infinity c'_n (z - a)^(n - m - 1) dz,
+    integral.cont_gamma (f(z) dz) / ((z - a)^(m + 1)) = integral.cont_gamma sum_(n = -oo)^oo c'_n (z - a)^(n - m - 1) dz,
   $
   implying that
   $
-    taui c_m = sum_(n = -infinity)^infinity c'_n integral.cont_gamma (z - a)^(n - m - 1) dz = taui c'_m,
+    taui c_m = sum_(n = -oo)^oo c'_n integral.cont_gamma (z - a)^(n - m - 1) dz = taui c'_m,
   $
   which is a contradiction, implying uniqueness.
 ]

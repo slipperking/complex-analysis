@@ -7,10 +7,10 @@ Following Riemann's personal convention, denote the primary variable with
 $s=sigma+ii t$.
 
 #definition[For $s=sigma+ii t$, define the Riemann $zeta$-function by the series 
-$ zeta(s)=sum_{n=1}^infinity (1)/(n^s), sigma=Re s>1. $] <def:riemannzetafunction>
+$ zeta(s)=sum_{n=1}^oo (1)/(n^s), sigma=Re s>1. $] <def:riemannzetafunction>
 
 Let $alpha in RR_{>1}$ be arbitrary. It is well known that $zeta(alpha)$ absolute converges by integral comparison. Therefore, $forall sigma gt.eq alpha$, 
-$ |sum_{n=1}^infinity (1)/(n^s)|lt.eq sum_{n=1}^infinity (1)/(n^sigma)lt.eq sum_{n=1}^infinity (1)/(n^alpha). $
+$ |sum_{n=1}^oo (1)/(n^s)|lt.eq sum_{n=1}^oo (1)/(n^sigma)lt.eq sum_{n=1}^oo (1)/(n^alpha). $
  Hence, $zeta(s)$ is uniformly and absolutely convergent on
 ${s in CC | Re(s)gt.eq alpha}$ by the Weierstrass $M$--Test
 (@thm:weierstrassmtest). The Weierstrass Theorem
@@ -21,39 +21,39 @@ in increasing order.
 
 #theorem("Euler Product Formula")[For $Re(s)=sigma>1$, we have
     
-$ \frac1{zeta(s)}=product_{n=1}^infinity (1-(1)/(p_n^s)), $ <eq:riemannzetafunction_infiniteproduct>
+$ \frac1{zeta(s)}=product_{n=1}^oo (1-(1)/(p_n^s)), $ <eq:riemannzetafunction_infiniteproduct>
  where $p_n$ is the $n$-th prime number.] <thm:riemannzetafunction_infiniteproduct>
 
-#proof[Since $sum_{n=1}^infinity |p_n^{-s}|=sum_{n=1}^infinity (1)/(p_n^sigma)<sum_{n=1}^infinity (1)/(n^sigma)$ is an absolutely convergent sequence, it follows from @sec:constructionofentireandmeromorphicfunctions that the infinite product in @eq:riemannzetafunction_infiniteproduct is absolutely convergent. Because 
-$ zeta(s)(1-(1)/(2^s))=sum_{n=1}^infinity (1)/(n^s)-sum_{n=1}^infinity (1)/((2n)^s)=sum_{2 \nmid n}\frac1{n^s}. $
+#proof[Since $sum_{n=1}^oo |p_n^{-s}|=sum_{n=1}^oo (1)/(p_n^sigma)<sum_{n=1}^oo (1)/(n^sigma)$ is an absolutely convergent sequence, it follows from @sec:constructionofentireandmeromorphicfunctions that the infinite product in @eq:riemannzetafunction_infiniteproduct is absolutely convergent. Because 
+$ zeta(s)(1-(1)/(2^s))=sum_{n=1}^oo (1)/(n^s)-sum_{n=1}^oo (1)/((2n)^s)=sum_{2 \nmid n}\frac1{n^s}. $
 
     Consequently, 
 $ zeta(s)(1-(1)/(2^s))(1-(1)/(3^s))=sum_{2,3 \nmid n}(1)/(n^s). $
 
     Repeating this process for up to the $n$-th prime (by the Sieve of
     Eratosthenes), we have 
-$ |zeta(s)product_{k=1}^n (1-\frac1{p_k^s})-1|lt.eq sum_{\substack{p_1,dots,p_n \nmid n\\n gt.eq 2}}\frac1{n^sigma}lt.eq sum_{k=p_n+1}^infinity (1)/(n^sigma)<integral_{p_n}^infinity (ddx)/(x^sigma)=(1)/((sigma-1)p_n^{sigma-1})-> 0 $
- as $n -> infinity$. This completes the proof.]
+$ |zeta(s)product_{k=1}^n (1-\frac1{p_k^s})-1|lt.eq sum_{\substack{p_1,dots,p_n \nmid n\\n gt.eq 2}}\frac1{n^sigma}lt.eq sum_{k=p_n+1}^oo (1)/(n^sigma)<integral_{p_n}^oo (ddx)/(x^sigma)=(1)/((sigma-1)p_n^{sigma-1})-> 0 $
+ as $n -> oo$. This completes the proof.]
 
 #theorem[Let $s in CC$ with $Re(s)>1$. Then
     
-$ Gamma(s)zeta(s)=integral_0^infinity (x^{s-1})/(ee^{x}-1)ddx. $] <thm:riemannzetafunctiongammaintegral>
+$ Gamma(s)zeta(s)=integral_0^oo (x^{s-1})/(ee^{x}-1)ddx. $] <thm:riemannzetafunctiongammaintegral>
 
 #proof[Starting from the Euler integral for the Gamma function and rewriting the exponential factor,
     
-$ Gamma(s)=integral_0^infinity ee^{-x}x^{s-1}ddx=integral_0^infinity ee^{-xn}x^{s-1}n^s (ddx)/(n^s), $
+$ Gamma(s)=integral_0^oo ee^{-x}x^{s-1}ddx=integral_0^oo ee^{-xn}x^{s-1}n^s (ddx)/(n^s), $
 
     so for each fixed $n gt.eq1$ one has
     
-$ Gamma(s)=n^s integral_0^infinity ee^{-xn}x^{s-1}ddx. $
+$ Gamma(s)=n^s integral_0^oo ee^{-xn}x^{s-1}ddx. $
 
     Multiplying by $n^{-s}$ and summing over $n gt.eq1$ yields
     
-$ Gamma(s)zeta(s)=sum_{n=1}^infinity integral_0^infinity ee^{-xn}x^{s-1}ddx. $
+$ Gamma(s)zeta(s)=sum_{n=1}^oo integral_0^oo ee^{-xn}x^{s-1}ddx. $
 
     By Fubini's theorem, the summation and integral may be interchanged:
     
-$ Gamma(s)zeta(s)=integral_0^infinity x^{s-1}sum_{n=1}^infinity ee^{-xn}ddx=integral_0^infinity x^{s-1}(ee^{-x})/(1-ee^{-x})ddx=integral_0^infinity (x^{s-1})/(ee^{x}-1)ddx. $]
+$ Gamma(s)zeta(s)=integral_0^oo x^{s-1}sum_{n=1}^oo ee^{-xn}ddx=integral_0^oo x^{s-1}(ee^{-x})/(1-ee^{-x})ddx=integral_0^oo (x^{s-1})/(ee^{x}-1)ddx. $]
 
 \begin{figure}[!tbp]
     \centering\vspace{0pt}
@@ -111,7 +111,7 @@ $ Gamma(s)zeta(s)=integral_0^infinity x^{s-1}sum_{n=1}^infinity ee^{-xn}ddx=inte
     \end{minipage}
 \end{figure}Now consider the _Hankel contour_, which consists of an arc and two rays oriented as in @fig:hankelcontour (note that this contour is not actually closed):
 
-$ C_{epsilon}={epsilon ee^{ii theta} | \asin((delta)/(epsilon))lt.eq theta lt.eq2 pi-\asin((delta)/(epsilon))}, overset(plus.minus, Gamma)_epsilon={x plus.minus ii delta | sqrt(epsilon^2-delta^2)lt.eq x<infinity}. $
+$ C_{epsilon}={epsilon ee^{ii theta} | \asin((delta)/(epsilon))lt.eq theta lt.eq2 pi-\asin((delta)/(epsilon))}, overset(plus.minus, Gamma)_epsilon={x plus.minus ii delta | sqrt(epsilon^2-delta^2)lt.eq x<oo}. $
 
 Define the auxiliary function 
 $ F_{epsilon,delta}(s)=integral_{C_epsilon union {overset(plus.minus, Gamma)_epsilon}}((-z)^{s-1})/(ee^z-1)ddz=(integral_{C_epsilon}+integral_{\overset+Gamma_epsilon}+integral_{\overset-Gamma_epsilon})((-z)^{s-1})/(ee^z-1)ddz, Re(s)>1 $
@@ -131,7 +131,7 @@ $tilde(delta)=sqrt(epsilon^2-delta^2)$. Then
 $F_{epsilon,delta}$ can be expanded as
 
 $
-F_{epsilon,delta}(s) & =integral_{theta.alt}^{2 pi-theta.alt}\frac{(-epsilon ee^{ii theta})^{s-1}}{ee^{epsilon ee^{ii theta}}-1}epsilon ii ee^{ii theta}dif theta+integral_{tilde(delta)}^infinity ((ii delta-x)^{s-1})/(ee^{-ii delta+x}-1)ddx-integral_{tilde(delta)}^infinity ((-ii delta-x)^{s-1})/(ee^{ii delta+x}-1)ddx \\ & = upright("I") + \mathrm{I\!I} + \mathrm{I\!I\!I}.
+F_{epsilon,delta}(s) & =integral_{theta.alt}^{2 pi-theta.alt}\frac{(-epsilon ee^{ii theta})^{s-1}}{ee^{epsilon ee^{ii theta}}-1}epsilon ii ee^{ii theta}dif theta+integral_{tilde(delta)}^oo ((ii delta-x)^{s-1})/(ee^{-ii delta+x}-1)ddx-integral_{tilde(delta)}^oo ((-ii delta-x)^{s-1})/(ee^{ii delta+x}-1)ddx \\ & = upright("I") + \mathrm{I\!I} + \mathrm{I\!I\!I}.
 $ <eq:riemannzetafunction_remainingthreeintegralshankelcontour>
 
 By the Maclaurin expansion with respect to $epsilon ee^{ii theta}$, we have 
@@ -149,12 +149,12 @@ $
 On the contrary,
 
 $
-\mathrm{I\!I}+\mathrm{I\!I\!I} & =integral_{tilde(delta)}^infinity (ee^{Log(ii delta-x)(s-1)})/(ee^{-ii delta+x}-1)ddx-integral_{tilde(delta)}^infinity (ee^{Log(-ii delta-x)(s-1)})/(ee^{ii delta+x}-1)ddx \\ |\mathrm{I\!I}+\mathrm{I\!I\!I}| & lt.eq integral_{tilde(delta)}^infinity (ee^{Re [Log(ii delta-x)(s-1)]})/(ee^x-1)ddx+integral_{tilde(delta)}^infinity (ee^{Re [Log(-ii delta-x)(s-1)]})/(ee^x-1)ddx \\ & lt.eq integral_{tilde(delta)}^infinity \frac{ee^{Log sqrt(delta^2+x^2)(Re(s)-1)-Arg (ii delta-x)Im(s)}}{ee^x-1}ddx \\ & +integral_{tilde(delta)}^infinity \frac{ee^{Log sqrt(delta^2+x^2)(Re(s)-1)-Arg (-ii delta-x)Im(s)}}{ee^x-1}ddx \\ & lt.eq integral_{tilde(delta)}^infinity \frac{ee^{Log sqrt(1+x^2)(Re(s)-1)+pi Im(s)}}{ee^x-1}ddx \\ & +integral_{tilde(delta)}^infinity \frac{ee^{Log sqrt(1+x^2)(Re(s)-1)+pi Im(s)}}{ee^x-1}ddx 
+\mathrm{I\!I}+\mathrm{I\!I\!I} & =integral_{tilde(delta)}^oo (ee^{Log(ii delta-x)(s-1)})/(ee^{-ii delta+x}-1)ddx-integral_{tilde(delta)}^oo (ee^{Log(-ii delta-x)(s-1)})/(ee^{ii delta+x}-1)ddx \\ |\mathrm{I\!I}+\mathrm{I\!I\!I}| & lt.eq integral_{tilde(delta)}^oo (ee^{Re [Log(ii delta-x)(s-1)]})/(ee^x-1)ddx+integral_{tilde(delta)}^oo (ee^{Re [Log(-ii delta-x)(s-1)]})/(ee^x-1)ddx \\ & lt.eq integral_{tilde(delta)}^oo \frac{ee^{Log sqrt(delta^2+x^2)(Re(s)-1)-Arg (ii delta-x)Im(s)}}{ee^x-1}ddx \\ & +integral_{tilde(delta)}^oo \frac{ee^{Log sqrt(delta^2+x^2)(Re(s)-1)-Arg (-ii delta-x)Im(s)}}{ee^x-1}ddx \\ & lt.eq integral_{tilde(delta)}^oo \frac{ee^{Log sqrt(1+x^2)(Re(s)-1)+pi Im(s)}}{ee^x-1}ddx \\ & +integral_{tilde(delta)}^oo \frac{ee^{Log sqrt(1+x^2)(Re(s)-1)+pi Im(s)}}{ee^x-1}ddx 
 $ <eq:riemannzetafunction_remainingtwointegralshankelcontour>
  where we choose the principal branch logarithm such that $\arg(z)in(-pi,pi]$ and take $0<delta lt.eq1$. It is trivial to see that the bounding integrals (now independent of $delta$) are convergent for fixed $s$. Then Lebesgue's Dominated Convergence Theorem applies to @eq:riemannzetafunction_remainingtwointegralshankelcontour as $delta -> 0^+$, resulting in
 
 $
-\mathrm{I\!I}+\mathrm{I\!I\!I} & -> integral_{tilde(delta)}^infinity (ee^{(s-1)[log (x)+ii pi]})/(ee^x-1)ddx-integral_{tilde(delta)}^infinity (ee^{(s-1)[log(x)-ii pi]})/(ee^x-1)ddx \\ & =integral_{tilde(delta)}^infinity (x^{s-1}ee^{ii pi(s-1)})/(ee^x-1)ddx-integral_{tilde(delta)}^infinity (x^{s-1}ee^{-ii pi(s-1)})/(ee^x-1)ddx \\ & =(ee^{-ii pi s}-ee^{ii pi s})integral_{tilde(delta)}^infinity (x^{s-1}ddx)/(ee^x-1)=-2 ii sin (pi s)integral_{tilde(delta)}^infinity (x^{s-1}ddx)/(ee^x-1).
+\mathrm{I\!I}+\mathrm{I\!I\!I} & -> integral_{tilde(delta)}^oo (ee^{(s-1)[log (x)+ii pi]})/(ee^x-1)ddx-integral_{tilde(delta)}^oo (ee^{(s-1)[log(x)-ii pi]})/(ee^x-1)ddx \\ & =integral_{tilde(delta)}^oo (x^{s-1}ee^{ii pi(s-1)})/(ee^x-1)ddx-integral_{tilde(delta)}^oo (x^{s-1}ee^{-ii pi(s-1)})/(ee^x-1)ddx \\ & =(ee^{-ii pi s}-ee^{ii pi s})integral_{tilde(delta)}^oo (x^{s-1}ddx)/(ee^x-1)=-2 ii sin (pi s)integral_{tilde(delta)}^oo (x^{s-1}ddx)/(ee^x-1).
 $ <eq:riemannzetafunction_remainingtwointegralslimit>
 
 Now under the limiting operations $delta -> 0^+$ and $epsilon ->0^+$, we have
@@ -214,13 +214,13 @@ $
 F_{(2n+1)pi}(s)-F_epsilon(s) & =taui sum_{k=1}^n [ee^{Log(taui k)(s-1)}+ee^{Log(-taui k)(s-1)}] \\ & =taui sum_{k=1}^n [ee^{Log(2 pi k)(s-1)}ee^{Log(ii)(s-1)}+ee^{Log(2 pi k)(s-1)}ee^{Log(-ii)(s-1)}] \\ & =taui sum_{k=1}^n(2 pi k)^{s-1}[ee^{ii (pi)/(2)(s-1)}+ee^{-ii (pi)/(2)(s-1)}] \\ & =4 pi ii cos (\frac pi2(s-1))sum_{k=1}^n(2 pi k)^{s-1}.
 $
 
-    Now as $n -> infinity$,
+    Now as $n -> oo$,
     
 $
-|F_{(2n+1)pi}(s)| & lt.eq |oint.cont_{partial D(0,R)}((-z)^{s-1}ddz)/(ee^z-1)|+2 |sin(pi s)integral_{R}^infinity (x^{s-1}ddx)/(ee^x-1)|, R=(2n+1)pi \\ & lt.eq2 pi R^{Re s}sup_{theta in[0,2 pi]}|(-ee^{ii theta})^{s-1}|sup_{z in partial D(0,R)}(1)/(|ee^z-1|)+2 |sin(pi s)integral_{R}^infinity (x^{s-1}ddx)/(ee^x-1)|.
+|F_{(2n+1)pi}(s)| & lt.eq |oint.cont_{partial D(0,R)}((-z)^{s-1}ddz)/(ee^z-1)|+2 |sin(pi s)integral_{R}^oo (x^{s-1}ddx)/(ee^x-1)|, R=(2n+1)pi \\ & lt.eq2 pi R^{Re s}sup_{theta in[0,2 pi]}|(-ee^{ii theta})^{s-1}|sup_{z in partial D(0,R)}(1)/(|ee^z-1|)+2 |sin(pi s)integral_{R}^oo (x^{s-1}ddx)/(ee^x-1)|.
 $ <eq:riemannzetafunction_functionalequation_contourintegralbound>
 
-    As $n -> infinity$, the second integral vanishes by the definition of convergent improper integrals. Now observe that $(-ee^{ii theta})^{s-1}$ depends only on $s$ and $theta$ and is independent of $n$, and hence is insignificant. We now aim to prove that $\frac1{|ee^z-1|}$ is above by a positive constant for all $z in cup partial D(0,R)$. Observe that
+    As $n -> oo$, the second integral vanishes by the definition of convergent improper integrals. Now observe that $(-ee^{ii theta})^{s-1}$ depends only on $s$ and $theta$ and is independent of $n$, and hence is insignificant. We now aim to prove that $\frac1{|ee^z-1|}$ is above by a positive constant for all $z in cup partial D(0,R)$. Observe that
     
 $
 |ee^z-1|^2 & =ee^{2x}-2 ee^x cos y+1=2 ee^x (cosh x-cos y) \\ & =2 ee^x (2 sinh^2{\frac x2}+2 sin^2{\frac y2})=4 ee^x (sinh^2{\frac x2}+sin^2{\frac y2}),
@@ -247,10 +247,10 @@ $ sin^2 \frac y2=cos^2 eta gt.eq cos[2](\frac2 pi)=> |ee^z-1|^2 gt.eq \frac4{ee^
 
     We have thus shown that $|ee^z-1|$ is bounded below by a positive constant 
 $ min \cbraces{1-ee^{-2},\frac2{ee}cos(\frac2 pi)}>0 $
- for all $z in cup_{n=1}^infinity partial D (0,(2n+1)pi)$ (and hence
+ for all $z in cup_{n=1}^oo partial D (0,(2n+1)pi)$ (and hence
     $\frac1{|ee^z-1|}$ is bounded). Therefore, from
     @eq:riemannzetafunction_functionalequation_contourintegralbound we have
-    that $|F_{(2n+1)pi}(s)|-> 0$ as $n -> infinity$ for $Re s<0$.
+    that $|F_{(2n+1)pi}(s)|-> 0$ as $n -> oo$ for $Re s<0$.
     Hence, we may deduce that for $Re s<0$, 
 $ -F_epsilon(s)=4 pi ii cos (\frac pi2(s-1))(2 pi)^{s-1}sum_{k=1}^nk^{s-1}=4 pi ii cos (\frac pi2(s-1))(2 pi)^{s-1}zeta(1-s). $
 
@@ -296,13 +296,13 @@ $ Lambda(n)= cases(log p & n=p^k " for some prime "p and k in NN, ,
  0 & "otherwise".) $ <eq:vonmangoldtfunction>]
 
 #proposition[For $Re s>1$, 
-$ sum_{n=2}^infinity (Lambda(n))/(n^s)=-(zeta'(s))/(zeta(s)). $] <prop:riemannzetafunction_logarithmicderivativezetavonmangoldt>
+$ sum_{n=2}^oo (Lambda(n))/(n^s)=-(zeta'(s))/(zeta(s)). $] <prop:riemannzetafunction_logarithmicderivativezetavonmangoldt>
 
 #proof[By the logarithmic differentiation of the Euler Product Formula
     (@thm:riemannzetafunction_infiniteproduct), we have that
     
 $
--(zeta'(s))/(zeta(s)) & =-\dv{s}(sum_{p " prime"}log \qty(1-ee^{-s log p}))=sum_{p " prime"}(ee^{-s log p}log p)/(1-ee^{-s log p}) \\ & =sum_{p " prime"}log p sum_{k=1}^infinity ee^{-s log p^k}=sum_{n=2}^infinity Lambda(n)ee^{-s log n},
+-(zeta'(s))/(zeta(s)) & =-\dv{s}(sum_{p " prime"}log \qty(1-ee^{-s log p}))=sum_{p " prime"}(ee^{-s log p}log p)/(1-ee^{-s log p}) \\ & =sum_{p " prime"}log p sum_{k=1}^oo ee^{-s log p^k}=sum_{n=2}^oo Lambda(n)ee^{-s log n},
 $
 
     where the interchange of the order of summation is justified by the absolute convergence of the series for $Re s>1$.]
@@ -335,13 +335,13 @@ $ Phi(s)=zeta^3(s)zeta^4 (s+ii t)zeta(s+2 ii t), $
     @eq:riemannzetafunction_nolinesofzeros_reallinepositivity gives
     
 $
-(Phi'(sigma))/(Phi(sigma)) & =(3 zeta^2(sigma)zeta'(sigma))/(zeta^3(sigma))+(4 zeta^3(sigma+ii t)zeta'(sigma+ii t))/(zeta^4(sigma+ii t))+(zeta'(sigma+2 ii t))/(zeta(sigma+2 ii t)) \\ & =(3 zeta'(sigma))/(zeta(sigma))+(4 zeta'(sigma+ii t))/(zeta(sigma+ii t))+(zeta'(sigma+2 ii t))/(zeta(sigma+2 ii t)) \\ & =sum_{n=2}^infinity Lambda(n)(-3 ee^{-sigma log n}-4 ee^{-(s+ii t)log n}-ee^{(sigma+2 ii t)log n})
+(Phi'(sigma))/(Phi(sigma)) & =(3 zeta^2(sigma)zeta'(sigma))/(zeta^3(sigma))+(4 zeta^3(sigma+ii t)zeta'(sigma+ii t))/(zeta^4(sigma+ii t))+(zeta'(sigma+2 ii t))/(zeta(sigma+2 ii t)) \\ & =(3 zeta'(sigma))/(zeta(sigma))+(4 zeta'(sigma+ii t))/(zeta(sigma+ii t))+(zeta'(sigma+2 ii t))/(zeta(sigma+2 ii t)) \\ & =sum_{n=2}^oo Lambda(n)(-3 ee^{-sigma log n}-4 ee^{-(s+ii t)log n}-ee^{(sigma+2 ii t)log n})
 $
 
     where the last equality follows from @prop:riemannzetafunction_logarithmicderivativezetavonmangoldt. Taking the real part, we have
     
 $
-Re \qty((Phi'(sigma))/(Phi(sigma))) & =sum_{n=2}^infinity Lambda(n)ee^{-sigma log n}(-3-4 cos(t log n)-cos(2t log n)) \\ & =-2 sum_{n=2}^infinity Lambda(n)ee^{-sigma log n}(cos(t log n)+1)^2<0.
+Re \qty((Phi'(sigma))/(Phi(sigma))) & =sum_{n=2}^oo Lambda(n)ee^{-sigma log n}(-3-4 cos(t log n)-cos(2t log n)) \\ & =-2 sum_{n=2}^oo Lambda(n)ee^{-sigma log n}(cos(t log n)+1)^2<0.
 $
 
     This is in direct contradiction with @eq:riemannzetafunction_nolinesofzeros_reallinepositivity.]

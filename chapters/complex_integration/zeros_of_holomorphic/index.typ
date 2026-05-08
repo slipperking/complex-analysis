@@ -13,7 +13,7 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
 ] <thm:fundamentaltheoremofalgebra>
 
 #proof[
-  For the sake of contradiction, suppose that $p(z)$ has no complex zeros. Then the function $f(z) = 1 / (p(z))$ is continuous and entire, because $p(z)$ has no zeros in $CC$. Moreover, as $z -> infinity$, $p(z) -> infinity$, so $f(z) -> 0$, and thus $f(z)$ is bounded. By Liouville's Theorem (@thm:liouville), every bounded entire function is constant. Thus, $f(z)$ is constant, and so $p(z)$ must also be constant. By contradiction, $p(z)$ has at least one complex zero.
+  For the sake of contradiction, suppose that $p(z)$ has no complex zeros. Then the function $f(z) = 1 / (p(z))$ is continuous and entire, because $p(z)$ has no zeros in $CC$. Moreover, as $z -> oo$, $p(z) -> oo$, so $f(z) -> 0$, and thus $f(z)$ is bounded. By Liouville's Theorem (@thm:liouville), every bounded entire function is constant. Thus, $f(z)$ is constant, and so $p(z)$ must also be constant. By contradiction, $p(z)$ has at least one complex zero.
 ]
 
 #theorem[
@@ -25,42 +25,42 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
 #proof[
   Let ${z_n}_(n in NN)$ be a subset of $S$ and assume it has an accumulation point $z_infinity$ in $U$. Since $f$ is holomorphic over $U$, $exists epsilon > 0$ such that $f$ is holomorphic over $D(z_infinity, epsilon) subset.eq U$. Then over this disk, $f$ has the Taylor expansion
 
-  $ f(z) = sum_(n = 0)^infinity a_n (z - z_infinity)^n. $ <eq:identityaccumulationofzeros_taylorexpansion>
+  $ f(z) = sum_(n = 0)^oo a_n (z - z_infinity)^n. $ <eq:identityaccumulationofzeros_taylorexpansion>
 
   By @def:accumulationpoint, $exists N in NN$ such that $forall n > N$, $z_n in D(z_infinity, epsilon)$. Since $z_n$ is a zero of $f$, $f (z_n) = 0$. Then, by the continuity of $f$,
-  $ lim_(n -> infinity) f (z_n) = f(lim_(n -> infinity) z_n) = f (z_infinity) = 0. $
+  $ lim_(n -> oo) f (z_n) = f(lim_(n -> oo) z_n) = f (z_infinity) = 0. $
   Using this result in comparison to @eq:identityaccumulationofzeros_taylorexpansion, we get that $a_0 = 0$.
 
   The function
   $ f_1(z) = (f(z)) / (z - z_infinity) $
   has a Taylor expansion over $D(z_infinity, epsilon)$ of
 
-  $ f_1(z) = sum_(n = 0)^infinity a_(n + 1) (z - z_infinity)^n. $
+  $ f_1(z) = sum_(n = 0)^oo a_(n + 1) (z - z_infinity)^n. $
 
   Let $z = z_n eq.not z_infinity$ for some $n > N$. Then $f_1$ vanishes, leaving
   $ 0 = a_1 + Order(z_n - z_infinity). $
 
-  Letting $n -> infinity$, $z_n -> z_infinity$, and $a_1 = 0$. Define
+  Letting $n -> oo$, $z_n -> z_infinity$, and $a_1 = 0$. Define
   $ f_2(z) = (f_1(z)) / (z - z_infinity). $
   Then,
-  $ f_2(z) = sum_(n = 0)^infinity a_(n + 2) (z - z_infinity)^n. $
+  $ f_2(z) = sum_(n = 0)^oo a_(n + 2) (z - z_infinity)^n. $
 
   Similarly, $a_2 = 0$. Letting
   $ f_n(z) = (f(z)) / ((z - z_infinity)^n), $
   the sequence ${a_n}_(n in ZZ_(gt.eq 0))$ vanishes, and $f equiv 0$ on $D(z_infinity, epsilon)$.
 
   Let
-  $ tilde(S) = {z in U : forall n in ZZ_(gt.eq 0), f^(n)(z) = 0}. $
+  $ tilde(S) = {z in U : forall n in ZZ_(gt.eq 0), f^((n))(z) = 0}. $
   For all $z in D(z_infinity, epsilon)$, since $f(z)$ locally vanishes (and has vanishing derivatives as a consequence),
   $ D(z_infinity, epsilon) subset.eq tilde(S). $
   Furthermore, for all $z' in tilde(S)$, $exists epsilon' > 0$ such that $f(z)$ has a convergent Taylor series with vanishing coefficients on $D(z', epsilon') subset.eq U$. Then $f equiv 0$ on $D(z', epsilon')$. Then for all $z in D(z', epsilon')$, since $f$ is constant at $z$, it also has vanishing derivatives. It follows that
   $ D(z', epsilon') subset.eq tilde(S). $
   Since every point in $tilde(S)$ has an open neighborhood also in $tilde(S)$, $tilde(S)$ is open.
 
-  It is evident that for all $k in ZZ_(gt.eq 0)$, $f^(k)$ is continuous in $U$ by the holomorphy of $f$. Let
-  $ S_k = {z in U : f^(k)(z) = 0}. $
+  It is evident that for all $k in ZZ_(gt.eq 0)$, $f^((k))$ is continuous in $U$ by the holomorphy of $f$. Let
+  $ S_k = {z in U : f^((k))(z) = 0}. $
   For any sequence ${tilde(z)_n} in S_k$ converging to some $tilde(z)_infinity in U$, by the continuity of $f$,
-  $ lim_(n -> infinity) f^(k)(tilde(z)_n) = f^(k)(lim_(n -> infinity) tilde(z)_n) = f^(k)(tilde(z)_infinity) = 0, $
+  $ lim_(n -> oo) f^((k))(tilde(z)_n) = f^((k))(lim_(n -> oo) tilde(z)_n) = f^((k))(tilde(z)_infinity) = 0, $
   and therefore $tilde(z)_infinity in S_k$. Thus, $S_k$ contains all of its accumulation points in $U$ and is therefore closed in $U$ (if $tilde(z)_infinity in.not U$, then it is no longer relevant; we are concerned about it being closed within $U$). Since
   $ tilde(S) = inter.big_(k in ZZ_(gt.eq 0)) S_k $
   and each of $S_k$ is closed in $U$, $tilde(S)$ is the intersection of closed sets and consequently closed.
@@ -156,21 +156,21 @@ $
   Since $gamma$ is a subset of any compact subset of $U$, ${f_n (zeta)}$ uniformly converges on $gamma$, and by @thm:limitintegralswitch,
 
   $
-    lim_(n -> infinity) integral.cont_Gamma f_n (zeta) dzeta = integral.cont_Gamma lim_(n -> infinity) f_n (zeta) dzeta = integral.cont_Gamma f(zeta) dzeta = 0.
+    lim_(n -> oo) integral.cont_Gamma f_n (zeta) dzeta = integral.cont_Gamma lim_(n -> oo) f_n (zeta) dzeta = integral.cont_Gamma f(zeta) dzeta = 0.
   $ <eq:hurwitzsimplecase_integrallimitswitchforholomorphy>
 
   Then by Morera's Theorem (@thm:morera), $f(z)$ is holomorphic, and $f'(z)$ is holomorphic. We aim to show that $f'_n (z) arrows.rr f'(z)$.
 
   Let $K subset U$ be arbitrary and compact and $V supset K$ be open and relatively compact in $U$. Since ${f'_n (z)}$ is holomorphic, by @cor:nthderivativeboundedsupremum, there exists a finite constant $c > 0$ such that
   $
-    lim_(n -> infinity) sup_(z in K) abs(f'_n (z) - f'(z)) lt.eq c lim_(n -> infinity) sup_(z in V) abs(f_n (z) - f(z)).
+    lim_(n -> oo) sup_(z in K) abs(f'_n (z) - f'(z)) lt.eq c lim_(n -> oo) sup_(z in V) abs(f_n (z) - f(z)).
   $
 
   By the definition of uniform convergence, the right-hand side approaches $0$, and ${f'_n (z)}$ is then uniformly convergent to $f'(z)$ by the same reasoning.
 
   Through the proof of @thm:identityaccumulationofzeros, if $f equiv.not 0$ over $U$, then the zeros of $f$ do not have an accumulation point in $U$ and are therefore discrete. In this case, let $gamma subset U$ be a curve that does not pass through the zeros of $f$. Since each function in the sequence $f_n$ does not contain zeros in $U$, by the Argument Principle (@thm:argumentprincipleholomorphic),
 
-  $ lim_(n -> infinity) integral.cont_Gamma (f'_n (z)) / (f_n (z)) dz = 0. $ <eq:hurwitzsimplecase_argumentprinciple>
+  $ lim_(n -> oo) integral.cont_Gamma (f'_n (z)) / (f_n (z)) dz = 0. $ <eq:hurwitzsimplecase_argumentprinciple>
 
   Since $f$ and $f'$ are holomorphic over $gamma$, by @thm:continuous_function_bounded_on_compact, there exists a finite value $M > 0$ such that $forall z in gamma$, $max {abs(f(z)), abs(f'(z))} < M$.
 
@@ -191,13 +191,13 @@ $
 
   $
     sup_(z in gamma) abs((f'(z)) / (f(z)) - (f'_n (z)) / (f_n (z))) & lt.eq (2 M) / (lambda^2) (sup_(z in gamma) abs(f_n (z) - f(z)) + sup_(z in gamma) abs(f'(z) - f'_n (z))) \
-    lim_(n -> infinity) sup_(z in gamma) abs((f'(z)) / (f(z)) - (f'_n (z)) / (f_n (z))) & lt.eq (2 M) / (lambda^2) (lim_(n -> infinity) sup_(z in gamma) abs(f_n (z) - f(z)) + abs(f'(z) - f'_n (z))) \
+    lim_(n -> oo) sup_(z in gamma) abs((f'(z)) / (f(z)) - (f'_n (z)) / (f_n (z))) & lt.eq (2 M) / (lambda^2) (lim_(n -> oo) sup_(z in gamma) abs(f_n (z) - f(z)) + abs(f'(z) - f'_n (z))) \
     & = 0.
   $
 
   Therefore, $(f'(z)) / (f(z))$ is uniformly convergent on $gamma$. By @thm:limitintegralswitch, we can pass the limit through the integral in @eq:hurwitzsimplecase_argumentprinciple. Then,
 
-  $ lim_(n -> infinity) integral.cont_gamma (f'_n (z)) / (f_n (z)) dz = integral.cont_gamma (f'(z)) / (f(z)) dz = 0. $
+  $ lim_(n -> oo) integral.cont_gamma (f'_n (z)) / (f_n (z)) dz = integral.cont_gamma (f'(z)) / (f(z)) dz = 0. $
   By the Argument Principle (@thm:argumentprincipleholomorphic), $f(z)$ has no zeros in the interior of $gamma$. Since $gamma$ was arbitrarily chosen, either $f(z) equiv 0$ on $U$ or has no zeros in $U$.
 ]
 

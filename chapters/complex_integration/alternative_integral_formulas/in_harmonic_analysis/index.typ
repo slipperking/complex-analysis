@@ -19,38 +19,38 @@ $ <eq:poissonintegralformulafourierseries>
 
 so that the corresponding Fourier series is
 
-$ sum_(n = -infinity)^infinity a_n ee^(ii n theta). $
+$ sum_(n = -oo)^oo a_n ee^(ii n theta). $
 
 This series may diverge. Observe that continuity of $u$ on the compact set $partial DD$ implies uniform boundedness: $exists M > 0$ such that $abs(u(ee^(ii theta))) <= M$ for all $theta$ (@thm:continuous_function_bounded_on_compact). Consequently, $abs(a_n) <= M$. Introducing factors $rho^(abs(n))$ with $abs(rho) < 1$ yields a convergent series:
 
 $
-  sum_(n = -infinity)^infinity a_n ee^(ii n theta) rho^(abs(n)),
+  sum_(n = -oo)^oo a_n ee^(ii n theta) rho^(abs(n)),
   quad
-  abs(sum_(n = -infinity)^infinity a_n ee^(ii n theta) rho^(abs(n))) <= sum_(n = -infinity)^infinity abs(a_n) rho^(abs(n)) <= M (1 + abs(rho)) / (1 - abs(rho)).
+  abs(sum_(n = -oo)^oo a_n ee^(ii n theta) rho^(abs(n))) <= sum_(n = -oo)^oo abs(a_n) rho^(abs(n)) <= M (1 + abs(rho)) / (1 - abs(rho)).
 $
 
 Substituting the coefficients gives
 
 $
-  sum_(n = -infinity)^infinity a_n ee^(ii n theta) rho^(abs(n))
-  &= sum_(n = -infinity)^infinity (1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) ee^(-ii n tau) dif tau) ee^(ii n theta) rho^(abs(n)) \
-  &= 1 / (2 uppi) sum_(n = -infinity)^infinity integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau.
+  sum_(n = -oo)^oo a_n ee^(ii n theta) rho^(abs(n))
+  &= sum_(n = -oo)^oo (1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) ee^(-ii n tau) dif tau) ee^(ii n theta) rho^(abs(n)) \
+  &= 1 / (2 uppi) sum_(n = -oo)^oo integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau.
 $
 
 By @thm:weierstrassmtest and @thm:limitintegralswitch,
 
 $
-  1 / (2 uppi) sum_(n = -infinity)^infinity integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau
-  = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) sum_(n = -infinity)^infinity rho^(abs(n)) ee^(ii n (theta - tau)) dif tau. #<eq:poissonintegralformulafourierseriespostintegralsummationswitch>
+  1 / (2 uppi) sum_(n = -oo)^oo integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau
+  = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) sum_(n = -oo)^oo rho^(abs(n)) ee^(ii n (theta - tau)) dif tau. #<eq:poissonintegralformulafourierseriespostintegralsummationswitch>
 $
 
 The summation simplifies as follows:
 
 $
-  sum_(n = -infinity)^infinity rho^(abs(n)) ee^(ii n (theta - tau))
-  &= sum_(n = 0)^infinity rho^n ee^(ii n (theta - tau)) + sum_(n = 1)^infinity rho^n ee^(-ii n (theta - tau)) \
-  &= 1 + 2 sum_(n = 1)^infinity rho^n cos(n (theta - tau)) \
-  &= 1 + 2 Re(sum_(n = 1)^infinity rho^n ee^(ii n (theta - tau))) \
+  sum_(n = -oo)^oo rho^(abs(n)) ee^(ii n (theta - tau))
+  &= sum_(n = 0)^oo rho^n ee^(ii n (theta - tau)) + sum_(n = 1)^oo rho^n ee^(-ii n (theta - tau)) \
+  &= 1 + 2 sum_(n = 1)^oo rho^n cos(n (theta - tau)) \
+  &= 1 + 2 Re(sum_(n = 1)^oo rho^n ee^(ii n (theta - tau))) \
   &= 1 + 2 Re((rho ee^(ii (theta - tau))) / (1 - rho ee^(ii (theta - tau)))) \
   &= (1 - rho^2) / (1 + rho^2 - 2 rho cos(theta - tau)).
 $
@@ -58,12 +58,12 @@ $
 Substituting into @eq:poissonintegralformulafourierseriespostintegralsummationswitch yields
 
 $
-  sum_(n = -infinity)^infinity a_n ee^(ii n theta) rho^(abs(n)) = 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau))) / (1 + rho^2 - 2 rho cos(theta - tau)) dif tau = u(rho ee^(ii theta)).
+  sum_(n = -oo)^oo a_n ee^(ii n theta) rho^(abs(n)) = 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau))) / (1 + rho^2 - 2 rho cos(theta - tau)) dif tau = u(rho ee^(ii theta)).
 $
 
 Furthermore, by the proof of @thm:dirichletproblemwithlaplaceequationsolution (specifically @eq:dirichletproblemwithlaplaceequationsolution_limittoboundary),
 
-$ lim_(rho -> 1^-) sum_(n = -infinity)^infinity a_n ee^(ii n theta) rho^(abs(n)) = u(ee^(ii theta)). $
+$ lim_(rho -> 1^-) sum_(n = -oo)^oo a_n ee^(ii n theta) rho^(abs(n)) = u(ee^(ii theta)). $
 
 Thus, for any continuous function $u$ on $partial DD$, its Fourier series is _Abel summable_ to $u$.
 

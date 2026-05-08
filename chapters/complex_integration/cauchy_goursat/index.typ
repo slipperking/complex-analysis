@@ -178,7 +178,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
     f(z) = 1 / uppi (1 / (2 ii) integral.cont_(partial D(0, R)) (f(zeta) dzeta) / (zeta - z) - integral.double_(D(0, R)) pdv(f, overline(ζ)) (dif xi dif eta) / (zeta - z)).
   $
 
-  Then the proof is complete given that $f$ vanishes on $partial D(0,R)$ and by letting $R -> infinity$.]
+  Then the proof is complete given that $f$ vanishes on $partial D(0,R)$ and by letting $R -> oo$.]
 
 In complex analysis, when integrating over a region that contains a singularity, it is common to exclude a small disk of radius $epsilon$ around the singularity, perform the integration over the punctured region, and then take the limit as $epsilon ->0$. As in the proof above, the displayed estimate for the integral over the removed disk is still necessary in confirmation, although it is typically tacitly elided.
 
@@ -417,7 +417,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
     abs(integral.cont_(Delta^2) f(z) dz) >= M / 4^2, dots, abs(integral.cont_(Delta^n) f(z) dz) >= M / 4^n.
   $ <eq:cauchyintegraltheoremoversimplyconnectedset_trianglelowerbound>
 
-  Let $L$ denote the perimeter of $Delta$. Then, the perimeters of $Delta^1,Delta^2,dots$ respectively are $(L)/(2),(L)/(2^2),dots$. As $n -> infinity$, $Delta_n$ shrinks to a single point $z_0$. Then, $forall n in NN$, $z_0 in Delta^n$.
+  Let $L$ denote the perimeter of $Delta$. Then, the perimeters of $Delta^1,Delta^2,dots$ respectively are $(L)/(2),(L)/(2^2),dots$. As $n -> oo$, $Delta_n$ shrinks to a single point $z_0$. Then, $forall n in NN$, $z_0 in Delta^n$.
 
   By the definition of holomorphy, $forall epsilon > 0$, $exists delta > 0$ such that $forall z in D(z_0, delta)$,
   $ abs((f(z) - f(z_0)) / (z - z_0) - f'(z_0)) < epsilon, $
@@ -688,7 +688,7 @@ This profound theorem is extremely important and helpful in complex integration 
   where $c_j$ are the coefficients of the partial fraction decomposition. By the Cauchy--Goursat Formula (@thm:cauchygoursatformula), @eq:cauchygoursatformulazerosofunity becomes:
   $ sum_(k = 0)^(n - 1) integral.cont_(partial D(0, 2)) (c_k) / (z - omega_k) dz = taui sum_(k = 0)^(n - 1) c_k. $
 
-  Observe that $sum_(k = 0)^(n - 1) c_k = lim_(z -> infinity) sum_(k = 0)^(n - 1) (z c_k) / (z - omega_k) = lim_(z -> infinity) z / (z^n - 1) = 0$ since $n >= 2$. Therefore,
+  Observe that $sum_(k = 0)^(n - 1) c_k = lim_(z -> oo) sum_(k = 0)^(n - 1) (z c_k) / (z - omega_k) = lim_(z -> oo) z / (z^n - 1) = 0$ since $n >= 2$. Therefore,
   $ integral.cont_(partial D(0, 2)) dz / (z^n - 1) = 0. #qedhere $
 ]
 
@@ -732,7 +732,7 @@ We have also already seen the utility of parameterization via a polar transforma
 )[
   Let $gamma subset CC$ be a simple closed curve, and suppose that $f:jexterior(gamma)-> CC$ is holomorphic and continuous on $overline(jexterior(gamma))=CC without jinterior(gamma)$, where $jinterior$ and $jexterior$ respectively denote the interior and exterior as in @thm:jordancurve.
 
-  + If $f$ has a removable singularity at $infinity$, or if $w = lim_(z -> infinity) f(z)$ exists and is finite, then $forall z in CC without gamma$,
+  + If $f$ has a removable singularity at $oo$, or if $w = lim_(z -> oo) f(z)$ exists and is finite, then $forall z in CC without gamma$,
     $
       1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = cases(
         w & text("if") z in jinterior(gamma)\,,
@@ -758,9 +758,9 @@ We have also already seen the utility of parameterization via a polar transforma
       )
     $
 
-    By letting $R -> infinity$ and letting $zeta = R ee^(ii theta)$, we get that
+    By letting $R -> oo$ and letting $zeta = R ee^(ii theta)$, we get that
     $
-      1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = 1 / (2 uppi) lim_(R -> infinity) integral_0^(2 uppi) (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta))) dif theta - cases(
+      1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = 1 / (2 uppi) lim_(R -> oo) integral_0^(2 uppi) (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta))) dif theta - cases(
         0 & text("if") z in jinterior(gamma)\,,
         f(z) & text("if") z in jexterior(gamma).
       )
@@ -769,7 +769,7 @@ We have also already seen the utility of parameterization via a polar transforma
     By the continuity of $f$ on $partial D(0, R)$, it attains its maximum $M$. For sufficiently large $R$, $abs(1 - z / (R ee^(ii theta)))$ attains a positive minimum. Then the integrand is uniformly bounded in $R$ and $theta$, and hence the order of the limit and the integral may be exchanged. Hence,
 
     $
-      1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta & = 1 / (2 uppi) integral_0^(2 uppi) w / (1 - lim_(R -> infinity) z / (R ee^(ii theta))) dif theta - cases(
+      1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta & = 1 / (2 uppi) integral_0^(2 uppi) w / (1 - lim_(R -> oo) z / (R ee^(ii theta))) dif theta - cases(
                                                                       0 & text("if") z in jinterior(gamma)\,,
                                                                       f(z) & text("if") z in jexterior(gamma),
                                                                     ) \
@@ -789,14 +789,14 @@ We have also already seen the utility of parameterization via a polar transforma
       )
     $ <eq:cauchy_goursat_formula_exterior_part2_pre_limit_integral>
     when $gamma subset D(0,R)$.
-    We will analyze the first integral as $R -> infinity$. By the triangle and reverse triangle inequalities,
+    We will analyze the first integral as $R -> oo$. By the triangle and reverse triangle inequalities,
 
     $
       abs(integral_0^(2 uppi) (f (R ee^(ii theta)) - (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta)))) dif theta) & <= integral_0^(2 uppi) abs(z / (R ee^(ii theta) - z)) dif theta \
       & <= integral_0^(2 uppi) abs(z) / (R - abs(z)) dif theta = (2 uppi abs(z)) / (R - abs(z)) -> 0.
     $
 
-    By substituting the result into @eq:cauchy_goursat_formula_exterior_part2_pre_limit_integral, and letting $R -> infinity$, we get that
+    By substituting the result into @eq:cauchy_goursat_formula_exterior_part2_pre_limit_integral, and letting $R -> oo$, we get that
     $
       1 / (taui) integral.cont_gamma z f(zeta) / (z zeta - zeta^2) dzeta = cases(
         0 & "if" z in jinterior(gamma)\,,

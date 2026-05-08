@@ -89,17 +89,17 @@ Under the normality of $N$, the group $G \/ N$ is known as the _quotient group_ 
 
 If there exists an isomorphism between two groups $G$ and $H$, they are said to be _isomorphic_, denoted by $G tilde.equiv H$. The utility of groups allows us to classify them according to their structure: if two groups are isomorphic, they are essentially the same from a group-theoretic perspective. This viewpoint lets us replace complicated groups with simpler, isomorphic ones, and study their properties without loss of generality.
 
-Let us now examine $Aut(extcomplex)$. Let $f(z) in Aut(extcomplex)$ such that $f(infinity) = infinity$. It follows that $f$ maps $CC$ to $CC$ bijectively and $f in Aut(CC) < Aut(extcomplex)$. Therefore, $f(z)$ has the form $a z + b$, where $a in CC^* = CC without {0}$ and $b in CC$ are constants.
+Let us now examine $Aut(extcomplex)$. Let $f(z) in Aut(extcomplex)$ such that $f(oo) = oo$. It follows that $f$ maps $CC$ to $CC$ bijectively and $f in Aut(CC) < Aut(extcomplex)$. Therefore, $f(z)$ has the form $a z + b$, where $a in CC^* = CC without {0}$ and $b in CC$ are constants.
 
-Let $f(z) in Aut(extcomplex)$ such that $f(infinity) != infinity$. Then,
+Let $f(z) in Aut(extcomplex)$ such that $f(oo) != oo$. Then,
 $
-  g(z) = 1 / (f(z) - f(infinity))
+  g(z) = 1 / (f(z) - f(oo))
 $
-is in $Aut(extcomplex)$ and $g(infinity) = infinity$. By the property above, $g(z) = c z + d$ for some complex $d$ and nonzero $c$. Hence,
+is in $Aut(extcomplex)$ and $g(oo) = oo$. By the property above, $g(z) = c z + d$ for some complex $d$ and nonzero $c$. Hence,
 $
-  f(z) = (f(infinity) (c z + d) + 1) / (c z + d).
+  f(z) = (f(oo) (c z + d) + 1) / (c z + d).
 $
-Let $a = c f(infinity)$ and $b = d f(infinity) + 1$. Then
+Let $a = c f(oo)$ and $b = d f(oo) + 1$. Then
 $
   f(z) = (a z + b) / (c z + d).
 $

@@ -18,7 +18,7 @@ $ dif s^2_{f^*rho}lt.eq dif s^2_lambda, $
 $ lambda_r(z)=(z |-> (z)/(r))^*lambda(z)=(2r)/(r^2-|z|^2), 0<r<1 $ <eq:poincaremetriconscaleddisks>
  to generalize the Poincaré metric to $D(0,r)$. @eq:curvatureinvarianceunderholomorphicpullback gives that $K_{lambda_r}(z)=K_lambda ((z)/(r))=-1$ for any $z in D(0,r)$. Define the real-valued function 
 $ u_r(z)=(f^*rho (z))/(lambda_r(z))\qfor z in D(0,r), $
- which is nonnegative and continuous on $D(0,r)$. The pullback metric $f^*rho=(rho compose f)|f'|$ is continuous on $bb(D)$ and thus bounded on $overline(D(0,r))$ (as a consequence of @thm:continuous_function_bounded_on_compact). As $|z|-> r^-$, $lambda_r(z)-> infinity$, and hence $\lim_{|z|-> r^{-}}u_r(z)=0$. Thus, 
+ which is nonnegative and continuous on $D(0,r)$. The pullback metric $f^*rho=(rho compose f)|f'|$ is continuous on $bb(D)$ and thus bounded on $overline(D(0,r))$ (as a consequence of @thm:continuous_function_bounded_on_compact). As $|z|-> r^-$, $lambda_r(z)-> oo$, and hence $\lim_{|z|-> r^{-}}u_r(z)=0$. Thus, 
 $ M_r=max_{z in overline(D(0,r))}u_r(z) $
  must be attained at some $z=tau_r in D(0,r)$ (within the interior).
 
@@ -97,7 +97,7 @@ $ sqrt(beta)f^*rho(z)lt.eq sqrt(alpha)lambda_r^alpha(z), forall z in D(0,r). $]
 
 #proof[By assumption, $exists beta>0$ such that $sup_{w in U}K_rho(w)lt.eq-beta$. Then @cor:generalizedahlfors gives that 
 $ f^*rho(z)lt.eq (1)/(sqrt(beta))lambda_r(z) forall z in D(0,r) $
- for any $r>0$. As $r -> infinity$, $lambda_r -> 0$. Hence, $f^*rho(z)=0$, implying that $(rho compose f)(z)|f'|=0$. Hence, $f$ is constant.]
+ for any $r>0$. As $r -> oo$, $lambda_r -> 0$. Hence, $f^*rho(z)=0$, implying that $(rho compose f)(z)|f'|=0$. Hence, $f$ is constant.]
 
 #remark[@cor:generalizedliouville implies Liouville's Theorem (@thm:liouville). To justify this differential-geometric generalization, suppose $f:CC-> U$ is entire such that $U$ is bounded. There then exists some $R>0$ such that $U subset.eq D(0,R)$. The metric $lambda_R$ has constant negative curvature $K=-1$ on $D(0,R)$, and hence, under $beta=1$, @cor:generalizedliouville implies that $f$ is constant.]
 
@@ -145,7 +145,7 @@ $ K_rho(z)=-(1)/(18)[(|z-1|^\frac53)/((1+|z|^{\frac13})^3 (1+|z-1|^{\frac13}))+(
 + $forall z in CCwithout \cbraces{0,1}$, $K_rho(z)<0$.
 + $\lim_{z -> 0}K_rho(z)=-\frac1{36}$.
 + $\lim_{z -> 1}K_rho(z)=-\frac1{36}$.
-+ $\lim_{z -> infinity}K_rho(z)=-infinity$ in any direction (as in the one-point compactification).
++ $\lim_{z -> oo}K_rho(z)=-oo$ in any direction (as in the one-point compactification).
 
     Hence, $exists delta>0$ such that $|K_rho(z)+(1)/(36)|<(1)/(72)$ for any $z in D^*(0,delta)union D^*(1,delta)$ and $exists R>0$ such that $K_rho(z)<-1$ for any $z$ satisfying $|z|>R$. By compactness of $overline(D(0,R))without (D(0,delta)union D(1,delta))$ and continuity, it attains its supremum of some value $-M<0$ by @thm:extremevalue. Let $-beta=max \cbraces{-(1)/(72),-M}<0$.
     

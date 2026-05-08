@@ -3,11 +3,11 @@
 == A Spherical Generalization of Normal Families<sec:sphericalgeneralizationofnormalfamilies>
 Picard's Great Theorem requires a more profound concept by generalizing normal families in the one-point compactification of $CC$.
 
-#definition[Let $\cbraces{f_n(z)}$ be a (not necessarily analytic) complex function sequence on a connected set $Omega subset.eq CC$. If $forall K subset Omega$ compact, $forall R>0$, $exists N in NN$ such that $forall n>N$, $forall z in K$, $|f_n(z)|>R$, then _$f_n -> infinity$ locally uniformly spherically on $Omega$_.]
+#definition[Let $\cbraces{f_n(z)}$ be a (not necessarily analytic) complex function sequence on a connected set $Omega subset.eq CC$. If $forall K subset Omega$ compact, $forall R>0$, $exists N in NN$ such that $forall n>N$, $forall z in K$, $|f_n(z)|>R$, then _$f_n -> oo$ locally uniformly spherically on $Omega$_.]
 
-When the ``locally uniform limit'' is taken to be $infinity$, the condition of $epsilon$-closeness is instead replaced by the requirement that the values eventually leave every fixed compact subset of $CC$ (the given definition is equivalent to: $forall K subset Omega$ compact, $forall L subset CC$ compact, $exists N in NN$ such that $forall n>N$, $forall z in K$, $f_n(z)in.not L$). In this way, convergence to infinity is treated symmetrically with convergence to finite values by working in the Riemann sphere $hat(CC)$, where $infinity$ is simply another accumulation point.
+When the ``locally uniform limit'' is taken to be $oo$, the condition of $epsilon$-closeness is instead replaced by the requirement that the values eventually leave every fixed compact subset of $CC$ (the given definition is equivalent to: $forall K subset Omega$ compact, $forall L subset CC$ compact, $exists N in NN$ such that $forall n>N$, $forall z in K$, $f_n(z)in.not L$). In this way, convergence to oo is treated symmetrically with convergence to finite values by working in the Riemann sphere $hat(CC)$, where $oo$ is simply another accumulation point.
 
-By equipping the extended complex plane $hat(CC)$ with the spherical metric instead of the Euclidean metric, convergence to $infinity$ can be treated like convergence to any finite point. In this setting, $infinity$ is simply another accumulation point, so there is no need to handle it differently from other values.
+By equipping the extended complex plane $hat(CC)$ with the spherical metric instead of the Euclidean metric, convergence to $oo$ can be treated like convergence to any finite point. In this setting, $oo$ is simply another accumulation point, so there is no need to handle it differently from other values.
 
 Let $\cbraces{a_n}_{n in NN}subset hat(CC)$ be a sequence. Then we say $a_n -> a_infinity$ _spherically_ iff $forall epsilon>0$, $exists N in NN$ such that $forall n>N$, $d_sigma (a_n,a_infinity)<epsilon$, where $d_sigma$ is the spherical distance.
 
@@ -31,46 +31,46 @@ $ d_sigma (w_1,w_2)=inf_Gamma integral_gamma psi^\sharp(z)|ddz|=inf_Gamma integr
  where $gamma$ joins $z_1$ and $z_2$. The spherical distance is bounded by the integral over the Euclidean straight line $gamma'$ joining $z_1$ and $z_2$:
     
 $ d_sigma (w_1,w_2)lt.eq integral_{gamma'}(2 |ad-bc|)/(|cz+d|^2+|az+b|^2)|ddz|. $
- Since $(2 |ad-bc|)/(|cz+d|^2+|az+b|^2)-> 0$ as $z -> infinity$ and $z |-> (2 |ad-bc|)/(|cz+d|^2+|az+b|^2)in C^0(CC)$, it is bounded by some constant $M$ on $CC$. Hence, we have 
+ Since $(2 |ad-bc|)/(|cz+d|^2+|az+b|^2)-> 0$ as $z -> oo$ and $z |-> (2 |ad-bc|)/(|cz+d|^2+|az+b|^2)in C^0(CC)$, it is bounded by some constant $M$ on $CC$. Hence, we have 
 $ d_sigma (w_1,w_2)lt.eq M |z_1-z_2|. $
  Hence, $forall epsilon>0$, $forall |z_1-z_2|<(epsilon)/(M)$, 
 $ d_sigma (psi \qty(z_1),psi \qty(z_2))<epsilon. $]
 
-#proposition[Let $\cbraces{f_n}_{n in NN}$ be a sequence of holomorphic functions on a domain $Omega subset.eq CC$. If $f_n -> f$ locally uniformly spherically, then $f$ is either holomorphic on $Omega$ or identically $infinity$.] <prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniformlimit>
+#proposition[Let $\cbraces{f_n}_{n in NN}$ be a sequence of holomorphic functions on a domain $Omega subset.eq CC$. If $f_n -> f$ locally uniformly spherically, then $f$ is either holomorphic on $Omega$ or identically $oo$.] <prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniformlimit>
 
 #proof[A result analogous to @thm:uniformlimit can be used to show that $f$ is spherically continuous. Let $z in Omega$ be arbitrary.
     
 + If $f(z)eq.in.notfinity$, then by spherical continuity, $exists delta>0$ such that $forall zeta in D(z,delta)$, 
-$ d_sigma (f(zeta),f(z))<\frac12d_sigma (infinity, f(z)). $
+$ d_sigma (f(zeta),f(z))<\frac12d_sigma (oo, f(z)). $
  Similarly, $exists N in NN$ such that $forall n>N$, 
-$ d_sigma (f(zeta),f_n (zeta))<\frac12d_sigma (infinity, f(z)). $
+$ d_sigma (f(zeta),f_n (zeta))<\frac12d_sigma (oo, f(z)). $
 
             Hence, we have 
-$ d_sigma (infinity,f(z))-d_sigma (f(z),f_n (zeta))>0. $
+$ d_sigma (oo,f(z))-d_sigma (f(z),f_n (zeta))>0. $
  By the reverse triangle inequality, we have 
-$ d_sigma (infinity,f_n (zeta))>0. $
+$ d_sigma (oo,f_n (zeta))>0. $
 
             By Weierstrass (@thm:weierstrassconvergence), $f$ is holomorphic on $D(z,delta)$.
-+ Consider $f(z)=infinity$. Assume, for the sake of contradiction, $z$ is an isolated pole of $f$. Hence, $exists delta$ such that $f$ is holomorphic on $D^*(z,delta)$.
++ Consider $f(z)=oo$. Assume, for the sake of contradiction, $z$ is an isolated pole of $f$. Hence, $exists delta$ such that $f$ is holomorphic on $D^*(z,delta)$.
 
             Because each $f_n$ is holomorphic on $D(z,delta)$, by the Maximum Modulus Principle (@thm:maximummodulus), $forall n in NN$, 
 $ |f_n(zeta)|lt.eq sup_{xi in partial D(z,delta)}|f_n(xi)| forall zeta in D(z,delta). $
 
-            By letting $n -> infinity$, we have 
-$ |f(zeta)|lt.eq sup_{xi in partial D(z,delta)}|f(xi)|<infinity forall zeta in D(z,delta), $
- contradicting the assumption that $f(z)=infinity$ is an isolated pole. Hence, $z$ must be an accumulation of values evaluating to $infinity$. By spherical continuity, $exists delta>0$ such that 
-$ d_sigma (f(zeta),infinity)<\frac pi2 forall zeta in D(z,delta). $
+            By letting $n -> oo$, we have 
+$ |f(zeta)|lt.eq sup_{xi in partial D(z,delta)}|f(xi)|<oo forall zeta in D(z,delta), $
+ contradicting the assumption that $f(z)=oo$ is an isolated pole. Hence, $z$ must be an accumulation of values evaluating to $oo$. By spherical continuity, $exists delta>0$ such that 
+$ d_sigma (f(zeta),oo)<\frac pi2 forall zeta in D(z,delta). $
  Similarly, $exists N in NN$ such that $forall n>N$, 
 $ d_sigma (f(zeta),f_n(zeta))<\frac pi2. $
 
             Hence, we have 
-$ pi-d_sigma (infinity,f_n(zeta))=d_sigma(infinity,0)-d_sigma (infinity,f_n(zeta))>0. $
+$ pi-d_sigma (oo,f_n(zeta))=d_sigma(oo,0)-d_sigma (oo,f_n(zeta))>0. $
  By the reverse triangle inequality, we have 
 $ d_sigma (0,f_n(zeta))>0. $
 
-            Hence each $(1)/(f_n)$ is holomorphic on $D(z,delta)$ and converges locally uniformly spherically to $(1)/(f)$ on $D(z,delta)$. By Weierstrass (@thm:weierstrassconvergence), $\frac1f$ is holomorphic on $D(z,delta)$ and has zeros that accumulate at $z$. By the Identity Theorem, $\frac1f equiv0 => f equiv infinity$ on $D(z,delta)$.
+            Hence each $(1)/(f_n)$ is holomorphic on $D(z,delta)$ and converges locally uniformly spherically to $(1)/(f)$ on $D(z,delta)$. By Weierstrass (@thm:weierstrassconvergence), $\frac1f$ is holomorphic on $D(z,delta)$ and has zeros that accumulate at $z$. By the Identity Theorem, $\frac1f equiv0 => f equiv oo$ on $D(z,delta)$.
 
-    Let $S$ be the set of all $z in Omega$ such that $f(z)$ is finite. By the argument above, $S$ is open. The complement $Omega without S$ then consists of all points where $f(z)=infinity$. By the argument above, $Omega without S$ is also open. Since $Omega$ is connected, by @thm:connectedtopologicalspaceclopensets, either $S=emptyset$ or $S=Omega$. In the former case, $f equiv infinity$ on $Omega$, and in the latter case, $f$ is holomorphic on $Omega$.]
+    Let $S$ be the set of all $z in Omega$ such that $f(z)$ is finite. By the argument above, $S$ is open. The complement $Omega without S$ then consists of all points where $f(z)=oo$. By the argument above, $Omega without S$ is also open. Since $Omega$ is connected, by @thm:connectedtopologicalspaceclopensets, either $S=emptyset$ or $S=Omega$. In the former case, $f equiv oo$ on $Omega$, and in the latter case, $f$ is holomorphic on $Omega$.]
 
 #theorem("#smallcaps[Marty's Criterion]")[A family of meromorphic functions $cal(F)$ on some $Omega subset.eq CC$ is spherically normal iff 
 $ {f^\sharp | f in cal(F)}, $
@@ -84,17 +84,17 @@ $ d_sigma (f \qty(z_1),f \qty(z_2))=inf_gamma integral_Gamma dif s_{sigma}lt.eq 
 
     Conversely, assume for the sake of contradiction that $cal(F)$ is a normal family such that conclusion is not satisfied. Then, $exists K subset Omega$ compact and a sequence $\cbraces{f_n}_{n in NN}subset.eq cal(F)$ such that the sequence 
 $ \cbraces{sup_{z in K}f^\sharp_n(z)}_{n in NN} $
- tends to $infinity$ (specifically, suppose that $forall n in NN$, $sup_{z in K}f_n^\sharp(z)>n$). By normality, we may extract a locally uniformly spherically convergent subsequence $\cbraces{f_{n_k}}_{k in NN}subset.eq \cbraces{f_n}_{n in NN}$. By @thm:uniformlimit under the spherical metric, the uniform spherical limit of $\cbraces{f_{n_k}}_{k in NN}$, $f$, is spherically continuous on $Omega$. For every point $z in Omega$, there are two possibilities:
+ tends to $oo$ (specifically, suppose that $forall n in NN$, $sup_{z in K}f_n^\sharp(z)>n$). By normality, we may extract a locally uniformly spherically convergent subsequence $\cbraces{f_{n_k}}_{k in NN}subset.eq \cbraces{f_n}_{n in NN}$. By @thm:uniformlimit under the spherical metric, the uniform spherical limit of $\cbraces{f_{n_k}}_{k in NN}$, $f$, is spherically continuous on $Omega$. For every point $z in Omega$, there are two possibilities:
     
 + If $f(z)eq.in.notfinity$, then by continuity, $exists delta>0$ such that $forall zeta in D(z,delta)$, 
-$ d_sigma (f(zeta),f(z))<\frac12d_sigma (infinity, f(z)). $
+$ d_sigma (f(zeta),f(z))<\frac12d_sigma (oo, f(z)). $
  Similarly, $exists N in NN$ such that $forall k>N$, 
-$ d_sigma (f(zeta),f_{n_k}(zeta))<\frac12d_sigma (infinity, f(z)). $
+$ d_sigma (f(zeta),f_{n_k}(zeta))<\frac12d_sigma (oo, f(z)). $
 
             Hence, we have 
-$ d_sigma (infinity,f(z))-d_sigma (f(z),f_{n_k}(zeta))>0. $
+$ d_sigma (oo,f(z))-d_sigma (f(z),f_{n_k}(zeta))>0. $
  By the reverse triangle inequality, we have 
-$ d_sigma (infinity,f_{n_k}(zeta))>0. $
+$ d_sigma (oo,f_{n_k}(zeta))>0. $
 
             Hence, the meromorphy of each $f_{n_k}$ is actually holomorphy. By continuity, $f$ is locally uniformly bounded on $D(z,delta)$. Hence, $\cbraces{f_{n_k}}_{k>N}$ locally uniformly converges on $D(z,delta)$. By a result of Weierstrass (@thm:weierstrassconvergence), $f$ is holomorphic on $D(z,delta)$ and the sequence $\cbraces{f'_{n_k}}_{k>N}$ locally uniformly converges to $f'$ on $D(z,delta)$.
 
@@ -104,13 +104,13 @@ $ |f'_{n_k}(zeta)-f'(zeta)|<1 => |f'_{n_k}(zeta)|lt.eq M'+1 forall zeta in overl
 $ M=max \qty(\cbraces{M'+1}union \cbraces{sup_{zeta in overline(D (0,\frac delta2))}|f_{n_k}'(zeta)|}_{N<k lt.eq N'}) $
  on this compact disk. Hence, $forall k>N$, 
 $ f^\sharp_{n_k}(zeta)=\frac{2 |f_{n_k}'(zeta)|}{1+|f_{n_k}(zeta)|^2}lt.eq 2 |f'_{n_k}(zeta)|lt.eq 2M forall zeta in D (z,\frac delta2)subset overline(D (z,\frac delta2)). $
-+ $f (z)=infinity$, then by continuity, $exists delta>0$ such that $forall zeta in D(z,delta)$, 
-$ d_sigma (f(zeta),infinity)<\frac pi2. $
++ $f (z)=oo$, then by continuity, $exists delta>0$ such that $forall zeta in D(z,delta)$, 
+$ d_sigma (f(zeta),oo)<\frac pi2. $
  Similarly, $exists N in NN$ such that $forall k>N$, 
 $ d_sigma (f(zeta),f_{n_k}(zeta))<\frac pi2. $
 
             Hence, we have 
-$ pi-d_sigma (infinity,f_{n_k}(zeta))=d_sigma(infinity,0)-d_sigma (infinity,f_{n_k}(zeta))>0. $
+$ pi-d_sigma (oo,f_{n_k}(zeta))=d_sigma(oo,0)-d_sigma (oo,f_{n_k}(zeta))>0. $
  By the reverse triangle inequality, we have 
 $ d_sigma (0,f_{n_k}(zeta))>0. $
 
@@ -147,9 +147,9 @@ $ f^*mu(z)lt.eq lambda_{r_zeta}(z-zeta)=> mu (f(z))|f'(z)|lt.eq (2r_zeta)/(r_zet
     Since $forall w in CCwithout \cbraces{0,1}$, 
 $ (sigma(w))/(mu(w))=\frac{(2)/(1+|w|^2)}{\frac{sqrt(1+|w|^{\frac13})sqrt(1+|w-1|^{\frac13})}{|w|^{\frac56}|w-1|^{\frac56}}}-> cases(0 & \qq*{as}w -> 0, ,
  0 & \qq*{as}w -> 1, ,
- (2 |w|^{-2})/(|w|^{-\frac43})->0 & \qq*{as}w -> infinity.) $
+ (2 |w|^{-2})/(|w|^{-\frac43})->0 & \qq*{as}w -> oo.) $
 
-    Hence, there exist open neighborhoods $U_0,U_1,U_infinity$ of $0,1,infinity$ respectively on which $\frac sigma mu<1$. Since $(sigma)/(mu)in C^0(CC)$, by @thm:continuous_function_bounded_on_compact, $exists M'>0$ such that $(sigma)/(mu)<M'$ on $CCwithout (U_0 union U_1 union U_infinity)$. Let $M=max \cbraces{M',1}$, and 
+    Hence, there exist open neighborhoods $U_0,U_1,U_infinity$ of $0,1,oo$ respectively on which $\frac sigma mu<1$. Since $(sigma)/(mu)in C^0(CC)$, by @thm:continuous_function_bounded_on_compact, $exists M'>0$ such that $(sigma)/(mu)<M'$ on $CCwithout (U_0 union U_1 union U_infinity)$. Let $M=max \cbraces{M',1}$, and 
 $ \therefore sigma lt.eq M mu \qq{on}CCwithout \cbraces{0,1}. $
 
     Hence, $forall f in tilde(cal(F))$, we have by virtue of @eq:fundamentalnormalitytest_f_mu_pullback_inequality, 
@@ -167,10 +167,10 @@ $ M_K=max {(8M)/(3r_{zeta_k}) | 1 lt.eq k lt.eq n} $
 
 #corollary("name=#smallcaps[Montel--Carathéodory]")[Let $Omega subset.eq CC$ be a region and suppose that $cal(F)$ is a family of meromorphic functions on $Omega$. If there exist three different points $alpha,beta,gamma in hat(CC)$ such that $\cbraces{alpha,beta,gamma}sect cup_{f in cal(F)}f(Omega)=emptyset$, then $cal(F)$ must be a spherically normal family.] <cor:montelcaratheodory>
 
-#proof[Let $phi.alt(z)=((z-alpha)(beta-gamma))/((z-gamma)(beta-alpha))$ be a Möbius transformation mapping $alpha,beta,gamma$ to $0,1,infinity$, respectively.
+#proof[Let $phi.alt(z)=((z-alpha)(beta-gamma))/((z-gamma)(beta-alpha))$ be a Möbius transformation mapping $alpha,beta,gamma$ to $0,1,oo$, respectively.
     Hence, the family of meromorphic functions 
 $ tilde(cal(F))={phi.alt compose f | f in cal(F)} $
- omits $0$, $1$, and $infinity$ (and hence each function is holomorphic). By the Fundamental Holomorphic Normality Test (@thm:fundamentalnormalitytest), $tilde(cal(F))$ is normal.
+ omits $0$, $1$, and $oo$ (and hence each function is holomorphic). By the Fundamental Holomorphic Normality Test (@thm:fundamentalnormalitytest), $tilde(cal(F))$ is normal.
 
     By @prop:linearfractionaltransformationuniformlysphericallycontinuous, $forall epsilon>0$, $exists delta>0$ such that $forall |w_1-w_2|<delta$ in $CC$, 
 $ d_sigma (phi.alt^{-1}\qty(w_1),phi.alt^{-1}\qty(w_2))<epsilon. $

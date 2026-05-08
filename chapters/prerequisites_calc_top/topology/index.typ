@@ -39,7 +39,7 @@ The following definitions are subject to the assumption where the topological sp
   $ Q_0 supset Q_1 supset Q_2 supset dots.c $
 
   Because the side lengths shrink to zero and the cubes are nested, the intersection
-  $ inter.big_(k=0)^(infinity) Q_k $
+  $ inter.big_(k=0)^(oo) Q_k $
   consists of exactly one point. Call this point $z_infinity in CC^n$.
 
   For each $k$, $Q_k$ contains infinitely many points of $A$. Because the side length of $Q_k$ tends to zero, for any $epsilon > 0$, $exists N in NN$ such that $forall k >= N$, $Q_k subset B^n (z_infinity, epsilon)$ where $B^n (a, r) subset CC^n$ is the $n$-dimensional _ball_ with radius $r$ centered at $a = (a_1, a_2, dots, a_n) in CC^n$, or
@@ -75,7 +75,7 @@ The following definitions are subject to the assumption where the topological sp
 
   Assume that there exists an infinite open cover $cal(U)$ of $X$ without finite subcovering. Bisect $Q_0 = Q$ into $2^(2n)$ sub-cubes (for real and complex parts). Choose $Q_1$ such that $Q_1 union X$ has no finite subcover of $cal(U)$. Under the previous assumptions, this is possible since if every $"sub-cube" inter X$ had finite subcovering, then $Q_0 inter X = X$ would have finite subcovering. Similarly, choose $Q_2$ by bisecting $Q_1$ similarly, and recursively obtain a sequence of cubes:
   $ Q_0 supset Q_1 supset Q_2 supset dots.c $
-  Since the side length of each cube tends to 0, $inter.big_(j=0)^infinity Q_j$ consists of a single point $z_infinity in CC^n$. By the Bolzano–Weierstrass Theorem (@thm:bolzanoweierstrass), because $forall j in NN$, $Q_j inter X eq.not emptyset$, select a point $z_j in Q_j inter X$, forming a sequence ${z_k} in X$ convergent to $z_infinity in X$ as $X$ is closed. Therefore, $exists U in cal(U)$ where $z_infinity in U$. Since $U$ is open, $exists epsilon > 0$ such that $B^n (z_infinity, epsilon) subset.eq U$. $exists N in NN$ such that $forall k > N$, $Q_k subset B^n (z_infinity, epsilon)$. Then taking the intersection with $X$ on both sides,
+  Since the side length of each cube tends to 0, $inter.big_(j=0)^oo Q_j$ consists of a single point $z_infinity in CC^n$. By the Bolzano–Weierstrass Theorem (@thm:bolzanoweierstrass), because $forall j in NN$, $Q_j inter X eq.not emptyset$, select a point $z_j in Q_j inter X$, forming a sequence ${z_k} in X$ convergent to $z_infinity in X$ as $X$ is closed. Therefore, $exists U in cal(U)$ where $z_infinity in U$. Since $U$ is open, $exists epsilon > 0$ such that $B^n (z_infinity, epsilon) subset.eq U$. $exists N in NN$ such that $forall k > N$, $Q_k subset B^n (z_infinity, epsilon)$. Then taking the intersection with $X$ on both sides,
   $ Q_k inter X subset.eq B^n (z_infinity, epsilon) inter X subset.eq U. $
   This contradicts the assumption that for every $k$, $Q_k inter X$ has no finite subcovering, since $U$ clearly covers $Q_k inter X$, which is a single open set that covers a nonempty subset. Therefore by contradiction, every open cover has finite subcovering.
 ]
@@ -85,5 +85,5 @@ The following definitions are subject to the assumption where the topological sp
 ] <def:support>
 
 #remark[
-  A notable classification of functions comes from the compactness of support---more specifically, its boundedness. Compactly supported functions in $C^infinity$ are commonly referred to as _bump functions_ (see @sec:partitions_of_unity).
+  A notable classification of functions comes from the compactness of support---more specifically, its boundedness. Compactly supported functions in $C^oo$ are commonly referred to as _bump functions_ (see @sec:partitions_of_unity).
 ]

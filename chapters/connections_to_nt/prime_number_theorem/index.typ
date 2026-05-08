@@ -17,7 +17,7 @@ Define the first and second _Chebyshev functions_ $theta.alt(x),psi(x)$ by
 $ theta.alt(x)=\mathmakebox[\widthof{\(sum\)}][c]{sum_{\substack{p lt.eq x\\p " prime"}}}log p, psi(x)=sum_{n lt.eq x}Lambda(n)=\mathmakebox[\widthof{\(sum\)}][c]{sum_{\substack{(p,k):p^k lt.eq x\\p " prime"}}}log p. $
 
 We hence derive that 
-$ psi(x)=sum_{k=1}^infinity sum_{\substack{p:p^k lt.eq x\\p " prime"}}log p=sum_{k=1}^infinity sum_{\substack{p:p lt.eq root(k, x)\\p " prime"}}log p=sum_{k=1}^infinity theta.alt (x^{\frac1k}). $
+$ psi(x)=sum_{k=1}^oo sum_{\substack{p:p^k lt.eq x\\p " prime"}}log p=sum_{k=1}^oo sum_{\substack{p:p lt.eq root(k, x)\\p " prime"}}log p=sum_{k=1}^oo theta.alt (x^{\frac1k}). $
 
 Grouping by primes, we see that this is in fact equivalent to
 
@@ -29,10 +29,10 @@ $ 0 lt.eq theta.alt(x)lt.eq psi(x)lt.eq \mathmakebox[\widthof{\(sum_{p:p lt.eq x
 
 #theorem[We have the following limit equivalences:
     
-$ \varlimsup_{x ->+infinity}(pi(x)log x)/(x)=\varlimsup_{x ->+infinity}(psi(x))/(x)=\varlimsup_{x ->+infinity}(theta.alt(x))/(x) $ <eq:chebyshevfunctions_limsup_inflim_equivalences_limsup>
+$ \varlimsup_{x ->+oo}(pi(x)log x)/(x)=\varlimsup_{x ->+oo}(psi(x))/(x)=\varlimsup_{x ->+oo}(theta.alt(x))/(x) $ <eq:chebyshevfunctions_limsup_inflim_equivalences_limsup>
  and
     
-$ \varliminf_{x ->+infinity}(pi(x)log x)/(x)=\varliminf_{x ->+infinity}(psi(x))/(x)=\varliminf_{x ->+infinity}(theta.alt(x))/(x). $ <eq:chebyshevfunctions_limsup_inflim_equivalences_liminf>] <thm:chebyshevfunctions_limsup_inflim_equivalences>
+$ \varliminf_{x ->+oo}(pi(x)log x)/(x)=\varliminf_{x ->+oo}(psi(x))/(x)=\varliminf_{x ->+oo}(theta.alt(x))/(x). $ <eq:chebyshevfunctions_limsup_inflim_equivalences_liminf>] <thm:chebyshevfunctions_limsup_inflim_equivalences>
 
 #proof[Let $0<alpha<1$ be arbitrary and suppose $x>1$. By definition, we have
     
@@ -43,17 +43,17 @@ $
     Hence we have that
     
 $ (alpha pi(x)log x)/(x)-alpha x^{alpha-1}log x<(theta.alt(x))/(x)lt.eq \frac{psi(x)}x lt.eq \frac{pi(x)log x}x $ <eq:chebyshevfunctions_limsup_inflim_equivalences_inequalities>
- by virtue of @eq:chebyshevfunctions_bounds_primecounting. Letting $x ->+infinity$ and taking the limit supremum yields
+ by virtue of @eq:chebyshevfunctions_bounds_primecounting. Letting $x ->+oo$ and taking the limit supremum yields
     
 $
-alpha \varlimsup_{x ->+infinity}\qty((pi(x)log x)/(x)-x^{alpha-1}) & =alpha \varlimsup_{x ->+infinity}(pi(x)log x)/(x)lt.eq \varlimsup_{x ->+infinity}\frac{theta.alt(x)}x \\ & lt.eq \varlimsup_{x ->+infinity}\frac{psi(x)}x lt.eq \varlimsup_{x ->+infinity}\frac{pi(x)log x}x.
+alpha \varlimsup_{x ->+oo}\qty((pi(x)log x)/(x)-x^{alpha-1}) & =alpha \varlimsup_{x ->+oo}(pi(x)log x)/(x)lt.eq \varlimsup_{x ->+oo}\frac{theta.alt(x)}x \\ & lt.eq \varlimsup_{x ->+oo}\frac{psi(x)}x lt.eq \varlimsup_{x ->+oo}\frac{pi(x)log x}x.
 $
 
     Letting $alpha -> 1^-$ yields @eq:chebyshevfunctions_limsup_inflim_equivalences_limsup. The proof of @eq:chebyshevfunctions_limsup_inflim_equivalences_liminf follows similarly by taking limit infimums in @eq:chebyshevfunctions_limsup_inflim_equivalences_inequalities and $alpha -> 1^-$.]
 
 #theorem[The Laplace transform of $psi compose exp$ defined as
     
-$ f(s)=integral_0^infinity psi (ee^{t})ee^{-st}ddt $ <eq:primenumbertheorem_laplacetransformchebyshevfunction_statement>
+$ f(s)=integral_0^oo psi (ee^{t})ee^{-st}ddt $ <eq:primenumbertheorem_laplacetransformchebyshevfunction_statement>
  converges for $Re s>1$ and defines a holomorphic function on this domain. Moreover, the function $g$ defined by 
 $ g(t)=\lim_{sigma -> 1^+}[f(s)-\frac1{s-1}], s=sigma+ii t $
  converges uniformly with respect to $t$ on compact subsets of $RR$ and is continuously differentiable thereon.] <thm:primenumbertheorem_laplacetransformchebyshevfunction>
@@ -61,7 +61,7 @@ $ g(t)=\lim_{sigma -> 1^+}[f(s)-\frac1{s-1}], s=sigma+ii t $
 #proof[Let $u=ee^t$, $dif u=ee^t ddt$. Then we obtain
     
 $
-f(s) & =integral_1^infinity psi(u)u^{-s-1}dif u=sum_{n=1}^infinity integral_n^{n+1}psi(u)u^{-s-1}dif u \\ & =sum_{n=1}^infinity psi(n)integral_n^{n+1}u^{-s-1}dif u=sum_{n=1}^infinity sum_{m=1}^n Lambda(m)\eval{(u^{-s})/(-s)}_n ^{n+1} \\ & =\frac1s sum_{n=1}^infinity sum_{m=1}^n Lambda(m)[n^{-s}-(n+1)^{-s}]=\frac1s sum_{m=1}^infinity Lambda(m)sum_{n=m}^infinity [n^{-s}-(n+1)^{-s}] \\ & =\frac1s sum_{m=1}^infinity Lambda(m)m^{-s}=\frac1s sum_{n=1}^infinity (Lambda(n))/(n^{-s})
+f(s) & =integral_1^oo psi(u)u^{-s-1}dif u=sum_{n=1}^oo integral_n^{n+1}psi(u)u^{-s-1}dif u \\ & =sum_{n=1}^oo psi(n)integral_n^{n+1}u^{-s-1}dif u=sum_{n=1}^oo sum_{m=1}^n Lambda(m)\eval{(u^{-s})/(-s)}_n ^{n+1} \\ & =\frac1s sum_{n=1}^oo sum_{m=1}^n Lambda(m)[n^{-s}-(n+1)^{-s}]=\frac1s sum_{m=1}^oo Lambda(m)sum_{n=m}^oo [n^{-s}-(n+1)^{-s}] \\ & =\frac1s sum_{m=1}^oo Lambda(m)m^{-s}=\frac1s sum_{n=1}^oo (Lambda(n))/(n^{-s})
 $
 
     by absolute convergence and the fact that the inner summation ``telescopes.'' By @prop:riemannzetafunction_logarithmicderivativezetavonmangoldt, we have that for $Re s>1$,

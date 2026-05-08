@@ -99,12 +99,12 @@ Let us now consider the specific region $ {z in CC : 0 < Re(z) < uppi}, $ and an
 
 1. $xi(z) = ii z$ maps the region ${z in CC : 0 < Re(z) < uppi}$ to ${xi in CC : 0 < Im(xi) < uppi}$.
 2. $zeta(xi) = ee^xi$ maps this region to the upper half-plane $Im(zeta) > 0$ since $0 < Arg(zeta) < uppi$ and $0 < abs(zeta)$.
-3. $w(zeta) = (zeta + 1 / zeta) / 2$ maps $Im(zeta) > 0$ to $CC without ((-infinity, -1] union [1, infinity))$.
+3. $w(zeta) = (zeta + 1 / zeta) / 2$ maps $Im(zeta) > 0$ to $CC without ((-oo, -1] union [1, oo))$.
 
 Thus, the composition $cos(z) = w compose zeta compose xi$ is univalent on the strip
 $ {z in CC : 0 < Re(z) < uppi}, $
 and the image of this strip under $cos$ is
-$ CC without ((-infinity, -1] union [1, infinity)). $
+$ CC without ((-oo, -1] union [1, oo)). $
 We will now analyze the inverse cosine function, denoted $arccos(z)$. Consider
 $ z = (ee^(ii w) + ee^(-ii w)) / 2. $
 Then

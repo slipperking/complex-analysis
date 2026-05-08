@@ -489,9 +489,9 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
     + For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.<itm:partition_of_unity_subordinate>
     + The collection ${supp(alpha_j)}_(j in NN)$ is locally finite.<itm:partition_of_unity_local_finiteness>
     + For each $j in NN$, $0 <= alpha_j <= 1$.<itm:partition_of_unity_nonnegativity>
-    + $sum_(j = 1)^infinity alpha_j equiv 1$ on $Omega$.<itm:partition_of_unity_partition_of_unity>
+    + $sum_(j = 1)^oo alpha_j equiv 1$ on $Omega$.<itm:partition_of_unity_partition_of_unity>
   
-  Then ${alpha_j}_(j in NN)$ is called a $C^infinity$ partition of unity subordinate to ${Omega_k}_(k in NN)$.
+  Then ${alpha_j}_(j in NN)$ is called a $C^oo$ partition of unity subordinate to ${Omega_k}_(k in NN)$.
 ] <thm:partition_of_unity>
 
 #proof[
@@ -515,11 +515,11 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   $ supp(beta_j) = overline(D(z_j, r_(z_j))) subset Omega_(k_(z_j)). $
 
   By local finiteness of ${D(z_j, r_(z_j))}_(j in NN)$, for each $z in Omega$ there exists an open neighborhood $V$ with $z in V$ intersecting only finitely many $overline(D(z_j, r_(z_j)))$. Thus ${supp(beta_j)}_(j in NN)$ is locally finite on $Omega$. Then the sum
-  $ S(z) = sum_(j = 1)^infinity beta_j(z) $
+  $ S(z) = sum_(j = 1)^oo beta_j(z) $
   defined for $z in Omega$ involves only finitely many nonzero terms (by local finiteness) on a neighborhood of every point $z$. Hence $S in C^oo (Omega)$ and $S(z) > 0$ (since ${D(z_j, r_(z_j))}_(j in NN)$ covers $Omega$). Define
   $ alpha_j(z) = beta_j(z) / S(z), quad forall j in NN. $
   Each $alpha_j in C^oo (CC)$ has compact support in $Omega$, $0 <= alpha_j <= 1$, the supports are locally finite, and
-  $ sum_(j = 1)^infinity alpha_j(z) = 1 $
+  $ sum_(j = 1)^oo alpha_j(z) = 1 $
   for all $z in Omega$. Moreover
   $ supp(alpha_j) subset.eq Omega_(k_(z_j)), $
   proving subordination.
@@ -544,7 +544,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
 
   By the Partition of Unity Theorem (@thm:partition_of_unity), there exist compactly supported functions ${alpha_j}_(j in NN) subset.eq C^oo (CC)$ forming a partition of unity subordinate to this cover. That is,
   $
-    0 <= alpha_j <= 1, quad supp(alpha_j) subset.eq Omega_(i_j) " for some " i_j in {1, 2}, quad sum_(j = 1)^infinity alpha_j equiv 1 quad "on" CC.
+    0 <= alpha_j <= 1, quad supp(alpha_j) subset.eq Omega_(i_j) " for some " i_j in {1, 2}, quad sum_(j = 1)^oo alpha_j equiv 1 quad "on" CC.
   $
   Let
   $ J = {j in NN : supp(alpha_j) subset.eq Omega_1}. $
@@ -554,6 +554,6 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   $ supp(phi) subset Omega_1 subset V. $
 
   For $z in V(K, epsilon)$, all functions with support in $Omega_2$ vanish at $z$, so
-  $ phi(z) = sum_(j in J) alpha_j(z) = sum_(j = 1)^infinity alpha_j(z) = 1. $
+  $ phi(z) = sum_(j in J) alpha_j(z) = sum_(j = 1)^oo alpha_j(z) = 1. $
   Hence, $phi equiv 1$ on the open neighborhood $V(K, epsilon)$ of $K$. Outside $V(K, 2 epsilon)$, all terms with support in $Omega_1$ vanish, so $phi(z) = 0$. Finally, $0 <= phi <= 1$ everywhere by construction. Thus $phi$ satisfies all required properties.
 ]
