@@ -75,9 +75,9 @@ $ (zeta'(s))/(zeta(s))+\frac1{s-1}=(zeta'(s)(s-1)+zeta(s))/(zeta(s)(s-1))=(\dv{s
  and @eq:primenumbertheorem_laplacetransformchebyshevfunction_gfunction define holomorphic functions on $Re s gt.eq1$ (observe that the numerator is entire).
 
     For a compact subset $I subset RR$, the complex rectangle $K equiv {x+ii y | 1 lt.eq x lt.eq 2,y in I}$ is compact in $CC$. Thus, by uniform continuity (given by @thm:heinecantor), $forall epsilon>0$, $exists delta>0$ such that 
-$ s_1=sigma_1+ii t_1,s_2=sigma_2+ii t_2 in K:|s_1-s_2|<delta => |f(s_1)-\frac1{s_1-1}-f(s_2)+\frac1{s_2-1}|<epsilon. $
+$ s_1=sigma_1+ii t_1,s_2=sigma_2+ii t_2 in K:|s_1-s_2|<delta ==> |f(s_1)-\frac1{s_1-1}-f(s_2)+\frac1{s_2-1}|<epsilon. $
  In particular, for $sigma_1=1$ such that $t_2=t_1(=t)$, we have 
-$ s=sigma+ii t in K:|sigma-1|<delta => |f (1+ii t)-\frac1{ii t}-f (s)+\frac1{s-1}|<epsilon, $
+$ s=sigma+ii t in K:|sigma-1|<delta ==> |f (1+ii t)-\frac1{ii t}-f (s)+\frac1{s-1}|<epsilon, $
  where $delta$ is chosen independently of $t$. Therefore, $g(t)$ converges uniformly on compact subsets of $RR$ and is continuously differentiable thereon.]
 
 // include wiener_ikehara_theorem/index.tex

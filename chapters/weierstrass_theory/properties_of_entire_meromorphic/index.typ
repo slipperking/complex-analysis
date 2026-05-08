@@ -93,6 +93,6 @@
   #include "construction_of_entire_and_meromorphic/index.typ"
 ]
 
-// #chapter-section("growth_hadamard_factorization")[
-//   #include "growth_hadamard_factorization/index.typ"
-// ]
+#chapter-section("growth_hadamard_factorization")[
+  #include "growth_hadamard_factorization/index.typ"
+]

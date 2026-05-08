@@ -36,7 +36,7 @@ Analogous to the real case, a 0-form is defined as a scalar-valued function in t
 #remark[
   The Jacobian determinant of $u,v$ with respect to $x,y$, for a holomorphic function $f(z)=u(x,y)+ii v(x,y)$ is equal to
   $
-    mat(delim: "|", u'_x, u'_y; v'_x, v'_y) = pdv(u, x) pdv(v, y) - pdv(u, y) pdv(v, x) = pdv(u, x)^2 + pdv(u, y)^2 = abs(f'(z))^2
+    mat(delim: "|", u'_x, u'_y; v'_x, v'_y) = pdv(u, x) pdv(v, y) - pdv(u, y) pdv(v, x) = (pdv(u, x))^2 + (pdv(u, y))^2 = abs(f'(z))^2
   $
   by @eq:holomorphic_derivative_decomposition.
 ]

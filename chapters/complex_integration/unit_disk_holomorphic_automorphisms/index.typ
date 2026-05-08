@@ -36,7 +36,7 @@ To discuss the main topic of this section, we will first introduce the concept o
   A _subgroup_ $H$ of $G$ is a subset of $G$ that is also a group under the same operation as $G$. This relationship is denoted by $H <= G$ or $H < G$ for _proper subgroups_.
 ] <def:group>
 
-Group operations are not necessarily commutative. In the case that they are, (specifically if $a, b in G => a * b = b * a$), then $G$ is an _abelian group_.
+Group operations are not necessarily commutative. In the case that they are, (specifically if $a, b in G ==> a * b = b * a$), then $G$ is an _abelian group_.
 
 If $U subset.eq CC$ is connected and $f:U -> U$ is holomorphic on $U$ and bijective, $f$ is a _holomorphic automorphism_ on $U$. The _group of holomorphic automorphisms_ on $U$ is denoted by $Aut(U)$, which is the set of all holomorphic automorphisms such as $f$, with the operation of composition $(f compose g)$.
 

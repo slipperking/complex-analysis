@@ -123,7 +123,7 @@ The function $f:[0, 2 uppi) -> S^1$ with $f(t) = (cos(t), sin(t))$ is indeed con
   $
     union.big_(a in f^(-1)(A)) U_a subset.eq f^(-1)(A),\
     union.big_(a in f^(-1)(A)) U_a supset.eq union.big_(a in f^(-1)(A)) {a} = f^(-1)(A)
-    => union.big_(a in f^(-1)(A)) U_a = f^(-1)(A).
+    ==> union.big_(a in f^(-1)(A)) U_a = f^(-1)(A).
   $
   By the definition of topologies,
   $ union.big_(a in f^(-1)(A)) U_a in tau_1. #qedhere $
@@ -149,11 +149,11 @@ The function $f:[0, 2 uppi) -> S^1$ with $f(t) = (cos(t), sin(t))$ is indeed con
 
 This in turn implies the reverse triangle inequality:
 $
-  d(x, z) <= d(x, y) + d(y, z) => d(x, y) gt.eq d(x, z) - d(y, z),
+  d(x, z) <= d(x, y) + d(y, z) ==> d(x, y) gt.eq d(x, z) - d(y, z),
 $
 and similarly,
 $
-  d(y, z) <= d(x, y) + d(x, z) => d(x, y) gt.eq d(y, z) - d(x, z).
+  d(y, z) <= d(x, y) + d(x, z) ==> d(x, y) gt.eq d(y, z) - d(x, z).
 $
 
 #definition[
@@ -185,17 +185,17 @@ We now justify a claim whose triviality we have taken for granted.
 
 #proof[
   We first imply that topological continuity implies epsilon--delta continuity. For any $x in X$, $forall epsilon > 0$, the ball $B(f(x), epsilon)$ is an open set (it is in the basis) in $Y$. By @itm:topologicalcontinuityequivalents_fitopenset of @prop:topologicalcontinuityequivalents, there is some open neighborhood $U$ of $x$ in $X$ such that $f(U) subset B(f(x), epsilon)$. By the previous proposition, there is a ball $B(x, delta) subset.eq U$. This is equivalent to
-  $ epsilon > 0, x in X => exists delta = delta_x > 0: y in B(x, delta) => f(y) in B(f(x), epsilon). $
+  $ epsilon > 0, x in X ==> exists delta = delta_x > 0: y in B(x, delta) ==> f(y) in B(f(x), epsilon). $
 
   Conversely, assume $f$ is $epsilon$--$delta$ continuous. Let $V subset.eq Y$ be open and $x in f^(-1)(V)$. Since $V$ is open in the metric topology, there exists $epsilon > 0$ such that
   $ B(f(x), epsilon) subset.eq V. $
   By epsilon--delta continuity, there exists $delta > 0$ such that
-  $ d_x(x, y) < delta => d_y(f(x), f(y)) < epsilon, $
+  $ d_x(x, y) < delta ==> d_y(f(x), f(y)) < epsilon, $
   or that
-  $ y in B(x, delta) => f(y) in B(f(x), epsilon) subset.eq V. $
+  $ y in B(x, delta) ==> f(y) in B(f(x), epsilon) subset.eq V. $
   Thus, the ball $B(x, delta_x)$ is an open neighborhood of $x$ in $X$ such that
   $
-    B(x, delta_x) subset.eq f^(-1)(V) => f^(-1)(V) subset.eq union.big_(x in f^(-1)(V)) B(x, delta_x) subset.eq f^(-1)(V).
+    B(x, delta_x) subset.eq f^(-1)(V) ==> f^(-1)(V) subset.eq union.big_(x in f^(-1)(V)) B(x, delta_x) subset.eq f^(-1)(V).
   $
   Since the union of open sets is open, the pre-image of any open set is open, and hence $f$ is topologically continuous.
 ]
@@ -484,7 +484,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
 ]
 
 #theorem("Partition of Unity")[
-  Let $Omega subset.eq CC$ be a nonempty open set and let ${Omega_k}_(k in NN)$ be an open cover of $Omega$. Then there exists a collection of bump functions ${alpha_j}_(j in NN) subset.eq C^infinity(CC)$, each with compact support in $Omega$, satisfying:
+  Let $Omega subset.eq CC$ be a nonempty open set and let ${Omega_k}_(k in NN)$ be an open cover of $Omega$. Then there exists a collection of bump functions ${alpha_j}_(j in NN) subset.eq C^oo (CC)$, each with compact support in $Omega$, satisfying:
 
     + For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.<itm:partition_of_unity_subordinate>
     + The collection ${supp(alpha_j)}_(j in NN)$ is locally finite.<itm:partition_of_unity_local_finiteness>
@@ -516,9 +516,9 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
 
   By local finiteness of ${D(z_j, r_(z_j))}_(j in NN)$, for each $z in Omega$ there exists an open neighborhood $V$ with $z in V$ intersecting only finitely many $overline(D(z_j, r_(z_j)))$. Thus ${supp(beta_j)}_(j in NN)$ is locally finite on $Omega$. Then the sum
   $ S(z) = sum_(j = 1)^infinity beta_j(z) $
-  defined for $z in Omega$ involves only finitely many nonzero terms (by local finiteness) on a neighborhood of every point $z$. Hence $S in C^infinity(Omega)$ and $S(z) > 0$ (since ${D(z_j, r_(z_j))}_(j in NN)$ covers $Omega$). Define
+  defined for $z in Omega$ involves only finitely many nonzero terms (by local finiteness) on a neighborhood of every point $z$. Hence $S in C^oo (Omega)$ and $S(z) > 0$ (since ${D(z_j, r_(z_j))}_(j in NN)$ covers $Omega$). Define
   $ alpha_j(z) = beta_j(z) / S(z), quad forall j in NN. $
-  Each $alpha_j in C^infinity(CC)$ has compact support in $Omega$, $0 <= alpha_j <= 1$, the supports are locally finite, and
+  Each $alpha_j in C^oo (CC)$ has compact support in $Omega$, $0 <= alpha_j <= 1$, the supports are locally finite, and
   $ sum_(j = 1)^infinity alpha_j(z) = 1 $
   for all $z in Omega$. Moreover
   $ supp(alpha_j) subset.eq Omega_(k_(z_j)), $
@@ -526,7 +526,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
 ]
 
 #theorem("Existence of Bump Functions")[
-  Let $K subset CC$ be compact and $V subset CC$ an open neighborhood of $K$. Then there exists a compactly supported $phi in C^infinity(CC)$ such that
+  Let $K subset CC$ be compact and $V subset CC$ an open neighborhood of $K$. Then there exists a compactly supported $phi in C^oo (CC)$ such that
   $ 0 <= phi(z) <= 1 quad forall z in CC, $
   $supp(phi) subset V$, and $phi equiv 1$ on some open neighborhood of $K$.
 ] <thm:bumpfunctionexistence>
@@ -542,7 +542,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   $ Omega_1 = V(K, 2 epsilon), quad Omega_2 = CC without overline(V(K, epsilon)). $
   Then ${Omega_1, Omega_2}$ is an open cover of $CC$.
 
-  By the Partition of Unity Theorem (@thm:partition_of_unity), there exist compactly supported functions ${alpha_j}_(j in NN) subset.eq C^infinity(CC)$ forming a partition of unity subordinate to this cover. That is,
+  By the Partition of Unity Theorem (@thm:partition_of_unity), there exist compactly supported functions ${alpha_j}_(j in NN) subset.eq C^oo (CC)$ forming a partition of unity subordinate to this cover. That is,
   $
     0 <= alpha_j <= 1, quad supp(alpha_j) subset.eq Omega_(i_j) " for some " i_j in {1, 2}, quad sum_(j = 1)^infinity alpha_j equiv 1 quad "on" CC.
   $
@@ -550,7 +550,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   $ J = {j in NN : supp(alpha_j) subset.eq Omega_1}. $
   Define
   $ phi(z) = sum_(j in J) alpha_j(z). $
-  Then $phi in C^infinity(CC)$ is compactly supported within $Omega_1$, and since only finitely many $alpha_j$ are nonzero on a neighborhood of each point, $phi in C^infinity(CC)$. Moreover,
+  Then $phi in C^oo (CC)$ is compactly supported within $Omega_1$, and since only finitely many $alpha_j$ are nonzero on a neighborhood of each point, $phi in C^oo (CC)$. Moreover,
   $ supp(phi) subset Omega_1 subset V. $
 
   For $z in V(K, epsilon)$, all functions with support in $Omega_2$ vanish at $z$, so

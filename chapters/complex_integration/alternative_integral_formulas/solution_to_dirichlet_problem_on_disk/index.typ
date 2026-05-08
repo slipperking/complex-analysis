@@ -5,7 +5,7 @@
 A fundamental problem in the theory of partial differential equations is to find a function $u$ that is continuous on the closed disk $overline(D(0, R))$, harmonic on the open disk $D(0, R)$, and identically equal to a given boundary function on $partial D(0, R)$. This is known as the _Dirichlet problem_ (for Laplace's equation) on a disk.
 
 #theorem[
-  For a continuous function $phi in C^0(partial D(0, R))$, the unique real-valued solution $u in C^0(overline(D(0, R)))$ that solves
+  For a continuous function $phi in C^0 (partial D(0, R))$, the unique real-valued solution $u in C^0 (overline(D(0, R)))$ that solves
   $
     Delta u(z) = 0 quad forall z in D(0, R), \
     u(z) = phi(z) quad forall z in partial D(0, R)

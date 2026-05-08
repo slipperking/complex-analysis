@@ -39,6 +39,9 @@
             Download PDF
           ]
         ]
+        #html.elem("div", attrs: (class: "abstract"))[
+          The conversion process was heavily facilitated by the use of LLMs; thus, there may be errors.
+        ]
       ]
       //#outline()
     ]

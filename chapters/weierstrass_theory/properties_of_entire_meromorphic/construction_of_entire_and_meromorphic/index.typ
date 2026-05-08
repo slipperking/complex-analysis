@@ -287,14 +287,14 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
     $
       u(z) = sum_(k = 1)^infinity phi_k (z) psi_k (z),
     $
-    which is an element of $C^infinity(CC without {a_k}_(k in NN))$. For a fixed $n in NN$, it is true that $u equiv psi_n$ on $overline(V_n) without {a_n}$. Hence, although $u$ is not meromorphic, it does have the required principal part near each $a_k$. Let
+    which is an element of $C^oo (CC without {a_k}_(k in NN))$. For a fixed $n in NN$, it is true that $u equiv psi_n$ on $overline(V_n) without {a_n}$. Hence, although $u$ is not meromorphic, it does have the required principal part near each $a_k$. Let
     $
       phi.alt(z) = cases(
         pdv(u, overline(z)) & "if" z in CC without {a_k}_(k in NN), ,
         0 & "if" z in {a_k}_(k in NN),
       ).
     $
-    Since $pdv(u, overline(z)) equiv pdv(psi_n, overline(z)) equiv 0$ and is $C^infinity$ on $overline(V_n) without {a_n}$ and $phi.alt$ vanishes on ${a_k}_(k in NN)$, $phi.alt in C^infinity(CC)$. By the discussion preceding @thm:onedimensionalpartialconjugatesolution, there exists a $C^infinity$ function $v(z)$ such that $pdv(v, overline(z)) = phi.alt(z)$ on $CC$. Since $phi.alt$ is $C^infinity$, it follows that $v$ is also $C^infinity$. Define $f(z) = u(z) - v(z)$. Then
+    Since $pdv(u, overline(z)) equiv pdv(psi_n, overline(z)) equiv 0$ and is $C^infinity$ on $overline(V_n) without {a_n}$ and $phi.alt$ vanishes on ${a_k}_(k in NN)$, $phi.alt in C^oo (CC)$. By the discussion preceding @thm:onedimensionalpartialconjugatesolution, there exists a $C^infinity$ function $v(z)$ such that $pdv(v, overline(z)) = phi.alt(z)$ on $CC$. Since $phi.alt$ is $C^infinity$, it follows that $v$ is also $C^infinity$. Define $f(z) = u(z) - v(z)$. Then
     $
       pdv(f, overline(z)) = pdv(u, overline(z)) - pdv(v, overline(z)) = phi.alt(z) - phi.alt(z) = 0,
     $
@@ -364,7 +364,7 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
   $
   where $k in NN$. By @thm:bumpfunctionexistence, we can construct a $C^infinity$ sequence of functions ${phi_k (z)}_(k in NN)$ such that $forall k in NN$, $supp(phi_k) subset D(z_k, 2 epsilon_k)$, $phi_k equiv 1$ on $overline(D(z_k, epsilon_k))$, and $0 <= phi_k <= 1$ on $CC$.
 
-  Let $Psi in C^infinity(CC)$, and construct
+  Let $Psi in C^oo (CC)$, and construct
   $
     f(z) = -Phi(z) Psi(z) + sum_(k = 1)^infinity phi.alt_k (z) phi_k (z).
   $ <eq:generalinterpolationexistence_constructionstatement>
@@ -382,7 +382,7 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
   $
     g(z) / Phi(z) = pdv(Psi, overline(z)),
   $
-  which has removable singularities at each $z_k$. Define $g(z) / Phi(z) = 0$ at $z = z_k$. Under this assertion, we have $g(z) / Phi(z) in C^infinity(CC)$. Since the support of $g(z) / Phi(z)$ is the union of disjoint compact sets, by @thm:onedimensionalpartialconjugatesolution, there exists a function $Psi in C^infinity(CC)$ satisfying
+  which has removable singularities at each $z_k$. Define $g(z) / Phi(z) = 0$ at $z = z_k$. Under this assertion, we have $g(z) / Phi(z) in C^oo (CC)$. Since the support of $g(z) / Phi(z)$ is the union of disjoint compact sets, by @thm:onedimensionalpartialconjugatesolution, there exists a function $Psi in C^oo (CC)$ satisfying
   $
     g(z) / Phi(z) = pdv(Psi, overline(z)).
   $
