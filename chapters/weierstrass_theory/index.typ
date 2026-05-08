@@ -1,5 +1,4 @@
 #import "/lib.typ": *
-#import "/paper-styles.typ": chapter-section
 
 = The Theory of Weierstrass
 While Weierstrass' contributions in complex analysis are mainly characterized by his discoveries on uniform convergence, he also characterized entire and _meromorphic functions_ and a unique representation of entire functions, as well as his contributions toward the study of _essential singularities_.

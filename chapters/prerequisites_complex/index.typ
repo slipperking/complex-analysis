@@ -1,5 +1,4 @@
 #import "/lib.typ": *
-#import "/paper-styles.typ": chapter-section
 
 = Complex Prerequisites
 #chapter-section("complex_differentiation")[

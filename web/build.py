@@ -87,6 +87,7 @@ def compile_pdfs():
     out = pdf_dir / "notes.pdf"
     cmd = [
         "typst", "compile",
+        "--features", "html", # so that target works
         str(ROOT / "main.typ"),
         str(out),
     ]

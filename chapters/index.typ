@@ -1,4 +1,4 @@
-#import "/paper-styles.typ": chapter-section, paper-styles
+#import "/lib.typ" : chapter-section
 
 #chapter-section("prerequisites")[
   #include "/chapters/prerequisites_calc_top/index.typ"

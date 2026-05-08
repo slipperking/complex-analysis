@@ -1,5 +1,4 @@
 #import "/lib.typ": *
-#import "/paper-styles.typ": chapter-section
 
 == Analyticity and Holomorphy<sec:analyticity_and_holomorphy>
 

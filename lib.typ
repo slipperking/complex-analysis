@@ -344,3 +344,41 @@
 #if _is-html {
   qedhere = none
 }
+
+#let citation(width: 55%, author, body) = {
+  if _is-html {
+    html.elem("blockquote", attrs: (class: "epigraph"), {
+      html.elem("p", body)
+      html.elem("footer", author)
+    })
+  } else {
+    align(right, block(width: width, inset: 0em)[
+      #set text(style: "italic", size: 0.95em)
+      #align(left, body)
+      #align(right, author)
+    ])
+  }
+}
+
+
+#let chapter-section(id, depth: auto, body) = context {
+  if _is-html == true {
+    let nav-depth = if depth == auto { none } else { str(depth) }
+    let attrs = if nav-depth == none {
+      (class: "chapter", id: id)
+    } else {
+      (class: "chapter", id: id, "data-nav-depth": nav-depth)
+    }
+    html.elem("section", attrs: attrs, body)
+  } else {
+    body
+  }
+}
+
+#let part-marker(id, title) = context {
+  if _is-html == true {
+    html.elem("section", attrs: (class: "part", id: id), {
+      html.elem("h1", attrs: (class: "part-title"), title)
+    })
+  }
+}

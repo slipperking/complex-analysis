@@ -1,6 +1,5 @@
 // sections/multivariable/index.typ
 #import "/lib.typ": *
-#import "/paper-styles.typ": chapter-section
 
 #chapter-section("ball_polydisk_holomorphic_automorphisms")[
   #include "ball_polydisk_holomorphic_automorphisms/index.typ"
