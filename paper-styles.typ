@@ -48,7 +48,7 @@
       html.elem(
         "div",
         attrs: (
-          style: "display: block; margin-left: auto; margin-right: auto; align-self: center;",
+          style: "display: block; margin-left: auto; margin-right: auto; align-self: center; margin-bottom: 16px",
         ),
       )[
         #html.frame(it)

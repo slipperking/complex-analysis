@@ -295,7 +295,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
     abs(1 / (Delta z) integral_z^(z + Delta z) f(zeta) dzeta - f(z)) = abs(1 / (Delta z) integral_z^(z + Delta z) (f(zeta)-f(z)) dzeta) <= epsilon.
   $
 
-  Thus, $F'(z)=f(z)$ for all $z in D$. Since $z_0$ was arbitrary, $f$ is holomorphic over $U$.
+  Thus, $F'(z)=f(z)$ for all $z in D$. Since $a$ was arbitrary, $f$ is holomorphic over $U$.
 ]
 
 #theorem[
