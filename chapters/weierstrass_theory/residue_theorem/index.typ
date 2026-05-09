@@ -80,25 +80,50 @@ Residues are extremely important as they allow for simple evaluation of definite
 #example[
   Evaluate the improper integral $I = integral_(-infinity)^infinity 1 / (x^2+1)^(n+1) dx$, where $n in NN$.
 ]
-// TikZ figure: semicircular contour
-// \begin{tikzpicture}
-//   \draw[-{Stealth}, ultra thin] (0, 0) -- (5, 0);
-//   \draw[-{Stealth}, ultra thin] (0, 0) -- (-5, 0);
-//   \draw[-{Stealth}, thin] (0, 0) -- (0, 5);
-//   \draw[-{Stealth}, thin] (0, 0) -- (0, -0.5);
-//   \draw[-{Stealth}, thick] (-3, 0) -- (0.2, 0);
-//   \draw[-{Stealth}, thick] (3,0) arc[start angle=0, end angle=61, radius=3];
-//   \draw[-{Stealth}, thick] (1.5,2.59807) arc[start angle=60, end angle=121, radius=3];
-//   \draw[-{Stealth}, thick] (-1.5,2.59807) arc[start angle=120, end angle=180, radius=3];
-//   \draw[-{Stealth}, thick] (0, 0) -- (3, 0);
-//   \node[anchor=north] at (3,0) {$R$};
-//   \node[anchor=north] at (-3,0) {$-R$};
-//   \node[anchor=south east] at (0,3) {$R$};
-// \end{tikzpicture}
-#figure(
-  [],
-  caption: [A semicircular contour with orientation marked.],
-) <fig:semicircularcontour>
+
+#figure-wrapper([
+  #figure(
+    {
+      let radius = 3
+      let max = radius + 0.5
+      quick-plot(scale: 1, x-min: -max, x-max: max, y-max: max, {
+        import cetz.draw: *
+        let mark = (end: (symbol: ">>", fill: black, pos: 30%, shorten-to: none))
+
+        arc-through(
+          (0deg, 3),
+          (30deg, 3),
+          (60deg, 3),
+          stroke: (thickness: 1.5pt),
+          mark: mark,
+        )
+
+        arc-through(
+          (60deg, 3),
+          (90deg, 3),
+          (120deg, 3),
+          stroke: (thickness: 1.5pt),
+          mark: mark,
+        )
+
+        arc-through(
+          (120deg, 3),
+          (150deg, 3),
+          (180deg, 3),
+          stroke: (thickness: 1.5pt),
+          mark: mark,
+        )
+
+        line((-radius, 0), (radius, 0), mark: mark, stroke: 1.5pt)
+
+        content((radius, 0), anchor: "north", $R$)
+        content((-radius, 0), anchor: "north", $-R$)
+        content((0, radius), anchor: "south-east", $R$)
+      })
+    },
+    caption: [A semicircular contour with orientation marked.],
+  ) <fig:semicircularcontour>
+])
 
 #proof[
   Consider $gamma$ to be a closed semicircle with radius $R gt.eq 2$ as in @fig:semicircularcontour. Notice that the function $z |-> 1 / (z^2+1)^(n+1)$ has singularities at only $z = ii$ and $z = -ii$, both of which are poles of order $n+1$. By @eq:residueatpole, the residue at $z = ii$ is
@@ -215,10 +240,48 @@ Residues are extremely important as they allow for simple evaluation of definite
 //   \node[anchor=north] at (3.5,0) {$R$};
 //   \node[anchor=south] at (2.5,2.5) {$R$};
 // \end{tikzpicture}
-#figure(
-  [],
-  caption: [A wedge contour with orientation marked.],
-) <fig:wedgecontour>
+#figure-wrapper(
+  [
+    #figure(
+      {
+        let outer-rad = 3.5
+
+        quick-plot(x-max: 4, y-max: 3, {
+          import cetz.draw: *
+          let mark = (end: (pos: 50%, symbol: ">>", fill: black, shorten-to: none))
+
+          arc(
+            (outer-rad, 0),
+            start: 0deg,
+            stop: 45deg,
+            radius: outer-rad,
+            mark: mark,
+            stroke: 1.5pt,
+            name: "C-R",
+          )
+
+          line((0, 0), (outer-rad, 0), mark: mark, stroke: (thickness: 1.5pt), name: "Gamma-1")
+
+          line(
+            cvector.scale((outer-rad, outer-rad), calc.sqrt(2) / 2),
+            (0, 0),
+            mark: mark,
+            stroke: 1.5pt,
+            name: "Gamma-2",
+          )
+
+          content("Gamma-1.mid", $Gamma_1$, anchor: "north", padding: 1pt)
+          content("Gamma-2.mid", $Gamma_2$, anchor: "south-east", padding: 1pt)
+          content("C-R.arc-center", $C_R$, anchor: "south-west", padding: 1pt)
+          content("Gamma-1.end", $R$, anchor: "north", padding: 1pt)
+          content("Gamma-1.start", $epsilon$, anchor: "north", padding: 1pt)
+          content("Gamma-2.start", $R$, anchor: "south", padding: 1pt)
+          content("Gamma-2.end", $epsilon$, anchor: "south-east", padding: 1pt)
+        })
+      },
+      caption: [A wedge contour with orientation marked.],
+    ) <fig:wedgecontour>],
+)
 #proof[
   Let $f(z) = ee^(ii z^2)$. Choose the wedge contour composed of
   $
@@ -381,8 +444,8 @@ Residues are extremely important as they allow for simple evaluation of definite
 #figure-wrapper([
   #figure(
     {
-      let var-h-max = 4
-      let var-v-max = 3.5
+      let var-h-max = 2.5
+      let var-v-max = 2
       quick-plot(
         x-min: -var-h-max,
         x-max: var-h-max,
@@ -391,8 +454,8 @@ Residues are extremely important as they allow for simple evaluation of definite
         {
           import cetz.draw: *
 
-          let R = 3
-          let h = 2.5
+          let R = 2
+          let h = 1.5
 
           let A = (-R, 0)
           let C = (R, 0)
@@ -400,15 +463,13 @@ Residues are extremely important as they allow for simple evaluation of definite
           let F = (-R, h)
 
           let thick = (thickness: 1.5pt)
-          let mark = (end: (symbol: ">>", pos: 50%, shorten-to: none))
+          let mark = (end: (symbol: ">>", pos: 30%, fill: black, shorten-to: none))
 
           line(A, C, mark: mark, stroke: thick)
           line(C, D, mark: mark, stroke: thick)
           line(D, F, mark: mark, stroke: thick)
           line(F, A, mark: mark, stroke: thick)
 
-          content((var-h-max, 0), $Re(z)$, anchor: "north", padding: 2pt)
-          content((0, var-v-max), $Im(z)$, anchor: "east", padding: 2pt)
           content(C, $R$, anchor: "north", padding: 2pt)
           content(A, $-R$, anchor: "north", padding: 2pt)
           content((0, h), $i$, anchor: "north-east", padding: 2pt)
