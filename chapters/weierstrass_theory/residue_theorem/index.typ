@@ -24,12 +24,12 @@ $
   c_(-1) = Res_(z=a) f(z) = 1 / ((m-1)!) lim_(z -> a) dif^(m-1) / (dif z^(m-1)) [(z-a)^m f(z)].
 $<eq:residueatpole>
 Let $z = infinity$ be an isolated singularity of $f(z)$, which is holomorphic in $CC without overline(D(0, R))$, for sufficiently large finite $R$. Then for finite $rho > R$, the residue at $z = infinity$ is _defined_ as (notice the orientation)
-$ Res_(z=infinity) f(z) = 1 / (2 uppi ii) integral.cont_(partial D(0, rho)) f(z) dz. $
+$ Res_(z=infinity) f(z) = 1 / (2 uppi ii) integral.cont.cw_(partial D(0, rho)) f(z) dz. $
 Let $zeta = 1 / z$. Then we get that
 $
   Res_(z=infinity) f(z)
-  &= -1 / (2 uppi ii) integral.cont_(partial D(0, rho)) f(1 / zeta) dif(1 / zeta) \
-  &= 1 / (2 uppi ii) integral.cont_(partial D(0, 1\/rho)) (f(1 \/ zeta)) / zeta^2 dzeta = -Res_(zeta=0) (f(1 \/ zeta)) / zeta^2.
+  &= -1 / (2 uppi ii) integral.cont.ccw_(partial D(0, rho)) f(1 / zeta) dif(1 / zeta) \
+  &= 1 / (2 uppi ii) integral.cont.ccw_(partial D(0, 1\/rho)) (f(1 \/ zeta)) / zeta^2 dzeta = -Res_(zeta=0) (f(1 \/ zeta)) / zeta^2.
 $
 In this definition, if
 $ f(z) = sum_(n=-infinity)^infinity c_n z^n <==> (f(1 \/ zeta)) / zeta^2 = sum_(n=-infinity)^infinity c_n zeta^(-n-2), $

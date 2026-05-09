@@ -30,23 +30,26 @@
   by @lem:nonvanishingholomorphiclogarithmabsolutemeanvalueproperty on $g$,
   $
     log abs(f(0))
-    &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta)) (product_(k=1)^n (r ee^(ii theta) - b_k)) / (product_(j=1)^m (r ee^(ii theta) - a_j))) dif theta + sum_(j=1)^m log abs(a_j) - sum_(k=1)^n log abs(b_k) \
-    &= 1 / (2 uppi) integral_0^(2 uppi) log abs(h (r ee^(ii theta))) dif theta + sum_(j=1)^m log abs(a_j) - sum_(k=1)^n log abs(b_k) \
-    &quad + 1 / (2 uppi) integral_0^(2 uppi) [sum_(k=1)^n (log r + log abs(1 - b_k / (r ee^(ii theta)))) - sum_(j=1)^m (log r + log abs(1 - a_j / (r ee^(ii theta))))] dif theta \
-    &= 1 / (2 uppi) integral_0^(2 uppi) log abs(h (r ee^(ii theta))) dif theta + sum_(j=1)^m log abs(a_j / r) - sum_(k=1)^n log abs(b_k / r) \
-    &quad + Re 1 / (2 uppi ii) [(sum_(j=1)^m integral.cont_(partial D(0, abs(a_j \/ r))) - sum_(k=1)^n integral.cont_(partial D(0, abs(b_k \/ r)))) (Log (1 - z) dz) / z] \
-    &= 1 / (2 uppi) integral_0^(2 uppi) log abs(h (r ee^(ii theta))) dif theta + sum_(j=1)^m log abs(a_j / r) - sum_(k=1)^n log abs(b_k / r) \
-    &quad + Re 1 / (2 uppi ii) (sum_(k=n_0+1)^n - sum_(j=m_0+1)^m) integral.cont_(partial DD) (Log (1 - z) dz) / z
+    &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta)) (product_(k=1)^n (r ee^(ii theta) - b_k)) / (product_(j=1)^m (r ee^(ii theta) - a_j))) dif theta \
+    &quad""+ sum_(j=1)^m log abs(a_j) - sum_(k=1)^n log abs(b_k) \
+    &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta + sum_(j=1)^m log abs(a_j) - sum_(k=1)^n log abs(b_k) \
+    &quad ""+ 1 / (2 uppi) integral_0^(2 uppi) [sum_(k=1)^n (log r + log abs(1 - b_k / (r ee^(ii theta)))) \
+      &wide""- sum_(j=1)^m (log r + log abs(1 - a_j / (r ee^(ii theta))))] dif theta \
+    &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta + sum_(j=1)^m log abs(a_j / r) - sum_(k=1)^n log abs(b_k / r) \
+    &quad ""+ Re 1 / (2 uppi ii) [(sum_(j=1)^m integral.cont.cw_(partial D(0, abs(a_j \/ r))) - sum_(k=1)^n integral.cont.cw_(partial D(0, abs(b_k \/ r)))) (Log (1 - z) dz) / z] \
+    &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta + sum_(j=1)^m log abs(a_j / r) - sum_(k=1)^n log abs(b_k / r) \
+    &quad ""+ Re 1 / (2 uppi ii) (sum_(k=n_0+1)^n - sum_(j=m_0+1)^m) integral.cont.ccw_(partial DD) (Log (1 - z) dz) / z
   $
-  where $z = b_k \/ (r ee^(ii theta))$, $dif theta = (ii dz) / z$ and the leftover integrals for interior points vanish by Cauchy--Goursat (@thm:cauchygoursattheorem), since $(Log(1-z)) / z$ has a removable singularity at $z = 0$.
+  where $z = a_j \/ (r ee^(ii theta)), b_k \/ (r ee^(ii theta))$, $dif theta = ii dz \/ z$, and the leftover integrals (up until $k=n_0$ and $j=m_0$) for interior points vanish by Cauchy--Goursat (@thm:cauchygoursattheorem), since $(Log(1-z)) / z$ has a removable singularity at $z = 0$.
 
   We now are left to prove that the remaining integral $I$ vanishes as well, which is not as immediate since the integrand does not extend continuously to the boundary. Let $z = ee^(ii theta)$, $dz = ii ee^(ii theta)$, then (by $psi = theta / 2$)
   $
     I
-    &= integral.cont_(partial DD) (Log (1 - z) dz) / z = integral_0^(2 uppi) log abs(1 - ee^(ii theta)) dif theta = 2 integral_0^uppi log abs(ee^(-ii psi) - ee^(ii psi)) dif psi \
-    &= 2 uppi log 2 + 2 integral_0^uppi log abs(sin psi) dif psi = 2 uppi log 2 + 4 integral_0^(uppi \/ 2) log abs(sin psi) dif psi = 2 uppi log 2 + 4 J.
+    &= integral.cont.ccw_(partial DD) (Log (1 - z) dz) / z = integral_0^(2 uppi) log abs(1 - ee^(ii theta)) dif theta = 2 integral_0^uppi log abs(ee^(-ii psi) - ee^(ii psi)) dif psi \
+    &= 2 uppi log 2 + 2 integral_0^uppi log abs(sin psi) dif psi = 2 uppi log 2 + 4 integral_0^(uppi \/ 2) log abs(sin psi) dif psi \
+    &= 2 uppi log 2 + 4 J.
   $
-  Splitting at $uppi / 4$ and using $cos$ with a substitution for the second integral then yields
+  Splitting at $uppi \/ 4$ and using $cos$ with a substitution for the second integral then yields
   $
     J = integral_0^(uppi \/ 4) log abs(sin psi) dif psi + integral_0^(uppi \/ 4) log abs(cos psi) dif psi = integral_0^(uppi \/ 4) log abs(1 / 2 sin 2 psi) dif psi.
   $
@@ -372,7 +375,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
 #proof[
   For fixed $z$, $r > 2 abs(z)$, we have
   $
-    integral_0^(2 uppi) (ii r ee^(ii theta) dif theta) / (r ee^(ii theta) - z)^(p+2) = integral.cont_(partial D(0,r)) (dif w) / (w - z)^(p+2) = 2 uppi ii Res_(w=z) 1 / (w - z)^(p+2)
+    integral_0^(2 uppi) (ii r ee^(ii theta) dif theta) / (r ee^(ii theta) - z)^(p+2) = integral.cont.ccw_(partial D(0,r)) (dif w) / (w - z)^(p+2) = 2 uppi ii Res_(w=z) 1 / (w - z)^(p+2)
   $
   by the Residue Theorem (@ thm:residuethm). Since $p + 2 > rho(f) + 1 gt.eq 1$ where $p$ is an integer, we must have $p + 2 gt.eq 2$ and thus
   $ integral_0^(2 uppi) (r ee^(ii theta) dif theta) / (r ee^(ii theta) - z)^(p+2) = 0. $
