@@ -215,6 +215,8 @@
 #let ii = $upright(i)$
 #let taui = $2 uppi ii$
 
+#let nothing = sym.diameter
+#let emptyset = sym.diameter
 #let abs(x) = $lr(| #x |)$
 #let ceil(x) = $lr(⌈ #x ⌉)$
 #let floor(x) = $lr(⌊ #x ⌋)$
