@@ -44,8 +44,8 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
 
   $
     (f(z)-f(a)) / (z-a) - 1 / taui integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-a)^2) & = 1 / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / (zeta-a) (1 / (zeta-z) - (1) / (zeta-a)) dzeta \
-    & = (z-a) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)(zeta-a)^2) dzeta,#<eq:cauchydifferentiationformula_differenceoffirstorderdifferences>
-  $
+    & = (z-a) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)(zeta-a)^2) dzeta,
+  $<eq:cauchydifferentiationformula_differenceoffirstorderdifferences>
 
   Let $d$ be the distance from $a$ to $partial U$; then $0 < r < d$. Then since $abs(z-a) < r$ and $abs(zeta-a) gt.eq d$, $abs(zeta-z) gt.eq d-r$. Then the absolute value of the integrand of @eq:cauchydifferentiationformula_differenceoffirstorderdifferences is bounded above by $M / (d^2(d-r))$, where $M$ is the maximum of $abs(f(zeta))$, which exists by @thm:continuous_function_bounded_on_compact. Then,
 
@@ -69,8 +69,8 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
 
   $
     1 / (zeta-z) & =1 / (zeta-a) dot (zeta-a) / (zeta-a+a-z)=1 / (zeta-a) dot 1 / (1 - (z-a) / (zeta-a)) \
-                 & =1 / (zeta-a) sum_(j = 0)^oo ((z-a) / (zeta-a))^j.#<eq:cauchydifferentiationformula_kernelexpansion>
-  $
+                 & =1 / (zeta-a) sum_(j = 0)^oo ((z-a) / (zeta-a))^j.
+  $<eq:cauchydifferentiationformula_kernelexpansion>
 
   Then,
 
@@ -447,4 +447,6 @@ The concept of analytic continuation and its consequent problems and properties 
   over the same disk of convergence. Over the punctured disk, $tilde(f)(z)=f(z)$, and therefore $tilde(f)$ is an analytic continuation of $f$.
 ]
 
-#include "partitions_of_unity/index.typ"
+#chapter-section("partitions_of_unity")[
+  #include "partitions_of_unity/index.typ"
+]

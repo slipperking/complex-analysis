@@ -69,7 +69,7 @@ The disk $abs(z) < R$ is known as the _disk of convergence_, a direct generaliza
 
 #theorem("Cauchy" + sym.dash.en + "Hadamard")[
   The radius of convergence of the power series in the form $sum_(n = 0)^oo a_n z^n$ can be determined by
-  $ R = 1 / op("lim sup")_(n -> oo) root(n, abs(a_n)). $ <eq:cauchyhadamard>
+  $ R = 1 / limsup_(n -> oo) root(n, abs(a_n)). $ <eq:cauchyhadamard>
 ] <thm:cauchyhadamard>
 
 Of course, a convergence radius of $0$ implies that the series is divergent everywhere except for possibly at $0$, and a convergence radius of $oo$ means that the series absolutely converges everywhere.
@@ -84,7 +84,7 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
   $ abs(sum_(k = 0)^(n_N) a_k z^k - sum_(k = 0)^(n_N - 1) a_k z^k) > 1, $
   by the Cauchy Criterion (@thm:cauchycriterionsequenceconvergence), $sum_(n = 0)^oo a_n z^n$ is divergent. Thus, part 2 is satisfied.
 
-  To prove part 3, first observe that $sum_(n = 1)^oo n a_n z^n$ and $sum_(n = 1)^oo a_n z^n$ have the same convergence radius since $op("lim sup")_(n -> oo) root(n, n) = 1$. For $z in D(0, R)$, let $f(z) = S_n (z) + R_n (z)$, where
+  To prove part 3, first observe that $sum_(n = 1)^oo n a_n z^n$ and $sum_(n = 1)^oo a_n z^n$ have the same convergence radius since $limsup_(n -> oo) root(n, n) = 1$. For $z in D(0, R)$, let $f(z) = S_n (z) + R_n (z)$, where
   $ S_n (z) = sum_(k = 0)^(n - 1) a_k z^k, quad R_n (z) = sum_(k = n)^oo a_k z^k. $
 
   Let
@@ -96,8 +96,8 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
   By analyzing the difference,
   $
     (f(z) - f(z_0)) / (z - z_0) - f_1(z) & = [(S_n (z) - S_n (z_0)) / (z - z_0) - S'_n (z)] \
-                                         & + S'_n (z) - f_1(z) + (R_n (z) - R_n (z_0)) / (z - z_0). #<eq:abelradius_differentiationintermediate>
-  $
+                                         & + S'_n (z) - f_1(z) + (R_n (z) - R_n (z_0)) / (z - z_0).
+  $<eq:abelradius_differentiationintermediate>
 
   Since $S'_n (z) -> f_1(z)$ as $n -> oo$, it follows that $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $abs(S'_n (z) - f_1(z)) < epsilon / 3$. Since
   $
@@ -146,9 +146,9 @@ Lastly, the sufficient criteria to pass a limit through an integral:
 
   Then $forall n > N$,
   $
-    abs(integral_gamma f_n (z) dz - integral_gamma f(z) dz) &= abs(integral_gamma (f_n (z) - f(z)) dz) \
-    &<= integral_gamma abs(f_n (z) - f(z)) abs(dz) \
-    &< integral_gamma epsilon / length(gamma) abs(dz) = epsilon.
+    abs(integral_gamma f_n (z) dz - integral_gamma f(z) dz) & = abs(integral_gamma (f_n (z) - f(z)) dz) \
+                                                            & <= integral_gamma abs(f_n (z) - f(z)) abs(dz) \
+                                                            & < integral_gamma epsilon / length(gamma) abs(dz) = epsilon.
   $
   Therefore,
   $ lim_(n -> oo) integral_gamma f_n (z) dz = integral_gamma f(z) dz. #qedhere $

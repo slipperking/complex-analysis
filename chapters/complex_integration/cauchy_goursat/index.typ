@@ -55,21 +55,21 @@ Analogous to the real case, a 0-form is defined as a scalar-valued function in t
   Then,
 
   $
-    omega & =(xi_1 + ii eta_1) dz + (xi_2 + ii eta_2) dif overline(z) #<eq:complex_green_omega_expansion_intermediate>\
+    omega & =(xi_1 + ii eta_1) dz + (xi_2 + ii eta_2) dif overline(z) \
     & =(xi_1 + ii eta_1) (dx + ii dy) + (xi_2 + ii eta_2) (dx - ii dy) \
     & =xi_1 dx + ii eta_1 dx + ii xi_1 dy - eta_1 dy + xi_2 dx + ii eta_2 dx - ii xi_2 dy + eta_2 dy \
-    & =[(xi_1 + xi_2) dx + (eta_2 - eta_1) dy] + ii [(eta_1 + eta_2) dx + (xi_1 - xi_2) dy]#<eq:complex_green_real_and_complex_dx_dy_intermediate>
-  $
+    & =[(xi_1 + xi_2) dx + (eta_2 - eta_1) dy] + ii [(eta_1 + eta_2) dx + (xi_1 - xi_2) dy]
+  $ <eq:complex_green_real_and_complex_dx_dy_intermediate>
 
-  Each of $xi_1, xi_2, eta_1, eta_2$ are real-valued functions that can be represented with a domain of $RR^2$. We then apply the $dif = partial + overline(partial)$ definition of the exterior derivative and relate it to @eq:complex_green. Starting from @eq:complex_green_omega_expansion_intermediate,
+  Each of $xi_1, xi_2, eta_1, eta_2$ are real-valued functions that can be represented with a domain of $RR^2$. By definition,
 
   $
     dif omega & =(partial + overline(partial)) (xi_1 + ii eta_1) dz + (partial + overline(partial)) (xi_2 + ii eta_2) dif overline(z) \
     & =(pdv(xi_1, overline(z)) + ii pdv(eta_1, overline(z))) dif overline(z) and dz + (pdv(xi_2, z) + ii pdv(eta_2, z)) dz and dif overline(z) \
     & =2 (ii pdv(xi_1, overline(z)) - pdv(eta_1, overline(z)) - ii pdv(xi_2, z) + pdv(eta_2, z)) dx and dy \
     & =(ii pdv(xi_1, x) - pdv(xi_1, y) - pdv(eta_1, x) - ii pdv(eta_1, y) - ii pdv(xi_2, x) - pdv(xi_2, y) + pdv(eta_2, x) - ii pdv(eta_2, y)) dx and dy \
-    & =(pdv(eta_2, x) - pdv(xi_1, y) - pdv(eta_1, x) - pdv(xi_2, y)) dif A + ii (pdv(xi_1, x) - pdv(eta_1, y) - pdv(xi_2, x) - pdv(eta_2, y)) dif A. #<eq:complex_green_exterior_derivative_result>
-  $
+    & =(pdv(eta_2, x) - pdv(xi_1, y) - pdv(eta_1, x) - pdv(xi_2, y)) dif A + ii (pdv(xi_1, x) - pdv(eta_1, y) - pdv(xi_2, x) - pdv(eta_2, y)) dif A.
+  $<eq:complex_green_exterior_derivative_result>
 
   From @eq:complex_green_real_and_complex_dx_dy_intermediate, we can apply @thm:real_green. For the real component of $omega$, we obtain
 

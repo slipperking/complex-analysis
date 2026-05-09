@@ -5,7 +5,8 @@
 #import "@preview/cetz-plot:0.1.3": *
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": vb as _vb
-#import "@preview/equate:0.3.2": equate
+// #import "@preview/equate:0.3.2": equate
+#import "@preview/intextual:0.1.1" : *
 
 #let cvector = cetz.vector
 #let cmatrix = cetz.matrix
@@ -22,10 +23,12 @@
   "example",
 )
 
+// #let equate-eq = equate.with(number-mode: "label")
 #let section-numbering-depth = 2
 
 #let _heading-numbers(depth: section-numbering-depth) = {
-  counter(heading).get().slice(0, depth)
+  let arr = counter(heading).get()
+  arr.slice(0, calc.min(depth, arr.len()))
 }
 
 #let _scoped-number(value, depth: section-numbering-depth) = {

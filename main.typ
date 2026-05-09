@@ -1,5 +1,5 @@
 #import "/lib.typ": *
-#import "paper-styles.typ": paper-styles
+#import "show-rules.typ": paper-styles
 
 #show: paper-styles
 

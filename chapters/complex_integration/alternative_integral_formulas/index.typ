@@ -45,8 +45,8 @@ By the univalence of $phi_z$, let $ee^(ii psi) = phi_z (ee^(ii t))$. It follows 
 $
   ii ee^(ii psi) dif psi & = ii (1 - overline(z) z) / ((1 - overline(z) ee^(ii t))^2) ee^(ii t) dt \
   dif psi & = (1 - overline(z) z) / ((1 - overline(z) ee^(ii t))^2) (1 - overline(z) ee^(ii t)) / (ee^(ii t) - z) ee^(ii t) dt \
-  & = (1 - abs(z)^2) / abs(1 - overline(z) ee^(ii t))^2 dt.#<eq:poissonintegralformula_differentialcomputation>
-$
+  & = (1 - abs(z)^2) / abs(1 - overline(z) ee^(ii t))^2 dt.
+$<eq:poissonintegralformula_differentialcomputation>
 
 Then from @eq:harmonicfunctionmeanvalueoverboundaryofunitdisk,
 
@@ -80,8 +80,8 @@ and from the bijectivity of $R ee^(ii psi) = tilde(phi)_z (R ee^(ii t))$,
 $
   dif psi & = (1 - (abs(z)^2)/(R^2)) / (1 - (overline(z))/(R) ee^(ii t))^2 ee^(ii t) ee^(-ii psi) dt \
   & = (1 - (abs(z)^2)/(R^2)) / (1 - (overline(z))/(R) ee^(ii t))^2 (1 - (overline(z))/(R) ee^(ii t)) / (1 - (z)/(R) ee^(-ii t)) dt \
-  & = (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 dt. #<eq:poissonintegralformula2_differentialcomputation>
-$
+  & = (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 dt. 
+$<eq:poissonintegralformula2_differentialcomputation>
 
 Then because $tilde(phi)_z^(-1) = tilde(phi)_(-z)$,
 
@@ -102,8 +102,8 @@ The Poisson kernel can also be rewritten as
 $
   P(zeta, z) & = (abs(zeta)^2 - abs(z)^2) / (2 uppi (zeta - z) (overline(zeta) - overline(z))) \
   & = 1 / (4 uppi) ((zeta + z) / (zeta - z) + (overline(zeta) + overline(z)) / (overline(zeta) - overline(z))) \
-  & = 1 / (2 uppi) Re((zeta + z) / (zeta - z)). #<eq:poissonkernelgeneralform>
-$
+  & = 1 / (2 uppi) Re((zeta + z) / (zeta - z)). 
+$<eq:poissonkernelgeneralform>
 
 Thus, @eq:poissonintegralformula2 is equivalent to
 
@@ -147,8 +147,8 @@ From @eq:schwarz_integral_formula_imaginary_part, we can rewrite
 $
   Im((zeta + z) / (zeta - z)) & = Im(1 + (2 z) / (zeta - z)) \
                               & = Im((2 z (overline(zeta) - overline(z))) / abs(zeta - z)^2) \
-                              & = (2 Im(z overline(zeta))) / abs(zeta - z)^2.#<eq:harmonic_conjugate>
-$
+                              & = (2 Im(z overline(zeta))) / abs(zeta - z)^2.
+$<eq:harmonic_conjugate>
 
 Let
 

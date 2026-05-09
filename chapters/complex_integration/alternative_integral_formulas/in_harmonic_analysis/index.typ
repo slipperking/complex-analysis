@@ -8,8 +8,8 @@ $
   u(z)
   &= 1 / (2 uppi) integral_0^(2 uppi) u(zeta) (1 - abs(z)^2) / abs(zeta - z)^2 dif tau \
   &= 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau)) dif tau) / ((ee^(ii tau) - rho ee^(ii theta)) (ee^(-ii tau) - rho ee^(-ii theta))) \
-  &= 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau)) dif tau) / (1 + rho^2 - 2 rho cos(theta - tau)). #<eq:poissonintegralformulatrigonometricsubstitution>
-$
+  &= 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau)) dif tau) / (1 + rho^2 - 2 rho cos(theta - tau)). 
+$<eq:poissonintegralformulatrigonometricsubstitution>
 
 Since $u(z)$ is continuous on $partial DD$ and $u(ee^(ii theta))$ is periodic with period $2 uppi$, it admits a Fourier series representation with coefficients
 
@@ -41,8 +41,8 @@ By @thm:weierstrassmtest and @thm:limitintegralswitch,
 
 $
   1 / (2 uppi) sum_(n = -oo)^oo integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau
-  = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) sum_(n = -oo)^oo rho^(abs(n)) ee^(ii n (theta - tau)) dif tau. #<eq:poissonintegralformulafourierseriespostintegralsummationswitch>
-$
+  = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) sum_(n = -oo)^oo rho^(abs(n)) ee^(ii n (theta - tau)) dif tau. 
+$<eq:poissonintegralformulafourierseriespostintegralsummationswitch>
 
 The summation simplifies as follows:
 

@@ -5,9 +5,27 @@
   set heading(numbering: "1.1")
   set page(numbering: "1", margin: 1.75in)
 
-  show: equate.with(number-mode: "label")
-  set math.equation(numbering: scoped-equation-numbering)
   show: thmrules.with(qed-symbol: $square$)
+  show: intertext-rule
+  show math.equation: it => {
+    if it.fields().keys().contains("label") {
+      math.equation(block: true, numbering: scoped-equation-numbering, it)
+    } else {
+      it
+    }
+  }
+
+  show ref: it => {
+    let el = it.element
+    if el != none and el.func() == math.equation {
+      link(el.location(), numbering(
+        scoped-equation-numbering,
+        counter(math.equation).at(el.location()).at(0) + 1,
+      ))
+    } else {
+      it
+    }
+  }
 
   set figure(placement: alignment.top)
   show figure.caption: it => context [

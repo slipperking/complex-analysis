@@ -62,7 +62,7 @@ $
 $ <eq:laurentseriesnegativeexponents>
 @eq:laurentseries is said to be convergent at $z = z_0$ if the two power series are both convergent. Let the convergence radius of @eq:laurentseriesnonnegativeexponents be
 $
-  R = 1 / op("lim sup")_(n -> oo) root(n, abs(c_n))
+  R = 1 / limsup_(n -> oo) root(n, abs(c_n))
 $
 by the Cauchy--Hadamard Theorem (@thm:cauchyhadamard). It follows that $phi$ is holomorphic on $D(a, R)$. Let $zeta = (z - a)^(-1)$. Then @eq:laurentseriesnegativeexponents becomes
 $
@@ -70,11 +70,11 @@ $
 $
 This series converges when
 $
-  abs(zeta) < 1 / op("lim sup")_(n -> oo) root(n, abs(c_(-n))) = lambda.
+  abs(zeta) < 1 / limsup_(n -> oo) root(n, abs(c_(-n))) = lambda.
 $
 Let $r = 1 / lambda$. Then $psi(z)$ converges when
 $
-  abs(z - a) > op("lim sup")_(n -> oo) root(n, abs(c_(-n))),
+  abs(z - a) > limsup_(n -> oo) root(n, abs(c_(-n))),
 $
 or when $z in CC without overline(D(a, r))$.
 
