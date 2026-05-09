@@ -7,7 +7,7 @@
 #chapter-section("complex_power_series")[
   #include "complex_power_series/index.typ"
 ]
-#chapter-section("conformality")[
+#chapter-section("conformality_of_holomorphic_mappings")[
   #include "conformality/index.typ"
 ]
 #chapter-section("elementary_functions")[

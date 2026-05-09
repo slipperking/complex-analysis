@@ -69,8 +69,8 @@ There is not a directly trivial reason for the definition of the residue at $inf
         import cetz.draw: *
 
         ortho(x: 35deg, y: 35deg, cull-face: none, {
-          circle((0, 1, 0), radius: 1.2pt, fill: black, stroke: none)
-          circle((0, -1, 0), radius: 1.2pt, fill: black, stroke: none)
+          anchor("north-pole", (0, 1, 0))
+          anchor("south-pole", (0, -1, 0))
           let theta-steps = 60
           let phi-steps = 30
           let n-shading-levels = 6
@@ -166,6 +166,8 @@ There is not a directly trivial reason for the definition of the residue at $inf
           line((0, 0, 0), (0, -ax, 0), stroke: ax-s, mark: (end: ">>", fill: black))
           content((0, ax + 0.2, 0), [$x_3$])
         })
+        circle("north-pole", radius: 1.2pt, fill: black, stroke: none)
+        circle("south-pole", radius: 1.2pt, fill: black, stroke: none)
       })
     },
     caption: [The orientation of a neighborhood that does not enclose $infinity$ after projection.],
