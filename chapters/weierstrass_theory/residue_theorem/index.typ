@@ -73,11 +73,8 @@ There is not a directly trivial reason for the definition of the residue at $inf
           circle((0, -1, 0), radius: 1.2pt, fill: black, stroke: none)
           let theta-steps = 60
           let phi-steps = 30
-          let n-shading-levels = 8
-          let get-level(j) = {
-            let phi-mid = (j / phi-steps + (j + 1) / phi-steps) / 2 * calc.pi
-            calc.round(calc.max(0.7, calc.cos(phi-mid) * 0.25 + 0.7) * n-shading-levels)
-          }
+          let n-shading-levels = 6
+
           for i in range(theta-steps) {
             for j in range(phi-steps) {
               let theta1 = i / theta-steps * 2 * calc.pi
@@ -96,8 +93,11 @@ There is not a directly trivial reason for the definition of the residue at $inf
                 calc.sin((phi1 + phi2) / 2) * calc.sin((theta1 + theta2) / 2),
               )
 
-              let raw-intensity = calc.max(0.7, normal.at(1) * 0.25 + 0.7)
-              let light-intensity = calc.round(raw-intensity * n-shading-levels) / n-shading-levels
+              let light-intensity = calc.max(
+                0.7,
+                calc.ceil((1 + normal.at(1)) * n-shading-levels / 2) * 0.3 / n-shading-levels + 0.7,
+              )
+
               let translucent-fill = color.transparentize(color.black, 100% * light-intensity)
 
               line(p1, p2, p3, p4, close: true, fill: translucent-fill, stroke: none)

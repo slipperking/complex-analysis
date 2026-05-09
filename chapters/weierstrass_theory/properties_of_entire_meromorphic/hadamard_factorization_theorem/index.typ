@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-==== Hadamard Factorization Theorem
+=== Hadamard Factorization Theorem
 
 #theorem[
   Let $f(z) = ee^(phi(z)) P(z)$ be the Weierstrass canonical factorization of $f$, where $f$ is entire with finite order $rho = rho(f)$ and $rho(0) = 1$. Then $phi$ is a polynomial of degree $lt.eq rho$.

@@ -16,9 +16,9 @@
   #include "/chapters/weierstrass_theory/index.typ"
 ]
 
-// #chapter-section("riemann-theory")[
-//   #include "/chapters/riemann_theory/index.typ"
-// ]
+#chapter-section("geometric_conformal_mappings")[
+  #include "/chapters/geometric_conformal_mappings/index.typ"
+]
 
 // #chapter-section("rational-approximation")[
 //   #include "/chapters/rational_approximation_theory/index.typ"
