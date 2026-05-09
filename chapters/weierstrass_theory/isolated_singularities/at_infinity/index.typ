@@ -2,7 +2,7 @@
 
 === At the $oo$ Point
 
-Given the one-point compactification of $CC$, $extcomplex$, we can now define and analyze the behavior of functions near the point at oo. Similar to the classification of isolated singularities in $CC$, we can classify $oo$ as a removable singularity, a pole, or an essential singularity of a holomorphic function.
+Given the one-point compactification of $CC$, $extcomplex$, we can now define and analyze the behavior of functions near the point at $oo$. Similar to the classification of isolated singularities in $CC$, we can classify $oo$ as a removable singularity, a pole, or an essential singularity of a holomorphic function.
 
 Let $f:CC without overline(D(0, R)) -> CC$ be holomorphic for some $R > 0$. Then $z = oo$ is an _isolated singularity_ of $f$. To analyze the nature of the singularity, let $zeta = 1 / z$. We define a new function $g(zeta) = f(1 / zeta) = f(z)$, which is holomorphic on $D^*(0, 1 / R)$. Then at $zeta = 0$, $g(zeta)$ has the Laurent expansion of
 $
@@ -17,10 +17,10 @@ The classification of the singularity at $oo$ is then reduced to the classificat
 
 1. If $z = oo$ is a removable singularity of $f(z)$, then $f(z)$ has the form of
   $ f(z) = c_0 + c_(-1) / z + c_(-2) / z^2 + c_(-3) / z^3 + dots.c. $
-2. If $z = oo$ is a pole of $f(z)$ with degree $m in NN$, then $f(z)$ can be written as
+1. If $z = oo$ is a pole of $f(z)$ with degree $m in NN$, then $f(z)$ can be written as
   $ f(z) = c_m z^m + c_(m - 1) z^(m - 1) + dots.c + c_0 + c_(-1) / z + dots.c, $
   where $c_m != 0$.
-3. If $z = oo$ is an essential singularity of $f(z)$, then $f(z)$ can be expanded as
+1. If $z = oo$ is an essential singularity of $f(z)$, then $f(z)$ can be expanded as
   $ f(z) = sum_(n = -oo)^oo c_n z^n, $
   where $forall N in NN$, $exists n > N$ such that $c_n != 0$ (infinitely many coefficients of $psi$ or $tilde(psi)$ are nonzero).
 

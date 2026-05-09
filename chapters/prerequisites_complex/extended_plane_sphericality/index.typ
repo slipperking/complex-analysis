@@ -4,7 +4,7 @@
 
 All complex numbers form a field that extends the real number field. A complex number $alpha + ii beta$ can be visualized on a rectangular plane as the point $(alpha, beta)$, with two axes: the real axis and the imaginary axis. It is well known that any complex number also has the polar form $r ee^(ii theta) = r (cos theta + ii sin theta)$.
 
-The point at oo, $oo$, extends $CC$ to
+The point at infinity, $oo$, extends $CC$ to
 $ extcomplex = CC union {oo}. $
 The following arithmetic operations are defined: for all $a in CC$,
 $ a + oo = oo + a = oo, $

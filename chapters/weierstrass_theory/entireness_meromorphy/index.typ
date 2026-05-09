@@ -4,7 +4,7 @@
 
 We have previously defined the concept of an entire function in the chapter on complex differentiation. Let $f$ be entire with the unique Taylor expansion $sum_(n = 0)^oo c_n z^n$. Since $z = oo$ is an isolated singularity, by the uniqueness of the Laurent expansion, the expansion at $z = 0$ has the same form as the expansion at $z = oo$. We will now analyze the implications on the entire function $f$ given an isolated singularity.
 
-1. If the oo point is a removable singularity, then $lim_(z -> oo) f(z)$ exists and is finite.
+1. If the infinity point is a removable singularity, then $lim_(z -> oo) f(z)$ exists and is finite.
 
   #proposition[
     If $f(z)$ is entire and has a removable singularity at $z = oo$, then $f$ is constant.
