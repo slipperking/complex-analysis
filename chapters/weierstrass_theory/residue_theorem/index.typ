@@ -61,13 +61,116 @@ This result itself is fairly trivial. Now we will explain the significance of th
 
 There is not a directly trivial reason for the definition of the residue at $infinity$, except for the fact that it seemingly "unifies" the Riemann sphere.
 
-// figure: fig:stereographicprojectionofneighborhood
-// \centerline{\includesvg[width=0.75\linewidth]{build/svg/riemann_sphere.svg}}
-// Caption: The orientation of a neighborhood that does not enclose $infinity$ after projection.
-#figure(
-  [],
-  caption: [The orientation of a neighborhood that does not enclose $infinity$ after projection.],
-) <fig:stereographicprojectionofneighborhood>
+#figure-wrapper([
+  #figure(
+    {
+      cetz.canvas({
+        import plot: *
+        import cetz.draw: *
+
+        ortho(x: 35deg, y: 35deg, cull-face: none, {
+          circle((0, 1, 0), radius: 1.2pt, fill: black, stroke: none)
+          circle((0, -1, 0), radius: 1.2pt, fill: black, stroke: none)
+          let theta-steps = 60
+          let phi-steps = 30
+          let n-shading-levels = 8
+          let get-level(j) = {
+            let phi-mid = (j / phi-steps + (j + 1) / phi-steps) / 2 * calc.pi
+            calc.round(calc.max(0.7, calc.cos(phi-mid) * 0.25 + 0.7) * n-shading-levels)
+          }
+          for i in range(theta-steps) {
+            for j in range(phi-steps) {
+              let theta1 = i / theta-steps * 2 * calc.pi
+              let theta2 = (i + 1) / theta-steps * 2 * calc.pi
+              let phi1 = j / phi-steps * calc.pi
+              let phi2 = (j + 1) / phi-steps * calc.pi
+
+              let p1 = (calc.sin(phi1) * calc.cos(theta1), calc.cos(phi1), calc.sin(phi1) * calc.sin(theta1))
+              let p2 = (calc.sin(phi1) * calc.cos(theta2), calc.cos(phi1), calc.sin(phi1) * calc.sin(theta2))
+              let p3 = (calc.sin(phi2) * calc.cos(theta2), calc.cos(phi2), calc.sin(phi2) * calc.sin(theta2))
+              let p4 = (calc.sin(phi2) * calc.cos(theta1), calc.cos(phi2), calc.sin(phi2) * calc.sin(theta1))
+
+              let normal = (
+                calc.sin((phi1 + phi2) / 2) * calc.cos((theta1 + theta2) / 2),
+                calc.cos((phi1 + phi2) / 2),
+                calc.sin((phi1 + phi2) / 2) * calc.sin((theta1 + theta2) / 2),
+              )
+
+              let raw-intensity = calc.max(0.7, normal.at(1) * 0.25 + 0.7)
+              let light-intensity = calc.round(raw-intensity * n-shading-levels) / n-shading-levels
+              let translucent-fill = color.transparentize(color.black, 100% * light-intensity)
+
+              line(p1, p2, p3, p4, close: true, fill: translucent-fill, stroke: none)
+            }
+          }
+
+          for i in range(6) {
+            let theta = i / 6 * 2 * calc.pi
+            let pts = range(61).map(j => {
+              let phi = j / 60 * calc.pi
+              (calc.sin(phi) * calc.cos(theta), calc.cos(phi), calc.sin(phi) * calc.sin(theta))
+            })
+            line(..pts, stroke: (paint: black, thickness: 0.3pt, dash: ("dot", .5pt)))
+          }
+
+          let eq-pts = range(101).map(i => {
+            let t = i / 100 * 2 * calc.pi
+            (calc.cos(t), 0, calc.sin(t))
+          })
+          line(..eq-pts, stroke: (paint: black, thickness: 0.8pt, dash: ("dot", 1pt)))
+
+          let pr = 3
+          for i in range(-2 * pr, 2 * pr + 1) {
+            let index = i / 2
+            line((index, 0, -pr), (index, 0, pr), stroke: (paint: black, thickness: 0.2pt))
+            line((-pr, 0, index), (pr, 0, index), stroke: (paint: black, thickness: 0.2pt))
+          }
+
+          let phi-c = calc.pi / 3
+          let theta-c = calc.pi / 3
+          let r-nb = 0.3
+          let nbhd-pts = range(61).map(i => {
+            let t = i / 60 * 2 * calc.pi
+            let phi = phi-c + r-nb * calc.cos(t)
+            let theta = theta-c + r-nb * calc.sin(t)
+            (calc.sin(phi) * calc.cos(theta), calc.cos(phi), calc.sin(phi) * calc.sin(theta))
+          })
+          line(..nbhd-pts, stroke: (paint: black, thickness: 0.5pt, dash: ("dot", "dot")))
+
+          let proj-pts = nbhd-pts.map(p => {
+            let (xc, yc, zc) = p
+            let d = 1 - yc
+            (xc / d, 0, zc / d)
+          })
+          line(..proj-pts, stroke: (paint: black, thickness: 0.6pt, dash: ("dot", "dot")))
+
+          let n-arrows = 6
+          for k in range(n-arrows) {
+            let i = int(k / n-arrows * 60)
+            mark(nbhd-pts.at(i + 1), nbhd-pts.at(i), ">>", fill: black, stroke: none, scale: 0.4)
+            mark(proj-pts.at(i + 1), proj-pts.at(i), ">>", fill: black, stroke: none, scale: 0.7)
+          }
+
+          let ax = 3.0
+          let ax-s = (paint: black, thickness: 0.6pt)
+
+          line((0, 0, 0), (ax, 0, 0), stroke: ax-s, mark: (end: ">>", fill: black))
+          line((0, 0, 0), (-ax, 0, 0), stroke: ax-s, mark: (end: ">>", fill: black))
+          content((ax + 0.2, 0, 0), [$x_2$])
+
+          line((0, 0, 0), (0, 0, ax), stroke: ax-s, mark: (end: ">>", fill: black))
+          line((0, 0, 0), (0, 0, -ax), stroke: ax-s, mark: (end: ">>", fill: black))
+          content((0, 0, ax + 0.2), [$x_1$])
+
+          line((0, 0, 0), (0, ax, 0), stroke: ax-s, mark: (end: ">>", fill: black))
+          line((0, 0, 0), (0, -ax, 0), stroke: ax-s, mark: (end: ">>", fill: black))
+          content((0, ax + 0.2, 0), [$x_3$])
+        })
+      })
+    },
+    caption: [The orientation of a neighborhood that does not enclose $infinity$ after projection.],
+  ) <fig:stereographicprojectionofneighborhood>
+])
 
 However, if we take a neighborhood of an arbitrary point in $CC$ on the Riemann sphere and traverse its boundary clockwise (from the perspective of outside the sphere), its projection onto $CC$ will be counterclockwise (@fig:stereographicprojectionofneighborhood). However, the boundary of a neighborhood of $infinity$ in $S^2$ will have a clockwise projection (hence the difference in orientation). We define its equality with the residue of $-(f(1\/zeta)) / zeta^2$ at $zeta = 0$, rather than $f(1\/zeta)$, because we compose the differential form $f(z) dz$ with the inversion, as opposed to $f(z)$.
 
@@ -86,7 +189,7 @@ Residues are extremely important as they allow for simple evaluation of definite
     {
       let radius = 3
       let max = radius + 0.5
-      quick-plot(scale: 1, x-min: -max, x-max: max, y-max: max, {
+      quick-plot(scale: 1, x-min: -max, x-max: max, y-max: max, canvas: {
         import cetz.draw: *
         let mark = (end: (symbol: ">>", fill: black, pos: 30%, shorten-to: none))
 
@@ -116,9 +219,9 @@ Residues are extremely important as they allow for simple evaluation of definite
 
         line((-radius, 0), (radius, 0), mark: mark, stroke: 1.5pt)
 
-        content((radius, 0), anchor: "north", $R$)
-        content((-radius, 0), anchor: "north", $-R$)
-        content((0, radius), anchor: "south-east", $R$)
+        content((radius, 0), anchor: "north", $R$, padding: 2pt)
+        content((-radius, 0), anchor: "north", $-R$, padding: 2pt)
+        content((0, radius), anchor: "south-east", $R$, padding: 2pt)
       })
     },
     caption: [A semicircular contour with orientation marked.],
@@ -154,28 +257,61 @@ Residues are extremely important as they allow for simple evaluation of definite
   Evaluate the integral $integral_0^infinity (sin x) / x dx$.
 ]
 
-// TikZ figure: indented semicircular contour
-// \begin{tikzpicture}
-//   \draw[-{Stealth}, ultra thin] (0, 0) -- (5, 0);
-//   \draw[-{Stealth}, ultra thin] (0, 0) -- (-5, 0);
-//   \draw[-{Stealth}, thin] (0, 0) -- (0, 5);
-//   \draw[-{Stealth}, thin] (0, 0) -- (0, -0.5);
-//   \draw[-{Stealth}, thick] (-3, 0) -- (-0.75, 0);
-//   \draw[-{Stealth}, thick] (-0.8,0) arc[start angle=180, end angle=0, radius=0.8];
-//   \draw[-{Stealth}, thick] (3,0) arc[start angle=0, end angle=61, radius=3];
-//   \draw[-{Stealth}, thick] (1.5,2.59807) arc[start angle=60, end angle=121, radius=3];
-//   \draw[-{Stealth}, thick] (-1.5,2.59807) arc[start angle=120, end angle=180, radius=3];
-//   \draw[-{Stealth}, thick] (0.8, 0) -- (3, 0);
-//   \node[anchor=north] at (3,0) {$R$};
-//   \node[anchor=north] at (0.8,0) {$epsilon$};
-//   \node[anchor=north] at (-3,0) {$-R$};
-//   \node[anchor=north] at (-0.8,0) {$-epsilon$};
-//   \node[anchor=south east] at (0,3) {$R$};
-// \end{tikzpicture}
-#figure(
-  [],
-  caption: [An indented semicircular contour with orientation marked.],
-) <fig:indentedsemicircularcontour>
+#figure-wrapper([
+  #figure(
+    {
+      let var-R = 3
+      let var-epsilon = 0.8
+      let max = var-R + 0.5
+      quick-plot(scale: 1, x-min: -max, x-max: max, y-max: max, canvas: {
+        import cetz.draw: *
+        let mark = (end: (pos: 50%, symbol: ">>", fill: black, shorten-to: none))
+
+        arc-through(
+          (180deg, var-epsilon),
+          (90deg, var-epsilon),
+          (0deg, var-epsilon),
+          stroke: (thickness: 1pt),
+          mark: mark,
+        )
+
+        line((-var-R, 0), (-var-epsilon, 0), stroke: (thickness: 1pt), mark: mark)
+        line((var-epsilon, 0), (var-R, 0), stroke: (thickness: 1pt), mark: mark)
+
+        arc-through(
+          (0deg, var-R),
+          (30deg, var-R),
+          (60deg, var-R),
+          stroke: (thickness: 1.5pt),
+          mark: mark,
+        )
+
+        arc-through(
+          (60deg, var-R),
+          (90deg, var-R),
+          (121deg, var-R),
+          stroke: (thickness: 1.5pt),
+          mark: mark,
+        )
+
+        arc-through(
+          (120deg, var-R),
+          (150deg, var-R),
+          (180deg, var-R),
+          stroke: (thickness: 1.5pt),
+          mark: mark,
+        )
+
+        content((var-R, 0), anchor: "north", $R$, padding: 2pt)
+        content((var-epsilon, 0), anchor: "north", $epsilon$, padding: 2pt)
+        content((-var-R, 0), anchor: "north", $-R$, padding: 2pt)
+        content((-var-epsilon, 0), anchor: "north", $-epsilon$, padding: 2pt)
+        content((0, var-R), anchor: "south-east", $R$, padding: 2pt)
+      })
+    },
+    caption: [An indented semicircular contour with orientation marked.],
+  ) <fig:indentedsemicircularcontour>
+])
 #proof[
   It is common to use integration with parameters to approach this integral. However, we will now provide a solution via contour integration.
 
@@ -223,30 +359,14 @@ Residues are extremely important as they allow for simple evaluation of definite
   Evaluate the improper integrals
   $ I_1 = integral_0^infinity cos(x^2) dx, quad I_2 = integral_0^infinity sin(x^2) dx. $
 ]
-// TikZ figure: wedge contour
-// \begin{tikzpicture}
-//   \draw[-{Stealth}, ultra thin] (0, 0) -- (4.5, 0);
-//   \draw[-{Stealth}, ultra thin] (0, 0) -- (-0.4, 0);
-//   \draw[-{Stealth}, thin] (0, 0) -- (0, 4);
-//   \draw[-{Stealth}, thin] (0, 0) -- (0, -0.5);
-//   \draw[-{Stealth}, thick] (3.5,0) arc[start angle=0, end angle=45, radius=3.5];
-//   \draw[thin] (0.5,0) arc[start angle=0, end angle=45, radius=0.5];
-//   \draw[-{Stealth}, thick] (0, 0) -- (3.5, 0);
-//   \draw[-{Stealth}, thick] (2.47487, 2.47487) -- (0, 0);
-//   \node[anchor=west] at (0.4,0.25) {$pi/4$};
-//   \node[anchor=north] at (1.75,0) {$Gamma_1$};
-//   \node[anchor=south east] at (1.4,1.4) {$Gamma_2$};
-//   \node[anchor=north] at (3.6,1.5) {$C_R$};
-//   \node[anchor=north] at (3.5,0) {$R$};
-//   \node[anchor=south] at (2.5,2.5) {$R$};
-// \end{tikzpicture}
+
 #figure-wrapper(
   [
     #figure(
       {
         let outer-rad = 3.5
 
-        quick-plot(x-max: 4, y-max: 3, {
+        quick-plot(x-max: 4, y-max: 3, canvas: {
           import cetz.draw: *
           let mark = (end: (pos: 50%, symbol: ">>", fill: black, shorten-to: none))
 
@@ -274,9 +394,7 @@ Residues are extremely important as they allow for simple evaluation of definite
           content("Gamma-2.mid", $Gamma_2$, anchor: "south-east", padding: 1pt)
           content("C-R.arc-center", $C_R$, anchor: "south-west", padding: 1pt)
           content("Gamma-1.end", $R$, anchor: "north", padding: 1pt)
-          content("Gamma-1.start", $epsilon$, anchor: "north", padding: 1pt)
           content("Gamma-2.start", $R$, anchor: "south", padding: 1pt)
-          content("Gamma-2.end", $epsilon$, anchor: "south-east", padding: 1pt)
         })
       },
       caption: [A wedge contour with orientation marked.],
@@ -339,9 +457,9 @@ Residues are extremely important as they allow for simple evaluation of definite
         let inner-rad = 1
         let outer-rad = 3.5
 
-        quick-plot(x-max: 4, y-max: 3, {
+        quick-plot(x-max: 4, y-max: 3, canvas: {
           import cetz.draw: *
-          let mark = (end: (pos: 50%, symbol: ">>", fill: black, shorten-to: none))
+          let mark = (end: (pos: 40%, symbol: ">>", fill: black, shorten-to: none))
 
           line((0, 0), (inner-rad, inner-rad), stroke: (dash: "dashed", thickness: 0.5pt), name: "wedge-dash")
           arc(
@@ -451,7 +569,7 @@ Residues are extremely important as they allow for simple evaluation of definite
         x-max: var-h-max,
         y-min: -1,
         y-max: var-v-max,
-        {
+        canvas: {
           import cetz.draw: *
 
           let R = 2

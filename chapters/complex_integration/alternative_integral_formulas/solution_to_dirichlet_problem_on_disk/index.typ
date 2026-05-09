@@ -18,7 +18,7 @@ A fundamental problem in the theory of partial differential equations is to find
   #figure(
     {
       let radius = 5
-      quick-plot(x-max: radius + .5, y-max: radius + .5, {
+      quick-plot(x-max: radius + .5, y-max: radius + .5, canvas: {
         import cetz.draw: *
 
         let zeta-angle = 10deg

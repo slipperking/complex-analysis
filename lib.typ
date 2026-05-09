@@ -251,7 +251,7 @@
 }
 
 #let quick-plot(
-  body,
+  canvas: none,
   extra-plot: none,
   canvas-args: none,
   scale: 1.4,
@@ -281,7 +281,7 @@
         plot.add(x => 0, domain: (0, 0))
         extra-plot
         plot.annotate({
-          body
+          canvas
         })
       },
     )

@@ -461,7 +461,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
         let (Mp, Np) = (M, N).map(point => cvector.add(point, (0, primeoffset)))
         let (Pp, Qp) = (P, Q).map(point => cvector.add(point, (0, -primeoffset)))
 
-        quick-plot({
+        quick-plot(canvas: {
           let MNpoints = offset => {
             (
               ..directional_points(angle: -90deg),
