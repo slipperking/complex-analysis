@@ -33,12 +33,12 @@
   ]
   show heading: it => context {
     if target() != "html" { return [#it#heading-reset-marker(it.level)] }
-    let level = calc.min(it.level, 4)
-    let tag = ("h1", "h2", "h3", "h4").at(level - 1)
+    let level = calc.min(it.level, 6)
+    let tag = ("h1", "h2", "h3", "h4", "h5", "h6").at(level - 1)
     let num-display = if it.numbering != none {
       if level == 1 {
         [Chapter ] + counter(heading).display() + [: ]
-      } else if level <= 3 {
+      } else if level <= 6 {
         counter(heading).display() + [ ]
       }
     }
@@ -78,11 +78,11 @@
 
   show grid: it => context {
     if target() == "html" {
-      if (measure(it).width <= 480pt) {
+      if (measure(it).width <= 360pt) {
         // to maintain centering
         html.frame(block(it))
       } else {
-        html.frame(block(width: 480pt, it))
+        html.frame(block(width: 360pt, it))
       }
     } else {
       it

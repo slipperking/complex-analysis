@@ -33,6 +33,11 @@ html {
   --font-body: "New Computer Modern", "Computer Modern", Georgia, serif;
   --font-heading: system-ui, -apple-system, sans-serif;
   --font-mono: "Fira Code", "Consolas", monospace;
+
+  /* TOC indentation — single source of truth.
+     Every level step adds exactly this amount. */
+  --toc-indent: 0.85rem;
+  --toc-base-pl: 0.5rem;  /* left padding shared by all items */
 }
 
 /* ---------------------------------------------------------------------------
@@ -422,14 +427,33 @@ svg {
   padding: 0;
 }
 
+/* ---------------------------------------------------------------------------
+   Local TOC — uniform indentation system
+   ============================================================
+   Every level step adds exactly --toc-indent.
+   Levels are:
+     toc-l2  →  0 extra indents  (top-level h2 headings)
+     toc-l3  →  1 extra indent   (h3 headings or theorems under h2)
+     toc-l4  →  2 extra indents  (h4 headings or theorems under h3)
+     toc-l5  →  3 extra indents  (h5 headings or theorems under h4)
+
+   Theorem entries carry a toc-lN class where N is their parent
+   heading level + 1, so they naturally sit one step deeper than
+   the heading they belong to — no special-case overrides needed.
+   --------------------------------------------------------------------------- */
+
 .local-toc li a {
   display: block;
-  padding: 0.28rem 0;
+  padding-top: 0.22rem;
+  padding-bottom: 0.22rem;
+  padding-right: 0;
+  padding-left: var(--toc-base-pl);
   color: var(--color-text-muted);
   border-left: 2px solid transparent;
-  padding-left: 0.5rem;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
   border-radius: 0 6px 6px 0;
+  font-size: 0.82rem;
+  line-height: 1.35;
 }
 
 .local-toc li a:hover {
@@ -444,38 +468,51 @@ svg {
   border-left-color: var(--color-sidebar-active);
 }
 
-.local-toc .toc-page a {
-  font-weight: 800;
-  color: var(--color-text-muted);
+/* Level 2 — base level, no extra indent */
+.local-toc .toc-l2 a {
+  padding-left: var(--toc-base-pl);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
+/* Level 3 — 1 step in */
 .local-toc .toc-l3 a {
-  padding-left: 1.2rem;
-  font-size: 0.8rem;
+  padding-left: calc(var(--toc-base-pl) + var(--toc-indent));
+  font-size: 0.80rem;
+  font-weight: 400;
 }
 
+/* Level 4 — 2 steps in */
 .local-toc .toc-l4 a {
-  padding-left: 1.8rem;
-  font-size: 0.76rem;
+  padding-left: calc(var(--toc-base-pl) + 2 * var(--toc-indent));
+  font-size: 0.77rem;
 }
 
-.local-toc .toc-theorem a {
-  padding-left: 2rem;
+/* Level 5 — 3 steps in */
+.local-toc .toc-l5 a {
+  padding-left: calc(var(--toc-base-pl) + 3 * var(--toc-indent));
+  font-size: 0.74rem;
+}
+
+/* Level 6 — 4 steps in */
+.local-toc .toc-l6 a {
+  padding-left: calc(var(--toc-base-pl) + 4 * var(--toc-indent));
   font-size: 0.72rem;
-  font-weight: 500;
+}
+
+/* Theorem entries — same indent as their toc-lN class dictates,
+   just slightly muted. No italic, no special offset. */
+.local-toc .toc-theorem a {
+  font-weight: 400;
+  font-style: normal;
   color: var(--color-text-muted);
-}
-
-.local-toc .toc-theorem.toc-l3 a {
-  padding-left: 2rem;
-}
-
-.local-toc .toc-theorem.toc-l4 a {
-  padding-left: 2.6rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
 }
 
 /* ---------------------------------------------------------------------------
-   Typography
+   Typography — Headings
    --------------------------------------------------------------------------- */
 
 h1 {
@@ -502,9 +539,29 @@ h3 {
 }
 
 h4 {
+  font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
-  margin: 1rem 0 0.5rem;
+  margin: 1.25rem 0 0.4rem;
+  color: var(--color-text);
+}
+
+h5 {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 1rem 0 0.35rem;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+h6 {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0.75rem 0 0.3rem;
+  color: var(--color-text-muted);
 }
 
 p {
@@ -688,7 +745,6 @@ svg.typst-frame {
 }
 
 /* Dark mode: invert inline SVG images (PDFs rendered as base64 SVG by Typst) */
-/* These are black-on-transparent diagrams that need the same treatment */
 [data-theme="dark"] figure img[src^="data:image/svg+xml"] {
   filter: invert(1) hue-rotate(180deg);
 }

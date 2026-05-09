@@ -269,19 +269,63 @@ Residues are extremely important as they allow for simple evaluation of definite
   Evaluate $I = integral_0^infinity x^alpha / (1 + x^beta) dx$, where $0 < alpha + 1 < beta$.
 ]
 
-// TikZ figure: indented wedge contour
-// \begin{tikzpicture}
-//   \draw[-{Stealth}, ultra thin] (0, 0) -- (4.5, 0);
-//   ...
-//   \node[anchor=north] at (2.35,0) {$Gamma_1$};
-//   \node[anchor=south east] at (1.8, 1.8) {$Gamma_2$};
-//   \node[anchor=north] at (3.6,1.5) {$C_R$};
-//   \node[anchor=north] at (0.9,0.65) {$C_epsilon$};
-// \end{tikzpicture}
-#figure(
-  [],
-  caption: [An indented wedge contour with orientation marked.],
-) <fig:indentedwedgecontour>
+#figure-wrapper(
+  [
+    #figure(
+      {
+        let inner-rad = 1
+        let outer-rad = 3.5
+
+        quick-plot(x-max: 4, y-max: 3, {
+          import cetz.draw: *
+          let mark = (end: (pos: 50%, symbol: ">>", fill: black, shorten-to: none))
+
+          line((0, 0), (inner-rad, inner-rad), stroke: (dash: "dashed", thickness: 0.5pt), name: "wedge-dash")
+          arc(
+            (outer-rad, 0),
+            start: 0deg,
+            stop: 45deg,
+            radius: outer-rad,
+            mark: mark,
+            stroke: 1.5pt,
+            name: "C-R",
+          )
+
+          arc(
+            cvector.scale((inner-rad, inner-rad), calc.sqrt(2) / 2),
+            start: 45deg,
+            stop: 0deg,
+            radius: inner-rad,
+            mark: mark,
+            stroke: 1.5pt,
+            name: "C-epsilon",
+          )
+
+          line((inner-rad, 0), (outer-rad, 0), mark: mark, stroke: (thickness: 1.5pt), name: "Gamma-1")
+
+          line(
+            cvector.scale((outer-rad, outer-rad), calc.sqrt(2) / 2),
+            cvector.scale((inner-rad, inner-rad), calc.sqrt(2) / 2),
+            mark: mark,
+            stroke: 1.5pt,
+            name: "Gamma-2",
+          )
+
+          content("Gamma-1.mid", $Gamma_1$, anchor: "north", padding: 1pt)
+          content("Gamma-2.mid", $Gamma_2$, anchor: "south-east", padding: 1pt)
+          content("C-R.arc-center", $C_R$, anchor: "south-west", padding: 1pt)
+          content("C-epsilon.arc-center", $C_epsilon$, anchor: "south-west", padding: 1pt)
+          content("Gamma-1.end", $R$, anchor: "north", padding: 1pt)
+          content("Gamma-1.start", $epsilon$, anchor: "north", padding: 1pt)
+          content("Gamma-2.start", $R$, anchor: "south", padding: 1pt)
+          content("Gamma-2.end", $epsilon$, anchor: "south-east", padding: 1pt)
+        })
+      },
+      caption: [An indented wedge contour with orientation marked.],
+    )
+    <fig:indentedwedgecontour>
+  ],
+)
 #proof[
   Let $f(z) = z^alpha / (1 + z^beta)$ and let $-uppi < Arg(z) lt.eq uppi$ in the principal branches of $z^alpha = ee^(alpha Log(z))$ and $z^beta = ee^(beta Log(z))$. Then except for at the zeros of $1 + z^beta$, $f$ is holomorphic.
 
@@ -333,26 +377,47 @@ Residues are extremely important as they allow for simple evaluation of definite
   Prove that the Fourier transform of $sech(uppi x)$ is itself, or that
   $ I(xi) = integral_(-infinity)^infinity exp(-2 uppi ii x xi) sech(uppi x) dx = sech(uppi xi). $
 ]
-// TikZ figure: rectangular contour
-// \begin{tikzpicture}
-//   \draw[-{Stealth}, ultra thin] (0, 0) -- (5, 0);
-//   \draw[-{Stealth}, ultra thin] (0, 0) -- (-5, 0);
-//   \draw[-{Stealth}, thin] (0, 0) -- (0, 3);
-//   \draw[-{Stealth}, thin] (0, 0) -- (0, -0.5);
-//   \draw[-{Stealth}, thick] (-3, 0) -- (0, 0);
-//   \draw[-{Stealth}, thick] (0, 0) -- (3, 0);
-//   \draw[-{Stealth}, thick] (3, 0) -- (3, 2);
-//   \draw[-{Stealth}, thick] (3, 2) -- (0, 2);
-//   \draw[-{Stealth}, thick] (0, 2) -- (-3, 2);
-//   \draw[-{Stealth}, thick] (-3, 2) -- (-3, 0);
-//   \node[anchor=north] at (3,0) {$R$};
-//   \node[anchor=north] at (-3,0) {$-R$};
-//   \node[anchor=south east] at (0,2) {$ii$};
-// \end{tikzpicture}
-#figure(
-  [],
-  caption: [A rectangular contour with orientation marked.],
-) <fig:rectangularcontour>
+
+#figure-wrapper([
+  #figure(
+    {
+      let var-h-max = 4
+      let var-v-max = 3.5
+      quick-plot(
+        x-min: -var-h-max,
+        x-max: var-h-max,
+        y-min: -1,
+        y-max: var-v-max,
+        {
+          import cetz.draw: *
+
+          let R = 3
+          let h = 2.5
+
+          let A = (-R, 0)
+          let C = (R, 0)
+          let D = (R, h)
+          let F = (-R, h)
+
+          let thick = (thickness: 1.5pt)
+          let mark = (end: (symbol: ">>", pos: 50%, shorten-to: none))
+
+          line(A, C, mark: mark, stroke: thick)
+          line(C, D, mark: mark, stroke: thick)
+          line(D, F, mark: mark, stroke: thick)
+          line(F, A, mark: mark, stroke: thick)
+
+          content((var-h-max, 0), $Re(z)$, anchor: "north", padding: 2pt)
+          content((0, var-v-max), $Im(z)$, anchor: "east", padding: 2pt)
+          content(C, $R$, anchor: "north", padding: 2pt)
+          content(A, $-R$, anchor: "north", padding: 2pt)
+          content((0, h), $i$, anchor: "north-east", padding: 2pt)
+        },
+      )
+    },
+    caption: [A rectangular contour with orientation marked.],
+  ) <fig:rectangularcontour>
+])
 #proof[
   Fix $xi in RR$ and let $f(z) = exp(-2 uppi ii z xi) / cosh(uppi z)$. Its poles in $CC$ occur when $ee^(uppi z) + ee^(-uppi z) = 0$, or equivalently, when $z = ii (n + 1/2)$, where $n in ZZ$.
 

@@ -56,9 +56,9 @@ Analogous to the real case, a 0-form is defined as a scalar-valued function in t
 
   $
     omega & =(xi_1 + ii eta_1) dz + (xi_2 + ii eta_2) dif overline(z) \
-    & =(xi_1 + ii eta_1) (dx + ii dy) + (xi_2 + ii eta_2) (dx - ii dy) \
-    & =xi_1 dx + ii eta_1 dx + ii xi_1 dy - eta_1 dy + xi_2 dx + ii eta_2 dx - ii xi_2 dy + eta_2 dy \
-    & =[(xi_1 + xi_2) dx + (eta_2 - eta_1) dy] + ii [(eta_1 + eta_2) dx + (xi_1 - xi_2) dy]
+          & =(xi_1 + ii eta_1) (dx + ii dy) + (xi_2 + ii eta_2) (dx - ii dy) \
+          & =xi_1 dx + ii eta_1 dx + ii xi_1 dy - eta_1 dy + xi_2 dx + ii eta_2 dx - ii xi_2 dy + eta_2 dy \
+          & =[(xi_1 + xi_2) dx + (eta_2 - eta_1) dy] + ii [(eta_1 + eta_2) dx + (xi_1 - xi_2) dy]
   $ <eq:complex_green_real_and_complex_dx_dy_intermediate>
 
   Each of $xi_1, xi_2, eta_1, eta_2$ are real-valued functions that can be represented with a domain of $RR^2$. By definition,
@@ -461,7 +461,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
         let (Mp, Np) = (M, N).map(point => cvector.add(point, (0, primeoffset)))
         let (Pp, Qp) = (P, Q).map(point => cvector.add(point, (0, -primeoffset)))
 
-        quick-plot(size: (8, 8), {
+        quick-plot({
           let MNpoints = offset => {
             (
               ..directional_points(angle: -90deg),
@@ -653,7 +653,8 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
     f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
   $ <eq:cauchygoursatformula>] <thm:cauchygoursatformula>
 
-#proof[By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem),
+#proof[
+  By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem),
   $
     integral_(partial (U without D(z, epsilon))) (f(zeta)) / (zeta - z) dzeta = integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta - integral.cont_(partial D(z, epsilon)) (f(zeta)) / (zeta - z) dzeta = 0.
   $

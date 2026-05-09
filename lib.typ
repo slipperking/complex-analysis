@@ -6,7 +6,7 @@
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": vb as _vb
 // #import "@preview/equate:0.3.2": equate
-#import "@preview/intextual:0.1.1" : *
+#import "@preview/intextual:0.1.1": *
 
 #let cvector = cetz.vector
 #let cmatrix = cetz.matrix
@@ -250,19 +250,33 @@
   out
 }
 
-#let quick-plot(body, extra-plot: none, canvas-args: none, ..args) = {
+#let quick-plot(
+  body,
+  extra-plot: none,
+  canvas-args: none,
+  scale: 1.4,
+  x-min: -1,
+  x-max: 6,
+  y-min: -1,
+  y-max: 6,
+  ..args,
+) = {
+  let x-range = x-max - x-min
+  let y-range = y-max - y-min
+  let size = (x-range * scale, y-range * scale)
+
   cetz.canvas(..canvas-args, {
     import cetz.draw: *
     plot.plot(
-      size: (6, 6),
+      size: size,
       axis-style: "school-book",
-      x-min: -1,
-      x-max: 6,
-      y-min: -1,
-      y-max: 6,
+      x-min: x-min,
+      x-max: x-max,
+      y-min: y-min,
+      y-max: y-max,
       x-tick-step: none,
       y-tick-step: none,
-      ..args.named(), // can override defaults
+      ..args.named(),
       {
         plot.add(x => 0, domain: (0, 0))
         extra-plot
@@ -273,9 +287,8 @@
     )
   })
 }
-
 // this must be used around any normal figure to show in html
-#let figure-wrapper(..items, columns: auto) = {
+#let figure-wrapper(..items, columns: auto) = context {
   let figures = items.pos()
   let column-count = if columns == auto { figures.len() } else { columns }
   let body = grid(
@@ -285,7 +298,7 @@
     ..figures.map(item => grid.cell([#item])),
   )
 
-  if _is-html {
+  if target() == "html" {
     body
   } else {
     place(

@@ -31,26 +31,129 @@ DIST_DIR = WEB_DIR / "dist"
 ASSETS_SRC = WEB_DIR / "assets"
 
 LANG = "en"
-
 THESIS_TITLE = "Notes on Complex Analysis"
-
 GITHUB_URL = "https://github.com/slipperking/complex-analysis"
 BASE_URL = "/"  # overridden by --base-url CLI arg
 
+# Heading tags tracked for TOC and section structure (h1 is page title, not TOC'd)
+HEADING_TAGS = {"h2", "h3", "h4", "h5", "h6"}
+# Minimum TOC level emitted (h2 = level 2 maps to toc-l2)
+TOC_MIN_LEVEL = 2
 
-ICON_HAMBURGER = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h14M3 10h14M3 15h14"/></svg>'
-ICON_SEARCH = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>'
-ICON_GITHUB = '<svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>'
-ICON_TOC = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h14M3 8h10M3 12h12M3 16h8"/></svg>'
-ICON_THEME_LIGHT = '<svg viewBox="0 0 512 512" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path></svg>'
+ICON_HAMBURGER = (
+    '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"'
+    ' stroke="currentColor" stroke-width="2">'
+    '<path d="M3 5h14M3 10h14M3 15h14"/></svg>'
+)
+ICON_SEARCH = (
+    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"'
+    ' stroke="currentColor" stroke-width="2">'
+    '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>'
+)
+ICON_GITHUB = (
+    '<svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">'
+    '<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17'
+    ".55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94"
+    "-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87"
+    " 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59"
+    ".82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27"
+    "s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82"
+    " 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01"
+    ' 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>'
+    "</svg>"
+)
+ICON_TOC = (
+    '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"'
+    ' stroke="currentColor" stroke-width="2">'
+    '<path d="M3 4h14M3 8h10M3 12h12M3 16h8"/></svg>'
+)
+ICON_THEME_LIGHT = (
+    '<svg viewBox="0 0 512 512" width="18" height="18" aria-hidden="true" fill="currentColor">'
+    '<path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6'
+    "s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6"
+    "L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3"
+    "c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9"
+    "-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6"
+    "L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8"
+    'c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0z'
+    "m224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z\"/></svg>"
+)
 
 
 # ---------------------------------------------------------------------------
-# Step 1: Compile Typst -> HTML
+# Helpers
+# ---------------------------------------------------------------------------
+
+def heading_level(tag: Tag) -> int:
+    """Return the numeric level of an hN tag (2–6)."""
+    return int(tag.name[1])
+
+
+def ensure_anchor_id(node: Tag, fallback_text: str) -> str:
+    """Ensure *node* has an id attribute, generating one from text if absent."""
+    node_id = node.get("id", "")
+    if node_id:
+        return node_id
+    slug = re.sub(r"[^\w-]", "-", fallback_text.lower())[:60].strip("-") or "section"
+    node["id"] = slug
+    return slug
+
+
+def clean_nav_title_text(text: str) -> str:
+    """Strip leading chapter/section number prefixes from plain-text nav labels."""
+    text = " ".join(text.split())
+    text = re.sub(r"^Chapter\s+\d+:\s*", "", text)
+    text = re.sub(r"^\d+(?:\.\d+)*\s+", "", text)
+    return text.strip()
+
+
+def clean_nav_title_html(heading: Tag) -> str:
+    """Strip leading number prefixes from a heading while preserving inline HTML."""
+    cloned = BeautifulSoup(str(heading), "html.parser").find(heading.name)
+    if cloned is None:
+        return ""
+    first_text = cloned.find(string=True)
+    if first_text is not None:
+        cleaned = re.sub(r"^\s*Chapter\s+\d+:\s*", "", str(first_text))
+        cleaned = re.sub(r"^\s*\d+(?:\.\d+)*\s+", "", cleaned)
+        first_text.replace_with(cleaned)
+    return cloned.decode_contents().strip()
+
+
+def heading_inner_html(heading: Tag) -> str:
+    """Return a heading's inner HTML exactly as rendered."""
+    cloned = BeautifulSoup(str(heading), "html.parser").find(heading.name)
+    return cloned.decode_contents().strip() if cloned else ""
+
+
+def section_filename(section_id: str) -> str:
+    """Map a top-level section id to its output filename."""
+    return "index.html" if section_id == "cover" else f"{section_id}/index.html"
+
+
+def relative_href(current_file: str, target_file: str, anchor: str | None = None) -> str:
+    """Build a relative URL from one generated page to another."""
+    current_dir = PurePosixPath(current_file).parent.as_posix()
+    rel = posixpath.relpath(target_file, current_dir if current_dir != "." else ".")
+    if rel == "index.html":
+        rel = "./"
+    elif rel.endswith("/index.html"):
+        rel = rel[: -len("index.html")]
+    return f"{rel}#{anchor}" if anchor else rel
+
+
+def asset_href(current_file: str, asset_path: str) -> str:
+    """Build a relative URL from a generated page to a shared asset."""
+    current_dir = (PurePosixPath(LANG) / PurePosixPath(current_file)).parent.as_posix()
+    return posixpath.relpath(asset_path, current_dir if current_dir != "." else ".")
+
+
+# ---------------------------------------------------------------------------
+# Step 1: Compile Typst → HTML
 # ---------------------------------------------------------------------------
 
 def compile_typst() -> Path:
-    """Compile the notes to a single HTML file."""
+    """Compile the notes to a single HTML file via Typst."""
     full_html = DIST_DIR / "full-en.html"
     DIST_DIR.mkdir(parents=True, exist_ok=True)
     cmd = [
@@ -80,14 +183,14 @@ def compile_typst() -> Path:
 # Step 2: Compile PDFs
 # ---------------------------------------------------------------------------
 
-def compile_pdfs():
-    """Compile the PDF notes."""
+def compile_pdfs() -> None:
+    """Compile the PDF version of the notes."""
     pdf_dir = DIST_DIR / "pdf"
     pdf_dir.mkdir(parents=True, exist_ok=True)
     out = pdf_dir / "notes.pdf"
     cmd = [
         "typst", "compile",
-        "--features", "html", # so that target works
+        "--features", "html",   # so that target() works
         str(ROOT / "main.typ"),
         str(out),
     ]
@@ -109,20 +212,12 @@ def compile_pdfs():
 # Step 3: Parse and split into chapters
 # ---------------------------------------------------------------------------
 
-def ensure_anchor_id(node: Tag, fallback_text: str) -> str:
-    """Ensure a node has an anchor id, generating one from text if needed."""
-    node_id = node.get("id", "")
-    if node_id:
-        return node_id
-    node_id = re.sub(r"[^\w-]", "-", fallback_text.lower())[:60].strip("-")
-    if not node_id:
-        node_id = "section"
-    node["id"] = node_id
-    return node_id
-
-
 def theorem_toc_entry(theorem_box: Tag, section: Tag, level: int) -> dict | None:
-    """Build a local TOC entry for theorem-like blocks."""
+    """Build a local TOC entry for a theorem-like block, or None if not applicable.
+
+    *level* should be the parent heading level + 1 so the entry sits one
+    indent step deeper than its containing section heading in the TOC.
+    """
     classes = theorem_box.get("class", [])
     if "thm-box" not in classes or "thm-remark" in classes:
         return None
@@ -135,6 +230,7 @@ def theorem_toc_entry(theorem_box: Tag, section: Tag, level: int) -> dict | None
     if not text:
         return None
 
+    # Walk up to find the nearest ancestor with an id (for anchor linking).
     anchor = theorem_box
     while isinstance(anchor.parent, Tag) and anchor.parent is not section and not anchor.get("id"):
         anchor = anchor.parent
@@ -150,19 +246,20 @@ def theorem_toc_entry(theorem_box: Tag, section: Tag, level: int) -> dict | None
 
 
 def extract_local_toc(section: Tag) -> list[dict]:
-    """Extract h2/h3 headings and theorem-like blocks from a section for the local TOC."""
-    toc = []
-    current_heading_level = 2
+    """Walk *section* and collect heading + theorem entries for the local TOC."""
+    toc: list[dict] = []
+    current_heading_level = TOC_MIN_LEVEL
 
     for node in section.descendants:
         if not isinstance(node, Tag):
             continue
 
-        if node.name in {"h2", "h3"}:
+        if node.name in HEADING_TAGS:
+            lvl = heading_level(node)
             heading_id = ensure_anchor_id(node, node.get_text(strip=True))
-            current_heading_level = int(node.name[1])
+            current_heading_level = lvl
             toc.append({
-                "level": current_heading_level,
+                "level": lvl,
                 "kind": "heading",
                 "id": heading_id,
                 "text": node.get_text(strip=True),
@@ -177,61 +274,22 @@ def extract_local_toc(section: Tag) -> list[dict]:
     return toc
 
 
-def section_filename(section_id: str) -> str:
-    """Map a top-level section id to its output filename."""
-    return "index.html" if section_id == "cover" else f"{section_id}/index.html"
+def discover_structure(
+    soup: BeautifulSoup,
+) -> tuple[
+    list[tuple[str, str, str]],
+    list[tuple[str, str, str, str]],
+    dict[str, int],
+    list[tuple[str | None, list[str]]],
+]:
+    """Discover pages and navigation entries from chapter-section blocks.
 
-
-def relative_href(current_file: str, target_file: str, anchor: str | None = None) -> str:
-    """Build a relative link from one generated page to another."""
-    current_dir = PurePosixPath(current_file).parent.as_posix()
-    rel = posixpath.relpath(target_file, current_dir if current_dir != "." else ".")
-    if rel == "index.html":
-        rel = "./"
-    elif rel.endswith("/index.html"):
-        rel = rel[: -len("index.html")]
-    return f"{rel}#{anchor}" if anchor else rel
-
-
-def asset_href(current_file: str, asset_path: str) -> str:
-    """Build a relative link from a generated page to a shared asset."""
-    current_dir = (PurePosixPath(LANG) / PurePosixPath(current_file)).parent.as_posix()
-    return posixpath.relpath(asset_path, current_dir if current_dir != "." else ".")
-
-
-def clean_nav_title_text(text: str) -> str:
-    """Remove displayed numbering prefixes from plain-text navigation labels."""
-    text = " ".join(text.split())
-    text = re.sub(r"^Chapter\s+\d+:\s*", "", text)
-    text = re.sub(r"^\d+(?:\.\d+)*\s+", "", text)
-    return text.strip()
-
-
-def clean_nav_title_html(heading: Tag) -> str:
-    """Remove displayed numbering prefixes from a heading while preserving inline HTML."""
-    cloned = BeautifulSoup(str(heading), "html.parser").find(heading.name)
-    if cloned is None:
-        return ""
-
-    first_text = cloned.find(string=True)
-    if first_text is not None:
-        cleaned = re.sub(r"^\s*Chapter\s+\d+:\s*", "", str(first_text))
-        cleaned = re.sub(r"^\s*\d+(?:\.\d+)*\s+", "", cleaned)
-        first_text.replace_with(cleaned)
-
-    return cloned.decode_contents().strip()
-
-
-def heading_inner_html(heading: Tag) -> str:
-    """Preserve a heading's inline HTML exactly as rendered."""
-    cloned = BeautifulSoup(str(heading), "html.parser").find(heading.name)
-    if cloned is None:
-        return ""
-    return cloned.decode_contents().strip()
-
-
-def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str, str]], dict[str, int], list[tuple[str | None, list[str]]]]:
-    """Discover pages and navigation entries from chapter-section blocks."""
+    Returns:
+        pages:      [(sid, filename, page_title), ...]
+        nav_items:  [(sid, filename, page_title, nav_title_html), ...]
+        nav_depths: {sid: depth}
+        parts:      [(part_title | None, [sid, ...]), ...]
+    """
     pages: list[tuple[str, str, str]] = []
     nav_items: list[tuple[str, str, str, str]] = []
     nav_depths: dict[str, int] = {}
@@ -241,9 +299,9 @@ def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]],
         if not sid:
             continue
 
-        title_heading = section.find(["h1", "h2", "h3"], recursive=False)
-        if title_heading is not None and title_heading.name.startswith("h"):
-            depth = max(0, int(title_heading.name[1]) - 1)
+        title_heading = section.find(["h1", "h2", "h3", "h4", "h5", "h6"], recursive=False)
+        if title_heading is not None:
+            depth = max(0, heading_level(title_heading) - 1)
         else:
             attr_depth = section.get("data-nav-depth")
             if attr_depth is not None:
@@ -253,8 +311,14 @@ def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]],
                     depth = len(section.find_parents("section", class_="chapter"))
             else:
                 depth = len(section.find_parents("section", class_="chapter"))
-        page_title = clean_nav_title_text(title_heading.get_text(" ", strip=True)) if title_heading else sid.replace("-", " ").title()
+
+        page_title = (
+            clean_nav_title_text(title_heading.get_text(" ", strip=True))
+            if title_heading
+            else sid.replace("-", " ").title()
+        )
         nav_title_html = clean_nav_title_html(title_heading) if title_heading else page_title
+
         if sid == "cover":
             page_title = "Home"
             nav_title_html = "Home"
@@ -264,9 +328,15 @@ def discover_structure(soup: BeautifulSoup) -> tuple[list[tuple[str, str, str]],
         nav_items.append((sid, filename, page_title, nav_title_html))
         nav_depths[sid] = depth
 
-    parts = [(None, [sid for sid, _href, _title, _nav_html in nav_items])]
+    parts: list[tuple[str | None, list[str]]] = [
+        (None, [sid for sid, *_ in nav_items])
+    ]
     return pages, nav_items, nav_depths, parts
 
+
+# ---------------------------------------------------------------------------
+# Navigation HTML builders
+# ---------------------------------------------------------------------------
 
 def build_global_nav(
     nav_items: list[tuple[str, str, str, str]],
@@ -275,27 +345,22 @@ def build_global_nav(
     nav_depths: dict[str, int],
     current_file: str,
 ) -> tuple[str, list[str]]:
-    """Build the global navigation sidebar HTML."""
-    chapter_map = {sid: (href, title, nav_title_html) for sid, href, title, nav_title_html in nav_items}
+    """Build the global navigation sidebar HTML.
+
+    Returns (html_string, list_of_active_group_ids).
+    """
+    chapter_map = {sid: (href, title, nav_html) for sid, href, title, nav_html in nav_items}
 
     def build_nav_tree(section_ids: list[str]) -> list[dict]:
         roots: list[dict] = []
         stack: list[tuple[int, dict]] = []
-
         for sid in section_ids:
             depth = nav_depths.get(sid, 0)
-            node = {"sid": sid, "depth": depth, "children": []}
-
+            node: dict = {"sid": sid, "depth": depth, "children": []}
             while stack and stack[-1][0] >= depth:
                 stack.pop()
-
-            if stack:
-                stack[-1][1]["children"].append(node)
-            else:
-                roots.append(node)
-
+            (stack[-1][1]["children"] if stack else roots).append(node)
             stack.append((depth, node))
-
         return roots
 
     def render_nodes(nodes: list[dict], level: int = 0) -> tuple[list[str], bool, list[str]]:
@@ -309,6 +374,7 @@ def build_global_nav(
             target_file, _title, nav_title_html = chapter_map[sid]
             depth = node["depth"]
             node_is_active = sid == current_id
+
             classes = []
             if node_is_active:
                 classes.append("active")
@@ -324,24 +390,24 @@ def build_global_nav(
 
             if node["children"]:
                 controls_id = f"nav-group-{sid}"
-                child_lines, child_contains_active, child_active_group_ids = render_nodes(node["children"], level + 3)
-                node_contains_active = node_is_active or child_contains_active
-                lines.append(f'{indent}    <div class="nav-item-row">')
-                lines.append(
-                    f'{indent}      <a href="{href}">{nav_title_html}</a>'
+                child_lines, child_active, child_group_ids = render_nodes(
+                    node["children"], level + 3
                 )
-                lines.append(
-                    f'{indent}      <button class="nav-collapse-toggle" type="button" '
-                    f'aria-expanded="true" aria-label="Collapse subsection" '
-                    f'aria-controls="{controls_id}"></button>'
-                )
-                lines.append(f"{indent}    </div>")
-                lines.append(f'{indent}    <div class="nav-children" id="{controls_id}">')
-                lines.extend(child_lines)
-                lines.append(f"{indent}    </div>")
+                node_contains_active = node_is_active or child_active
+                lines += [
+                    f'{indent}    <div class="nav-item-row">',
+                    f'{indent}      <a href="{href}">{nav_title_html}</a>',
+                    f'{indent}      <button class="nav-collapse-toggle" type="button"'
+                    f' aria-expanded="true" aria-label="Collapse subsection"'
+                    f' aria-controls="{controls_id}"></button>',
+                    f"{indent}    </div>",
+                    f'{indent}    <div class="nav-children" id="{controls_id}">',
+                    *child_lines,
+                    f"{indent}    </div>",
+                ]
                 if node_contains_active:
                     active_group_ids.append(controls_id)
-                active_group_ids.extend(child_active_group_ids)
+                active_group_ids.extend(child_group_ids)
                 contains_active = contains_active or node_contains_active
             else:
                 lines.append(f'{indent}    <a href="{href}">{nav_title_html}</a>')
@@ -357,37 +423,57 @@ def build_global_nav(
     for part_title, section_ids in parts:
         if part_title:
             lines.append(f'  <div class="nav-part">{part_title}</div>')
-        part_lines, _part_contains_active, part_active_groups = render_nodes(build_nav_tree(section_ids), 1)
+        part_lines, _active, part_groups = render_nodes(build_nav_tree(section_ids), 1)
         lines.extend(part_lines)
-        active_nav_groups.extend(part_active_groups)
+        active_nav_groups.extend(part_groups)
     lines.append("</nav>")
     return "\n".join(lines), active_nav_groups
 
 
 def build_local_toc(toc: list[dict], lang: str) -> str:
-    """Build the local TOC sidebar HTML."""
+    """Build the local TOC sidebar HTML.
+
+    Indentation is driven entirely by item["level"]:
+      level 2 → toc-l2 (base, no extra indent)
+      level 3 → toc-l3 (one step in)
+      level 4 → toc-l4, etc.
+    Theorem entries are extracted with level = parent_heading_level + 1,
+    so they already sit one step deeper than their section — no special
+    offset logic needed here.
+    """
     if not toc:
         return ""
+
     title = "On this page"
-    lines = [f'<nav class="local-toc" aria-label="{title}">']
-    lines.append(f"  <h3>{title}</h3>")
-    lines.append("  <ul>")
+    lines = [
+        f'<nav class="local-toc" aria-label="{title}">',
+        f"  <h3>{title}</h3>",
+        "  <ul>",
+    ]
+
     for item in toc:
-        indent = "    " if item["level"] == 2 else "      "
-        classes = []
-        if item["level"] >= 3:
-            classes.append(f'toc-l{item["level"]}')
-        if item.get("kind") == "heading":
+        level = item["level"]
+        # Clamp to the range the CSS handles (toc-l2 … toc-l6).
+        css_level = max(TOC_MIN_LEVEL, min(level, 6))
+
+        classes = [f"toc-l{css_level}"]
+        if item["kind"] == "heading":
             classes.append("toc-page")
-        elif item.get("kind") == "theorem":
+        elif item["kind"] == "theorem":
             classes.append("toc-theorem")
-        cls = f' class="{" ".join(classes)}"' if classes else ""
+
+        cls = f' class="{" ".join(classes)}"'
         label_html = item.get("html") or item["text"]
+        indent = "    " if css_level == TOC_MIN_LEVEL else "      "
         lines.append(f'{indent}<li{cls}><a href="#{item["id"]}">{label_html}</a></li>')
-    lines.append("  </ul>")
-    lines.append("</nav>")
+
+    lines += ["  </ul>", "</nav>"]
     return "\n".join(lines)
 
+
+# ---------------------------------------------------------------------------
+# Page assembly
+# ---------------------------------------------------------------------------
 
 def build_page(
     section_html: str,
@@ -401,18 +487,27 @@ def build_page(
     lang: str,
     current_file: str,
 ) -> str:
-    """Assemble a complete HTML page with topbar."""
-    prev_btn = f'<a href="{relative_href(current_file, prev_link[0])}" class="nav-prev">&larr; {prev_link[1]}</a>' if prev_link else '<span></span>'
-    next_btn = f'<a href="{relative_href(current_file, next_link[0])}" class="nav-next">{next_link[1]} &rarr;</a>' if next_link else '<span></span>'
+    """Assemble a complete HTML page."""
+    prev_btn = (
+        f'<a href="{relative_href(current_file, prev_link[0])}" class="nav-prev">'
+        f"&larr; {prev_link[1]}</a>"
+        if prev_link else "<span></span>"
+    )
+    next_btn = (
+        f'<a href="{relative_href(current_file, next_link[0])}" class="nav-next">'
+        f"{next_link[1]} &rarr;</a>"
+        if next_link else "<span></span>"
+    )
 
     search_label = "Search"
     home_href = relative_href(current_file, "index.html")
     favicon_href = asset_href(current_file, "assets/favicon.svg")
     stylesheet_href = asset_href(current_file, "assets/style.css")
-    modifications_script_href = asset_href(current_file, "assets/modifications.js")
+    script_href = asset_href(current_file, "assets/modifications.js")
     active_nav_groups_json = json.dumps(active_nav_groups)
 
-    return f"""<!DOCTYPE html>
+    return f"""\
+<!DOCTYPE html>
 <html lang="{lang}" data-theme="light">
 <head>
   <meta charset="utf-8">
@@ -431,24 +526,17 @@ def build_page(
   </script>
   <script>
     (function(){{
-      var activeNavGroups = {active_nav_groups_json};
-      var collapsed = {{}};
-      try {{
-        collapsed = JSON.parse(sessionStorage.getItem("global-nav-collapsed") || "{{}}") || {{}};
-      }} catch (_err) {{
-        collapsed = {{}};
-      }}
-      for (var i = 0; i < activeNavGroups.length; i++) {{
-        delete collapsed[activeNavGroups[i]];
-      }}
-      var ids = Object.keys(collapsed).filter(function(id) {{ return collapsed[id]; }});
-      if (!ids.length) return;
-      var style = document.createElement("style");
-      style.id = "nav-collapsed-state";
-      style.textContent = ids.map(function(id) {{
-        return "#" + id + "{{display:none;}}";
-      }}).join("");
-      document.head.appendChild(style);
+      var activeNavGroups={active_nav_groups_json};
+      var collapsed={{}};
+      try{{collapsed=JSON.parse(sessionStorage.getItem("global-nav-collapsed")||"{{}}")||{{}};}}
+      catch(_){{}}
+      for(var i=0;i<activeNavGroups.length;i++){{delete collapsed[activeNavGroups[i]];}}
+      var ids=Object.keys(collapsed).filter(function(id){{return collapsed[id];}});
+      if(!ids.length)return;
+      var s=document.createElement("style");
+      s.id="nav-collapsed-state";
+      s.textContent=ids.map(function(id){{return"#"+id+"{{display:none;}}"}}).join("");
+      document.head.appendChild(s);
     }})();
   </script>
 </head>
@@ -484,40 +572,42 @@ def build_page(
   <div class="search-overlay" id="search-overlay">
     <div class="search-dialog">
       <div class="search-header">
-        <input type="text" class="search-input" id="search-input" placeholder="{search_label}..." autocomplete="off">
+        <input type="text" class="search-input" id="search-input"
+               placeholder="{search_label}..." autocomplete="off">
         <kbd class="search-close">Esc</kbd>
       </div>
       <div class="search-results" id="search-results"></div>
     </div>
   </div>
-  <script src="{modifications_script_href}"></script>
+  <script src="{script_href}"></script>
 </body>
 </html>"""
 
 
-def split_and_generate(full_html: Path):
-    """Parse the full HTML, split by sections, generate individual pages."""
-    thesis_title = THESIS_TITLE
-    lang = LANG
-    out_dir = DIST_DIR / lang
+# ---------------------------------------------------------------------------
+# Step 3 (cont.): Split full HTML into per-chapter pages
+# ---------------------------------------------------------------------------
+
+def split_and_generate(full_html: Path) -> None:
+    """Parse the monolithic HTML, split by chapter sections, write individual pages."""
+    out_dir = DIST_DIR / LANG
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"  Parsing HTML ({lang})...")
+    print(f"  Parsing HTML ({LANG})...")
     soup = BeautifulSoup(full_html.read_text(encoding="utf-8"), "html.parser")
     pages, nav_items, nav_depths, parts = discover_structure(soup)
 
-    # Find all chapter sections
     chapter_map = {sid: (fname, title) for sid, fname, title in pages}
-    sections: dict[str, Tag] = {}
 
+    # Collect section Tag objects
+    sections: dict[str, Tag] = {}
     for section in soup.find_all("section", class_="chapter"):
         sid = section.get("id", "")
         if sid in chapter_map:
             sections[sid] = section
-
     print(f"    Found {len(sections)} chapter sections")
 
-    # Extract endnotes (footnotes)
+    # Collect endnotes / footnotes
     endnotes_section = soup.find("section", attrs={"role": "doc-endnotes"})
     footnote_map: dict[str, Tag] = {}
     if endnotes_section:
@@ -525,7 +615,7 @@ def split_and_generate(full_html: Path):
             footnote_map[li["id"]] = li
         print(f"    Found {len(footnote_map)} footnotes")
 
-    # Build id -> filename map for cross-chapter link rewriting
+    # Build id → filename map for cross-chapter link rewriting
     id_to_file: dict[str, str] = {}
     for sid, fname, _title in pages:
         if sid not in sections:
@@ -534,7 +624,7 @@ def split_and_generate(full_html: Path):
         for elem in sections[sid].find_all(attrs={"id": True}):
             id_to_file[elem["id"]] = fname
 
-    # Map footnote IDs to chapter files
+    # Map footnote ids to the chapter that references them
     if footnote_map:
         for sid, fname, _title in pages:
             if sid not in sections:
@@ -546,31 +636,31 @@ def split_and_generate(full_html: Path):
 
     cross_links_total = 0
 
-    # Generate each page
     for i, (sid, fname, title) in enumerate(pages):
         if sid not in sections:
             print(f"    WARNING: section '{sid}' not found, skipping")
             continue
 
-        section = sections[sid]
-        page_section = BeautifulSoup(str(section), "html.parser").find("section")
+        # Clone the section so we can mutate it freely
+        page_section: Tag | None = BeautifulSoup(str(sections[sid]), "html.parser").find("section")
         if page_section is None:
-            print(f"    WARNING: section '{sid}' could not be cloned, skipping")
+            print(f"    WARNING: could not clone section '{sid}', skipping")
             continue
 
-        # Parent chapter pages should not inline the full bodies of nested chapter-section pages.
-        # Those nested sections get their own generated pages and nav entries.
+        # Remove nested chapter sections — they get their own pages
         for nested in page_section.find_all("section", class_="chapter"):
             nested.decompose()
 
         local_toc = extract_local_toc(page_section)
-        global_nav, active_nav_groups = build_global_nav(nav_items, parts, sid, nav_depths, fname)
-        local_toc_html = build_local_toc(local_toc, lang)
+        global_nav, active_nav_groups = build_global_nav(
+            nav_items, parts, sid, nav_depths, fname
+        )
+        local_toc_html = build_local_toc(local_toc, LANG)
 
         prev_link = (nav_items[i - 1][1], nav_items[i - 1][3]) if i > 0 else None
         next_link = (nav_items[i + 1][1], nav_items[i + 1][3]) if i < len(pages) - 1 else None
 
-        # Rewrite cross-chapter href="#id" to href="other-file.html#id"
+        # Rewrite cross-chapter internal links
         cross_links = 0
         for a_tag in page_section.find_all("a", href=True):
             href = a_tag["href"]
@@ -581,15 +671,15 @@ def split_and_generate(full_html: Path):
                     a_tag["href"] = relative_href(fname, target_file, target_id)
                     cross_links += 1
 
-        # Collect footnotes for this chapter
+        # Collect and inline footnotes referenced on this page
         footnotes_html = ""
         if footnote_map:
-            noterefs = page_section.find_all("a", attrs={"role": "doc-noteref"})
-            chapter_footnotes = []
-            for ref_a in noterefs:
+            chapter_footnotes: list[Tag] = []
+            for ref_a in page_section.find_all("a", attrs={"role": "doc-noteref"}):
                 target_id = ref_a.get("href", "").lstrip("#")
                 if target_id in footnote_map:
                     chapter_footnotes.append(footnote_map[target_id])
+
             if chapter_footnotes:
                 for fn in chapter_footnotes:
                     for a_tag in fn.find_all("a", href=True):
@@ -602,12 +692,15 @@ def split_and_generate(full_html: Path):
                                 cross_links += 1
                 items = "\n".join(fn.decode() for fn in chapter_footnotes)
                 footnotes_html = (
-                    f'\n<section class="footnotes" role="doc-endnotes">'
-                    f'\n<hr>\n<ol style="list-style-type: none">\n{items}\n</ol>'
-                    f'\n</section>'
+                    '\n<section class="footnotes" role="doc-endnotes">'
+                    "\n<hr>\n"
+                    '<ol style="list-style-type: none">\n'
+                    f"{items}\n"
+                    "</ol>\n</section>"
                 )
 
         section_html = page_section.decode_contents() + footnotes_html
+        cross_links_total += cross_links
 
         page = build_page(
             section_html=section_html,
@@ -615,28 +708,30 @@ def split_and_generate(full_html: Path):
             active_nav_groups=active_nav_groups,
             local_toc=local_toc_html,
             title=title,
-            thesis_title=thesis_title,
+            thesis_title=THESIS_TITLE,
             prev_link=prev_link,
             next_link=next_link,
-            lang=lang,
+            lang=LANG,
             current_file=fname,
         )
 
-        cross_links_total += cross_links
         out_path = out_dir / fname
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(page, encoding="utf-8")
-        print(f"    -> {lang}/{out_path.relative_to(out_dir).as_posix()} ({len(local_toc)} TOC, {cross_links} xlinks)")
+        print(
+            f"    -> {LANG}/{out_path.relative_to(out_dir).as_posix()}"
+            f" ({len(local_toc)} TOC, {cross_links} xlinks)"
+        )
 
     print(f"    Total cross-chapter links rewritten: {cross_links_total}")
 
 
 # ---------------------------------------------------------------------------
-# Step 4: Generate redirect index
+# Step 4: Redirect index
 # ---------------------------------------------------------------------------
 
-def generate_redirect_index():
-    """Generate dist/index.html redirecting to the notes home page."""
+def generate_redirect_index() -> None:
+    """Write dist/index.html that immediately redirects to the notes home page."""
     html = """\
 <!DOCTYPE html>
 <html>
@@ -645,22 +740,20 @@ def generate_redirect_index():
   <title>Notes on Complex Analysis</title>
   <script>window.location.replace("en/index.html");</script>
   <meta http-equiv="refresh" content="0;url=en/index.html">
-  <noscript><meta http-equiv="refresh" content="0;url=en/index.html"></noscript>
 </head>
 <body>
   <p>Redirecting&hellip; <a href="en/index.html">Open the notes</a></p>
 </body>
 </html>"""
-    out = DIST_DIR / "index.html"
-    out.write_text(html, encoding="utf-8")
-    print(f"  -> index.html (redirect)")
+    (DIST_DIR / "index.html").write_text(html, encoding="utf-8")
+    print("  -> index.html (redirect)")
 
 
 # ---------------------------------------------------------------------------
 # Step 5: Copy assets
 # ---------------------------------------------------------------------------
 
-def copy_assets():
+def copy_assets() -> None:
     """Copy CSS/JS assets to dist/assets/."""
     assets_dist = DIST_DIR / "assets"
     assets_dist.mkdir(parents=True, exist_ok=True)
@@ -671,13 +764,12 @@ def copy_assets():
 
 
 # ---------------------------------------------------------------------------
-# Step 6: Run Pagefind
+# Step 6: Pagefind search index
 # ---------------------------------------------------------------------------
 
-def run_pagefind():
-    """Index the site with Pagefind for search."""
+def run_pagefind() -> None:
+    """Index the built site with Pagefind."""
     pf_args = ["--site", str(DIST_DIR), "--output-subdir", "assets/pagefind"]
-    # Try several ways to run Pagefind
     candidates = [
         [sys.executable, "-m", "pagefind"] + pf_args,
         ["pagefind"] + pf_args,
@@ -699,12 +791,15 @@ def run_pagefind():
 # Main
 # ---------------------------------------------------------------------------
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Build the HTML complex analysis notes")
     parser.add_argument("--skip-pdf", action="store_true", help="Skip PDF compilation")
     parser.add_argument("--skip-compile", action="store_true", help="Skip Typst HTML compilation")
     parser.add_argument("--skip-search", action="store_true", help="Skip Pagefind indexing")
-    parser.add_argument("--base-url", default="/", help="Base URL prefix for deployment (e.g. /phd-pagerank/)")
+    parser.add_argument(
+        "--base-url", default="/",
+        help="Base URL prefix for deployment (e.g. /complex-analysis/)",
+    )
     args = parser.parse_args()
 
     global BASE_URL
@@ -716,42 +811,38 @@ def main():
     if lang_dir.exists():
         shutil.rmtree(lang_dir)
 
-    # Step 1: Compile HTML for each language
-    full_html = None
+    # 1. Compile Typst → HTML
     if not args.skip_compile:
         print("[1/5] Compiling Typst -> HTML")
         full_html = compile_typst()
     else:
         print("[1/5] Skipping Typst compilation")
-        p = DIST_DIR / "full-en.html"
-        if not p.exists():
-            print(f"  Error: {p.name} not found. Run without --skip-compile first.")
+        full_html = DIST_DIR / "full-en.html"
+        if not full_html.exists():
+            print(f"  Error: {full_html.name} not found. Run without --skip-compile first.")
             sys.exit(1)
-        full_html = p
 
-    # Step 2: Split and generate pages
+    # 2. Split into per-chapter pages
     print("\n[2/5] Splitting into chapter pages")
     split_and_generate(full_html)
     try:
         full_html.unlink()
-    except FileNotFoundError:
-        pass
-    except PermissionError:
-        print(f"  Warning: could not remove temporary file {full_html.name} because it is still in use.")
+    except (FileNotFoundError, PermissionError) as exc:
+        print(f"  Warning: could not remove {full_html.name}: {exc}")
 
-    # Step 3: Compile PDFs
+    # 3. Compile PDFs
     if not args.skip_pdf:
         print("\n[3/5] Compiling PDFs")
         compile_pdfs()
     else:
         print("\n[3/5] Skipping PDF compilation")
 
-    # Step 4: Generate redirect index + copy assets
+    # 4. Assets and redirect index
     print("\n[4/5] Generating assets and index")
     generate_redirect_index()
     copy_assets()
 
-    # Step 5: Pagefind
+    # 5. Pagefind
     if not args.skip_search:
         print("\n[5/5] Running Pagefind search indexer")
         run_pagefind()
