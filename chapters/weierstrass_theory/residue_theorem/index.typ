@@ -585,14 +585,19 @@ Residues are extremely important as they allow for simple evaluation of definite
           let thick = (thickness: 1.5pt)
           let mark = (end: (symbol: ">>", pos: 30%, fill: black, shorten-to: none))
 
-          line(A, C, mark: mark, stroke: thick)
-          line(C, D, mark: mark, stroke: thick)
-          line(D, F, mark: mark, stroke: thick)
-          line(F, A, mark: mark, stroke: thick)
+          line(A, C, mark: mark, stroke: thick, name: "Gamma>")
+          line(C, D, mark: mark, stroke: thick, name: "Gamma^")
+          line(D, F, mark: mark, stroke: thick, name: "Gamma<")
+          line(F, A, mark: mark, stroke: thick, name: "Gammav")
 
           content(C, $R$, anchor: "north", padding: 2pt)
           content(A, $-R$, anchor: "north", padding: 2pt)
           content((0, h), $i$, anchor: "north-east", padding: 2pt)
+
+          content("Gamma>.mid", $Gamma^(arrow.r)$, anchor: "south-west", padding: 2pt)
+          content("Gamma<.mid", $Gamma^(arrow.l)$, anchor: "south-west", padding: 2pt)
+          content("Gammav.mid", $Gamma^(arrow.b)$, anchor: "east", padding: 2pt)
+          content("Gamma^.mid", $Gamma^(arrow.t)$, anchor: "east", padding: 2pt)
         },
       )
     },

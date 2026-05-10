@@ -30,7 +30,7 @@ Holomorphic injectivity, or univalence, satisfies the proceeding assertion:
 #proof[
   Suppose, for the sake of contradiction, that $f$ is univalent on $U$ such that $exists z_0 in U$ such that $f'(z_0) = 0$. Let $w_0 = f(z_0)$. The previous statement is equivalent to: $f(z) - w_0$ has a zero at $z_0$ with multiplicity $m >= 2$.
 
-  Since this zero is isolated, let $rho > 0$ be chosen such that $z_0$ is the only zero of $f - w_0$ contained in $overline(D(z_0, rho)) subset U$. By @thm:hurwitzshifts, $exists delta > 0$ such that $forall w in D(w_0, delta)$, the equation $f(z) = w$ has $m$ solutions in $overline(D(z_0, rho))$. This contradicts the univalence of $f$.
+  Since $f$ is univalent, neither $f-w_0$ nor $f'$ may have accumulation points in $U$. Thus, $exists rho > 0$ such that $z_0$ is the only zero of either $f - w_0$ and $f'$ contained in $overline(D(z_0, rho)) subset U$. By @thm:hurwitzshifts, $exists delta > 0$ such that $forall w in D^*(w_0, delta)=D(w_0, delta) without {w_0}$, the equation $f(z) = w$ has $m$ solutions in $overline(D(z_0, rho))$, which cannot lie all at a single point (unless that point is $z_0$ itself, which cannot be the case as $z_0$ already maps to $w_0 eq.not w$), as otherwise $z_0$ would not be the only zero of $f'$ in $overline(D(z_0,rho))$. This contradicts the univalence of $f$.
 ]
 
 Conversely, we have the following statement on local univalence and invertibility.
@@ -52,20 +52,28 @@ We will now study holomorphic functions from a more geometric perspective.
 ] <thm:boundaryofconformalmap>
 
 #proof[
-  Let $w_0 in CC$. First assume that $w_0$ does not lie on $Gamma$ itself. By the Argument Principle (@thm:argumentprincipleholomorphic), the number of zeros of $f - w_0$ enclosed by $gamma$ is equal to
+  Let $w_0 in CC$. Let $k=k(w_0)$ be the number of zeros of $f - w_0$ in $U$. By the Argument Principle (@thm:argumentprincipleholomorphic), for $w_0 in.not Gamma$,
   $
-    k = 1 / (2 uppi ii) integral.cont_(gamma) (f'(z)) / (f(z) - w_0) dz = 1 / (2 uppi ii) integral.cont_(Gamma) (dif w) / (w - w_0) = Ind_Gamma (w_0).
+    k = 1 / (2 uppi ii) integral.cont.ccw_(gamma) (f'(z)) / (f(z) - w_0) dz = 1 / (2 uppi ii) integral.cont.ccw_(Gamma) (dif w) / (w - w_0) = Ind_Gamma (w_0).
   $
-  If $w_0 in jexterior(Gamma)$, the integral vanishes by the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem). On the contrary, if $w_0 in jinterior(Gamma)$, then $Gamma$ winds around $w_0$ exactly once, and hence, in other words, $forall w_0 in jinterior(Gamma)$, $f(z) = w_0$ has a unique solution in $U$. This verifies the univalence of $f$ in $U$.
+  + If $w_0 in jexterior(Gamma)$, the expression vanishes since $Ind_Gamma (w_0)=0$. Then $f(z) = w_0$ has no solution in $U$ (i.e. $k=0$).
 
-  If $w_0$ lies on $Gamma$, $f - w_0$ has no zeros in $U$. Indeed, for the sake of contradiction, assume that $exists z_0 in U$ such that $f(z_0) = w_0$. By the Open Mapping Theorem (@thm:openmapping) and @thm:hurwitzshifts, $exists delta > 0$ such that $D(w_0, delta) subset.eq f(U)$ and $forall w' in D(w_0, delta)$, $f - w'$ has zeros in $U$. Since $w_0$ lies on $Gamma$, a subset of $D(w_0, delta)$ lies in the exterior of $Gamma$. It was previously established that $f - w'$ has no zeros if $w' in D(w_0, delta) inter jexterior(Gamma)$. Thus, we have a contradiction. We then have
+  + If $w_0 in jinterior(Gamma)$, then $Gamma$ winds around $w_0$ exactly once, and hence, in other words, $forall w_0 in jinterior(Gamma)$, $f(z) = w_0$ has a unique solution in $U$ (i.e. $k=1$).
+
+  + If $w_0$ lies on $Gamma$, then it can be shown that $f - w_0$ has no zeros in $U$.
+
+    Indeed, for the sake of contradiction, assume that $exists z_0 in U$ such that $f(z_0) = w_0$. By the Open Mapping Theorem (@thm:openmapping), $exists delta > 0$ such that $D(w_0, delta) subset.eq f(U)$, or equivalently, $forall w in D(w_0, delta)$, $f - w$ has zeros in $U$. Since $w_0$ lies on $Gamma$, a subset of $D(w_0, delta)$ lies in the exterior of $Gamma$. It was previously established that $f - w$ has no zeros if $w in D(w_0, delta) inter jexterior(Gamma)$. Thus, we have a contradiction, and no such $z_0$ exists, implying $k=0$.
+
+  We then have
   $
     k = cases(
       0 & "if" w_0 in overline(jexterior(Gamma)),
       1 & "if" w_0 in jinterior(Gamma)
     ).
   $
-  Hence, for any arbitrary $z_0 in U$, $w_0 = f(z_0)$ must lie in $jinterior(Gamma)$. Indeed, if $f(z_0)$ lies in $jexterior(Gamma)$ or $Gamma$, then $k$ would be nonzero in those areas. It follows that $f(U) = jinterior(Gamma)$.
+  Hence, $f$ is univalent in $U$ (since for each $w_0$, $k$ is at most one).
+
+  Moreover, any point $z_0 in U$ must map to either $jinterior(Gamma)$ or $overline(jexterior(Gamma))$. The latter is an impossibility since otherwise $k eq.not 0$. This $f(U)=jinterior(Gamma)$.
 ]
 
 We will now give examples of biholomorphisms.

@@ -4,8 +4,17 @@
 
 The Riemann Mapping Theorem is one of the most profound results in complex analysis; in the case of one dimension, it establishes sufficient conditions for the biholomorphic equivalence between two open subsets of the complex plane.
 
-If there exists a biholomorphism $f$ between two regions, then the two regions are said to be _conformally equivalent_, _holomorphically equivalent_, or _biholomorphically equivalent_.
+If there exists a biholomorphism $f$ between two regions, then the two regions are said to be _conformally equivalent_, _holomorphically equivalent_, or _biholomorphically equivalent_. As a required intermediate for the proof, we first introduce:
+#definition("Holomorphic Logarithms")[
+  Suppose $Phi:U -> CC^* = CC without {0}$ is holomorphic, where $U$ is simply connected. Define the _holomorphic logarithm_ of $Phi(z)$ to be a branch of
+  $
+    log(Phi(z)) = integral_gamma (Phi'(zeta)) / (Phi(zeta)) dzeta + log(Phi(z_0))
+  $
+  for any $z_0 in U$, where the integral is path-independent $gamma subset U$ is any piecewise $C^1$ curve from $z_0$ to $z$.
 
+  Similarly, define the _holomorphic powers_ of $Phi(z)$ to be branches of $(Phi^alpha) (z) = ee^(alpha log(Phi(z)))$, where $log(Phi(z))$ is the holomorphic logarithm.
+]
+The path independence of the definition is provided by the simple connectivity of $U$. The result is the heuristic concatenation of several different branches of the complex logarithm, unique up to an additive factor of $2 uppi ii k$, where this additive factor is the same throughout.
 #theorem("Riemann Mapping Theorem")[
   Let $U subset CC$ (a proper subset, in other words, $U != CC$) be a simply connected (nonempty) open region. Let $z_0 in U$ be arbitrary. Then there exists a unique biholomorphism $f:U -> DD$ such that $f(z_0) = 0$ and $f'(z_0) in RR_(> 0)$.
 ] <thm:riemannmapping>
@@ -34,12 +43,6 @@ If there exists a biholomorphism $f$ between two regions, then the two regions a
   Let $zeta_1, zeta_2 in U$ be arbitrary and different. Choose $r' > 0$ to satisfy $0 < r' < abs(zeta_1 - zeta_2)$, and let $psi_k(z) = tilde(alpha)_(n_k) (z) - tilde(alpha)_(n_k) (zeta_2)$. Since each $tilde(alpha)_(n_k)$ is univalent in $U$, it follows that each $psi_k$ is non-vanishing in $U without {zeta_2}$ and consequently, in $overline(D(zeta_1, r'))$. By @thm:hurwitzsimplecase, it follows that the locally uniform limit of $psi_k$, or $psi = f(z) - f(zeta_2)$, is either non-vanishing or is identically zero in $overline(D(zeta_1, r'))$. The latter is an impossibility since $psi'(z_0) = M > 0$. Hence, $f(z) = f(zeta_2)$ has no solutions for $z in overline(D(zeta_1, r'))$. In particular, $f(zeta_1) != f(zeta_2)$. By the arbitrariness of $zeta_1$ and $zeta_2$, the univalence of $f$ follows.
 
   Additionally, since $forall k in NN$, $abs(tilde(alpha)_(n_k)) < 1$ in $U$, it follows that $f(U) subset.eq overline(DD)$. By the Open Mapping Theorem (@thm:openmapping), the condition becomes $f(U) subset.eq DD$. Since $tilde(alpha)_(n_k) (z_0) = 0$ for all $k in NN$ and $tilde(alpha)_(n_k) (z_0) -> 0 = f(z_0)$, it follows that $f in cal(F)$.
-
-  Suppose $Phi:U -> CC^* = CC without {0}$ is holomorphic. Define the _holomorphic logarithm_ of $Phi(z)$ to be a branch of
-  $
-    log(Phi(z)) = integral_gamma (Phi'(zeta)) / (Phi(zeta)) dzeta + log(Phi(z_0))
-  $
-  for any $z_0 in U$, where $gamma subset U$ is any piecewise $C^1$ curve from $z_0$ to $z$, and path independence is provided by the simple connectivity of $U$. The result is the heuristic concatenation of several different branches of the complex logarithm, unique up to an additive factor of $2 uppi ii k$. Similarly, we can define the _holomorphic powers_ of $Phi(z)$ to be branches of $Phi^alpha (z) = ee^(alpha log(Phi(z)))$, where $log(Phi(z))$ is the holomorphic logarithm.
 
   Lastly, we aim to prove that $f$ maps $U$ to $DD$ surjectively. For the sake of contradiction, assume that $exists xi in DD^*$ such that $xi in.not f(U)$. Consider the unit disk automorphism $phi_xi (z) = (z - xi) / (1 - z overline(xi))$. Since $phi_xi (z)$ vanishes when $z = xi$, and since $f(z) = xi$ has no solutions in $U$, there exists a holomorphic square root
   $
