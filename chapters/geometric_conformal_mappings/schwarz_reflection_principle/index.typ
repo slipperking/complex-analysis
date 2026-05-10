@@ -16,6 +16,46 @@ We have previously considered analytic continuations over two regions with an in
   on $U_1 union U_2 union gamma$.
 ] <thm:painleve>
 
+#figure-wrapper([
+  #figure(
+    {
+      cetz.canvas({
+        import cetz.draw: *
+
+        catmull(
+          (-3, -0.3),
+          (-2, -2),
+          (-0.8, -2),
+          (0.4, -3),
+          (1.5, -3),
+          (2, -1.5),
+          (3, 1.5),
+          (-1, 3),
+          close: true,
+          stroke: 0.7pt,
+          name: "union",
+        )
+        hide(line((-2, -4), (4, 8), name: "testline"))
+        intersections("gamma-boundaries", "testline", "union")
+        for-each-anchor("gamma-boundaries", name => {
+          circle((), radius: 1.5pt, fill: black)
+        })
+
+        catmull("gamma-boundaries.0", (0.1, -0.6), (0.2, 0.8), "gamma-boundaries.1", name: "gamma")
+
+        get-ctx(ctx => {
+          let var-z = cetz.coordinate.resolve-anchor(ctx, (name: "gamma", anchor: 30%))
+          circle(var-z, radius: 1.5pt, fill: black)
+          circle(var-z, radius: 1)
+          content((name: "gamma", anchor: 60%), $gamma$, anchor: "south-east", padding: 2pt)
+          content(var-z, $z$, anchor: "south-east", padding: 2pt)
+        })
+      })
+    },
+    caption: [The two regions $U_1$ and $U_2$ sharing a boundary curve $gamma$, the disk $D(z,R_z)$ for $z in gamma$, and the curve $Gamma$.],
+  ) <fig:painleve_theorem>
+])
+
 #proof[
   We aim to prove that the constructed function $f$ is holomorphic on $U_1 union U_2 union gamma$. In particular, we only need to prove that $f$ is holomorphic on (a neighborhood of) $gamma$, after which the Identity Theorem (@thm:identity) applies.
 
@@ -51,7 +91,7 @@ A consequent result was discovered by Schwarz, known as the _reflection principl
 #proof[
   If $z in RR$, then $overline(z) = z$, and since $f$ is real on $gamma$, it follows that $f(z) = overline(f(overline(z)))$ for $z in gamma$. Thus, we are left to prove that $z |-> overline(f(overline(z)))$ is holomorphic on $tilde(U)$. Let $z_0 in tilde(U)$. It follows that
   $
-    lim_(z -> z_0 \ z in tilde(U)) (overline(f(overline(z))) - overline(f(overline(z_0)))) / (z - z_0) = lim_(z -> z_0 \ z in tilde(U)) overline((f(overline(z)) - f(overline(z_0))) / (overline(z) - overline(z_0))) = overline(f'(overline(z_0))).
+    lim_(z -> z_0 \ z in tilde(U)) (overline(f(overline(z))) - overline(f(overline(z_0)))) / (z - z_0) = lim_(z -> z_0 \ z in tilde(U)) overline(((f(overline(z)) - f(overline(z_0))) / (overline(z) - overline(z_0)))) = overline(f'(overline(z_0))).
   $
   Since this limit exists, it follows that $overline(f(overline(z)))$ is holomorphic on $tilde(U)$. Assume that $z_0 in gamma$. Since
   $
