@@ -147,8 +147,8 @@ There is not a directly trivial reason for the definition of the residue at $inf
           let n-arrows = 6
           for k in range(n-arrows) {
             let i = int(k / n-arrows * 60)
-            mark(nbhd-pts.at(i + 1), nbhd-pts.at(i), ">>", fill: black, stroke: none, scale: 0.4)
-            mark(proj-pts.at(i + 1), proj-pts.at(i), ">>", fill: black, stroke: none, scale: 0.7)
+            mark(nbhd-pts.at(i), nbhd-pts.at(i + 1), ">>", fill: black, stroke: none, scale: 0.4)
+            mark(proj-pts.at(i), proj-pts.at(i + 1), ">>", fill: black, stroke: none, scale: 0.7)
           }
 
           let ax = 3.0
