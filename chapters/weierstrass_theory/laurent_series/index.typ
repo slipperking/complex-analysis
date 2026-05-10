@@ -164,7 +164,7 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
     1 / (zeta - z) = -1 / ((z - a) (1 - (zeta - a) / (z - a))) = -sum_(n = 0)^oo (zeta - a)^n / (z - a)^(n + 1)
   $ <eq:laurentexpansionofholomorphicfunction_kernelexpansioninside>
   is uniformly convergent with respect to $zeta$. Similarly, for all $zeta in gamma_2$,
-  $ abs(zeta - a) > abs(z - a) <=> (abs(z - a)) / (abs(zeta - a)) < 1, $
+  $ abs(zeta - a) > abs(z - a) <==> (abs(z - a)) / (abs(zeta - a)) < 1, $
   and it follows that
   $
     1 / (zeta - z) = 1 / ((zeta - a) (1 - (z - a) / (zeta - a))) = sum_(n = 0)^oo (z - a)^n / (zeta - a)^(n + 1)

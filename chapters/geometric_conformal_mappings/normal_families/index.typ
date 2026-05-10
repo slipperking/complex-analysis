@@ -46,7 +46,7 @@ In contrast, the uniform continuity of a function $f$ guarantees that $delta$ ma
 The following theorem is important in many areas of mathematical analysis and has a plethora of generalizations. It was first introduced by Ascoli (who proved the sufficiency of compactness) and later formalized by Arzelà, who proved the necessity of uniform equicontinuity and uniform boundedness.
 
 #theorem("Arzelà" + sym.dash.en + "Ascoli")[
-  Let $cal(F)$ be a family of complex continuous functions defined on a compact subset $K subset.eq CC$. Then, $cal(F)$ is uniformly bounded and uniformly equicontinuous on $K$ <=> $cal(F)$ is normal on $K$.
+  Let $cal(F)$ be a family of complex continuous functions defined on a compact subset $K subset.eq CC$. Then, $cal(F)$ is uniformly bounded and uniformly equicontinuous on $K$ iff $cal(F)$ is normal on $K$.
 ] <thm:arzelaascoli>
 
 #proof[
@@ -129,7 +129,7 @@ Lastly, we will prove Montel's Theorem in preparation of the Riemann Mapping The
 Obviously, the equivalence is established similarly to local finiteness and locally uniform convergence.
 
 #theorem("Montel's Theorem")[
-  Let $U subset.eq CC$ be open, and suppose that $cal(F)$ is a family of holomorphic functions on $U$. Then, $cal(F)$ is locally uniformly bounded on $U$ <=> $cal(F)$ is a normal family.
+  Let $U subset.eq CC$ be open, and suppose that $cal(F)$ is a family of holomorphic functions on $U$. Then, $cal(F)$ is locally uniformly bounded on $U$ iff $cal(F)$ is a normal family.
 ] <thm:montel>
 
 #proof[

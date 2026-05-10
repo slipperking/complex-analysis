@@ -11,9 +11,9 @@
 #chapter-section("riemann_mapping_theorem")[
   #include "riemann_mapping_theorem/index.typ"
 ]
-// #chapter-section("schwarz_christoffel")[
-//   #include "schwarz_christoffel/index.typ"
-// ]
-// #chapter-section("schwarz_reflection_principle_")[
-//   #include "schwarz_reflection_principle/index.typ"
-// ]
+#chapter-section("schwarz_christoffel")[
+  #include "schwarz_christoffel/index.typ"
+]
+#chapter-section("schwarz_reflection_principle_")[
+  #include "schwarz_reflection_principle/index.typ"
+]
