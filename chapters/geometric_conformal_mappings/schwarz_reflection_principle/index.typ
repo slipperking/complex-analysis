@@ -21,20 +21,24 @@ We have previously considered analytic continuations over two regions with an in
     {
       cetz.canvas({
         import cetz.draw: *
+        import cetz.decorations: brace
+
+        let var-R = 2.6
 
         catmull(
-          (-3, -0.3),
-          (-2, -2),
-          (-0.8, -2),
-          (0.4, -3),
-          (1.5, -3),
-          (2, -1.5),
-          (3, 1.5),
-          (-1, 3),
+          (-4, -0.5),
+          (-3, -3),
+          (-1, -3),
+          (0.6, -4),
+          (1.9, -4),
+          (3, -2),
+          (4.3, 2),
+          (-1.5, 4),
           close: true,
           stroke: 0.7pt,
           name: "union",
         )
+
         hide(line((-2, -4), (4, 8), name: "testline"))
         intersections("gamma-boundaries", "testline", "union")
         for-each-anchor("gamma-boundaries", name => {
@@ -44,15 +48,100 @@ We have previously considered analytic continuations over two regions with an in
         catmull("gamma-boundaries.0", (0.1, -0.6), (0.2, 0.8), "gamma-boundaries.1", name: "gamma")
 
         get-ctx(ctx => {
-          let var-z = cetz.coordinate.resolve-anchor(ctx, (name: "gamma", anchor: 30%))
+          let var-z = cetz.coordinate.resolve-anchor(ctx, (name: "gamma", anchor: 45%))
           circle(var-z, radius: 1.5pt, fill: black)
-          circle(var-z, radius: 1)
-          content((name: "gamma", anchor: 60%), $gamma$, anchor: "south-east", padding: 2pt)
-          content(var-z, $z$, anchor: "south-east", padding: 2pt)
+          circle(var-z, radius: var-R, stroke: (dash: "dashed"))
+
+          let points = (
+            (-0.6, -0.2),
+            (-0.7, -0.4),
+            (-0.4, -0.7),
+            (0.1, -0.8),
+            (0.1, -0.5),
+            (-0.4, -0.2),
+            (0.7, -0.2),
+            (0.5, 0.6),
+            (-0.3, 0.8),
+            (0.3, 0.3),
+            (-0.4, 0.3),
+          ).map(point => cvector.add(cvector.scale(point, var-R), var-z))
+          catmull(..points, close: true, stroke: 0.5pt, name: "Gamma", mark: (
+            end: range(16)
+              .map(num => 100% * num / 16)
+              .map(pos => (
+                pos: pos,
+                symbol: ">>",
+                fill: black,
+                shorten-to: none,
+              )),
+          ))
+
+          intersections("Gamma-ints", "Gamma", "gamma", sort: (ctx, pts) => pts.sorted(key: p => p.at(1)))
+
+          for-each-anchor("Gamma-ints", name => {
+            circle((), radius: 1.5pt, fill: black)
+          })
+
+          let radius-indicator-loc = cvector.add(var-z, cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(-30deg), (
+            var-R,
+            0,
+          )))
+
+          brace(
+            (var-z, 2%, radius-indicator-loc),
+            (var-z, 98%, radius-indicator-loc),
+            name: "var-R-brace",
+            amplitude: 7pt,
+            stroke: (thickness: 1pt),
+            flip: true,
+          )
+
+          get-ctx(ctx => {
+            let var-gamma-int-points = ctx
+              .nodes
+              .at("Gamma-ints")
+              .at("anchors")(())
+              .map(
+                anchor => cetz.coordinate.resolve-anchor(ctx, "Gamma-ints." + anchor),
+              )
+
+            for k in range(0, var-gamma-int-points.len()) {
+              if (k + 1 < var-gamma-int-points.len()) {
+                for points in (
+                  (var-gamma-int-points.at(k), var-gamma-int-points.at(k + 1)),
+                  (
+                    var-gamma-int-points.at(k + 1),
+                    var-gamma-int-points.at(k),
+                  ),
+                ) {
+                  halflength-arrow(
+                    ..points,
+                    scalar: 0.3,
+                    stroke: if calc.rem(k, 2) == 0 { (:) } else { (dash: ("dot", "dot"), thickness: 0.6pt) },
+                    mark: if calc.rem(k, 2) == 0 { (end: ">>", fill: black) } else { (end: ">>", scale: 0.5) },
+                  )
+                }
+              }
+            }
+          })
+
+          hide(line(cvector.add(var-z, (100, -20)), cvector.sub(var-z, (100, -20)), name: "label-testline"))
+
+          intersections("U-label-ints", "label-testline", "union")
+
+          content("U-label-ints.0", $U_2$, anchor: "west", padding: 3pt)
+          content("U-label-ints.1", $U_1$, anchor: "west", padding: 3pt)
+
+          intersections("Gamma-label-ints", "label-testline", "Gamma")
+          content("Gamma-label-ints.0", $Gamma$, anchor: "west", padding: 2pt)
+
+          content("var-R-brace.content", $R_z$)
+          content((name: "gamma", anchor: 88%), $gamma$, anchor: "south-east", padding: 2pt)
+          content(var-z, $z$, anchor: "east", padding: 4pt)
         })
       })
     },
-    caption: [The two regions $U_1$ and $U_2$ sharing a boundary curve $gamma$, the disk $D(z,R_z)$ for $z in gamma$, and the curve $Gamma$.],
+    caption: [The two regions $U_1$ and $U_2$ sharing a boundary curve $gamma$, the disk $D(z,R_z)$ for $z in gamma$, and the curve $Gamma$. Solid large arrows and arrowheads denote orientation of the $tilde(Gamma)_1$ and $tilde(Gamma)_2$ regions.],
   ) <fig:painleve_theorem>
 ])
 
@@ -67,7 +156,7 @@ We have previously considered analytic continuations over two regions with an in
   $
     integral.cont_(Gamma) f(z) dz = integral.cont_(Gamma) f_2(z) dz = 0.
   $
-  If $Gamma$ intersects $gamma$, then we can decompose $Gamma = Gamma_1 union Gamma_2$, where $Gamma_1$ is the part of $Gamma$ that lies in $U_1 union gamma$ and $Gamma_2$ is the part of $Gamma$ that lies in $U_2 union gamma$. The set $tilde(Gamma) = gamma inter jinterior(Gamma)$ closes $Gamma_1$ and $Gamma_2$ in the sense that $tilde(Gamma)_1 = Gamma_1 union tilde(Gamma)$ and $tilde(Gamma)_2 = Gamma_2 union tilde(Gamma)$ are both simple closed curves, (where $tilde(Gamma)$ in each of the two curves have opposite orientations). By Cauchy--Goursat (@thm:cauchygoursattheorem), we have
+  If $Gamma$ intersects $gamma$, then we can decompose $Gamma = Gamma_1 union Gamma_2$, where $Gamma_1$ is the part of $Gamma$ that lies in $U_1 union gamma$ and $Gamma_2$ is the part of $Gamma$ that lies in $U_2 union gamma$. The set $tilde(Gamma) = gamma inter jinterior(Gamma)$ closes $Gamma_1$ and $Gamma_2$ in the sense that $tilde(Gamma)_1 = Gamma_1 union tilde(Gamma)$ and $tilde(Gamma)_2 = Gamma_2 union tilde(Gamma)$ are both simple closed curves, or unions of simple closed curves (where $tilde(Gamma)$ in each of the two curves have opposite orientations). By Cauchy--Goursat (@thm:cauchygoursattheorem), we have
   $
     integral.cont.ccw_(Gamma) f(z) dz = (integral_(Gamma_1) + integral_(Gamma_2) + integral_(tilde(Gamma)) - integral_(tilde(Gamma))) f(z) dz = (integral.cont.ccw_(tilde(Gamma)_1) + integral.cont.ccw_(tilde(Gamma)_2)) f(z) dz = 0.
   $

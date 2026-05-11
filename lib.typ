@@ -224,17 +224,23 @@
 
 #let doubletilde(x) = $tilde(tilde(#x))$
 
-#let halflength-arrow(start, end, scalar: 0, ..args) = {
-  let diff = cvector.scale(cvector.norm(cvector.sub(start, end)), scalar)
-  let offset = cmatrix.mul-vec(((0, 1), (-1, 0)), diff)
+#let halflength-arrow(start, end, scalar: 0, mark: (end: ">>", fill: black), ..args) = {
+  let stripped-start = start.slice(0, 2)
+  let stripped-end = end.slice(0, 2)
 
-  let pstart = cvector.add(start, offset)
-  let pend = cvector.add(end, offset)
+  let diff = cvector.scale(cvector.norm(cvector.sub(stripped-start, stripped-end)), scalar)
+  let offset = cmatrix.mul-vec(
+    ((0, 1), (-1, 0)),
+    diff,
+  )
+
+  let pstart = cvector.add(stripped-start, offset)
+  let pend = cvector.add(stripped-end, offset)
   cetz.draw.line(
     (pstart, 25%, pend),
     (pstart, 75%, pend),
     ..args,
-    mark: (end: ">>", fill: black),
+    mark: mark,
   )
 }
 

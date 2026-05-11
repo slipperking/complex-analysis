@@ -189,41 +189,47 @@ Residues are extremely important as they allow for simple evaluation of definite
 #figure-wrapper([
   #figure(
     {
-      let radius = 3
-      let max = radius + 0.5
+      let var-R = 3
+      let max = var-R + 0.5
       quick-plot(scale: 1, x-min: -max, x-max: max, y-max: max, canvas: {
         import cetz.draw: *
-        let mark = (end: (symbol: ">>", fill: black, pos: 30%, shorten-to: none))
 
         arc-through(
-          (0deg, 3),
-          (30deg, 3),
-          (60deg, 3),
+          (0deg, var-R),
+          (90deg, var-R),
+          (180deg, var-R),
           stroke: (thickness: 1.5pt),
-          mark: mark,
+          mark: (
+            end: range(8)
+              .map(num => 100% * (num + 0.5) / 8)
+              .map(pos => (
+                pos: pos,
+                symbol: ">>",
+                fill: black,
+                shorten-to: none,
+              )),
+          ),
         )
 
-        arc-through(
-          (60deg, 3),
-          (90deg, 3),
-          (120deg, 3),
-          stroke: (thickness: 1.5pt),
-          mark: mark,
+        line(
+          (-var-R, 0),
+          (var-R, 0),
+          mark: (
+            end: range(4)
+              .map(num => 100% * (num + 0.5) / 4)
+              .map(pos => (
+                pos: pos,
+                symbol: ">>",
+                fill: black,
+                shorten-to: none,
+              )),
+          ),
+          stroke: 1.5pt,
         )
 
-        arc-through(
-          (120deg, 3),
-          (150deg, 3),
-          (180deg, 3),
-          stroke: (thickness: 1.5pt),
-          mark: mark,
-        )
-
-        line((-radius, 0), (radius, 0), mark: mark, stroke: 1.5pt)
-
-        content((radius, 0), anchor: "north", $R$, padding: 2pt)
-        content((-radius, 0), anchor: "north", $-R$, padding: 2pt)
-        content((0, radius), anchor: "south-east", $R$, padding: 2pt)
+        content((var-R, 0), anchor: "north", $R$, padding: 2pt)
+        content((-var-R, 0), anchor: "north", $-R$, padding: 2pt)
+        content((0, var-R), anchor: "south-east", $R$, padding: 2pt)
       })
     },
     caption: [A semicircular contour with orientation marked.],
@@ -282,26 +288,19 @@ Residues are extremely important as they allow for simple evaluation of definite
 
         arc-through(
           (0deg, var-R),
-          (30deg, var-R),
-          (60deg, var-R),
-          stroke: (thickness: 1.5pt),
-          mark: mark,
-        )
-
-        arc-through(
-          (60deg, var-R),
           (90deg, var-R),
-          (121deg, var-R),
-          stroke: (thickness: 1.5pt),
-          mark: mark,
-        )
-
-        arc-through(
-          (120deg, var-R),
-          (150deg, var-R),
           (180deg, var-R),
           stroke: (thickness: 1.5pt),
-          mark: mark,
+          mark: (
+            end: range(7)
+              .map(num => 100% * num / 7)
+              .map(pos => (
+                pos: pos,
+                symbol: ">>",
+                fill: black,
+                shorten-to: none,
+              )),
+          ),
         )
 
         content((var-R, 0), anchor: "north", $R$, padding: 2pt)

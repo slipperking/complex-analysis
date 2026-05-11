@@ -486,11 +486,11 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
 #theorem("Partition of Unity")[
   Let $Omega subset.eq CC$ be a nonempty open set and let ${Omega_k}_(k in NN)$ be an open cover of $Omega$. Then there exists a collection of bump functions ${alpha_j}_(j in NN) subset.eq C^oo (CC)$, each with compact support in $Omega$, satisfying:
 
-    + For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.<itm:partition_of_unity_subordinate>
-    + The collection ${supp(alpha_j)}_(j in NN)$ is locally finite.<itm:partition_of_unity_local_finiteness>
-    + For each $j in NN$, $0 <= alpha_j <= 1$.<itm:partition_of_unity_nonnegativity>
-    + $sum_(j = 1)^oo alpha_j equiv 1$ on $Omega$.<itm:partition_of_unity_partition_of_unity>
-  
+  + For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.<itm:partition_of_unity_subordinate>
+  + The collection ${supp(alpha_j)}_(j in NN)$ is locally finite.<itm:partition_of_unity_local_finiteness>
+  + For each $j in NN$, $0 <= alpha_j <= 1$.<itm:partition_of_unity_nonnegativity>
+  + $sum_(j = 1)^oo alpha_j equiv 1$ on $Omega$.<itm:partition_of_unity_partition_of_unity>
+
   Then ${alpha_j}_(j in NN)$ is called a $C^oo$ partition of unity subordinate to ${Omega_k}_(k in NN)$.
 ] <thm:partition_of_unity>
 
