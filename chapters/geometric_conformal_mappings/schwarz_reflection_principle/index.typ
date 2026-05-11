@@ -150,13 +150,13 @@ We have previously considered analytic continuations over two regions with an in
 
   Let $z in gamma$ be fixed, and choose $R = R_z > 0$ such that $D(z, R) subset.eq U_1 union U_2 union gamma$. Let $Gamma$ be any simple closed curve in $D(z, R)$. If $Gamma$ is fully contained in $U_1 union gamma (inter D(z, R))$, then by Cauchy--Goursat (@thm:cauchygoursattheorem),
   $
-    integral.cont_(Gamma) f(z) dz = integral.cont_(Gamma) f_1(z) dz = 0.
+    integral.cont_(Gamma) f(z) dz = integral.cont_(Gamma) f_1 (z) dz = 0.
   $
   Similarly, if $Gamma$ is fully contained in $U_2 union gamma$, then
   $
-    integral.cont_(Gamma) f(z) dz = integral.cont_(Gamma) f_2(z) dz = 0.
+    integral.cont_(Gamma) f(z) dz = integral.cont_(Gamma) f_2 (z) dz = 0.
   $
-  If $Gamma$ intersects $gamma$, then we can decompose $Gamma = Gamma_1 union Gamma_2$, where $Gamma_1$ is the part of $Gamma$ that lies in $U_1 union gamma$ and $Gamma_2$ is the part of $Gamma$ that lies in $U_2 union gamma$. The set $tilde(Gamma) = gamma inter jinterior(Gamma)$ closes $Gamma_1$ and $Gamma_2$ in the sense that $tilde(Gamma)_1 = Gamma_1 union tilde(Gamma)$ and $tilde(Gamma)_2 = Gamma_2 union tilde(Gamma)$ are both simple closed curves, or unions of simple closed curves (where $tilde(Gamma)$ in each of the two curves have opposite orientations). By Cauchy--Goursat (@thm:cauchygoursattheorem), we have
+  If $Gamma$ intersects $gamma$, then we can decompose $Gamma = Gamma_1 union Gamma_2$, where $Gamma_1$ is the part of $Gamma$ that lies in $U_1 union gamma$ and $Gamma_2$ is the part of $Gamma$ that lies in $U_2 union gamma$. The set $tilde(Gamma) = gamma inter jinterior(Gamma)$ closes $Gamma_1$ and $Gamma_2$ in the sense that $tilde(Gamma)_1 = Gamma_1 union tilde(Gamma)$ and $tilde(Gamma)_2 = Gamma_2 union tilde(Gamma)$ are both simple closed curves, or unions of simple closed curves (where $tilde(Gamma)$ in each of the two curves have opposite orientations, see @fig:painleve_theorem). By Cauchy--Goursat (@thm:cauchygoursattheorem), we have
   $
     integral.cont.ccw_(Gamma) f(z) dz = (integral_(Gamma_1) + integral_(Gamma_2) + integral_(tilde(Gamma)) - integral_(tilde(Gamma))) f(z) dz = (integral.cont.ccw_(tilde(Gamma)_1) + integral.cont.ccw_(tilde(Gamma)_2)) f(z) dz = 0.
   $

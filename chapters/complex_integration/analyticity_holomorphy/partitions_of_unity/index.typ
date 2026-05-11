@@ -190,7 +190,7 @@ We now justify a claim whose triviality we have taken for granted.
   Conversely, assume $f$ is $epsilon$--$delta$ continuous. Let $V subset.eq Y$ be open and $x in f^(-1)(V)$. Since $V$ is open in the metric topology, there exists $epsilon > 0$ such that
   $ B(f(x), epsilon) subset.eq V. $
   By epsilon--delta continuity, there exists $delta > 0$ such that
-  $ d_x(x, y) < delta ==> d_y(f(x), f(y)) < epsilon, $
+  $ d_x (x, y) < delta ==> d_y (f(x), f(y)) < epsilon, $
   or that
   $ y in B(x, delta) ==> f(y) in B(f(x), epsilon) subset.eq V. $
   Thus, the ball $B(x, delta_x)$ is an open neighborhood of $x$ in $X$ such that
@@ -510,16 +510,16 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   $ theta_epsilon(z) = theta(z / epsilon), $
   which has support $overline(D(0, epsilon))$.
   Define
-  $ beta_j(z) = theta_(r_(z_j))(z - z_j), $
+  $ beta_j (z) = theta_(r_(z_j))(z - z_j), $
   so
   $ supp(beta_j) = overline(D(z_j, r_(z_j))) subset Omega_(k_(z_j)). $
 
   By local finiteness of ${D(z_j, r_(z_j))}_(j in NN)$, for each $z in Omega$ there exists an open neighborhood $V$ with $z in V$ intersecting only finitely many $overline(D(z_j, r_(z_j)))$. Thus ${supp(beta_j)}_(j in NN)$ is locally finite on $Omega$. Then the sum
-  $ S(z) = sum_(j = 1)^oo beta_j(z) $
+  $ S(z) = sum_(j = 1)^oo beta_j (z) $
   defined for $z in Omega$ involves only finitely many nonzero terms (by local finiteness) on a neighborhood of every point $z$. Hence $S in C^oo (Omega)$ and $S(z) > 0$ (since ${D(z_j, r_(z_j))}_(j in NN)$ covers $Omega$). Define
-  $ alpha_j(z) = beta_j(z) / S(z), quad forall j in NN. $
+  $ alpha_j (z) = beta_j (z) / S(z), quad forall j in NN. $
   Each $alpha_j in C^oo (CC)$ has compact support in $Omega$, $0 <= alpha_j <= 1$, the supports are locally finite, and
-  $ sum_(j = 1)^oo alpha_j(z) = 1 $
+  $ sum_(j = 1)^oo alpha_j (z) = 1 $
   for all $z in Omega$. Moreover
   $ supp(alpha_j) subset.eq Omega_(k_(z_j)), $
   proving subordination.
@@ -549,11 +549,11 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   Let
   $ J = {j in NN : supp(alpha_j) subset.eq Omega_1}. $
   Define
-  $ phi(z) = sum_(j in J) alpha_j(z). $
+  $ phi(z) = sum_(j in J) alpha_j (z). $
   Then $phi in C^oo (CC)$ is compactly supported within $Omega_1$, and since only finitely many $alpha_j$ are nonzero on a neighborhood of each point, $phi in C^oo (CC)$. Moreover,
   $ supp(phi) subset Omega_1 subset V. $
 
   For $z in V(K, epsilon)$, all functions with support in $Omega_2$ vanish at $z$, so
-  $ phi(z) = sum_(j in J) alpha_j(z) = sum_(j = 1)^oo alpha_j(z) = 1. $
+  $ phi(z) = sum_(j in J) alpha_j (z) = sum_(j = 1)^oo alpha_j (z) = 1. $
   Hence, $phi equiv 1$ on the open neighborhood $V(K, epsilon)$ of $K$. Outside $V(K, 2 epsilon)$, all terms with support in $Omega_1$ vanish, so $phi(z) = 0$. Finally, $0 <= phi <= 1$ everywhere by construction. Thus $phi$ satisfies all required properties.
 ]

@@ -12,7 +12,7 @@ It follows that
 $ Arg(sigma'(0)) - Arg(gamma'(0)) = Arg(f' (z_0)). $
 This shows that the change in direction between a curve and its image under $f$ is independent of the curve itself, depending only on the value of $f' (z_0)$.
 
-Now consider two smooth curves $gamma_1, gamma_2 in C^1([0, 1])$ such that $gamma_1(0) = gamma_2(0) = z_0$, with respective images $sigma_1(t) = f(gamma_1(t))$ and $sigma_2(t) = f(gamma_2(t))$. Then
+Now consider two smooth curves $gamma_1, gamma_2 in C^1([0, 1])$ such that $gamma_1 (0) = gamma_2 (0) = z_0$, with respective images $sigma_1 (t) = f(gamma_1 (t))$ and $sigma_2 (t) = f(gamma_2 (t))$. Then
 $
   Arg(sigma_1'(0)) - Arg(gamma_1'(0)) = Arg(f' (z_0)) = Arg(sigma_2'(0)) - Arg(gamma_2'(0)),
 $

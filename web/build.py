@@ -34,10 +34,8 @@ LANG = "en"
 THESIS_TITLE = "Notes on Complex Analysis"
 GITHUB_URL = "https://github.com/slipperking/complex-analysis"
 BASE_URL = "/"  # overridden by --base-url CLI arg
-
-# Heading tags tracked for TOC and section structure (h1 is page title, not TOC'd)
 HEADING_TAGS = {"h2", "h3", "h4", "h5", "h6"}
-# Minimum TOC level emitted (h2 = level 2 maps to toc-l2)
+
 TOC_MIN_LEVEL = 2
 
 ICON_HAMBURGER = (

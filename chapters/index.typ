@@ -20,9 +20,9 @@
   #include "/chapters/geometric_conformal_mappings/index.typ"
 ]
 
-// #chapter-section("rational-approximation")[
-//   #include "/chapters/rational_approximation_theory/index.typ"
-// ]
+#chapter-section("rational-approximation")[
+  #include "/chapters/rational_approximation_theory/index.typ"
+]
 
 // #chapter-section("harmonic-functions")[
 //   #include "/chapters/harmonic_functions/index.typ"

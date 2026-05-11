@@ -32,21 +32,21 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   Using this result in comparison to @eq:identityaccumulationofzeros_taylorexpansion, we get that $a_0 = 0$.
 
   The function
-  $ f_1(z) = (f(z)) / (z - z_infinity) $
+  $ f_1 (z) = (f(z)) / (z - z_infinity) $
   has a Taylor expansion over $D(z_infinity, epsilon)$ of
 
-  $ f_1(z) = sum_(n = 0)^oo a_(n + 1) (z - z_infinity)^n. $
+  $ f_1 (z) = sum_(n = 0)^oo a_(n + 1) (z - z_infinity)^n. $
 
   Let $z = z_n eq.not z_infinity$ for some $n > N$. Then $f_1$ vanishes, leaving
   $ 0 = a_1 + Order(z_n - z_infinity). $
 
   Letting $n -> oo$, $z_n -> z_infinity$, and $a_1 = 0$. Define
-  $ f_2(z) = (f_1(z)) / (z - z_infinity). $
+  $ f_2 (z) = (f_1 (z)) / (z - z_infinity). $
   Then,
-  $ f_2(z) = sum_(n = 0)^oo a_(n + 2) (z - z_infinity)^n. $
+  $ f_2 (z) = sum_(n = 0)^oo a_(n + 2) (z - z_infinity)^n. $
 
   Similarly, $a_2 = 0$. Letting
-  $ f_n(z) = (f(z)) / ((z - z_infinity)^n), $
+  $ f_n (z) = (f(z)) / ((z - z_infinity)^n), $
   the sequence ${a_n}_(n in ZZ_(gt.eq 0))$ vanishes, and $f equiv 0$ on $D(z_infinity, epsilon)$.
 
   Let
@@ -110,20 +110,18 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   $
 
   Near each $z_j$, express
-  $ f(z) = (z - z_j)^(k_j) h_j(z) $
+  $ f(z) = (z - z_j)^(k_j) h_j (z) $
   where $h_j$ is holomorphic and non-vanishing on $D(z_j, epsilon_j)$. Differentiation yields
 
-  $ f'(z) = k_j (z - z_j)^(k_j - 1) h_j(z) + (z - z_j)^(k_j) h_j'(z), $
+  $ f'(z) = k_j (z - z_j)^(k_j - 1) h_j (z) + (z - z_j)^(k_j) h_j' (z), $
 
   and thus
 
-  $ (f'(z)) / (f(z)) = (k_j) / (z - z_j) + (h_j'(z)) / (h_j(z)). $
+  $ (f'(z)) / (f(z)) = (k_j) / (z - z_j) + (h_j' (z)) / (h_j (z)). $
 
-  Since $h_j$ is holomorphic and non-vanishing on $D(z_j, epsilon_j)$, the function
-  $ (h_j') / (h_j) $
-  is holomorphic there. By the Cauchy--Goursat Theorem,
+  Since $h_j$ is holomorphic and non-vanishing on $D(z_j, epsilon_j)$, the function $frac(h_j', h_j, style: "horizontal")$ is holomorphic there. By the Cauchy--Goursat Theorem,
 
-  $ integral.cont_(partial D(z_j, epsilon_j)) (h_j'(z)) / (h_j(z)) dz = 0. $
+  $ integral.cont_(partial D(z_j, epsilon_j)) (h_j' (z)) / (h_j (z)) dz = 0. $
 
   The Cauchy--Goursat Formula (@thm:cauchygoursatformula) gives
 

@@ -32,7 +32,7 @@ $
 $
 where $c in RR_(> 0)$ is fixed.
 
-The absolute integrability of $beta(zeta)$ along the real axis concerns only the convergence at each singularity $zeta = a_k$ and the behavior as $zeta -> plus.minus oo$. For a fixed $k$, $beta(zeta) = h_k(zeta) (zeta - a_k)^(alpha_k - 1)$ (where $h_k$ is holomorphic and nonzero in a compact neighborhood of $a_k$). Since $alpha_k - 1 > -1$, it is an integrable singularity. Since $beta(zeta) tilde zeta^(sum alpha_k - n)$ as $zeta -> plus.minus oo$ and $sum_(k = 1)^n alpha_k - n < -1$, $beta$ is integrable on $RR$.
+The absolute integrability of $beta(zeta)$ along the real axis concerns only the convergence at each singularity $zeta = a_k$ and the behavior as $zeta -> plus.minus oo$. For a fixed $k$, $beta(zeta) = h_k (zeta) (zeta - a_k)^(alpha_k - 1)$ (where $h_k$ is holomorphic and nonzero in a compact neighborhood of $a_k$). Since $alpha_k - 1 > -1$, it is an integrable singularity. Since $beta(zeta) tilde zeta^(sum alpha_k - n)$ as $zeta -> plus.minus oo$ and $sum_(k = 1)^n alpha_k - n < -1$, $beta$ is integrable on $RR$.
 
 Let
 $
@@ -40,4 +40,4 @@ $
 $ <eq:schwarzchristoffeltransformation_statement>
 Since $beta$ is holomorphic on $HH^+$,
 
-// source excerpt provided by the user ends here
+// TBC

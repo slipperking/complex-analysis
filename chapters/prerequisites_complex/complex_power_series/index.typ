@@ -42,7 +42,7 @@ Function series are defined to be a sequence formed by the partial sums of funct
   By the convergence of $sum_(n = 1)^oo M_n$, $forall epsilon > 0$, $exists N in NN$ such that $forall m >= n > N$,
   $ abs(M_m + M_(m - 1) + dots + M_(n + 1)) < epsilon. $
 
-  Since $M_j$ bounds $f_j(z)$, it follows that
+  Since $M_j$ bounds $f_j (z)$, it follows that
   $
     abs(f_m (z) + f_(m - 1)(z) + dots + f_(n + 1)(z)) <= abs(M_m + M_(m - 1) + dots + M_(n + 1)) < epsilon,
   $
@@ -88,18 +88,18 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
   $ S_n (z) = sum_(k = 0)^(n - 1) a_k z^k, quad R_n (z) = sum_(k = n)^oo a_k z^k. $
 
   Let
-  $ f_1(z) = lim_(n -> oo) S'_n (z) = sum_(n = 1)^oo n a_n z^(n - 1). $
+  $ f_1 (z) = lim_(n -> oo) S'_n (z) = sum_(n = 1)^oo n a_n z^(n - 1). $
 
   Let $rho < R$ be positive and $abs(z_0) < rho$. Then we aim to show that
-  $ lim_(z -> z_0) ((f(z) - f(z_0)) / (z - z_0) - f_1(z)) = 0. $
+  $ lim_(z -> z_0) ((f(z) - f(z_0)) / (z - z_0) - f_1 (z)) = 0. $
 
   By analyzing the difference,
   $
-    (f(z) - f(z_0)) / (z - z_0) - f_1(z) & = [(S_n (z) - S_n (z_0)) / (z - z_0) - S'_n (z)] \
-                                         & + S'_n (z) - f_1(z) + (R_n (z) - R_n (z_0)) / (z - z_0).
+    (f(z) - f(z_0)) / (z - z_0) - f_1 (z) & = [(S_n (z) - S_n (z_0)) / (z - z_0) - S'_n (z)] \
+                                          & + S'_n (z) - f_1 (z) + (R_n (z) - R_n (z_0)) / (z - z_0).
   $<eq:abelradius_differentiationintermediate>
 
-  Since $S'_n (z) -> f_1(z)$ as $n -> oo$, it follows that $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $abs(S'_n (z) - f_1(z)) < epsilon / 3$. Since
+  Since $S'_n (z) -> f_1 (z)$ as $n -> oo$, it follows that $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $abs(S'_n (z) - f_1 (z)) < epsilon / 3$. Since
   $
     (R_n (z) - R_n (z_0)) / (z - z_0) = sum_(k = n)^oo a_k (z^(k - 1) + z^(k - 2) z_0 + dots + z_0^(k - 1))
   $
@@ -113,7 +113,7 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
   $ abs((S_n (z) - S_n (z_0)) / (z - z_0) - S'_n (z)) < epsilon / 3. $
 
   From @eq:abelradius_differentiationintermediate, we get
-  $ abs((f(z) - f(z_0)) / (z - z_0) - f_1(z)) < epsilon, $
+  $ abs((f(z) - f(z_0)) / (z - z_0) - f_1 (z)) < epsilon, $
   confirming part 3.
 ]
 

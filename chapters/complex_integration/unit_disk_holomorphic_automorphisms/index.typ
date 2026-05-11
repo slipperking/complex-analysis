@@ -43,16 +43,16 @@ If $U subset.eq CC$ is connected and $f:U -> U$ is holomorphic on $U$ and biject
 First we will show that $forall a in DD$,
 
 $
-  phi_a(z) = (z - a) / (1 - overline(a) z) in Aut(DD).
+  phi_a (z) = (z - a) / (1 - overline(a) z) in Aut(DD).
 $ <eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement>
 
-Firstly, the function is holomorphic on $DD$ as $abs(z) <= 1$, $abs(overline(a)) < 1$, the denominator never vanishes. Additionally, $phi_a(a) = 0$.
+Firstly, the function is holomorphic on $DD$ as $abs(z) <= 1$, $abs(overline(a)) < 1$, the denominator never vanishes. Additionally, $phi_a (a) = 0$.
 
 First, we will observe the image of $partial DD$. Let $abs(z) = 1$. Then,
 $
-  abs(phi_a(z)) = abs(1 / (z)) abs((z - a) / (1 / (z) - overline(a))) = abs((z - a) / (overline(z) - overline(a))) = 1.
+  abs(phi_a (z)) = abs(1 / (z)) abs((z - a) / (1 / (z) - overline(a))) = abs((z - a) / (overline(z) - overline(a))) = 1.
 $
-Therefore, the image of $partial DD$ lies on $partial DD$, and since $f$ is holomorphic and non-constant, by the Maximum Modulus Principle (@thm:maximummodulus), for any $abs(z) < 1$, $abs(phi_a(z)) < 1$. Therefore, $f$ maps $DD$ to $DD$. We next aim to show that $f:DD -> DD$ is bijective.
+Therefore, the image of $partial DD$ lies on $partial DD$, and since $f$ is holomorphic and non-constant, by the Maximum Modulus Principle (@thm:maximummodulus), for any $abs(z) < 1$, $abs(phi_a (z)) < 1$. Therefore, $f$ maps $DD$ to $DD$. We next aim to show that $f:DD -> DD$ is bijective.
 
 Let us first confirm injectivity. For all $z_1, z_2 in DD$, we will observe when
 $ (z_1 - a) / (1 - overline(a) z_1) = (z_2 - a) / (1 - overline(a) z_2) $
@@ -63,9 +63,9 @@ $
 $
 Then,
 $ abs(a)^2 (z_2 - z_1) = z_2 - z_1 <==> (abs(a)^2 - 1) (z_2 - z_1) = 0. $
-Since $abs(a) < 1$, then $abs(a)^2 - 1 != 0$, and we get $z_2 - z_1 = 0$. This proves the univalence of $phi_a(z)$.
+Since $abs(a) < 1$, then $abs(a)^2 - 1 != 0$, and we get $z_2 - z_1 = 0$. This proves the univalence of $phi_a (z)$.
 
-Next, we will solve for the inverse of $phi_a$. Let $z = phi_a(w) = (w - a) / (1 - overline(a) w)$. Then,
+Next, we will solve for the inverse of $phi_a$. Let $z = phi_a (w) = (w - a) / (1 - overline(a) w)$. Then,
 $ z - overline(a) z w = w - a <==> w = (z + a) / (1 + overline(a) z). $ <eq:inversemobiustransformation>
 
 It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bijective automorphism. It follows that @eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement is true. Functions in the form of $phi_a$ (where $a in DD$) are known as _Möbius transformations_, and the group of all such transformations is known as the _Möbius transformation group on the unit disk_, which is a subgroup of $Aut(DD)$. Functions in the form of $rho_tau(z) = z ee^(ii tau)$, where $tau in RR$ is constant, form a group known as the _rotation group_, which is also a subgroup of $Aut(DD)$.

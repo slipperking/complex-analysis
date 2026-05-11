@@ -68,12 +68,12 @@ For the purpose of the following contents, a _region_ or _domain_ will denote a 
   For the converse, let $f(z) = f(x, y) = u(x, y) + ii v(x, y)$. Assume that $u, v in C^1(U)$ and satisfy the Cauchy--Riemann equations at $z_0 = x_0 + ii y_0$. Let
   $ alpha = pdv(u, x)(x_0, y_0) = pdv(v, y)(x_0, y_0), quad beta = pdv(v, x)(x_0, y_0) = -pdv(u, y)(x_0, y_0). $
 
-  Because $u$ and $v$ are continuously differentiable, there are functions $epsilon_u(Delta x, Delta y)$ and $epsilon_v(Delta x, Delta y)$ such that $epsilon_u -> 0$ and $epsilon_v -> 0$ as $(Delta x, Delta y) -> (0, 0)$, and
+  Because $u$ and $v$ are continuously differentiable, there are functions $epsilon_u (Delta x, Delta y)$ and $epsilon_v (Delta x, Delta y)$ such that $epsilon_u -> 0$ and $epsilon_v -> 0$ as $(Delta x, Delta y) -> (0, 0)$, and
   $
-    u(x, y) - u(x_0, y_0) = alpha (x - x_0) - beta (y - y_0) + epsilon_u(Delta x, Delta y) abs(Delta z),
+    u(x, y) - u(x_0, y_0) = alpha (x - x_0) - beta (y - y_0) + epsilon_u (Delta x, Delta y) abs(Delta z),
   $
   $
-    v(x, y) - v(x_0, y_0) = beta (x - x_0) + alpha (y - y_0) + epsilon_v(Delta x, Delta y) abs(Delta z),
+    v(x, y) - v(x_0, y_0) = beta (x - x_0) + alpha (y - y_0) + epsilon_v (Delta x, Delta y) abs(Delta z),
   $
   where $Delta z = (x - x_0) + ii (y - y_0)$.
 
@@ -81,14 +81,14 @@ For the purpose of the following contents, a _region_ or _domain_ will denote a 
   $
     f(z) - f(z_0)
     &= [alpha (x - x_0) - beta (y - y_0)] + ii [beta (x - x_0) + alpha (y - y_0)] \
-    &+ [epsilon_u(Delta x, Delta y) + ii epsilon_v(Delta x, Delta y)] abs(Delta z) \
-    &= (alpha + ii beta) Delta z + [epsilon_u(Delta x, Delta y) + ii epsilon_v(Delta x, Delta y)] abs(Delta z).
+    &+ [epsilon_u (Delta x, Delta y) + ii epsilon_v (Delta x, Delta y)] abs(Delta z) \
+    &= (alpha + ii beta) Delta z + [epsilon_u (Delta x, Delta y) + ii epsilon_v (Delta x, Delta y)] abs(Delta z).
   $
   Therefore,
   $
     (f(z) - f(z_0)) / (z - z_0)
     =
-    alpha + ii beta + [epsilon_u(Delta x, Delta y) + ii epsilon_v(Delta x, Delta y)] (abs(Delta z) / (Delta z)).
+    alpha + ii beta + [epsilon_u (Delta x, Delta y) + ii epsilon_v (Delta x, Delta y)] (abs(Delta z) / (Delta z)).
   $
   Taking the limit as $Delta z -> 0$, the last term vanishes because $abs(abs(Delta z) / (Delta z)) = 1$. Hence
   $ lim_(Delta z -> 0) (f(z) - f(z_0)) / (z - z_0) = alpha + ii beta. #qedhere $
