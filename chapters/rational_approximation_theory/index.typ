@@ -8,9 +8,9 @@ When we refer to approximation, we refer to the approximation of a function as t
 #chapter-section("runges_theorem")[
   #include "runges_theorem/index.typ"
 ]
-// #chapter-section("mergelyans_theorem")[
-//   #include "mergelyan/index.typ"
-// ]
+#chapter-section("mergelyans_theorem")[
+  #include "mergelyans_theorem/index.typ"
+]
 // #chapter-section("analytic_capacity")[
 //   #include "analytic_capacity/index.typ"
 // ]

@@ -259,15 +259,15 @@ In its full generality, we will now apply a technique to push a pole to a prescr
   For fixed $j$ (where $a_(-j) != 0$), we aim to prove the existence of an $N in NN$ such that $forall n > N$, we have at least
   $
     abs([(z - beta)^(-1) sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k]^j - [(z - beta)^(-1) sum_(k = 0)^n ((alpha - beta) / (z - beta))^k]^j) < epsilon / (m abs(a_(-j))),
-  $ <eq:simplepolepushing_uniformboundassumption>
-  where $z in extcomplex without D(beta, r)$. Since $abs(1 / (z - beta)) < 1 / r$, we can restrict @eq:simplepolepushing_uniformboundassumption further with
+  $ <eq:simple_pole_pushing_uniform_bound_assumption>
+  where $z in extcomplex without D(beta, r)$. Since $abs(1 / (z - beta)) < 1 / r$, we can restrict @eq:simple_pole_pushing_uniform_bound_assumption further with
   $
     abs((sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^j - (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j) < r^j epsilon / (m abs(a_(-j))).
   $
   Additionally, the difference on the left-hand side is also equal to
   $
-    abs([sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k] [sum_(l = 0)^(j - 1) (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^l (sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^(j - l - 1)]).
-  $ <eq:simplepolepushing_uniformboundassumption2>
+    abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k) abs(sum_(l = 0)^(j - 1) (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^l (sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^(j - l - 1)).
+  $ <eq:simple_pole_pushing_uniform_bound_assumption2>
   For any $n in NN$, we have
   $
     abs(sum_(k = 0)^n ((alpha - beta) / (z - beta))^k) <= sum_(k = 0)^n abs((alpha - beta) / (z - beta))^k <= sum_(k = 0)^oo abs(alpha - beta / r)^k <= 1 / (1 - abs(alpha - beta / r)).
@@ -276,11 +276,11 @@ In its full generality, we will now apply a technique to push a pole to a prescr
   $
     M = r / (r - abs(alpha - beta))
   $
-  on $extcomplex without D(beta, r)$. Thus, @eq:simplepolepushing_uniformboundassumption2 is bounded by $M^(j - 1) j abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k)$, and we apply further restriction by setting this to be bounded by $r^j epsilon / (m abs(a_(-j)))$. By uniform convergence, for any $epsilon > 0$, $exists N_j in NN$ such that $forall n > N_j$,
+  on $extcomplex without D(beta, r)$. Thus, @eq:simple_pole_pushing_uniform_bound_assumption2 is bounded by $M^(j - 1) j abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k)$, and we apply further restriction by setting this to be bounded by $r^j epsilon / (m abs(a_(-j)))$. By uniform convergence, for any $epsilon > 0$, $exists N_j in NN$ such that $forall n > N_j$,
   $
     abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k) < r^j epsilon / (M^(j - 1) j m abs(a_(-j))).
   $
-  For $n > N_j$, @eq:simplepolepushing_uniformboundassumption is satisfied, and $forall n > max_(j = 1 \ a_(-j) != 0)^m (N_j)$, $z in extcomplex without D(beta, r)$, we have
+  For $n > N_j$, @eq:simple_pole_pushing_uniform_bound_assumption is satisfied, and $forall n > max_(j = 1 \ a_(-j) != 0)^m (N_j)$, $z in extcomplex without D(beta, r)$, we have
   $
     abs(f(z) - sum_(j = 1)^m a_(-j) ((1 / (z - beta) sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j)) \
     <= sum_(j = 1 \ a_(-j) != 0)^m abs(a_(-j)) abs((sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^j - (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j) \

@@ -5,7 +5,7 @@
 #import "@preview/cetz-plot:0.1.3": *
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": vb as _vb
-// #import "@preview/equate:0.3.2": equate
+#import "@preview/fancy-tiling:1.0.0": *
 #import "@preview/intextual:0.1.1": *
 
 #let cvector = cetz.vector
