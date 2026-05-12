@@ -377,7 +377,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $
     integral_0^(2 uppi) (ii r ee^(ii theta) dif theta) / (r ee^(ii theta) - z)^(p+2) = integral.cont.ccw_(partial D(0,r)) (dif w) / (w - z)^(p+2) = 2 uppi ii Res_(w=z) 1 / (w - z)^(p+2)
   $
-  by the Residue Theorem (@ thm:residuethm). Since $p + 2 > rho(f) + 1 gt.eq 1$ where $p$ is an integer, we must have $p + 2 gt.eq 2$ and thus
+  by the Residue Theorem (@thm:residuethm). Since $p + 2 > rho(f) + 1 gt.eq 1$ where $p$ is an integer, we must have $p + 2 gt.eq 2$ and thus
   $ integral_0^(2 uppi) (r ee^(ii theta) dif theta) / (r ee^(ii theta) - z)^(p+2) = 0. $
   Therefore,
   $

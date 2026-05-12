@@ -24,13 +24,17 @@
 // #let equate-eq = equate.with(number-mode: "label")
 #let section-numbering-depth = 2
 
-#let _heading-numbers(depth: section-numbering-depth) = {
-  let arr = counter(heading).get()
+#let _heading-numbers(depth: section-numbering-depth, loc: none) = {
+  let arr = if loc != none {
+    counter(heading).at(loc)
+  } else {
+    counter(heading).get()
+  }
   arr.slice(0, calc.min(depth, arr.len()))
 }
 
-#let _scoped-number(value, depth: section-numbering-depth) = {
-  let nums = _heading-numbers(depth: depth)
+#let _scoped-number(value, depth: section-numbering-depth, loc: none) = {
+  let nums = _heading-numbers(depth: depth, loc: loc)
   let scoped = nums + (value,)
   scoped.map(str).join(".")
 }
@@ -97,7 +101,7 @@
   }
 }
 
-#let scoped-theorem-numbering(..nums, last) = [#_scoped-number(last)]
+#let scoped-theorem-numbering(..nums) = nums.pos().map(str).join(".")
 
 #let theorem = if _is-html {
   _html-thm("theorem", "Theorem", "thm-theorem")
