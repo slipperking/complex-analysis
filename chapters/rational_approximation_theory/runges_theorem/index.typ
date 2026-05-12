@@ -311,7 +311,7 @@ In its full generality, we will now apply a technique to push a pole to a prescr
     S = {zeta in U without {oo} :
       (forall epsilon > 0) (exists psi) mat(
         delim: "[",
-        psi " is rational,";
+        psi "is rational,";
         psi(CC without {zeta}) subset.eq CC and psi(zeta) = oo, ;
         sup_(z in K) abs(1 / (z - a) - psi(z)) < epsilon
       )

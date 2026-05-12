@@ -6,7 +6,7 @@
 
 Although many mathematicians have since tried after the efforts of Weierstrass and Runge to approximation continuous functions holomorphic on the interior restriction, it was only 67 years later when Armenian mathematician provided the first widely accepted proof. The proof of Runge's Theorem (specifically in @prop:rungesimplepolesandremovablesingularityatinfinity) relied heavily on the assumption of holomorphy on a neighborhood, a rational function was created by placing poles in prescribed points of a contour that lay outside of $K$ but within its domain of holomorphy. Obviously, these assumptions are null under the context of this new formulation.
 
-The proof proposed by Mergelyan is almost trivial when compared with the results of many other mathematicians at the time. It even uses the concepts previously proposed by Runge. This begs the question: why was there such a prolonged time gap between the two similar formulations? Many mathematicians felt that the conclusion was too ``too good to be true''; during this elapsed time period there were many efforts of mathematicians that resulted in many technical partial results. Mergelyan's Theorem came as a surprise as it encapsulated many of those results with simplicity.
+The proof proposed by Mergelyan is almost trivial when compared with the results of many other mathematicians at the time. It even uses the concepts previously proposed by Runge. This begs the question: why was there such a prolonged time gap between the two similar formulations? Many mathematicians felt that the conclusion was "too good to be true"; during this elapsed time period there were many efforts of mathematicians that resulted in many technical partial results. Mergelyan's Theorem came as a surprise as it encapsulated many of those results with simplicity.
 
 As we have previously seen, there is a prevalent notion in complex analysis that regards $oo$ intrinsically as essentially any other point of $extcomplex$. An appertaining question relates to the complex derivative at $oo$. Although
 $
@@ -52,7 +52,7 @@ $ <eq:derivativeatpole2>
 #proof[
   Denote the derivative of $phi.alt$ at the infinity to be $alpha$. By @eq:derivativeatpole1, we have
   $
-    (phi.alt^(-1))'(0) = 1 / phi.alt'(oo) = 1 / alpha = -lim_(z -> 0) ((phi.alt^(-1))'(z)) / ((phi.alt^(-1))(z))^2 <==> -lim_(z -> 0) ((phi.alt^(-1))(z))^2 / (alpha (phi.alt^(-1))'(z)) = 1.
+    (phi.alt^(-1))'(0) = 1 / phi.alt'(oo) = 1 / alpha = -lim_(z -> 0) ((phi.alt^(-1))'(z)) / (phi.alt^(-1)(z)^2) <==> -lim_(z -> 0) ((phi.alt^(-1))(z)^2) / (alpha (phi.alt^(-1))'(z)) = 1.
   $
   Fix $tau in K$ and let $psi(z) = alpha / ((phi.alt^(-1))(z) - tau)$, univalent on $DD$. By direct calculation, we have $psi(0) = 0$. Additionally,
   $
@@ -222,7 +222,7 @@ $ <eq:derivativeatpole2>
 
   For simplicity, by the boundedness of $f$, we may assume that $f(K) = [-1, 1]$ (by a scaling and shift). We now aim to construct a sequence ${g_n}_(n in NN_(>= 0))$ inductively such that
   $
-    abs(g_n) lt.eq 2^n / 3^(n + 1) " on " CC, quad abs(f - sum_(k = 0)^n g_k) lt.eq (2 / 3)^(n + 1) " on " K quad forall n in NN.
+    abs(g_n) lt.eq 2^n / 3^(n + 1) "on" CC, quad abs(f - sum_(k = 0)^n g_k) lt.eq (2 / 3)^(n + 1) "on" K quad forall n in NN.
   $
   In the case that $n = 0$, define the disjoint closed sets
   $
@@ -644,7 +644,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $ <eq:mergelyan_familybounds>
   Let $tilde(H)_k^((j)) = H inter D(zeta_k^((j)), 5 / 4 r)$, for each $j, k$ and construct the disjoint sets
   $
-    H_k^((j)) = tilde(H)_k^((j)) without (union.big_(j' < j) tilde(H)_k^((j')) union union.big_(k' < k) union.big_(j' <= m_(k')) tilde(H)_(k')^((j'))) " if " j != 1, quad H_1^((1)) = tilde(H)_1^((1)).
+    H_k^((j)) = tilde(H)_k^((j)) without (union.big_(j' < j) tilde(H)_k^((j')) union union.big_(k' < k) union.big_(j' <= m_(k')) tilde(H)_(k')^((j'))) "if" j != 1, quad H_1^((1)) = tilde(H)_1^((1)).
   $
   Thus the union
   $

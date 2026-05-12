@@ -9,15 +9,18 @@ The uses of analytic capacity are present in many other topics of complex analys
 #definition("Analytic Capacity")[
   Let $K subset.eq CC$ be compact. The _analytic capacity_ of $K$ is defined as
   $
-    gamma(K) = sup {abs(f'(oo)): f "is holomorphic on" extcomplex without K and f(oo) = 0 and f(extcomplex without K) subset.eq overline(DD)},
+    gamma(K) = sup {abs(f'(oo)): mat(
+        delim: "[",
+        f "is holomorphic on" extcomplex without K; f(extcomplex without K) subset.eq overline(DD); f(oo) = 0
+      )},
   $ <def:analyticcapacity>
   where $f'(oo)$ is defined as in @eq:derivativeatinfinity. For an arbitrary set $U subset.eq CC$, we define
   $
-    sup {gamma(K): K subset.eq U and K " is compact"}.
+    sup {gamma(K): K subset.eq U and K "is compact"}.
   $
 ]
 
-Intuitively, $gamma$ measures the extent to which bounded analytic functions outside $K$ can deviate from constancy. Generally, the ``larger'' $K$ is, the greater the capacity is.
+Intuitively, $gamma$ measures the extent to which bounded analytic functions outside $K$ can deviate from constancy. Generally, the "larger" $K$ is, the greater the capacity is.
 
 #proposition[
   If $K subset CC$ is a compact set of discrete points, then $lambda(K) = 0$.
@@ -41,12 +44,16 @@ $
 $
 Recent results hint the affirmative, as many special cases of the relation have been proved; the question of subadditivity has been proved in the affirmative for disjoint compact continua, and recent findings by Xavier Tolsa show that capacity is (countably) semi-(sub)additive (the existence of an absolute constant $C$ such that $gamma(K_1 union K_2) <= C [gamma(K_1) + gamma(K_2)]$).
 
-We now give some quantifying examples of how analytic capacity measures a type of ``largeness'' of compact sets, (rather much like area, which satisfies the subadditivity relation). First we define a specific classification of compact sets.
+We now give some quantifying examples of how analytic capacity measures a type of "largeness" of compact sets, (rather much like area, which satisfies the subadditivity relation). First we define a specific classification of compact sets.
+
+An alternative perspective of this "largeness" pertains to a certain _removability_ of sets. A compact set $K subset CC$ is considered to be _removable_ if every holomorphic function on the complement can be extended to $CC$. For instance, the analytic capacity $gamma({a})$ of any singleton ${a}$ (any singular point) is 0, and any singleton is a removable set. Indeed, if there exists some $a$ such that $f:CC without {a} -> DD$ is holomorphic, then the Riemann Removable Singularities Theorem (@thm:riemannremovablesingularities) would imply that $f$ extends to $CC$. Because $f$ would be bounded, Liouville's Theorem (@thm:liouville) would imply that $f$ was the constant function, which has a vanishing derivative everywhere, including at infinity.
+
+In a heuristic sense, analytic capacity measures the irremovability of a set, and larger sets tend to be "less removable."
 
 A compact set $K subset CC$ is a _continuum_ if it is connected, $CC without K$ is connected, and if it is not a singleton ($K$ contains at least 2 distinct points).
 
 #proposition[
-  Let $K subset CC$ be a continuum. Then $gamma(K) = abs(f'(oo))$ where $f: extcomplex without K -> DD$ is a biholomorphism satisfying $f(oo) = 0$ (or that the maximal $abs(f'(oo))$ is attained when $f$ is biholomorphic).
+  Let $K subset CC$ be a continuum. Then $gamma(K) = abs(f'(oo))$ where $f: extcomplex without K -> DD$ is a biholomorphism satisfying $f(oo) = 0$ (i. e. the maximal $abs(f'(oo))$ in the supremum of the definition of analytic capacity is attained when $f$ is biholomorphic).
 ] <prop:analyticcapacitycontinuumbiholomorphism>
 
 #proof[

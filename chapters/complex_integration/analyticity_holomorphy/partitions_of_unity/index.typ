@@ -545,7 +545,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
 
   By the Partition of Unity Theorem (@thm:partition_of_unity), there exist compactly supported functions ${alpha_j}_(j in NN) subset.eq C^oo (CC)$ forming a partition of unity subordinate to this cover. That is,
   $
-    0 <= alpha_j <= 1, quad supp(alpha_j) subset.eq Omega_(i_j) " for some " i_j in {1, 2}, quad sum_(j = 1)^oo alpha_j equiv 1 quad "on" CC.
+    0 <= alpha_j <= 1, quad supp(alpha_j) subset.eq Omega_(i_j) "for some" i_j in {1, 2}, quad sum_(j = 1)^oo alpha_j equiv 1 quad "on" CC.
   $
   Let
   $ J = {j in NN : supp(alpha_j) subset.eq Omega_1}. $
