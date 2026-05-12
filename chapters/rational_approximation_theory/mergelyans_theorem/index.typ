@@ -95,7 +95,7 @@ $ <eq:derivativeatpole2>
   $
     phi_zeta (z) = phi(z) + (zeta - beta) phi^2(z), quad z in extcomplex without K
   $
-  where $beta = phi''(oo) / 2$. The application of Cauchy's Estimate (@thm:cauchysestimate) on $(z mapsto 1 / z)(extcomplex without D(0, r)) = D(0, 1 / r)$ gives:
+  where $beta = (phi''(oo)) / 2$. The application of Cauchy's Estimate (@thm:cauchysestimate) on $(z mapsto 1 / z)(extcomplex without D(0, r)) = D(0, 1 / r)$ gives:
   $
     abs(beta) = 1 / 2 abs(dv(phi(1 / z), z, deg: 2, eval: 0)) lt.eq sup_(D(0, 1 / r)) abs(phi(1 / z)) / op("dist")(0, partial D(0, 1 / r))^2 = 8 r.
   $

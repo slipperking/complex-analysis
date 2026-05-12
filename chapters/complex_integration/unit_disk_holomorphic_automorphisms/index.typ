@@ -68,11 +68,11 @@ Since $abs(a) < 1$, then $abs(a)^2 - 1 != 0$, and we get $z_2 - z_1 = 0$. This p
 Next, we will solve for the inverse of $phi_a$. Let $z = phi_a (w) = (w - a) / (1 - overline(a) w)$. Then,
 $ z - overline(a) z w = w - a <==> w = (z + a) / (1 + overline(a) z). $ <eq:inversemobiustransformation>
 
-It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bijective automorphism. It follows that @eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement is true. Functions in the form of $phi_a$ (where $a in DD$) are known as _Möbius transformations_, and the group of all such transformations is known as the _Möbius transformation group on the unit disk_, which is a subgroup of $Aut(DD)$. Functions in the form of $rho_tau(z) = z ee^(ii tau)$, where $tau in RR$ is constant, form a group known as the _rotation group_, which is also a subgroup of $Aut(DD)$.
+It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bijective automorphism. It follows that @eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement is true. Functions in the form of $phi_a$ (where $a in DD$) are known as _Möbius transformations_, and the group of all such transformations is known as the _Möbius transformation group on the unit disk_, which is a subgroup of $Aut(DD)$. Functions in the form of $rho_tau (z) = z ee^(ii tau)$, where $tau in RR$ is constant, form a group known as the _rotation group_, which is also a subgroup of $Aut(DD)$.
 
 #theorem("The Holomorphic Automorphism Group on " + $DD$)[
   $forall f in Aut(DD)$, $f$ is a composition between a Möbius transformation and a rotation. In other words, $exists abs(a) < 1$ and $exists tau in RR$ such that
-  $ f(z) = phi_a compose rho_tau(z). $
+  $ f(z) = phi_a compose rho_tau (z). $
   Moreover, all such functions are in $Aut(DD)$.
 ] <thm:holomorphicautomorphismgrouponunitdisk>
 
@@ -85,11 +85,11 @@ It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bije
   By the Schwarz Lemma (@lem:schwarz), $abs(psi'(0)) <= 1$. Since $psi^(-1) in Aut(DD)$ with $psi^(-1)(0) = 0$, $abs((psi^(-1))'(0)) <= 1$. Then,
   $ abs((psi^(-1))'(0)) = abs(1 / (psi'(psi^(-1)(0)))) = abs(1 / (psi'(0))) <= 1. $
   Then, $abs(psi'(0)) = 1$, and by the equality statement of @lem:schwarz,
-  $ psi(z) = z ee^(ii tau) = rho_tau(z) $
+  $ psi(z) = z ee^(ii tau) = rho_tau (z) $
   for some constant $tau in RR$, and
-  $ f(z) = phi_(f(0))^(-1) compose rho_tau(z). $
+  $ f(z) = phi_(f(0))^(-1) compose rho_tau (z). $
   By @eq:inversemobiustransformation, it follows that
-  $ f(z) = phi_(-f(0)) compose rho_tau(z). $
+  $ f(z) = phi_(-f(0)) compose rho_tau (z). $
 ]
 
 As a direct consequence of @thm:holomorphicautomorphismgrouponunitdisk, we have the following result:

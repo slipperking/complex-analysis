@@ -193,7 +193,7 @@ The proof can be well-organized through the use of the results that we will now 
 #proof[
   By assumption of relative compactness, $sigma = op("dist")(partial U, partial K)$, or the distance (infimum) between $K$ and $CC without U$, is positive and finite. More concretely, let
   $
-    sigma = inf({abs(z_1 - z_2) : z_1 in K, z_2 in CC without U}) > 0.
+    sigma = inf{abs(z_1 - z_2) : z_1 in K, z_2 in CC without U} > 0.
   $
   The longest distance between two points in any square is the length of the diagonal. Hence, any square $Q$ that intersects $partial K$ with a side length less than $sigma sqrt(2) / 2$ will lie completely within $U$.
 

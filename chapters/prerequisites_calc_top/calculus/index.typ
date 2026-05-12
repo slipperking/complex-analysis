@@ -6,10 +6,10 @@ Since traditional complex analysis is the theory of calculus on complex function
 
 It is well known that a function $f : (a, b) -> RR$ is differentiable at a point $x in (a, b)$ if the limit
 $ lim_(Delta x -> 0) (f(x + Delta x) - f(x)) / (Delta x) $
-exists, and the value of this limit is the derivative of $f(x)$, denoted by $f'(x)$ or $dv(f, x)$. The value $dif f = f'(x) dif x$ is the differential of $f(x)$. Partition $[a, b]$ into $a = x_0 < x_1 < x_2 < dots.c < x_n = b$ such that the length of the intervals $[x_i, x_(i-1)]$ vanishes (we let the norm of the partition, or the size of the largest interval, tend to zero) as $n -> oo$. If for any such partition, the sum
+exists, and the value of this limit is the derivative of $f(x)$, denoted by $f'(x)$ or $dv(f, x)$. The value $dif f = f'(x) dx$ is the differential of $f(x)$. Partition $[a, b]$ into $a = x_0 < x_1 < x_2 < dots.c < x_n = b$ such that the length of the intervals $[x_i, x_(i-1)]$ vanishes (we let the norm of the partition, or the size of the largest interval, tend to zero) as $n -> oo$. If for any such partition, the sum
 $ sum_(i=1)^n f(xi_i)(x_i - x_(i-1)) $
 tends to the same value $forall xi_i in [x_(i-1), x_i]$ (as the length of the largest partition approaches 0), then the function can be roughly said to be integrable over $[a, b]$. The full details of Riemann integrability are simplified by the use of Darboux sums and will not be discussed here. The value of this sum is denoted by
-$ integral_a^b f(x) dif x. $
+$ integral_a^b f(x) dx. $
 
 We will attempt to avoid notions involving Lebesgue integration. However, it is important to note that every Riemann integrable function is also Lebesgue integrable, and the two integrals are equal. Therefore, we will use Lebesgue integral theorems (where the resultant integral is Riemann integrable) when necessary without further mention of the Lebesgue integral itself.
 
@@ -18,7 +18,7 @@ The following theorems are the fundamental results of classical calculus:
 #theorem("Fundamental Theorem of Calculus, Differential Form")[
   Let $f(x)$ be a function continuous over $[a, b]$. For $x in [a, b]$, define
   $ Phi(x) = integral_a^x f(t) dif t. $
-  Then $Phi(x)$ is differentiable over $[a, b]$, $Phi'(x) = f(x)$, and $dif Phi(x) = f(x) dif x$.
+  Then $Phi(x)$ is differentiable over $[a, b]$, $Phi'(x) = f(x)$, and $dif Phi(x) = f(x) dx$.
 ]
 
 #theorem("Fundamental Theorem of Calculus, Integral Form")[
@@ -29,15 +29,15 @@ The following theorems are the fundamental results of classical calculus:
 The two forms of the theorem show that differentiation and integration are inverse operations to each other. Operations performed for differentiating oftentimes have a corresponding inverse operation that can be done for integrating. For instance,
 $ dv(f, x) plus.minus dv(g, x) (f(x) plus.minus g(x)) = dv(f, x) plus.minus dv(g, x) $
 corresponds to
-$ integral (f(x) plus.minus g(x)) dif x = integral f(x) dif x plus.minus integral g(x) dif x, $
+$ integral (f(x) plus.minus g(x)) dx = integral f(x) dx plus.minus integral g(x) dx, $
 and
 $ dv(, x) (f(x) g(x)) = f'(x) g(x) + f(x) g'(x) $
 corresponds to
-$ integral f(x) g'(x) dif x = f(x) g(x) - integral f'(x) g(x) dif x, $
+$ integral f(x) g'(x) dx = f(x) g(x) - integral f'(x) g(x) dx, $
 and
 $ dv(f(g(x)), x) = dv(f(g), g) dot dv(g, x) $
 corresponds to
-$ integral_a^b f(g(x)) g'(x) dif x = integral_(g(a))^(g(b)) f(u) dif u. $
+$ integral_a^b f(g(x)) g'(x) dx = integral_(g(a))^(g(b)) f(u) dif u. $
 Another correspondence is the Mean Value Theorem:
 
 #theorem("Mean Value Theorem, Differential Form")[
@@ -47,7 +47,7 @@ Another correspondence is the Mean Value Theorem:
 
 #theorem("Mean Value Theorem, Integral Form")[
   If $f(x)$ is continuous over $[a, b]$, then $exists xi in [a, b]$ such that
-  $ integral_a^b f(x) dif x = f(xi)(b - a). $
+  $ integral_a^b f(x) dx = f(xi)(b - a). $
 ]
 
 A curve is a one-dimensional manifold embedded within a higher dimensional space. They can be parameterized with a vector $vb(F)(t) = (P(t), Q(t), R(t))$ of one parameter. In the complex plane, a curve is a complex-valued function $gamma(t)$ for a real parameter $alpha <= t <= beta$. A curve is _closed_ if $gamma(alpha) = gamma(beta)$. It is _smooth_ if it is continuously differentiable, and its direction is defined to be the direction as $t$ increases. If it is smooth everywhere except at a finite number of points, it is _piecewise smooth_. If it is of finite length, then the curve is said to be _rectifiable_. Piecewise smooth curves are rectifiable. A curve is _simple_ if it is simple (non-self-intersecting), or if $gamma(t_1) = gamma(t_2)$ implies that $t_1 = t_2$. A simple closed curve is also called a _Jordan curve_.
@@ -58,12 +58,13 @@ A curve is a one-dimensional manifold embedded within a higher dimensional space
 
 The theorem above seems trivial, but its rigorous proof in topology is extremely complex. The theorem itself can also be stated on $CC$ instead of $RR^2$. For a region $U$, the boundary is denoted $partial U$. If the region bounded by any closed curve in $U$ also lies in $U$, then it is a _simply connected_ region. A connected region that is not simply connected is multiply connected. A region bound by 2 non-intersecting Jordan curves is doubly connected, and a region bound by $n$ non-intersecting Jordan curves is traditionally known as $n$-connected. Lastly, any closed curve can degenerate to a single point or slit.
 
-Generalizations of the differential and integral exist for multivariate functions. The partial differentials of $f(x, y, z)$, $pdv(f, x) dif x$, $pdv(f, y) dif y$, and $pdv(f, z) dif z$ sum up to form the total differential, denoted by $dif f$. An important result in multivariable calculus allows the calculation of the derivatives of a definite integral with respect to its parameter.
+Generalizations of the differential and integral exist for multivariate functions. The partial differentials of $f(x, y, z)$, $pdv(f, x) dx$, $pdv(f, y) dy$, and $pdv(f, z) dz$ sum up to form the total differential, denoted by $dif f$. An important result in multivariable calculus allows the calculation of the derivatives of a definite integral with respect to its parameter.
 
 #theorem("Leibniz Integral Rule")[
   Let $f(x, u)$ be continuous on $a <= x <= b$, $c <= u <= d$, and suppose $a <= alpha(u), beta(u) <= b$ are differentiable functions of $c <= u <= d$. If $f$ is continuously differentiable with respect to $u$, then
   $
-    dv(, u) (integral_(alpha(u))^(beta(u)) f(x, u) dif x) &= integral_(alpha(u))^(beta(u)) pdv(f, u) (x, u) dif x \ & quad ""+ dv(beta, u) f(beta(u), u) - dv(alpha, u) f(alpha(u), u).
+    dv(, u) (integral_(alpha(u))^(beta(u)) f(x, u) dx) & = integral_(alpha(u))^(beta(u)) pdv(f, u) (x, u) dx \
+                                                       & quad ""+ dv(beta, u) f(beta(u), u) - dv(alpha, u) f(alpha(u), u).
   $
 ] <thm:leibnizintegralrule>
 
@@ -71,42 +72,42 @@ Four main classical theorems exist, relating a function and its line integral in
 
 #theorem("Gradient Theorem")[
   Let $C$ be an oriented smooth curve in $RR^3$ with boundary points $A$ to $B$. Then
-  $ evaluated(f)_(partial C)= f(B) - f(A) = integral_C pdv(f, x) dif x + pdv(f, y) dif y + pdv(f, z) dif z. $
+  $ evaluated(f)_(partial C)= f(B) - f(A) = integral_C pdv(f, x) dx + pdv(f, y) dy + pdv(f, z) dz. $
 ] <thm:gradient>
 
 #theorem("Green's Theorem")[
   Let $U$ be a positively oriented, multiply connected subset of $RR^2$ with a piecewise smooth oriented boundary $partial U$. Suppose that $P(x, y), Q(x, y) in C^1(overline(U))$. Then,
-  $ integral.cont_(partial U) P dif x + Q dif y = integral.double_U (pdv(Q, x) - pdv(P, y)) dd(x, y). $
+  $ integral.cont_(partial U) P dx + Q dy = integral.double_U (pdv(Q, x) - pdv(P, y)) dd(x, y). $
 ] <thm:real_green>
 
 #theorem("Stokes' Theorem")[
   Suppose that $S subset RR^3$ is a positively oriented surface with a positively oriented, piecewise smooth boundary curve $partial S$. Suppose that $P(x, y, z), Q(x, y, z), R(x, y, z) in C^1(overline(S))$. Then,
   $
-    integral.cont_(partial S) P dif x + Q dif y + R dif z \
-    = integral.double_S (pdv(R, y) - pdv(Q, z)) dif y dif z + (pdv(P, z) - pdv(R, x)) dif z dif x + (pdv(Q, x) - pdv(P, y)) dd(x, y).
+    integral.cont_(partial S) P dx + Q dy + R dz \
+    = integral.double_S (pdv(R, y) - pdv(Q, z)) dy dz + (pdv(P, z) - pdv(R, x)) dz dx + (pdv(Q, x) - pdv(P, y)) dd(x, y).
   $
 ] <thm:kelvinstokes>
 
 #theorem("Gauss' Theorem")[
   Suppose that $V subset RR^3$ is a positively oriented region with a positively oriented, piecewise smooth boundary surface $partial V$. Suppose that $P(x, y, z), Q(x, y, z), R(x, y, z) in C^1(overline(V))$. Then,
   $
-    integral.surf_(partial V) P dif y dif z + Q dif z dif x + R dif x dif y = integral.triple_V (pdv(P, x) + pdv(Q, y) + pdv(R, z)) dd(x, y, z).
+    integral.surf_(partial V) P dy dz + Q dz dx + R dx dy = integral.triple_V (pdv(P, x) + pdv(Q, y) + pdv(R, z)) dd(x, y, z).
   $
 ] <thm:divergencegauss>
 
-In 3-dimensional $RR^3$ space, define a scalar valued function to be a 0-form, a linear combination of $dif x$, $dif y$, and $dif z$ to be a 1-form, and a linear combination of $dif y and dif z$, $dif z and dif x$, and $dif x and dif y$ to be a 2-form, and $dif x and dif y and dif z$ to be a 3-form, where $and$ denotes an anti-commutative and associative product, where for any two differential forms $omega_1$ and $omega_2$
+In 3-dimensional $RR^3$ space, define a scalar valued function to be a 0-form, a linear combination of $dx$, $dy$, and $dz$ to be a 1-form, and a linear combination of $dy and dz$, $dz and dx$, and $dx and dy$ to be a 2-form, and $dx and dy and dz$ to be a 3-form, where $and$ denotes an anti-commutative and associative product, where for any two differential forms $omega_1$ and $omega_2$
 $ omega_1 and omega_2 = - omega_2 and omega_1. $
 Then consequently, for any differential form $omega$,
 $ omega and omega = 0. $
 
 We can generalize the operator $dif$ to increase the degree of a differential form. For instance,
-$ dif f = pdv(f, x) dif x + pdv(f, y) dif y + pdv(f, z) dif z, $
-which is the definition of the total differential. For a 1-form in 3-dimensional space, $omega_1 = P dif x + Q dif y + R dif z$, we can define the exterior derivative in a similar way:
+$ dif f = pdv(f, x) dx + pdv(f, y) dy + pdv(f, z) dz, $
+which is the definition of the total differential. For a 1-form in 3-dimensional space, $omega_1 = P dx + Q dy + R dz$, we can define the exterior derivative in a similar way:
 $
-  dif omega_1 & = dif P and dif x + dif Q and dif y + dif R and dif z \
-              & = (pdv(P, x) dif x + pdv(P, y) dif y + pdv(P, z) dif z) and dif x \
-              & quad + (pdv(Q, x) dif x + pdv(Q, y) dif y + pdv(Q, z) dif z) and dif y \
-              & wide + (pdv(R, x) dif x + pdv(R, y) dif y + pdv(R, z) dif z) and dif z \
+  dif omega_1 & = dif P and dx + dif Q and dy + dif R and dz \
+              & = (pdv(P, x) dx + pdv(P, y) dy + pdv(P, z) dz) and dx \
+              & quad + (pdv(Q, x) dx + pdv(Q, y) dy + pdv(Q, z) dz) and dy \
+              & wide + (pdv(R, x) dx + pdv(R, y) dy + pdv(R, z) dz) and dz \
               & = (pdv(R, y) - pdv(Q, z)) dd(y, z, prod: and) + (pdv(P, z) - pdv(R, x)) dd(z, x, prod: and) \
               & quad ""+ (pdv(Q, x) - pdv(P, y)) dd(x, y, prod: and).
 $
