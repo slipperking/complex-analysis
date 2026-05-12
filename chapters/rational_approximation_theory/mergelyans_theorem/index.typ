@@ -158,7 +158,7 @@ $ <eq:derivativeatpole2>
   + $lambda_r in C^1(CC)$ and is compactly supported. <itm:diracdeltaapproximation_compactsupportcontinuousdifferentiability>
   + $integral.double_(CC) pdv(lambda_r, overline(zeta)) dif xi dif eta = 0$. <itm:diracdeltaapproximation_antiholomorphicderivativeintegral>
   + $integral.double_(CC) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta lt.eq (2 uppi) / r$. <itm:diracdeltaapproximation_absoluteantiholomorphicderivativeintegral>
-  + $norm(grad lambda_r(z)) lt.eq 4 / r^3$ for all $z$, where $grad = (pdv(, x), pdv(, y))$ denotes the vector differential operator. <itm:diracdeltaapproximation_gradientstatement>
+  + $norm(grad lambda_r (z)) lt.eq 4 / r^3$ for all $z$, where $grad = (pdv(, x), pdv(, y))$ denotes the vector differential operator. <itm:diracdeltaapproximation_gradientstatement>
   + For any $z in CC$ such that $f$ is a holomorphic function on $D(z, r)$, we have the integral formula. <itm:diracdeltaapproximation_integralformula>
     $
       f(z) = integral.double_(D(0, r)) f(z - zeta) lambda_r (zeta) dif xi dif eta.
@@ -168,23 +168,27 @@ $ <eq:derivativeatpole2>
 #proof[
   Let $zeta = rho ee^(ii theta)$. Then we have
   $
-    integral.double_(CC) lambda_r (zeta) dif xi dif eta & = integral_0^(2 uppi) integral_0^r lambda_r(rho ee^(ii theta)) rho dr d theta = integral_0^(2 uppi) integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 dr d theta \
-    & = 6 / r^2 integral_0^r (rho + rho^5 / r^4 - 2 rho^3 / r^2) dr = 6 / r^2 (r^2 / 2 + r^6 / (6 r^4) - r^4 / (2 r^2)) = 1,
+    integral.double_(CC) lambda_r (zeta) dif xi dif eta & = integral_0^(2 uppi) integral_0^r lambda_r (rho ee^(ii theta)) rho dr d theta \
+    &= integral_0^(2 uppi) integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 dr d theta \
+    & = 6 / r^2 integral_0^r (rho + rho^5 / r^4 - 2 rho^3 / r^2) dr \ &= 6 / r^2 (r^2 / 2 + r^6 / (6 r^4) - r^4 / (2 r^2)) = 1,
   $
   which confirms @itm:diracdeltaapproximation_integralto1. Let $z in CC$ be arbitrary. The integral in @eq:diracdeltaapproximation_integralformula is equal to
   $
-    integral.double_(D(0, R)) f(z - zeta) lambda_r (zeta) dif xi dif eta & = integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 integral_0^(2 uppi) f(z - rho ee^(ii theta)) d theta dr \
-    & = 2 uppi f(z) integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 dr = f(z)
+    &integral.double_(D(0, R)) f(z - zeta) lambda_r (zeta) dif xi dif eta \
+    & wide"" = integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 integral_0^(2 uppi) f(z - rho ee^(ii theta)) d theta dr \
+    & wide""= 2 uppi f(z) integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 dr = f(z)
   $
   by the mean-value property (@lem:holomorphicmeanvalueproperty), proving @itm:diracdeltaapproximation_integralformula. For $z in DD$, we have
   $
-    norm(grad lambda(z)) = 2 (1 - abs(z)^2) norm(grad(abs(z)^2)) = 2 (1 - abs(z)^2) 2 abs(z) norm(grad sqrt(x^2 + y^2)) = 4 (1 - abs(z)^2) abs(z).
+    norm(grad lambda(z)) & = 2 (1 - abs(z)^2) norm(grad(abs(z)^2)) \
+                         & = 2 (1 - abs(z)^2) 2 abs(z) norm(grad sqrt(x^2 + y^2)) = 4 (1 - abs(z)^2) abs(z).
   $
   Hence,
   $
-    norm(grad lambda_r(z)) = 3 / (uppi r^2) norm(grad(lambda(z / r))) = 3 / (uppi r^2) norm((grad lambda)(z / r)) 1 / r = 12 / (uppi r^3) (1 - abs(z)^2) abs(z) < 4 / r^3,
+    norm(grad lambda_r (z)) & = 3 / (uppi r^2) norm(grad(lambda(z / r))) = 3 / (uppi r^2) norm((grad lambda)(z / r)) 1 / r \
+                            & = 12 / (uppi r^3) (1 - abs(z)^2) abs(z) < 4 / r^3,
   $
-  which confirms @itm:diracdeltaapproximation_gradientstatement. Since $abs(pdv(lambda_r, overline(zeta))) = abs(1 / 2 (pdv(lambda_r, xi) + ii pdv(lambda_r, eta))) = 1 / 2 norm(grad lambda_r(zeta)) < 2 / r^3$, we have
+  which confirms @itm:diracdeltaapproximation_gradientstatement. Since $abs(pdv(lambda_r, overline(zeta))) = abs(1 / 2 (pdv(lambda_r, xi) + ii pdv(lambda_r, eta))) = 1 / 2 norm(grad lambda_r (zeta)) < 2 / r^3$, we have
   $
     integral.double_(CC) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta = integral.double_(D(0, r)) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta < uppi r^2 2 / r^3 = (2 uppi) / r
   $
@@ -193,7 +197,7 @@ $ <eq:derivativeatpole2>
   The @itm:diracdeltaapproximation_antiholomorphicderivativeintegral is also true since
   $
     integral.double_(CC) pdv(lambda_r, overline(zeta)) dif xi dif eta & = 1 / 2 integral_(-r)^r integral_(-r)^r pdv(lambda_r, xi) dif xi dif eta + ii / 2 integral_(-r)^r integral_(-r)^r pdv(lambda_r, eta) dif eta dif xi \
-    & = 1 / 2 integral_(-r)^r [lambda_r(r + ii eta) - lambda(-r + ii eta)] dif eta \
+    & = 1 / 2 integral_(-r)^r [lambda_r (r + ii eta) - lambda(-r + ii eta)] dif eta \
     & quad ""+ ii / 2 integral_(-r)^r [lambda_r (xi + ii r) - lambda_r (xi - ii r)] dif xi = 0.
   $
   Trivially, $lambda_r$ is continuous on $D(0, r)$ and $CC without overline(D(0, r))$. Thus, we only need to prove the joint continuity of $lambda$ (the continuity of $lambda_r$ implies that of $lambda$) on an open neighborhood of $partial D(0, r)$.
@@ -688,13 +692,14 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
     sup_(z in K) abs(psi(z) - Psi(z)) lt.eq uppi omega_f (r)
   $
-  since $Psi$ is holomorphic on a neighborhood of $K$ (to assure this bound is positive, we assume $f$ is not identically zero, otherwise the assertion is trivial). Therefore, for all $z in K$, we have
+  since $Psi$ is holomorphic on a neighborhood of $K$ (to assure this bound is positive, we assume $f$ is not identically zero, otherwise the assertion is trivial). Therefore, for all $z in K$, we have (the third supremum term coming from @itm:integralofcontinuousextensionofholomorphicproperties_differbymodulusofcontinuity of @prop:integralofcontinuousextensionofholomorphicproperties)
   $
-    sup_(z in K) abs(psi(z) - Phi(z)) lt.eq sup_(z in K) abs(psi(z) - Psi(z)) + abs(Psi(z) - Phi(z)) lt.eq 28065 uppi omega_f (r).
+    sup_(z in K) abs(psi(z) - f(z)) & lt.eq sup_(z in K) abs(psi(z) - Psi(z)) + abs(Psi(z) - Phi(z)) + abs(Phi(z)-f(z)) \
+                                    & lt.eq 28065 uppi omega_f (r) + omega_f (r) <= 28066 uppi omega_f (r).
   $
   Because $lim_(r -> 0^+) omega_f (r) = 0$, for any $epsilon > 0$, there exists a $r > 0$ such that
   $
-    omega_f (r) < epsilon / (28065 uppi).
+    omega_f (r) < epsilon / (28066 uppi).
   $
-  Hence for any such $epsilon$, we now construct $psi$ in accordance with an $r$ satisfying $28065 uppi omega_f (r) < epsilon$.
+  Hence for any such $epsilon$, we now construct $psi$ in accordance with an $r$ satisfying $28066 uppi omega_f (r) < epsilon$.
 ]

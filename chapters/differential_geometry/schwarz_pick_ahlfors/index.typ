@@ -15,7 +15,7 @@ $ dif s^2_{f^*rho}lt.eq dif s^2_lambda, $
 
 #proof[Define
     
-$ lambda_r(z)=(z |-> (z)/(r))^*lambda(z)=(2r)/(r^2-|z|^2), 0<r<1 $ <eq:poincaremetriconscaleddisks>
+$ lambda_r (z)=(z |-> (z)/(r))^*lambda(z)=(2r)/(r^2-|z|^2), 0<r<1 $ <eq:poincaremetriconscaleddisks>
  to generalize the Poincaré metric to $D(0,r)$. @eq:curvatureinvarianceunderholomorphicpullback gives that $K_{lambda_r}(z)=K_lambda ((z)/(r))=-1$ for any $z in D(0,r)$. Define the real-valued function 
 $ u_r(z)=(f^*rho (z))/(lambda_r(z))\qfor z in D(0,r), $
  which is nonnegative and continuous on $D(0,r)$. The pullback metric $f^*rho=(rho compose f)|f'|$ is continuous on $bb(D)$ and thus bounded on $overline(D(0,r))$ (as a consequence of @thm:continuous_function_bounded_on_compact). As $|z|-> r^-$, $lambda_r(z)-> oo$, and hence $\lim_{|z|-> r^{-}}u_r(z)=0$. Thus, 
