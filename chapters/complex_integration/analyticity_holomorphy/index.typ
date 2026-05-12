@@ -132,7 +132,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
   A _Legendre polynomial_ is a polynomial whose explicit equation is given by
 
   $
-    P_n (z)=1 / (2^n n!) dv((z^2-1)^n, z, deg: n).
+    P_n (z)=1 / (2^n n!) dv((z^2-1)^n, z, n, style: "large").
   $ <eq:legendrepolynomialintegralformula_rodriguesformula>
 
   Prove the integral form

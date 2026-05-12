@@ -17,7 +17,7 @@ may seem to be a natural object to consider, it is quite impractical; there exis
 #definition[
   Let $R > 0$, $f:CC without overline(D(0, R)) -> CC$ be holomorphic such that $f$ has a removable singularity at $oo$. Then we define the derivatives of $f$ at $oo$ to be
   $
-    f^((n)) (oo) = dvs(f(1 / z), z, deg: n, eval: 0).
+    f^((n)) (oo) = evaluated(dv((f(1 / z)), z, n, style: "large"))_(z=0).
   $
   In the case that $n = 1$, we have
   $
@@ -38,7 +38,7 @@ $
 $ <eq:derivativeatpole1>
 Let $z = (f^(-1))(w)$. Then we have
 $
-  f'(a) = -lim_(z -> a) (f'(z)) / f(z)^2 = dv(1 / f(z), z, eval: a).
+  f'(a) = -lim_(z -> a) (f'(z)) / f(z)^2 = evaluated(dv((1 / f(z)), z, style: "large"))_(z=a).
 $ <eq:derivativeatpole2>
 
 #proposition[
@@ -119,7 +119,7 @@ $ <eq:derivativeatpole2>
   $
   by letting $z -> oo$. Since
   $
-    phi^2(z) = (1 / (z - zeta) + Order(1 / (z - zeta)^2))^2 = 1 / (z - zeta)^2 + Order(1 / (z - zeta)^3),
+    phi(z)^2 = (1 / (z - zeta) + Order(1 / (z - zeta)^2))^2 = 1 / (z - zeta)^2 + Order(1 / (z - zeta)^3),
   $
   from the definition of $phi_zeta$, we have
   $
@@ -149,9 +149,9 @@ $ <eq:derivativeatpole2>
   Suppose
   $
     lambda(z) = cases(
-      (1 - abs(z)^2)^2 & abs(z) < 1, ,
-      0 & abs(z) gt.eq 1,
-    ), quad lambda_r (z) = 3 / (uppi r^2) lambda(z / r) quad forall r > 0
+      (1 - abs(z)^2)^2 & abs(z) < 1\,,
+      0 & abs(z) gt.eq 1\,
+    ) quad lambda_r (z) = 3 / (uppi r^2) lambda(z / r) quad forall r > 0
   $ <eq:diracdeltaapproximation_lambdadefinition>
   For fixed $r$, the function $lambda_r$ satisfies:
   + $integral.double_(CC) lambda_r (zeta) dif xi dif eta = 1$, where $zeta = xi + ii eta$. <itm:diracdeltaapproximation_integralto1>
@@ -658,7 +658,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
     (Psi(z + Delta x) - Psi(z)) / (Delta x) = 1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) integral_(H_k^((j))) pdv(Phi, overline(zeta)) (phi_(zeta, k)^((j)) (z + Delta x) - phi_(zeta, k)^((j)) (z)) / (Delta x) dif xi and dif eta,
   $
-  and both $partialderivative(Phi, overline(zeta), style: "horizontal")$ and the integrand is continuous on a set (we only need to consider the term involving $phi_(zeta, k)^((j))$ since $partialderivative(Phi, overline(zeta), style: "horizontal")$ is independent from $z$) by Cauchy's Estimates and the first bound of @eq:mergelyan_familybounds, Lebesgue's Dominated Convergence gives that
+  and both $partialderivative(Phi, overline(zeta), style: "horizontal")$ and the integrand is continuous on a set (we only need to consider the factors involving $phi_(zeta, k)^((j))$ since $partialderivative(Phi, overline(zeta), style: "horizontal")$ is independent from $z$) by Cauchy's Estimates and the first bound of @eq:mergelyan_familybounds, Lebesgue's Dominated Convergence gives that
   $
     pdv(Psi, x) = 1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) integral_(H_k^((j))) pdv(Phi, overline(zeta)) pdv(phi_(zeta, k)^((j)), x)(z) dif xi and dif eta,
   $

@@ -191,7 +191,7 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
     integral.cont_gamma (z - a)^k dz =
     cases(
       0 & "if" k >= 0,
-      taui dvs(1, z, deg: -k - 1) & "if" k <= -1,
+      taui dv((1), z, -k - 1, style: "large") & "if" k <= -1,
     )
     =
     cases(

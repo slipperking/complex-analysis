@@ -6,8 +6,8 @@ Previously we have seen the subtle relation between $zeta$ and $psi$. Given the 
 For arbitrary $x in RR$ and $lambda>0$, define a triangular kernel cutoff by
 $
   K_lambda(x)= cases(
-    1-(|x|)/(2 lambda) & |x|<2 lambda, ,
-    0 & "otherwise",
+    1-(|x|)/(2 lambda) & |x|<2 lambda\, ,
+    0 & "otherwise"\,
   ) op("supp") K_lambda=[-2 lambda,2 lambda],
 $
 and a normalized Fejér kernel by

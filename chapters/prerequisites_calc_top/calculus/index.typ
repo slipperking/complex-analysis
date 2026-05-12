@@ -58,12 +58,12 @@ A curve is a one-dimensional manifold embedded within a higher dimensional space
 
 The theorem above seems trivial, but its rigorous proof in topology is extremely complex. The theorem itself can also be stated on $CC$ instead of $RR^2$. For a region $U$, the boundary is denoted $partial U$. If the region bounded by any closed curve in $U$ also lies in $U$, then it is a _simply connected_ region. A connected region that is not simply connected is multiply connected. A region bound by 2 non-intersecting Jordan curves is doubly connected, and a region bound by $n$ non-intersecting Jordan curves is traditionally known as $n$-connected. Lastly, any closed curve can degenerate to a single point or slit.
 
-Generalizations of the differential and integral exist for multivariate functions. The partial differentials of $f(x, y, z)$, $dvp(f, x) dif x$, $dvp(f, y) dif y$, and $dvp(f, z) dif z$ sum up to form the total differential, denoted by $dif f$. An important result in multivariable calculus allows the calculation of the derivatives of a definite integral with respect to its parameter.
+Generalizations of the differential and integral exist for multivariate functions. The partial differentials of $f(x, y, z)$, $pdv(f, x) dif x$, $pdv(f, y) dif y$, and $pdv(f, z) dif z$ sum up to form the total differential, denoted by $dif f$. An important result in multivariable calculus allows the calculation of the derivatives of a definite integral with respect to its parameter.
 
 #theorem("Leibniz Integral Rule")[
   Let $f(x, u)$ be continuous on $a <= x <= b$, $c <= u <= d$, and suppose $a <= alpha(u), beta(u) <= b$ are differentiable functions of $c <= u <= d$. If $f$ is continuously differentiable with respect to $u$, then
   $
-    dv(, u) (integral_(alpha(u))^(beta(u)) f(x, u) dif x) &= integral_(alpha(u))^(beta(u)) dvp(f, u) (x, u) dif x \ & quad ""+ dv(beta, u) f(beta(u), u) - dv(alpha, u) f(alpha(u), u).
+    dv(, u) (integral_(alpha(u))^(beta(u)) f(x, u) dif x) &= integral_(alpha(u))^(beta(u)) pdv(f, u) (x, u) dif x \ & quad ""+ dv(beta, u) f(beta(u), u) - dv(alpha, u) f(alpha(u), u).
   $
 ] <thm:leibnizintegralrule>
 
@@ -71,26 +71,26 @@ Four main classical theorems exist, relating a function and its line integral in
 
 #theorem("Gradient Theorem")[
   Let $C$ be an oriented smooth curve in $RR^3$ with boundary points $A$ to $B$. Then
-  $ evaluated(f)_(partial C)= f(B) - f(A) = integral_C dvp(f, x) dif x + dvp(f, y) dif y + dvp(f, z) dif z. $
+  $ evaluated(f)_(partial C)= f(B) - f(A) = integral_C pdv(f, x) dif x + pdv(f, y) dif y + pdv(f, z) dif z. $
 ] <thm:gradient>
 
 #theorem("Green's Theorem")[
   Let $U$ be a positively oriented, multiply connected subset of $RR^2$ with a piecewise smooth oriented boundary $partial U$. Suppose that $P(x, y), Q(x, y) in C^1(overline(U))$. Then,
-  $ integral.cont_(partial U) P dif x + Q dif y = integral.double_U (dvp(Q, x) - dvp(P, y)) dd(x, y). $
+  $ integral.cont_(partial U) P dif x + Q dif y = integral.double_U (pdv(Q, x) - pdv(P, y)) dd(x, y). $
 ] <thm:real_green>
 
 #theorem("Stokes' Theorem")[
   Suppose that $S subset RR^3$ is a positively oriented surface with a positively oriented, piecewise smooth boundary curve $partial S$. Suppose that $P(x, y, z), Q(x, y, z), R(x, y, z) in C^1(overline(S))$. Then,
   $
     integral.cont_(partial S) P dif x + Q dif y + R dif z \
-    = integral.double_S (dvp(R, y) - dvp(Q, z)) dif y dif z + (dvp(P, z) - dvp(R, x)) dif z dif x + (dvp(Q, x) - dvp(P, y)) dd(x, y).
+    = integral.double_S (pdv(R, y) - pdv(Q, z)) dif y dif z + (pdv(P, z) - pdv(R, x)) dif z dif x + (pdv(Q, x) - pdv(P, y)) dd(x, y).
   $
 ] <thm:kelvinstokes>
 
 #theorem("Gauss' Theorem")[
   Suppose that $V subset RR^3$ is a positively oriented region with a positively oriented, piecewise smooth boundary surface $partial V$. Suppose that $P(x, y, z), Q(x, y, z), R(x, y, z) in C^1(overline(V))$. Then,
   $
-    integral.surf_(partial V) P dif y dif z + Q dif z dif x + R dif x dif y = integral.triple_V (dvp(P, x) + dvp(Q, y) + dvp(R, z)) dd(x, y, z).
+    integral.surf_(partial V) P dif y dif z + Q dif z dif x + R dif x dif y = integral.triple_V (pdv(P, x) + pdv(Q, y) + pdv(R, z)) dd(x, y, z).
   $
 ] <thm:divergencegauss>
 
@@ -100,19 +100,19 @@ Then consequently, for any differential form $omega$,
 $ omega and omega = 0. $
 
 We can generalize the operator $dif$ to increase the degree of a differential form. For instance,
-$ dif f = dvp(f, x) dif x + dvp(f, y) dif y + dvp(f, z) dif z, $
+$ dif f = pdv(f, x) dif x + pdv(f, y) dif y + pdv(f, z) dif z, $
 which is the definition of the total differential. For a 1-form in 3-dimensional space, $omega_1 = P dif x + Q dif y + R dif z$, we can define the exterior derivative in a similar way:
 $
   dif omega_1 & = dif P and dif x + dif Q and dif y + dif R and dif z \
-              & = (dvp(P, x) dif x + dvp(P, y) dif y + dvp(P, z) dif z) and dif x \
-              & quad + (dvp(Q, x) dif x + dvp(Q, y) dif y + dvp(Q, z) dif z) and dif y \
-              & wide + (dvp(R, x) dif x + dvp(R, y) dif y + dvp(R, z) dif z) and dif z \
-              & = (dvp(R, y) - dvp(Q, z)) dd(y, z, prod: and) + (dvp(P, z) - dvp(R, x)) dd(z, x, prod: and) \
-              & quad ""+ (dvp(Q, x) - dvp(P, y)) dd(x, y, prod: and).
+              & = (pdv(P, x) dif x + pdv(P, y) dif y + pdv(P, z) dif z) and dif x \
+              & quad + (pdv(Q, x) dif x + pdv(Q, y) dif y + pdv(Q, z) dif z) and dif y \
+              & wide + (pdv(R, x) dif x + pdv(R, y) dif y + pdv(R, z) dif z) and dif z \
+              & = (pdv(R, y) - pdv(Q, z)) dd(y, z, prod: and) + (pdv(P, z) - pdv(R, x)) dd(z, x, prod: and) \
+              & quad ""+ (pdv(Q, x) - pdv(P, y)) dd(x, y, prod: and).
 $
 
 Similarly, we can differentiate a 2-form $omega = P dd(y, z, prod: and) + Q dd(z, x, prod: and) + R dd(x, y, prod: and)$ to get:
-$ (dvp(P, x) + dvp(Q, y) + dvp(R, z)) dd(x, y, z, prod: and). $
+$ (pdv(P, x) + pdv(Q, y) + pdv(R, z)) dd(x, y, z, prod: and). $
 The two results above resemble the curl and divergence of $(P, Q, R)$. A differential form $omega$ is _closed_ if $dif omega = 0$, and is _exact_ if there exists $eta$ such that $omega = dif eta$.
 
 #lemma("Poincaré")[

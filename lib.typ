@@ -1,6 +1,5 @@
 #import "@preview/ctheorems:1.1.3": *
 #import "/itemize/lib.typ" as itemize
-#import "@preview/diverential:0.3.0": *
 #import "@preview/cetz:0.5.0"
 #import "@preview/cetz-plot:0.1.3": *
 #import "@preview/physica:0.9.8": *
