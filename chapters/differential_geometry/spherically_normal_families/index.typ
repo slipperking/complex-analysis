@@ -3,9 +3,9 @@
 == A Spherical Generalization of Normal Families<sec:sphericalgeneralizationofnormalfamilies>
 Picard's Great Theorem requires a more profound concept by generalizing normal families in the one-point compactification of $CC$.
 
-#definition[Let $\cbraces{f_n(z)}$ be a (not necessarily analytic) complex function sequence on a connected set $Omega subset.eq CC$. If $forall K subset Omega$ compact, $forall R>0$, $exists N in NN$ such that $forall n>N$, $forall z in K$, $|f_n(z)|>R$, then _$f_n -> oo$ locally uniformly spherically on $Omega$_.]
+#definition[Let $\cbraces{f_n (z)}$ be a (not necessarily analytic) complex function sequence on a connected set $Omega subset.eq CC$. If $forall K subset Omega$ compact, $forall R>0$, $exists N in NN$ such that $forall n>N$, $forall z in K$, $|f_n (z)|>R$, then _$f_n -> oo$ locally uniformly spherically on $Omega$_.]
 
-When the ``locally uniform limit'' is taken to be $oo$, the condition of $epsilon$-closeness is instead replaced by the requirement that the values eventually leave every fixed compact subset of $CC$ (the given definition is equivalent to: $forall K subset Omega$ compact, $forall L subset CC$ compact, $exists N in NN$ such that $forall n>N$, $forall z in K$, $f_n(z)in.not L$). In this way, convergence to oo is treated symmetrically with convergence to finite values by working in the Riemann sphere $hat(CC)$, where $oo$ is simply another accumulation point.
+When the ``locally uniform limit'' is taken to be $oo$, the condition of $epsilon$-closeness is instead replaced by the requirement that the values eventually leave every fixed compact subset of $CC$ (the given definition is equivalent to: $forall K subset Omega$ compact, $forall L subset CC$ compact, $exists N in NN$ such that $forall n>N$, $forall z in K$, $f_n (z)in.not L$). In this way, convergence to oo is treated symmetrically with convergence to finite values by working in the Riemann sphere $hat(CC)$, where $oo$ is simply another accumulation point.
 
 By equipping the extended complex plane $hat(CC)$ with the spherical metric instead of the Euclidean metric, convergence to $oo$ can be treated like convergence to any finite point. In this setting, $oo$ is simply another accumulation point, so there is no need to handle it differently from other values.
 
@@ -54,19 +54,19 @@ $ d_sigma (oo,f_n (zeta))>0. $
 + Consider $f(z)=oo$. Assume, for the sake of contradiction, $z$ is an isolated pole of $f$. Hence, $exists delta$ such that $f$ is holomorphic on $D^*(z,delta)$.
 
             Because each $f_n$ is holomorphic on $D(z,delta)$, by the Maximum Modulus Principle (@thm:maximummodulus), $forall n in NN$, 
-$ |f_n(zeta)|lt.eq sup_{xi in partial D(z,delta)}|f_n(xi)| forall zeta in D(z,delta). $
+$ |f_n (zeta)|lt.eq sup_{xi in partial D(z,delta)}|f_n (xi)| forall zeta in D(z,delta). $
 
             By letting $n -> oo$, we have 
 $ |f(zeta)|lt.eq sup_{xi in partial D(z,delta)}|f(xi)|<oo forall zeta in D(z,delta), $
  contradicting the assumption that $f(z)=oo$ is an isolated pole. Hence, $z$ must be an accumulation of values evaluating to $oo$. By spherical continuity, $exists delta>0$ such that 
 $ d_sigma (f(zeta),oo)<\frac pi2 forall zeta in D(z,delta). $
  Similarly, $exists N in NN$ such that $forall n>N$, 
-$ d_sigma (f(zeta),f_n(zeta))<\frac pi2. $
+$ d_sigma (f(zeta),f_n (zeta))<\frac pi2. $
 
             Hence, we have 
-$ pi-d_sigma (oo,f_n(zeta))=d_sigma(oo,0)-d_sigma (oo,f_n(zeta))>0. $
+$ pi-d_sigma (oo,f_n (zeta))=d_sigma(oo,0)-d_sigma (oo,f_n (zeta))>0. $
  By the reverse triangle inequality, we have 
-$ d_sigma (0,f_n(zeta))>0. $
+$ d_sigma (0,f_n (zeta))>0. $
 
             Hence each $(1)/(f_n)$ is holomorphic on $D(z,delta)$ and converges locally uniformly spherically to $(1)/(f)$ on $D(z,delta)$. By Weierstrass (@thm:weierstrassconvergence), $\frac1f$ is holomorphic on $D(z,delta)$ and has zeros that accumulate at $z$. By the Identity Theorem, $\frac1f equiv0 => f equiv oo$ on $D(z,delta)$.
 
@@ -83,7 +83,7 @@ $ d_sigma (f \qty(z_1),f \qty(z_2))=inf_gamma integral_Gamma dif s_{sigma}lt.eq 
  where $gamma$ joins $f (z_1)$ and $f (z_2)$ where $z_1,z_2 in K$. Hence, $forall epsilon>0$, $forall z_1,z_2 in K$ such that $|z_1-z_2|<(epsilon)/(M)$, $d_sigma (f \qty(z_1),f \qty(z_2))<epsilon$, and hence $cal(F)$ is _uniformly spherically equicontinuous_. Since $d_sigma lt.eq pi$ for any two points by geometry of $S^2$, $cal(F)$ is also _uniformly spherically bounded_ (the compactness of $S^2$). Then the Arzelà--Ascoli Theorem (@thm:arzelaascoli) under the spherical metric gives that $cal(F)$ is a normal family.
 
     Conversely, assume for the sake of contradiction that $cal(F)$ is a normal family such that conclusion is not satisfied. Then, $exists K subset Omega$ compact and a sequence $\cbraces{f_n}_{n in NN}subset.eq cal(F)$ such that the sequence 
-$ \cbraces{sup_{z in K}f^\sharp_n(z)}_{n in NN} $
+$ \cbraces{sup_{z in K}f^\sharp_n (z)}_{n in NN} $
  tends to $oo$ (specifically, suppose that $forall n in NN$, $sup_{z in K}f_n^\sharp(z)>n$). By normality, we may extract a locally uniformly spherically convergent subsequence $\cbraces{f_{n_k}}_{k in NN}subset.eq \cbraces{f_n}_{n in NN}$. By @thm:uniformlimit under the spherical metric, the uniform spherical limit of $\cbraces{f_{n_k}}_{k in NN}$, $f$, is spherically continuous on $Omega$. For every point $z in Omega$, there are two possibilities:
     
 + If $f(z)eq.in.notfinity$, then by continuity, $exists delta>0$ such that $forall zeta in D(z,delta)$, 
@@ -123,7 +123,7 @@ $ M=max \qty(\cbraces{M'+1}union \cbraces{sup_{zeta in overline(D (0,\frac delta
  on this compact disk. Hence, $forall k>N$, 
 $ f^\sharp_{n_k}(zeta)=\frac{2 |-(g_{n_k}'(zeta))/(g_{n_k}(zeta)^2)|}{1+|g_{n_k}(zeta)|^{-2}}=\frac{2 |g_{n_k}'(zeta)|}{|g_{n_k}(zeta)|^2+1}lt.eq 2 |g'_{n_k}(zeta)|lt.eq 2M, forall zeta in D (z,\frac delta2). $
 
-    In essence, for any point $z$, there exists an open disk $D_z$ centered at $z$ on which the spherical derivatives $f^\sharp_{n_k}$ are bounded by some constant $M_z$ for $k>N_z$. By Heine--Borel (@thm:heineborel), there exists a finite collection of disks $\cbraces{D_{z_j}}_{1 lt.eq j lt.eq n}$ that cover $K$. Thus, $\cbraces{f_{n_k}^\sharp(z)}_{k>N}$ is uniformly bounded on $K$ by $max_{1 lt.eq j lt.eq n}M_{z_j}$, where $N=max_{1 lt.eq j lt.eq n} N_{z_j}$, contradicting the assumption that $sup_{z in K}f^\sharp_n(z)>n$ for all $n in NN$.]
+    In essence, for any point $z$, there exists an open disk $D_z$ centered at $z$ on which the spherical derivatives $f^\sharp_{n_k}$ are bounded by some constant $M_z$ for $k>N_z$. By Heine--Borel (@thm:heineborel), there exists a finite collection of disks $\cbraces{D_{z_j}}_{1 lt.eq j lt.eq n}$ that cover $K$. Thus, $\cbraces{f_{n_k}^\sharp(z)}_{k>N}$ is uniformly bounded on $K$ by $max_{1 lt.eq j lt.eq n}M_{z_j}$, where $N=max_{1 lt.eq j lt.eq n} N_{z_j}$, contradicting the assumption that $sup_{z in K}f^\sharp_n (z)>n$ for all $n in NN$.]
 
 #theorem("#smallcaps[Fundamental Normality Test]")[Let $Omega subset.eq CC$ be a region and suppose that $cal(F)$ is a family of holomorphic functions on $Omega$. If there exist two different points $alpha,beta in CC$ such that $\cbraces{alpha,beta}sect cup_{f in cal(F)}f(Omega)=emptyset$, then $cal(F)$ must be a spherically normal family.] <thm:fundamentalnormalitytest>
 

@@ -46,7 +46,7 @@ Recent results hint the affirmative, as many special cases of the relation have 
 
 We now give some quantifying examples of how analytic capacity measures a type of "largeness" of compact sets, (rather much like area, which satisfies the subadditivity relation). First we define a specific classification of compact sets.
 
-An alternative perspective of this "largeness" pertains to a certain _removability_ of sets. A compact set $K subset CC$ is considered to be _removable_ if every holomorphic function on the complement can be extended to $CC$. For instance, the analytic capacity $gamma({a})$ of any singleton ${a}$ (any singular point) or set of discrete points is 0 as evidenced by @prop:analytic_capacity_of_discrete_points, and any singleton is a removable set. In a heuristic sense, analytic capacity measures the irremovability of a set, and larger sets tend to be "less removable."
+An alternative perspective of this "largeness" pertains to a certain _removability_ of sets. A compact set $K subset CC$ is considered to be _removable_ if every bounded holomorphic function on the complement can be extended to $CC$. For instance, the analytic capacity $gamma({a})$ of any singleton ${a}$ (any singular point) or set of discrete points is 0, as evidenced by @prop:analytic_capacity_of_discrete_points; and moreover, any singleton or compact set of discrete points is a removable set. In a heuristic sense, analytic capacity measures the irremovability of a set, and larger sets tend to be "less removable."
 
 A compact set $K subset CC$ is a _continuum_ if it is connected, $CC without K$ is connected, and if it is not a singleton ($K$ contains at least 2 distinct points).
 

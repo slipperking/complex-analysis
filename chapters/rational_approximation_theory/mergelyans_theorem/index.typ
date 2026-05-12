@@ -52,11 +52,11 @@ $ <eq:derivativeatpole2>
 #proof[
   Denote the derivative of $phi.alt$ at the infinity to be $alpha$. By @eq:derivativeatpole1, we have
   $
-    (phi.alt^(-1))'(0) = 1 / phi.alt'(oo) = 1 / alpha = -lim_(z -> 0) ((phi.alt^(-1))'(z)) / (phi.alt^(-1)(z)^2) <==> -lim_(z -> 0) ((phi.alt^(-1))(z)^2) / (alpha (phi.alt^(-1))'(z)) = 1.
+    (phi.alt^(-1))'(0) = 1 / (phi.alt'(oo)) = 1 / alpha = -lim_(z -> 0) ((phi.alt^(-1))'(z)) / (phi.alt^(-1)(z)^2) <==> -lim_(z -> 0) (phi.alt^(-1)(z)^2) / (alpha (phi.alt^(-1))'(z)) = 1.
   $
-  Fix $tau in K$ and let $psi(z) = alpha / ((phi.alt^(-1))(z) - tau)$, univalent on $DD$. By direct calculation, we have $psi(0) = 0$. Additionally,
+  Fix $tau in K$ and let $psi(z) = alpha / (phi.alt^(-1)(z) - tau)$, univalent on $DD$. By direct calculation, we have $psi(0) = 0$. Additionally,
   $
-    psi'(0) &= -lim_(z -> 0) alpha (phi.alt^(-1))'(z) / ((phi.alt^(-1))(z) - tau)^2 \ &= lim_(z -> 0) alpha (phi.alt^(-1))'(z) / ((phi.alt^(-1))(z) - tau)^2 dot ((phi.alt^(-1))(z))^2 / (alpha (phi.alt^(-1))'(z)) = 1.
+    psi'(0) = -lim_(z -> 0) (alpha (phi.alt^(-1))'(z)) / (phi.alt^(-1)(z) - tau)^2 = lim_(z -> 0) (alpha (phi.alt^(-1))'(z)) / (phi.alt^(-1)(z) - tau)^2 dot (phi.alt^(-1)(z)^2) / (alpha (phi.alt^(-1))'(z)) = 1.
   $
   By the Koebe Quarter Theorem (@ thm:koebequarter), whose proof is independent of results of this section, in accordance, $D(0, 1 / 4) subset.eq psi(DD)$. Let $mu in K without {tau}$. Obviously, $mu in.not (phi.alt^(-1))(DD) = extcomplex without K$.
 
@@ -97,11 +97,11 @@ $ <eq:derivativeatpole2>
   $
   where $beta = (phi''(oo)) / 2$. The application of Cauchy's Estimate (@thm:cauchysestimate) on $(z mapsto 1 / z)(extcomplex without D(0, r)) = D(0, 1 / r)$ gives:
   $
-    abs(beta) = 1 / 2 abs(dv(phi(1 / z), z, deg: 2, eval: 0)) lt.eq sup_(D(0, 1 / r)) abs(phi(1 / z)) / op("dist")(0, partial D(0, 1 / r))^2 = 8 r.
+    abs(beta) = 1 / 2 abs(evaluated(dv(phi(1 / z), z, 2, style: "large"))_(z=0)) lt.eq (sup_(D(0, 1 / r)) abs(phi(1 / z))) / (op("dist")(0, partial D(0, 1 / r))^2) = 8 r.
   $
   Hence,
   $
-    abs(phi_zeta (z)) &lt.eq abs(phi(z)) + abs(zeta - beta) abs(phi^2(z)) lt.eq abs(phi(z)) + abs(zeta - beta) abs(phi^2(z)) \ &lt.eq 8 / r + 9 r 64 / r^2 = 584 / r.
+    abs(phi_zeta (z)) &lt.eq abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 lt.eq abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 \ &lt.eq 8 / r + 9 r 64 / r^2 = 584 / r.
   $
   This is @itm:complementbiholomorphism584r4767r2estimates_absolute584. Suppose that $abs(z - zeta) > 2 r$. It follows from $abs(zeta) < r$ that $abs(z) > r$ (from the reverse triangle inequality) and hence disjoint from $K$ and $zeta$. On this infinite annulus, we have the Laurent expansion (from @thm:laurentexpansionofholomorphicfunction) that
   $
@@ -234,23 +234,23 @@ $ <eq:derivativeatpole2>
   $
   This proves the base case. For the inductive step, assume the claim holds for each $g_0, g_1, dots, g_(n - 1)$. Define
   $
-    h_n(z) = f(z) - sum_(k = 0)^(n - 1) g_k(z)
+    h_n (z) = f(z) - sum_(k = 0)^(n - 1) g_k (z)
   $
   for $z in K$. By the inductive hypothesis, we have $abs(h_n) lt.eq (2 / 3)^n$ on $K$. Define the disjoint closed sets
-  $ A_n = {z in K: -(2^n) / 3^n lt.eq h_n(z) lt.eq -(2^n) / 3^(n + 1)} $ and $ B_n = {z in K: (2^n) / 3^n gt.eq h_n(z) gt.eq (2^n) / 3^(n + 1)}. $
-  Let $g_n(z) = 2^n / 3^(n + 1) eta_(A_n, B_n)(z)$, so that $abs(g_n) lt.eq 2^n / 3^(n + 1)$ on $CC$, and
+  $ A_n = {z in K: -(2^n) / 3^n lt.eq h_n (z) lt.eq -(2^n) / 3^(n + 1)} $ and $ B_n = {z in K: (2^n) / 3^n gt.eq h_n (z) gt.eq (2^n) / 3^(n + 1)}. $
+  Let $g_n (z) = 2^n / 3^(n + 1) eta_(A_n, B_n)(z)$, so that $abs(g_n) lt.eq 2^n / 3^(n + 1)$ on $CC$, and
   $
-    abs(h_n(z) - g_n(z)) lt.eq 2^(n + 1) / 3^(n + 1)
+    abs(h_n (z) - g_n (z)) lt.eq 2^(n + 1) / 3^(n + 1)
   $
   for all $z in K$ by the same argument as in the base case. Hence,
   $
-    abs(f(z) - sum_(k = 0)^n g_k(z)) = abs(h_n(z) - g_n(z)) lt.eq (2 / 3)^(n + 1)
+    abs(f(z) - sum_(k = 0)^n g_k (z)) = abs(h_n (z) - g_n (z)) lt.eq (2 / 3)^(n + 1)
   $
   for all $z in K$, completing the induction. Because
   $
-    abs(g(z)) lt.eq sum_(n = 0)^oo abs(g_n(z)) lt.eq 1 / 3 sum_(n = 0)^oo 2^n / 3^n = 1 quad forall z in CC,
+    abs(g(z)) lt.eq sum_(n = 0)^oo abs(g_n (z)) lt.eq 1 / 3 sum_(n = 0)^oo 2^n / 3^n = 1 quad forall z in CC,
   $
-  the Weierstrass $M$--Test (@thm:weierstrassmtest) implies that the series $sum_(n = 0)^oo g_n(z)$ converges uniformly on $CC$ to $g$. Since each $g_n$ is continuous, @thm:uniformlimit gives the continuity of $g$ on $CC$. Finally, for any $z in K$, we have
+  the Weierstrass $M$--Test (@thm:weierstrassmtest) implies that the series $sum_(n = 0)^oo g_n (z)$ converges uniformly on $CC$ to $g$. Since each $g_n$ is continuous, @thm:uniformlimit gives the continuity of $g$ on $CC$. Finally, for any $z in K$, we have
   $
     abs(f(z) - g(z)) lt.eq lim_(n -> oo) 2^(n + 1) / 3^(n + 1) = 0. #qedhere
   $
