@@ -77,7 +77,7 @@ Conversely, we have:
   $
   where the series converges for sufficiently large $abs(z)$. If $oo$ is a removable singularity, the coefficients $a_n = 0$ for all $n > 0$. If $oo$ is a pole of order $m$, then $a_n = 0$ for all $n > m$, and $a_m != 0$. In either case, the principal part at $oo$ is
   $
-    psi_infinity(z) = sum_(n = 1)^m a_n z^n,
+    psi_infinity (z) = sum_(n = 1)^m a_n z^n,
   $
   which is a polynomial (identically zero if degree is $0$).
 
@@ -89,7 +89,7 @@ Conversely, we have:
   $
   where $m_k$ is the order of the pole at $z_k$. Define the auxiliary function
   $
-    Phi(z) = f(z) - psi_infinity(z) - sum_(k = 1)^n psi_k (z),
+    Phi(z) = f(z) - psi_infinity (z) - sum_(k = 1)^n psi_k (z),
   $
   which is meromorphic on $CC$, with potential singularities only at $z_1, dots, z_n$ and $oo$.
 
@@ -97,15 +97,15 @@ Conversely, we have:
 
   1. Since $f(z) - psi_j (z)$ is the holomorphic part of the Laurent expansion at $z_j$, it is holomorphic on $D(z_j, epsilon_j)$ (including at $z_j$).
   2. $sum_(k != j) psi_k (z)$ is holomorphic on $D(z_j, epsilon_j)$, as each $psi_k$ has its singularity elsewhere.
-  3. $psi_infinity(z)$ is a polynomial, hence entire.
+  3. $psi_infinity (z)$ is a polynomial, hence entire.
 
   Thus,
   $
-    Phi(z) = [f(z) - psi_j (z)] - psi_infinity(z) - sum_(k != j) psi_k (z)
+    Phi(z) = [f(z) - psi_j (z)] - psi_infinity (z) - sum_(k != j) psi_k (z)
   $
   is holomorphic on $D(z_j, epsilon_j)$, including at $z_j$. Therefore, we can define $Phi(z_j)$ to make $Phi$ holomorphic at $z_j$.
 
-  Since $f(z) - psi_infinity(z)$ is the holomorphic part of the expansion at $oo$, consisting of terms with nonpositive powers of $z$, $lim_(z -> oo) f(z) - psi_infinity(z)$ exists and is finite. Additionally, each $psi_k (z)$ consists of negative powers of $z - z_k$, so $lim_(z -> oo) psi_k (z) = 0$ for each $k$, and thus $lim_(z -> oo) sum_(k = 1)^n psi_k (z) = 0$. Therefore, $lim_(z -> oo) Phi(z)$ exists and is finite, so $oo$ is a removable singularity of $Phi$. Without the finite singularities at each $z_k$, $Phi$ is entire. Since $Phi$ has a finite limit at $oo$, it is bounded on $CC$. By Liouville's theorem, $Phi(z) equiv c$ for some constant $c$.
+  Since $f(z) - psi_infinity (z)$ is the holomorphic part of the expansion at $oo$, consisting of terms with nonpositive powers of $z$, $lim_(z -> oo) f(z) - psi_infinity (z)$ exists and is finite. Additionally, each $psi_k (z)$ consists of negative powers of $z - z_k$, so $lim_(z -> oo) psi_k (z) = 0$ for each $k$, and thus $lim_(z -> oo) sum_(k = 1)^n psi_k (z) = 0$. Therefore, $lim_(z -> oo) Phi(z)$ exists and is finite, so $oo$ is a removable singularity of $Phi$. Without the finite singularities at each $z_k$, $Phi$ is entire. Since $Phi$ has a finite limit at $oo$, it is bounded on $CC$. By Liouville's theorem, $Phi(z) equiv c$ for some constant $c$.
 
   Hence,
   $

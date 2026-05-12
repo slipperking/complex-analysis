@@ -245,8 +245,9 @@ In its full generality, we will now apply a technique to push a pole to a prescr
 #proof[
   By assumption, $f$ can be expressed as a polynomial of
   $
-    (z - alpha)^(-1) = (z - beta)^(-1) 1 / ((z - alpha) (z - beta)^(-1)) = (z - beta)^(-1) 1 / (1 - (alpha - beta) (z - beta)^(-1)) \
-    = (z - beta)^(-1) sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k.
+    (z - alpha)^(-1) & = (z - beta)^(-1) 1 / ((z - alpha) (z - beta)^(-1)) \
+                     & = (z - beta)^(-1) 1 / (1 - (alpha - beta) (z - beta)^(-1)) \
+                     & = (z - beta)^(-1) sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k.
   $
   This series locally uniformly converges on
   $
@@ -254,11 +255,14 @@ In its full generality, we will now apply a technique to push a pole to a prescr
   $
   and uniformly converges on $extcomplex without D(beta, r)$. Hence, for $m in NN$, we have
   $
-    f(z) = sum_(j = 1)^m a_(-j) (((z - beta)^(-1) sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k))^j.
+    f(z) = sum_(j = 1)^m a_(-j) ((z - beta)^(-1) sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^j.
   $
   For fixed $j$ (where $a_(-j) != 0$), we aim to prove the existence of an $N in NN$ such that $forall n > N$, we have at least
   $
-    abs([(z - beta)^(-1) sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k]^j - [(z - beta)^(-1) sum_(k = 0)^n ((alpha - beta) / (z - beta))^k]^j) < epsilon / (m abs(a_(-j))),
+    abs(
+      & [(z - beta)^(-1) sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k]^j \
+      & quad""- [(z - beta)^(-1) sum_(k = 0)^n ((alpha - beta) / (z - beta))^k]^j
+    ) < epsilon / (m abs(a_(-j))),
   $ <eq:simple_pole_pushing_uniform_bound_assumption>
   where $z in extcomplex without D(beta, r)$. Since $abs(1 / (z - beta)) < 1 / r$, we can restrict @eq:simple_pole_pushing_uniform_bound_assumption further with
   $
@@ -266,7 +270,8 @@ In its full generality, we will now apply a technique to push a pole to a prescr
   $
   Additionally, the difference on the left-hand side is also equal to
   $
-    abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k) abs(sum_(l = 0)^(j - 1) (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^l (sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^(j - l - 1)).
+    &abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k) \
+    &wide""dot abs(sum_(l = 0)^(j - 1) (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^l (sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^(j - l - 1)).
   $ <eq:simple_pole_pushing_uniform_bound_assumption2>
   For any $n in NN$, we have
   $
@@ -280,11 +285,11 @@ In its full generality, we will now apply a technique to push a pole to a prescr
   $
     abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k) < r^j epsilon / (M^(j - 1) j m abs(a_(-j))).
   $
-  For $n > N_j$, @eq:simple_pole_pushing_uniform_bound_assumption is satisfied, and $forall n > max_(j = 1 \ a_(-j) != 0)^m (N_j)$, $z in extcomplex without D(beta, r)$, we have
+  For $n > N_j$, @eq:simple_pole_pushing_uniform_bound_assumption is satisfied, and $forall n > max_(j in NN_(lt.eq m) \ a_(-j) != 0) (N_j)$, $z in extcomplex without D(beta, r)$, we have
   $
-    abs(f(z) - sum_(j = 1)^m a_(-j) ((1 / (z - beta) sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j)) \
-    <= sum_(j = 1 \ a_(-j) != 0)^m abs(a_(-j)) abs((sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^j - (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j) \
-    <= sum_(j = 1 \ a_(-j) != 0)^m abs(a_(-j)) epsilon / (m abs(a_(-j))) <= epsilon,
+    &abs(f(z) - sum_(j = 1)^m a_(-j) ((1 / (z - beta) sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j)) \
+    &wide""<= sum_(j = 1 \ a_(-j) != 0)^m abs(a_(-j)) abs((sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^j - (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j) \
+    &wide""<= sum_(j = 1 \ a_(-j) != 0)^m abs(a_(-j)) epsilon / (m abs(a_(-j))) <= epsilon,
   $
   which completes the proof as
   $

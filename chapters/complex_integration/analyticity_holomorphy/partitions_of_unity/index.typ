@@ -339,7 +339,8 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   so $K$ is disjoint from $V_n$ for all $n > N + 1$. Since each $V_n$ intersects only finitely many $U_j$, $K$ intersects only finitely many $U_j$. Thus the collection is locally finite.
 ]
 
-#figure-wrapper([#figure(
+#figure-wrapper([
+  #figure(
     cetz.canvas({
       import cetz.draw: *
       import cetz.decorations: brace

@@ -6,7 +6,6 @@
   set page(numbering: "1", margin: 1.75in)
 
   show: thmrules.with(qed-symbol: $square$)
-  show: intertext-rule
   show math.equation: it => {
     if it.fields().keys().contains("label") {
       math.equation(block: true, numbering: scoped-equation-numbering, it)

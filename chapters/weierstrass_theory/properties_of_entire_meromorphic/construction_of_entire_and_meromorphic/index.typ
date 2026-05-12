@@ -290,11 +290,11 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
     which is an element of $C^oo (CC without {a_k}_(k in NN))$. For a fixed $n in NN$, it is true that $u equiv psi_n$ on $overline(V_n) without {a_n}$. Hence, although $u$ is not meromorphic, it does have the required principal part near each $a_k$. Let
     $
       phi.alt(z) = cases(
-        pdv(u, overline(z)) & "if" z in CC without {a_k}_(k in NN), ,
-        0 & "if" z in {a_k}_(k in NN),
-      ).
+        pdv(u, overline(z)) & "if" z in CC without {a_k}_(k in NN)\,,
+        0 & "if" z in {a_k}_(k in NN).
+      )
     $
-    Since $pdv(u, overline(z)) equiv pdv(psi_n, overline(z)) equiv 0$ and is $C^oo$ on $overline(V_n) without {a_n}$ and $phi.alt$ vanishes on ${a_k}_(k in NN)$, $phi.alt in C^oo (CC)$. By the discussion preceding @thm:onedimensionalpartialconjugatesolution, there exists a $C^oo$ function $v(z)$ such that $pdv(v, overline(z)) = phi.alt(z)$ on $CC$. Since $phi.alt$ is $C^oo$, it follows that $v$ is also $C^oo$. Define $f(z) = u(z) - v(z)$. Then
+    Since $partialderivative(u, overline(z), style: "horizontal") equiv partialderivative(psi_n, overline(z), style: "horizontal") equiv 0$ and is $C^oo$ on $overline(V_n) without {a_n}$ and $phi.alt$ vanishes on ${a_k}_(k in NN)$, $phi.alt in C^oo (CC)$. By the discussion preceding @thm:onedimensionalpartialconjugatesolution, there exists a $C^oo$ function $v(z)$ such that $pdv(v, overline(z)) = phi.alt(z)$ on $CC$. Since $phi.alt$ is $C^oo$, it follows that $v$ is also $C^oo$. Define $f(z) = u(z) - v(z)$. Then
     $
       pdv(f, overline(z)) = pdv(u, overline(z)) - pdv(v, overline(z)) = phi.alt(z) - phi.alt(z) = 0,
     $
@@ -370,7 +370,7 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
   $ <eq:generalinterpolationexistence_constructionstatement>
   Under what conditions on $Psi$ will $f$ be entire? Since the supports of each $phi_k$ are disjoint, the summation $sum_(k = 1)^oo phi.alt_k (z) phi_k (z)$ contains at most one nonzero term and is convergent and well-defined. To construct $f$ to be entire, we must have $pdv(f, overline(z)) = 0$. In other words, we want
   $
-    pdv((sum_(k = 1)^oo phi.alt_k phi_k), overline(z), style: "large") = pdv((Phi Psi), overline(z)) <==> sum_(k = 1)^oo phi.alt_k pdv(phi_k, overline(z)) = Phi pdv(Psi, overline(z))
+    partialderivative((sum_(k = 1)^oo phi.alt_k phi_k), overline(z), style: "large") = pdv((Phi Psi), overline(z)) <==> sum_(k = 1)^oo phi.alt_k partialderivative(phi_k, overline(z)) = Phi partialderivative(Psi, overline(z))
   $
   on all of $CC$. Let
   $
@@ -394,7 +394,7 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
   $
   Since $Phi$ has a zero at $z_k$ with multiplicity $n_k$, $Phi(z) Psi(z)$ vanishes at $z_k$ with multiplicity at least $n_k$. Therefore, we have
   $
-    f^((n)) (z_k) & = dv(, z, deg: n, eval: z_k, n)(sum_(j = 0)^(n_k - 1) w_(k, j) (z - z_k)^j) - dv(, z, deg: n, eval: z_k, n)(sum_(j = n_k)^oo w'_(k, j) (z - z_k)^j) \
+    f^((n)) (z_k) & = dv(, z, deg: n, eval: z_k)(sum_(j = 0)^(n_k - 1) w_(k, j) (z - z_k)^j) - dv(, z, deg: n, eval: z_k)(sum_(j = n_k)^oo w'_(k, j) (z - z_k)^j) \
     & = lim_(z -> z_k) sum_(j = n)^(n_k - 1) (w_(k, j) (z - z_k)^(j - n) product_(r = j - n + 1)^j r) \
     & quad - sum_(j = n_k)^oo (w'_(k, j) (z - z_k)^(j - n) product_(r = j - n + 1)^j r) \
     & = n! w_(k, n),

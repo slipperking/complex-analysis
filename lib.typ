@@ -6,7 +6,6 @@
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": vb as _vb
 #import "@preview/fancy-tiling:1.0.0": *
-#import "@preview/intextual:0.1.1": *
 
 #let cvector = cetz.vector
 #let cmatrix = cetz.matrix
@@ -189,6 +188,7 @@
 #let dy = $dif y$
 #let dz = $dif z$
 #let dzeta = $dif zeta$
+#let dtheta = $dif theta$
 #let dt = $dif t$
 #let dr = $dif r$
 
@@ -358,9 +358,9 @@
 
 #let math-rect(snippet, ..args) = {
   box(
-    math.equation(numbering: none, block: true, $ inline(snippet) $),
-    outset: 1pt,
+    math.equation(numbering: none, block: true, $ inline(#snippet) $),
     fill: luma(100%, 80%),
+    outset: 1pt,
     ..args,
   )
 }
