@@ -24,7 +24,7 @@ Intuitively, $gamma$ measures the extent to which bounded analytic functions out
 
 #proposition[
   If $K subset CC$ is a compact set of discrete points, then $lambda(K) = 0$.
-]
+] <prop:analytic_capacity_of_discrete_points>
 
 #proof[
   For any $f: extcomplex without K -> CC$ holomorphic with $f(extcomplex without K) subset.eq overline(DD)$, since $f$ is bounded, the Riemann's Theorem for removable singularities (@thm:riemannremovablesingularities) allows for an analytic continuation onto all of $extcomplex$. Then Liouville's Theorem (@thm:liouville) implies that $f$ is constant and $f'(oo) = 0$. Hence $gamma(K) = 0$.
@@ -46,15 +46,13 @@ Recent results hint the affirmative, as many special cases of the relation have 
 
 We now give some quantifying examples of how analytic capacity measures a type of "largeness" of compact sets, (rather much like area, which satisfies the subadditivity relation). First we define a specific classification of compact sets.
 
-An alternative perspective of this "largeness" pertains to a certain _removability_ of sets. A compact set $K subset CC$ is considered to be _removable_ if every holomorphic function on the complement can be extended to $CC$. For instance, the analytic capacity $gamma({a})$ of any singleton ${a}$ (any singular point) is 0, and any singleton is a removable set. Indeed, if there exists some $a$ such that $f:CC without {a} -> DD$ is holomorphic, then the Riemann Removable Singularities Theorem (@thm:riemannremovablesingularities) would imply that $f$ extends to $CC$. Because $f$ would be bounded, Liouville's Theorem (@thm:liouville) would imply that $f$ was the constant function, which has a vanishing derivative everywhere, including at infinity.
-
-In a heuristic sense, analytic capacity measures the irremovability of a set, and larger sets tend to be "less removable."
+An alternative perspective of this "largeness" pertains to a certain _removability_ of sets. A compact set $K subset CC$ is considered to be _removable_ if every holomorphic function on the complement can be extended to $CC$. For instance, the analytic capacity $gamma({a})$ of any singleton ${a}$ (any singular point) or set of discrete points is 0 as evidenced by @prop:analytic_capacity_of_discrete_points, and any singleton is a removable set. In a heuristic sense, analytic capacity measures the irremovability of a set, and larger sets tend to be "less removable."
 
 A compact set $K subset CC$ is a _continuum_ if it is connected, $CC without K$ is connected, and if it is not a singleton ($K$ contains at least 2 distinct points).
 
 #proposition[
   Let $K subset CC$ be a continuum. Then $gamma(K) = abs(f'(oo))$ where $f: extcomplex without K -> DD$ is a biholomorphism satisfying $f(oo) = 0$ (i. e. the maximal $abs(f'(oo))$ in the supremum of the definition of analytic capacity is attained when $f$ is biholomorphic).
-] <prop:analyticcapacitycontinuumbiholomorphism>
+] <prop:analytic_capacity_continuum_biholomorphism>
 
 #proof[
   Let $f$ be the biholomorphism, $g: extcomplex without K -> DD$ be holomorphic (not necessarily surjective) mapping $oo$ to $0$. Since $h equiv g compose f^(-1): DD -> DD$ and maps $0$ to $0$, the Schwarz Lemma (@lem:schwarz) implies that
@@ -76,13 +74,13 @@ A compact set $K subset CC$ is a _continuum_ if it is connected, $CC without K$ 
   $
     f(z) = r / (z - a), quad f'(oo) = lim_(z -> 0) dv((r / (1 / z - a)), z, style: "large") = r.
   $
-  Hence, @prop:analyticcapacitycontinuumbiholomorphism, gives that $gamma(overline(D(a, r))) = r$.
+  Hence, @prop:analytic_capacity_continuum_biholomorphism, gives that $gamma(overline(D(a, r))) = r$.
 ]
 
 #proposition[
   If $K subset CC$ is a continuum, then
   $
-    diam K / 4 <= gamma(K) <= diam K.
+    (diam K) / 4 <= gamma(K) <= diam K.
   $
 ] <prop:analyticcapacitycontinuuminequalities>
 
