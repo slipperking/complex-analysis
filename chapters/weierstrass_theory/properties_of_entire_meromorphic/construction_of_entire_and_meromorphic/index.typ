@@ -370,7 +370,7 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
   $ <eq:generalinterpolationexistence_constructionstatement>
   Under what conditions on $Psi$ will $f$ be entire? Since the supports of each $phi_k$ are disjoint, the summation $sum_(k = 1)^oo phi.alt_k (z) phi_k (z)$ contains at most one nonzero term and is convergent and well-defined. To construct $f$ to be entire, we must have $pdv(f, overline(z)) = 0$. In other words, we want
   $
-    partialderivative((sum_(k = 1)^oo phi.alt_k phi_k), overline(z), style: "large") = pdv((Phi Psi), overline(z), style: "large") <==> sum_(k = 1)^oo phi.alt_k partialderivative(phi_k, overline(z)) = Phi partialderivative(Psi, overline(z))
+    partialderivative((sum_(k = 1)^oo phi.alt_k phi_k), overline(z), style: "large") = pdv(, overline(z))(Phi Psi) <==> sum_(k = 1)^oo phi.alt_k partialderivative(phi_k, overline(z)) = Phi partialderivative(Psi, overline(z))
   $
   on all of $CC$. Let
   $
@@ -394,7 +394,7 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
   $
   Since $Phi$ has a zero at $z_k$ with multiplicity $n_k$, $Phi(z) Psi(z)$ vanishes at $z_k$ with multiplicity at least $n_k$. Therefore, we have
   $
-    f^((n)) (z_k) & = dv(, z, deg: n, eval: z_k)(sum_(j = 0)^(n_k - 1) w_(k, j) (z - z_k)^j) - dv(, z, deg: n, eval: z_k)(sum_(j = n_k)^oo w'_(k, j) (z - z_k)^j) \
+    f^((n)) (z_k) & = evaluated(dv(, z, n)(sum_(j = 0)^(n_k - 1) w_(k, j) (z - z_k)^j))_(z_k) - evaluated(dv(, z, n)(sum_(j = n_k)^oo w'_(k, j) (z - z_k)^j))_(z_k) \
     & = lim_(z -> z_k) sum_(j = n)^(n_k - 1) (w_(k, j) (z - z_k)^(j - n) product_(r = j - n + 1)^j r) \
     & quad - sum_(j = n_k)^oo (w'_(k, j) (z - z_k)^(j - n) product_(r = j - n + 1)^j r) \
     & = n! w_(k, n),

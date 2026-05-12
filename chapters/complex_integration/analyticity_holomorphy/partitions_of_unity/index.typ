@@ -518,7 +518,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   By local finiteness of ${D(z_j, r_(z_j))}_(j in NN)$, for each $z in Omega$ there exists an open neighborhood $V$ with $z in V$ intersecting only finitely many $overline(D(z_j, r_(z_j)))$. Thus ${supp(beta_j)}_(j in NN)$ is locally finite on $Omega$. Then the sum
   $ S(z) = sum_(j = 1)^oo beta_j (z) $
   defined for $z in Omega$ involves only finitely many nonzero terms (by local finiteness) on a neighborhood of every point $z$. Hence $S in C^oo (Omega)$ and $S(z) > 0$ (since ${D(z_j, r_(z_j))}_(j in NN)$ covers $Omega$). Define
-  $ alpha_j (z) = beta_j (z) / S(z), quad forall j in NN. $
+  $ alpha_j (z) = (beta_j (z)) / (S(z)), quad forall j in NN. $
   Each $alpha_j in C^oo (CC)$ has compact support in $Omega$, $0 <= alpha_j <= 1$, the supports are locally finite, and
   $ sum_(j = 1)^oo alpha_j (z) = 1 $
   for all $z in Omega$. Moreover

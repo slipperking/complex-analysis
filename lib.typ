@@ -3,7 +3,7 @@
 #import "@preview/cetz:0.5.0"
 #import "@preview/cetz-plot:0.1.3": *
 #import "@preview/physica:0.9.8": *
-#import "@preview/physica:0.9.8": vb as _vb
+#import "@preview/physica:0.9.8": vb as _vb, va as _va, vu as _vu
 #import "@preview/fancy-tiling:1.0.0": *
 
 #let cvector = cetz.vector

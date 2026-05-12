@@ -92,7 +92,8 @@ As an immediate consequence, we have:
 #proof[
   First assume $f(0) != 0$ and choose $M$ such that $abs(f) lt.eq M$ on $DD$. Let $n(r, 0, f)$ count the number of zeros of $f$, according to multiplicities, inside $overline(D(0,r))$. By Jensen's Formula (@thm:jensensformula), we have
   $
-    log abs(f(0)) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta + sum_(k=1)^(n(r,0,f)) log abs(a_k / r) lt.eq log(M) + sum_(k=1)^(n(r,0,f)) log abs(a_k / r).
+    log abs(f(0)) & = 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta \
+                  & quad ""+ sum_(k=1)^(n(r,0,f)) log abs(a_k / r) lt.eq log(M) + sum_(k=1)^(n(r,0,f)) log abs(a_k / r).
   $
   For any fixed positive integer $k$, choose $r$ such that $abs(a_k) < r < 1$. Then $n(r, 0, f) gt.eq k$ and
   $ sum_(k=1)^(n(r,0,f)) log abs(a_j / r) lt.eq sum_(j=1)^k log abs(a_j / r), $
@@ -164,11 +165,11 @@ As an immediate consequence, we have:
   $ B_n (z) = product_(k=1)^n [-abs(a_k) / a_k phi_(a_k) (z)] $
   give for fixed $theta in RR$, $epsilon > 0$, the existence of $0 < r' < 1$ such that $r' < r < 1$ implies
   $ abs(B_n (r ee^(ii theta))) > 1 - epsilon. $
-  Then
+  Then by the Maximum Modulus Principle (@thm:maximummodulus),
   $
-    sup_(z in DD) abs(f(z) / (z^m B_n (z))) = sup_(z in DD without overline(D(0,r))) abs(f(z) / (z^m B_n (z))) lt.eq 1 / (r^m (1 - epsilon)) sup_(z in DD) abs(f(z)) -> 1 / (1 - epsilon) sup_(z in DD) abs(f(z))
+    sup_(z in DD) abs(f(z) / (z^m B_n (z))) &= sup_(z in DD without overline(D(0,r))) abs(f(z) / (z^m B_n (z))) \ &lt.eq 1 / (r^m (1 - epsilon)) sup_(z in DD) abs(f(z)) -> 1 / (1 - epsilon) sup_(z in DD) abs(f(z))
   $
-  as $r -> 1^-$ by the Maximum Modulus Principle (@thm:maximummodulus). Letting $epsilon -> 0^+$, $n -> infinity$ gives
+  as $r -> 1^-$. Letting $epsilon -> 0^+$, $n -> infinity$ gives
   $ sup_(z in DD) abs(F(z)) lt.eq sup_(z in DD) abs(f(z)), $
   which in conjunction with @eq:blaschkeproductfactorization_supremuminequalities, completes the final assertion.
 ]
@@ -265,7 +266,7 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
   $
   where $a_1, dots, a_(n(2r,0,f))$ are the zeros of $f$ in $D(0,2r)$, ordered such that each $abs(a_k) lt.eq abs(a_(k+1))$. Then
   $
-    sum_(k=1)^(n(r,0,f)) log 2 lt.eq sum_(k=1)^(n(r,0,f)) log abs((2r) / a_k) lt.eq sum_(k=1)^(n(2r,0,f)) log abs((2r) / a_k) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f (2r ee^(ii theta))) dif theta lt.eq log M(2r, f). #qedhere
+    sum_(k=1)^(n(r,0,f)) log 2 &<= sum_(k=1)^(n(r,0,f)) log abs((2r) / a_k) lt.eq sum_(k=1)^(n(2r,0,f)) log abs((2r) / a_k) \ &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (2r ee^(ii theta))) dif theta lt.eq log M(2r, f). #qedhere
   $
 ]
 
@@ -351,7 +352,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
 #proof[
   For fixed $z$, let $r > 2 abs(z)$ such that $a_1, dots, a_(n(r,0,f))$ lie in $D(0,r)$. For each $k$ we obtain
   $
-    abs(r^2 - overline(a_k) z) gt.eq r^2 - abs(a_k) abs(z) > r^2 - r dot r/2 = r^2/2 ==> abs(a_k)^(p+1) abs(r^2 - overline(a_k) z)^(-p-1) < (2/r)^(p+1)
+    abs(r^2 - overline(a_k) z) gt.eq r^2 - abs(a_k) abs(z) > r^2 - r dot r/2 = r^2/2 \ ==> abs(a_k)^(p+1) abs(r^2 - overline(a_k) z)^(-p-1) < (2/r)^(p+1)
   $
   since $rho(f) gt.eq 0$ by the logarithm formula. Now by definition of $rho(f)$, @lem:maximummoduluszerocountingdoubleradius gives the estimate for sufficiently large $r$ and arbitrarily small $epsilon > 0$:
   $ n(r, 0, f) r^(-p-1) lt.eq (log M(2r, 0, f)) / (log 2) r^(-p-1) lt.eq ((2r)^(rho(f) + epsilon) r^(-p-1)) / (log 2). $
@@ -381,11 +382,11 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $ integral_0^(2 uppi) (r ee^(ii theta) dif theta) / (r ee^(ii theta) - z)^(p+2) = 0. $
   Therefore,
   $
-    abs(integral_0^(2 uppi) (r ee^(ii theta) log abs(f (r ee^(ii theta)))) / (r ee^(ii theta) - z)^(p+2) dif theta)
-    &= abs(integral_0^(2 uppi) (r ee^(ii theta)) / (r ee^(ii theta) - z)^(p+2) [log abs(f (r ee^(ii theta))) - log M(r, f)] dif theta) \
-    &lt.eq integral_0^(2 uppi) r / (r\/2)^(p+2) [log M(r, f) - log abs(f (r ee^(ii theta)))] dif theta \
-    &= 2^(p+3) r^(-p-1) [2 uppi log M(r, f) - integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta] \
-    &lt.eq 2^(p+4) r^(-p-1) uppi log M(r, f),
+    &abs(integral_0^(2 uppi) (r ee^(ii theta) log abs(f (r ee^(ii theta)))) / (r ee^(ii theta) - z)^(p+2) dif theta) \
+    &wide wide""= abs(integral_0^(2 uppi) (r ee^(ii theta)) / (r ee^(ii theta) - z)^(p+2) [log abs(f (r ee^(ii theta))) - log M(r, f)] dif theta) \
+    &wide wide""lt.eq integral_0^(2 uppi) r / (r\/2)^(p+2) [log M(r, f) - log abs(f (r ee^(ii theta)))] dif theta \
+    &wide wide""= 2^(p+3) r^(-p-1) [2 uppi log M(r, f) - integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta] \
+    &wide wide""<= 2^(p+4) r^(-p-1) uppi log M(r, f),
   $
   where the last expression uses the inequality derived from Jensen's formula (@cor:jensensinequality) on the remaining integral.
 
@@ -407,11 +408,12 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
 #proof[
   Let $r > 2 abs(z)$. By the Poisson--Jensen Formula (@thm:poissonjensenformula), at each non-singular point, we have (the kernel representation derived in @eq:poissonkernelgeneralform)
   $
-    Re log f(z) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) Re ((r ee^(ii theta) + z) / (r ee^(ii theta) - z)) dif theta + sum_(k=1)^(n(r,0,f)) Re log ((r(z - a_k)) / (r^2 - overline(a_k) z)).
+    Re log f(z) &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) Re ((r ee^(ii theta) + z) / (r ee^(ii theta) - z)) dif theta \
+    &wide""+ sum_(k=1)^(n(r,0,f)) Re log ((r(z - a_k)) / (r^2 - overline(a_k) z)).
   $
   For any holomorphic $g = u + ii v$, we have
   $
-    (partial (Re g(z))) / (partial z) = 1/2 ((partial u(z)) / (partial x) - ii (partial u(z)) / (partial y)) = 1/2 ((partial u(z)) / (partial x) + ii (partial v) / (partial x)) = 1/2 (partial g(z)) / (partial x) = (g'(z)) / 2.
+    (partial (Re g(z))) / (partial z) &= 1/2 ((partial u(z)) / (partial x) - ii (partial u(z)) / (partial y)) \ &= 1/2 ((partial u(z)) / (partial x) + ii (partial v) / (partial x)) = 1/2 (partial g(z)) / (partial x) = (g'(z)) / 2.
   $<eq:wirtingerderivativeofrealpartofholomorphicfunction>
   Therefore, by differentiation under the integral sign,
   $
@@ -443,7 +445,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $
   implying that
   $
-    dif^p / (dif z^p) (P'_n (z) / P_n (z)) = -sum_(k=1)^n (p!) / (a_k - z)^(p+1) + dif^p / (dif z^p) sum_(j=1)^(op("rank") f) sum_(k=1)^n z^(j-1) / a_k^j.
+    dif^p / (dif z^p) ((P'_n (z)) / (P_n (z))) = -sum_(k=1)^n (p!) / (a_k - z)^(p+1) + dif^p / (dif z^p) sum_(j=1)^(op("rank") f) sum_(k=1)^n z^(j-1) / a_k^j.
   $
   Since the polynomial in the rightmost term has degree at most $max j - 1 = op("rank") f - 1$, and because $p > floor(rho) - 1 gt.eq op("rank") f - 1$, after $p$ derivatives each term of the expression vanishes. For an arbitrarily chosen compact $K subset CC$ avoiding $a_k$, some $N in NN$ such that $abs(a_k) gt.eq max_(z in K) abs(z)$ for all $k > N$, we have $forall z in K$, $abs(a_k - z) lt.eq abs(a_k) + abs(z) lt.eq 2 abs(a_k)$. Then the convergence of
   $ sum_(k=1)^infinity 1 / (2 abs(a_k)^(p+1)) $
@@ -451,7 +453,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $ sum_(k=1)^infinity 1 / (a_k - z)^(p+1) $
   in $K$. Moreover, it can be shown that the uniform convergence of $P_n -> P$ (from the Weierstrass factorization) and $P'_n -> P'_n$ (by the Weierstrass Convergence Theorem, @thm:weierstrassconvergence) in $K$ implies that of $(P'(z)) / P(z)$. Hence, the Weierstrass Convergence Theorem implies that
   $
-    lim_(n -> infinity) dif^p / (dif z^p) (P'_n (z) / P_n (z)) &= (P'(z)) / P(z) = -lim_(n -> infinity) sum_(k=1)^n (p!) / (a_k - z)^(p+1) \
+    lim_(n -> infinity) dif^p / (dif z^p) ((P'_n (z)) / (P_n (z))) &= (P'(z)) / P(z) = -lim_(n -> infinity) sum_(k=1)^n (p!) / (a_k - z)^(p+1) \
     &= -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1). #qedhere
   $
 ]
