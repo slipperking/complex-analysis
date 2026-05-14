@@ -7,7 +7,7 @@ A fundamental problem in the theory of partial differential equations is to find
 #theorem[
   For a continuous function $phi in C^0 (partial D(0, R))$, the unique real-valued solution $u in C^0 (overline(D(0, R)))$ that solves
   $
-    Delta u(z) = 0 quad forall z in D(0, R), \
+    laplacian u(z) = 0 quad forall z in D(0, R), \
     u(z) = phi(z) quad forall z in partial D(0, R)
   $
   is given by the Poisson integral formula:
@@ -131,11 +131,11 @@ A fundamental problem in the theory of partial differential equations is to find
   $
     P(zeta, z) = 1 / (4 uppi) ((zeta + z) / (zeta - z) + (overline(zeta) + overline(z)) / (overline(zeta) - overline(z))),
   $
-  from @eq:laplaciancomplexform, we have that $Delta_z P(zeta, z) = 4 pdv(P(zeta, z), z, overline(z)) = 0$ (since each term is independent of either $z$ or $overline(z)$). Moreover, by @thm:leibnizintegralrule, @eq:dirichletproblemwithlaplaceequationsolution gives that
+  from @eq:laplaciancomplexform, we have that $laplacian_z P(zeta, z) = 4 pdv(P(zeta, z), z, overline(z)) = 0$ (since each term is independent of either $z$ or $overline(z)$). Moreover, by @thm:leibnizintegralrule, @eq:dirichletproblemwithlaplaceequationsolution gives that
   $
-    Delta u(z)
-    = Delta integral_0^(2 uppi) phi(zeta) P(zeta, z) dif tau
-    = integral_0^(2 uppi) Delta [phi(zeta) P(zeta, z)] dif tau
+    laplacian u(z)
+    = laplacian integral_0^(2 uppi) phi(zeta) P(zeta, z) dif tau
+    = integral_0^(2 uppi) laplacian [phi(zeta) P(zeta, z)] dif tau
     = 0.
   $
 

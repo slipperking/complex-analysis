@@ -227,6 +227,8 @@
 
 #let doubletilde(x) = $tilde(tilde(#x))$
 
+#let widearc(x) = $accent(x, paren.t)$
+
 #let halflength-arrow(start, end, scalar: 0, mark: (end: ">>", fill: black), ..args) = {
   let stripped-start = start.slice(0, 2)
   let stripped-end = end.slice(0, 2)

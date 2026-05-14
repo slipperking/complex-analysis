@@ -86,8 +86,8 @@ The following theorem is important in many areas of mathematical analysis and ha
   $
   Letting $tilde(N) = tilde(N)(epsilon) = max({N(epsilon, 1), dots, N(epsilon, l(epsilon))})$, we have that $forall i, j > tilde(N)$, $forall z in K$,
   $
-    abs(f_(n'_j) (z) - f_(n'_i) (z)) & <= abs(f_(n'_j) (z) - f_(n'_j) (zeta_k)) + abs(f_(n'_j) (zeta_k) - f_(n'_i) (zeta_k)) + abs(f_(n'_i) (zeta_k) - f_(n'_i) (z)) \
-                                     & = epsilon / 3 + epsilon / 3 + epsilon / 3 = epsilon.
+    abs(f_(n'_j) (z) - f_(n'_i) (z)) & <= abs(f_(n'_j) (z) - f_(n'_j) (zeta_k)) + abs(f_(n'_j) (zeta_k) - f_(n'_i) (zeta_k)) \ & wide"" + abs(f_(n'_i) (zeta_k) - f_(n'_i) (z)) \
+    & = epsilon / 3 + epsilon / 3 + epsilon / 3 = epsilon.
   $
   Hence, the sequence is uniformly convergent on $K$ by the Cauchy Criterion (@thm:cauchycriterionuniformconvergence).
 

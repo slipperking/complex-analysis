@@ -4,9 +4,9 @@
 #chapter-section("gaussian_curvature_of_surface")[
   #include "gaussian_curvature_of_surface/index.typ"
 ]
-// #chapter-section("metrics_and_curvature")[
-//   #include "metrics_and_curvature/index.typ"
-// ]
+#chapter-section("metrics_and_curvature")[
+  #include "metrics_and_curvature/index.typ"
+]
 // #chapter-section("schwarz_pick_ahlfors")[
 //   #include "schwarz_pick_ahlfors/index.typ"
 // ]
