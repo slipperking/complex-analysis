@@ -61,8 +61,8 @@
 
 // use the non-abbreviated terms for no upright.
 #let vb(x) = _vb(math.upright(x))
-#let vu(x) = _vu(math.upright(x))
-#let va(x) = _va(math.upright(x))
+#let vu(x) = _vu(vb(x))
+#let va(x) = _va(vb(x))
 
 #let _html-thm(identifier, head, css-class, numbered: true) = {
   let thm-kind = "thm-" + identifier

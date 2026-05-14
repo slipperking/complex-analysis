@@ -1,6 +1,9 @@
 #import "/lib.typ": *
 
 == Gaussian Curvature of a Surface <sec:gaussiancurvatureofsurface>
+#let II-matrix = $vb(I #h(-0.15em) I)$
+#let II-form = $upright(I #h(-0.15em) I)$
+
 We will give a brief introduction to the curvature of a surface for heuristic intuition.
 
 Suppose $U subset.eq RR^2$ is a region, and let $(u, v) in U$. Consider a surface parameterized via
@@ -14,7 +17,7 @@ where $x, y, z in C^2 (U)$. If $va(r)'_u times va(r)'_v$ never vanishes for $(u,
 The square of the length of the vector infinitesimal $dif va(r)=va(r)'_u dif u + va(r)'_v dif v$, or
 
 $
-  upright("I")=dif s^2=E dif u^2 + 2 F dif u dif v + G dif v^2,
+  upright(I)=dif s^2=E dif u^2 + 2 F dif u dif v + G dif v^2,
 $ <eq:firstfundamentalform>
 
 is known as the _first fundamental form_ of $Sigma$, where $E=va(r)'_u dot va(r)'_u$, $F=va(r)'_u dot va(r)'_v$, and $G=va(r)'_v dot va(r)'_v$.
@@ -34,7 +37,7 @@ $
 The first two linear terms vanish by properties of the triple scalar product. The _second fundamental form_ of $Sigma$ is defined as
 
 $
-  upright("II")=L dif u^2 + 2 M dif u dif v + N dif v^2,
+  #II-form=L dif u^2 + 2 M dif u dif v + N dif v^2,
 $ <eq:secondfundamentalform>
 
 where $L=va(r)''_(u u) dot vu(n)$, $M=va(r)''_(u v) dot vu(n)$, and $N=va(r)''_(v v) dot vu(n)$. Since $va(r)'_u dot vu(n)=0$ and $va(r)'_v dot vu(n)=0$, by differentiation, we have
@@ -47,7 +50,7 @@ $
 It follows that $L=-va(r)'_u dot vu(n)'_u$, $M=-va(r)'_u dot vu(n)'_v=-va(r)'_v dot vu(n)'_u$, and $N=-va(r)'_v dot vu(n)'_v$. Because $dif vu(n)=vu(n)'_u dif u + vu(n)'_v dif v$,
 
 $
-  upright("II")=-dif va(r) dot dif vu(n).
+  #II-form=-dif va(r) dot dif vu(n).
 $
 
 #figure-wrapper([
@@ -87,29 +90,29 @@ $
 The quotient
 
 $
-  kappa_n=(upright("II"))/(upright("I"))=(L dif u^2 + 2 M dif u dif v + N dif v^2)/(E dif u^2 + 2 F dif u dif v + G dif v^2),
+  kappa_n=(#II-form)/(upright(I))=(L dif u^2 + 2 M dif u dif v + N dif v^2)/(E dif u^2 + 2 F dif u dif v + G dif v^2),
 $
 
-varies depending on the curve traversing $Sigma$ (and ultimately, depending on the direction induced by $dif u$ and $dif v$). On $gamma$, the two representations are equivalent since $upright("I")=dif s^2$. The maximum and minimum values of $kappa_n$ are known as the _principal curvatures_ $kappa_1$ and $kappa_2$ of $Sigma$ at $P$, achieved along the _principal directions_ of the (unit) tangent vectors at $P$.
+varies depending on the curve traversing $Sigma$ (and ultimately, depending on the direction induced by $dif u$ and $dif v$). On $gamma$, the two representations are equivalent since $upright(I)=dif s^2$. The maximum and minimum values of $kappa_n$ are known as the _principal curvatures_ $kappa_1$ and $kappa_2$ of $Sigma$ at $P$, achieved along the _principal directions_ of the (unit) tangent vectors at $P$.
 
 The _mean curvature_ of $Sigma$ at $P$ is defined to be $H=(kappa_1 + kappa_2) / 2$. Let $r_1, r_2$ be the radii of curvature corresponding to $kappa_1$ and $kappa_2$. The product of the two principal curvatures is known as the _Gaussian curvature_ of $Sigma$ at $P$, denoted by $K=kappa_1 kappa_2$. We will now heuristically derive the explicit formulas for $H$ and $K$ in terms of $E, F, G, L, M, N$.
 
-Suppose $p in Sigma$. Adopt the matrix notation of $vb(I)$, $vb("II")$ as in
+Suppose $p in Sigma$. Adopt the matrix notation of $vb(I)$, $#II-matrix$ as in
 
 $
-  vb(I)=mat(E, F; F, G), quad vb("II")=mat(L, M; M, N),
+  vb(I)=mat(E, F; F, G), quad #II-matrix=mat(L, M; M, N),
 $
 
 to reduce to the optimization problem of
 
 $
-  kappa_n=(va(v)^top vb("II") va(v))/(va(v)^top vb(I) va(v)), quad va(v) in T_p Sigma.
+  kappa_n=(va(v)^top #II-matrix va(v))/(va(v)^top vb(I) va(v)), quad va(v) in T_p Sigma.
 $
 
 We may restrict $va(v)=(v_1, v_2)$ so that the denominator is always $1$, aiming to optimize the numerator. By the method of Lagrange multipliers, we write
 
 $
-  cal(L)(va(v), lambda)=va(v)^top vb("II") va(v)-lambda (va(v)^top vb(I) va(v)-1).
+  cal(L)(va(v), lambda)=va(v)^top #II-matrix va(v)-lambda (va(v)^top vb(I) va(v)-1).
 $
 
 The equation $grad cal(L)=vb(0)$ for $grad=(pdv(, v_1), pdv(, v_2), pdv(, lambda))$ can then be decomposed into (where $va(v)=(v_1, v_2)$):
@@ -129,19 +132,20 @@ $ <eq:gaussiancurvaturelambdarootsmatrixvectorvanish>
 Let the matrix on the left be denoted by $vb(M)$. In order for non-trivial $(vb(v) eq.not vb(0))$ to exist, we must have $det vb(M)=0$. That is,
 
 $
-  (L - lambda E)(N - lambda G) - (M - lambda F)^2=lambda^2 (E G - F^2) + lambda (2 M F - E N - G L) + L N - M^2=0.
+  & (L - lambda E)(N - lambda G) - (M - lambda F)^2 \
+  & wide""=lambda^2 (E G - F^2) + lambda (2 M F - E N - G L) + L N - M^2=0.
 $
 
 This is a quadratic giving two solutions for $lambda$. From
 
 $
-  grad(va(v)^top vb("II") va(v))=lambda grad(va(v)^top vb(I) va(v))
+  grad(va(v)^top #II-matrix va(v))=lambda grad(va(v)^top vb(I) va(v))
 $
 
 it is apparent that the roots $lambda_1, lambda_2 in RR$. Moreover, from @eq:gaussiancurvaturelambdarootsmatrixvectorvanish we have
 
 $
-  vb("II") va(v)=lambda vb(I) va(v) ==> lambda=(va(v)^top vb("II") va(v))/(va(v)^top vb(I) va(v)).
+  #II-matrix va(v)=lambda vb(I) va(v) ==> lambda=(va(v)^top #II-matrix va(v))/(va(v)^top vb(I) va(v)).
 $
 
 Hence, the two roots $lambda_1, lambda_2$ are precisely the principal curvatures. Vieta's formulas give that
@@ -153,7 +157,7 @@ $
 Now, assume a parameterization of $Sigma$ by $va(r)(u, v)$ (thrice continuously differentiable) such that
 
 $
-  upright("I")(u, v)=rho^2 dif u^2 + rho^2 dif v^2=rho^2 (dif u^2 + dif v^2)
+  upright(I)(u, v)=rho^2 dif u^2 + rho^2 dif v^2=rho^2 (dif u^2 + dif v^2)
 $
 
 (which we will later formalize as a _conformal metric_). Then there is an alternate representation of the Gaussian curvature in terms of $rho$.
@@ -162,15 +166,15 @@ By definition, $E equiv G equiv rho^2$ while $F equiv 0$. Moreover,
 
 $
   L N & =(va(r)''_(u u) dot (va(r)'_u times va(r)'_v) / norm(va(r)'_u times va(r)'_v))(va(r)''_(v v) dot (va(r)'_u times va(r)'_v) / norm(va(r)'_u times va(r)'_v)) \
-  & = (det(mat(va(r)''_(u u), va(r)'_u, va(r)'_v)) det(mat(va(r)''_(v v), va(r)'_u, va(r)'_v))) / (norm(va(r)'_u)^2 norm(va(r)'_v)^2 - (va(r)'_u dot va(r)'_v)^2) \
-  & = (det(mat(va(r)''_(u u), va(r)'_u, va(r)'_v)) det(mat(va(r)''_(v v), va(r)'_u, va(r)'_v))) / (E G - F^2) \
-  & = 1 / rho^4 det(mat(va(r)''_(v v) dot va(r)''_(u u), va(r)''_(v v) dot va(r)'_u, va(r)''_(v v) dot va(r)'_v; va(r)'_u dot va(r)''_(u u), va(r)'_u dot va(r)'_u, va(r)'_u dot va(r)'_v; va(r)'_v dot va(r)''_(u u), va(r)'_v dot va(r)'_u, va(r)'_v dot va(r)'_v)).
+  & = (det mat(va(r)''_(u u), va(r)'_u, va(r)'_v) det mat(va(r)''_(v v), va(r)'_u, va(r)'_v)) / (norm(va(r)'_u)^2 norm(va(r)'_v)^2 - (va(r)'_u dot va(r)'_v)^2) \
+  & = (det mat(va(r)''_(u u), va(r)'_u, va(r)'_v) det mat(va(r)''_(v v), va(r)'_u, va(r)'_v)) / (E G - F^2) \
+  & = 1 / rho^4 det mat(va(r)''_(v v) dot va(r)''_(u u), va(r)''_(v v) dot va(r)'_u, va(r)''_(v v) dot va(r)'_v; va(r)'_u dot va(r)''_(u u), va(r)'_u dot va(r)'_u, va(r)'_u dot va(r)'_v; va(r)'_v dot va(r)''_(u u), va(r)'_v dot va(r)'_u, va(r)'_v dot va(r)'_v).
 $
 
 Similarly,
 
 $
-  M^2 & = 1 / rho^4 det(mat(va(r)''_(u v) dot va(r)''_(u v), rho rho'_v, rho rho'_u; rho rho'_v, rho^2, 0; rho rho'_u, 0, rho^2)) \
+  M^2 & = 1 / rho^4 det mat(va(r)''_(u v) dot va(r)''_(u v), rho rho'_v, rho rho'_u; rho rho'_v, rho^2, 0; rho rho'_u, 0, rho^2) \
   & = 1 / rho^4 [va(r)''_(u v) dot va(r)''_(u v) rho^4 - rho^4 (rho'_v)^2 - rho^4 (rho'_u)^2] \
   & = va(r)''_(u v) dot va(r)''_(u v) - (rho'_v)^2 - (rho'_u)^2.
 $
@@ -202,13 +206,13 @@ $
 Differentiating these give
 
 $
-  va(r)'''_(u u v) dot va(r)'_v + va(r)''_(u u) dot va(r)_(v v)=- (rho'_v)^2 - rho rho''_(v v), quad (va(r)'''_(v v u) dot va(r)'_u + va(r)''_(v v) dot va(r)_(u u)=- (rho'_u)^2 - rho rho''_(u u)).
+  va(r)'''_(u u v) dot va(r)'_v + va(r)''_(u u) dot va(r)_(v v)=- (rho'_v)^2 - rho rho''_(v v), \ (va(r)'''_(v v u) dot va(r)'_u + va(r)''_(v v) dot va(r)_(u u)=- (rho'_u)^2 - rho rho''_(u u)).
 $
 
 Differentiating the inner two expressions of @eq:gaussiancurvatureofsurface_conformalnonzerodifferentiation, we have
 
 $
-  va(r)'''_(u u v) dot va(r)'_v + va(r)''_(u v) dot va(r)_(u v)=(rho'_u)^2 + rho rho''_(u u), quad (va(r)'''_(v v u) dot va(r)'_u + va(r)''_(u v) dot va(r)_(u v)=(rho'_v)^2 + rho rho''_(v v)).
+  va(r)'''_(u u v) dot va(r)'_v + va(r)''_(u v) dot va(r)_(u v)=(rho'_u)^2 + rho rho''_(u u), \ (va(r)'''_(v v u) dot va(r)'_u + va(r)''_(u v) dot va(r)_(u v)=(rho'_v)^2 + rho rho''_(v v)).
 $
 
 It follows that
@@ -217,10 +221,10 @@ $
   va(r)''_(u v) dot va(r)_(u v) - va(r)''_(u u) dot va(r)''_(v v)=(rho'_u)^2 + (rho'_v)^2 + rho laplacian rho,
 $
 
-where $laplacian$ here is $pdv(, u, 2) + pdv(, v, 2)$. Then
+where $laplacian$ here is $pdv(, u, 2, style: "horizontal") + pdv(, v, 2, style: "horizontal")$. Then
 
 $
-  L N & = 1 / rho^4 det(mat(va(r)''_(v v) dot va(r)''_(u u), -rho rho'_u, rho rho'_v; rho rho'_u, rho^2, 0; -rho rho'_v, 0, rho^2)) \
+  L N & = 1 / rho^4 det mat(va(r)''_(v v) dot va(r)''_(u u), -rho rho'_u, rho rho'_v; rho rho'_u, rho^2, 0; -rho rho'_v, 0, rho^2) \
   & = 1 / rho^4 [va(r)''_(v v) dot va(r)''_(u u) rho^4 + rho^4 (rho'_u)^2 + rho^4 (rho'_v)^2] \
   & = va(r)''_(v v) dot va(r)''_(u u) + (rho'_u)^2 + (rho'_v)^2,
 $
@@ -228,7 +232,7 @@ $
 and
 
 $
-  M^2 & = 1 / rho^4 det(mat(va(r)''_(u v) dot va(r)''_(u v), rho rho'_v, rho rho'_u; rho rho'_v, rho^2, 0; rho rho'_u, 0, rho^2)) \
+  M^2 & = 1 / rho^4 det mat(va(r)''_(u v) dot va(r)''_(u v), rho rho'_v, rho rho'_u; rho rho'_v, rho^2, 0; rho rho'_u, 0, rho^2) \
   & = 1 / rho^4 [va(r)''_(u v) dot va(r)''_(u v) rho^4 - rho^4 (rho'_v)^2 - rho^4 (rho'_u)^2] \
   & = va(r)''_(u v) dot va(r)''_(u v) - (rho'_v)^2 - (rho'_u)^2.
 $
@@ -242,11 +246,9 @@ $ <eq:gaussiancurvatureofsurface_gaussiancurvatureconformalmetricformula>
 
 To understand the motivation for which $dif s^2$ is said to be conformal, consider two curves in the $u-v$ plane, parameterized by $vb(gamma)_1 (t)=(u_1 (t), v_1 (t))$ and $vb(gamma)_2 (t)=(u_2 (t), v_2 (t))$ such that $vb(gamma)_1 (0)=vb(gamma)_2 (0)=vb(w)_0=(u_0, v_0)$. Their images via $vb(r)$ are $vb(alpha)_1 (t)=vb(r) compose vb(gamma)_1 (t)$ and $vb(alpha)_2 (t)=vb(r) compose vb(gamma)_2 (t)$ so that they intersect at some point $P in Sigma$. Let $vb(gamma)'_1 (0)=vb(v)_1=a vb(e)_u + b vb(e)_v$ and $vb(gamma)'_2 (0)=vb(v)_2=c vb(e)_u + d vb(e)_v$ be two tangent vectors. Then the corresponding vectors in $T_P Sigma$ are
 
-$
-  dif vb(r)_(vb(w)_0) (vb(v)_1)=a dif vb(r)_(vb(w)_0) (vb(e)_u) + b dif vb(r)_(vb(w)_0) (vb(e)_v), quad dif vb(r)_(vb(w)_0) (vb(v)_2)=c dif vb(r)_(vb(w)_0) (vb(e)_u) + d dif vb(r)_(vb(w)_0) (vb(e)_v).
-$
+$ dif vb(r)_(vb(w)_0) (vb(v)_1)=a dif vb(r)_(vb(w)_0) (vb(e)_u) + b dif vb(r)_(vb(w)_0) (vb(e)_v) $ and $ dif vb(r)_(vb(w)_0) (vb(v)_2)=c dif vb(r)_(vb(w)_0) (vb(e)_u) + d dif vb(r)_(vb(w)_0) (vb(e)_v). $
 
-Since#footnote[In more modern formulations of differential geometry, differentials (known as pushforwards) are functions mapping tangent vectors to tangent vectors. The notion came from the realization that ``changes'' of functions are best described in terms of a direction of change. Then basis vectors themselves became partial derivative operators two give the second set of equalities, which is a consequence of the more abstract notion of ``duality.'' For the remaining sections, this structural viewpoint is not considered.] $vb(e)_u=pdv(, u)$, $vb(e)_v=pdv(, v)$ and $dif vb(r)_(vb(w)_0) (pdv(, u))=evaluated(pdv(vb(r), u))_(vb(w)_0)$, $dif vb(r)_(vb(w)_0) (pdv(, v))=evaluated(pdv(vb(r), v))_(vb(w)_0)$. Then
+Since#footnote[In more modern formulations of differential geometry, differentials (known as pushforwards) are functions mapping tangent vectors to tangent vectors. The notion came from the realization that "changes" of functions are best described in terms of a direction of change. Then basis vectors themselves became partial derivative operators two give the second set of equalities, which is a consequence of the more abstract notion of ``duality.'' For the remaining sections, this structural viewpoint is not considered.] $vb(e)_u=pdv(, u)$, $vb(e)_v=pdv(, v)$ and $dif vb(r)_(vb(w)_0) (pdv(, u))=evaluated(pdv(vb(r), u))_(vb(w)_0)$, $dif vb(r)_(vb(w)_0) (pdv(, v))=evaluated(pdv(vb(r), v))_(vb(w)_0)$. Then
 
 $
   dif vb(r)_(vb(w)_0) (vb(v)_1)=a vb(r)'_u (vb(w)_0) + b vb(r)'_v (vb(w)_0), quad dif vb(r)_(vb(w)_0) (vb(v)_2)=c vb(r)'_u (vb(w)_0) + d vb(r)'_v (vb(w)_0).
@@ -261,5 +263,5 @@ $
 while the angle $theta_Sigma$ between the two tangent vectors in $T_P Sigma$ satisfies
 
 $
-  cos theta_Sigma=evaluated(((a vb(r)'_u + b vb(r)'_v) dot (c vb(r)'_u + d vb(r)'_v)) / (norm(a vb(r)'_u + b vb(r)'_v) norm(c vb(r)'_u + d vb(r)'_v)))_(vb(w)_0)=evaluated((rho^2 (a c + b d)) / (sqrt(a^2 rho^2 + b^2 rho^2) sqrt(c^2 rho^2 + d^2 rho^2)))_(vb(w)_0)=cos theta_(u v).
+  cos theta_Sigma&=evaluated(((a vb(r)'_u + b vb(r)'_v) dot (c vb(r)'_u + d vb(r)'_v)) / (norm(a vb(r)'_u + b vb(r)'_v) norm(c vb(r)'_u + d vb(r)'_v)))_(vb(w)_0)\ &=evaluated((rho^2 (a c + b d)) / (sqrt(a^2 rho^2 + b^2 rho^2) sqrt(c^2 rho^2 + d^2 rho^2)))_(vb(w)_0)=cos theta_(u v).
 $
