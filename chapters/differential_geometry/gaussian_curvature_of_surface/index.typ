@@ -38,7 +38,7 @@ The first two linear terms vanish by properties of the triple scalar product. Th
 
 $
   #II-form=L dif u^2 + 2 M dif u dif v + N dif v^2,
-$ <eq:secondfundamentalform>
+$ <eq:second_fundamental_form>
 
 where $L=va(r)''_(u u) dot vu(n)$, $M=va(r)''_(u v) dot vu(n)$, and $N=va(r)''_(v v) dot vu(n)$. Since $va(r)'_u dot vu(n)=0$ and $va(r)'_v dot vu(n)=0$, by differentiation, we have
 
@@ -55,13 +55,63 @@ $
 
 #figure-wrapper([
   #figure(
-    // align(center, image("build/svg/second_fundamental_form.svg", width: 75%))
-    {},
+    {
+      cetz.canvas(length: 3cm, {
+        import cetz.draw: *
+        let para(u, v) = (u, u * u + v * v, v)
+
+        ortho(x: 25deg, y: -25deg, {
+          let n = 10
+          let s = 20
+
+          for i in range(0, n + 1) {
+            let v = -1 + 2 * i / n
+            line(
+              ..(range(0, s + 1).map(j => para(-1 + 2 * j / s, v))),
+              stroke: (paint: black.transparentize(60%), thickness: 0.3pt),
+            )
+          }
+          for i in range(0, n + 1) {
+            let u = -1 + 2 * i / n
+            line(
+              ..(range(0, s + 1).map(j => para(u, -1 + 2 * j / s))),
+              stroke: (paint: black.transparentize(60%), thickness: 0.3pt),
+            )
+          }
+
+          let tp = 5
+          for i in range(0, tp + 1) {
+            let t = -1.1 + 2.2 * i / tp
+            line((t, 0, -1.1), (t, 0, 1.1), stroke: (paint: black.transparentize(50%), thickness: 0.5pt))
+            line((-1.1, 0, t), (1.1, 0, t), stroke: (paint: black.transparentize(50%), thickness: 0.5pt))
+          }
+
+          let P = (0.0, 0.00, 0.0)
+          let Q = (0.5, 0.34, 0.3)
+          let Qp = (0.5, 0.00, 0.3)
+          anchor("P", P)
+          anchor("Q", Q)
+          anchor("Qp", Qp)
+          line(
+            ..(range(0, 51).map(i => para(0.5 * i / 50, 0.3 * i / 50))),
+            stroke: (paint: black, thickness: 0.5pt),
+          )
+
+          line(Q, Qp, stroke: (paint: black, thickness: 0.5pt, dash: "dotted"))
+          line(P, Qp, stroke: (paint: black, thickness: 0.5pt, dash: "dotted"))
+        })
+        circle("P", radius: 0.022, fill: black)
+        circle("Q", radius: 0.022, fill: black)
+        content("P", $P = arrow(bold(r))(u, v)$, anchor: "east", padding: 3pt)
+        content("Q", $Q = arrow(bold(r))(u + Delta u, v + Delta v)$, anchor: "west", padding: 3pt)
+        content((-0.9, 0.1, -0.9), $T_P Sigma$)
+      })
+    },
     caption: [$Q$ has a greater heuristic distance to $T_P Sigma$ for a more curved surface.],
-  ) <fig:secondfundamentalform>
+  ) <fig:second_fundamental_form>
 ])
 
-The second fundamental form, in a rough sense, measures the curvature of the surface $Sigma$ at $P$ (refer to @fig:secondfundamentalform). Both the first and second fundamental forms are geometric invariants; they are independent of the parameterization $va(r)$ of $Sigma$. The first fundamental form is also referred to as the _intrinsic metric_ (we will not delve into the metric tensor here) of $Sigma$, and the second fundamental form is an _extrinsic_ property of $Sigma$ as it is invariant up to the orientation of the surface (consequent direction of the normal vector).
+The second fundamental form, in a rough sense, measures the curvature of the surface $Sigma$ at $P$ (refer to @fig:second_fundamental_form). Both the first and second fundamental forms are geometric invariants; they are independent of the parameterization $va(r)$ of $Sigma$. The first fundamental form is also referred to as the _intrinsic metric_ (we will not delve into the metric tensor here) of $Sigma$, and the second fundamental form is an _extrinsic_ property of $Sigma$ as it is invariant up to the orientation of the surface (consequent direction of the normal vector).
 
 Let $gamma subset Sigma$ be a curve parameterized by arc length, $va(r)(s)=va(r)(u(s), v(s))$. Then the unit tangent vector at $P=va(r)(s)$ is
 
