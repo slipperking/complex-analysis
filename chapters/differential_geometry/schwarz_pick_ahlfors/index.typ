@@ -168,7 +168,7 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
 
   Since $laplacian(log abs(z)^(5 / 6)) = (5)/(6) laplacian(log abs(z)) = (5)/(6) laplacian(Re log(z))$,
   $
-    laplacian(log((sqrt(1 + abs(z)^(1 / 3))) / (abs(z)^(5 / 6)))) & = 2 pdv((log(1 + abs(z)^(1 / 3))), overline(z), z, style: "large") = z^(-5 / 6) / 3 pdv(((overline(z)^(1 / 6)) / (1 + abs(z)^(1 / 3))), overline(z), style: "large") \
+    laplacian log((sqrt(1 + abs(z)^(1 / 3))) / (abs(z)^(5 / 6))) & = 2 pdv((log(1 + abs(z)^(1 / 3))), overline(z), z, style: "large") = z^(-5 / 6) / 3 pdv(((overline(z)^(1 / 6)) / (1 + abs(z)^(1 / 3))), overline(z), style: "large") \
     & = z^(-5 / 6) / 3 pdv(((overline(z)^(1 / 6)) / (1 + abs(z)^(1 / 3))), overline(z), style: "large") = (z^(-5 / 6) overline(z)^(-5 / 6) (1 + abs(z)^(1 / 3)) - z^(-5 / 6) overline(z)^(1 / 6) z^(1 / 6) overline(z)^(-5 / 6)) / (18 (1 + abs(z)^(1 / 3))^2) \
     & = 1 / (18 abs(z)^(5 / 3) (1 + abs(z)^(1 / 3))^2),
   $
@@ -178,14 +178,14 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
   $
   Hence,
   $
-    K_rho (z) = -(1)/(18) ((abs(z - 1)^(5 / 3)) / ((1 + abs(z)^(1 / 3))^3 (1 + abs(z - 1)^(1 / 3))) + (abs(z)^(5 / 3)) / ((1 + abs(z - 1)^(1 / 3))^3 (1 + abs(z)^(1 / 3)))),
+    K_rho (z) = -1/(18) [(abs(z - 1)^(5 / 3)) / ((1 + abs(z)^(1 / 3))^3 (1 + abs(z - 1)^(1 / 3))) + (abs(z)^(5 / 3)) / ((1 + abs(z - 1)^(1 / 3))^3 (1 + abs(z)^(1 / 3)))],
   $
   and that
 
   + $K_rho in C^0(CC without {0, 1})$.
   + $forall z in CC without {0, 1}$, $K_rho (z) < 0$.
-  + $lim_(z -> 0) K_rho (z) = -(1)/(36)$.
-  + $lim_(z -> 1) K_rho (z) = -(1)/(36)$.
+  + $lim_(z -> 0) K_rho (z) = -1/(36)$.
+  + $lim_(z -> 1) K_rho (z) = -1/(36)$.
   + $lim_(z -> oo) K_rho (z) = -oo$ in any direction (as in the one-point compactification).
 
   Hence, $exists delta > 0$ such that $abs(K_rho (z) + 1 / 36) < 1 / 72$ for any $z in D^*(0, delta) union D^*(1, delta)$ and $exists R > 0$ such that $K_rho (z) < -1$ for any $z$ satisfying $abs(z) > R$. By compactness of $overline(D(0, R)) without (D(0, delta) union D(1, delta))$ and continuity, it attains its supremum of some value $-M < 0$ by @thm:extremevalue. Let $-beta = max{-1 / 72, -M} < 0$.

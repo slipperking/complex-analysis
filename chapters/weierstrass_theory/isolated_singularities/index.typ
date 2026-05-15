@@ -84,6 +84,6 @@ An analogous proof yields the following result for entire functions.
   It follows that $abs(g) <= 1 / epsilon$ on $CC$. By Liouville's Theorem (@thm:liouville), $g$ is a constant function, and hence, $f$ is also constant, which is a contradiction of the statement.
 ]
 
-In sec:differential_geometry, we will prove a profound generalization of the two results (@ thm:greatpicard and @ thm:littlepicard), which was first proved by Emile Picard in 1879.
+In @sec:differential_geometry, we will prove a profound generalization of the two results (@ thm:greatpicard and @thm:littlepicard), which was first proved by Emile Picard in 1879.
 
 #include "at_infinity/index.typ"
