@@ -144,7 +144,7 @@ As a direct consequence of @thm:holomorphicautomorphismgrouponunitdisk, we have 
 ]
 
 #remark[
-  In @ sec:differentialgeometry, we will introduce the _hyperbolic metric_ on $DD$, defined as
+  In @sec:differential_geometry, we will introduce the _hyperbolic metric_ on $DD$, defined as
   $ dif s^2 = (4 abs(dz)^2) / ((1 - abs(z)^2)^2). $
   From @eq:schwarzpick_nonincreasingmetric, we get that the hyperbolic metric does in.notcrease under a holomorphic mapping of $DD$ to itself. This metric is invariant (the equality condition) under all functions in $Aut(DD)$. This gives a geometric explanation for @lem:schwarz.
 ]

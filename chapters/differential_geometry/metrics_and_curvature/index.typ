@@ -132,9 +132,11 @@ The three following metrics are of particular interest in complex differential g
 
   If we let $P = (x_1, x_2, x_3)$ and $Q = (tilde(x_1), tilde(x_2), tilde(x_3))$ be two points in $S^2$, the distance between the two points is the length of the shortest arc $widearc(P Q)$ (a subset of great circle passing the two points). By considering $P$ and $Q$ as vectors from $(0, 0, 0)$, this distance is equal to
 
-  $#block($display(arccos(P dot Q) = 2 arctan sqrt((1 - x_1 tilde(x_1) - x_2 tilde(x_2) - x_3 tilde(x_3))/(1 + x_1 tilde(x_1) + x_2 tilde(x_2) + x_3 tilde(x_3))))$)\
-  quad#block($ & = 2 arctan sqrt((1 - ((z + overline(z))(tilde(z) + overline(tilde(z))))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)) + ((z - overline(z))(tilde(z) - overline(tilde(z))))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)) - ((abs(z)^2 - 1)(abs(tilde(z))^2 - 1))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)))/(1 + ((z + overline(z))(tilde(z) + overline(tilde(z))))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)) - ((z - overline(z))(tilde(z) - overline(tilde(z))))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)) + ((abs(z)^2 - 1)(abs(tilde(z))^2 - 1))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)))) \
-  & = 2 arctan sqrt((-z overline(tilde(z)) - overline(z) tilde(z) + abs(z)^2 + abs(tilde(z))^2)/(z overline(tilde(z)) + overline(z) tilde(z) + abs(z)^2 abs(tilde(z))^2 + 1)) = 2 arctan sqrt(((z - tilde(z))(overline(z) - overline(tilde(z))))/((z overline(tilde(z)) + 1)(overline(z) tilde(z) + 1))). $)$
+  $
+    & display(arccos(P dot Q) = 2 arctan sqrt((1 - x_1 tilde(x_1) - x_2 tilde(x_2) - x_3 tilde(x_3))/(1 + x_1 tilde(x_1) + x_2 tilde(x_2) + x_3 tilde(x_3))))\
+    & quad""= 2 arctan sqrt((1 - ((z + overline(z))(tilde(z) + overline(tilde(z))))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)) + ((z - overline(z))(tilde(z) - overline(tilde(z))))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)) - ((abs(z)^2 - 1)(abs(tilde(z))^2 - 1))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)))/(1 + ((z + overline(z))(tilde(z) + overline(tilde(z))))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)) - ((z - overline(z))(tilde(z) - overline(tilde(z))))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)) + ((abs(z)^2 - 1)(abs(tilde(z))^2 - 1))/((abs(z)^2 + 1)(abs(tilde(z))^2 + 1)))) \
+    & quad""= 2 arctan sqrt((-z overline(tilde(z)) - overline(z) tilde(z) + abs(z)^2 + abs(tilde(z))^2)/(z overline(tilde(z)) + overline(z) tilde(z) + abs(z)^2 abs(tilde(z))^2 + 1)) = 2 arctan sqrt(((z - tilde(z))(overline(z) - overline(tilde(z))))/((z overline(tilde(z)) + 1)(overline(z) tilde(z) + 1))).
+  $
 
   Notice that the fraction within the square root is a product between a complex number and its conjugate. Thus, this distance is equal to
 
