@@ -248,7 +248,7 @@ In a topological space $X$, a subset can be open, closed (the complement of some
 
 #theorem("Connectivity Argument")[
   A topological space $X$ is _connected_ if and only if $X$ and $emptyset$ are the only clopen subsets of $X$.
-] <thm:connectedtopologicalspaceclopensets>
+] <thm:connected_topological_space_clopen_sets>
 
 #proof[
   Suppose $X$ is connected and let $A subset.eq X$ be clopen. Then $A$ and $X without A$ are both open in $X$, disjoint, and their union is $X$. Thus, either $A = emptyset$ or $X without A = emptyset$ (i.e. $A = X$).
@@ -328,7 +328,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   $ z in U_(z, n) subset.eq W_n. $
   The collection
   $ {U_(z, n) : z in V_n} $
-  is an open cover of the compact set $V_n$, so by Heine--Borel (@thm:heineborel) it admits a finite subcover, there exist finitely many points $z_(n, 1), dots, z_(n, k_n) in V_n$ such that
+  is an open cover of the compact set $V_n$, so by Heine--Borel (@thm:heine_borel) it admits a finite subcover, there exist finitely many points $z_(n, 1), dots, z_(n, k_n) in V_n$ such that
   $ V_n subset union.big_(i = 1)^(k_n) U_(z_(n, i), n) subset.eq W_n. $
   Enumerate all such $U_(z_(n, i), n)$ over $n in NN$ and $i = 1, dots, k_n$ to obtain a countable collection ${U_j}_(j in NN) subset.eq frak(B)$. Then
   $ union.big_(j in NN) U_j = Omega, $
@@ -481,7 +481,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
 #remark[
   The property of local finiteness of an open collection $S$ in $Omega$ is commonly stated as: for every $z in Omega$, there exists an open neighborhood of $z$ that intersects only finitely many sets in $S$.
 
-  This is equivalent to @itm:locally_finite_open_cover_existence_localfiniteness in @lem:locally_finite_open_cover_existence. Indeed, if every point has such a neighborhood, then any compact $K subset Omega$ admits a finite subcover of these neighborhoods by Heine--Borel (@thm:heineborel), so $K$ intersects finitely many sets in $S$. Conversely, for any $z in Omega$, take an open neighborhood $V$ with $z in V$ and with relatively compact closure in $Omega$; then $overline(V)$ intersects finitely many sets in $S$, and so does $V$.
+  This is equivalent to @itm:locally_finite_open_cover_existence_localfiniteness in @lem:locally_finite_open_cover_existence. Indeed, if every point has such a neighborhood, then any compact $K subset Omega$ admits a finite subcover of these neighborhoods by Heine--Borel (@thm:heine_borel), so $K$ intersects finitely many sets in $S$. Conversely, for any $z in Omega$, take an open neighborhood $V$ with $z in V$ and with relatively compact closure in $Omega$; then $overline(V)$ intersects finitely many sets in $S$, and so does $V$.
 ]
 
 #theorem("Partition of Unity")[

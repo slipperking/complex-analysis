@@ -65,7 +65,7 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   $ tilde(S) = inter.big_(k in ZZ_(gt.eq 0)) S_k $
   and each of $S_k$ is closed in $U$, $tilde(S)$ is the intersection of closed sets and consequently closed.
 
-  Since $tilde(S)$ is nonempty and clopen in the connected set $U$, $tilde(S) = U$ (by @thm:connectedtopologicalspaceclopensets). It follows that $f equiv 0$ on $U$.
+  Since $tilde(S)$ is nonempty and clopen in the connected set $U$, $tilde(S) = U$ (by @thm:connected_topological_space_clopen_sets). It follows that $f equiv 0$ on $U$.
 ]
 
 #remark[

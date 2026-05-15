@@ -339,7 +339,7 @@ In its full generality, we will now apply a technique to push a pole to a prescr
 
   Now, consider $zeta in U without (S union {oo})$. Suppose there exists $zeta' in D(zeta, op("dist")(zeta, K)) inter S$. By repeated application of the preceding argument, this would imply $zeta in S$, contradicting the assumption that $zeta in U without (S union {oo})$. Therefore, no such $zeta'$ exists, and $S$ is relatively closed in $U without {oo}$.
 
-  Since $U without {oo}$ is connected and $S$ is both relatively open and closed in $U without {oo}$, it follows from @thm:connectedtopologicalspaceclopensets that $S = U without {oo}$, completing the proof under the assumption that $oo in.not U$.
+  Since $U without {oo}$ is connected and $S$ is both relatively open and closed in $U without {oo}$, it follows from @thm:connected_topological_space_clopen_sets that $S = U without {oo}$, completing the proof under the assumption that $oo in.not U$.
 
   Now suppose $oo in U$. In essence, we pole push to a point outside a disk on which we can make approximations by Taylor polynomials. Let $R > 0$ satisfy $K subset D(0, R)$ and let $b in U without ({oo} union overline(D(0, R)))$ be an arbitrary point. By @lem:simplepolepushing, there exists some rational function $tilde(psi) (z)$ with a pole at $b$ such that
   $

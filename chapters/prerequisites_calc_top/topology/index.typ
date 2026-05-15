@@ -53,7 +53,7 @@ The following definitions are subject to the assumption where the topological sp
 
 #theorem("Heine–Borel")[
   A set $X in CC^n$ is compact iff every open cover has a finite subcover.
-] <thm:heineborel>
+] <thm:heine_borel>
 
 #proof[
   We will first show that any set satisfying the condition is compact.

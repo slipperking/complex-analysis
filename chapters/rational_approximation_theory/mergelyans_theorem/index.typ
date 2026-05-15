@@ -515,7 +515,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
     {D(zeta_k, 5 / 4 r): (forall) zeta_k in extcomplex without (K union overline(D(p_k, 3 / 4 r))), 1 <= k <= n}
   $
-  covers a (compact) $r$-neighborhood of $extcomplex without K$ (so that each $zeta_k in.not K$, and is labeled so that each $zeta_k$ is in the same connected component as $p_k$) (in the case that $p_k = oo$, let the disk inside be the empty set). Thus, the collection also covers $H$. A finite subcover ${D(zeta_k^((j)), 5 / 4 r)}_(1 <= j <= m_k\ 1 <= k <= n)$ covering $H$ exists by the Heine--Borel Theorem (@thm:heineborel).
+  covers a (compact) $r$-neighborhood of $extcomplex without K$ (so that each $zeta_k in.not K$, and is labeled so that each $zeta_k$ is in the same connected component as $p_k$) (in the case that $p_k = oo$, let the disk inside be the empty set). Thus, the collection also covers $H$. A finite subcover ${D(zeta_k^((j)), 5 / 4 r)}_(1 <= j <= m_k\ 1 <= k <= n)$ covering $H$ exists by the Heine--Borel Theorem (@thm:heine_borel).
 
   By the connectivity of each component of $extcomplex without K$, there exists a piecewise-linear simple curve $gamma_k^((j))$ for all $1 <= k <= n$, $1 <= j <= m_k$, joining $zeta_k^((j))$ and $p_k$, which lies entirely within $extcomplex without K$. The compact disks $D(zeta_k^((j)), 3 / 4 r)$ are all disjoint from their corresponding $p_k$ since each $zeta_k^((j)) in.not overline(D(p_k, 3 / 4 r))$ by definition.
 

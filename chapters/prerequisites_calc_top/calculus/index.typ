@@ -254,7 +254,7 @@ $
   Fix $x in K$. Since $f$ is continuous at $x$, for every $epsilon > 0$ there exists $delta_x > 0$ such that for all $zeta in D(x, delta_x) inter K$,
   $ abs(f(zeta) - f(x)) < epsilon / 2. $ <eq:heine_cantor_pointwise>
 
-  The collection of open balls ${D(x, delta_x / 2)}_(x in K)$ forms an open cover of the compact set $K$. By Heine--Borel (@thm:heineborel), there is a finite subcover
+  The collection of open balls ${D(x, delta_x / 2)}_(x in K)$ forms an open cover of the compact set $K$. By Heine--Borel (@thm:heine_borel), there is a finite subcover
   $ {D(x_k, delta_(x_k) / 2)}_(k=1)^n. $
   Set
   $ delta = min_(1 <= k <= n) delta_(x_k) / 2. $
