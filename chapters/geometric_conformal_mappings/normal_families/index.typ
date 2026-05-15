@@ -18,13 +18,13 @@ In contrast, the uniform continuity of a function $f$ guarantees that $delta$ ma
 
 #theorem[
   A family of functions $cal(F)$ that is pointwise equicontinuous on every point $z in K subset CC$ for a compact set $K$ is uniformly equicontinuous on $K$.
-] <thm:heinecantorfamily>
+] <thm:heine_cantor_family>
 
 #proof[
   Fix $z in K$. By pointwise equicontinuity, $forall epsilon > 0$, $exists delta_z > 0$ such that $forall f in cal(F)$, $forall zeta in D(z, delta_z) inter K$,
   $
     abs(f(zeta) - f(z)) < epsilon / 2.
-  $ <eq:heinecantorfamily_equicontinuityconsequence>
+  $ <eq:heine_cantor_family_equicontinuityconsequence>
 
   The collection ${D(z, delta_z / 2)}_(z in K)$ forms an open cover of $K$, and by the Heine--Borel Theorem, it admits a finite subcover ${D(z_k, delta_(z_k) / 2)}_(k in NN_(<= n))$ for some finite $n in NN$. Let $delta = min_(k in NN_(<= n)) (delta_(z_k) / 2)$.
 
@@ -32,7 +32,7 @@ In contrast, the uniform continuity of a function $f$ guarantees that $delta$ ma
   $
     abs(z_j - w) <= abs(z_j - z) + abs(z - w) < delta_(z_j) / 2 + delta <= delta_(z_j).
   $
-  Therefore, from @eq:heinecantorfamily_equicontinuityconsequence, we have $forall f in cal(F)$,
+  Therefore, from @eq:heine_cantor_family_equicontinuityconsequence, we have $forall f in cal(F)$,
   $
     abs(f(z_j) - f(w)) < epsilon / 2, quad abs(f(z_j) - f(z)) < epsilon / 2.
   $
@@ -113,14 +113,14 @@ The following theorem is important in many areas of mathematical analysis and ha
   $
   which contradicts the result that $abs(f_(n_k) (z_(n_k)) - f_(n_k) (z_0)) > epsilon$ for all $k$.
 
-  Hence, by contradiction, $cal(F)$ is pointwise equicontinuous on all of $K$. By @thm:heinecantorfamily, $cal(F)$ must be uniformly equicontinuous on $K$.
+  Hence, by contradiction, $cal(F)$ is pointwise equicontinuous on all of $K$. By @thm:heine_cantor_family, $cal(F)$ must be uniformly equicontinuous on $K$.
 ]
 
 The notions and results introduced have profound implications and uses in the theory of differential equations and harmonic analysis.
 
-In the definition of equicontinuity used in the Arzelà--Ascoli theorem, the distance is taken with respect to the Euclidean metric. However, the theorem continues to hold for other metrics as well, with the proof requiring little modification. We will rely on this formulation in @ sec:sphericalgeneralizationofnormalfamilies.
+In the definition of equicontinuity used in the Arzelà--Ascoli theorem, the distance is taken with respect to the Euclidean metric. However, the theorem continues to hold for other metrics as well, with the proof requiring little modification. We will rely on this formulation in @sec:spherical_generalization_of_normal_families.
 
-Lastly, we will prove Montel's Theorem in preparation of the Riemann Mapping Theorem (@thm:riemannmapping).
+Lastly, we will prove Montel's Theorem in preparation of the Riemann Mapping Theorem (@thm:riemann_mapping).
 
 #definition[
   Let $cal(F)$ be a family of functions defined on an open set $U subset.eq CC$. The family $cal(F)$ is said to be _locally uniformly bounded_ if, for every point $z in U$, there exists a neighborhood $V subset.eq U$ of $z$ such that $cal(F)$ is uniformly bounded on $V$. This condition is equivalent to the condition that $cal(F)$ is uniformly bounded on all compact subsets $K$ of $U$.

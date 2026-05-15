@@ -27,7 +27,7 @@ Since the real and imaginary parts of holomorphic functions are real-valued harm
 
 #theorem("Maximum Modulus Principle")[
   Let $f(z)$ be holomorphic on an open connected region $U subset.eq CC$. If $exists z_0 in U$ and an open neighborhood $V subset.eq U$ of $z_0$ such that $forall z in V$, $abs(f(z_0)) gt.eq abs(f(z))$, then $f$ is a constant function on $U$.
-] <thm:maximummodulus>
+] <thm:maximum_modulus>
 
 #proof[
   Assume that $z_0$ exists. We will first prove that the set
@@ -54,7 +54,7 @@ Since the real and imaginary parts of holomorphic functions are real-valued harm
 ]
 
 #remark[
-  If $f$ is holomorphic and non-constant on an open region $U subset.eq CC$, then for any compact set $K subset U$, the maximum of $f$ in $K$ lies on $partial K$. Otherwise, $f$ would attain a maximum at some $z in interior(K)$, and contradict the statement of @thm:maximummodulus under the assumption of being non-constant.
+  If $f$ is holomorphic and non-constant on an open region $U subset.eq CC$, then for any compact set $K subset U$, the maximum of $f$ in $K$ lies on $partial K$. Otherwise, $f$ would attain a maximum at some $z in interior(K)$, and contradict the statement of @thm:maximum_modulus under the assumption of being non-constant.
 ]
 
 A similar theorem exists for real-valued harmonic functions. The proof follows in the same way as the one for holomorphic functions. We will state it formally below.

@@ -8,7 +8,7 @@ We now introduce a fundamental result in complex analysis due to Weierstrass, wh
 
 #theorem("Weierstrass")[
   Let ${f_n (z)}_(n in NN)$ be a sequence of holomorphic functions on an open region $U subset.eq CC$ that converges uniformly to $f(z)$ on every compact subset of $U$. Then $f(z)$ is holomorphic on $U$, and $forall k in NN$, the sequence ${f_n^(k) (z)}_(n in NN)$ uniformly converges to $f^((k)) (z)$ on all compact subsets of $U$.
-] <thm:weierstrassconvergence>
+] <thm:weierstrass_convergence>
 
 #proof[
   By Morera's Theorem (@thm:morera) and the uniform convergence of ${f_n (z)}$, the holomorphy of $f(z)$ follows (refer to @eq:hurwitzsimplecase_integrallimitswitchforholomorphy and preceding explanations).
@@ -36,7 +36,7 @@ The condition of uniform convergence on every compact subset can also be signifi
     sup_(z in partial K) abs(f_n (z) - f_m (z)) < epsilon.
   $
 
-  By the Maximum Modulus Principle (@thm:maximummodulus) on $f_n - f_m$,
+  By the Maximum Modulus Principle (@thm:maximum_modulus) on $f_n - f_m$,
   $
     sup_(z in partial K) abs(f_n (z) - f_m (z)) = sup_(z in K) abs(f_n (z) - f_m (z)) < epsilon.
   $
@@ -45,7 +45,7 @@ The condition of uniform convergence on every compact subset can also be signifi
 ]
 
 #remark[
-  From the above result, the uniform convergence on every compact subset in @thm:weierstrassconvergence can therefore be loosened to the uniform convergence on every simple closed curve.
+  From the above result, the uniform convergence on every compact subset in @thm:weierstrass_convergence can therefore be loosened to the uniform convergence on every simple closed curve.
 ]
 
 We will now study Laurent series. Let $a in CC$ and ${c_n}_(n in ZZ) subset CC$ be constants. A series in the form of

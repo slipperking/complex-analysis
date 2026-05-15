@@ -14,7 +14,7 @@ $ |sum_{n=1}^oo (1)/(n^s)|lt.eq sum_{n=1}^oo (1)/(n^sigma)lt.eq sum_{n=1}^oo (1)
  Hence, $zeta(s)$ is uniformly and absolutely convergent on
 ${s in CC | Re(s)gt.eq alpha}$ by the Weierstrass $M$--Test
 (@thm:weierstrassmtest). The Weierstrass Theorem
-(@thm:weierstrassconvergence) gives the analyticity of $zeta$ thereon.
+(@thm:weierstrass_convergence) gives the analyticity of $zeta$ thereon.
 We will now explain the simple connection between $zeta$ and the prime
 numbers. Let $p_1=2,p_2=3,p_3=5,dots$ be the sequence of all prime numbers
 in increasing order.

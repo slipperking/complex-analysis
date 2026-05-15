@@ -70,7 +70,7 @@ $ <eq:derivativeatpole2>
 ]
 
 #remark[
-  Such a biholomorphism will always exist; for arbitrary $zeta in K$, the map $z mapsto 1 / (z - zeta)$ maps $extcomplex without K$ to a simply connected, proper subset of $CC$, which is biholomorphic to $DD$ by the Riemann Mapping Theorem (@thm:riemannmapping).
+  Such a biholomorphism will always exist; for arbitrary $zeta in K$, the map $z mapsto 1 / (z - zeta)$ maps $extcomplex without K$ to a simply connected, proper subset of $CC$, which is biholomorphic to $DD$ by the Riemann Mapping Theorem (@thm:riemann_mapping).
 ]
 
 #proposition[
@@ -136,7 +136,7 @@ $ <eq:derivativeatpole2>
     abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 & lt.eq abs(phi_zeta (z)) abs(z - zeta)^3 + abs(z - zeta)^2 \
                                                        & lt.eq 584 / r (2 r)^3 + (2 r)^2 = 4676 r^2
   $
-  from @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584. The Maximum Modulus Principle (@thm:maximummodulus) implies that
+  from @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584. The Maximum Modulus Principle (@thm:maximum_modulus) implies that
   $
     sup_(abs(z - zeta) > 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 lt.eq sup_(abs(z - zeta) = 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 lt.eq 4676 r^2
   $

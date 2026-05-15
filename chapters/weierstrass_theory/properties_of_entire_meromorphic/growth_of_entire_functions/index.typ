@@ -165,7 +165,7 @@ As an immediate consequence, we have:
   $ B_n (z) = product_(k=1)^n [-abs(a_k) / a_k phi_(a_k) (z)] $
   give for fixed $theta in RR$, $epsilon > 0$, the existence of $0 < r' < 1$ such that $r' < r < 1$ implies
   $ abs(B_n (r ee^(ii theta))) > 1 - epsilon. $
-  Then by the Maximum Modulus Principle (@thm:maximummodulus),
+  Then by the Maximum Modulus Principle (@thm:maximum_modulus),
   $
     sup_(z in DD) abs(f(z) / (z^m B_n (z))) &= sup_(z in DD without overline(D(0,r))) abs(f(z) / (z^m B_n (z))) \ &lt.eq 1 / (r^m (1 - epsilon)) sup_(z in DD) abs(f(z)) -> 1 / (1 - epsilon) sup_(z in DD) abs(f(z))
   $
@@ -178,7 +178,7 @@ From the results above, a recurring theme in complex analysis is hinted at; the 
 
 The subjects to be discussed here are relevant and preliminary to Nevanlinna theory, or the study of holomorphic value distribution.
 
-For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs(z) lt.eq r) abs(f(z))$ (by the Maximum Modulus Principle in @thm:maximummodulus).
+For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs(z) lt.eq r) abs(f(z))$ (by the Maximum Modulus Principle in @thm:maximum_modulus).
 
 #definition("Growth Order of Entire Functions")[
   An entire function $f$ is said to be of _finite order_ if there exists $alpha, r_alpha in RR$ such that
@@ -257,7 +257,7 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
 #lemma[
   If $f$ is entire with $f(0) = 1$, then
   $ log 2 dot n(r, 0, f) lt.eq log M(2r, f). $
-]<lem:maximummoduluszerocountingdoubleradius>
+]<lem:maximum_moduluszerocountingdoubleradius>
 
 #proof[
   By Jensen's formula (@thm:jensensformula), for $r > 0$, we have
@@ -302,7 +302,7 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
 #proof[
   By trivial definition, we have
   $ M(2r, f) lt.eq exp((2r)^(rho + epsilon)) $
-  for all $epsilon' > 0$ and some $0 < epsilon < epsilon'$. @lem:maximummoduluszerocountingdoubleradius gives that for any $r > 0$,
+  for all $epsilon' > 0$ and some $0 < epsilon < epsilon'$. @lem:maximum_moduluszerocountingdoubleradius gives that for any $r > 0$,
   $ log 2 dot n(r, 0, f) lt.eq log M(2r, f). $
   Hence,
   $
@@ -354,7 +354,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $
     abs(r^2 - overline(a_k) z) gt.eq r^2 - abs(a_k) abs(z) > r^2 - r dot r/2 = r^2/2 \ ==> abs(a_k)^(p+1) abs(r^2 - overline(a_k) z)^(-p-1) < (2/r)^(p+1)
   $
-  since $rho(f) gt.eq 0$ by the logarithm formula. Now by definition of $rho(f)$, @lem:maximummoduluszerocountingdoubleradius gives the estimate for sufficiently large $r$ and arbitrarily small $epsilon > 0$:
+  since $rho(f) gt.eq 0$ by the logarithm formula. Now by definition of $rho(f)$, @lem:maximum_moduluszerocountingdoubleradius gives the estimate for sufficiently large $r$ and arbitrarily small $epsilon > 0$:
   $ n(r, 0, f) r^(-p-1) lt.eq (log M(2r, 0, f)) / (log 2) r^(-p-1) lt.eq ((2r)^(rho(f) + epsilon) r^(-p-1)) / (log 2). $
   Thus,
   $
@@ -451,7 +451,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $ sum_(k=1)^infinity 1 / (2 abs(a_k)^(p+1)) $
   from @thm:entirefunctionfiniteorderzerossummationconvergence implies the absolute convergence of
   $ sum_(k=1)^infinity 1 / (a_k - z)^(p+1) $
-  in $K$. Moreover, it can be shown that the uniform convergence of $P_n -> P$ (from the Weierstrass factorization) and $P'_n -> P'_n$ (by the Weierstrass Convergence Theorem, @thm:weierstrassconvergence) in $K$ implies that of $(P'(z)) / P(z)$. Hence, the Weierstrass Convergence Theorem implies that
+  in $K$. Moreover, it can be shown that the uniform convergence of $P_n -> P$ (from the Weierstrass factorization) and $P'_n -> P'_n$ (by the Weierstrass Convergence Theorem, @thm:weierstrass_convergence) in $K$ implies that of $(P'(z)) / P(z)$. Hence, the Weierstrass Convergence Theorem implies that
   $
     lim_(n -> infinity) dif^p / (dif z^p) ((P'_n (z)) / (P_n (z))) &= (P'(z)) / P(z) = -lim_(n -> infinity) sum_(k=1)^n (p!) / (a_k - z)^(p+1) \
     &= -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1). #qedhere

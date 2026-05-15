@@ -102,7 +102,7 @@ via the results and definitions in @eq:poincaremetriconscaleddisks.
   Then $forall alpha > 0$,
   $ f^* rho(z) <= sqrt(alpha / beta) lambda_r^alpha (z) $
   for any $z in D(0, r)$, where $f^* rho(z) = (rho compose f) abs(f')$ is the metric pullback.
-] <cor:generalizedahlfors>
+] <cor:generalized_ahlfors>
 
 #proof[
   Consider the $(z |-> z r)^* f^*(rho sqrt(beta))$, a conformal metric pullback of $rho sqrt(beta)$ to $DD$, which satisfies
@@ -122,7 +122,7 @@ via the results and definitions in @eq:poincaremetriconscaleddisks.
 ] <cor:generalizedliouville>
 
 #proof[
-  By assumption, $exists beta > 0$ such that $sup_(w in U) K_rho (w) <= -beta$. Then @cor:generalizedahlfors gives that
+  By assumption, $exists beta > 0$ such that $sup_(w in U) K_rho (w) <= -beta$. Then @cor:generalized_ahlfors gives that
   $ f^* rho(z) <= (1)/(sqrt(beta)) lambda_r (z) quad forall z in D(0, r) $
   for any $r > 0$. As $r -> oo$, $lambda_r -> 0$. Hence, $f^* rho(z) = 0$, implying that $(rho compose f)(z) abs(f') = 0$. Hence, $f$ is constant.
 ]
@@ -137,7 +137,7 @@ Consider an entire function $f:CC -> U$, where $U$ is an unbounded region such t
 
 In contrast, if $f:CC -> U$ is entire and $CC without U$ has zero area (one readily considers sets consisting of curves or isolated points), we must be more specific in determining sufficient conditions that still imply constancy of $f$.
 
-Similar to in the proof of the Riemann Mapping Theorem (@thm:riemannmapping), one may use holomorphic square roots or other transformations to reduce to the bounded setting.
+Similar to in the proof of the Riemann Mapping Theorem (@thm:riemann_mapping), one may use holomorphic square roots or other transformations to reduce to the bounded setting.
 
 #example[
   If $f:CC -> CC without {x in RR: 0 <= x <= 1}$ is entire, then $f$ must be constant.

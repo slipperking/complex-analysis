@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-== A Spherical Generalization of Normal Families <sec:sphericalgeneralizationofnormalfamilies>
+== A Spherical Generalization of Normal Families <sec:spherical_generalization_of_normal_families>
 
 Picard's Great Theorem requires a more profound concept by generalizing normal families in the one-point compactification of $CC$.
 
@@ -18,7 +18,7 @@ Let ${a_n}_(n in NN) subset.eq extcomplex$ be a sequence. Then we say $a_n -> a_
   A family of meromorphic functions $cal(F)$ on some $Omega subset.eq CC$ is said to be _spherically normal_ iff every sequence has a locally uniformly spherically convergent subsequence on $Omega$.
 ]
 
-Montel's Theorem for holomorphically normal families in @ thm:montel can be generalized via the spherical metric by the statement of Marty's Criterion (@thm:marty).
+Montel's Theorem for holomorphically normal families in @thm:montel can be generalized via the spherical metric by the statement of Marty's Criterion (@thm:marty).
 
 #definition("Spherical Derivative")[
   Let $Omega subset.eq CC$ be an open region or domain. Suppose $f:Omega -> extcomplex$ is meromorphic. Then the _spherical derivative_ of $f$ is given by
@@ -52,7 +52,7 @@ Montel's Theorem for holomorphically normal families in @ thm:montel can be gene
 ] <prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniformlimit>
 
 #proof[
-  A result analogous to @ thm:uniformlimit can be used to show that $f$ is spherically continuous. Let $z in Omega$ be arbitrary.
+  A result analogous to @thm:uniformlimit can be used to show that $f$ is spherically continuous. Let $z in Omega$ be arbitrary.
 
   1. If $f(z) != oo$, then by spherical continuity, $exists delta > 0$ such that $forall zeta in D(z, delta)$,
     $ d_sigma (f(zeta), f(z)) < (1)/(2) d_sigma (oo, f(z)). $
@@ -62,10 +62,10 @@ Montel's Theorem for holomorphically normal families in @ thm:montel can be gene
     $ d_sigma (oo, f(z)) - d_sigma (f(z), f_n (zeta)) > 0. $
     By the reverse triangle inequality, we have
     $ d_sigma (oo, f_n (zeta)) > 0. $
-    By Weierstrass (@thm:weierstrassconvergence), $f$ is holomorphic on $D(z, delta)$.
+    By Weierstrass (@thm:weierstrass_convergence), $f$ is holomorphic on $D(z, delta)$.
   2. Consider $f(z) = oo$. Assume, for the sake of contradiction, $z$ is an isolated pole of $f$. Hence, $exists delta$ such that $f$ is holomorphic on $D^*(z, delta)$.
 
-    Because each $f_n$ is holomorphic on $D(z, delta)$, by the Maximum Modulus Principle (@ thm:maximummodulus), $forall n in NN$,
+    Because each $f_n$ is holomorphic on $D(z, delta)$, by the Maximum Modulus Principle (@thm:maximum_modulus), $forall n in NN$,
     $ abs(f_n (zeta)) <= sup_(xi in partial D(z, delta)) abs(f_n (xi)) quad forall zeta in D(z, delta). $
     By letting $n -> oo$, we have
     $ abs(f(zeta)) <= sup_(xi in partial D(z, delta)) abs(f(xi)) < oo quad forall zeta in D(z, delta), $
@@ -77,7 +77,7 @@ Montel's Theorem for holomorphically normal families in @ thm:montel can be gene
     $ uppi - d_sigma (oo, f_n (zeta)) = d_sigma (oo, 0) - d_sigma (oo, f_n (zeta)) > 0. $
     By the reverse triangle inequality, we have
     $ d_sigma (0, f_n (zeta)) > 0. $
-    Hence each $(1)/(f_n)$ is holomorphic on $D(z, delta)$ and converges locally uniformly spherically to $(1)/(f)$ on $D(z, delta)$. By Weierstrass (@ thm:weierstrassconvergence), $(1)/(f)$ is holomorphic on $D(z, delta)$ and has zeros that accumulate at $z$. By the Identity Theorem, $(1)/(f) equiv 0 ==> f equiv oo$ on $D(z, delta)$.
+    Hence each $(1)/(f_n)$ is holomorphic on $D(z, delta)$ and converges locally uniformly spherically to $(1)/(f)$ on $D(z, delta)$. By Weierstrass (@thm:weierstrass_convergence), $(1)/(f)$ is holomorphic on $D(z, delta)$ and has zeros that accumulate at $z$. By the Identity Theorem, $(1)/(f) equiv 0 ==> f equiv oo$ on $D(z, delta)$.
 
   Let $S$ be the set of all $z in Omega$ such that $f(z)$ is finite. By the argument above, $S$ is open. The complement $Omega without S$ then consists of all points where $f(z) = oo$. By the argument above, $Omega without S$ is also open. Since $Omega$ is connected, by @thm:connected_topological_space_clopen_sets, either $S = emptyset$ or $S = Omega$. In the former case, $f equiv oo$ on $Omega$, and in the latter case, $f$ is holomorphic on $Omega$.
 ]
@@ -107,7 +107,7 @@ Montel's Theorem for holomorphically normal families in @ thm:montel can be gene
     $ d_sigma (oo, f(z)) - d_sigma (f(z), f_(n_k) (zeta)) > 0. $
     By the reverse triangle inequality, we have
     $ d_sigma (oo, f_(n_k) (zeta)) > 0. $
-    Hence, the meromorphy of each $f_(n_k)$ is actually holomorphy. By continuity, $f$ is locally uniformly bounded on $D(z, delta)$. Hence, ${f_(n_k)}_(k > N)$ locally uniformly converges on $D(z, delta)$. By a result of Weierstrass (@thm:weierstrassconvergence), $f$ is holomorphic on $D(z, delta)$ and the sequence ${f'_(n_k)}_(k > N)$ locally uniformly converges to $f'$ on $D(z, delta)$.
+    Hence, the meromorphy of each $f_(n_k)$ is actually holomorphy. By continuity, $f$ is locally uniformly bounded on $D(z, delta)$. Hence, ${f_(n_k)}_(k > N)$ locally uniformly converges on $D(z, delta)$. By a result of Weierstrass (@thm:weierstrass_convergence), $f$ is holomorphic on $D(z, delta)$ and the sequence ${f'_(n_k)}_(k > N)$ locally uniformly converges to $f'$ on $D(z, delta)$.
 
     By holomorphy of $f'$ on $overline(D(z, delta / 2))$, $exists M' > 0$ such that $sup_(zeta in overline(D(z, delta / 2))) abs(f'(zeta)) < M'$. Uniform convergence of ${f'_(n_k)}_(k > N)$ gives the existence of some $N' > N$ such that $forall k > N'$,
     $
@@ -127,14 +127,14 @@ Montel's Theorem for holomorphically normal families in @ thm:montel can be gene
     $ uppi - d_sigma (oo, f_(n_k) (zeta)) = d_sigma (oo, 0) - d_sigma (oo, f_(n_k) (zeta)) > 0. $
     By the reverse triangle inequality, we have
     $ d_sigma (0, f_(n_k) (zeta)) > 0. $
-    Hence, each $g_(n_k) = (1)/(f_(n_k))$ is holomorphic on $D(z, delta)$. By continuity, $g = (1)/(f)$ is locally uniformly bounded on $D(z, delta)$. It can also be realized that ${g_(n_k)}_(k > N)$ locally uniformly converges on $D(z, delta)$. By a result of Weierstrass (@thm:weierstrassconvergence), $g$ is holomorphic on $D(z, delta)$ and the sequence ${g'_(n_k)}_(k > N)$ locally uniformly converges to $g'$ on $D(z, delta)$.
+    Hence, each $g_(n_k) = (1)/(f_(n_k))$ is holomorphic on $D(z, delta)$. By continuity, $g = (1)/(f)$ is locally uniformly bounded on $D(z, delta)$. It can also be realized that ${g_(n_k)}_(k > N)$ locally uniformly converges on $D(z, delta)$. By a result of Weierstrass (@thm:weierstrass_convergence), $g$ is holomorphic on $D(z, delta)$ and the sequence ${g'_(n_k)}_(k > N)$ locally uniformly converges to $g'$ on $D(z, delta)$.
 
-    By holomorphy of $g'$ on $overline(D(z, delta / 2))$, $exists M' > 0$ such that $sup_(zeta in overline(D(0, delta / 2))) abs(g'(zeta)) < M'$. Uniform convergence of ${g'_(n_k)}_(k > N)$ gives the existence of some $N' > N$ such that $forall k > N'$,
+    By holomorphy of $g'$ on $overline(D(z, delta / 2))$, $exists M' > 0$ such that $sup_(zeta in overline(D(z, delta / 2))) abs(g'(zeta)) < M'$. Uniform convergence of ${g'_(n_k)}_(k > N)$ gives the existence of some $N' > N$ such that $forall k > N'$,
     $
       abs(g'_(n_k) (zeta) - g'(zeta)) < 1 ==> abs(g'_(n_k) (zeta)) <= M' + 1 quad forall zeta in overline(D(z, delta / 2)).
     $
     Therefore, ${g'_(n_k)}_(k > N)$ is uniformly bounded by
-    $ M = max({M' + 1} union {sup_(zeta in overline(D(0, delta / 2))) abs(g'_(n_k) (zeta))}_(N < k <= N')) $
+    $ M = max({M' + 1} union {sup_(zeta in overline(D(z, delta / 2))) abs(g'_(n_k) (zeta))}_(N < k <= N')) $
     on this compact disk. Hence, $forall k > N$,
     $
       f_(n_k)^sharp (zeta) = (2 abs(-(g'_(n_k) (zeta))/(g_(n_k) (zeta)^2)))/(1 + abs(g_(n_k) (zeta))^(-2)) = (2 abs(g'_(n_k) (zeta)))/(abs(g_(n_k) (zeta))^2 + 1) <= 2 abs(g'_(n_k) (zeta)) <= 2 M, quad forall zeta in D(z, delta / 2).
@@ -162,7 +162,7 @@ Montel's Theorem for holomorphically normal families in @ thm:montel can be gene
   $
     K_mu = -(laplacian(log compose mu))/(mu^2) = -(laplacian(log compose rho))/(rho^2 beta) = K_rho / beta <= -1 quad "on" quad CC without {0, 1}.
   $ <eq:fundamentalnormalitytest_f_mu_pullback_inequality>
-  Let $zeta in Omega$ be arbitrary and let $r=r_zeta > 0$ satisfy $D(zeta, r_zeta) subset.eq Omega$. By @ cor:generalizedahlfors, the pullback of $mu$ from $CC without {0, 1}$ to $D(zeta, r_zeta) subset.eq Omega$ satisfies
+  Let $zeta in Omega$ be arbitrary and let $r=r_zeta > 0$ satisfy $D(zeta, r_zeta) subset.eq Omega$. By @cor:generalized_ahlfors, the pullback of $mu$ from $CC without {0, 1}$ to $D(zeta, r_zeta) subset.eq Omega$ satisfies
   $ f^* mu(z) <= lambda_(r_zeta) (z - zeta) ==> mu(f(z)) abs(f'(z)) <= (2 r_zeta)/(r_zeta^2 - abs(z - zeta)^2) $ $forall z in D(zeta, r_zeta), f in tilde(cal(F))$. Since $forall w in CC without {0, 1}$,
   $
     (sigma)/(mu) = ((2)/(1 + abs(w)^2))/((sqrt(1 + abs(w)^((1)/(3))) sqrt(1 + abs(w - 1)^((1)/(3))))/(abs(w)^((5)/(6)) abs(w - 1)^((5)/(6)))) ->
@@ -172,7 +172,7 @@ Montel's Theorem for holomorphically normal families in @ thm:montel can be gene
       (2 abs(w)^(-2))/(abs(w)^(-(4)/(3))) -> 0 & "as" w -> oo,
     ).
   $
-  Hence, there exist open neighborhoods $U_0, U_1, U_(oo)$ of $0, 1, oo$ respectively on which $(sigma)/(mu) < 1$. Since $(sigma)/(mu) in C^0(CC)$, by @ thm:continuousfunctionboundedoncompact, $exists M' > 0$ such that $(sigma)/(mu) < M'$ on $CC without (U_0 union U_1 union U_(oo))$. Let $M = max(M', 1)$, and
+  Hence, there exist open neighborhoods $U_0, U_1, U_(oo)$ of $0, 1, oo$ respectively on which $(sigma)/(mu) < 1$. Since $(sigma)/(mu) in C^0(CC)$, by @thm:continuous_function_bounded_on_compact, $exists M' > 0$ such that $(sigma)/(mu) < M'$ on $CC without (U_0 union U_1 union U_(oo))$. Let $M = max(M', 1)$, and
   $ therefore sigma <= M mu quad "on" quad CC without {0, 1}. $
   Hence, $forall f in tilde(cal(F))$, we have by virtue of @eq:fundamentalnormalitytest_f_mu_pullback_inequality,
   $
@@ -184,7 +184,7 @@ Montel's Theorem for holomorphically normal families in @ thm:montel can be gene
   $
   For any compact $K subset Omega$, the collection of open disks
   $ {D(zeta, r_zeta / 2)}_(zeta in K) $
-  forms an open cover of $K$. Hence, by Heine--Borel (@ thm:heine_borel), it admits a finite subcover
+  forms an open cover of $K$. Hence, by Heine--Borel (@thm:heine_borel), it admits a finite subcover
   $ {D(zeta_k, r_(zeta_k) / 2)}_(1 <= k <= n) $
   for some $n in NN$. Then ${f^sharp:f in tilde(cal(F))}$ is uniformly bounded on $K$ by
   $ M_K = max{(8 M)/(3 r_(zeta_k)) : 1 <= k <= n} $

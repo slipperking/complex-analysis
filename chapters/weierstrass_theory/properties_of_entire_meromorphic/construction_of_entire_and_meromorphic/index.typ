@@ -54,7 +54,7 @@ We will now provide the following assertions on the _locally uniform convergence
   $
     abs(product_(k = 1)^n exp(f_k (z)) - product_(k = 1)^m exp(f_k (z))) = abs(exp(sum_(k = 1)^n f_k (z)) - exp(sum_(k = 1)^m f_k (z))).
   $
-  By @thm:weierstrassconvergence, the uniform limit $sum_(k = 1)^oo f_k (z)$ is holomorphic on $U$. By continuity and @thm:continuous_function_bounded_on_compact, this limit is bounded on $K$. It follows that each partial sum is uniformly bounded on $K$. Since the exponential function is Lipschitz continuous on compact subsets of $CC$, there exists a finite constant $M > 0$ such that
+  By @thm:weierstrass_convergence, the uniform limit $sum_(k = 1)^oo f_k (z)$ is holomorphic on $U$. By continuity and @thm:continuous_function_bounded_on_compact, this limit is bounded on $K$. It follows that each partial sum is uniformly bounded on $K$. Since the exponential function is Lipschitz continuous on compact subsets of $CC$, there exists a finite constant $M > 0$ such that
   $
     abs(exp(sum_(k = 1)^n f_k (z)) - exp(sum_(k = 1)^m f_k (z))) <= M abs(sum_(k = m + 1)^n f_k (z)) < M epsilon. #qedhere
   $
@@ -165,7 +165,7 @@ We will now study the construction of an entire function $f(z)$ via its zeros. W
   $
     product_(n = N)^oo E_(p_n) (z / a_n) = exp(sum_(n = N)^oo Q_(p_n) (z / a_n)),
   $
-  and it uniformly converges on $overline(D(0, R))$ to a nonzero holomorphic function $f(z)$ on $D(0, R)$ by @lem:infiniteproductlocallyuniformconvergencecriterion, @thm:weierstrassconvergence, and @thm:hurwitzsimplecase.
+  and it uniformly converges on $overline(D(0, R))$ to a nonzero holomorphic function $f(z)$ on $D(0, R)$ by @lem:infiniteproductlocallyuniformconvergencecriterion, @thm:weierstrass_convergence, and @thm:hurwitzsimplecase.
 
   The zeros of
   $
@@ -322,7 +322,7 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
     $
       Phi_N (z) = sum_(n = N + 1)^oo (psi_n (z) - p_n (z))
     $ <eq:mittagleffler_construction_uniformlyconvergentseries>
-    converges uniformly on $D(0, R)$. Since $z < R < abs(a_n / 2) < abs(a_n)$ when $n > N$, the pole of $psi_n (z)$, namely $z = a_n$, is not in $D(0, R)$ when $n > N$. By @thm:weierstrassconvergence, @eq:mittagleffler_construction_uniformlyconvergentseries is holomorphic on $D(0, R)$. Let
+    converges uniformly on $D(0, R)$. Since $z < R < abs(a_n / 2) < abs(a_n)$ when $n > N$, the pole of $psi_n (z)$, namely $z = a_n$, is not in $D(0, R)$ when $n > N$. By @thm:weierstrass_convergence, @eq:mittagleffler_construction_uniformlyconvergentseries is holomorphic on $D(0, R)$. Let
     $
       Psi(z) = sum_(n = 1)^N (psi_n (z) - p_n (z)) + Phi_N (z).
     $
