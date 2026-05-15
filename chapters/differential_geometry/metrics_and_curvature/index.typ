@@ -97,10 +97,10 @@ The three following metrics are of particular interest in complex differential g
   which is the Poincaré distance (or _hyperbolic distance_) between $z_1$ and $z_2$. The infimum is attained along the geodesic curve $gamma$ parameterized by
 
   $
-    z(t) = (phi_(z_1))^(-1) ((z_2 - z_1)/(1 - overline(z_1) z_2) t)
+    z(t) = phi_(z_1)^(-1) ((z_2 - z_1)/(1 - overline(z_1) z_2) t)
   $
 
-  for $t in [0, 1]$. By @thm:linearfractionaltransformationmapscirclestocircles, the geodesic is either an arc or a straight line segment passing through $z_1$ and $z_2$. Since $partial DD$ is orthogonal to the straight line passing through $0$ and $(z_2 - z_1)/(1 - overline(z_1) z_2)$, by the conformality of $phi_(z_1)^(-1)$, $phi_(z_1)^(-1)(partial DD) = partial DD$ is orthogonal to the circular (or straight line) extension of the geodesic curve.
+  for $t in [0, 1]$. By @thm:linear_fractional_transformation_maps_circles_to_circles, the geodesic is either an arc or a straight line segment passing through $z_1$ and $z_2$. Since $partial DD$ is orthogonal to the straight line passing through $0$ and $(z_2 - z_1)/(1 - overline(z_1) z_2)$, by the conformality of $phi_(z_1)^(-1)$, $phi_(z_1)^(-1)(partial DD) = partial DD$ is orthogonal to the circular (or straight line) extension of the geodesic curve.
 
   As a consequence of the Schwarz--Pick Lemma (@lem:schwarzpick), for any $f:DD -> DD$ is holomorphic, we have
 

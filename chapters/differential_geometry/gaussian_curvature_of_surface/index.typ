@@ -239,15 +239,15 @@ we have
 
 $
   va(r)''_(u u) dot va(r)'_v + va(r)'_u dot va(r)''_(u v) equiv 0, quad va(r)''_(u v) dot va(r)'_v + va(r)'_u dot va(r)''_(v v) equiv 0,
-$ <eq:gaussiancurvatureofsurface_conformalzerodifferentiation>
+$ <eq:gaussian_curvature_of_surface_conformal_zero_differentiation>
 
 and
 
 $
   2 va(r)''_(u u) dot va(r)'_u equiv 2 rho rho'_u equiv 2 va(r)''_(u v) dot va(r)'_v, quad 2 va(r)''_(u v) dot va(r)'_u equiv 2 rho rho'_v equiv 2 va(r)''_(v v) dot va(r)'_v.
-$ <eq:gaussiancurvatureofsurface_conformalnonzerodifferentiation>
+$ <eq:gaussian_curvature_of_surface_conformal_nonzero_differentiation>
 
-Substituting @eq:gaussiancurvatureofsurface_conformalnonzerodifferentiation into @eq:gaussiancurvatureofsurface_conformalzerodifferentiation then gives
+Substituting @eq:gaussian_curvature_of_surface_conformal_nonzero_differentiation into @eq:gaussian_curvature_of_surface_conformal_zero_differentiation then gives
 
 $
   va(r)''_(u u) dot va(r)'_v=-rho rho'_v, quad (va(r)''_(v v) dot va(r)'_u=-rho rho'_u).
@@ -259,7 +259,7 @@ $
   va(r)'''_(u u v) dot va(r)'_v + va(r)''_(u u) dot va(r)_(v v)=- (rho'_v)^2 - rho rho''_(v v), \ (va(r)'''_(v v u) dot va(r)'_u + va(r)''_(v v) dot va(r)_(u u)=- (rho'_u)^2 - rho rho''_(u u)).
 $
 
-Differentiating the inner two expressions of @eq:gaussiancurvatureofsurface_conformalnonzerodifferentiation, we have
+Differentiating the inner two expressions of @eq:gaussian_curvature_of_surface_conformal_nonzero_differentiation, we have
 
 $
   va(r)'''_(u u v) dot va(r)'_v + va(r)''_(u v) dot va(r)_(u v)=(rho'_u)^2 + rho rho''_(u u), \ (va(r)'''_(v v u) dot va(r)'_u + va(r)''_(u v) dot va(r)_(u v)=(rho'_v)^2 + rho rho''_(v v)).

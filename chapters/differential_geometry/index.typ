@@ -7,9 +7,9 @@
 #chapter-section("metrics_and_curvature")[
   #include "metrics_and_curvature/index.typ"
 ]
-// #chapter-section("schwarz_pick_ahlfors")[
-//   #include "schwarz_pick_ahlfors/index.typ"
-// ]
+#chapter-section("schwarz_pick_ahlfors")[
+  #include "schwarz_pick_ahlfors/index.typ"
+]
 // #chapter-section("spherically_normal_families")[
 //   #include "spherically_normal_families/index.typ"
 // ]

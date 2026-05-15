@@ -124,7 +124,7 @@ Let us now introduce some important properties of linear fractional transformati
 
 #theorem[
   Let $cal(C)$ be the collection of subsets of $extcomplex$ that are circles or $L union {oo}$, where $L$ is a straight line in $CC$ (known as _generalized circles_). Then every linear fractional transformation $f:extcomplex -> extcomplex$ maps elements of $cal(C)$ to elements of $cal(C)$.
-] <thm:linearfractionaltransformationmapscirclestocircles>
+] <thm:linear_fractional_transformation_maps_circles_to_circles>
 
 #proof[
   Since each linear fractional transformation is a composition of maps in the form of $z |-> a z$, $z |-> z + b$, and $z |-> 1 / z$, it suffices to show that these maps preserve the property of being a circle or a straight line. Consider a circle defined implicitly with
@@ -133,13 +133,13 @@ Let us now introduce some important properties of linear fractional transformati
   $
     &alpha z overline(z) + beta (z + overline(z)) / 2 + gamma (z - overline(z)) / (2 ii) + delta \
     &quad""= alpha z overline(z) + xi z + overline(xi) overline(z) + delta = 0 quad "for" quad xi = beta / 2 + gamma / (2 ii).
-  $ <eq:linearfractionaltransformationmapscirclestocircles_circlecomplexform>
+  $ <eq:linear_fractional_transformation_maps_circles_to_circles_circlecomplexform>
 
-  If $alpha = 0$, the equation represents a straight line. It is easy to see that a complex dilation or a translation of $z$ will preserve the property of being a straight line or a circle. Indeed, by letting $z = a zeta$ for nonzero $a$ in @eq:linearfractionaltransformationmapscirclestocircles_circlecomplexform, we have
+  If $alpha = 0$, the equation represents a straight line. It is easy to see that a complex dilation or a translation of $z$ will preserve the property of being a straight line or a circle. Indeed, by letting $z = a zeta$ for nonzero $a$ in @eq:linear_fractional_transformation_maps_circles_to_circles_circlecomplexform, we have
   $
     alpha abs(a)^2 zeta overline(zeta) + xi a zeta + overline(xi) overline(a) overline(zeta) + delta = 0,
   $
-  which is trivially in the form of @eq:linearfractionaltransformationmapscirclestocircles_circlecomplexform. Similarly, if we substitute $z = zeta + b$, we have
+  which is trivially in the form of @eq:linear_fractional_transformation_maps_circles_to_circles_circlecomplexform. Similarly, if we substitute $z = zeta + b$, we have
   $
     alpha (zeta + b) (overline(zeta) + overline(b)) + xi (zeta + b) + overline(xi) (overline(zeta) + overline(b)) + delta = 0 \
     alpha zeta overline(zeta) + (xi + alpha overline(b)) zeta + (overline(xi) + alpha b) overline(zeta) + alpha abs(b)^2 + 2 Re(xi b) + delta = 0.
@@ -148,7 +148,7 @@ Let us now introduce some important properties of linear fractional transformati
   $
     delta zeta overline(zeta) + xi overline(zeta) + overline(xi) zeta + alpha = 0,
   $
-  which is in the form of @eq:linearfractionaltransformationmapscirclestocircles_circlecomplexform.
+  which is in the form of @eq:linear_fractional_transformation_maps_circles_to_circles_circlecomplexform.
 ]
 
 #remark[

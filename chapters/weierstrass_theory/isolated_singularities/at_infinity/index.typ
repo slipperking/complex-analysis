@@ -17,10 +17,10 @@ The classification of the singularity at $oo$ is then reduced to the classificat
 
 1. If $z = oo$ is a removable singularity of $f(z)$, then $f(z)$ has the form of
   $ f(z) = c_0 + c_(-1) / z + c_(-2) / z^2 + c_(-3) / z^3 + dots.c. $
-1. If $z = oo$ is a pole of $f(z)$ with degree $m in NN$, then $f(z)$ can be written as
++ If $z = oo$ is a pole of $f(z)$ with degree $m in NN$, then $f(z)$ can be written as
   $ f(z) = c_m z^m + c_(m - 1) z^(m - 1) + dots.c + c_0 + c_(-1) / z + dots.c, $
   where $c_m != 0$.
-1. If $z = oo$ is an essential singularity of $f(z)$, then $f(z)$ can be expanded as
++ If $z = oo$ is an essential singularity of $f(z)$, then $f(z)$ can be expanded as
   $ f(z) = sum_(n = -oo)^oo c_n z^n, $
   where $forall N in NN$, $exists n > N$ such that $c_n != 0$ (infinitely many coefficients of $psi$ or $tilde(psi)$ are nonzero).
 
