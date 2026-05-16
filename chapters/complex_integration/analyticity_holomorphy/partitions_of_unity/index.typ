@@ -22,7 +22,7 @@ The implied topology of a subspace $A$ of $(X, tau)$ is given by the intersectio
 
 It is immediate from definition that the trivial sets $X$ and $emptyset$ are always closed. It is equally trivial from definition that the union of finitely many closed sets is closed, and the intersection of any collection of closed sets is closed.
 
-If $exists U in tau$ such that $x in U$, then $U$ is an (open) _neighborhood_ of $x$. If $forall x, y in X$ (different) have disjoint neighborhoods, then $X$ is a _Hausdorff space_.
+If $exists U in tau$ such that $x in U$, then $U$ is an (open) _neighborhood_ of $x$. If $forall x, y in X$ (such that $x eq.not y$) have disjoint neighborhoods, then $X$ is a _Hausdorff space_.
 
 The following discussions involved with topological spaces here will always be of Hausdorff spaces, although making such distinction is important for future extensibility.
 

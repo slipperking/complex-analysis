@@ -27,7 +27,7 @@ The following theorems are the fundamental results of classical calculus:
 ]
 
 The two forms of the theorem show that differentiation and integration are inverse operations to each other. Operations performed for differentiating oftentimes have a corresponding inverse operation that can be done for integrating. For instance,
-$ dv(f, x) plus.minus dv(g, x) (f(x) plus.minus g(x)) = dv(f, x) plus.minus dv(g, x) $
+$ dv(, x)(f(x) plus.minus g(x)) = f'(x) plus.minus g'(x) $
 corresponds to
 $ integral (f(x) plus.minus g(x)) dx = integral f(x) dx plus.minus integral g(x) dx, $
 and

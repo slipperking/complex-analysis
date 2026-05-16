@@ -24,9 +24,10 @@ and
 $ pdv(, y) = pdv(, z) pdv(z, y) + pdv(, overline(z)) pdv(overline(z), y) = ii pdv(, z) - ii pdv(, overline(z)). $
 The Laplacian is equal to
 $
-  Delta = pdv(, x, 2) + pdv(, y, 2) &= (pdv(, z) + pdv(, overline(z)))^2 + (ii pdv(, z) - ii pdv(, overline(z)))^2 \
-  &= pdv(, z, 2) + pdv(, overline(z), 2) + 2 pdv(, z, overline(z)) - pdv(, z, 2) - pdv(, overline(z), 2) + 2 pdv(, z, overline(z)) \
-  &= 4 pdv(, z, overline(z)).
+  Delta = pdv(, x, 2) + pdv(, y, 2) & = (pdv(, z) + pdv(, overline(z)))^2 + (ii pdv(, z) - ii pdv(, overline(z)))^2 \
+                                    & = pdv(, z, 2) + pdv(, overline(z), 2) + 2 pdv(, z, overline(z)) \
+                                    & quad""- pdv(, z, 2) - pdv(, overline(z), 2) + 2 pdv(, z, overline(z)) \
+                                    & = 4 pdv(, z, overline(z)).
 $<eq:laplaciancomplexform>
 Under this definition, we can derive the chain rule:
 
