@@ -22,7 +22,7 @@ The following definitions are subject to the assumption where the topological sp
 
 #definition("Set Covering")[
   A cover $cal(C)$ of a set $X$ is a collection of sets ${U_n}$ such that
-  $ union.big_(n in NN) U_n subset.eq X. $
+  $ union.big_(n in NN) U_n supset.eq X. $
   A cover is _open_ if every set in the collection is open.
 ]
 

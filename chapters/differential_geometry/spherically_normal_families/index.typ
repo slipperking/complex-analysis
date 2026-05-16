@@ -204,7 +204,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   By @prop:linearfractionaltransformationuniformlysphericallycontinuous, $forall epsilon > 0$, $exists delta > 0$ such that $forall abs(w_1 - w_2) < delta$ in $CC$,
   $ d_sigma (phi^(-1) (w_1), phi^(-1) (w_2)) < epsilon. $
   Let ${tilde(f)_n}_(n in NN)$ be any function sequence in $cal(F)$ and let ${tilde(f)_(n_k)}_(k in NN)$ be locally uniformly convergent to $tilde(f)$ on a compact set $K subset Omega$. Then $exists N in NN$ such that $forall k > N$,
-  $ abs(tilde(f)_(n_k) (z) - tilde(f)(z)) < delta quad forall z in K. $
+  $ abs(tilde(f)_(n_k) (z) - tilde(f)(z)) < delta wide forall z in K. $
   Therefore, $forall z in K$, $k > N$, we have
   $
     d_sigma (phi^(-1) compose tilde(f)_(n_k) (z), phi^(-1) compose tilde(f)(z)) = d_sigma (f_(n_k) (z), f(z)) < epsilon.
