@@ -9,15 +9,15 @@ The following definitions are subject to the assumption where the topological sp
 ] <def:accumulationpoint>
 
 #definition("Closure")[
-  For a set $X in CC^n$, define the _closure_ of $X$, or $overline(X)$ to be the intersection of all closed sets containing $X$. In other words, it is the union of $X$ and its accumulation points.
+  For a set $X subset.eq CC^n$, define the _closure_ of $X$, or $overline(X)$ to be the intersection of all closed sets containing $X$. In other words, it is the union of $X$ and its accumulation points.
 ] <def:closure>
 
 #definition("Interior")[
-  For a set $X in CC^n$, the _interior_ of $X$, denoted $interior(X)$, is the union of all open sets contained in $X$, or the set of points $z in CC^n$ such that there exists an open neighborhood of $z$ that is fully contained in $X$.
+  For a set $X subset.eq CC^n$, the _interior_ of $X$, denoted $interior(X)$, is the union of all open sets contained in $X$, or the set of points $z in CC^n$ such that there exists an open neighborhood of $z$ that is fully contained in $X$.
 ] <def:interior>
 
 #definition("Compact Set")[
-  A set $X in CC^n$ is compact iff $X$ is closed and bounded.
+  A set $X subset.eq CC^n$ is compact iff $X$ is closed and bounded.
 ] <def:compactsets>
 
 #definition("Set Covering")[
@@ -27,7 +27,7 @@ The following definitions are subject to the assumption where the topological sp
 ]
 
 #theorem("Bolzano–Weierstrass")[
-  Every infinite subset $A$ of a compact set $X subset CC^n$ has an accumulation point in $X$.
+  Every infinite subset $A$ of a compact set $X subset.eq CC^n$ has an accumulation point in $X$.
 ] <thm:bolzanoweierstrass>
 
 #proof[
@@ -51,8 +51,8 @@ The following definitions are subject to the assumption where the topological sp
   But then, for sufficiently large $k$, we have $Q_k subset B^n (z_infinity, delta)$, and hence $Q_k inter X = emptyset$. This contradicts the construction of $Q_k$, which ensures that $Q_k$ contains infinitely many points of $A subset X$.
 ]
 
-#theorem("Heine–Borel")[
-  A set $X in CC^n$ is compact iff every open cover has a finite subcover.
+#theorem("Heine" + sym.dash.en + "Borel")[
+  A set $X subset.eq CC^n$ is compact iff every open cover has a finite subcover.
 ] <thm:heine_borel>
 
 #proof[
@@ -81,7 +81,7 @@ The following definitions are subject to the assumption where the topological sp
   $ Q_0 supset Q_1 supset Q_2 supset dots.c $
   Since the side length of each cube tends to 0, $inter.big_(j=0)^oo Q_j$ consists of a single point $z_infinity in CC^n$. Since $cal(U)$ covers $X$, $exists U in cal(U)$ such that $z_infinity in U$. Since $U$ is open, $exists epsilon > 0$ such that $B^n (z_infinity, epsilon) subset.eq U$. $exists N in NN$ such that $forall k > N$, $Q_k subset B^n (z_infinity, epsilon)$. Then taking the intersection with $X$ on both sides,
   $ Q_k inter X subset.eq B^n (z_infinity, epsilon) inter X subset.eq U. $
-  This contradicts the assumption that for every $k$, $Q_k inter X$ has no finite subcovering, since ${U} subset cal(U)$ clearly covers $Q_k inter X$, which is a single open set that covers a nonempty subset. Therefore by contradiction, every open cover has finite subcovering.
+  This contradicts the assumption that for every $k$, $Q_k inter X$ has no finite subcovering, since ${U} subset cal(U)$ clearly covers $Q_k inter X$, as it is a single open set that covers a nonempty subset. Therefore by contradiction, every open cover has finite subcovering.
 ]
 
 #definition("Support of a Function")[
