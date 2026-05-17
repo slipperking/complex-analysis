@@ -3,13 +3,15 @@
 #import "@preview/cetz:0.5.0"
 #import "@preview/cetz-plot:0.1.3": *
 #import "@preview/physica:0.9.8": *
-#import "@preview/physica:0.9.8": vb as Vb, va as Va, vu as Vu
+#import "@preview/physica:0.9.8": va as Va, vb as Vb, vu as Vu
 #import "@preview/fancy-tiling:1.0.0": *
 
 #let cvector = cetz.vector
 #let cmatrix = cetz.matrix
 
 #let _is-html = sys.inputs.at("html", default: "false") == "true" // target() == "html"
+
+#let ray = b => context { $attach(limits(#b), t: stretch(arrow, size: #measure(b).width))$ }
 
 #let theorem-kinds = (
   "theorem",
