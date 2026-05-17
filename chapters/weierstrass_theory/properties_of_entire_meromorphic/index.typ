@@ -56,8 +56,8 @@
   Combining these,
   $
     integral.cont_gamma (psi(z) f'(z)) / (f(z)) dz
-    = sum_(i = 1)^k 2 uppi ii alpha_i psi(a_i) - sum_(j = 1)^m 2 uppi ii beta_j psi(b_j)
-    = 2 uppi ii (sum_(i = 1)^k alpha_i psi(a_i) - sum_(j = 1)^m beta_j psi(b_j)). #qedhere
+    &= sum_(i = 1)^k 2 uppi ii alpha_i psi(a_i) - sum_(j = 1)^m 2 uppi ii beta_j psi(b_j)
+    \ &= 2 uppi ii (sum_(i = 1)^k alpha_i psi(a_i) - sum_(j = 1)^m beta_j psi(b_j)). #qedhere
   $
 ]
 

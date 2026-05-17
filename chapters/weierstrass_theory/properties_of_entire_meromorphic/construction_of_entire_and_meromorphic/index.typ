@@ -77,7 +77,7 @@ We also have:
 #proof[
   Let $K subset U$ be an arbitrary compact set. By the uniform convergence of $sum_(k = 1)^oo abs(f_k (z))$ on $K$, it follows that the uniform limit is continuous by the Uniform Limit Theorem (@thm:uniformlimit). By continuity on a compact set, it follows that the limit is bounded by some constant $M'$. Additionally, $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $sum_(k = 1)^n abs(f_k (z)) < M' + epsilon$. It follows that the partial sums are uniformly bounded on $K$ by
   $
-    M = max({ max_(1 <= k <= N) max_(z in K) abs(f_k (z)), M' + epsilon }).
+    M = max{ max_(1 <= k <= N) max_(z in K) abs(f_k (z)), M' + epsilon }.
   $
   Similarly, by earlier discussion of infinite products, we have
   $
