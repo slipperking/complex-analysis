@@ -5,13 +5,24 @@
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": va as Va, vb as Vb, vu as Vu
 #import "@preview/fancy-tiling:1.0.0": *
+#import "@preview/mannot:0.3.3"
 
 #let cvector = cetz.vector
 #let cmatrix = cetz.matrix
 
 #let _is-html = sys.inputs.at("html", default: "false") == "true" // target() == "html"
 
-#let ray = b => context { $attach(limits(#b), t: stretch(arrow, size: #measure(b).width))$ }
+#let ray(body, dy: 0em, tag: none) = {
+  let body = pad(top: 0em, $#body$)
+
+  mannot.core-mark(body, tag: tag, color: none, outset: (top: 0em), overlay: (width, height, color) => {
+    place(bottom, dy: dy, math.stretch(sym.arrow, size: width))
+  })
+}
+
+#let sray(body, tag: none) = {
+  return ray($script(body)$, dy: 0.3em, tag: tag)
+}
 
 #let theorem-kinds = (
   "theorem",

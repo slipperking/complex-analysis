@@ -400,8 +400,8 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
   Since $P$ is a closed polygonal chain, we can triangulate the interior. For example, consider @fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation, where
   $
-    integral.cont_(penta A B C D E) f(z) dz & =(integral_#ray($A B$) + integral_#ray($B C$) + integral_#ray($C D$) + integral_#ray($D E$) + integral_#ray($E A$)) f(z) dz \
-    & +(integral_#ray($B E$) + integral_#ray($E B$) + integral_#ray($C E$) + integral_#ray($E C$)) f(z) dz \
+    integral.cont_(penta A B C D E) f(z) dz & =(integral_sray(A B) + integral_sray(B C) + integral_sray(C D) + integral_sray(D E) + integral_sray(E A)) f(z) dz \
+    & +(integral_sray(B E) + integral_sray(E B) + integral_sray(C E) + integral_sray(E C)) f(z) dz \
     & =integral.cont_(Delta A B E) f(z) dz + integral.cont_(Delta B C E) f(z) dz + integral.cont_(Delta C D E) f(z) dz.
   $
   Thus, if the integral over every triangle in $U$ vanishes, then @eq:cauchyintegraltheoremoversimplyconnectedset_statement follows. Consider a triangle in $U$ with boundary $Delta$. Then define $M$ to be
@@ -575,53 +575,53 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 #proof[
   Since $partial U inter U=emptyset$ and $f(z)$ is not necessarily holomorphic over $overline(U)$, we cannot directly apply @lem:cauchyintegraltheoremoversimplyconnectedset.
 
-  First assume $U$ has the shape of $M N Q P$ in @fig:cauchy_goursat_theorem_simplified_region. That is, $U$ consists of $x = a$, $x = b$ for $a < b$, and two rectifiable $C^0$ curves $#ray($M N$): y = phi.alt(x)$ and $#ray($Q P$): y = psi(x)$ such that $phi.alt(x) < psi(x)$, $forall a <= x <= b$.
+  First assume $U$ has the shape of $M N Q P$ in @fig:cauchy_goursat_theorem_simplified_region. That is, $U$ consists of $x = a$, $x = b$ for $a < b$, and two rectifiable $C^0$ curves $ray(M N): y = phi.alt(x)$ and $ray(Q P): y = psi(x)$ such that $phi.alt(x) < psi(x)$, $forall a <= x <= b$.
 
   For some $epsilon > 0$, $eta > 0$, construct a new curve $M'_1N'_1Q'_1P'_1 in U$ to be the boundary of the region bounded by $P_1M_1: x = a + epsilon$, $N_1Q_1: x = b - epsilon$, $M'N': phi.alt(x) + eta$, and $Q'P': psi(x) - eta$ such that $M'_1N'_1Q'_1P'_1$ remains simple. By @lem:cauchyintegraltheoremoversimplyconnectedset,
   $ integral.cont_(M'_1N'_1Q'_1P'_1)f(z)dz=0. $
 
-  By @thm:heinecantor, $f(z)$ is uniformly continuous over $overline(U)$, and therefore $forall epsilon' > 0$, we can choose $eta > 0$ so that $forall z in #ray($M'_1 N'_1$)$, $abs(f(z) - f(z - eta)) < epsilon'$ is satisfied. Letting $eta -> 0$ with $epsilon' -> 0$ and fixing $epsilon > 0$, we get that
+  By @thm:heinecantor, $f(z)$ is uniformly continuous over $overline(U)$, and therefore $forall epsilon' > 0$, we can choose $eta > 0$ so that $forall z in ray(M'_1 N'_1)$, $abs(f(z) - f(z - eta)) < epsilon'$ is satisfied. Letting $eta -> 0$ with $epsilon' -> 0$ and fixing $epsilon > 0$, we get that
 
   $
-    abs(integral_#ray($M'_1 N'_1$) f(z) dz - integral_#ray($M_1 N_1$) f(z) dz) & <= integral_#ray($M'_1 N'_1$) abs(f(z) - f(z - eta)) abs(dz) \
-    & < epsilon' integral_#ray($M'_1 N'_1$) abs(dz) -> 0,
+    abs(integral_sray(M'_1 N'_1) f(z) dz - integral_sray(M_1 N_1) f(z) dz) & <= integral_sray(M'_1 N'_1) abs(f(z) - f(z - eta)) abs(dz) \
+    & < epsilon' integral_sray(M'_1 N'_1) abs(dz) -> 0,
   $
 
   and consequently,
 
   $
-    integral_(#ray($M'_1 N'_1$)) f(z) dz -> integral_#ray($M_1 N_1$) f(z) dz.
+    integral_sray(M'_1 N'_1) f(z) dz -> integral_sray(M_1 N_1) f(z) dz.
   $ <eq:cauchygoursattheorem_innerinnerhorizontaltoouterinnerhorizontal1>
 
   Under the same limit, we get
 
   $
-    integral_#ray($Q'_1 P'_1$) f(z) dz -> integral_#ray($Q_1 P_1$) f(z) dz.
+    integral_sray(Q'_1 P'_1) f(z) dz -> integral_sray(Q_1 P_1) f(z) dz.
   $ <eq:cauchygoursattheorem_innerinnerhorizontaltoouterinnerhorizontal2>
   By the continuity of $f(z)$ over a compact set,
 
   $
-    integral_#ray($P'_1 M'_1$) f(z) dz -> integral_#ray($P_1 M_1$) f(z) dz, integral_#ray($N'_1 Q'_1$) f(z) dz -> integral_#ray($N_1 Q_1$) f(z) dz.
+    integral_sray(P'_1 M'_1) f(z) dz -> integral_sray(P_1 M_1) f(z) dz, integral_sray(N'_1 Q'_1) f(z) dz -> integral_sray(N_1 Q_1) f(z) dz.
   $ <eq:cauchygoursattheorem_innerinnerverticaltoouterinnervertical>
 
   Then letting $epsilon -> 0$, for the same reason as @eq:cauchygoursattheorem_innerinnerverticaltoouterinnervertical, @eq:cauchygoursattheorem_innerinnerhorizontaltoouterinnerhorizontal1, @eq:cauchygoursattheorem_innerinnerhorizontaltoouterinnerhorizontal2 yield
   $
-    integral_#ray($M_1 N_1$) f(z) dz -> integral_#ray($M N$) f(z) dz, integral_#ray($Q_1 P_1$) f(z) dz -> integral_#ray($Q P$) f(z) dz.
+    integral_sray(M_1 N_1) f(z) dz -> integral_sray(M N) f(z) dz, integral_sray(Q_1 P_1) f(z) dz -> integral_sray(Q P) f(z) dz.
   $
 
   We are left to show the subsequent limits of the results from @eq:cauchygoursattheorem_innerinnerverticaltoouterinnervertical. For the left integral, let $y_(phi.alt) = max(phi.alt(a), phi.alt(a + epsilon))$ and $y_psi = max(psi(a), psi(a + epsilon))$.
 
   Then,
   $
-    integral_#ray($P M$) f(z) dz = ii integral_(psi(a))^(phi.alt(a)) f(a + ii y) dy = ii (integral_(psi(a))^(y_(phi.alt)) + integral_(y_(phi.alt))^(y_psi) + integral_(y_psi)^(phi.alt(a))) f(a + ii y) dy.
+    integral_sray(P M) f(z) dz = ii integral_(psi(a))^(phi.alt(a)) f(a + ii y) dy = ii (integral_(psi(a))^(y_(phi.alt)) + integral_(y_(phi.alt))^(y_psi) + integral_(y_psi)^(phi.alt(a))) f(a + ii y) dy.
   $
 
   Similarly,
   $
-    integral_#ray($P_1 M_1$) f(z) dz = ii (integral_(psi(a + epsilon))^(y_(phi.alt)) + integral_(y_(phi.alt))^(y_psi) + integral_(y_psi)^(phi.alt(a + epsilon))) f(a + epsilon + ii y) dy.
+    integral_sray(P_1 M_1) f(z) dz = ii (integral_(psi(a + epsilon))^(y_(phi.alt)) + integral_(y_(phi.alt))^(y_psi) + integral_(y_psi)^(phi.alt(a + epsilon))) f(a + epsilon + ii y) dy.
   $
 
-  The difference $(integral_#ray($P M$) - integral_#ray($P_1 M_1$)) f(z) dz$ between the two is then equal to
+  The difference $(integral_sray(P M) - integral_sray(P_1 M_1)) f(z) dz$ between the two is then equal to
 
   $
     ii integral_(y_(phi.alt))^(y_psi) (f(a + ii y) - f(a + epsilon + ii y)) dy + ii (integral_(psi(a))^(y_(phi.alt)) + integral_(y_psi)^(phi.alt(a))) f(a + ii y) \
@@ -629,10 +629,10 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   $
 
   The first term vanishes by uniform continuity, through the same argument used for $M'_1N'_1 -> M_1N_1$, and the remaining four integrals all tend to $0$ because they are taken over degenerating intervals. As $epsilon -> 0$, $y_(phi.alt) -> phi.alt(a)$ and $y_psi -> psi(a)$ because $phi.alt, psi in C^0$. Therefore,
-  $ integral_#ray($P_1 M_1$) f(z) dz -> integral_#ray($P M$) f(z) dz, $
+  $ integral_sray(P_1 M_1) f(z) dz -> integral_sray(P M) f(z) dz, $
 
   and through similar logic,
-  $ integral_#ray($N_1 Q_1$) f(z) dz -> integral_#ray($N Q$) f(z) dz. $
+  $ integral_sray(N_1 Q_1) f(z) dz -> integral_sray(N Q) f(z) dz. $
   Therefore,
   $ integral.cont_(M N Q P) f(z) dz = 0. $
 
