@@ -68,11 +68,11 @@ Generalizations of the differential and integral exist for multivariate function
   $
 ] <thm:leibnizintegralrule>
 
-Four main classical theorems exist, relating a function and its line integral in 2 and 3 dimensions, line and surface integrals in 2 and 3 dimensions, and the surface and volume integrals in 3 dimensions:
+Four main classical theorems exist, relating a function and its line integral in 2 and 3 dimensions, line and surface (or area) integrals in 2 and 3 dimensions, and the surface and volume integrals in 3 dimensions:
 
 #theorem("Gradient Theorem")[
-  Let $C$ be an oriented smooth curve in $RR^3$ with boundary points $A$ to $B$. Then
-  $ evaluated(f)_(partial C)= f(B) - f(A) = integral_C pdv(f, x) dx + pdv(f, y) dy + pdv(f, z) dz. $
+  Let $gamma$ be an oriented smooth curve in $RR^3$ with boundary points $a$ and $b$. Then if $f in C^1 (gamma)$
+  $ evaluated(f)_(partial gamma)= f(b) - f(a) = integral_gamma pdv(f, x) dx + pdv(f, y) dy + pdv(f, z) dz. $
 ] <thm:gradient>
 
 #theorem("Green's Theorem")[
