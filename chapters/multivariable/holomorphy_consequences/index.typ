@@ -50,7 +50,7 @@ By the boundedness assumption for $f$, we have:
   For each $j$, let $zeta_j = a_j + r_j ee^(ii t_j)$, and it follows that $dif zeta_j = ii r_j ee^(ii t_j) dif t_j$. Because $abs(zeta_j - z_j) > epsilon_j$, we have, after substitution,
   $
     &abs((product_(j=1)^n pdv(, z_j, [k_j])) f(bold(z)))<= (product_(j=1)^n (r_j k_j !)) / (2 uppi)^n integral_0^(2 uppi) dots.c integral_0^(2 uppi) abs((f (zeta_1, dots, zeta_n)) / (product_(j=1)^n epsilon_j^(k_j + 1))) dif t_n dots.c dif t_1 \
-    &wide""<= product_(j=1)^n ((r_j k_j !) / (2 uppi epsilon_j^(k_j + 1))) sup_(bold(zeta) in product_(j=1)^n partial D(a_j, r_j)) abs(f(bold(zeta))) iteratedintegral_([0, 2 uppi]^n) dif t_n dots.c dif t_1 \ // TODO: make the iterated integral bounds align correctly
+    &wide""<= product_(j=1)^n ((r_j k_j !) / (2 uppi epsilon_j^(k_j + 1))) sup_(bold(zeta) in product_(j=1)^n partial D(a_j, r_j)) abs(f(bold(zeta))) integral #h(-0.3em) dots.c #h(-0.3em) integral_([0, 2 uppi]^n) dif t_n dots.c dif t_1 \ // TODO: make the iterated integral bounds align correctly
     &wide""<= product_(j=1)^n ((k_j !) / (r_j^(k_j))) sup_(bold(zeta) in product_(j=1)^n partial D(a_j, r_j)) abs(f (bold(zeta))),
   $
   since $epsilon_j <= r_j$ for all $j$.
@@ -65,7 +65,7 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
   $ <eq:taylorexpansionmultivariable_series>
   where $forall k_1, dots, k_n in ZZ_(gt.eq 0)$,
   $
-    a_(k_1, dots, k_n) = (1) / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, k_j)) f (bold(a)).
+    a_(k_1, dots, k_n) = (1) / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)).
   $
   The series converges absolutely and uniformly on $Omega$.
 ] <thm:taylorexpansionmultivariable>
@@ -90,11 +90,11 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
   $
   By the Cauchy Integral Formula (@thm:cauchyintegralformulapolydisks), we have
   $
-    (product_(j=1)^n pdv(, z_j, k_j)) f (bold(a)) = (product_(j=1)^n k_j !) / ((2 uppi ii)^n) integral.cont_(partial D(a_1, r_1)) dots.c integral.cont_(partial D(a_n, r_n)) (f(bold(zeta))dzeta_n dots.c dzeta_1) / (product_(j=1)^n (zeta_j - a_j)^(k_j + 1)),
+    (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)) = (product_(j=1)^n k_j !) / ((2 uppi ii)^n) integral.cont_(partial D(a_1, r_1)) dots.c integral.cont_(partial D(a_n, r_n)) (f(bold(zeta))dzeta_n dots.c dzeta_1) / (product_(j=1)^n (zeta_j - a_j)^(k_j + 1)),
   $
   and hence if we let
   $
-    a_(k_1, dots, k_n) = (1) / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, k_j)) f (bold(a)),
+    a_(k_1, dots, k_n) = (1) / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)),
   $
   then @eq:taylorexpansionmultivariable_series follows. Cauchy's Estimate (@cor:cauchysestimatepolydisks) gives that
   $
@@ -125,7 +125,7 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
 #theorem("Weierstrass")[
   Suppose that $Omega subset.eq CC^n$ is a region and that ${f_k}_(k in NN)$ is a sequence of holomorphic functions on $Omega$. If ${f_k}_(k in NN)$ converges locally uniformly to $f$ on $Omega$, then $f$ is holomorphic on $Omega$. Moreover, $forall k_1, dots, k_n in ZZ_(gt.eq 0)$,
   $
-    (product_(j=1)^n pdv(, z_j, k_j)) f_k arrows.rr (product_(j=1)^n pdv(, z_j, k_j)) f
+    (product_(j=1)^n pdv(, z_j, [k_j])) f_k arrows.rr (product_(j=1)^n pdv(, z_j, [k_j])) f
   $
   on compact subsets of $Omega$.
 ] <thm:weierstrassconvergencemultivar>
