@@ -186,7 +186,7 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
   $
     f(z) = sum_(n = -oo)^oo c'_n (z - a)^n,
   $ <eq:laurentexpansionofholomorphicfunction_uniquenessstatement>
-  where $z in V$ and the series is uniformly convergent on $gamma$. Let $m in ZZ$ be arbitrary. By Cauchy--Goursat (@thm:cauchydifferentiationformula),
+  where $z in V$ and the series is uniformly convergent on $gamma$. Let $m in ZZ$ be arbitrary. By Cauchy--Goursat (@thm:cauchy_differentiation_formula),
   $
     integral.cont_gamma (z - a)^k dz =
     cases(

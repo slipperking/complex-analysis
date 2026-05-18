@@ -200,6 +200,8 @@
   thmproof("proof", "Proof", base: "theorem", inset: (top: 0em, left: 0em, right: 0em))
 }
 
+#let iteratedintegral = $integral #h(-0.3em) dots.c #h(-0.3em) integral$
+
 #let dx = $dif x$
 #let dy = $dif y$
 #let dz = $dif z$

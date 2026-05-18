@@ -32,9 +32,9 @@
   #include "differential_geometry/index.typ"
 ]
 
-// #chapter-section("multivariable")[
-//   #include "multivariable/index.typ"
-// ]
+#chapter-section("multivariable")[
+  #include "multivariable/index.typ"
+]
 
 // #chapter-section("special-classes")[
 //   #include "special_classes_holomorphic/index.typ"
