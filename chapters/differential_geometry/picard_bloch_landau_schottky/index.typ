@@ -95,7 +95,7 @@ Hence, for simplicity, we entertain a much simpler case without algebraic branch
 
   Define the metric
   $ rho(w) = A / (sqrt(phi.alt(w)) (A^2 - phi.alt(w))), quad dif s = rho(w) abs(dif w) $
-  for $w in f(DD)$ and $rho(w) != 0$, where $A^2 > sup_w phi(w)$ is a constant. We may assume that $sup_w phi(w)$ is finite, since otherwise the theorem is already proved for $f$.
+  for $w in f(DD)$ and $rho(w) != 0$, where $A^2 > sup_w phi.alt(w)$ is a constant. We may assume that $sup_w phi.alt(w)$ is finite, since otherwise the theorem is already proved for $f$.
 
   For every point $w_0 in f(DD)$, the bounding circle corresponding to $phi.alt(w_0)$ passes through a (at least one) boundary point, denoted by $b = b_(w_0)$. Let $phi.alt_(w_0) (w) = abs(w - b)$ and let
   $ rho_(w_0) (w) = A / (sqrt(phi.alt_(w_0) (w)) (A^2 - phi.alt_(w_0) (w))), quad w in D(w_0, phi.alt(w_0)). $
@@ -105,17 +105,17 @@ Hence, for simplicity, we entertain a much simpler case without algebraic branch
   $ sqrt(phi.alt_(w_0) (w)) (A^2 - phi.alt_(w_0) (w)) >= sqrt(phi.alt(w)) (A^2 - phi.alt(w)), quad phi.alt_(w_0) (w) >= phi.alt(w). $
   In particular, we want
   $ t |-> sqrt(t) (A^2 - t) $
-  to be increasing on $[0, phi.alt(w_0) + delta]$ for arbitrary $delta > 0$. The function itself can be calculated to be increasing for $t <= A^2 / 3$ by elementary methods (using derivative tests). Therefore, the conditions for a supporting metric are satisfied if $A^2 / 3 >= sup_(w in f(DD)) phi.alt(w) >= phi.alt(w_0) + delta$. Without loss of generality we let $delta -> 0^+$ and thus, under the condition that $A^2 / 3 > sup_w phi.alt(w)$, @thm:schwarzahlforspicksupportingmetric gives that
+  to be increasing on $[0, phi.alt(w_0) + delta]$ for arbitrary $delta > 0$. The function itself can be calculated to be increasing for $t <= A^2 / 3$ by elementary methods (using derivative tests). Therefore, the conditions for a supporting metric are satisfied if $A^2 / 3 >= sup_(w in f(DD)) phi.alt(w) + delta >= phi.alt(w_0) + delta$. Without loss of generality we let $delta -> 0^+$ and thus, under the condition that $A^2 / 3 > sup_w phi.alt(w)$, @thm:schwarzahlforspicksupportingmetric gives that
   $ rho(w) abs(dif w) <= (2 abs(dz)) / (1 - abs(z)^2). $
-  Let $z = 0$, $w = f(0)$, $abs(dv(w, z)) = 1$, and therefore
+  Let $z = 0$, $w = f(0)$, so that by the theorem conditions, $abs(dv(w, z)) = 1$, and therefore
   $ rho(f(0)) <= 2 ==> A <= 2 sqrt(phi.alt(f(0))) [A^2 - phi.alt(f(0))]. $
   By the previous assumptions on $A$, the corresponding function on the right-hand side is increasing, and since $phi.alt(f(0)) <= sup_w phi.alt(w)$, we have
   $ A^2 <= 4 sup_w phi.alt(w) (A^2 - sup_w phi.alt(w))^2. $
-  As $A^2 / 3 -> sup_w phi.alt(w)^+$, it follows that
+  As $A^2 / 3 -> sup_w phi.alt(w)^+$ ($A$ was chosen arbitarily, so this is valid), it follows that
   $ sup_w phi.alt(w) >= sqrt(3) / 4. #qedhere $
 ]
 
-It is however notable that the proof follows similarly for general functions, but now we consider functions $f:DD -> W$, where $W$ is a Riemann surface and the "singularities" are not only boundary points but also algebraic branch points (where $f' = 0$).
+It is however notable that the proof follows similarly for general functions, but instead we consider functions $f:DD -> W$, where $W$ is a Riemann surface and the "singularities" are not only boundary points but also algebraic branch points (where $f' = 0$).
 
 #theorem("Landau" + sym.dash.en + "Carathéodory")[
   Let $f(z) = sum_(n = 0)^oo a_n z^n$ such that $a_1 != 0$ and $f$ is holomorphic on $D(0, r)$. If $f$ omits $0$ and $1$, then $exists R$ dependent only on $a_0$ and $a_1$ such that $r <= R$.

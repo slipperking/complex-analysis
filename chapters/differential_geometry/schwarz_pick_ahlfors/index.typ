@@ -72,7 +72,7 @@ The hyperbolic metric $lambda$ in @eq:poincaremetricdefinition does not increase
 #theorem[
   Let $f:DD -> U$ be holomorphic. Let
   $ rho:U subset.eq CC -> RR_(> 0), quad dif s_rho = rho(w) abs(dif w) $
-  be a continuous conformal metric (but not necessarily $C^2$) such that at each point $w$, there exists a neighborhood $V_w in.rev w$ in $U$ and a regular metric $rho_w$ thereon such that $rho_w (w) = rho(w)$ and $rho_w <= rho$ everywhere else (referred to as a "supporting metric"). If each $K_(rho_w) <= -1$ everywhere, then the conclusion of @thm:schwarzahlforspick continues to hold.
+  be a continuous conformal metric (but not necessarily $C^2$) such that at each point $w$, there exists a neighborhood $V_w in.rev w$ in $U$ and a regular metric $rho_w$ thereon such that $rho_w (w) = rho(w)$ and $rho_w <= rho$ everywhere else (referred to as a "supporting metric"). If each $K_(rho_w) <= -1$ everywhere, then the conclusion of @thm:schwarzahlforspick continues to hold for $rho$.
 ] <thm:schwarzahlforspicksupportingmetric>
 
 #proof[
