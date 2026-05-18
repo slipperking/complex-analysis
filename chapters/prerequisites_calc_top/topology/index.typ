@@ -2,16 +2,30 @@
 
 == Topological Preliminaries
 
-The following definitions are subject to the assumption where the topological space is defined to be $X = CC^n$. This is satisfactory to the main purpose of our proceeding passage, but it is noteworthy that it can be generalized to more abstract sets.
+The following definitions are subject to the assumption where the topological space is defined to be $X = CC^n$. This is satisfactory to the main purpose of our proceeding passage, but it is noteworthy that it can be generalized to more abstract sets (which will be discussed in later sections, especially in @sec:partitions_of_unity).
 
+#definition("Open Ball")[
+  Let $B^n (a, r) subset CC^n$ denote the $n$-dimensional _ball_ with radius $r$ centered at $a = (a_1, a_2, dots, a_n) in CC^n$, defined by
+  $ B^n (a, r) = {(z_1, z_2, dots, z_n) in CC^n | sum_(j=1)^n abs(z_j - a_j)^2 < r^2}. $
+]
+#definition("Open and Closed Sets")[
+  A set $U subset.eq CC^n$ is _open_ if for every $z in U$, there exists an _open ball_ centered at $z$ that is fully contained in $U$. A set $F subset.eq CC^n$ is _closed_ if its complement, $CC^n without F$, is open.
+] <def:openclosedsets>
+(Note that these definitions hold only for the standard topology on $CC^n$ induced by the Euclidean metric. For now, this is unimportant, but will be explained later in @sec:partitions_of_unity.)
 #definition("Accumulation Point")[
   A point $z in CC^n$ is an _accumulation point_ of $X$ if for any open set $U$ containing $z$, $(U without {z}) inter X eq.not emptyset$
 ] <def:accumulationpoint>
-
+#theorem[
+  A set $X subset.eq CC^n$ is closed iff $X$ contains all of its accumulation points.
+]
+#proof[
+  + We first prove that closedness implies the inclusion of accumulation points. Let $X$ be a closed set, and assume that some accumulation point $z_0$ of $X$ satisfies $z_0 in.not X$. Since $X$ is closed, $CC^n without X$ is open, and there exists an open ball $B^n (z_0, epsilon)$ that is fully contained in $CC^n without X$. However, this contradicts the definition of accumulation point, since $B^n (z_0, epsilon) without {z_0}$ does not intersect with $X$.
+  + Assume $X$ is an arbitrary set which includes all its accumulation points. We will show that $CC^n without X$ is open, which implies that $X$ is closed. Let $z_0 in CC^n without X$. Since $z_0$ is not an accumulation point of $X$ (as otherwise $z_0 in X$), there exists an open ball $B^n (z_0, epsilon)$ such that $(B^n (z_0, epsilon) without {z_0}) inter X = emptyset$. Then, $B^n (z_0, epsilon) subset CC^n without X$, and hence $CC^n without X$ is open. #qedhere
+]
 #definition("Closure")[
   For a set $X subset.eq CC^n$, define the _closure_ of $X$, or $overline(X)$ to be the intersection of all closed sets containing $X$. In other words, it is the union of $X$ and its accumulation points.
 ] <def:closure>
-
+Because the accumulation points of $X$ all lie in $overline(X)$, the closure of $X$ is a closed set. Moreover, $X$ is closed iff $X = overline(X)$.
 #definition("Interior")[
   For a set $X subset.eq CC^n$, the _interior_ of $X$, denoted $interior(X)$, is the union of all open sets contained in $X$, or the set of points $z in CC^n$ such that there exists an open neighborhood of $z$ that is fully contained in $X$.
 ] <def:interior>
@@ -42,8 +56,8 @@ The following definitions are subject to the assumption where the topological sp
   $ inter.big_(k=0)^(oo) Q_k $
   consists of exactly one point. Call this point $z_infinity in CC^n$.
 
-  For each $k$, $Q_k$ contains infinitely many points of $A$. Because the side length of $Q_k$ tends to zero, for any $epsilon > 0$, $exists N in NN$ such that $forall k >= N$, $Q_k subset B^n (z_infinity, epsilon)$ where $B^n (a, r) subset CC^n$ is the $n$-dimensional _ball_ with radius $r$ centered at $a = (a_1, a_2, dots, a_n) in CC^n$, or
-  $ B^n (a, r) = {(z_1, z_2, dots, z_n) in CC^n | sum_(j=1)^n abs(z_j - a_j)^2 < r^2}. $
+  For each $k$, $Q_k$ contains infinitely many points of $A$. Because the side length of $Q_k$ tends to zero, for any $epsilon > 0$, $exists N in NN$ such that $forall k >= N$, $Q_k subset B^n (z_infinity, epsilon)$.
+
   Then, $B^n (z_infinity, epsilon)$ also contains infinitely many points of $A$. Therefore, $z_infinity$ is an accumulation point of $A$.
 
   We now show that $z_infinity in X$. Suppose for contradiction that $z_infinity in.not X$. Since $X$ is closed, $CC^n without X$ is open, and $exists delta > 0$ such that
