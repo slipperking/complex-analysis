@@ -55,7 +55,7 @@ In both complex and real analysis, the concept of _power series_, a unique type 
 $ sum_(n = 0)^oo a_n z^n, $
 where ${a_n}$ are constants.
 
-Let $D(a, r) = B^1(a, r) = {z in CC | abs(z - a) < r}$ denote the _open disk_ centered at $a$ with radius $r$. For simplicity, from now on we will have $DD$ denote the unit open disk, or $D(0, 1)$. We will now observe the convergence of power series.
+Let $D(a, r) = B^1(a, r) = {z in CC : abs(z - a) < r}$ denote the _open disk_ centered at $a$ with radius $r$. For simplicity, from now on we will have $DD$ denote the unit open disk, or $D(0, 1)$. We will now observe the convergence of power series.
 
 #theorem("Abel's Theorem")[
   For a power series $f(z) = sum_(n = 0)^oo a_n z^n$, there exists a constant $R in RR_(>= 0) union {oo}$, known as the _radius of convergence_ such that:
@@ -69,7 +69,7 @@ The disk $abs(z) < R$ is known as the _disk of convergence_, a direct generaliza
 
 #theorem("Cauchy" + sym.dash.en + "Hadamard")[
   The radius of convergence of the power series in the form $sum_(n = 0)^oo a_n z^n$ can be determined by
-  $ R = 1 / limsup_(n -> oo) root(n, abs(a_n)). $ <eq:cauchyhadamard>
+  $ R = 1 / (limsup_(n -> oo) root(n, abs(a_n))). $ <eq:cauchyhadamard>
 ] <thm:cauchyhadamard>
 
 Of course, a convergence radius of $0$ implies that the series is divergent everywhere except for possibly at $0$, and a convergence radius of $oo$ means that the series absolutely converges everywhere.
