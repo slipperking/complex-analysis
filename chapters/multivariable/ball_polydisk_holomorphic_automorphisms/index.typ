@@ -348,11 +348,11 @@ In preparation, we will introduce several relevant concepts.
   $
   so $bold(U) bold(w) in bold(v)_1^perp$. Hence $bold(v)_1^perp$ is invariant under $bold(U)$. The restriction of $bold(U)$ to $bold(v)_1^perp$, $bold(U)|_(bold(v)_1^perp)$, yields another eigenvalue $lambda_2 in partial DD$ with eigenvector $bold(v)_2 in bold(v)_1^perp$ satisfying $abs(lambda_2) = 1$ and $norm(bold(v)_2) = 1$. Similarly, we may define $bold(v)_2^perp subset bold(v)_1^perp$, which is an $(n - 2)$-dimensional subspace invariant under $bold(U)$. Repeating this process inductively, we obtain an orthonormal basis ${bold(v)_1, dots, bold(v)_n}$ of eigenvectors of $bold(U)$ with corresponding eigenvalues $lambda_1, dots, lambda_n in partial DD$. Setting
   $
-    bold(V) = mat(bold(v)_1, dots, bold(v)_n), quad bold(D) = op("diag")(lambda_1, dots, lambda_n)
+    bold(V) = mat(bold(v)_1, dots.c, bold(v)_n), quad bold(D) = op("diag")(lambda_1, dots.c, lambda_n)
   $
   gives that
   $
-    bold(V)^dagger bold(U) bold(V) = bold(V)^dagger mat(bold(U) bold(v)_1, dots, bold(U) bold(v)_n) = bold(V)^dagger mat(lambda_1 bold(v)_1, dots, lambda_n bold(v)_n) = bold(V)^dagger bold(V) bold(D).
+    bold(V)^dagger bold(U) bold(V) = bold(V)^dagger mat(bold(U) bold(v)_1, dots.c, bold(U) bold(v)_n) = bold(V)^dagger mat(lambda_1 bold(v)_1, dots.c, lambda_n bold(v)_n) = bold(V)^dagger bold(V) bold(D).
   $
   The $k$-th diagonal entry of $bold(V)^dagger bold(V)$ is equal to $bold(v)_k^dagger bold(v)_k = norm(bold(v)_k)^2 = 1$, while the non-diagonal entries correspond to $bold(v)_k^dagger bold(v)_l$ for some $k != l$, which vanish by orthogonality in construction. Thus, $bold(V)^dagger bold(V) = bold(I)$ (unitary) and $bold(V) bold(D) bold(V)^dagger = bold(U)$.
 ]
@@ -390,7 +390,7 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
 #proof[
   Because $B^n$ is a bounded complete circular domain centered at $bold(0)$, from @lem:multivarcartan2 we have that $bold(f) equiv bold(U)$ for some constant invertible matrix
   $
-    bold(U) = mat(zeta_(1,1), dots, zeta_(1,n); dots.v, dots.down, dots.v; zeta_(n,1), dots, zeta_(n,n)).
+    bold(U) = mat(zeta_(1,1), dots.c, zeta_(1,n); dots.v, dots.down, dots.v; zeta_(n,1), dots.c, zeta_(n,n)).
   $
   Similarly, we have $bold(f)^(-1) = bold(U)^(-1)$, so $norm(bold(z)) = norm(bold(U)^(-1) bold(U) bold(z))$. Observe that
   $
