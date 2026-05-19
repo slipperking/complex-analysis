@@ -40,11 +40,11 @@ Function series are defined to be a sequence formed by the partial sums of funct
 
 #proof[
   By the convergence of $sum_(n = 1)^oo M_n$, $forall epsilon > 0$, $exists N in NN$ such that $forall m >= n > N$,
-  $ abs(M_m + M_(m - 1) + dots + M_(n + 1)) < epsilon. $
+  $ abs(M_m + M_(m - 1) + dots.c + M_(n + 1)) < epsilon. $
 
   Since $M_j$ bounds $f_j (z)$, it follows that
   $
-    abs(f_m (z) + f_(m - 1)(z) + dots + f_(n + 1)(z)) <= abs(M_m + M_(m - 1) + dots + M_(n + 1)) < epsilon,
+    abs(f_m (z) + f_(m - 1)(z) + dots.c + f_(n + 1)(z)) <= abs(M_m + M_(m - 1) + dots.c + M_(n + 1)) < epsilon,
   $
   and the result follows from @thm:cauchycriterionuniformconvergence.
 ]
@@ -101,11 +101,11 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
 
   Since $S'_n (z) -> f_1 (z)$ as $n -> oo$, it follows that $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $abs(S'_n (z) - f_1 (z)) < epsilon / 3$. Since
   $
-    (R_n (z) - R_n (z_0)) / (z - z_0) = sum_(k = n)^oo a_k (z^(k - 1) + z^(k - 2) z_0 + dots + z_0^(k - 1))
+    (R_n (z) - R_n (z_0)) / (z - z_0) = sum_(k = n)^oo a_k (z^(k - 1) + z^(k - 2) z_0 + dots.c + z_0^(k - 1))
   $
   for $z != z_0$, with $abs(z) < rho < R$,
   $
-    abs(sum_(k = n)^oo a_k (z^(k - 1) + dots + z_0^(k - 1))) <= sum_(k = n)^oo abs(a_k) (abs(z^(k - 1)) + dots + abs(z_0^(k - 1))) < sum_(k = n)^oo abs(a_k) k rho^(k - 1).
+    abs(sum_(k = n)^oo a_k (z^(k - 1) + dots.c + z_0^(k - 1))) <= sum_(k = n)^oo abs(a_k) (abs(z^(k - 1)) + dots.c + abs(z_0^(k - 1))) < sum_(k = n)^oo abs(a_k) k rho^(k - 1).
   $
   Since $sum_(k = 1)^oo k abs(a_k) rho^(k - 1)$ is absolutely convergent, $sum_(k = n)^oo abs(a_k) k rho^(k - 1)$ is the remainder term of a convergent series. Then, $exists N' in NN$ such that $forall n > N'$, $sum_(k = n)^oo abs(a_k) k rho^(k - 1) < epsilon / 3$.
 

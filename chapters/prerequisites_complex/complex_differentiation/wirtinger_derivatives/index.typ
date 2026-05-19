@@ -8,7 +8,7 @@ and
 $
   pdv(, overline(z)) = pdv(, x) pdv(x, overline(z)) + pdv(, y) pdv(y, overline(z)) = 1/2 (pdv(, x) + ii pdv(, y)).
 $ <eq:wirtingerderivative2>
-If @eq:wirtingerderivative1 is set equal to 0, then it is the equivalent form of the homogeneous Cauchy--Riemann Equations. Then for a holomorphic function $f(z)$, the Wirtinger derivative $pdv(f, z) = dv(f, z)$.
+If @eq:wirtingerderivative1 is set equal to $0$, then it is the equivalent form of the homogeneous Cauchy--Riemann Equations. Then for a holomorphic function $f(z)$, the Wirtinger derivative $pdv(f, z) = dv(f, z)$.
 
 In terms of $u$ and $v$, the two derivatives of a function $f(z)$ are equal to:
 $ pdv(f, z) = 1/2 (pdv(u, x) + ii pdv(v, x) - ii pdv(u, y) + pdv(v, y)), $

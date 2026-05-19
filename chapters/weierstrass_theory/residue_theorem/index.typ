@@ -16,9 +16,9 @@ After Riemann and Weierstrass refined the understanding of analytic functions an
 ]<def:residue>
 
 It then follows that the residue at a removable singularity is 0. As a direct consequence of @eq:residue, we can derive explicit formulas for the calculation of residues at poles. If $U subset.eq CC$ is open, $a in U$ is an isolated singularity (a pole of order $m != infinity$) of $f : U without {a} -> CC$ that is holomorphic, then locally:
-$ f(z) = c_(-m) (z-a)^(-m) + c_(1-m) (z-a)^(1-m) + dots + c_(-1) (z-a)^(-1) + dots. $
+$ f(z) = c_(-m) (z-a)^(-m) + c_(1-m) (z-a)^(1-m) + dots.c + c_(-1) (z-a)^(-1) + dots. $
 Multiplying by $(z-a)^m$, we obtain that
-$ (z-a)^m f(z) = c_(-m) + c_(1-m) (z-a) + dots + c_(-1) (z-a)^(m-1) + dots. $
+$ (z-a)^m f(z) = c_(-m) + c_(1-m) (z-a) + dots.c + c_(-1) (z-a)^(m-1) + dots. $
 By the definition of a Taylor series, we find that
 $
   c_(-1) = Res_(z=a) f(z) = 1 / ((m-1)!) lim_(z -> a) dif^(m-1) / (dif z^(m-1)) [(z-a)^m f(z)].

@@ -17,7 +17,7 @@ exists and is finite, then the infinite product is said to be _convergent_.
 For $x in RR_(>= 0)$, since $ee^x >= x$ and $ee^0 = 1$, we can integrate over $[0, x]$ to get that $ee^x >= x + 1$. Therefore,
 $
   exp(sum_(k = 1)^n abs(u_k)) &>= product_(k = 1)^n (1 + abs(u_k)) = 1 + sum_(k = 1)^n abs(u_k) \
-  & quad + sum_(j, k in {1, dots, n} \ j < k) abs(u_j u_k) + dots + product_(k = 1)^n abs(u_k) > sum_(k = 1)^n abs(u_k).
+  & quad + sum_(j, k in {1, dots, n} \ j < k) abs(u_j u_k) + dots.c + product_(k = 1)^n abs(u_k) > sum_(k = 1)^n abs(u_k).
 $
 Since the convergence of $sum_(k = 1)^oo abs(u_k)$ is the same as that of $exp(sum_(k = 1)^oo abs(u_k))$, it follows that the convergence of $sum_(k = 1)^oo abs(u_k)$ is equivalent to that of $product_(k = 1)^oo (1 + abs(u_k))$. If $sum_(k = 1)^oo abs(u_k)$ is convergent, then $product_(k = 1)^oo (1 + u_k)$ is _absolutely convergent_. As with the order of summing an absolutely convergent series is unimportant, we may also rearrange terms in an absolutely convergent infinite product.
 
@@ -136,11 +136,11 @@ We will now study the construction of an entire function $f(z)$ via its zeros. W
 
   There exists a positive integer sequence $p_1, p_2, dots$ such that for every positive and finite $R$, $sum_(n = 1)^oo abs(R / a_n)^(p_n + 1)$ converges. For example, let $p_n = n$, and for sufficiently large $n$, $R / abs(a_n) < 1$ and the series is convergent. Consider the infinite product
   $
-    product_(n = 1)^oo (1 - z / a_n) exp(z / a_n + 1 / 2 (z / a_n)^2 + dots + 1 / p_n (z / a_n)^(p_n)).
+    product_(n = 1)^oo (1 - z / a_n) exp(z / a_n + 1 / 2 (z / a_n)^2 + dots.c + 1 / p_n (z / a_n)^(p_n)).
   $ <eq:infiniteproductweierstrassfactorizationintermediate>
   Let
   $
-    P_p (z) = z + 1 / 2 z^2 + dots + 1 / p z^p \
+    P_p (z) = z + 1 / 2 z^2 + dots.c + 1 / p z^p \
     Q_p (z) = log(1 - z) + P_p (z) \
     E_p (z) = exp(Q_p (z)) = (1 - z) exp(P_p (z)).
   $ <eq:weierstrasselementaryfactor>
@@ -201,7 +201,7 @@ We will now study the construction of an entire function $f(z)$ via its zeros. W
     $ <eq:weierstrassfactorization_statement>
     on $D(0, R)$, where $E_p (z)$ is the $p$-th Weierstrass elementary factor defined in @eq:weierstrasselementaryfactor and $phi(z)$ is an entire function. The infinite product converges uniformly on $overline(D(0, R))$ and converges absolutely on $CC$. If we let $p_n = n$, we can write
     $
-      f(z) = z^m ee^(phi(z)) product_(n = 1)^oo (1 - z / a_n) exp(z / a_n + 1 / 2 (z / a_n)^2 + dots + 1 / n (z / a_n)^n).
+      f(z) = z^m ee^(phi(z)) product_(n = 1)^oo (1 - z / a_n) exp(z / a_n + 1 / 2 (z / a_n)^2 + dots.c + 1 / n (z / a_n)^n).
     $
   ] <thm:weierstrassfactorization>
 

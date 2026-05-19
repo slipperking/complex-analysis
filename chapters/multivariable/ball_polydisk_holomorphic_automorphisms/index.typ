@@ -48,7 +48,7 @@ In preparation, we will introduce several relevant concepts.
   $
   where terms with $k_j < alpha_j$ vanish. For each remaining term, the total degree is
   $
-    (k_1 - alpha_1) + dots + (k_n - alpha_n) = d - abs(Vb(alpha)).
+    (k_1 - alpha_1) + dots.c + (k_n - alpha_n) = d - abs(Vb(alpha)).
   $
   Hence, $partial^(Vb(alpha)) Vb(psi)$ is a homogeneous polynomial of degree $d - abs(Vb(alpha))$, establishing @itm:homogeneouspolynomialderivatives_less.
 
