@@ -102,8 +102,8 @@ $
         })
         circle("P", radius: 0.022, fill: black)
         circle("Q", radius: 0.022, fill: black)
-        content("P", $P = arrow(bold(r))(u, v)$, anchor: "east", padding: 3pt)
-        content("Q", $Q = arrow(bold(r))(u + Delta u, v + Delta v)$, anchor: "west", padding: 3pt)
+        content("P", $P = va(r)(u, v)$, anchor: "east", padding: 3pt)
+        content("Q", $Q = va(r)(u + Delta u, v + Delta v)$, anchor: "west", padding: 3pt)
         content((-0.9, 0.1, -0.9), $T_P Sigma$)
       })
     },

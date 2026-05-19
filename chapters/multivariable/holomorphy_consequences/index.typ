@@ -123,7 +123,7 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
 ]
 
 #theorem("Weierstrass")[
-  Suppose that $Omega subset.eq CC^n$ is a region and that ${f_k}_(k in NN)$ is a sequence of holomorphic functions on $Omega$. If ${f_k}_(k in NN)$ converges locally uniformly to $f$ on $Omega$, then $f$ is holomorphic on $Omega$. Moreover, $forall k_1, dots, k_n in ZZ_(gt.eq 0)$,
+  Suppose that $Omega subset.eq CC^n$ is a region and that ${f_k}_(k in NN)$ is a sequence of holomorphic functions $Omega -> CC$. If ${f_k}_(k in NN)$ converges locally uniformly to $f$ on $Omega$, then $f$ is holomorphic on $Omega$. Moreover, $forall k_1, dots, k_n in ZZ_(gt.eq 0)$,
   $
     (product_(j=1)^n pdv(, z_j, [k_j])) f_k arrows.rr (product_(j=1)^n pdv(, z_j, [k_j])) f
   $
