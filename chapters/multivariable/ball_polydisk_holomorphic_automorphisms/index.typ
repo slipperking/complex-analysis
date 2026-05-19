@@ -15,9 +15,9 @@ In preparation, we will introduce several relevant concepts.
   $
     abs(bold(k)) = sum_(j=1)^n k_j, quad
     bold(z)^(bold(k)) = product_(j=1)^n z_j^(k_j), quad
-    partial^(bold(k)) = (partial^(abs(bold(k)))) / (partial z_1^(k_1) dots.c partial z_n^(k_n)) = product_(j=1)^n (partial^(k_j)) / (partial z_j^(k_j)), quad
-    bold(z) = (z_1, dots, z_n) in CC^n.
+    partial^(bold(k)) = (partial^(abs(bold(k)))) / (partial z_1^(k_1) dots.c partial z_n^(k_n)) = product_(j=1)^n pdv(, z_j, [k_j]),
   $
+  where $bold(z) = (z_1, dots, z_n) in CC^n.$
 ] <def:multiindex>
 
 #definition[
@@ -78,7 +78,7 @@ In preparation, we will introduce several relevant concepts.
 #proof[
   By @thm:taylorexpansionmultivariable, we have the expansion
   $
-    bold(f)(bold(z)) = sum_(abs(bold(k)) = 0)^oo bold(a)_(bold(k)) (bold(z) - bold(a))^(bold(k)) = sum_(j=0)^oo bold(psi)_j (bold(z) - bold(a)) = bold(a) + sum_(j=1)^oo sum_(abs(bold(k)) = j) bold(a)_(bold(k)) (bold(z) - bold(a))^(bold(k)),
+    bold(f)(bold(z)) &= sum_(abs(bold(k)) = 0)^oo bold(a)_(bold(k)) (bold(z) - bold(a))^(bold(k)) = sum_(j=0)^oo bold(psi)_j (bold(z) - bold(a)) \ &= bold(a) + sum_(j=1)^oo sum_(abs(bold(k)) = j) bold(a)_(bold(k)) (bold(z) - bold(a))^(bold(k)),
   $ <eq:multivarcartan1_taylorseries>
   which is absolutely convergent on some polydisk centered at $bold(a)$, where $bold(a)_(bold(k)) = (partial^(bold(k)) bold(f)(bold(a))) / (product_(j=1)^n k_j !)$ and $bold(k) = (k_1, dots, k_n)$. The terms have been rearranged (from absolute convergence) so that the inner summation is a homogeneous polynomial $bold(psi)_j$ with a zero at $bold(z) = bold(a)$ and degree $j$.
 
@@ -101,19 +101,23 @@ In preparation, we will introduce several relevant concepts.
   it then follows that
   $
     bold(f)_2 (bold(z))
-    &= bold(z) + bold(psi)_m (bold(z) - bold(a)) + sum_(j > m) bold(psi)_j (bold(z) - bold(a)) + bold(psi)_m (bold(z) - bold(a) + sum_(j gt.eq m) bold(psi)_j (bold(z) - bold(a))) + sum_(j > m) bold(psi)_j (bold(f)(bold(z)) - bold(a)) \
-    &= bold(z) + 2 bold(psi)_m (bold(z) - bold(a)) + ("homogeneous polynomials of degree " > m)(bold(z) - bold(a)).
+    &= bold(z) + bold(psi)_m (bold(z) - bold(a)) + sum_(j > m) bold(psi)_j (bold(z) - bold(a)) \
+    &quad""+ bold(psi)_m (bold(z) - bold(a) + sum_(j gt.eq m) bold(psi)_j (bold(z) - bold(a))) + sum_(j > m) bold(psi)_j (bold(f)(bold(z)) - bold(a)) \
+    &= bold(z) + 2 bold(psi)_m (bold(z) - bold(a)) \
+    &quad""+ ("homogeneous polynomials of degree" > m)(bold(z) - bold(a)).
   $
   Assume, for induction, that
   $
-    bold(f)_k (bold(z)) = bold(z) + k bold(psi)_m (bold(z) - bold(a)) + ("homogeneous polynomials of degree " > m)(bold(z) - bold(a)).
+    bold(f)_k (bold(z)) = bold(z) + k bold(psi)_m (bold(z) - bold(a)) + ("homogeneous polynomials of degree" > m)(bold(z) - bold(a)).
   $
   Then we have
   $
     bold(f)_(k+1) (bold(z))
-    &= bold(z) + sum_(j gt.eq m) bold(psi)_j (bold(z) - bold(a)) + k bold(psi)_m (bold(z) - bold(a) + sum_(j gt.eq m) ("degree " j " hom. polynomial")(bold(z) - bold(a))) \
-    &quad + sum_(j > m) ("homogeneous polynomial of degree " j)(bold(f)(bold(z)) - bold(a)) \
-    &= bold(z) + (k + 1) bold(psi)_m (bold(z) - bold(a)) + ("degree " > m " homogeneous polynomials")(bold(z) - bold(a)).
+    &= bold(z) + sum_(j gt.eq m) bold(psi)_j (bold(z) - bold(a)) \
+    &quad"" + k bold(psi)_m (bold(z) - bold(a) + sum_(j gt.eq m) ("degree" j "hom. polynomial")(bold(z) - bold(a))) \
+    &wide ""+ sum_(j > m) ("homogeneous polynomial of degree" j)(bold(f)(bold(z)) - bold(a)) \
+    &= bold(z) + (k + 1) bold(psi)_m (bold(z) - bold(a))\
+    &quad""+ ("degree" > m "homogeneous polynomials")(bold(z) - bold(a)).
   $
   Since $bold(f)_k (Omega) subset.eq Omega$ for any $k$, the sequence ${bold(f)_k}_(k in NN)$ is uniformly bounded on $Omega$. By Montel's Theorem (@thm:montelmultivar), there exists a subsequence ${bold(f)_(k_l)}_(l in NN)$ that converges locally uniformly to some holomorphic function $tilde(bold(f))$ by virtue of Weierstrass (@thm:weierstrassconvergencemultivar).
 
@@ -123,7 +127,7 @@ In preparation, we will introduce several relevant concepts.
   $
   is a nonzero constant by @prop:homogeneouspolynomialderivatives. Consequently,
   $
-    partial^(bold(alpha)) ("homogeneous polynomials of degree " > m)(bold(z) - bold(a))
+    partial^(bold(alpha)) ("homogeneous polynomials of degree" > m)(bold(z) - bold(a))
   $
   is a homogeneous polynomial with degree $gt.eq 1$ and thus vanishes as $bold(z) -> bold(a)$. Similarly, $bold(z) |-> bold(z)$ is homogeneous with degree $1 < m$ and thus $partial^(bold(alpha)) z$ vanishes. Therefore,
   $
@@ -182,28 +186,27 @@ In preparation, we will introduce several relevant concepts.
   $
   where each $g_p : U_0 -> CC$ and each $f_l : U_1 -> CC$ is holomorphic for $p = 1, dots, n_1$ and $l = 1, dots, n_2$. Then $h_l (bold(z)) = f_l (bold(g)(bold(z)))$ for each $l$. By the chain multivariable rule, the complex Jacobian of $bold(h)$ at $bold(z)$ is the $n_2 times n_0$ matrix
   $
-    bold(J)_(bold(h))
-    &= mat(
-      pdv(h_1, z_1), dots, pdv(h_1, z_(n_0));
-      dots.v, dots.down, dots.v;
-      pdv(h_(n_2), z_1), dots, pdv(h_(n_2), z_(n_0))
-    ) \\
-    &= mat(
-      sum_(p=1)^(n_1) pdv(f_1, g_p)(bold(g)) pdv(g_p, z_1), dots, sum_(p=1)^(n_1) pdv(f_1, g_p)(bold(g)) pdv(g_p, z_(n_0));
-      dots.v, dots.down, dots.v;
-      sum_(p=1)^(n_1) pdv(f_(n_2), g_p)(bold(g)) pdv(g_p, z_1), dots, sum_(p=1)^(n_1) pdv(f_(n_2), g_p)(bold(g)) pdv(g_p, z_(n_0))
-    ) \\
-    &= mat(
-      pdv(f_1, g_1)(bold(g)), dots, pdv(f_1, g_(n_1))(bold(g));
-      dots.v, dots.down, dots.v;
-      pdv(f_(n_2), g_1)(bold(g)), dots, pdv(f_(n_2), g_(n_1))(bold(g))
-    )
-    mat(
-      pdv(g_1, z_1), dots, pdv(g_1, z_(n_0));
-      dots.v, dots.down, dots.v;
-      pdv(g_(n_1), z_1), dots, pdv(g_(n_1), z_(n_0))
-    )
-    = bold(J)_(bold(f))(bold(g)) dot bold(J)_(bold(g)). #qedhere
+    bold(J)_(bold(h)) & = mat(
+                          pdv(h_1, z_1), dots, pdv(h_1, z_(n_0));
+                          dots.v, dots.down, dots.v;
+                          pdv(h_(n_2), z_1), dots, pdv(h_(n_2), z_(n_0))
+                        ) \
+                      & = mat(
+                          sum_(p=1)^(n_1) pdv(f_1, g_p)(bold(g)) pdv(g_p, z_1), dots, sum_(p=1)^(n_1) pdv(f_1, g_p)(bold(g)) pdv(g_p, z_(n_0));
+                          dots.v, dots.down, dots.v;
+                          sum_(p=1)^(n_1) pdv(f_(n_2), g_p)(bold(g)) pdv(g_p, z_1), dots, sum_(p=1)^(n_1) pdv(f_(n_2), g_p)(bold(g)) pdv(g_p, z_(n_0))
+                        ) \
+                      & = mat(
+                          pdv(f_1, g_1)(bold(g)), dots, pdv(f_1, g_(n_1))(bold(g));
+                          dots.v, dots.down, dots.v;
+                          pdv(f_(n_2), g_1)(bold(g)), dots, pdv(f_(n_2), g_(n_1))(bold(g))
+                        )
+                        mat(
+                          pdv(g_1, z_1), dots, pdv(g_1, z_(n_0));
+                          dots.v, dots.down, dots.v;
+                          pdv(g_(n_1), z_1), dots, pdv(g_(n_1), z_(n_0))
+                        )
+                        = bold(J)_(bold(f))(bold(g)) dot bold(J)_(bold(g)). #qedhere
   $
 ]
 
@@ -215,7 +218,8 @@ In preparation, we will introduce several relevant concepts.
   Let $bold(rho)_theta (bold(z)) = ee^(ii theta) bold(z)$ for all $theta in RR$ and suppose that $bold(phi) = bold(rho)_(-theta) compose bold(f)^(-1) compose bold(rho)_theta compose bold(f)$. By @prop:jacobianchainrule, we must have that
   $
     bold(J)_(bold(phi))(bold(z))
-    &= bold(J)_(bold(rho)_(-theta))(bold(f)^(-1) compose bold(rho)_theta compose bold(f)(bold(z))) dot bold(J)_(bold(rho)_(-theta) compose bold(f)^(-1))(bold(rho)_theta compose bold(f)(bold(z))) dot bold(J)_(bold(rho)_(-theta) compose bold(f)^(-1) compose bold(rho)_theta)(bold(f)(bold(z))) dot bold(J)_(bold(rho)_(-theta) compose bold(f)^(-1) compose bold(rho)_theta compose bold(f))(bold(z)) \
+    &= bold(J)_(bold(rho)_(-theta))(bold(f)^(-1) compose bold(rho)_theta compose bold(f)(bold(z))) dot bold(J)_(bold(rho)_(-theta) compose bold(f)^(-1))(bold(rho)_theta compose bold(f)(bold(z))) \
+    &quad""dot bold(J)_(bold(rho)_(-theta) compose bold(f)^(-1) compose bold(rho)_theta)(bold(f)(bold(z))) dot bold(J)_(bold(rho)_(-theta) compose bold(f)^(-1) compose bold(rho)_theta compose bold(f))(bold(z)) \
     bold(J)_(bold(phi))(bold(0))
     &= mat(
       ee^(-ii theta), dots, 0;
@@ -225,7 +229,8 @@ In preparation, we will introduce several relevant concepts.
       ee^(ii theta), dots, 0;
       dots.v, dots.down, dots.v;
       0, dots, ee^(ii theta)
-    ) dot bold(J)_(bold(f))(bold(0)) = ee^(-ii theta) ee^(ii theta) (bold(J)_(bold(f)^(-1)) dot bold(J)_(bold(f)))(bold(0)) = bold(I).
+    ) dot bold(J)_(bold(f))(bold(0)) \
+    &= ee^(-ii theta) ee^(ii theta) (bold(J)_(bold(f)^(-1)) dot bold(J)_(bold(f)))(bold(0)) = bold(I).
   $
   By @lem:multivarcartan1, $bold(phi)(bold(z)) equiv bold(z)$ on $Omega$. Hence, $bold(f) compose bold(rho)_theta = bold(rho)_theta compose bold(f)$ for all $theta in RR$. Together with @thm:taylorexpansionmultivariable, write
   $
@@ -239,9 +244,9 @@ In preparation, we will introduce several relevant concepts.
   $
     bold(rho)_theta compose bold(f)(bold(z)) = ee^(ii theta) sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) bold(z)^(bold(k)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) ee^(ii theta) bold(z)^(bold(k)).
   $
-  Hence, by the uniqueness of power series expansions, we must either have that $bold(a)_(bold(k)) = bold(0)$, $ee^(ii theta) equiv ee^(ii theta abs(bold(k)))$, or equivalently, that
+  Hence, by the uniqueness of power series expansions, we must either have that $bold(a)_(bold(k)) = bold(0)$, $ee^(ii theta) equiv ee^(ii theta abs(bold(k)))$, or equivalently, that $forall theta in RR$,
   $
-    abs(bold(k)) equiv 1 " mod " 2 uppi.
+    theta abs(bold(k)) equiv theta mod 2 uppi ==> abs(bold(k)) equiv 1 mod 2 uppi.
   $
   This is only possible when $abs(bold(k)) = 1$ by irrationality, and thus $bold(a)_(bold(k)) = bold(0)$ for all $abs(bold(k)) != 1$. Therefore, $bold(f)$ must be linear.
 ]
@@ -250,7 +255,7 @@ In preparation, we will introduce several relevant concepts.
   If $n = 1$, then $Omega = D(0, R)$ for some $R > 0$ and any automorphism $f$ with a fixed point $0$ is a rotation in the form of $z |-> ee^(ii theta) z$, hence linear, the effective statement of the Schwarz Lemma (@lem:schwarz).
 ]
 
-#theorem("The Holomorphic Automorphism Group on $DD^n$")[
+#theorem[The Holomorphic Automorphism Group on $DD^n$][
   The holomorphic automorphism group of the polydisk $DD^n$ consists solely of biholomorphisms in the form of
   $
     bold(z) = (z_1, dots, z_n) |-> bold(P)(ee^(ii theta_1) (z_1 - a_1) / (1 - overline(a_1) z_1), dots, ee^(ii theta_n) (z_n - a_n) / (1 - overline(a_n) z_n)),
@@ -267,9 +272,9 @@ In preparation, we will introduce several relevant concepts.
   $
   which implies $abs(zeta_(k,j)) <= 1$ for all $j, k in {1, dots, n}$ (for if $abs(zeta_(k,j)) > 1$, then choosing $z_j = 1 / abs(zeta_(k,j)) + epsilon$ with $0 < epsilon < 1 - 1 / abs(zeta_(k,j))$ and $z_l = 0$ for $l != j$ yields a contradiction).
 
-  For each $j in {1, dots, n}$, define the sequence ${bold(z)_(j,k)}_(k in NN)$ by
+  For each $j in {1, dots, n}$, define the sequence ${bold(z)_(j,k)}_(k in NN)$ for each $k in NN$ by
   $
-    bold(z)_(j,k) = (z_(j,k,1), dots, z_(j,k,n)) = ((1 - 1 / k) abs(zeta_(j,1)) / zeta_(j,1), dots, (1 - 1 / k) abs(zeta_(j,n)) / zeta_(j,n)) in DD^n quad forall k in NN,
+    bold(z)_(j,k) = (z_(j,k,1), dots, z_(j,k,n)) = ((1 - 1 / k) abs(zeta_(j,1)) / zeta_(j,1), dots, (1 - 1 / k) abs(zeta_(j,n)) / zeta_(j,n)) in DD^n,
   $
   where we informally let $abs(zeta_(j,i)) / zeta_(j,i) = 0$ if $zeta_(j,i) = 0$. Then, for all $j in {1, dots, n}$ and $k in NN$,
   $
@@ -357,7 +362,8 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
 #proposition[
   For any $a in DD$,
   $
-    bold(w) = (w_1, dots, w_n) = bold(phi)_a (bold(z)) = ((z_1 - a) / (1 - overline(a) z_1), z_2 (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1), z_3 (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1), dots, z_n (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1))
+    bold(w) &= (w_1, dots, w_n) = bold(phi)_a (bold(z)) \
+    &=((z_1 - a) / (1 - overline(a) z_1), z_2 (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1), z_3 (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1), dots, z_n (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1))
   $ <eq:unitballsimpleautomorphism_statement>
   lies in $Aut(B^n)$, where $bold(z) = (z_1, dots, z_n)$. Moreover, $bold(phi)_a^(-1) = bold(phi)_(-a)$.
 ] <prop:unitballsimpleautomorphism>
@@ -443,7 +449,7 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
   Conversely, if $H$ is divisible then the same argument applied to $phi^(-1) : H -> G$ shows $G$ is divisible. Therefore divisibility is preserved under group isomorphisms.
 ]
 
-#theorem("The Holomorphic Automorphism Group on $B^n$")[
+#theorem[The Holomorphic Automorphism Group on $B^n$][
   The holomorphic automorphism group $Aut(B^n)$ consists solely of biholomorphisms in the form of
   $
     bold(z) |-> bold(U)^(-1) bold(phi)_a compose bold(V) bold(z),
@@ -452,7 +458,7 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
 ] <thm:holomorphicautomorphismgrouponunitball>
 
 #proof[
-  Let $bold(f) in Aut(B^n)$ be arbitrary, and set $bold(alpha) = bold(f)(bold(0))$. Then there exists a unitary matrix $bold(U)$ such that $bold(U) bold(alpha) = (abs(alpha), 0, dots, 0)$.
+  Let $bold(f) in Aut(B^n)$ be arbitrary, and set $bold(alpha) = bold(f)(bold(0))$. Then there exists a unitary matrix $bold(U)$ such that $bold(U) bold(alpha) = (abs(bold(alpha)), 0, dots, 0)$.
 
   Now let $bold(phi)_(abs(bold(alpha)))$ be as in @prop:unitballsimpleautomorphism, mapping $(abs(alpha), 0, dots, 0)$ to $bold(0)$. Then, the map $bold(phi)_(abs(bold(alpha))) compose bold(U) bold(f) in Aut(B^n)$ fixes $bold(0)$, so by @prop:unitballautomorphismfixedpointatzero it is a unitary transformation, say $bold(V)$. Therefore,
   $
