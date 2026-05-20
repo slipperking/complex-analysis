@@ -124,11 +124,14 @@ Obviously, a substitution of $z = zeta - a$ where $a in CC$ translates the disk 
 ] <thm:uniformlimit>
 
 #proof[
-  By continuity, $forall n in NN$, $forall z_0 in U$, $forall epsilon > 0$, $exists delta > 0$ such that $forall z in D(z_0, delta) subset.eq U$, $abs(f_n (z) - f_n (z_0)) < epsilon / 3$. Additionally, $exists N in NN$ such that $forall n > N$, $forall z in U$, $abs(f_n (z) - f(z)) < epsilon / 3$. It follows that $abs(f_n (z_0) - f(z_0)) < epsilon / 3$. By the triangle inequality,
+  Fix $epsilon>0$ and $z_0 in U$. By uniform convergence, $exists n in NN$ such that $forall z in U$, $abs(f_n (z) - f(z)) < epsilon / 3$ and $abs(f_n (z_0) - f(z_0)) < epsilon / 3$.
+  By continuity, $exists delta > 0$ such that $forall z in D(z_0, delta) inter U subset.eq U$, $abs(f_n (z) - f_n (z_0)) < epsilon / 3$.
+
+  By the triangle inequality,
   $
-    abs(f(z) - f(z_0)) <= abs(f(z) - f_n (z)) + abs(f_n (z) - f_n (z_0)) + abs(f_n (z_0) - f(z_0)) < epsilon
+    abs(f(z) - f(z_0)) <= abs(f(z) - f_n (z)) + abs(f_n (z) - f_n (z_0)) + abs(f_n (z_0) - f(z_0)) < epsilon.
   $
-  for all $z in D(z_0, delta)$. Then the continuity of $f$ is satisfied.
+  for all $z in D(z_0, delta) inter U$. Then the continuity of $f$ is satisfied.
 ]
 
 Lastly, the sufficient criteria to pass a limit through an integral:
