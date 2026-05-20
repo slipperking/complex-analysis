@@ -1,5 +1,5 @@
-// sections/multivariable/index.typ
 #import "/lib.typ": *
+
 = A Glimpse into the Function Theory of Multiple Complex Variables<sec:multivariatecomplexanalysis>
 As in the single-variable case, there exist natural extensions of the definitions of holomorphy and of derivatives, as well as direct analogs of integral theorems.
 
@@ -19,6 +19,6 @@ Whereas the efforts of mathematicians of over two centuries give rise to the dev
 #chapter-section("topological_equiv_biholomorphic_equiv")[
   #include "topological_equiv_biholomorphic_equiv/index.typ"
 ]
-// #chapter-section("hartogs_phenomenon")[
-//   #include "hartogs_phenomenon/index.typ"
-// ]
+#chapter-section("hartogs_phenomenon")[
+  #include "hartogs_phenomenon/index.typ"
+]

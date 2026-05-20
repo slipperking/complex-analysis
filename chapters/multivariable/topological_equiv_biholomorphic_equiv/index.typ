@@ -67,7 +67,7 @@
   $
     bold(P)_sigma bold(D) bold(P)_sigma bold(D) = bold(P)_tau ==> bold(P)_sigma bold(P)_sigma bold(D)'bold(D) = bold(P)_tau ==> bold(P)_sigma^2 bold(D)'' = bold(P)_tau,
   $
-  where $bold(D)'$ and $bold(D)''$ are diagonal matrices, where the former existence are given by @lem:monomial_matrix_diagonal_multiplication_commute. Thus, $bold(P)_sigma^2 = bold(P)_tau$ (and $bold(D)'' = bold(I)$) since their permutation parts must match. This is an impossibility since $bold(P)_sigma^2$ corresponds to an even permutation, while $bold(P)_tau$ corresponds to an odd permutation. Thus, the unitary monomial group is not divisible.
+  where $bold(D)'$ and $bold(D)''$ are diagonal matrices, where the former existence is given by @lem:monomial_matrix_diagonal_multiplication_commute. Thus, $bold(P)_sigma^2 = bold(P)_tau$ (and $bold(D)'' = bold(I)$) since their permutation parts must match. This is an impossibility since $bold(P)_sigma^2$ corresponds to an even permutation, while $bold(P)_tau$ corresponds to an odd permutation. Thus, the unitary monomial group is not divisible.
 
   By @prop:groupdivisibilitypreservedunderisomorphisms, the two groups cannot be isomorphic to each other.
 

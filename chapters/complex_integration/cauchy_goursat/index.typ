@@ -499,14 +499,9 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
             line((M.at(0) + numoffset, 0), (M.at(0) + numoffset, maxy), name: "left_vertical_test_line")
             line((N.at(0) - numoffset, 0), (N.at(0) - numoffset, maxy), name: "right_vertical_test_line")
           })
+
           let sort = (ctx, intersections) => {
-            let new_intersections = intersections
-              .map(intersection => {
-                if (0 < intersection.at(1) and intersection.at(1) < maxy) { return intersection }
-                return
-              })
-              .filter(element => element != none)
-            return new_intersections
+            intersections.map(i => if (0 < i.at(1) and i.at(1) < maxy) { i }).filter(e => e != none)
           }
 
           intersections("left_vertical_intersections_MN", "left_vertical_test_line", "MN", sort: sort)
@@ -514,47 +509,42 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
           intersections("left_vertical_intersections_PQ", "left_vertical_test_line", "PQ", sort: sort)
           intersections("right_vertical_intersections_PQ", "right_vertical_test_line", "PQ", sort: sort)
 
-          get-ctx(ctx => {
-            let (ctx, M1, N1, P1, Q1) = cetz.coordinate.resolve(
-              ctx,
-              "left_vertical_intersections_MN.0",
-              "right_vertical_intersections_MN.0",
-              "left_vertical_intersections_PQ.0",
-              "right_vertical_intersections_PQ.0",
-            )
+          let M1 = "left_vertical_intersections_MN.0"
+          let N1 = "right_vertical_intersections_MN.0"
+          let P1 = "left_vertical_intersections_PQ.0"
+          let Q1 = "right_vertical_intersections_PQ.0"
 
-            let M1p = cvector.add(M1, (0, primeoffset))
-            let N1p = cvector.add(N1, (0, primeoffset))
-            let P1p = cvector.add(P1, (0, -primeoffset))
-            let Q1p = cvector.add(Q1, (0, -primeoffset))
+          let M1p = (rel: (0, primeoffset), to: M1)
+          let N1p = (rel: (0, primeoffset), to: N1)
+          let P1p = (rel: (0, -primeoffset), to: P1)
+          let Q1p = (rel: (0, -primeoffset), to: Q1)
 
-            line((M1.at(0), 0), M1, stroke: (thickness: 0.5pt, dash: "dashed"))
-            line((N1.at(0), 0), N1, stroke: (thickness: 0.5pt, dash: "dashed"))
+          line((M1, "|-", (0, 0)), M1, stroke: (thickness: 0.5pt, dash: "dashed"))
+          line((N1, "|-", (0, 0)), N1, stroke: (thickness: 0.5pt, dash: "dashed"))
 
-            line(M1, P1, stroke: 0.5pt, mark: arrowed_mark_start)
-            line(N1, Q1, stroke: 0.5pt, mark: arrowed_mark_end)
+          line(M, (M, "|-", (0, 0)), stroke: (thickness: 0.5pt, dash: "dashed"))
+          line(N, (N, "|-", (0, 0)), stroke: (thickness: 0.5pt, dash: "dashed"))
 
-            line(M, (M.at(0), 0), stroke: (thickness: 0.5pt, dash: "dashed"))
-            line(N, (N.at(0), 0), stroke: (thickness: 0.5pt, dash: "dashed"))
+          line(M1, P1, stroke: 0.5pt, mark: arrowed_mark_start)
+          line(N1, Q1, stroke: 0.5pt, mark: arrowed_mark_end)
 
-            let content_groups = (
-              ((M, M1, N1, N), ([$M$], [$M_1$], [$N_1$], [$N$]), 215deg),
-              ((Mp, M1p, N1p, Np), ([$M'$], [$M'_1$], [$N'_1$], [$N'$]), 215deg),
-              ((P, P1, Q1, Q), ([$P$], [$P_1$], [$Q_1$], [$Q$]), 210deg),
-              ((Pp, P1p, Q1p, Qp), ([$P'$], [$P'_1$], [$Q'_1$], [$Q'$]), 210deg),
-            )
-            let anchors_list = ("east", none, "north-east", "west")
-            for (vars, labels, second_anchor) in content_groups {
-              for i in range(4) {
-                let anchor = if i == 1 { second_anchor } else { anchors_list.at(i) }
-                content(vars.at(i), labels.at(i), anchor: anchor, padding: .05cm)
-                for j in range(4) { circle(vars.at(j), radius: 0.04cm, fill: black) }
-              }
+          let content_groups = (
+            ((M, M1, N1, N), ([$M$], [$M_1$], [$N_1$], [$N$]), 215deg),
+            ((Mp, M1p, N1p, Np), ([$M'$], [$M'_1$], [$N'_1$], [$N'$]), 215deg),
+            ((P, P1, Q1, Q), ([$P$], [$P_1$], [$Q_1$], [$Q$]), 210deg),
+            ((Pp, P1p, Q1p, Qp), ([$P'$], [$P'_1$], [$Q'_1$], [$Q'$]), 210deg),
+          )
+          let anchors_list = ("east", none, "north-east", "west")
+          for (vars, labels, second_anchor) in content_groups {
+            for i in range(4) {
+              let anchor = if i == 1 { second_anchor } else { anchors_list.at(i) }
+              content(vars.at(i), labels.at(i), anchor: anchor, padding: .05cm)
+              for j in range(4) { circle(vars.at(j), radius: 0.04cm, fill: black) }
             }
-            for vars in ((M, Mp, "east"), (N, Np, "west"), (P, Pp, "east"), (Q, Qp, "west")) {
-              content((vars.at(0), 50%, vars.at(1)), [$eta$], anchor: vars.at(2), padding: .05cm)
-            }
-          })
+          }
+          for vars in ((M, Mp, "east"), (N, Np, "west"), (P, Pp, "east"), (Q, Qp, "west")) {
+            content((vars.at(0), 50%, vars.at(1)), [$eta$], anchor: vars.at(2), padding: .05cm)
+          }
 
           content((M.at(0), 0), [$a$], anchor: "north", padding: .1cm)
           content((N.at(0), 0), [$b$], anchor: "north", padding: .1cm)

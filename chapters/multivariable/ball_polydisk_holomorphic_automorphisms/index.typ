@@ -137,7 +137,7 @@ In preparation, we will introduce several relevant concepts.
 ]
 
 #definition("Reinhardt Domain")[
-  An open domain $Omega subset.eq CC^n$ is a _Reinhardt domain_ centered at $bold(a) = (a_1, dots, a_n) in CC^n$ iff $forall bold(zeta) = (zeta_1, dots, zeta_n) in Omega$,
+  An open connected domain $Omega subset.eq CC^n$ is a _Reinhardt domain_ centered at $bold(a) = (a_1, dots, a_n) in CC^n$ iff $forall bold(zeta) = (zeta_1, dots, zeta_n) in Omega$,
   $
     {(z_1, dots, z_n) in CC^n : abs(z_k - a_k) = abs(zeta_k - a_k), 1 <= k <= n}
   $
@@ -153,7 +153,7 @@ In preparation, we will introduce several relevant concepts.
 ] <def:completereinhardtdomain>
 
 #definition("Circular Domain")[
-  An open domain $Omega subset.eq CC^n$ is a _circular domain_ centered at $bold(a) in CC^n$ iff $forall bold(zeta) in Omega$,
+  An open connected domain $Omega subset.eq CC^n$ is a _circular domain_ centered at $bold(a) in CC^n$ iff $forall bold(zeta) in Omega$,
   $
     {bold(a) + ee^(ii theta) (bold(zeta) - bold(a)) : 0 <= theta < 2 uppi}
   $
