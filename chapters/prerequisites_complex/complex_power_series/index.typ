@@ -60,31 +60,32 @@ Let $D(a, r) = B^1(a, r) = {z in CC : abs(z - a) < r}$ denote the _open disk_ ce
 #theorem("Abel's Theorem")[
   For a power series $f(z) = sum_(n = 0)^oo a_n z^n$, there exists a constant $R in RR_(>= 0) union {oo}$, known as the _radius of convergence_ such that:
 
-  1. $f$ absolutely converges on $D(0, R)$, and $forall 0 <= rho < R$, uniformly converges on $overline(D(0, rho))$.
-  2. $f(z)$ diverges when $abs(z) > R$.
-  3. $f$ is holomorphic over $D(0, R)$ and $f'(z)$ can be obtained by termwise differentiation, or $f'(z) = sum_(n = 1)^oo n a_n z^(n - 1)$, which also has a convergence radius of $R$.
-] <thm:abelradius>
+  1. $f$ absolutely converges on $D(0, R)$, and $forall 0 <= rho < R$, uniformly converges on $overline(D(0, rho))$. <itm:abels_theorem_radius_convergence>
+  2. $f(z)$ diverges when $abs(z) > R$. <itm:abels_theorem_radius_divergence>
+  3. $f$ is holomorphic over $D(0, R)$ and $f'(z)$ can be obtained by termwise differentiation, or $f'(z) = sum_(n = 1)^oo n a_n z^(n - 1)$, which also has a convergence radius of $R$. <itm:abels_theorem_radius_differentiation>
+] <thm:abels_theorem_radius>
 
 The disk $abs(z) < R$ is known as the _disk of convergence_, a direct generalization of the _interval of convergence_ for real series. There are many ways to determine the radius of convergence:
 
 #theorem[Cauchy--Hadamard][
   The radius of convergence of the power series in the form $sum_(n = 0)^oo a_n z^n$ can be determined by
-  $ R = 1 / (limsup_(n -> oo)root(n, abs(a_n))). $ <eq:cauchyhadamard>
-] <thm:cauchyhadamard>
+  $ R = 1 / (limsup_(n -> oo)root(n, abs(a_n))). $ <eq:cauchy_hadamard>
+] <thm:cauchy_hadamard>
 
 Of course, a convergence radius of $0$ implies that the series is divergent everywhere except for possibly at $0$, and a convergence radius of $oo$ means that the series absolutely converges everywhere.
 
-#proof[We will prove that the value in @eq:cauchyhadamard satisfies the criteria in @thm:abelradius.
+#proof[of @thm:abels_theorem_radius and @thm:cauchy_hadamard][
+  We will prove that the value in @eq:cauchy_hadamard satisfies the criteria in @thm:abels_theorem_radius.
 
-  Assume $abs(z) < R$. Then $forall rho in (abs(z), R)$, and consequently, $1 / rho > 1 / R$. By @def:limsup and @eq:cauchyhadamard, $exists N in NN$ such that $forall n > N$, $root(n, abs(a_n)) < 1 / rho$ and $abs(a_n) < 1 / rho^n$. It follows that $abs(a_n z^n) < abs(z)^n / rho^n < 1$ for all $n > N$. Then $sum_(n = 0)^oo abs(a_n z^n)$ converges.
+  Assume $abs(z) < R$. Then $forall rho in (abs(z), R)$, and consequently, $1 / rho > 1 / R$. By @def:limsup and @eq:cauchy_hadamard, $exists N in NN$ such that $forall n > N$, $root(n, abs(a_n)) < 1 / rho$ and $abs(a_n) < 1 / rho^n$. It follows that $abs(a_n z^n) < abs(z)^n / rho^n < 1$ for all $n > N$. Then $sum_(n = 0)^oo abs(a_n z^n)$ converges.
 
-  Let $rho' in (rho, R)$. Similarly, $exists N' in NN$ such that $forall n > N'$, $root(n, abs(a_n)) < 1 / rho'$, and $abs(a_n) < 1 / rho'^n$. Then $abs(a_n z^n) < abs(a_n rho^n) < rho^n / rho'^n$. By the Weierstrass $M$-Test (@thm:weierstrassmtest), $sum_(n = 0)^oo abs(a_n z^n)$ is uniformly bounded for $n > N'$ by the convergent series $sum_(n = 0)^oo a_n rho^n$, and thus uniformly converges on $abs(z) < rho$. This proves part 1.
+  Let $rho' in (rho, R)$. Similarly, $exists N' in NN$ such that $forall n > N'$, $root(n, abs(a_n)) < 1 / rho'$, and $abs(a_n) < 1 / rho'^n$. Then $abs(a_n z^n) < abs(a_n rho^n) < rho^n / rho'^n$. By the Weierstrass $M$-Test (@thm:weierstrassmtest), $sum_(n = 0)^oo abs(a_n z^n)$ is uniformly bounded for $n > N'$ by the convergent series $sum_(n = 0)^oo a_n rho^n$, and thus uniformly converges on $abs(z) < rho$. This proves @itm:abels_theorem_radius_convergence.
 
   Assume that $abs(z) > R$. For all $rho in (R, abs(z))$, $1 / rho < 1 / R$. By @def:limsup, $forall N in NN$, $exists n_N > N$ such that $root(n_N, abs(a_(n_N))) > 1 / rho$. It follows that $abs(a_(n_N) z^(n_N)) > abs(z^(n_N)) / rho^(n_N) > 1$. Since $forall N in NN$,
   $ abs(sum_(k = 0)^(n_N) a_k z^k - sum_(k = 0)^(n_N - 1) a_k z^k) > 1, $
-  by the Cauchy Criterion (@thm:cauchycriterionsequenceconvergence), $sum_(n = 0)^oo a_n z^n$ is divergent. Thus, part 2 is satisfied.
+  by the Cauchy Criterion (@thm:cauchycriterionsequenceconvergence), $sum_(n = 0)^oo a_n z^n$ is divergent. Thus, @itm:abels_theorem_radius_divergence is satisfied.
 
-  To prove part 3, first observe that $sum_(n = 1)^oo n a_n z^n$ and $sum_(n = 1)^oo a_n z^n$ have the same convergence radius since $limsup_(n -> oo) root(n, n) = 1$. For $z in D(0, R)$, let $f(z) = S_n (z) + R_n (z)$, where
+  To prove @itm:abels_theorem_radius_differentiation, first observe that $sum_(n = 1)^oo n a_n z^n$ and $sum_(n = 1)^oo a_n z^n$ have the same convergence radius since $limsup_(n -> oo) root(n, n) = 1$. For $z in D(0, R)$, let $f(z) = S_n (z) + R_n (z)$, where
   $ S_n (z) = sum_(k = 0)^(n - 1) a_k z^k, quad R_n (z) = sum_(k = n)^oo a_k z^k. $
 
   Let
@@ -97,7 +98,7 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
   $
     (f(z) - f(z_0)) / (z - z_0) - f_1 (z) & = [(S_n (z) - S_n (z_0)) / (z - z_0) - S'_n (z)] \
                                           & + S'_n (z) - f_1 (z) + (R_n (z) - R_n (z_0)) / (z - z_0).
-  $<eq:abelradius_differentiationintermediate>
+  $<eq:abels_theorem_radius_differentiationintermediate>
 
   Since $S'_n (z) -> f_1 (z)$ as $n -> oo$, it follows that $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $abs(S'_n (z) - f_1 (z)) < epsilon / 3$. Since
   $
@@ -112,9 +113,9 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
   Finally, for a fixed $n > max(N, N')$, $exists delta > 0$ such that $forall z in D(z_0, delta) without {z_0}$,
   $ abs((S_n (z) - S_n (z_0)) / (z - z_0) - S'_n (z)) < epsilon / 3. $
 
-  From @eq:abelradius_differentiationintermediate, we get
+  From @eq:abels_theorem_radius_differentiationintermediate, we get
   $ abs((f(z) - f(z_0)) / (z - z_0) - f_1 (z)) < epsilon, $
-  confirming part 3.
+  confirming @itm:abels_theorem_radius_differentiation.
 ]
 
 Obviously, a substitution of $z = zeta - a$ where $a in CC$ translates the disk of convergence to $D(a, R)$. The subsequent results on uniform convergence hold for complex functions:

@@ -64,7 +64,7 @@ $ <eq:laurentseriesnegativeexponents>
 $
   R = 1 / limsup_(n -> oo) root(n, abs(c_n))
 $
-by the Cauchy--Hadamard Theorem (@thm:cauchyhadamard). It follows that $phi$ is holomorphic on $D(a, R)$. Let $zeta = (z - a)^(-1)$. Then @eq:laurentseriesnegativeexponents becomes
+by the Cauchy--Hadamard Theorem (@thm:cauchy_hadamard). It follows that $phi$ is holomorphic on $D(a, R)$. Let $zeta = (z - a)^(-1)$. Then @eq:laurentseriesnegativeexponents becomes
 $
   sum_(n = 1)^oo c_(-n) zeta^n.
 $
@@ -90,7 +90,7 @@ diverges on all of $partial DD$, while
 $
   sum_(n = -oo \ n != 0)^oo z^n / n
 $
-converges (conditionally) on all of $partial DD without {1}$ and diverges at $z = 1$. If $r > R$, then the series is divergent on all of $CC$. The region $D(a, R) without overline(D(a, r))$ is known as the _annulus of convergence_. $f(z)$ in @eq:laurentseries is holomorphic over this annulus. The series $phi(z)$ is known as the _holomorphic part_ of $f(z)$, and $psi(z)$ is known as the _principal part_ of the Laurent series. The properties of the convergence disk in Abel's Theorem (@thm:abelradius) can be generalized to Laurent series. In other words, $f$ is absolutely convergent on the annulus and is uniformly convergent on every compact subset of it.
+converges (conditionally) on all of $partial DD without {1}$ and diverges at $z = 1$. If $r > R$, then the series is divergent on all of $CC$. The region $D(a, R) without overline(D(a, r))$ is known as the _annulus of convergence_. $f(z)$ in @eq:laurentseries is holomorphic over this annulus. The series $phi(z)$ is known as the _holomorphic part_ of $f(z)$, and $psi(z)$ is known as the _principal part_ of the Laurent series. The properties of the convergence disk in Abel's Theorem (@thm:abels_theorem_radius) can be generalized to Laurent series. In other words, $f$ is absolutely convergent on the annulus and is uniformly convergent on every compact subset of it.
 
 #theorem[
   Let $V = {z in CC : r < abs(z - a) < R}$ for some $0 <= r < R <= oo$. Let $f$ be holomorphic on $V$. Then $f$ has the unique _Laurent expansion_

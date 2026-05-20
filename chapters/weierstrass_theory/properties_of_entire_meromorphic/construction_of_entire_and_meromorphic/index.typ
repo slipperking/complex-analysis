@@ -305,7 +305,7 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
       psi_n (z) = sum_(k = 0)^oo (psi_n^((k))(0)) / (k!) z^k.
     $
 
-    By @thm:abelradius, this series is uniformly convergent on $D(0, abs(a_n / 2))$. Hence, $exists lambda_n in NN$ such that
+    By @thm:abels_theorem_radius, this series is uniformly convergent on $D(0, abs(a_n / 2))$. Hence, $exists lambda_n in NN$ such that
     $
       abs(psi_n (z) - sum_(k = 0)^(lambda_n) (psi_n^((k))(0)) / (k!) z^k) < epsilon_n.
     $

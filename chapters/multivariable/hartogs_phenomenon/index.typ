@@ -17,7 +17,7 @@ The general study of complex function theory in multiple variables is made pract
 Only certain cases of @thm:hartogsextensiontheorem are proved here.
 
 #proposition[
-  Let $Omega subset.eq CC^n$ be a Reinhardt domain centered at $bold(0)$ and let $f : Omega -> CC$ be holomorphic. Then $f$ admits the unique Laurent expansion
+  Let $Omega subset.eq CC^n$ be a Reinhardt domain centered at $bold(0)$. Let $f : Omega -> CC$ be holomorphic. Then $f$ admits the unique Laurent expansion
   $
     f(bold(z)) = sum_(bold(k) in ZZ^n) a_(bold(k)) bold(z)^(bold(k)), quad a_(bold(k)) in CC,
   $ <eq:reinhardtlaurentexpansion>
@@ -29,7 +29,7 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
   $
     z_j = w_j ee^(ii theta_j), quad j in NN_(<= n)
   $
-  lies in $Omega$; moreover, the set of all such points, $K$, is compact in $Omega$. Assuming that a Laurent expansion exists and converges uniformly on this compact set, termwise integration gives
+  lies in $Omega$; moreover, the set of all such points, $K$, is compact in $Omega$. Assuming that a Laurent expansion exists and converges uniformly on this compact set, termwise integration on both sides of $(f(bold(z)))/ (bold(z)^(bold(k) + (1, dots, 1))) = sum_(bold(j) in ZZ^n) a_(bold(j)) bold(z)^(bold(j) - bold(k) - (1, dots, 1))$ gives
   $
     a_(bold(k))
     &= (1) / ((2 uppi ii)^n) integral_K (f(bold(z))) / (bold(z)^(bold(k) + (1, dots, 1))) dif bold(z) \
