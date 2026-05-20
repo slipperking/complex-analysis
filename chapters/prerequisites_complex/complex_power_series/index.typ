@@ -67,9 +67,9 @@ Let $D(a, r) = B^1(a, r) = {z in CC : abs(z - a) < r}$ denote the _open disk_ ce
 
 The disk $abs(z) < R$ is known as the _disk of convergence_, a direct generalization of the _interval of convergence_ for real series. There are many ways to determine the radius of convergence:
 
-#theorem("Cauchy" + sym.dash.en + "Hadamard")[
+#theorem[Cauchy--Hadamard][
   The radius of convergence of the power series in the form $sum_(n = 0)^oo a_n z^n$ can be determined by
-  $ R = 1 / (limsup_(n -> oo) root(n, abs(a_n))). $ <eq:cauchyhadamard>
+  $ R = 1 / (limsup_(n -> oo)root(n, abs(a_n))). $ <eq:cauchyhadamard>
 ] <thm:cauchyhadamard>
 
 Of course, a convergence radius of $0$ implies that the series is divergent everywhere except for possibly at $0$, and a convergence radius of $oo$ means that the series absolutely converges everywhere.
@@ -120,7 +120,7 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
 Obviously, a substitution of $z = zeta - a$ where $a in CC$ translates the disk of convergence to $D(a, R)$. The subsequent results on uniform convergence hold for complex functions:
 
 #theorem("Uniform Limit")[
-  Let ${f_n (z)}$ be continuous on $U subset.eq CC$ and uniformly convergent to $f(z)$. Then $f(z)$ is continuous on $U$.
+  Let ${f_n (z)}_n$ be a sequence of continuous functions on $U subset.eq CC$ and uniformly convergent to $f(z)$. Then $f(z)$ is continuous on $U$.
 ] <thm:uniformlimit>
 
 #proof[

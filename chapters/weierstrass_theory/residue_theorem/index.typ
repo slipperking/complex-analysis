@@ -6,11 +6,11 @@ After Riemann and Weierstrass refined the understanding of analytic functions an
 #definition("Residue")[
   For some $r in RR_(>0)$, $a in U$, suppose $f : D^*(a, r) -> CC$ is holomorphic. Then the _residue_ of $f$ at $a$, denoted by $Res_(z=a) f(z)$ or $Res(f, a)$, is equal to
   $
-    Res_(z=a) f(z) = 1 / (2 uppi ii) oint_(partial D(a, rho)) f(z) dz,
+    Res_(z=a) f(z) = 1 / (2 uppi ii) integral.cont_(partial D(a, rho)) f(z) dz,
   $<eq:residue>
   where $0 < rho < r$ is arbitrary. Since $f$ has a Laurent expansion at $a$, being
   $
-    sum_(n=-infinity)^infinity c_n (z - a)^n, quad c_n = 1 / (2 uppi ii) oint_(partial D(a, rho)) (f(z) dz) / (z - a)^(n+1),
+    sum_(n=-infinity)^infinity c_n (z - a)^n, quad c_n = 1 / (2 uppi ii) integral.cont_(partial D(a, rho)) (f(z) dz) / (z - a)^(n+1),
   $
   we get that the residue of $f$ at $a$ is equal to the first term $c_(-1)$ of the principal part of its Laurent expansion.
 ]<def:residue>
@@ -37,13 +37,13 @@ the residue at $z = infinity$ is equal to $-c_(-1)$. We will later explain the r
 
 #theorem("Residue Theorem")[
   Let $U subset CC$ be an open set with a simple closed boundary curve $partial U$. Suppose ${z_n} subset U$ is a finite set and $f(z)$ is holomorphic on $U without {z_n}$ and continuous on $overline(U) without {z_n}$. Then,
-  $ oint_(partial U) f(z) dz = 2 uppi ii sum_(k=1)^n Res_(z=z_k) f(z) $
+  $ integral.cont_(partial U) f(z) dz = 2 uppi ii sum_(k=1)^n Res_(z=z_k) f(z) $
 ]<thm:residuethm>
 
 #proof[
   Since $U$ is open, there exists a small disk centered at each isolated singularity $z_k$ of radii $delta_k$. By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem), we get that
   $ integral_(union.big_(k=1)^n D(z_k, delta_k)^- union partial U^+) f(z) dz = 0. $
-  From rearrangement, $oint_(partial U) f(z) dz = sum_(k=1)^n oint_(partial D(z_k, delta_k)) f(z) dz$, and the conclusion follows.
+  From rearrangement, $integral.cont_(partial U) f(z) dz = sum_(k=1)^n integral.cont_(partial D(z_k, delta_k)) f(z) dz$, and the conclusion follows.
 ]
 
 This result itself is fairly trivial. Now we will explain the significance of the residue at infinity.
@@ -55,7 +55,7 @@ This result itself is fairly trivial. Now we will explain the significance of th
 
 #proof[
   Let $R > max_(j in NN_(lt.eq n)) abs(z_n)$ be arbitrary. By the Residue Theorem (@thm:residuethm),
-  $ -Res_(z=infinity) f(z) = 1 / (2 uppi ii) oint_(partial D(0,R)) f(z) dz = sum_(k=1)^n Res_(z=z_k) f(z) $
+  $ -Res_(z=infinity) f(z) = 1 / (2 uppi ii) integral.cont_(partial D(0,R)) f(z) dz = sum_(k=1)^n Res_(z=z_k) f(z) $
   as desired. This is merely a restatement of @thm:residuethm.
 ]
 
@@ -177,7 +177,7 @@ There is not a directly trivial reason for the definition of the residue at $inf
 However, if we take a neighborhood of an arbitrary point in $CC$ on the Riemann sphere and traverse its boundary clockwise (from the perspective of outside the sphere), its projection onto $CC$ will be counterclockwise (@fig:stereographicprojectionofneighborhood). However, the boundary of a neighborhood of $infinity$ in $S^2$ will have a clockwise projection (hence the difference in orientation). We define its equality with the residue of $-(f(1\/zeta)) / zeta^2$ at $zeta = 0$, rather than $f(1\/zeta)$, because we compose the differential form $f(z) dz$ with the inversion, as opposed to $f(z)$.
 
 For any closed rectifiable curve $gamma subset U$ (here we are not bound under the assumption of simpleness), the Residue Theorem can be generalized into:
-$ oint_gamma f(z) dz = 2 uppi ii sum_k Ind_gamma (z_k) Res_(z=z_k) f(z) $
+$ integral.cont_gamma f(z) dz = 2 uppi ii sum_k Ind_gamma (z_k) Res_(z=z_k) f(z) $
 where $z_k$ are the singularities of $f$ in $U$ and $Ind_gamma$ is the winding index.
 
 Residues are extremely important as they allow for simple evaluation of definite (most commonly improper) real-valued integrals. This is because oftentimes, residues at poles are generally easy to calculate and have an integral representation. We can integrate over a contour (a smooth closed curve) that contains the important part of the real interval. Oftentimes this is the most non-trivial step.
@@ -245,7 +245,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
   The singularity at $z = -ii$ is not relevant, as it is not enclosed by the contour. By the Residue Theorem (@thm:residuethm), we have
   $
-    oint_gamma 1 / (z^2+1)^(n+1) dz
+    integral.cont_gamma 1 / (z^2+1)^(n+1) dz
     &= integral_(-R)^R 1 / (x^2+1)^(n+1) dx + integral_0^uppi (R ii) / (R^2 ee^(2 ii theta) + 1)^(n+1) ee^(ii theta) dif theta \
     &= 2 uppi ii Res_(z=ii) 1 / (z^2+1)^(n+1) = ((2n)! uppi) / (2^(2n) (n!)^2).
   $
@@ -256,7 +256,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   which is integrable over $[0, uppi]$, and we can commute the limit with the integral. Therefore, we have
   $
     integral_(-infinity)^infinity 1 / (x^2+1)^(n+1) dx
-    &= lim_(R -> infinity) oint_gamma 1 / (z^2+1)^(n+1) dz \
+    &= lim_(R -> infinity) integral.cont_gamma 1 / (z^2+1)^(n+1) dz \
     &quad - integral_0^uppi lim_(R -> infinity) (R ii) / (R^2 ee^(2 ii theta) + 1)^(n+1) ee^(ii theta) dif theta = ((2n)! uppi) / (2^(2n) (n!)^2). #qedhere
   $
 ]
@@ -320,7 +320,7 @@ Residues are extremely important as they allow for simple evaluation of definite
 
   By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem), we have that
   $
-    oint_gamma f(z) dz = integral_(C_R) f(z) dz + integral_(-R)^(-epsilon) f(z) dz + integral_(C_epsilon) f(z) dz + integral_epsilon^R f(z) dz = 0.
+    integral.cont_gamma f(z) dz = integral_(C_R) f(z) dz + integral_(-R)^(-epsilon) f(z) dz + integral_(C_epsilon) f(z) dz + integral_epsilon^R f(z) dz = 0.
   $
   We will now analyze each integral. The first integral is
   $
@@ -442,7 +442,7 @@ Residues are extremely important as they allow for simple evaluation of definite
 #proof[
   Let $z = ee^(ii theta)$. Consequently, we have $cos theta = (z + z^(-1)) / 2$, $sin theta = (z - z^(-1)) / (2 ii)$, and $dz = ii ee^(ii theta) dif theta$, implying that $dif theta = dz / (ii z)$. Therefore, by the Residue Theorem (@thm:residuethm), letting $f(z) = 1 / (ii z) Phi((z + z^(-1)) / 2, (z - z^(-1)) / (2 ii))$, we have
   $
-    integral_0^(2 uppi) Phi(cos theta, sin theta) dif theta = oint_(partial DD) f(z) dz = 2 uppi ii sum_(k=1)^n Res_(z=z_k) f(z),
+    integral_0^(2 uppi) Phi(cos theta, sin theta) dif theta = integral.cont_(partial DD) f(z) dz = 2 uppi ii sum_(k=1)^n Res_(z=z_k) f(z),
   $
   where $z_k$ where $k = 1, dots, n$ are the isolated singularities of $f$ in $DD$.
 ]
@@ -713,7 +713,7 @@ In the case that a branch point singularity is present on the contour, we may at
   $ Gamma = {x in RR : -R lt.eq x lt.eq R}, quad C_R = {R ee^(ii theta) : 0 lt.eq theta lt.eq uppi} $
   and $R > 2$, and let $f(z) = Log(z + ii) / (z^2+1)$, where the branch for $Log$ is chosen to satisfy $[0, uppi] subset Im log(CC^*)$, such as the principal branch. The only singularity of $f$ in the upper half plane is a simple pole at $z = ii$. By the Residue Theorem (@thm:residuethm), we have
   $
-    lim_(R -> infinity) oint_gamma f(z) dz = lim_(R -> infinity) (integral_Gamma + integral_(C_R)) f(z) dz = 2 uppi ii Res_(z=ii) f(z).
+    lim_(R -> infinity) integral.cont_gamma f(z) dz = lim_(R -> infinity) (integral_Gamma + integral_(C_R)) f(z) dz = 2 uppi ii Res_(z=ii) f(z).
   $
   By @eq:residueatpole, we have
   $

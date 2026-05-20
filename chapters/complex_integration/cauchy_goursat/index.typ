@@ -74,13 +74,13 @@ Analogous to the real case, a 0-form is defined as a scalar-valued function in t
   From @eq:complex_green_real_and_complex_dx_dy_intermediate, we can apply @thm:real_green. For the real component of $omega$, we obtain
 
   $
-    oint_(partial U)(xi_1+xi_2)dx+(eta_2-eta_1)dy=integral.double_U (pdv(eta_2, x)-pdv(xi_1, y)-pdv(eta_1, x)-pdv(xi_2, y))dx dy,
+    integral.cont_(partial U)(xi_1+xi_2)dx+(eta_2-eta_1)dy=integral.double_U (pdv(eta_2, x)-pdv(xi_1, y)-pdv(eta_1, x)-pdv(xi_2, y))dx dy,
   $
 
   and for the imaginary component,
 
   $
-    oint_(partial U)(eta_1+eta_2)dx+(xi_1-xi_2)dy=integral.double_U (pdv(xi_1, x)-pdv(eta_1, y)-pdv(xi_2, x)-pdv(eta_2, y))dx dy,
+    integral.cont_(partial U)(eta_1+eta_2)dx+(xi_1-xi_2)dy=integral.double_U (pdv(xi_1, x)-pdv(eta_1, y)-pdv(xi_2, x)-pdv(eta_2, y))dx dy,
   $
 
   and the integrands on the right side both match those of @eq:complex_green_exterior_derivative_result.
@@ -93,7 +93,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
 )[Let $U subset CC$ be bounded with a piecewise $C^1$ boundary $partial U$. Let $f(z)in C^1 (overline(U))$. Then $forall z in U without partial U$,
 
   $
-    f(z)=1/taui (oint_(partial U)(f(zeta))/(zeta-z)dzeta-integral_U pdv(f(zeta), overline(zeta))(dif overline(zeta) and dzeta)/(zeta-z)).
+    f(z)=1/taui (integral.cont_(partial U)(f(zeta))/(zeta-z)dzeta-integral_U pdv(f(zeta), overline(zeta))(dif overline(zeta) and dzeta)/(zeta-z)).
   $
 ] <thm:pompeiu>
 
@@ -104,7 +104,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
   with a singularity at $zeta=z$. Consider the region $U without D(z,epsilon)$. Since $f in C^1 (overline(U))$, by applying Green's Theorem (@thm:complex_green),
 
   $
-    integral_(U without D(z, epsilon)) dif ((f(zeta) dzeta) / (zeta - z)) = oint_(partial U) (f(zeta) dzeta) / (zeta - z) - oint_(partial D(z, epsilon)) (f(zeta) dzeta) / (zeta - z).
+    integral_(U without D(z, epsilon)) dif ((f(zeta) dzeta) / (zeta - z)) = integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral.cont_(partial D(z, epsilon)) (f(zeta) dzeta) / (zeta - z).
   $ <eq:pompeiu_directintermediate>
 
   By properties of $dif$, the expression is equal to
@@ -121,7 +121,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
   The rightmost term in @eq:pompeiu_directintermediate can be parameterized with $zeta = z + epsilon ee^(ii t)$, $t in [0, 2 uppi]$. Then,
 
   $
-    oint_(partial D(z, epsilon)) (f(zeta) dzeta) / (zeta - z) &=integral_0^(2 uppi) (f (z + epsilon ee^(ii t))) / (epsilon ee^(ii t)) dot ii epsilon ee^(ii t) dt \
+    integral.cont_(partial D(z, epsilon)) (f(zeta) dzeta) / (zeta - z) &=integral_0^(2 uppi) (f (z + epsilon ee^(ii t))) / (epsilon ee^(ii t)) dot ii epsilon ee^(ii t) dt \
     &=ii integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt \
     &=ii integral_0^(2 uppi) (f (z + epsilon ee^(ii t)) - f(z)) dt + ii integral_0^(2 uppi) f(z) dt.
   $
@@ -133,7 +133,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
   which approaches 0 as $epsilon ->0$. Taking this limit, we obtain
 
   $
-    taui f(z) = oint_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z) + lim_(epsilon -> 0) integral_(D(z, epsilon)) pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z).
+    taui f(z) = integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z) + lim_(epsilon -> 0) integral_(D(z, epsilon)) pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z).
   $ <eq:pompeiu_epsilonlimitintermediate>
 
   We then aim to prove that
@@ -164,7 +164,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
   Then from rearranging @eq:pompeiu_epsilonlimitintermediate, we obtain:
 
   $
-    f(z) = 1 / (taui) (oint_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z)). #qedhere
+    f(z) = 1 / (taui) (integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z)). #qedhere
   $
 ]
 

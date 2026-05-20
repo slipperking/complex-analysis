@@ -2,18 +2,34 @@
 
 == Topological Equivalence and Biholomorphic Equivalence
 
+#lemma[
+  If $bold(P)$ is a permutation matrix, and $bold(D)$ is a diagonal matrix, then there exists a diagonal matrix $bold(D)'$ such that $bold(P) bold(D) = bold(D)' bold(P)$. Similarly, there exists a diagonal matrix $bold(D)''$ such that $bold(D) bold(P) = bold(P) bold(D)''$.
+] <lem:monomial_matrix_diagonal_multiplication_commute>
+#proof[
+  Let $bold(D) = diag(d_1, dots, d_n)$ and let $sigma$ be the permutation corresponding to $bold(P)$, $bold(P) bold(e)_i = bold(e)_(sigma(i))$ for each standard basis vector $bold(e)_i$. Define $ bold(D)' = diag(d_(sigma^(-1)(1)), dots, d_(sigma^(-1)(n))). $
+  Then for every $i$,
+  $ bold(P) bold(D) bold(e)_i = bold(P)(d_i bold(e)_i) = d_i bold(e)_(sigma(i)), $
+  while
+  $ bold(D)' bold(P) bold(e)_i = bold(D)' bold(e)_(sigma(i)) = d_i bold(e)_(sigma(i)). $
+  Hence
+  $ bold(P) bold(D) bold(e)_i = bold(D)' bold(P) bold(e)_i $
+  for all $i$, so
+  $ bold(P) bold(D) = bold(D)' bold(P). $
+  Now apply this result to $bold(P)^top$, and thus, $(bold(P)^top bold(D))^top = (bold(D)'' bold(P)^top)^top <==> bold(D)^top bold(P) = bold(P) bold(D)''^top$.
+]
+
 #theorem("Poincaré")[
   For any $n gt.eq 2$, the $n$-dimensional unit ball $B^n$ and the $n$-dimensional polydisk $DD^n$ are not biholomorphically equivalent.
 ] <thm:poincarepolydiskandunitball>
 
 #proof[
-  Suppose, for the sake of contradiction, that there exists a biholomorphism $bold(phi) : DD^n -> B^n$. Let $bold(alpha) = bold(phi)(bold(0)) in B^n$, and define $bold(Phi) = bold(phi)_(abs(bold(alpha))) compose bold(U) bold(phi)$, where $bold(U)$ is a unitary matrix such that $bold(U) bold(alpha) = (abs(bold(alpha)), 0, dots, 0)$ and $bold(phi)_(abs(bold(alpha)))$ is as in @prop:unitballsimpleautomorphism.
+  Suppose, for the sake of contradiction, that there exists a biholomorphism $bold(phi) : DD^n -> B^n$. Let $bold(alpha) = bold(phi)(bold(0)) in B^n$, and define $bold(Phi) = bold(phi)_(norm(bold(alpha))) compose bold(U) bold(phi)$, where $bold(U)$ is a unitary matrix such that $bold(U) bold(alpha) = (norm(bold(alpha)), 0, dots, 0)$ and $bold(phi)_(norm(bold(alpha)))$ is as in @prop:unitballsimpleautomorphism.
 
   The definition of $bold(Phi)$ ensures that $bold(Phi) : DD^n -> B^n$ and $bold(Phi)(bold(0)) = bold(0)$. Then $bold(Phi)^(-1) compose Aut(B^n) compose bold(Phi)$ consists of functions mapping $DD^n$ to $DD^n$, or that
   $
     bold(Phi)^(-1) compose Aut(B^n) compose bold(Phi) subset.eq Aut(DD^n) ==> Aut(B^n) subset.eq bold(Phi) compose Aut(DD^n) compose bold(Phi)^(-1).
   $
-  Similarly, $bold(Phi) compose Aut(DD^n) compose bold(Phi)^(-1) subset.eq Aut(B^n)$. Hence, $Aut(B^n) = bold(Phi) compose Aut(DD^n) compose bold(Phi)^(-1)$, and
+  Similarly, $bold(Phi) compose Aut(DD^n) compose bold(Phi)^(-1) subset.eq Aut(B^n)$. Therefore, $Aut(B^n) = bold(Phi) compose Aut(DD^n) compose bold(Phi)^(-1)$, and
   $
     bold(psi) |-> bold(Phi) compose bold(psi) compose bold(Phi)^(-1)
   $ <eq:poincarepolydiskandunitball_isomorphism>
@@ -23,7 +39,7 @@
   $
     bold(P) op("diag")(ee^(ii theta_1), dots, ee^(ii theta_n)),
   $
-  where $bold(P)$ is a permutation matrix and $(theta_1, dots, theta_n) in [0, 2 uppi)^n$. Hence $Aut'(DD^n)$ is isomorphic to the group of unitary monomial matrices. The structure of $Aut'(B^n)$ is given by @prop:unitballautomorphismfixedpointatzero, and each element corresponds uniquely to a unitary matrix. Thus there is a natural isomorphism $Aut'(B^n) ~= upright("U")(n)$, the $n times n$ _unitary group_.
+  where $bold(P)$ is a permutation matrix and $(theta_1, dots, theta_n) in [0, 2 uppi)^n$. Hence $Aut'(DD^n)$ is isomorphic to the group of unitary monomial matrices. The structure of $Aut'(B^n)$ is given by @prop:unitballautomorphismfixedpointatzero, and each element corresponds uniquely to a unitary matrix. Thus there is a natural isomorphism $Aut'(B^n) tilde.equiv upright("U")(n)$, the $n times n$ _unitary group_.
 
   For $bold(U) in upright("U")(n)$, the spectral theorem allows it to be expressed in the form of $bold(V) op("diag")(ee^(ii theta_1), dots, ee^(ii theta_n)) bold(V)^dagger$. Hence, for any positive integer $m$, we have
   $
@@ -31,7 +47,8 @@
   $
   and
   $
-    (bold(V) op("diag")(ee^(ii (theta_1) / (m)), dots, ee^(ii (theta_n) / (m))) bold(V)^dagger)^m = bold(V) op("diag")(ee^(ii (theta_1) / (m)), dots, ee^(ii (theta_n) / (m))) bold(V)^dagger dots.c bold(V) op("diag")(ee^(ii (theta_1) / (m)), dots, ee^(ii (theta_n) / (m))) bold(V)^dagger.
+    (bold(V) op("diag")(ee^(ii (theta_1) / (m)), dots, ee^(ii (theta_n) / (m))) bold(V)^dagger)^m \
+    ""= bold(V) op("diag")(ee^(ii (theta_1) / (m)), dots, ee^(ii (theta_n) / (m))) bold(V)^dagger dots.c bold(V) op("diag")(ee^(ii (theta_1) / (m)), dots, ee^(ii (theta_n) / (m))) bold(V)^dagger.
   $
   The adjacent products of $bold(V)^dagger bold(V)$ simplify to the identity and the entire expression then simplifies to $bold(U)$. Hence the unitary group is divisible.
 
@@ -48,9 +65,9 @@
   $
   inducing the permutation $tau$, swapping the first and second entries. Assume that there exists some unitary monomial matrix $bold(Q) = bold(P)_sigma bold(D)$ (where $bold(D)$ is diagonal and $bold(P)_sigma$ is a permutation matrix corresponding to the permutation $sigma$) such that $bold(Q)^2 = bold(P)_tau$. This is equivalent to
   $
-    bold(P)_sigma bold(D) bold(P)_sigma bold(D) = bold(P)_tau ==> bold(P)_sigma^2 bold(P)_sigma^(-1) bold(D) bold(P)_sigma bold(D) = bold(P)_tau ==> bold(P)_sigma^2 bold(D)^2 = bold(P)_tau
+    bold(P)_sigma bold(D) bold(P)_sigma bold(D) = bold(P)_tau ==> bold(P)_sigma bold(P)_sigma bold(D)'bold(D) = bold(P)_tau ==> bold(P)_sigma^2 bold(D)'' = bold(P)_tau,
   $
-  because $bold(P)_sigma^(-1) bold(D) bold(P)_sigma = bold(D)$. Thus, $bold(P)_sigma^2 = bold(P)_tau$ (and $bold(D)^2 = bold(I)$) since their permutation parts must match. This is an impossibility since $bold(P)_sigma^2$ corresponds to an even permutation, while $bold(P)_tau$ corresponds to an odd permutation. Thus, the unitary monomial group is not divisible.
+  where $bold(D)'$ and $bold(D)''$ are diagonal matrices, where the former existence are given by @lem:monomial_matrix_diagonal_multiplication_commute. Thus, $bold(P)_sigma^2 = bold(P)_tau$ (and $bold(D)'' = bold(I)$) since their permutation parts must match. This is an impossibility since $bold(P)_sigma^2$ corresponds to an even permutation, while $bold(P)_tau$ corresponds to an odd permutation. Thus, the unitary monomial group is not divisible.
 
   By @prop:groupdivisibilitypreservedunderisomorphisms, the two groups cannot be isomorphic to each other.
 

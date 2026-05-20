@@ -219,7 +219,7 @@
 #let Re = math.op($frak(Re)$)
 #let Im = math.op($frak(Im)$)
 #let Ind = math.op("Ind")
-#let oint = $integral.cont$
+#let wp = math.op($\u{2118}$)
 
 #let extcomplex = $hat(CC)$
 #let length = $op("length")$

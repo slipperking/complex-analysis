@@ -294,7 +294,7 @@ $
   & = ((rho'_u)^2 + (rho'_v)^2 - rho laplacian rho) / rho^4 = -(1)/(rho^2) laplacian(log rho).
 $ <eq:gaussiancurvatureofsurface_gaussiancurvatureconformalmetricformula>
 
-To understand the motivation for which $dif s^2$ is said to be conformal, consider two curves in the $u-v$ plane, parameterized by $Vb(gamma)_1 (t)=(u_1 (t), v_1 (t))$ and $Vb(gamma)_2 (t)=(u_2 (t), v_2 (t))$ such that $Vb(gamma)_1 (0)=Vb(gamma)_2 (0)=vb(w)_0=(u_0, v_0)$. Their images via $vb(r)$ are $vb(alpha)_1 (t)=vb(r) compose Vb(gamma)_1 (t)$ and $vb(alpha)_2 (t)=vb(r) compose Vb(gamma)_2 (t)$ so that they intersect at some point $P in Sigma$. Let $Vb(gamma)'_1 (0)=vb(v)_1=a vb(e)_u + b vb(e)_v$ and $Vb(gamma)'_2 (0)=vb(v)_2=c vb(e)_u + d vb(e)_v$ be two tangent vectors. Then the corresponding vectors in $T_P Sigma$ are
+To understand the motivation for which $dif s^2$ is said to be conformal, consider two curves in the $u-v$ plane, parameterized by $bold(gamma)_1 (t)=(u_1 (t), v_1 (t))$ and $bold(gamma)_2 (t)=(u_2 (t), v_2 (t))$ such that $bold(gamma)_1 (0)=bold(gamma)_2 (0)=vb(w)_0=(u_0, v_0)$. Their images via $vb(r)$ are $vb(alpha)_1 (t)=vb(r) compose bold(gamma)_1 (t)$ and $vb(alpha)_2 (t)=vb(r) compose bold(gamma)_2 (t)$ so that they intersect at some point $P in Sigma$. Let $bold(gamma)'_1 (0)=vb(v)_1=a vb(e)_u + b vb(e)_v$ and $bold(gamma)'_2 (0)=vb(v)_2=c vb(e)_u + d vb(e)_v$ be two tangent vectors. Then the corresponding vectors in $T_P Sigma$ are
 
 $ dif vb(r)_(vb(w)_0) (vb(v)_1)=a dif vb(r)_(vb(w)_0) (vb(e)_u) + b dif vb(r)_(vb(w)_0) (vb(e)_v) $ and $ dif vb(r)_(vb(w)_0) (vb(v)_2)=c dif vb(r)_(vb(w)_0) (vb(e)_u) + d dif vb(r)_(vb(w)_0) (vb(e)_v). $
 
