@@ -15,7 +15,7 @@
   $ bold(P) bold(D) bold(e)_i = bold(D)' bold(P) bold(e)_i $
   for all $i$, so
   $ bold(P) bold(D) = bold(D)' bold(P). $
-  Now apply this result to $bold(P)^top$, and thus, $(bold(P)^top bold(D))^top = (bold(D)'' bold(P)^top)^top <==> bold(D)^top bold(P) = bold(P) bold(D)''^top$.
+  Now apply this result to $bold(P)^top$, and thus, $(bold(P)^top bold(D))^top = (bold(D)'' bold(P)^top)^top <==> bold(D)^top bold(P) = bold(P) bold(D)''^top <==> bold(D P) = bold(P D)''$ since diagonal matrices are invariant under transposition.
 ]
 
 #theorem("Poincaré")[
@@ -23,7 +23,7 @@
 ] <thm:poincarepolydiskandunitball>
 
 #proof[
-  Suppose, for the sake of contradiction, that there exists a biholomorphism $bold(phi) : DD^n -> B^n$. Let $bold(alpha) = bold(phi)(bold(0)) in B^n$, and define $bold(Phi) = bold(phi)_(norm(bold(alpha))) compose bold(U) bold(phi)$, where $bold(U)$ is a unitary matrix such that $bold(U) bold(alpha) = (norm(bold(alpha)), 0, dots, 0)$ and $bold(phi)_(norm(bold(alpha)))$ is as in @prop:unitballsimpleautomorphism.
+  Suppose, for the sake of contradiction, that there exists a biholomorphism $bold(phi) : DD^n -> B^n$. Let $bold(alpha) = bold(phi)(bold(0)) in B^n$, and define $bold(Phi) = bold(phi)_(norm(bold(alpha))) compose bold(U) compose bold(phi)$, where $bold(U)$ is a unitary matrix such that $bold(U) bold(alpha) = (norm(bold(alpha)), 0, dots, 0)$ and $bold(phi)_(norm(bold(alpha)))$ is as in @prop:unitballsimpleautomorphism.
 
   The definition of $bold(Phi)$ ensures that $bold(Phi) : DD^n -> B^n$ and $bold(Phi)(bold(0)) = bold(0)$. Then $bold(Phi)^(-1) compose Aut(B^n) compose bold(Phi)$ consists of functions mapping $DD^n$ to $DD^n$, or that
   $
