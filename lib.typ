@@ -107,7 +107,11 @@
 #let _html-proof(head) = {
   (..args, body) => {
     html.elem("div", attrs: (class: "thm-proof"), {
-      html.elem("p", attrs: (class: "proof-head"), html.elem("em", [#head.]))
+      html.elem("p", attrs: (class: "proof-head"), html.elem("em", [
+        #if args.pos().len() == 0 { head } else {
+          (head, ..args.pos()).join(" ")
+        }.
+      ]))
       body
       html.elem("p", attrs: (class: "qed"), [$square$])
     })

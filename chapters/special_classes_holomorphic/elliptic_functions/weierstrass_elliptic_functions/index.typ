@@ -15,64 +15,72 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
   $ <eq:weierstrasspfunctionintermediateseriesconvergence_statement>
   is (absolutely) convergent for $alpha > 2$.
 ] <prop:weierstrasspfunctionintermediateseriesconvergence>
+#figure-wrapper(
+  [
+    #figure(
+      {
+        cetz.canvas({
+          import cetz.draw: *
 
+          let n = 4
+          let ax = 1.5
+          let ay = 0.3
+          let bx = 0.5
+          let by = 1.0
+          let ov = 0.3
+
+          let lp = (i, j) => (i * ax + j * bx, i * ay + j * by)
+
+          for j in range(0, n + 1) {
+            line(
+              (-ov * ax + j * bx, -ov * ay + j * by),
+              ((n + ov) * ax + j * bx, (n + ov) * ay + j * by),
+              stroke: 0.4pt,
+            )
+          }
+          for i in range(0, n + 1) {
+            line(
+              (i * ax - ov * bx, i * ay - ov * by),
+              (i * ax + (n + ov) * bx, i * ay + (n + ov) * by),
+              stroke: 0.4pt,
+            )
+          }
+
+          let h = n / 2
+          for i in (-1, 1) {
+            line(lp(h + i, h - 1), lp(h + i, h + 1), stroke: 1.5pt)
+            line(lp(h - 1, h + i), lp(h + 1, h + i), stroke: 1.5pt)
+          }
+
+          content(lp(h, h), math-rect($0$), anchor: "south-east", padding: 2pt)
+          content(lp(h + 1, h), math-rect($omega_1$), anchor: "north-west")
+          content(lp(h - 1, h), math-rect($-omega_1$), anchor: "south-east")
+          content(lp(h, h + 1), math-rect($omega_2$), anchor: "north-west")
+          content(lp(h, h - 1), math-rect($-omega_2$), anchor: "north", padding: 2pt)
+          content(lp(h + 1, h + 1), math-rect($omega_1 + omega_2$), anchor: "south-west")
+          content(lp(h - 1, h - 1), math-rect($-omega_1 - omega_2$), anchor: "north-east", padding: 2pt)
+          content(lp(h - 1, h + 1), math-rect($omega_2 - omega_1$), anchor: "east", padding: 2pt)
+          content(lp(h + 1, h - 1), math-rect($omega_1 - omega_2$), anchor: "north-west", padding: 2pt)
+
+          anchor("O", lp(h, h))
+          anchor("O-b", lp(h, h - 1))
+          anchor("O-b+a", lp(h + 1, h - 1))
+
+          line(
+            "O",
+            ("O", "_|_", "O-b", "O-b+a"),
+            name: "dl",
+            stroke: (paint: black, dash: "dotted", thickness: 1.5pt),
+          )
+
+          content("dl.mid", math-rect($delta$), anchor: "east", padding: 2pt)
+        })
+      },
+      caption: [The parallelogram $P_1$ with 8 periods on its boundary with lattice $Lambda$.],
+    ) <fig:weierstrasspfunctionintermediateseriesconvergence_parallelogram>
+  ],
+)
 #proof[
-  #figure(
-    box(
-      inset: 1em,
-      stroke: 0.6pt,
-      radius: 4pt,
-      width: 100%,
-      [Illustration placeholder for the parallelogram $P_1$ with 8 periods on its boundary with lattice $Lambda$. Raw TikZ source is preserved below for manual conversion.],
-    ),
-    caption: [The parallelogram $P_1$ with 8 periods on its boundary with lattice $Lambda$.],
-  ) <fig:weierstrasspfunctionintermediateseriesconvergence_parallelogram>
-
-  /*
-  \begin{figure}
-      \centering
-      \begin{tikzpicture}
-          \pgfmathsetmacro{\n}{4}
-          \pgfmathsetmacro{\ax}{1.5}
-          \pgfmathsetmacro{\ay}{0.3}
-          \pgfmathsetmacro{\bx}{0.5}
-          \pgfmathsetmacro{\by}{1.0}
-          \pgfmathsetmacro{\over}{0.3}
-          \foreach \j in {0,...,\n} {
-                  \draw[thin]
-                  ({-\over*\ax+\j*\bx},{-\over*\ay+\j*\by})
-                  -- ({(\n+\over)*\ax+\j*\bx},{(\n+\over)*\ay+\j*\by});
-              }
-          \foreach \i in {0,...,\n} {
-                  \draw[thin]
-                  ({-\over*\bx+\i*\ax},{-\over*\by+\i*\ay}) -- ({\i*\ax+(\n+\over)*\bx},{\i*\ay+(\n+\over)*\by});
-              }
-          \foreach \i in {-1,1} {
-                  \draw[thick] ({\ax*(\n/2+\i)+\bx*(\n/2-1)},{\ay*(\n/2+\i)+\by*(\n/2-1)}) -- ({\ax*(\n/2+\i)+\bx*(\n/2+1)},{\ay*(\n/2+\i)+\by*(\n/2+1)});
-                  \draw[thick] ({\ax*(\n/2-1)+\bx*(\n/2+\i)},{\ay*(\n/2-1)+\by*(\n/2+\i)}) -- ({\ax*(\n/2+1)+\bx*(\n/2+\i)},{\ay*(\n/2+1)+\by*(\n/2+\i)});
-              }
-          \node[shift={(5pt,-5pt)}] at ({\ax*(\n/2)+\bx*(\n/2)},{\ay*(\n/2)+\by*(\n/2)}) {\(0\)};
-          \node[shift={(5pt,-5pt)}] at ({\ax*(\n/2+1)+\bx*(\n/2)},{\ay*(\n/2+1)+\by*(\n/2)}) {\(\omega_1\)};
-          \node[shift={(9pt,-5pt)}] at ({\ax*(\n/2-1)+\bx*(\n/2)},{\ay*(\n/2-1)+\by*(\n/2)}) {\(-\omega_1\)};
-          \node[shift={(5pt,-5pt)}] at ({\ax*(\n/2)+\bx*(\n/2+1)},{\ay*(\n/2)+\by*(\n/2+1)}) {\(\omega_2\)};
-          \node[shift={(9pt,-5pt)}] at ({\ax*(\n/2)+\bx*(\n/2-1)},{\ay*(\n/2)+\by*(\n/2-1)}) {\(-\omega_2\)};
-          \node[shift={(16pt,-5pt)}] at ({\ax*(\n/2+1)+\bx*(\n/2+1)},{\ay*(\n/2+1)+\by*(\n/2+1)}) {\(\omega_1+\omega_2\)};
-          \node[shift={(16pt,-5pt)}] at ({\ax*(\n/2-1)+\bx*(\n/2-1)},{\ay*(\n/2-1)+\by*(\n/2-1)}) {\(-\omega_1-\omega_2\)};
-          \node[shift={(16pt,-5pt)}] at ({\ax*(\n/2-1)+\bx*(\n/2+1)},{\ay*(\n/2-1)+\by*(\n/2+1)}) {\(\omega_2-\omega_1\)};
-          \node[shift={(16pt,-5pt)}] at ({\ax*(\n/2+1)+\bx*(\n/2-1)},{\ay*(\n/2+1)+\by*(\n/2-1)}) {\(\omega_1-\omega_2\)};
-          \coordinate (O) at ({\ax*(\n/2)+\bx*(\n/2)},{\ay*(\n/2)+\by*(\n/2)});
-
-          \pgfmathsetmacro{\lengtha}{sqrt(\ax*\ax+\ay*\ay)}
-          \pgfmathsetmacro{\lengthb}{sqrt(\bx*\bx+\by*\by)}
-          \pgfmathsetmacro{\sineanglebetween}{sqrt(1-((\ax*\bx+\ay*\by)/(\lengtha*\lengthb))^2)}
-          \coordinate (H) at ([shift={(\ay*\lengthb*\sineanglebetween/\lengtha,-\ax*\lengthb*\sineanglebetween/\lengtha)}] O);
-          \draw[dotted, thick] (O) -- (H);
-          \node[xshift=-4, yshift=-2] at ($(O)!0.5!(H)$) {\(\delta\)};
-      \end{tikzpicture}
-      \caption{The parallelogram \(P_1\) with 8 periods on its boundary with lattice \(\Lambda\).}\label{fig:weierstrasspfunctionintermediateseriesconvergence_parallelogram}
-  \end{figure}
-  */
-
   Let $P_n$ be a parallelogram whose center is $0$ and has $n(omega_1 + omega_2)$ as a vertex (the specific case of $n = 1$ is illustrated in @fig:weierstrasspfunctionintermediateseriesconvergence_parallelogram). For each $n in NN$, there exist $8 n$ periods (points in $Lambda$) on $partial P_n$.
 
   Let $delta$ be the distance from $0$ to $partial P_1$. Hence, the distance from $0$ to $partial P_n$ is $n delta$. Since each $omega in Lambda^* = Lambda without {0}$ lies in a unique $partial P_n$, it follows that $abs(omega)^alpha gt.eq n^alpha delta^alpha$ for all $alpha > 0$. Hence,
