@@ -65,7 +65,7 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
   $ <eq:taylorexpansionmultivariable_series>
   where $forall k_1, dots, k_n in ZZ_(gt.eq 0)$,
   $
-    a_(k_1, dots, k_n) = (1) / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)).
+    a_(k_1, dots, k_n) = 1 / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)).
   $
   The series converges absolutely and uniformly on $Omega$.
 ] <thm:taylorexpansionmultivariable>
@@ -73,16 +73,16 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
 #proof[
   By @thm:cauchyintegralformulapolydisks we have
   $
-    f(bold(z)) = (1) / ((2 uppi ii)^n) integral.cont_(partial D(a_1, r_1)) dots.c integral.cont_(partial D(a_n, r_n)) (f(bold(zeta))) / ((zeta_1 - z_1) dots.c (zeta_n - z_n)) dzeta_n dots.c dzeta_1.
+    f(bold(z)) = 1 / ((2 uppi ii)^n) integral.cont_(partial D(a_1, r_1)) dots.c integral.cont_(partial D(a_n, r_n)) (f(bold(zeta))) / ((zeta_1 - z_1) dots.c (zeta_n - z_n)) dzeta_n dots.c dzeta_1.
   $
 
   For each $j$, since $abs(z_j - a_j) < r_j = abs(zeta_j - a_j)$ on $partial D(a_j, r_j)$, the geometric series expansion holds:
   $
-    (1) / (zeta_j - z_j) = (1) / (zeta_j - a_j) dot (1) / (1 - (z_j - a_j) / (zeta_j - a_j)) = sum_(k_j=0)^oo ((z_j - a_j)^(k_j)) / ((zeta_j - a_j)^(k_j + 1)),
+    1 / (zeta_j - z_j) = 1 / (zeta_j - a_j) dot 1 / (1 - (z_j - a_j) / (zeta_j - a_j)) = sum_(k_j=0)^oo ((z_j - a_j)^(k_j)) / ((zeta_j - a_j)^(k_j + 1)),
   $
   which converges uniformly in $zeta_j$ on $partial D(a_j, r_j)$. Hence, we have
   $
-    f (bold(z)) = (1) / ((2 uppi ii)^n) sum_(k_1=0)^oo integral.cont_(partial D(a_1, r_1)) dots.c integral.cont_(partial D(a_n, r_n)) (f(bold(zeta)) (z_1 - a_1)^(k_1) dzeta_n dots.c dzeta_1) / ((zeta_1 - a_1)^(k_1 + 1) (zeta_2 - z_2) dots.c (zeta_n - z_n))
+    f (bold(z)) = 1 / ((2 uppi ii)^n) sum_(k_1=0)^oo integral.cont_(partial D(a_1, r_1)) dots.c integral.cont_(partial D(a_n, r_n)) (f(bold(zeta)) (z_1 - a_1)^(k_1) dzeta_n dots.c dzeta_1) / ((zeta_1 - a_1)^(k_1 + 1) (zeta_2 - z_2) dots.c (zeta_n - z_n))
   $
   where uniform convergence has allowed the interchange of summation and integration. Reiteration of this process gives
   $
@@ -94,11 +94,11 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
   $
   and hence if we let
   $
-    a_(k_1, dots, k_n) = (1) / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)),
+    a_(k_1, dots, k_n) = 1 / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)),
   $
   then @eq:taylorexpansionmultivariable_series follows. Cauchy's Estimate (@cor:cauchysestimatepolydisks) gives that
   $
-    abs(a_(k_1, dots, k_n)) <= M product_(j=1)^n ((1) / (rho_j^(k_j))),
+    abs(a_(k_1, dots, k_n)) <= M product_(j=1)^n (1 / (rho_j^(k_j))),
   $
   where $M = sup_(bold(zeta) in product_(j=1)^n partial D(a_j, r_j)) abs(f(bold(zeta)))$ for some $rho_j > r_j$ for all $j$. Hence,
   $

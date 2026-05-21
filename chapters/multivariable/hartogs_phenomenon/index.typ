@@ -32,7 +32,7 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
   lies in $Omega$; moreover, the set of all such points, $K$, is compact in $Omega$. Assuming that a Laurent expansion exists and converges uniformly on this compact set, termwise integration on both sides of $(f(bold(z)))/ (bold(z)^(bold(k) + (1, dots, 1))) = sum_(bold(j) in ZZ^n) a_(bold(j)) bold(z)^(bold(j) - bold(k) - (1, dots, 1))$ gives
   $
     a_(bold(k))
-    &= (1) / ((2 uppi ii)^n) integral_K (f(bold(z))) / (bold(z)^(bold(k) + (1, dots, 1))) dif bold(z) \
+    &= 1 / ((2 uppi ii)^n) integral_K (f(bold(z))) / (bold(z)^(bold(k) + (1, dots, 1))) dif bold(z) \
     &= (bold(w)^(-bold(k))) / ((2 uppi)^n) integral_([-uppi, uppi]^n) f(w_1 ee^(ii theta_1), dots, w_n ee^(ii theta_n)) ee^(-ii (k_1 theta_1 + dots + k_n theta_n)) dtheta_1 dots.c dtheta_n,
   $
   which shows that the coefficients $a_(bold(k))$ are uniquely determined.

@@ -43,7 +43,7 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
   Since
 
   $
-    (f(z)-f(a)) / (z-a) - 1 / taui integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-a)^2) & = 1 / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / (zeta-a) (1 / (zeta-z) - (1) / (zeta-a)) dzeta \
+    (f(z)-f(a)) / (z-a) - 1 / taui integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-a)^2) & = 1 / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / (zeta-a) (1 / (zeta-z) - 1 / (zeta-a)) dzeta \
     & = (z-a) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)(zeta-a)^2) dzeta,
   $<eq:cauchy_differentiation_formula_differenceoffirstorderdifferences>
 

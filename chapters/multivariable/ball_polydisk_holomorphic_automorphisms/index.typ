@@ -344,7 +344,7 @@ In preparation, we will introduce several relevant concepts.
   $
   where $norm(bold(v)_1) = 1$ is the corresponding eigenvector in $CC^n$. Then
   $
-    bold(U)^(-1) bold(U) bold(v)_1 = bold(U)^(-1) lambda_1 bold(v)_1 ==> (1) / (lambda_1) bold(v)_1 = bold(U)^(-1) bold(v)_1 ==> overline(lambda_1) bold(v)_1 = bold(U)^dagger bold(v)_1.
+    bold(U)^(-1) bold(U) bold(v)_1 = bold(U)^(-1) lambda_1 bold(v)_1 ==> 1 / (lambda_1) bold(v)_1 = bold(U)^(-1) bold(v)_1 ==> overline(lambda_1) bold(v)_1 = bold(U)^dagger bold(v)_1.
   $
   Let $bold(v)_1^perp = {bold(w) : bold(v)_1^dagger bold(w) = bold(0)} subset CC^n$ be an $(n - 1)$-dimensional subspace. For any $bold(w) in bold(v)_1^perp$,
   $
@@ -376,8 +376,8 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
   For $bold(z) = (z_1, dots, z_n) in B^n$, because $sum_(k=2)^n abs(z_k)^2 < 1 - abs(z_1)^2$,
   $
     norm(bold(phi)_a (bold(z)))^2
-    &= (1) / abs(1 - overline(a) z_1)^2 [abs(z_1 - a)^2 + sum_(k=2)^n (1 - abs(a)^2) abs(z_k)^2] \
-    &< (1) / ((1 - overline(a) z_1)(1 - a overline(z_1))) [(z_1 - a)(overline(z_1) - overline(a)) + (1 - abs(z_1)^2)(1 - abs(a)^2)] \
+    &= 1 / abs(1 - overline(a) z_1)^2 [abs(z_1 - a)^2 + sum_(k=2)^n (1 - abs(a)^2) abs(z_k)^2] \
+    &< 1 / ((1 - overline(a) z_1)(1 - a overline(z_1))) [(z_1 - a)(overline(z_1) - overline(a)) + (1 - abs(z_1)^2)(1 - abs(a)^2)] \
     &= (abs(z_1)^2 + abs(a)^2 - 2 Re(overline(a) z_1) + 1 + abs(a z_1)^2 - abs(a)^2 - abs(z_1)^2) / (1 + abs(a z_1)^2 - 2 Re(overline(a) z_1)) = 1.
   $
   Hence, $bold(phi)_a$ maps $B^n$ to $B^n$. A simple calculation shows that
@@ -398,7 +398,7 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
   $
   Similarly, we have $bold(f)^(-1) = bold(U)^(-1)$, so $norm(bold(z)) = norm(bold(U)^(-1) bold(U) bold(z))$. Observe that
   $
-    norm((1) / (norm(bold(z))) bold(f)(bold(z))) = norm(bold(f)((bold(z)) / (norm(bold(z))))) = 1 ==> norm(bold(U) bold(z))^2 = norm(bold(z))^2.
+    norm(1 / (norm(bold(z))) bold(f)(bold(z))) = norm(bold(f)((bold(z)) / (norm(bold(z))))) = 1 ==> norm(bold(U) bold(z))^2 = norm(bold(z))^2.
   $
   More explicitly, we have
   $
@@ -411,14 +411,14 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
   Letting $bold(z) = (sqrt(2)) / (2) (bold(e)_i + bold(e)_j)$ ($i != j$), we have
   $
     norm(bold(U) bold(z)) = 1
-    &= (1) / (2) norm((zeta_(1,i) + zeta_(1,j), dots, zeta_(n,i) + zeta_(n,j)))^2 = (1) / (2) sum_(k=1)^n abs(zeta_(k,i) + zeta_(k,j))^2 \
-    &= (1) / (2) sum_(k=1)^n (abs(zeta_(k,i)^2) + abs(zeta_(k,j)^2) + 2 Re(zeta_(k,i) overline(zeta_(k,j)))) = 1 + sum_(k=1)^n Re(zeta_(k,i) overline(zeta_(k,j))),
+    &= 1 / (2) norm((zeta_(1,i) + zeta_(1,j), dots, zeta_(n,i) + zeta_(n,j)))^2 = 1 / (2) sum_(k=1)^n abs(zeta_(k,i) + zeta_(k,j))^2 \
+    &= 1 / (2) sum_(k=1)^n (abs(zeta_(k,i)^2) + abs(zeta_(k,j)^2) + 2 Re(zeta_(k,i) overline(zeta_(k,j)))) = 1 + sum_(k=1)^n Re(zeta_(k,i) overline(zeta_(k,j))),
   $
   which implies that $sum_(k=1)^n Re(zeta_(k,i) overline(zeta_(k,j))) = 0$. Similarly, letting $bold(z) = (sqrt(2)) / (2) (bold(e)_i + ii bold(e)_j)$ gives
   $
     norm(bold(U) bold(z)) = 1
-    &= (1) / (2) norm((zeta_(1,i) + ii zeta_(1,j), dots, zeta_(n,i) + ii zeta_(n,j)))^2 = (1) / (2) sum_(k=1)^n abs(zeta_(k,i) + ii zeta_(k,j))^2 \
-    &= (1) / (2) sum_(k=1)^n (abs(zeta_(k,i)^2) + abs(zeta_(k,j)^2) + 2 Im(zeta_(k,i) overline(zeta_(k,j)))) = 1 + sum_(k=1)^n Im(zeta_(k,i) overline(zeta_(k,j))),
+    &= 1 / (2) norm((zeta_(1,i) + ii zeta_(1,j), dots, zeta_(n,i) + ii zeta_(n,j)))^2 = 1 / (2) sum_(k=1)^n abs(zeta_(k,i) + ii zeta_(k,j))^2 \
+    &= 1 / (2) sum_(k=1)^n (abs(zeta_(k,i)^2) + abs(zeta_(k,j)^2) + 2 Im(zeta_(k,i) overline(zeta_(k,j)))) = 1 + sum_(k=1)^n Im(zeta_(k,i) overline(zeta_(k,j))),
   $
   which implies that $sum_(k=1)^n Im(zeta_(k,i) overline(zeta_(k,j))) = 0$. Therefore, by @eq:unitballautomorphismfixedpointatzero_diagonalentries, for all $i, j in {1, dots, n}$, observe that
   $

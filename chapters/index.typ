@@ -36,9 +36,9 @@
   #include "multivariable/index.typ"
 ]
 
-// #chapter-section("special-classes")[
-//   #include "special_classes_holomorphic/index.typ"
-// ]
+#chapter-section("special-classes")[
+  #include "special_classes_holomorphic/index.typ"
+]
 
 // #chapter-section("connections-nt")[
 //   #include "connections_to_nt/index.typ"
