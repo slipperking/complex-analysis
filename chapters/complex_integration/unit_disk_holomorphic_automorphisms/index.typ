@@ -94,7 +94,7 @@ It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bije
 
 As a direct consequence of @thm:holomorphicautomorphismgrouponunitdisk, we have the following result:
 
-#lemma("Schwarz" + sym.dash.en + "Pick")[
+#lemma[Schwarz--Pick][
   Let $f:DD -> DD$ be holomorphic. For all $z_1, z_2 in DD$, let $w_1 = f(z_1)$ and $w_2 = f(z_2)$. Then,
 
   $

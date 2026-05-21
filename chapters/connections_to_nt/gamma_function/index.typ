@@ -51,7 +51,7 @@ $
 
 We will now study two representations for the Gamma function.
 
-#theorem("#smallcaps[Gauss]")[
+#theorem[Gauss][
   The Gamma function satisfies
   $
     Gamma(z)=\lim_{n -> oo}(n^z n!)/(product_(k=0)^n(z+k)), Re z>0.

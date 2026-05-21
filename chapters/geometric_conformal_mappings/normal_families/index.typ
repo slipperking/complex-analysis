@@ -45,7 +45,7 @@ In contrast, the uniform continuity of a function $f$ guarantees that $delta$ ma
 
 The following theorem is important in many areas of mathematical analysis and has a plethora of generalizations. It was first introduced by Ascoli (who proved the sufficiency of compactness) and later formalized by Arzelà, who proved the necessity of uniform equicontinuity and uniform boundedness.
 
-#theorem("Arzelà" + sym.dash.en + "Ascoli")[
+#theorem[Arzelà--Ascoli][
   Let $cal(F)$ be a family of complex continuous functions defined on a compact subset $K subset.eq CC$. Then, $cal(F)$ is uniformly bounded and uniformly equicontinuous on $K$ iff $cal(F)$ is normal on $K$.
 ] <thm:arzelaascoli>
 

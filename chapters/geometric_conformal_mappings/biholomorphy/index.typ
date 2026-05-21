@@ -54,7 +54,7 @@ We will now study holomorphic functions from a more geometric perspective.
 #proof[
   Let $w_0 in CC$. Let $k=k(w_0)$ be the number of zeros of $f - w_0$ in $U$. By the Argument Principle (@thm:argumentprincipleholomorphic), for $w_0 in.not Gamma$,
   $
-    k = 1 / (2 uppi ii) integral.cont.ccw_(gamma) (f'(z)) / (f(z) - w_0) dz = 1 / (2 uppi ii) integral.cont.ccw_(Gamma) (dif w) / (w - w_0) = Ind_Gamma (w_0).
+    k = 1 / taui integral.cont.ccw_(gamma) (f'(z)) / (f(z) - w_0) dz = 1 / taui integral.cont.ccw_(Gamma) (dif w) / (w - w_0) = Ind_Gamma (w_0).
   $
   + If $w_0 in jexterior(Gamma)$, the expression vanishes since $Ind_Gamma (w_0)=0$. Then $f(z) = w_0$ has no solution in $U$ (i.e. $k=0$).
 

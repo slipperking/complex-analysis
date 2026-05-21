@@ -4,7 +4,7 @@
 
 The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized into a result that equates complex integration and differentiation:
 
-#theorem("Cauchy" + sym.dash.en + "Goursat")[
+#theorem[Cauchy--Goursat][
   Let $U subset CC$ be an open region bounded by a simple closed boundary $partial U$, and let $f:U -> CC$ be holomorphic and continuous over $overline(U)$. Then $forall z in U$, $forall n in NN$, $f^((n)) (z)$ exists, and
 
   $
@@ -20,7 +20,7 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
   where
 
   $
-    a_j = 1 / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(j+1)) dzeta
+    a_j = 1 / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(j+1)) dzeta
   $ <eq:cauchy_differentiation_formula_taylorseriescoefficients>
 
   for $z in overline(D(a, r))$.
@@ -37,13 +37,13 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
   and dividing by $z-a$, the above is equal to
 
   $
-    (f(z)-f(a)) / (z-a) = 1 / (2 uppi ii) integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-z)(zeta-a)).
+    (f(z)-f(a)) / (z-a) = 1 / taui integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-z)(zeta-a)).
   $
 
   Since
 
   $
-    (f(z)-f(a)) / (z-a) - 1 / taui integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-a)^2) & = 1 / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / (zeta-a) (1 / (zeta-z) - 1 / (zeta-a)) dzeta \
+    (f(z)-f(a)) / (z-a) - 1 / taui integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-a)^2) & = 1 / taui integral.cont_(partial U) (f(zeta)) / (zeta-a) (1 / (zeta-z) - 1 / (zeta-a)) dzeta \
     & = (z-a) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)(zeta-a)^2) dzeta,
   $<eq:cauchy_differentiation_formula_differenceoffirstorderdifferences>
 
@@ -115,7 +115,7 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
   By the Weierstrass $M$--Test (@thm:weierstrassmtest), the integrand uniformly converges, and we can justify
 
   $
-    1 / (2 uppi ii) integral.cont_(partial U) sum_(j = 0)^oo (z-z_0)^j (f(zeta)) / ((zeta-z_0)^(j+1)) dzeta &= 1 / (2 uppi ii) sum_(j = 0)^oo integral.cont_(partial U) (z-z_0)^j (f(zeta)) / ((zeta-z_0)^(j+1)) dzeta \
+    1 / taui integral.cont_(partial U) sum_(j = 0)^oo (z-z_0)^j (f(zeta)) / ((zeta-z_0)^(j+1)) dzeta &= 1 / taui sum_(j = 0)^oo integral.cont_(partial U) (z-z_0)^j (f(zeta)) / ((zeta-z_0)^(j+1)) dzeta \
     &= sum_(j = 0)^oo a_j (z-z_0)^j,
   $
 
@@ -138,7 +138,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
   Prove the integral form
 
   $
-    P_n (z)=1 / (2 uppi ii) integral.cont_gamma ((zeta^2-1)^n) / (2^n (zeta-z)^(n+1)) dzeta,
+    P_n (z)=1 / taui integral.cont_gamma ((zeta^2-1)^n) / (2^n (zeta-z)^(n+1)) dzeta,
   $
 
   where $gamma$ is a simple closed curve enclosing $z$.
@@ -318,7 +318,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   Let $phi in C^oo (CC)$ satisfy $supp(phi) subset V$ and be identically equal to $1$ over some open neighborhood $W$ of $K$ relatively compact in $V$. Since $f in C^oo (U)$, by the Cauchy--Pompeiu Theorem (@thm:pompeiu) on $f(z) phi(z) in C^oo (overline(U))$,
 
   $
-    f(z) phi(z)=1 / (2 uppi ii) (integral.cont_(partial U) (f(zeta) phi(zeta)) / (zeta-z) dzeta - integral_U pdv(f(zeta) phi(zeta), overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta-z)).
+    f(z) phi(z)=1 / taui (integral.cont_(partial U) (f(zeta) phi(zeta)) / (zeta-z) dzeta - integral_U pdv(f(zeta) phi(zeta), overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta-z)).
   $
 
   By the product rule,
@@ -330,13 +330,13 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   and since $partial U subset CC without supp(phi)$, the first term vanishes, resulting in
 
   $
-    f(z) phi(z) = -1 / (2 uppi ii) integral_U pdv(phi(zeta), overline(zeta)) f(zeta) dot (dif overline(zeta) and dzeta) / (zeta-z).
+    f(z) phi(z) = -1 / taui integral_U pdv(phi(zeta), overline(zeta)) f(zeta) dot (dif overline(zeta) and dzeta) / (zeta-z).
   $
 
   Let $K_1$ denote $supp(pdv(phi(zeta), overline(zeta)))$, and $forall z in K$, $phi(z)=1$. Therefore,
 
   $
-    f(z)=1 / (2 uppi ii) integral_(K_1) f(zeta) dot pdv(phi(zeta), overline(zeta)) dot (dzeta and dif overline(zeta)) / (zeta-z).
+    f(z)=1 / taui integral_(K_1) f(zeta) dot pdv(phi(zeta), overline(zeta)) dot (dzeta and dif overline(zeta)) / (zeta-z).
   $
 
   We can differentiate within the integral as $f(zeta) dot pdv(phi(zeta), overline(zeta))$ is $C^oo$ and bounded over $K_1$, and thus the integrand is uniformly bounded by an integrable function independent of $zeta$:

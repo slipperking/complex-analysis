@@ -8,7 +8,7 @@ In 1938, Lars Ahlfors provided a further generalization by curvature, prompting 
 
 The hyperbolic metric $lambda$ in @eq:poincaremetricdefinition does not increase under any holomorphic $f:DD -> DD$. It was realized that this was a consequence of the constant negative curvature $-1$ of $lambda$. The results we now provide are simplifications of those from~@ahlforsanextensionofschwarzlemma.
 
-#theorem("Schwarz" + sym.dash.en + "Ahlfors" + sym.dash.en + "Pick")[
+#theorem[Schwarz--Ahlfors--Pick][
   Let $f$ be holomorphic on $DD$. Suppose that $rho$ is a regular metric defined on an open neighborhood $U$, where $f(DD) subset.eq U$, $dif s_rho^2 = rho^2(w) abs(dif w)^2$, and $K_rho (w) <= -1$ for all $w in U$. Then
   $ f^* rho(z) <= lambda(z) quad forall z in DD, $
   where $lambda$ is the Poincaré metric, and equivalently,

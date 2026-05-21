@@ -32,7 +32,7 @@ Power series in real analysis can be generalized into complex series. Particular
 
 Function series are defined to be a sequence formed by the partial sums of function sequences. There are many ways to verify the uniform convergence of a function series. Perhaps the most widely known is the Weierstrass $M$-Test.
 
-#theorem("Weierstrass " + $M$ + "-Test")[
+#theorem[Weierstrass $M$-Test][
   Let $U subset.eq CC$ be a region and ${f_n}$ be a function sequence on $U$.
 
   If $exists {M_n} subset RR_(>= 0)$ such that $forall n in NN$, $forall z in U$, $abs(f_n (z)) <= M_n$ and the series $sum_(n = 1)^oo M_n$ converges, then the series $sum_(n = 1)^oo f_n (z)$ converges uniformly and absolutely on $U$.

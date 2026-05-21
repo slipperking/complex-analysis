@@ -126,7 +126,7 @@ The implications of this are important: if $omega$ is a 0-form, then $curl(grad 
 
 Then, the Fundamental Theorem of Calculus, the Gradient Theorem, Green's, Stokes', and Gauss' Theorems can be generalized into:
 
-#theorem("Stokes" + sym.dash.en + "Cartan")[
+#theorem[Stokes--Cartan][
   For an oriented smooth $n$-dimensional compact manifold $M$ with boundary $partial M$, for a smooth differential $(n-1)$-form $omega$ over $overline(M)$,
   $ integral_M dif omega = integral_(partial M) omega. $
 ] <thm:stokescartan>

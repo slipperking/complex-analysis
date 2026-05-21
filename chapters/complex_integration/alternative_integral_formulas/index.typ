@@ -112,17 +112,17 @@ $ u(z) = 1 / (2 uppi) integral_0^(2 uppi) u(zeta) Re((zeta + z) / (zeta - z)) dt
 Since $dzeta = ii zeta dt$, $dt = dzeta / (ii zeta)$, and
 
 $
-  u(z) = 1 / (2 uppi ii) integral.cont_(partial D(0, R)) (u(zeta)) / zeta Re((zeta + z) / (zeta - z)) dzeta
-  = Re(1 / (2 uppi ii) integral.cont_(partial D(0, R)) (u(zeta)) / zeta (zeta + z) / (zeta - z) dzeta),
+  u(z) = 1 / taui integral.cont_(partial D(0, R)) (u(zeta)) / zeta Re((zeta + z) / (zeta - z)) dzeta
+  = Re(1 / taui integral.cont_(partial D(0, R)) (u(zeta)) / zeta (zeta + z) / (zeta - z) dzeta),
 $
 
 where $z in D(0, R)$. Since $R > 0$ and $zeta - z != 0$ for all $zeta in partial D(0, R)$ and $z in D(0, R)$, the function
 
-$ F(z) = 1 / (2 uppi ii) integral.cont_(partial D(0, R)) (u(zeta)) / zeta (zeta + z) / (zeta - z) dzeta $
+$ F(z) = 1 / taui integral.cont_(partial D(0, R)) (u(zeta)) / zeta (zeta + z) / (zeta - z) dzeta $
 
 is holomorphic on $D(0, R)$: for each fixed $zeta in partial D(0, R)$, the integrand is holomorphic in $z$, and on compact subsets of $D(0, R)$ we may differentiate under the integral sign. Therefore, $u(z)$ is the real part of a holomorphic function
 
-$ f(z) = 1 / (2 uppi ii) integral.cont_(partial D(0, R)) (u(zeta)) / zeta (zeta + z) / (zeta - z) dzeta + ii c, $
+$ f(z) = 1 / taui integral.cont_(partial D(0, R)) (u(zeta)) / zeta (zeta + z) / (zeta - z) dzeta + ii c, $
 
 where $c in RR$. Since $c in RR$ is holomorphic, by @prop:realvaluedholomorphicfunctionconstant, $c$ is constant. For $f(z) = u(z) + ii v(z)$,
 

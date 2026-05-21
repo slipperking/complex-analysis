@@ -205,11 +205,11 @@ The proof can be well-organized through the use of the results that we will now 
 
   As a consequence of Cauchy--Goursat (@thm:cauchygoursatformula), we have
   $
-    1 / (2 uppi ii) integral.cont_(partial tilde(K)) (f(zeta) dzeta) / (zeta - z) = f(z)
+    1 / taui integral.cont_(partial tilde(K)) (f(zeta) dzeta) / (zeta - z) = f(z)
   $ <eq:rungesimplepolesandremovablesingularityatinfinity_cauchygoursat>
   in the case that $z in tilde(K)$. The boundary $partial tilde(K)$ may be written as the union of $n$ lines parameterized by $0 <= t <= 1$; more concretely, we have $partial tilde(K) = union.big_(j in NN_(<= n)) gamma_j ([0, 1])$. Hence we have in equivalent formulation,
   $
-    f(z) = 1 / (2 uppi ii) sum_(j = 1)^n integral_(gamma_j ([0, 1])) (f(zeta)) / (zeta - z) dzeta = 1 / (2 uppi ii) sum_(j = 1)^n integral_0^1 (f(gamma_j (t)) gamma'_j (t)) / (gamma_j (t) - z) dt.
+    f(z) = 1 / taui sum_(j = 1)^n integral_(gamma_j ([0, 1])) (f(zeta)) / (zeta - z) dzeta = 1 / taui sum_(j = 1)^n integral_0^1 (f(gamma_j (t)) gamma'_j (t)) / (gamma_j (t) - z) dt.
   $
   The distance between $K$ and $partial tilde(K)$ is strictly positive. Suppose instead that the distance were zero. Then some point of $K$ would lie on the boundary of a square $Q in cal(G)$ that intersects $partial tilde(K)$. If this point lies on an edge of $Q$ (but not at a vertex), then the square adjacent along that edge must also intersect $K$, and hence belong to $cal(G)$, contradicting the assumption that the point lies on $partial tilde(K)$. If the point lies at a vertex of $Q$, then all three adjacent squares also intersect $K$, so they too belong to $cal(G)$, leading to the same contradiction. Thus, the distance must be positive.
 
@@ -221,14 +221,14 @@ The proof can be well-organized through the use of the results that we will now 
   $
   Partition $[0, 1]$ by $0 = t_0 < t_1 < dots < t_m = 1$ such that $forall 0 <= k < m$, $Delta t_k = t_(k + 1) - t_k < delta$. It follows that
   $
-    &abs(f(z) - 1 / (2 uppi ii) sum_(j = 1)^n sum_(k = 0)^(m - 1) (f(gamma_j (t_k)) gamma'_j (t_k)) / (gamma_j (t_k) - z) Delta t_k) \
+    &abs(f(z) - 1 / taui sum_(j = 1)^n sum_(k = 0)^(m - 1) (f(gamma_j (t_k)) gamma'_j (t_k)) / (gamma_j (t_k) - z) Delta t_k) \
     &quad""= 1 / (2 uppi) abs(sum_(j = 1)^n sum_(k = 0)^(m - 1) integral_(t_k)^(t_(k + 1)) [(f(gamma_j (t)) gamma'_j (t)) / (gamma_j (t) - z) - (f(gamma_j (t_k)) gamma'_j (t_k)) / (gamma_j (t_k) - z)] dt) \
     &wide""<= 1 / (2 uppi) sum_(j = 1)^n sum_(k = 0)^(m - 1) integral_(t_k)^(t_(k + 1)) abs((f(gamma_j (t)) gamma'_j (t)) / (gamma_j (t) - z) - (f(gamma_j (t_k)) gamma'_j (t_k)) / (gamma_j (t_k) - z)) dt \
     &wide quad ""<= epsilon / (2 n uppi) sum_(j = 1)^n sum_(k = 0)^(m - 1) Delta t_k = epsilon / (2 uppi) < epsilon
   $
   uniformly in $z in K$. The summation
   $
-    psi(z) = 1 / (2 uppi ii) sum_(j = 1)^n sum_(k = 0)^(m - 1) (f(gamma_j (t_k)) gamma'_j (t_k)) / (gamma_j (t_k) - z) Delta t_k
+    psi(z) = 1 / taui sum_(j = 1)^n sum_(k = 0)^(m - 1) (f(gamma_j (t_k)) gamma'_j (t_k)) / (gamma_j (t_k) - z) Delta t_k
   $
   defines a rational function with simple poles at each $gamma_j (t_k) in partial tilde(K)$, which is disjoint from $K$.
 ]

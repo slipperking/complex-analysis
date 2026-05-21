@@ -36,9 +36,9 @@
     &quad ""+ 1 / (2 uppi) integral_0^(2 uppi) [sum_(k=1)^n (log r + log abs(1 - b_k / (r ee^(ii theta)))) \
       &wide""- sum_(j=1)^m (log r + log abs(1 - a_j / (r ee^(ii theta))))] dif theta \
     &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta + sum_(j=1)^m log abs(a_j / r) - sum_(k=1)^n log abs(b_k / r) \
-    &quad ""+ Re 1 / (2 uppi ii) [(sum_(j=1)^m integral.cont.cw_(partial D(0, abs(a_j \/ r))) - sum_(k=1)^n integral.cont.cw_(partial D(0, abs(b_k \/ r)))) (Log (1 - z) dz) / z] \
+    &quad ""+ Re 1 / taui [(sum_(j=1)^m integral.cont.cw_(partial D(0, abs(a_j \/ r))) - sum_(k=1)^n integral.cont.cw_(partial D(0, abs(b_k \/ r)))) (Log (1 - z) dz) / z] \
     &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta + sum_(j=1)^m log abs(a_j / r) - sum_(k=1)^n log abs(b_k / r) \
-    &quad ""+ Re 1 / (2 uppi ii) (sum_(k=n_0+1)^n - sum_(j=m_0+1)^m) integral.cont.ccw_(partial DD) (Log (1 - z) dz) / z
+    &quad ""+ Re 1 / taui (sum_(k=n_0+1)^n - sum_(j=m_0+1)^m) integral.cont.ccw_(partial DD) (Log (1 - z) dz) / z
   $
   where $z = a_j \/ (r ee^(ii theta)), b_k \/ (r ee^(ii theta))$, $dif theta = ii dz \/ z$, and the leftover integrals (up until $k=n_0$ and $j=m_0$) for interior points vanish by Cauchy--Goursat (@thm:cauchygoursattheorem), since $(Log(1-z)) / z$ has a removable singularity at $z = 0$.
 
@@ -64,7 +64,7 @@ As an immediate consequence, we have:
   $ log abs(f(0)) lt.eq 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta. $
 ] <cor:jensensinequality>
 
-#theorem("Poisson" + sym.dash.en + "Jensen Formula")[
+#theorem[Poisson--Jensen Formula][
   Suppose $f$ is a meromorphic function on $overline(D(0,r))$ such that $f equiv.not 0$ on $D(0,r)$ and is non-vanishing and non-infinity on $partial D(0,r)$. Let $a_1, dots, a_m$ and $b_1, dots, b_n$ be the zeros and poles of $f$ in $D(0,r)$, counted with multiplicity and order, respectively (multiplicities and orders count as multiple zeros or poles). Then it follows that
   $
     log abs(f(z)) &= integral_0^(2 uppi) log abs(f(zeta)) P (zeta, z) dif theta \

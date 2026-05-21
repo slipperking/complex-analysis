@@ -261,7 +261,7 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
 
 3. The existence of a transcendental meromorphic function $f$ whose poles have an accumulation point at $z = oo$ is the concern of the following theorem:
 
-  #theorem("Mittag" + sym.dash.en + "Leffler")[
+  #theorem[Mittag--Leffler][
     Let ${a_n}_(n in NN) subset CC$ be a sequence of distinct complex numbers such that $forall n in NN$, $abs(a_n) <= abs(a_(n + 1))$ and $lim_(n -> oo) a_n = oo$. Let ${psi_n}_(n in NN)$ be a function sequence, each in the form of @eq:meromorphicfunctionconstructionprincipalparts. Then the following hold.
 
     First, a meromorphic function $f(z)$ on $CC$ can be constructed such that $forall n in NN$, $f$ has a pole at $a_n$ with principal part $psi_n$ at $a_n$.

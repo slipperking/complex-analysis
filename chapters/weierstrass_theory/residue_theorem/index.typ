@@ -6,11 +6,11 @@ After Riemann and Weierstrass refined the understanding of analytic functions an
 #definition("Residue")[
   For some $r in RR_(>0)$, $a in U$, suppose $f : D^*(a, r) -> CC$ is holomorphic. Then the _residue_ of $f$ at $a$, denoted by $Res_(z=a) f(z)$ or $Res(f, a)$, is equal to
   $
-    Res_(z=a) f(z) = 1 / (2 uppi ii) integral.cont_(partial D(a, rho)) f(z) dz,
+    Res_(z=a) f(z) = 1 / taui integral.cont_(partial D(a, rho)) f(z) dz,
   $<eq:residue>
   where $0 < rho < r$ is arbitrary. Since $f$ has a Laurent expansion at $a$, being
   $
-    sum_(n=-infinity)^infinity c_n (z - a)^n, quad c_n = 1 / (2 uppi ii) integral.cont_(partial D(a, rho)) (f(z) dz) / (z - a)^(n+1),
+    sum_(n=-infinity)^infinity c_n (z - a)^n, quad c_n = 1 / taui integral.cont_(partial D(a, rho)) (f(z) dz) / (z - a)^(n+1),
   $
   we get that the residue of $f$ at $a$ is equal to the first term $c_(-1)$ of the principal part of its Laurent expansion.
 ]<def:residue>
@@ -24,12 +24,12 @@ $
   c_(-1) = Res_(z=a) f(z) = 1 / ((m-1)!) lim_(z -> a) dif^(m-1) / (dif z^(m-1)) [(z-a)^m f(z)].
 $<eq:residueatpole>
 Let $z = infinity$ be an isolated singularity of $f(z)$, which is holomorphic in $CC without overline(D(0, R))$, for sufficiently large finite $R$. Then for finite $rho > R$, the residue at $z = infinity$ is _defined_ as (notice the orientation)
-$ Res_(z=infinity) f(z) = 1 / (2 uppi ii) integral.cont.cw_(partial D(0, rho)) f(z) dz. $
+$ Res_(z=infinity) f(z) = 1 / taui integral.cont.cw_(partial D(0, rho)) f(z) dz. $
 Let $zeta = 1 / z$. Then we get that
 $
   Res_(z=infinity) f(z)
-  &= -1 / (2 uppi ii) integral.cont.ccw_(partial D(0, rho)) f(1 / zeta) dif(1 / zeta) \
-  &= 1 / (2 uppi ii) integral.cont.ccw_(partial D(0, 1\/rho)) (f(1 \/ zeta)) / zeta^2 dzeta = -Res_(zeta=0) (f(1 \/ zeta)) / zeta^2.
+  &= -1 / taui integral.cont.ccw_(partial D(0, rho)) f(1 / zeta) dif(1 / zeta) \
+  &= 1 / taui integral.cont.ccw_(partial D(0, 1\/rho)) (f(1 \/ zeta)) / zeta^2 dzeta = -Res_(zeta=0) (f(1 \/ zeta)) / zeta^2.
 $
 In this definition, if
 $ f(z) = sum_(n=-infinity)^infinity c_n z^n <==> (f(1 \/ zeta)) / zeta^2 = sum_(n=-infinity)^infinity c_n zeta^(-n-2), $
@@ -55,7 +55,7 @@ This result itself is fairly trivial. Now we will explain the significance of th
 
 #proof[
   Let $R > max_(j in NN_(lt.eq n)) abs(z_n)$ be arbitrary. By the Residue Theorem (@thm:residuethm),
-  $ -Res_(z=infinity) f(z) = 1 / (2 uppi ii) integral.cont_(partial D(0,R)) f(z) dz = sum_(k=1)^n Res_(z=z_k) f(z) $
+  $ -Res_(z=infinity) f(z) = 1 / taui integral.cont_(partial D(0,R)) f(z) dz = sum_(k=1)^n Res_(z=z_k) f(z) $
   as desired. This is merely a restatement of @thm:residuethm.
 ]
 

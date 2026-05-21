@@ -5,7 +5,7 @@
 #theorem[
   Let $U subset.eq CC$ be a region and $f:U -> CC$ be meromorphic. Let $gamma subset U$ be a positively oriented Jordan curve that is null-homotopic in $U$. If $f$ has no zeros on $gamma$, then $f$ has finitely many zeros and poles in the region bounded by $gamma$. Denote the zeros of $f$ in the bounded region by $a_1, dots, a_k$ with respective multiplicities $alpha_1, dots, alpha_k$, and the poles by $b_1, dots, b_m$ with respective orders $beta_1, dots, beta_m$. Let $psi$ be any function holomorphic on a neighborhood of the closure of the bounded region. Then
   $
-    1 / (2 uppi ii) integral.cont_gamma (psi(z) f'(z)) / (f(z)) dz = sum_(i = 1)^k alpha_i psi(a_i) - sum_(j = 1)^m beta_j psi(b_j).
+    1 / taui integral.cont_gamma (psi(z) f'(z)) / (f(z)) dz = sum_(i = 1)^k alpha_i psi(a_i) - sum_(j = 1)^m beta_j psi(b_j).
   $
 ] <thm:generalizedargumentprinciple>
 
@@ -64,7 +64,7 @@
 #theorem("Argument Principle")[
   Let $U subset.eq CC$ be a region and $f:U -> CC$ be meromorphic. Let $gamma subset U$ be a simple, closed, positively oriented curve that is null-homotopic in $U$. If $f$ has no zeros or poles on $gamma$, then $f$ has finitely many zeros and poles in the region bounded by $gamma$, and the number of zeros, $k$, minus the number of poles, $k'$, counting multiplicities and orders, is given by
   $
-    k - k' = 1 / (2 uppi ii) integral.cont_gamma (f'(z)) / (f(z)) dz.
+    k - k' = 1 / taui integral.cont_gamma (f'(z)) / (f(z)) dz.
   $
   Let $Gamma$ be the image of $gamma$ under the map $w = f(z)$. Then $k - k' = Ind_Gamma (0)$.
 ] <thm:argumentprinciplemeromorphic>
@@ -72,12 +72,12 @@
 #proof[
   By @thm:generalizedargumentprinciple for $psi equiv 1$,
   $
-    1 / (2 uppi ii) integral.cont_gamma (f'(z)) / (f(z)) dz = k - k'.
+    1 / taui integral.cont_gamma (f'(z)) / (f(z)) dz = k - k'.
   $
 
   Parametrize $Gamma$ by $w = f(z)$. Then $dif w = f'(z) dz$, and
   $
-    k - k' = 1 / (2 uppi ii) integral.cont_Gamma (dif w) / w = Ind_Gamma (0). #qedhere
+    k - k' = 1 / taui integral.cont_Gamma (dif w) / w = Ind_Gamma (0). #qedhere
   $
 ]
 

@@ -246,7 +246,7 @@ We now provide a formal definition of the connectivity of sets:
 
 In a topological space $X$, a subset can be open, closed (the complement of some open set), both (clopen), or neither. The only clopen sets that exist in any topological space $X$ are $emptyset$ and $X$ iff $X$ is connected. A technique pertinent to many future proofs relies on the following fact:
 
-#theorem("Connectivity Argument")[
+#theorem[Connectivity Argument][
   A topological space $X$ is _connected_ if and only if $X$ and $emptyset$ are the only clopen subsets of $X$.
 ] <thm:connected_topological_space_clopen_sets>
 

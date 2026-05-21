@@ -8,16 +8,16 @@ It is well-known in real analysis that a periodic function can be expressed as a
 
 If $f : CC -> extcomplex$ is meromorphic with period $omega in CC^*$, then it has the Fourier expansion
 $
-  f(z) = sum_(n=-oo)^oo c_n exp((2 uppi ii n z) / omega), quad c_n = 1 / omega integral_a^(a + omega) f(z) exp(-(2 uppi ii n z) / omega) dz quad forall n in ZZ.
+  f(z) = sum_(n=-oo)^oo c_n exp((2 uppi ii n z) / omega), quad c_n = 1 / omega integral_a^(a + omega) f(z) exp(-(2 uppi ii n z) / omega) dz.
 $
 We briefly justify this as follows.
 $f$ being periodic with period $omega$ implies that by letting $w = exp((2 uppi ii z) / omega)$, the function $g(w) = f(omega / (2 uppi ii) log w) = f(z)$ is well-defined and single-valued on $extcomplex without {0}$ (except for at finitely many isolated poles). Hence, $g$ admits a Laurent expansion
 $
-  g(w) = sum_(n=-oo)^oo c_n w^n, quad c_n = 1 / (2 uppi ii) integral.cont_(abs(w) = r) g(w) w^(-n - 1) dif w quad forall n in ZZ,
+  g(w) = sum_(n=-oo)^oo c_n w^n, quad c_n = 1 / taui integral.cont_(abs(w) = r) g(w) w^(-n - 1) dif w quad forall n in ZZ,
 $
 for $r > 0$. Substituting back $w = exp((2 uppi ii z) / omega)$, $dif w = (2 uppi ii) / omega exp((2 uppi ii z) / omega) dz$ gives the desired Fourier expansion of $f$:
 $
-  c_n & = 1 / (2 uppi ii) integral_(omega / (2 uppi ii) log(r))^(omega / (2 uppi ii) (log(r) + 2 uppi ii)) f(z) exp(-(2 uppi ii n z) / omega) exp(-(2 uppi ii z) / omega) (2 uppi ii) / omega exp((2 uppi ii z) / omega) dz \
+  c_n & = 1 / taui integral_(omega / (2 uppi ii) log(r))^(omega / (2 uppi ii) (log(r) + 2 uppi ii)) f(z) exp(-(2 uppi ii n z) / omega) exp(-(2 uppi ii z) / omega) (2 uppi ii) / omega exp((2 uppi ii z) / omega) dz \
   & = 1 / omega integral_(omega / (2 uppi ii) log(r))^(omega / (2 uppi ii) log(r) + omega) f(z) exp(-(2 uppi ii n z) / omega) dz.
 $
 The term "elliptic function" itself refers to a _doubly periodic_ meromorphic function. More precisely, a meromorphic function $f : CC -> extcomplex$ is called an _elliptic function_ if there exist two $CC$-linearly independent periods $omega_1, omega_2 in CC^*$ such that $f(z + omega_1) = f(z + omega_2) = f(z)$ for all $z in CC$. Without loss of generalization, we will assume that $Im(omega_2 / omega_1) > 0$ (linear independence guarantees that this is non-vanishing, while we may consider periods $omega_1, -omega_2$ or $-omega_1, omega_2$ to achieve the same result). Any period of $f$ is in the form of
@@ -41,7 +41,7 @@ is known as a _fundamental parallelogram of_ $Lambda$.
     let draw-torus(
       R: 0.55,
       r: 0.22,
-      fill: luma(40%),
+      fill: black.transparentize(60%),
       n-theta: 70,
       n-phi: 100,
       light: (0.4, -0.6, 1.0),
@@ -66,7 +66,7 @@ is known as a _fundamental parallelogram of_ $Lambda$.
           let n = norm((cos(mp) * cos(mt), cos(mp) * sin(mt), sin(mp)))
           let intensity = min(1, 0.2 + 0.8 * max(0, dot(n, ln)))
           let c = fill.lighten(100% * (intensity - 0.5))
-          cetz.draw.line(pt(t1, p1), pt(t2, p1), pt(t2, p2), pt(t1, p2), close: true, fill: c, stroke: 0.1pt + c)
+          cetz.draw.line(pt(t1, p1), pt(t2, p1), pt(t2, p2), pt(t1, p2), close: true, fill: c, stroke: none)
         }
       }
     }
@@ -77,8 +77,9 @@ is known as a _fundamental parallelogram of_ $Lambda$.
       n-lat: 100,
       n-mer: 10,
       n-pts: 70,
-      fill: luma(40%),
+      fill: black.transparentize(60%),
       light: (0.4, -0.6, 1.0),
+      ring-stroke: 0.5pt + black,
     ) = {
       import calc: cos, max, min, pi, sin, sqrt
       let stop = stop-deg * pi / 180
@@ -94,15 +95,14 @@ is known as a _fundamental parallelogram of_ $Lambda$.
         for j in range(n-pts) {
           let phi1 = 2 * pi * i / n-lat
           let phi2 = 2 * pi * (i + 1) / n-lat
-          let t1 = stop * j / (n-pts - 1)
-          let t2 = stop * (j + 1) / (n-pts - 1)
+          let t1 = stop * j / n-pts
+          let t2 = stop * (j + 1) / n-pts
 
           let rad1 = R + r * cos(phi1)
           let z1 = r * sin(phi1)
           let rad2 = R + r * cos(phi2)
           let z2 = r * sin(phi2)
 
-          let pt(rad, phi, t) = (rad * cos(t), rad * sin(t), z1 + (z2 - z1) * (phi - phi1) / (phi2 - phi1))
           let pt1 = (rad1 * cos(t1), rad1 * sin(t1), z1)
           let pt2 = (rad2 * cos(t1), rad2 * sin(t1), z2)
           let pt3 = (rad2 * cos(t2), rad2 * sin(t2), z2)
@@ -114,9 +114,31 @@ is known as a _fundamental parallelogram of_ $Lambda$.
           let intensity = min(1, 0.2 + 0.8 * max(0, dot(n, ln)))
           let c = fill.lighten(100% * (intensity - 0.5))
 
-          cetz.draw.line(pt1, pt2, pt3, pt4, close: true, fill: c, stroke: 0.1pt + c)
+          cetz.draw.line(pt1, pt2, pt3, pt4, close: true, fill: c, stroke: none)
         }
       }
+
+      let draw-end-ring(t) = {
+        let n = 90
+        let ring-pt(k) = {
+          let phi = 2 * pi * k / n
+          ((R + r * cos(phi)) * cos(t), (R + r * cos(phi)) * sin(t), r * sin(phi))
+        }
+
+        let pts = range(n).map(ring-pt)
+        cetz.draw.line(..pts, close: true, stroke: ring-stroke, fill: none)
+
+        let arrow-n = 20
+        let arrow-pts = range(arrow-n).map(k => ring-pt(n - arrow-n + k))
+        cetz.draw.line(
+          ..arrow-pts,
+          mark: (end: ">>", scale: 0.4, fill: black, transform-shape: false),
+          stroke: ring-stroke,
+        )
+      }
+
+      draw-end-ring(0)
+      draw-end-ring(stop)
     }
 
     cetz.canvas({
@@ -125,7 +147,8 @@ is known as a _fundamental parallelogram of_ $Lambda$.
       let thick = 0.8pt
       let dashed = (dash: "dashed", thickness: thick)
       let thin-dashed = (dash: "dashed", thickness: 0.5pt)
-      let arr = (end: ">>", size: 0.1, fill: black)
+      let arr = (end: ">>", scale: 0.4, fill: black)
+      let larr = (end: ">>", scale: 0.8, fill: black)
 
       // rectangle
       rect((0, 0), (1.5, 1.2), stroke: thick)
@@ -134,7 +157,7 @@ is known as a _fundamental parallelogram of_ $Lambda$.
       line((0.2, 0.1), (1.3, 0.1), stroke: thick, mark: arr)
       line((0.2, 1.1), (1.3, 1.1), stroke: thick, mark: arr)
 
-      line((1.7, 0.6), (2.3, 0.6), stroke: thick, mark: arr)
+      line((1.7, 0.6), (2.3, 0.6), stroke: thick, mark: larr)
 
       // cylinder
       let cx = 2.7
@@ -142,31 +165,31 @@ is known as a _fundamental parallelogram of_ $Lambda$.
       let sr = 0.25
       let lr = 0.3
       let cl = 1.5
-      let at = 0.3
+      let at = 0.2
       circle((cx, cy), radius: (sr, lr), stroke: thick)
       line((cx, cy + lr), (cx + cl, cy + lr), stroke: thick)
       line((cx, cy - lr), (cx + cl, cy - lr), stroke: thick)
       arc((cx + cl, cy - lr), start: -90deg, stop: 90deg, radius: (sr, lr), stroke: thick)
       arc((cx + cl, cy + lr), start: 90deg, stop: 270deg, radius: (sr, lr), stroke: dashed)
-      arc((cx + sr * 0.7, cy), start: 360deg, stop: 20deg, radius: (sr * 0.7, lr * 0.7), stroke: dashed, mark: arr)
+      arc((cx + sr * 0.8, cy), start: 360deg, stop: 20deg, radius: (sr * 0.8, lr * 0.8), stroke: dashed, mark: arr)
       arc(
-        (cx + sr * 0.7 + cl, cy),
+        (cx + sr * 0.8 + cl, cy),
         start: 360deg,
         stop: 20deg,
-        radius: (sr * 0.7, lr * 0.7),
+        radius: (sr * 0.8, lr * 0.8),
         stroke: thin-dashed,
         mark: arr,
       )
       line((cx + sr + at, cy), (cx + cl + sr - at, cy), stroke: thick, mark: arr)
 
-      line((4.65, 0.6), (5.1, 0.6), stroke: thick, mark: arr)
+      line((4.65, 0.6), (5.5, 0.6), stroke: thick, mark: larr)
 
       scope({
-        translate((6.2, 0.6))
+        translate((6.5, 0.6))
         ortho(x: -60deg, y: 0deg, z: -42deg, draw-bent-cylinder())
       })
 
-      line((7.5, 0.6), (8.0, 0.6), stroke: thick, mark: arr)
+      line((7.5, 0.6), (8.5, 0.6), stroke: thick, mark: larr)
 
       scope({
         translate((9.5, 0.6))
@@ -287,7 +310,7 @@ Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then
 #proof[
   Let $P$ be a fundamental parallelogram of $Lambda$ such that $f$ has no poles or zeros on $partial P$. By the Argument Principle (@thm:argumentprinciplemeromorphic), we have
   $
-    1 / (2 uppi ii) integral.cont_(partial P) (f'(z)) / (f(z)) dz = "# of zeros in" P - "# of poles in" P
+    1 / taui integral.cont_(partial P) (f'(z)) / (f(z)) dz = "# of zeros in" P - "# of poles in" P
   $
   where the sums are over all zeros and poles of $f$ in $CC \/ Lambda$ (effectively $P$) counted with multiplicities and orders, respectively. By assumption, $f' equiv.not 0$, and hence $f' / f$ is non-constant and elliptic with period lattice $Lambda$. By @prop:ellipticfunctionresiduesum, the integral vanishes and hence the assertion follows.
 ]
@@ -325,11 +348,11 @@ Hence, it is only natural to quantify this number:
 #proof[
   By @thm:generalizedargumentprinciple, the quantity in question is equal to
   $
-    & sum_(j=1)^n a_j - sum_(j=1)^n b_j = 1 / (2 uppi ii) integral.cont_(partial P) (z f'(z)) / (f(z)) dz \
-    &wide = plus.minus 1 / (2 uppi ii) (integral_alpha^(alpha + omega_1) + integral_(alpha + omega_1)^(alpha + omega_1 + omega_2) + integral_(alpha + omega_1 + omega_2)^(alpha + omega_2) + integral_(alpha + omega_2)^alpha) (z f'(z)) / (f(z)) dz \
-    &wide = plus.minus 1 / (2 uppi ii) (integral_alpha^(alpha + omega_1) + integral_(alpha + omega_2)^alpha) (z f'(z)) / (f(z)) dz \
-    & wide quad plus.minus 1 / (2 uppi ii) (integral_alpha^(alpha + omega_2) ((z + omega_1) f'(z)) / (f(z)) dz + integral_(alpha + omega_1)^alpha ((z + omega_2) f'(z)) / (f(z)) dz) \
-    &wide = plus.minus 1 / (2 uppi ii) (integral_(alpha + omega_1)^alpha (omega_2 f'(z)) / (f(z)) dz + integral_alpha^(alpha + omega_2) (omega_1 f'(z)) / (f(z)) dz) \
+    & sum_(j=1)^n a_j - sum_(j=1)^n b_j = 1 / taui integral.cont_(partial P) (z f'(z)) / (f(z)) dz \
+    &wide = plus.minus 1 / taui (integral_alpha^(alpha + omega_1) + integral_(alpha + omega_1)^(alpha + omega_1 + omega_2) + integral_(alpha + omega_1 + omega_2)^(alpha + omega_2) + integral_(alpha + omega_2)^alpha) (z f'(z)) / (f(z)) dz \
+    &wide = plus.minus 1 / taui (integral_alpha^(alpha + omega_1) + integral_(alpha + omega_2)^alpha) (z f'(z)) / (f(z)) dz \
+    & wide quad plus.minus 1 / taui (integral_alpha^(alpha + omega_2) ((z + omega_1) f'(z)) / (f(z)) dz + integral_(alpha + omega_1)^alpha ((z + omega_2) f'(z)) / (f(z)) dz) \
+    &wide = plus.minus 1 / taui (integral_(alpha + omega_1)^alpha (omega_2 f'(z)) / (f(z)) dz + integral_alpha^(alpha + omega_2) (omega_1 f'(z)) / (f(z)) dz) \
     &wide = plus.minus (omega_2) / (2 uppi ii) (log f(alpha) - log f(alpha + omega_1)) plus.minus (omega_1) / (2 uppi ii) (log f(alpha + omega_2) - log f(alpha)) \
     &wide = plus.minus (omega_2) / (2 uppi ii) log(1) plus.minus (omega_1) / (2 uppi ii) log(1).
   $

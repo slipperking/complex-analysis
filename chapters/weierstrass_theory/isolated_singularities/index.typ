@@ -58,7 +58,7 @@ An _isolated singularity_ of a complex function is a point $a in CC$ where a fun
 
 A function with an essential singularity exhibits striking behavior. We will first introduce the following famous result.
 
-#theorem("Casorati" + sym.dash.en + "Sokhotski" + sym.dash.en + "Weierstrass")[
+#theorem[Casorati--Sokhotski--Weierstrass][
   Let $a in CC$ and $U subset.eq CC$ be an open region. Suppose $f:U without {a} -> CC$ is holomorphic with an essential singularity at $a$. Then the set of values that $f$ attains on any open punctured neighborhood of $a$ is dense. In other words, $forall epsilon, delta > 0$, $forall w in CC$, $exists z in D^*(a, delta)$ such that $abs(f(z) - w) < epsilon$.
 ] <thm:casoratiweierstrass>
 

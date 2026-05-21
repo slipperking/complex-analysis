@@ -165,7 +165,7 @@ We have previously considered analytic continuations over two regions with an in
 
 A consequent result was discovered by Schwarz, known as the _reflection principle_, is a unique result derived from the above theorem for when the shared boundary curve lies in the real axis under certain conditions.
 
-#theorem("Schwarz Reflection Principle")[
+#theorem[Schwarz Reflection Principle][
   Let $U subset.eq CC$ be a connected region on one side of the real axis such that there exists a non-degenerate curve $gamma subset.eq partial U$ such that $gamma subset.eq RR$. Let $f:U -> CC$ be holomorphic with continuity up to $U union gamma$ such that $f$ is real-valued on $gamma$, and let $tilde(U) = { overline(z) : z in U }$ be the reflection of $U$ across the real axis. Then there exists a unique holomorphic function
   $
     tilde(f)(z) = cases(

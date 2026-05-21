@@ -209,7 +209,7 @@ $ <eq:derivativeatpole2>
   At $x^2 + y^2 = 1$, both partial derivatives vanish, and hence, they match the vanishing derivative on the complement of $supp(lambda)$, completing the proof of @itm:diracdeltaapproximation_compactsupportcontinuousdifferentiability.
 ]
 
-#theorem("Tietze" + sym.dash.en + "Urysohn" + sym.dash.en + "Brouwer")[
+#theorem[Tietze--Urysohn--Brouwer][
   Let $K subset.eq CC$ be compact and $f:K -> RR$ be continuous. Then $exists g in C^0(CC)$ such that $g equiv f$ on $K$.
 ] <thm:tietzeextension>
 

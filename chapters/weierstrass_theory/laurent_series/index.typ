@@ -95,7 +95,7 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
 #theorem[
   Let $V = {z in CC : r < abs(z - a) < R}$ for some $0 <= r < R <= oo$. Let $f$ be holomorphic on $V$. Then $f$ has the unique _Laurent expansion_
   $
-    f(z) = sum_(n = -oo)^oo c_n (z - a)^n, quad c_n = 1 / (2 uppi ii) integral.cont_gamma (f(zeta) dzeta) / ((zeta - a)^(n + 1)), quad z in V,
+    f(z) = sum_(n = -oo)^oo c_n (z - a)^n, quad c_n = 1 / taui integral.cont_gamma (f(zeta) dzeta) / ((zeta - a)^(n + 1)), quad z in V,
   $ <eq:laurentexpansionofholomorphicfunction_statement>
   for any simple closed curve $gamma subset V$ enclosing $a$. Moreover, the series converges absolutely on $V$ and uniformly on all compact subsets of $V$.
 ] <thm:laurentexpansionofholomorphicfunction>

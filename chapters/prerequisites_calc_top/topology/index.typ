@@ -40,7 +40,7 @@ Because the accumulation points of $X$ all lie in $overline(X)$, the closure of 
   A cover is _open_ if every set in the collection is open.
 ]
 
-#theorem("Bolzano–Weierstrass")[
+#theorem[Bolzano--Weierstrass][
   Every infinite subset $A$ of a compact set $X subset.eq CC^n$ has an accumulation point in $X$.
 ] <thm:bolzanoweierstrass>
 
@@ -65,7 +65,7 @@ Because the accumulation points of $X$ all lie in $overline(X)$, the closure of 
   But then, for sufficiently large $k$, we have $Q_k subset B^n (z_infinity, delta)$, and hence $Q_k inter X = emptyset$. This contradicts the construction of $Q_k$, which ensures that $Q_k$ contains infinitely many points of $A subset X$.
 ]
 
-#theorem("Heine" + sym.dash.en + "Borel")[
+#theorem[Heine--Borel][
   A set $X subset.eq CC^n$ is compact iff every open cover has a finite subcover.
 ] <thm:heine_borel>
 
