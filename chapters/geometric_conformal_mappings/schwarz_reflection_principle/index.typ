@@ -48,9 +48,9 @@ We have previously considered analytic continuations over two regions with an in
         catmull("gamma-boundaries.0", (0.1, -0.6), (0.2, 0.8), "gamma-boundaries.1", name: "gamma")
 
         get-ctx(ctx => {
-          let var-z = cetz.coordinate.resolve-anchor(ctx, (name: "gamma", anchor: 45%))
-          circle(var-z, radius: 1.5pt, fill: black)
-          circle(var-z, radius: var-R, stroke: (dash: "dashed"))
+          anchor("z", (name: "gamma", anchor: 45%))
+          circle("z", radius: 1.5pt, fill: black)
+          circle("z", radius: var-R, stroke: (dash: "dashed"))
 
           let points = (
             (-0.6, -0.2),
@@ -64,7 +64,7 @@ We have previously considered analytic continuations over two regions with an in
             (-0.3, 0.8),
             (0.3, 0.3),
             (-0.4, 0.3),
-          ).map(point => cvector.add(cvector.scale(point, var-R), var-z))
+          ).map(point => (rel: cvector.scale(point, var-R), to: "z"))
           catmull(..points, close: true, stroke: 0.5pt, name: "Gamma", mark: (
             end: range(16)
               .map(num => 100% * num / 16)
@@ -82,14 +82,17 @@ We have previously considered analytic continuations over two regions with an in
             circle((), radius: 1.5pt, fill: black)
           })
 
-          let radius-indicator-loc = cvector.add(var-z, cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(-30deg), (
-            var-R,
-            0,
-          )))
+          let radius-indicator-loc = (
+            rel: "z",
+            to: cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(-30deg), (
+              var-R,
+              0,
+            )),
+          )
 
           brace(
-            (var-z, 2%, radius-indicator-loc),
-            (var-z, 98%, radius-indicator-loc),
+            ("z", 2%, radius-indicator-loc),
+            ("z", 98%, radius-indicator-loc),
             name: "var-R-brace",
             amplitude: 7pt,
             stroke: (thickness: 1pt),
@@ -102,7 +105,7 @@ We have previously considered analytic continuations over two regions with an in
               .at("Gamma-ints")
               .at("anchors")(())
               .map(
-                anchor => cetz.coordinate.resolve-anchor(ctx, "Gamma-ints." + anchor),
+                anchor => cetz.coordinate.resolve-anchor(ctx, none, "Gamma-ints." + anchor),
               )
 
             for k in range(0, var-gamma-int-points.len()) {
@@ -125,7 +128,7 @@ We have previously considered analytic continuations over two regions with an in
             }
           })
 
-          hide(line(cvector.add(var-z, (100, -20)), cvector.sub(var-z, (100, -20)), name: "label-testline"))
+          hide(line((rel: "z", to: (100, -20)), (rel: "z", to: (-100, 20)), name: "label-testline"))
 
           intersections("U-label-ints", "label-testline", "union")
 
@@ -137,7 +140,7 @@ We have previously considered analytic continuations over two regions with an in
 
           content("var-R-brace.content", $R_z$)
           content((name: "gamma", anchor: 88%), $gamma$, anchor: "south-east", padding: 2pt)
-          content(var-z, $z$, anchor: "east", padding: 4pt)
+          content("z", $z$, anchor: "east", padding: 4pt)
         })
       })
     },

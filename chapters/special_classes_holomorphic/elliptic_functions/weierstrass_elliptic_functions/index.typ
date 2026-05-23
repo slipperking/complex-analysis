@@ -123,7 +123,7 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
   $ <eq:weierstrasspfunction>
 ] <def:weierstrasspfunction>
 
-By @prop:weierstrasspfunctionconvergence, @ thm:weierstrassconvergence, $wp$ is well-defined and meromorphic on $CC$. By @ thm:weierstrassconvergence, we can use termwise differentiation to get
+By @prop:weierstrasspfunctionconvergence, @thm:weierstrass_convergence, $wp$ is well-defined and meromorphic on $CC$. By @thm:weierstrass_convergence, we can use termwise differentiation to get
 $
   wp'(z) = -2 / z^3 - sum_(omega in Lambda without {0}) 2 / (z - omega)^3 = -2 sum_(omega in Lambda) 1 / (z - omega)^3,
 $
@@ -167,7 +167,7 @@ By evenness of $wp$, we must have $c_1 = c_2 = 0$. Therefore, $wp$ is also an el
   which for $abs(omega) > 2 R$ (which comprises all $omega$ except for finitely many) is bounded by $sum_(omega in Lambda, abs(omega) > 2 R) 10 R / abs(omega)^3$ (estimates derived in the proof of @prop:weierstrasspfunctionconvergence), which is convergent by @prop:weierstrasspfunctionintermediateseriesconvergence. Hence, the series converges absolutely for $abs(z) < R$ and the summation exchange is valid. By the symmetry of the period lattice, it is trivial that $c_(2 m + 1) = 0$ for all $m in NN$. Hence, the assertion follows.
 ]
 
-Termwise differentiation (provided by @ thm:weierstrassconvergence) now gives
+Termwise differentiation (provided by @thm:weierstrass_convergence) now gives
 $
   wp'(z) = -2 / z^3 + sum_(n=1)^oo 2 n c_(2 n) z^(2 n - 1).
 $

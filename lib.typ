@@ -1,6 +1,6 @@
 #import "@preview/ctheorems:1.1.3": *
 #import "/itemize/lib.typ" as itemize
-#import "@preview/cetz:0.5.0"
+#import "@preview/cetz:0.5.2"
 #import "@preview/cetz-plot:0.1.3": *
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": va as Va, vb as Vb, vu as Vu
@@ -108,9 +108,7 @@
   (..args, body) => {
     html.elem("div", attrs: (class: "thm-proof"), {
       html.elem("p", attrs: (class: "proof-head"), html.elem("em", [
-        #if args.pos().len() == 0 { head } else {
-          (head, ..args.pos()).join(" ")
-        }.
+        #if args.pos().len() == 0 { head } else { (head, ..args.pos()).join(" ") }.
       ]))
       body
       html.elem("p", attrs: (class: "qed"), [$square$])
@@ -247,17 +245,8 @@
 #let widearc(x) = $accent(x, paren.t)$
 
 #let halflength-arrow(start, end, scalar: 0, mark: (end: ">>", fill: black), ..args) = {
-  let stripped-start = start.slice(0, 2)
-  let stripped-end = end.slice(0, 2)
-
-  let diff = cvector.scale(cvector.norm(cvector.sub(stripped-start, stripped-end)), scalar)
-  let offset = cmatrix.mul-vec(
-    ((0, 1), (-1, 0)),
-    diff,
-  )
-
-  let pstart = cvector.add(stripped-start, offset)
-  let pend = cvector.add(stripped-end, offset)
+  let pstart = (start, scalar, 90deg, end)
+  let pend = (end, scalar, -90deg, start)
   cetz.draw.line(
     (pstart, 25%, pend),
     (pstart, 75%, pend),
