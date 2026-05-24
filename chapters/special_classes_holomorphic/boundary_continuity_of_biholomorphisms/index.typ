@@ -363,7 +363,7 @@ In fact, it is almost always true that such an extension exists. We will give th
     #figure(
       grid(
         columns: 2,
-        gutter: 1em,
+        gutter: 1fr,
         cetz.canvas(length: 1cm, {
           import cetz.draw: *
 
@@ -549,7 +549,7 @@ In fact, it is almost always true that such an extension exists. We will give th
     $
       abs(phi(mu_1(t)) - phi(mu_2(t))) <= diam W_j < epsilon
     $
-    for all $S < t < 1$, thus equality is derived. Moreover, $inter.big_j overline(W_j)$ (shrinks to) is a single point, which is precisely the prescribed limit.
+    for all $S < t < 1$, thus equality is derived. Moreover, $inter.big_j overline(W_j)$ shrinks to a single point, which is precisely the prescribed limit.
   ]
 
   #corollary[
@@ -582,61 +582,91 @@ In fact, it is almost always true that such an extension exists. We will give th
     The extension $tilde(phi)$ of the biholomorphism $phi$ to $overline(DD)$ is injective.
   ]
 
+  #figure-wrapper([
+    #figure(
+      {
+        grid(
+          columns: 2,
+          gutter: 1fr,
+          column-gutter: 1em,
+          cetz.canvas({
+            import cetz.draw: *
+            let r = 1.875
+            circle((0, 0), radius: r, name: "D")
+            let zeta-ang = 20deg
+            let zeta-prime-ang = -30deg
+            let zeta-pt = ((0, 0), r, zeta-ang, (1, 0))
+            line(zeta-pt, (0, 0))
+
+            let zeta-prime-pt = ((0, 0), r, zeta-prime-ang, (1, 0))
+            line(zeta-prime-pt, (0, 0))
+
+            content(zeta-pt, math-rect($zeta$), anchor: "west", padding: 3pt)
+            content(zeta-prime-pt, math-rect($zeta'$), anchor: "west", padding: 3pt)
+            content((0, 0), $0$, anchor: "east", padding: 3pt)
+            content("D.32%", math-rect($partial DD$), anchor: "north-east", padding: 2pt)
+            content(
+              (((0, 0), 50%, zeta-pt), 6pt, 90deg, zeta-pt),
+              math-rect($alpha$),
+              anchor: "center",
+            )
+            content(
+              (((0, 0), 50%, zeta-prime-pt), 6pt, -90deg, zeta-prime-pt),
+              math-rect($beta$),
+              anchor: "center",
+            )
+            content(((0, 0), r * 0.7, (zeta-ang + zeta-prime-ang) / 2, (1, 0)), $U_1$)
+            content((-1, 0), $U_2$)
+          }),
+          cetz.canvas({
+            import cetz.draw: *
+            catmull(
+              (3.6, 0.9),
+              (2.1, 2.55),
+              (-1.2, 0.75),
+              (-1.5, -0.75),
+              (-1.1, -1.3),
+              (-0.75, -1.5),
+              (0.5, -1.4),
+              (1.65, -1.35),
+              tension: 0.5,
+              close: true,
+              name: "Omega_2",
+            )
+            catmull(
+              (-0.75, -1.5),
+              (-0.8, -0.7),
+              (-0.4, -0.5),
+              (-0.1, 0.2),
+              (0.4, 0.5),
+              (0.7, 0.8),
+              (1.1, 1.2),
+              tension: 0.5,
+            )
+            catmull(
+              (-0.75, -1.5),
+              (-0.6, -1.1),
+              (-0.2, -0.9),
+              (0.8, -0.7),
+              (1.4, 0.1),
+              (1.8, 0.5),
+              (1.2, 0.9),
+              (1.1, 1.2),
+              tension: 0.5,
+              name: "phi-line",
+            )
+
+            content("phi-line.100%", $tilde(phi)(0)$, anchor: "south", padding: 2pt)
+            content("phi-line.0", $tilde(phi)(zeta) = tilde(phi)(zeta')$, anchor: "north", padding: 2pt)
+            content((0.4, -0.1), $W$, anchor: "center")
+            content((name: "Omega_2", anchor: 90%), math-rect($partial Omega_2$), anchor: "north-west")
+          }),
+        )
+      },
+      caption: [Two line segments $alpha$ and $beta$ mapping to a Jordan curve bounding $W$],
+    ) <fig:osgood_taylor_caratheodory_injectivityofextension>
+  ])
   #proof[
-    #figure-wrapper([
-      #figure(
-        rect(
-          width: 100%,
-          height: 5cm,
-          stroke: gray + 0.8pt,
-          inset: 10pt,
-        )[
-          #align(center + horizon)[Figure placeholder. Raw TikZ preserved below.]
-        ],
-        caption: [Two line segments $alpha$ and $beta$ mapping to a Jordan curve bounding $W$],
-      ) <fig:osgood_taylor_caratheodory_injectivityofextension>
-    ])
-
-    /*
-    \begin{figure}
-        \centering
-        \vspace{0pt}
-        \begin{tikzpicture}
-            \draw[thick] (-1.875, 0) arc (180:-180:1.875);
-            \draw[thick] ({1.875*cos(20)}, {1.875*sin(20)}) -- (0,0);
-            \draw[thick] ({1.875*sqrt(3)/2}, {-1.875/2}) -- (0,0);
-
-            \node[anchor=west] at ({1.875*cos(20)}, {1.875*sin(20)}) {\footnotesize\(\zeta\)};
-            \node[anchor=west] at ({1.875*cos(30)}, {1.875*sin(-30)}) {\footnotesize\(\zeta'\)};
-            \node[anchor=east] at (0,0) {0};
-            \node[anchor=north] at (-1.7, -1.2) {\footnotesize\(\partial\mathbb{D}\)};
-            \node[anchor=north] at (0.9, 0.7) {\footnotesize\(\alpha\)};
-            \node[anchor=north] at (0.8, -0.53) {\footnotesize\(\beta\)};
-            \node[anchor=north] at (1.2, 0.2) {\(U_1\)};
-            \node[anchor=center] at (-1, 0) {\(U_2\)};
-        \end{tikzpicture}\hfill
-        \begin{tikzpicture}
-            \draw[thick] plot[smooth cycle] coordinates {
-                (3.6,0.9) (2.1,2.55) (-1.2,0.75) (-1.5,-0.75) (-1.1,-1.3) (-0.75,-1.5) (0.5,-1.4) (1.65,-1.35)
-            };
-            \draw[thick] plot[smooth] coordinates {
-                (-0.75,-1.5) (-0.8,-0.7)
-                (-0.4,-0.5) (-0.1,0.2) (0.4,0.5)
-                (0.7,0.8) (1.1,1.2)
-            };
-            \draw[thick] plot[smooth] coordinates {
-                (-0.75,-1.5) (-0.6,-1.1)(-0.2,-0.9)
-                (0.8,-0.7) (1.4,0.1) (1.8,0.5) (1.2,0.9) (1.1,1.2)
-            };
-            \node[anchor=south] at (1.1,1.17) {\footnotesize\(\widetilde{\varphi}(0)\)};
-            \node[anchor=north] at (-0.75,-1.51) {\footnotesize\(\widetilde{\varphi}(\zeta)=\widetilde{\varphi}\qty(\zeta')\)};
-            \node[anchor=north] at (0.4,0) {\(W\)};
-            \node[anchor=center] at (2.75,-0.75) {\footnotesize\(\partial\Omega_2\)};
-        \end{tikzpicture}
-        \caption{Two line segments \(\alpha\) and \(\beta\) mapping to a Jordan curve bounding \(W\)}\label{fig:osgood_taylor_caratheodory_injectivityofextension}
-    \end{figure}
-    */
-
     Notice that $tilde(phi)(DD) = Omega_2$, and from the earlier discussion regarding properness, $tilde(phi)(S^1) subset.eq partial Omega_2$. By the biholomorphy on $DD$, it thus suffices to show that $tilde(phi)|_(partial DD)$ is one-to-one, or that for any two points $zeta, zeta' in partial DD$ such that $tilde(phi)(zeta) = tilde(phi)(zeta')$, $zeta = zeta'$. Assume, for the sake of contradiction, that $zeta != zeta'$. The straight line segment connecting $0$ to $zeta$ (denoted $alpha$), and the straight line segment joining $0$ and $zeta'$ (denoted $beta$) then split $DD$ into two domains $U_1$ and $U_2$, and $tilde(phi)(alpha) union tilde(phi)(beta)$ forms a Jordan curve enclosing some region $W$. See @fig:osgood_taylor_caratheodory_injectivityofextension. By connectivity, either $U_1$ or $U_2$ maps to $W$. Without loss of generality, assume $tilde(phi)(U_1) = W$. Then it follows that
     $
       partial DD inter partial U_1 subset.eq partial Omega_2 inter partial W = {tilde(phi)(zeta)} = {tilde(phi)(zeta')}.
