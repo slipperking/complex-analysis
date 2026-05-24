@@ -669,7 +669,7 @@ In fact, it is almost always true that such an extension exists. We will give th
   #proof[
     Notice that $tilde(phi)(DD) = Omega_2$, and from the earlier discussion regarding properness, $tilde(phi)(S^1) subset.eq partial Omega_2$. By the biholomorphy on $DD$, it thus suffices to show that $tilde(phi)|_(partial DD)$ is one-to-one, or that for any two points $zeta, zeta' in partial DD$ such that $tilde(phi)(zeta) = tilde(phi)(zeta')$, $zeta = zeta'$. Assume, for the sake of contradiction, that $zeta != zeta'$. The straight line segment connecting $0$ to $zeta$ (denoted $alpha$), and the straight line segment joining $0$ and $zeta'$ (denoted $beta$) then split $DD$ into two domains $U_1$ and $U_2$, and $tilde(phi)(alpha) union tilde(phi)(beta)$ forms a Jordan curve enclosing some region $W$. See @fig:osgood_taylor_caratheodory_injectivityofextension. By connectivity, either $U_1$ or $U_2$ maps to $W$. Without loss of generality, assume $tilde(phi)(U_1) = W$. Then it follows that
     $
-      partial DD inter partial U_1 subset.eq partial Omega_2 inter partial W = {tilde(phi)(zeta)} = {tilde(phi)(zeta')}.
+      tilde(phi)(partial DD inter partial U_1) subset.eq partial Omega_2 inter partial W = {tilde(phi)(zeta)} = {tilde(phi)(zeta')}.
     $
     Then the arc of $partial DD$ in $partial U_1$ maps to a constant, which by @prop:holomorphicondiskcontinuousonclosureconstantonarcconstancy, implies that $tilde(phi)$ is constant, which is an impossibility. (The same argument is used for $U_2$)
 
