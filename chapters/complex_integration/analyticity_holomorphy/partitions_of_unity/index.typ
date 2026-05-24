@@ -200,9 +200,9 @@ We now justify a claim whose triviality we have taken for granted.
   Since the union of open sets is open, the pre-image of any open set is open, and hence $f$ is topologically continuous.
 ]
 
-#theorem[
+#theorem[Compact--Hausdorff][
   Let $X$ be a compact topological space and let $Y$ be a Hausdorff space. If $f:X -> Y$ is a continuous bijection, then $f$ is a homeomorphism.
-]
+] <thm:compact_hausdorff>
 
 #proof[
   If $A subset.eq X$ is compact, then the pre-images of any open cover $cal(U)$ of $f(A)$ cover $A$. Hence, there is a finite subcover

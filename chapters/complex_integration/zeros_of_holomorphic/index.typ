@@ -113,15 +113,15 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   $ f(z) = (z - z_j)^(k_j) h_j (z) $
   where $h_j$ is holomorphic and non-vanishing on $D(z_j, epsilon_j)$. Differentiation yields
 
-  $ f'(z) = k_j (z - z_j)^(k_j - 1) h_j (z) + (z - z_j)^(k_j) h_j' (z), $
+  $ f'(z) = k_j (z - z_j)^(k_j - 1) h_j (z) + (z - z_j)^(k_j) h'_j (z), $
 
   and thus
 
-  $ (f'(z)) / (f(z)) = (k_j) / (z - z_j) + (h_j' (z)) / (h_j (z)). $
+  $ (f'(z)) / (f(z)) = (k_j) / (z - z_j) + (h'_j (z)) / (h_j (z)). $
 
-  Since $h_j$ is holomorphic and non-vanishing on $D(z_j, epsilon_j)$, the function $frac(h_j', h_j, style: "horizontal")$ is holomorphic there. By the Cauchy--Goursat Theorem,
+  Since $h_j$ is holomorphic and non-vanishing on $D(z_j, epsilon_j)$, the function $frac(h'_j, h_j, style: "horizontal")$ is holomorphic there. By the Cauchy--Goursat Theorem,
 
-  $ integral.cont_(partial D(z_j, epsilon_j)) (h_j' (z)) / (h_j (z)) dz = 0. $
+  $ integral.cont_(partial D(z_j, epsilon_j)) (h'_j (z)) / (h_j (z)) dz = 0. $
 
   The Cauchy--Goursat Formula (@thm:cauchygoursatformula) gives
 
