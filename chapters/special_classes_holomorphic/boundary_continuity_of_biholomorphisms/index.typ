@@ -18,7 +18,7 @@ In fact, it is almost always true that such an extension exists. We will give th
   extends continuously but not differentiably to $plus.minus 1$. The boundary of $DD inter HH^+$ is piecewise $C^oo$.
 ]
 
-#theorem("Osgood--Taylor--Carathéodory")[
+#theorem[Osgood--Taylor--Carathéodory][
   Suppose that $Omega_1$ and $Omega_2$ are two bounded regions in $CC$ such that $partial Omega_1$ and $partial Omega_2$ each comprises a single Jordan curve. If $phi : Omega_1 -> Omega_2$ is a biholomorphism (provided by the Riemann Mapping Theorem in @thm:riemann_mapping), then $exists tilde(phi) : overline(Omega_1) -> overline(Omega_2)$ homeomorphic such that $tilde(phi)|_(Omega_1) equiv phi$ (the restriction of $tilde(phi)$ to $Omega_1$ agrees with $phi$).
 ] <thm:osgood_taylor_caratheodory>
 
@@ -495,7 +495,7 @@ In fact, it is almost always true that such an extension exists. We will give th
   #proposition[
     As $j -> oo$,
     $
-      diam W_j -> 0 quad "and" quad op("area")(W_j) -> 0.
+      diam W_j -> 0 quad "and" quad op("area")W_j -> 0.
     $
   ] <prop:osgood_taylor_caratheodory_vanishing_areas_and_diameters>
 
@@ -678,17 +678,25 @@ In fact, it is almost always true that such an extension exists. We will give th
 
   Thus, the preceding results gives the construction of an injective, continuous extension of $phi$ to $overline(DD)$. Moreover, the extension is onto since a continuous function maps compact sets to compact sets.
 
-  Now consider the general case for arbitrary $Omega_1$ as in the theorem statement.
+  Next, we show that the extension is a homeomorphism.
+  #proposition[
+    The extension $tilde(phi)$ of the biholomorphism $phi$ to $overline(DD)$ is a homeomorphism.
+  ] <prop:osgood_taylor_caratheodory_extension_homeomorphism>
 
-  By the preceding results, there exist biholomorphisms $phi_1 : DD -> Omega_1$ and $phi_2 : DD -> Omega_2$, and the Riemann Mapping Theorem (@thm:riemann_mapping) implies the existence of a biholomorphism $phi : Omega_1 -> Omega_2$. Moreover, $phi_1$ and $phi_2$ extend continuously to $tilde(phi)_1$ and $tilde(phi)_2$, respectively.
+  #proof[
+    It suffices to show that the restriction $tilde(phi)|_(partial DD)$ is a homeomorphism between $partial DD$ and $partial Omega_1$. Since $partial DD$ is compact (and one under the subspace topology, a compact space) and $partial Omega_1$ is trivially Hausdorff (under the subspace topology), the continuity and injectivity of $tilde(phi)|_(partial DD)$ suffices to show that it is a homeomorphism (by @thm:compact_hausdorff).
+  ]
+  #proof[(Alternate)][
+    We show that the inverse of $tilde(phi)|_(partial DD)$ is continuous, which also suffices to show that $tilde(phi)|_(partial DD)$ is a homeomorphism.
 
-  The restriction $tilde(phi)_1|_(partial DD)$ forms a continuous bijection to $partial Omega_1$. We now aim to show that $(tilde(phi)_1|_(partial DD))^(-1)$ is continuous (which thus proves that $tilde(phi)_1|_(partial DD)$ is a homeomorphism). This is in fact a specific case of a famous topological argument (specifically @thm:compact_hausdorff).
+    By the final argument of the proof of @cor:osgood_taylor_caratheodory_continuous_extension, it suffices to show that any sequence ${z_n}_(n in NN) subset partial Omega_2$ that converges to a point $z in partial Omega_2$ has a corresponding sequence ${w_n}_(n in NN) = {(tilde(phi)|_(partial DD))^(-1)(z_n)}_(n in NN)$ in $partial DD$ which converges to $w = (tilde(phi)|_(partial DD))^(-1)(z)$. Assume, for contradiction, that some sequence as labeled above does not converge to $w$. By the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), some subsequence of ${w_n}_(n in NN)$, denoted by ${w_(n_k)}_(k in NN)$, converges to $w_oo in partial DD$ (which is not equal to $w$). Then $tilde(phi)(w_(n_k)) -> tilde(phi)(w_oo)$ as $k -> oo$ by the continuity of $(tilde(phi))$. However, each $tilde(phi)(w_(n_k)) = z_(n_k) -> z = tilde(phi)(w)$. Hence, $tilde(phi)(w) = tilde(phi)(w_oo)$ which by injectivity, implies $w = w_oo$, which is a contradiction. Thus $tilde(phi)$ establishes a homeomorphism between $overline(DD)$ and $overline(Omega_1)$.
+  ]
 
-  However, here we may also entertain a different approach.
+  Now consider the general case for arbitrary $Omega_1$ as in the theorem statement. Let $phi : Omega_1 -> Omega_2$ be a biholomorphism.
 
-  By the final argument of the proof of @cor:osgood_taylor_caratheodory_continuous_extension, it suffices to show that any sequence ${z_n}_(n in NN) subset partial Omega_2$ that converges to a point $z in partial Omega_2$ has a corresponding sequence ${w_n}_(n in NN) = {(tilde(phi)_1|_(partial DD))^(-1)(z_n)}_(n in NN)$ in $partial DD$ which converges to $w = (tilde(phi)_1|_(partial DD))^(-1)(z)$. Assume, for contradiction, that some sequence as labeled above does not converge to $w$. By the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), some subsequence of ${w_n}_(n in NN)$, denoted by ${w_(n_k)}_(k in NN)$, converges to $w_oo in partial DD$ (which is not equal to $w$). Then $tilde(phi)_1(w_(n_k)) -> tilde(phi)_1(w_oo)$ as $k -> oo$ by the continuity of $(tilde(phi)_1)$. However, each $tilde(phi)_1(w_(n_k)) = z_(n_k) -> z = tilde(phi)_1(w)$. Hence, $tilde(phi)_1(w) = tilde(phi)_1(w_oo)$ which by injectivity, implies $w = w_oo$, which is a contradiction. Thus $tilde(phi)_1$ establishes a homeomorphism between $overline(DD)$ and $overline(Omega_1)$. A similar deduction gives the same result for $tilde(phi)_2$.
+  By the Riemann Mapping Theorem (@thm:riemann_mapping), there exist biholomorphisms $phi_1 : DD -> Omega_1$ and $phi_2 : DD -> Omega_2$, which extend homeomorphically to $tilde(phi)_1$ and $tilde(phi)_2$, respectively, by the preceding results.
 
-  Thus, $psi = phi_2^(-1) compose phi compose phi_1 in Aut(DD)$, which by @thm:holomorphicautomorphismgrouponunitdisk, is the composition of a Möbius transformation and a rotation, which extends injectively and continuously to some function $tilde(psi)$ on $overline(DD)$. Thus, we define $tilde(phi) = tilde(phi)_2 compose tilde(psi) compose tilde(phi)_1^(-1)$ to be the composition of three continuous functions, defining a continuous extension of $phi$, completing the proof.
+  Thus, $psi = phi_2^(-1) compose phi compose phi_1 in Aut(DD)$, which by @thm:holomorphicautomorphismgrouponunitdisk, is the composition of a Möbius transformation and a rotation, which extends homeomorphically to some function $tilde(psi)$ on $overline(DD)$. Thus, we define $tilde(phi) = tilde(phi)_2 compose tilde(psi) compose tilde(phi)_1^(-1)$ to be the composition of three continuous functions, defining a continuous extension of $phi$, completing the proof.
 ]
 
 The second case pertaining to $C^oo$ boundaries will be proved later. We now entertain the third.
@@ -696,34 +704,66 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
 #theorem[
   Let $Omega_1$ and $Omega_2$ be two regions in $CC$ each bounded by a single real-analytic Jordan curve. Then a biholomorphism $phi : Omega_1 -> Omega_2$ can be analytically continued to a neighborhood of $overline(Omega_1)$.
 ] <thm:osgood_taylor_caratheodoryrealanalyticboundaries>
-
+#figure-wrapper([
+  #figure(
+    {
+      let x-max = 1.2
+      quick-plot(x-min: -1.2, x-max: x-max, y-min: -1.2, y-max: 1.2, canvas: {
+        import cetz.draw: *
+        set-style(mark: (fill: black))
+        line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
+        hobby(
+          (-0.6, 0.4),
+          (-0.5, 0.6),
+          (-0.4, 0.7),
+          (0.1, 0.8),
+          (0.3, 0.6),
+          (0.9, 0),
+          (0.5, -0.3),
+          (0.2, -0.8),
+          (-0.3, -0.7),
+          (-0.6, -0.3),
+          (-0.9, 0),
+          close: true,
+          name: "partial-N1",
+        )
+        content("I.70%", math-rect($I$), anchor: "south")
+        content("partial-N1.70%", math-rect($N_1$), anchor: "south", padding: 2pt)
+        line((x-max + 0.8, 0), (x-max + 2.1, 0), mark: (end: ">>"))
+        // tbc
+      })
+    },
+    caption: [The construction of $N_1$, $V_p$, $eta_1$, and $phi.alt$.],
+  ) <fig:extension_across_real_analytic_boundary_inverse_flattening_map>
+])
 #proof[
-  The Osgood--Taylor--Carathéodory Theorem (@thm:osgood_taylor_caratheodory) suffices to extend $phi$ to $overline(Omega_1)$ continuously (continue to denote the extension with $phi$) such that $phi(partial Omega_1) = partial Omega_2$.
+  The Osgood--Taylor--Carathéodory Theorem (@thm:osgood_taylor_caratheodory) extends $phi$ continuously to $overline(Omega_1)$ (retain the name $phi$ for the extension) with $phi(partial Omega_1) = partial Omega_2$.
 
-  Fix $p in partial Omega_1$ and let $q = phi(p) in partial Omega_2$. Because $partial Omega_1$ is real-analytic, there exists some open interval $I$ and a real-analytic function $eta_1 : I -> partial Omega_1$ such that $eta_1(0) = p$ and $eta'_1(t) != 0$ for $t in I$. By the analytic continuation via power series, $eta_1$ can be analytically continued to a region $N_1 supset.eq I$ on which $eta'_1$ does not vanish and $eta_1$ is univalent (by @thm:nonvanishingderivativeunivalentonneighborhood) and conformally maps to a neighborhood $V_p in.rev p$. Then $phi.alt = eta_1^(-1) : V_p -> N_1$ maps $V_p inter partial Omega_1$ to $N_1 inter RR$ and $p$ to $0$.
+  Fix $p in partial Omega_1$ and let $q = phi(p) in partial Omega_2$. Since $partial Omega_1$ is real-analytic, there exist an open interval $I in.rev 0$ and a real-analytic parameterization $eta_1 : I -> partial Omega_1$ with $eta_1(0) = p$ and $eta'_1 (0) != 0$. Analytically continuing $eta_1$ via power series yields a biholomorphism $eta_1 : N_1 -> V_p$ from a region $N_1 in.rev 0$ (without loss of generality, assume $I subset.eq N_1$, or we may shrink $I$ sufficiently) onto a neighborhood $V_p in.rev p$ (univalence by @thm:nonvanishingderivativeunivalentonneighborhood), with $eta_1(N_1 inter RR) = V_p inter partial Omega_1$. Write $phi.alt = eta_1^(-1) : V_p -> N_1$; thus $phi.alt(p) = 0$ and $phi.alt$ maps $V_p inter partial Omega_1$ onto $N_1 inter RR$.
 
-  Similarly, $V_q subset CC$ there exists a neighborhood $V_q in.rev q$ and a corresponding complex neighborhood $N_2 in.rev 0$ such that $eta_2 : N_2 -> V_q$ is a biholomorphism with $eta_2(0) = q$. Define $psi = eta_2^(-1) : V_q -> N_2$ which maps $V_q inter partial Omega_2$ to $N_2 inter RR$.
+  The biholomorphism $eta_1$ maps the two components of $N_1 without RR$ to $V_p inter Omega_1$ and $V_p without overline(Omega_1)$ respectively; denote by $N_1^+$ the component mapping to $V_p inter Omega_1$.
 
-  For $psi compose phi compose phi.alt^(-1)$ to be defined on some set $U$, we must have $phi compose phi.alt^(-1)(U) subset.eq V_q$, which is satisfied when $U subset.eq phi.alt compose phi^(-1)(V_q inter overline(Omega_2))$. The image $phi.alt compose phi^(-1)(V_q inter partial Omega_2)$ then is an open interval $I' subset RR$ containing $0$. Since $phi.alt compose phi^(-1)(V_q inter Omega_2)$ either lies entirely above ($HH^+$) or below ($HH^-$) $RR$, without loss of generality we assume it lies entirely in $HH^+$. Let $I'' = (N_1 inter RR) inter I'$ and define $N'_1 subset.eq phi.alt compose phi^(-1)(V_q inter Omega_2) inter N_1 subset HH^+$ to be a new region on which $eta_1$ is analytic.
+  Similarly, there exist a region $N_2 in.rev 0$ and a biholomorphism $eta_2 : N_2 -> V_q$ with $eta_2(0) = q$ and $eta_2(N_2 inter RR) = V_q inter partial Omega_2$. Set $psi = eta_2^(-1) : V_q -> N_2$, so that $psi$ maps $V_q inter partial Omega_2$ onto $N_2 inter RR$.
 
-  Then
+  Shrink $V_p$ if necessary so that $phi(V_p inter overline(Omega_1)) subset.eq V_q$. Since $phi$ maps $V_p inter Omega_1$ into $Omega_2$, the preimage $phi^(-1)(V_q inter Omega_2) inter V_p$ is a connected subset of $V_p inter Omega_1$, so its image under $phi.alt$ is a connected subset of $N_1 without RR$ lying entirely in $N_1^+$. Define
   $
-    psi compose phi compose phi.alt^(-1)(I'') subset.eq psi(V_q inter partial Omega_2) = N_2 inter RR,
+    N'_1 = phi.alt (phi^(-1)(V_q inter Omega_2) inter V_p) subset N_1^+ subset HH^+,
   $
-  and the composition is of three univalent functions for $z in N'_1$ whose ultimate codomain lies either entirely in $HH^+$ or $HH^-$ (without loss of generality, we assume $HH^+$), and said composition is continuous up to $I''$.
+  and set $I'' = phi.alt(phi^(-1)(V_q inter partial Omega_2) inter V_p) subset N_1 inter RR$, an open interval containing $0$.
 
-  By the Schwarz Reflection Principle (@thm:riemannschwarzreflection), $psi compose phi compose phi.alt^(-1)$ may be analytically continued from $N'_1 -> HH^+$ to a symmetric domain in $N_1$,
+  Consider the composition $F = psi compose phi compose eta_1 : N'_1 -> CC$. On $N'_1$, the map $eta_1$ takes values in $V_p inter Omega_1$ where $phi$ is holomorphic, and $phi compose eta_1$ takes values in $V_q inter Omega_2$ where $psi$ is holomorphic; hence $F$ is holomorphic on $N'_1$. By the continuity of the Osgood--Taylor--Carathéodory extension (@thm:osgood_taylor_caratheodory), $phi$ is continuous up to $V_p inter partial Omega_1$, so $F$ is continuous up to $I''$ with
   $
-    U' = N_1 inter (N'_1 union I'' union {overline(z) : z in N'_1}) -> W subset CC
+    F(I'') = psi(phi(eta_1(I''))) subset psi(V_q inter partial Omega_2) = N_2 inter RR.
   $
-  biholomorphically (where $W$ is a neighborhood of $0$). Since $U'$ is a neighborhood of $0$, the set defined by
-  $
-    psi compose phi compose phi.alt^(-1)(U') = W ==> phi(V) = psi^(-1)(W),
-  $
-  where $V = phi.alt^(-1)(U')$ is a neighborhood of $p$ and $psi^(-1)(W)$ is a neighborhood of $q$. Let $V'_p subset.eq V$ be an open disk centered at $p$ and denote the continuation by $phi_p$.
+  Since $psi$ maps the connected set $V_q inter Omega_2$ into one of the two components of $N_2 without RR$, the image $F(N'_1) subset psi(V_q inter Omega_2)$ lies entirely in one component; without loss of generality $F(N'_1) subset HH^+$. Thus $F : N'_1 -> HH^+$ is holomorphic, continuous up to $I''$, and real-valued on $I''$.
 
-  For every $z in partial Omega_1$, we may construct a neighborhood $V'_z$ and a continuation $phi_z$ of $phi$ on $V'_z$. Now let $z_1, z_2 in partial Omega_1$ be two distinct points such that $V_(z_1) inter V_(z_2) != emptyset$. Obviously, $phi_(z_1) equiv phi_(z_2)$ on $V_(z_1) inter V_(z_2) inter overline(Omega_1) != emptyset$. Hence the Identity Theorem (@thm:identity) implies that $phi_(z_1) equiv phi_(z_2)$ on all of $V_(z_1) inter V_(z_2)$.
+  By the Schwarz Reflection Principle (@thm:riemannschwarzreflection), $F$ extends to a holomorphic function on the symmetric domain
+  $
+    U' = N'_1 union I'' union {overline(z) : z in N'_1},
+  $
+  which is an open neighborhood of every point of $I''$, and in particular of $0$. Since $F = psi compose phi compose eta_1$ on $U'$, we have $phi = eta_2 compose F compose phi.alt$ on $V = eta_1(U')$, an open neighborhood of $p$ in $CC$. Restricting to an open disk $V'_p subset.eq V$ centered at $p$ and denoting the resulting map by $phi_p$ gives a holomorphic continuation of $phi$ across $p$.
 
-  Therefore, the local continuations ${phi_z}_(z in partial Omega_1)$ agree on overlaps and concatenate together to define a single-valued holomorphic extension of $phi$ to a neighborhood of $overline(Omega_1)$.
+  Applying this construction at every $z in partial Omega_1$ produces an open neighborhood $V'_z$ of $z$ and a holomorphic continuation $phi_z$ of $phi$ on $V'_z$. If $z_1, z_2 in partial Omega_1$ satisfy $V'_(z_1) inter V'_(z_2) != emptyset$, then $phi_(z_1)$ and $phi_(z_2)$ agree on the open connected set $V'_(z_1) inter V'_(z_2) inter Omega_1 != emptyset$, where both equal $phi|_(Omega_1)$, so the Identity Theorem (@thm:identity) forces $phi_(z_1) equiv phi_(z_2)$ on all of $V'_(z_1) inter V'_(z_2)$.
+
+  Hence the local continuations ${phi_z}_(z in partial Omega_1)$ are mutually consistent and, together with $phi|_(Omega_1)$, define a single-valued holomorphic extension of $phi$ to the open neighborhood $Omega_1 union (union.big_(z in partial Omega_1) V'_z)$ of $overline(Omega_1)$.
 ]
-

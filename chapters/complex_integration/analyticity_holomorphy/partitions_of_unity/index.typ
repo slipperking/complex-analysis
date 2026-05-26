@@ -484,7 +484,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   This is equivalent to @itm:locally_finite_open_cover_existence_localfiniteness in @lem:locally_finite_open_cover_existence. Indeed, if every point has such a neighborhood, then any compact $K subset Omega$ admits a finite subcover of these neighborhoods by Heine--Borel (@thm:heine_borel), so $K$ intersects finitely many sets in $S$. Conversely, for any $z in Omega$, take an open neighborhood $V$ with $z in V$ and with relatively compact closure in $Omega$; then $overline(V)$ intersects finitely many sets in $S$, and so does $V$.
 ]
 
-#theorem("Partition of Unity")[
+#theorem[Partition of Unity][
   Let $Omega subset.eq CC$ be a nonempty open set and let ${Omega_k}_(k in NN)$ be an open cover of $Omega$. Then there exists a collection of bump functions ${alpha_j}_(j in NN) subset.eq C^oo (CC)$, each with compact support in $Omega$, satisfying:
 
   + For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.<itm:partition_of_unity_subordinate>
@@ -526,7 +526,7 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   proving subordination.
 ]
 
-#theorem("Existence of Bump Functions")[
+#theorem[Existence of Bump Functions][
   Let $K subset CC$ be compact and $V subset CC$ an open neighborhood of $K$. Then there exists a compactly supported $phi in C^oo (CC)$ such that
   $ 0 <= phi(z) <= 1 quad forall z in CC, $
   $supp(phi) subset V$, and $phi equiv 1$ on some open neighborhood of $K$.

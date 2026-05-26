@@ -35,7 +35,7 @@ In this definition, if
 $ f(z) = sum_(n=-infinity)^infinity c_n z^n <==> (f(1 \/ zeta)) / zeta^2 = sum_(n=-infinity)^infinity c_n zeta^(-n-2), $
 the residue at $z = infinity$ is equal to $-c_(-1)$. We will later explain the reasoning behind this definition.
 
-#theorem("Residue Theorem")[
+#theorem[Residue Theorem][
   Let $U subset CC$ be an open set with a simple closed boundary curve $partial U$. Suppose ${z_n} subset U$ is a finite set and $f(z)$ is holomorphic on $U without {z_n}$ and continuous on $overline(U) without {z_n}$. Then,
   $ integral.cont_(partial U) f(z) dz = 2 uppi ii sum_(k=1)^n Res_(z=z_k) f(z) $
 ]<thm:residuethm>
@@ -65,7 +65,6 @@ There is not a directly trivial reason for the definition of the residue at $inf
   #figure(
     {
       cetz.canvas({
-        import plot: *
         import cetz.draw: *
 
         ortho(x: 35deg, y: 35deg, cull-face: none, {

@@ -55,7 +55,8 @@ We will now study two representations for the Gamma function.
   The Gamma function satisfies
   $
     Gamma(z)=\lim_{n -> oo}(n^z n!)/(product_(k=0)^n(z+k)), Re z>0.
-  $ <eq:gammafunctiongaussformula>] <thm:gammafunctiongaussformula>
+  $ <eq:gammafunctiongaussformula>
+] <thm:gammafunctiongaussformula>
 
 #proof[
   Define the sequence of functions

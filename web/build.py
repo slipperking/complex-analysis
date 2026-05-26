@@ -158,6 +158,7 @@ def compile_typst() -> Path:
         "typst", "compile",
         "--features", "html",
         "--format", "html",
+        "--package-path", str(ROOT / "packages"), # local packages
         "--input", f"lang={LANG}",
         "--input", "html=true",
         str(ROOT / "main.typ"),
@@ -189,6 +190,7 @@ def compile_pdfs() -> None:
     cmd = [
         "typst", "compile",
         "--features", "html",   # so that target() works
+        "--package-path", str(ROOT / "packages"), # local packages
         str(ROOT / "main.typ"),
         str(out),
     ]

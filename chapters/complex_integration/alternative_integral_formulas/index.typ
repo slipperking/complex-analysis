@@ -4,7 +4,7 @@
 
 As in the Cauchy Integral Formula (@thm:cauchygoursatformula), we can write holomorphic functions in terms of an integral representation. We define the _Cauchy kernel_ to be
 
-$ H(zeta, z) = 1 / (2 uppi ii (zeta - z)). $
+$ H(zeta, z) = 1 / (taui (zeta - z)). $
 
 Then @thm:cauchygoursatformula can be written as
 
@@ -80,7 +80,7 @@ and from the bijectivity of $R ee^(ii psi) = tilde(phi)_z (R ee^(ii t))$,
 $
   dif psi & = (1 - (abs(z)^2)/(R^2)) / (1 - (overline(z))/(R) ee^(ii t))^2 ee^(ii t) ee^(-ii psi) dt \
   & = (1 - (abs(z)^2)/(R^2)) / (1 - (overline(z))/(R) ee^(ii t))^2 (1 - (overline(z))/(R) ee^(ii t)) / (1 - (z)/(R) ee^(-ii t)) dt \
-  & = (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 dt. 
+  & = (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 dt.
 $<eq:poissonintegralformula2_differentialcomputation>
 
 Then because $tilde(phi)_z^(-1) = tilde(phi)_(-z)$,
@@ -101,8 +101,8 @@ The Poisson kernel can also be rewritten as
 
 $
   P(zeta, z) & = (abs(zeta)^2 - abs(z)^2) / (2 uppi (zeta - z) (overline(zeta) - overline(z))) \
-  & = 1 / (4 uppi) ((zeta + z) / (zeta - z) + (overline(zeta) + overline(z)) / (overline(zeta) - overline(z))) \
-  & = 1 / (2 uppi) Re((zeta + z) / (zeta - z)). 
+             & = 1 / (4 uppi) ((zeta + z) / (zeta - z) + (overline(zeta) + overline(z)) / (overline(zeta) - overline(z))) \
+             & = 1 / (2 uppi) Re((zeta + z) / (zeta - z)).
 $<eq:poissonkernelgeneralform>
 
 Thus, @eq:poissonintegralformula2 is equivalent to
@@ -134,7 +134,7 @@ Letting $z = 0$, the integral vanishes, and we obtain $c = v(0) = Im(f(0))$.
 
 Define the _Schwarz kernel_ to be
 
-$ S(zeta, z) = (zeta + z) / (2 uppi ii (zeta - z) zeta). $
+$ S(zeta, z) = (zeta + z) / (taui (zeta - z) zeta). $
 
 Then for a holomorphic function $f$ on $D(0, R)$ that is continuous on $overline(D(0, R))$, we obtain the _Schwarz Integral Formula_:
 

@@ -35,8 +35,8 @@ $
   0 lt.eq theta.alt(x)lt.eq psi(x)lt.eq \mathmakebox[\widthof{\(sum_{p:p lt.eq x}\)}][c]{sum_{\substack{p:p lt.eq x\\p " prime"}}}(log x)/(log p)log p=\mathmakebox[\widthof{\(sum\)}][c]{sum_{\substack{p:p lt.eq x\\p " prime"}}}log x=pi(x)log x.
 $ <eq:chebyshevfunctions_bounds_primecounting>
 
-#theorem[We have the following limit equivalences:
-
+#theorem[
+  We have the following limit equivalences:
   $
     \varlimsup_{x ->+oo}(pi(x)log x)/(x)=\varlimsup_{x ->+oo}(psi(x))/(x)=\varlimsup_{x ->+oo}(theta.alt(x))/(x)
   $ <eq:chebyshevfunctions_limsup_inflim_equivalences_limsup>
@@ -44,7 +44,8 @@ $ <eq:chebyshevfunctions_bounds_primecounting>
 
   $
     \varliminf_{x ->+oo}(pi(x)log x)/(x)=\varliminf_{x ->+oo}(psi(x))/(x)=\varliminf_{x ->+oo}(theta.alt(x))/(x).
-  $ <eq:chebyshevfunctions_limsup_inflim_equivalences_liminf>] <thm:chebyshevfunctions_limsup_inflim_equivalences>
+  $ <eq:chebyshevfunctions_limsup_inflim_equivalences_liminf>
+] <thm:chebyshevfunctions_limsup_inflim_equivalences>
 
 #proof[Let $0<alpha<1$ be arbitrary and suppose $x>1$. By definition, we have
 

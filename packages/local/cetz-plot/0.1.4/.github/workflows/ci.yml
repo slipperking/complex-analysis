@@ -1,0 +1,35 @@
+name: Tests
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Install just from crates.io
+        uses: baptiste0928/cargo-install@v3
+        with:
+          crate: just
+      - name: Install tytanic
+        uses: baptiste0928/cargo-install@v3
+        with:
+          crate: tytanic
+          git: https://github.com/tingerrr/tytanic.git
+      - uses: typst-community/setup-typst@v4
+        with:
+          typst-version: '0.14.2'
+          zip-packages: requirements.json
+      - run: |
+          just install @local
+          just install @preview
+          just manual
+          just test

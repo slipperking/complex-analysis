@@ -40,19 +40,19 @@ corresponds to
 $ integral_a^b f(g(x)) g'(x) dx = integral_(g(a))^(g(b)) f(u) dif u. $
 Another correspondence is the Mean Value Theorem:
 
-#theorem("Mean Value Theorem, Differential Form")[
+#theorem[Mean Value Theorem, Differential Form][
   If $f(x)$ is differentiable over $[a, b]$, then $exists c in [a, b]$ such that
   $ f(b) - f(a) = f'(c)(b - a). $
 ]
 
-#theorem("Mean Value Theorem, Integral Form")[
+#theorem[Mean Value Theorem, Integral Form][
   If $f(x)$ is continuous over $[a, b]$, then $exists xi in [a, b]$ such that
   $ integral_a^b f(x) dx = f(xi)(b - a). $
 ]
 
 A curve is a one-dimensional manifold embedded within a higher dimensional space. They can be parameterized with a vector $vb(F)(t) = (P(t), Q(t), R(t))$ of one parameter. In the complex plane, a curve is a complex-valued function $gamma(t)$ for a real parameter $alpha <= t <= beta$. A curve is _closed_ if $gamma(alpha) = gamma(beta)$. It is _smooth_ if it is continuously differentiable, and its direction is defined to be the direction as $t$ increases. If it is smooth everywhere except at a finite number of points, it is _piecewise smooth_. If it is of finite length, then the curve is said to be _rectifiable_. Piecewise smooth curves are rectifiable. A curve is _simple_ if it is simple (non-self-intersecting), or if $gamma(t_1) = gamma(t_2)$ implies that $t_1 = t_2$. A simple closed curve is also called a _Jordan curve_.
 
-#theorem("Jordan Curve Theorem")[
+#theorem[Jordan Curve Theorem][
   Let $gamma$ be a Jordan curve in $RR^2$. Then the set $RR^2 without gamma$ consists of exactly two connected subsets. One of them is the interior, denoted by $op("int")(gamma)$, and is a bounded set, while the other is the exterior, denoted by $op("ext")(gamma)$, which is unbounded. Both of the two sets share the common boundary $gamma$.
 ] <thm:jordancurve>
 
@@ -60,7 +60,7 @@ The theorem above seems trivial, but its rigorous proof in topology is extremely
 
 Generalizations of the differential and integral exist for multivariate functions. The partial differentials of $f(x, y, z)$, $pdv(f, x) dx$, $pdv(f, y) dy$, and $pdv(f, z) dz$ sum up to form the total differential, denoted by $dif f$. An important result in multivariable calculus allows the calculation of the derivatives of a definite integral with respect to its parameter.
 
-#theorem("Leibniz Integral Rule")[
+#theorem[Leibniz Integral Rule][
   Let $f(x, u)$ be continuous on $a <= x <= b$, $c <= u <= d$, and suppose $a <= alpha(u), beta(u) <= b$ are differentiable functions of $c <= u <= d$. If $f$ is continuously differentiable with respect to $u$, then
   $
     dv(, u) (integral_(alpha(u))^(beta(u)) f(x, u) dx) & = integral_(alpha(u))^(beta(u)) pdv(f, u) (x, u) dx \
@@ -246,7 +246,7 @@ $
   Then $forall delta > 0$, $exists n > 1$ where $abs(x - y) < delta$, since $lim_(n -> oo) abs(x - y) = 0$. Additionally, $abs(f(x) - f(y)) = 1 >= epsilon$. This satisfies the negation, and thus, $f(x) = 1 / x$ is not uniformly continuous over $(0, 1)$.
 ]
 
-#theorem("Heine" + sym.dash.en + "Cantor")[
+#theorem[Heine--Cantor][
   A continuous function on a compact set $K$ is uniformly continuous on $K$.
 ] <thm:heinecantor>
 

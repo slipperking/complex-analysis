@@ -1,7 +1,8 @@
 #import "@preview/ctheorems:1.1.3": *
-#import "/itemize/lib.typ" as itemize
+#import "@local/itemize:0.2.0" as itemize
 #import "@preview/cetz:0.5.2"
-#import "@preview/cetz-plot:0.1.3": *
+// #import "@preview/cetz-plot:0.1.4": *
+#import "@local/cetz-plot:0.1.4" as cetz-plot
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": va as Va, vb as Vb, vu as Vu
 #import "@preview/fancy-tiling:1.0.0": *
@@ -286,7 +287,7 @@
 
   cetz.canvas(..canvas-args, {
     import cetz.draw: *
-    plot.plot(
+    cetz-plot.plot.plot(
       size: size,
       axis-style: "school-book",
       x-min: x-min,
@@ -297,9 +298,9 @@
       y-tick-step: none,
       ..args.named(),
       {
-        plot.add(x => 0, domain: (0, 0))
+        cetz-plot.plot.add(x => 0, domain: (0, 0))
         extra-plot
-        plot.annotate({
+        cetz-plot.plot.annotate({
           canvas
         })
       },

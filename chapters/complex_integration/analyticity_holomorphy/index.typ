@@ -8,7 +8,7 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
   Let $U subset CC$ be an open region bounded by a simple closed boundary $partial U$, and let $f:U -> CC$ be holomorphic and continuous over $overline(U)$. Then $forall z in U$, $forall n in NN$, $f^((n)) (z)$ exists, and
 
   $
-    f^((n)) (z)= (n!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(n+1)) dzeta.
+    f^((n)) (z)= (n!) / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(n+1)) dzeta.
   $ <eq:cauchy_differentiation_formula_statement>
 
   Additionally, since $U$ is open, $forall a in U$, $forall r > 0$ such that the closed disk $overline(D(a, r)) subset U$, $f$ has the uniformly and absolutely convergent Taylor expansion
@@ -154,7 +154,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
   as desired.
 ]
 
-#theorem("Cauchy's Estimate")[
+#theorem[Cauchy's Estimate][
   For a function $f:U -> CC$ holomorphic over $U subset.eq CC$ and $forall z_0 in U$ and $forall R > 0$ such that $overline(D(z_0, R)) subset.eq U$, $forall n in NN$,
 
   $
@@ -218,7 +218,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
 
 The following theorem, albeit originally proven by Cauchy in 1844, shows a fundamental difference between holomorphic functions on proper subsets of $CC$ and entire functions.
 
-#theorem("Liouville")[
+#theorem[Liouville][
   Any bounded entire function is constant.
 ] <thm:liouville>
 
@@ -232,7 +232,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   where $M=sup_(z in CC) abs(f(z))$. By letting $R -> oo$, $f'(z_0)$ where $z_0$ is any arbitrary value in $CC$. Therefore, $f(z)$ is constant.
 ]
 
-#proof("Alternative Proof")[
+#proof[(Alternative)][
   Let $a, b in CC$ be distinct and arbitrarily chosen. Let $f:CC -> CC$ be entire and bounded such that $abs(f) <= M$ for some $M > 0$. Let $R > abs(a), abs(b)$. Since $a != b$, $exists epsilon > 0$ such that $overline(D(a, epsilon)) union overline(D(b, epsilon)) = emptyset$. By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem), we have
 
   $
@@ -262,7 +262,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   for all distinct complex $a$ and $b$. Hence, $f$ is a constant function.
 ]
 
-#theorem("Morera")[
+#theorem[Morera][
   Let $U subset.eq CC$ and $f:U -> CC$ be continuous over $U$. If for any closed triangular contour $gamma subset U$,
 
   $
@@ -409,7 +409,7 @@ For the next theorem we will briefly introduce the concept of _analytic continua
 
 The concept of analytic continuation and its consequent problems and properties will be discussed in detail in a later chapter. For now, we will prove a theorem that is a direct consequence of the Cauchy--Goursat Differentiation Formula (@thm:cauchy_differentiation_formula) and the existence of holomorphic functions with removable singularities.
 
-#theorem("Riemann")[
+#theorem[Riemann][
   Let $D^*(z_0, r)=D(z_0, r) without {z_0}$ (known as a punctured disk), and $f:D^*(z_0, r) -> CC$ be holomorphic and bounded. Then $f$ can be analytically continued to $D(z_0, r)$.
 ] <thm:riemannremovablesingularities>
 

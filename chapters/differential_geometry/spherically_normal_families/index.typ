@@ -82,7 +82,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   Let $S$ be the set of all $z in Omega$ such that $f(z)$ is finite. By the argument above, $S$ is open. The complement $Omega without S$ then consists of all points where $f(z) = oo$. By the argument above, $Omega without S$ is also open. Since $Omega$ is connected, by @thm:connected_topological_space_clopen_sets, either $S = emptyset$ or $S = Omega$. In the former case, $f equiv oo$ on $Omega$, and in the latter case, $f$ is holomorphic on $Omega$.
 ]
 
-#theorem("Marty's Criterion")[
+#theorem[Marty's Criterion][
   A family of meromorphic functions $cal(F)$ on some $Omega subset.eq CC$ is spherically normal iff
   $ {f^sharp:f in cal(F)}, $
   or the family of spherical derivatives, is locally uniformly bounded in $Omega$.
@@ -143,7 +143,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   In essence, for any point $z$, there exists an open disk $D_z$ centered at $z$ on which the spherical derivatives $f_(n_k)^sharp$ are bounded by some constant $M_z$ for $k > N_z$. By Heine--Borel (@thm:heine_borel), there exists a finite collection of disks ${D_(z_j)}_(1 <= j <= n)$ that cover $K$. Thus, ${f_(n_k)^sharp (z)}_(k > N)$ is uniformly bounded on $K$ by $max_(1 <= j <= n) M_(z_j)$, where $N = max_(1 <= j <= n) N_(z_j)$, contradicting the assumption that $sup_(z in K) f_n^sharp (z) > n$ for all $n in NN$.
 ]
 
-#theorem("Fundamental Normality Test")[
+#theorem[Fundamental Normality Test][
   Let $Omega subset.eq CC$ be a region and suppose that $cal(F)$ is a family of holomorphic functions on $Omega$. If there exist two different points $alpha, beta in CC$ such that ${alpha, beta} inter union.big_(f in cal(F)) f(Omega) = emptyset$, then $cal(F)$ must be a spherically normal family.
 ] <thm:fundamentalnormalitytest>
 

@@ -14,10 +14,10 @@ $
 
 Analogous to the real case, a 0-form is defined as a scalar-valued function in the form $f (z, overline(z))$, a 1-form in the form $omega_0 dz + omega_1 dif overline(z)$, and a 2-form as $omega_0 dz and dif overline(z)$. The exterior differential operator for this one-dimensional case is defined as $partial + overline(partial)$, where $partial = dz and pdv(, z)$ and $overline(partial) = dif overline(z) and pdv(, overline(z))$. Occasionally, one will informally use $partial$ and $overline(partial)$ as an abbreviation for $pdv(, z)$ and $pdv(, overline(z))$ respectively.
 
-#theorem(
-  "Lusin Area Theorem",
-)[For a region $U subset CC$ and $f:U -> CC$ univalent, the area of the image $f(U)$ is equal to
-  $ integral_U abs(f'(z))^2 dif A. $] <thm:lusinarea>
+#theorem[Lusin Area Theorem][
+  For a region $U subset CC$ and $f:U -> CC$ univalent, the area of the image $f(U)$ is equal to
+  $ integral_U abs(f'(z))^2 dif A. $
+] <thm:lusinarea>
 
 #proof[
   We aim to find
@@ -40,9 +40,7 @@ Analogous to the real case, a 0-form is defined as a scalar-valued function in t
   $
   by @eq:holomorphic_derivative_decomposition.
 ]
-#theorem(
-  "Green's Theorem, Complex Form",
-)[
+#theorem[Green's Theorem, Complex Form][
   Let $U subset CC$ be bounded with a piecewise smooth boundary $partial U$. For two scalar functions $omega_1=omega_1 (z,overline(z))$ and $omega_2=omega_2 (z,overline(z))$ satisfying $omega_1,omega_2 in C^1 (overline(U))$, define the 1-form $omega=omega_1 dz + omega_2 dif overline(z)$. Then,
 
   $ integral_(partial U)omega=integral_U dif omega. $ <eq:complex_green>
@@ -88,9 +86,8 @@ Analogous to the real case, a 0-form is defined as a scalar-valued function in t
 
 The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:stokescartan). However, it proves the validity of the treatment of the $partial$ and $overline(partial)$ operators, and the generalization to forms with basis $dz$ and $dif overline(z)$.
 
-#theorem(
-  "Cauchy" + sym.dash.en + "Pompeiu",
-)[Let $U subset CC$ be bounded with a piecewise $C^1$ boundary $partial U$. Let $f(z)in C^1 (overline(U))$. Then $forall z in U without partial U$,
+#theorem[Cauchy--Pompeiu][
+  Let $U subset CC$ be bounded with a piecewise $C^1$ boundary $partial U$. Let $f(z)in C^1 (overline(U))$. Then $forall z in U without partial U$,
 
   $
     f(z)=1/taui (integral.cont_(partial U)(f(zeta))/(zeta-z)dzeta-integral_U pdv(f(zeta), overline(zeta))(dif overline(zeta) and dzeta)/(zeta-z)).
@@ -184,19 +181,20 @@ In complex analysis, when integrating over a region that contains a singularity,
 
 From the above result, we can directly obtain the following theorem:
 
-#theorem(
-  "Cauchy's Integral Formula",
-)[Let $U subset CC$ be an open region with a piecewise $C^1$ boundary $partial U$, and let $f in C^1 (overline(U))$ be holomorphic on $U$. Then for all $z in U$,
+#theorem[Cauchy's Integral Formula][
+  Let $U subset CC$ be an open region with a piecewise $C^1$ boundary $partial U$, and let $f in C^1 (overline(U))$ be holomorphic on $U$. Then for all $z in U$,
 
   $
     f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
-  $ <eq:cauchyintegralformula>] <thm:cauchyintegralformula>
+  $ <eq:cauchyintegralformula>
+] <thm:cauchyintegralformula>
 
-#proof[By @eq:wirtingerderivative2, for $f (zeta,overline(zeta))$, $pdv(f, overline(zeta))=0$. Applying the Cauchy--Pompeiu Theorem (@thm:pompeiu), the area integral vanishes, and @eq:cauchyintegralformula consequently follows.]
+#proof[
+  By @eq:wirtingerderivative2, for $f (zeta,overline(zeta))$, $pdv(f, overline(zeta))=0$. Applying the Cauchy--Pompeiu Theorem (@thm:pompeiu), the area integral vanishes, and @eq:cauchyintegralformula consequently follows.
+]
 
-#theorem(
-  "Cauchy's Integral Theorem",
-)[Let $U subset CC$ be an open region with piecewise $C^1$ boundary $partial U$. For a function $f(z)in C^1 (overline(U))$ holomorphic over $U$,
+#theorem[Cauchy's Integral Theorem][
+  Let $U subset CC$ be an open region with piecewise $C^1$ boundary $partial U$. For a function $f(z)in C^1 (overline(U))$ holomorphic over $U$,
   $ integral.cont_(partial U) f(zeta) dzeta = 0. $] <thm:cauchyintegraltheorem>
 
 #proof[Let $psi(z)=z f(z)$. Applying @thm:cauchyintegralformula on $psi(zeta)$ with $z=0$, we obtain
@@ -210,13 +208,15 @@ From the above result, we can directly obtain the following theorem:
     integral.cont_(partial U) f(zeta) dzeta = integral.cont_(partial U) omega = integral_U dif omega = integral_U pdv(f, overline(zeta)) dif overline(zeta) and dzeta = 0. #qedhere
   $]
 
-#theorem[For a compactly supported function $psi(z)in C^1 (CC)$, a solution satisfying $u(z)in C^1 (CC)$ to the non-homogeneous Cauchy--Riemann equation
+#theorem[
+  For a compactly supported function $psi(z)in C^1 (CC)$, a solution satisfying $u(z)in C^1 (CC)$ to the non-homogeneous Cauchy--Riemann equation
   $ pdv(u(z), overline(z))=psi(z) $
   is
 
   $
-    u(z) = -1 / (taui) integral_CC (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta.
-  $ <eq:onedimensionalpartialconjugatesolution>] <thm:onedimensionalpartialconjugatesolution>
+    u(z) = -1 / taui integral_CC (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta.
+  $ <eq:onedimensionalpartialconjugatesolution>
+] <thm:onedimensionalpartialconjugatesolution>
 
 #proof[Split $CC$ into $CC without D (z, epsilon)$ and $overline(D (z, epsilon))$. For all $epsilon > 0$, the integral
   $ -1 / (taui) integral_(CC without D (z, epsilon)) (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta $
@@ -557,9 +557,8 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
     ) <fig:cauchy_goursat_theorem_simplified_region>
   ],
 )
-#theorem(
-  "Cauchy" + sym.dash.en + "Goursat",
-)[Let $U subset CC$ be an open region bounded with boundary $partial U$. Let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then,
+#theorem[Cauchy--Goursat][
+  Let $U subset CC$ be an open region bounded with boundary $partial U$. Let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then,
   $ integral.cont_(partial U) f(zeta) dzeta = 0. $
 ] <thm:cauchygoursattheorem>
 #proof[
@@ -635,13 +634,13 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   is well-defined and independent of the path taken from $z_0$ to $z$. In this sense, holomorphic functions behave analogously to potential fields.
 ]
 
-#theorem(
-  "Cauchy" + sym.dash.en + "Goursat",
-)[Let $U subset CC$ be an open region bounded with a simple closed boundary $partial U$, and let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then for all $z in U$,
+#theorem[Cauchy--Goursat][
+  Let $U subset CC$ be an open region bounded with a simple closed boundary $partial U$, and let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then for all $z in U$,
 
   $
     f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
-  $ <eq:cauchygoursatformula>] <thm:cauchygoursatformula>
+  $ <eq:cauchygoursatformula>
+] <thm:cauchygoursatformula>
 
 #proof[
   By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem),

@@ -72,7 +72,7 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   This is a trivial property of holomorphic functions that allows for the uniqueness of analytic continuations. It is oftentimes stated in the form below:
 ]
 
-#theorem("Identity Theorem")[
+#theorem[Identity Theorem][
   Let $U subset.eq CC$ be open and connected, and define $f(z)$ and $g(z)$ to be two holomorphic functions on $U$. For a set $S subset.eq U$ with an accumulation point in $U$, if $f equiv g$ on $S$, then $f equiv g$ on $U$.
 ] <thm:identity>
 
