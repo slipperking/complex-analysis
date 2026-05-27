@@ -463,26 +463,25 @@ Results have already shown that an infinite number of zeros lie on this line. Fo
   By @prop:positivelogarithmicderivativerealpart, $exists epsilon>0$
   such that
   $
-    Re(Phi'(sigma)/Phi(sigma))>0, quad forall 1<sigma<1+epsilon,
+    Re((Phi'(sigma))/Phi(sigma))>0, quad forall 1<sigma<1+epsilon,
   $ <eq:riemannzetafunction_nolinesofzeros_reallinepositivity>
   where we define $Phi(s)$ to be holomorphic on the real line (dependent on $t$) via
   $
     Phi(s)=zeta(s)^3 zeta(s+ii t)^4 zeta(s+2 ii t),
   $
-  since the triple pole at $s=1$ of $zeta^3$ is cancelled by the (at least)
-  quadruple zero of $zeta(s+ii t)^4$ at $s=1$.
+  since the triple pole at $s=1$ of $zeta^3$ is cancelled by the (at least) quadruple zero of $zeta(s+ii t)^4$ at $s=1$.
 
   Now a manual calculation of the quantity in
   @eq:riemannzetafunction_nolinesofzeros_reallinepositivity gives
   $
-    Phi'(sigma)/Phi(sigma) & =3 zeta(sigma)^2 zeta'(sigma)/zeta(sigma)^3+4 zeta(sigma+ii t)^3 zeta'(sigma+ii t)/zeta(sigma+ii t)^4+zeta'(sigma+2 ii t)/zeta(sigma+2 ii t) \
-    & =3 zeta'(sigma)/zeta(sigma)+4 zeta'(sigma+ii t)/zeta(sigma+ii t)+zeta'(sigma+2 ii t)/zeta(sigma+2 ii t) \
+    (Phi'(sigma))/Phi(sigma) & =3 zeta(sigma)^2 (zeta'(sigma))/zeta(sigma)^3+4 zeta(sigma+ii t)^3 zeta'(sigma+ii t)/zeta(sigma+ii t)^4+zeta'(sigma+2 ii t)/zeta(sigma+2 ii t) \
+    & =3 (zeta'(sigma))/zeta(sigma)+4 zeta'(sigma+ii t)/zeta(sigma+ii t)+zeta'(sigma+2 ii t)/zeta(sigma+2 ii t) \
     & =sum_(n=2)^oo Lambda(n) (-3 ee^(-sigma log n)-4 ee^(-(s+ii t) log n)-ee^((sigma+2 ii t) log n))
   $
   where the last equality follows from @prop:riemannzetafunction_logarithmicderivativezetavonmangoldt. Taking the real part, we have
   $
-    Re(Phi'(sigma)/Phi(sigma)) & =sum_(n=2)^oo Lambda(n) ee^(-sigma log n) (-3-4 cos(t log n)-cos(2 t log n)) \
-                               & =-2 sum_(n=2)^oo Lambda(n) ee^(-sigma log n) (cos(t log n)+1)^2<0.
+    Re((Phi'(sigma))/Phi(sigma)) & =sum_(n=2)^oo Lambda(n) ee^(-sigma log n) (-3-4 cos(t log n)-cos(2 t log n)) \
+                                 & =-2 sum_(n=2)^oo Lambda(n) ee^(-sigma log n) (cos(t log n)+1)^2<0,
   $
-  This is in direct contradiction with @eq:riemannzetafunction_nolinesofzeros_reallinepositivity.
+  which is a direct contradiction of @eq:riemannzetafunction_nolinesofzeros_reallinepositivity.
 ]

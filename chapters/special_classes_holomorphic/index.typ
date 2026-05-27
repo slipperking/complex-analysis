@@ -1,4 +1,5 @@
 #import "/lib.typ": *
+= Special Classes of Holomorphic Functions
 #chapter-section("elliptic_functions")[
   #include "elliptic_functions/index.typ"
 ]
