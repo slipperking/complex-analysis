@@ -991,14 +991,21 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
   $
   an open neighborhood of $0$, and maps to
   $ V=F(N_1^+) union F(N_1 inter RR) union {overline(z) : z in F(N_1^+)} in.rev 0. $
-  Setting $V'_p = eta_1(U inter N_1 inter F^(-1) (V))$ (the $dot inter N_1$ is added here to ensure that $U inter N_1$ is in the domain of $eta_1$), an open neighborhood of $p$, the map
+  Setting $ W_p = eta_1(U inter F^(-1) (V inter N_2) inter N_1) $
+  (the $dot inter N_1$ is added here to ensure that the region in the parenthesis is in the domain of $eta_1$), an open neighborhood of $p$, the map
   $
-    phi_p = eta_2 compose F compose phi.alt : V'_p -> CC
+    phi_p = eta_2 compose F compose phi.alt : W_p -> CC
   $
-  is holomorphic and agrees with $phi$ on $V'_p inter Omega_1$.
+  is holomorphic and agrees with $phi$ on $W_p inter Omega_1$. To justify the domain restrictions, observe that applying $phi.alt$ on $W_p$ gives $U inter F^(-1) (V inter N_2) inter N_1$, and $F$ is defined thereon (since it is a subset of $U$), and maps to a subset of $V inter N_2$, on which $eta$ is defined.
 
-  Applying this construction at every $z in partial Omega_1$ yields an open neighborhood $V'_z in.rev z$ and a holomorphic map $phi_z$ extending $phi|_(Omega_1)$. Whenever $V'_(z_1) inter V'_(z_2) != emptyset$, both $phi_(z_1)$ and $phi_(z_2)$ agree with $phi$ on the nonempty open connected set $V'_(z_1) inter V'_(z_2) inter Omega_1$, so the Identity Theorem (@thm:identity) gives $phi_(z_1) equiv phi_(z_2)$ on
-  $V'_(z_1) inter V'_(z_2)$.
+  The main observation here is that each composition will map open sets to open sets and vice versa (although we are being a bit pedantic).
 
-  The local extensions are therefore mutually consistent and, together with $phi|_(Omega_1)$, define a holomorphic extension of $phi$ to the open neighborhood $Omega_1 union (union.big_(z in partial Omega_1) V'_z)$ of $overline(Omega_1)$.
+  Applying this construction at every $z in partial Omega_1$ yields an open neighborhood $W_z in.rev z$ and a holomorphic map $phi_z$ extending $phi|_(overline(Omega_1))$.
+
+  The collection of all $W_z$'s form an open cover of $partial Omega_1$; thus the Heine--Borel Theorem (@thm:heine_borel) gives the existence of a finite subcover $cal(W) = {W_(z_k)}_k$ where each $z_k in partial Omega_1$.
+
+  For two sets $W_1, W_2 in cal(W)$ where $W_1 inter W_2 != emptyset$, both $phi_(z_1)$ and $phi_(z_2)$ agree with $phi$ on the nonempty open connected set $W_(z_1) inter W_(z_2) inter Omega_1$, so the Identity Theorem (@thm:identity) gives $phi_(z_1) equiv phi_(z_2)$ on
+  $W_(z_1) inter W_(z_2)$.
+
+  The local extensions are therefore mutually consistent and, together with $phi|_(Omega_1)$, define a holomorphic extension of $phi$ to the open neighborhood $Omega_1 union union.big_(W in cal(W)) W$.
 ]
