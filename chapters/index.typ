@@ -1,4 +1,4 @@
-#import "/lib.typ" : chapter-section
+#import "/lib.typ": chapter-section
 
 #chapter-section("prerequisites")[
   #include "prerequisites_calc_top/index.typ"
@@ -36,19 +36,19 @@
   #include "multivariable/index.typ"
 ]
 
-#chapter-section("special-classes")[
-  #include "special_classes_holomorphic/index.typ"
+#chapter-section("special_classes_of_holomorphic_functions")[
+  #include "special_classes_of_holomorphic_functions/index.typ"
 ]
 
-#chapter-section("connections-nt")[
-  #include "connections_to_nt/index.typ"
+#chapter-section("connections_to_number_theory")[
+  #include "connections_to_number_theory/index.typ"
 ]
 
-// #chapter-section("riemann-surfaces")[
+// #chapter-section("riemann_surfaces")[
 //   #include "riemann_surfaces/index.typ"
 // ]
 
-// #chapter-section("nevanlinna-theory")[
+// #chapter-section("nevanlinna_theory")[
 //   #include "nevanlinna_theory/index.typ"
 // ]
 
