@@ -30,6 +30,7 @@ In fact, it is almost always true that such an extension exists. We will give th
   Let $V = DD inter D(1, 1 / 2)$, which has a finite area. Since $phi$ is a biholomorphism, $phi(V) subset Omega_2$ also has a finite area (call this $M$) and is simply connected since its complement in $Omega_2$, $phi(DD without V)$, is connected.
 
   #let hatch = diagonal-stripes(
+    background-color: black.transparentize(100%),
     size: 3pt,
     angle: 45deg,
     thickness: 0.2pt,
@@ -705,65 +706,299 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
   Let $Omega_1$ and $Omega_2$ be two regions in $CC$ each bounded by a single real-analytic Jordan curve. Then a biholomorphism $phi : Omega_1 -> Omega_2$ can be analytically continued to a neighborhood of $overline(Omega_1)$.
 ] <thm:osgood_taylor_caratheodoryrealanalyticboundaries>
 #figure-wrapper([
+  #let primary-shade = black.transparentize(60%)
+  #let hatch = diagonal-stripes(
+    background-color: black.transparentize(100%),
+    size: 3pt,
+    angle: 45deg,
+    thickness: 0.2pt,
+  )
   #figure(
-    {
-      let x-max = 1.2
-      quick-plot(x-min: -1.2, x-max: x-max, y-min: -1.2, y-max: 1.2, canvas: {
-        import cetz.draw: *
-        set-style(mark: (fill: black))
-        line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
-        hobby(
-          (-0.6, 0.4),
-          (-0.5, 0.6),
-          (-0.4, 0.7),
-          (0.1, 0.8),
-          (0.3, 0.6),
-          (0.9, 0),
-          (0.5, -0.3),
-          (0.2, -0.8),
-          (-0.3, -0.7),
-          (-0.6, -0.3),
-          (-0.9, 0),
-          close: true,
-          name: "partial-N1",
-        )
-        content("I.70%", math-rect($I$), anchor: "south")
-        content("partial-N1.70%", math-rect($N_1$), anchor: "south", padding: 2pt)
-        line((x-max + 0.8, 0), (x-max + 2.1, 0), mark: (end: ">>"))
-        // tbc
-      })
-    },
-    caption: [The construction of $N_1$, $V_p$, $eta_1$, and $phi.alt$.],
+    grid(
+      columns: 1,
+      rows: (auto, auto),
+      gutter: 3em,
+      {
+        import cetz: *
+        let x-max = 1.2
+        quick-plot(x-min: -x-max, x-max: x-max, y-min: -1.2, y-max: 1.2, canvas: {
+          import cetz.draw: *
+          set-style(mark: (fill: black))
+          line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
+          catmull(
+            (-0.6, 0.7),
+            (-0.3, 1.1),
+            (0.1, 0.9),
+            (0.3, 0.7),
+            (0.9, 0),
+            (0.6, -0.5),
+            (0.3, -0.9),
+            (-0.5, -1.1),
+            (-0.7, -0.7),
+            (-0.9, 0),
+            close: true,
+            name: "partial-N2",
+            tension: 0.5,
+          )
+          catmull(
+            (-0.4, 0.6),
+            (-0.2, 0.8),
+            (0.1, 0.6),
+            (0.6, 0),
+            (0.4, -0.4),
+            (-0.3, -0.8),
+            (-0.5, -0.4),
+            (-0.6, 0),
+            close: true,
+            stroke: none,
+            tension: 0.5,
+            // fill: primary-shade,
+            name: "flattened-map-to",
+          )
+          floating(
+            merge-path(
+              {
+                line((-x-max, 0), (x-max, 0))
+                line((x-max, 0), (x-max, 1.5))
+                line((x-max, 1.5), (-x-max, 1.5))
+              },
+              close: true,
+              stroke: none,
+              name: "rect-testline",
+            ),
+          )
+          boolean(
+            "rect-testline",
+            "flattened-map-to",
+            op: "intersection",
+            fill: hatch,
+            name: "N1+-region",
+          )
+          content("I.70%", math-rect($N_2 inter RR$), anchor: "south")
+          content("partial-N2.10%", math-rect($N_2$), anchor: "south", padding: 2pt)
+          hobby((x-max + 0.8, -0.3), (x-max + 1.3, -0.6), (x-max + 2.3, -0.3), mark: (end: ">>"), name: "arrow-eta2")
+          hobby((x-max + 2.3, 0.3), (x-max + 1.3, 0.5), (x-max + 0.7, 0.2), mark: (end: ">>"), name: "arrow-psi")
+          floating({
+            line((0.6, -2), (0.6, -1.1), mark: (end: ">>"), name: "arrow-F-biholomorphism", stroke: (dash: "dashed"))
+            content("arrow-F-biholomorphism.40%", math-rect($F$), anchor: "west")
+          })
+          group({
+            translate(x: x-max + 2.4, y: 0)
+            let top-left = (0, 1.2)
+            let bottom-right = (1.8, -1)
+            hobby(
+              top-left,
+              (0.5, 1.0),
+              (0.8, 0.9),
+              (1.3, 0.1),
+              (1.5, -0.6),
+              ..directional_points(offset: bottom-right, angle: -70deg),
+              stroke: 2pt,
+              name: "partial-Omega2",
+            )
+            merge-path(
+              {
+                hobby(
+                  top-left,
+                  (0.5, 1.0),
+                  (0.8, 0.9),
+                  (1.3, 0.1),
+                  (1.5, -0.6),
+                  ..directional_points(offset: bottom-right, angle: -70deg),
+                )
+                line((top-left, "|-", bottom-right), top-left)
+              },
+              close: true,
+              stroke: none,
+              name: "inter Vq test",
+            )
+            anchor("q", "partial-Omega2.50%")
+            circle("q", radius: 1.8pt, fill: black)
+            content("q", math-rect($q$), anchor: "south-west", padding: 2pt)
+            content(("q", 60%, (top-left, "|-", bottom-right)), $Omega_2$)
+            hobby(
+              (0.4, 0.3),
+              (0.7, 0.7),
+              (1.1, 1.2),
+              (1.7, 0.8),
+              (2.1, 0.3),
+              (1.8, -0.1),
+              (1.3, -0.4),
+              (0.8, -0.1),
+              (0.7, 0),
+              close: true,
+              name: "Vq",
+            )
+            hobby(
+              (0.9, 0.6),
+              (1.3, 0.8),
+              (1.7, 0.2),
+              (1.6, 0.1),
+              (1, -0.1),
+              (0.8, 0.4),
+              close: true,
+              stroke: none,
+              // fill: primary-shade,
+              name: "mapped-to-region",
+            )
+            boolean("inter Vq test", "mapped-to-region", op: "intersection", fill: hatch)
+            content("arrow-eta2.50%", math-rect($eta_2$), anchor: "north")
+            content("arrow-psi.50%", math-rect($psi$), anchor: "south")
+
+            content("Vq.40%", math-rect($V_q$), anchor: "west")
+            floating({
+              line((1.2, -2.3), (1.2, -0.7), mark: (end: ">>"), name: "arrow-phi-biholomorphism")
+              content("arrow-phi-biholomorphism.40%", math-rect($phi$), anchor: "west")
+            })
+          })
+        })
+      },
+      {
+        let x-max = 1.2
+        quick-plot(x-min: -x-max, x-max: x-max, y-min: -1.2, y-max: 1.2, canvas: {
+          import cetz.draw: *
+          set-style(mark: (fill: black))
+          line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
+          catmull(
+            (-0.6, 0.4),
+            (-0.5, 0.6),
+            (-0.3, 0.7),
+            (0.1, 0.8),
+            (0.3, 0.6),
+            (0.9, 0),
+            (0.5, -0.3),
+            (0.2, -0.8),
+            (-0.3, -0.7),
+            (-0.6, -0.3),
+            (-0.9, 0),
+            close: true,
+            name: "partial-N1",
+            tension: 0.5,
+            fill: primary-shade,
+          )
+          floating(
+            merge-path(
+              {
+                line((-x-max, 0), (x-max, 0))
+                line((x-max, 0), (x-max, -1.5))
+                line((x-max, -1.5), (-x-max, -1.5))
+              },
+              close: true,
+              stroke: none,
+              name: "N1+-rect-testline",
+            ),
+          )
+          boolean(
+            "N1+-rect-testline",
+            "partial-N1",
+            op: "intersection",
+            fill: hatch,
+            name: "N1+-region",
+          )
+          content("N1+-region.90%", math-rect($N^+_1$), anchor: "south")
+          content("I.50%", math-rect($N_1 inter RR$), anchor: "south")
+          content("partial-N1.10%", math-rect($N_1$), anchor: "south", padding: 2pt)
+          hobby((x-max + 0.8, -0.3), (x-max + 1.3, -0.6), (x-max + 2.4, -0.3), mark: (end: ">>"), name: "arrow-eta1")
+          hobby((x-max + 2.4, 0.3), (x-max + 1.3, 0.5), (x-max + 0.7, 0.2), mark: (end: ">>"), name: "arrow-phi")
+          group({
+            translate(x: x-max + 2.4, y: 0)
+            let top-left = (0, 1.2)
+            let bottom-right = (1.8, -1)
+            hobby(
+              top-left,
+              (0.2, 1.1),
+              (0.3, 1),
+              (0.6, 0.7),
+              (1.2, 0.3),
+              (1.4, -0.6),
+              ..directional_points(offset: bottom-right, angle: -70deg),
+              stroke: 2pt,
+              name: "partial-Omega1",
+            )
+            anchor("p", "partial-Omega1.50%")
+            circle("p", radius: 1.8pt, fill: black)
+            content("p", math-rect($p$), anchor: "south-west", padding: 2pt)
+            content(("p", 60%, (top-left, "|-", bottom-right)), $Omega_1$)
+            hobby(
+              (0.4, 0.3),
+              (0.7, 0.7),
+              (1.1, 1.2),
+              (1.4, 0.8),
+              (1.8, 0.3),
+              (1.5, -0.1),
+              (1.1, -0.4),
+              (0.8, -0.1),
+              (0.7, 0.2),
+              close: true,
+              fill: primary-shade,
+              name: "Vp",
+            )
+            content("arrow-eta1.50%", math-rect($eta_1$), anchor: "north")
+            content("arrow-phi.50%", math-rect($phi.alt$), anchor: "south")
+
+            merge-path(
+              {
+                hobby(
+                  top-left,
+                  (0.2, 1.1),
+                  (0.3, 1),
+                  (0.6, 0.7),
+                  (1.2, 0.3),
+                  (1.4, -0.6),
+                  ..directional_points(offset: bottom-right, angle: -70deg),
+                )
+                line((top-left, "|-", bottom-right), top-left)
+              },
+              close: true,
+              stroke: none,
+              name: "Omega1 inter Vp test",
+            )
+            boolean(
+              "Omega1 inter Vp test",
+              "Vp",
+              op: "intersection",
+              fill: hatch,
+            )
+            content("Vp.40%", math-rect($V_p$), anchor: "west")
+          })
+        })
+      },
+    ),
+    caption: [The construction of $N_2$, $V_q$, $eta_2$, and $psi$, and similarly, that of $N_1$, $V_p$, $eta_1$, and $phi.alt$.],
   ) <fig:extension_across_real_analytic_boundary_inverse_flattening_map>
 ])
 #proof[
-  The Osgood--Taylor--Carathéodory Theorem (@thm:osgood_taylor_caratheodory) extends $phi$ continuously to $overline(Omega_1)$ (retain the name $phi$ for the extension) with $phi(partial Omega_1) = partial Omega_2$.
+  By the Osgood--Taylor--Carathéodory Theorem (@thm:osgood_taylor_caratheodory), $phi$ extends continuously to $overline(Omega_1)$ with $phi(partial Omega_1) = partial Omega_2$; retain the name $phi$ for this extension.
 
-  Fix $p in partial Omega_1$ and let $q = phi(p) in partial Omega_2$. Since $partial Omega_1$ is real-analytic, there exist an open interval $I in.rev 0$ and a real-analytic parameterization $eta_1 : I -> partial Omega_1$ with $eta_1(0) = p$ and $eta'_1 (0) != 0$. Analytically continuing $eta_1$ via power series yields a biholomorphism $eta_1 : N_1 -> V_p$ from a region $N_1 in.rev 0$ (without loss of generality, assume $I subset.eq N_1$, or we may shrink $I$ sufficiently) onto a neighborhood $V_p in.rev p$ (univalence by @thm:nonvanishingderivativeunivalentonneighborhood), with $eta_1(N_1 inter RR) = V_p inter partial Omega_1$. Write $phi.alt = eta_1^(-1) : V_p -> N_1$; thus $phi.alt(p) = 0$ and $phi.alt$ maps $V_p inter partial Omega_1$ onto $N_1 inter RR$.
+  Fix $p in partial Omega_1$ and set $q = phi(p) in partial Omega_2$. Since $partial Omega_2$ is real-analytic, the function $eta_2$ defined by a locally injective power series on a subset of the real axis extends (by power series) to a biholomorphism $eta_2 : N_2 -> V_q$ from a region $N_2 in.rev 0$ onto a neighborhood $V_q in.rev q$, with $eta_2(0) = q$ and $eta_2(N_2 inter RR) = V_q inter partial Omega_2$ (existence by real-analyticity and biholomorphy by @thm:nonvanishingderivativeunivalentonneighborhood).
+  Set $psi = eta_2^(-1) : V_q -> N_2$.
 
-  The biholomorphism $eta_1$ maps the two components of $N_1 without RR$ to $V_p inter Omega_1$ and $V_p without overline(Omega_1)$ respectively; denote by $N_1^+$ the component mapping to $V_p inter Omega_1$.
+  Since $phi$ is continuous at $p$ and $phi(p) = q in V_q$, the set $phi^(-1)(V_q)$ is an open neighborhood of $p$. Since $partial Omega_1$ is real-analytic, choose a biholomorphism $eta_1 : N_1 -> V_p$ from a region $N_1 in.rev 0$ onto a neighborhood $V_p in.rev p$ contained in $phi^(-1)(V_q)$, with $eta_1(0) = p$ and $eta_1(N_1 inter RR) = V_p inter partial Omega_1$. Set $phi.alt = eta_1^(-1) : V_p -> N_1$. Denote by $N_1^+$ the component of $N_1 without RR$ whose image under $eta_1$ is $V_p inter Omega_1$. See @fig:extension_across_real_analytic_boundary_inverse_flattening_map.
 
-  Similarly, there exist a region $N_2 in.rev 0$ and a biholomorphism $eta_2 : N_2 -> V_q$ with $eta_2(0) = q$ and $eta_2(N_2 inter RR) = V_q inter partial Omega_2$. Set $psi = eta_2^(-1) : V_q -> N_2$, so that $psi$ maps $V_q inter partial Omega_2$ onto $N_2 inter RR$.
-
-  Shrink $V_p$ if necessary so that $phi(V_p inter overline(Omega_1)) subset.eq V_q$. Since $phi$ maps $V_p inter Omega_1$ into $Omega_2$, the preimage $phi^(-1)(V_q inter Omega_2) inter V_p$ is a connected subset of $V_p inter Omega_1$, so its image under $phi.alt$ is a connected subset of $N_1 without RR$ lying entirely in $N_1^+$. Define
+  By construction $phi(V_p inter overline(Omega_1)) subset.eq V_q$, so the composition $F = psi compose phi compose eta_1$ is defined on
   $
-    N'_1 = phi.alt (phi^(-1)(V_q inter Omega_2) inter V_p) subset N_1^+ subset HH^+,
+    N_1^+ union (N_1 inter RR) #[(the striped region with the thick line in @fig:extension_across_real_analytic_boundary_inverse_flattening_map)].
   $
-  and set $I'' = phi.alt(phi^(-1)(V_q inter partial Omega_2) inter V_p) subset N_1 inter RR$, an open interval containing $0$.
+  On $N_1^+$, $eta_1$ maps to $V_p inter Omega_1$ on which $phi$ is holomorphic, and $phi compose eta_1$ maps to a subset of $V_q inter Omega_2$, on which $psi$ is holomorphic, so $F$ is holomorphic on $N_1^+$ (the regions mapped from here are visualized in @fig:extension_across_real_analytic_boundary_inverse_flattening_map with striped lines). By Osgood--Taylor--Carathéodory (@thm:osgood_taylor_caratheodory), $F$ is continuous up to $N_1 inter RR$ with
+  $
+    F(N_1 inter RR) = psi(phi(eta_1(N_1 inter RR))) subset.eq psi(V_q inter partial Omega_2) = N_2 inter RR.
+  $
+  Since $psi(V_q inter Omega_2)$ is connected and disjoint from $RR$, the image $F(N_1^+) subset psi(V_q inter Omega_2)$ lies entirely in one component of $CC without RR$; without loss of generality $F(N_1^+) subset HH^+$.
 
-  Consider the composition $F = psi compose phi compose eta_1 : N'_1 -> CC$. On $N'_1$, the map $eta_1$ takes values in $V_p inter Omega_1$ where $phi$ is holomorphic, and $phi compose eta_1$ takes values in $V_q inter Omega_2$ where $psi$ is holomorphic; hence $F$ is holomorphic on $N'_1$. By the continuity of the Osgood--Taylor--Carathéodory extension (@thm:osgood_taylor_caratheodory), $phi$ is continuous up to $V_p inter partial Omega_1$, so $F$ is continuous up to $I''$ with
+  Thus $F : N_1^+ -> HH^+$ is univalent, continuous up to $N_1 inter RR$, and real-valued there. The Schwarz Reflection Principle (@thm:riemannschwarzreflection) extends $F$ biholomorphically to
   $
-    F(I'') = psi(phi(eta_1(I''))) subset psi(V_q inter partial Omega_2) = N_2 inter RR.
+    U = N_1^+ union (N_1 inter RR) union {overline(z) : z in N_1^+}
   $
-  Since $psi$ maps the connected set $V_q inter Omega_2$ into one of the two components of $N_2 without RR$, the image $F(N'_1) subset psi(V_q inter Omega_2)$ lies entirely in one component; without loss of generality $F(N'_1) subset HH^+$. Thus $F : N'_1 -> HH^+$ is holomorphic, continuous up to $I''$, and real-valued on $I''$.
+  an open neighborhood of $0$, and maps to
+  $ V=F(N_1^+) union F(N_1 inter RR) union {overline(z) : z in F(N_1^+)} in.rev 0. $
+  Setting $V'_p = eta_1(U inter N_1 inter F^(-1) (V))$ (the $dot inter N_1$ is added here to ensure that $U inter N_1$ is in the domain of $eta_1$), an open neighborhood of $p$, the map
+  $
+    phi_p = eta_2 compose F compose phi.alt : V'_p -> CC
+  $
+  is holomorphic and agrees with $phi$ on $V'_p inter Omega_1$.
 
-  By the Schwarz Reflection Principle (@thm:riemannschwarzreflection), $F$ extends to a holomorphic function on the symmetric domain
-  $
-    U' = N'_1 union I'' union {overline(z) : z in N'_1},
-  $
-  which is an open neighborhood of every point of $I''$, and in particular of $0$. Since $F = psi compose phi compose eta_1$ on $U'$, we have $phi = eta_2 compose F compose phi.alt$ on $V = eta_1(U')$, an open neighborhood of $p$ in $CC$. Restricting to an open disk $V'_p subset.eq V$ centered at $p$ and denoting the resulting map by $phi_p$ gives a holomorphic continuation of $phi$ across $p$.
+  Applying this construction at every $z in partial Omega_1$ yields an open neighborhood $V'_z in.rev z$ and a holomorphic map $phi_z$ extending $phi|_(Omega_1)$. Whenever $V'_(z_1) inter V'_(z_2) != emptyset$, both $phi_(z_1)$ and $phi_(z_2)$ agree with $phi$ on the nonempty open connected set $V'_(z_1) inter V'_(z_2) inter Omega_1$, so the Identity Theorem (@thm:identity) gives $phi_(z_1) equiv phi_(z_2)$ on
+  $V'_(z_1) inter V'_(z_2)$.
 
-  Applying this construction at every $z in partial Omega_1$ produces an open neighborhood $V'_z$ of $z$ and a holomorphic continuation $phi_z$ of $phi$ on $V'_z$. If $z_1, z_2 in partial Omega_1$ satisfy $V'_(z_1) inter V'_(z_2) != emptyset$, then $phi_(z_1)$ and $phi_(z_2)$ agree on the open connected set $V'_(z_1) inter V'_(z_2) inter Omega_1 != emptyset$, where both equal $phi|_(Omega_1)$, so the Identity Theorem (@thm:identity) forces $phi_(z_1) equiv phi_(z_2)$ on all of $V'_(z_1) inter V'_(z_2)$.
-
-  Hence the local continuations ${phi_z}_(z in partial Omega_1)$ are mutually consistent and, together with $phi|_(Omega_1)$, define a single-valued holomorphic extension of $phi$ to the open neighborhood $Omega_1 union (union.big_(z in partial Omega_1) V'_z)$ of $overline(Omega_1)$.
+  The local extensions are therefore mutually consistent and, together with $phi|_(Omega_1)$, define a holomorphic extension of $phi$ to the open neighborhood $Omega_1 union (union.big_(z in partial Omega_1) V'_z)$ of $overline(Omega_1)$.
 ]

@@ -164,7 +164,7 @@ By evenness of $wp$, we must have $c_1 = c_2 = 0$. Therefore, $wp$ is also an el
   $
     abs(sum_(omega in Lambda^*) sum_(m=1)^oo (m + 1) / omega^(m + 2) z^m) <= sum_(omega in Lambda^*) (2 abs(z omega) - abs(z)^2) / ((abs(omega) - abs(z))^2 abs(omega)^2) = sum_(omega in Lambda^*) (abs(z) (2 - abs(z / omega))) / (abs(omega)^3 (abs(z / omega) - 1)^2),
   $
-  which for $abs(omega) > 2 R$ (which comprises all $omega$ except for finitely many) is bounded by $sum_(omega in Lambda, abs(omega) > 2 R) 10 R / abs(omega)^3$ (estimates derived in the proof of @prop:weierstrasspfunctionconvergence), which is convergent by @prop:weierstrasspfunctionintermediateseriesconvergence. Hence, the series converges absolutely for $abs(z) < R$ and the summation exchange is valid. By the symmetry of the period lattice, it is trivial that $c_(2 m + 1) = 0$ for all $m in NN$. Hence, the assertion follows.
+  which for $abs(omega) > 2 R$ (which comprises all $omega$ except for finitely many) is bounded by $sum_(omega in Lambda, abs(omega) > 2 R) 10 R / abs(omega)^3$ (estimates derived in the proof of @prop:weierstrasspfunctionconvergence), which is convergent by @prop:weierstrasspfunctionintermediateseriesconvergence. Hence, the series converges absolutely for $abs(z) < R$ and the summation exchange (and the Cauchy product) is valid. By the symmetry of the period lattice, it is trivial that $c_(2 m + 1) = 0$ for all $m in NN$. Hence, the assertion follows.
 ]
 
 Termwise differentiation (provided by @thm:weierstrass_convergence) now gives

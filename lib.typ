@@ -2,7 +2,7 @@
 #import "@local/itemize:0.2.0" as itemize
 #import "@preview/cetz:0.5.2"
 // #import "@preview/cetz-plot:0.1.4": *
-#import "@local/cetz-plot:0.1.4" as cetz-plot
+#import "@preview/cetz-plot:0.1.4" as cetz-plot
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": va as Va, vb as Vb, vu as Vu
 #import "@preview/fancy-tiling:1.0.0": *
@@ -279,13 +279,13 @@
   x-max: 6,
   y-min: -1,
   y-max: 6,
+  wrap: true,
   ..args,
-) = {
+) = context {
   let x-range = x-max - x-min
   let y-range = y-max - y-min
   let size = (x-range * scale, y-range * scale)
-
-  cetz.canvas(..canvas-args, {
+  let plot = {
     import cetz.draw: *
     cetz-plot.plot.plot(
       size: size,
@@ -305,7 +305,13 @@
         })
       },
     )
-  })
+  }
+
+  if wrap {
+    return cetz.canvas(..canvas-args, plot)
+  } else {
+    return plot
+  }
 }
 // this must be used around any normal figure to show in html
 #let figure-wrapper(..items, columns: auto) = context {
