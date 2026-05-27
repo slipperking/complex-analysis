@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-=== The Construction of Entire and Meromorphic Functions
+=== The Construction of Entire and Meromorphic Functions<sec:construction_of_entire_and_meromorphic_functions>
 
 It is common knowledge in algebra that any polynomial can be factored into linear factors. When can this factorization be extended to transcendental entire functions?
 

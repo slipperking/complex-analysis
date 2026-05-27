@@ -30,7 +30,7 @@ in increasing order.
 ] <thm:riemannzetafunction_infiniteproduct>
 
 #proof[
-  Since $sum_(n=1)^oo abs(p_n^(-s))=sum_(n=1)^oo 1/(p_n^sigma)<sum_(n=1)^oo 1/(n^sigma)$ is an absolutely convergent sequence, it follows from @ sec:constructionofentireandmeromorphicfunctions that the infinite product in @eq:riemannzetafunction_infiniteproduct is absolutely convergent. Because
+  Since $sum_(n=1)^oo abs(p_n^(-s))=sum_(n=1)^oo 1/(p_n^sigma)<sum_(n=1)^oo 1/(n^sigma)$ is an absolutely convergent sequence, it follows from @sec:construction_of_entire_and_meromorphic_functions that the infinite product in @eq:riemannzetafunction_infiniteproduct is absolutely convergent. Because
   $
     zeta(s)(1-1/(2^s))=sum_(n=1)^oo 1/(n^s)-sum_(n=1)^oo 1/((2n)^s)=sum_(2 divides.not n)1/(n^s).
   $
@@ -178,7 +178,9 @@ in increasing order.
               },
               close: true,
               mark: (end: arrow-populate(10, offset01: 0.6)),
+              name: "gamma",
             )
+            content("gamma.50%", math-rect($gamma$))
           },
         )
       },
@@ -193,9 +195,9 @@ $
 $
 Define the auxiliary function
 $
-  F_(epsilon, delta) (s)=integral_(C_epsilon union {Gamma^(plus.minus)_epsilon}) ((-z)^(s-1))/(ee^z-1) dz=(integral_(C_epsilon)+integral_(Gamma^+_epsilon)+integral_(Gamma^-_epsilon)) ((-z)^(s-1))/(ee^z-1) dz, quad Re(s)>1
+  F_(epsilon, delta) (s)=integral_(C_epsilon union {Gamma^(plus.minus)_epsilon}) ((-z)^(s-1))/(ee^z-1) dz=(integral_(C_epsilon)+integral_(Gamma^+_epsilon)+integral_(Gamma^-_epsilon)) ((-z)^(s-1))/(ee^z-1) dz
 $
-where the branch cut of the power function lies on the negative real axis. It is important to note that $F_(epsilon, delta)$ is independent of $epsilon>=delta$. To see this, suppose that $delta<=epsilon_1<epsilon_2<2 uppi$ is arbitrarily chosen. Then we have
+for $Re(s)>1$, where the branch cut of the power function lies on the negative real axis. It is important to note that $F_(epsilon, delta)$ is independent of $epsilon>=delta$. To see this, suppose that $delta<=epsilon_1<epsilon_2<2 uppi$ is arbitrarily chosen. Then we have
 $
   F_(epsilon_2, delta) (s)-F_(epsilon_1, delta) (s) &= (integral_(C_(epsilon_2))-integral_(C_(epsilon_1))+integral_(Gamma^+_(epsilon_2))+integral_(Gamma^-_(epsilon_2))-integral_(Gamma^+_(epsilon_1))-integral_(Gamma^-_(epsilon_1))) ((-z)^(s-1) dz)/(ee^z-1) \
   &= integral.cont_gamma ((-z)^(s-1) dz)/(ee^z-1),
@@ -298,7 +300,7 @@ The functional equation as provided by Riemann in his original paper gives a mor
   $
     F_((2n+1) uppi) (s)-F_epsilon (s)=taui sum_(z in 2 uppi ii ZZ \ z in"contour") Res_z ((-z)^(s-1))/(ee^z-1), quad epsilon<2 uppi
   $
-  where the contour is the keyhole contour in @ fig:keyholecontour with a
+  where the contour is the keyhole contour in @fig:keyholecontour with a
   larger radius of $(2n+1) uppi$ and a smaller one of $epsilon$. Then we
   have, by virtue of @eq:residueatpole:
   $
@@ -424,7 +426,7 @@ Results have already shown that an infinite number of zeros lie on this line. Fo
   By the logarithmic differentiation of the Euler Product Formula
   (@thm:riemannzetafunction_infiniteproduct), we have that
   $
-    -zeta'(s)/zeta(s) & =-dv(sum_(p "prime") log(1-ee^(-s log p)), s)=sum_(p "prime") (ee^(-s log p) log p)/(1-ee^(-s log p)) \
+    -(zeta'(s))/zeta(s) & =-dv((sum_(p "prime") log(1-ee^(-s log p))), s, style: "large")=sum_(p "prime") (ee^(-s log p) log p)/(1-ee^(-s log p)) \
     & =sum_(p "prime") log p sum_(k=1)^oo ee^(-s log p^k)=sum_(n=2)^oo Lambda(n) ee^(-s log n),
   $
   where the interchange of the order of summation is justified by the absolute convergence of the series for $Re s>1$.
@@ -433,7 +435,7 @@ Results have already shown that an infinite number of zeros lie on this line. Fo
 #proposition[
   If $Phi$ is holomorphic on a neighborhood of a point $a in RR$ on which $Phi equiv.not 0$ such that $Phi(a)=0$, then
   $
-    Re(Phi'(s)/Phi(s))>0
+    Re((Phi'(s))/Phi(s))>0
   $
   for $s in RR_(> a)$ near $a$.
 ] <prop:positivelogarithmicderivativerealpart>
@@ -446,7 +448,7 @@ Results have already shown that an infinite number of zeros lie on this line. Fo
   for some $n in NN$ and holomorphic $phi$ (non-vanishing near
   $a$). Hence
   $
-    Phi'(s)=n(s-a)^(n-1) phi(s)+(s-a)^n phi'(s), \ Re(Phi'(s)/Phi(s))=Re(n/(s-a)+phi'(s)/phi(s))>0
+    Phi'(s)=n(s-a)^(n-1) phi(s)+(s-a)^n phi'(s), \ Re((Phi'(s))/Phi(s))=Re(n/(s-a)+(phi'(s))/phi(s))>0
   $
   for $s>a$ sufficiently close to $a$.
 ]
