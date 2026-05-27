@@ -2,7 +2,6 @@
 
 == Gaussian Curvature of a Surface <sec:gaussiancurvatureofsurface>
 #let II-matrix = $vb(I #h(-0.15em) I)$
-#let II-form = $upright(I #h(-0.15em) I)$
 
 We will give a brief introduction to the curvature of a surface for heuristic intuition.
 
@@ -37,7 +36,7 @@ $
 The first two linear terms vanish by properties of the triple scalar product. The _second fundamental form_ of $Sigma$ is defined as
 
 $
-  #II-form=L dif u^2 + 2 M dif u dif v + N dif v^2,
+  #II-num=L dif u^2 + 2 M dif u dif v + N dif v^2,
 $ <eq:second_fundamental_form>
 
 where $L=va(r)''_(u u) dot vu(n)$, $M=va(r)''_(u v) dot vu(n)$, and $N=va(r)''_(v v) dot vu(n)$. Since $va(r)'_u dot vu(n)=0$ and $va(r)'_v dot vu(n)=0$, by differentiation, we have
@@ -50,7 +49,7 @@ $
 It follows that $L=-va(r)'_u dot vu(n)'_u$, $M=-va(r)'_u dot vu(n)'_v=-va(r)'_v dot vu(n)'_u$, and $N=-va(r)'_v dot vu(n)'_v$. Because $dif vu(n)=vu(n)'_u dif u + vu(n)'_v dif v$,
 
 $
-  #II-form=-dif va(r) dot dif vu(n).
+  #II-num=-dif va(r) dot dif vu(n).
 $
 
 #figure-wrapper([
@@ -140,7 +139,7 @@ $
 The quotient
 
 $
-  kappa_n=(#II-form)/(upright(I))=(L dif u^2 + 2 M dif u dif v + N dif v^2)/(E dif u^2 + 2 F dif u dif v + G dif v^2),
+  kappa_n=(#II-num)/(upright(I))=(L dif u^2 + 2 M dif u dif v + N dif v^2)/(E dif u^2 + 2 F dif u dif v + G dif v^2),
 $
 
 varies depending on the curve traversing $Sigma$ (and ultimately, depending on the direction induced by $dif u$ and $dif v$). On $gamma$, the two representations are equivalent since $upright(I)=dif s^2$. The maximum and minimum values of $kappa_n$ are known as the _principal curvatures_ $kappa_1$ and $kappa_2$ of $Sigma$ at $P$, achieved along the _principal directions_ of the (unit) tangent vectors at $P$.

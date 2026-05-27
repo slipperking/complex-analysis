@@ -40,9 +40,9 @@
   #include "special_classes_holomorphic/index.typ"
 ]
 
-// #chapter-section("connections-nt")[
-//   #include "connections_to_nt/index.typ"
-// ]
+#chapter-section("connections-nt")[
+  #include "connections_to_nt/index.typ"
+]
 
 // #chapter-section("riemann-surfaces")[
 //   #include "riemann_surfaces/index.typ"

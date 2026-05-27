@@ -133,7 +133,7 @@ Then, the Fundamental Theorem of Calculus, the Gradient Theorem, Green's, Stokes
 
 Real analysis is the subject dedicated to rigorously defining concepts such as limits, continuity, integrability, convergence, etc. The most widely used definition of a finite limit of a function is the language of $epsilon$--$delta$, which states:
 
-#definition("Epsilon" + sym.dash.en + "Delta")[
+#definition[Epsilon--Delta][
   Let $f : U -> RR$ be a function defined over an open set $U subset.eq RR$ such that $a$ is an accumulation point of $U$. We say that $lim_(x -> a) f(x) = L$ if $forall epsilon > 0$, $exists delta > 0$ such that for all $x in U$ with $0 < abs(x - a) < delta$, we have $abs(f(x) - L) < epsilon$.
 
   Similarly, we define the _right-handed limit_ $lim_(x -> a^+) f(x) = L$ if for every $epsilon > 0$, there exists $delta > 0$ such that for all $x in U$ with $0 < x - a < delta$, we have $abs(f(x) - L) < epsilon$.

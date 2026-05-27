@@ -688,7 +688,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
     &18704 r omega_f (r) integral_0^(2 uppi) integral_(2 r)^oo (dr dtheta) / rho^2 \
     &wide""+ (4 omega_f (r)) / r (584 / r op("area") D(0, 2 r) + integral_0^(2 uppi) integral_0^(2 r) dr d theta) \
-    &quad""= 18704 r omega_f (r) 2 uppi [1 / rho]_oo^(2 r) + (9344 uppi omega_f (r) r^2) / r^2 + (4 omega_f (r)) / r 4 r uppi \
+    &quad""= evaluated(18704 r omega_f (r) 2 uppi 1 / rho)_oo^(2 r) + (9344 uppi omega_f (r) r^2) / r^2 + (4 omega_f (r)) / r 4 r uppi \
     &quad""= 18704 uppi omega_f (r) + 9344 uppi omega_f (r) + 16 uppi omega_f (r) = 28064 uppi omega_f (r).
   $
   Runge's Theorem (@thm:runge) provides the existence of some rational function $psi$ with poles in $E$ such that

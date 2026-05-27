@@ -70,7 +70,7 @@ $ z - overline(a) z w = w - a <==> w = (z + a) / (1 + overline(a) z). $ <eq:inve
 
 It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bijective automorphism. It follows that @eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement is true. Functions in the form of $phi_a$ (where $a in DD$) are known as _Möbius transformations_, and the group of all such transformations is known as the _Möbius transformation group on the unit disk_, which is a subgroup of $Aut(DD)$. Functions in the form of $rho_tau (z) = z ee^(ii tau)$, where $tau in RR$ is constant, form a group known as the _rotation group_, which is also a subgroup of $Aut(DD)$.
 
-#theorem("The Holomorphic Automorphism Group on " + $DD$)[
+#theorem[The Holomorphic Automorphism Group on $DD$][
   $forall f in Aut(DD)$, $f$ is a composition between a Möbius transformation and a rotation. In other words, $exists abs(a) < 1$ and $exists tau in RR$ such that
   $ f(z) = phi_a compose rho_tau (z). $
   Moreover, all such functions are in $Aut(DD)$.

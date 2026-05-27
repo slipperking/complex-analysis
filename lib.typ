@@ -229,6 +229,9 @@
 #let jinterior = $op("int")$
 #let jexterior = $op("ext")$
 #let uppi = $upright(pi)$
+#let I-num = $upright(I)$
+#let II-num = $upright(I #h(-0.15em) I)$
+#let III-num = $upright(I #h(-0.15em) I #h(-0.15em) I)$
 
 #let ee = $upright(e)$
 #let ii = $upright(i)$
@@ -423,4 +426,16 @@
       html.elem("h1", attrs: (class: "part-title"), title)
     })
   }
+}
+
+#let arrow-populate = (n, offset01: 0, ..mark) => {
+  return range(n)
+    .map(num => 100% * (num + offset01) / n)
+    .map(pos => (
+      symbol: ">>",
+      fill: black,
+      ..mark.named(),
+      pos: pos,
+      shorten-to: none,
+    ))
 }

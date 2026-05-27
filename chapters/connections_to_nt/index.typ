@@ -2,6 +2,10 @@
 
 = Precise Connections to Number Theory
 The Riemann $zeta$-function is one of the most important functions in analytic number theory due to its connection with the distribution of prime numbers. We will also introduce one of the most profound theorems in number theory on the distribution of prime numbers. To formulate more insightful conclusions on $zeta$, we first observe the $Gamma$-function in the complex plane.
-// include gamma_function/index.tex
-// include riemann_zeta_function/index.tex
-// include prime_number_theorem/index.tex
+#chapter-section("gamma_function")[
+  #include "gamma_function/index.typ"
+]
+#chapter-section("riemann_zeta_function")[
+  #include "riemann_zeta_function/index.typ"
+]
+// #include prime_number_theorem/index.typ

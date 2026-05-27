@@ -66,14 +66,7 @@ We have previously considered analytic continuations over two regions with an in
             (-0.4, 0.3),
           ).map(point => (rel: cvector.scale(point, var-R), to: "z"))
           catmull(..points, close: true, stroke: 0.5pt, name: "Gamma", mark: (
-            end: range(16)
-              .map(num => 100% * num / 16)
-              .map(pos => (
-                pos: pos,
-                symbol: ">>",
-                fill: black,
-                shorten-to: none,
-              )),
+            end: arrow-populate(16),
           ))
 
           intersections("Gamma-ints", "Gamma", "gamma", sort: (ctx, pts) => pts.sorted(key: p => p.at(1)))
@@ -172,9 +165,9 @@ A consequent result was discovered by Schwarz, known as the _reflection principl
   Let $U subset.eq CC$ be a connected region on one side of the real axis such that there exists a non-degenerate curve $gamma subset.eq partial U$ such that $gamma subset.eq RR$. Let $f:U -> CC$ be holomorphic with continuity up to $U union gamma$ such that $f$ is real-valued on $gamma$, and let $tilde(U) = { overline(z) : z in U }$ be the reflection of $U$ across the real axis. Then there exists a unique holomorphic function
   $
     tilde(f)(z) = cases(
-      f(z) & "if" z in U,
-      overline(f(overline(z))) & "if" z in tilde(U),
-      f(z) equiv overline(f(overline(z))) & "if" z in gamma
+      f(z) quad & "if" z in U,
+      overline(f(overline(z))) quad & "if" z in tilde(U),
+      f(z) equiv overline(f(overline(z))) quad & "if" z in gamma
     ).
   $
   on $U union tilde(U) union gamma$.

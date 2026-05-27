@@ -17,10 +17,8 @@
   show ref: it => {
     let el = it.element
     if el != none and el.func() == math.equation {
-      link(el.location(), numbering(
-        scoped-equation-numbering,
-        counter(math.equation).at(el.location()).at(0) + 1,
-      ))
+      let eq-num = counter(math.equation).at(el.location()).at(0) + 1
+      link(el.location(), [(#_scoped-number(eq-num, loc: el.location()))])
     } else {
       it
     }
@@ -52,6 +50,7 @@
   }
 
   // todo: implement some method to maintain its text for search, etc.
+  // edit: will be hopefully solved with mathml in 15.0
   show math.equation.where(block: false): it => context {
     if target() == "html" {
       box(html.frame(it))

@@ -13,7 +13,9 @@ Before the theorem, we first introduce the mean-value property of holomorphic fu
 
 #proof[
   By the Cauchy--Goursat Formula (@thm:cauchygoursatformula),
-  $ f(z) = 1 / (taui) integral.cont_(partial D(z, epsilon)) (f(zeta)) / (zeta - z) dzeta = 1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt. $
+  $
+    f(z) = 1 / (taui) integral.cont_(partial D(z, epsilon)) (f(zeta)) / (zeta - z) dzeta = 1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt.
+  $
 
   Observe that
   $
@@ -50,7 +52,7 @@ Since the real and imaginary parts of holomorphic functions are real-valued harm
   $
   From the equality of the last two integrals,
   $ integral_0^(2 uppi) [abs(f(z)) - abs(f(z + epsilon ee^(ii t)))] dt = 0. $
-  Since this integrand is strictly non-negative, we have equality. Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$. Therefore, $S$ is open and $S = V$ as it is a nonempty clopen subset. Since $V$ is nonempty and open, it has an accumulation point in $U$. It follows that $f(z) equiv f(z_0)$ over $U$ by the Identity Theorem (@thm:identity).
+  Since this integrand is strictly non-negative, we have equality. Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$. Therefore, $S$ is open and $S = V$ as it is a nonempty clopen subset (@thm:connected_topological_space_clopen_sets). Since $V$ is nonempty and open, it has an accumulation point in $U$. It follows that $f(z) equiv f(z_0)$ over $U$ by the Identity Theorem (@thm:identity).
 ]
 
 #remark[
