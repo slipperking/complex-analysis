@@ -273,7 +273,7 @@ The two kernels are related by a angular unitary Fourier transform:
 ]
 
 #theorem("Prime Number Theorem")[
-  The prime counting function $pi(x)$ is asymptotically equal to $x / log x$, i.e., $lim_(x -> oo) (pi(x) log x) / x = 1$.
+  The prime counting function $pi(x)$ is asymptotically equal to $x / (log x)$, i.e., $lim_(x -> oo) (pi(x) log x) / x = 1$.
 ] <thm:primenumber>
 
 #proof[

@@ -8,9 +8,9 @@ This result was first conjectured by Gauss and Legendre in the late 18th century
 
 The logarithmic integral function, defined by
 
-$ op("Li")(x) = integral_2^x dt / log t $
+$ op("Li")(x) = integral_2^x dt / (log t) $
 
-is of considerable interest as it much better approximates the prime counting function $pi(x)$ than $x / log x$ does. It can be trivially shown that $op("Li")(x) ~ x / log x$ by the realization that
+is of considerable interest as it much better approximates the prime counting function $pi(x)$ than $x / (log x)$ does. It can be trivially shown that $op("Li")(x) ~ x / (log x)$ by the realization that
 
 $
   op("Li")(x) & = evaluated(t / (log t))_2^x + integral_2^x dt / (log^2 t) = x / (log x) + integral_2^x dt / (log^2 t) + Order(1) \
