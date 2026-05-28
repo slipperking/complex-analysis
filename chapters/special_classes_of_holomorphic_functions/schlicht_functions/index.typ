@@ -41,13 +41,20 @@ We will introduce two of the oldest results regarding schlicht functions, namely
 #proof[
   Let $ tilde(h)(z) = sqrt((overline(b_1)) / (abs(b_1))) h(z sqrt((overline(b_1)) / abs(b_1))) - sqrt((overline(b_1)) / abs(b_1)) b_0 $ (where the branch or value of the square root is the same across), so that
   $
-    tilde(h)(z) = 1 / z + sum_(n=1)^oo ((overline(b_1)) / (abs(b_1)))^((1+n)/2) b_n z^n = 1/z + sum_(n=0)^oo tilde(b_n) z^n, "where" tilde(b_0)=0 "and" tilde(b_1) = abs(b_1).
+    tilde(h)(z) = 1 / z + sum_(n=1)^oo ((overline(b_1)) / (abs(b_1)))^((1+n)/2) b_n z^n = 1/z + sum_(n=0)^oo tilde(b_n) z^n, "where" tilde(b_0)=0 and tilde(b_1) = abs(b_1).
   $
-  Heuristically, we applied a rigid transformation to $h$ so that the result has no constant term and whose linear coefficient is real. Trivially, if the conclusions of the statement are satisfied for $tilde(h)$, then they naturally follow for $h$. Hence, without loss of generality, we consider only $h(z)$ such that $b_0 = 0$ and $b_1 in RR$, or when $h(z) = 1 / z + b_1 z + phi(z)$ where $phi(z) = Order(z^2)$. For $z = r ee^(ii theta)$,
+  Heuristically, we applied a rigid transformation to $h$ so that the result has no constant term and whose linear coefficient is real. Trivially, if the conclusions of the statement are satisfied for $tilde(h)$, then they naturally follow for $h$. Hence, without loss of generality, we consider only $h(z)$ such that $b_0 = 0$ and $b_1 in RR$, or when $h(z) = 1 / z + b_1 z + phi.alt(z)$ where $phi.alt(z) = Order(z^2)$. For $z = r ee^(ii theta)$,
   $
-    h(z) & = 1 / r (cos theta - ii sin theta) + b_1 r (cos theta + ii sin theta) + phi(r ee^(ii theta)) \
-         & = ((1 / r + b_1 r) cos theta + Re phi) + ii ((b_1 r - 1 / r) sin theta + Im phi).
+    h(z) & = 1 / r (cos theta - ii sin theta) + b_1 r (cos theta + ii sin theta) + phi.alt(r ee^(ii theta)) \
+         & = ((1 / r + b_1 r) cos theta + Re phi.alt) + ii ((b_1 r - 1 / r) sin theta + Im phi.alt).
   $
+  Let $alpha = 1/r + b_1 r$ and let $beta = 1/r - b_1 r$. Then
+  $
+    [Re h(r e^(i theta))]^2/ alpha^2 + [Im h(r e^(i theta))]^2 / beta^2 &= cos^2 theta + [Re phi.alt]^2/alpha^2 + (2 cos theta Re phi) / alpha
+    \ & wide"" + sin^2 theta + [Im phi.alt]^2 / beta^2 - (2 sin theta Im phi.alt) / beta.
+  $
+  Since for all $alpha / (1/(2r)) = 2 + 2b_1r^2 -> 2$, and $beta / (1/(2r)) = 2-2b_1 r^2 -> 2$ as $r -> 0^+$, for sufficiently small $r$, $alpha>1/(2r)$ and $beta > 1/(2r)$.
+
   TO BE CONTINUED
 ]
 
