@@ -239,7 +239,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   Consider $gamma$ to be a closed semicircle with radius $R gt.eq 2$ as in @fig:semicircularcontour. Notice that the function $z |-> 1 / (z^2+1)^(n+1)$ has singularities at only $z = ii$ and $z = -ii$, both of which are poles of order $n+1$. By @eq:residueatpole, the residue at $z = ii$ is
   $
     Res_(z=ii) 1 / (z^2+1)^(n+1)
-    &= lr(1 / (n!) dif^n / (dif z^n) ((z + ii)^(-n-1)) |)_(z=ii) = 1 / (n!) ((-1)^n product_(k=1)^n (n+k)) / (2 ii)^(2n+1) \
+    &= evaluated(1 / (n!) dv(, z, n) (z + ii)^(-n-1))_(z=ii) = 1 / (n!) ((-1)^n product_(k=1)^n (n+k)) / (2 ii)^(2n+1) \
     &= ((-1)^n (2n)!) / ((n!)^2 (2 ii)^(2n+1)) = ((2n)!) / (2^(2n+1) ii (n!)^2).
   $
   The singularity at $z = -ii$ is not relevant, as it is not enclosed by the contour. By the Residue Theorem (@thm:residuethm), we have
@@ -329,7 +329,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
     abs(ii integral_0^uppi ee^(ii R cos theta) ee^(-R sin theta) dif theta)
     &lt.eq integral_0^uppi ee^(-R sin theta) dif theta = 2 integral_0^(uppi\/2) ee^(-R sin theta) dif theta \
-    &< 2 integral_0^(uppi\/2) ee^(-R 2/uppi theta) dif theta = lr(-uppi/R ee^(-R 2/uppi theta) |)_0^(uppi\/2) \
+    &< 2 integral_0^(uppi\/2) ee^(-R 2/uppi theta) dif theta = evaluated(-uppi/R ee^(-R 2/uppi theta))_0^(uppi\/2) \
     &= uppi/R (1 - ee^(-R)) -> 0.
   $
   Let us evaluate the integral on $gamma_epsilon$ as $epsilon -> 0$:
@@ -416,7 +416,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
     abs(integral_(C_R) f(z) dz)
     &lt.eq R integral_0^(uppi\/4) ee^(-R^2 sin(2 theta)) dif theta < R integral_0^(uppi\/4) ee^(-4/uppi R^2 theta) dif theta \
-    &= -uppi/(4R) lr(ee^(-4/uppi R^2 theta) |)_0^(uppi\/4) = uppi/(4R) (1 - ee^(-R^2)).
+    &= -uppi/(4R) evaluated(ee^(-4/uppi R^2 theta))_0^(uppi\/4) = uppi/(4R) (1 - ee^(-R^2)).
   $
   As $R -> infinity$, this integral tends to 0. Let $z = r ee^(ii uppi\/4)$ on $Gamma_2$. Then, we have
   $

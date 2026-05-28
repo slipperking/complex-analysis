@@ -37,10 +37,10 @@ Therefore, $Gamma(x)$ is convergent on $RR_(> 0)$. It follows that $Gamma(z)$ is
 
 From integration by parts, we obtain
 $
-  Gamma(z+1) = integral_0^oo ee^(-t) t^z dt = -lr(ee^(-t) t^z |)_0^oo + z integral_0^oo ee^(-t) t^(z-1) dt = z Gamma(z).
+  Gamma(z+1) = integral_0^oo ee^(-t) t^z dt = -evaluated(ee^(-t) t^z)_0^oo + z integral_0^oo ee^(-t) t^(z-1) dt = z Gamma(z).
 $
 Additionally,
-$ Gamma(1) = integral_0^oo ee^(-t) dt = -lr(ee^(-t) |)_0^oo = 1. $
+$ Gamma(1) = integral_0^oo ee^(-t) dt = -evaluated(ee^(-t))_0^oo = 1. $
 
 Hence, we have $Gamma(z+1) = z!$ for nonnegative integers, and the $Gamma$-function generalizes the factorial. We also have
 $
@@ -72,7 +72,7 @@ We will now study two representations for the Gamma function.
   $
   By integration by parts, we have
   $
-    f_n (z) & = n^z [lr((t^z)/z (1-t)^n |)_0^1 + n/z integral_0^1 (1-t)^(n-1) t^z dt] \
+    f_n (z) & = n^z [evaluated((t^z)/z (1-t)^n)_0^1 + n/z integral_0^1 (1-t)^(n-1) t^z dt] \
             & = (n / (n-1))^(z+1) f_(n-1) (z+1) / z = [n^(z+1) (n-1) / ((n-2)^(z+2))] f_(n-2) (z+2) / (z(z+1)) \
             & = n^(z+1) (n-1)! f_1 (z+n-1) / (product_(k=0)^(n-2) (z+k)) \
             & = (n^z n!) / (product_(k=0)^n (z+k)).

@@ -8,4 +8,6 @@ The Riemann $zeta$-function is one of the most important functions in analytic n
 #chapter-section("riemann_zeta_function")[
   #include "riemann_zeta_function/index.typ"
 ]
-// #include prime_number_theorem/index.typ
+#chapter-section("prime_number_theorem")[
+  #include "prime_number_theorem/index.typ"
+]

@@ -193,7 +193,6 @@
     "Example",
     titlefmt: strong,
     inset: (top: 0em, left: 0em, right: 0em),
-    namefmt: x => emph(smallcaps([(#x)])),
   ).with(numbering: scoped-theorem-numbering)
 }
 

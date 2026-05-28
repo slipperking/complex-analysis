@@ -197,7 +197,7 @@ Define the auxiliary function
 $
   F_(epsilon, delta) (s)=integral_(C_epsilon union {Gamma^(plus.minus)_epsilon}) ((-z)^(s-1))/(ee^z-1) dz=(integral_(C_epsilon)+integral_(Gamma^+_epsilon)+integral_(Gamma^-_epsilon)) ((-z)^(s-1))/(ee^z-1) dz
 $
-for $Re(s)>1$, where the branch cut of the power function lies on the negative real axis. It is important to note that $F_(epsilon, delta)$ is independent of $epsilon>=delta$. To see this, suppose that $delta<=epsilon_1<epsilon_2<2 uppi$ is arbitrarily chosen. Then we have
+for $Re(s)>1$, where the integrand is $(exp[(s-1)Log(-z)])/(e^z - 1)$, where we take the principal branch with a branch cut on $RR_(<=0)$. It is important to note that $F_(epsilon, delta)$ is independent of $epsilon>=delta$. To see this, suppose that $delta<=epsilon_1<epsilon_2<2 uppi$ is arbitrarily chosen. Then we have
 $
   F_(epsilon_2, delta) (s)-F_(epsilon_1, delta) (s) &= (integral_(C_(epsilon_2))-integral_(C_(epsilon_1))+integral_(Gamma^+_(epsilon_2))+integral_(Gamma^-_(epsilon_2))-integral_(Gamma^+_(epsilon_1))-integral_(Gamma^-_(epsilon_1))) ((-z)^(s-1) dz)/(ee^z-1) \
   &= integral.cont_gamma ((-z)^(s-1) dz)/(ee^z-1),
@@ -278,7 +278,7 @@ whose singularities lie within $ZZ$ (the $Gamma$-function never vanishes since $
   $s=1$ is a simple pole (contributed from the simple zero of $sin$). By
   @eq:residueatpole once more, the residue at $s=1$ is equal to
   $
-    Res_(s=1) zeta(s) & =lim_(s -> 1) (s-1) zeta(s)=lim_(s -> 1) (1-s) (F_epsilon (s)/(2 ii sin(uppi s) Gamma(s))) \
+    Res_(s=1) zeta(s) & =lim_(s -> 1) (s-1) zeta(s)=lim_(s -> 1) (1-s) ((F_epsilon (s))/(2 ii sin(uppi s) Gamma(s))) \
     & =taui/(2 ii Gamma(1)) lim_(s -> 1) (1-s)/(sin(uppi s))=-uppi lim_(s -> 1) 1/(uppi cos(uppi s))=1. #qedhere
   $
 ]
@@ -447,9 +447,7 @@ Results have already shown that an infinite number of zeros lie on this line. Fo
   $
   for some $n in NN$ and holomorphic $phi$ (non-vanishing near
   $a$). Hence
-  $
-    Phi'(s)=n(s-a)^(n-1) phi(s)+(s-a)^n phi'(s), \ Re((Phi'(s))/Phi(s))=Re(n/(s-a)+(phi'(s))/phi(s))>0
-  $
+  $ Phi'(s)=n(s-a)^(n-1) phi(s)+(s-a)^n phi'(s), $ which implies that $ Re((Phi'(s))/Phi(s))=Re(n/(s-a)+(phi'(s))/phi(s))>0 $
   for $s>a$ sufficiently close to $a$.
 ]
 
@@ -474,8 +472,8 @@ Results have already shown that an infinite number of zeros lie on this line. Fo
   Now a manual calculation of the quantity in
   @eq:riemannzetafunction_nolinesofzeros_reallinepositivity gives
   $
-    (Phi'(sigma))/Phi(sigma) & =3 zeta(sigma)^2 (zeta'(sigma))/zeta(sigma)^3+4 zeta(sigma+ii t)^3 zeta'(sigma+ii t)/zeta(sigma+ii t)^4+zeta'(sigma+2 ii t)/zeta(sigma+2 ii t) \
-    & =3 (zeta'(sigma))/zeta(sigma)+4 zeta'(sigma+ii t)/zeta(sigma+ii t)+zeta'(sigma+2 ii t)/zeta(sigma+2 ii t) \
+    (Phi'(sigma))/Phi(sigma) & = (3 zeta(sigma)^2 zeta'(sigma))/zeta(sigma)^3+(4 zeta(sigma+ii t)^3 zeta'(sigma+ii t))/zeta(sigma+ii t)^4+(zeta'(sigma+2 ii t))/zeta(sigma+2 ii t) \
+    & =(3 zeta'(sigma))/zeta(sigma)+(4 zeta'(sigma+ii t))/zeta(sigma+ii t)+(zeta'(sigma+2 ii t))/zeta(sigma+2 ii t) \
     & =sum_(n=2)^oo Lambda(n) (-3 ee^(-sigma log n)-4 ee^(-(s+ii t) log n)-ee^((sigma+2 ii t) log n))
   $
   where the last equality follows from @prop:riemannzetafunction_logarithmicderivativezetavonmangoldt. Taking the real part, we have
