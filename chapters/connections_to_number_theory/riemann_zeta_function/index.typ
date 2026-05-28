@@ -85,7 +85,7 @@ in increasing order.
           scale: 1,
           canvas: {
             import cetz.draw: *
-            let var-delta = 0.2
+            let var-delta = 0.25
             let var-epsilon = 0.6
             let var-meet-angle = calc.asin(var-delta / var-epsilon)
             let var-ext = 3.2
@@ -120,15 +120,27 @@ in increasing order.
               stroke: 0.5pt,
               mark: (start: "|", end: "|"),
             )
-            content("C-epsilon-arc.65%", anchor: "north-east", $C_epsilon$)
-            content((var-x / 2 + var-ext / 2, -var-delta), anchor: "north", math-rect($Gamma^-$), padding: 4pt)
-            content((var-x / 2 + var-ext / 2, var-delta), anchor: "south", math-rect($Gamma^+$), padding: 4pt)
+            content("C-epsilon-arc.65%", anchor: "north-east", $C_(epsilon,delta)$)
+            content(
+              (var-x / 2 + var-ext / 2, -var-delta),
+              anchor: "north",
+              math-rect($Gamma^-_(epsilon,delta)$),
+              padding: 4pt,
+            )
+            content(
+              (var-x / 2 + var-ext / 2, var-delta),
+              anchor: "south",
+              math-rect($Gamma^+_(epsilon,delta)$),
+              padding: 4pt,
+            )
             content(
               ((var-label-ext, var-delta), 50%, (var-label-ext, -var-delta)),
               anchor: "west",
               padding: 3pt,
               math-rect($2 delta$),
             )
+            line((var-x, -0.1), (var-x, 0.1), stroke: 0.7pt)
+            content((var-x, 0), math-rect($tilde(delta)$), anchor: "north", padding: 3pt)
           },
         )
       },
@@ -191,15 +203,15 @@ in increasing order.
 
 Now consider the _Hankel contour_, which consists of an arc and two rays oriented as in @fig:hankelcontour (note that this contour is not actually closed):
 $
-  C_epsilon={ epsilon ee^(ii theta) : arcsin(delta/epsilon)<=theta<=2 uppi-arcsin(delta/epsilon) } \ Gamma^(plus.minus)_epsilon={ x plus.minus ii delta : sqrt(epsilon^2-delta^2)<=x<oo }.
+  C_(epsilon,delta)={ epsilon ee^(ii theta) : arcsin(delta/epsilon)<=theta<=2 uppi-arcsin(delta/epsilon) } \ Gamma^(plus.minus)_(epsilon,delta)={ x plus.minus ii delta : sqrt(epsilon^2-delta^2)<=x<oo }.
 $
 Define the auxiliary function
 $
-  F_(epsilon, delta) (s)=integral_(C_epsilon union {Gamma^(plus.minus)_epsilon}) ((-z)^(s-1))/(ee^z-1) dz=(integral_(C_epsilon)+integral_(Gamma^+_epsilon)+integral_(Gamma^-_epsilon)) ((-z)^(s-1))/(ee^z-1) dz
+  F_(epsilon, delta) (s)=integral_(C_(epsilon,delta) union {Gamma^(plus.minus)_epsilon}) ((-z)^(s-1))/(ee^z-1) dz=(integral_(C_(epsilon,delta))+integral_(Gamma^+_(epsilon,delta))+integral_(Gamma^-_(epsilon,delta))) ((-z)^(s-1))/(ee^z-1) dz
 $
-for $Re(s)>1$, where the integrand is $(exp[(s-1)Log(-z)])/(e^z - 1)$, where we take the principal branch with a branch cut on $RR_(<=0)$. It is important to note that $F_(epsilon, delta)$ is independent of $epsilon>=delta$. To see this, suppose that $delta<=epsilon_1<epsilon_2<2 uppi$ is arbitrarily chosen. Then we have
+for $Re(s)>1$, where the integrand is $(exp[(s-1)Log(-z)])/(e^z - 1)$, where we take $Log$ to be the principal branch with a branch cut on $RR_(<=0)$ (corresponding to $RR_(>=0)$ in terms of $z$). It is important to note that $F_(epsilon, delta)$ is independent of $epsilon>=delta$. To see this, suppose that $delta<=epsilon_1<epsilon_2<2 uppi$ is arbitrarily chosen. Then we have
 $
-  F_(epsilon_2, delta) (s)-F_(epsilon_1, delta) (s) &= (integral_(C_(epsilon_2))-integral_(C_(epsilon_1))+integral_(Gamma^+_(epsilon_2))+integral_(Gamma^-_(epsilon_2))-integral_(Gamma^+_(epsilon_1))-integral_(Gamma^-_(epsilon_1))) ((-z)^(s-1) dz)/(ee^z-1) \
+  F_(epsilon_2, delta) (s)-F_(epsilon_1, delta) (s) &= (integral_(C_(epsilon_2, delta))-integral_(C_(epsilon_1,delta))+integral_(Gamma^+_(epsilon_2,delta))+integral_(Gamma^-_(epsilon_2,delta))-integral_(Gamma^+_(epsilon_1,delta))-integral_(Gamma^-_(epsilon_1,delta)))\ & wide ((-z)^(s-1) dz)/(ee^z-1) \
   &= integral.cont_gamma ((-z)^(s-1) dz)/(ee^z-1),
 $
 where $gamma$ is a closed _keyhole countour_ (@fig:keyholecontour) around the positive real axis. Since $((-z)^(s-1))/(ee^z-1)$ is holomorphic on and inside $gamma$, Cauchy--Goursat (@thm:cauchygoursattheorem) implies that $integral.cont_gamma ((-z)^(s-1) dz)/(ee^z-1)=0$. Therefore, $F_(epsilon_2, delta) (s)=F_(epsilon_1, delta) (s)$. Now we define $F_epsilon=lim_(delta -> 0^+) F_(epsilon, delta)$.
@@ -230,20 +242,22 @@ $
   & =4 uppi epsilon^(Re(s)-1) sup_theta abs(ee^(theta (ii (Re(s)-1)-Im(s))))=4 uppi epsilon^(Re(s)-1) sup_theta ee^(-theta Im(s)) \
   & <=4 uppi epsilon^(Re(s)-1) ee^(2 uppi abs(Im(s))) -> 0 quad "as" quad epsilon -> 0.
 $
-On the contrary,
+On the contrary, for fixed $epsilon$, if we assume that $0<delta<= epsilon sqrt(2)/2$, then it follows that $tilde(delta) > sqrt(2)/2 epsilon$. Then,
 $
   #II-num + #III-num & =integral_(tilde(delta))^oo (ee^(Log(ii delta-x)(s-1)))/(ee^(-ii delta+x)-1) dx-integral_(tilde(delta))^oo (ee^(Log(-ii delta-x)(s-1)))/(ee^(ii delta+x)-1) dx \
   abs(#II-num + #III-num) & <=integral_(tilde(delta))^oo (ee^(Re [Log(ii delta-x)(s-1)]))/(ee^x-1) dx+integral_(tilde(delta))^oo (ee^(Re [Log(-ii delta-x)(s-1)]))/(ee^x-1) dx \
   & <=integral_(tilde(delta))^oo (ee^(Log sqrt(delta^2+x^2)(Re(s)-1)-Arg(ii delta-x) Im(s)))/(ee^x-1) dx \
   & quad +integral_(tilde(delta))^oo (ee^(Log sqrt(delta^2+x^2)(Re(s)-1)-Arg(-ii delta-x) Im(s)))/(ee^x-1) dx \
   & <=integral_(tilde(delta))^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx \
-  & quad +integral_(tilde(delta))^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx
+  & quad +integral_(tilde(delta))^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx \
+  & <=integral_(sqrt(2)/2 epsilon)^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx \
+  & quad +integral_(sqrt(2)/2 epsilon)^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx
 $ <eq:riemannzetafunction_remainingtwointegralshankelcontour>
-where we choose the principal branch logarithm such that $arg(z) in (-uppi, uppi]$ and take $0<delta<=1$. It is trivial to see that the bounding integrals (now independent of $delta$) are convergent for fixed $s$. Then Lebesgue's Dominated Convergence Theorem applies to @eq:riemannzetafunction_remainingtwointegralshankelcontour as $delta -> 0^+$, resulting in
+where the principal branch logarithm gives that $Arg(z) in (-uppi, uppi]$.  It is trivial to see that the bounding integrals (now independent of $delta$, as the integration bounds depend only on $epsilon$) are convergent for fixed $s$. Then Lebesgue's Dominated Convergence Theorem applies to @eq:riemannzetafunction_remainingtwointegralshankelcontour as $delta -> 0^+$, resulting in
 $
-  #II-num + #III-num & ->integral_(tilde(delta))^oo (ee^((s-1)[log(x)+ii uppi]))/(ee^x-1) dx-integral_(tilde(delta))^oo (ee^((s-1)[log(x)-ii uppi]))/(ee^x-1) dx \
-  & =integral_(tilde(delta))^oo (x^(s-1) ee^(ii uppi (s-1)))/(ee^x-1) dx-integral_(tilde(delta))^oo (x^(s-1) ee^(-ii uppi (s-1)))/(ee^x-1) dx \
-  & =(ee^(-ii uppi s)-ee^(ii uppi s)) integral_(tilde(delta))^oo (x^(s-1) dx)/(ee^x-1)=-2 ii sin(uppi s) integral_(tilde(delta))^oo (x^(s-1) dx)/(ee^x-1).
+  #II-num + #III-num & ->integral_epsilon^oo (ee^((s-1)[log(x)+ii uppi]))/(ee^x-1) dx-integral_(tilde(delta))^oo (ee^((s-1)[log(x)-ii uppi]))/(ee^x-1) dx \
+  & =integral_epsilon^oo (x^(s-1) ee^(ii uppi (s-1)))/(ee^x-1) dx-integral_epsilon^oo (x^(s-1) ee^(-ii uppi (s-1)))/(ee^x-1) dx \
+  & =(ee^(-ii uppi s)-ee^(ii uppi s)) integral_epsilon^oo (x^(s-1) dx)/(ee^x-1)=-2 ii sin(uppi s) integral_epsilon^oo (x^(s-1) dx)/(ee^x-1).
 $ <eq:riemannzetafunction_remainingtwointegralslimit>
 Now under the limiting operations $delta -> 0^+$ and $epsilon -> 0^+$, we have
 $
@@ -293,7 +307,7 @@ The functional equation as provided by Riemann in his original paper gives a mor
 ] <thm:riemannzetafunction_functionalequation>
 
 #proof[
-  We restrict our consideration to $s eq.not 0,-1,-2,dots$ (and the usage of limits suffices to extend the relation to all of $CC^*$). The integrand $((-z)^(s-1))/(ee^z-1)$ (as a function of $z$) has a branch cut singularity on $RR_(>=0)$ (a region excluded by all Hankel contours and thus irrelevant to our interest). The denominator vanishes (simply) when $ee^z=1$ or when $z in 2 uppi ii ZZ$ and thus has simple poles at these points.
+  We restrict our consideration to $s eq.not 0,-1,-2,dots$ (and the usage of limits suffices to extend the relation to all of $CC^*$). The integrand $((-z)^(s-1))/(ee^z-1)$ (as a function of $z$) has a branch cut singularity on $RR_(>=0)$ (in terms of $z$) (a region excluded by all Hankel contours and thus irrelevant to our interest). The denominator vanishes (simply) when $ee^z=1$ or when $z in 2 uppi ii ZZ$ and thus has simple poles at these points.
 
   Suppose that $Re s<0$. Now the Residue Theorem (@thm:residuethm) gives
   that
