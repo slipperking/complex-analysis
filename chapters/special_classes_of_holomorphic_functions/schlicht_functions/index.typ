@@ -57,7 +57,7 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   $
     abs((Re phi.alt(r ee^(ii theta)))/ alpha'),abs((Im phi.alt(r ee^(ii theta)))/ beta') < Order(r^2)/(1/(2r)) = Order(r^3)< eta' r^3,
   $
-  for some constant $eta'>0$, so that $ [Re h(r ee^(ii theta))]^2/ alpha'^2 + [Im h(r ee^(ii theta))]^2 / beta'^2 &< 1 + 2eta'^2 r^6 + (2 cos theta Re phi) / alpha' - (2 sin theta Im phi.alt) / beta'\
+  for some constant $eta'>0$, so that $ [Re h(r ee^(ii theta))]^2/ alpha'^2 + [Im h(r ee^(ii theta))]^2 / beta'^2 &< 1 + 2eta'^2 r^6 + (2 cos theta Re phi.alt) / alpha' - (2 sin theta Im phi.alt) / beta'\
   &<1+ order(r^3) + 4eta' r^3<1+eta r^3 $
   for some constant $eta>0$ and sufficiently small $r$. From rearrangement, $ [Re h(r e^(ii theta))]^2/ (alpha' sqrt(1+eta r^3))^2 + [Im h(r e^(ii theta))]^2 / (beta' sqrt(1+eta r^3))^2 <1. $
   Define $alpha,beta$ as in the theorem statement. It follows that $h(r e^(ii theta))$ lies in the region bounded by the ellipse centered at $0$ with semi-major and semi-minor axes $alpha,beta$, respectively.
