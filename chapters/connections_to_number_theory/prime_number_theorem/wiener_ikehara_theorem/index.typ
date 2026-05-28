@@ -36,7 +36,8 @@ The two kernels are related by a angular unitary Fourier transform:
 
   Since $supp K_(lambda) = [-2 lambda, 2 lambda]$, we have that
   $
-    cal(F){K_(lambda)}(x) &= 1 / sqrt(2 uppi) integral_(-2 lambda)^(2 lambda) (1 - abs(t) / (2 lambda)) ee^(-ii x t) dt = 1 / sqrt(2 uppi) integral_0^(2 lambda) (1 - t / (2 lambda)) (ee^(-ii x t) + ee^(ii x t)) dt \
+    cal(F){K_(lambda)}(x) &= 1 / sqrt(2 uppi) integral_(-2 lambda)^(2 lambda) (1 - abs(t) / (2 lambda)) ee^(-ii x t) dt \
+    &= 1 / sqrt(2 uppi) integral_0^(2 lambda) (1 - t / (2 lambda)) (ee^(-ii x t) + ee^(ii x t)) dt \
     &= sqrt(2) / sqrt(uppi) integral_0^(2 lambda) (1 - t / (2 lambda)) cos(x t) dt \
     &= sqrt(2) / sqrt(uppi) [evaluated(sin(x t) / x)_0^(2 lambda) - evaluated((t sin(x t)) / (2 lambda x))_0^(2 lambda) + integral_0^(2 lambda) (sin(x t)) / (2 lambda x) dt] \
     &= sqrt(2) / sqrt(uppi) [sin(2 lambda x) / x - sin(2 lambda x) / x - evaluated(cos(x t) / (2 lambda x^2))_0^(2 lambda)] \
@@ -120,14 +121,14 @@ The two kernels are related by a angular unitary Fourier transform:
   which confirms the second equivalence.
 ]
 
+We note that, in a distribution-theoretic treatment, it would suffice to prove one of the above identities, the other then following immediately from Fourier inversion and the Dirac delta. Without the framework of distributions however, the use of the Dirac delta is generally unjustified. For completeness, we have instead given a direct classical proof.
+
 #definition[
   A function $f:RR -> RR$ is said to be _slowly decreasing_ if
   $ liminf_(delta -> 0^+) liminf_(x -> oo) [f(x + delta) - f(x)] >= 0, $
   or equivalently, for every $epsilon > 0$, $exists x_0$, $exists delta > 0$ such that
   $ forall x, y > x_0, 0 < y - x < delta ==> f(y) - f(x) > -epsilon. $
 ]
-
-#proof[of equivalence][]
 
 #proposition[
   Let $f:RR -> RR$ be a slowly decreasing function bounded by $M > 0$. If the limit of the convolution $f * k_(lambda)$ given by

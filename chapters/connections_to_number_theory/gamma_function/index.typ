@@ -91,7 +91,8 @@ We will now study two representations for the Gamma function.
   $ <eq:gammafunction_gaussformulaintermediate2>
   Additionally, since
   $
-    dv(ee^u (1 - u/n)^(n-1), u) = ee^u (1 - u/n)^(n-1) - (n-1)/n ee^u (1 - u/n)^(n-2) = (ee^u)/n (1 - u/n)^(n-2) (1-u)
+    dv(ee^u (1 - u/n)^(n-1), u) & = ee^u (1 - u/n)^(n-1) - (n-1)/n ee^u (1 - u/n)^(n-2) \
+                                & = (ee^u)/n (1 - u/n)^(n-2) (1-u)
   $
   has zeros at $u = 1$ and at $u = n$, and
   $

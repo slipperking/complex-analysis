@@ -11,14 +11,9 @@ $s=sigma+ii t$.
   $ zeta(s)=sum_(n=1)^oo 1/(n^s), quad sigma=Re s>1. $
 ] <def:riemannzetafunction>
 
-Let $alpha in RR_(> 1)$ be arbitrary. It is well known that $zeta(alpha)$ absolute converges by integral comparison. Therefore, $forall sigma>=alpha$,
+Let $alpha in RR_(> 1)$ be arbitrary. It is well known that $zeta(alpha)$ absolute converges by integral comparison. Therefore, $forall s=sigma+ii t:sigma>=alpha$,
 $ abs(sum_(n=1)^oo 1/(n^s)) <= sum_(n=1)^oo 1/(n^sigma) <= sum_(n=1)^oo 1/(n^alpha). $
-Hence, $zeta(s)$ is uniformly and absolutely convergent on
-${ s in CC : Re(s)>=alpha }$ by the Weierstrass $M$--Test
-(@thm:weierstrassmtest). The Weierstrass Theorem
-(@ thm:weierstrassconvergence) gives the analyticity of $zeta$ thereon.
-We will now explain the simple connection between $zeta$ and the prime
-numbers. Let $p_1=2,p_2=3,p_3=5,dots$ be the sequence of all prime numbers
+Hence, $zeta(s)$ is uniformly and absolutely convergent on ${ s in CC : Re(s)>=alpha }$ by the Weierstrass $M$--Test (@thm:weierstrassmtest). The Weierstrass Theorem (@thm:weierstrass_convergence) gives the analyticity of $zeta$ thereon. We will now explain the simple connection between $zeta$ and the prime numbers. Let $p_1=2,p_2=3,p_3=5,dots$ be the sequence of all prime numbers
 in increasing order.
 
 #theorem("Euler Product Formula")[
@@ -214,7 +209,9 @@ $
   F_(epsilon_2, delta) (s)-F_(epsilon_1, delta) (s) &= (integral_(C_(epsilon_2, delta))-integral_(C_(epsilon_1,delta))+integral_(Gamma^+_(epsilon_2,delta))+integral_(Gamma^-_(epsilon_2,delta))-integral_(Gamma^+_(epsilon_1,delta))-integral_(Gamma^-_(epsilon_1,delta)))\ & wide ((-z)^(s-1) dz)/(ee^z-1) \
   &= integral.cont_gamma ((-z)^(s-1) dz)/(ee^z-1),
 $
-where $gamma$ is a closed _keyhole countour_ (@fig:keyholecontour) around the positive real axis. Since $((-z)^(s-1))/(ee^z-1)$ is holomorphic on and inside $gamma$, Cauchy--Goursat (@thm:cauchygoursattheorem) implies that $integral.cont_gamma ((-z)^(s-1) dz)/(ee^z-1)=0$. Therefore, $F_(epsilon_2, delta) (s)=F_(epsilon_1, delta) (s)$. Now we define $F_epsilon=lim_(delta -> 0^+) F_(epsilon, delta)$.
+where $gamma$ is a closed _keyhole countour_ (@fig:keyholecontour) around the positive real axis. Since $((-z)^(s-1))/(ee^z-1)$ is holomorphic on and inside $gamma$, Cauchy--Goursat (@thm:cauchygoursattheorem) implies that $integral.cont_gamma ((-z)^(s-1) dz)/(ee^z-1)=0$. Therefore, $F_(epsilon_2, delta) (s)=F_(epsilon_1, delta) (s)$.
+
+For any $epsilon$, define $F_epsilon=lim_(delta -> 0^+) F_(epsilon, delta)$. By the preceding discussion, this value is constant for $epsilon<2pi$.
 
 For brevity, let $theta.alt=arcsin(delta/epsilon)$ and let
 $tilde(delta)=sqrt(epsilon^2-delta^2)$. Then
@@ -261,7 +258,7 @@ $
 $ <eq:riemannzetafunction_remainingtwointegralslimit>
 Now under the limiting operations $delta -> 0^+$ and $epsilon -> 0^+$, we have
 $
-  F(s)&=F_epsilon (s)(forall epsilon<2 uppi)=lim_(epsilon -> 0^+) F_epsilon (s)=lim_(epsilon -> 0) lim_(delta -> 0) #I-num + #II-num + #III-num \ & =-2 ii sin(uppi s) Gamma(s) zeta(s)
+  F(s)&=F_epsilon (s)("constant for all" epsilon<2 uppi)=lim_(epsilon -> 0^+) F_epsilon (s)=lim_(epsilon -> 0) lim_(delta -> 0) #I-num + #II-num + #III-num \ & =-2 ii sin(uppi s) Gamma(s) zeta(s)
 $ <eq:riemannzetafunctionthreeintegralslimit>
 by virtue of @thm:riemannzetafunctiongammaintegral. The integral $#I-num + #II-num + #III-num$ for any $epsilon$ and $delta$ defines an entire function of $s$---by expressing each integral in its parametric form as in @eq:riemannzetafunction_remainingthreeintegralshankelcontour, a simple calculation yields that $dv(F_epsilon (s), overline(s)) equiv 0$ (either through differentiation under the integral sign, or by Lebesgue's Dominated Convergence) and hence the entireness of each $F_epsilon$ follows.
 
@@ -309,20 +306,17 @@ The functional equation as provided by Riemann in his original paper gives a mor
 #proof[
   We restrict our consideration to $s eq.not 0,-1,-2,dots$ (and the usage of limits suffices to extend the relation to all of $CC^*$). The integrand $((-z)^(s-1))/(ee^z-1)$ (as a function of $z$) has a branch cut singularity on $RR_(>=0)$ (in terms of $z$) (a region excluded by all Hankel contours and thus irrelevant to our interest). The denominator vanishes (simply) when $ee^z=1$ or when $z in 2 uppi ii ZZ$ and thus has simple poles at these points.
 
-  Suppose that $Re s<0$. Now the Residue Theorem (@thm:residuethm) gives
-  that
+  Suppose that $Re s<0$. Now the Residue Theorem (@thm:residuethm) gives that
   $
-    F_((2n+1) uppi) (s)-F_epsilon (s)=taui sum_(z in 2 uppi ii ZZ \ z in"contour") Res_z ((-z)^(s-1))/(ee^z-1), quad epsilon<2 uppi
+    F_((2n+1) uppi) (s)-F_epsilon (s) = lim_(delta -> 0^+) integral.cont_gamma ((-z)^(s-1))/(ee^z-1) dz = lim_(delta -> 0^+) taui sum_(z in 2 uppi ii ZZ \ z in jinterior gamma) Res_z ((-z)^(s-1))/(ee^z-1)
   $
-  where the contour is the keyhole contour in @fig:keyholecontour with a
-  larger radius of $(2n+1) uppi$ and a smaller one of $epsilon$. Then we
-  have, by virtue of @eq:residueatpole:
+  where $gamma$ is the keyhole contour in @fig:keyholecontour with a larger radius of $(2n+1) uppi$ and a smaller one of $epsilon < 2pi$ whose lateral segments are $2delta$ apart from each other. Since $delta<epsilon<2pi$, the choice of $gamma$ does not affect the enclosed singularities. Then we have, by virtue of @eq:residueatpole:
   $
     & 1/taui (F_((2n+1) uppi) (s)-F_epsilon (s)) = sum_(k=-n \ k eq.not 0)^n lim_(zeta -> 2 uppi ii k) ((zeta-2 uppi ii k)(-zeta)^(s-1))/(ee^zeta-1) \
     &wide quad= sum_(k=-n \ k eq.not 0)^n lim_(zeta -> 2 uppi ii k) (2 uppi ii k (s-1) (-zeta)^(s-2)+s (-zeta)^(s-1))/(ee^zeta) \
     &wide quad= sum_(k=-n \ k eq.not 0)^n [2 uppi ii k (s-1) (-2 uppi ii k)^(s-2)+s (-2 uppi ii k)^(s-1)]=sum_(k=-n \ k eq.not 0)^n (-2 uppi ii k)^(s-1),
   $
-  where we utilize the principal branch logarithm:
+  where by definition, uses the principal branch:
   $
     F_((2n+1) uppi) (s)&-F_epsilon (s) =taui sum_(k=1)^n [ee^(Log(2 uppi ii k)(s-1))+ee^(Log(-2 uppi ii k)(s-1))] \
     & =taui sum_(k=1)^n [ee^(Log(2 uppi k)(s-1)) ee^(Log(ii)(s-1))+ee^(Log(2 uppi k)(s-1)) ee^(Log(-ii)(s-1))] \
@@ -447,11 +441,11 @@ Results have already shown that an infinite number of zeros lie on this line. Fo
 ]
 
 #proposition[
-  If $Phi$ is holomorphic on a neighborhood of a point $a in RR$ on which $Phi equiv.not 0$ such that $Phi(a)=0$, then
+  If $Phi$ is holomorphic on a neighborhood of a point $a in RR$ on which $Phi equiv.not 0$ (except for at $a$) such that $Phi(a)=0$, then
   $
     Re((Phi'(s))/Phi(s))>0
   $
-  for $s in RR_(> a)$ near $a$.
+  for $s > a$ near $a$.
 ] <prop:positivelogarithmicderivativerealpart>
 
 #proof[
@@ -488,11 +482,12 @@ Results have already shown that an infinite number of zeros lie on this line. Fo
   $
     (Phi'(sigma))/Phi(sigma) & = (3 zeta(sigma)^2 zeta'(sigma))/zeta(sigma)^3+(4 zeta(sigma+ii t)^3 zeta'(sigma+ii t))/zeta(sigma+ii t)^4+(zeta'(sigma+2 ii t))/zeta(sigma+2 ii t) \
     & =(3 zeta'(sigma))/zeta(sigma)+(4 zeta'(sigma+ii t))/zeta(sigma+ii t)+(zeta'(sigma+2 ii t))/zeta(sigma+2 ii t) \
-    & =sum_(n=2)^oo Lambda(n) (-3 ee^(-sigma log n)-4 ee^(-(s+ii t) log n)-ee^((sigma+2 ii t) log n))
+    & =sum_(n=2)^oo Lambda(n) (-3 ee^(-sigma log n)-4 ee^(-(sigma+ii t) log n)-ee^((sigma+2 ii t) log n))
   $
   where the last equality follows from @prop:riemannzetafunction_logarithmicderivativezetavonmangoldt. Taking the real part, we have
   $
     Re((Phi'(sigma))/Phi(sigma)) & =sum_(n=2)^oo Lambda(n) ee^(-sigma log n) (-3-4 cos(t log n)-cos(2 t log n)) \
+                                 & = sum_(n=2)^oo Lambda(n) ee^(-sigma log n) (-2-4 cos(t log n)-2cos^2 (2t log n))<0 \
                                  & =-2 sum_(n=2)^oo Lambda(n) ee^(-sigma log n) (cos(t log n)+1)^2<0,
   $
   which is a direct contradiction of @eq:riemannzetafunction_nolinesofzeros_reallinepositivity.
