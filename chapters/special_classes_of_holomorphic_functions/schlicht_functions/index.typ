@@ -35,7 +35,7 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   $
     A_r = {z in CC : r < abs(z) < 1}
   $
-  be an annulus for $0 < r < 1$. Then $exists eta > 0$ such that $forall r in (0, 1)$ ($eta$ independent of $r$), $h(A_r)$ lies in an ellipse with a semi-major axis $ alpha = (1 / r + abs(b_1) eta) sqrt(1 + eta r^3) $ and a semi-minor axis $ beta = (1 / r - abs(b_1) eta) sqrt(1 + eta r^3). $
+  be an annulus for $0 < r < 1$. Then $exists eta > 0$ such that $forall r>0$ sufficiently small ($eta$ independent of $r$), $h(A_r)$ lies in an ellipse with a semi-major axis $ alpha = (1 / r + abs(b_1) eta) sqrt(1 + eta r^3) $ and a semi-minor axis $ beta = (1 / r - abs(b_1) eta) sqrt(1 + eta r^3). $
 ]
 
 #proof[
@@ -48,14 +48,25 @@ We will introduce two of the oldest results regarding schlicht functions, namely
     h(z) & = 1 / r (cos theta - ii sin theta) + b_1 r (cos theta + ii sin theta) + phi.alt(r ee^(ii theta)) \
          & = ((1 / r + b_1 r) cos theta + Re phi.alt) + ii ((b_1 r - 1 / r) sin theta + Im phi.alt).
   $
-  Let $alpha = 1/r + b_1 r$ and let $beta = 1/r - b_1 r$. Then
+  Let $alpha' = 1/r + b_1 r$ and let $beta' = 1/r - b_1 r$. Then
   $
-    [Re h(r e^(i theta))]^2/ alpha^2 + [Im h(r e^(i theta))]^2 / beta^2 &= cos^2 theta + [Re phi.alt]^2/alpha^2 + (2 cos theta Re phi) / alpha
-    \ & wide"" + sin^2 theta + [Im phi.alt]^2 / beta^2 - (2 sin theta Im phi.alt) / beta.
+    [Re h(r ee^(ii theta))]^2/ alpha'^2 + [Im h(r e^(ii theta))]^2 / beta'^2 &= cos^2 theta + [Re phi.alt]^2/alpha'^2 + (2 cos theta Re phi) / alpha'
+    \ & wide"" + sin^2 theta + [Im phi.alt]^2 / beta'^2 - (2 sin theta Im phi.alt) / beta'.
   $
-  Since for all $alpha / (1/(2r)) = 2 + 2b_1r^2 -> 2$, and $beta / (1/(2r)) = 2-2b_1 r^2 -> 2$ as $r -> 0^+$, for sufficiently small $r$, $alpha>1/(2r)$ and $beta > 1/(2r)$.
+  Since for all $alpha' / (1/(2r)) = 2 + 2b_1r^2 -> 2$, and $beta' / (1/(2r)) = 2-2b_1 r^2 -> 2$ as $r -> 0^+$, for sufficiently small $r$, $alpha'>1/(2r)$ and $beta' > 1/(2r)$. Similarly, for sufficiently small $r$
+  $
+    abs((Re phi.alt(r ee^(ii theta)))/ alpha'),abs((Im phi.alt(r ee^(ii theta)))/ beta') < Order(r^2)/(1/(2r)) = Order(r^3)< eta' r^3,
+  $
+  for some constant $eta'>0$, so that $ [Re h(r ee^(ii theta))]^2/ alpha'^2 + [Im h(r ee^(ii theta))]^2 / beta'^2 &< 1 + 2eta'^2 r^6 + (2 cos theta Re phi) / alpha' - (2 sin theta Im phi.alt) / beta'\
+  &<1+ order(r^3) + 4eta' r^3<1+eta r^3 $
+  for some constant $eta>0$ and sufficiently small $r$. From rearrangement, $ [Re h(r e^(ii theta))]^2/ (alpha' sqrt(1+eta r^3))^2 + [Im h(r e^(ii theta))]^2 / (beta' sqrt(1+eta r^3))^2 <1. $
+  Define $alpha,beta$ as in the theorem statement. It follows that $h(r e^(ii theta))$ lies in the region bounded by the ellipse centered at $0$ with semi-major and semi-minor axes $alpha,beta$, respectively.
 
-  TO BE CONTINUED
+  Since $h(0) = oo$, it follows that $h$ (which is injective by the univalence of $f$) maps $D(0,r)$ to a neighborhood of $oo$ and maps $partial D(0,r)$ to the interior of the previous ellipse.
+
+  By the Jordan Curve Theorem (@thm:jordancurve), $CC without h(partial D(0,r))$ contains two connected regions. Since $h$ maps a neighborhood $U$ of $partial D(0,r)$ to a neighborhood of $h(partial D(0,r))$ by the Open Mapping Theorem (@thm:openmapping), for a point $w in h(partial D(0,r))$, there exists a disk $D(w,epsilon) subset.eq h(U)$, which intersects both $jinterior h(partial D(0,r))$ and $jexterior h(partial D(0,r))$ (because $w$ is an accumulation point of both sets as it lies in the boundary).
+
+  Thus, there exist points in $U$ which map into $jinterior h(partial D(0,r))$, (hence map to points in the ellipse). Because $h$ maps connected sets to connected sets, and no point in $h(D(0,r))$ can map to $jinterior h(partial D(0,r))$ (as otherwise the set would be disconnected), therefore all points inside $A_r$ map into $jinterior h(partial D(0,r))$.
 ]
 
 #theorem[
