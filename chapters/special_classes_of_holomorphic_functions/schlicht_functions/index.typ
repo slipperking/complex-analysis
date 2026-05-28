@@ -20,7 +20,7 @@ where $a_n = (f^((n)) (0)) / (n !)$ for $n gt.eq 2$. Two historic results regard
   $
     z |-> z / (1 - ee^(ii theta) z)^2.
   $
-  The Koebe functions are more extremal in that it satisfies the conclusion $abs(a_n) = n$ for all $n in NN$; its power series is given by
+  The Koebe functions are more extremal in the sense that it satisfies the conclusion $abs(a_n) = n$ for all $n in NN$; its power series is given by
   $
     z |-> sum_(n=1)^oo n ee^(ii theta (n - 1)) z^n.
   $
@@ -35,18 +35,18 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   $
     A_r = {z in CC : r < abs(z) < 1}
   $
-  be an annulus for $0 < r < 1$. Then $exists eta > 0$ such that $forall r in (0, 1)$ ($eta$ independent of $r$), $h(A_r)$ lies in an ellipse with a semi-major axis $alpha = (1 / r + abs(b_1) eta) sqrt(1 + eta r^3)$ and a semi-minor axis $beta = (1 / r - abs(b_1) eta) sqrt(1 + eta r^3)$.
+  be an annulus for $0 < r < 1$. Then $exists eta > 0$ such that $forall r in (0, 1)$ ($eta$ independent of $r$), $h(A_r)$ lies in an ellipse with a semi-major axis $ alpha = (1 / r + abs(b_1) eta) sqrt(1 + eta r^3) $ and a semi-minor axis $ beta = (1 / r - abs(b_1) eta) sqrt(1 + eta r^3). $
 ]
 
 #proof[
-  Let $tilde(h)(z) = sqrt((overline(b_1)) / (abs(b_1))) h(z (overline(b_1)) / (abs(b_1))) - sqrt((overline(b_1)) / (b_1)) b_0$, so that
+  Let $ tilde(h)(z) = sqrt((overline(b_1)) / (abs(b_1))) h(z sqrt((overline(b_1)) / abs(b_1))) - sqrt((overline(b_1)) / abs(b_1)) b_0 $ (where the branch or value of the square root is the same across), so that
   $
-    tilde(h)(z) = 1 / z + sum_(n=1)^oo ((overline(b_1)) / (abs(b_1)))^((1 + n) / 2) b_n z^n.
+    tilde(h)(z) = 1 / z + sum_(n=1)^oo ((overline(b_1)) / (abs(b_1)))^((1+n)/2) b_n z^n = 1/z + sum_(n=0)^oo tilde(b_n) z^n, "where" tilde(b_0)=0 "and" tilde(b_1) = abs(b_1).
   $
-  Heuristically, we apply a rigid transformation to $h$ so that $tilde(h)$ satisfies the theorem hypothesis. Trivially, if the conclusions of the statement are satisfied for $tilde(h)$, then they naturally follow for $h$. Hence, without loss of generality, we consider only $h(z)$ such that $b_0 = 0$ and $b_1 in RR$, or when $h(z) = 1 / z + b_1 z + phi(z)$ where $phi(z) = Order(z^2)$. For $z = r ee^(ii theta)$,
+  Heuristically, we applied a rigid transformation to $h$ so that the result has no constant term and whose linear coefficient is real. Trivially, if the conclusions of the statement are satisfied for $tilde(h)$, then they naturally follow for $h$. Hence, without loss of generality, we consider only $h(z)$ such that $b_0 = 0$ and $b_1 in RR$, or when $h(z) = 1 / z + b_1 z + phi(z)$ where $phi(z) = Order(z^2)$. For $z = r ee^(ii theta)$,
   $
     h(z) & = 1 / r (cos theta - ii sin theta) + b_1 r (cos theta + ii sin theta) + phi(r ee^(ii theta)) \
-    &= ((1 / r + b_1 r) cos theta + Re phi) + ii ((b_1 r - 1 / r) sin theta + Im phi).
+         & = ((1 / r + b_1 r) cos theta + Re phi) + ii ((b_1 r - 1 / r) sin theta + Im phi).
   $
   TO BE CONTINUED
 ]
