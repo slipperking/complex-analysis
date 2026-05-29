@@ -28,7 +28,7 @@ where $a_n = (f^((n)) (0)) / (n !)$ for $n gt.eq 2$. Two historic results regard
 
 Both were solved in the 20th century by Louis de Branges in the affirmative. The second statement is known as the _Bieberbach Conjecture_ as it was originally hypothesized by Ludwig Bieberbach.
 
-We will introduce two of the oldest results regarding schlicht functions, namely $abs(a_2) <= 2$ and the Koebe Quarter Theorem (@thm:koebequarter). There are many applications of the latter, for instance, we used it in the proof of Mergelyan's Theorem (@thm:mergelyan).
+We will introduce two of the oldest results regarding schlicht functions, namely $abs(a_2) <= 2$ and the Koebe Quarter Theorem (@thm:koebe_quarter). There are many applications of the latter, for instance, we used it in the proof of Mergelyan's Theorem (@thm:mergelyan).
 
 #lemma[
   Let $f : DD -> CC$ be schlicht and define $h(z) = 1 / (f(z)) = 1 / z + sum_(n=0)^oo b_n z^n$. Let
@@ -69,13 +69,23 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   Thus, there exist points in $U$ which map into $jinterior h(partial D(0,r))$, (hence map to points in the ellipse). Because $h$ maps connected sets to connected sets, and no point in $h(D(0,r))$ can map to $jinterior h(partial D(0,r))$ (as otherwise the set would be disconnected), therefore all points inside $A_r$ map into $jinterior h(partial D(0,r))$.
 ]
 
+#theorem[Area Principle][
+
+]
+#proof[
+
+]
+
 #theorem[
   If $f : DD -> CC$ is schlicht and expands to $sum_(n=1)^oo a_n z^n$, then $abs(a_2) <= 2$.
-] <thm:schlichta2leq2>
+] <thm:schlicht_a2_leq_2>
+#proof[
+
+]
 
 #theorem("Koebe Quarter Theorem")[
   If $f : DD -> CC$ is schlicht, then the image $f(DD)$ contains the open disk of radius $1 / 4$ centered at $f(0)$.
-] <thm:koebequarter>
+] <thm:koebe_quarter>
 
 #chapter-section("bieberbach_conjecture")[
   #include "bieberbach_conjecture/index.typ"
