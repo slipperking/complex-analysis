@@ -295,9 +295,9 @@ In fact, it is almost always true that such an extension exists. We will give th
       &= integral_0^(1 / 2) 1 / (uppi r) [integral_(-theta_0(r))^(theta_0(r)) abs(phi'(1 - r ee^(ii theta))) sqrt(r) sqrt(r) dtheta]^2 dr \
       & <= integral_0^(1 / 2) 1 / (uppi r) [integral_(-theta_0(r))^(theta_0(r)) abs(phi'(1 - r ee^(ii theta)))^2 r dtheta] [integral_(-theta_0(r))^(theta_0(r)) r dtheta] dr \
       & <= integral_0^(1 / 2) integral_(-theta_0(r))^(theta_0(r)) abs(phi'(1 - r ee^(ii theta)))^2 r dtheta dr \
-      &= integral.double_V abs(phi'(z))^2 dx dy = M,
+      &= integral.double_V abs(phi'(z))^2 dx dy = op("area")(phi(V))<= op("area")(Omega_2) < oo,
     $
-    where the last step uses the Jacobian matrix (see @thm:lusinarea).
+    where the last step uses the Lusin Area Theorem (see @thm:lusinarea).
   ]
 
   Assume that $exists c > 0, epsilon > 0$ such that $l_r >= c$ for all $0 < r < epsilon$. Then, this implies that
@@ -332,7 +332,7 @@ In fact, it is almost always true that such an extension exists. We will give th
   ] <lem:osgood_taylor_caratheodory_jordan_curve_arc_diameter>
 
   #proof[
-    Since $tau$ is a Jordan curve, it admits a homeomorphic parametrization $psi : S^1 -> tau$, and $psi$ is a bicontinuous bijection (onto its image) between compact Hausdorff spaces, so $psi^(-1)$ is continuous.
+    Since $tau$ is a Jordan curve, it admits a homeomorphic parameterization $psi : S^1 -> tau$, and $psi$ is a bicontinuous bijection (onto its image) between compact Hausdorff spaces, so $psi^(-1)$ is continuous.
 
     Since $psi^(-1)$ is uniformly continuous on the compact set $tau$, for every $epsilon > 0$ there exists $delta' > 0$ such that if $abs(p - q) < delta'$ with $p, q in tau$, then $abs(psi^(-1)(p) - psi^(-1)(q)) < epsilon$.
 

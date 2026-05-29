@@ -58,7 +58,7 @@ $ <eq:derivativeatpole2>
   $
     psi'(0) = -lim_(z -> 0) (alpha (phi.alt^(-1))'(z)) / (phi.alt^(-1)(z) - tau)^2 = lim_(z -> 0) (alpha (phi.alt^(-1))'(z)) / (phi.alt^(-1)(z) - tau)^2 dot (phi.alt^(-1)(z)^2) / (alpha (phi.alt^(-1))'(z)) = 1.
   $
-  By the Koebe Quarter Theorem (@ thm:koebe_quarter), whose proof is independent of results of this section, in accordance, $D(0, 1 / 4) subset.eq psi(DD)$. Let $mu in K without {tau}$. Obviously, $mu in.not (phi.alt^(-1))(DD) = extcomplex without K$.
+  By the Koebe Quarter Theorem (@thm:koebe_quarter), whose proof is independent of results of this section, in accordance, $D(0, 1 / 4) subset.eq psi(DD)$. Let $mu in K without {tau}$. Obviously, $mu in.not (phi.alt^(-1))(DD) = extcomplex without K$.
 
   Let $z mapsto alpha / (z - tau)$ be injective on $extcomplex$. For the sake of contradiction, assume that $(z mapsto alpha / (z - tau))(mu) in psi(DD)$. Then $exists zeta in (phi.alt^(-1))(DD)$ such that $alpha / (zeta - tau) = alpha / (mu - tau)$. By injectivity, $zeta = mu$, which contradicts $mu in K$, and accordingly, $alpha / (mu - tau) in.not psi(DD) supset.eq D(0, 1 / 4)$.
 

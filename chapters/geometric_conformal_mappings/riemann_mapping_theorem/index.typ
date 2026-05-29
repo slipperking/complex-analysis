@@ -89,5 +89,5 @@ The path independence of the definition is provided by the simple connectivity o
 #remark[
   It is natural that we require $U != CC$; if there exists a univalent function $f:CC -> DD$, then by Liouville's Theorem (@thm:liouville), $f$ would be a constant function.
 
-  As we will see in @ sec:multivariatecomplexanalysis, this theorem and many other properties of one-variable holomorphic functions do not extend to functions of several complex variables.
+  As we will see in @sec:multivariatecomplexanalysis, this theorem and many other properties of one-variable holomorphic functions do not extend to functions of several complex variables.
 ]

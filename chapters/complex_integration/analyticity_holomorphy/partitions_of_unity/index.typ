@@ -301,7 +301,17 @@ Note that the converse here is not necessarily true.
 ]
 #proof[
   + Let $ T'=T without{0} = {(x,sin 1/x) : x in (0,1]} $ under the subspace topology, which is trivially path-connected. By @thm:pathconnectivityimpliesconnectivity, this subspace is connected. If $T$ is disconnected, then there exists a non-trivial clopen set $U subset T$ including $0$. Then $U inter T' = U without {0}$ would be a non-trivial clopen set in $T'$, which is an impossibility. Thus, $T$ is a connected space.
-  + Assume for contradiction that there exists a continuous path $gamma(t) = (x(t),y(t)):[0,1] -> T$ with $gamma(0)=(0,0)$ and $gamma(1)=(1,sin(1))$. // tbc
+  + Assume for contradiction that there exists a continuous path $gamma(t) = (x(t),y(t)):[0,1] -> T$ with $gamma(0)=(0,0)$ and $gamma(1)=(1,sin(1))$.
+
+    Then $x([0,1])=[0,1]$ by the Intermediate Value Theorem. For each $t$ where $x(t) != 0$, $y(t) = sin(1/x(t))$. For each natural number $n$, let $ x_n=1/(uppi/2 + 2 uppi n) quad "and" quad tilde(x)_n = 1/(-uppi/2 + 2 uppi n), $
+    where $x_n -> 0$ and $tilde(x)_n -> 0$. Let $t' = inf gamma^(-1) (T')$. Then by continuity, $x(t') = 0$, and for all $t<=t'$, $x(t) = 0$.
+
+    By continuity, $forall epsilon>0$, $exists delta : 0<delta<epsilon$ such that $forall t in [t', t'+delta)$, $abs(x(t))<epsilon$. By the definition of infimum, $exists t = t_epsilon in (t', t'+delta)$ such that $x(t) != 0$. As $epsilon -> 0$, $t_epsilon -> t'$ since $t'<t_epsilon < t'+delta <= t'+epsilon$.
+
+    For each $n in NN$, let $epsilon=1/n$, and there exist $m_n in NN$ such that $x_m_n < x(t_epsilon)$ and $tilde(x)_m_n < x(t_epsilon)$. By the Intermediate Value Theorem, there exists some $t_n, tilde(t)_n$ where $t'< t_n, tilde(t)_n < t_epsilon<t'+ 1/n$ such that $x(t_n) = x_m$ and $x(tilde(t)_n) = tilde(x)_m$.
+
+    For each $t_n$, $y(t_n) = sin 1/(x(t_n)) = sin 1/(x_m_n) = 1$, and for each $tilde(t)_n$, $y(tilde(t)_n) = sin 1/(x(tilde(t)_n)) = sin 1/(tilde(x)_m_n) = -1$. Thus, there exist two sequences of $t$ that approach $t'^+$ for which $y -> 1$ and $y -> -1$. Thus $y$ and $gamma$ are not continuous (for any parameterization).
+  // tbc
 ]
 #definition("Exhaustion by Compact Sets")[
   For a topological space $X$, an _exhaustion by compact sets_ is a nested sequence of compact sets ${K_n}_(n in NN) subset.eq X$ such that $K_n subset interior(K_(n + 1))$ for all $n in NN$ and
