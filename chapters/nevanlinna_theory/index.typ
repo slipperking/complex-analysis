@@ -3,7 +3,7 @@
 = An Introduction to Nevanlinna Theory<sec:nevanlinnatheory>
 The information we present here is primarily based on @holland1973introduction and some structural remarks of @charak2009meromorphicvaluedistribution.
 
-The study of value distribution has gained considerable prominence recently. In 1798, Gauss presented a geometric proof of the Fundamental Theorem of Algebra (@thm:fundamentaltheoremofalgebra) under certain topological assumptions. Subsequently, in 1806, Argand provided the first rigorous proof. A direct consequence is that polynomials attain every complex value precisely as many times as their degree, accounting for multiplicities. General entire functions, however, exhibit different behavior; for instance, $exp$ omits the values 0 and $oo$ while attaining all others infinitely often. We have already established Picard's theorem for entire functions.
+The study of value distribution has gained considerable prominence recently. In 1798, Gauss presented a geometric proof of the Fundamental Theorem of Algebra (@thm:fundamentaltheoremofalgebra) under certain topological assumptions. Subsequently, in 1806, Argand provided the first rigorous proof. A direct consequence is that polynomials attain every complex value precisely as many times as their degree, accounting for multiplicities. General entire functions, however, exhibit different behavior; for instance, $exp$ omits the values $0$ and $oo$ while attaining all others infinitely often. We have already established Picard's theorem for entire functions.
 
 E. Borel later introduced the concept of order for entire functions, prompting investigation into its extension to meromorphic functions. Yet the order of entire functions, defined through the maximum modulus, lacks a natural analog for functions potentially taking the value $oo$. R. Nevanlinna resolved this by developing a generalization of order applicable to both entire and meromorphic functions, by using the _Nevanlinna characteristic_. The broader study of value distribution of entire and meromorphic functions is now known as Nevanlinna Theory.
 
@@ -15,11 +15,11 @@ The L. V. Ahlfors has also discovered a geometric theory that in general reflect
 #chapter-section("properties_of_characteristic")[
   #include "properties_of_characteristic/index.typ"
 ]
+#chapter-section("ahlfors_shimizu")[
+  #include "ahlfors_shimizu/index.typ"
+]
 // #chapter-section("second_fundamental_theorem")[
 //   #include "second_fundamental_theorem/index.typ"
-// ]
-// #chapter-section("ahlfors_shimizu")[
-//   #include "ahlfors_shimizu/index.typ"
 // ]
 // #chapter-section("corollaries_of_second_theorem")[
 //   #include "corollaries_of_second_theorem/index.typ"
