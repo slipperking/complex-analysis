@@ -85,7 +85,7 @@ $
 Taking the limit $epsilon -> 0^+$ hence gives
 $
   &1 / (2 uppi) integral_0^(2 uppi) nabla_(vu(n)) G(abs(f(r ee^(ii theta)))) r dtheta + n(r, f) \
-  & wide wide ""= 1 / uppi integral_0^(2 uppi) integral_0^r (abs(f'(rho ee^(ii theta)))^2) / (1 + abs(f'(rho ee^(ii theta)))^2)^2 rho dr dtheta.
+  & wide wide ""= 1 / uppi integral_0^(2 uppi) integral_0^r (abs(f'(rho ee^(ii theta)))^2) / (1 + abs(f(rho ee^(ii theta)))^2)^2 rho dr dtheta.
 $
 Let the expression on the right-hand side be denoted by $A(r, f)$. We thus derive
 $
@@ -204,7 +204,7 @@ Let $S$ be the Riemann sphere but centered at $(0, 0, 1\/2)$, diameter 1, with a
 $
   bold(sigma)(w) = 1 / (abs(w)^2 + 1) (Re w, Im w, abs(w)^2),
 $
-for two points $w_1, w_2 in extcomplex$, their spherical points are $bold(sigma)(w_1), bold(sigma)(w_2)$. The Euclidean distance between the two points on the sphere is verifiable (after manual simplification) to be $k(w_1, w_2)$. Thus, $k$ is the _chordal_ distance function, and is thus geometrically invariant under rotations of the sphere. The mapping $W$ of $w$ is precisely such a transformation: geometrically it rotates points on the Riemann sphere. Geometrically, the invariance of $m$ is now clear.
+for two points $w_1, w_2 in extcomplex$, their spherical points are $bold(sigma)(w_1), bold(sigma)(w_2)$. The Euclidean distance between the two points on the sphere is verifiable (after manual simplification) to be $k(w_1, w_2)$. Thus, $k$ is the _chordal_ distance function, and is thus geometrically invariant under rotations of the sphere. The mapping $W$ of $w$ is precisely such a transformation: geometrically it rotates points on the Riemann sphere. Geometrically, the invariance of $m_0$ is now clear.
 
 Let $w = u + ii v$ be a point in the projected plane and let $dif u dif v$ be an area element on the plane. Then the corresponding area element on the sphere is equal to:
 $
