@@ -54,7 +54,7 @@ This result itself is fairly trivial. Now we will explain the significance of th
 ]<thm:globalresiduethm>
 
 #proof[
-  Let $R > max_(j in NN_(lt.eq n)) abs(z_n)$ be arbitrary. By the Residue Theorem (@thm:residuethm),
+  Let $R > max_(j in NN_(<= n)) abs(z_n)$ be arbitrary. By the Residue Theorem (@thm:residuethm),
   $ -Res_(z=infinity) f(z) = 1 / taui integral.cont_(partial D(0,R)) f(z) dz = sum_(k=1)^n Res_(z=z_k) f(z) $
   as desired. This is merely a restatement of @thm:residuethm.
 ]
@@ -250,7 +250,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
   We will now show that the integral over the semicircle vanishes as $R -> infinity$. Under the assumption that $R gt.eq 2$, since
   $
-    abs((R ii ee^(ii theta)) / (R^2 ee^(2 ii theta) + 1)^(n+1)) = R / abs(R^2 ee^(2 ii theta) + 1)^(n+1) lt.eq R / abs(R^2 - 1) lt.eq 2/3,
+    abs((R ii ee^(ii theta)) / (R^2 ee^(2 ii theta) + 1)^(n+1)) = R / abs(R^2 ee^(2 ii theta) + 1)^(n+1) <= R / abs(R^2 - 1) <= 2/3,
   $
   which is integrable over $[0, uppi]$, and we can commute the limit with the integral. Therefore, we have
   $
@@ -325,10 +325,10 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
     integral_(C_R) f(z) dz = integral_0^uppi (exp(ii R ee^(ii theta))) / (R ee^(ii theta)) R ii ee^(ii theta) dif theta = ii integral_0^uppi ee^(ii R cos theta) ee^(-R sin theta) dif theta.
   $
-  Notice that $2/uppi theta lt.eq sin(theta) lt.eq theta$ over the integration range. We want to observe the behavior as $R -> infinity$:
+  Notice that $2/uppi theta <= sin(theta) <= theta$ over the integration range. We want to observe the behavior as $R -> infinity$:
   $
     abs(ii integral_0^uppi ee^(ii R cos theta) ee^(-R sin theta) dif theta)
-    &lt.eq integral_0^uppi ee^(-R sin theta) dif theta = 2 integral_0^(uppi\/2) ee^(-R sin theta) dif theta \
+    &<= integral_0^uppi ee^(-R sin theta) dif theta = 2 integral_0^(uppi\/2) ee^(-R sin theta) dif theta \
     &< 2 integral_0^(uppi\/2) ee^(-R 2/uppi theta) dif theta = evaluated(-uppi/R ee^(-R 2/uppi theta))_0^(uppi\/2) \
     &= uppi/R (1 - ee^(-R)) -> 0.
   $
@@ -337,7 +337,7 @@ Residues are extremely important as they allow for simple evaluation of definite
     integral_(C_epsilon) f(z) dz = ii integral_uppi^0 exp(epsilon (ii cos theta - sin theta)) dif theta = ii integral_uppi^0 ee^(-epsilon sin theta) ee^(ii epsilon cos theta) dif theta.
   $
   Obviously,
-  $ abs(ee^(-epsilon sin theta) ee^(ii epsilon cos theta)) lt.eq 1, $
+  $ abs(ee^(-epsilon sin theta) ee^(ii epsilon cos theta)) <= 1, $
   and therefore, the integral and the limit may commute:
   $
     lim_(epsilon -> 0) integral_(C_epsilon) f(z) dz = ii integral_uppi^0 lim_(epsilon -> 0^+) ee^(-epsilon sin theta) ee^(ii epsilon cos theta) dif theta = ii integral_uppi^0 dif theta = -ii uppi.
@@ -403,8 +403,8 @@ Residues are extremely important as they allow for simple evaluation of definite
 #proof[
   Let $f(z) = ee^(ii z^2)$. Choose the wedge contour composed of
   $
-    Gamma_1 = {x in RR : 0 lt.eq x lt.eq R}, quad Gamma_2 = {r ee^(ii uppi\/4) : 0 lt.eq r lt.eq R}, \
-    C_R = {R ee^(ii theta) : 0 lt.eq theta lt.eq uppi/4}
+    Gamma_1 = {x in RR : 0 <= x <= R}, quad Gamma_2 = {r ee^(ii uppi\/4) : 0 <= r <= R}, \
+    C_R = {R ee^(ii theta) : 0 <= theta <= uppi/4}
   $
   as in @fig:wedgecontour. By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem), we have that
   $
@@ -415,7 +415,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   Using the fact that $4/uppi theta < sin(2 theta)$ on the integration range, it can be bounded as
   $
     abs(integral_(C_R) f(z) dz)
-    &lt.eq R integral_0^(uppi\/4) ee^(-R^2 sin(2 theta)) dif theta < R integral_0^(uppi\/4) ee^(-4/uppi R^2 theta) dif theta \
+    &<= R integral_0^(uppi\/4) ee^(-R^2 sin(2 theta)) dif theta < R integral_0^(uppi\/4) ee^(-4/uppi R^2 theta) dif theta \
     &= -uppi/(4R) evaluated(ee^(-4/uppi R^2 theta))_0^(uppi\/4) = uppi/(4R) (1 - ee^(-R^2)).
   $
   As $R -> infinity$, this integral tends to 0. Let $z = r ee^(ii uppi\/4)$ on $Gamma_2$. Then, we have
@@ -508,14 +508,14 @@ Residues are extremely important as they allow for simple evaluation of definite
   ],
 )
 #proof[
-  Let $f(z) = z^alpha / (1 + z^beta)$ and let $-uppi < Arg(z) lt.eq uppi$ in the principal branches of $z^alpha = ee^(alpha Log(z))$ and $z^beta = ee^(beta Log(z))$. Then except for at the zeros of $1 + z^beta$, $f$ is holomorphic.
+  Let $f(z) = z^alpha / (1 + z^beta)$ and let $-uppi < Arg(z) <= uppi$ in the principal branches of $z^alpha = ee^(alpha Log(z))$ and $z^beta = ee^(beta Log(z))$. Then except for at the zeros of $1 + z^beta$, $f$ is holomorphic.
 
   The solutions to $z^beta = -1$ are $z = exp(ii uppi/beta + 2 ii k uppi/beta)$. Choose an indented wedge contour (as there is a logarithmic branch point singularity at the origin) with an angle of $2 uppi / beta$ (as in @fig:wedgecontour). The only singularity it encloses is $exp(ii uppi/beta)$. Since it is a simple zero of $1/f$, this singularity is a simple pole.
 
   The contour is the union of the following curves:
   $
-    Gamma_1 = {x in RR : epsilon lt.eq x lt.eq R}, quad Gamma_2 = {r exp(ii 2 uppi\/beta) : epsilon lt.eq r lt.eq R}, \
-    C_R = {R ee^(ii theta) : 0 lt.eq theta lt.eq 2 uppi\/beta}, quad C_epsilon = {epsilon ee^(ii theta) : 0 lt.eq theta lt.eq 2 uppi\/beta}
+    Gamma_1 = {x in RR : epsilon <= x <= R}, quad Gamma_2 = {r exp(ii 2 uppi\/beta) : epsilon <= r <= R}, \
+    C_R = {R ee^(ii theta) : 0 <= theta <= 2 uppi\/beta}, quad C_epsilon = {epsilon ee^(ii theta) : 0 <= theta <= 2 uppi\/beta}
   $
   where $R > 1$ and $0 < epsilon < 1$. By the Residue Theorem (@thm:residuethm), we get that
   $
@@ -540,11 +540,11 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
   It can also be shown that the integral is bounded by a vanishing function as $R -> infinity$:
   $
-    abs(integral_0^(2 uppi\/beta) (R^(alpha+1)) / (1 + R^beta ee^(ii beta theta)) exp[ii theta (1+alpha)] dif theta) lt.eq integral_0^(2 uppi\/beta) (R^(alpha+1)) / (R^beta - 1) dif theta = 2 uppi/beta (R^(alpha+1)) / (R^beta - 1) -> 0.
+    abs(integral_0^(2 uppi\/beta) (R^(alpha+1)) / (1 + R^beta ee^(ii beta theta)) exp[ii theta (1+alpha)] dif theta) <= integral_0^(2 uppi\/beta) (R^(alpha+1)) / (R^beta - 1) dif theta = 2 uppi/beta (R^(alpha+1)) / (R^beta - 1) -> 0.
   $
   Similarly, as $epsilon -> 0$,
   $
-    abs(integral_(C_epsilon) f(z) dz) lt.eq epsilon integral_0^(2 uppi\/beta) abs(f(epsilon ee^(ii theta))) dif theta = integral_0^(2 uppi\/beta) (epsilon^(alpha+1)) / (1 - epsilon^beta) dif theta = 2 uppi/beta (epsilon^(alpha+1)) / (1 - epsilon^beta) -> 0.
+    abs(integral_(C_epsilon) f(z) dz) <= epsilon integral_0^(2 uppi\/beta) abs(f(epsilon ee^(ii theta))) dif theta = integral_0^(2 uppi\/beta) (epsilon^(alpha+1)) / (1 - epsilon^beta) dif theta = 2 uppi/beta (epsilon^(alpha+1)) / (1 - epsilon^beta) -> 0.
   $
   By letting $R -> infinity$ and $epsilon -> 0$, we have
   $ [1 - exp(ii 2 uppi/beta (1 + alpha))] I = -(2 uppi ii)/beta exp(ii uppi/beta (alpha+1)). $
@@ -609,7 +609,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   $ cosh(uppi (z + ii)) = -cosh(uppi z), quad exp(-2 uppi ii (z + ii) xi) = exp(2 uppi xi) exp(-2 uppi ii z xi), $
   we have that $f(z)$ is a constant multiple of $f(z + ii)$. In particular, $f(z + ii) = -exp(2 uppi xi) f(z)$. Therefore, we can use a rectangular contour as shown in @fig:rectangularcontour. Let the sides be denoted by
   $
-    attach(Gamma, t: arrow.l) = {x + ii : -R lt.eq x lt.eq R, x in RR}, quad attach(Gamma, t: arrow.r) = {x in RR : -R lt.eq x lt.eq R} \
+    attach(Gamma, t: arrow.l) = {x + ii : -R <= x <= R, x in RR}, quad attach(Gamma, t: arrow.r) = {x in RR : -R <= x <= R} \
     attach(Gamma, t: arrow.b) = {-R + ii y : y in [0,1]}, quad attach(Gamma, t: arrow.t) = {R + ii y : y in [0,1]}.
   $
   The only enclosed singularity is a simple pole at $z = ii/2$ (simple by evaluation of the Taylor expansion of the denominator). By the Residue Theorem (@thm:residuethm), we get that
@@ -638,14 +638,14 @@ Residues are extremely important as they allow for simple evaluation of definite
   They can be bounded with
   $
     abs(integral_0^1 exp(-2 uppi ii (R + ii z) xi) / cosh(uppi (R + ii z)) dz)
-    &lt.eq 2 integral_0^1 (exp(2 uppi z xi)) / abs(ee^(uppi R) ee^(uppi ii z) + ee^(-uppi R) ee^(-uppi ii z)) dz \
-    &lt.eq 2 integral_0^1 (exp(2 uppi z xi)) / abs(ee^(uppi R) - ee^(-uppi R)) dz
+    &<= 2 integral_0^1 (exp(2 uppi z xi)) / abs(ee^(uppi R) ee^(uppi ii z) + ee^(-uppi R) ee^(-uppi ii z)) dz \
+    &<= 2 integral_0^1 (exp(2 uppi z xi)) / abs(ee^(uppi R) - ee^(-uppi R)) dz
   $
   and
   $
     abs(integral_1^0 exp(2 uppi ii (R - ii z) xi) / cosh(uppi (-R + ii z)) dz)
-    &lt.eq 2 integral_0^1 (exp(2 uppi z xi)) / abs(ee^(-uppi R) ee^(uppi ii z) + ee^(uppi R) ee^(-uppi ii z)) dz \
-    &lt.eq 2 integral_0^1 (exp(2 uppi z xi)) / abs(ee^(uppi R) - ee^(-uppi R)) dz.
+    &<= 2 integral_0^1 (exp(2 uppi z xi)) / abs(ee^(-uppi R) ee^(uppi ii z) + ee^(uppi R) ee^(-uppi ii z)) dz \
+    &<= 2 integral_0^1 (exp(2 uppi z xi)) / abs(ee^(uppi R) - ee^(-uppi R)) dz.
   $
   Since the integrands are continuous and uniformly convergent to $0$ with respect to $z$, we have
   $ integral_(attach(Gamma, t: arrow.t)) f(z) dz + integral_(attach(Gamma, t: arrow.b)) f(z) dz -> 0 $
@@ -709,7 +709,7 @@ In the case that a branch point singularity is present on the contour, we may at
     &= integral_(-infinity)^infinity (log abs(x plus.minus i)) / (x^2+1) = Re integral_(-infinity)^infinity (log(x+i)) / (x^2+1).
   $<eq:branchpointpoleconcurrenceintegral_rewrite>
   Let $gamma = Gamma union C_R$, where concretely,
-  $ Gamma = {x in RR : -R lt.eq x lt.eq R}, quad C_R = {R ee^(ii theta) : 0 lt.eq theta lt.eq uppi} $
+  $ Gamma = {x in RR : -R <= x <= R}, quad C_R = {R ee^(ii theta) : 0 <= theta <= uppi} $
   and $R > 2$, and let $f(z) = Log(z + ii) / (z^2+1)$, where the branch for $Log$ is chosen to satisfy $[0, uppi] subset Im log(CC^*)$, such as the principal branch. The only singularity of $f$ in the upper half plane is a simple pole at $z = ii$. By the Residue Theorem (@thm:residuethm), we have
   $
     lim_(R -> infinity) integral.cont_gamma f(z) dz = lim_(R -> infinity) (integral_Gamma + integral_(C_R)) f(z) dz = 2 uppi ii Res_(z=ii) f(z).
@@ -718,7 +718,7 @@ In the case that a branch point singularity is present on the contour, we may at
   $
     Res_(z=ii) f(z) = lim_(z -> ii) (z - ii) (log(z+ii)) / (z^2+1) = lim_(z -> ii) (log(z+ii)) / (z+ii) = (log(2 ii)) / (2 ii) = uppi/4 - ii (log(2)) / 2.
   $
-  Additionally, for $z in C_R$, since as $R -> infinity$, $abs(f(z)) = abs(Log(z+i) / (z^2+1)) lt.eq (abs(log abs(z+i)) + uppi) / (R^2-1) lt.eq (log abs(R+1) + uppi) / (R^2-1) < (R+1+uppi) / (R^2-1) -> 0$ by virtue of $R > 2$, it follows that $integral_(C_R) f(z) dz -> 0$.
+  Additionally, for $z in C_R$, since as $R -> infinity$, $abs(f(z)) = abs(Log(z+i) / (z^2+1)) <= (abs(log abs(z+i)) + uppi) / (R^2-1) <= (log abs(R+1) + uppi) / (R^2-1) < (R+1+uppi) / (R^2-1) -> 0$ by virtue of $R > 2$, it follows that $integral_(C_R) f(z) dz -> 0$.
 
   Since $lim_(R -> infinity) integral_Gamma f(z) dz = integral_(-infinity)^infinity f(z) dz$ and
   $ integral_(-infinity)^infinity f(z) dz = (uppi^2 ii) / 2 + uppi log(2), $

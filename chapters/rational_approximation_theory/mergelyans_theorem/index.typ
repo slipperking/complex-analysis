@@ -79,8 +79,8 @@ $ <eq:derivativeatpole2>
     phi_zeta:extcomplex without K -> CC,
   $
   and
-  + $abs(phi_zeta (z)) lt.eq 584 / r$ for any $z in extcomplex without K$. <itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584>
-  + $abs(phi_zeta (z) - 1 / (z - zeta)) lt.eq (4676 r^2) / abs(zeta - z)^3$ for any $z in extcomplex without (K union {zeta})$. <itm:complement_biholomorphism_584_r_4767_r2_estimates_absolutedifference4676>
+  + $abs(phi_zeta (z)) <= 584 / r$ for any $z in extcomplex without K$. <itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584>
+  + $abs(phi_zeta (z) - 1 / (z - zeta)) <= (4676 r^2) / abs(zeta - z)^3$ for any $z in extcomplex without (K union {zeta})$. <itm:complement_biholomorphism_584_r_4767_r2_estimates_absolutedifference4676>
   + The function $phi(zeta, z) equiv phi_zeta (z)$ is jointly continuous in $zeta$ and $z$.
 ] <prop:complement_biholomorphism_584_r_4767_r2_estimates>
 
@@ -89,7 +89,7 @@ $ <eq:derivativeatpole2>
 
   Let $tilde(phi)$ be a conformal mapping from $extcomplex without K$ to $DD$, such that $tilde(phi)(oo) = 0$ and $alpha = tilde(phi)'(oo) in RR_(> 0)$. Let $phi(z) = 1 / alpha tilde(phi)(z)$. It follows that $phi'(oo) = 1$, $phi(oo) = 0$. By @prop:complementbiholomorphismquarterestimate,
   $
-    abs(alpha) gt.eq 1 / 4 diam(K) <==> abs(phi(z)) lt.eq (4 abs(tilde(phi)(z))) / diam(K).
+    abs(alpha) gt.eq 1 / 4 diam(K) <==> abs(phi(z)) <= (4 abs(tilde(phi)(z))) / diam(K).
   $
   Consequently, we have the crucial estimate of $phi(extcomplex without K) subset.eq D(0, 4 / diam(K)) subset.eq D(0, 8 / r)$. For fixed $zeta in D(0, r)$, define
   $
@@ -97,11 +97,11 @@ $ <eq:derivativeatpole2>
   $
   where $beta = (phi''(oo)) / 2$. The application of Cauchy's Estimate (@thm:cauchysestimate) on $(z mapsto 1 / z)(extcomplex without D(0, r)) = D(0, 1 / r)$ gives:
   $
-    abs(beta) = 1 / 2 abs(evaluated(dv(phi(1 / z), z, 2, style: "large"))_(z=0)) lt.eq (sup_(D(0, 1 / r)) abs(phi(1 / z))) / (op("dist")(0, partial D(0, 1 / r))^2) = 8 r.
+    abs(beta) = 1 / 2 abs(evaluated(dv(phi(1 / z), z, 2, style: "large"))_(z=0)) <= (sup_(D(0, 1 / r)) abs(phi(1 / z))) / (op("dist")(0, partial D(0, 1 / r))^2) = 8 r.
   $
   Hence,
   $
-    abs(phi_zeta (z)) &lt.eq abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 lt.eq abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 \ &lt.eq 8 / r + 9 r 64 / r^2 = 584 / r.
+    abs(phi_zeta (z)) &<= abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 <= abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 \ &<= 8 / r + 9 r 64 / r^2 = 584 / r.
   $
   This is @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584. Suppose that $abs(z - zeta) > 2 r$. It follows from $abs(zeta) < r$ that $abs(z) > r$ (from the reverse triangle inequality) and hence disjoint from $K$ and $zeta$. On this infinite annulus, we have the Laurent expansion (from @thm:laurentexpansionofholomorphicfunction) that
   $
@@ -131,14 +131,14 @@ $ <eq:derivativeatpole2>
   $
     abs(phi_zeta (z) - 1 / (z - zeta)) < M / abs(z - zeta)^3 <==> abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 < M
   $
-  for all $z$ satisfying $abs(z - zeta) > 2 r$. By @thm:riemannremovablesingularities, $(phi_zeta (z) - 1 / (z - zeta)) (z - zeta)^3$ has a removable singularity at $oo$. On the other hand, for $abs(z - zeta) lt.eq 2 r$ such that $z in extcomplex without (K union {zeta})$, we have
+  for all $z$ satisfying $abs(z - zeta) > 2 r$. By @thm:riemannremovablesingularities, $(phi_zeta (z) - 1 / (z - zeta)) (z - zeta)^3$ has a removable singularity at $oo$. On the other hand, for $abs(z - zeta) <= 2 r$ such that $z in extcomplex without (K union {zeta})$, we have
   $
-    abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 & lt.eq abs(phi_zeta (z)) abs(z - zeta)^3 + abs(z - zeta)^2 \
-                                                       & lt.eq 584 / r (2 r)^3 + (2 r)^2 = 4676 r^2
+    abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 & <= abs(phi_zeta (z)) abs(z - zeta)^3 + abs(z - zeta)^2 \
+                                                       & <= 584 / r (2 r)^3 + (2 r)^2 = 4676 r^2
   $
   from @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584. The Maximum Modulus Principle (@thm:maximum_modulus) implies that
   $
-    sup_(abs(z - zeta) > 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 lt.eq sup_(abs(z - zeta) = 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 lt.eq 4676 r^2
+    sup_(abs(z - zeta) > 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 <= sup_(abs(z - zeta) = 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 <= 4676 r^2
   $
   and thus @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolutedifference4676 follows. The joint continuity of $phi_zeta$ is immediate from the definition.
 
@@ -157,8 +157,8 @@ $ <eq:derivativeatpole2>
   + $integral.double_(CC) lambda_r (zeta) dif xi dif eta = 1$, where $zeta = xi + ii eta$. <itm:diracdeltaapproximation_integralto1>
   + $lambda_r in C^1(CC)$ and is compactly supported. <itm:diracdeltaapproximation_compactsupportcontinuousdifferentiability>
   + $integral.double_(CC) pdv(lambda_r, overline(zeta)) dif xi dif eta = 0$. <itm:diracdeltaapproximation_antiholomorphicderivativeintegral>
-  + $integral.double_(CC) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta lt.eq (2 uppi) / r$. <itm:diracdeltaapproximation_absoluteantiholomorphicderivativeintegral>
-  + $norm(grad lambda_r (z)) lt.eq 4 / r^3$ for all $z$, where $grad = (pdv(, x), pdv(, y))$ denotes the vector differential operator. <itm:diracdeltaapproximation_gradientstatement>
+  + $integral.double_(CC) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta <= (2 uppi) / r$. <itm:diracdeltaapproximation_absoluteantiholomorphicderivativeintegral>
+  + $norm(grad lambda_r (z)) <= 4 / r^3$ for all $z$, where $grad = (pdv(, x), pdv(, y))$ denotes the vector differential operator. <itm:diracdeltaapproximation_gradientstatement>
   + For any $z in CC$ such that $f$ is a holomorphic function on $D(z, r)$, we have the integral formula. <itm:diracdeltaapproximation_integralformula>
     $
       f(z) = integral.double_(D(0, r)) f(z - zeta) lambda_r (zeta) dif xi dif eta.
@@ -222,37 +222,37 @@ $ <eq:derivativeatpole2>
 
   For simplicity, by the boundedness of $f$, we may assume that $f(K) = [-1, 1]$ (by a scaling and shift). We now aim to construct a sequence ${g_n}_(n in NN_(>= 0))$ inductively such that
   $
-    abs(g_n) lt.eq 2^n / 3^(n + 1) "on" CC, quad abs(f - sum_(k = 0)^n g_k) lt.eq (2 / 3)^(n + 1) "on" K quad forall n in NN.
+    abs(g_n) <= 2^n / 3^(n + 1) "on" CC, quad abs(f - sum_(k = 0)^n g_k) <= (2 / 3)^(n + 1) "on" K quad forall n in NN.
   $
   In the case that $n = 0$, define the disjoint closed sets
   $
-    A_0 = {z in K: f(z) lt.eq -1 / 3} quad "and" quad B_0 = {z in K: f(z) gt.eq 1 / 3}.
+    A_0 = {z in K: f(z) <= -1 / 3} quad "and" quad B_0 = {z in K: f(z) gt.eq 1 / 3}.
   $
-  Let $g_0(z) = 1 / 3 eta_(A_0, B_0)(z)$. It is clear that $abs(g_0) lt.eq 1 / 3$ on $CC$. If $z in A_0$, then $-1 lt.eq f(z) lt.eq -1 / 3$, $g_0(z) = -1 / 3$, and hence $abs(f - g_0) lt.eq 2 / 3$. If $z in B_0$, then $1 / 3 lt.eq f(z) lt.eq 1$, $g_0(z) = 1 / 3$, and thus $abs(f - g_0) lt.eq 2 / 3$. If $z in.not A_0 union B_0$, then $-1 / 3 < f(z) < 1 / 3$ and $abs(f - g_0) lt.eq abs(f) + abs(g_0) < 1 / 3 + 1 / 3 = 2 / 3$. Thus, $forall z in K$,
+  Let $g_0(z) = 1 / 3 eta_(A_0, B_0)(z)$. It is clear that $abs(g_0) <= 1 / 3$ on $CC$. If $z in A_0$, then $-1 <= f(z) <= -1 / 3$, $g_0(z) = -1 / 3$, and hence $abs(f - g_0) <= 2 / 3$. If $z in B_0$, then $1 / 3 <= f(z) <= 1$, $g_0(z) = 1 / 3$, and thus $abs(f - g_0) <= 2 / 3$. If $z in.not A_0 union B_0$, then $-1 / 3 < f(z) < 1 / 3$ and $abs(f - g_0) <= abs(f) + abs(g_0) < 1 / 3 + 1 / 3 = 2 / 3$. Thus, $forall z in K$,
   $
-    abs(f(z) - g_0(z)) lt.eq 2 / 3.
+    abs(f(z) - g_0(z)) <= 2 / 3.
   $
   This proves the base case. For the inductive step, assume the claim holds for each $g_0, g_1, dots, g_(n - 1)$. Define
   $
     h_n (z) = f(z) - sum_(k = 0)^(n - 1) g_k (z)
   $
-  for $z in K$. By the inductive hypothesis, we have $abs(h_n) lt.eq (2 / 3)^n$ on $K$. Define the disjoint closed sets
-  $ A_n = {z in K: -(2^n) / 3^n lt.eq h_n (z) lt.eq -(2^n) / 3^(n + 1)} $ and $ B_n = {z in K: (2^n) / 3^n gt.eq h_n (z) gt.eq (2^n) / 3^(n + 1)}. $
-  Let $g_n (z) = 2^n / 3^(n + 1) eta_(A_n, B_n)(z)$, so that $abs(g_n) lt.eq 2^n / 3^(n + 1)$ on $CC$, and
+  for $z in K$. By the inductive hypothesis, we have $abs(h_n) <= (2 / 3)^n$ on $K$. Define the disjoint closed sets
+  $ A_n = {z in K: -(2^n) / 3^n <= h_n (z) <= -(2^n) / 3^(n + 1)} $ and $ B_n = {z in K: (2^n) / 3^n gt.eq h_n (z) gt.eq (2^n) / 3^(n + 1)}. $
+  Let $g_n (z) = 2^n / 3^(n + 1) eta_(A_n, B_n)(z)$, so that $abs(g_n) <= 2^n / 3^(n + 1)$ on $CC$, and
   $
-    abs(h_n (z) - g_n (z)) lt.eq 2^(n + 1) / 3^(n + 1)
+    abs(h_n (z) - g_n (z)) <= 2^(n + 1) / 3^(n + 1)
   $
   for all $z in K$ by the same argument as in the base case. Hence,
   $
-    abs(f(z) - sum_(k = 0)^n g_k (z)) = abs(h_n (z) - g_n (z)) lt.eq (2 / 3)^(n + 1)
+    abs(f(z) - sum_(k = 0)^n g_k (z)) = abs(h_n (z) - g_n (z)) <= (2 / 3)^(n + 1)
   $
   for all $z in K$, completing the induction. Because
   $
-    abs(g(z)) lt.eq sum_(n = 0)^oo abs(g_n (z)) lt.eq 1 / 3 sum_(n = 0)^oo 2^n / 3^n = 1 quad forall z in CC,
+    abs(g(z)) <= sum_(n = 0)^oo abs(g_n (z)) <= 1 / 3 sum_(n = 0)^oo 2^n / 3^n = 1 quad forall z in CC,
   $
   the Weierstrass $M$--Test (@thm:weierstrassmtest) implies that the series $sum_(n = 0)^oo g_n (z)$ converges uniformly on $CC$ to $g$. Since each $g_n$ is continuous, @thm:uniformlimit gives the continuity of $g$ on $CC$. Finally, for any $z in K$, we have
   $
-    abs(f(z) - g(z)) lt.eq lim_(n -> oo) 2^(n + 1) / 3^(n + 1) = 0. #qedhere
+    abs(f(z) - g(z)) <= lim_(n -> oo) 2^(n + 1) / 3^(n + 1) = 0. #qedhere
   $
 ]
 
@@ -264,7 +264,7 @@ $ <eq:derivativeatpole2>
   Let $f = u + ii v$ where $u, v:K -> RR$ are continuous. By Tietze--Urysohn--Brouwer (@thm:tietzeextension), $exists tilde(u), tilde(v) in C^0(CC)$ such that $tilde(u) equiv u$ and $tilde(v) equiv v$ on $K$. Let $R > 0$ be such that $K subset D(0, R)$, provided by compactness. Define the piecewise-linear function
   $
     psi(z) = cases(
-      1 & abs(z) lt.eq R\,,
+      1 & abs(z) <= R\,,
       2 - abs(z) / R & R < abs(z) < 2 R\,,
       0 & abs(z) gt.eq 2 R,
     )
@@ -276,7 +276,7 @@ Let $f in C^0(K)$ be holomorphic on $interior(K)$. Then $f$ has a continuous ext
 $
   omega_f (delta) = sup_(
   z, zeta in CC \
-  abs(z - zeta) lt.eq delta
+  abs(z - zeta) <= delta
   ) abs(f(z) - f(zeta)).
 $
 Because $f$ has compact support, it must be uniformly continuous; hence we have $lim_(delta -> 0^+) omega_f (delta) = 0$.
@@ -291,8 +291,8 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   The function $Phi$ as in @eq:integralofcontinuousextensionofholomorphic satisfies:
   + $Phi in C^1(CC)$ and has compact support. <itm:integralofcontinuousextensionofholomorphicproperties_continuousdifferentiabilitycompactsupport>
   + $Phi equiv f$ on $U = {z in K: op("dist")(z, CC without K) > r}$. <itm:integralofcontinuousextensionofholomorphicproperties_equivalenceonU>
-  + $abs(f(z) - Phi(z)) lt.eq omega_f (r)$ for all $z in CC$. <itm:integralofcontinuousextensionofholomorphicproperties_differbymodulusofcontinuity>
-  + For all $z in CC$, $abs(pdv(Phi, overline(z))(z)) lt.eq (4 uppi omega_f (r)) / r$. <itm:integralofcontinuousextensionofholomorphicproperties_antiholomorphicderivativebound>
+  + $abs(f(z) - Phi(z)) <= omega_f (r)$ for all $z in CC$. <itm:integralofcontinuousextensionofholomorphicproperties_differbymodulusofcontinuity>
+  + For all $z in CC$, $abs(pdv(Phi, overline(z))(z)) <= (4 uppi omega_f (r)) / r$. <itm:integralofcontinuousextensionofholomorphicproperties_antiholomorphicderivativebound>
   + $Phi(z) = -1 / uppi integral.double_H pdv(Phi, overline(zeta))(zeta) (dif xi dif eta) / (zeta - z)$ for $z in CC$, where $H = supp(Phi) without U$. <itm:integralofcontinuousextensionofholomorphicproperties_integralformula>
 ] <prop:integralofcontinuousextensionofholomorphicproperties>
 
@@ -322,9 +322,9 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
   by @itm:diracdeltaapproximation_integralto1 of @prop:diracdeltaapproximation, we have
   $
-    abs(f(z) - Phi(z)) & lt.eq abs(integral_(CC) f(z) lambda_r (zeta) dif xi and dif eta - integral_(CC) f(z - zeta) lambda_r (zeta) dif xi and dif eta) \
+    abs(f(z) - Phi(z)) & <= abs(integral_(CC) f(z) lambda_r (zeta) dif xi and dif eta - integral_(CC) f(z - zeta) lambda_r (zeta) dif xi and dif eta) \
     & = abs(integral_(CC) lambda_r (zeta) (f(z) - f(z - zeta)) dif xi and dif eta) \
-    & lt.eq integral_(D(0, r)) lambda_r (zeta) abs(f(z) - f(z - zeta)) dif xi and dif eta lt.eq omega_f (r),
+    & <= integral_(D(0, r)) lambda_r (zeta) abs(f(z) - f(z - zeta)) dif xi and dif eta <= omega_f (r),
   $ <eq:integralofcontinuousextensionofholomorphicproperties_differencebound>
   which implies @itm:integralofcontinuousextensionofholomorphicproperties_differbymodulusofcontinuity. For $z in U$, $zeta in D(0, r)$ now implies that $z - zeta in interior(K)$ and hence $f(z) - f(z - zeta)$ is holomorphic in $zeta$ on $D(z, r)$. By @itm:diracdeltaapproximation_integralformula of @prop:diracdeltaapproximation, @eq:integralofcontinuousextensionofholomorphicproperties_differencebound becomes
   $
@@ -339,9 +339,9 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
   by @itm:diracdeltaapproximation_antiholomorphicderivativeintegral of @prop:diracdeltaapproximation. Hence,
   $
-    abs(pdv(Phi, overline(z))) & lt.eq integral.double_(D(0, r)) abs(pdv(lambda_r, overline(zeta))) abs(f(z - zeta) - f(z)) dif xi dif eta \
-    & lt.eq omega_f (r) integral.double_(D(0, r)) norm(grad lambda_r) dif xi dif eta \
-    & lt.eq (4 omega_f (r)) / r^3 integral.double_(D(0, r)) dif xi dif eta lt.eq (4 omega_f (r)) / r^3 dot uppi r^2 = (4 uppi omega_f (r)) / r,
+    abs(pdv(Phi, overline(z))) & <= integral.double_(D(0, r)) abs(pdv(lambda_r, overline(zeta))) abs(f(z - zeta) - f(z)) dif xi dif eta \
+    & <= omega_f (r) integral.double_(D(0, r)) norm(grad lambda_r) dif xi dif eta \
+    & <= (4 omega_f (r)) / r^3 integral.double_(D(0, r)) dif xi dif eta <= (4 omega_f (r)) / r^3 dot uppi r^2 = (4 uppi omega_f (r)) / r,
   $
   by @itm:diracdeltaapproximation_gradientstatement of @prop:diracdeltaapproximation, confirming @itm:integralofcontinuousextensionofholomorphicproperties_antiholomorphicderivativebound. Finally, @itm:integralofcontinuousextensionofholomorphicproperties_integralformula follows from @cor:pompeiuwithoutcauchyterm (since outside the support the integral trivially vanishes and within $U$, $pdv(Phi, overline(zeta))$ vanishes as a consequence of holomorphy).
 ]
@@ -643,7 +643,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
 
   Now for each $j$ and $k$, @prop:complement_biholomorphism_584_r_4767_r2_estimates now provides the existence of a family of holomorphic functions $phi_(zeta, k)^((j)):extcomplex without E_k^((j)) -> CC$ given with $zeta in D(zeta_k^((j)), 5 / 4 r)$ such that
   $
-    abs(phi_(zeta, k)^((j)) (z)) lt.eq 584 / r, quad abs(phi_(zeta, k)^((j)) (z) - 1 / (z - zeta)) lt.eq 4676 / abs(z - zeta)^3, quad forall z in extcomplex without E_k^((j)).
+    abs(phi_(zeta, k)^((j)) (z)) <= 584 / r, quad abs(phi_(zeta, k)^((j)) (z) - 1 / (z - zeta)) <= 4676 / abs(z - zeta)^3, quad forall z in extcomplex without E_k^((j)).
   $ <eq:mergelyan_family_bounds>
   Let $tilde(H)_k^((j)) = H inter D(zeta_k^((j)), 5 / 4 r)$, for each $j, k$ and construct the disjoint sets
   $
@@ -673,15 +673,15 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
     abs(Psi(z) - Phi(z)) & = abs(1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) integral.double_(H_k^((j))) pdv(Phi, overline(zeta)) phi_(zeta, k)^((j)) (z) dif xi dif eta - 1 / uppi integral.double_H pdv(Phi, overline(zeta)) (dif xi dif eta) / (z - zeta)) \
     & = 1 / uppi abs(sum_(k = 1)^n sum_(j = 1)^(m_k) integral.double_(H_k^((j))) pdv(Phi, overline(zeta)) (phi_(zeta, k)^((j)) (z) - 1 / (z - zeta)) dif xi dif eta) \
-    & lt.eq 1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) integral.double_(H_k^((j))) abs(pdv(Phi, overline(zeta))) abs(phi_(zeta, k)^((j)) (z) - 1 / (z - zeta)) dif xi dif eta \
-    & lt.eq 1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) (integral.double_(H_k^((j)) inter D(z, 2 r)) + integral.double_(H_k^((j)) without D(z, 2 r)))\
+    & <= 1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) integral.double_(H_k^((j))) abs(pdv(Phi, overline(zeta))) abs(phi_(zeta, k)^((j)) (z) - 1 / (z - zeta)) dif xi dif eta \
+    & <= 1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) (integral.double_(H_k^((j)) inter D(z, 2 r)) + integral.double_(H_k^((j)) without D(z, 2 r)))\
     &wide""dot abs(pdv(Phi, overline(zeta))) abs(phi_(zeta, k)^((j)) (z) - 1 / (z - zeta)) dif xi dif eta
   $
   The estimates in @itm:integralofcontinuousextensionofholomorphicproperties_antiholomorphicderivativebound of @prop:integralofcontinuousextensionofholomorphicproperties, in tandem with those from @eq:mergelyan_family_bounds now give that
   $
-    abs(Psi(z) - Phi(z)) & lt.eq 18704 r omega_f (r) sum_(k = 1)^n sum_(j = 1)^(m_k) integral.double_(H_k^((j)) without D(z, 2 r)) 1 / abs(z - zeta)^3 dif xi dif eta \
+    abs(Psi(z) - Phi(z)) & <= 18704 r omega_f (r) sum_(k = 1)^n sum_(j = 1)^(m_k) integral.double_(H_k^((j)) without D(z, 2 r)) 1 / abs(z - zeta)^3 dif xi dif eta \
     & quad ""+ (4 omega_f (r)) / r sum_(k = 1)^n sum_(j = 1)^(m_k) integral.double_(H_k^((j)) inter D(z, 2 r)) (584 / r + 1 / abs(z - zeta)) dif xi dif eta \
-    & lt.eq 18704 r omega_f (r) integral.double_(abs(zeta) > 2 r) (dif xi dif eta) / abs(zeta)^3 \
+    & <= 18704 r omega_f (r) integral.double_(abs(zeta) > 2 r) (dif xi dif eta) / abs(zeta)^3 \
     & quad""+ (4 omega_f (r)) / r integral.double_(abs(zeta) < 2 r) (584 / r + 1 / abs(zeta)) dif xi dif eta
   $
   through a linear change of variables. Now evaluation via polar coordinates (with $rho ee^(ii theta) = xi + ii eta$, $dif xi and dif eta = rho dr and d theta$) yields a revised upper bound of
@@ -693,12 +693,12 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
   Runge's Theorem (@thm:runge) provides the existence of some rational function $psi$ with poles in $E$ such that
   $
-    sup_(z in K) abs(psi(z) - Psi(z)) lt.eq uppi omega_f (r)
+    sup_(z in K) abs(psi(z) - Psi(z)) <= uppi omega_f (r)
   $
   since $Psi$ is holomorphic on a neighborhood of $K$ (to assure this bound is positive, we assume $f$ is not identically zero, otherwise the assertion is trivial). Therefore, for all $z in K$, we have (the third supremum term coming from @itm:integralofcontinuousextensionofholomorphicproperties_differbymodulusofcontinuity of @prop:integralofcontinuousextensionofholomorphicproperties)
   $
-    sup_(z in K) abs(psi(z) - f(z)) & lt.eq sup_(z in K) abs(psi(z) - Psi(z)) + abs(Psi(z) - Phi(z)) + abs(Phi(z)-f(z)) \
-                                    & lt.eq 28065 uppi omega_f (r) + omega_f (r) <= 28066 uppi omega_f (r).
+    sup_(z in K) abs(psi(z) - f(z)) & <= sup_(z in K) abs(psi(z) - Psi(z)) + abs(Psi(z) - Phi(z)) + abs(Phi(z)-f(z)) \
+                                    & <= 28065 uppi omega_f (r) + omega_f (r) <= 28066 uppi omega_f (r).
   $
   Because $lim_(r -> 0^+) omega_f (r) = 0$, for any $epsilon > 0$, there exists a $r > 0$ such that
   $

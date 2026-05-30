@@ -161,7 +161,7 @@ $
 
   Let $K subset U$ be arbitrary and compact and $V supset K$ be open and relatively compact in $U$. Since ${f'_n (z)}$ is holomorphic, by @cor:nthderivativeboundedsupremum, there exists a finite constant $c > 0$ such that
   $
-    lim_(n -> oo) sup_(z in K) abs(f'_n (z) - f'(z)) lt.eq c lim_(n -> oo) sup_(z in V) abs(f_n (z) - f(z)).
+    lim_(n -> oo) sup_(z in K) abs(f'_n (z) - f'(z)) <= c lim_(n -> oo) sup_(z in V) abs(f_n (z) - f(z)).
   $
 
   By the definition of uniform convergence, the right-hand side approaches $0$, and ${f'_n (z)}$ is then uniformly convergent to $f'(z)$ by the same reasoning.
@@ -188,8 +188,8 @@ $
   $
 
   $
-    sup_(z in gamma) abs((f'(z)) / (f(z)) - (f'_n (z)) / (f_n (z))) & lt.eq (2 M) / (lambda^2) (sup_(z in gamma) abs(f_n (z) - f(z)) + sup_(z in gamma) abs(f'(z) - f'_n (z))) \
-    lim_(n -> oo) sup_(z in gamma) abs((f'(z)) / (f(z)) - (f'_n (z)) / (f_n (z))) & lt.eq (2 M) / (lambda^2) (lim_(n -> oo) sup_(z in gamma) abs(f_n (z) - f(z)) + abs(f'(z) - f'_n (z))) \
+    sup_(z in gamma) abs((f'(z)) / (f(z)) - (f'_n (z)) / (f_n (z))) & <= (2 M) / (lambda^2) (sup_(z in gamma) abs(f_n (z) - f(z)) + sup_(z in gamma) abs(f'(z) - f'_n (z))) \
+    lim_(n -> oo) sup_(z in gamma) abs((f'(z)) / (f(z)) - (f'_n (z)) / (f_n (z))) & <= (2 M) / (lambda^2) (lim_(n -> oo) sup_(z in gamma) abs(f_n (z) - f(z)) + abs(f'(z) - f'_n (z))) \
     & = 0.
   $
 
@@ -234,7 +234,7 @@ By the Fundamental Theorem of Algebra (@thm:fundamentaltheoremofalgebra), any po
 ] <thm:hurwitzshifts>
 
 #proof[
-  The zero at $z_0$ is isolated by @thm:identityaccumulationofzeros. Furthermore, $abs(f - w_0)$ is continuous on $partial D(z_0, rho)$ and attains a positive infimum $delta$. In other words, on this set, $abs(f - w_0) gt.eq delta$. Hence, $forall xi in D(w_0, delta)$, we have $abs(xi - w_0) < delta lt.eq abs(f(z) - w_0)$ for any $z in partial D(z_0, rho)$.
+  The zero at $z_0$ is isolated by @thm:identityaccumulationofzeros. Furthermore, $abs(f - w_0)$ is continuous on $partial D(z_0, rho)$ and attains a positive infimum $delta$. In other words, on this set, $abs(f - w_0) gt.eq delta$. Hence, $forall xi in D(w_0, delta)$, we have $abs(xi - w_0) < delta <= abs(f(z) - w_0)$ for any $z in partial D(z_0, rho)$.
 
   By Rouché's Theorem, since $abs((f(z) - w_0) - (f(z) - xi)) < abs(f(z) - w_0)$, it follows that $f - xi$ and $f - w_0$ have the same number of zeros in $D(z_0, rho)$.
 ]
@@ -248,7 +248,7 @@ We also have the following generalization of @thm:hurwitzsimplecase, which is a 
 ] <thm:hurwitz>
 
 #proof[
-  The zero at $z_0$ is isolated by @thm:identityaccumulationofzeros. Furthermore, $abs(f - w_0)$ is continuous on $partial D(z_0, rho)$ and attains a positive infimum $delta$. In other words, on this set, $abs(f - w_0) gt.eq delta$. By uniform convergence, $exists N in NN$ such that $forall n > N$, we have $abs(f(z) - f_n (z)) < delta lt.eq abs(f(z) - w_0)$ for any $z in partial D(z_0, rho)$.
+  The zero at $z_0$ is isolated by @thm:identityaccumulationofzeros. Furthermore, $abs(f - w_0)$ is continuous on $partial D(z_0, rho)$ and attains a positive infimum $delta$. In other words, on this set, $abs(f - w_0) gt.eq delta$. By uniform convergence, $exists N in NN$ such that $forall n > N$, we have $abs(f(z) - f_n (z)) < delta <= abs(f(z) - w_0)$ for any $z in partial D(z_0, rho)$.
 
   By Rouché's Theorem (@thm:rouche), since
   $ abs((f(z) - w_0) - (f_n (z) - w_0)) < abs(f(z) - w_0), $

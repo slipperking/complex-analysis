@@ -310,8 +310,7 @@ Note that the converse here is not necessarily true.
 
     For each $n in NN$, let $epsilon=1/n$, and there exist $m_n in NN$ such that $x_m_n < x(t_epsilon)$ and $tilde(x)_m_n < x(t_epsilon)$. By the Intermediate Value Theorem, there exists some $t_n, tilde(t)_n$ where $t'< t_n, tilde(t)_n < t_epsilon<t'+ 1/n$ such that $x(t_n) = x_m_n$ and $x(tilde(t)_n) = tilde(x)_m_n$.
 
-    For each $t_n$, $y(t_n) = sin 1/(x(t_n)) = sin 1/(x_m_n) = 1$, and for each $tilde(t)_n$, $y(tilde(t)_n) = sin 1/(x(tilde(t)_n)) = sin 1/(tilde(x)_m_n) = -1$. Thus, there exist two sequences of $t$ that approach $t'^+$ for which $y -> 1$ and $y -> -1$. Thus $y$ and $gamma$ are not continuous (for any parameterization).
-  // tbc
+    For each $t_n$, $y(t_n) = sin 1/(x(t_n)) = sin 1/(x_m_n) = 1$, and for each $tilde(t)_n$, $y(tilde(t)_n) = sin 1/(x(tilde(t)_n)) = sin 1/(tilde(x)_m_n) = -1$. Thus, there exist two sequences of $t$ that approach $t'^+$ for which $y -> 1$ and $y -> -1$. Thus $y$ and $gamma$ are not continuous (for any parameterization). #qedhere
 ]
 #definition("Exhaustion by Compact Sets")[
   For a topological space $X$, an _exhaustion by compact sets_ is a nested sequence of compact sets ${K_n}_(n in NN) subset.eq X$ such that $K_n subset interior(K_(n + 1))$ for all $n in NN$ and

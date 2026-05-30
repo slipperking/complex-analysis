@@ -44,13 +44,13 @@
   #include "connections_to_number_theory/index.typ"
 ]
 
-// #chapter-section("riemann_surfaces")[
-//   #include "riemann_surfaces/index.typ"
-// ]
+#chapter-section("riemann_surfaces")[
+  #include "riemann_surfaces/index.typ"
+]
 
-// #chapter-section("nevanlinna_theory")[
-//   #include "nevanlinna_theory/index.typ"
-// ]
+#chapter-section("nevanlinna_theory")[
+  #include "nevanlinna_theory/index.typ"
+]
 
 #chapter-section("bibliography")[
   #bibliography("/references.bib", full: true)

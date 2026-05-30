@@ -285,7 +285,7 @@ In its full generality, we will now apply a technique to push a pole to a prescr
   $
     abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k) < r^j epsilon / (M^(j - 1) j m abs(a_(-j))).
   $
-  For $n > N_j$, @eq:simple_pole_pushing_uniform_bound_assumption is satisfied, and $forall n > max_(j in NN_(lt.eq m) \ a_(-j) != 0) (N_j)$, $z in extcomplex without D(beta, r)$, we have
+  For $n > N_j$, @eq:simple_pole_pushing_uniform_bound_assumption is satisfied, and $forall n > max_(j in NN_(<= m) \ a_(-j) != 0) (N_j)$, $z in extcomplex without D(beta, r)$, we have
   $
     &abs(f(z) - sum_(j = 1)^m a_(-j) ((1 / (z - beta) sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j)) \
     &wide""<= sum_(j = 1 \ a_(-j) != 0)^m abs(a_(-j)) abs((sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^j - (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j) \
