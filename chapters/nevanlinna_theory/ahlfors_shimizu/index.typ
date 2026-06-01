@@ -170,7 +170,7 @@ $ <eq:ahlforsshimizufirstfundamentaltheorem_singularcase>
   Let $f$ be meromorphic on $D(0, R)$ (where $0 < R <= oo$). For $0 < r < R$ and $a in extcomplex$ such that $f(0) != a$,
   $ T_0(r, f) = N(r, a, f) + m_0(r, a, f) - m_0(0, a, f). $
   If $f(0) = a != oo$, then
-  $ T_0(r, f) = N(r, a, f) + m_0(r, a, f) - log abs(frac(1 + abs(a)^2, c, style: "horizontal")), $
+  $ T_0(r, f) = N(r, a, f) + m_0(r, a, f) - log abs(1 + abs(a)^2 / c), $
   where $c$ is the first nonzero coefficient of the Laurent expansion of $f - a$. If $f(0) = a = oo$, then
   $ T_0(r, f) = N(r, a, f) + m_0(r, a, f) - log abs(c) $
   where $c$ is the first non-zero coefficient of the Laurent series of $f$.

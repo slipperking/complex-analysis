@@ -87,7 +87,7 @@ $ 0 <= theta.alt(x) <= psi(x) <= pi(x) log x. $ <eq:chebyshevfunctions_bounds_pr
     & = sum_(n=1)^oo psi(n) integral_n^(n+1) u^(-s - 1) dif u = sum_(n=1)^oo sum_(m=1)^n Lambda(m) evaluated((u^(-s)) / (-s))_n^(n+1) \
     & = 1 / s sum_(n=1)^oo sum_(m=1)^n Lambda(m) [n^(-s) - (n+1)^(-s)] \
     & = 1 / s sum_(m=1)^oo Lambda(m) sum_(n=m)^oo [n^(-s) - (n+1)^(-s)] \
-    & = 1 / s sum_(m=1)^oo Lambda(m) m^(-s) = 1 / s sum_(n=1)^oo Lambda(n) / (n^(-s)).
+    & = 1 / s sum_(m=1)^oo Lambda(m) m^(-s) = 1 / s sum_(n=1)^oo Lambda(n) / (n^s).
   $
   by absolute convergence and the fact that the inner summation "telescopes." By @prop:riemannzetafunction_logarithmicderivativezetavonmangoldt, we have that for $Re s > 1$,
   $

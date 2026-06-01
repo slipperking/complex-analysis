@@ -166,7 +166,7 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
   $ <eq:conformalmetricnegativecurvatureexistencewhenomits2points_metric>
   on $CC without {0, 1}$.
 
-  Since $laplacian(log abs(z)^(5 / 6)) = (5)/(6) laplacian(log abs(z)) = (5)/(6) laplacian(Re log(z))$,
+  Since $laplacian(log abs(z)^(5 / 6)) = (5)/(6) laplacian(log abs(z)) = (5)/(6) laplacian(Re log(z)) = 0$ by harmonicity,
   $
     laplacian log((sqrt(1 + abs(z)^(1 / 3))) / (abs(z)^(5 / 6))) & = 2 pdv((log(1 + abs(z)^(1 / 3))), overline(z), z, style: "large") = z^(-5 / 6) / 3 pdv(((overline(z)^(1 / 6)) / (1 + abs(z)^(1 / 3))), overline(z), style: "large") \
     & = z^(-5 / 6) / 3 pdv(((overline(z)^(1 / 6)) / (1 + abs(z)^(1 / 3))), overline(z), style: "large") = (z^(-5 / 6) overline(z)^(-5 / 6) (1 + abs(z)^(1 / 3)) - z^(-5 / 6) overline(z)^(1 / 6) z^(1 / 6) overline(z)^(-5 / 6)) / (18 (1 + abs(z)^(1 / 3))^2) \
