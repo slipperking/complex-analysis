@@ -111,7 +111,7 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
   $
     sum_(omega in Lambda \ omega in.not overline(D(0, 2 R))) [1 / (z - omega)^2 - 1 / omega^2]
   $ <eq:weierstrasspfunctionconvergence_intermediateseries>
-  is termwise bounded by a series $sum_(omega in Lambda, omega in.not overline(D(0, 2 R))) 10 R / omega^3$, which is convergent by @prop:weierstrasspfunctionintermediateseriesconvergence. Weierstrass $M$--Test (@thm:weierstrassmtest) gives the uniform convergence of @eq:weierstrasspfunctionconvergence_intermediateseries on $D(0, R)$. Since we have omitted only finitely many terms, @eq:weierstrasspfunctionintermediateseriesconvergence_statement converges uniformly on $D(0, R) without Lambda$.
+  is termwise bounded by a series $sum_(omega in Lambda, omega in.not overline(D(0, 2 R))) (10 R) / omega^3$, which is convergent by @prop:weierstrasspfunctionintermediateseriesconvergence. Weierstrass $M$--Test (@thm:weierstrassmtest) gives the uniform convergence of @eq:weierstrasspfunctionconvergence_intermediateseries on $D(0, R)$. Since we have omitted only finitely many terms, @eq:weierstrasspfunctionintermediateseriesconvergence_statement converges uniformly on $D(0, R) without Lambda$.
 
   Let $K subset CC without Lambda$ be compact and arbitrary. By boundedness, $exists R > 0$ such that $K subset D(0, R) without Lambda$, on which it uniformly converges.
 ]
@@ -164,7 +164,7 @@ By evenness of $wp$, we must have $c_1 = c_2 = 0$. Therefore, $wp$ is also an el
   $
     abs(sum_(omega in Lambda^*) sum_(m=1)^oo (m + 1) / omega^(m + 2) z^m) <= sum_(omega in Lambda^*) (2 abs(z omega) - abs(z)^2) / ((abs(omega) - abs(z))^2 abs(omega)^2) = sum_(omega in Lambda^*) (abs(z) (2 - abs(z / omega))) / (abs(omega)^3 (abs(z / omega) - 1)^2),
   $
-  which for $abs(omega) > 2 R$ (which comprises all $omega$ except for finitely many) is bounded by $sum_(omega in Lambda, abs(omega) > 2 R) 10 R / abs(omega)^3$ (estimates derived in the proof of @prop:weierstrasspfunctionconvergence), which is convergent by @prop:weierstrasspfunctionintermediateseriesconvergence. Hence, the series converges absolutely for $abs(z) < R$ and the summation exchange (and the Cauchy product) is valid. By the symmetry of the period lattice, it is trivial that $c_(2 m + 1) = 0$ for all $m in NN$. Hence, the assertion follows.
+  which for $abs(omega) > 2 R$ (which comprises all $omega$ except for finitely many) is bounded by $sum_(omega in Lambda, abs(omega) > 2 R) (10 R) / abs(omega)^3$ (estimates derived in the proof of @prop:weierstrasspfunctionconvergence), which is convergent by @prop:weierstrasspfunctionintermediateseriesconvergence. Hence, the series converges absolutely for $abs(z) < R$ and the summation exchange (and the Cauchy product) is valid. By the symmetry of the period lattice, it is trivial that $c_(2 m + 1) = 0$ for all $m in NN$. Hence, the assertion follows.
 ]
 
 Termwise differentiation (provided by @thm:weierstrass_convergence) now gives

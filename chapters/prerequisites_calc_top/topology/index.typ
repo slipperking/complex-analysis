@@ -103,5 +103,5 @@ Because the accumulation points of $X$ all lie in $overline(X)$, the closure of 
 ] <def:support>
 
 #remark[
-  A notable classification of functions comes from the compactness of support---more specifically, its boundedness. Compactly supported functions in $C^oo$ are commonly referred to as _bump functions_ (see @sec:partitions_of_unity).
+  A notable classification of functions comes from the compactness of support---more specifically, its boundedness. Compactly supported functions in $C^oo(CC)$ (infinitely differentiable functions in the complex plane) are commonly referred to as _bump functions_ (see @sec:partitions_of_unity).
 ]

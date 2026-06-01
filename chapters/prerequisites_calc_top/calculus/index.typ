@@ -58,7 +58,19 @@ A curve is a one-dimensional manifold embedded within a higher dimensional space
 
 The theorem above seems trivial, but its rigorous proof in topology is extremely complex. The theorem itself can also be stated on $CC$ instead of $RR^2$. For a region $U$, the boundary is denoted $partial U$. If the region bounded by any closed curve in $U$ also lies in $U$, then it is a _simply connected_ region. A connected region that is not simply connected is multiply connected. A region bound by 2 non-intersecting Jordan curves is doubly connected, and a region bound by $n$ non-intersecting Jordan curves is traditionally known as $n$-connected. Lastly, any closed curve can degenerate to a single point or slit.
 
-Generalizations of the differential and integral exist for multivariate functions. The partial differentials of $f(x, y, z)$, $pdv(f, x) dx$, $pdv(f, y) dy$, and $pdv(f, z) dz$ sum up to form the total differential, denoted by $dif f$. An important result in multivariable calculus allows the calculation of the derivatives of a definite integral with respect to its parameter.
+Generalizations of the differential and integral exist for multivariate functions. The partial differentials of $f(x, y, z)$, $pdv(f, x) dx$, $pdv(f, y) dy$, and $pdv(f, z) dz$ sum up to form the total differential, denoted by $dif f$.
+
+#definition[
+  Let $U subset RR^n$ be open and let $f : U -> RR^m$. More generally, for $k in NN$, we write $f in C^k (U)$ iff all partial derivatives of $f$ of order $k$ exist and are continuous on $U$. If $K subset RR^n$ is compact, then $f in C^k (K)$ means that $f$ is $C^k$ on some open neighborhood of $K$. We write $f in C^oo (U)$ means that $f$ has derivatives of all orders and that every derivative is continuous. Equivalently, $f$ is infinitely differentiable; that is, infinitely continuously differentiable.
+]
+
+There is a difference between differentiability and continuous differentiability:
+
+#example[
+  The one-variable function $f(x) = x^2 sin(1/x)$ for $x != 0$, with $f(0) = 0$, is differentiable everywhere but not continuously differentiable, since its derivative oscillates near $x = 0$.
+]
+
+An important result in multivariable calculus allows the calculation of the derivatives of a definite integral with respect to its parameter.
 
 #theorem[Leibniz Integral Rule][
   Let $f(x, u)$ be continuous on $a <= x <= b$, $c <= u <= d$, and suppose $a <= alpha(u), beta(u) <= b$ are differentiable functions of $c <= u <= d$. If $f$ is continuously differentiable with respect to $u$, then
@@ -143,7 +155,7 @@ Real analysis is the subject dedicated to rigorously defining concepts such as l
 
 We also have the definition of the limit of a sequence:
 
-#definition("Epsilon–N")[
+#definition[Epsilon--N][
   Let ${a_n}_(n in NN) subset RR$ be a sequence. If $exists a_infinity in RR$ such that $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $abs(a_n - a_infinity) < epsilon$, then ${a_n}$ _converges_ to $a_infinity$.
 ] <def:epsilonn>
 
