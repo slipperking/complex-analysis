@@ -70,7 +70,7 @@ For the purpose of the following contents, a _region_ or _domain_ will denote a 
   $
     v(x, y) - v(x_0, y_0) = beta (x - x_0) + alpha (y - y_0) + order(abs(Delta z)),
   $
-  where $abs(Delta z) = sqrt((Delta x)^2 + (Delta y)^2)$ and $order(abs(Delta z))$ denotes a value with higher infinitesimal order to $abs(Delta z)$, or that $lim_(Delta z -> 0) (order(abs(Delta z))) / abs(Delta z) = 0$. Then letting $Delta z = x - x_0 + ii (y - y_0)$,
+  where $abs(Delta z) = sqrt(Delta x^2 + Delta y^2)$ and $order(abs(Delta z))$ denotes a value with higher infinitesimal order to $abs(Delta z)$, or that $lim_(Delta z -> 0) (order(abs(Delta z))) / abs(Delta z) = 0$. Then letting $Delta z = x - x_0 + ii (y - y_0)$,
   $
     f(z) - f(z_0) = alpha Delta z + ii beta Delta z + order(abs(Delta z)) + order(abs(Delta z)),
   $

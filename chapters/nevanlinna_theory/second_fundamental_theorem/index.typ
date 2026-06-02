@@ -90,7 +90,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     $
       1 / abs(f(z) - a_nu) <= (3q) / delta
       ==>
-      sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) <= 0 <= logp abs(F(z)).
+      sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) & <= 0 \ & <= logp abs(F(z)).
     $
     Then @eq:nevanlinnasecondfundamentaltheorempart1_logpFlowerbound holds for this case trivially.
 

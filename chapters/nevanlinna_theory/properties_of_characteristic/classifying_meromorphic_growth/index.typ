@@ -28,7 +28,7 @@
   equivalent to the condition that $T(r, f) = Order(r^(rho + epsilon))$ for any $epsilon > 0$ but not for $epsilon < 0$.
 ] <def:orderofmeromorphicfunction>
 
-#proof[Proof of equivalent definitions][
+#proof[of equivalent definitions][
   For any prescribed $epsilon > 0$ there exists $r' > 0$ such that for any $r > r'$,
   $ (logp T(r, f)) / (log r) <= rho + epsilon ==> T(r, f) <= r^(rho + epsilon). $
   Assume there exists some $epsilon > 0$ such that

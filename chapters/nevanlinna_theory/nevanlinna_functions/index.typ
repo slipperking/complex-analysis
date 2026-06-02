@@ -37,7 +37,7 @@ $
 Letting $n(x, oo, f)$ denote the number of poles, counting orders, in $overline(D(0, x))$, we obtain similarly
 
 $
-  log abs(r^n / (b_1 b_2 dots.c b_n)) = integral_0^r (n(x, oo, f) - n(x, oo, f)) / x dx.
+  log abs(r^n / (b_1 b_2 dots.c b_n)) = integral_0^r (n(x, oo, f) - n(0, oo, f)) / x dx.
 $
 
 #definition[
@@ -114,5 +114,5 @@ Then @eq:nevanlinnafirsttheorematzero can be rewritten as:
 
 #proposition[
   For any (non-constant) meromorphic $f$ on $D(0, R)$ with the innermost Laurent series $f(z) = sum_(j = k)^oo c_j z^j$ and any $0 < r < R$,
-  $ T(r, 0, f) = T(r, oo, f) - log abs(c_k) $.
+  $ T(r, 0, f) = T(r, oo, f) - log abs(c_k). $
 ] <prop:nevanlinnafirsttheorematzero>

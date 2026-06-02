@@ -78,7 +78,7 @@ Last we have taking derivatives of conjugates:
 
 #theorem[
   Let $f in C^1(Omega)$ where $Omega subset.eq CC$ is a region. Then
-  $ pdv(overline(f), z) = overline(pdv(f, overline(z))), quad pdv(overline(f), overline(z)) = overline(pdv(f, z)). $
+  $ pdv(overline(f), z) = overline((pdv(f, overline(z)))), quad pdv(overline(f), overline(z)) = overline((pdv(f, z))). $
 ]
 
 #proof[
@@ -95,3 +95,4 @@ Last we have taking derivatives of conjugates:
   Taking complex conjugates gives
   $ overline(pdv(f, z)) = 1/2 (u'_x + v'_y + ii (u'_y - v'_x)) = pdv(overline(f), overline(z)). #h(1fr) #qedhere $
 ]
+As a final remark, we establish that the meaning of $C^k (Omega)$ does not refer to the existence of a $k$-th order complex derivative, but rather the existence of continuous partial derivatives up to order $k$ in the real variables $x$ and $y$ (or equivalently, in terms of $z$ and $overline(z)$).
