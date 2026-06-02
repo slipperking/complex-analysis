@@ -58,7 +58,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     $
       abs(f(z) - a_mu)
       >= abs(abs(a_nu - a_mu) - abs(f(z) - a_nu))
-      >= delta - delta / (3q) > 2 delta / 3.
+      >= delta - delta / (3q) > (2 delta) / 3.
     $
     It follows that
     $
@@ -83,20 +83,20 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     Observe that for each $mu != nu$, $logp abs(f(z) - a_mu)^(-1) < logp (3 / (2 delta))$, and therefore
     $
       logp abs(F(z)) & >= sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - (q - 1) logp (3 / (2 delta)) - log 2 \
-                     & >= sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp (3q / delta) - log 2.
+                     & >= sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) - log 2.
     $ <eq:nevanlinnasecondfundamentaltheorempart1_logpFlowerbound>
 
   + There exists no such $nu$. Then all $nu$ have the property that $abs(f(z) - a_nu) >= delta / (3q)$. It follows that
     $
       1 / abs(f(z) - a_nu) <= (3q) / delta
       ==>
-      sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp (3q / delta) <= 0 <= logp abs(F(z)).
+      sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) <= 0 <= logp abs(F(z)).
     $
     Then @eq:nevanlinnasecondfundamentaltheorempart1_logpFlowerbound holds for this case trivially.
 
   Integrating the relation @eq:nevanlinnasecondfundamentaltheorempart1_logpFlowerbound (which holds in all cases) gives that
   $
-    m(r, F) >= sum_(nu = 1)^q m(r, a_nu, f) - q logp (3q / delta) - log 2.
+    m(r, F) >= sum_(nu = 1)^q m(r, a_nu, f) - q logp ((3q) / delta) - log 2.
   $ <eq:nevanlinnasecondfundamentaltheorempart1_proximityFlowerbound>
   Observe that
   $
@@ -123,16 +123,16 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
   $
   Combining this with @eq:nevanlinnasecondfundamentaltheorempart1_proximityFlowerbound gives
   $
-    m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) & <= m(r, f) + m(r, F) + q logp (3q / delta) + log 2 \
-                                           & <= T(r, f) - N(r, f) + q logp (3q / delta) + log 2 \
+    m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) & <= m(r, f) + m(r, F) + q logp ((3q) / delta) + log 2 \
+                                           & <= T(r, f) - N(r, f) + q logp ((3q) / delta) + log 2 \
                                            & quad "" + T(r, f) - N(r, 1 / f) - log abs(c) + m(r, f' / f) \
                                            & quad quad "" + N(r, f' / f) - N(r, f / f') + log abs(c'') + m(r, f' F)
   $
   Using @eq:nevanlinnacountingjensensformulaexposition2 three times gives that
   $
-    N(r, f' \/ f) - N(r, f \/ f')
+    N(r, f' / f) - N(r, f / f')
     &= 1 / (2 uppi) integral_0^(2 uppi)
-    log abs(f(r ee^(ii theta)) / f'(r ee^(ii theta))) dtheta
+    log abs(f(r ee^(ii theta)) / (f'(r ee^(ii theta)))) dtheta
     - log abs(c'') \
     &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta - log abs(c) \
     &quad "" - (1 / (2 uppi) integral_0^(2 uppi) log abs(f'(r ee^(ii theta))) dtheta - log abs(c')) \
@@ -140,7 +140,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
   $
   Thus, we obtain
   $
-    m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) & <= 2 T(r, f) - 2 N(r, f) + q logp (3q / delta) + log 2 + m(r, f' / f) \
+    m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) & <= 2 T(r, f) - 2 N(r, f) + q logp ((3q) / delta) + log 2 + m(r, f' / f) \
                                            & quad "" - N(r, 1 / f') + N(r, f') - log abs(c') + m(r, f' F) \
                                            & = 2 T(r, f) - [N(r, 1 / f') + 2 N(r, f) - N(r, f')] + S(r, f),
   $
