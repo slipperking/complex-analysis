@@ -18,9 +18,9 @@ The L. V. Ahlfors has also discovered a geometric theory that in general reflect
 #chapter-section("ahlfors_shimizu")[
   #include "ahlfors_shimizu/index.typ"
 ]
-// #chapter-section("second_fundamental_theorem")[
-//   #include "second_fundamental_theorem/index.typ"
-// ]
+#chapter-section("second_fundamental_theorem")[
+  #include "second_fundamental_theorem/index.typ"
+]
 // #chapter-section("corollaries_of_second_theorem")[
 //   #include "corollaries_of_second_theorem/index.typ"
 // ]
