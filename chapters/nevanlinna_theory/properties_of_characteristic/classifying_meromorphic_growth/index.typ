@@ -70,7 +70,8 @@
   $ T(r, f) = Order(r^(rho + epsilon)), $
   which proves @itm:meromorphicfunctionfiniteorderestimates_proximity and @itm:meromorphicfunctionfiniteorderestimates_counting. Since
   $
-    N(2r, a, f) - N(r, a, f) &= integral_r^(2r) (n(x, a, f)) / x dx \ &>= n(r, a, f) integral_r^(2r) dx / x = log 2 dot n(r, a, f),
+    N(2r, a, f) - N(r, a, f) & = integral_r^(2r) (n(x, a, f)) / x dx \
+                             & >= n(r, a, f) integral_r^(2r) dx / x = log 2 dot n(r, a, f),
   $
   it follows from @itm:meromorphicfunctionfiniteorderestimates_counting that
   $
@@ -93,5 +94,5 @@
   $ rho + epsilon > limsup_(r -> oo) (log n(r, f)) / (log r), $
   and hence the conclusion follows for $a = oo$ by @thm:nonzerosequencepowersummationconvergence. Assume $a$ is finite; observe that
   $ T(r, f) = T(r, a, f) + Order(1) = T(r, frac(1, f - a)) + Order(1) $
-  by the First Fundamental Theorem (@thm:nevanlinnafirstfundamentaltheorem). It follows that $rho$ is the order of $frac(1, f - a, style: "horizontal")$. Applying the previous result to this function, whose poles are precisely at ${ r_n (a) }$, the conclusion follows.
+  by the First Fundamental Theorem (@thm:nevanlinnafirstfundamentaltheorem). It follows that $rho$ is the order of $1/(f-a)$. Applying the previous result to this function, whose poles are precisely at ${ r_n (a) }$, the conclusion follows.
 ]

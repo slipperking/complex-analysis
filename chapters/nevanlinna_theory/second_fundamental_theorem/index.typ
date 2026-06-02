@@ -38,7 +38,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
   where $N_1(r) = N(r, 0, f') + 2 N(r, f) - N(r, f')$ and
   $
     S(r, f) & = m(r, f' / f) + m(r, sum_(nu = 1)^q f' / (f - a_nu)) \
-            & quad""+ q logp (3q / delta) + log 2 - log abs(c'),
+            & quad""+ q logp ((3q) / delta) + log 2 - log abs(c'),
   $ <eq:nevanlinnasecondfundamentaltheorempart1_smallerrorterm>
   where $c'$ is the first nonzero coefficient of the Laurent expansion of $f'$ (at the origin).
 ] <thm:nevanlinnasecondfundamentaltheorempart1>
@@ -126,7 +126,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) & <= m(r, f) + m(r, F) + q logp ((3q) / delta) + log 2 \
                                            & <= T(r, f) - N(r, f) + q logp ((3q) / delta) + log 2 \
                                            & quad "" + T(r, f) - N(r, 1 / f) - log abs(c) + m(r, f' / f) \
-                                           & quad quad "" + N(r, f' / f) - N(r, f / f') + log abs(c'') + m(r, f' F)
+                                           & wide "" + N(r, f' / f) - N(r, f / f') + log abs(c'') + m(r, f' F)
   $
   Using @eq:nevanlinnacountingjensensformulaexposition2 three times gives that
   $

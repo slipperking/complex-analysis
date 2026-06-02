@@ -14,7 +14,7 @@ We now provide a second formulation of the first fundamental theorem, given by A
 #proof[
   Let the zeros of $f$ in $U$ (which are finite, otherwise they accumulate) be ${z_k}_(k=1)^n$. Choose $epsilon' > 0$ so that for any $0 < epsilon < epsilon'$ the disks ${D(z_k, epsilon)}_(k=1)^n$ each lie in the open set $U$ and are pairwise disjoint from one another.
 
-  Applying Green's Theorem (@thm:real_green)#footnote[We define $vu(n)$ to be the normal vector pointing into the region, so for the $partial U$ integral, $vu(n)$ points outwards and for the summation integrals $vu(n)$ points into the disks.]
+  Applying Green's Theorem (@thm:real_green)#footnote[We define $vu(n)$ to be the normal vector pointing into the multiply connected region, so for the $partial U$ integral, $vu(n)$ points outwards and for the summation integrals $vu(n)$ points into the disks.]
   $
     (integral.cont_(partial U) + sum_(k=1)^n integral.cont_(partial D(z_k, epsilon))) vb(v) dot vu(n) dif s = integral.double_(U without union.big D(z_k, epsilon)) div vb(v) dif A
   $
