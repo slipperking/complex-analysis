@@ -403,11 +403,9 @@ The functional equation as provided by Riemann in his original paper gives a mor
 
 The zeros at the negative even integers are known as the _trivial zeros_ of the Riemann $zeta$-function. The other zeros, known as the _non-trivial zeros_, all lie within the _critical strip_ defined by $0<Re s<1$.
 
-There exists a long-standing conjecture relating to the distribution of the
-non-trivial zeros of the Riemann $zeta$-function, known as the
-_Riemann Hypothesis_:
+There exists a long-standing conjecture relating to the distribution of the non-trivial zeros of the Riemann $zeta$-function, known as the _Riemann Hypothesis_:
 
-#quote(block: true)[
+#conjecture[Riemann Hypothesis][
   All non-trivial zeros of the Riemann $zeta$-function lie on the _critical line_ defined by $Re s=1/2$.
 ]
 

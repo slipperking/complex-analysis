@@ -26,6 +26,14 @@ html {
   --color-topbar-bg: #f7f8fa;
   --color-search-bg: #fff;
   --color-backdrop: rgba(0, 0, 0, 0.4);
+  --thm-theorem-bg: #f4f7ff;
+  --thm-theorem-border: #4f7eea;
+  --thm-definition-bg: #f2fbf4;
+  --thm-definition-border: #3d9b63;
+  --thm-example-bg: #fff8eb;
+  --thm-example-border: #cc8a1a;
+  --thm-remark-bg: #f6f7f8;
+  --thm-remark-border: #8c929a;
   --sidebar-width: 280px;
   --toc-width: 260px;
   --content-max-width: 820px;
@@ -59,6 +67,14 @@ html {
   --color-topbar-bg: #1a1d23;
   --color-search-bg: #1e2028;
   --color-backdrop: rgba(0, 0, 0, 0.6);
+  --thm-theorem-bg: #182131;
+  --thm-theorem-border: #6da2ff;
+  --thm-definition-bg: #17261c;
+  --thm-definition-border: #5bbd87;
+  --thm-example-bg: #2b2418;
+  --thm-example-border: #d0a04a;
+  --thm-remark-bg: #1e2127;
+  --thm-remark-border: #9097a1;
 }
 
 /* ---------------------------------------------------------------------------
@@ -806,68 +822,53 @@ th {
   margin: 0 0 0.5em;
 }
 
-.thm-theorem {
-  background: #e8f4f8;
-  border-color: #2196F3;
+.thm-theorem,
+.thm-lemma,
+.thm-proposition,
+.thm-corollary,
+.thm-conjecture {
+  background: var(--thm-theorem-bg);
+  border-color: var(--thm-theorem-border);
 }
 
-.thm-lemma {
-  background: #f0f8e8;
-  border-color: #4CAF50;
-}
-
-.thm-proposition {
-  background: #fff8e8;
-  border-color: #FF9800;
-}
-
-.thm-corollary {
-  background: #f8f0f8;
-  border-color: #9C27B0;
-}
-
-.thm-definition {
-  background: #f5f5f5;
-  border-color: #607D8B;
-}
-
-.thm-remark {
-  background: #f8f7e8;
-  border-color: #d4b400;
+.thm-definition,
+.thm-problem {
+  background: var(--thm-definition-bg);
+  border-color: var(--thm-definition-border);
 }
 
 .thm-example {
-  background: #eef4ea;
-  border-color: #7aa95c;
+  background: var(--thm-example-bg);
+  border-color: var(--thm-example-border);
+}
+
+.thm-remark,
+.thm-claim {
+  background: var(--thm-remark-bg);
+  border-color: var(--thm-remark-border);
 }
 
 /* Theorem Boxes — Dark theme */
-[data-theme="dark"] .thm-theorem {
-  background: #1a2733;
+[data-theme="dark"] .thm-theorem,
+[data-theme="dark"] .thm-lemma,
+[data-theme="dark"] .thm-proposition,
+[data-theme="dark"] .thm-corollary,
+[data-theme="dark"] .thm-conjecture {
+  background: var(--thm-theorem-bg);
 }
 
-[data-theme="dark"] .thm-lemma {
-  background: #1a2a1a;
-}
-
-[data-theme="dark"] .thm-proposition {
-  background: #2a2418;
-}
-
-[data-theme="dark"] .thm-corollary {
-  background: #271a2a;
-}
-
-[data-theme="dark"] .thm-definition {
-  background: #1e2124;
-}
-
-[data-theme="dark"] .thm-remark {
-  background: #2a2918;
+[data-theme="dark"] .thm-definition,
+[data-theme="dark"] .thm-problem {
+  background: var(--thm-definition-bg);
 }
 
 [data-theme="dark"] .thm-example {
-  background: #1d2619;
+  background: var(--thm-example-bg);
+}
+
+[data-theme="dark"] .thm-remark,
+[data-theme="dark"] .thm-claim {
+  background: var(--thm-remark-bg);
 }
 
 /* Proofs */

@@ -13,9 +13,12 @@
 #let _ams-lemma = lemma
 #let _ams-proposition = proposition
 #let _ams-corollary = corollary
+#let _ams-conjecture = conjecture
 #let _ams-definition = definition
+#let _ams-problem = problem
 #let _ams-remark = remark
 #let _ams-example = example
+#let _ams-claim = claim
 #let _ams-proof = proof
 
 #let cvector = cetz.vector
@@ -35,16 +38,6 @@
   return ray($script(body)$, dy: 0.3em, tag: tag)
 }
 
-#let theorem-kinds = (
-  "theorem",
-  "lemma",
-  "proposition",
-  "corollary",
-  "definition",
-  "remark",
-  "example",
-)
-
 #let section-numbering-depth = 2
 
 #let _heading-numbers(depth: section-numbering-depth, loc: none) = {
@@ -62,18 +55,9 @@
   scoped.map(str).join(".")
 }
 
-#let reset-theorem-counters() = {
-  for id in theorem-kinds {
-    counter(figure.where(kind: "thm-" + id)).update(0)
-  }
-}
-
-#let reset-heading-scoped-counters(include-theorems: true) = {
+#let reset-heading-scoped-counters() = {
   counter(footnote).update(0)
   counter(math.equation).update(0)
-  if include-theorems {
-    reset-theorem-counters()
-  }
 }
 
 #let scoped-equation-numbering(..args) = [(#_scoped-number(args.at(0)))]
@@ -86,6 +70,10 @@
 #let vb(x) = Vb(math.upright(x))
 #let vu(x) = Vu(vb(x))
 #let va(x) = Va(vb(x))
+
+#let _plain-thm-fmt = thm-fmt-block.with(
+  name-fmt: x => emph(smallcaps([(#x)])),
+)
 
 #let _html-thm-fmt(head, css-class, numbered: true) = thm => {
   let title = if numbered and thm.number != none {
@@ -104,6 +92,10 @@
   })
 }
 
+#let _html-thm-env(env, head, css-class, numbered: true) = env.with(
+  fmt: _html-thm-fmt(head, css-class, numbered: numbered),
+)
+
 #let _html-proof-fmt(head) = thm => {
   let title = if thm.name != none {
     [#head #thm.name]
@@ -119,61 +111,63 @@
 }
 
 #let theorem = if _is-html {
-  _ams-theorem.with(fmt: _html-thm-fmt("Theorem", "thm-theorem"))
+  _html-thm-env(_ams-theorem, "Theorem", "thm-theorem")
 } else {
-  _ams-theorem.with(
-    fmt: thm-fmt-block.with(
-      name-fmt: x => emph(smallcaps([(#x)])),
-    ),
-  )
+  _ams-theorem.with(fmt: _plain-thm-fmt)
 }
 
 #let lemma = if _is-html {
-  _ams-lemma.with(fmt: _html-thm-fmt("Lemma", "thm-lemma"))
+  _html-thm-env(_ams-lemma, "Lemma", "thm-lemma")
 } else {
-  _ams-lemma.with(
-    fmt: thm-fmt-block.with(
-      name-fmt: x => emph(smallcaps([(#x)])),
-    ),
-  )
+  _ams-lemma.with(fmt: _plain-thm-fmt)
 }
 
 #let proposition = if _is-html {
-  _ams-proposition.with(fmt: _html-thm-fmt("Proposition", "thm-proposition"))
+  _html-thm-env(_ams-proposition, "Proposition", "thm-proposition")
 } else {
-  _ams-proposition.with(
-    fmt: thm-fmt-block.with(
-      name-fmt: x => emph(smallcaps([(#x)])),
-    ),
-  )
+  _ams-proposition.with(fmt: _plain-thm-fmt)
 }
 
 #let corollary = if _is-html {
-  _ams-corollary.with(fmt: _html-thm-fmt("Corollary", "thm-corollary"))
+  _html-thm-env(_ams-corollary, "Corollary", "thm-corollary")
 } else {
-  _ams-corollary.with(
-    fmt: thm-fmt-block.with(
-      name-fmt: x => emph(smallcaps([(#x)])),
-    ),
-  )
+  _ams-corollary.with(fmt: _plain-thm-fmt)
+}
+
+#let conjecture = if _is-html {
+  _html-thm-env(_ams-conjecture, "Conjecture", "thm-conjecture")
+} else {
+  _ams-conjecture.with(fmt: _plain-thm-fmt)
 }
 
 #let definition = if _is-html {
-  _ams-definition.with(fmt: _html-thm-fmt("Definition", "thm-definition"))
+  _html-thm-env(_ams-definition, "Definition", "thm-definition")
 } else {
   _ams-definition
 }
 
+#let problem = if _is-html {
+  _html-thm-env(_ams-problem, "Problem", "thm-problem")
+} else {
+  _ams-problem
+}
+
 #let remark = if _is-html {
-  _ams-remark.with(fmt: _html-thm-fmt("Remark", "thm-remark", numbered: false))
+  _html-thm-env(_ams-remark, "Remark", "thm-remark", numbered: false)
 } else {
   _ams-remark
 }
 
 #let example = if _is-html {
-  _ams-example.with(fmt: _html-thm-fmt("Example", "thm-example"))
+  _html-thm-env(_ams-example, "Example", "thm-example")
 } else {
   _ams-example
+}
+
+#let claim = if _is-html {
+  _html-thm-env(_ams-claim, "Claim", "thm-claim", numbered: false)
+} else {
+  _ams-claim
 }
 
 #let proof = if _is-html {
