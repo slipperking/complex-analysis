@@ -122,7 +122,9 @@
   _ams-theorem.with(fmt: _html-thm-fmt("Theorem", "thm-theorem"))
 } else {
   _ams-theorem.with(
-    name-fmt: x => emph(smallcaps([(#x)])),
+    fmt: thm-fmt-block.with(
+      name-fmt: x => emph(smallcaps([(#x)])),
+    ),
   )
 }
 
@@ -130,7 +132,9 @@
   _ams-lemma.with(fmt: _html-thm-fmt("Lemma", "thm-lemma"))
 } else {
   _ams-lemma.with(
-    name-fmt: x => emph(smallcaps([(#x)])),
+    fmt: thm-fmt-block.with(
+      name-fmt: x => emph(smallcaps([(#x)])),
+    ),
   )
 }
 
@@ -138,7 +142,9 @@
   _ams-proposition.with(fmt: _html-thm-fmt("Proposition", "thm-proposition"))
 } else {
   _ams-proposition.with(
-    name-fmt: x => emph(smallcaps([(#x)])),
+    fmt: thm-fmt-block.with(
+      name-fmt: x => emph(smallcaps([(#x)])),
+    ),
   )
 }
 
@@ -146,7 +152,9 @@
   _ams-corollary.with(fmt: _html-thm-fmt("Corollary", "thm-corollary"))
 } else {
   _ams-corollary.with(
-    name-fmt: x => emph(smallcaps([(#x)])),
+    fmt: thm-fmt-block.with(
+      name-fmt: x => emph(smallcaps([(#x)])),
+    ),
   )
 }
 
