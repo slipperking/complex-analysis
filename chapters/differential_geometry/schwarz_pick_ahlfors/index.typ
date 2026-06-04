@@ -194,7 +194,7 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
 
 And we have the final implication:
 
-#theorem("Picard's Little Theorem")[
+#theorem("Picard's Little Theorem", restate: true, restate-keys: ("thm:littlepicard",))[
   Let $f:CC -> U$ be entire such that $CC without U$ contains two or more points. Then $f$ is constant.
 ] <thm:littlepicard>
 

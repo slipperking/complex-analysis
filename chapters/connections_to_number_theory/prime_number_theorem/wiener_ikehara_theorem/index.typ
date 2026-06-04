@@ -273,7 +273,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   The slow decrease, boundedness, and the condition in @eq:wienerikehara_convolutionlimit are sufficient by @prop:wienerikehara_intermediatetauberiantheorem, to show that $lim_(x -> oo) a(x) = c$, or equivalently, $lim_(x -> oo) f(x) / ee^x = c$.
 ]
 
-#theorem("Prime Number Theorem")[
+#theorem("Prime Number Theorem", restate-keys: ("thm:primenumber",), restate: true)[
   The prime counting function $pi(x)$ is asymptotically equal to $x / (log x)$, i.e., $lim_(x -> oo) (pi(x) log x) / x = 1$.
 ] <thm:primenumber>
 

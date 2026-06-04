@@ -58,7 +58,7 @@ An _isolated singularity_ of a complex function is a point $a in CC$ where a fun
 
 A function with an essential singularity exhibits striking behavior. We will first introduce the following famous result.
 
-#theorem[Casorati--Sokhotski--Weierstrass][
+#theorem([Casorati--Sokhotski--Weierstrass], restate: true, restate-keys: ("thm:casoratiweierstrass",))[
   Let $a in CC$ and $U subset.eq CC$ be an open region. Suppose $f:U without {a} -> CC$ is holomorphic with an essential singularity at $a$. Then the set of values that $f$ attains on any open punctured neighborhood of $a$ is dense. In other words, $forall epsilon, delta > 0$, $forall w in CC$, $exists z in D^*(a, delta)$ such that $abs(f(z) - w) < epsilon$.
 ] <thm:casoratiweierstrass>
 
@@ -84,6 +84,8 @@ An analogous proof yields the following result for entire functions.
   It follows that $abs(g) <= 1 / epsilon$ on $CC$. By Liouville's Theorem (@thm:liouville), $g$ is a constant function, and hence, $f$ is also constant, which is a contradiction of the statement.
 ]
 
-In @sec:differential_geometry, we will prove a profound generalization of the two results (@thm:greatpicard and @thm:littlepicard), which was first proved by Emile Picard in 1879.
+In @sec:differential_geometry, we will prove a profound generalization of the two results (@thm:greatpicard and @thm:littlepicard), which was first proved by Emile Picard in 1879:
+#thm-state.thm-restate("thm:littlepicard", final: true)
+#thm-state.thm-restate("thm:greatpicard", final: true)
 
 #include "at_infinity/index.typ"

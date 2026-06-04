@@ -9,6 +9,15 @@
 #import "@preview/mannot:0.3.3"
 #import thm-themes.ams: *
 
+#let _ams-theorem = theorem
+#let _ams-lemma = lemma
+#let _ams-proposition = proposition
+#let _ams-corollary = corollary
+#let _ams-definition = definition
+#let _ams-remark = remark
+#let _ams-example = example
+#let _ams-proof = proof
+
 #let cvector = cetz.vector
 #let cmatrix = cetz.matrix
 
@@ -78,99 +87,91 @@
 #let vu(x) = Vu(vb(x))
 #let va(x) = Va(vb(x))
 
-#let _html-thm(identifier, head, css-class, numbered: true) = {
-  let thm-kind = "thm-" + identifier
-  let fmt-num() = context if numbered {
-    let n = counter(figure.where(kind: thm-kind)).get().first()
-    _scoped-number(n)
+#let _html-thm-fmt(head, css-class, numbered: true) = thm => {
+  let title = if numbered and thm.number != none {
+    [#head #thm.number]
   } else {
-    none
+    [#head]
   }
-  (..args, body) => {
-    let name = if args.pos().len() > 0 { args.pos().first() } else { none }
-    figure(
-      kind: thm-kind,
-      supplement: head,
-      outlined: false,
-      numbering: if numbered { (..nums) => [#_scoped-number(nums.at(0))] } else { none },
-      html.elem("div", attrs: (class: "thm-box " + css-class), {
-        html.elem("p", attrs: (class: "thm-head"), {
-          html.elem("strong", if numbered { [#head #fmt-num()] } else { [#head] })
-          if name != none [ (#name)]
-          [.]
-        })
-        body
-      }),
-    )
-  }
+
+  html.elem("div", attrs: (class: "thm-box " + css-class), {
+    html.elem("p", attrs: (class: "thm-head"), {
+      html.elem("strong", title)
+      if thm.name != none [ (#thm.name)]
+      [.]
+    })
+    thm.body
+  })
 }
 
-#let _html-proof(head) = {
-  (..args, body) => {
-    html.elem("div", attrs: (class: "thm-proof"), {
-      html.elem("p", attrs: (class: "proof-head"), html.elem("em", [
-        #if args.pos().len() == 0 { head } else { (head, ..args.pos()).join(" ") }.
-      ]))
-      body
-      html.elem("p", attrs: (class: "qed"), [$square$])
-    })
+#let _html-proof-fmt(head) = thm => {
+  let title = if thm.name != none {
+    [#head #thm.name]
+  } else {
+    [#head]
   }
+
+  html.elem("div", attrs: (class: "thm-proof"), {
+    html.elem("p", attrs: (class: "proof-head"), html.elem("em", [#title.]))
+    thm.body
+    html.elem("p", attrs: (class: "qed"), [$square$])
+  })
 }
 
 #let theorem = if _is-html {
-  _html-thm("theorem", "Theorem", "thm-theorem")
+  _ams-theorem.with(fmt: _html-thm-fmt("Theorem", "thm-theorem"))
 } else {
-  theorem.with(
+  _ams-theorem.with(
     name-fmt: x => emph(smallcaps([(#x)])),
   )
 }
 
 #let lemma = if _is-html {
-  _html-thm("lemma", "Lemma", "thm-lemma")
+  _ams-lemma.with(fmt: _html-thm-fmt("Lemma", "thm-lemma"))
 } else {
-  lemma.with(
+  _ams-lemma.with(
     name-fmt: x => emph(smallcaps([(#x)])),
   )
 }
 
 #let proposition = if _is-html {
-  _html-thm("proposition", "Proposition", "thm-proposition")
+  _ams-proposition.with(fmt: _html-thm-fmt("Proposition", "thm-proposition"))
 } else {
-  proposition.with(
+  _ams-proposition.with(
     name-fmt: x => emph(smallcaps([(#x)])),
   )
 }
 
 #let corollary = if _is-html {
-  _html-thm("corollary", "Corollary", "thm-corollary")
+  _ams-corollary.with(fmt: _html-thm-fmt("Corollary", "thm-corollary"))
 } else {
-  corollary.with(
+  _ams-corollary.with(
     name-fmt: x => emph(smallcaps([(#x)])),
   )
 }
 
 #let definition = if _is-html {
-  _html-thm("definition", "Definition", "thm-definition")
+  _ams-definition.with(fmt: _html-thm-fmt("Definition", "thm-definition"))
 } else {
-  definition
+  _ams-definition
 }
 
 #let remark = if _is-html {
-  _html-thm("remark", "Remark", "thm-remark", numbered: false)
+  _ams-remark.with(fmt: _html-thm-fmt("Remark", "thm-remark", numbered: false))
 } else {
-  remark
+  _ams-remark
 }
 
 #let example = if _is-html {
-  _html-thm("example", "Example", "thm-example")
+  _ams-example.with(fmt: _html-thm-fmt("Example", "thm-example"))
 } else {
-  example
+  _ams-example
 }
 
 #let proof = if _is-html {
-  _html-proof("Proof")
+  _ams-proof.with(fmt: _html-proof-fmt("Proof"))
 } else {
-  proof
+  _ams-proof
 }
 
 #let dx = $dif x$

@@ -4,11 +4,11 @@
 
 Recall the Casorati--Weierstrass Theorem, one of the earliest results on the value distribution near essential singularities:
 
-@thm:casoratiweierstrass
+#thm-state.thm-restate("thm:casoratiweierstrass", final: true)
 
 We will now prove a more advanced characterization of this distribution by methods of differential geometry.
 
-#theorem("Picard's Great Theorem")[
+#theorem("Picard's Great Theorem", restate: true, restate-keys: ("thm:greatpicard",))[
   Suppose $f$ is holomorphic on a punctured neighborhood $D^*(z_0, delta)$ of $z_0$. If $z_0$ is an essential singularity of $f$, then $f(D^*(z_0, delta))$ omits at most one value of $CC$.
 ] <thm:greatpicard>
 
@@ -49,7 +49,7 @@ We will now prove a more advanced characterization of this distribution by metho
 ]
 
 Picard's Great Theorem is also a generalization of Picard's Little Theorem (@thm:littlepicard):
-
+#thm-state.thm-restate("thm:littlepicard", final: true)
 #proof[
   Let $g(z) = f(1 / z)$ with an isolated singularity at $0$ and a removable singularity at $oo$. By Picard's Great Theorem (@thm:greatpicard), $g(z)$ has a meromorphic extension to $z = 0$. If $z = 0$ is removable, by virtue of @prop:removablesingularityatinftyentireconstant and @thm:liouville, the constancy of $g$ and $f$ follows.
 
