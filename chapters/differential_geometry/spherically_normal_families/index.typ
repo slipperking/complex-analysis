@@ -20,13 +20,17 @@ Let ${a_n}_(n in NN) subset.eq extcomplex$ be a sequence. Then we say $a_n -> a_
 
 Montel's Theorem for holomorphically normal families in @thm:montel can be generalized via the spherical metric by the statement of Marty's Criterion (@thm:marty).
 
-#definition("Spherical Derivative")[
+#definition[Spherical Derivative][
   Let $Omega subset.eq CC$ be an open region or domain. Suppose $f:Omega -> extcomplex$ is meromorphic. Then the _spherical derivative_ of $f$ is given by
   $ f^sharp (z) = f^* sigma(z) = (2 abs(f'(z)))/(1 + abs(f(z))^2) $
   for $f(z) != oo$ and
   $ f^sharp (z) = lim_(zeta -> z) f^sharp (zeta) $
   otherwise.
 ] <def:sphericalderivative>
+
+#remark[
+  In certain normalizations (where the Riemann sphere has north pole $(0,0,1)$ and diameter 1), the spherical derivative will instead be defined by $f^sharp (z) = (abs(f'(z)))/(1 + abs(f(z))^2)$
+]
 
 #proposition[
   Any linear fractional transformation is spherically uniformly continuous on $CC$.
@@ -191,7 +195,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   and is thus locally uniformly bounded on $Omega$. Marty's Criterion (@thm:marty) gives the normality of $tilde(cal(F))$; since $phi$ is linear, it follows that $cal(F)$ is also normal on $Omega$.
 ]
 
-#corollary("Montel" + sym.dash.en + "Carathéodory")[
+#corollary[Montel--Carathéodory][
   Let $Omega subset.eq CC$ be a region and suppose that $cal(F)$ is a family of meromorphic functions on $Omega$. If there exist three different points $alpha, beta, gamma in extcomplex$ such that ${alpha, beta, gamma} inter union.big_(f in cal(F)) f(Omega) = emptyset$, then $cal(F)$ must be a spherically normal family.
 ] <cor:montelcaratheodory>
 

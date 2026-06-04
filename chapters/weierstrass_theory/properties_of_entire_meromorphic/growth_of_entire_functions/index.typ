@@ -248,7 +248,7 @@ For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs
     $
 ]
 
-The utility of $rho$ is that it gives implications on the rate of which the zeros of an entire function tend to $infinity$. The order for meromorphic functions is more general and is pertinent in Nevanlinna Theory (@ sec:nevanlinnatheory). This is quantified technically by the convergence range of the sum given by
+The utility of $rho$ is that it gives implications on the rate of which the zeros of an entire function tend to $infinity$. The order for meromorphic functions is more general and is pertinent in Nevanlinna Theory (@sec:nevanlinnatheory). This is quantified technically by the convergence range of the sum given by
 $ sum_(n=1)^infinity 1 / abs(a_n)^(k+1), $
 where each $a_n$ is a zero. Specifically, the infimum of all such $k$ under which the prescribed sum converges correlates to this right. For example, let $a_n = n$ for each $n$. Then for any $k > 0$, the integral test gives the convergence of the series, while if $a_n = sqrt(a_n)$ (corresponding to a slower approach to $infinity$), the series converges for $k > 1$.
 
@@ -266,7 +266,8 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
   $
   where $a_1, dots, a_(n(2r,0,f))$ are the zeros of $f$ in $D(0,2r)$, ordered such that each $abs(a_k) <= abs(a_(k+1))$. Then
   $
-    sum_(k=1)^(n(r,0,f)) log 2 &<= sum_(k=1)^(n(r,0,f)) log abs((2r) / a_k) <= sum_(k=1)^(n(2r,0,f)) log abs((2r) / a_k) \ &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (2r ee^(ii theta))) dif theta <= log M(2r, f). #qedhere
+    sum_(k=1)^(n(r,0,f)) log 2 &<= sum_(k=1)^(n(r,0,f)) log abs((2r) / a_k) <= sum_(k=1)^(n(2r,0,f)) log abs((2r) / a_k) #tag("yo what")\
+    &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (2r ee^(ii theta))) dif theta <= log M(2r, f). #qedhere
   $
 ]
 

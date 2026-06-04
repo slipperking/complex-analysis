@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-== The Extended Complex Plane and its Spherical Representation
+== The Extended Complex Plane and its Spherical Representation <sec:extendedplaneandsphericality>
 
 All complex numbers form a field that extends the real number field. A complex number $alpha + ii beta$ can be visualized on a rectangular plane as the point $(alpha, beta)$, with two axes: the real axis and the imaginary axis. It is well known that any complex number also has the polar form $r ee^(ii theta) = r (cos theta + ii sin theta)$.
 
@@ -36,7 +36,7 @@ It follows that the points $(0, 0, 0)$, $(x, y, 1)$, and $(x_1, x_2, 1 - x_3)$ a
 $ vb(v) mapsto vb(v) mat(1, 0, 0; 0, 1, 0; 0, 0, -1) + (0, 0, 1), $
 we get that $(0, 0, 1)$, $(x, y, 0)$, and $(x_1, x_2, x_3)$ are collinear. In other words, this correspondence is a central projection with center $(0, 0, 1)$, projecting the points from $S^2 without (0, 0, 1)$ onto $CC$. Let this center correspond to $oo$. In this representation, $oo in extcomplex$ is no longer considered to be "special".
 
-It is worth noting that in several geometric contexts, an alternative paradigm exists where we let $S$ be the sphere centered at $(0, 0, 1 / 2)$ of diameter $1$, and project points from the north pole $(0, 0, 1)$ onto the horizontal plane of tangency. Later in Nevanlinna theory, specifically in @ sec:nevanlinnatheory, we will observe that in some sense this is the more natural object to study. The corresponding equations are then
+It is worth noting that in several geometric contexts, an alternative paradigm exists where we let $S$ be the sphere centered at $(0, 0, 1 / 2)$ of diameter $1$, and project points from the north pole $(0, 0, 1)$ onto the horizontal plane of tangency. The corresponding equations are then
 $
   x_1 = Re(z) / (abs(z)^2 + 1), quad x_2 = Im(z) / (abs(z)^2 + 1), quad x_3 = abs(z)^2 / (abs(z)^2 + 1).
 $

@@ -90,7 +90,8 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     $
       1 / abs(f(z) - a_nu) <= (3q) / delta
       ==>
-      sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) & <= 0 \ & <= logp abs(F(z)).
+      sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) & <= 0 \
+                                                                         & <= logp abs(F(z)).
     $
     Then @eq:nevanlinnasecondfundamentaltheorempart1_logpFlowerbound holds for this case trivially.
 
@@ -140,9 +141,9 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
   $
   Thus, we obtain
   $
-    m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) & <= 2 T(r, f) - 2 N(r, f) + q logp ((3q) / delta) + log 2 + m(r, f' / f) \
-                                           & quad "" - N(r, 1 / f') + N(r, f') - log abs(c') + m(r, f' F) \
-                                           & = 2 T(r, f) - [N(r, 1 / f') + 2 N(r, f) - N(r, f')] + S(r, f),
+    & m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) <= 2 T(r, f) - 2 N(r, f) + q logp ((3q) / delta) \
+    & wide quad ""+ log 2 + m(r, f' / f) - N(r, 1 / f') + N(r, f') - log abs(c') + m(r, f' F) \
+    & wide = 2 T(r, f) - [N(r, 1 / f') + 2 N(r, f) - N(r, f')] + S(r, f),
   $
   where $S(r, f)$ is defined as in @eq:nevanlinnasecondfundamentaltheorempart1_smallerrorterm. This concludes the proof.
 ]

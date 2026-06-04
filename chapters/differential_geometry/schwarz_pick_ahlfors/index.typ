@@ -162,7 +162,7 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
 
   Define a regular metric with
   $
-    rho(z) = (sqrt(1 + abs(z)^(1 / 3)) sqrt(1 + abs(z - 1)^(1 / 3))) / (abs(z)^(5 / 6) abs(z - 1)^(5 / 6)), quad dif s_rho^2 = rho^2(z) abs(dz)^2
+    rho(z) = (sqrt(1 + abs(z)^(1 / 3)) sqrt(1 + abs(z - 1)^(1 / 3))) / (abs(z)^(5 / 6) abs(z - 1)^(5 / 6)), quad dif s_rho^2 = rho(z)^2 abs(dz)^2
   $ <eq:conformalmetricnegativecurvatureexistencewhenomits2points_metric>
   on $CC without {0, 1}$.
 

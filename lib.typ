@@ -1,12 +1,13 @@
-#import "@preview/ctheorems:1.1.3": *
+//#import "@preview/ctheorems:1.1.3": *
+#import "@local/ctheorems:2.0.0": *
 #import "@local/itemize:0.2.0" as itemize
 #import "@preview/cetz:0.5.2"
-// #import "@preview/cetz-plot:0.1.4": *
 #import "@preview/cetz-plot:0.1.4" as cetz-plot
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": va as Va, vb as Vb, vu as Vu
 #import "@preview/fancy-tiling:1.0.0": *
 #import "@preview/mannot:0.3.3"
+#import thm-themes.ams: *
 
 #let cvector = cetz.vector
 #let cmatrix = cetz.matrix
@@ -35,7 +36,6 @@
   "example",
 )
 
-// #let equate-eq = equate.with(number-mode: "label")
 #let section-numbering-depth = 2
 
 #let _heading-numbers(depth: section-numbering-depth, loc: none) = {
@@ -117,89 +117,60 @@
   }
 }
 
-#let scoped-theorem-numbering(..nums) = nums.pos().map(str).join(".")
-
 #let theorem = if _is-html {
   _html-thm("theorem", "Theorem", "thm-theorem")
 } else {
-  thmplain(
-    "theorem",
-    "Theorem",
-    titlefmt: strong,
-    inset: (top: 0em, left: 0em, right: 0em),
-    namefmt: x => emph(smallcaps([(#x)])),
-  ).with(numbering: scoped-theorem-numbering)
+  theorem.with(
+    name-fmt: x => emph(smallcaps([(#x)])),
+  )
 }
 
 #let lemma = if _is-html {
   _html-thm("lemma", "Lemma", "thm-lemma")
 } else {
-  thmplain(
-    "lemma",
-    "Lemma",
-    titlefmt: strong,
-    inset: (top: 0em, left: 0em, right: 0em),
-    namefmt: x => emph(smallcaps([(#x)])),
-  ).with(numbering: scoped-theorem-numbering)
+  lemma.with(
+    name-fmt: x => emph(smallcaps([(#x)])),
+  )
 }
 
 #let proposition = if _is-html {
   _html-thm("proposition", "Proposition", "thm-proposition")
 } else {
-  thmplain(
-    "proposition",
-    "Proposition",
-    titlefmt: strong,
-    inset: (top: 0em, left: 0em, right: 0em),
-    namefmt: x => emph(smallcaps([(#x)])),
-  ).with(numbering: scoped-theorem-numbering)
+  proposition.with(
+    name-fmt: x => emph(smallcaps([(#x)])),
+  )
 }
 
 #let corollary = if _is-html {
   _html-thm("corollary", "Corollary", "thm-corollary")
 } else {
-  thmplain(
-    "corollary",
-    "Corollary",
-    base: "theorem",
-    titlefmt: strong,
-    inset: (top: 0em, left: 0em, right: 0em),
-    namefmt: x => emph(smallcaps([(#x)])),
-  ).with(numbering: scoped-theorem-numbering)
+  corollary.with(
+    name-fmt: x => emph(smallcaps([(#x)])),
+  )
 }
 
 #let definition = if _is-html {
   _html-thm("definition", "Definition", "thm-definition")
 } else {
-  thmplain(
-    "definition",
-    "Definition",
-    titlefmt: strong,
-    inset: (top: 0em, left: 0em, right: 0em),
-  ).with(numbering: scoped-theorem-numbering)
+  definition
 }
 
 #let remark = if _is-html {
   _html-thm("remark", "Remark", "thm-remark", numbered: false)
 } else {
-  thmplain("remark", "Remark", inset: (top: 0em, left: 0em, right: 0em)).with(numbering: none)
+  remark
 }
 
 #let example = if _is-html {
   _html-thm("example", "Example", "thm-example")
 } else {
-  thmplain(
-    "example",
-    "Example",
-    titlefmt: strong,
-    inset: (top: 0em, left: 0em, right: 0em),
-  ).with(numbering: scoped-theorem-numbering)
+  example
 }
 
 #let proof = if _is-html {
   _html-proof("Proof")
 } else {
-  thmproof("proof", "Proof", base: "theorem", inset: (top: 0em, left: 0em, right: 0em))
+  proof
 }
 
 #let dx = $dif x$

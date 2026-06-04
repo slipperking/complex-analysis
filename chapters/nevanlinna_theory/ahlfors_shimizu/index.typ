@@ -49,10 +49,9 @@ We now provide a second formulation of the first fundamental theorem, given by A
   $
   Thus, the left-hand side expression of @eq:ahlforsshimizugreens_greensapplication also tends to that of @eq:ahlforsshimizugreens_statement.
 ]
-
 We apply @lem:ahlforsshimizugreens to
 $
-  G(R) = log sqrt(1 + R^2) ==> g(R) = (1 - R^2) / (1 + R^2)^2 + 1/R (R / (1 + R^2)) = 2 / (1 + R^2)^2.
+  G(R) = log (sqrt(1 + R^2) / 2) ==> g(R) = (1 - R^2) / (1 + R^2)^2 + 1/R (R / (1 + R^2)) = 2 / (1 + R^2)^2.
 $
 Let $f$ be meromorphic on $overline(D(0, r))$ with no poles on the boundary, and let its poles in the interior be at each ${b_j}_(j=1)^n$ of respective orders ${k_j}_(j=1)^n$. Let $epsilon' > 0$ such that $forall 0 < epsilon < epsilon'$, the disks $overline(D(b_j, epsilon))$ are disjoint and all lie in $D(0, r)$. We aim to apply the lemma on this multiply connected region on which $f$ is holomorphic.
 
@@ -66,8 +65,8 @@ $
 $
 This implies that
 $
-  G(abs(f(z))) & = log abs(f(z)) + log sqrt(1 + 1 / abs(f(z))^2) \
-               & = log abs(phi.alt(z)) - k_j log epsilon + log sqrt(1 + 1 / abs(f(z))^2).
+  G(abs(f(z))) & = log abs(f(z)) + log sqrt(1 + 1 / abs(f(z))^2) - log 2 \
+               & = log abs(phi.alt(z)) - k_j log epsilon + log sqrt(1 + 1 / abs(f(z))^2) - log 2.
 $
 On the contour defined by $partial D(b_j, epsilon)$#footnote[The outwards normal vector actually points directly into the interior, since the disk is removed from the pertinent region.],
 $
@@ -85,99 +84,134 @@ $
 Taking the limit $epsilon -> 0^+$ hence gives
 $
   &1 / (2 uppi) integral_0^(2 uppi) nabla_(vu(n)) G(abs(f(r ee^(ii theta)))) r dtheta + n(r, f) \
-  & wide wide ""= 1 / uppi integral_0^(2 uppi) integral_0^r (abs(f'(rho ee^(ii theta)))^2) / (1 + abs(f(rho ee^(ii theta)))^2)^2 rho dr dtheta.
+  & wide wide ""= 1 / (4 uppi) integral.double_(D(0,r)) (4 abs(f'(z))^2) / (1 + abs(f(z))^2)^2 dif A = 1 / (4 uppi) integral.double_D(0,r) f^sharp (z)^2 dif A\
+  & wide wide ""= 1 / uppi integral_0^(2 uppi) integral_0^r (abs(f'(rho ee^(ii theta)))^2) / (1 + abs(f(rho ee^(ii theta)))^2)^2 rho d rho dtheta.
 $
 Let the expression on the right-hand side be denoted by $A(r, f)$. We thus derive
 $
-  A(r, f) = r / (2 uppi) integral_0^(2 uppi) pdv(, r) log sqrt(1 + abs(f(r ee^(ii theta)))^2) dtheta + n(r, f).
+  A(r, f) = r / (2 uppi) integral_0^(2 uppi) pdv(, r) log(sqrt(1 + abs(f(r ee^(ii theta)))^2) / 2) dtheta + n(r, f).
 $
 By dividing by $r$, changing variables, and integrating from 0 to $r$, we have
 $
   integral_0^r (A(t, f) dt) / t
-  &= lim_(epsilon -> 0^+) integral_epsilon^r 1 / (2 uppi) dv(, t) integral_0^(2 uppi) log sqrt(1 + abs(f(t ee^(ii theta)))^2) dtheta dt + integral_epsilon^r n(0, f) / t dt \
-  &quad "" + N(r, f) - n(0, f) log r. \
-  &= lim_(epsilon -> 0^+) integral_epsilon^r n(0, f) / t dt - 1 / (2 uppi) integral_0^(2 uppi) log sqrt(1 + abs(f(epsilon ee^(ii theta)))^2) dtheta \
-  &quad "" + N(r, f) - n(0, f) log r + 1 / (2 uppi) integral_0^(2 uppi) log sqrt(1 + abs(f(r ee^(ii theta)))^2) dtheta.
+  &= lim_(epsilon -> 0^+) [integral_epsilon^r 1 / (2 uppi) dv(, t) integral_0^(2 uppi) log(sqrt(1 + abs(f(t ee^(ii theta)))^2) / 2) dtheta dt \
+    &quad ""+ integral_epsilon^r n(0, f) / t dt] + N(r, f) - n(0, f) log r. \
+  &= lim_(epsilon -> 0^+) integral_epsilon^r n(0, f) / t dt - 1 / (2 uppi) integral_0^(2 uppi) log (sqrt(1 + abs(f(epsilon ee^(ii theta)))^2) / 2) dtheta \
+  &quad "" + N(r, f) - n(0, f) log r + 1 / (2 uppi) integral_0^(2 uppi) log(sqrt(1 + abs(f(r ee^(ii theta)))^2)/2) dtheta.
 $ <eq:ahlforsshimizuderivation_convergentintegral>
-For $f(0) != oo$,
-$
-  integral_0^r (A(t, f) dt) / t & = 1 / (2 uppi) integral_0^(2 uppi) log sqrt(1 + abs(f(r ee^(ii theta)))^2) dtheta \
-                                & quad ""- 1 / (2 uppi) integral_0^(2 uppi) log sqrt(1 + abs(f(0))^2) dtheta \
-                                & wide ""+ N(r, f)
-$ <eq:ahlforsshimizuderivation_regularcase>
-The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is written in its present form to ensure convergence in the event of a pole. Thus assume a pole; let $f(z) = c z^k + Order(z^(k+1))$, where $k < 0$ and $c != 0$. It follows that
-$
-  abs(f(epsilon ee^(ii theta))) = abs(c) epsilon^k + Order(epsilon^(k+1)) = abs(c) epsilon^k (1 + Order(epsilon)) \
-  log abs(f(epsilon ee^(ii theta))) = log abs(c) + k log epsilon + log(1 + Order(epsilon))
-$
-where the errors are uniform in $theta$. Since
-$
-  log sqrt(1 + abs(f(epsilon ee^(ii theta)))^2) &= log abs(f(epsilon ee^(ii theta))) + log sqrt(1 + 1 / abs(f(epsilon ee^(ii theta)))^2) \
-  &= log abs(f(epsilon ee^(ii theta))) + Order(abs(f(epsilon ee^(ii theta)))^(-2)) \
-  &= log abs(c) + k log epsilon + Order(epsilon),
-$
-it follows from $k = -n(0, f)$, that
-$
-  integral_epsilon^r n(0, f) / t dt - 1 / (2 uppi) integral_0^(2 uppi) log sqrt(1 + abs(f(epsilon ee^(ii theta)))^2) dtheta = -k log r - log abs(c) + Order(epsilon) \
-  -> n(0, f) log r - log abs(c) quad "as" quad epsilon -> 0.
-$
-Hence, from @eq:ahlforsshimizuderivation_convergentintegral, we have for $f(0) = oo$,
-$
-  integral_0^r (A(t, f) dt) / t &= N(r, f) - log abs(c) \
-  &quad ""+ 1 / (2 uppi) integral_0^(2 uppi) log sqrt(1 + abs(f(r ee^(ii theta)))^2) dtheta.
-$ <eq:ahlforsshimizuderivation_singularcase>
-For each $a in extcomplex$, let $W = (1 + overline(a) w) / (w - a)$ (for $a = oo$, $W equiv w$), where $w = f(z)$, and denote the function $W = F(z)$. Set using limits on $w$ and $a$:
-$
-  k(w, a) = 1 / sqrt(1 + abs(W)^2) = abs(w - a) / sqrt(abs(w - a)^2 + abs(1 + overline(a) w)^2) = abs(w - a) / sqrt((1 + abs(w)^2)(1 + abs(a)^2)).
-$
-For $w = oo$, taking the corresponding limit then gives
-$
-  k(oo, a) = 1 / sqrt(1 + abs(a)^2).
-$
-Moreover,
-$
-  abs(dv(W, z)) = (abs(a)^2 + 1) / abs(w - a)^2 abs(dv(w, z)).
-$
-Therefore,
-$
-  1 / (1 + abs(W)^2) abs(dv(W, z)) = (abs(a)^2 + 1) / abs(w - a)^2 k(w, a)^2 abs(dv(w, z)) = 1 / (1 + abs(w)^2) abs(dv(w, z)).
-$
-Substituting in their corresponding functions, it follows that
-$ f^sharp equiv F^sharp ==> A(r, f) = A(r, F). $
-Let
-$
-  T_0(r, f) = T_0(r, F) = integral_0^r (A(t, f) dt) / t = integral_0^r (A(t, F) dt) / t,
-$
-which is known as the _Ahlfors--Shimizu characteristic function_ of $f$ and $F$. Observe that if $w = f(z)$ attains $a$ with order $k$, then $1 + overline(a) f(z) = 1 + abs(a)^2 >= 1$, and $f(z) - a$ has a zero of multiplicity $k$. Hence, $F$ has a pole at $z$ of order $k$. More importantly,
-$
-  N(r, F) = N(r, a, f).
-$ <eq:ahlforsshimizuriemannsphererotationcountingfunction>
-Define the _Ahlfors--Shimizu proximity function_ to be equal to:
-$
-  m_0(r, F) & = 1 / (2 uppi) integral_0^(2 uppi) log sqrt(1 + abs(F(r ee^(ii theta)))^2) dtheta \
-            & = m_0(r, a, f) = 1 / (2 uppi) integral_0^(2 uppi) log(1 / k(f(r ee^(ii theta)), a)) dtheta
-$ <eq:ahlforsshimizuproximity>
-Assume $F(0) != oo$, or when $f(0) != a$. Applying @eq:ahlforsshimizuderivation_regularcase on the function $F$, we have
-$
-  T_0(r, F) = N(r, F) + m_0(r, F) - m_0(0, F).
-$ <eq:ahlforsshimizufirstfundamentaltheorem_regularcase>
-If $a != oo$ and $f(z) = a + c_k z^k + c_(k+1) z^(k+1) + dots.c$ ($k >= 1$, $c = c_k$), since $F(z) = (1 + abs(a)^2) / (c z^k) + Order(1 / z^(k-1))$, applying @eq:ahlforsshimizuderivation_singularcase on $F$ yields
-$
-  T_0(r, F) = N(r, F) + m_0(r, F) - log abs((1 + abs(a)^2) / c).
-$ <eq:ahlforsshimizufirstfundamentaltheorem_singularcase>
-
+The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is written in its present form to ensure convergence in the event of a pole.
+#definition[Ahlfors--Shimizu Proximity Function][
+  For $a in extcomplex$, define the _Ahlfors--Shimizu proximity function_ to be equal to:
+  $ m_0(r, a, f) = 1 / (2 uppi) integral_0^(2 uppi) log(1 / k(f(r ee^(ii theta)), a)) dtheta $ <eq:ahlforsshimizuproximity> for finite $a$ and
+  $ m_0(r, f) = 1/(2 uppi) integral_0^(2 uppi) log (1 / k(f(r,ee^(ii theta)), oo)) dtheta $ for $a = oo$,
+  where $ k(w, a) = cases(
+    (2 abs(w - a)) / sqrt((1 + abs(w)^2)(1 + abs(a)^2)) quad & a!= oo and w != oo\,,
+    2 / sqrt(1 + abs(w)^2) quad & a = oo and w != oo\,,
+    2/sqrt(1 + abs(a)^2) quad & w= oo and a != oo\,,
+    0 quad & w= oo and a = oo.
+  ) $ <eq:ahlforsshimizuchordaldistance>
+]
+#theorem[Ahlfors--Shimizu Characteristic Function][
+  The _Ahlfors--Shimizu characteristic function_ $T_0(r, f)$ is defined by
+  $
+    T_0(r, f) = integral_0^r (A(t, f) dt) / t.
+  $
+]
+#theorem[
+  For $f$ meromorphic on a neighborhood of $overline(D(0,r))$, then $ T_0(r,f) = N(r,f) + m_0(r,f) - m_0(0,f) $ for $f(0) != oo$, and
+  $ T_0(r,f) = N(r,f) + m_0(r,f) - log abs(c / 2) $
+  if $f(0) = oo$, where for some $k<0$, $c in CC^*$ satisfies $f(z) = c z^k + Order(z^(k+1))$ as $z -> 0$.
+] <thm:nevanlinnafirstfundamentaltheoremahlforsshimizusimplecase>
+#proof[
+  In the first case for $f(0) != oo$, from @eq:ahlforsshimizuderivation_convergentintegral, we have
+  $
+    integral_0^r (A(t, f) dt) / t & = 1 / (2 uppi) integral_0^(2 uppi) log(sqrt(1 + abs(f(r ee^(ii theta)))^2)/2) dtheta \
+                                  & quad ""- 1 / (2 uppi) integral_0^(2 uppi) log(sqrt(1 + abs(f(0))^2)/2) dtheta + N(r, f) \
+                        T_0(r, f) & = N(r, f) + m_0(r, f) - m_0(0, f).
+  $ <eq:ahlforsshimizuderivation_regularcase>
+  Now assume a pole; let $f(z) = c z^k + Order(z^(k+1))$, where $k < 0$ and $c != 0$. It follows that
+  $
+    abs(f(epsilon ee^(ii theta))) = abs(c) epsilon^k + Order(epsilon^(k+1)) = abs(c) epsilon^k (1 + Order(epsilon)) \
+    log abs(f(epsilon ee^(ii theta))) = log abs(c) + k log epsilon + log(1 + Order(epsilon))
+  $
+  where the errors are uniform in $theta$. Since
+  $
+    log(sqrt(1 + abs(f(epsilon ee^(ii theta)))^2)/2) &= log abs(f(epsilon ee^(ii theta))) + log sqrt(1 + 1 / abs(f(epsilon ee^(ii theta)))^2) - log 2 \
+    &= log abs(f(epsilon ee^(ii theta))) + Order(abs(f(epsilon ee^(ii theta)))^(-2)) - log 2 \
+    &= log abs(c / 2) + k log epsilon + Order(epsilon),
+  $
+  it follows from $k = -n(0, f)$, that
+  $
+    &integral_epsilon^r n(0, f) / t dt - 1 / (2 uppi) integral_0^(2 uppi) log(sqrt(1 + abs(f(epsilon ee^(ii theta)))^2)/2) dtheta \
+    &wide wide = -k log r - log abs(c) + Order(epsilon) + log 2 \
+    &wide wide -> n(0, f) log r - log abs(c/2) quad "as" quad epsilon -> 0.
+  $
+  Hence, from @eq:ahlforsshimizuderivation_convergentintegral,
+  $
+    integral_0^r (A(t, f) dt) / t &= N(r, f) - log abs(c/2) \
+    &quad ""+ 1 / (2 uppi) integral_0^(2 uppi) log(sqrt(1 + abs(f(r ee^(ii theta)))^2)/2) dtheta \
+    T_0(r, f) & = N(r, f) + m_0(r, f) - log abs(c/2). #qedhere
+  $ <eq:ahlforsshimizuderivation_singularcase>
+]
 #theorem[First Fundamental Theorem in Ahlfors--Shimizu Form][
   Let $f$ be meromorphic on $D(0, R)$ (where $0 < R <= oo$). For $0 < r < R$ and $a in extcomplex$ such that $f(0) != a$,
   $ T_0(r, f) = N(r, a, f) + m_0(r, a, f) - m_0(0, a, f). $
   If $f(0) = a != oo$, then
-  $ T_0(r, f) = N(r, a, f) + m_0(r, a, f) - log abs(1 + abs(a)^2 / c), $
-  where $c$ is the first nonzero coefficient of the Laurent expansion of $f - a$. If $f(0) = a = oo$, then
-  $ T_0(r, f) = N(r, a, f) + m_0(r, a, f) - log abs(c) $
+  $ T_0(r, f) = N(r, a, f) + m_0(r, a, f) - log abs((1 + abs(a)^2) / (2c_a)), $
+  where $c_a$ is the first nonzero coefficient of the Laurent expansion of $f - a$. If $f(0) = a = oo$, then
+  $ T_0(r, f) = N(r, a, f) + m_0(r, a, f) - log abs(c / 2) $
   where $c$ is the first non-zero coefficient of the Laurent series of $f$.
 ] <thm:nevanlinnafirstfundamentaltheoremahlforsshimizu>
 
 #proof[
-  The first two cases follow from substituting @eq:ahlforsshimizuriemannsphererotationcountingfunction and @eq:ahlforsshimizuproximity into @eq:ahlforsshimizufirstfundamentaltheorem_regularcase and @eq:ahlforsshimizufirstfundamentaltheorem_singularcase. The final case is simply a rewriting of @eq:ahlforsshimizuderivation_singularcase.
+  For $a != oo$, consider the Möbius transformation $W=(1 + overline(a) w) / (w - a)$, where $w = f(z)$, and denote the function $W = F(z)$. Then
+  $
+    abs(F'(z)) &= abs(dv(W, w) dv(w, z)) = abs((overline(a)(w-a) - (1+overline(a) w)) / (w - a)^2)abs(f'(z)) = (1 + abs(a)^2) / abs(w-a)^2 abs(f'(z))\
+    (2 abs(F'(z))) / (1+abs(F(z))^2) &= 2 / (1+abs((1 + overline(a) w) / (w - a))^2) (1+abs(a)^2)/abs(w-a)^2 = (2 abs(w - a)^2) / (abs(w - a)^2+abs(1 + overline(a) w)^2) (1+abs(a)^2)/abs(w-a)^2 \
+    &=2 (abs(a)^2 + 1) / ((w - a)(overline(w)-overline(a))+(1 + overline(a) w)(1+a overline(w))) abs(dv(w, z))\
+    &=2 (abs(a)^2 + 1) / (abs(w)^2 + abs(a)^2 - a overline(w) - overline(a) w+ 1+abs(a)^2 abs(w)^2 + overline(a)w + a overline(w)) abs(dv(w, z))\
+    &=(2(abs(a)^2 + 1)) / ((abs(w)^2+1)(abs(a)^2+1)) abs(dv(w, z)) = (2 abs(f'(z))) / (1 + abs(f(z))^2). #tag[$(dagger)$]
+  $
+  In other words, $f^sharp equiv F^sharp$ (where $f^sharp = (2 abs(f')) / (1 + abs(f)^2)$ is the spherical derivative as in @def:sphericalderivative), implying that
+  $ A(r,f) = 1/(4 uppi) integral.double_(D(0,r)) f^sharp (z)^2 dif A = 1/(4 uppi) integral.double_(D(0,r)) F^sharp (z)^2 dif A = A(r,F), $ and consequently,
+  $ T_0(r,f) = A(r,f) = A(r,F) = T_0(r,F).#tag[(a)] $
+  If $z$ is a solution to $f(z) = a$ of order $k$, then $1+ overline(a)w = 1+ abs(a)^2 >= 1$. Then $W = F(z)$ has a pole of order $k$. Thus,
+  $ N(r,F) equiv N(r,a,f).#tag[(b)] $
+  From ($dagger$), since $k(w,a) = (2 abs(w-a)) / sqrt((1+abs(w)^2)(1+abs(a)^2))$,
+  $
+    f^sharp (z) = F^sharp (z) = k(w,a)^2 (abs(a)^2 + 1) / (2 abs(w-a)^2) = (abs(F'(z)) k(w,a)^2) / 2,
+  $
+  we arrive at
+  $ k(w,a) = 2/sqrt(1+abs(W)^2) = k(W,oo). $
+  Then,
+  $
+    m_0(r, a, f) & = integral_0^(2 uppi) log(1/k(f(r ee^(ii theta)), a)) dtheta \
+                 & = integral_0^(2 uppi) log(1/k(F(r ee^(ii theta)), oo)) dtheta = m_0(r, F).#tag[(c)]
+  $
+  1. From (a), (b), and (c), by applying @thm:nevanlinnafirstfundamentaltheoremahlforsshimizusimplecase to $F$, we have $ T_0(r, F) & = N(r, F) + m_0(r, F) - m_0(0, F) \
+              & = T_0(r,f) = N(r, a, f) + m_0(r, a, f) - m_0(0, a, f), $
+    if $f(0) != a (!= oo)$, since $F(0) = (1 + overline(a) f(0)) / (f(0)-a)$ is finite,
+    $
+      T_0(r, F) & = N(r, F) + m_0(r, F) - m_0(0, F) \
+                & = T_0(r,f) = N(r, a, f) + m_0(r, a, f) - m_0(0, a, f),
+    $
+
+  + If $f(0) = a != oo$, then $F(0) = oo$ and $f(z) = a + c_a z^k + Order(z^(k+1))$ for some $k in NN$. Then
+    $
+      F(z) = (1 + overline(a) a + Order(z^k)) / (c_a z^k + Order(z^(k+1)))
+    $
+    which implies that
+    $
+      F(z) z^k = (1 + abs(a)^2 + Order(z^k)) / (c_a + Order(z)) -> (1 + abs(a)^2) / c_a quad "as" quad z -> 0,
+    $
+    so the leading coefficient of the Laurent expansion of $F$ at 0 is $C = (1 + abs(a)^2) / c_a$. By applying @thm:nevanlinnafirstfundamentaltheoremahlforsshimizusimplecase to $F$, we have
+    $
+      T_0(r, F) & = N(r, F) + m_0(r, F) - log abs(C/2) \
+                & = T_0(r,f) = N(r, a, f) + m_0(r, a, f) - log abs((1 + abs(a)^2) / (2 c_a)).
+    $
+  + If $f(0) != a = oo$, then the assertion follows directly from @thm:nevanlinnafirstfundamentaltheoremahlforsshimizusimplecase on $f$.
+
+  + If $f(0) = a = oo$, the assertion also follows from @thm:nevanlinnafirstfundamentaltheoremahlforsshimizusimplecase on $f$. #qedhere
 ]
 
 #theorem[
@@ -186,37 +220,69 @@ $ <eq:ahlforsshimizufirstfundamentaltheorem_singularcase>
 
 #proof[
   Observe that for $z in partial D(0, r)$,
-  $ logp abs(f(z)) <= log sqrt(1 + abs(f(z))^2) = 1/2 log(1 + abs(f(z))^2). $
-  Since $1 + x^2 <= 2 max{1, x^2}$ for any real $x$,
-  $ 1/2 log(1 + abs(f(z))^2) <= 1/2 log 2 + logp abs(f(z)). $
+  $ logp abs(f(z)) - log 2 <= log(sqrt(1 + abs(f(z))^2) / 2) = 1/2 log(1 + abs(f(z))^2) - log 2. $
+  Since $1 + x^2 <= max{2, 2 x^2}$ for any real $x$,
+  $
+    1/2 log(1 + abs(f(z))^2) - log 2<= 1/2 (max{log 2, log 2 + 2 log abs(f(z))}) - log 2 \
+    <= logp abs(f(z)) - 1/2 log 2.
+  $
   Integrating and adding $N$, we have
-  $ T(r, f) <= m_0(r, f) + N(r, f) <= 1/2 log 2 + T(r, f). $
+  $ T(r, f) - log 2 <= m_0(r, f) + N(r, f) <= T(r, f) - 1/2 log 2. $
   By the First Fundamental Theorem (@thm:nevanlinnafirstfundamentaltheoremahlforsshimizu) in Ahlfors--Shimizu Form with $a = oo$, if we let
   $
     C = cases(m_0(0, a, f) quad & "if" f(0) != oo, log abs(c) quad & "if" f(0) = oo),
   $
   where $c$ is the first nonzero coefficient of the Laurent expansion of $f$, it follows that
-  $ T(r, f) - C <= T_0(r, f) <= T(r, f) + 1/2 log 2 - C, $
+  $ T(r, f) - C - log 2 <= T_0(r, f) <= T(r, f) - 1/2 log 2 - C, $
   where $C$ does not depend on $R$.
 ]
 
-Let $S$ be the Riemann sphere but centered at $(0, 0, 1\/2)$, diameter 1, with a stereographic projection with center $(0, 0, 1)$. Letting
+Let $S$ be the Riemann sphere centered at $(0, 0, 0)$, radius 1, with a stereographic projection with center $(0, 0, 1)$ as in @sec:extendedplaneandsphericality. Letting
 $
-  bold(sigma)(w) = 1 / (abs(w)^2 + 1) (Re w, Im w, abs(w)^2),
+  bold(sigma)(w) = 1 / (abs(w)^2 + 1) (2 Re w, 2 Im w, abs(w)^2 - 1) = ((2 u, 2 v, u^2 + v^2 - 1)) / (u^2 + v^2 + 1),
 $
-for two points $w_1, w_2 in extcomplex$, their spherical points are $bold(sigma)(w_1), bold(sigma)(w_2)$. The Euclidean distance between the two points on the sphere is verifiable (after manual simplification) to be $k(w_1, w_2)$. Thus, $k$ is the _chordal_ distance function, and is thus geometrically invariant under rotations of the sphere. The mapping $W$ of $w$ is precisely such a transformation: geometrically it rotates points on the Riemann sphere. Geometrically, the invariance of $m_0$ is now clear.
+for $w = u + ii v$, then for two points $w_1, w_2 in extcomplex$, their spherical points are $bold(sigma)(w_1), bold(sigma)(w_2)$. The Euclidean straight-line distance between the two points on the sphere is given by
+$
+  & norm(bold(sigma)(w_1) - bold(sigma)(w_2)) \
+  & wide""= sqrt(
+    & ((2 Re w_1)/(abs(w_1)^2+1) - (2 Re w_2)/(abs(w_2)^2+1))^2
+      + ((2 Im w_1)/(abs(w_1)^2+1) - (2 Im w_2)/(abs(w_2)^2+1))^2 \
+    & ""+ ((abs(w_1)^2-1)/(abs(w_1)^2+1) - (abs(w_2)^2-1)/(abs(w_2)^2+1))^2
+  ) \
+  & wide""= 1/((abs(w_1)^2+1)(abs(w_2)^2+1)) \
+  & wide quad ""times sqrt(
+    & 4 Re[w_1(abs(w_2)^2+1) - w_2(abs(w_1)^2+1)]^2 \
+    & ""+ 4 Im[w_1(abs(w_2)^2+1) - w_2(abs(w_1)^2+1)]^2 \
+    & ""+[(abs(w_1)^2-1)(abs(w_2)^2+1) - (abs(w_2)^2-1)(abs(w_1)^2+1)]^2
+  ) \
+  & wide""= 2/(rho_1 rho_2) sqrt(abs(w_1 rho_2 - w_2 rho_1)^2 + [rho_1 - rho_2]^2) #tag[(where $rho_i = abs(w_i)^2 + 1$)] \
+  & wide""= 2 / (rho_1 rho_2) sqrt(rho_2^2 (rho_1 - 1) + rho_1^2 (rho_2 - 1) - 2 rho_2 rho_1 Re[w_1 overline(w_2)] + (rho_1 - rho_2)^2) \
+  & wide""= 2 / (rho_1 rho_2) sqrt(rho_2^2 rho_1 + rho_1^2 rho_2 - 2 rho_2 rho_1 Re[w_1 overline(w_2)] - 2 rho_1 rho_2) \
+  & wide""= 2 / sqrt(rho_1 rho_2) sqrt(rho_2 + rho_1 - 2 Re[w_1 overline(w_2)] - 2) = (2 abs(w_1 - w_2)) / sqrt(rho_1 rho_2) = k(w_1, w_2) \
+$
+Thus, $k$ measures the _chordal_ distance between points on the Riemann sphere, and is thus geometrically invariant under rotations of the sphere. The mapping $W$ of $w$ is precisely such a transformation: geometrically it rotates points on the Riemann sphere. Geometrically, the invariance of $m_0$ is now clear.
 
 Let $w = u + ii v$ be a point in the projected plane and let $dif u dif v$ be an area element on the plane. Then the corresponding area element on the sphere is equal to:
 $
-  dif A_S &= norm(bold(sigma)'_u times bold(sigma)'_v) dif u dif v = (dif u dif v) / (abs(w)^2 + 1)^4 norm(mat(-u^2 + v^2 + 1; -2u v; 2u) times mat(-2u v; u^2 - v^2 + 1; 2v)) \
-  &= (dif u dif v) / (abs(w)^2 + 1)^4 norm((-2u v^2 - 2u^3 - 2u, -2u^2 v - 2v^3 - 2v, 1 - (u^2 + v^2)^2)) \
-  &= (dif u dif v) / (abs(w)^2 + 1)^3 norm((-2u, -2v, 1 - abs(w)^2)) = (dif u dif v) / (abs(w)^2 + 1)^3 sqrt(2 abs(w)^2 + 1 + abs(w)^4) \
-  &= (dif u dif v) / (abs(w)^2 + 1)^2
+  dif A_S & = norm(bold(sigma)'_u times bold(sigma)'_v) dif u dif v \
+  & = (dif u dif v) / (abs(w)^2 + 1)^4 norm(mat(2v^2-2u^2 + 2; -4v u; 4u) times mat(-4u v; 2u^2 - 2 v^2 + 2; 4v)) \
+  & = (2 dif u dif v) / (abs(w)^2 + 1)^4 norm(mat(-2u v^2 - 2u^3 - 2u; -2u^2 v - 2v^3 - 2v; 1 - (u^2 + v^2)^2)) = (2 dif u dif v) / (abs(w)^2 + 1)^3 norm(mat(-2u; -2v; 1 - abs(w)^2)) \
+  & = (dif u dif v) / (abs(w)^2 + 1)^3 sqrt(2 abs(w)^2 + 1 + abs(w)^4) = (2 dif u dif v) / (abs(w)^2 + 1)^2
 $
 The surface area of a surface $E subset.eq S$ is given by
 $
-  integral_E dif A_S = integral.double_(bold(sigma)^(-1) (E)) (dif u dif v) / (abs(w)^2 + 1)^2.
+  integral_E dif A_S = integral.double_(bold(sigma)^(-1) (E)) (2 dif u dif v) / (abs(w)^2 + 1)^2.
 $
-For $w = f(z)$, pulling back to $z$ gives $A(r)= 1/uppi integral.double_(bold(sigma)(f(D(0,r)))) dif A$ or the area of the image of $f$ on the Riemann sphere, counted according to multiplicities (referring to overlaps when not univalent), divided by the area of the Riemann sphere.
+For $w = f(z)$, pulling back to $z$ gives
+$
+  A(r)= 1/(4 uppi) integral.double_D(0,r) f^sharp (z) dif x dif y = 1/(4 uppi) integral.double_(bold(sigma)(f(D(0,r)))) dif A_S#tag[$(star.stroked)$]
+$
+or the area of the image of $f$ on the Riemann sphere, counted according to multiplicities (referring to overlaps when not univalent), divided by the area of the Riemann sphere ($4 uppi$). In some sense, $A$ measures the amount by which the image of $f$ covers the Riemann sphere.
 
-This completes the geometric explanation for @thm:nevanlinnafirstfundamentaltheoremahlforsshimizu. This area is invariant under rotations of $S$. In particular, we rotate the north pole $(0, 0, 1)$ corresponding to $oo$ to the point corresponding to $a$.
+(Observe the similarity between the first integral of $(star.stroked)$ and the Lusin Area Theorem (@thm:lusinarea)!)
+
+This completes the geometric explanation for the invariances of (a), (b), and (c) in the proof of @thm:nevanlinnafirstfundamentaltheoremahlforsshimizu. The covered area and chordal distance are invariant under rotations of $S$. In particular, we rotate the spherical point of $a$ to the north pole $(0, 0, 1)$ corresponding to $oo$.
+
+#remark[
+  It is noteworthy that the original Ahlfors--Shimizu formulation uses the Riemann sphere centered at $(0,0, 1\/ 2)$ with diameter $1$, which yields a slightly different proximity function (without the $\/2$ factor) and spherical derivative (without the factor of 2). This normalization is present throughout Ahlfors' works; in @sec:differential_geometry, the spherical and hyperbolic metrics are also defined without a $2 dot$ factor (and hence yield curvatures of $plus.minus 4$). There is little fundamental difference between the two normalizations, and we have adopted the sphere of diameter $2$ to uniformize better with the previous sections.
+]

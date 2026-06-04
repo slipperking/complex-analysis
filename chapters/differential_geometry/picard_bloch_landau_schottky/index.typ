@@ -73,7 +73,7 @@ The methods of differential geometry can also be used to prove the statements of
 
   The precise value of $B$ remains unknown to this day. In 1937, H. Grunsky and L. Ahlfors established the bound
   $ B <= (Gamma((1)/(3)) Gamma((11)/(12)))/(Gamma((1)/(4))) sqrt((sqrt(3) - 1)/(2)), $
-  where $Gamma$ denotes the Gamma function (as in @ eq:gammafunction). Later the lower bound of $sqrt(3) / 4$ was given, then to be refined to $B >= sqrt(3) / 4 + (10^(-12))/(13)$ by M. Bonk, which was further improved to $B >= sqrt(3) / 4 + 1 / 5000$ in 1996 by H. Chen and P. M. Gauthier.
+  where $Gamma$ denotes the Gamma function (as in @eq:gammafunction). Later the lower bound of $sqrt(3) / 4$ was given, then to be refined to $B >= sqrt(3) / 4 + (10^(-12))/(13)$ by M. Bonk, which was further improved to $B >= sqrt(3) / 4 + 1 / 5000$ in 1996 by H. Chen and P. M. Gauthier.
 
   Grunsky and Ahlfors actually conjectured that the upper bound in their inequality is exact -- that is, $B = (Gamma((1)/(3)) Gamma((11)/(12)))/(Gamma((1)/(4))) sqrt((sqrt(3) - 1)/(2))$.
 ]

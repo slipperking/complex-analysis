@@ -214,3 +214,7 @@ $
 $
 
 For a given metric $dif s = lambda(z) abs(dz)$, if there is some other parameterization such that $dif s = lambda'(z') abs(dz')$, $z' = f(z)$ is conformal, then the relation is given by $lambda = f^*lambda'$. Under differing parameterizations of a metric $dif s$, we once again have the invariance of curvature.
+
+#remark[
+  In the work of Ahlfors and others, there is no $2 dot$ term in front of the hyperbolic and spherical metrics, in which cases the curvatures are $-4$ and $4$ respectively.
+]
