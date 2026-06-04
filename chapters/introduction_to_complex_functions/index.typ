@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-= Complex Prerequisites
+= Introduction to Complex Functions
 #chapter-section("extended_plane_sphericality")[
   #include "extended_plane_sphericality/index.typ"
 ]

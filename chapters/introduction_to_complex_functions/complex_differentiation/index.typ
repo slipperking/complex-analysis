@@ -91,7 +91,10 @@ Adding the equations,
 $ pdv(u, x, 2) + pdv(u, y, 2) = 0, quad pdv(v, x, 2) + pdv(v, y, 2) = 0. $
 This general type of equation is known as _Laplace's equation_, which is a basic example of an elliptic partial differential equation. Define the operator (the _Laplacian_)
 $ laplacian = div grad = pdv(, x, 2) + pdv(, y, 2). $
-A function $u$ satisfying Laplace's equation $laplacian u = 0$ is a _harmonic function_. Thus, the real and complex parts of a holomorphic function are harmonic functions.
+#definition[Harmonicity][
+  For a given region $U subset.eq CC$, a real-valued function $u in C^2 (U)$ satisfying Laplace's equation $laplacian u = 0$ is a _harmonic function_.
+]
+Thus, the real and complex parts of a holomorphic function are harmonic functions.
 
 Letting $x = r cos theta$, $y = r sin theta$, the Laplacian is equal to:
 $

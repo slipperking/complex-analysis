@@ -156,7 +156,7 @@ $ Q(zeta, z) = Im(z overline(zeta)) / (uppi abs(zeta - z)^2), $
 
 which is known as the _conjugate Poisson kernel_. Then @eq:schwarz_integral_formula_imaginary_part yields yet another integral representation of harmonic functions:
 
-$ v(z) = v(0) + integral_0^(2 uppi) u(zeta) Q(zeta, z) dt. $
+$ v(z) = v(0) + integral_0^(2 uppi) u(zeta) Q(zeta, z) dt. $ <eq:conjugate_poisson_integral_formula>
 
 where $zeta = R ee^(ii t)$. Two harmonic functions are said to be _conjugate_ if they are the real and imaginary parts of a holomorphic function. As seen above, on open disks, any harmonic function will admit a unique conjugate, up to an additive constant $v(0)$. For a harmonic function $u$, we can construct its harmonic conjugate from @eq:harmonic_conjugate.
 

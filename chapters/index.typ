@@ -4,8 +4,8 @@
   #include "prerequisites_calc_top/index.typ"
 ]
 
-#chapter-section("complex_prerequisites")[
-  #include "prerequisites_complex/index.typ"
+#chapter-section("introduction_to_complex_functions")[
+  #include "introduction_to_complex_functions/index.typ"
 ]
 
 #chapter-section("complex_integration")[
