@@ -176,13 +176,15 @@
   _ams-proof
 }
 
-#let dx = $dif x$
-#let dy = $dif y$
-#let dz = $dif z$
-#let dzeta = $dif zeta$
-#let dtheta = $dif theta$
-#let dt = $dif t$
-#let dr = $dif r$
+#let dx = $dd(x)$
+#let dy = $dd(y)$
+#let dz = $dd(z)$
+#let dzbar = $dd(overline(z))$
+#let dzeta = $dd(zeta)$
+#let dzetabar = $dd(overline(zeta))$
+#let dtheta = $dd(theta)$
+#let dt = $dd(t)$
+#let dr = $dd(r)$
 
 #let supp = math.op("supp")
 #let diam = math.op("diam")
