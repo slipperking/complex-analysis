@@ -32,16 +32,16 @@ An _isolated singularity_ of a complex function is a point $a in CC$ where a fun
     $
     By the uniqueness of the Laurent series, the conclusion follows.
   ]
-+ If $lim_(z -> a) f(z)$ is nonexistent, then $a$ is known as an _essential singularity_. <itm:isolatedsingularities_essential>
++ If $lim_(z -> a) f(z)$ does not exist, then $a$ is known as an _essential singularity_. <itm:isolatedsingularities_essential>
 
   #example[
-    The function $ee^(1 / (z))$ has an essential singularity at $z = 0$.
+    Classify the singularity of the function $ee^(1 / z)$ on the punctured plane $CC^*=CC without {0}$ at $z = 0$.
   ] <ex:isolatedsingularities_essential_exp1z>
 
-  #proof[
+  #solution[to @ex:isolatedsingularities_essential_exp1z][
     Observe that $lim_(x -> 0^+) ee^(1 / (x)) = oo$. Similarly, $lim_(x -> 0^-) ee^(1 / (x)) = 0$, and for $z = ii y$ with $y -> 0^+$,
     $ ee^(1 / (z)) = ee^(-ii / y), $
-    which is divergent. Therefore, the limit does not exist.
+    which is divergent. Hence, the limit does not exist, and thus $z=0$ is an essential singularity.
   ]
 
   The implication on its Laurent expansion at $a$ is:

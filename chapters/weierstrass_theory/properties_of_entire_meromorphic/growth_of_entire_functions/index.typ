@@ -226,9 +226,9 @@ For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs
 
 #example[
   The function $sin$ is of order 1, while $exp circle.small exp$ is not of finite order.
-]<ex:entirefunctionfiniteordersinexpexp>
+]<ex:entire_function_finite_order_sin_exp_exp>
 
-#proof[
+#solution[to @ex:entire_function_finite_order_sin_exp_exp][
   We consider the two examples separately:
   + Observe that
     $

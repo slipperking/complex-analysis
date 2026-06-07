@@ -183,7 +183,7 @@ Residues are extremely important as they allow for simple evaluation of definite
 
 #example[
   Evaluate the improper integral $I = integral_(-infinity)^infinity 1 / (x^2+1)^(n+1) dx$, where $n in NN$.
-]
+]<ex:integral_1_x_2_1_n_1_dx>
 
 #figure-wrapper([
   #figure(
@@ -235,7 +235,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   ) <fig:semicircularcontour>
 ])
 
-#proof[
+#solution[to @ex:integral_1_x_2_1_n_1_dx][
   Consider $gamma$ to be a closed semicircle with radius $R gt.eq 2$ as in @fig:semicircularcontour. Notice that the function $z |-> 1 / (z^2+1)^(n+1)$ has singularities at only $z = ii$ and $z = -ii$, both of which are poles of order $n+1$. By @eq:residueatpole, the residue at $z = ii$ is
   $
     Res_(z=ii) 1 / (z^2+1)^(n+1)
@@ -260,9 +260,9 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
 ]
 
-#example("Dirichlet Integral")[
+#example[Dirichlet Integral][
   Evaluate the integral $integral_0^infinity (sin x) / x dx$.
-]
+] <ex:dirichlet_integral>
 
 #figure-wrapper([
   #figure(
@@ -312,7 +312,7 @@ Residues are extremely important as they allow for simple evaluation of definite
     caption: [An indented semicircular contour with orientation marked.],
   ) <fig:indentedsemicircularcontour>
 ])
-#proof[
+#solution[to @ex:dirichlet_integral][
   It is common to use integration with parameters to approach this integral. However, we will now provide a solution via contour integration.
 
   Let $f(z) = ee^(ii z) / z$. Consider a closed contour $gamma$ in the form of @fig:indentedsemicircularcontour, consisting of a semicircle of radius $R$ in $overline(HH^+)$ ($C_R$), a line segment from $-R$ to $-epsilon$, a smaller semicircle of radius $epsilon$ in the upper half-plane ($C_epsilon$), and a line segment from $epsilon$ to $R$.
@@ -355,10 +355,10 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
 ]
 
-#example("Fresnel Integral")[
+#example[Fresnel Integrals][
   Evaluate the improper integrals
   $ I_1 = integral_0^infinity cos(x^2) dx, quad I_2 = integral_0^infinity sin(x^2) dx. $
-]
+] <ex:fresnel_integrals>
 
 #figure-wrapper(
   [
@@ -400,7 +400,7 @@ Residues are extremely important as they allow for simple evaluation of definite
       caption: [A wedge contour with orientation marked.],
     ) <fig:wedgecontour>],
 )
-#proof[
+#solution[to @ex:fresnel_integrals][
   Let $f(z) = ee^(ii z^2)$. Choose the wedge contour composed of
   $
     Gamma_1 = {x in RR : 0 <= x <= R}, quad Gamma_2 = {r ee^(ii uppi\/4) : 0 <= r <= R}, \
@@ -436,9 +436,9 @@ Residues are extremely important as they allow for simple evaluation of definite
 
 #example[
   Evaluate the integrals $integral_0^(2 uppi) Phi(cos theta, sin theta) dif theta$, where $Phi(xi, eta)$ is a rational function of $xi$ and $eta$ that is continuous on $theta in [0, 2 uppi]$.
-]
+] <ex:integral_of_rational_function_of_trig>
 
-#proof[
+#solution[to @ex:integral_of_rational_function_of_trig][
   Let $z = ee^(ii theta)$. Consequently, we have $cos theta = (z + z^(-1)) / 2$, $sin theta = (z - z^(-1)) / (2 ii)$, and $dz = ii ee^(ii theta) dif theta$, implying that $dif theta = dz / (ii z)$. Therefore, by the Residue Theorem (@thm:residuethm), letting $f(z) = 1 / (ii z) Phi((z + z^(-1)) / 2, (z - z^(-1)) / (2 ii))$, we have
   $
     integral_0^(2 uppi) Phi(cos theta, sin theta) dif theta = integral.cont_(partial DD) f(z) dz = 2 uppi ii sum_(k=1)^n Res_(z=z_k) f(z),
@@ -448,7 +448,7 @@ Residues are extremely important as they allow for simple evaluation of definite
 
 #example[
   Evaluate $I = integral_0^infinity x^alpha / (1 + x^beta) dx$, where $0 < alpha + 1 < beta$.
-]
+] <ex:integral_x_alpha_1_x_beta_dx>
 
 #figure-wrapper(
   [
@@ -507,7 +507,7 @@ Residues are extremely important as they allow for simple evaluation of definite
     <fig:indentedwedgecontour>
   ],
 )
-#proof[
+#solution[to @ex:integral_x_alpha_1_x_beta_dx][
   Let $f(z) = z^alpha / (1 + z^beta)$ and let $-uppi < Arg(z) <= uppi$ in the principal branches of $z^alpha = ee^(alpha Log(z))$ and $z^beta = ee^(beta Log(z))$. Then except for at the zeros of $1 + z^beta$, $f$ is holomorphic.
 
   The solutions to $z^beta = -1$ are $z = exp(ii uppi/beta + 2 ii k uppi/beta)$. Choose an indented wedge contour (as there is a logarithmic branch point singularity at the origin) with an angle of $2 uppi / beta$ (as in @fig:wedgecontour). The only singularity it encloses is $exp(ii uppi/beta)$. Since it is a simple zero of $1/f$, this singularity is a simple pole.
@@ -557,7 +557,7 @@ Residues are extremely important as they allow for simple evaluation of definite
 #example[
   Prove that the Fourier transform of $sech(uppi x)$ is itself, or that
   $ I(xi) = integral_(-infinity)^infinity exp(-2 uppi ii x xi) sech(uppi x) dx = sech(uppi xi). $
-]
+]<ex:sech_fourier_transform>
 
 #figure-wrapper([
   #figure(
@@ -602,7 +602,7 @@ Residues are extremely important as they allow for simple evaluation of definite
     caption: [A rectangular contour with orientation marked.],
   ) <fig:rectangularcontour>
 ])
-#proof[
+#solution[to @ex:sech_fourier_transform][
   Fix $xi in RR$ and let $f(z) = exp(-2 uppi ii z xi) / cosh(uppi z)$. Its poles in $CC$ occur when $ee^(uppi z) + ee^(-uppi z) = 0$, or equivalently, when $z = ii (n + 1/2)$, where $n in ZZ$.
 
   Since
@@ -699,15 +699,15 @@ In the case that a branch point singularity is present on the contour, we may at
 
 #example[
   Evaluate $I = integral_0^infinity (log(x^2+1)) / (x^2+1) dx$.
-]<ex:branchpointpoleconcurrenceintegral>
+]<ex:branch_point_pole_concurrence_integral>
 
-#proof[
+#solution[to @ex:branch_point_pole_concurrence_integral][
   Notice that the integrand itself has branch points at $z = plus.minus ii$ coinciding with the poles from the denominator. We can rewrite the integral as
   $
     I
     &= 1/2 integral_(-infinity)^infinity (log(x^2+1)) / (x^2+1) = integral_(-infinity)^infinity (log sqrt((x+i)(x-i))) / (x^2+1) \
     &= integral_(-infinity)^infinity (log abs(x plus.minus i)) / (x^2+1) = Re integral_(-infinity)^infinity (log(x+i)) / (x^2+1).
-  $<eq:branchpointpoleconcurrenceintegral_rewrite>
+  $<eq:branch_point_pole_concurrence_integral_rewrite>
   Let $gamma = Gamma union C_R$, where concretely,
   $ Gamma = {x in RR : -R <= x <= R}, quad C_R = {R ee^(ii theta) : 0 <= theta <= uppi} $
   and $R > 2$, and let $f(z) = Log(z + ii) / (z^2+1)$, where the branch for $Log$ is chosen to satisfy $[0, uppi] subset Im log(CC^*)$, such as the principal branch. The only singularity of $f$ in the upper half plane is a simple pole at $z = ii$. By the Residue Theorem (@thm:residuethm), we have
@@ -722,5 +722,5 @@ In the case that a branch point singularity is present on the contour, we may at
 
   Since $lim_(R -> infinity) integral_Gamma f(z) dz = integral_(-infinity)^infinity f(z) dz$ and
   $ integral_(-infinity)^infinity f(z) dz = (uppi^2 ii) / 2 + uppi log(2), $
-  by @eq:branchpointpoleconcurrenceintegral_rewrite, we have $I = Re integral_(-infinity)^infinity f(z) dz = uppi log(2)$.
+  by @eq:branch_point_pole_concurrence_integral_rewrite, we have $I = Re integral_(-infinity)^infinity f(z) dz = uppi log(2)$.
 ]

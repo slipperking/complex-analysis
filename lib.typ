@@ -20,6 +20,8 @@
 #let _ams-example = example
 #let _ams-claim = claim
 #let _ams-proof = proof
+#let _ams-solution = solution
+#let qed-symbol = $square$
 
 #let cvector = cetz.vector
 #let cmatrix = cetz.matrix
@@ -96,18 +98,26 @@
   fmt: _html-thm-fmt(head, css-class, numbered: numbered),
 )
 
-#let _html-proof-fmt(head) = thm => {
+#let _html-proof-like-fmt(head, css-class, collapsible: false) = thm => {
   let title = if thm.name != none {
     [#head #thm.name]
   } else {
     [#head]
   }
 
-  html.elem("div", attrs: (class: "thm-proof"), {
-    html.elem("p", attrs: (class: "proof-head"), html.elem("em", [#title.]))
-    thm.body
-    html.elem("p", attrs: (class: "qed"), [$square$])
-  })
+  if collapsible {
+    html.elem("details", attrs: (class: "thm-proof thm-solution"), {
+      html.elem("summary", attrs: (class: "proof-head solution-head"), html.elem("em", [#title.]))
+      thm.body
+      html.elem("p", attrs: (class: "qed"), [#qed-symbol])
+    })
+  } else {
+    html.elem("div", attrs: (class: "thm-proof"), {
+      html.elem("p", attrs: (class: "proof-head"), html.elem("em", [#title.]))
+      thm.body
+      html.elem("p", attrs: (class: "qed"), [#qed-symbol])
+    })
+  }
 }
 
 #let theorem = if _is-html {
@@ -171,9 +181,15 @@
 }
 
 #let proof = if _is-html {
-  _ams-proof.with(fmt: _html-proof-fmt("Proof"))
+  _ams-proof.with(fmt: _html-proof-like-fmt("Proof", "thm-proof"))
 } else {
   _ams-proof
+}
+
+#let solution = if _is-html {
+  _ams-solution.with(fmt: _html-proof-like-fmt("Solution", "thm-solution", collapsible: true))
+} else {
+  _ams-solution
 }
 
 #let dx = $dd(x)$

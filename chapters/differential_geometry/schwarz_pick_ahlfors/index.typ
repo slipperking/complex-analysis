@@ -139,14 +139,14 @@ In contrast, if $f:CC -> U$ is entire and $CC without U$ has zero area (one read
 
 Similar to in the proof of the Riemann Mapping Theorem (@thm:riemann_mapping), one may use holomorphic square roots or other transformations to reduce to the bounded setting.
 
-#example[
+#proposition[
   If $f:CC -> CC without {x in RR: 0 <= x <= 1}$ is entire, then $f$ must be constant.
 ]
 
 #proof[
   Consider the biholomorphism $phi (z) = 1 / z$, mapping $CC without {x in RR: 0 <= x <= 1}$ to $CC^* without RR_(>= 1)$. By simple connectivity of $CC without RR_(>= 1)$, there exists a univalent branch $psi$ of $z |-> sqrt(z - 1)$ on $CC without RR_(>= 1)$. Now omitting the origin, it is trivially realized that $psi(CC^* without RR_(>= 1)) inter -psi(CC^* without RR_(>= 1)) = emptyset$. If otherwise, then $exists xi in psi(CC^* without RR_(>= 1))$ such that $-xi in psi(CC^* without RR_(>= 1))$, implying that $exists z_1, z_2 in CC^* without RR_(>= 1)$ such that $phi.alt (z_1) = xi$ and $phi.alt (z_2) = -xi$, implying that $z_1 = z_2$ and $xi = 0 ==> z_1 = z_2 = 1$, which does not lie in $psi(CC^* without RR_(>= 1))$.
 
-  Now fix $xi in psi(CC^* without RR_(>= 1))$. By the Open Mapping Theorem (@thm:openmapping), $exists epsilon > 0$ such that $D(xi, epsilon) subset.eq psi(CC^* without RR_(>= 1))$. Consequently, $D(-xi, epsilon) inter psi(CC^* without RR_(>= 1)) = emptyset$. Lastly, the function $phi.alt(z) = epsilon / (z + xi)$ maps $psi(CC^* without RR_(>= 1))$ to $DD$. By Liouville (@thm:liouville), $phi.alt compose psi compose phi compose f$ is constant, which implies $f$ is constant by the injectivity of $phi.alt$, $psi$, and $phi$.
+  Now fix $xi in psi(CC^* without RR_(>= 1))$. By the Open Mapping Theorem (@thm:open_mapping), $exists epsilon > 0$ such that $D(xi, epsilon) subset.eq psi(CC^* without RR_(>= 1))$. Consequently, $D(-xi, epsilon) inter psi(CC^* without RR_(>= 1)) = emptyset$. Lastly, the function $phi.alt(z) = epsilon / (z + xi)$ maps $psi(CC^* without RR_(>= 1))$ to $DD$. By Liouville (@thm:liouville), $phi.alt compose psi compose phi compose f$ is constant, which implies $f$ is constant by the injectivity of $phi.alt$, $psi$, and $phi$.
 ]
 
 The preceding examples show that if the omitted set is sufficiently "large" (in the sense of having positive area or disconnecting the plane in certain ways), then any entire function avoiding it must reduce to a constant. However, there are natural limits to the smallness of the omitted set. For instance, the exponential function $exp$ is an entire non-constant function whose image is $CC^*$, omitting only a single point. Thus, the property that _an entire function omits a set_ is not by itself sufficient to guarantee constancy unless that set is suitably substantial. This observation is formalized by Picard's Little Theorem (@thm:littlepicard), which as preluded to before, asserts that any non-constant entire function can omit at most one complex value.

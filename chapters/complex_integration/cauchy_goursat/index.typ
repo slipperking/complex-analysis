@@ -667,9 +667,12 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
 This profound theorem is extremely important and helpful in complex integration and essential in the evaluation of integrals, as demonstrated below.
 
-#example[Evaluate the integral $integral.cont_(partial D(0, 2)) dz / (z^n - 1)$, where $n in NN_(>= 2)$.] <ex:cauchygoursatformulazeroofunity>
+#example[
+  Evaluate the integral $integral.cont_(partial D(0, 2)) dz / (z^n - 1)$, where $n in NN_(>= 2)$.
+] <ex:cauchygoursatformulazeroofunity>
 
-#proof[Since $z^n - 1 = product_(k = 0)^(n - 1) (z - omega_n^k)$, where $omega_n^k = ee^(taui k / n)$, the integrand has singularities at every $n$-th root of unity. Then the integral is equal to:
+#proof[of @ex:cauchygoursatformulazeroofunity][
+  Since $z^n - 1 = product_(k = 0)^(n - 1) (z - omega_n^k)$, where $omega_n^k = ee^(taui k / n)$, the integrand has singularities at every $n$-th root of unity. Then the integral is equal to:
 
   $
     integral.cont_(partial D(0, 2)) dz / (product_(j = 0)^(n - 1) (z - omega_j)) = integral.cont_(partial D(0, 2)) sum_(j = 0)^(n - 1) (c_j) / (z - omega_j) dz,
@@ -684,10 +687,13 @@ This profound theorem is extremely important and helpful in complex integration 
 
 We have also already seen the utility of parameterization via a polar transformation. Many useful identities in classical calculus can also be derived from concepts in its generalization:
 
-#example[Prove that $forall n in NN$,
-  $ integral_0^(2 uppi) cos^(2n) theta dif theta = 2 uppi product_(k = 1)^n (2k - 1) / (2k). $]
+#example[
+  Prove that $forall n in NN$,
+  $ integral_0^(2 uppi) cos^(2n) theta dif theta = 2 uppi product_(k = 1)^n (2k - 1) / (2k). $
+]<ex:cosine_power_integral>
 
-#proof[Consider the integral
+#solution[to @ex:cosine_power_integral][
+  Consider the integral
   $ integral.cont_(partial bb(D)) (z + 1 / z)^(2n) dz / z. $
 
   Letting $z = ee^(ii theta)$, we get $integral.cont_(partial bb(D)) (ee^(ii theta) + ee^(-ii theta))^(2n) ee^(-ii theta) dz = 2^(2n) ii integral_0^(2 uppi) cos^(2n) theta dif theta$. Alternatively, we can expand the integrand and get
@@ -717,16 +723,14 @@ We have also already seen the utility of parameterization via a polar transforma
   From simple cancellation, we then have
   $ 2 uppi product_(k = 1)^n (2k - 1) / product_(k = 1)^n (2k) = 2 uppi product_(k = 1)^n (2k - 1) / (2k). #qedhere $]
 
-#example(
-  "Cauchy" + sym.dash.en + "Goursat Formula on the Exterior",
-)[
-  Let $gamma subset CC$ be a simple closed curve, and suppose that $f:jexterior(gamma)-> CC$ is holomorphic and continuous on $overline(jexterior(gamma))=CC without jinterior(gamma)$, where $jinterior$ and $jexterior$ respectively denote the interior and exterior as in @thm:jordancurve.
+#proposition[Cauchy--Goursat Formula on the Exterior][
+  Let $gamma subset CC$ be a simple closed curve, and suppose that $f:jexterior(gamma)-> CC$ is holomorphic and continuous on $overline(jexterior(gamma))=CC without jinterior(gamma)$, where $jinterior$ and $jexterior$ respectively denote the interior and exterior as in @thm:jordan_curve.
 
   + If $f$ has a removable singularity at $oo$, or if $w = lim_(z -> oo) f(z)$ exists and is finite, then $forall z in CC without gamma$,
     $
       1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = cases(
-        w & text("if") z in jinterior(gamma)\,,
-        w - f(z) & text("if") z in jexterior(gamma).
+        w quad & "if" z in jinterior(gamma)\,,
+        w - f(z) quad & "if" z in jexterior(gamma).
       )
     $
   + If $gamma$ encloses the origin, then $forall z in CC without gamma$,

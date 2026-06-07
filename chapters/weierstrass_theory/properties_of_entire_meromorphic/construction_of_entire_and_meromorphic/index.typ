@@ -412,9 +412,9 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
     uppi csc(uppi z) = op("P.V.")(sum_(k = -oo)^oo ((-1)^k) / (z + k)) = 1 / z + sum_(k = 1)^oo (2 z (-1)^k) / (z^2 - k^2)
   $
   for $z in CC without ZZ$.
-] <ex:cscpoleexpansion>
+] <ex:csc_pole_expansion>
 
-#proof[
+#solution[to @ex:csc_pole_expansion][
   Let the simple poles of $uppi csc(uppi z)$ at each integer be enumerated by
   $
     a_n = cases(

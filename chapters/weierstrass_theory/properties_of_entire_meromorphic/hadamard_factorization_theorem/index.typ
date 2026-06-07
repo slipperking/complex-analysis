@@ -57,7 +57,7 @@ Then the results of @cor:hadamardfactorizationpolynomial and @thm:entirefunction
       uppi (k+1) \/ 2 & "if" k in NN without 2 NN,
     )
   $
-  enumerate the zeros of $sin$. By @ex:entirefunctionfiniteordersinexpexp, and the Hadamard Factorization Theorem (@thm:hadamardfactorization), the order of $sin$ is 1, the genus does not exceed 1, and
+  enumerate the zeros of $sin$. By @ex:entire_function_finite_order_sin_exp_exp, and the Hadamard Factorization Theorem (@thm:hadamardfactorization), the order of $sin$ is 1, the genus does not exceed 1, and
   $
     sin z = z ee^(phi(z)) product_(k=1)^infinity E_1 (z / a_k) = z ee^(phi(z)) product_(k=1)^infinity (1 - z / a_k) exp(z / a_k),
   $

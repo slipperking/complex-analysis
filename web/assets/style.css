@@ -335,6 +335,7 @@ svg {
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
   transform: rotate(-135deg);
+  transition: transform 0.15s, color 0.15s;
 }
 
 .global-nav .nav-item-row:hover .nav-collapse-toggle,
@@ -883,6 +884,43 @@ th {
 .qed {
   display: block;
   text-align: right;
+}
+
+/* Solutions */
+.thm-solution > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  width: 100%;
+  margin: 0 0 0.5em;
+  cursor: pointer;
+  list-style: none;
+}
+
+.thm-solution > summary::-webkit-details-marker,
+.thm-solution > summary::marker {
+  display: none;
+}
+
+.thm-solution > summary::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-left: auto;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  color: var(--color-text-muted);
+  transition: transform 0.15s, color 0.15s;
+}
+
+.thm-solution[open] > summary::after {
+  transform: rotate(-135deg);
+}
+
+.thm-solution > summary:hover::after {
+  color: var(--color-text);
 }
 
 /* ---------------------------------------------------------------------------

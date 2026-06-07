@@ -144,7 +144,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
   where $gamma$ is a simple closed curve enclosing $z$.
 ] <ex:legendrepolynomialintegralformula>
 
-#proof[
+#solution[to @ex:legendrepolynomialintegralformula][
   By applying Cauchy--Goursat (@thm:cauchy_differentiation_formula) on @eq:legendrepolynomialintegralformula_rodriguesformula, we get that
 
   $
@@ -187,14 +187,14 @@ The differentiation formula above can be thought of as a generalization of @thm:
 @thm:nthderivativeboundedl1norm will profoundly generalize this statement significantly. The relationship between the derivatives of a holomorphic function and the function itself is an important property of holomorphic functions.
 
 #example[
-  Let $f$ be entire and $forall z in CC$, $abs(f(z)) <= M ee^(abs(z))$. Prove that $forall n in NN$, $abs(f(0)) <= M$ and
+  Let $f$ be entire such that $forall z in CC$, $abs(f(z)) <= M ee^(abs(z))$. Prove that $forall n in NN$, $abs(f(0)) <= M$ and
 
   $
     abs(f^((n)) (0)) <= M n! (ee / n)^n.
   $
-]
+] <ex:entire_function_exponential_bounded_derivative_bound>
 
-#proof[
+#solution[to @ex:entire_function_exponential_bounded_derivative_bound][
   $abs(f(0)) <= M$ is obviously true by letting $z=0$. Then $forall R > 0$, by Cauchy's Estimate (@thm:cauchysestimate),
 
   $

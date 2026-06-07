@@ -489,7 +489,7 @@ In fact, it is almost always true that such an extension exists. We will give th
 
   For fixed $r_j$, in the case of @eq:osgood_taylor_caratheodory_twoalternatives_differentpoints, let $phi(gamma_(r_j))$ be the described curve joining $a_j$ and $b_j$ (where $gamma_(r_j)$ is represented by the arc as labeled in @fig:osgood_taylor_caratheodory_subwedgeimage). Except for the two boundary points, the curve $phi(gamma_(r_j))$ lies entirely in $Omega_2$ since $gamma_(r_j) subset V subset DD$. Let the _shorter_ arc on $Omega_2$ joining the two points $a_j$ and $b_j$ be denoted by $tau_j$. Therefore, the curve $phi(gamma_(r_j)) union tau_j$ forms a Jordan curve (simplicity by injectivity).
 
-  In the event that @eq:osgood_taylor_caratheodory_twoalternatives_samepoint is assumed, let $tau_j = {p_j}$, and $phi(gamma_(r_j))(union tau_j)$ forms a Jordan curve. By the Jordan Curve Theorem (@thm:jordancurve), the selected curve bounds a region, which we will denote by $W_j subset.eq Omega_2$.
+  In the event that @eq:osgood_taylor_caratheodory_twoalternatives_samepoint is assumed, let $tau_j = {p_j}$, and $phi(gamma_(r_j))(union tau_j)$ forms a Jordan curve. By the Jordan Curve Theorem (@thm:jordan_curve), the selected curve bounds a region, which we will denote by $W_j subset.eq Omega_2$.
 
   For each $j$, let $V_j = {1 - r ee^(ii theta) : 0 < r < r_j, -theta_0(r) < theta < theta_0(r)}$. Since $phi(gamma_(r_j))$ is a curve with endpoints $a_j$ and $b_j$ (or $p_j$) and lies in $Omega_2$ except for its endpoints, it splits $Omega_2$ into two disconnected regions, $W_j$ or $Omega_2 without overline(W_j)$. Since $gamma_(r_j)$ splits $DD$ into two regions, one of which being $V_j$, the image $phi(V_j)$ is either $W_j$ or $Omega_2 without overline(W_j)$.
 

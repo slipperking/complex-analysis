@@ -54,7 +54,7 @@ A curve is a one-dimensional manifold embedded within a higher dimensional space
 
 #theorem[Jordan Curve Theorem][
   Let $gamma$ be a Jordan curve in $RR^2$. Then the set $RR^2 without gamma$ consists of exactly two connected subsets. One of them is the interior, denoted by $op("int")(gamma)$, and is a bounded set, while the other is the exterior, denoted by $op("ext")(gamma)$, which is unbounded. Both of the two sets share the common boundary $gamma$.
-] <thm:jordancurve>
+] <thm:jordan_curve>
 
 The theorem above seems trivial, but its rigorous proof in topology is extremely complex. The theorem itself can also be stated on $CC$ instead of $RR^2$. For a region $U$, the boundary is denoted $partial U$. If the region bounded by any closed curve in $U$ also lies in $U$, then it is a _simply connected_ region. A connected region that is not simply connected is multiply connected. A region bound by 2 non-intersecting Jordan curves is doubly connected, and a region bound by $n$ non-intersecting Jordan curves is traditionally known as $n$-connected. Lastly, any closed curve can degenerate to a single point or slit.
 

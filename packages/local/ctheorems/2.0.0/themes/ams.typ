@@ -1,4 +1,4 @@
-#import "../src/thm.typ": thm, thm-fmt-block, proof-body-fmt
+#import "../src/thm.typ": proof-body-fmt, thm, thm-fmt-block
 
 /// Set of theorem environments, styled in the manner of `amsthm`.
 
@@ -7,8 +7,8 @@
     name-fmt: x => [(#x)],
     title-fmt: strong,
     body-fmt: emph,
-    separator: [*.* ]
-  )
+    separator: [*.* ],
+  ),
 )
 
 #let thm-def = thm.with(
@@ -16,8 +16,8 @@
     name-fmt: x => [(#x)],
     title-fmt: strong,
     body-fmt: x => x,
-    separator: [*.* ]
-  )
+    separator: [*.* ],
+  ),
 )
 
 #let thm-rem = thm.with(
@@ -26,54 +26,53 @@
     name-fmt: name => emph([(#name)]),
     title-fmt: emph,
     body-fmt: x => x,
-    separator: [. ]
-  )
+    separator: [. ],
+  ),
 )
 
 
 #let theorem = thm.with(
   supplement: "Theorem",
-  counter: "Theorem"
+  counter: "Theorem",
 )
 #let proposition = thm.with(
   supplement: "Proposition",
-  counter: "Theorem"
+  counter: "Theorem",
 )
 #let lemma = thm.with(
   supplement: "Lemma",
-  counter: "Theorem"
+  counter: "Theorem",
 )
 #let conjecture = thm.with(
   supplement: "Conjecture",
-  counter: "Theorem"
+  counter: "Theorem",
 )
 
 #let corollary = thm.with(
   supplement: "Corollary",
   counter: "Sub-Theorem",
-  base: "Theorem"
+  base: "Theorem",
 )
 
 #let definition = thm-def.with(
   supplement: "Definition",
-  counter: "Theorem"
+  counter: "Theorem",
 )
 #let example = thm-def.with(
   supplement: "Example",
-  counter: "Sub-Theorem",
-  base: "Theorem"
+  counter: "Theorem",
 )
 
 #let problem = thm-def.with(
   supplement: "Problem",
-  counter: "Problem"
+  counter: "Problem",
 )
 
 #let remark = thm-rem.with(
   supplement: "Remark",
 )
 #let claim = thm-rem.with(
-  supplement: "Claim"
+  supplement: "Claim",
 )
 
 #let proof = thm.with(
@@ -83,6 +82,17 @@
     name-fmt: emph,
     title-fmt: emph,
     body-fmt: proof-body-fmt,
-    separator: [. ]
-  )
+    separator: [. ],
+  ),
+)
+
+#let solution = thm.with(
+  supplement: "Solution",
+  numbering: none,
+  fmt: thm-fmt-block.with(
+    name-fmt: emph,
+    title-fmt: emph,
+    body-fmt: proof-body-fmt,
+    separator: [. ],
+  ),
 )

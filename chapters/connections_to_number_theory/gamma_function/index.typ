@@ -173,9 +173,9 @@ We have two famous identities on the $Gamma$-function:
 
 #example[
   Evaluate $Gamma(1/2)$.
-] <ex:gammafunction_onehalf>
+] <ex:gamma_function_one_half>
 
-#proof[
+#solution[to @ex:gamma_function_one_half][
   By the Reflection Formula (@thm:gammafunction_eulerreflection), we have that
   $
     Gamma(1/2)^2 = uppi csc(uppi / 2) = uppi,
@@ -203,7 +203,7 @@ We have two famous identities on the $Gamma$-function:
     & = 2^(1-2z) Gamma(2z) Gamma(1/2) \
     & = 2^(1-2z) Gamma(2z) sqrt(uppi),
   $
-  where the last step is derived from @ex:gammafunction_onehalf.
+  where the last step is derived from @ex:gamma_function_one_half.
 ]
 
 The identity above is a special case of the following result:
@@ -250,9 +250,9 @@ The Beta function is commonly treated as an auxiliary function in many cases of 
   $
     integral_0^(uppi / 2) (tan(x)^(1/3)) / (sin(x) + cos(x))^2 dx.
   $
-]
+] <ex:mit_integration_bee_2023_finals_1>
 
-#proof[
+#solution[to @ex:mit_integration_bee_2023_finals_1][
   By rewriting the integral, and letting $u = tan(x)$, we have
   $
     I = integral_0^(uppi / 2) (tan(x)^(1/3)) / (sin(x) + cos(x))^2 dx & = integral_0^oo (u^(1/3) sec^2(x) dx) / (u+1)^2 \
@@ -274,9 +274,9 @@ The Beta function is commonly treated as an auxiliary function in many cases of 
   $
     I = integral_0^(uppi / 2) x sqrt(tan x) dx.
   $
-]
+] <ex:integral_0_pi_2_x_sqrt_tan_x_dx>
 
-#proof[
+#proof[of @ex:integral_0_pi_2_x_sqrt_tan_x_dx][
   Apply the substitution $u = tan x$, $s = u^2$ and the integral representation $arctan u = integral_0^u (dif v) / (1+v^2) = integral_0^1 u (dif v) / (1+u^2 v^2)$ to get
   $
     I & = integral_0^oo arctan u (sqrt(u) dif u) / (1+u^2) = integral_0^oo (integral_0^1 u / (1+u^2 v^2) dif v) (sqrt(u) dif u) / (1+u^2) \

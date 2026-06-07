@@ -8,7 +8,7 @@ We have the following immediate assertion:
 
 #theorem("Open Mapping Theorem")[
   Suppose $U subset.eq CC$ is a region (open, nonempty, and connected). Then the image of any holomorphic and non-constant function $f:U -> CC$, $f(U)$, is a region.
-] <thm:openmapping>
+] <thm:open_mapping>
 
 #proof[
   The nonemptiness of $f(U)$ is an immediate conclusion from the fact that $U$ is nonempty and $f$ is defined on all of $U$.
@@ -62,7 +62,7 @@ We will now study holomorphic functions from a more geometric perspective.
 
   + If $w_0$ lies on $Gamma$, then it can be shown that $f - w_0$ has no zeros in $U$.
 
-    Indeed, for the sake of contradiction, assume that $exists z_0 in U$ such that $f(z_0) = w_0$. By the Open Mapping Theorem (@thm:openmapping), $exists delta > 0$ such that $D(w_0, delta) subset.eq f(U)$, or equivalently, $forall w in D(w_0, delta)$, $f - w$ has zeros in $U$. Since $w_0$ lies on $Gamma$, a subset of $D(w_0, delta)$ lies in the exterior of $Gamma$. It was previously established that $f - w$ has no zeros if $w in D(w_0, delta) inter jexterior(Gamma)$. Thus, we have a contradiction, and no such $z_0$ exists, implying $k=0$.
+    Indeed, for the sake of contradiction, assume that $exists z_0 in U$ such that $f(z_0) = w_0$. By the Open Mapping Theorem (@thm:open_mapping), $exists delta > 0$ such that $D(w_0, delta) subset.eq f(U)$, or equivalently, $forall w in D(w_0, delta)$, $f - w$ has zeros in $U$. Since $w_0$ lies on $Gamma$, a subset of $D(w_0, delta)$ lies in the exterior of $Gamma$. It was previously established that $f - w$ has no zeros if $w in D(w_0, delta) inter jexterior(Gamma)$. Thus, we have a contradiction, and no such $z_0$ exists, implying $k=0$.
 
   We then have
   $

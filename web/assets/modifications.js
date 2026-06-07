@@ -495,8 +495,8 @@
     updateSpy();
   }
 
-  document.querySelectorAll('.thm-proof').forEach(proof => {
-    const qedPara = proof.querySelector('p.qed');
+  document.querySelectorAll('.thm-proof, .thm-solution').forEach(block => {
+    const qedPara = block.querySelector('p.qed');
     if (!qedPara) return;
 
     // Only move the QED marker to the immediately preceding element.

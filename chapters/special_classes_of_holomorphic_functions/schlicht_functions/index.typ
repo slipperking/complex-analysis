@@ -64,7 +64,7 @@ We will introduce two of the oldest results regarding schlicht functions, namely
 
   Since $h(0) = oo$, it follows that $h$ (which is injective by the univalence of $f$) maps $D(0,r)$ to a neighborhood of $oo$ and maps $partial D(0,r)$ to the interior of the previous ellipse.
 
-  By the Jordan Curve Theorem (@thm:jordancurve), $CC without h(partial D(0,r))$ contains two connected regions. Since $h$ maps a neighborhood $U$ of $partial D(0,r)$ to a neighborhood of $h(partial D(0,r))$ by the Open Mapping Theorem (@thm:openmapping), for a point $w in h(partial D(0,r))$, there exists a disk $D(w,epsilon) subset.eq h(U)$, which intersects both $jinterior h(partial D(0,r))$ and $jexterior h(partial D(0,r))$ (because $w$ is an accumulation point of both sets as it lies in the boundary).
+  By the Jordan Curve Theorem (@thm:jordan_curve), $CC without h(partial D(0,r))$ contains two connected regions. Since $h$ maps a neighborhood $U$ of $partial D(0,r)$ to a neighborhood of $h(partial D(0,r))$ by the Open Mapping Theorem (@thm:open_mapping), for a point $w in h(partial D(0,r))$, there exists a disk $D(w,epsilon) subset.eq h(U)$, which intersects both $jinterior h(partial D(0,r))$ and $jexterior h(partial D(0,r))$ (because $w$ is an accumulation point of both sets as it lies in the boundary).
 
   Thus, there exist points in $U$ which map into $jinterior h(partial D(0,r))$, (hence map to points in the ellipse). Because $h$ maps connected sets to connected sets, and no point in $h(D(0,r))$ can map to $jinterior h(partial D(0,r))$ (as otherwise the set would be disconnected), therefore all points inside $A_r$ map into $jinterior h(partial D(0,r))$.
 ]
@@ -86,8 +86,8 @@ We will introduce two of the oldest results regarding schlicht functions, namely
     & = integral_r^1 integral_0^(2 uppi) abs(h'(rho ee^(ii theta)))^2 rho dtheta dif rho \
     & = integral_r^1 integral_0^(2 uppi) abs(-rho^(-2) ee^(-2 ii theta)+sum_(j=0)^oo j b_j rho^(j-1) ee^(ii theta(j-1)))^2 rho dtheta dif rho \
     & = integral_r^1 integral_0^(2 uppi) [rho^(-4)+(sum_(j=0)^oo j b_j rho^(j-1) ee^(ii theta(j-1)))overline(sum_(j=0)^oo j b_j rho^(j-1) ee^(ii theta(j-1))) \ &wide""+ 2 Re(-rho^(-2) overline(ee^(-2 ii theta)) sum_(j=0)^oo j b_j rho^(j-1) ee^(ii theta(j-1)))] rho dtheta dif rho \
-    &= integral_r^1 [2 uppi rho^(-3) + integral_0^(2 uppi) sum_(j,k in ZZ_(>=0)) j k b_j overline(b_k)ee^(ii theta (j-k)) rho^(j+k-1) dif theta\
-      &wide""- 2/rho integral_0^(2 uppi) Re(sum_(j=0)^oo j b_j rho^(j-1) ee^(ii theta(j+1))) dtheta ] dif rho #tag[(a)] \
+    &= integral_r^1 [2 uppi rho^(-3) + integral_0^(2 uppi) sum_(j,k in ZZ_(>=0)) j k b_j overline(b_k)ee^(ii theta (j-k)) rho^(j+k-1) dif theta #tag[(a)] \
+      &wide""- 2/rho integral_0^(2 uppi) Re(sum_(j=0)^oo j b_j rho^(j-1) ee^(ii theta(j+1))) dtheta ] dif rho \
     &= integral_r^1 [2 uppi rho^(-3) + sum_(j,k in ZZ_(>=0)) j k b_j overline(b_k)(integral_0^(2 uppi) ee^(ii theta (j-k))dtheta) rho^(j+k-1) \
       &wide""- 2/rho Re(sum_(j=0)^oo j b_j rho^(j-1) integral_0^(2 uppi)ee^(ii theta(j+1))) dtheta] dif rho. #tag[(b)]
   $
@@ -96,6 +96,8 @@ We will introduce two of the oldest results regarding schlicht functions, namely
     integral_0^(2 uppi) ee^(ii n theta) dtheta = cases(2 uppi& quad "if" quad n = 0\,, evaluated(1 / (n ii) ee^(ii n theta))_0^(2 uppi) & quad "otherwise") = cases(2 pi& quad "if" n=0\,, 0 & quad "otherwise".)
   $
   Thus, in the second term, only terms with $j=k$ persist. In the third term, since $j+1$ never vanishes, the entire third term vanishes as well.
+
+  The expansion of the summation in (a) is justified by the absolute convergence of the two factors. The switch in (b) is justified by locally uniform convergence of a power series.
 
   As a result, we are hence left with
   $
@@ -108,6 +110,13 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   Taking $r -> 0^+$,
   $ 1 >= sum_(j=0)^N j abs(b_j)^2, $
   which holds for any $N$. Thus, letting $N -> oo$ gives the desired result.
+]
+
+#theorem[
+  If $f$ is schlicht, then there exists a schlicht $g$ such that $g(z)^2 equiv f(z^2)$ on $DD$.
+]
+#proof[
+
 ]
 
 #theorem[
