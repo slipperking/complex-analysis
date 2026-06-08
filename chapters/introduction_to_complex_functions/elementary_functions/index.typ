@@ -45,25 +45,25 @@ Since all elementary functions can be written in terms of exponential functions 
 2. Since $ee^(taui) = 1$, it is periodic over $taui$.
 3. It is also an entire function with $(ee^z)' = ee^z$.
 
-Write $ee^z = ee^(x + ii y) = ee^x (cos(y) + ii sin(y))$ where $x, y in RR$. Let $u(x, y) = Re(ee^z) = ee^x cos(y)$ and $v(x, y) = Im(ee^z) = ee^x sin(y)$. The first order derivatives are respectively
-$ pdv(u, x) = ee^x cos(y), quad pdv(u, y) = -ee^x sin(y), $
-and
-$ pdv(v, x) = ee^x sin(y), quad pdv(v, y) = ee^x cos(y), $
-and indeed, the condition described by @thm:holomorphy_condition is satisfied.
+  Write $ee^z = ee^(x + ii y) = ee^x (cos(y) + ii sin(y))$ where $x, y in RR$. Let $u(x, y) = Re(ee^z) = ee^x cos(y)$ and $v(x, y) = Im(ee^z) = ee^x sin(y)$. The first order derivatives are respectively
+  $ pdv(u, x) = ee^x cos(y), quad pdv(u, y) = -ee^x sin(y), $
+  and
+  $ pdv(v, x) = ee^x sin(y), quad pdv(v, y) = ee^x cos(y), $
+  and indeed, the condition described by @thm:holomorphy_condition is satisfied.
 
 4. For any two complex numbers $z_1$ and $z_2$, $ee^(z_1) ee^(z_2) = ee^(z_1 + z_2)$.
 
-In fact, most real exponentiation rules are identical to those in the complex number field. Previously we claimed the periodic properties of $ee^z$. For $U subset.eq CC$, a holomorphic function $f: U -> CC$ is _univalent_ over $U$ if it is injective over $U$. This means that the solutions $z_1$ and $z_2$ satisfying $f(z_1) = f(z_2)$ will also always satisfy $z_1 = z_2$.
+  In fact, most real exponentiation rules are identical to those in the complex number field. Previously we claimed the periodic properties of $ee^z$. For $U subset.eq CC$, a holomorphic function $f: U -> CC$ is _univalent_ over $U$ if it is injective over $U$. This means that the solutions $z_1$ and $z_2$ satisfying $f(z_1) = f(z_2)$ will also always satisfy $z_1 = z_2$.
 
 5. The function $ee^z$ is univalent over any horizontal strip of height $2 uppi$.
 
-Let $z_1 = x_1 + ii y_1$ and $z_2 = x_2 + ii y_2$, with $x_1, y_1, x_2, y_2 in RR$, and assume $ee^(z_1) = ee^(z_2)$. Then
-$ ee^(x_1) ee^(ii y_1) = ee^(x_2) ee^(ii y_2). $
-The moduli are equal, and therefore $x_1 = x_2$. By the periodic nature of exponentiation of imaginary numbers, $y_1 - y_2 = 2 uppi k$, where $k in ZZ$. To satisfy univalence over a region $U$, we must exclude distinct points whose imaginary parts differ by an integer multiple of $2 uppi$. Thus, we may select $U$ to be any horizontal strip
-$ 2 uppi k <= Im(z) < 2 uppi (k + 1) $
-or
-$ 2 uppi k < Im(z) <= 2 uppi (k + 1). $
-Similar to the exponential function, any belt region with thickness $2 uppi$ is a region over which $log$ is univalent.
+  Let $z_1 = x_1 + ii y_1$ and $z_2 = x_2 + ii y_2$, with $x_1, y_1, x_2, y_2 in RR$, and assume $ee^(z_1) = ee^(z_2)$. Then
+  $ ee^(x_1) ee^(ii y_1) = ee^(x_2) ee^(ii y_2). $
+  The moduli are equal, and therefore $x_1 = x_2$. By the periodic nature of exponentiation of imaginary numbers, $y_1 - y_2 = 2 uppi k$, where $k in ZZ$. To satisfy univalence over a region $U$, we must exclude distinct points whose imaginary parts differ by an integer multiple of $2 uppi$. Thus, we may select $U$ to be any horizontal strip
+  $ 2 uppi k <= Im(z) < 2 uppi (k + 1) $
+  or
+  $ 2 uppi k < Im(z) <= 2 uppi (k + 1). $
+  Similar to the exponential function, any belt region with thickness $2 uppi$ is a region over which $log$ is univalent.
 
 Next we examine the complex logarithm.
 

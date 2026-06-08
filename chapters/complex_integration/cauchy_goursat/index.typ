@@ -195,11 +195,13 @@ From the above result, we can directly obtain the following theorem:
 
 #theorem[Cauchy's Integral Theorem][
   Let $U subset CC$ be an open region with piecewise $C^1$ boundary $partial U$. For a function $f(z)in C^1 (overline(U))$ holomorphic over $U$,
-  $ integral.cont_(partial U) f(zeta) dzeta = 0. $] <thm:cauchyintegraltheorem>
+  $ integral.cont_(partial U) f(zeta) dzeta = 0. $
+] <thm:cauchyintegraltheorem>
 
-#proof[Let $psi(z)=z f(z)$. Applying @thm:cauchyintegralformula on $psi(zeta)$ with $z=0$, we obtain
+#proof[
+  Let $z in U$ be fixed, and suppose $psi(zeta)=(zeta-z) f(zeta)$. Applying @thm:cauchyintegralformula on $psi(zeta)$, we obtain
   $
-    0 = 1 / (taui) integral.cont_(partial U) (psi(zeta)) / zeta dzeta = 1 / (taui) integral.cont_(partial U) f (zeta) dzeta.
+    0 = 1 / (taui) integral.cont_(partial U) (psi(zeta)) / (zeta-z) dzeta = 1 / (taui) integral.cont_(partial U) f (zeta) dzeta.
   $
 
   Alternatively, we can use Green's Theorem (@thm:complex_green) with $omega=f(zeta)dzeta$:
@@ -272,10 +274,13 @@ From the above result, we can directly obtain the following theorem:
 
 When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, he included the necessary condition that $f(z)in C^1 (overline(U))$. It was later shown that all such holomorphic functions had holomorphic derivatives, and this condition was thus later dropped by Goursat:
 
-#lemma[Let $f:G -> CC$ be a continuous function defined for a region $G subset.eq CC$. Let $Gamma subset G$ be a rectifiable piecewise smooth curve. Then $forall epsilon > 0$, there exists a polygonal chain $P subset G$ inscribing $Gamma$ (each vertex lies on $Gamma$) where
-  $ abs(integral_Gamma f(z) dz - integral_P f(z) dz) < epsilon. $] <lem:integralpiecewisesmoothtopolygonalchain>
+#lemma[
+  Let $f:G -> CC$ be a continuous function defined for a region $G subset.eq CC$. Let $Gamma subset G$ be a rectifiable piecewise smooth curve. Then $forall epsilon > 0$, there exists a polygonal chain $P subset G$ inscribing $Gamma$ (each vertex lies on $Gamma$) where
+  $ abs(integral_Gamma f(z) dz - integral_P f(z) dz) < epsilon. $
+] <lem:integralpiecewisesmoothtopolygonalchain>
 
-#proof[Because $f in C^0(G)$, there is a compact set $D subset.eq G$ enclosing $Gamma$ and is the closure of some open set. By @thm:heinecantor, $forall epsilon > 0$, $exists delta > 0$ such that $forall z', z'' in D$ satisfying $abs(z'' - z') < delta$, $abs(f (z'') - f (z')) < epsilon$. Partition $Gamma$ into $n in NN$ curves $gamma_0, gamma_1, dots, gamma_(n - 1)$ between points $z_0, z_1, dots z_n$ such that $forall k in {0, 1, dots, n - 1}$ the length of $gamma_k$ is less than $delta$. For all $k in {0, 1, dots, n - 1}$, let $l_k$ denote the straight line segment connecting $z_k$ and $z_(k + 1)$. The length of $l_k$ is less than $delta$ as well. Then let
+#proof[
+  Because $f in C^0(G)$, there is a compact set $D subset.eq G$ enclosing $Gamma$ and is the closure of some open set. By @thm:heinecantor, $forall epsilon > 0$, $exists delta > 0$ such that $forall z', z'' in D$ satisfying $abs(z'' - z') < delta$, $abs(f (z'') - f (z')) < epsilon$. Partition $Gamma$ into $n in NN$ curves $gamma_0, gamma_1, dots, gamma_(n - 1)$ between points $z_0, z_1, dots z_n$ such that $forall k in {0, 1, dots, n - 1}$ the length of $gamma_k$ is less than $delta$. For all $k in {0, 1, dots, n - 1}$, let $l_k$ denote the straight line segment connecting $z_k$ and $z_(k + 1)$. The length of $l_k$ is less than $delta$ as well. Then let
   $ P=union.big_(k=0)^(n-1)l_k. $
   Over the partition formed with $gamma_k$, the integral
 
@@ -304,10 +309,11 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
 #lemma(
   "Goursat",
-)[Given a holomorphic function $f(z)$ on a simply connected region $U subset.eq CC$, for any piecewise $C^1$ closed curve $Gamma subset U$,
+)[
+  Given a holomorphic function $f(z)$ on a simply connected region $U subset.eq CC$, for any piecewise $C^1$ closed curve $Gamma subset U$,
 
   $
-    integral_Gamma f(zeta)dzeta=0.
+    integral.cont_Gamma f(zeta)dzeta=0.
   $ <eq:cauchyintegraltheoremoversimplyconnectedset_statement>
 ] <lem:cauchyintegraltheoremoversimplyconnectedset>
 #figure-wrapper(
@@ -389,14 +395,14 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   ],
 )
 #proof[
-  By @lem:integralpiecewisesmoothtopolygonalchain, $forall epsilon > 0$, there is a polygonal chain $P$ where
+  By @lem:integralpiecewisesmoothtopolygonalchain, $forall epsilon > 0$, there is a closed polygonal chain $P$ where
 
   $
-    abs(integral_Gamma f(z) dz - integral_P f(z) dz) < epsilon.
+    abs(integral.cont_Gamma f(z) dz - integral.cont_P f(z) dz) < epsilon.
   $ <eq:cauchyintegraltheoremoversimplyconnectedset_chaindefinition>
   The statement we aim to prove is equivalent to proving that
 
-  $ integral_P f(z)dz=0. $ <eq:cauchyintegraltheoremoversimplyconnectedset_chainvanishingstatement>
+  $ integral.cont_P f(z)dz=0. $ <eq:cauchyintegraltheoremoversimplyconnectedset_chainvanishingstatement>
 
   Since $P$ is a closed polygonal chain, we can triangulate the interior. For example, consider @fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation, where
   $
@@ -441,6 +447,10 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   $ M / 4^n < epsilon L / 4^n, quad M < epsilon L. $
   Since $Delta$ is rectifiable, $L$ is finite, and letting $epsilon ->0$, we find that $M ->0$. Then, for every triangle in $U$, the integral vanishes, and @eq:cauchyintegraltheoremoversimplyconnectedset_chainvanishingstatement, @eq:cauchyintegraltheoremoversimplyconnectedset_chaindefinition follow.
 ]
+#theorem[Cauchy--Goursat][
+  Let $U subset CC$ be an open region bounded with boundary $partial U$. Let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then,
+  $ integral.cont_(partial U) f(zeta) dzeta = 0. $
+] <thm:cauchygoursattheorem>
 #figure-wrapper(
   [
     #figure(
@@ -557,10 +567,6 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
     ) <fig:cauchy_goursat_theorem_simplified_region>
   ],
 )
-#theorem[Cauchy--Goursat][
-  Let $U subset CC$ be an open region bounded with boundary $partial U$. Let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then,
-  $ integral.cont_(partial U) f(zeta) dzeta = 0. $
-] <thm:cauchygoursattheorem>
 #proof[
   Since $partial U inter U=emptyset$ and $f(z)$ is not necessarily holomorphic over $overline(U)$, we cannot directly apply @lem:cauchyintegraltheoremoversimplyconnectedset.
 
@@ -663,7 +669,9 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   By rearrangement,
   $ f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta. #qedhere $]
 
-#remark[In the proof of @thm:pompeiu, we used Lipschitz continuity for a smooth function, which was a stronger condition than necessary. The true necessity of smoothness was to be able to apply Green's Theorem (@thm:complex_green).]
+#remark[
+  In the proof of @thm:pompeiu, we used Lipschitz continuity for a smooth function, which was a stronger condition than necessary. The true necessity of smoothness was to be able to apply Green's Theorem (@thm:complex_green).
+]
 
 This profound theorem is extremely important and helpful in complex integration and essential in the evaluation of integrals, as demonstrated below.
 
@@ -671,7 +679,7 @@ This profound theorem is extremely important and helpful in complex integration 
   Evaluate the integral $integral.cont_(partial D(0, 2)) dz / (z^n - 1)$, where $n in NN_(>= 2)$.
 ] <ex:cauchygoursatformulazeroofunity>
 
-#proof[of @ex:cauchygoursatformulazeroofunity][
+#solution[to @ex:cauchygoursatformulazeroofunity][
   Since $z^n - 1 = product_(k = 0)^(n - 1) (z - omega_n^k)$, where $omega_n^k = ee^(taui k / n)$, the integrand has singularities at every $n$-th root of unity. Then the integral is equal to:
 
   $
@@ -717,11 +725,17 @@ We have also already seen the utility of parameterization via a polar transforma
 
   Therefore,
   $
-    2^(2n) ii integral_0^(2 uppi) cos^(2n) theta dif theta = taui binom(2n, n) <==> integral_0^(2 uppi) cos^(2n) theta dif theta = (2 uppi (2n)!) / (2^(2n) (n!)^2) = (2 uppi product_(k = 1)^(2n) k) / (product_(k = 1)^n (2k)^2).
+    2^(2n) ii integral_0^(2 uppi) cos^(2n) theta dif theta = taui binom(2n, n)
+  $
+  which gives that
+  $
+    integral_0^(2 uppi) cos^(2n) theta dif theta = (2 uppi (2n)!) / (2^(2n) (n!)^2) = (2 uppi product_(k = 1)^(2n) k) / (product_(k = 1)^n (2k)^2).
   $
 
   From simple cancellation, we then have
-  $ 2 uppi product_(k = 1)^n (2k - 1) / product_(k = 1)^n (2k) = 2 uppi product_(k = 1)^n (2k - 1) / (2k). #qedhere $]
+  $
+    2 uppi (product_(k = 1)^n (2k - 1)) / (product_(k = 1)^n (2k)) = 2 uppi product_(k = 1)^n (2k - 1) / (2k). #qedhere
+  $]
 
 #proposition[Cauchy--Goursat Formula on the Exterior][
   Let $gamma subset CC$ be a simple closed curve, and suppose that $f:jexterior(gamma)-> CC$ is holomorphic and continuous on $overline(jexterior(gamma))=CC without jinterior(gamma)$, where $jinterior$ and $jexterior$ respectively denote the interior and exterior as in @thm:jordan_curve.
