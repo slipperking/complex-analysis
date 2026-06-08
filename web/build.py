@@ -230,11 +230,7 @@ def theorem_toc_entry(theorem_box: Tag, section: Tag, level: int) -> dict | None
     if not text:
         return None
 
-    # Walk up to find the nearest ancestor with an id (for anchor linking).
-    anchor = theorem_box
-    while isinstance(anchor.parent, Tag) and anchor.parent is not section and not anchor.get("id"):
-        anchor = anchor.parent
-    anchor_id = ensure_anchor_id(anchor, text)
+    anchor_id = ensure_anchor_id(theorem_box, text)
 
     return {
         "level": level,

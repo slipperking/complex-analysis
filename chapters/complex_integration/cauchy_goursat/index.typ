@@ -401,7 +401,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   Since $P$ is a closed polygonal chain, we can triangulate the interior. For example, consider @fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation, where
   $
     integral.cont_(penta A B C D E) f(z) dz & =(integral_sray(A B) + integral_sray(B C) + integral_sray(C D) + integral_sray(D E) + integral_sray(E A)) f(z) dz \
-    & +(integral_sray(B E) + integral_sray(E B) + integral_sray(C E) + integral_sray(E C)) f(z) dz \
+    & quad""+(integral_sray(B E) + integral_sray(E B) + integral_sray(C E) + integral_sray(E C)) f(z) dz \
     & =integral.cont_(Delta A B E) f(z) dz + integral.cont_(Delta B C E) f(z) dz + integral.cont_(Delta C D E) f(z) dz.
   $
   Thus, if the integral over every triangle in $U$ vanishes, then @eq:cauchyintegraltheoremoversimplyconnectedset_statement follows. Consider a triangle in $U$ with boundary $Delta$. Then define $M$ to be
