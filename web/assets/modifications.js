@@ -5,6 +5,46 @@
   var navScriptUrl = currentScript && currentScript.src
     ? new URL(currentScript.src, window.location.href)
     : new URL(window.location.href);
+  var typstColorizeCounter = 0;
+
+  function colorizeTypstSvgFrames() {
+    document.querySelectorAll("svg.typst-frame").forEach(function (svg) {
+      if (svg.dataset.typstColorized === "true") {
+        return;
+      }
+
+      svg.dataset.typstColorized = "true";
+      svg.style.color = "inherit";
+
+      var ns = "http://www.w3.org/2000/svg";
+      var defs = svg.querySelector("defs");
+      if (!defs) {
+        defs = document.createElementNS(ns, "defs");
+        svg.insertBefore(defs, svg.firstChild);
+      }
+
+      var filterId = "typst-colorize-" + (++typstColorizeCounter);
+      var filter = document.createElementNS(ns, "filter");
+      filter.setAttribute("id", filterId);
+      filter.setAttribute("color-interpolation-filters", "sRGB");
+
+      var flood = document.createElementNS(ns, "feFlood");
+      flood.setAttribute("flood-color", "currentColor");
+      flood.setAttribute("flood-opacity", "1");
+      flood.setAttribute("result", "typstColor");
+
+      var composite = document.createElementNS(ns, "feComposite");
+      composite.setAttribute("in", "typstColor");
+      composite.setAttribute("in2", "SourceAlpha");
+      composite.setAttribute("operator", "in");
+
+      filter.appendChild(flood);
+      filter.appendChild(composite);
+      defs.appendChild(filter);
+
+      svg.setAttribute("filter", "url(#" + filterId + ")");
+    });
+  }
 
   // =========================================================================
   // 1. Theme toggle (light → dark → auto → light)
@@ -60,6 +100,7 @@
 
   // Apply on load (complements the inline FOUC-prevention script in <head>)
   applyTheme(storedMode);
+  colorizeTypstSvgFrames();
 
   // =========================================================================
   // 2. Sidebar toggles (mobile)

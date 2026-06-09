@@ -727,6 +727,7 @@ figcaption {
   margin-left: auto;
   margin-right: auto;
   align-self: center;
+  color: inherit;
 }
 
 svg.typst-frame {
@@ -734,17 +735,8 @@ svg.typst-frame {
   height: auto;
 }
 
-[data-theme="dark"] svg.typst-frame {
-  filter: invert(1) hue-rotate(180deg);
-}
-
 [data-theme="dark"] figure img[src^="data:image/svg+xml"] {
   filter: invert(1) hue-rotate(180deg);
-}
-
-a svg.typst-frame,
-a svg.typst-frame * {
-  fill: currentColor;
 }
 
 ul.itemize-ul-list {
