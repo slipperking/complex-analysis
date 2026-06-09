@@ -1,5 +1,6 @@
 #import "/lib.typ": chapter-section
 
+#set heading(numbering: "1.1")
 #chapter-section("prerequisites")[
   #include "prerequisites_calc_top/index.typ"
 ]
@@ -51,6 +52,10 @@
 #chapter-section("nevanlinna_theory")[
   #include "nevanlinna_theory/index.typ"
 ]
+
+#set heading(numbering: "A.1")
+#counter(heading).update(0)
+#include "appendices/index.typ"
 
 #chapter-section("bibliography")[
   #bibliography("/references.bib", full: true)

@@ -2,7 +2,6 @@
 
 #let paper-styles(doc) = {
   set par(justify: true)
-  set heading(numbering: "1.1")
   set page(numbering: "1", margin: 1.75in)
 
   show: thm-rules.with(qed-symbol: qed-symbol, is-html: _is-html)
@@ -34,9 +33,13 @@
     let tag = ("h1", "h2", "h3", "h4", "h5", "h6").at(level - 1)
     let num-display = if it.numbering != none {
       if level == 1 {
-        [Chapter ] + counter(heading).display() + [: ]
+        if chapter-title-mode.get() == "appendix" {
+          [Appendix ] + counter(heading).display() + [: ]
+        } else {
+          [Chapter ] + counter(heading).display() + [: ]
+        }
       } else if level <= 6 {
-        counter(heading).display() + [ ]
+        [#sym.section] + counter(heading).display() + [ ]
       }
     }
     let label-id = if it.has("label") { str(it.label) } else { none }

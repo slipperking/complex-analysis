@@ -27,6 +27,7 @@
 #let cmatrix = cetz.matrix
 
 #let _is-html = sys.inputs.at("html", default: "false") == "true" // target() == "html"
+#let chapter-title-mode = state("chapter-title-mode", "chapter")
 
 #let ray(body, dy: 0em, tag: none) = {
   let body = pad(top: 0em, $#body$)
@@ -397,7 +398,7 @@
 }
 
 
-#let chapter-section(id, depth: auto, body) = context {
+#let chapter-section(id, depth: auto, title-mode: "chapter", body) = context {
   if _is-html == true {
     let nav-depth = if depth == auto { none } else { str(depth) }
     let attrs = if nav-depth == none {
@@ -405,6 +406,7 @@
     } else {
       (class: "chapter", id: id, "data-nav-depth": nav-depth)
     }
+    chapter-title-mode.update(title-mode)
     html.elem("section", attrs: attrs, body)
   } else {
     body

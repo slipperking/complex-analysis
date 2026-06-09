@@ -1,85 +1,72 @@
-/* ============================================================================
-   PyData-inspired theme for thesis HTML export
-   ============================================================================ */
-
 html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
 }
 
-/* ---------------------------------------------------------------------------
-   CSS Variables — Light theme (default)
-   --------------------------------------------------------------------------- */
-
 :root {
-  --color-bg: #fff;
-  --color-text: #333;
-  --color-text-muted: #6c757d;
-  --color-link: #0366d6;
-  --color-link-hover: #024ea4;
-  --color-border: #e1e4e8;
-  --color-sidebar-bg: #f7f8fa;
-  --color-sidebar-active: #0366d6;
-  --color-sidebar-active-bg: #e8f0fe;
-  --color-nav-part: #555;
-  --color-code-bg: #f6f8fa;
-  --color-topbar-bg: #f7f8fa;
-  --color-search-bg: #fff;
-  --color-backdrop: rgba(0, 0, 0, 0.4);
-  --thm-theorem-bg: #f4f7ff;
-  --thm-theorem-border: #4f7eea;
-  --thm-definition-bg: #f2fbf4;
-  --thm-definition-border: #3d9b63;
-  --thm-example-bg: #fff8eb;
-  --thm-example-border: #cc8a1a;
-  --thm-remark-bg: #f6f7f8;
-  --thm-remark-border: #8c929a;
-  --sidebar-width: 280px;
-  --toc-width: 260px;
-  --content-max-width: 820px;
-  --topbar-height: 3.5rem;
+  --color-bg: #eff5fc;
+  --color-text: #222734;
+  --color-text-muted: #5f6676;
+  --color-link: #1d4ed8;
+  --color-link-hover: #1e40af;
+  --color-border: rgba(34, 39, 52, 0.12);
+  --color-sidebar-bg: rgba(255, 255, 255, 0.7);
+  --color-sidebar-active: #1d4ed8;
+  --color-sidebar-active-bg: rgba(29, 78, 216, 0.12);
+  --color-nav-part: #3457a5;
+  --color-code-bg: #edf4ff;
+  --color-topbar-bg: rgba(250, 246, 239, 0.76);
+  --color-search-bg: #fffdf8;
+  --color-backdrop: rgba(17, 24, 39, 0.38);
+  --color-surface: rgba(255, 255, 255, 0.82);
+  --shadow-panel: 0 24px 50px rgba(34, 42, 58, 0.08);
+  --shadow-pop: 0 18px 30px rgba(34, 42, 58, 0.12);
+  --thm-theorem-bg: rgba(15, 118, 110, 0.08);
+  --thm-theorem-border: #0f766e;
+  --thm-definition-bg: rgba(37, 99, 235, 0.08);
+  --thm-definition-border: #2563eb;
+  --thm-example-bg: rgba(217, 119, 6, 0.09);
+  --thm-example-border: #d97706;
+  --thm-remark-bg: rgba(82, 94, 116, 0.08);
+  --thm-remark-border: #64748b;
+  --sidebar-width: 292px;
+  --toc-width: 272px;
+  --content-max-width: 860px;
+  --topbar-height: 4rem;
   --font-body: "New Computer Modern", "Computer Modern", Georgia, serif;
   --font-heading: system-ui, -apple-system, sans-serif;
-  --font-mono: "Fira Code", "Consolas", monospace;
-
-  /* TOC indentation — single source of truth.
-     Every level step adds exactly this amount. */
+  --font-mono: "Cascadia Mono", "Fira Code", "Consolas", monospace;
   --toc-indent: 0.85rem;
-  --toc-base-pl: 0.5rem;  /* left padding shared by all items */
+  --toc-base-pl: 0.5rem;
 }
-
-/* ---------------------------------------------------------------------------
-   CSS Variables — Dark theme
-   --------------------------------------------------------------------------- */
 
 [data-theme="dark"] {
-  --color-bg: #15171a;
-  --color-text: #d4d4d8;
-  --color-text-muted: #9ca3af;
-  --color-link: #60a5fa;
-  --color-link-hover: #93c5fd;
-  --color-border: #2d3139;
-  --color-sidebar-bg: #1a1d23;
+  --color-bg: #0b1117;
+  --color-text: #e8edf5;
+  --color-text-muted: #98a2b6;
+  --color-link: #93c5fd;
+  --color-link-hover: #bfdbfe;
+  --color-border: rgba(148, 163, 184, 0.18);
+  --color-sidebar-bg: rgba(12, 17, 25, 0.82);
   --color-sidebar-active: #60a5fa;
-  --color-sidebar-active-bg: #1e293b;
-  --color-nav-part: #a0a0a0;
-  --color-code-bg: #1e1e2e;
-  --color-topbar-bg: #1a1d23;
-  --color-search-bg: #1e2028;
-  --color-backdrop: rgba(0, 0, 0, 0.6);
-  --thm-theorem-bg: #182131;
-  --thm-theorem-border: #6da2ff;
-  --thm-definition-bg: #17261c;
-  --thm-definition-border: #5bbd87;
-  --thm-example-bg: #2b2418;
-  --thm-example-border: #d0a04a;
-  --thm-remark-bg: #1e2127;
-  --thm-remark-border: #9097a1;
+  --color-sidebar-active-bg: rgba(96, 165, 250, 0.12);
+  --color-nav-part: #8ab4f8;
+  --color-code-bg: #111827;
+  --color-topbar-bg: rgba(8, 12, 18, 0.78);
+  --color-search-bg: #111827;
+  --color-backdrop: rgba(2, 6, 23, 0.65);
+  --color-surface: rgba(15, 23, 34, 0.84);
+  --shadow-panel: 0 28px 50px rgba(0, 0, 0, 0.34);
+  --shadow-pop: 0 18px 30px rgba(0, 0, 0, 0.34);
+  --thm-theorem-bg: rgba(94, 234, 212, 0.09);
+  --thm-theorem-border: #5eead4;
+  --thm-definition-bg: rgba(96, 165, 250, 0.08);
+  --thm-definition-border: #60a5fa;
+  --thm-example-bg: rgba(245, 158, 11, 0.1);
+  --thm-example-border: #f59e0b;
+  --thm-remark-bg: rgba(148, 163, 184, 0.09);
+  --thm-remark-border: #94a3b8;
 }
-
-/* ---------------------------------------------------------------------------
-   Reset & Base
-   --------------------------------------------------------------------------- */
 
 *,
 *::before,
@@ -99,6 +86,7 @@ body {
   line-height: 1.7;
   color: var(--color-text);
   background: var(--color-bg);
+  min-height: 100vh;
 }
 
 a {
@@ -117,10 +105,6 @@ svg {
   height: auto;
 }
 
-/* ---------------------------------------------------------------------------
-   Topbar
-   --------------------------------------------------------------------------- */
-
 .topbar {
   position: sticky;
   top: 0;
@@ -128,22 +112,27 @@ svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: var(--topbar-height);
+  min-height: var(--topbar-height);
   padding: 0 1rem;
   background: var(--color-topbar-bg);
+  backdrop-filter: blur(18px) saturate(160%);
   border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-pop);
 }
 
 .topbar-left {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
   min-width: 0;
 }
 
 .topbar-title {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-text);
   white-space: nowrap;
   overflow: hidden;
@@ -158,11 +147,10 @@ svg {
 .topbar-right {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   flex-shrink: 0;
 }
 
-/* Topbar buttons — shared style */
 .topbar .sidebar-toggle-btn,
 .topbar .theme-toggle,
 .topbar .github-link,
@@ -170,13 +158,14 @@ svg {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  background: none;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   color: var(--color-text-muted);
   cursor: pointer;
-  border-radius: 6px;
-  padding: 0.35rem;
-  transition: background 0.15s, color 0.15s;
+  border-radius: 999px;
+  padding: 0.45rem;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset;
+  transition: background 0.18s, color 0.18s, transform 0.18s, border-color 0.18s;
 }
 
 .topbar .sidebar-toggle-btn:hover,
@@ -186,26 +175,28 @@ svg {
   background: var(--color-sidebar-active-bg);
   color: var(--color-text);
   text-decoration: none;
+  transform: translateY(-1px);
 }
 
-/* Search trigger */
 .search-trigger {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.3rem 0.75rem;
+  padding: 0.45rem 0.9rem;
   border: 1px solid var(--color-border);
-  border-radius: 6px;
-  background: var(--color-bg);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
   color: var(--color-text-muted);
   font-size: 0.85rem;
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
+  box-shadow: var(--shadow-pop);
+  transition: border-color 0.18s, background 0.18s, transform 0.18s;
 }
 
 .search-trigger:hover {
   border-color: var(--color-link);
   background: var(--color-sidebar-active-bg);
+  transform: translateY(-1px);
 }
 
 .search-trigger kbd {
@@ -213,11 +204,10 @@ svg {
   font-size: 0.75rem;
   padding: 0.1rem 0.4rem;
   border: 1px solid var(--color-border);
-  border-radius: 3px;
+  border-radius: 0.35rem;
   background: var(--color-sidebar-bg);
 }
 
-/* Language switch badge */
 .lang-switch {
   font-size: 0.8rem;
   font-weight: 700;
@@ -226,34 +216,30 @@ svg {
   border-radius: 4px;
 }
 
-/* Hide sidebar toggles on desktop */
 #sidebar-toggle-left,
 #sidebar-toggle-right {
   display: none;
 }
 
-/* ---------------------------------------------------------------------------
-   3-Column Layout
-   --------------------------------------------------------------------------- */
-
 .layout {
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr var(--toc-width);
+  gap: 1rem;
+  padding: 1rem;
   min-height: calc(100vh - var(--topbar-height));
+  align-items: start;
 }
-
-/* ---------------------------------------------------------------------------
-   Sidebar Left (Global Navigation)
-   --------------------------------------------------------------------------- */
 
 .sidebar-left {
   position: sticky;
-  top: var(--topbar-height);
-  height: calc(100vh - var(--topbar-height));
+  top: calc(var(--topbar-height) + 1rem);
+  height: calc(100vh - var(--topbar-height) - 2rem);
   overflow-y: auto;
   background: var(--color-sidebar-bg);
-  border-right: 1px solid var(--color-border);
-  padding: 1rem 0;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-panel);
+  padding: 0.9rem 0;
   font-size: 0.9rem;
 }
 
@@ -284,16 +270,21 @@ svg {
 
 .global-nav li a {
   display: block;
-  padding: 0.35rem 1rem;
+  min-width: 0;
+  padding: 0.42rem 1rem;
   color: var(--color-text-muted);
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.18s, color 0.18s, transform 0.18s;
   border-left: 3px solid transparent;
+  border-radius: 0;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .global-nav li a:hover {
   background: var(--color-sidebar-active-bg);
   color: var(--color-text);
   text-decoration: none;
+  transform: translateX(1px);
 }
 
 .global-nav li.active>a {
@@ -370,12 +361,16 @@ svg {
 }
 
 .nav-part {
-  padding: 0.8rem 1rem 0.3rem;
+  margin: 0.6rem 0.8rem 0.35rem;
+  padding: 0.45rem 0.75rem;
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-nav-part);
+  background: rgba(139, 107, 63, 0.08);
+  border: 1px solid rgba(139, 107, 63, 0.14);
+  border-radius: 999px;
 }
 
 .global-nav li:not(.nav-sub)>a {
@@ -405,32 +400,33 @@ svg {
   font-size: 0.8em;
 }
 
-/* ---------------------------------------------------------------------------
-   Main Content
-   --------------------------------------------------------------------------- */
-
 .content {
   max-width: var(--content-max-width);
-  padding: 2rem 3rem;
   width: 100%;
+  padding: clamp(1.5rem, 2vw, 2.75rem);
   justify-self: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 28px;
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(18px) saturate(140%);
 }
-
-/* ---------------------------------------------------------------------------
-   Sidebar Right (Local TOC)
-   --------------------------------------------------------------------------- */
 
 .sidebar-right {
   position: sticky;
-  top: var(--topbar-height);
-  height: calc(100vh - var(--topbar-height));
+  top: calc(var(--topbar-height) + 1rem);
+  height: calc(100vh - var(--topbar-height) - 2rem);
   overflow-y: auto;
-  padding: 2rem 1rem;
+  padding: 1.25rem 1rem;
   font-size: 0.85rem;
-  border-left: 1px solid var(--color-border);
+  background: var(--color-sidebar-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-panel);
 }
 
 .local-toc h3 {
+  font-family: var(--font-heading);
   font-size: 0.92rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -444,21 +440,6 @@ svg {
   padding: 0;
 }
 
-/* ---------------------------------------------------------------------------
-   Local TOC — uniform indentation system
-   ============================================================
-   Every level step adds exactly --toc-indent.
-   Levels are:
-     toc-l2  →  0 extra indents  (top-level h2 headings)
-     toc-l3  →  1 extra indent   (h3 headings or theorems under h2)
-     toc-l4  →  2 extra indents  (h4 headings or theorems under h3)
-     toc-l5  →  3 extra indents  (h5 headings or theorems under h4)
-
-   Theorem entries carry a toc-lN class where N is their parent
-   heading level + 1, so they naturally sit one step deeper than
-   the heading they belong to — no special-case overrides needed.
-   --------------------------------------------------------------------------- */
-
 .local-toc li a {
   display: block;
   padding-top: 0.22rem;
@@ -467,16 +448,18 @@ svg {
   padding-left: var(--toc-base-pl);
   color: var(--color-text-muted);
   border-left: 2px solid transparent;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-  border-radius: 0 6px 6px 0;
+  transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.18s;
+  border-radius: 0;
   font-size: 0.82rem;
   line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .local-toc li a:hover {
   background: var(--color-sidebar-active-bg);
   color: var(--color-text);
   text-decoration: none;
+  transform: translateX(1px);
 }
 
 .local-toc li a.active {
@@ -485,7 +468,6 @@ svg {
   border-left-color: var(--color-sidebar-active);
 }
 
-/* Level 2 — base level, no extra indent */
 .local-toc .toc-l2 a {
   padding-left: var(--toc-base-pl);
   font-size: 0.84rem;
@@ -493,33 +475,27 @@ svg {
   color: var(--color-text);
 }
 
-/* Level 3 — 1 step in */
 .local-toc .toc-l3 a {
   padding-left: calc(var(--toc-base-pl) + var(--toc-indent));
   font-size: 0.80rem;
   font-weight: 400;
 }
 
-/* Level 4 — 2 steps in */
 .local-toc .toc-l4 a {
   padding-left: calc(var(--toc-base-pl) + 2 * var(--toc-indent));
   font-size: 0.77rem;
 }
 
-/* Level 5 — 3 steps in */
 .local-toc .toc-l5 a {
   padding-left: calc(var(--toc-base-pl) + 3 * var(--toc-indent));
   font-size: 0.74rem;
 }
 
-/* Level 6 — 4 steps in */
 .local-toc .toc-l6 a {
   padding-left: calc(var(--toc-base-pl) + 4 * var(--toc-indent));
   font-size: 0.72rem;
 }
 
-/* Theorem entries — same indent as their toc-lN class dictates,
-   just slightly muted. No italic, no special offset. */
 .local-toc .toc-theorem a {
   font-weight: 400;
   font-style: normal;
@@ -528,55 +504,62 @@ svg {
   padding-bottom: 0.15rem;
 }
 
-/* ---------------------------------------------------------------------------
-   Typography — Headings
-   --------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  text-wrap: balance;
+}
 
 h1 {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  margin: 2rem 0 1rem;
-  line-height: 1.3;
-  border-bottom: 2px solid var(--color-border);
-  padding-bottom: 0.5rem;
+  font-size: 2.35rem;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.03em;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
 h2 {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  margin: 2rem 0 0.75rem;
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: 0.3rem;
+  font-size: 1.72rem;
+  margin: 2.4rem 0 1rem;
+  padding-left: 0.95rem;
+  border-left: 4px solid var(--color-link);
+  color: var(--color-text);
+}
+
+h2:first-of-type {
+  margin-top: 1.4rem;
 }
 
 h3 {
-  font-family: var(--font-heading);
   font-size: 1.2rem;
-  margin: 1.5rem 0 0.5rem;
+  margin: 1.7rem 0 0.6rem;
+  color: var(--color-text);
 }
 
 h4 {
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
+  font-size: 1.03rem;
   font-weight: 700;
   margin: 1.25rem 0 0.4rem;
   color: var(--color-text);
 }
 
 h5 {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 0.9rem;
+  font-weight: 800;
   margin: 1rem 0 0.35rem;
   color: var(--color-text);
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.06em;
 }
 
 h6 {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 800;
   margin: 0.75rem 0 0.3rem;
   color: var(--color-text-muted);
 }
@@ -631,10 +614,6 @@ blockquote.epigraph footer::before {
   font-variant: small-caps;
 }
 
-/* ---------------------------------------------------------------------------
-   Footnotes
-   --------------------------------------------------------------------------- */
-
 .footnotes {
   margin-top: 2em;
   font-size: 0.9em;
@@ -676,18 +655,23 @@ sup {
 }
 
 .paper-header .paper-title {
+  font-family: var(--font-heading);
   font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   border: none;
   margin: 1rem 0;
 }
 
 .paper-header .author {
+  font-family: var(--font-heading);
   text-align: center;
   font-size: 1.2rem;
   margin: 0.5rem 0;
 }
 
 .paper-header .date {
+  font-family: var(--font-heading);
   color: var(--color-text-muted);
   text-align: center;
 }
@@ -700,7 +684,6 @@ sup {
   color: var(--color-text-muted);
 }
 
-/* PDF download button */
 .pdf-download {
   text-align: center;
   margin-top: 1.5rem;
@@ -727,10 +710,6 @@ sup {
   color: var(--color-bg);
 }
 
-/* ---------------------------------------------------------------------------
-   Figures & Images
-   --------------------------------------------------------------------------- */
-
 figure {
   margin: 1.5em 0;
   text-align: center;
@@ -743,7 +722,6 @@ figcaption {
   text-align: left;
 }
 
-/* SVG frames from Typst html.frame */
 .typst-frame {
   display: block;
   margin-left: auto;
@@ -756,14 +734,17 @@ svg.typst-frame {
   height: auto;
 }
 
-/* Dark mode: invert SVGs and rotate hue to preserve colors */
 [data-theme="dark"] svg.typst-frame {
   filter: invert(1) hue-rotate(180deg);
 }
 
-/* Dark mode: invert inline SVG images (PDFs rendered as base64 SVG by Typst) */
 [data-theme="dark"] figure img[src^="data:image/svg+xml"] {
   filter: invert(1) hue-rotate(180deg);
+}
+
+a svg.typst-frame,
+a svg.typst-frame * {
+  fill: currentColor;
 }
 
 ul.itemize-ul-list {
@@ -784,10 +765,6 @@ ul.itemize-ul-list {
   top: 0;
 }
 
-/* ---------------------------------------------------------------------------
-   Tables
-   --------------------------------------------------------------------------- */
-
 table {
   border-collapse: collapse;
   margin: 1em 0;
@@ -807,20 +784,20 @@ th {
   font-weight: 600;
 }
 
-/* ---------------------------------------------------------------------------
-   Theorem Boxes — Light theme
-   --------------------------------------------------------------------------- */
-
 .thm-box {
-  padding: 1em;
-  margin: 1em 0;
-  border-left: 4px solid;
-  border-radius: 4pt;
+  padding: 1rem 1rem 1rem 1.1rem;
+  margin: 1.1rem 0;
+  border: 1px solid var(--color-border);
+  border-left: 5px solid;
+  border-radius: 18px;
   text-align: left;
+  box-shadow: 0 12px 24px rgba(34, 42, 58, 0.04);
 }
 
 .thm-head {
-  margin: 0 0 0.5em;
+  margin: 0 0 0.45em;
+  font-family: var(--font-heading);
+  font-weight: 700;
 }
 
 .thm-theorem,
@@ -849,7 +826,6 @@ th {
   border-color: var(--thm-remark-border);
 }
 
-/* Theorem Boxes — Dark theme */
 [data-theme="dark"] .thm-theorem,
 [data-theme="dark"] .thm-lemma,
 [data-theme="dark"] .thm-proposition,
@@ -872,7 +848,6 @@ th {
   background: var(--thm-remark-bg);
 }
 
-/* Proofs */
 .thm-proof {
   margin: 1em 0;
 }
@@ -886,8 +861,7 @@ th {
   text-align: right;
 }
 
-/* Solutions */
-.thm-solution > summary {
+.thm-solution>summary {
   display: flex;
   align-items: center;
   gap: 0.35em;
@@ -897,12 +871,12 @@ th {
   list-style: none;
 }
 
-.thm-solution > summary::-webkit-details-marker,
-.thm-solution > summary::marker {
+.thm-solution>summary::-webkit-details-marker,
+.thm-solution>summary::marker {
   display: none;
 }
 
-.thm-solution > summary::after {
+.thm-solution>summary::after {
   content: "";
   flex: 0 0 auto;
   width: 0.5rem;
@@ -915,17 +889,13 @@ th {
   transition: transform 0.15s, color 0.15s;
 }
 
-.thm-solution[open] > summary::after {
+.thm-solution[open]>summary::after {
   transform: rotate(-135deg);
 }
 
-.thm-solution > summary:hover::after {
+.thm-solution>summary:hover::after {
   color: var(--color-text);
 }
-
-/* ---------------------------------------------------------------------------
-   Code & Algorithms
-   --------------------------------------------------------------------------- */
 
 code,
 pre {
@@ -940,45 +910,59 @@ pre {
   overflow-x: auto;
 }
 
-/* ---------------------------------------------------------------------------
-   Page Navigation (prev/next)
-   --------------------------------------------------------------------------- */
-
 .page-nav {
   display: flex;
+  gap: 1rem;
+  align-items: stretch;
   justify-content: space-between;
-  align-items: center;
   margin-top: 3rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--color-border);
 }
 
 .page-nav a {
-  display: inline-block;
-  padding: 0.5rem 1rem;
+  display: block;
+  min-height: 3.4rem;
+  padding: 0.75rem 1rem;
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 0.65rem;
+  background: var(--color-surface);
   font-size: 0.9rem;
-  transition: background 0.15s, border-color 0.15s;
+  box-shadow: var(--shadow-pop);
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
+  flex: 0 1 auto;
+  max-width: 50%;
+  min-width: 0;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.35;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+.page-nav .nav-prev {
+  text-align: left;
+}
+
+.page-nav .nav-next {
+  text-align: right;
+}
+
+.page-nav>span {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .page-nav a:hover {
-  background: var(--color-sidebar-bg);
+  background: var(--color-sidebar-active-bg);
   border-color: var(--color-link);
   text-decoration: none;
+  transform: translateY(-1px);
 }
-
-/* ---------------------------------------------------------------------------
-   Bibliography
-   --------------------------------------------------------------------------- */
 
 .bibliography {
   font-size: 0.9em;
 }
-
-/* ---------------------------------------------------------------------------
-   Sidebar Backdrop (mobile overlays)
-   --------------------------------------------------------------------------- */
 
 .sidebar-backdrop {
   display: none;
@@ -991,10 +975,6 @@ pre {
 .sidebar-backdrop.visible {
   display: block;
 }
-
-/* ---------------------------------------------------------------------------
-   Search Modal
-   --------------------------------------------------------------------------- */
 
 .search-overlay {
   display: none;
@@ -1016,8 +996,8 @@ pre {
   max-width: 600px;
   background: var(--color-search-bg);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  box-shadow: var(--shadow-panel);
   overflow: hidden;
 }
 
@@ -1109,11 +1089,6 @@ pre {
   font-size: 0.95rem;
 }
 
-/* ---------------------------------------------------------------------------
-   Responsive Design
-   --------------------------------------------------------------------------- */
-
-/* Medium screens: hide right sidebar */
 @media (max-width: 1200px) {
   .sidebar-right {
     display: none;
@@ -1127,22 +1102,21 @@ pre {
     display: inline-flex;
   }
 
-  /* Right sidebar as overlay when toggled */
   .sidebar-right.open {
     display: block;
     position: fixed;
-    top: var(--topbar-height);
+    top: calc(var(--topbar-height) + 1rem);
     right: 0;
     width: var(--toc-width);
-    height: calc(100vh - var(--topbar-height));
+    height: calc(100vh - var(--topbar-height) - 2rem);
     z-index: 150;
-    background: var(--color-bg);
-    border-left: 1px solid var(--color-border);
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    background: var(--color-sidebar-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 24px 0 0 24px;
+    box-shadow: var(--shadow-panel);
   }
 }
 
-/* Small screens: hide both sidebars */
 @media (max-width: 960px) {
   .layout {
     grid-template-columns: 1fr;
@@ -1156,31 +1130,29 @@ pre {
     display: inline-flex;
   }
 
-  /* Left sidebar as overlay */
   .sidebar-left.open {
     display: block;
     position: fixed;
-    top: var(--topbar-height);
+    top: calc(var(--topbar-height) + 1rem);
     left: 0;
     width: var(--sidebar-width);
-    height: calc(100vh - var(--topbar-height));
+    height: calc(100vh - var(--topbar-height) - 2rem);
     z-index: 150;
     background: var(--color-sidebar-bg);
-    border-right: 1px solid var(--color-border);
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--color-border);
+    border-radius: 0 24px 24px 0;
+    box-shadow: var(--shadow-panel);
   }
 
   .content {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.25rem;
   }
 
-  /* Hide Ctrl+K label on small screens */
   .search-trigger kbd {
     display: none;
   }
 }
 
-/* Very small screens */
 @media (max-width: 600px) {
   .topbar-title {
     font-size: 0.8rem;
@@ -1188,13 +1160,9 @@ pre {
   }
 
   .content {
-    padding: 1.5rem 1rem;
+    padding: 1.25rem 0.95rem;
   }
 }
-
-/* ---------------------------------------------------------------------------
-   Print
-   --------------------------------------------------------------------------- */
 
 @media print {
 

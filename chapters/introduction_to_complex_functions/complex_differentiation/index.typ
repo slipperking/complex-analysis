@@ -107,13 +107,13 @@ $
   & = (cos theta pdv(, r) - (sin theta)/r pdv(, theta))(cos theta pdv(, r) - (sin theta)/r pdv(, theta)) \
   & quad"" + (sin theta pdv(, r) + (cos theta)/r pdv(, theta))(sin theta pdv(, r) + (cos theta)/r pdv(, theta)) \
   & = cos^2 theta pdv(, r, 2)
-  - cos theta sin theta (-(1/r^2) pdv(, theta) + (1/r) pdv(, theta, r)) \
+  - cos theta sin theta (-1/r^2 pdv(, theta) + 1/r pdv(, theta, r)) \
   & quad"" - (sin theta)/r (-sin theta pdv(, r) + cos theta pdv(, theta, r))
   + (sin theta)/r^2 (cos theta pdv(, theta) + sin theta pdv(, theta, 2)) \
   & wide"" + sin^2 theta pdv(, r, 2)
-  + sin theta cos theta (-(1/r^2) pdv(, theta) + (1/r) pdv(, theta, r)) \
+  + sin theta cos theta (-1/r^2 pdv(, theta) + 1/r pdv(, theta, r)) \
   & quad wide"" + (cos theta)/r (cos theta pdv(, r) + sin theta pdv(, theta, r)) + (cos theta)/r^2 (-sin theta pdv(, theta) + cos theta pdv(, theta, 2)) \
-  & = pdv(, r, 2) + (1/r^2) pdv(, theta, 2) + (1/r) pdv(, r).
+  & = pdv(, r, 2) + 1/r^2 pdv(, theta, 2) + 1/r pdv(, r).
 $ <eq:laplacianpolarform>
 
 #proposition[

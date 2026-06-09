@@ -294,7 +294,7 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
         0 & "if" z in {a_k}_(k in NN).
       )
     $
-    Since $partialderivative(u, overline(z), style: "horizontal") equiv partialderivative(psi_n, overline(z), style: "horizontal") equiv 0$ and is $C^oo$ on $overline(V_n) without {a_n}$ and $phi.alt$ vanishes on ${a_k}_(k in NN)$, $phi.alt in C^oo (CC)$. By the discussion preceding @thm:onedimensionalpartialconjugatesolution, there exists a $C^oo$ function $v(z)$ such that $pdv(v, overline(z)) = phi.alt(z)$ on $CC$. Since $phi.alt$ is $C^oo$, it follows that $v$ is also $C^oo$. Define $f(z) = u(z) - v(z)$. Then
+    Since $partialderivative(u, overline(z), style: "horizontal") equiv partialderivative(psi_n, overline(z), style: "horizontal") equiv 0$ and is $C^oo$ on $overline(V_n) without {a_n}$ and $phi.alt$ vanishes on ${a_k}_(k in NN)$, $phi.alt in C^oo (CC)$. By the discussion preceding @thm:one_dimensional_partial_conjugate_solution, there exists a $C^oo$ function $v(z)$ such that $pdv(v, overline(z)) = phi.alt(z)$ on $CC$. Since $phi.alt$ is $C^oo$, it follows that $v$ is also $C^oo$. Define $f(z) = u(z) - v(z)$. Then
     $
       pdv(f, overline(z)) = pdv(u, overline(z)) - pdv(v, overline(z)) = phi.alt(z) - phi.alt(z) = 0,
     $
@@ -382,7 +382,7 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
   $
     g(z) / Phi(z) = pdv(Psi, overline(z)),
   $
-  which has removable singularities at each $z_k$. Define $g(z) / Phi(z) = 0$ at $z = z_k$. Under this assertion, we have $g(z) / Phi(z) in C^oo (CC)$. Since the support of $g(z) / Phi(z)$ is the union of disjoint compact sets, by @thm:onedimensionalpartialconjugatesolution, there exists a function $Psi in C^oo (CC)$ satisfying
+  which has removable singularities at each $z_k$. Define $g(z) / Phi(z) = 0$ at $z = z_k$. Under this assertion, we have $g(z) / Phi(z) in C^oo (CC)$. Since the support of $g(z) / Phi(z)$ is the union of disjoint compact sets, by @thm:one_dimensional_partial_conjugate_solution, there exists a function $Psi in C^oo (CC)$ satisfying
   $
     g(z) / Phi(z) = pdv(Psi, overline(z)).
   $

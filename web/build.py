@@ -36,6 +36,11 @@ BASE_URL = "/"  # overridden by --base-url CLI arg
 HEADING_TAGS = {"h2", "h3", "h4", "h5", "h6"}
 
 TOC_MIN_LEVEL = 2
+HEADING_NUMBER_RE = re.compile(
+    r"^(?:Chapter\s+(?P<chapter>\d+):\s*(?P<chapter_label>.*)|"
+    r"Appendix\s+(?P<appendix>[A-Z]):\s*(?P<appendix_label>.*)|"
+    r"(?P<number>\d+(?:\.\d+)*)(?:[.)]\s*|\s+)(?P<label>.*))$"
+)
 
 ICON_HAMBURGER = (
     '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"'
@@ -96,25 +101,30 @@ def ensure_anchor_id(node: Tag, fallback_text: str) -> str:
     return slug
 
 
+def split_heading_prefix(text: str) -> tuple[str | None, str]:
+    """Return (number_prefix, label) for a heading-like string."""
+    text = " ".join(text.split())
+    match = HEADING_NUMBER_RE.match(text)
+    if match:
+        number = (
+            match.group("chapter")
+            or match.group("appendix")
+            or match.group("number")
+        )
+        label = (
+            match.group("chapter_label")
+            or match.group("appendix_label")
+            or match.group("label")
+            or ""
+        )
+        return number, label.strip()
+    return None, text
+
+
 def clean_nav_title_text(text: str) -> str:
     """Strip leading chapter/section number prefixes from plain-text nav labels."""
-    text = " ".join(text.split())
-    text = re.sub(r"^Chapter\s+\d+:\s*", "", text)
-    text = re.sub(r"^\d+(?:\.\d+)*\s+", "", text)
-    return text.strip()
-
-
-def clean_nav_title_html(heading: Tag) -> str:
-    """Strip leading number prefixes from a heading while preserving inline HTML."""
-    cloned = BeautifulSoup(str(heading), "html.parser").find(heading.name)
-    if cloned is None:
-        return ""
-    first_text = cloned.find(string=True)
-    if first_text is not None:
-        cleaned = re.sub(r"^\s*Chapter\s+\d+:\s*", "", str(first_text))
-        cleaned = re.sub(r"^\s*\d+(?:\.\d+)*\s+", "", cleaned)
-        first_text.replace_with(cleaned)
-    return cloned.decode_contents().strip()
+    _number, label = split_heading_prefix(text)
+    return label
 
 
 def heading_inner_html(heading: Tag) -> str:
@@ -311,7 +321,9 @@ def discover_structure(
             if title_heading
             else sid.replace("-", " ").title()
         )
-        nav_title_html = clean_nav_title_html(title_heading) if title_heading else page_title
+        nav_title_html = (
+            heading_inner_html(title_heading) if title_heading else page_title
+        )
 
         if sid == "cover":
             page_title = "Home"

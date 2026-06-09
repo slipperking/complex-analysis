@@ -108,7 +108,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
 
   $
     integral_(U without D(z, epsilon)) (partial + overline(partial)) ((f(zeta)) / (zeta - z)) and dzeta & =integral_(U without D(z, epsilon)) pdv(, zeta) ((f(zeta)) / (zeta - z)) dzeta and dzeta \
-    & + pdv(, overline(zeta)) ((f(zeta)) / (zeta - z)) dif overline(zeta) and dzeta.
+    & quad""+ pdv(, overline(zeta)) ((f(zeta)) / (zeta - z)) dif overline(zeta) and dzeta.
   $
 
   The first term in the integrand vanishes as it contains $dzeta and dzeta$. The second term can be simplified using the fact that $pdv(, overline(zeta))(1 / (zeta - z)) = 0$, leading to
@@ -125,12 +125,12 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
 
   Because $f in C^1 (overline(U))$, by @prop:c1_lipschitz, $f$ is Lipschitz continuous on $overline(U)$, and $exists M in RR_(>0)$ such that $forall z_0, z_1 in overline(U)$, $abs(f(z_1) - f(z_0)) <= M abs(z_1 - z_0)$. On $partial D(z,epsilon)$, we get that $abs(f(z + epsilon ee^(ii t)) - f(z)) <= M epsilon$. Therefore,
   $
-    abs(integral_0^(2 uppi) (f(z + epsilon ee^(ii t)) - f(z)) dt) <= integral_0^(2 uppi) abs(f(z + epsilon ee^(ii t)) - f(z)) dt <= 2 M uppi epsilon,
+    abs(integral_0^(2 uppi) [f(z + epsilon ee^(ii t)) - f(z)] dt) <= integral_0^(2 uppi) abs(f(z + epsilon ee^(ii t)) - f(z)) dt <= 2 M uppi epsilon,
   $
   which approaches 0 as $epsilon ->0$. Taking this limit, we obtain
 
   $
-    taui f(z) = integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z) + lim_(epsilon -> 0) integral_(D(z, epsilon)) pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z).
+    taui f(z) = integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) (dif overline(zeta) and dzeta) / (zeta - z) + lim_(epsilon -> 0) integral_(D(z, epsilon)) pdv(f, overline(zeta)) (dif overline(zeta) and dzeta) / (zeta - z).
   $ <eq:pompeiu_epsilonlimitintermediate>
 
   We then aim to prove that
@@ -210,15 +210,15 @@ From the above result, we can directly obtain the following theorem:
     integral.cont_(partial U) f(zeta) dzeta = integral.cont_(partial U) omega = integral_U dif omega = integral_U pdv(f, overline(zeta)) dif overline(zeta) and dzeta = 0. #qedhere
   $]
 
-#theorem[
+#theorem[Solution to the one-dimensional $overline(partial)$-problem][
   For a compactly supported function $psi(z)in C^1 (CC)$, a solution satisfying $u(z)in C^1 (CC)$ to the non-homogeneous Cauchy--Riemann equation
   $ pdv(u(z), overline(z))=psi(z) $
   is
 
   $
     u(z) = -1 / taui integral_CC (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta.
-  $ <eq:onedimensionalpartialconjugatesolution>
-] <thm:onedimensionalpartialconjugatesolution>
+  $ <eq:one_dimensional_partial_conjugate_solution>
+] <thm:one_dimensional_partial_conjugate_solution>
 
 #proof[Split $CC$ into $CC without D (z, epsilon)$ and $overline(D (z, epsilon))$. For all $epsilon > 0$, the integral
   $ -1 / (taui) integral_(CC without D (z, epsilon)) (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta $
@@ -227,13 +227,13 @@ From the above result, we can directly obtain the following theorem:
     lim_(epsilon -> 0) (-1 / (taui) integral_(D(z, epsilon)) (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta) = 0.
   $
 
-  Therefore, @eq:onedimensionalpartialconjugatesolution is continuous. A trivial substitution can be used to rewrite
+  Therefore, @eq:one_dimensional_partial_conjugate_solution is continuous. A trivial substitution can be used to rewrite
   $ u(z) = 1 / (taui) integral_CC (psi(zeta + z)) / zeta dif zeta and dif overline(zeta) $
   Then,
 
   $
     (u(z + Delta z) - u (z)) / (Delta z) = 1 / (taui) integral_CC (psi(zeta + z + Delta z) - psi (zeta + z)) / (Delta z zeta) dif zeta and dif overline(zeta).
-  $ <eq:onedimensionalpartialconjugatesolution_differenceexpr>
+  $ <eq:one_dimensional_partial_conjugate_solution_differenceexpr>
 
   For a fixed $z$, the value of
   $ (psi(zeta + z + Delta z) - psi (zeta + z)) / (Delta z) $
@@ -242,19 +242,19 @@ From the above result, we can directly obtain the following theorem:
   and specifically, when $zeta + z in.not K$,
   $ (psi(zeta+z+Delta z)-psi (zeta+z))/(Delta z)=0. $
 
-  As shown above, the integrand is uniformly bounded by $M$, which has a convergent integral of $integral_K M dif zeta and dif overline(zeta)$, the limit $Delta z ->0$ may commute with the integral in @eq:onedimensionalpartialconjugatesolution_differenceexpr. Let $zeta=xi+ii eta$. From the real axis,
+  As shown above, the integrand is uniformly bounded by $M$, which has a convergent integral of $integral_K M dif zeta and dif overline(zeta)$, the limit $Delta z ->0$ may commute with the integral in @eq:one_dimensional_partial_conjugate_solution_differenceexpr. Let $zeta=xi+ii eta$. From the real axis,
 
   $
     pdv(u, x)(z) = 1 / taui integral_CC pdv(psi, xi) (zeta + z) (dzeta and dzetabar) / zeta = 1 / taui integral_CC pdv(psi(zeta), xi) (dzeta and dzetabar) / (zeta - z).
-  $ <eq:onedimensionalpartialconjugatesolution_differenceexpr_realaxisderivative>
+  $ <eq:one_dimensional_partial_conjugate_solution_differenceexpr_realaxisderivative>
 
   From the imaginary axis,
 
   $
     pdv(u, y)(z) = 1 / taui integral_CC pdv(psi, eta) (zeta + z) (dzeta and dzetabar) / zeta = 1 / taui integral_CC pdv(psi(zeta), eta) (dzeta and dzetabar) / (zeta - z).
-  $ <eq:onedimensionalpartialconjugatesolution_differenceexpr_imaginaryaxisderivative>
+  $ <eq:one_dimensional_partial_conjugate_solution_differenceexpr_imaginaryaxisderivative>
 
-  Since $psi in C^1 (CC)$ and has Lipschitz constant $M$, @eq:onedimensionalpartialconjugatesolution_differenceexpr_realaxisderivative, @eq:onedimensionalpartialconjugatesolution_differenceexpr_imaginaryaxisderivative are both continuous (by the same argument for the continuity of $u(z)$). Thus, $u in C^1(CC)$. It follows from the two equations that
+  Since $psi in C^1 (CC)$ and has Lipschitz constant $M$, @eq:one_dimensional_partial_conjugate_solution_differenceexpr_realaxisderivative, @eq:one_dimensional_partial_conjugate_solution_differenceexpr_imaginaryaxisderivative are both continuous (by the same argument for the continuity of $u(z)$). Thus, $u in C^1(CC)$. It follows from the two equations that
   $
     pdv(u, overline(z)) = 1 / (taui) integral_CC pdv(psi, overline(zeta)) dot 1 / (zeta - z) dzeta and dif overline(zeta) = 1 / (taui) integral_K pdv(psi, overline(zeta)) dot 1 / (zeta - z) dzeta and dif overline(zeta).
   $
@@ -266,11 +266,11 @@ From the above result, we can directly obtain the following theorem:
 #remark[In the first part, we established that a function $psi(z)in C^0(CC)$ with compact support satisfies
   $ u(z) = -1 / (taui) integral_CC (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta in C^0(CC). $
 
-  If $psi(z)in C^1(CC)$, then the first order derivatives of $u(z)$ can be written in the same form (@eq:onedimensionalpartialconjugatesolution_differenceexpr_realaxisderivative, @eq:onedimensionalpartialconjugatesolution_differenceexpr_imaginaryaxisderivative) since $pdv(psi, xi),pdv(psi, eta)in C^0(CC)$ and are also compactly supported. Then they too are continuous functions, and $u(z)in C^1(CC)$.
+  If $psi(z)in C^1(CC)$, then the first order derivatives of $u(z)$ can be written in the same form (@eq:one_dimensional_partial_conjugate_solution_differenceexpr_realaxisderivative, @eq:one_dimensional_partial_conjugate_solution_differenceexpr_imaginaryaxisderivative) since $pdv(psi, xi),pdv(psi, eta)in C^0(CC)$ and are also compactly supported. Then they too are continuous functions, and $u(z)in C^1(CC)$.
 
   Then using the same argument, In general, for $psi(z)in C^k (CC)$, the same process can be used recursively to find that $u(z)in C^k (CC)$ as well.
 
-  If the support of $psi(z)$ is the union of infinitely many or finitely many disjoint compact sets, then the integral in @eq:onedimensionalpartialconjugatesolution can be split into a sum of integrals over each compact set, and the same argument applies to each term.]
+  If the support of $psi(z)$ is the union of infinitely many or finitely many disjoint compact sets, then the integral in @eq:one_dimensional_partial_conjugate_solution can be split into a sum of integrals over each compact set, and the same argument applies to each term.]
 
 When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, he included the necessary condition that $f(z)in C^1 (overline(U))$. It was later shown that all such holomorphic functions had holomorphic derivatives, and this condition was thus later dropped by Goursat:
 
