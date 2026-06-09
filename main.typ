@@ -49,7 +49,7 @@
           Typst Source: https://github.com/slipperking/complex-analysis
         ]
         #html.elem("p", attrs: (class: "pdf-download"))[
-          #html.elem("a", attrs: (href: "../pdf/notes.pdf", class: "btn-pdf"))[
+          #html.elem("a", attrs: (href: "pdf/notes.pdf", class: "btn-pdf"))[
             Download PDF
           ]
         ]
