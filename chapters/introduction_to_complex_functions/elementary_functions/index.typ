@@ -133,13 +133,13 @@ Doing casework on $alpha$,
 1. If $alpha = u in ZZ$, then $u$ can be absorbed into $k$, and $z^alpha$ is single-valued.
 + If $alpha = u in QQ$ with reduced fractional form $p / q$, where $p, q in ZZ$, $q > 0$, and $gcd(p, q) = 1$, then the multi-valued function $z^alpha$ is given by
   $
-    z^alpha & = abs(z)^(p / q) exp(ii (p / q) (Arg(z) + 2 uppi k)) \
-            & = abs(z)^(p / q) exp(ii (p / q) Arg(z)) exp(taui (p / q) k),
+    z^alpha & = abs(z)^(p / q) exp(ii p / q (Arg(z) + 2 uppi k)) \
+            & = abs(z)^(p / q) exp(ii p / q Arg(z)) exp(taui p / q k),
   $
   for $k in ZZ$. These values are periodic with period $q$, since
-  $ exp(taui (p / q) (k + q)) = exp(taui (p / q) k), $
+  $ exp(taui p / q (k + q)) = exp(taui p / q k), $
   as $exp(taui p) = 1$ for integer $p$. To prove there are exactly $q$ distinct values, consider $k = 0, 1, 2, dots, q - 1$. The exponential factors are $exp(taui (p / q) k)$. These are distinct if, for $0 <= j < k <= q - 1$,
-  $ exp(taui (p / q) j) != exp(taui (p / q) k), $
+  $ exp(taui p / q j) != exp(taui p / q k), $
   which holds unless $(p / q) (k - j) in ZZ$, or equivalently unless $q$ divides $p(k - j)$. Since $gcd(p, q) = 1$, $q$ must divide $k - j$, but $abs(k - j) < q$ and $k - j != 0$, a contradiction. Thus, $z^alpha$ has exactly $q$ distinct values.
 + If $alpha = u in RR without QQ$, then $z^alpha$ is infinite-valued.
 
