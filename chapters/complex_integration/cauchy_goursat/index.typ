@@ -111,7 +111,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
     & + pdv(, overline(zeta)) ((f(zeta)) / (zeta - z)) dif overline(zeta) and dzeta.
   $
 
-  The first term in the integrand vanishes as it contains $dzeta and dzeta$. The second term can be simplified using the fact that $pdv(1 / (zeta - z), overline(zeta)) = 0$, leading to
+  The first term in the integrand vanishes as it contains $dzeta and dzeta$. The second term can be simplified using the fact that $pdv(, overline(zeta))(1 / (zeta - z)) = 0$, leading to
 
   $ integral_(U without D(z, epsilon)) pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z). $
 
@@ -237,7 +237,7 @@ From the above result, we can directly obtain the following theorem:
 
   For a fixed $z$, the value of
   $ (psi(zeta + z + Delta z) - psi (zeta + z)) / (Delta z) $
-  tends to $pdv(psi (zeta + z), zeta)$ as $Delta z -> 0$. Because $psi(zeta) = psi (zeta + z)$ has compact support and is $C^1$, by @prop:c1_lipschitz, it is Lipschitz continuous for a constant $M$. Let $abs(Delta z) < 1$ and let $K = {w in CC : inf_(zeta in op("supp") phi.alt) abs(w - zeta) <= 1}$. Then,
+  tends to $pdv(psi (zeta + z), zeta)$ as $Delta z -> 0$. Because $zeta mapsto psi(zeta + z)$ has compact support and is $C^1$, by @prop:c1_lipschitz, it is Lipschitz continuous for a constant $M$. Let $abs(Delta z) < 1$ and let $K = {w in CC : inf_(zeta in op("supp") psi) abs(w - zeta) <= 1}$ be a neighborhood of the support of $psi$. Then,
   $ abs((psi(zeta + z + Delta z) - psi(zeta + z)) / (Delta z)) <= M, $
   and specifically, when $zeta + z in.not K$,
   $ (psi(zeta+z+Delta z)-psi (zeta+z))/(Delta z)=0. $
@@ -245,13 +245,13 @@ From the above result, we can directly obtain the following theorem:
   As shown above, the integrand is uniformly bounded by $M$, which has a convergent integral of $integral_K M dif zeta and dif overline(zeta)$, the limit $Delta z ->0$ may commute with the integral in @eq:onedimensionalpartialconjugatesolution_differenceexpr. Let $zeta=xi+ii eta$. From the real axis,
 
   $
-    pdv(u, x)(z) = 1 / (taui) integral_CC 1 / zeta pdv(psi, xi) (zeta + z) dif zeta and dif overline(zeta) = 1 / (taui) integral_CC pdv(psi(zeta), xi) dot 1 / (zeta - z) dzeta and dif overline(zeta).
+    pdv(u, x)(z) = 1 / taui integral_CC pdv(psi, xi) (zeta + z) (dzeta and dzetabar) / zeta = 1 / taui integral_CC pdv(psi(zeta), xi) (dzeta and dzetabar) / (zeta - z).
   $ <eq:onedimensionalpartialconjugatesolution_differenceexpr_realaxisderivative>
 
   From the imaginary axis,
 
   $
-    pdv(u, y)(z) = 1 / (taui) integral_CC 1 / zeta pdv(psi, eta) (zeta + z) dif zeta and dif overline(zeta) = 1 / (taui) integral_CC pdv(psi(zeta), eta) dot 1 / (zeta - z) dzeta and dif overline(zeta).
+    pdv(u, y)(z) = 1 / taui integral_CC pdv(psi, eta) (zeta + z) (dzeta and dzetabar) / zeta = 1 / taui integral_CC pdv(psi(zeta), eta) (dzeta and dzetabar) / (zeta - z).
   $ <eq:onedimensionalpartialconjugatesolution_differenceexpr_imaginaryaxisderivative>
 
   Since $psi in C^1 (CC)$ and has Lipschitz constant $M$, @eq:onedimensionalpartialconjugatesolution_differenceexpr_realaxisderivative, @eq:onedimensionalpartialconjugatesolution_differenceexpr_imaginaryaxisderivative are both continuous (by the same argument for the continuity of $u(z)$). Thus, $u in C^1(CC)$. It follows from the two equations that
@@ -430,7 +430,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
   $ abs(f(z) - f(z_0) - f'(z_0) (z - z_0)) < epsilon abs(z - z_0), $
   and $exists N in NN$ such that $forall n in NN_(>N)$, $Delta^n subset D (z_0, delta)$. By @thm:cauchyintegraltheorem, since the functions $z -> 1$ and $z -> z$ are both entire,
-  $ integral.cont_(Delta^n)dz=0, integral.cont_(Delta^n)z dz=0. $
+  $ integral.cont_(Delta^n)dz=0, wide integral.cont_(Delta^n)z dz=0. $
   Then
 
   $

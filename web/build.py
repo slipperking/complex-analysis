@@ -30,7 +30,6 @@ WEB_DIR = ROOT / "web"
 DIST_DIR = WEB_DIR / "dist"
 ASSETS_SRC = WEB_DIR / "assets"
 
-LANG = "en"
 THESIS_TITLE = "Notes on Complex Analysis"
 GITHUB_URL = "https://github.com/slipperking/complex-analysis"
 BASE_URL = "/"  # overridden by --base-url CLI arg
@@ -142,7 +141,7 @@ def relative_href(current_file: str, target_file: str, anchor: str | None = None
 
 def asset_href(current_file: str, asset_path: str) -> str:
     """Build a relative URL from a generated page to a shared asset."""
-    current_dir = (PurePosixPath(LANG) / PurePosixPath(current_file)).parent.as_posix()
+    current_dir = PurePosixPath(current_file).parent.as_posix()
     return posixpath.relpath(asset_path, current_dir if current_dir != "." else ".")
 
 
@@ -152,19 +151,18 @@ def asset_href(current_file: str, asset_path: str) -> str:
 
 def compile_typst() -> Path:
     """Compile the notes to a single HTML file via Typst."""
-    full_html = DIST_DIR / "full-en.html"
+    full_html = DIST_DIR / "full.html"
     DIST_DIR.mkdir(parents=True, exist_ok=True)
     cmd = [
         "typst", "compile",
         "--features", "html",
         "--format", "html",
         "--package-path", str(ROOT / "packages"), # local packages
-        "--input", f"lang={LANG}",
         "--input", "html=true",
         str(ROOT / "main.typ"),
         str(full_html),
     ]
-    print(f"  Compiling HTML ({LANG}): {' '.join(cmd[-3:])}")
+    print(f"  Compiling HTML: {' '.join(cmd[-3:])}")
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.returncode != 0:
         for line in result.stderr.splitlines():
@@ -426,7 +424,7 @@ def build_global_nav(
     return "\n".join(lines), active_nav_groups
 
 
-def build_local_toc(toc: list[dict], lang: str) -> str:
+def build_local_toc(toc: list[dict]) -> str:
     """Build the local TOC sidebar HTML.
 
     Indentation is driven entirely by item["level"]:
@@ -480,7 +478,6 @@ def build_page(
     thesis_title: str,
     prev_link: tuple[str, str] | None,
     next_link: tuple[str, str] | None,
-    lang: str,
     current_file: str,
 ) -> str:
     """Assemble a complete HTML page."""
@@ -504,7 +501,7 @@ def build_page(
 
     return f"""\
 <!DOCTYPE html>
-<html lang="{lang}" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -586,10 +583,10 @@ def build_page(
 
 def split_and_generate(full_html: Path) -> None:
     """Parse the monolithic HTML, split by chapter sections, write individual pages."""
-    out_dir = DIST_DIR / LANG
+    out_dir = DIST_DIR
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"  Parsing HTML ({LANG})...")
+    print("  Parsing HTML...")
     soup = BeautifulSoup(full_html.read_text(encoding="utf-8"), "html.parser")
     pages, nav_items, nav_depths, parts = discover_structure(soup)
 
@@ -651,7 +648,7 @@ def split_and_generate(full_html: Path) -> None:
         global_nav, active_nav_groups = build_global_nav(
             nav_items, parts, sid, nav_depths, fname
         )
-        local_toc_html = build_local_toc(local_toc, LANG)
+        local_toc_html = build_local_toc(local_toc)
 
         prev_link = (nav_items[i - 1][1], nav_items[i - 1][3]) if i > 0 else None
         next_link = (nav_items[i + 1][1], nav_items[i + 1][3]) if i < len(pages) - 1 else None
@@ -707,46 +704,19 @@ def split_and_generate(full_html: Path) -> None:
             thesis_title=THESIS_TITLE,
             prev_link=prev_link,
             next_link=next_link,
-            lang=LANG,
             current_file=fname,
         )
 
         out_path = out_dir / fname
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(page, encoding="utf-8")
-        print(
-            f"    -> {LANG}/{out_path.relative_to(out_dir).as_posix()}"
-            f" ({len(local_toc)} TOC, {cross_links} xlinks)"
-        )
+        print(f"    -> {out_path.relative_to(out_dir).as_posix()} ({len(local_toc)} TOC, {cross_links} xlinks)")
 
     print(f"    Total cross-chapter links rewritten: {cross_links_total}")
 
 
 # ---------------------------------------------------------------------------
-# Step 4: Redirect index
-# ---------------------------------------------------------------------------
-
-def generate_redirect_index() -> None:
-    """Write dist/index.html that immediately redirects to the notes home page."""
-    html = """\
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Notes on Complex Analysis</title>
-  <script>window.location.replace("en/index.html");</script>
-  <meta http-equiv="refresh" content="0;url=en/index.html">
-</head>
-<body>
-  <p>Redirecting&hellip; <a href="en/index.html">Open the notes</a></p>
-</body>
-</html>"""
-    (DIST_DIR / "index.html").write_text(html, encoding="utf-8")
-    print("  -> index.html (redirect)")
-
-
-# ---------------------------------------------------------------------------
-# Step 5: Copy assets
+# Step 4: Copy assets
 # ---------------------------------------------------------------------------
 
 def copy_assets() -> None:
@@ -760,7 +730,7 @@ def copy_assets() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Step 6: Pagefind search index
+# Step 5: Pagefind search index
 # ---------------------------------------------------------------------------
 
 def run_pagefind() -> None:
@@ -803,9 +773,21 @@ def main() -> None:
 
     print("=== Building HTML complex analysis notes ===\n")
 
-    lang_dir = DIST_DIR / LANG
-    if lang_dir.exists():
-        shutil.rmtree(lang_dir)
+    if DIST_DIR.exists():
+        for child in DIST_DIR.iterdir():
+            if child.name == "assets":
+                pagefind_dir = child / "pagefind"
+                if pagefind_dir.exists():
+                    shutil.rmtree(pagefind_dir)
+                continue
+            if child.name == "pdf":
+                continue
+            if args.skip_compile and child.name == "full.html":
+                continue
+            if child.is_dir():
+                shutil.rmtree(child)
+            else:
+                child.unlink()
 
     # 1. Compile Typst → HTML
     if not args.skip_compile:
@@ -813,7 +795,7 @@ def main() -> None:
         full_html = compile_typst()
     else:
         print("[1/5] Skipping Typst compilation")
-        full_html = DIST_DIR / "full-en.html"
+        full_html = DIST_DIR / "full.html"
         if not full_html.exists():
             print(f"  Error: {full_html.name} not found. Run without --skip-compile first.")
             sys.exit(1)
@@ -833,9 +815,8 @@ def main() -> None:
     else:
         print("\n[3/5] Skipping PDF compilation")
 
-    # 4. Assets and redirect index
-    print("\n[4/5] Generating assets and index")
-    generate_redirect_index()
+    # 4. Assets
+    print("\n[4/5] Generating assets")
     copy_assets()
 
     # 5. Pagefind
