@@ -34,7 +34,7 @@ html {
   --content-max-width: 860px;
   --topbar-height: 4rem;
   --font-body: "New Computer Modern", "Computer Modern", Georgia, serif;
-  --font-heading: system-ui, -apple-system, sans-serif;
+  --font-heading: "New Computer Modern", "Computer Modern", Georgia, serif;
   --font-mono: "Cascadia Mono", "Fira Code", "Consolas", monospace;
   --toc-indent: 0.85rem;
   --toc-base-pl: 0.5rem;
@@ -652,6 +652,7 @@ sup {
   color: var(--color-text-muted);
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .paper-header .paper-title {

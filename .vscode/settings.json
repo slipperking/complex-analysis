@@ -6,7 +6,9 @@
         "extcomplex",
         "logp",
         "namefmt",
+        "Nevanlinna",
         "smallcaps",
-        "titlefmt"
+        "titlefmt",
+        "Typst"
     ]
 }

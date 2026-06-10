@@ -528,7 +528,6 @@
   /// )
   /// -> content
   qed-symbol: $qed$,
-  is-html: false,
   doc,
 ) = {
   show figure.where(kind: "thm-env"): it => {
@@ -566,10 +565,11 @@
   }
 
   show math.equation: eq => {
+    let measured = measure(box(width: 100%, eq))
     show metadata.where(value: "thm-qedhere"): tag(thm-qed-show)
     show metadata: data => {
       if type(data.value) == dictionary and data.value.keys().contains("eq-tag") {
-        if is-html {
+        if measured.width <= 0pt {
           [#h(0.5em)#data.value.eq-tag] // render inline
         } else {
           context {
@@ -607,16 +607,16 @@
     // }
 
     if eq.numbering == none and eq.block {
-      if (is-html) {
-        grid(
-          columns: 2,
-          eq, metadata("thm-equation-numbering"),
-        )
-      } else {
+      if measured.width > 0pt {
         box(width: 100%, {
           eq
           place(right + horizon, metadata("thm-equation-numbering"))
         })
+      } else {
+        grid(
+          columns: 2,
+          eq, metadata("thm-equation-numbering"),
+        )
       }
     } else {
       eq

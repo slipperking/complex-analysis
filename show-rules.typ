@@ -4,7 +4,7 @@
   set par(justify: true)
   set page(numbering: "1", margin: 1.75in)
 
-  show: thm-rules.with(qed-symbol: qed-symbol, is-html: _is-html)
+  show: thm-rules.with(qed-symbol: qed-symbol)
   show math.equation: it => {
     if it.fields().keys().contains("label") {
       math.equation(block: true, numbering: scoped-equation-numbering, it)
@@ -93,6 +93,17 @@
   show: itemize.default-enum-list
   show: itemize.config.ref.with(supplement: "Part")
   set enum(numbering: "1")
+
+  set figure(numbering: (n, ..) => {
+    numbering("1.1", counter(heading).get().first(), n)
+  })
+  show heading.where(level: 1): it => {
+    counter(figure.where(kind: image)).update(0)
+    counter(figure.where(kind: table)).update(0)
+    counter(figure.where(kind: raw)).update(0)
+    it
+  }
+
 
   doc
 }
