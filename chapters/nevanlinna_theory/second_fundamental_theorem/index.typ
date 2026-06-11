@@ -72,9 +72,8 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     $
     Since
     $
-      logp (1 / abs(f(z) - a_nu))
-      = logp (2 dot 1 / (2 abs(f(z) - a_nu)))
-      <= log 2 + log (1 / (2 abs(f(z) - a_nu)))
+      logp (1 / abs(f(z) - a_nu)) & = logp (2 dot 1 / (2 abs(f(z) - a_nu))) \
+                                  & <= log 2 + log (1 / (2 abs(f(z) - a_nu)))
     $
     from @prop:lognonnegativepartproperties, it follows that
     $
@@ -127,7 +126,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) & <= m(r, f) + m(r, F) + q logp ((3q) / delta) + log 2 \
                                            & <= T(r, f) - N(r, f) + q logp ((3q) / delta) + log 2 \
                                            & quad "" + T(r, f) - N(r, 1 / f) - log abs(c) + m(r, f' / f) \
-                                           & wide "" + N(r, f' / f) - N(r, f / f') + log abs(c'') + m(r, f' F)
+                                           & quad "" + N(r, f' / f) - N(r, f / f') + log abs(c'') + m(r, f' F)
   $
   Using @eq:nevanlinnacountingjensensformulaexposition2 three times gives that
   $

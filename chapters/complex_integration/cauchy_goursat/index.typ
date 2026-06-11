@@ -633,7 +633,8 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
   Any open region $U subset CC$ with a simple closed boundary can be broken up into smaller regions with the same form as $M N Q P$ with finitely many auxiliary lines. Then the conclusion follows.]
 
-#remark[The theorem is also valid for any multiply connected region (and its boundary will consist of multiple curves) as a multiply connected region is equal to the union of several simply connected regions with vertical auxiliary lines between.
+#remark[
+  The theorem is also valid for any multiply connected region (in which case its boundary will consist of multiple curves of differeng orientations) as a multiply connected region is equal to the union of several simply connected regions with vertical auxiliary lines between.
 
   Additionally, if $U subset CC$ is simply connected and $f$ is holomorphic on $U$, then for any two points $z,z_0 in U$, the integral
   $ integral_(z_0)^z f(zeta)dzeta $
@@ -750,7 +751,7 @@ We have also already seen the utility of parameterization via a polar transforma
   + If $gamma$ encloses the origin, then $forall z in CC without gamma$,
 
     $
-      1 / (taui) integral.cont_gamma z f(zeta) / (z zeta - zeta^2) dzeta = cases(
+      1 / (taui) integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = cases(
         0 & text("if") z in jinterior(gamma)\,,
         f(z) & text("if") z in jexterior(gamma).
       )
@@ -790,7 +791,7 @@ We have also already seen the utility of parameterization via a polar transforma
   + Under the partial fraction decomposition of @eq:cauchy_goursat_formula_exterior_part2_statement, we get that
 
     $
-      I & = integral.cont_gamma z f(zeta) / (z zeta - zeta^2) dzeta = integral.cont_gamma ((f(zeta)) / zeta - (f(zeta)) / (zeta - z)) dzeta \
+      I & = integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = integral.cont_gamma ((f(zeta)) / zeta - (f(zeta)) / (zeta - z)) dzeta \
       & = integral_0^(2 uppi) (f (R ee^(ii theta)) - (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta)))) dif theta + cases(
         0 & text("if") z in jinterior(gamma)\,,
         taui f(z) & text("if") z in jexterior(gamma) inter D(0, R),
@@ -806,7 +807,7 @@ We have also already seen the utility of parameterization via a polar transforma
 
     By substituting the result into @eq:cauchy_goursat_formula_exterior_part2_pre_limit_integral, and letting $R -> oo$, we get that
     $
-      1 / (taui) integral.cont_gamma z f(zeta) / (z zeta - zeta^2) dzeta = cases(
+      1 / (taui) integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = cases(
         0 & "if" z in jinterior(gamma)\,,
         f(z) & "if" z in jexterior(gamma),
       )

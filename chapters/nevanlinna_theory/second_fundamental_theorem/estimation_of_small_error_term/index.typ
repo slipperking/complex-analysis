@@ -17,18 +17,21 @@ Modern results vastly improve said estimations, and the search for a sharp estim
 
   Because the exponential is periodic every $2 uppi ii$, we may assume that $E'_k$ is restricted to $-uppi < theta.alt < uppi$ instead of $-uppi - psi < theta.alt < uppi - psi$. The expression $abs(rho - r ee^(ii theta.alt)) = k r$ gives at most two symmetric solutions $plus.minus theta_0$ (let $theta_0 >= 0$).
 
-  Evidently, for $theta.alt > uppi / 2$ or $theta.alt < -uppi / 2$, $abs(rho - r ee^(ii theta.alt)) >= r >= k r$, so it follows that $theta_0 <= uppi / 2$, and furthermore, all $-theta_0 < theta.alt < theta_0$ lie in $E'_k$ by the geometry of a circle. Since $abs(rho - r ee^(ii theta.alt)) >= abs(Im(rho - r ee^(ii theta.alt))) = r abs(sin(theta.alt))$, assuming that $E'_k != emptyset$, it follows that
+  Evidently, for $theta.alt > uppi / 2$ or $-theta.alt < -uppi / 2$,
+  $ abs(rho - r ee^(ii theta.alt)) = sqrt(rho^2 + r^2 - 2 r rho cos(theta.alt))>= r >= k r,#tag[(Law of Cosines)] $
+  so it follows that $theta_0 <= uppi / 2$, and furthermore, all $-theta_0 < theta.alt < theta_0$ lie in $E'_k$ by the geometry of a circle. Since $abs(rho - r ee^(ii theta.alt)) >= abs(Im(rho - r ee^(ii theta.alt))) = r abs(sin(theta.alt))$, assuming that $E'_k != emptyset$, it follows that
   $
     I & = 2 integral_0^(theta_0) log abs(frac(r, rho - r ee^(ii theta.alt))) dif theta.alt <= 2 integral_0^(theta_0) log csc(theta.alt) dif theta.alt <= 2 integral_0^(theta_0) log(uppi / (2 theta.alt)) dif theta.alt \
-    & = 2 theta_0 log(uppi / 2) - 2 integral_0^(theta_0) log(theta.alt) dif theta.alt = 2 theta_0 log(uppi / 2) - 2 (theta_0 log(theta_0) - theta_0) = 2 theta_0 (log(uppi / (2 theta_0)) + 1).
+    & = 2 theta_0 log(uppi / 2) - 2 integral_0^(theta_0) log(theta.alt) dif theta.alt = 2 theta_0 log(uppi / 2) - 2 (theta_0 log(theta_0) - theta_0) \
+    &= 2 theta_0 (log(uppi / (2 theta_0)) + 1).
   $
 
-  Since $(uppi / 2) sin x >= x$ for $x in [0, uppi / 2]$, it follows that $theta_0 <= (uppi / 2) sin(theta_0) = uppi k / 2$.
+  Since $uppi / 2 sin x >= x$ for $x in [0, uppi / 2]$, it follows that $theta_0 <= uppi / 2 sin theta_0 = (uppi k) / 2$.
   Moreover, $theta mapsto 2 theta (log(uppi / (2 theta)) + 1)$ is an increasing function of $0 <= theta <= uppi / 2$; thus we may replace all instances of $theta_0$ with $uppi k / 2$, proving the lemma.
 ]
 
 #lemma[
-  Let ${z_nu}_(nu = 1)^n$ be $n >= 1$ (possibly indistinct) complex numbers. Define $delta(z) = min({abs(z - z_nu) : nu in NN_(<= n)})$. It follows that for any $r > 0$,
+  Let ${z_nu}_(nu = 1)^n$ be $n >= 1$ (possibly indistinct) complex numbers. Define $delta(z) = min{abs(z - z_nu) : nu in NN_(<= n)}$. It follows that for any $r > 0$,
   $
     frac(1, 2 uppi) integral_0^(2 uppi) logp(frac(r, delta(r ee^(ii theta)))) dtheta <= 2 log n + 1 / 2
   $
@@ -43,18 +46,20 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   and let $E = union.big_(nu = 1)^n E_nu$. For $theta in E$, $delta(r ee^(ii theta)) < r / n$, implying that $r / delta(r ee^(ii theta)) > n$. Define
   $
     log_0 x = cases(
-      log x & x >= n,
-          0 & "otherwise"
-    ) quad "(>= 0)",
+      log x quad & "if" x >= n,
+      0 quad & "otherwise"
+    )(>= 0),
   $
   so that for $theta$ in the prescribed range, we have
   $
-    logp(frac(r, delta(r ee^(ii theta)))) = log_0(frac(r, delta(r ee^(ii theta)))) = log_0(frac(r, min_(nu in NN_(<= n)) abs(r ee^(ii theta) - z_nu))) <= sum_(nu = 1)^n log_0(frac(r, abs(r ee^(ii theta) - z_nu))).
+    logp(frac(r, delta(r ee^(ii theta)))) &= log_0(frac(r, delta(r ee^(ii theta)))) = log_0(frac(r, min_(nu in NN_(<= n)) abs(r ee^(ii theta) - z_nu))) \
+    &<= sum_(nu = 1)^n log_0(frac(r, abs(r ee^(ii theta) - z_nu))).
   $
   Since $0 < 1 / n <= 1$, by virtue of @lem:nevanlinna_small_error_term_estimation_1 for $k = 1 / n$,
   $
-    frac(1, 2 uppi) integral_E logp(frac(r, delta(r ee^(ii theta)))) dtheta <= frac(1, 2 uppi) sum_(nu = 1)^n integral_0^(2 uppi) log_0(frac(r, abs(r ee^(ii theta) - z_nu))) dtheta \
-    = frac(1, 2 uppi) sum_(nu = 1)^n integral_0^(2 uppi) log(frac(r, abs(r ee^(ii theta) - z_nu))) dtheta < frac(1, 2 uppi) sum_(nu = 1)^n frac(uppi, n) (1 + log n) = 1 / 2 + (log n) / 2.
+    frac(1, 2 uppi) integral_E logp(frac(r, delta(r ee^(ii theta)))) dtheta &<= frac(1, 2 uppi) sum_(nu = 1)^n integral_0^(2 uppi) log_0(frac(r, abs(r ee^(ii theta) - z_nu))) dtheta \
+    & = frac(1, 2 uppi) sum_(nu = 1)^n integral_0^(2 uppi) log(frac(r, abs(r ee^(ii theta) - z_nu))) dtheta \
+    &< frac(1, 2 uppi) sum_(nu = 1)^n frac(uppi, n) (1 + log n) = 1 / 2 + (log n) / 2.
   $ <eq:nevanlinna_small_error_term_estimation_2_E_set>
   For $theta in.not E$, for each $nu$ we have $abs(z_nu - r ee^(ii theta)) >= r / n$ and thus $delta(r ee^(ii theta)) >= r / n$. It follows that
   $
@@ -151,43 +156,45 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     m(r, frac(f', f)) & <= logp rho + 3 logp(frac(2, R - r)) + logp T(rho, f) + logp logp abs(frac(1, c)) + logp(frac(1, r)) \
     & quad "" + logp r + 1 / 2 + 5 log 2 + 3 logp R + 3 logp(frac(2, R - r)) \
     & quad "" + 3 logp T(R, f) + 3 logp logp abs(frac(1, c)) + 6 log 2 \
-    & < 5 logp R + 17 log 2 + 6 logp(frac(1, R - r)) + 4 logp T(rho, f) + 4 logp logp abs(frac(1, c)) + logp(frac(1, r)) + 1 / 2 \
-    & <= 5 logp R + 17 log 2 + 6 logp(frac(1, R - r)) + 4 logp T(R, f) + 4 logp logp abs(frac(1, c)) + logp(frac(1, r)) + 1 / 2,
+    & < 5 logp R + 17 log 2 + 6 logp(frac(1, R - r)) + 4 logp T(rho, f) \
+    &quad""+ 4 logp logp abs(frac(1, c)) + logp(frac(1, r)) + 1 / 2 \
+    & <= 5 logp R + 17 log 2 + 6 logp(frac(1, R - r)) + 4 logp T(R, f) \
+    &quad""+ 4 logp logp abs(frac(1, c)) + logp(frac(1, r)) + 1 / 2,
   $
   since $T(rho, f) <= T(R, f)$ (@thm:nevanlinnacharacteristicnondecreasingconvex). This proves the proposition.
 ]
 
 #lemma[Borel][
   Let $T : [r_0, R_0) -> RR$ be an increasing, continuous function satisfying $T > 1$ on all of its domain (where $r_0 < R_0 <= oo$).
-  + If $R_0 = oo$, for $r >= r_0$ outside a set $E_0 subset.eq RR_(>= r_0)$ whose linear measure does not exceed 2 (satisfying $integral_(E_0) dr <= 2$ with respect to the Lebesgue measure#footnote["Linear measure" refers to length. Here, the condition is equivalent to the inequality given by $inf({sum_k abs(I_k) : E subset.eq union.big_k I_k}) <= 2$ where ${I_k}$ are finite open intervals.]),
+  + If $R_0 = oo$, for $r >= r_0$ outside a set $E_0 subset.eq RR_(>= r_0)$ whose linear measure does not exceed 2 (satisfying $integral_(E_0) dr <= 2$ with respect to the Lebesgue measure#footnote["Linear measure" refers to length. Here, the condition is equivalent to the inequality given by $inf{sum_k abs(I_k) : E subset.eq union.big_k I_k} <= 2$ where ${I_k}$ are finite open intervals.]),
     $
       T(r + frac(1, T(r))) < 2 T(r)
-    $ <eq:nevanlinnaborel_infiniteradius>
+    $ <eq:nevanlinna_borel_infinite_radius>
   + If $R_0 < oo$, then $exists E_0 subset.eq [r_0, R_0)$ satisfying $integral_(E_0) (dr / (R_0 - r)) <= 2$ such that for $r in [r_0, R_0) without E_0$,
     $
       T(r + frac(R_0 - r, ee T(r))) < 2 T(r)
-    $ <eq:nevanlinnaborel_finiteradius>
+    $ <eq:nevanlinna_borel_finiteradius>
     Moreover, for any $R, rho, rho' in (0, R_0)$ such that $R - rho' < ee^(-2) (R - rho)$ (implying that $rho < rho'$), $exists r in (rho, rho')$ such that $r in.not E_0$.
 ]
-<lem:nevanlinnaborel>
+<lem:nevanlinna_borel>
 
 #proof[
   We observe the two cases separately.
   + Assume $R_0 = oo$. Then define $r'_0 = r_0 + 1 / T(r_0)$, and
     $
-      r_1 = inf({r > r'_0 : #[@eq:nevanlinnaborel_infiniteradius fails]}), quad r'_1 = r_1 + 1 / T(r_1) > r_1,
+      r_1 = inf{r > r'_0 : #[@eq:nevanlinna_borel_infinite_radius fails]}, quad r'_1 = r_1 + 1 / T(r_1) > r_1,
     $
     and let
     $
-      r_2 = inf({r > r'_1 : #[@eq:nevanlinnaborel_infiniteradius fails]}), quad r'_2 = r_2 + 1 / T(r_2) > r_2,
+      r_2 = inf{r > r'_1 : #[@eq:nevanlinna_borel_infinite_radius fails]}, quad r'_2 = r_2 + 1 / T(r_2) > r_2,
     $
     repeating this process recursively by
     $
-      r_n = inf({r > r'_(n - 1) : #[@eq:nevanlinnaborel_infiniteradius fails]}), quad r'_n = r_n + 1 / T(r_n) > r_n.
+      r_n = inf{r > r'_(n - 1) : #[@eq:nevanlinna_borel_infinite_radius fails]}, quad r'_n = r_n + 1 / T(r_n) > r_n.
     $
     It follows that $r_n >= r'_(n - 1) > r_(n - 1)$, and $r_n - r_(n - 1) >= r'_(n - 1) - r_(n - 1)$.
 
-    Let $N in NN union {oo}$ be the largest $n$ for which the infimum in $r_n$ is defined. Observe that by the definition of the infimum, for each $n$, @eq:nevanlinnaborel_infiniteradius must be satisfied throughout each $(r'_(n - 1), r_n)$. Indeed, if there exists some value within this interval for which @eq:nevanlinnaborel_infiniteradius fails, then $r_n$, which was defined by an infimum, would then be at most this new value, contradicting the assertion that it lay within the interval. It follows that the exceptional set must lie outside of the disjoint union; in other words,
+    Let $N in NN union {oo}$ be the largest $n$ for which the infimum in $r_n$ is defined. Observe that by the definition of the infimum, for each $n$, @eq:nevanlinna_borel_infinite_radius must be satisfied throughout each $(r'_(n - 1), r_n)$. Indeed, if there exists some value within this interval for which @eq:nevanlinna_borel_infinite_radius fails, then $r_n$, which was defined by an infimum, would then be at most this new value, contradicting the assertion that it lay within the interval. It follows that the exceptional set must lie outside of the disjoint union; in other words,
     $
       E_0 subset.eq RR_(>= r_0) without union.big_(n = 1)^N (r'_(n - 1), r_n) = union.big_(n = 0)^N [r_n, r'_n].
     $
@@ -215,7 +222,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     $
       integral_(E_0) (dr / (R_0 - r)) <= 2, quad T(R_0 - (R_0 - r) ee^(-1 / T(r))) < 2 T(r) quad forall r in.not E_0.
     $
-    We are left to bound the inequality to be in the form of @eq:nevanlinnaborel_finiteradius. For $x in (0, 1)$, $ee^(-x) < 1 - ((ee - 1) / ee) x < 1 - x / ee$, thus for $r$ within $[r_0, R_0)$ outside $E_0$, we have from $ee^(-1 / T(r)) < 1 - 1 / (ee T(r))$. Hence,
+    We are left to bound the inequality to be in the form of @eq:nevanlinna_borel_finiteradius. For $x in (0, 1)$, $ee^(-x) < 1 - ((ee - 1) / ee) x < 1 - x / ee$, thus for $r$ within $[r_0, R_0)$ outside $E_0$, we have from $ee^(-1 / T(r)) < 1 - 1 / (ee T(r))$. Hence,
     $
       T(R_0 - (R_0 - r) ee^(-1 / T(r))) >= T(R_0 - (R_0 - r) (1 - 1 / (ee T(r)))) = T(r + frac(R_0 - r, ee T(r))).
     $
@@ -273,7 +280,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     m(r, frac(f', f)) < Order(logp T(r + 1 / T(r), f)) + Order(1) + Order(logp r) \
     m(r, frac(phi.alt', phi.alt)) < Order(logp T(r + 1 / T(r), f)) + Order(1) + Order(logp r).
   $
-  By @lem:nevanlinnaborel, there is some exceptional set $E_0$ of linear measure not exceeding 2 such that
+  By @lem:nevanlinna_borel, there is some exceptional set $E_0$ of linear measure not exceeding 2 such that
   $
     logp T(r + 1 / T(r), f) <= logp T(r + 1 / T(r), f) + Order(1),
   $
@@ -286,7 +293,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     m(r, frac(f', f)) < Order(logp T(R, f)) + Order(1) + Order(logp(r + (R_0 - r) / (ee T(r, f)))) + Order(logp(ee T(r, f) / (R_0 - r))), \
     S(r, f) = Order(logp T(r, f) + log(frac(1, R_0 - r))).
   $
-  The final assertion is also evident from @lem:nevanlinnaborel.
+  The final assertion is also evident from @lem:nevanlinna_borel.
 ]
 
 #proposition[
