@@ -14,7 +14,6 @@
       }
 
       svg.dataset.typstColorized = "true";
-      svg.style.color = "inherit";
 
       var ns = "http://www.w3.org/2000/svg";
       var defs = svg.querySelector("defs");
@@ -29,7 +28,7 @@
       filter.setAttribute("color-interpolation-filters", "sRGB");
 
       var flood = document.createElementNS(ns, "feFlood");
-      flood.setAttribute("flood-color", "currentColor");
+      flood.setAttribute("flood-color", "var(--typst-svg-color, transparent)");
       flood.setAttribute("flood-opacity", "1");
       flood.setAttribute("result", "typstColor");
 
@@ -37,18 +36,25 @@
       composite.setAttribute("in", "typstColor");
       composite.setAttribute("in2", "SourceAlpha");
       composite.setAttribute("operator", "in");
+      composite.setAttribute("result", "colorLayer");
+
+      var merge = document.createElementNS(ns, "feMerge");
+      var mn1 = document.createElementNS(ns, "feMergeNode");
+      mn1.setAttribute("in", "SourceGraphic");
+      var mn2 = document.createElementNS(ns, "feMergeNode");
+      mn2.setAttribute("in", "colorLayer");
+      merge.appendChild(mn1);
+      merge.appendChild(mn2);
 
       filter.appendChild(flood);
       filter.appendChild(composite);
+      filter.appendChild(merge);
       defs.appendChild(filter);
 
-      svg.setAttribute("filter", "url(#" + filterId + ")");
+      svg.style.setProperty("--_typst-filter", "url(#" + filterId + ")");
+      svg.classList.add("typst-colorized");
     });
   }
-
-  // =========================================================================
-  // 1. Theme toggle (light → dark → auto → light)
-  // =========================================================================
 
   var THEMES = ["light", "dark", "auto"];
   var THEME_ICON_LIGHT = '<svg viewBox="0 0 512 512" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path></svg>';
@@ -91,20 +97,14 @@
     });
   }
 
-  // Listen for OS theme changes when in auto mode
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
     if (storedMode === "auto") {
       document.documentElement.dataset.theme = resolveTheme("auto");
     }
   });
 
-  // Apply on load (complements the inline FOUC-prevention script in <head>)
   applyTheme(storedMode);
   colorizeTypstSvgFrames();
-
-  // =========================================================================
-  // 2. Sidebar toggles (mobile)
-  // =========================================================================
 
   var sidebarLeft = document.querySelector(".sidebar-left");
   var sidebarRight = document.querySelector(".sidebar-right");
@@ -144,7 +144,6 @@
     backdrop.addEventListener("click", closeSidebars);
   }
 
-  // Auto-close sidebars when resizing above breakpoint
   window.addEventListener("resize", function () {
     if (window.innerWidth > 960 && sidebarLeft && sidebarLeft.classList.contains("open")) {
       closeSidebars();
@@ -153,10 +152,6 @@
       closeSidebars();
     }
   });
-
-  // =========================================================================
-  // 3. Collapsible global navigation
-  // =========================================================================
 
   var navCollapseButtons = document.querySelectorAll(".nav-collapse-toggle");
   var navStateStorageKey = "global-nav-collapsed";
@@ -173,7 +168,6 @@
     try {
       sessionStorage.setItem(navStateStorageKey, JSON.stringify(state));
     } catch (_err) {
-      // Ignore storage failures and keep the nav usable.
     }
   }
 
@@ -251,10 +245,6 @@
     });
   });
 
-  // =========================================================================
-  // 4. Search modal (Pagefind lazy-load)
-  // =========================================================================
-
   var searchOverlay = document.getElementById("search-overlay");
   var searchInput = document.getElementById("search-input");
   var searchResults = document.getElementById("search-results");
@@ -306,7 +296,6 @@
         searchResults.innerHTML = '<div class="search-no-results">No results found.</div>';
         return;
       }
-      // Load first 8 page results, then expand sub_results for section-level precision
       var items = results.results.slice(0, 8);
       Promise.all(items.map(function (r) { return r.data(); })).then(function (dataList) {
         var html = "";
@@ -314,7 +303,6 @@
         for (var i = 0; i < dataList.length && count < 12; i++) {
           var data = dataList[i];
           var pageTitle = (data.meta && data.meta.title) || "Untitled";
-          // Use sub_results for section-level anchors (h2/h3 with IDs)
           var subs = data.sub_results;
           if (subs && subs.length > 0) {
             for (var j = 0; j < subs.length && count < 12; j++) {
@@ -322,7 +310,6 @@
               var url = sub.url || data.url || "#";
               var title = sub.title || pageTitle;
               var excerpt = sub.excerpt || "";
-              // Show page title as breadcrumb if sub-title differs
               var breadcrumb = (title !== pageTitle)
                 ? '<div class="search-result-page">' + escapeHtml(pageTitle) + '</div>'
                 : '';
@@ -334,7 +321,6 @@
               count++;
             }
           } else {
-            // Fallback: page-level result
             var url = data.url || "#";
             var excerpt = data.excerpt || "";
             html += '<a class="search-result" href="' + url + '">'
@@ -370,19 +356,13 @@
     });
   }
 
-  // Click on overlay backdrop closes search
   if (searchOverlay) {
     searchOverlay.addEventListener("click", function (e) {
       if (e.target === searchOverlay) closeSearch();
     });
   }
 
-  // =========================================================================
-  // 5. Keyboard shortcuts
-  // =========================================================================
-
   document.addEventListener("keydown", function (e) {
-    // Ctrl+K or Cmd+K → open/close search
     if ((e.ctrlKey || e.metaKey) && e.key === "k") {
       e.preventDefault();
       if (searchOverlay && searchOverlay.classList.contains("visible")) {
@@ -391,7 +371,6 @@
         openSearch();
       }
     }
-    // Escape → close search or sidebar
     if (e.key === "Escape") {
       if (searchOverlay && searchOverlay.classList.contains("visible")) {
         closeSearch();
@@ -400,10 +379,6 @@
       }
     }
   });
-
-  // =========================================================================
-  // 5. Scroll-spy for local TOC
-  // =========================================================================
 
   var tocLinks = document.querySelectorAll(".local-toc a");
   if (tocLinks.length > 0) {
@@ -532,7 +507,6 @@
       });
     });
 
-    // Initial highlight
     updateSpy();
   }
 
@@ -540,7 +514,6 @@
     const qedPara = block.querySelector('p.qed');
     if (!qedPara) return;
 
-    // Only move the QED marker to the immediately preceding element.
     const prev = qedPara.previousElementSibling;
     if (!prev || !(prev.tagName === 'P' || prev.tagName === 'SVG')) return;
     const target = prev;

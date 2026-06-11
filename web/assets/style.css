@@ -736,6 +736,27 @@ svg.typst-frame {
   height: auto;
 }
 
+svg.typst-colorized {
+  filter: var(--_typst-filter);
+}
+
+[data-theme="dark"] svg.typst-colorized {
+  filter: invert(1) var(--_typst-filter);
+}
+
+a svg.typst-colorized,
+.topbar-title:hover svg.typst-colorized,
+.site-title:hover svg.typst-colorized,
+.global-nav li.active>a svg.typst-colorized,
+.global-nav li.active>.nav-item-row>a svg.typst-colorized,
+.global-nav li.active>.nav-item-row>.nav-collapse-toggle svg.typst-colorized,
+.local-toc li a.active svg.typst-colorized,
+.btn-pdf svg.typst-colorized,
+.nav-part svg.typst-colorized {
+  --typst-svg-color: currentColor;
+  filter: var(--_typst-filter);
+}
+
 [data-theme="dark"] figure img[src^="data:image/svg+xml"] {
   filter: invert(1) hue-rotate(180deg);
 }
