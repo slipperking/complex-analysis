@@ -4,7 +4,7 @@
 #theorem[
   Let $f$ be holomorphic on $overline(D(0, R))$ for $R > 0$ and define $M(r, f)$ to be $max_(abs(z) <= r) abs(f(z)) = max_(abs(z) = r) abs(f(z))$ for $0 < r < R$; then
   $ T(r, f) <= logp M(r, f) <= (R + r) / (R - r) T(R, f). $
-] <thm:nevanlinnaentirefunctionmaximummodulussandwich>
+] <thm:nevanlinna_entire_function_maximum_modulus_sandwich>
 
 #proof[
   Since $f$ is holomorphic in $D(0, r)$, $N(r, f) equiv 0$ and hence
@@ -46,7 +46,7 @@
 ]
 
 #proof[
-  Since $f$ is non-constant, for sufficiently large $r$, $logp M(r, f) = log M(r, f)$. For the remainder of this proof we will assume the two are equivalent. From @thm:nevanlinnaentirefunctionmaximummodulussandwich it is apparent that (under $R = 2r$ for sufficiently large $r$)
+  Since $f$ is non-constant, for sufficiently large $r$, $logp M(r, f) = log M(r, f)$. For the remainder of this proof we will assume the two are equivalent. From @thm:nevanlinna_entire_function_maximum_modulus_sandwich it is apparent that (under $R = 2r$ for sufficiently large $r$)
   $
     (logp T(r, f)) / (log r) <= (logp log M(r, f)) / (log r) <= (log 3) / (log r) + (logp T(2r, f)) / (log(2r)) dot (log(2r)) / (log r).
   $

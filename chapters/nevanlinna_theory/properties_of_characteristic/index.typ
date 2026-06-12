@@ -24,7 +24,7 @@
   $
   @itm:nevanlinnathreefunctionsmiscproperties_Nsubadd then follows. Since the pole order at $z$ of $product_k f_k$ does not exceed $sum_k m_k$, it also follows that $n(r, product_k f_k) <= sum_k n(r, f_k)$. The same logic can be applied henceforth to prove @itm:nevanlinnathreefunctionsmiscproperties_Nprodsubadd.
 
-  @itm:nevanlinnathreefunctionsmiscproperties_mprodsubadd and @itm:nevanlinnathreefunctionsmiscproperties_msubaddconst are clear from @prop:lognonnegativepartproperties. @itm:nevanlinnathreefunctionsmiscproperties_Tprodsubadd and @itm:nevanlinnathreefunctionsmiscproperties_Tsubaddconst follow the previous inequalities.
+  @itm:nevanlinnathreefunctionsmiscproperties_mprodsubadd and @itm:nevanlinnathreefunctionsmiscproperties_msubaddconst are clear from @prop:log_nonnegative_part_properties. @itm:nevanlinnathreefunctionsmiscproperties_Tprodsubadd and @itm:nevanlinnathreefunctionsmiscproperties_Tsubaddconst follow the previous inequalities.
 ]
 
 #theorem[
@@ -103,7 +103,7 @@
 ] <thm:nevanlinnafirstfundamentaltheorem>
 
 #proof[
-  Since for $z in partial D(0, r)$, by the properties of $logp$ as in @prop:lognonnegativepartproperties,
+  Since for $z in partial D(0, r)$, by the properties of $logp$ as in @prop:log_nonnegative_part_properties,
   $
     logp abs(f(z) - a) <= logp (abs(f(z)) + abs(a)) <= log 2 + logp abs(f(z)) + logp abs(a).
   $

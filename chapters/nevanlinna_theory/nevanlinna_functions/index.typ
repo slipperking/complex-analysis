@@ -58,18 +58,18 @@ Define the _nonnegative part of the logarithm_, denoted $logp (x)$, to be
 
 $ logp (x) = max { log(x), 0 }. $
 
-#proposition[
-  The following easily verifiable properties hold:
-  1. $logp x gt.eq log x$ for $x > 0$. <itm:lognonnegativepartproperties_firstproperty>
-  2. $logp x <= logp y$ for $x <= y$ (nondecreasing). <itm:lognonnegativepartproperties_nondecreasing>
-  3. $log x = logp x - logp (1 / x)$ for $x > 0$. <itm:lognonnegativepartproperties_differenceofreciprocallogs>
-  4. $abs(log x) = logp x + logp (1 / x)$ for $x > 0$. <itm:lognonnegativepartproperties_sumofreciprocallogs>
-  5. $logp product_k x_k <= sum_k logp x_k$ for (finitely many) positive $x_k$. <itm:lognonnegativepartproperties_multiplicativesubadditivity>
-  6. $logp sum_(k = 1)^n x_k <= log n + sum_(k = 1)^n logp x_k$ for (finitely many) positive $x_k$. <itm:lognonnegativepartproperties_weaksubadditivity>
-] <prop:lognonnegativepartproperties>
+#proposition[Properties of $logp$][
+  The following properties hold:
+  1. $logp x gt.eq log x$ for $x > 0$. <itm:log_nonnegative_part_properties_firstproperty>
+  2. $logp x <= logp y$ for $x <= y$ (nondecreasing). <itm:log_nonnegative_part_properties_nondecreasing>
+  3. $log x = logp x - logp (1 / x)$ for $x > 0$. <itm:log_nonnegative_part_properties_differenceofreciprocallogs>
+  4. $abs(log x) = logp x + logp (1 / x)$ for $x > 0$. <itm:log_nonnegative_part_properties_sumofreciprocallogs>
+  5. $logp product_k x_k <= sum_k logp x_k$ for (finitely many) positive $x_k$. <itm:log_nonnegative_part_properties_multiplicativesubadditivity>
+  6. $logp sum_(k = 1)^n x_k <= log n + sum_(k = 1)^n logp x_k$ for (finitely many) positive $x_k$. <itm:log_nonnegative_part_properties_weaksubadditivity>
+] <prop:log_nonnegative_part_properties>
 
 #proof[
-  The first five properties are trivial. We now prove @itm:lognonnegativepartproperties_weaksubadditivity. Observing that $x_k <= ee^(logp x_k)$, it follows that
+  The first five properties are trivial. We now prove @itm:log_nonnegative_part_properties_weaksubadditivity. Observing that $x_k <= ee^(logp x_k)$, it follows that
 
   $
     logp sum_(k = 1)^n x_k & <= logp sum_(k = 1)^n ee^(logp x_k)

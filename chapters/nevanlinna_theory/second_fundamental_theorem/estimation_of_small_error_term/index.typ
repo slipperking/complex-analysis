@@ -99,7 +99,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   $
   it follows that
   $
-    abs(frac(overline(a_k), rho^2 - overline(a_k) z)) <= frac(rho, rho^2 - r rho) = frac(1, rho - r), quad abs(frac(overline(b_j), rho^2 - overline(b_j) z)) <= frac(rho, rho^2 - r rho) = frac(1, rho - r),
+    abs(frac(overline(a_k), rho^2 - overline(a_k) z)),abs(frac(overline(b_j), rho^2 - overline(b_j) z)) <= frac(rho, rho^2 - r rho) = frac(1, rho - r),
   $ <eq:nevanlinna_log_diff_proximity_estimate_mobius_bounds>
   and additionally,
   $
@@ -110,7 +110,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     abs(frac(1, 2 uppi) integral_0^(2 uppi) log abs(f(rho ee^(ii theta))) frac(2 rho ee^(ii theta) dtheta, (rho ee^(ii theta) - z)^2)) <= frac(1, 2 uppi) frac(2 rho, (rho - r)^2) integral_0^(2 uppi) abs(log abs(f(rho ee^(ii theta)))) dtheta \
     = frac(2 rho, (rho - r)^2) [m(rho, f) + m(rho, frac(1, f))].
   $ <eq:nevanlinna_log_diff_proximity_estimate_integralbounds>
-  by @itm:lognonnegativepartproperties_sumofreciprocallogs of @prop:lognonnegativepartproperties. Combining @eq:nevanlinna_log_diff_proximity_estimate_mobius_bounds, @eq:nevanlinna_log_diff_proximity_estimate_inversionbounds, @eq:nevanlinna_log_diff_proximity_estimate_integralbounds, we have
+  by @itm:log_nonnegative_part_properties_sumofreciprocallogs of @prop:log_nonnegative_part_properties. Combining @eq:nevanlinna_log_diff_proximity_estimate_mobius_bounds, @eq:nevanlinna_log_diff_proximity_estimate_inversionbounds, @eq:nevanlinna_log_diff_proximity_estimate_integralbounds, we have
   $
     abs(frac(f'(z), f(z))) & <= frac(2 rho, (rho - r)^2) [m(rho, f) + m(rho, 1 / f)] \
     &quad""+ sum_(k = 1)^(n(rho, 0, f)) (frac(1, rho - r) + frac(1, delta(z))) + sum_(j = 1)^(n(rho, f)) (frac(1, rho - r) + frac(1, delta(z))) \
@@ -125,20 +125,21 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   $
     abs(frac(f'(z), f(z))) <= frac(4 rho, (rho - r)^2) [T(rho, f) + logp abs(frac(1, c))] + frac(n, r) (frac(r, rho - r) + frac(r, delta(z))).
   $
-  By the subadditive properties of @prop:lognonnegativepartproperties, we have
+  By the subadditive properties of @prop:log_nonnegative_part_properties, we have
   $
-    logp abs(frac(f'(z), f(z))) & <= logp [frac(4 rho, (rho - r)^2) [T(rho, f) + logp abs(frac(1, c))]] + logp [frac(n, r) (frac(r, rho - r) + frac(r, delta(z)))] + log 2 \
-    & <= logp rho + logp [(2 / (rho - r))^2] + logp [T(rho, f) + logp abs(frac(1, c))] + logp(frac(n, r)) \
-    & quad "" + logp(frac(r, rho - r) + frac(r, delta(z))) + log 2 \
-    & <= logp rho + 2 logp(frac(1, rho - r)) + logp T(rho, f) + logp logp abs(frac(1, c)) + logp(frac(n, r)) \
-    & quad "" + logp(frac(r, rho - r)) + logp(frac(r, delta(z))) + 5 log 2.
+    logp abs(frac(f'(z), f(z))) & <= logp [frac(4 rho, (rho - r)^2) [T(rho, f) + logp abs(frac(1, c))]] \
+                                & quad ""+ logp [frac(n, r) (frac(r, rho - r) + frac(r, delta(z)))] + log 2 \
+                                & <= logp rho + logp [(2 / (rho - r))^2] + logp [T(rho, f) + logp abs(frac(1, c))] \
+                                & quad "" + logp n/r+ logp(frac(r, rho - r) + frac(r, delta(z))) + log 2 \
+                                & <= logp rho + 2 logp 1 / (rho - r) + logp T(rho, f) + logp logp abs(frac(1, c)) \
+                                & quad "" + logp n/r + logp r / (rho - r) + logp r/(delta(z)) + 5 log 2.
   $
   Integrating on $abs(z) = r$ with @lem:nevanlinna_small_error_term_estimation2 gives
   $
-    m(r, frac(f', f)) & <= logp rho + 2 logp(frac(1, rho - r)) + logp T(rho, f) + logp logp abs(frac(1, c)) + logp(frac(n, r)) \
-    & quad "" + logp(frac(r, rho - r)) + frac(1, 2 uppi) integral_0^(2 uppi) logp(frac(r, delta(r ee^(ii theta)))) dtheta + 5 log 2 \
-    & <= logp rho + 3 logp(frac(1, rho - r)) + logp T(rho, f) + logp logp abs(frac(1, c)) + 3 logp n + logp(frac(1, r)) \
-    & quad "" + logp r + 1 / 2 + 5 log 2.
+    m(r, frac(f', f)) & <= logp rho + 2 logp frac(1, rho - r) + logp T(rho, f) + logp logp abs(frac(1, c)) \
+    & quad "" + logp n/r + logp r / (rho - r) + 1 / (2 uppi) integral_0^(2 uppi) logp r / (delta(r ee^(ii theta))) dtheta + 5 log 2 \
+    & <= logp rho + 3 logp 1 / (rho - r) + logp T(rho, f) + logp logp abs(frac(1, c)) \
+    & quad "" + 3 logp n + logp 1 / r + logp r + 1 / 2 + 5 log 2.
   $ <eq:nevanlinna_log_diff_proximity_estimate_proximityprimaryestimate>
   To derive a more useful estimate for $n$, we note that
   $
@@ -331,7 +332,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   $
     log M(r, h) <= 3 T(2r, h) = Order(log r)
   $
-  by @thm:nevanlinnaentirefunctionmaximummodulussandwich. Then
+  by @thm:nevanlinna_entire_function_maximum_modulus_sandwich. Then
   $
     M(r, h) <= a r^b,
   $

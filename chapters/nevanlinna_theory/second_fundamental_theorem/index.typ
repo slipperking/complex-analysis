@@ -75,7 +75,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
       logp (1 / abs(f(z) - a_nu)) & = logp (2 dot 1 / (2 abs(f(z) - a_nu))) \
                                   & <= log 2 + log (1 / (2 abs(f(z) - a_nu)))
     $
-    from @prop:lognonnegativepartproperties, it follows that
+    from @prop:log_nonnegative_part_properties, it follows that
     $
       logp abs(F(z)) >= logp (1 / (2 abs(f(z) - a_nu))) >= logp (1 / abs(f(z) - a_nu)) - log 2.
     $
