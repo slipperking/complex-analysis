@@ -14,7 +14,7 @@ We now give a meromorphic analog of the Hadamard Factorization Theorem:
 #proof[
   By @thm:meromorphicfunctionfiniteorderestimatessum, letting $q = floor(rho)$ gives that the two given products converge locally uniformly and the corresponding summation of exponent $q + 1$ converge. Define $g$ to be the analytic continuation across all removable singularities of $f dot P_2$ such that $g$ is entire and vanishes at each ${a_n}$. Observe that
   $ T(r, g) <= T(r, f) + T(r, P_2), quad T(r, f) = Order(r^(rho + epsilon)) $
-  by @prop:nevanlinnacharacteristicproperties and @prop:meromorphicfunctionfiniteorderestimates. For sufficiently large $r$,
+  by @prop:nevanlinna_characteristic_properties and @prop:meromorphicfunctionfiniteorderestimates. For sufficiently large $r$,
   $ T(r, P_2) = m(r, P_2) <= log M(r, P_2). $
   Define
   $

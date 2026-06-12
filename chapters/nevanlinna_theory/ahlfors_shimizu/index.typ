@@ -121,7 +121,7 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
   For $f$ meromorphic on a neighborhood of $overline(D(0,r))$, then $ T_0(r,f) = N(r,f) + m_0(r,f) - m_0(0,f) $ for $f(0) != oo$, and
   $ T_0(r,f) = N(r,f) + m_0(r,f) - log abs(c / 2) $
   if $f(0) = oo$, where for some $k<0$, $c in CC^*$ satisfies $f(z) = c z^k + Order(z^(k+1))$ as $z -> 0$.
-] <thm:nevanlinnafirstfundamentaltheoremahlforsshimizusimplecase>
+] <thm:nevanlinna_first_fundamental_theoremahlforsshimizusimplecase>
 #proof[
   In the first case for $f(0) != oo$, from @eq:ahlforsshimizuderivation_convergentintegral, we have
   $
@@ -161,7 +161,7 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
   where $c_a$ is the first nonzero coefficient of the Laurent expansion of $f - a$. If $f(0) = a = oo$, then
   $ T_0(r, f) = N(r, a, f) + m_0(r, a, f) - log abs(c / 2) $
   where $c$ is the first non-zero coefficient of the Laurent series of $f$.
-] <thm:nevanlinnafirstfundamentaltheoremahlforsshimizu>
+] <thm:nevanlinna_first_fundamental_theoremahlforsshimizu>
 
 #proof[
   For $a != oo$, consider the Möbius transformation $W=(1 + overline(a) w) / (w - a)$, where $w = f(z)$, and denote the function $W = F(z)$. Then
@@ -188,7 +188,7 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
     m_0(r, a, f) & = integral_0^(2 uppi) log(1/k(f(r ee^(ii theta)), a)) dtheta \
                  & = integral_0^(2 uppi) log(1/k(F(r ee^(ii theta)), oo)) dtheta = m_0(r, F).#tag[(c)]
   $
-  1. From (a), (b), and (c), by applying @thm:nevanlinnafirstfundamentaltheoremahlforsshimizusimplecase to $F$, we have $ T_0(r, F) & = N(r, F) + m_0(r, F) - m_0(0, F) \
+  1. From (a), (b), and (c), by applying @thm:nevanlinna_first_fundamental_theoremahlforsshimizusimplecase to $F$, we have $ T_0(r, F) & = N(r, F) + m_0(r, F) - m_0(0, F) \
               & = T_0(r,f) = N(r, a, f) + m_0(r, a, f) - m_0(0, a, f), $
     if $f(0) != a (!= oo)$, since $F(0) = (1 + overline(a) f(0)) / (f(0)-a)$ is finite,
     $
@@ -204,14 +204,14 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
     $
       F(z) z^k = (1 + abs(a)^2 + Order(z^k)) / (c_a + Order(z)) -> (1 + abs(a)^2) / c_a quad "as" quad z -> 0,
     $
-    so the leading coefficient of the Laurent expansion of $F$ at 0 is $C = (1 + abs(a)^2) / c_a$. By applying @thm:nevanlinnafirstfundamentaltheoremahlforsshimizusimplecase to $F$, we have
+    so the leading coefficient of the Laurent expansion of $F$ at 0 is $C = (1 + abs(a)^2) / c_a$. By applying @thm:nevanlinna_first_fundamental_theoremahlforsshimizusimplecase to $F$, we have
     $
       T_0(r, F) & = N(r, F) + m_0(r, F) - log abs(C/2) \
                 & = T_0(r,f) = N(r, a, f) + m_0(r, a, f) - log abs((1 + abs(a)^2) / (2 c_a)).
     $
-  + If $f(0) != a = oo$, then the assertion follows directly from @thm:nevanlinnafirstfundamentaltheoremahlforsshimizusimplecase on $f$.
+  + If $f(0) != a = oo$, then the assertion follows directly from @thm:nevanlinna_first_fundamental_theoremahlforsshimizusimplecase on $f$.
 
-  + If $f(0) = a = oo$, the assertion also follows from @thm:nevanlinnafirstfundamentaltheoremahlforsshimizusimplecase on $f$. #qedhere
+  + If $f(0) = a = oo$, the assertion also follows from @thm:nevanlinna_first_fundamental_theoremahlforsshimizusimplecase on $f$. #qedhere
 ]
 
 #theorem[
@@ -228,7 +228,7 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
   $
   Integrating and adding $N$, we have
   $ T(r, f) - log 2 <= m_0(r, f) + N(r, f) <= T(r, f) - 1/2 log 2. $
-  By the First Fundamental Theorem (@thm:nevanlinnafirstfundamentaltheoremahlforsshimizu) in Ahlfors--Shimizu Form with $a = oo$, if we let
+  By the First Fundamental Theorem (@thm:nevanlinna_first_fundamental_theoremahlforsshimizu) in Ahlfors--Shimizu Form with $a = oo$, if we let
   $
     C = cases(m_0(0, a, f) quad & "if" f(0) != oo, log abs(c / 2) quad & "if" f(0) = oo),
   $
@@ -255,7 +255,7 @@ $
     & ""+ 4 Im[w_1(abs(w_2)^2+1) - w_2(abs(w_1)^2+1)]^2 \
     & ""+[(abs(w_1)^2-1)(abs(w_2)^2+1) - (abs(w_2)^2-1)(abs(w_1)^2+1)]^2
   ) \
-  & wide""= 2/(rho_1 rho_2) sqrt(abs(w_1 rho_2 - w_2 rho_1)^2 + [rho_1 - rho_2]^2) #tag[(where $rho_i = abs(w_i)^2 + 1$)] \
+  & wide""= 2/(rho_1 rho_2) sqrt(abs(w_1 rho_2 - w_2 rho_1)^2 + (rho_1 - rho_2)^2) #tag[(where $rho_i = abs(w_i)^2 + 1$)] \
   & wide""= 2 / (rho_1 rho_2) sqrt(rho_2^2 (rho_1 - 1) + rho_1^2 (rho_2 - 1) - 2 rho_2 rho_1 Re[w_1 overline(w_2)] + (rho_1 - rho_2)^2) \
   & wide""= 2 / (rho_1 rho_2) sqrt(rho_2^2 rho_1 + rho_1^2 rho_2 - 2 rho_2 rho_1 Re[w_1 overline(w_2)] - 2 rho_1 rho_2) \
   & wide""= 2 / sqrt(rho_1 rho_2) sqrt(rho_2 + rho_1 - 2 Re[w_1 overline(w_2)] - 2) = (2 abs(w_1 - w_2)) / sqrt(rho_1 rho_2) = k(w_1, w_2) \
@@ -282,7 +282,7 @@ or the area of the image of $f$ on the Riemann sphere, counted according to mult
 
 (Observe the similarity between the first integral of $(star.stroked)$ and the Lusin Area Theorem (@thm:lusinarea)!)
 
-This completes the geometric explanation for the invariances of (a), (b), and (c) in the proof of @thm:nevanlinnafirstfundamentaltheoremahlforsshimizu. The covered area and chordal distance are invariant under rotations of $S$. In particular, we rotate the spherical point of $a$ to the north pole $(0, 0, 1)$ corresponding to $oo$.
+This completes the geometric explanation for the invariances of (a), (b), and (c) in the proof of @thm:nevanlinna_first_fundamental_theoremahlforsshimizu. The covered area and chordal distance are invariant under rotations of $S$. In particular, we rotate the spherical point of $a$ to the north pole $(0, 0, 1)$ corresponding to $oo$.
 
 #remark[
   It is noteworthy that the original Ahlfors--Shimizu formulation uses the Riemann sphere centered at $(0,0, 1\/ 2)$ with diameter $1$, which yields a slightly different proximity function (without the $\/2$ factor) and spherical derivative (without the factor of 2). This normalization is present throughout Ahlfors' works; in @sec:differential_geometry, the spherical and hyperbolic metrics are also defined without a $2 dot$ factor (and hence yield curvatures of $plus.minus 4$). There is little fundamental difference between the two normalizations, and we have adopted the sphere of diameter $2$ to uniformize better with the previous sections.

@@ -62,7 +62,7 @@
 ] <prop:meromorphicfunctionfiniteorderestimates>
 
 #proof[
-  By the First Fundamental Theorem of Nevanlinna theory (@thm:nevanlinnafirstfundamentaltheorem),
+  By the First Fundamental Theorem of Nevanlinna theory (@thm:nevanlinna_first_fundamental_theorem),
   $ m(r, a) = T(r, f) + Order(1) - N(r, a) $
   and since $m(r, a) >= 0$ and $N(r, a) >= 0$, we obtain
   $ m(r, a) <= T(r, f) + Order(1) quad "and" quad N(r, a) <= T(r, f) + Order(1). $
@@ -94,5 +94,5 @@
   $ rho + epsilon > limsup_(r -> oo) (log n(r, f)) / (log r), $
   and hence the conclusion follows for $a = oo$ by @thm:nonzerosequencepowersummationconvergence. Assume $a$ is finite; observe that
   $ T(r, f) = T(r, a, f) + Order(1) = T(r, frac(1, f - a)) + Order(1) $
-  by the First Fundamental Theorem (@thm:nevanlinnafirstfundamentaltheorem). It follows that $rho$ is the order of $1/(f-a)$. Applying the previous result to this function, whose poles are precisely at ${ r_n (a) }$, the conclusion follows.
+  by the First Fundamental Theorem (@thm:nevanlinna_first_fundamental_theorem). It follows that $rho$ is the order of $1/(f-a)$. Applying the previous result to this function, whose poles are precisely at ${ r_n (a) }$, the conclusion follows.
 ]

@@ -84,7 +84,7 @@
 
 #theorem[
   For (non-constant) meromorphic $f$ in $D(0, R)$, $T(r, f)$ is a nondecreasing convex (not necessarily strictly convex) function of $log r$ (for $0 < r < R$).
-] <thm:nevanlinnacharacteristicnondecreasingconvex>
+] <thm:nevanlinna_characteristic_nondecreasing_convex>
 
 #proof[
   Applying $dv(, log r, style: "horizontal")$ to @thm:nevanlinnacartanidentity, we have
@@ -100,7 +100,7 @@
   Let $f$ be (non-constant) meromorphic on $D(0, R)$ where $0 < r <= oo$. Then for any $a in CC$,
   $ T(r, a, f) = T(r, f) - log abs(c) + epsilon(r, a, f), $
   where $abs(epsilon(r, a, f)) <= logp abs(a) + log 2$ for $0 < r < R$ and $c$ is the first nonzero coefficient of the innermost Laurent series expansion of $f(z) - a$ about the origin.
-] <thm:nevanlinnafirstfundamentaltheorem>
+] <thm:nevanlinna_first_fundamental_theorem>
 
 #proof[
   Since for $z in partial D(0, r)$, by the properties of $logp$ as in @prop:log_nonnegative_part_properties,
@@ -139,7 +139,7 @@ As we have seen before, it is often pedantic and somewhat annoying to account fo
 ]
 
 #proof[
-  By the First Fundamental Theorem (@thm:nevanlinnafirstfundamentaltheorem), we have
+  By the First Fundamental Theorem (@thm:nevanlinna_first_fundamental_theorem), we have
   $
     T(r, f) = N(r, ee^(ii theta), f) + m(r, ee^(ii theta), f) + log abs(c_theta) + epsilon(r, ee^(ii theta), f),
   $
@@ -161,11 +161,11 @@ As we have seen before, it is often pedantic and somewhat annoying to account fo
 
 #proposition[
   Let $f, g$ be meromorphic on $D(0, R)$ and suppose $m in NN$. For any $0 < r < R$, the following properties hold:
-  1. $T(r, f g) <= T(r, f) + T(r, g)$. <itm:nevanlinnacharacteristicproperties_prodsubadd>
-  2. $T(r, f + g) <= T(r, f) + T(r, g) + Order(1)$. <itm:nevanlinnacharacteristicproperties_subadd>
-  3. $T(r, 1 / f) = T(r, f) + Order(1)$. <itm:nevanlinnacharacteristicproperties_inversion>
-  4. $T(r, f^n) = n T(r, f)$. <itm:nevanlinnacharacteristicproperties_power>
-] <prop:nevanlinnacharacteristicproperties>
+  1. $T(r, f g) <= T(r, f) + T(r, g)$. <itm:nevanlinna_characteristic_properties_prodsubadd>
+  2. $T(r, f + g) <= T(r, f) + T(r, g) + Order(1)$. <itm:nevanlinna_characteristic_properties_subadd>
+  3. $T(r, 1 / f) = T(r, f) + Order(1)$. <itm:nevanlinna_characteristic_properties_inversion>
+  4. $T(r, f^n) = n T(r, f)$. <itm:nevanlinna_characteristic_properties_power>
+] <prop:nevanlinna_characteristic_properties>
 
 #proof[
   Since
@@ -174,9 +174,9 @@ As we have seen before, it is often pedantic and somewhat annoying to account fo
   $ logp abs(f g) <= logp abs(f) + logp abs(g), quad logp abs(f + g) <= log 2 + logp abs(f) + logp abs(g), $
   it follows that
   $ m(r, f g) <= m(r, f) + m(r, g), quad m(r, f + g) <= m(r, f) + m(r, g) + Order(1), $
-  and the conclusions of @itm:nevanlinnacharacteristicproperties_prodsubadd and @itm:nevanlinnacharacteristicproperties_subadd. @itm:nevanlinnacharacteristicproperties_inversion is a corollary of the First Fundamental Theorem (@thm:nevanlinnafirstfundamentaltheorem). Lastly, because a pole of $f^n$ has order $n$ times of that of $f$, it follows that $N(r, f^n) = n N(r, f)$. If $abs(f) >= 1$, it follows that $logp abs(f^n) = n logp abs(f)$ exactly. If $abs(f) < 1$, $logp abs(f^n) = n logp abs(f) = 0$. Hence, $m(r, f^n) = n m(r, f)$.
+  and the conclusions of @itm:nevanlinna_characteristic_properties_prodsubadd and @itm:nevanlinna_characteristic_properties_subadd. @itm:nevanlinna_characteristic_properties_inversion is a corollary of the First Fundamental Theorem (@thm:nevanlinna_first_fundamental_theorem). Lastly, because a pole of $f^n$ has order $n$ times of that of $f$, it follows that $N(r, f^n) = n N(r, f)$. If $abs(f) >= 1$, it follows that $logp abs(f^n) = n logp abs(f)$ exactly. If $abs(f) < 1$, $logp abs(f^n) = n logp abs(f) = 0$. Hence, $m(r, f^n) = n m(r, f)$.
 
-  Adding the two quantities $N$ and $m$ together gives @itm:nevanlinnacharacteristicproperties_power.
+  Adding the two quantities $N$ and $m$ together gives @itm:nevanlinna_characteristic_properties_power.
 ]
 
 We now provide some classical examples of the Nevanlinna characteristic:
