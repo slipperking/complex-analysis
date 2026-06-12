@@ -565,59 +565,59 @@
   }
 
   show math.equation: eq => {
-    let measured = measure(box(width: 100%, eq))
     show metadata.where(value: "thm-qedhere"): tag(thm-qed-show)
     show metadata: data => {
       if type(data.value) == dictionary and data.value.keys().contains("eq-tag") {
-        if measured.width <= 0pt {
-          [#h(0.5em)#data.value.eq-tag] // render inline
+        if not eq.block {
+          // inline equation — always render inline
+          [#h(0.5em)#data.value.eq-tag]
         } else {
-          context {
-            let pos-numbering = query(metadata.where(value: "thm-equation-numbering").after(eq.location()))
-              .first()
-              .location()
-              .position()
-            let pos-here = here().position()
-            let height = measure(data.value.eq-tag).height
-            let width = measure(data.value.eq-tag).width
-            let dx = -pos-here.x + pos-numbering.x - width
-            if data.value.move {
-              move(dx: dx, data.value.eq-tag)
+          layout(size => {
+            if (size.width / 1pt).is-infinite() {
+              // infinite width (HTML export, page(width: auto), unsized box) — inline
+              [#h(0.5em)#data.value.eq-tag]
             } else {
-              place(horizon, dx: dx, data.value.eq-tag)
+              // finite width (normal paged) — place at edge
+              context {
+                let pos-numbering = query(
+                  metadata.where(value: "thm-equation-numbering").after(eq.location()),
+                )
+                  .first()
+                  .location()
+                  .position()
+                let pos-here = here().position()
+                let width = measure(data.value.eq-tag).width
+                let dx = -pos-here.x + pos-numbering.x - width
+                if data.value.move {
+                  move(dx: dx, data.value.eq-tag)
+                } else {
+                  place(horizon, dx: dx, data.value.eq-tag)
+                }
+              }
             }
-          }
+          })
         }
       } else {
         data
       }
     }
-    // if eq.numbering == none {
-    //   math.equation(
-    //     block: eq.block,
-    //     numbering: x => {
-    //       metadata("thm-equation-numbering")
-    //     },
-    //     number-align: eq.number-align,
-    //     supplement: eq.supplement,
-    //     eq.body
-    //   )
-    // } else {
-    //   eq
-    // }
 
     if eq.numbering == none and eq.block {
-      if measured.width > 0pt {
-        box(width: 100%, {
-          eq
-          place(right + horizon, metadata("thm-equation-numbering"))
-        })
-      } else {
-        grid(
-          columns: 2,
-          eq, metadata("thm-equation-numbering"),
-        )
-      }
+      layout(size => {
+        if (size.width / 1pt).is-infinite() {
+          // infinite/unbounded width
+          grid(
+            columns: 2,
+            eq, metadata("thm-equation-numbering"),
+          )
+        } else {
+          // finite width, use edge
+          box(width: 100%, {
+            eq
+            place(right + horizon, metadata("thm-equation-numbering"))
+          })
+        }
+      })
     } else {
       eq
     }
