@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-=== Classifying Growth of Entire Functions <sec:classifyinggrowthofentirefunctions>
+=== Classifying Growth of Entire Functions <sec:classifying_growth_of_entire_functions>
 
 #lemma[
   Let $f : overline(D(0,r)) -> CC^*$ (where $r > 0$) be a nowhere-vanishing holomorphic function. It follows that
@@ -415,7 +415,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   For any holomorphic $g = u + ii v$, we have
   $
     (partial (Re g(z))) / (partial z) &= 1/2 ((partial u(z)) / (partial x) - ii (partial u(z)) / (partial y)) \ &= 1/2 ((partial u(z)) / (partial x) + ii (partial v) / (partial x)) = 1/2 (partial g(z)) / (partial x) = (g'(z)) / 2.
-  $<eq:wirtingerderivativeofrealpartofholomorphicfunction>
+  $<eq:wirtinger_derivative_of_real_part_of_holomorphic_function>
   Therefore, by differentiation under the integral sign,
   $
     (f'(z)) / f(z)

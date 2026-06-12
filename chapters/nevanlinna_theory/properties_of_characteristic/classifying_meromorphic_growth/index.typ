@@ -26,7 +26,7 @@
   The _order of a meromorphic function_ $f : CC -> extcomplex$, denoted $rho = rho(f)$, is given by
   $ rho = limsup_(r -> oo) (logp T(r, f)) / (log r), $
   equivalent to the condition that $T(r, f) = Order(r^(rho + epsilon))$ for any $epsilon > 0$ but not for $epsilon < 0$.
-] <def:orderofmeromorphicfunction>
+] <def:order_of_meromorphic_function>
 
 #proof[of equivalent definitions][
   For any prescribed $epsilon > 0$ there exists $r' > 0$ such that for any $r > r'$,
@@ -38,11 +38,11 @@
     T(r, f) <= c r^(rho - epsilon) & ==> logp T(r, f) <= Order(1) + (rho - epsilon) log r \
                                    & ==> (logp T(r, f)) / (log r) <= rho - epsilon,
   $
-  which is a contradiction. The converse follows similarly to the case of entire functions in @sec:classifyinggrowthofentirefunctions.
+  which is a contradiction. The converse follows similarly to the case of entire functions in @sec:classifying_growth_of_entire_functions.
 ]
 
 #theorem[
-  Let $rho_M$ be the order of a non-constant entire function $f$ as defined in @sec:classifyinggrowthofentirefunctions and let $rho_T$ be the order as defined in @def:orderofmeromorphicfunction. Then $rho_M = rho_T$.
+  Let $rho_M$ be the order of a non-constant entire function $f$ as defined in @sec:classifying_growth_of_entire_functions and let $rho_T$ be the order as defined in @def:order_of_meromorphic_function. Then $rho_M = rho_T$.
 ]
 
 #proof[

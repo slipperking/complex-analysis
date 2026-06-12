@@ -17,7 +17,9 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   Because the exponential is periodic every $2 uppi ii$, we may assume that $E'_k$ is restricted to $-uppi < theta.alt < uppi$ instead of $-uppi - psi < theta.alt < uppi - psi$. The expression $abs(rho - r ee^(ii theta.alt)) = k r$ gives at most two symmetric solutions $plus.minus theta_0$ (let $theta_0 >= 0$).
 
   Evidently, for $theta.alt > uppi / 2$ or $-theta.alt < -uppi / 2$,
-  $ abs(rho - r ee^(ii theta.alt)) = sqrt(rho^2 + r^2 - 2 r rho cos(theta.alt))>= r >= k r,#tag[(Law of Cosines)] $
+  $
+    abs(rho - r ee^(ii theta.alt)) = sqrt(rho^2 + r^2 - 2 r rho cos(theta.alt))>= r >= k r,wide wide#tag[(Law of Cosines)]
+  $
   so it follows that $theta_0 <= uppi / 2$, and furthermore, all $-theta_0 < theta.alt < theta_0$ lie in $E'_k$ by the geometry of a circle. Since $abs(rho - r ee^(ii theta.alt)) >= abs(Im(rho - r ee^(ii theta.alt))) = r abs(sin(theta.alt))$, assuming that $E'_k != emptyset$, it follows that
   $
     I & = 2 integral_0^(theta_0) log abs(frac(r, rho - r ee^(ii theta.alt))) dif theta.alt <= 2 integral_0^(theta_0) log csc(theta.alt) dif theta.alt <= 2 integral_0^(theta_0) log(uppi / (2 theta.alt)) dif theta.alt \
@@ -68,20 +70,20 @@ Modern results vastly improve said estimations, and the search for a sharp estim
 ]
 
 #proposition[
-  If $f$ is meromorphic on a neighborhood of $overline(D(0, R))$, then for $0 < r < R$, letting $c$ be the first nonzero coefficient of the Laurent of expansion of $f$ about the origin,
+  If $f$ is meromorphic on $D(0, R)$, then for $0 < r < R$, letting $c$ be the first nonzero coefficient of the Laurent of expansion of $f$ about the origin,
   $
-    m(r, frac(f', f)) & < 4 logp T(R, f) + 4 logp logp abs(frac(1, c)) \
-                      & quad""+ 5 logp R + 6 logp(frac(1, R - r)) + logp(frac(1, r)) + 14.
+    m(r, frac(f', f)) & < 4 logp T(R, f) + 4 logp logp abs(1 / c) \
+                      & quad""+ 5 logp R + 6 logp 1 / (R - r) + logp 1 / r + 14.
   $
 ] <prop:nevanlinna_log_diff_proximity_estimate>
 
 #proof[
-  By the Poisson--Jensen Formula (@thm:poissonjensenformula), letting $rho = (1 / 2) (R + r)$, for each non-singular point $z in partial D(0, r)$,
+  By the Poisson--Jensen Formula (@thm:poissonjensenformula), letting $rho = 1 / 2 (R + r)$, for each non-singular point $z in partial D(0, r)$,
   $
     Re log f(z) & = frac(1, 2 uppi) integral_0^(2 uppi) log abs(f(rho ee^(ii theta))) Re(frac(rho ee^(ii theta) + z, rho ee^(ii theta) - z)) dtheta \
     & quad "" + sum_(k = 1)^(n(rho, 0, f)) Re log(frac(rho (z - a_k), rho^2 - overline(a_k) z)) \ &wide""- sum_(j = 1)^(n(rho, f)) Re log(frac(rho (z - b_j), rho^2 - overline(b_j) z)),
   $
-  where ${a_k}$ and ${b_j}$ are the respective zeros and poles. By @eq:wirtingerderivativeofrealpartofholomorphicfunction, we have $pdv(, z) (Re g(z)) = 1 / 2 g'(z)$ for all holomorphic $g$. Applying this with differentiation under the integral sign, we have that
+  where ${a_k}$ and ${b_j}$ are the respective zeros and poles in the disk. By @eq:wirtinger_derivative_of_real_part_of_holomorphic_function, we have $pdv(, z) (Re g(z)) = 1 / 2 g'(z)$ for all holomorphic $g$. Applying this with differentiation under the integral sign, we have that
   $
     (f'(z)) / (f(z)) & = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(rho ee^(ii theta))) frac(2 rho ee^(ii theta) dtheta, (rho ee^(ii theta) - z)^2) \
     & quad "" + sum_(k = 1)^(n(rho, 0, f)) (frac(overline(a_k), rho^2 - overline(a_k) z) - frac(1, a_k - z)) + sum_(j = 1)^(n(rho, f)) (frac(1, b_j - z) - frac(overline(b_j), rho^2 - overline(b_j) z)).
@@ -98,7 +100,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   it follows that
   $
     abs(frac(overline(a_k), rho^2 - overline(a_k) z)) <= frac(rho, rho^2 - r rho) = frac(1, rho - r), quad abs(frac(overline(b_j), rho^2 - overline(b_j) z)) <= frac(rho, rho^2 - r rho) = frac(1, rho - r),
-  $ <eq:nevanlinna_log_diff_proximity_estimate_mobiusbounds>
+  $ <eq:nevanlinna_log_diff_proximity_estimate_mobius_bounds>
   and additionally,
   $
     abs(frac(1, b_j - z)) <= frac(1, delta(z)), quad abs(frac(1, a_k - z)) <= frac(1, delta(z)).
@@ -108,7 +110,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     abs(frac(1, 2 uppi) integral_0^(2 uppi) log abs(f(rho ee^(ii theta))) frac(2 rho ee^(ii theta) dtheta, (rho ee^(ii theta) - z)^2)) <= frac(1, 2 uppi) frac(2 rho, (rho - r)^2) integral_0^(2 uppi) abs(log abs(f(rho ee^(ii theta)))) dtheta \
     = frac(2 rho, (rho - r)^2) [m(rho, f) + m(rho, frac(1, f))].
   $ <eq:nevanlinna_log_diff_proximity_estimate_integralbounds>
-  by @itm:lognonnegativepartproperties_sumofreciprocallogs of @prop:lognonnegativepartproperties. Combining @eq:nevanlinna_log_diff_proximity_estimate_mobiusbounds, @eq:nevanlinna_log_diff_proximity_estimate_inversionbounds, @eq:nevanlinna_log_diff_proximity_estimate_integralbounds, we have
+  by @itm:lognonnegativepartproperties_sumofreciprocallogs of @prop:lognonnegativepartproperties. Combining @eq:nevanlinna_log_diff_proximity_estimate_mobius_bounds, @eq:nevanlinna_log_diff_proximity_estimate_inversionbounds, @eq:nevanlinna_log_diff_proximity_estimate_integralbounds, we have
   $
     abs(frac(f'(z), f(z))) & <= frac(2 rho, (rho - r)^2) [m(rho, f) + m(rho, 1 / f)] \
     &quad""+ sum_(k = 1)^(n(rho, 0, f)) (frac(1, rho - r) + frac(1, delta(z))) + sum_(j = 1)^(n(rho, f)) (frac(1, rho - r) + frac(1, delta(z))) \
@@ -274,8 +276,10 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   $ <eq:nevanlinna_second_fundamental_theorem_part_2_intermediate>
   by @prop:nevanlinnacharacteristicproperties, @thm:nevanlinnafirstfundamentaltheorem. In the first case, where $R_0 = oo$, by @prop:nevanlinna_log_diff_proximity_estimate with $R = 2r$,
   $
-    m(r, frac(f', f)) < 4 logp T(R, f) + Order(1) + 5 logp(2r) = Order(logp T(2r, f)) + Order(logp r). \
-    m(r, frac(phi.alt', phi.alt)) < 4 logp T(R, phi.alt) + Order(1) + 5 logp(2r) = Order(logp T(2r, phi.alt)) + Order(logp r).
+                m(r, frac(f', f)) & < 4 logp T(R, f) + Order(1) + 5 logp(2r) \
+                                  & = Order(logp T(2r, f)) + Order(logp r). \
+    m(r, frac(phi.alt', phi.alt)) & < 4 logp T(R, phi.alt) + Order(1) + 5 logp(2r) \
+                                  & = Order(logp T(2r, phi.alt)) + Order(logp r).
   $
   Since $f$ has finite order, $T(2r, f) = Order((2r)^(rho + epsilon)) = Order(r^rho.alt)$, so $logp T(R, f) = Order(logp r)$, thus as $r -> oo$, using @eq:nevanlinna_second_fundamental_theorem_part_2_intermediate we have
   $

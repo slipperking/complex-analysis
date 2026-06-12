@@ -27,7 +27,7 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
 
   $ f(z) = sum_(n = 0)^oo a_n (z - z_infinity)^n. $ <eq:identityaccumulationofzeros_taylorexpansion>
 
-  By @def:accumulationpoint, $exists N in NN$ such that $forall n > N$, $z_n in D(z_infinity, epsilon)$. Since $z_n$ is a zero of $f$, $f (z_n) = 0$. Then, by the continuity of $f$,
+  By @def:accumulation_point, $exists N in NN$ such that $forall n > N$, $z_n in D(z_infinity, epsilon)$. Since $z_n$ is a zero of $f$, $f (z_n) = 0$. Then, by the continuity of $f$,
   $ lim_(n -> oo) f (z_n) = f(lim_(n -> oo) z_n) = f (z_infinity) = 0. $
   Using this result in comparison to @eq:identityaccumulationofzeros_taylorexpansion, we get that $a_0 = 0$.
 

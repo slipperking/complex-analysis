@@ -14,7 +14,7 @@ The following definitions are subject to the assumption where the topological sp
 (Note that these definitions hold only for the standard topology on $CC^n$ induced by the Euclidean metric. For now, this is unimportant, but will be explained later in @sec:partitions_of_unity.)
 #definition("Accumulation Point")[
   A point $z in CC^n$ is an _accumulation point_ of $X$ if for any open set $U$ containing $z$, $(U without {z}) inter X eq.not emptyset$
-] <def:accumulationpoint>
+] <def:accumulation_point>
 #theorem[
   A set $X subset.eq CC^n$ is closed iff $X$ contains all of its accumulation points.
 ]
@@ -22,7 +22,7 @@ The following definitions are subject to the assumption where the topological sp
   + We first prove that closedness implies the inclusion of accumulation points. Let $X$ be a closed set, and assume that some accumulation point $z_0$ of $X$ satisfies $z_0 in.not X$. Since $X$ is closed, $CC^n without X$ is open, and there exists an open ball $B^n (z_0, epsilon)$ that is fully contained in $CC^n without X$. However, this contradicts the definition of accumulation point, since $B^n (z_0, epsilon) without {z_0}$ does not intersect with $X$.
   + Assume $X$ is an arbitrary set which includes all its accumulation points. We will show that $CC^n without X$ is open, which implies that $X$ is closed. Let $z_0 in CC^n without X$. Since $z_0$ is not an accumulation point of $X$ (as otherwise $z_0 in X$), there exists an open ball $B^n (z_0, epsilon)$ such that $(B^n (z_0, epsilon) without {z_0}) inter X = emptyset$. Then, $B^n (z_0, epsilon) subset CC^n without X$, and hence $CC^n without X$ is open. #qedhere
 ]
-#definition("Closure")[
+#definition[Closure][
   For a set $X subset.eq CC^n$, define the _closure_ of $X$, or $overline(X)$ to be the intersection of all closed sets containing $X$. In other words, it is the union of $X$ and its accumulation points.
 ] <def:closure>
 Because the accumulation points of $X$ all lie in $overline(X)$, the closure of $X$ is a closed set. Moreover, $X$ is closed iff $X = overline(X)$.
@@ -32,7 +32,7 @@ Because the accumulation points of $X$ all lie in $overline(X)$, the closure of 
 
 #definition("Compact Set")[
   A set $X subset.eq CC^n$ is compact iff $X$ is closed and bounded.
-] <def:compactsets>
+] <def:compact_sets>
 
 #definition("Set Covering")[
   A cover $cal(C)$ of a set $X$ is a collection of sets ${U_n}$ such that

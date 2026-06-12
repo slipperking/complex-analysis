@@ -67,7 +67,7 @@ The following discussions involved with topological spaces here will always be o
 
 #proposition[
   A set $A$ in a topological space $X$ is closed iff it contains all its accumulation points.
-] <prop:closedsetcontainsaccumulationpoints>
+] <prop:closedsetcontainsaccumulation_points>
 
 #proof[
   We first prove the forward implications under the assumption that $A$ is closed. Since $X without A$ is open, and suppose for contradiction, that $a in X without A$. Then for $a in U = X without A$ open, $U inter A = emptyset$ (and hence $a$ cannot be an accumulation point by contradiction of definition).
@@ -274,7 +274,7 @@ In a topological space $X$, a subset can be open, closed (the complement of some
   Without loss of generality, assume $0 in U$ (otherwise switch $U$ and $V$). Let
   $ a = inf V. $
 
-  Since $U, V$ are also closed in $[0, 1]$, either $a in V$ or $a$ is an accumulation point. Either way, $a$ is contained in $V$ by @prop:closedsetcontainsaccumulationpoints. Assume that $a != 0$. Then by openness, there exists some $0 < delta < a$ such that
+  Since $U, V$ are also closed in $[0, 1]$, either $a in V$ or $a$ is an accumulation point. Either way, $a$ is contained in $V$ by @prop:closedsetcontainsaccumulation_points. Assume that $a != 0$. Then by openness, there exists some $0 < delta < a$ such that
   $ (a - delta, a) subset.eq (a - delta, a + delta) inter [0, 1] subset.eq V. $
   In particular,
   $ a - delta / 2 in V, $
@@ -317,7 +317,7 @@ Note that the converse here is not necessarily true.
 #definition("Exhaustion by Compact Sets")[
   For a topological space $X$, an _exhaustion by compact sets_ is a nested sequence of compact sets ${K_n}_(n in NN) subset.eq X$ such that $K_n subset interior(K_(n + 1))$ for all $n in NN$ and
   $ X = union.big_(n in NN) K_n. $
-] <def:exhaustionbycompactsets>
+] <def:exhaustionbycompact_sets>
 
 #lemma[
   Let $Omega subset.eq CC$ be an open set and let $frak(B)$ be a basis for the topology on $Omega$. Then there exists a collection of sets ${U_n}_(n in NN) subset.eq frak(B)$ such that
