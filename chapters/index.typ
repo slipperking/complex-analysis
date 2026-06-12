@@ -52,7 +52,7 @@
 #chapter-section("nevanlinna_theory")[
   #include "nevanlinna_theory/index.typ"
 ]
-
+#pagebreak()
 #set heading(numbering: "A.1")
 #counter(heading).update(0)
 #include "appendices/index.typ"

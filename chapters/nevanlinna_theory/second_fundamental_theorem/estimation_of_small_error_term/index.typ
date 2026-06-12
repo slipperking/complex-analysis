@@ -362,9 +362,9 @@ These definitions ensure that $S(r, f)$ is generally sufficiently small:
     $
       frac(1, R_0 - rho_n) = order(T(rho_n)) = order(T(r_n)),
     $
-    since $T$ is a non-decreasing function of radius. Then
+    since $T$ is a non-decreasing function of radius. Then as $n -> oo$,
     $
-      S(r_n, f) = Order(logp T(r_n, f) + log(order(T(r_n, f)))) = order(T(r_n, f)) quad "as" quad n -> oo.#qedhere
+      S(r_n, f) = Order(logp T(r_n, f) + log(order(T(r_n, f)))) = order(T(r_n, f)).#qedhere
     $
 ]
 

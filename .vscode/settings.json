@@ -7,8 +7,15 @@
         "logp",
         "namefmt",
         "Nevanlinna",
+        "pagebreak",
         "smallcaps",
         "titlefmt",
         "Typst"
+    ],
+    "tinymist.typstExtraArgs": [
+        "--features",
+        "html",
+        "--package-path",
+        "packages"
     ]
 }

@@ -18,7 +18,7 @@ We now provide a second formulation of the first fundamental theorem, given by A
   $
     (integral.cont_(partial U) + sum_(k=1)^n integral.cont_(partial D(z_k, epsilon))) vb(v) dot vu(n) dif s = integral.double_(U without union.big D(z_k, epsilon)) div vb(v) dif A
   $
-  to $I$, we have
+  to $I$ (so letting $vb(v) = G(abs(f(z)))$), we have
   $
     I &= (integral.cont_(partial U) + sum_(k=1)^n integral.cont_(partial D(z_k, epsilon))) grad G(abs(f(z))) dot vu(n) abs(dz) \ &= integral.double_(U without union.big D(z_k, epsilon)) laplacian G(abs(f(z))) r dr dtheta.
   $ <eq:ahlforsshimizugreens_greensapplication>
@@ -85,7 +85,7 @@ Taking the limit $epsilon -> 0^+$ hence gives
 $
   &1 / (2 uppi) integral_0^(2 uppi) nabla_(vu(n)) G(abs(f(r ee^(ii theta)))) r dtheta + n(r, f) \
   & wide wide ""= 1 / (4 uppi) integral.double_(D(0,r)) (4 abs(f'(z))^2) / (1 + abs(f(z))^2)^2 dif A = 1 / (4 uppi) integral.double_D(0,r) f^sharp (z)^2 dif A\
-  & wide wide ""= 1 / uppi integral_0^(2 uppi) integral_0^r (abs(f'(rho ee^(ii theta)))^2) / (1 + abs(f(rho ee^(ii theta)))^2)^2 rho d rho dtheta.
+  //  & wide wide ""= 1 / (4 uppi) integral_0^(2 uppi) integral_0^r (4 abs(f'(rho ee^(ii theta)))^2) / (1 + abs(f(rho ee^(ii theta)))^2)^2 rho dif rho dtheta.
 $
 Let the expression on the right-hand side be denoted by $A(r, f)$. We thus derive
 $
@@ -174,7 +174,7 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
   $
   In other words, $f^sharp equiv F^sharp$ (where $f^sharp = (2 abs(f')) / (1 + abs(f)^2)$ is the spherical derivative as in @def:sphericalderivative), implying that
   $ A(r,f) = 1/(4 uppi) integral.double_(D(0,r)) f^sharp (z)^2 dif A = 1/(4 uppi) integral.double_(D(0,r)) F^sharp (z)^2 dif A = A(r,F), $ and consequently,
-  $ T_0(r,f) = A(r,f) = A(r,F) = T_0(r,F).#tag[(a)] $
+  $ T_0(r,f) = integral_0^r A(t,f) / t dt = integral_0^r A(t,F) / t dt = T_0(r,F).#tag[(a)] $
   If $z$ is a solution to $f(z) = a$ of order $k$, then $1+ overline(a)w = 1+ abs(a)^2 >= 1$. Then $W = F(z)$ has a pole of order $k$. Thus,
   $ N(r,F) equiv N(r,a,f).#tag[(b)] $
   From ($dagger$), since $k(w,a) = (2 abs(w-a)) / sqrt((1+abs(w)^2)(1+abs(a)^2))$,
@@ -230,7 +230,7 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
   $ T(r, f) - log 2 <= m_0(r, f) + N(r, f) <= T(r, f) - 1/2 log 2. $
   By the First Fundamental Theorem (@thm:nevanlinnafirstfundamentaltheoremahlforsshimizu) in Ahlfors--Shimizu Form with $a = oo$, if we let
   $
-    C = cases(m_0(0, a, f) quad & "if" f(0) != oo, log abs(c) quad & "if" f(0) = oo),
+    C = cases(m_0(0, a, f) quad & "if" f(0) != oo, log abs(c / 2) quad & "if" f(0) = oo),
   $
   where $c$ is the first nonzero coefficient of the Laurent expansion of $f$, it follows that
   $ T(r, f) - C - log 2 <= T_0(r, f) <= T(r, f) - 1/2 log 2 - C, $
@@ -266,16 +266,17 @@ Let $w = u + ii v$ be a point in the projected plane and let $dif u dif v$ be an
 $
   dif A_S & = norm(bold(sigma)'_u times bold(sigma)'_v) dif u dif v \
   & = (dif u dif v) / (abs(w)^2 + 1)^4 norm(mat(2v^2-2u^2 + 2; -4v u; 4u) times mat(-4u v; 2u^2 - 2 v^2 + 2; 4v)) \
-  & = (2 dif u dif v) / (abs(w)^2 + 1)^4 norm(mat(-2u v^2 - 2u^3 - 2u; -2u^2 v - 2v^3 - 2v; 1 - (u^2 + v^2)^2)) = (2 dif u dif v) / (abs(w)^2 + 1)^3 norm(mat(-2u; -2v; 1 - abs(w)^2)) \
-  & = (dif u dif v) / (abs(w)^2 + 1)^3 sqrt(2 abs(w)^2 + 1 + abs(w)^4) = (2 dif u dif v) / (abs(w)^2 + 1)^2
+  & = (4 dif u dif v) / (abs(w)^2 + 1)^4 norm(mat(-2u v^2 - 2u^3 - 2u; -2u^2 v - 2v^3 - 2v; 1 - (u^2 + v^2)^2)) = (4 dif u dif v) / (abs(w)^2 + 1)^3 norm(mat(-2u; -2v; 1 - abs(w)^2)) \
+  & = (4 dif u dif v) / (abs(w)^2 + 1)^3 sqrt(2 abs(w)^2 + 1 + abs(w)^4) = (4 dif u dif v) / (abs(w)^2 + 1)^2
 $
 The surface area of a surface $E subset.eq S$ is given by
 $
-  integral_E dif A_S = integral.double_(bold(sigma)^(-1) (E)) (2 dif u dif v) / (abs(w)^2 + 1)^2.
+  integral_E dif A_S = integral.double_(bold(sigma)^(-1) (E)) (4 dif u dif v) / (abs(w)^2 + 1)^2 = -2 ii integral.double_(bold(sigma)^(-1) (E)) (dif overline(w) dif w) / (abs(w)^2 + 1)^2.
 $
-For $w = f(z)$, pulling back to $z$ gives
+For $w = f(z)$, $E = bold(sigma) compose f(D(0,r))$, pulling back to $z$ gives
 $
-  A(r)= 1/(4 uppi) integral.double_D(0,r) f^sharp (z) dif x dif y = 1/(4 uppi) integral.double_(bold(sigma)(f(D(0,r)))) dif A_S#tag[$(star.stroked)$]
+  1/(4 uppi) integral.double_(bold(sigma)(f(D(0,r)))) dif A_S &= 1 /(2 uppi ii) integral.double_D(0,r) ((overline(f'(z)) dzbar) and (f'(z) dz)) / (abs(f(z))^2 + 1)^2 \
+  &= 1 / (4 uppi) integral.double_D(0,r) f^sharp (z)^2 dif x dif y = A(r) #tag[$(star.stroked)$]
 $
 or the area of the image of $f$ on the Riemann sphere, counted according to multiplicities (referring to overlaps when not univalent), divided by the area of the Riemann sphere ($4 uppi$). In some sense, $A$ measures the amount by which the image of $f$ covers the Riemann sphere.
 
