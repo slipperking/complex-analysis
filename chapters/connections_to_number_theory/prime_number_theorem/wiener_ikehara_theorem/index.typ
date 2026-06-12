@@ -273,12 +273,12 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   The slow decrease, boundedness, and the condition in @eq:wienerikehara_convolutionlimit are sufficient by @prop:wienerikehara_intermediatetauberiantheorem, to show that $lim_(x -> oo) a(x) = c$, or equivalently, $lim_(x -> oo) f(x) / ee^x = c$.
 ]
 
-#theorem("Prime Number Theorem", restate-keys: ("thm:primenumber",), restate: true)[
+#theorem("Prime Number Theorem", restate-keys: ("thm:prime_number",), restate: true)[
   The prime counting function $pi(x)$ is asymptotically equal to $x / (log x)$, i.e., $lim_(x -> oo) (pi(x) log x) / x = 1$.
-] <thm:primenumber>
+] <thm:prime_number>
 
 #proof[
-  By @thm:chebyshevfunctions_limsup_inflim_equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:primenumbertheorem_laplacetransformchebyshevfunction_statement. By @thm:primenumbertheorem_laplacetransformchebyshevfunction, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuously differentiable. Hence, by the Wiener--Ikehara theorem (@thm:wienerikehara), we have that
+  By @thm:chebyshevfunctions_limsup_inflim_equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:primenumbertheorem_laplacetransformchebyshevfunction_statement. By @thm:prime_numbertheorem_laplacetransformchebyshevfunction, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuously differentiable. Hence, by the Wiener--Ikehara theorem (@thm:wienerikehara), we have that
   $ lim_(x -> oo) psi(ee^x) / ee^x = lim_(x -> oo) psi(x) / x = 1, $
   and the Prime Number Theorem follows.
 ]

@@ -4,7 +4,7 @@
 
 Prime numbers have been a central object of study in number theory since antiquity. From the times of Euclid, it was known that there were infinitely many primes. The _prime counting function_ $pi(n)$ is defined to be the number of primes not exceeding $n$. The _Prime Number Theorem_ states formally that:
 
-#thm-state.thm-restate("thm:primenumber", final: true)
+#thm-state.thm-restate("thm:prime_number", final: true)
 
 This result was first conjectured by Gauss and Legendre in the late 18th century based on empirical evidence, while early results given by P. L. Chebyshev and J. J. Sylvester proved that the ratio $(log(n) pi(n)) / n$ is bounded between two positive constants for large $n$. The full asymtotic relation was finally proven independently by Hadamard and de la Vallée Poussin in 1896 using complex analysis and properties of the Riemann $zeta$-function.
 
@@ -80,7 +80,7 @@ $ 0 <= theta.alt(x) <= psi(x) <= pi(x) log x. $ <eq:chebyshevfunctions_bounds_pr
   converges for $Re s > 1$ and defines a holomorphic function on this domain. Moreover, the function $g$ defined by
   $ g(t) = lim_(sigma -> 1^+) [f(s) - 1 / (s - 1)], s = sigma + ii t $
   converges uniformly with respect to $t$ on compact subsets of $RR$ and is continuously differentiable thereon.
-] <thm:primenumbertheorem_laplacetransformchebyshevfunction>
+] <thm:prime_numbertheorem_laplacetransformchebyshevfunction>
 
 #proof[
   Let $u = ee^t$, $dif u = ee^t dt$. Then we obtain

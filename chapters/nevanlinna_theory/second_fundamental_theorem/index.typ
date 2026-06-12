@@ -26,7 +26,7 @@ $
       + limsup_(r_n -> oo) (S(r_n, f)) / (T(r_n, f)) \
     & = limsup_(r -> oo) (N(r, c, f)) / (T(r, f)),
 $
-where the precise formulation allows for a sequence ${r_n}$ diverging to $oo$ to be chosen so that $S(r, f) = o(T(r, f))$ for $r -> oo$ in this sequence. This implies $limsup_(r -> oo) (N(r, c, f)) / (T(r, f)) = 1$. This in turn then proves Picard's theorems (see @ sec:deficiencyrelation). As we shall later see, the conclusions of the theorem have even further extensibility.
+where the precise formulation allows for a sequence ${r_n}$ diverging to $oo$ to be chosen so that $S(r, f) = o(T(r, f))$ for $r -> oo$ in this sequence. This implies $limsup_(r -> oo) (N(r, c, f)) / (T(r, f)) = 1$. This in turn then proves Picard's theorems (see @sec:deficiency_relation). As we shall later see, the conclusions of the theorem have even further extensibility.
 
 Regarding Nevanlinna's original paper containing the result, mathematician Hermann Weyl has stated in 1943 that "the appearance of this paper has been one of the few great mathematical events of our century."
 
@@ -39,7 +39,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
   $
     S(r, f) & = m(r, f' / f) + m(r, sum_(nu = 1)^q f' / (f - a_nu)) \
             & quad""+ q logp ((3q) / delta) + log 2 - log abs(c'),
-  $ <eq:nevanlinnasecondfundamentaltheorempart1_smallerrorterm>
+  $ <eq:nevanlinna_second_fundamental_theorem_part_1_small_error_term>
   where $c'$ is the first nonzero coefficient of the Laurent expansion of $f'$ (at the origin).
 ] <thm:nevanlinnasecondfundamentaltheorempart1>
 
@@ -144,7 +144,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     & wide quad ""+ log 2 + m(r, f' / f) - N(r, 1 / f') + N(r, f') - log abs(c') + m(r, f' F) \
     & wide = 2 T(r, f) - [N(r, 1 / f') + 2 N(r, f) - N(r, f')] + S(r, f),
   $
-  where $S(r, f)$ is defined as in @eq:nevanlinnasecondfundamentaltheorempart1_smallerrorterm. This concludes the proof.
+  where $S(r, f)$ is defined as in @eq:nevanlinna_second_fundamental_theorem_part_1_small_error_term. This concludes the proof.
 ]
 
 #chapter-section("estimation_of_small_error_term")[

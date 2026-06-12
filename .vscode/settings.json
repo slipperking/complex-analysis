@@ -1,16 +1,20 @@
 {
     "cSpell.words": [
         "doubletilde",
+        "dtheta",
         "dzeta",
         "emph",
         "extcomplex",
+        "liminf",
+        "limsup",
         "logp",
         "namefmt",
         "Nevanlinna",
         "pagebreak",
         "smallcaps",
         "titlefmt",
-        "Typst"
+        "Typst",
+        "uppi"
     ],
     "tinymist.typstExtraArgs": [
         "--features",

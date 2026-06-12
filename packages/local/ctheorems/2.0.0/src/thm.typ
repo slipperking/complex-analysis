@@ -569,15 +569,12 @@
     show metadata: data => {
       if type(data.value) == dictionary and data.value.keys().contains("eq-tag") {
         if not eq.block {
-          // inline equation — always render inline
           [#h(0.5em)#data.value.eq-tag]
         } else {
           layout(size => {
             if (size.width / 1pt).is-infinite() {
-              // infinite width (HTML export, page(width: auto), unsized box) — inline
               [#h(0.5em)#data.value.eq-tag]
             } else {
-              // finite width (normal paged) — place at edge
               context {
                 let pos-numbering = query(
                   metadata.where(value: "thm-equation-numbering").after(eq.location()),

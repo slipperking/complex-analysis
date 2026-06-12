@@ -307,7 +307,7 @@ Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then
 
 #theorem[
   For any non-constant elliptic function $f$ with period lattice $Lambda$, the number of zeros and poles (counting multiplicities and orders, respectively) in $CC \/ Lambda$ are equal.
-] <thm:ellipticfunctionnumberofzerosandpoles>
+] <thm:elliptic_function_number_of_zeros_and_poles>
 
 #proof[
   Let $P$ be a fundamental parallelogram of $Lambda$ such that $f$ has no poles or zeros on $partial P$. By the Argument Principle (@thm:argumentprinciplemeromorphic), we have
@@ -322,7 +322,7 @@ Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then
 ]
 
 #proof[
-  Assume that $z != oo$ and suppose $P$ is a fundamental parallelogram that does not pass through a pole. Then the number of times $zeta |-> f(zeta) - z$ attains $0$ and $oo$ in $CC \/ Lambda$ are equal by @thm:ellipticfunctionnumberofzerosandpoles. In other words, $f$ has the same number of poles as the number of times it attains any finite complex number.
+  Assume that $z != oo$ and suppose $P$ is a fundamental parallelogram that does not pass through a pole. Then the number of times $zeta |-> f(zeta) - z$ attains $0$ and $oo$ in $CC \/ Lambda$ are equal by @thm:elliptic_function_number_of_zeros_and_poles. In other words, $f$ has the same number of poles as the number of times it attains any finite complex number.
 ]
 
 Hence, it is only natural to quantify this number:

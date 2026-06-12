@@ -1,5 +1,10 @@
-// sections/nevanlinna_theory/corollaries_of_second_theorem/index.typ
 #import "/lib.typ": *
+== Corollaries to the Second Fundamental Theorem
 
-#include "deficiency_relation/index.typ"
-#include "functions_sharing_values/index.typ"
+#chapter-section("deficiency_relation")[
+  #include "deficiency_relation/index.typ"
+]
+
+#chapter-section("functions_sharing_values")[
+  #include "functions_sharing_values/index.typ"
+]

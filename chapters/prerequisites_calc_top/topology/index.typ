@@ -10,7 +10,7 @@ The following definitions are subject to the assumption where the topological sp
 ]
 #definition("Open and Closed Sets")[
   A set $U subset.eq CC^n$ is _open_ if for every $z in U$, there exists an _open ball_ centered at $z$ that is fully contained in $U$. A set $F subset.eq CC^n$ is _closed_ if its complement, $CC^n without F$, is open.
-] <def:openclosedsets>
+] <def:open_closed_sets>
 (Note that these definitions hold only for the standard topology on $CC^n$ induced by the Euclidean metric. For now, this is unimportant, but will be explained later in @sec:partitions_of_unity.)
 #definition("Accumulation Point")[
   A point $z in CC^n$ is an _accumulation point_ of $X$ if for any open set $U$ containing $z$, $(U without {z}) inter X eq.not emptyset$
@@ -103,5 +103,5 @@ Because the accumulation points of $X$ all lie in $overline(X)$, the closure of 
 ] <def:support>
 
 #remark[
-  A notable classification of functions comes from the compactness of support---more specifically, its boundedness. Compactly supported functions in $C^oo(CC)$ (infinitely differentiable functions in the complex plane) are commonly referred to as _bump functions_ (see @sec:partitions_of_unity).
+  A notable classification of functions comes from the compactness of support---more specifically, its boundedness. Compactly supported functions in $C^oo (CC)$ (infinitely differentiable functions in the complex plane) are commonly referred to as _bump functions_ (see @sec:partitions_of_unity).
 ]
