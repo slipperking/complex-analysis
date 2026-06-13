@@ -123,8 +123,8 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
   $
   Combining this with @eq:nevanlinnasecondfundamentaltheorempart1_proximityFlowerbound gives
   $
-    m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) & <= m(r, f) + m(r, F) + q logp ((3q) / delta) + log 2 \
-                                           & <= T(r, f) - N(r, f) + q logp ((3q) / delta) + log 2 \
+    m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) & <= m(r, f) + m(r, F) + q logp (3q) / delta + log 2 \
+                                           & <= T(r, f) - N(r, f) + q logp (3q) / delta + log 2 \
                                            & quad "" + T(r, f) - N(r, 1 / f) - log abs(c) + m(r, f' / f) \
                                            & quad "" + N(r, f' / f) - N(r, f / f') + log abs(c'') + m(r, f' F)
   $

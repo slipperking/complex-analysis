@@ -568,31 +568,26 @@
     show metadata.where(value: "thm-qedhere"): tag(thm-qed-show)
     show metadata: data => {
       if type(data.value) == dictionary and data.value.keys().contains("eq-tag") {
-        if not eq.block {
-          [#h(0.5em)#data.value.eq-tag]
-        } else {
-          layout(size => {
-            if (size.width / 1pt).is-infinite() {
-              [#h(0.5em)#data.value.eq-tag]
-            } else {
-              context {
-                let pos-numbering = query(
-                  metadata.where(value: "thm-equation-numbering").after(eq.location()),
-                )
-                  .first()
-                  .location()
-                  .position()
-                let pos-here = here().position()
-                let width = measure(data.value.eq-tag).width
-                let dx = -pos-here.x + pos-numbering.x - width
-                if data.value.move {
-                  move(dx: dx, data.value.eq-tag)
-                } else {
-                  place(horizon, dx: dx, data.value.eq-tag)
-                }
-              }
-            }
-          })
+        context {
+          let equation-numbering-metadata = query(
+            selector(<thm-equation-numbering>).after(eq.location()),
+          ).first()
+          let pos-numbering = equation-numbering-metadata.location().position()
+          let pos-here = here().position()
+          let width = measure(data.value.eq-tag).width
+          let dx = -pos-here.x + pos-numbering.x - width
+          if (
+            data.value.move
+              or (
+                type(equation-numbering-metadata.value) == dictionary
+                  and equation-numbering-metadata.value.keys().contains("force-move")
+                  and equation-numbering-metadata.value.force-move
+              )
+          ) {
+            move(dx: dx, data.value.eq-tag)
+          } else {
+            place(horizon, dx: dx, data.value.eq-tag)
+          }
         }
       } else {
         data
@@ -602,16 +597,19 @@
     if eq.numbering == none and eq.block {
       layout(size => {
         if (size.width / 1pt).is-infinite() {
-          // infinite/unbounded width
+          // infinite or unbounded width
           grid(
             columns: 2,
-            eq, metadata("thm-equation-numbering"),
+            eq, [#metadata((force-move: true)) <thm-equation-numbering>],
           )
         } else {
           // finite width, use edge
           box(width: 100%, {
             eq
-            place(right + horizon, metadata("thm-equation-numbering"))
+            place(
+              right + horizon,
+              [#metadata((force-move: false)) <thm-equation-numbering>],
+            )
           })
         }
       })
