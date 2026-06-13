@@ -11,7 +11,7 @@
   $
     T(r, f) = m(r, f) = 1 / (2 uppi) integral_0^(2 uppi) logp abs(f(r ee^(ii theta))) dtheta <= 1 / (2 uppi) integral_0^(2 uppi) logp M(r, f) dtheta,
   $
-  which proves the first inequality. Since $T >= 0$ trivially, if $M <= 1$ the second assertion holds trivially. Hence, assume $M > 1$; by the Poisson--Jensen formula (@thm:poissonjensenformula), letting $z in partial D(0, r)$ be where $abs(f)$ attains $M$, we have
+  which proves the first inequality. Since $T >= 0$ trivially, if $M <= 1$ the second assertion holds trivially. Hence, assume $M > 1$; by the Poisson--Jensen formula (@thm:poisson_jensen_formula), letting $z in partial D(0, r)$ be where $abs(f)$ attains $M$, we have
   $
     logp M(r, f) &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f(R ee^(ii theta))) (R^2 - r^2) / abs(R ee^(ii theta) - z)^2 dtheta \
     &quad + sum_(j = 1)^m log abs((R (z - a_j)) / (R^2 - overline(a_j) z)) - sum_(k = 1)^n log abs((R (z - b_k)) / (R^2 - overline(b_k) z)) \

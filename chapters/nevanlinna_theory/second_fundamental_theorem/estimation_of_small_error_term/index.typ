@@ -65,7 +65,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   $ <eq:nevanlinna_small_error_term_estimation_2_E_set>
   For $theta in.not E$, for each $nu$ we have $abs(z_nu - r ee^(ii theta)) >= r / n$ and thus $delta(r ee^(ii theta)) >= r / n$. It follows that
   $
-    frac(1, 2 uppi) integral_(theta in.not E) logp(frac(r, delta(r ee^(ii theta)))) dtheta <= frac(1, 2 uppi) integral_0^(2 uppi) logp n dtheta <= log n.
+    frac(1, 2 uppi) integral_(theta in.not E) logp r / (delta(r ee^(ii theta))) dtheta <= 1 / (2 uppi) integral_0^(2 uppi) logp n dtheta <= log n.
   $ <eq:nevanlinna_small_error_term_estimation2_E_complement>
   Combining @eq:nevanlinna_small_error_term_estimation_2_E_set, @eq:nevanlinna_small_error_term_estimation2_E_complement gives the desired result.
 ]
@@ -79,7 +79,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
 ] <prop:nevanlinna_log_diff_proximity_estimate>
 
 #proof[
-  By the Poisson--Jensen Formula (@thm:poissonjensenformula), letting $rho = 1 / 2 (R + r)$, for each non-singular point $z in partial D(0, r)$,
+  By the Poisson--Jensen Formula (@thm:poisson_jensen_formula), letting $rho = 1 / 2 (R + r)$, for each non-singular point $z in partial D(0, r)$,
   $
     Re log f(z) & = frac(1, 2 uppi) integral_0^(2 uppi) log abs(f(rho ee^(ii theta))) Re(frac(rho ee^(ii theta) + z, rho ee^(ii theta) - z)) dtheta \
     & quad "" + sum_(k = 1)^(n(rho, 0, f)) Re log(frac(rho (z - a_k), rho^2 - overline(a_k) z)) \ &wide""- sum_(j = 1)^(n(rho, f)) Re log(frac(rho (z - b_j), rho^2 - overline(b_j) z)),
@@ -209,7 +209,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     $
       integral_(E_0) dr <= sum_(n = 0)^N (r'_n - r_n).
     $
-    By construction, for points arbitrarily close to $r_n$ or at $r_n$ itself,
+    By construction, for points sufficiently close to $r_n$ or at $r_n$ itself,
     $
       T(r + frac(1, T(r))) >= 2 T(r),
     $
@@ -253,14 +253,14 @@ Modern results vastly improve said estimations, and the search for a sharp estim
       S(r, f) = Order(log T(r, f)) + Order(log r) #tag[$(dagger)$]
     $
     as $r -> oo$ through all values.
-  + If $R_0 = oo$ and $f$ has infinite order, then $(dagger)$ holds as $r -> oo$ through all values of $r$ outside a set $E$ of finite linear measure not exceeding 2.
+  + If $R_0 = oo$ and $f$ has infinite order, then $(dagger)$ holds as $r -> oo$ through all values of $r$ outside a set $E$ of finite linear measure.
   + If $R_0 < oo$, then
     $
       S(r, f) = Order(logp T(r, f) + log 1 / (R_0 - r)) #tag[$(dagger.double)$]
     $
     as $r -> R_0^-$ outside a set $E$ satisfying
     $
-      integral_E dr / (R_0 - r) <= 2.
+      integral_E dr / (R_0 - r) < oo.
     $
     Moreover, for any $rho, rho' in (0, R_0)$ such that $R_0 - rho' < ee^(-2) (R_0 - rho)$ (implying that $rho < rho'$), $exists r in (rho, rho')$ such that $r in.not E$.
 ]
@@ -274,43 +274,50 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   where $phi.alt(z) = product_(nu = 1)^q (f(z) - a_nu)$, where the constant term does not depend on $r$. In all three perceivable cases,
   $
     T(r, phi.alt) <= sum_(nu = 1)^q T(r, f - a_nu) = q T(r, f) + Order(1),\
-    logp T(r, phi.alt) = logp T(r, f) + Order(1)
+    logp T(r, phi.alt) <= logp T(r, f) + Order(1)
   $ <eq:nevanlinna_second_fundamental_theorem_part_2_intermediate>
-  by @prop:nevanlinna_characteristic_properties, @thm:nevanlinna_first_fundamental_theorem. In the first case, where $R_0 = oo$, by @prop:nevanlinna_log_diff_proximity_estimate with $R = 2r$,
+  by @prop:nevanlinna_characteristic_properties (product-subadditivity), @thm:nevanlinna_first_fundamental_theorem (first fundamental theorem). In the first case, where $R_0 = oo$, by @prop:nevanlinna_log_diff_proximity_estimate with $R = 2r$,
   $
                      m(r, (f')/f) & < 4 logp T(R, f) + Order(1) + 5 logp(2r) \
                                   & = Order(logp T(2r, f)) + Order(logp r). \
     m(r, frac(phi.alt', phi.alt)) & < 4 logp T(R, phi.alt) + Order(1) + 5 logp(2r) \
                                   & = Order(logp T(2r, phi.alt)) + Order(logp r).
   $
-  Since $f$ has finite order, $T(2r, f) = Order((2r)^(rho + epsilon)) = Order(r^rho.alt)$, so $logp T(R, f) = Order(logp r)$, thus as $r -> oo$, using @eq:nevanlinna_second_fundamental_theorem_part_2_intermediate we have
+  Since $f$ has finite order, $T(2r, f) = Order((2r)^(rho + epsilon)) = Order(r^rho.alt)$, so $logp T(2r, f) = Order(logp r)$, thus as $r -> oo$, using @eq:nevanlinna_second_fundamental_theorem_part_2_intermediate we have
   $
-    m(r, (f')/f) = Order(log r), quad m(r, frac(phi.alt', phi.alt)) = Order(logp T(2r, phi.alt)) + Order(logp r) = Order(log r).
+    m(r, (f')/f) = Order(logp T(2r, f)) + Order(logp r) = Order(log r), \ m(r, frac(phi.alt', phi.alt)) = Order(logp T(2r, phi.alt)) + Order(logp r) = Order(log r).
   $
   Then $S(r, f) = Order(log r)$, clearly satisfying $(dagger)$.
 
   Now assume $f$ is not necessarily of finite order and $R_0 = oo$. Then by @prop:nevanlinna_log_diff_proximity_estimate with $R = r + 1 / T(r)$,
   $
-    m(r, (f')/f) < Order(logp T(r + 1 / T(r), f)) + Order(1) + Order(logp r) \
-    m(r, frac(phi.alt', phi.alt)) < Order(logp T(r + 1 / T(r), f)) + Order(1) + Order(logp r).
+    m(r, (f')/f) < Order(logp T(r + 1 / T(r, f), f)) + Order(1) + Order(logp r) \
+    m(r, frac(phi.alt', phi.alt)) < Order(logp T(r + 1 / T(r, phi.alt), phi.alt)) + Order(1) + Order(logp r)
   $
-  By @lem:nevanlinna_borel, there is some exceptional set $E_0$ of linear measure not exceeding 2 such that
+  By @lem:nevanlinna_borel, there exist some exceptional sets $E_1, E_2$ each of linear measure not exceeding 2 such that for $r in.not E_1 union E_2$,
   $
-    logp T(r + 1 / T(r), f) <= logp T(r + 1 / T(r), f) + Order(1),
+    logp T(r + 1 / T(r, f), f) <= logp T(r, f) + Order(1) \ logp T(r + 1 / T(r, phi.alt), phi.alt) <= logp T(r, phi.alt) + Order(1)
   $
   thus for $r -> oo$ with $r in.not E_0$,
   $
     S(r, f) = Order(logp T(r, f)) + Order(logp r).
   $
-  Lastly, assume that $R_0 < oo$. Now apply @prop:nevanlinna_log_diff_proximity_estimate with $R = r + (R_0 - r) / (ee T(r, f))$ outside an exceptional set satisfying $integral_E dr / (R_0 - r) < oo$ to get that
+  Lastly, assume that $R_0 < oo$. Now apply @prop:nevanlinna_log_diff_proximity_estimate with $R = r + (R_0 - r) / (ee T(r, f))$ and $R = r + (R_0 - r) / (ee T(r, phi.alt))$, so that for $r$ outside some exceptional set satisfying $integral_E dr / (R_0 - r) <= 4 < oo$, by @lem:nevanlinna_borel,
   $
-    m(r, (f')/f) & < Order(logp T(R, f)) + Order(1) + Order(logp(r + (R_0 - r) / (ee T(r, f)))) \
-                 & quad""+ Order(logp((ee T(r, f)) / (R_0 - r))),
+    m(r, (f')/f) & < Order(logp T(r + (R_0 - r) / (ee T(r, f)), f)) + Order(1) \
+                 & quad "" + Order(logp(r + (R_0 - r) / (ee T(r, f)))) + Order(logp (ee T(r, f)) / (R_0 - r)), \
+                 & <Order(logp T(r,f)) + Order(1) + Order(logp (ee T(r, f)) / (R_0 - r)) \
+                 & = Order(logp T(r, f) + log 1 / (R_0 - r)),
   $
+  where the $Order(logp(r + (R_0 - r) / (ee T(r, f))))$ term has been coalesced to $Order(1)$ as $r + (R_0 - r) / (ee T(r, f))$ is bounded.
   $
-    S(r, f) = Order(logp T(r, f) + log(frac(1, R_0 - r))).
+    m(r, (phi.alt')/phi.alt) &= Order(logp T(r, phi.alt) + log 1 / (R_0 - r)) \
+    &<= Order(logp T(r, f) + log 1 / (R_0 - r)). #tag[(by @eq:nevanlinna_second_fundamental_theorem_part_2_intermediate)]
   $
-  The final assertion is also evident from @lem:nevanlinna_borel.
+  Therefore,
+  $
+    S(r, f) = Order(logp T(r, f) + log 1 / (R_0 - r)). #qedhere
+  $
 ]
 
 #proposition[

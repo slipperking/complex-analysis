@@ -11,9 +11,9 @@ A fundamental problem in the theory of partial differential equations is to find
     u(z) = phi(z) quad forall z in partial D(0, R)
   $
   is given by the Poisson integral formula:
-  $ u(z) = integral_0^(2 uppi) phi(zeta) P(zeta, z) dif tau, $ <eq:dirichletproblemwithlaplaceequationsolution>
+  $ u(z) = integral_0^(2 uppi) phi(zeta) P(zeta, z) dif tau, $ <eq:dirichlet_problem_with_laplace_equation_solution>
   where $zeta = R ee^(ii tau)$.
-] <thm:dirichletproblemwithlaplaceequationsolution>
+] <thm:dirichlet_problem_with_laplace_equation_solution>
 #figure-wrapper([
   #figure(
     {
@@ -124,14 +124,14 @@ A fundamental problem in the theory of partial differential equations is to find
       })
     },
     caption: [$zeta$, $xi$, and $z$ when $abs(theta.alt - tau) > delta$, with distances marked. The use of $+$ and $-$ denote a value more or less (respectively) than the preceding value.],
-  ) <fig:dirichletproblemwithlaplaceequationsolution_secondintegral>
+  ) <fig:dirichlet_problem_with_laplace_equation_solution_secondintegral>
 ])
 #proof[
   Since
   $
     P(zeta, z) = 1 / (4 uppi) ((zeta + z) / (zeta - z) + (overline(zeta) + overline(z)) / (overline(zeta) - overline(z))),
   $
-  from @eq:laplaciancomplexform, we have that $laplacian_z P(zeta, z) = 4 pdv(P(zeta, z), z, overline(z)) = 0$ (since each term is independent of either $z$ or $overline(z)$). Moreover, by @thm:leibnizintegralrule, @eq:dirichletproblemwithlaplaceequationsolution gives that
+  from @eq:laplaciancomplexform, we have that $laplacian_z P(zeta, z) = 4 pdv(P(zeta, z), z, overline(z)) = 0$ (since each term is independent of either $z$ or $overline(z)$). Moreover, by @thm:leibnizintegralrule, @eq:dirichlet_problem_with_laplace_equation_solution gives that
   $
     laplacian u(z)
     = laplacian integral_0^(2 uppi) phi(zeta) P(zeta, z) dif tau
@@ -140,7 +140,7 @@ A fundamental problem in the theory of partial differential equations is to find
   $
 
   Our goal is to show that for fixed $xi = R ee^(ii theta.alt) in partial D(0, R)$,
-  $ lim_(z -> xi \ z in D(0, R)) u(z) = phi(xi). $ <eq:dirichletproblemwithlaplaceequationsolution_limittoboundary>
+  $ lim_(z -> xi \ z in D(0, R)) u(z) = phi(xi). $ <eq:dirichlet_problem_with_laplace_equation_solution_limittoboundary>
 
   Let $R/2 < rho < R$ and $z = rho ee^(ii theta)$. Then with $zeta = R ee^(ii tau)$,
   $
@@ -170,10 +170,10 @@ A fundamental problem in the theory of partial differential equations is to find
   By continuity of $phi$ on the compact set $partial D(0, R)$, by @thm:heinecantor, it is bounded and $M = sup_(abs(zeta) = R) abs(phi(zeta))$ is finite. The Poisson kernel can be rewritten as
   $ P(zeta, z) = (R^2 - rho^2) / (2 uppi abs(zeta - z)^2), $
   where $zeta = R ee^(ii tau)$ and $z = rho ee^(ii theta)$, with $abs(theta.alt - tau) > delta$. Then $exists eta > 0$ such that $forall z$ with $abs(xi - z) < eta$ (small enough so that $abs(theta.alt - theta)< delta/2$),
-  $ abs(theta - tau) > delta / 2 $ <eq:dirichletproblemwithlaplaceequationsolution_constraint1>
+  $ abs(theta - tau) > delta / 2 $ <eq:dirichlet_problem_with_laplace_equation_solution_constraint1>
   and
-  $ (rho > R / 2) quad "and" quad eta <= R / 2 $ <eq:dirichletproblemwithlaplaceequationsolution_constraint2>
-  as in @fig:dirichletproblemwithlaplaceequationsolution_secondintegral. Then,
+  $ (rho > R / 2) quad "and" quad eta <= R / 2 $ <eq:dirichlet_problem_with_laplace_equation_solution_constraint2>
+  as in @fig:dirichlet_problem_with_laplace_equation_solution_secondintegral. Then,
   $
     abs(zeta - z)^2 > 4 rho^2 sin(delta / 4)^2 > 1 / 2 R^2 (1 - cos(delta / 2)).
   $
@@ -191,9 +191,9 @@ A fundamental problem in the theory of partial differential equations is to find
   which follows in particular from
   $
     R - rho < epsilon / (8 M) R (1 - cos(delta / 2)).
-  $ <eq:dirichletproblemwithlaplaceequationsolution_constraint3>
+  $ <eq:dirichlet_problem_with_laplace_equation_solution_constraint3>
 
-  From @fig:dirichletproblemwithlaplaceequationsolution_secondintegral, it is evident that $R - rho < abs(xi - z) < eta$. For @eq:dirichletproblemwithlaplaceequationsolution_constraint1 to be true, we previously had that $abs(theta.alt - theta) < delta / 2$. In other words
+  From @fig:dirichlet_problem_with_laplace_equation_solution_secondintegral, it is evident that $R - rho < abs(xi - z) < eta$. For @eq:dirichlet_problem_with_laplace_equation_solution_constraint1 to be true, we previously had that $abs(theta.alt - theta) < delta / 2$. In other words
   $ abs(xi - z)^2 < R^2 + rho^2 - 2 R rho cos(delta / 2). $
 
   Obviously, this is satisfied if $abs(xi - z)^2 < R^2 / 2 (1 - cos(delta / 2)) < 2 rho^2 (1 - cos(delta / 2))$. This can be rearranged into
@@ -206,9 +206,9 @@ A fundamental problem in the theory of partial differential equations is to find
       R / 2,
     ) > 0,
   $
-  under which @eq:dirichletproblemwithlaplaceequationsolution_constraint1, @eq:dirichletproblemwithlaplaceequationsolution_constraint2, and @eq:dirichletproblemwithlaplaceequationsolution_constraint3 are satisfied.
+  under which @eq:dirichlet_problem_with_laplace_equation_solution_constraint1, @eq:dirichlet_problem_with_laplace_equation_solution_constraint2, and @eq:dirichlet_problem_with_laplace_equation_solution_constraint3 are satisfied.
 
-  Hence, $forall epsilon > 0$, $exists eta > 0$ such that $forall z$ with $0 < abs(xi - z) < eta$, we have $abs(phi(xi) - u(z)) < 2 epsilon$. Then @eq:dirichletproblemwithlaplaceequationsolution_limittoboundary follows.
+  Hence, $forall epsilon > 0$, $exists eta > 0$ such that $forall z$ with $0 < abs(xi - z) < eta$, we have $abs(phi(xi) - u(z)) < 2 epsilon$. Then @eq:dirichlet_problem_with_laplace_equation_solution_limittoboundary follows.
 
   We will now show that $u(z)$ is unique. Assume that $v != u$ on $overline(D(0, R))$ also solves the problem. Then $u - v$ is harmonic and vanishes on $partial D(0, R)$. By the Poisson Integral Formula (@eq:poissonintegralformula2),
   $

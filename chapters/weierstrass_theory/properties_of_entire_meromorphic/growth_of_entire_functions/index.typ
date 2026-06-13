@@ -69,9 +69,9 @@ As an immediate consequence, we have:
   $
     log abs(f(z)) &= integral_0^(2 uppi) log abs(f(zeta)) P (zeta, z) dif theta \
     &quad ""+ sum_(j=1)^m log abs((r (z - a_j)) / (r^2 - overline(a_j) z)) - sum_(k=1)^n log abs((r (z - b_k)) / (r^2 - overline(b_k) z)),
-  $<eq:poissonjensenformula_statement>
+  $<eq:poisson_jensen_formula_statement>
   where $zeta = r ee^(ii theta)$, $z in D(0,r) without ({a_j}_(j=1)^m union {b_k}_(j=1)^n)$, and $P(zeta, z)$ is the Poisson kernel in @eq:poissonkernelgeneralform.
-]<thm:poissonjensenformula>
+]<thm:poisson_jensen_formula>
 
 #proof[
   For fixed $z in D(0,r)$ not at zeros or poles, let
@@ -407,7 +407,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
 ]<prop:entirefunctionfiniteorderlogdiffderivatives>
 
 #proof[
-  Let $r > 2 abs(z)$. By the Poisson--Jensen Formula (@thm:poissonjensenformula), at each non-singular point, we have (the kernel representation derived in @eq:poissonkernelgeneralform)
+  Let $r > 2 abs(z)$. By the Poisson--Jensen Formula (@thm:poisson_jensen_formula), at each non-singular point, we have (the kernel representation derived in @eq:poissonkernelgeneralform)
   $
     Re log f(z) &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) Re ((r ee^(ii theta) + z) / (r ee^(ii theta) - z)) dif theta \
     &wide""+ sum_(k=1)^(n(r,0,f)) Re log ((r(z - a_k)) / (r^2 - overline(a_k) z)).
