@@ -4,24 +4,24 @@
 We now provide a second formulation of the first fundamental theorem, given by Ahlfors and Shimizu, found independently of each other.
 
 #lemma[
-  Let $U$ be a positively oriented bounded region by a piecewise $C^1$ simple closed boundary. Let $f$ be a (not identically $0$) holomorphic function on an open neighborhood of $overline(U)$, $G in C^2({abs(f(z)) : z in overline(U)})$. Then
+  Let $U$ be a positively oriented bounded region by a piecewise $C^1$ simple closed boundary. Let $f$ be a (not identically $0$) holomorphic function on an open neighborhood of $overline(U)$, $G in C^2(f(overline(U)))$. Then
   $
     I = integral.cont_(partial U) nabla_(vu(n)) G(abs(f(z))) abs(dz) = integral_U g(abs(f(z))) abs(f'(z))^2 r dr and dtheta,
-  $ <eq:ahlforsshimizugreens_statement>
-  where $z = r ee^(ii theta)$, $g(R) = G''(R) + frac(1, R, style: "horizontal") G'(R)$, and $vu(n)$ is the unit normal vector pointing towards the exterior of $partial U$.
-] <lem:ahlforsshimizugreens>
+  $ <eq:ahlfors_shimizu_green_statement>
+  where $z = r ee^(ii theta)$, $g(R) = G''(R) + 1 / R G'(R)$, and $vu(n)$ is the unit normal vector pointing towards the exterior of $partial U$.
+] <lem:ahlfors_shimizu_green>
 
 #proof[
-  Let the zeros of $f$ in $U$ (which are finite, otherwise they accumulate) be ${z_k}_(k=1)^n$. Choose $epsilon' > 0$ so that for any $0 < epsilon < epsilon'$ the disks ${D(z_k, epsilon)}_(k=1)^n$ each lie in the open set $U$ and are pairwise disjoint from one another.
+  Let the zeros of $f$ in $U$ (which are finite, otherwise they accumulate) be ${z_k}_(k=1)^n$. Choose $epsilon' > 0$ so that for any $0 < epsilon < epsilon'$ the disks ${D(z_k, epsilon)}_(k=1)^n$ each lie in the open set $U$ and are pairwise disjoint from one another (we do this to ensure $g$ is continuous, as $g$ is singular when $R = abs(f(z)) = 0$).
 
   Applying Green's Theorem (@thm:real_green)#footnote[We define $vu(n)$ to be the normal vector pointing into the multiply connected region, so for the $partial U$ integral, $vu(n)$ points outwards and for the summation integrals $vu(n)$ points into the disks.]
   $
     (integral.cont_(partial U) + sum_(k=1)^n integral.cont_(partial D(z_k, epsilon))) vb(v) dot vu(n) dif s = integral.double_(U without union.big D(z_k, epsilon)) div vb(v) dif A
   $
-  to $I$ (so letting $vb(v) = G(abs(f(z)))$), we have
+  to $I$ (so letting $vb(v) = grad G(abs(f(z)))$), we have
   $
     I &= (integral.cont_(partial U) + sum_(k=1)^n integral.cont_(partial D(z_k, epsilon))) grad G(abs(f(z))) dot vu(n) abs(dz) \ &= integral.double_(U without union.big D(z_k, epsilon)) laplacian G(abs(f(z))) r dr dtheta.
-  $ <eq:ahlforsshimizugreens_greensapplication>
+  $ <eq:ahlfors_shimizu_green_greensapplication>
   Letting $R = abs(f(z)) = sqrt(f(z) overline(f(z)))$ and adopting the elliptic notations $partial_z = pdv(, z, style: "horizontal")$, $partial_(overline(z)) = pdv(, overline(z), style: "horizontal")$ etc.,
   $
     partial_z R = (partial_z (f overline(f))) / (2R) = (f' overline(f) + f overline(partial_(overline(z)) f)) / (2R) = (f' overline(f)) / (2R), wide partial_(overline(z)) R = (partial_(overline(z)) (f overline(f))) / (2R) = (f overline(f')) / (2R),
@@ -39,17 +39,17 @@ We now provide a second formulation of the first fundamental theorem, given by A
     partial_(z overline(z)) G(R) = partial_z G'(R) partial_(overline(z)) R + G'(R) partial_(overline(z) z) R &= G''(R) (f' overline(f)) / (2R) dot (f overline(f')) / (2R) + G'(R) abs(f')^2 / (4R) \
     &= abs(f')^2 / 4 (G''(R) + (G'(R)) / R),
   $
-  it follows that $laplacian G(abs(f(z))) = g(R) abs(f')^2$. Substituting this in @eq:ahlforsshimizugreens_greensapplication gives
+  it follows that $laplacian G(abs(f(z))) = g(R) abs(f')^2$. Substituting this in @eq:ahlfors_shimizu_green_greensapplication gives
   $
     (integral.cont_(partial U) + sum_(k=1)^n integral.cont_(partial D(z_k, epsilon))) grad G(abs(f(z))) dot vu(n) abs(dz) = integral.double_(U without union.big D(z_k, epsilon)) laplacian G(abs(f(z))) r dr dtheta.
   $
-  As $epsilon -> 0^+$, the right-hand side is simply the desired quantity in @eq:ahlforsshimizugreens_statement. By the continuous differentiability of $G$, $exists M > 0$ such that $abs(grad G dot vu(n)) <= M$ on $union.big_k overline(D(z_k, epsilon))$, thus
+  As $epsilon -> 0^+$, the right-hand side is simply the desired quantity in @eq:ahlfors_shimizu_green_statement. By the continuous differentiability of $G$, $exists M > 0$ such that $abs(grad G dot vu(n)) <= M$ on $union.big_k overline(D(z_k, epsilon))$, thus
   $
     abs(integral.cont_(partial D(z_k, epsilon)) grad G dot vu(n) dif s) <= integral_0^(2 uppi) M epsilon dtheta -> 0 quad "as" quad epsilon -> 0^+.
   $
-  Thus, the left-hand side expression of @eq:ahlforsshimizugreens_greensapplication also tends to that of @eq:ahlforsshimizugreens_statement.
+  Thus, the left-hand side expression of @eq:ahlfors_shimizu_green_greensapplication also tends to that of @eq:ahlfors_shimizu_green_statement.
 ]
-We apply @lem:ahlforsshimizugreens to
+We apply @lem:ahlfors_shimizu_green to
 $
   G(R) = log (sqrt(1 + R^2) / 2) ==> g(R) = (1 - R^2) / (1 + R^2)^2 + 1/R (R / (1 + R^2)) = 2 / (1 + R^2)^2.
 $
