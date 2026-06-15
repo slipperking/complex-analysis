@@ -93,7 +93,7 @@ Because the accumulation points of $X$ all lie in $overline(X)$, the closure of 
 
   Under the previous assumptions, this is possible since if every $"sub-cube" inter X$ had finite subcovering, then $Q_0 inter X = X$ would have finite subcovering. Similarly, choose $Q_2$ by bisecting $Q_1$ similarly, and recursively obtain a sequence of cubes:
   $ Q_0 supset Q_1 supset Q_2 supset dots.c $
-  Since the side length of each cube tends to 0, $inter.big_(j=0)^oo Q_j$ consists of a single point $z_infinity in CC^n$. Since $cal(U)$ covers $X$, $exists U in cal(U)$ such that $z_infinity in U$. Since $U$ is open, $exists epsilon > 0$ such that $B^n (z_infinity, epsilon) subset.eq U$. $exists N in NN$ such that $forall k > N$, $Q_k subset B^n (z_infinity, epsilon)$. Then taking the intersection with $X$ on both sides,
+  Since the side length of each cube tends to $0$, $inter.big_(j=0)^oo Q_j$ consists of a single point $z_infinity in CC^n$. Since $cal(U)$ covers $X$, $exists U in cal(U)$ such that $z_infinity in U$. Since $U$ is open, $exists epsilon > 0$ such that $B^n (z_infinity, epsilon) subset.eq U$. $exists N in NN$ such that $forall k > N$, $Q_k subset B^n (z_infinity, epsilon)$. Then taking the intersection with $X$ on both sides,
   $ Q_k inter X subset.eq B^n (z_infinity, epsilon) inter X subset.eq U. $
   This contradicts the assumption that for every $k$, $Q_k inter X$ has no finite subcovering, since ${U} subset cal(U)$ clearly covers $Q_k inter X$, as it is a single open set that covers a nonempty subset. Therefore by contradiction, every open cover has finite subcovering.
 ]

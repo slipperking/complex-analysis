@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-== The Schwarz--Christoffel Transformation<sec:schwarzchristoffeltransformation>
+== The Schwarz--Christoffel Transformation<sec:schwarz_christoffel_transformation>
 
 The Riemann Mapping Theorem is elegant in its own simplicity and definitions. However, it is only a theorem that guarantees existence of biholomorphisms. No information whatsoever can be straightforwardly extracted regarding the explicit construction of such biholomorphisms. However, in the explicit case that $U$ is the open interior of a polygon, the result is provided by the Schwarz--Christoffel Transformation.
 
@@ -37,7 +37,7 @@ The absolute integrability of $beta(zeta)$ along the real axis concerns only the
 Let
 $
   f(z) = c integral^z beta(zeta) dzeta.
-$ <eq:schwarzchristoffeltransformation_statement>
+$ <eq:schwarz_christoffel_transformation_statement>
 Since $beta$ is holomorphic on $HH^+$,
 
 // TBC

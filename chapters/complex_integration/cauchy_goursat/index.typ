@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 
 == The Cauchy--Goursat Theorem
-It is important to know the differential 2-forms even for a single variable complex function. Consider $z=x+ii y$ and $overline(z)=x-ii y$. We can then define their corresponding differentials:
+Especially for area or double integrals, it becomes important to know the differential forms for a single variable complex function (as they are effectively functions of $z$ and $overline(z)$). Consider $z=x+ii y$ and $overline(z)=x-ii y$. We can then define their corresponding differentials:
 
 $ dz = dx + ii dy, quad dif overline(z) = dx - ii dy. $
 
@@ -12,7 +12,7 @@ $
                          & =2 ii dx and dy.
 $
 
-Analogous to the real case, a 0-form is defined as a scalar-valued function in the form $f (z, overline(z))$, a 1-form in the form $omega_0 dz + omega_1 dif overline(z)$, and a 2-form as $omega_0 dz and dif overline(z)$. The exterior differential operator for this one-dimensional case is defined as $partial + overline(partial)$, where $partial = dz and pdv(, z)$ and $overline(partial) = dif overline(z) and pdv(, overline(z))$. Occasionally, one will informally use $partial$ and $overline(partial)$ as an abbreviation for $pdv(, z)$ and $pdv(, overline(z))$ respectively.
+Analogous to the real case, a $0$-form is defined as a scalar-valued function in the form $f (z, overline(z))$, a $1$-form in the form $omega_0 dz + omega_1 dif overline(z)$, and a $2$-form as $omega_0 dz and dif overline(z)$. The exterior differential operator for this one-dimensional case is defined as $partial + overline(partial)$, where $partial = dz and pdv(, z)$ and $overline(partial) = dif overline(z) and pdv(, overline(z))$. Occasionally, one will informally use $partial$ and $overline(partial)$ as an abbreviation for $pdv(, z)$ and $pdv(, overline(z))$ respectively.
 
 #theorem[Lusin Area Theorem][
   For a region $U subset CC$ and $f:U -> CC$ univalent, the area of the image $f(U)$ is equal to
@@ -41,7 +41,7 @@ Analogous to the real case, a 0-form is defined as a scalar-valued function in t
   by @eq:holomorphic_derivative_decomposition.
 ]
 #theorem[Green's Theorem, Complex Form][
-  Let $U subset CC$ be bounded with a piecewise smooth boundary $partial U$. For two scalar functions $omega_1=omega_1 (z,overline(z))$ and $omega_2=omega_2 (z,overline(z))$ satisfying $omega_1,omega_2 in C^1 (overline(U))$, define the 1-form $omega=omega_1 dz + omega_2 dif overline(z)$. Then,
+  Let $U subset CC$ be bounded with a piecewise smooth boundary $partial U$. For two scalar functions $omega_1=omega_1 (z,overline(z))$ and $omega_2=omega_2 (z,overline(z))$ satisfying $omega_1,omega_2 in C^1 (overline(U))$, define the $1$-form $omega=omega_1 dz + omega_2 dif overline(z)$. Then,
 
   $ integral_(partial U)omega=integral_U dif omega. $ <eq:complex_green>
 ] <thm:complex_green>

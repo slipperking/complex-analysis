@@ -83,7 +83,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     $
       logp abs(F(z)) & >= sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - (q - 1) logp (3 / (2 delta)) - log 2 \
                      & >= sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) - log 2.
-    $ <eq:nevanlinnasecondfundamentaltheorempart1_logpFlowerbound>
+    $ <eq:nevanlinna_second_fundamental_theorem_part_1_log_p_F_lower_bound>
 
   + There exists no such $nu$. Then all $nu$ have the property that $abs(f(z) - a_nu) >= delta / (3q)$. It follows that
     $
@@ -92,9 +92,9 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
       sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) & <= 0 \
                                                                          & <= logp abs(F(z)).
     $
-    Then @eq:nevanlinnasecondfundamentaltheorempart1_logpFlowerbound holds for this case trivially.
+    Then @eq:nevanlinna_second_fundamental_theorem_part_1_log_p_F_lower_bound holds for this case trivially.
 
-  Integrating the relation @eq:nevanlinnasecondfundamentaltheorempart1_logpFlowerbound (which holds in all cases) gives that
+  Integrating the relation @eq:nevanlinna_second_fundamental_theorem_part_1_log_p_F_lower_bound (which holds in all cases) gives that
   $
     m(r, F) >= sum_(nu = 1)^q m(r, a_nu, f) - q logp ((3q) / delta) - log 2.
   $ <eq:nevanlinnasecondfundamentaltheorempart1_proximityFlowerbound>

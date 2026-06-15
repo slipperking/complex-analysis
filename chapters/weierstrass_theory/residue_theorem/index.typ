@@ -418,7 +418,7 @@ Residues are extremely important as they allow for simple evaluation of definite
     &<= R integral_0^(uppi\/4) ee^(-R^2 sin(2 theta)) dif theta < R integral_0^(uppi\/4) ee^(-4/uppi R^2 theta) dif theta \
     &= -uppi/(4R) evaluated(ee^(-4/uppi R^2 theta))_0^(uppi\/4) = uppi/(4R) (1 - ee^(-R^2)).
   $
-  As $R -> infinity$, this integral tends to 0. Let $z = r ee^(ii uppi\/4)$ on $Gamma_2$. Then, we have
+  As $R -> infinity$, this integral tends to $0$. Let $z = r ee^(ii uppi\/4)$ on $Gamma_2$. Then, we have
   $
     lim_(R -> infinity) integral_(Gamma_2) f(z) dz = integral_infinity^0 exp[ii (r ee^(ii uppi\/4))^2] ee^(ii uppi\/4) dr = ee^(ii uppi\/4) integral_infinity^0 exp(-r^2) dr.
   $

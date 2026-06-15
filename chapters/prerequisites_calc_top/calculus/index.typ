@@ -107,14 +107,14 @@ Four main classical theorems exist, relating a function and its line integral in
   $
 ] <thm:divergencegauss>
 
-In 3-dimensional $RR^3$ space, define a scalar valued function to be a 0-form, a linear combination of $dx$, $dy$, and $dz$ to be a 1-form, and a linear combination of $dy and dz$, $dz and dx$, and $dx and dy$ to be a 2-form, and $dx and dy and dz$ to be a 3-form, where $and$ denotes an anti-commutative and associative product, where for any two differential forms $omega_1$ and $omega_2$
+In 3-dimensional $RR^3$ space, define a scalar valued function to be a $0$-form, a linear combination of $dx$, $dy$, and $dz$ to be a $1$-form, and a linear combination of $dy and dz$, $dz and dx$, and $dx and dy$ to be a $2$-form, and $dx and dy and dz$ to be a $3$-form, where $and$ denotes an anti-commutative and associative product, where for any two differential forms $omega_1$ and $omega_2$
 $ omega_1 and omega_2 = - omega_2 and omega_1. $
 Then consequently, for any differential form $omega$,
 $ omega and omega = 0. $
 
 We can generalize the operator $dif$ to increase the degree of a differential form. For instance,
 $ dif f = pdv(f, x) dx + pdv(f, y) dy + pdv(f, z) dz, $
-which is the definition of the total differential. For a 1-form in 3-dimensional space, $omega_1 = P dx + Q dy + R dz$, we can define the exterior derivative in a similar way:
+which is the definition of the total differential. For a $1$-form in 3-dimensional space, $omega_1 = P dx + Q dy + R dz$, we can define the exterior derivative in a similar way:
 $
   dif omega_1 & = dif P and dx + dif Q and dy + dif R and dz \
               & = (pdv(P, x) dx + pdv(P, y) dy + pdv(P, z) dz) and dx \
@@ -124,7 +124,7 @@ $
               & quad ""+ (pdv(Q, x) - pdv(P, y)) dd(x, y, prod: and).
 $
 
-Similarly, we can differentiate a 2-form $omega = P dd(y, z, prod: and) + Q dd(z, x, prod: and) + R dd(x, y, prod: and)$ to get:
+Similarly, we can differentiate a $2$-form $omega = P dd(y, z, prod: and) + Q dd(z, x, prod: and) + R dd(x, y, prod: and)$ to get:
 $ (pdv(P, x) + pdv(Q, y) + pdv(R, z)) dd(x, y, z, prod: and). $
 The two results above resemble the curl and divergence of $(P, Q, R)$. A differential form $omega$ is _closed_ if $dif omega = 0$, and is _exact_ if there exists $eta$ such that $omega = dif eta$.
 
@@ -134,7 +134,7 @@ The two results above resemble the curl and divergence of $(P, Q, R)$. A differe
 
 It is true that for any set $U subset.eq RR^n$, regardless of contractibility, that for a differential form $omega$ defined on $U$, $dif(dif omega) = 0$. In other words, all exact differential forms are closed. (For a region $U$, we have $partial partial U = nothing$. This is one of many reasons for which the boundary operator is denoted by $partial$, in analogy to $dif$.)
 
-The implications of this are important: if $omega$ is a 0-form, then $curl(grad omega) = 0$, and if $omega$ is a 1-form, $div(curl vb(v)) = 0$, where $vb(v)$ is the vector of the coefficients of the basis differential forms of $omega$ (there are no correlations for higher degree forms since in 3-dimensional space, the highest degree possible for any differential form is 3).
+The implications of this are important: if $omega$ is a $0$-form, then $curl(grad omega) = 0$, and if $omega$ is a $1$-form, $div(curl vb(v)) = 0$, where $vb(v)$ is the vector of the coefficients of the basis differential forms of $omega$ (there are no correlations for higher degree forms since in 3-dimensional space, the highest degree possible for any differential form is 3).
 
 Then, the Fundamental Theorem of Calculus, the Gradient Theorem, Green's, Stokes', and Gauss' Theorems can be generalized into:
 
