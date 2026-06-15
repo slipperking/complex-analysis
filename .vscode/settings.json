@@ -5,6 +5,7 @@
         "dzeta",
         "emph",
         "extcomplex",
+        "forall",
         "liminf",
         "limsup",
         "logp",
@@ -14,6 +15,7 @@
         "pagebreak",
         "qedhere",
         "smallcaps",
+        "subcovering",
         "titlefmt",
         "Typst",
         "uppi"

@@ -47,7 +47,7 @@ The following theorem is important in many areas of mathematical analysis and ha
 
 #theorem[Arzelà--Ascoli][
   Let $cal(F)$ be a family of complex continuous functions defined on a compact subset $K subset.eq CC$. Then, $cal(F)$ is uniformly bounded and uniformly equicontinuous on $K$ iff $cal(F)$ is normal on $K$.
-] <thm:arzelaascoli>
+] <thm:arzela_ascoli>
 
 #proof[
   We will first prove the sufficiency of uniform boundedness and uniform equicontinuity. Let ${f_n}_(n in NN)$ be any sequence in $cal(F)$. By the uniform boundedness of $cal(F)$, there exists a constant $M > 0$ such that $abs(f_n (z)) <= M$ for all $z in K$ and all $n in NN$.
@@ -61,7 +61,7 @@ The following theorem is important in many areas of mathematical analysis and ha
     dots.v \
     n_(k,1) < n_(k,2) < dots.c < n_(k,j) < dots.c \
     dots.down,
-  $ <eq:arzelaascoli_indexsequences>
+  $ <eq:arzela_ascoli_indexsequences>
   and furthermore, the sequence in each row is a subsequence of the previous row. As a result, we have
   $
     n_(1,1) <= n_(2,1) <= dots.c <= n_(k,1) <= dots.c \
@@ -69,22 +69,22 @@ The following theorem is important in many areas of mathematical analysis and ha
     dots.v \
     n_(1,j) <= n_(2,j) <= dots.c <= n_(k,j) <= dots.c \
     dots.down.
-  $ <eq:arzelaascoli_indexsequencestransposed>
-  We will now invoke a diagonalization argument. Since the sequences above in @eq:arzelaascoli_indexsequences are strictly increasing and from the results of @eq:arzelaascoli_indexsequencestransposed, it follows that ${n_(j,j)}_(j in NN)$ is strictly increasing. Let $n_(j,j)$ be denoted by $n'_j$. Since $cal(F)$ is uniformly equicontinuous on $K$, $forall epsilon > 0$, $exists delta = delta(epsilon) > 0$ such that $forall z, z' in K$ satisfying $abs(z - z') < delta$, $forall j in NN$, we have
+  $ <eq:arzela_ascoli_indexsequencestransposed>
+  We will now invoke a diagonalization argument. Since the sequences above in @eq:arzela_ascoli_indexsequences are strictly increasing and from the results of @eq:arzela_ascoli_indexsequencestransposed, it follows that ${n_(j,j)}_(j in NN)$ is strictly increasing. Let $n_(j,j)$ be denoted by $n'_j$. Since $cal(F)$ is uniformly equicontinuous on $K$, $forall epsilon > 0$, $exists delta = delta(epsilon) > 0$ such that $forall z, z' in K$ satisfying $abs(z - z') < delta$, $forall j in NN$, we have
   $
     abs(f_(n'_j) (z) - f_(n'_j) (z')) < epsilon / 3.
-  $ <eq:arzelaascoli_uniformequicontinuitydirectconsequence>
+  $ <eq:arzela_ascoli_uniform_equicontinuity_direct_consequence>
   Since each ${f_(n_(k,j))}_(j in NN)$ is convergent at $zeta_k$ (for a fixed $k$) by construction, and since ${n'_j}_(j >= k)$ is a subsequence of ${n_(k,j)}_(j in NN)$, it is evident that ${f_(n'_j)}_(j in NN)$ is convergent at each $zeta_k$. We then have that $forall k in NN$, $exists N = N(epsilon, k) in NN$ such that $forall i, j > N$,
   $
     abs(f_(n'_i) (zeta_k) - f_(n'_j) (zeta_k)) < epsilon / 3.
   $
   For the fixed value of $epsilon$, the collection ${D(zeta_k, delta)}_(k in NN)$ forms an open cover of $K$, and by the Heine--Borel Theorem (@thm:heine_borel), it admits finite subcovering ${D(zeta_k, delta)}_(k in {1, dots, l})$ for some finite $l = l(epsilon) in NN$.
 
-  Hence, $exists k = k(epsilon) <= l$ such that any point $z in K$ lies in $D(zeta_k, delta)$. By @eq:arzelaascoli_uniformequicontinuitydirectconsequence, we have that
+  Hence, $exists k = k(epsilon) <= l$ such that any point $z in K$ lies in $D(zeta_k, delta)$. By @eq:arzela_ascoli_uniform_equicontinuity_direct_consequence, we have that
   $
     abs(f_(n'_j) (z) - f_(n'_j) (zeta_k)) < epsilon / 3, quad abs(f_(n'_i) (z) - f_(n'_i) (zeta_k)) < epsilon / 3.
   $
-  Letting $tilde(N) = tilde(N)(epsilon) = max({N(epsilon, 1), dots, N(epsilon, l(epsilon))})$, we have that $forall i, j > tilde(N)$, $forall z in K$,
+  Letting $tilde(N) = tilde(N)(epsilon) = max{N(epsilon, 1), dots, N(epsilon, l(epsilon))}$, we have that $forall i, j > tilde(N)$, $forall z in K$,
   $
     abs(f_(n'_j) (z) - f_(n'_i) (z)) & <= abs(f_(n'_j) (z) - f_(n'_j) (zeta_k)) + abs(f_(n'_j) (zeta_k) - f_(n'_i) (zeta_k)) \ & wide"" + abs(f_(n'_i) (zeta_k) - f_(n'_i) (z)) \
     & = epsilon / 3 + epsilon / 3 + epsilon / 3 = epsilon.
@@ -93,7 +93,7 @@ The following theorem is important in many areas of mathematical analysis and ha
 
   For the proof of the necessity, we will first assume the normality of $cal(F)$ in $K$.
 
-  For the sake of contradiction, assume that $cal(F)$ is not uniformly bounded. Then $forall n in NN$, $exists f_n in cal(F)$ and $exists z_n in K$ such that $abs(f_n (z_n)) > n$. By assumption, this sequence has a subsequence ${f_(n_k)}_(k in NN)$ that uniformly converges. Hence, $exists N in NN$ such that $forall k > N$, $forall z in K$, $abs(f_(n_k) (z) - f(z)) < 1$. By the reverse triangle inequality, it follows that $abs(f_(n_k) (z)) < abs(f(z)) + 1$. Since $f$ is continuous on $K$ by @thm:uniformlimit, it is bounded by some $M_1$ (@thm:continuous_function_bounded_on_compact). Let $M_2 = max_(k in NN_(<= N)) sup_(z in K) abs(f_(n_k) (z))$. It follows that this subsequence is uniformly bounded by $max({M_1 + 1, M_2})$. However, since $abs(f_(n_k) (z_(n_k))) > n_k -> oo$ for any $k$, this subsequence cannot be uniformly bounded, and hence we have a contradiction.
+  For the sake of contradiction, assume that $cal(F)$ is not uniformly bounded. Then $forall n in NN$, $exists f_n in cal(F)$ and $exists z_n in K$ such that $abs(f_n (z_n)) > n$. By assumption, this sequence has a subsequence ${f_(n_k)}_(k in NN)$ that uniformly converges. Hence, $exists N in NN$ such that $forall k > N$, $forall z in K$, $abs(f_(n_k) (z) - f(z)) < 1$. By the reverse triangle inequality, it follows that $abs(f_(n_k) (z)) < abs(f(z)) + 1$. Since $f$ is continuous on $K$ by @thm:uniformlimit, it is bounded by some $M_1$ (@thm:continuous_function_bounded_on_compact). Let $M_2 = max_(k in NN_(<= N)) sup_(z in K) abs(f_(n_k) (z))$. It follows that this subsequence is uniformly bounded by $max{M_1 + 1, M_2}$. However, since $abs(f_(n_k) (z_(n_k))) > n_k -> oo$ for any $k$, this subsequence cannot be uniformly bounded, and hence we have a contradiction.
 
   We will now assume that $cal(F)$ is not pointwise equicontinuous at some arbitrary point $z_0 in K$. In other words, $exists epsilon > 0$ such that $forall delta > 0$, $exists f in cal(F)$, $exists z in K$ such that $abs(z - z_0) < delta$ satisfying
   $
@@ -133,11 +133,11 @@ Obviously, the equivalence is established similarly to local finiteness and loca
 ] <thm:montel>
 
 #proof[
-  Obviously, if $cal(F)$ is normal on $U$, for any compact $K subset U$, it follows that $cal(F)$ is normal on $K$, and the uniform boundedness on $K$ follows from the Arzelà--Ascoli Theorem (@thm:arzelaascoli).
+  Obviously, if $cal(F)$ is normal on $U$, for any compact $K subset U$, it follows that $cal(F)$ is normal on $K$, and the uniform boundedness on $K$ follows from the Arzelà--Ascoli Theorem (@thm:arzela_ascoli).
 
   Conversely, we will first assume that $cal(F)$ is locally uniformly bounded. Let $z in U$ be arbitrary, and choose $R_z > 0$ such that $overline(D(z, R_z)) subset U$. Therefore, it follows that $CC without U$ is closed and disjoint from $overline(D(z, R_z))$ and the distance between them is positive. Let this distance be
   $
-    d_z = inf({abs(zeta - zeta') : zeta in CC without U, zeta' in overline(D(z, R_z))}).
+    d_z = inf{abs(zeta - zeta') : zeta in CC without U, zeta' in overline(D(z, R_z))}.
   $
   It follows that the disk $V_z = D(z, R_z + d_z / 2)$ is relatively compact in $U$. By @cor:nthderivativeboundedsupremum, there exists a finite constant $c'_z > 0$ independent of $f in cal(F)$ such that
   $
@@ -153,9 +153,9 @@ Obviously, the equivalence is established similarly to local finiteness and loca
   $
   Therefore, $cal(F)$ is uniformly equicontinuous in $overline(D(z, R_z))$ (and also in $D(z, R_z)$). Indeed, $forall epsilon > 0$, we can choose $delta_z = epsilon / c_z$ and the assertion follows.
 
-  Let $K subset U$ be compact and arbitrary. The collection ${D(z, R_z)}_(z in K)$ forms an open cover of $K$ and by the Heine--Borel Theorem (@thm:heine_borel) admits a finite subcover ${D(z_k, R_(z_k))}_(k in NN_(<= n))$ for some finite $n in NN$. If we let $delta = min_(k in NN_(<= n)) (delta_k)$, it follows that $cal(F)$ is uniformly equicontinuous on $K$. By the Arzelà--Ascoli Theorem (@thm:arzelaascoli), any sequence ${f_n}_(n in NN) subset.eq cal(F)$ has a uniformly convergent subsequence ${f_(n_k)}_(k in NN)$ on $K$.
+  Let $K subset U$ be compact and arbitrary. The collection ${D(z, R_z)}_(z in K)$ forms an open cover of $K$ and by the Heine--Borel Theorem (@thm:heine_borel) admits a finite subcover ${D(z_k, R_(z_k))}_(k in NN_(<= n))$ for some finite $n in NN$. If we let $delta = min_(k in NN_(<= n)) (delta_k)$, it follows that $cal(F)$ is uniformly equicontinuous on $K$. By the Arzelà--Ascoli Theorem (@thm:arzela_ascoli), any sequence ${f_n}_(n in NN) subset.eq cal(F)$ has a uniformly convergent subsequence ${f_(n_k)}_(k in NN)$ on $K$.
 
   Let ${f_n}_(n in NN) subset.eq cal(F)$ be arbitrary. Let $U$ be exhausted by the compact sets ${K_n}_(n in NN)$. By the argument above, we may extract a subsequence ${f_(n_(1,j))}_(j in NN) subset.eq {f_n}_(n in NN)$ that uniformly converges on $K_1$. By the same argument, there exists a subsequence ${f_(n_(2,j))}_(j in NN) subset.eq {f_(n_(1,j))}_(j in NN)$ that uniformly converges on $K_2$. Let $n'_j = n_(j,j)$.
 
-  We will now invoke the same diagonalization argument as in the proof of the Arzelà--Ascoli Theorem (@thm:arzelaascoli). Let $K subset U$ be an arbitrary compact set. It follows that for some $k in NN$, $K_k supset.eq K$. Since ${f_(n'_j)}_(j >= k) subset.eq {f_(n_(k,j))}_(j in NN)$ is the subsequence of a sequence that converges on $K$, the assertion follows.
+  We will now invoke the same diagonalization argument as in the proof of the Arzelà--Ascoli Theorem (@thm:arzela_ascoli). Let $K subset U$ be an arbitrary compact set. It follows that for some $k in NN$, $K_k supset.eq K$. Since ${f_(n'_j)}_(j >= k) subset.eq {f_(n_(k,j))}_(j in NN)$ is the subsequence of a sequence that converges on $K$, the assertion follows.
 ]

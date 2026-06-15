@@ -26,15 +26,11 @@ Let $Q=va(r)(u + Delta u, v + Delta v)$ be near $P$. It follows that $arrow(P Q)
 $
   arrow(P Q) & = va(r)'_u Delta u + va(r)'_v Delta v + 1 / 2 (va(r)''_(u u) Delta u^2 + 2 va(r)''_(u v) Delta u Delta v + va(r)''_(v v) Delta v^2) + Order(Delta u^3 + Delta v^3),
 $
-
 and therefore,
-
 $
-  arrow(P Q) dot vu(n)=1 / 2 (va(r)''_(u u) dot vu(n) Delta u^2 + 2 va(r)''_(u v) dot vu(n) Delta u Delta v + va(r)''_(v v) dot vu(n) Delta v^2) + Order(3) dot vu(n).
+  arrow(P Q) dot vu(n)=1 / 2 (va(r)''_(u u) dot vu(n) Delta u^2 + 2 va(r)''_(u v) dot vu(n) Delta u Delta v + va(r)''_(v v) dot vu(n) Delta v^2) + Order(Delta u^3 + Delta v^3),
 $
-
-The first two linear terms vanish by properties of the triple scalar product. The _second fundamental form_ of $Sigma$ is defined as
-
+where the first two linear terms vanished by properties of the scalar triple product. Omitting the higher order terms and the coefficient, the _second fundamental form_ of $Sigma$ is defined as
 $
   #II-num=L dif u^2 + 2 M dif u dif v + N dif v^2,
 $ <eq:second_fundamental_form>

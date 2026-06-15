@@ -224,6 +224,9 @@
 #let I-num = $upright(I)$
 #let II-num = $upright(I #h(-0.15em) I)$
 #let III-num = $upright(I #h(-0.15em) I #h(-0.15em) I)$
+#let Order = $cal(O)$
+#let order = $cal(o)$
+#let diff = $partial$
 
 #let ee = $upright(e)$
 #let ii = $upright(i)$

@@ -8,7 +8,7 @@ The first question we answer here is the cases when a harmonic function can be r
 #proof[
   Letting $f = u + ii v$, where $v$ is given in @eq:conjugate_poisson_integral_formula suffices.
 ]
-#theorem[
+#theorem[Elliptic Regularity][
   Let $U subset.eq CC$ be a region. Then a harmonic function $u in C^2(U)$ is infinitely differentiable.
 ]
 #proof[

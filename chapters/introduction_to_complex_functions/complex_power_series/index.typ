@@ -140,7 +140,7 @@ Lastly, the sufficient criteria to pass a limit through an integral:
 #theorem[
   Let $gamma$ be a rectifiable curve on which the function sequence ${f_n}_(n in NN)$ is continuous. If ${f_n (z)}$ uniformly converges to $f$, then
   $ lim_(n -> oo) integral_gamma f_n (z) dz = integral_gamma f(z) dz. $
-] <thm:limitintegralswitch>
+] <thm:limit_integral_switch>
 
 #proof[
   Since ${f_n (z)}$ uniformly converges to $f(z)$ on $gamma$, $forall epsilon > 0$, there exists $N in NN$ such that for all $n > N$,
@@ -150,7 +150,7 @@ Lastly, the sufficient criteria to pass a limit through an integral:
 
   Then $forall n > N$,
   $
-    abs(integral_gamma f_n (z) dz - integral_gamma f(z) dz) & = abs(integral_gamma (f_n (z) - f(z)) dz) \
+    abs(integral_gamma f_n (z) dz - integral_gamma f(z) dz) & = abs(integral_gamma [f_n (z) - f(z)] dz) \
                                                             & <= integral_gamma abs(f_n (z) - f(z)) abs(dz) \
                                                             & < integral_gamma epsilon / length(gamma) abs(dz) = epsilon.
   $

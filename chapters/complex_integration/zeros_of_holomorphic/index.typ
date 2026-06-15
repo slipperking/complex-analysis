@@ -151,7 +151,7 @@ $
 #proof[
   By the holomorphy of $f_n (z)$, for any simple closed rectifiable curve $gamma subset U$ (whose interior is a subset of $U$), by the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem),
   $ integral.cont_Gamma f_n (zeta) dzeta = 0. $
-  Since $gamma$ is a subset of any compact subset of $U$, ${f_n (zeta)}$ uniformly converges on $gamma$, and by @thm:limitintegralswitch,
+  Since $gamma$ is a subset of any compact subset of $U$, ${f_n (zeta)}$ uniformly converges on $gamma$, and by @thm:limit_integral_switch,
 
   $
     lim_(n -> oo) integral.cont_Gamma f_n (zeta) dzeta = integral.cont_Gamma lim_(n -> oo) f_n (zeta) dzeta = integral.cont_Gamma f(zeta) dzeta = 0.
@@ -193,7 +193,7 @@ $
     & = 0.
   $
 
-  Therefore, $(f'(z)) / (f(z))$ is uniformly convergent on $gamma$. By @thm:limitintegralswitch, we can pass the limit through the integral in @eq:hurwitzsimplecase_argumentprinciple. Then,
+  Therefore, $(f'(z)) / (f(z))$ is uniformly convergent on $gamma$. By @thm:limit_integral_switch, we can pass the limit through the integral in @eq:hurwitzsimplecase_argumentprinciple. Then,
 
   $ lim_(n -> oo) integral.cont_gamma (f'_n (z)) / (f_n (z)) dz = integral.cont_gamma (f'(z)) / (f(z)) dz = 0. $
   By the Argument Principle (@thm:argumentprincipleholomorphic), $f(z)$ has no zeros in the interior of $gamma$. Since $gamma$ was arbitrarily chosen, either $f(z) equiv 0$ on $U$ or has no zeros in $U$.

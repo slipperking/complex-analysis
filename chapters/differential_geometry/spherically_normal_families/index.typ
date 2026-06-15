@@ -97,7 +97,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   $ (2 abs(f'(z)))/(1 + abs(f(z))^2) <= M quad forall f in cal(F) $
   for all compact $K subset Omega$, $forall z in K$, where $M$ depends only on $K$. Under the assumption that this holds, then
   $ d_sigma (f(z_1), f(z_2)) = inf_gamma integral_gamma dif s_sigma <= M abs(z_2 - z_1) quad forall f in cal(F) $
-  where $gamma$ joins $f(z_1)$ and $f(z_2)$ where $z_1, z_2 in K$. Hence, $forall epsilon > 0$, $forall z_1, z_2 in K$ such that $abs(z_1 - z_2) < epsilon / M$, $d_sigma (f(z_1), f(z_2)) < epsilon$, and hence $cal(F)$ is _uniformly spherically equicontinuous_. Since $d_sigma <= uppi$ for any two points by geometry of $S^2$, $cal(F)$ is also _uniformly spherically bounded_ (the compactness of $S^2$). Then the Arzelà--Ascoli Theorem (@thm:arzelaascoli) under the spherical metric gives that $cal(F)$ is a normal family.
+  where $gamma$ joins $f(z_1)$ and $f(z_2)$ where $z_1, z_2 in K$. Hence, $forall epsilon > 0$, $forall z_1, z_2 in K$ such that $abs(z_1 - z_2) < epsilon / M$, $d_sigma (f(z_1), f(z_2)) < epsilon$, and hence $cal(F)$ is _uniformly spherically equicontinuous_. Since $d_sigma <= uppi$ for any two points by geometry of $S^2$, $cal(F)$ is also _uniformly spherically bounded_ (the compactness of $S^2$). Then the Arzelà--Ascoli Theorem (@thm:arzela_ascoli) under the spherical metric gives that $cal(F)$ is a normal family.
 
   Conversely, assume for the sake of contradiction that $cal(F)$ is a normal family such that conclusion is not satisfied. Then, $exists K subset Omega$ compact and a sequence ${f_n}_(n in NN) subset.eq cal(F)$ such that the sequence
   $ {sup_(z in K) f_n^sharp (z)}_(n in NN) $
