@@ -14,13 +14,13 @@ The following important result can be directly obtained from the Maximum Modulus
   Define the auxiliary function
   $ g(z) = cases((f(z)) / (z) & "if" z eq.not 0, f'(0) & "if" z = 0.) $
 
-  Because $lim_(z -> 0) (f(z)) / (z) = f'(0)$, $g(z)$ is holomorphic on $DD$. Since $f$ is an automorphism on the open disk, $forall abs(z) < 1$, $abs(f(z)) < 1$. By the Maximum Modulus Principle (@thm:maximum_modulus), $forall 0 < epsilon < 1$, $forall z in D(0, epsilon)$,
+  Because $lim_(z -> 0) (f(z)) / (z) = f'(0)$, $g(z)$ is holomorphic on $DD$. Since $f$ is an automorphism on the open disk, $forall abs(z) < 1$, $abs(f(z)) < 1$. By the Maximum Modulus Principle (@thm:maximum-modulus), $forall 0 < epsilon < 1$, $forall z in D(0, epsilon)$,
   $ abs(g(z)) <= max_(z_epsilon in partial D(0, epsilon)) abs(f(z_epsilon)) / (epsilon) < 1 / (epsilon). $
   As $epsilon -> 1^-$, we obtain that $forall z in DD$, $abs(g(z)) <= 1$, or that $abs(f(z)) <= abs(z)$. Let $z = 0$. Then we get $abs(g(0)) = abs(f'(0)) <= 1$.
 
-  For the sake of the equality condition, assume $abs(f(z)) = abs(z)$. Then $abs(g(z)) equiv 1$ on the unit open disk. By @thm:maximum_modulus, $g(z) = ee^(ii tau)$ where $tau in RR$ and $f(z) = z ee^(ii tau)$ on $DD$.
+  For the sake of the equality condition, assume $abs(f(z)) = abs(z)$. Then $abs(g(z)) equiv 1$ on the unit open disk. By @thm:maximum-modulus, $g(z) = ee^(ii tau)$ where $tau in RR$ and $f(z) = z ee^(ii tau)$ on $DD$.
 
-  Next, assume only that $abs(f'(0)) = 1$. It follows that $abs(g(0)) = 1$. Since $abs(g(z)) <= 1$ for all $z in DD$, it follows from @thm:maximum_modulus that $g$ is constant with magnitude $1$, or in the form of $ee^(ii tau)$, where $tau in RR$ is a constant. Consequently, $f(z) = z ee^(ii tau)$.
+  Next, assume only that $abs(f'(0)) = 1$. It follows that $abs(g(0)) = 1$. Since $abs(g(z)) <= 1$ for all $z in DD$, it follows from @thm:maximum-modulus that $g$ is constant with magnitude $1$, or in the form of $ee^(ii tau)$, where $tau in RR$ is a constant. Consequently, $f(z) = z ee^(ii tau)$.
 ]
 
 To discuss the main topic of this section, we will first introduce the concept of a _group_.
@@ -52,7 +52,7 @@ First, we will observe the image of $partial DD$. Let $abs(z) = 1$. Then,
 $
   abs(phi_a (z)) = abs(1 / (z)) abs((z - a) / (1 / (z) - overline(a))) = abs((z - a) / (overline(z) - overline(a))) = 1.
 $
-Therefore, the image of $partial DD$ lies on $partial DD$, and since $f$ is holomorphic and non-constant, by the Maximum Modulus Principle (@thm:maximum_modulus), for any $abs(z) < 1$, $abs(phi_a (z)) < 1$. Therefore, $f$ maps $DD$ to $DD$. We next aim to show that $f:DD -> DD$ is bijective.
+Therefore, the image of $partial DD$ lies on $partial DD$, and since $f$ is holomorphic and non-constant, by the Maximum Modulus Principle (@thm:maximum-modulus), for any $abs(z) < 1$, $abs(phi_a (z)) < 1$. Therefore, $f$ maps $DD$ to $DD$. We next aim to show that $f:DD -> DD$ is bijective.
 
 Let us first confirm injectivity. For all $z_1, z_2 in DD$, we will observe when
 $ (z_1 - a) / (1 - overline(a) z_1) = (z_2 - a) / (1 - overline(a) z_2) $

@@ -69,7 +69,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
     By Weierstrass (@thm:weierstrass_convergence), $f$ is holomorphic on $D(z, delta)$.
   2. Consider $f(z) = oo$. Assume, for the sake of contradiction, $z$ is an isolated pole of $f$. Hence, $exists delta$ such that $f$ is holomorphic on $D^*(z, delta)$.
 
-    Because each $f_n$ is holomorphic on $D(z, delta)$, by the Maximum Modulus Principle (@thm:maximum_modulus), $forall n in NN$,
+    Because each $f_n$ is holomorphic on $D(z, delta)$, by the Maximum Modulus Principle (@thm:maximum-modulus), $forall n in NN$,
     $ abs(f_n (zeta)) <= sup_(xi in partial D(z, delta)) abs(f_n (xi)) quad forall zeta in D(z, delta). $
     By letting $n -> oo$, we have
     $ abs(f(zeta)) <= sup_(xi in partial D(z, delta)) abs(f(xi)) < oo quad forall zeta in D(z, delta), $

@@ -19,7 +19,7 @@ We will now prove a more advanced characterization of this distribution by metho
 
   1. Suppose ${f_(n_k)}_(k in NN)$ converges locally uniformly to a holomorphic function on $D^*(0, delta)$. Then ${f_(n_k)}_(k in NN)$ is uniformly bounded on $partial D(0, delta / 2)$. Hence, there exists $M > 0$ such that
     $ abs(f(z / (n_k))) = abs(f_(n_k) (z)) < M quad forall z in partial D(0, delta / 2), k in NN. $
-    In other words, $f$ is bounded by $M$ on every circle $partial D(0, delta / (2 n_k))$ for $k in NN$. By the Maximum Modulus Principle (@thm:maximum_modulus), $f$ is then bounded by $M$ on each annulus $overline(D(0, delta / (2 n_k))) without D(0, delta / (2 n_(k + 1)))$ for $k in NN$. As
+    In other words, $f$ is bounded by $M$ on every circle $partial D(0, delta / (2 n_k))$ for $k in NN$. By the Maximum Modulus Principle (@thm:maximum-modulus), $f$ is then bounded by $M$ on each annulus $overline(D(0, delta / (2 n_k))) without D(0, delta / (2 n_(k + 1)))$ for $k in NN$. As
     $
       union.big_(k in NN) overline(D(0, delta / (2 n_k))) without D(0, delta / (2 n_(k + 1))) = overline(D(0, delta / (2 n_1))) without {0},
     $

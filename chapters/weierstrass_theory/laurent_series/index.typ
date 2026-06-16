@@ -36,7 +36,7 @@ The condition of uniform convergence on every compact subset can also be signifi
     sup_(z in partial K) abs(f_n (z) - f_m (z)) < epsilon.
   $
 
-  By the Maximum Modulus Principle (@thm:maximum_modulus) on $f_n - f_m$,
+  By the Maximum Modulus Principle (@thm:maximum-modulus) on $f_n - f_m$,
   $
     sup_(z in partial K) abs(f_n (z) - f_m (z)) = sup_(z in K) abs(f_n (z) - f_m (z)) < epsilon.
   $

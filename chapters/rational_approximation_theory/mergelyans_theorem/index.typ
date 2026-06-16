@@ -136,7 +136,7 @@ $ <eq:derivativeatpole2>
     abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 & <= abs(phi_zeta (z)) abs(z - zeta)^3 + abs(z - zeta)^2 \
                                                        & <= 584 / r (2 r)^3 + (2 r)^2 = 4676 r^2
   $
-  from @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584. The Maximum Modulus Principle (@thm:maximum_modulus) implies that
+  from @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584. The Maximum Modulus Principle (@thm:maximum-modulus) implies that
   $
     sup_(abs(z - zeta) > 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 <= sup_(abs(z - zeta) = 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 <= 4676 r^2
   $
