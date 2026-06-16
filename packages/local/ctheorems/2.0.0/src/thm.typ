@@ -430,7 +430,7 @@
   /// layout convergence issues in some cases.
   ///
   /// -> bool
-  move: false,
+  move: true,
 ) = {
   tag-metadata-counter.step()
   context {

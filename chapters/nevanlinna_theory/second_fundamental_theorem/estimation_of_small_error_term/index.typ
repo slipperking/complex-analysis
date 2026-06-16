@@ -19,7 +19,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
 
   Evidently, for $theta.alt > uppi / 2$ or $-theta.alt < -uppi / 2$,
   $
-    abs(rho - r ee^(ii theta.alt)) = sqrt(rho^2 + r^2 - 2 r rho cos(theta.alt))>= r >= k r,wide wide#tag[(Law of Cosines)]
+    abs(rho - r ee^(ii theta.alt)) = sqrt(rho^2 + r^2 - 2 r rho cos(theta.alt))>= r >= k r,#tag[(Law of Cosines)]
   $
   so it follows that $theta_0 <= uppi / 2$, and furthermore, all $-theta_0 < theta.alt < theta_0$ lie in $E'_k$ by the geometry of a circle. Since $abs(rho - r ee^(ii theta.alt)) >= abs(Im(rho - r ee^(ii theta.alt))) = r abs(sin(theta.alt))$, assuming that $E'_k != emptyset$, it follows that
   $
