@@ -7,22 +7,22 @@ We now provide a second formulation of the first fundamental theorem, given by A
   Let $U$ be a positively oriented bounded region by a piecewise $C^1$ simple closed boundary. Let $f$ be a (not identically $0$) holomorphic function on an open neighborhood of $overline(U)$, $G in C^2(f(overline(U)))$. Then
   $
     I = integral.cont_(partial U) nabla_(vu(n)) G(abs(f(z))) abs(dz) = integral_U g(abs(f(z))) abs(f'(z))^2 r dr and dtheta,
-  $ <eq:ahlfors_shimizu_green_statement>
+  $ <eq:ahlfors-shimizu_green_statement>
   where $z = r ee^(ii theta)$, $g(R) = G''(R) + 1 / R G'(R)$, and $vu(n)$ is the unit normal vector pointing towards the exterior of $partial U$.
-] <lem:ahlfors_shimizu_green>
+] <lem:ahlfors-shimizu_green>
 
 #proof[
   Let the zeros of $f$ in $U$ (which are finite, otherwise they accumulate) be ${z_k}_(k=1)^n$. Choose $epsilon' > 0$ so that for any $0 < epsilon < epsilon'$ the disks ${D(z_k, epsilon)}_(k=1)^n$ each lie in the open set $U$ and are pairwise disjoint from one another (we do this to ensure $g$ is continuous, as $g$ is singular when $R = abs(f(z)) = 0$).
 
-  Applying Green's Theorem (@thm:real_green)#footnote[We define $vu(n)$ to be the normal vector pointing into the multiply connected region, so for the $partial U$ integral, $vu(n)$ points outwards and for the summation integrals $vu(n)$ points into the disks.]
+  Applying Green's Theorem (@thm:real-green)#footnote[We define $vu(n)$ to be the normal vector pointing into the multiply connected region, so for the $partial U$ integral, $vu(n)$ points outwards and for the summation integrals $vu(n)$ points into the disks.]
   $
     (integral.cont_(partial U) + sum_(k=1)^n integral.cont_(partial D(z_k, epsilon))) vb(v) dot vu(n) dif s = integral.double_(U without union.big D(z_k, epsilon)) div vb(v) dif A
   $
   to $I$ (so letting $vb(v) = grad G(abs(f(z)))$), we have
   $
     I &= (integral.cont_(partial U) + sum_(k=1)^n integral.cont_(partial D(z_k, epsilon))) grad G(abs(f(z))) dot vu(n) abs(dz) \ &= integral.double_(U without union.big D(z_k, epsilon)) laplacian G(abs(f(z))) r dr dtheta.
-  $ <eq:ahlfors_shimizu_green_greensapplication>
-  Letting $R = abs(f(z)) = sqrt(f(z) overline(f(z)))$ and adopting the elliptic notations $partial_z = pdv(, z, style: "horizontal")$, $partial_(overline(z)) = pdv(, overline(z), style: "horizontal")$ etc.,
+  $ <eq:ahlfors-shimizu_green_greensapplication>
+  Letting $R = abs(f(z)) = sqrt(f(z) overline(f(z)))$ and adopting the elliptical notations $partial_z = pdv(, z, style: "horizontal")$, $partial_(overline(z)) = pdv(, overline(z), style: "horizontal")$ etc.,
   $
     partial_z R = (partial_z (f overline(f))) / (2R) = (f' overline(f) + f overline(partial_(overline(z)) f)) / (2R) = (f' overline(f)) / (2R), wide partial_(overline(z)) R = (partial_(overline(z)) (f overline(f))) / (2R) = (f overline(f')) / (2R),
   $
@@ -39,17 +39,17 @@ We now provide a second formulation of the first fundamental theorem, given by A
     partial_(z overline(z)) G(R) = partial_z G'(R) partial_(overline(z)) R + G'(R) partial_(overline(z) z) R &= G''(R) (f' overline(f)) / (2R) dot (f overline(f')) / (2R) + G'(R) abs(f')^2 / (4R) \
     &= abs(f')^2 / 4 (G''(R) + (G'(R)) / R),
   $
-  it follows that $laplacian G(abs(f(z))) = g(R) abs(f')^2$. Substituting this in @eq:ahlfors_shimizu_green_greensapplication gives
+  it follows that $laplacian G(abs(f(z))) = g(R) abs(f')^2$. Substituting this in @eq:ahlfors-shimizu_green_greensapplication gives
   $
     (integral.cont_(partial U) + sum_(k=1)^n integral.cont_(partial D(z_k, epsilon))) grad G(abs(f(z))) dot vu(n) abs(dz) = integral.double_(U without union.big D(z_k, epsilon)) laplacian G(abs(f(z))) r dr dtheta.
   $
-  As $epsilon -> 0^+$, the right-hand side is simply the desired quantity in @eq:ahlfors_shimizu_green_statement. By the continuous differentiability of $G$, $exists M > 0$ such that $abs(grad G dot vu(n)) <= M$ on $union.big_k overline(D(z_k, epsilon))$, thus
+  As $epsilon -> 0^+$, the right-hand side is simply the desired quantity in @eq:ahlfors-shimizu_green_statement. By the continuous differentiability of $G$, $exists M > 0$ such that $abs(grad G dot vu(n)) <= M$ on $union.big_k overline(D(z_k, epsilon))$, thus
   $
     abs(integral.cont_(partial D(z_k, epsilon)) grad G dot vu(n) dif s) <= integral_0^(2 uppi) M epsilon dtheta -> 0 quad "as" quad epsilon -> 0^+.
   $
-  Thus, the left-hand side expression of @eq:ahlfors_shimizu_green_greensapplication also tends to that of @eq:ahlfors_shimizu_green_statement.
+  Thus, the left-hand side expression of @eq:ahlfors-shimizu_green_greensapplication also tends to that of @eq:ahlfors-shimizu_green_statement.
 ]
-We apply @lem:ahlfors_shimizu_green to
+We apply @lem:ahlfors-shimizu_green to
 $
   G(R) = log (sqrt(1 + R^2) / 2) ==> g(R) = (1 - R^2) / (1 + R^2)^2 + 1/R (R / (1 + R^2)) = 2 / (1 + R^2)^2.
 $
@@ -121,7 +121,7 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
   For $f$ meromorphic on a neighborhood of $overline(D(0,r))$, then $ T_0(r,f) = N(r,f) + m_0(r,f) - m_0(0,f) $ for $f(0) != oo$, and
   $ T_0(r,f) = N(r,f) + m_0(r,f) - log abs(c / 2) $
   if $f(0) = oo$, where for some $k<0$, $c in CC^*$ satisfies $f(z) = c z^k + Order(z^(k+1))$ as $z -> 0$.
-] <thm:nevanlinna_first_fundamental_theorem_ahlfors_shimizusimplecase>
+] <thm:nevanlinna_first_fundamental_theorem_ahlfors-shimizusimplecase>
 #proof[
   In the first case for $f(0) != oo$, from @eq:ahlforsshimizuderivation_convergentintegral, we have
   $
@@ -161,7 +161,7 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
   where $c_a$ is the first nonzero coefficient of the Laurent expansion of $f - a$. If $f(0) = a = oo$, then
   $ T_0(r, f) = N(r, a, f) + m_0(r, a, f) - log abs(c / 2) $
   where $c$ is the first non-zero coefficient of the Laurent series of $f$.
-] <thm:nevanlinna_first_fundamental_theorem_ahlfors_shimizu>
+] <thm:nevanlinna_first_fundamental_theorem_ahlfors-shimizu>
 
 #proof[
   For $a != oo$, consider the Möbius transformation $W=(1 + overline(a) w) / (w - a)$, where $w = f(z)$, and denote the function $W = F(z)$. Then
@@ -188,7 +188,7 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
     m_0(r, a, f) & = integral_0^(2 uppi) log(1/k(f(r ee^(ii theta)), a)) dtheta \
                  & = integral_0^(2 uppi) log(1/k(F(r ee^(ii theta)), oo)) dtheta = m_0(r, F).#tag[(c)]
   $
-  1. From (a), (b), and (c), by applying @thm:nevanlinna_first_fundamental_theorem_ahlfors_shimizusimplecase to $F$, we have $ T_0(r, F) & = N(r, F) + m_0(r, F) - m_0(0, F) \
+  1. From (a), (b), and (c), by applying @thm:nevanlinna_first_fundamental_theorem_ahlfors-shimizusimplecase to $F$, we have $ T_0(r, F) & = N(r, F) + m_0(r, F) - m_0(0, F) \
               & = T_0(r,f) = N(r, a, f) + m_0(r, a, f) - m_0(0, a, f), $
     if $f(0) != a (!= oo)$, since $F(0) = (1 + overline(a) f(0)) / (f(0)-a)$ is finite,
     $
@@ -204,14 +204,14 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
     $
       F(z) z^k = (1 + abs(a)^2 + Order(z^k)) / (c_a + Order(z)) -> (1 + abs(a)^2) / c_a quad "as" quad z -> 0,
     $
-    so the leading coefficient of the Laurent expansion of $F$ at 0 is $C = (1 + abs(a)^2) / c_a$. By applying @thm:nevanlinna_first_fundamental_theorem_ahlfors_shimizusimplecase to $F$, we have
+    so the leading coefficient of the Laurent expansion of $F$ at 0 is $C = (1 + abs(a)^2) / c_a$. By applying @thm:nevanlinna_first_fundamental_theorem_ahlfors-shimizusimplecase to $F$, we have
     $
       T_0(r, F) & = N(r, F) + m_0(r, F) - log abs(C/2) \
                 & = T_0(r,f) = N(r, a, f) + m_0(r, a, f) - log abs((1 + abs(a)^2) / (2 c_a)).
     $
-  + If $f(0) != a = oo$, then the assertion follows directly from @thm:nevanlinna_first_fundamental_theorem_ahlfors_shimizusimplecase on $f$.
+  + If $f(0) != a = oo$, then the assertion follows directly from @thm:nevanlinna_first_fundamental_theorem_ahlfors-shimizusimplecase on $f$.
 
-  + If $f(0) = a = oo$, the assertion also follows from @thm:nevanlinna_first_fundamental_theorem_ahlfors_shimizusimplecase on $f$. #qedhere
+  + If $f(0) = a = oo$, the assertion also follows from @thm:nevanlinna_first_fundamental_theorem_ahlfors-shimizusimplecase on $f$. #qedhere
 ]
 
 #theorem[
@@ -228,7 +228,7 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
   $
   Integrating and adding $N$, we have
   $ T(r, f) - log 2 <= m_0(r, f) + N(r, f) <= T(r, f) - 1/2 log 2. $
-  By the First Fundamental Theorem (@thm:nevanlinna_first_fundamental_theorem_ahlfors_shimizu) in Ahlfors--Shimizu Form with $a = oo$, if we let
+  By the First Fundamental Theorem (@thm:nevanlinna_first_fundamental_theorem_ahlfors-shimizu) in Ahlfors--Shimizu Form with $a = oo$, if we let
   $
     C = cases(m_0(0, a, f) quad & "if" f(0) != oo, log abs(c / 2) quad & "if" f(0) = oo),
   $
@@ -284,7 +284,7 @@ or the area of the image of $f$ on the Riemann sphere, counted according to mult
 
 (Observe the similarity between the first integral of $(star.stroked)$ and the Lusin Area Theorem (@thm:lusinarea)!)
 
-This completes the geometric explanation for the invariances of (a), (b), and (c) in the proof of @thm:nevanlinna_first_fundamental_theorem_ahlfors_shimizu. The covered area and chordal distance are invariant under rotations of $S$. In particular, we rotate the spherical point of $a$ to the north pole $(0, 0, 1)$ corresponding to $oo$.
+This completes the geometric explanation for the invariances of (a), (b), and (c) in the proof of @thm:nevanlinna_first_fundamental_theorem_ahlfors-shimizu. The covered area and chordal distance are invariant under rotations of $S$. In particular, we rotate the spherical point of $a$ to the north pole $(0, 0, 1)$ corresponding to $oo$.
 
 #remark[
   It is noteworthy that the original Ahlfors--Shimizu formulation uses the Riemann sphere centered at $(0,0, 1\/ 2)$ with diameter $1$, which yields a slightly different proximity function (without the $\/2$ factor) and spherical derivative (without the factor of 2). (Note that the characteristic _does not change_ as the amount a function covers the extended plane (or either sphere) is independent on the size of this sphere).

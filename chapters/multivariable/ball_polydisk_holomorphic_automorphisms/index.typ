@@ -338,7 +338,7 @@ In preparation, we will introduce several relevant concepts.
 ] <thm:unitaryspectraltheorem>
 
 #proof[
-  Because $norm(bold(U) bold(z))^2 = bold(z)^dagger bold(U)^dagger bold(U) bold(z) = norm(bold(z))^2$ for any $bold(z) in CC^n$, any eigenvalue $lambda_1$ (existence given by the Fundamental Theorem of Algebra in @thm:fundamentaltheoremofalgebra on the characteristic equation) of $bold(U)$ must satisfy
+  Because $norm(bold(U) bold(z))^2 = bold(z)^dagger bold(U)^dagger bold(U) bold(z) = norm(bold(z))^2$ for any $bold(z) in CC^n$, any eigenvalue $lambda_1$ (existence given by the Fundamental Theorem of Algebra in @thm:fundamental-theorem-of-algebra on the characteristic equation) of $bold(U)$ must satisfy
   $
     bold(U) bold(v)_1 = lambda_1 bold(v)_1 ==> norm(bold(U) bold(v)_1) = norm(bold(v)_1) = abs(lambda_1) norm(bold(v)_1) ==> abs(lambda_1) = 1,
   $

@@ -151,7 +151,7 @@ The _Weierstrass formula_ is a direct consequence of the Gauss formula.
 
 We have two famous identities on the $Gamma$-function:
 
-#theorem("Euler's Reflection Formula")[
+#theorem[Euler's Reflection Formula][
   The $Gamma$-function can be analytically continued to the left half-plane with the functional equation of
   $
     Gamma(z) Gamma(1-z) = uppi csc(uppi z)

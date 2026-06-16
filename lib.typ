@@ -225,7 +225,7 @@
 #let Re = math.op($frak(Re)$)
 #let Im = math.op($frak(Im)$)
 #let Ind = math.op("Ind")
-#let wp = $pee$ // math.op($\u{2118}$)
+#let wp = math.op($\u{2118}$) // $pee$ waiting for tinymist update
 
 #let extcomplex = $hat(CC)$
 #let length = $op("length")$

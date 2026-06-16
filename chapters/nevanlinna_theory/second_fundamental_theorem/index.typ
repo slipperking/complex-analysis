@@ -26,7 +26,7 @@ $
       + limsup_(r_n -> oo) (S(r_n, f)) / (T(r_n, f)) \
     & = limsup_(r -> oo) (N(r, c, f)) / (T(r, f)),
 $
-where the precise formulation allows for a sequence ${r_n}$ diverging to $oo$ to be chosen so that $S(r, f) = o(T(r, f))$ for $r -> oo$ in this sequence. This implies $limsup_(r -> oo) (N(r, c, f)) / (T(r, f)) = 1$. This in turn then proves Picard's theorems (see @sec:deficiency_relation). As we shall later see, the conclusions of the theorem have even further extensibility.
+where the precise formulation allows for a sequence ${r_n}$ diverging to $oo$ to be chosen so that $S(r, f) = o(T(r, f))$ for $r -> oo$ in this sequence. This implies $limsup_(r -> oo) (N(r, c, f)) / (T(r, f)) = 1$. This in turn then proves Picard's theorems (see @sec:deficiency-relation). As we shall later see, the conclusions of the theorem have even further extensibility.
 
 Regarding Nevanlinna's original paper containing the result, mathematician Hermann Weyl has stated in 1943 that "the appearance of this paper has been one of the few great mathematical events of our century."
 

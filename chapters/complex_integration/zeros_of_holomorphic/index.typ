@@ -10,7 +10,7 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
 
 #theorem("Fundamental Theorem of Algebra")[
   Every non-constant polynomial $p(z)$ with complex coefficients has at least one complex zero.
-] <thm:fundamentaltheoremofalgebra>
+] <thm:fundamental-theorem-of-algebra>
 
 #proof[
   For the sake of contradiction, suppose that $p(z)$ has no complex zeros. Then the function $f(z) = 1 / (p(z))$ is continuous and entire, because $p(z)$ has no zeros in $CC$. Moreover, as $z -> oo$, $p(z) -> oo$, so $f(z) -> 0$, and thus $f(z)$ is bounded. By Liouville's Theorem (@thm:liouville), every bounded entire function is constant. Thus, $f(z)$ is constant, and so $p(z)$ must also be constant. By contradiction, $p(z)$ has at least one complex zero.
@@ -225,7 +225,7 @@ $
   as desired.
 ]
 
-By the Fundamental Theorem of Algebra (@thm:fundamentaltheoremofalgebra), any polynomial in the form $p(z) = sum_(k = 0)^n a_k z^k$ ($n in NN$, $a_n eq.not 0$, $a_k in CC$ where $k = 1, dots n$) has at least one complex zero. Consider the function $q(z) = a_n z^n$, with a zero at $z = 0$ with multiplicity $n$. By Rouché's Theorem (@thm:rouche), since $exists R in RR$ such that $abs(q(z) - p(z)) = abs(sum_(k = 0)^(n - 1) a_k z^k) < abs(a_n z^n)$ over $abs(z) = R$, $p$ and $q$ have the same number of zeros, counting multiplicity.
+By the Fundamental Theorem of Algebra (@thm:fundamental-theorem-of-algebra), any polynomial in the form $p(z) = sum_(k = 0)^n a_k z^k$ ($n in NN$, $a_n eq.not 0$, $a_k in CC$ where $k = 1, dots n$) has at least one complex zero. Consider the function $q(z) = a_n z^n$, with a zero at $z = 0$ with multiplicity $n$. By Rouché's Theorem (@thm:rouche), since $exists R in RR$ such that $abs(q(z) - p(z)) = abs(sum_(k = 0)^(n - 1) a_k z^k) < abs(a_n z^n)$ over $abs(z) = R$, $p$ and $q$ have the same number of zeros, counting multiplicity.
 
 #theorem[
   Let $U subset.eq CC$ be open and connected, and $f(z)$ be holomorphic and non-constant on $U$.

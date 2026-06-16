@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-=== Deficiency Relation <sec:deficiency_relation>
+=== Deficiency Relation <sec:deficiency-relation>
 
 One of the reformulations of the Second Fundamental Theorem is characterized in a way so that it comprises the statements of Picard-like theorems in a compact manner (of course, the conclusions are substantially more far-reaching than just the Picard theorems themselves). We first introduce the relevant terminology.
 
@@ -32,7 +32,7 @@ Using these formulations, we now have
 #theorem[Deficiency Relation][
   Suppose $f: D(0, R_0) -> extcomplex$ ($0 < R_0 <= oo$) is meromorphic and admissible. Then $S = {a in extcomplex : Theta(a, f) > 0}$ is a countable set and
   $ sum_(a in S) [delta(a, f) + theta(a, f)] <= sum_(a in S) Theta(a, f) <= 2. $
-] <thm:deficiency_relation>
+] <thm:deficiency-relation>
 
 #proof[
   For any $q$ numbers ${a_nu}_(nu = 1)^q subset CC$,
@@ -55,7 +55,7 @@ Using these formulations, we now have
   Hence,
   $
     q - 1 - S(r, f) / T(r, f) <= (overline(N) (r, f)) / T(r, f) - (N_0 (r, 0, f')) / T(r, f) + sum_(nu = 1)^q (overline(N) (r, a_nu, f)) / T(r, f).
-  $ <eq:deficiency_relation_fundamentalinequality>
+  $ <eq:deficiency-relation_fundamentalinequality>
   Then taking the superior limits on both side through a sequence ${r_n}$ such that $lim_(n -> oo) S(r_n, f) / T(r_n, f) = 0$ (whose existence is given by @thm:nevanlinnaadmissibilityerrortermgrowth) and loosening the inequality by removing the $N_0$ term,
   $
     q - 1 <= limsup_(n -> oo) (overline(N) (r_n, oo, f)) / T(r_n, f) + sum_(nu = 1)^q limsup_(n -> oo) (overline(N) (r_n, a_nu, f)) / T(r_n, f) \
@@ -83,7 +83,7 @@ Therefore, we have
 #proof[
   Assume there exists three values $a$, $b$, $c in extcomplex$ that meromorphic function $f$ does not ever attain. Then $N(r, a, f)$, $N(r, b, f)$, $N(r, c, f)$ all vanish identically with respect to radius while $T > 0$.
 
-  Then $delta(a, f)$, $delta(b, f)$, $delta(c, f) = 1$. By the deficiency relation (@thm:deficiency_relation),
+  Then $delta(a, f)$, $delta(b, f)$, $delta(c, f) = 1$. By the deficiency relation (@thm:deficiency-relation),
   $ 2 >= sum_(z in S) [delta(z) + theta(z)] >= delta(a, f) + delta(b, f) + delta(c, f) = 3, $
   which is an impossibility.
 ]

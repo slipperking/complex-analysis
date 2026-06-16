@@ -53,7 +53,7 @@ Picard's Great Theorem is also a generalization of Picard's Little Theorem (@thm
 #proof[
   Let $g(z) = f(1 / z)$ with an isolated singularity at $0$ and a removable singularity at $oo$. By Picard's Great Theorem (@thm:greatpicard), $g(z)$ has a meromorphic extension to $z = 0$. If $z = 0$ is removable, by virtue of @prop:removablesingularityatinftyentireconstant and @thm:liouville, the constancy of $g$ and $f$ follows.
 
-  If instead $z = 0$ is a pole of $g$, then $z = oo$ is a pole of $f$, and hence $f$ is a polynomial. Assume, for the sake of contradiction that $f$ is non-constant. Then $forall w in CC$, the Fundamental Theorem of Algebra (@thm:fundamentaltheoremofalgebra) gives the existence of some $z in CC$ such that $f(z) = w$. Hence, $f$ attains every value $w in CC$. This contradicts the statement and hence $f$ is constant.
+  If instead $z = 0$ is a pole of $g$, then $z = oo$ is a pole of $f$, and hence $f$ is a polynomial. Assume, for the sake of contradiction that $f$ is non-constant. Then $forall w in CC$, the Fundamental Theorem of Algebra (@thm:fundamental-theorem-of-algebra) gives the existence of some $z in CC$ such that $f(z) = w$. Hence, $f$ attains every value $w in CC$. This contradicts the statement and hence $f$ is constant.
 ]
 
 The efforts of many mathematicians resulted in several alternative proofs following that of Picard; the geometric realization of Ahlfors (@thm:schwarzahlforspick) was followed by results discovered by R. M. Robinson. Other approaches from Nevanlinna theory appeared later in the 20th century.

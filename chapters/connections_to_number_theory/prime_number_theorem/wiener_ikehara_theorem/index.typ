@@ -29,7 +29,7 @@ The two kernels are related by a angular unitary Fourier transform:
   $
     cal(F){f}(x) = 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) ee^(-ii x t) dt, quad cal(F)^(-1){f} (x) = 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) ee^(ii x t) dt.
   $
-] <lem:wienerikehara_kernels_fouriertransform>
+] <lem:wiener-ikehara_kernels_fouriertransform>
 
 #proof[
   The equivalence between the Fourier and inverse Fourier transforms follows from the evenness of both kernels. We hence prove only the forward transform equivalences.
@@ -136,7 +136,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
     L equiv lim_(x -> oo) (f * k_(lambda)) (x) = lim_(x -> oo) 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x - t) dt
   $
   is independent of $lambda > 0$, then $lim_(x -> oo) f(x) = L$.
-] <prop:wienerikehara_intermediatetauberiantheorem>
+] <prop:wiener-ikehara_intermediatetauberiantheorem>
 
 #proof[
   Let $epsilon > 0$ be arbitrary. Assume, for the sake of contradiction, that $f$ does not converge to $L$ as $x -> oo$. Then there exists some sequence ${x_n}_(n in NN)$ such that $abs(f(x_n) - L) > epsilon$ for all $n$. From here, we may extract an infinite subsequence (continued to be denoted by ${x_n}$) such that one of the two cases is assumed:
@@ -178,21 +178,21 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
     Letting $lambda -> oo$, we have similarly that $lim_(n -> oo) (f * k_(lambda)) (x_n - delta) <= L - epsilon / 2$, contradicting $lim_(n -> oo) (f * k_(lambda)) (x_n - delta) = L$. #qedhere
 ]
 
-#theorem("Wiener--Ikehara")[
-  Let $f:RR_(>=0) -> RR$ be a nonnegative, monotically nondecreasing function such that the Laplace transform
+#theorem[Wiener--Ikehara][
+  Let $f:RR_(>=0) -> RR$ be a nonnegative, monotonically non-decreasing function such that the Laplace transform
   $
     cal(L){f} (s) = integral_0^oo f(x) ee^(-s x) dx
-  $ <eq:wienerikehara_laplacetransform>
+  $ <eq:wiener-ikehara_laplacetransform>
   converges for $Re s > 1$. Suppose that there exists some constant $c > 0$ such
   that
   $
     g(t) = lim_(sigma -> 1^+) [cal(L){f} (s) - c / (s - 1)], quad s = sigma + ii t
-  $ <eq:wienerikehara_gfunction>
+  $ <eq:wiener-ikehara_gfunction>
   converges locally uniformly with respect to $t$ in $RR$ and is continuously differentiable. Then
   $
     lim_(x -> oo) f(x) / ee^x = c.
-  $ <eq:wienerikehara_conclusion>
-] <thm:wienerikehara>
+  $ <eq:wiener-ikehara_conclusion>
+] <thm:wiener-ikehara>
 
 #proof[
   Let
@@ -205,7 +205,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
       0 quad & t < 0,
     ).
   $
-  The convergence of @eq:wienerikehara_laplacetransform implies that for $epsilon, lambda > 0$, the convolution
+  The convergence of @eq:wiener-ikehara_laplacetransform implies that for $epsilon, lambda > 0$, the convolution
   $
     I_(lambda, epsilon) (x) = 1 / sqrt(2 uppi) integral_(-oo)^oo k_(lambda) (x - t) ((a(t) - A(t)) / ee^(epsilon t)) dt
   $
@@ -213,13 +213,13 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
     integral_(-oo)^oo ((a(t) - A(t)) / ee^((epsilon + ii y) t)) dt
   $
-  converges uniformly for $abs(y) < 2 lambda$, we have by virtue of @lem:wienerikehara_kernels_fouriertransform, that
+  converges uniformly for $abs(y) < 2 lambda$, we have by virtue of @lem:wiener-ikehara_kernels_fouriertransform, that
   $
     I_(lambda, epsilon) (x) &= 1 / (2 uppi) integral_(-oo)^oo ((a(t) - A(t)) / ee^(epsilon t)) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii (x - t) y) dy dt \
     &= 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii x y) integral_0^oo (a(t) - A(t)) / ee^((epsilon + ii y) t) dt dy \
     &= 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii x y) [cal(L){f} (1 + epsilon + ii y) - c / (epsilon + ii y)] dy.
   $
-  Now $forall epsilon' > 0$, by the local uniform convergence of $g$ in @eq:wienerikehara_gfunction, there exists some $delta > 0$ such that
+  Now $forall epsilon' > 0$, by the local uniform convergence of $g$ in @eq:wiener-ikehara_gfunction, there exists some $delta > 0$ such that
   $
     forall abs(y) < 2 lambda, abs(cal(L){f} (1 + epsilon + ii y) - c / (epsilon + ii y) - g(y)) < (uppi epsilon') / lambda.
   $
@@ -247,7 +247,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   as $x -> oo$. Since $(A * k_(lambda)) (x) = c$ for all $x$, we have that
   $
     lim_(x -> oo) (a * k_(lambda)) (x) = c.
-  $ <eq:wienerikehara_convolutionlimit>
+  $ <eq:wiener-ikehara_convolutionlimit>
   Therefore, $exists x_0 > 0$ such that
   $ (a * k_(lambda)) (x) < c + 1 ==> 1 / uppi integral_(-oo)^oo ((sin t) / t)^2 a (x - t / lambda) dt < c + 1 $
   for all $x > x_0$. Substituting $x + 2 / sqrt(lambda)$ for $x$ in the integral, we have (after further restricting the integration bounds, which preserves the inequality)
@@ -270,15 +270,15 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   If $delta$ is chosen so that $M (1 - ee^(-delta)) < epsilon$, namely $0 < delta < ln(M / (M - epsilon))$, then $a(y) - a(x) > -epsilon$,
   and $a$ then exhibits slow decrease.
 
-  The slow decrease, boundedness, and the condition in @eq:wienerikehara_convolutionlimit are sufficient by @prop:wienerikehara_intermediatetauberiantheorem, to show that $lim_(x -> oo) a(x) = c$, or equivalently, $lim_(x -> oo) f(x) / ee^x = c$.
+  The slow decrease, boundedness, and the condition in @eq:wiener-ikehara_convolutionlimit are sufficient by @prop:wiener-ikehara_intermediatetauberiantheorem, to show that $lim_(x -> oo) a(x) = c$, or equivalently, $lim_(x -> oo) f(x) / ee^x = c$.
 ]
 
-#theorem("Prime Number Theorem", restate-keys: ("thm:prime_number",), restate: true)[
+#theorem([Prime Number Theorem], restate-keys: ("thm:prime_number",), restate: true)[
   The prime counting function $pi(x)$ is asymptotically equal to $x / (log x)$, i.e., $lim_(x -> oo) (pi(x) log x) / x = 1$.
 ] <thm:prime_number>
 
 #proof[
-  By @thm:chebyshevfunctions_limsup_inflim_equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:primenumbertheorem_laplacetransformchebyshevfunction_statement. By @thm:prime_numbertheorem_laplacetransformchebyshevfunction, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuously differentiable. Hence, by the Wiener--Ikehara theorem (@thm:wienerikehara), we have that
+  By @thm:chebyshevfunctions_limsup_inflim_equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:primenumbertheorem_laplacetransformchebyshevfunction_statement. By @thm:prime_numbertheorem_laplacetransformchebyshevfunction, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuously differentiable. Hence, by the Wiener--Ikehara theorem (@thm:wiener-ikehara), we have that
   $ lim_(x -> oo) psi(ee^x) / ee^x = lim_(x -> oo) psi(x) / x = 1, $
   and the Prime Number Theorem follows.
 ]

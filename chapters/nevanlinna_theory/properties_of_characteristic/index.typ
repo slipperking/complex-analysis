@@ -183,7 +183,7 @@ We now provide some classical examples of the Nevanlinna characteristic:
 
 1. Let
   $ f(z) = c (z^p + a_1 z^(p - 1) + dots.c + a_p) / (z^q + b_1 z^(q - 1) + dots.c + b_q), quad c != 0 $
-  be an arbitrary rational function in reduced form. If $p > q$, then for sufficiently large $r$, $f -> oo$ in every direction. This implies $logp abs(1 / (f(z) - a)) = 0$ for any complex $a$ and sufficiently large $r$ ($abs(z) > r$). This implies $m(r, a, f) = 0$. Additionally, the equation $f(z) = a$ has $p$ complex solutions by the Fundamental Theorem of Algebra (@thm:fundamentaltheoremofalgebra). Thus, for sufficiently large $r$ ($r > r'$), any $abs(z) > r$ has the property that $n(r, a, f) = n(abs(z), a, f)$,
+  be an arbitrary rational function in reduced form. If $p > q$, then for sufficiently large $r$, $f -> oo$ in every direction. This implies $logp abs(1 / (f(z) - a)) = 0$ for any complex $a$ and sufficiently large $r$ ($abs(z) > r$). This implies $m(r, a, f) = 0$. Additionally, the equation $f(z) = a$ has $p$ complex solutions by the Fundamental Theorem of Algebra (@thm:fundamental-theorem-of-algebra). Thus, for sufficiently large $r$ ($r > r'$), any $abs(z) > r$ has the property that $n(r, a, f) = n(abs(z), a, f)$,
   $
     N(r, a, f) & = (integral_0^(r') + integral_(r')^r) (n(x, a, f) - n(0, a, f)) / x dx + n(0, a, f) log r \
                & = Order(1) + (n(r', a, f) - n(0, a, f)) (log r - log(r')) \

@@ -69,7 +69,7 @@ Analogous to the real case, a $0$-form is defined as a scalar-valued function in
     & =(pdv(eta_2, x) - pdv(xi_1, y) - pdv(eta_1, x) - pdv(xi_2, y)) dif A + ii (pdv(xi_1, x) - pdv(eta_1, y) - pdv(xi_2, x) - pdv(eta_2, y)) dif A.
   $<eq:complex_green_exterior_derivative_result>
 
-  From @eq:complex_green_real_and_complex_dx_dy_intermediate, we can apply @thm:real_green. For the real component of $omega$, we obtain
+  From @eq:complex_green_real_and_complex_dx_dy_intermediate, we can apply @thm:real-green. For the real component of $omega$, we obtain
 
   $
     integral.cont_(partial U)(xi_1+xi_2)dx+(eta_2-eta_1)dy=integral.double_U (pdv(eta_2, x)-pdv(xi_1, y)-pdv(eta_1, x)-pdv(xi_2, y))dx dy,

@@ -90,7 +90,7 @@ Four main classical theorems exist, relating a function and its line integral in
 #theorem("Green's Theorem")[
   Let $U$ be a positively oriented, multiply connected subset of $RR^2$ with a piecewise smooth oriented boundary $partial U$. Suppose that $P(x, y), Q(x, y) in C^1(overline(U))$. Then,
   $ integral.cont_(partial U) P dx + Q dy = integral.double_U (pdv(Q, x) - pdv(P, y)) dd(x, y). $
-] <thm:real_green>
+] <thm:real-green>
 
 #theorem("Stokes' Theorem")[
   Suppose that $S subset RR^3$ is a positively oriented surface with a positively oriented, piecewise smooth boundary curve $partial S$. Suppose that $P(x, y, z), Q(x, y, z), R(x, y, z) in C^1(overline(S))$. Then,
