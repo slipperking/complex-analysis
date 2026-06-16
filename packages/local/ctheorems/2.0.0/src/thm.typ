@@ -603,8 +603,8 @@
               // otherwise do nothing
               let extra-diff = calc.max(0pt, raw-overlap) // amount of space to add
               place(horizon, dx: diff + extra-diff, data.value.eq-tag)
-              place(horizon, dx: diff + extra-diff + 2em, repr(extra-diff))
-              place(horizon, dx: diff + extra-diff + 6em, repr(pre-extra-diff))
+              // place(horizon, dx: diff + extra-diff + 2em, repr(extra-diff))
+              // place(horizon, dx: diff + extra-diff + 6em, repr(pre-extra-diff))
               box(width: 2 * extra-diff, height: 0pt, stroke: none)
               context data.value.pre-extra-diff.update(extra-diff)
             } else {

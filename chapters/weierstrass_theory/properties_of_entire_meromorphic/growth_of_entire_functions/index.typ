@@ -266,7 +266,7 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
   $
   where $a_1, dots, a_(n(2r,0,f))$ are the zeros of $f$ in $D(0,2r)$, ordered such that each $abs(a_k) <= abs(a_(k+1))$. Then
   $
-    sum_(k=1)^(n(r,0,f)) log 2 &<= sum_(k=1)^(n(r,0,f)) log abs((2r) / a_k) <= sum_(k=1)^(n(2r,0,f)) log abs((2r) / a_k) #tag("yo what")\
+    sum_(k=1)^(n(r,0,f)) log 2 &<= sum_(k=1)^(n(r,0,f)) log abs((2r) / a_k) <= sum_(k=1)^(n(2r,0,f)) log abs((2r) / a_k) \
     &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (2r ee^(ii theta))) dif theta <= log M(2r, f). #qedhere
   $
 ]
