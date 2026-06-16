@@ -297,7 +297,7 @@ In fact, it is almost always true that such an extension exists. We will give th
       & <= integral_0^(1 / 2) integral_(-theta_0(r))^(theta_0(r)) abs(phi'(1 - r ee^(ii theta)))^2 r dtheta dr \
       &= integral.double_V abs(phi'(z))^2 dx dy = op("area")(phi(V))<= op("area")(Omega_2) < oo,
     $
-    where the last step uses the Lusin Area Theorem (see @thm:lusinarea).
+    where the last step uses the Lusin Area Theorem (see @thm:lusin-area).
   ]
 
   Assume that $exists c > 0, epsilon > 0$ such that $l_r >= c$ for all $0 < r < epsilon$. Then, this implies that
@@ -518,7 +518,7 @@ In fact, it is almost always true that such an extension exists. We will give th
     For fixed $j$, let $T_j$ be the complementary region of $V_j$ in $DD$ (as $DD without overline(V_j)$). Then for an arbitrary $w_0 in W_j$, there exists a point $z_0 in DD$ (specifically, either in $T_j$ or $V_j$) such that $phi(z_0) = w_0$.
 
     1. If $z_0 in V_j$, then $phi(z_0) in W_j$ and connectivity suffices to ensure that $phi(V_j) = W_j$.
-    2. If $z_0 in T_j$, then from $phi(z_0) in W_j$, connectivity implies that $phi(T_j) subset.eq W_j$. Now by the Lusin Area Theorem (@thm:lusinarea),
+    2. If $z_0 in T_j$, then from $phi(z_0) in W_j$, connectivity implies that $phi(T_j) subset.eq W_j$. Now by the Lusin Area Theorem (@thm:lusin-area),
       $
         op("area")(phi(T_j)) = op("area")(Omega_2) - op("area")(phi(V_j)) = op("area")(Omega_2) - integral.double_(V_j) abs(phi'(z)) dx dy.
       $

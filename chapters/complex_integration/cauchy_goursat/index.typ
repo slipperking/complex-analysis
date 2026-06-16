@@ -17,7 +17,7 @@ Analogous to the real case, a $0$-form is defined as a scalar-valued function in
 #theorem[Lusin Area Theorem][
   For a region $U subset CC$ and $f:U -> CC$ univalent, the area of the image $f(U)$ is equal to
   $ integral_U abs(f'(z))^2 dif A. $
-] <thm:lusinarea>
+] <thm:lusin-area>
 
 #proof[
   We aim to find

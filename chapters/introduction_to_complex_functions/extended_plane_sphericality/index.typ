@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-== The Extended Complex Plane and its Spherical Representation <sec:extendedplaneandsphericality>
+== The Extended Complex Plane and its Spherical Representation <sec:extended-plane-and-sphericality>
 
 All complex numbers form a field that extends the real number field. A complex number $alpha + ii beta$ can be visualized on a rectangular plane as the point $(alpha, beta)$, with two axes: the real axis and the imaginary axis. It is well known that any complex number also has the polar form $r ee^(ii theta) = r (cos theta + ii sin theta)$.
 
