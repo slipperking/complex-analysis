@@ -40,7 +40,7 @@ By the boundedness assumption for $f$, we have:
     abs((product_(j=1)^n (partial^(k_j)) / (partial z_j^(k_j))) f (bold(z))) <= product_(j=1)^n ((k_j !) / (r_j^(k_j))) sup_(bold(zeta) in product_(j=1)^n partial D(a_j, r_j)) abs(f(bold(zeta)))
   $
   for any $bold(z) = (z_1, z_2, dots, z_n) in Omega$.
-] <cor:cauchysestimatepolydisks>
+] <cor:cauchys_estimatepolydisks>
 
 #proof[
   For each $j$, let $epsilon_j$ satisfy $D(z_j, epsilon_j) subset.eq D(a_j, r_j)$. By Cauchy's Integral Formula (@thm:cauchyintegralformulapolydisks), we have
@@ -96,7 +96,7 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
   $
     a_(k_1, dots, k_n) = 1 / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)),
   $
-  then @eq:taylorexpansionmultivariable_series follows. Cauchy's Estimate (@cor:cauchysestimatepolydisks) gives that
+  then @eq:taylorexpansionmultivariable_series follows. Cauchy's Estimate (@cor:cauchys_estimatepolydisks) gives that
   $
     abs(a_(k_1, dots, k_n)) <= M product_(j=1)^n (1 / (rho_j^(k_j))),
   $

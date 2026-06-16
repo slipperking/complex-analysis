@@ -30,7 +30,7 @@ The path independence of the definition is provided by the simple connectivity o
   $
   maps $U$ to $DD$, and it is linear and univalent. This shows that $alpha in cal(F)$. It is easy to prove that $cal(F)$ is infinite; any function in the form of $z |-> (z - z_0) / zeta$ for $zeta >= 2 R$ also lies in $cal(F)$.
 
-  Since $cal(F)$ is uniformly bounded on $U$, by Montel's Theorem (@thm:montel), $cal(F)$ is a normal family. Let $r > 0$ satisfy $overline(D(z_0, r)) subset U$. Then by Cauchy's Estimate (@thm:cauchysestimate), $forall alpha in cal(F)$, $abs(alpha') <= 1 / r$ on $overline(D(z_0, r))$. Hence, we have
+  Since $cal(F)$ is uniformly bounded on $U$, by Montel's Theorem (@thm:montel), $cal(F)$ is a normal family. Let $r > 0$ satisfy $overline(D(z_0, r)) subset U$. Then by Cauchy's Estimate (@thm:cauchys_estimate), $forall alpha in cal(F)$, $abs(alpha') <= 1 / r$ on $overline(D(z_0, r))$. Hence, we have
   $
     0 < M = sup_(alpha in cal(F)) abs(alpha'(z_0)) <= 1 / r,
   $ <eq:riemann_mapping_fixedpointderivativesupremum>

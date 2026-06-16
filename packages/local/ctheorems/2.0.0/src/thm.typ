@@ -582,7 +582,7 @@
           ).first()
           let pos-numbering = equation-numbering-metadata.location().position()
           let pre-extra-diff = data.value.pre-extra-diff.final() // hacky but we reuse data from previous passes
-          let dy = -0.0875em
+          let dy = 0em //-0.0875em
           if pre-extra-diff == none {
             pre-extra-diff = 0pt
           }
@@ -592,14 +592,14 @@
             equation-numbering-metadata.value.keys().contains("align")
               and equation-numbering-metadata.value.align == "left"
           ) {
-            move(dx: 0.5em, dy: dy, {
+            move(dx: 0.4em, dy: dy, {
               data.value.eq-tag
             })
           } else {
             let tag-start = pos-numbering.x - width
             let diff = tag-start - pos-here-x
             if (data.value.move) {
-              let raw-overlap = (-diff + 0.5em).to-absolute()
+              let raw-overlap = (-diff + 0.4em).to-absolute()
               // if the marker/position metadata of numbering, minus width (so tag start) is before equation end (here), we add spaces after to add effective spaces
               // otherwise do nothing
               let extra-diff = calc.max(0pt, raw-overlap) // amount of space to add

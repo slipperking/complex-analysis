@@ -166,7 +166,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
   $
     M=max_(z in overline(D(z_0, R))) abs(f(z)).
   $
-] <thm:cauchysestimate>
+] <thm:cauchys_estimate>
 
 #proof[
   By the Differentiation Formula (@thm:cauchy_differentiation_formula), $forall n in NN$,
@@ -195,7 +195,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
 ] <ex:entire_function_exponential_bounded_derivative_bound>
 
 #solution[to @ex:entire_function_exponential_bounded_derivative_bound][
-  $abs(f(0)) <= M$ is obviously true by letting $z=0$. Then $forall R > 0$, by Cauchy's Estimate (@thm:cauchysestimate),
+  $abs(f(0)) <= M$ is obviously true by letting $z=0$. Then $forall R > 0$, by Cauchy's Estimate (@thm:cauchys_estimate),
 
   $
     abs(f^((n)) (0)) <= M n! (ee^R) / (R^n).
@@ -223,7 +223,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 ] <thm:liouville>
 
 #proof[
-  Let $f:CC -> CC$ be entire. Then, $forall z_0 in CC$, $forall R > 0$, $f$ is holomorphic over $overline(D(z_0, R))$. By @thm:cauchysestimate,
+  Let $f:CC -> CC$ be entire. Then, $forall z_0 in CC$, $forall R > 0$, $f$ is holomorphic over $overline(D(z_0, R))$. By @thm:cauchys_estimate,
 
   $
     abs(f'(z_0)) <= M / R,

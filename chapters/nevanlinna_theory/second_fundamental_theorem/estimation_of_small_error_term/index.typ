@@ -328,27 +328,24 @@ Modern results vastly improve said estimations, and the search for a sharp estim
 #proof[
   We must have (for any $a in extcomplex$) $N(r, a, f) = Order(log r)$. We assert that $f$ attains each value finitely many times. Otherwise, for each $k in NN$, there exists $r'$ such that $forall r > r'$, $n(r, a, f) > k$. Then
   $
-    N(r, a, f) = c + integral_(r')^r (n(x, a, f) - n(0, a, f)) dx / x + n(0, a, f) log r > c + k log r.
+    N(r, a, f) = c + integral_(r')^r (n(x, a, f) - n(0, a, f)) / x dx + n(0, a, f) log r > c + k log r.
   $
-  Thus, $N$ eventually grows faster than $k log r$ for any $k$. It follows that each $a$ is attained finitely many times by contradiction. Construct $g = Order(abs(z)^d)$ to be a polynomial with its zeros at each pole (finitely many) of $f$.
+  Thus, $N$ eventually grows faster than $k log r$ for any $k$. It follows that each $a$ is attained finitely many times by contradiction. Construct $g = Order(abs(z)^d)$ to be a polynomial with its zeros at each pole (finitely many), counting orders, of $f$.
 
-  Then $h = f g$ is entire, and furthermore, $T(r, h) <= T(r, f) + T(r, g)$. Then $T(r, f) = Order(log r)$ and
+  Then $h = f g$ is entire, and furthermore, $T(r, h) <= T(r, f) + T(r, g)$. Since $T(r, f) = Order(log r)$ and
   $
-    T(r, g) = m(r, g) < logp M(r, g) = Order(log r).
+    T(r, g) = m(r, g) <= logp M(r, g) = Order(log r),
   $
-  Then
+  then
+  $ log M(r, h) <= 3 T(2r, h) = Order(log r). #tag[(by @thm:nevanlinna_entire_function_maximum_modulus_sandwich with $R = 2r$)] $ Then
   $
-    log M(r, h) <= 3 T(2r, h) = Order(log r)
+    M(r, h) <= a r^b + c quad forall r>0,
   $
-  by @thm:nevanlinna_entire_function_maximum_modulus_sandwich. Then
+  where $a, b, c$ are constants. Thus the growth of $h$ may not exceed that of a polynomial. By Cauchy's Estimate (@thm:cauchys_estimate), for any natural number $n$ and positive $r$,
   $
-    M(r, h) <= a r^b,
+    abs(h^((n)) (0)) <= (n!(a r^b + c)) / r^n = Order(r^(b-n)).
   $
-  where $a, b$ are constants. Thus the growth of $h$ may not exceed that of a polynomial. By Cauchy's Estimate (@thm:cauchysestimate), for any natural number $n$ and any $r > 0$,
-  $
-    M(r, h^((n))) <= n! r^(b - n).
-  $
-  For $n > b$, let $r -> oo$ to find that the derivatives of $h$ eventually vanish. Therefore, $h$ is a polynomial, and consequently $f$ is the quotient of two polynomials.
+  By letting $r -> oo$, it follows that $h^((n)) (0) = 0$ for any $n>b$. Then there are finitely many terms in the Taylor expansion of $h$, and therefore $h$ is a polynomial. Consequently $f$ is the quotient of two polynomials.
 ]
 
 #definition[
