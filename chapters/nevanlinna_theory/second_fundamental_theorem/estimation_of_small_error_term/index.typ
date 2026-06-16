@@ -219,7 +219,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     $
     Using induction, $T(r_n) >= 2^n T(r_0)$, implying that
     $
-      r'_n - r_n = frac(1, T(r_n)) <= frac(1, 2^n T(r_0)) ==> sum_(n = 0)^N (r'_n - r_n) <= frac(1, T(r_0)) sum_(n = 0)^oo frac(1, 2^n) = 2 / T(r_0) <= 2.
+      r'_n - r_n = frac(1, T(r_n)) <= frac(1, 2^n T(r_0)) \ sum_(n = 0)^N (r'_n - r_n) <= frac(1, T(r_0)) sum_(n = 0)^oo frac(1, 2^n) = 2 / T(r_0) <= 2.
     $
   + Suppose $R_0 < oo$ in the theorem statement. Let $T_0 (rho) = T(R_0 - ee^(-rho))$, where $rho_0 = log 1 / (R_0 - r_0) <= rho < oo$, so that $T_0$ is an increasing function on $[rho_0, oo)$. By the result above, $exists E_0' subset.eq [rho_0, oo)$ such that
     $
@@ -351,7 +351,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
 #definition[
   Let $f : D(0, R_0) -> extcomplex$ be meromorphic for $R_0 in RR_(> 0) union {oo}$. Then $f$ is said to be _admissible_ if either of the following are true:
   + $R_0 = oo$ and $f$ is non-constant.
-  + $R_0 < oo$ and $limsup_(r -> R_0^-) T(r, f) / log(frac(1, R_0 - r)) = oo$.
+  + $R_0 < oo$ and $limsup_(r -> R_0^-) T(r, f) / (log frac(1, R_0 - r)) = oo$.
 ]
 
 These definitions ensure that $S(r, f)$ is generally sufficiently small:
@@ -371,21 +371,21 @@ These definitions ensure that $S(r, f)$ is generally sufficiently small:
     $
     If $rho = 0$, either $log r = order(T(r, f))$ or $T(r, f) = Order(log r)$. The former case is the same as above.
 
-    In the latter case, @prop:nevanlinnaorderrationalcondition gives that $f$ is rational. Hence, as $r -> oo$, $M(r, (f')/f), M(r, sum_(nu = 1)^q frac(f', f - a_nu)) -> 0$. Hence for sufficiently large $r$, $m(r, (f')/f)$ and $m(r, sum_(nu = 1)^q frac(f', f - a_nu))$ vanish and $S(r, f) = Order(1)$, therefore $frac(S, T) -> 0$.
+    In the latter case, @prop:nevanlinnaorderrationalcondition gives that $f$ is rational. Hence, as $r -> oo$, $M(r, (f')/f), M(r, sum_(nu = 1)^q (f') / (f - a_nu)) -> 0$. Hence for sufficiently large $r$, $m(r, (f')/f)$ and $m(r, sum_(nu = 1)^q (f') / (f - a_nu))$ vanish and $S(r, f) = Order(1)$, therefore $S / T -> 0$.
   + Assume $R_0 = oo$ and $f$ has infinite order. Then by @thm:nevanlinna_second_fundamental_theorem_part_2, it follows that for $r -> R_0^-$ outside a set $E_0$ of finite linear measure, $S(r, f) = Order(log T(r, f)) + Order(log r)$. Since $frac(log T(r, f), log r) -> oo$, then $log r = order(T(r, f))$, and thus $S(r, f) = order(T(r, f))$ outside this exceptional set.
   + Assume $R_0 < oo$. Construct two sequences ${rho_n}_n, {rho'_n}_n$ such that $rho_n < rho'_n$, $rho_n, rho'_n -> R_0^-$, and
     $
-      lim_(n -> oo) T(rho_n, f) / log(frac(1, R_0 - rho_n)) = oo
+      lim_(n -> oo) T(rho_n, f) / log 1 / (R_0 - rho_n) = oo
     $
     (observe that this is no longer a limit superior) and $rho'_n = R_0 - ee^(-2) (R_0 - rho_n) / 2$, so that $R_0 - rho'_n < ee^(-2) (R_0 - rho_n)$.
 
     Then by @thm:nevanlinna_second_fundamental_theorem_part_2, there exists some $r_n in (rho_n, rho'_n)$ such that $r_n in.not E_0$. It follows that $R_0 - rho_n > R_0 - r_n > R_0 - rho'_n = (R_0 - rho_n) / (2 ee^2)$. Then for $n -> oo$,
     $
-      frac(1, R_0 - rho_n) = order(T(rho_n)) = order(T(r_n)),
+      1 / (R_0 - rho_n) = order(T(rho_n)) = order(T(r_n)),
     $
     since $T$ is a non-decreasing function of radius. Then as $n -> oo$,
     $
-      S(r_n, f) = Order(logp T(r_n, f) + log(order(T(r_n, f)))) = order(T(r_n, f)).#qedhere
+      S(r_n, f) = Order[logp T(r_n, f) + log order(T(r_n, f))] = order(T(r_n, f)).#qedhere
     $
 ]
 
