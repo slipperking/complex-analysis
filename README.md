@@ -10,7 +10,7 @@ To build both the HTML and PDF, run:
 uv run web/build.py
 ```
 
-The script relies on Typst 0.14.2. To build just the PDF directly, run:
+The script relies on Typst 0.15. To build just the PDF directly, run:
 
 ```bash
 typst compile --features html --package-path packages main.typ main.pdf

@@ -1,18 +1,10 @@
-# Build output
 web/dist/
-
-# PDFs (except figure PDFs)
 *.pdf
+main.html
 !figures/**/*.pdf
-
-# Typst cache
 .typst-cache/
-
-# Python
 __pycache__/
 .venv/
-
-# OS
 .DS_Store
 Thumbs.db
 

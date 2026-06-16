@@ -8,7 +8,6 @@
     if thm.name != none {
       head = head + [~(#thm.name)]
     }
-    let page = link(thm.loc, [#thm.loc.position().page])
-    [#head~#box(width: 1fr, repeat[.])~#page\ ]
+    [#link(thm.loc, [#head~#box(width: 1fr, repeat[.])~#thm.loc.page()])\ ]
   },
 )

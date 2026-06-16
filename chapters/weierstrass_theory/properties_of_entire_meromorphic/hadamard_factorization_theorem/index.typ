@@ -11,7 +11,7 @@
   $
     (f'(z)) / f(z) = phi'(z) + (P'(z)) / P(z) ==> dif^p / (dif z^p) ((f'(z)) / f(z)) = phi^((p+1)) (z) + dif^p / (dif z^p) ((P'(z)) / P(z)).
   $
-  By applying @prop:entirefunctionfiniteorderlogdiffderivatives and @lem:entirefunctionweierstrassproductfiniteorderlogdiffderivatives, we have
+  By applying @prop:entirefunctionfiniteorderlogdiffderivatives and @lem:entire_function_weierstrass_product_finite_order_log_diff_derivatives, we have
   $
     -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1) = phi^((p+1)) (z) - sum_(k=1)^infinity (p!) / (a_k - z)^(p+1) ==> phi^((p+1)) equiv 0.
   $

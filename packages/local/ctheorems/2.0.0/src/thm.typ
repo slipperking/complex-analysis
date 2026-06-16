@@ -361,9 +361,6 @@
   )
 }
 
-
-
-
 // Track whether the qed symbol has already been placed in a proof
 #let thm-qed-done = state("thm-qed-done", ())
 
@@ -404,7 +401,7 @@
 /// -> metadata
 #let qedhere = metadata("thm-qedhere")
 
-
+#let tag-metadata-counter = counter("tag-metadata-counter")
 /// Add content which floats to the right in an equation.
 /// #example(```
 /// >>> #show: thm-rules
@@ -434,10 +431,17 @@
   ///
   /// -> bool
   move: false,
-) = metadata((eq-tag: t, move: move))
-
-
-
+) = {
+  tag-metadata-counter.step()
+  context {
+    let key = "pre-extra-diff-" + str(tag-metadata-counter.get().first())
+    metadata((
+      eq-tag: t,
+      move: move,
+      pre-extra-diff: state(key),
+    ))
+  }
+}
 
 /// Used as @thm-fmt-block.body-fmt by @proof, for properly styling proofs
 /// with a `qed` symbol inserted at the end of the body.
@@ -567,26 +571,46 @@
   show math.equation: eq => {
     show metadata.where(value: "thm-qedhere"): tag(thm-qed-show)
     show metadata: data => {
-      if type(data.value) == dictionary and data.value.keys().contains("eq-tag") {
+      if (
+        type(data.value) == dictionary
+          and data.value.keys().contains("eq-tag")
+          and data.value.keys().contains("pre-extra-diff")
+      ) {
         context {
           let equation-numbering-metadata = query(
             selector(<thm-equation-numbering>).after(eq.location()),
           ).first()
           let pos-numbering = equation-numbering-metadata.location().position()
-          let pos-here = here().position()
+          let pre-extra-diff = data.value.pre-extra-diff.final() // hacky but we reuse data from previous passes
+          if pre-extra-diff == none {
+            pre-extra-diff = 0pt
+          }
+          let pos-here-x = here().position().x + pre-extra-diff
           let width = measure(data.value.eq-tag).width
-          let dx = -pos-here.x + pos-numbering.x - width
           if (
-            data.value.move
-              or (
-                type(equation-numbering-metadata.value) == dictionary
-                  and equation-numbering-metadata.value.keys().contains("force-move")
-                  and equation-numbering-metadata.value.force-move
-              )
+            equation-numbering-metadata.value.keys().contains("align")
+              and equation-numbering-metadata.value.align == "left"
           ) {
-            move(dx: dx, data.value.eq-tag)
+            move(dx: 0.5em, {
+              data.value.eq-tag
+            })
           } else {
-            place(horizon, dx: dx, data.value.eq-tag)
+            let tag-start = pos-numbering.x - width
+            let diff = tag-start - pos-here-x
+            if (data.value.move) {
+              let raw-overlap = (-diff + 0.5em).to-absolute()
+              // if the marker/position metadata of numbering, minus width (so tag start) is before equation end (here), we add spaces after to add effective spaces
+              // otherwise do nothing
+              let extra-diff = calc.max(0pt, raw-overlap) // amount of space to add
+              place(horizon, dx: diff + extra-diff, data.value.eq-tag)
+              place(horizon, dx: diff + extra-diff + 2em, repr(extra-diff))
+              place(horizon, dx: diff + extra-diff + 6em, repr(pre-extra-diff))
+              box(width: 2 * extra-diff, height: 0pt, stroke: none)
+              context data.value.pre-extra-diff.update(extra-diff)
+            } else {
+              place(horizon, dx: diff, data.value.eq-tag)
+              context data.value.pre-extra-diff.update(0pt)
+            }
           }
         }
       } else {
@@ -600,7 +624,7 @@
           // infinite or unbounded width
           grid(
             columns: 2,
-            eq, [#metadata((force-move: true)) <thm-equation-numbering>],
+            eq, [#metadata((align: "left")) <thm-equation-numbering>],
           )
         } else {
           // finite width, use edge
@@ -608,7 +632,7 @@
             eq
             place(
               right + horizon,
-              [#metadata((force-move: false)) <thm-equation-numbering>],
+              [#metadata((align: "right")) <thm-equation-numbering>],
             )
           })
         }

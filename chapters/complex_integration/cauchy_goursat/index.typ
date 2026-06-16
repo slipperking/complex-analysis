@@ -351,8 +351,8 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
         let A = (0, 0)
         let E = (2.7, 0)
         let F = (1.8, 2)
-        let C = cvector.add(E, cvector.sub(E, A))
-        let D = cvector.add(F, cvector.sub(E, A))
+        let C = (A, 200%, E)
+        let D = (rel: F, to: (rel: E, to: ((0, 0), -100%, A)))
         let B = cvector.add(F, cvector.sub(F, A))
 
         cetz.draw.line(A, F, E, stroke: 1pt, close: true)
@@ -360,7 +360,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
         cetz.draw.line(C, D, E, stroke: 1pt, close: true)
 
         for (i, points) in ((A, F, E), (B, D, F), (C, D, E), (F, D, E)).enumerate(start: 1) {
-          let result = cvector.scale(points.fold((0, 0), cvector.add), 1 / (points.len()))
+          let result = scale-vector(points.fold((0, 0), add-vectors), 1 / (points.len()))
           cetz.draw.content(result, [$Delta_#i$], anchor: "center")
         }
 
@@ -469,7 +469,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
         let N = cvector.add(M, (width, slantoffset))
         let Q = cvector.add(N, (0, height))
         let (Mp, Np) = (M, N).map(point => cvector.add(point, (0, primeoffset)))
-        let (Pp, Qp) = (P, Q).map(point => cvector.add(point, (0, -primeoffset)))
+        let (Pp, Qp) = (P, Q).map(point => (rel: point, to: (0, -primeoffset)))
 
         quick-plot(canvas: {
           let MNpoints = offset => {
@@ -480,7 +480,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
               (width * .7, slantoffset * .2),
               (width * .85, slantoffset * .1),
               ..directional_points(offset: (width, slantoffset), angle: -90deg).rev(),
-            ).map(point => cvector.add(offset, point))
+            ).map(point => (rel: point, to: offset))
           }
 
           let PQpoints = offset => {
@@ -491,7 +491,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
               (width * .6, slantoffset * 1.2),
               (width * .8, slantoffset * 1.1),
               ..directional_points(offset: (width, slantoffset), angle: 90deg).rev(),
-            ).map(point => cvector.add(offset, point))
+            ).map(point => (rel: point, to: offset))
           }
 
           let arrowed_mark_start = (start: (symbol: ">>", pos: 50%, shorten-to: none, fill: black))

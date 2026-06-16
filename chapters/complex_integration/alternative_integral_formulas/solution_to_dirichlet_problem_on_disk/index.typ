@@ -25,10 +25,11 @@ A fundamental problem in the theory of partial differential equations is to find
         let xi-angle = 80deg
         let z-angle = 60deg
         let z-radius = 4.75
-        let var-zeta = cvector.scale(cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(zeta-angle), (1, 0)), radius)
-        let var-xi = cvector.scale(cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(xi-angle), (1, 0)), radius)
-        let var-z = cvector.scale(cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(z-angle), (1, 0)), z-radius)
-        let auxiliary1 = cvector.scale(cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(zeta-angle), (1, 0)), z-radius)
+        let var-zeta = ((0, 0), 100%, zeta-angle, (radius, 0))
+
+        let var-xi = ((0, 0), 100%, xi-angle, (radius, 0))
+        let var-z = ((0, 0), 100%, z-angle, (z-radius, 0))
+        let auxiliary1 = ((0, 0), 100%, zeta-angle, (z-radius, 0))
 
         arc-center((0, 0), start: 0deg, stop: 90deg, radius: 5, stroke: .7pt)
 
@@ -72,55 +73,59 @@ A fundamental problem in the theory of partial differential equations is to find
           name: "arc-theta-alt",
         )
 
-        arc(
-          var-z,
-          start: cvector.angle2((0, 0), cvector.sub(var-z, var-xi)),
-          stop: xi-angle - 180deg,
-          radius: cvector.len(cvector.sub(var-z, var-xi)),
-          stroke: (
-            dash: "dotted",
-            thickness: .7pt,
-          ),
-        )
-        arc(
-          var-z,
-          start: z-angle,
-          stop: xi-angle,
-          radius: cvector.len(var-z),
-          stroke: (
-            dash: "dotted",
-            thickness: .7pt,
-          ),
-          name: "z-radius-arc",
-        )
+        let var-diff = sub-vectors(var-z, var-xi)
+        get-ctx(ctx => {
+          let (_, var-z, var-xi, var-diff) = cetz.coordinate.resolve(ctx, var-z, var-xi, var-diff)
+          arc(
+            var-z,
+            start: cvector.angle2((0, 0, 0), var-diff),
+            stop: xi-angle - 180deg,
+            radius: cvector.len(var-diff),
+            stroke: (
+              dash: "dotted",
+              thickness: .7pt,
+            ),
+          )
+          arc(
+            var-z,
+            start: z-angle,
+            stop: xi-angle,
+            radius: cvector.len(var-z),
+            stroke: (
+              dash: "dotted",
+              thickness: .7pt,
+            ),
+            name: "z-radius-arc",
+          )
 
-        content(var-zeta, anchor: "west", [$zeta$], padding: .1cm)
-        content(var-z, anchor: "east", [$z$], padding: .1cm)
-        content(var-xi, anchor: "south", [$xi$], padding: .1cm)
+          content(var-zeta, anchor: "west", [$zeta$], padding: .1cm)
+          content(var-z, anchor: "east", [$z$], padding: .1cm)
+          content(var-xi, anchor: "south", [$xi$], padding: .1cm)
 
-        content((auxiliary1, 50%, (0, 0)), anchor: "south", [$rho$])
-        content((var-z, 50%, var-xi), anchor: "south", [
-          #text(10pt, box(
-            outset: 1pt,
-            fill: luma(100%, 80%),
-            math.equation(numbering: none, block: true, $ inline(eta^-) $),
-          ))
-        ])
-        content((var-xi, 50%, (0, 0)), anchor: "west", [$R$])
-        content((var-z, 50%, (0, 0)), anchor: "west", [$rho>R/2$])
+          content((auxiliary1, 50%, (0, 0)), anchor: "south", [$rho$])
+          content((var-z, 50%, var-xi), anchor: "south", [
+            #text(10pt, box(
+              outset: 1pt,
+              fill: luma(100%, 80%),
+              math.equation(numbering: none, block: true, $ inline(eta^-) $),
+            ))
+          ])
+          content((var-xi, 50%, (0, 0)), anchor: "west", [$R$])
+          content((var-z, 50%, (0, 0)), anchor: "west", [$rho>R/2$])
 
-        content("arc-greater-than-delta/2.arc-center", anchor: "south-west", [#text(10pt, $frac(delta, 2)^+$)])
-        content("arc-theta-alt.arc-center", anchor: "south-west", [#text(10pt, $theta.alt$)])
-        content("arc-greater-than-delta.arc-center", anchor: "south-west", [#text(10pt, $delta^+$)])
-        content("arc-tau.arc-center", anchor: "west", [$tau$])
+          content("arc-greater-than-delta/2.arc-center", anchor: "south-west", [#text(10pt, $frac(delta, 2)^+$)])
+          content("arc-theta-alt.arc-center", anchor: "south-west", [#text(10pt, $theta.alt$)])
+          content("arc-greater-than-delta.arc-center", anchor: "south-west", [#text(10pt, $delta^+$)])
+          content("arc-tau.arc-center", anchor: "west", [$tau$])
 
-        content((var-z, 50%, var-zeta), anchor: "east", [
-          #text(10pt, box(
-            outset: 1pt,
-            fill: luma(100%, 80%),
-            math.equation(numbering: none, block: true, $ inline(abs(zeta - z)^-) $),
-          ))
-        ])
+          content((var-z, 50%, var-zeta), anchor: "east", [
+            #text(10pt, box(
+              outset: 1pt,
+              fill: luma(100%, 80%),
+              math.equation(numbering: none, block: true, $ inline(abs(zeta - z)^-) $),
+            ))
+          ])
+        })
       })
     },
     caption: [$zeta$, $xi$, and $z$ when $abs(theta.alt - tau) > delta$, with distances marked. The use of $+$ and $-$ denote a value more or less (respectively) than the preceding value.],

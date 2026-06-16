@@ -15,7 +15,7 @@ To make more profound conclusions on the structure of $Aut(extcomplex)$, we will
   $
     H g = { h g : h in H }.
   $
-  The subgroup $H$ is _normal_ iff the left and right cosets are equal. The notation $H lt.tri.eq G$ is used to represent a normal subgroup. Cosets, like groups and sets, are unordered.
+  The subgroup $H$ is _normal_ iff the left and right cosets are equal. The notation $H lt.closed.eq G$ is used to represent a normal subgroup. Cosets, like groups and sets, are unordered.
 ] <def:coset>
 
 #theorem[
@@ -27,15 +27,15 @@ To make more profound conclusions on the structure of $Aut(extcomplex)$, we will
   $
     (g N) (h N) = (g h) N
   $
-  if and only if $N$ is a normal subgroup of $G$ (i.e. $N lt.tri.eq G$).
+  if and only if $N$ is a normal subgroup of $G$ (i.e. $N lt.closed.eq G$).
 ]
 
 #proof[
   We prove the two implications separately.
 
-  + _If $N lt.tri.eq G$ then $G \/ N$ is a group._
+  + _If $N lt.closed.eq G$ then $G \/ N$ is a group._
 
-    Assume $N$ is normal, $N lt.tri.eq G$, so $g N g^(-1) = N$ for every $g in G$ (equivalently $g^(-1) N g = N$). Define a product on $G \/ N$ by
+    Assume $N$ is normal, $N lt.closed.eq G$, so $g N g^(-1) = N$ for every $g in G$ (equivalently $g^(-1) N g = N$). Define a product on $G \/ N$ by
     $
       (g N) (h N) = (g h) N.
     $
@@ -54,7 +54,7 @@ To make more profound conclusions on the structure of $Aut(extcomplex)$, we will
     $
     The identity is $e N = N$, since $(e N) (g N) = (e g) N = g N$ and similarly on the other side. The inverse of $g N$ is $g^(-1) N$, because $(g N) (g^(-1) N) = (g g^(-1)) N = N$. Thus $G \/ N$ is a group.
 
-  + _If $G \/ N$ can be given a group structure via the coset multiplication, then $N lt.tri.eq G$._
+  + _If $G \/ N$ can be given a group structure via the coset multiplication, then $N lt.closed.eq G$._
 
     Fix $g in G$ and $n in N$ arbitrarily. By assumption, we have
     $

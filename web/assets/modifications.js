@@ -7,53 +7,59 @@
     : new URL(window.location.href);
   var typstColorizeCounter = 0;
 
+  function colorizeTypstSvg(svg) {
+    if (!svg || svg.dataset.typstColorized === "true") {
+      return;
+    }
+
+    svg.dataset.typstColorized = "true";
+
+    var ns = "http://www.w3.org/2000/svg";
+    var defs = svg.querySelector("defs");
+    if (!defs) {
+      defs = document.createElementNS(ns, "defs");
+      svg.insertBefore(defs, svg.firstChild);
+    }
+
+    var filterId = "typst-colorize-" + (++typstColorizeCounter);
+    var filter = document.createElementNS(ns, "filter");
+    filter.setAttribute("id", filterId);
+    filter.setAttribute("color-interpolation-filters", "sRGB");
+
+    var flood = document.createElementNS(ns, "feFlood");
+    flood.setAttribute("flood-color", "var(--typst-svg-color, transparent)");
+    flood.setAttribute("flood-opacity", "1");
+    flood.setAttribute("result", "typstColor");
+
+    var composite = document.createElementNS(ns, "feComposite");
+    composite.setAttribute("in", "typstColor");
+    composite.setAttribute("in2", "SourceAlpha");
+    composite.setAttribute("operator", "in");
+    composite.setAttribute("result", "colorLayer");
+
+    var merge = document.createElementNS(ns, "feMerge");
+    var mn1 = document.createElementNS(ns, "feMergeNode");
+    mn1.setAttribute("in", "SourceGraphic");
+    var mn2 = document.createElementNS(ns, "feMergeNode");
+    mn2.setAttribute("in", "colorLayer");
+    merge.appendChild(mn1);
+    merge.appendChild(mn2);
+
+    filter.appendChild(flood);
+    filter.appendChild(composite);
+    filter.appendChild(merge);
+    defs.appendChild(filter);
+
+    svg.style.setProperty("--_typst-filter", "url(#" + filterId + ")");
+    svg.classList.add("typst-frame", "typst-colorized");
+  }
+
   function colorizeTypstSvgFrames() {
-    document.querySelectorAll("svg.typst-frame").forEach(function (svg) {
-      if (svg.dataset.typstColorized === "true") {
-        return;
-      }
-
-      svg.dataset.typstColorized = "true";
-
-      var ns = "http://www.w3.org/2000/svg";
-      var defs = svg.querySelector("defs");
-      if (!defs) {
-        defs = document.createElementNS(ns, "defs");
-        svg.insertBefore(defs, svg.firstChild);
-      }
-
-      var filterId = "typst-colorize-" + (++typstColorizeCounter);
-      var filter = document.createElementNS(ns, "filter");
-      filter.setAttribute("id", filterId);
-      filter.setAttribute("color-interpolation-filters", "sRGB");
-
-      var flood = document.createElementNS(ns, "feFlood");
-      flood.setAttribute("flood-color", "var(--typst-svg-color, transparent)");
-      flood.setAttribute("flood-opacity", "1");
-      flood.setAttribute("result", "typstColor");
-
-      var composite = document.createElementNS(ns, "feComposite");
-      composite.setAttribute("in", "typstColor");
-      composite.setAttribute("in2", "SourceAlpha");
-      composite.setAttribute("operator", "in");
-      composite.setAttribute("result", "colorLayer");
-
-      var merge = document.createElementNS(ns, "feMerge");
-      var mn1 = document.createElementNS(ns, "feMergeNode");
-      mn1.setAttribute("in", "SourceGraphic");
-      var mn2 = document.createElementNS(ns, "feMergeNode");
-      mn2.setAttribute("in", "colorLayer");
-      merge.appendChild(mn1);
-      merge.appendChild(mn2);
-
-      filter.appendChild(flood);
-      filter.appendChild(composite);
-      filter.appendChild(merge);
-      defs.appendChild(filter);
-
-      svg.style.setProperty("--_typst-filter", "url(#" + filterId + ")");
-      svg.classList.add("typst-colorized");
+    document.querySelectorAll(".typst-frame-wrapper").forEach(function (wrapper) {
+      wrapper.querySelectorAll("svg").forEach(colorizeTypstSvg);
     });
+
+    document.querySelectorAll("svg.typst-frame").forEach(colorizeTypstSvg);
   }
 
   var THEMES = ["light", "dark", "auto"];

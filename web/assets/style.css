@@ -723,28 +723,53 @@ figcaption {
   text-align: left;
 }
 
-.typst-frame {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  align-self: center;
+.typst-frame,
+.typst-frame-wrapper {
   color: inherit;
 }
 
-svg.typst-frame {
+.typst-frame-wrapper.typst-frame-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin: 0;
+  text-align: initial;
+}
+
+.typst-frame-wrapper.typst-frame-block {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg.typst-frame,
+.typst-frame-wrapper svg {
   max-width: 100%;
   height: auto;
 }
 
-svg.typst-colorized {
+.typst-frame-wrapper.typst-frame-block>svg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+}
+
+svg.typst-colorized,
+.typst-frame-wrapper svg.typst-colorized {
   filter: var(--_typst-filter);
 }
 
-[data-theme="dark"] svg.typst-colorized {
+[data-theme="dark"] svg.typst-colorized,
+[data-theme="dark"] .typst-frame-wrapper svg.typst-colorized {
   filter: invert(1) var(--_typst-filter);
 }
 
 a svg.typst-colorized,
+.typst-frame-wrapper a svg.typst-colorized,
 .topbar-title:hover svg.typst-colorized,
 .site-title:hover svg.typst-colorized,
 .global-nav li.active>a svg.typst-colorized,

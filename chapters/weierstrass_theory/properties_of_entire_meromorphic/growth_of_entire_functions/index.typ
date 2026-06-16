@@ -437,7 +437,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   be the associated product. If $p > rho(f) - 1$ is an integer, then
   $ dif^p / (dif z^p) ((P'(z)) / P(z)) equiv -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1) $
   for all $z in CC$.
-]<lem:entirefunctionweierstrassproductfiniteorderlogdiffderivatives>
+]<lem:entire_function_weierstrass_product_finite_order_log_diff_derivatives>
 
 #proof[
   Let $P_n$ be the $n$-th partial product of $P$. Then
@@ -459,4 +459,4 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $
 ]
 
-The two preceding results are similar in conclusion, but @lem:entirefunctionweierstrassproductfiniteorderlogdiffderivatives is not a special case of @prop:entirefunctionfiniteorderlogdiffderivatives since we have not asserted that the canonical product is of finite order.
+The two preceding results are similar in conclusion, but @lem:entire_function_weierstrass_product_finite_order_log_diff_derivatives is not a special case of @prop:entirefunctionfiniteorderlogdiffderivatives since we have not asserted that the canonical product is of finite order.

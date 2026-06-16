@@ -13,6 +13,8 @@
     }
   }
 
+  // show: layout-limiter.with(max-iterations: 5)
+
   show ref: it => {
     let el = it.element
     if el != none and el.func() == math.equation {
@@ -56,7 +58,9 @@
   // edit: will be hopefully solved with mathml in 15.0
   show math.equation.where(block: false): it => context {
     if target() == "html" {
-      box(html.frame(it))
+      html-frame-wrapper(
+        box(html.frame(it)),
+      )
     } else {
       it
     }
@@ -64,14 +68,10 @@
 
   show math.equation.where(block: true): it => context {
     if target() == "html" {
-      html.elem(
-        "div",
-        attrs: (
-          style: "display: block; margin-left: auto; margin-right: auto; align-self: center; margin-bottom: 16px",
-        ),
-      )[
-        #html.frame(it)
-      ]
+      html-frame-wrapper(
+        html.frame(it),
+        block: true,
+      )
     } else {
       it
     }
@@ -81,9 +81,9 @@
     if target() == "html" {
       if (measure(it).width <= 360pt) {
         // to maintain centering
-        html.frame(block(it))
+        html-frame-wrapper(html.frame(block(it)))
       } else {
-        html.frame(block(width: 360pt, it))
+        html-frame-wrapper(html.frame(block(width: 360pt, it)))
       }
     } else {
       it
@@ -103,7 +103,6 @@
     counter(figure.where(kind: raw)).update(0)
     it
   }
-
 
   doc
 }

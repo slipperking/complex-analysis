@@ -1,4 +1,5 @@
 //#import "@preview/ctheorems:1.1.3": *
+#import "@preview/layout-ltd:0.1.0": layout-limiter
 #import "@local/ctheorems:2.0.0": *
 #import "@local/itemize:0.2.0" as itemize
 #import "@preview/cetz:0.5.2"
@@ -9,25 +10,21 @@
 #import "@preview/mannot:0.3.3"
 #import thm-themes.ams: *
 
-#let _ams-theorem = theorem
-#let _ams-lemma = lemma
-#let _ams-proposition = proposition
-#let _ams-corollary = corollary
-#let _ams-conjecture = conjecture
-#let _ams-definition = definition
-#let _ams-problem = problem
-#let _ams-remark = remark
-#let _ams-example = example
-#let _ams-claim = claim
-#let _ams-proof = proof
-#let _ams-solution = solution
-#let qed-symbol = $square$
-
 #let cvector = cetz.vector
 #let cmatrix = cetz.matrix
 
 #let _is-html = sys.inputs.at("html", default: "false") == "true" // target() == "html"
 #let chapter-title-mode = state("chapter-title-mode", "chapter")
+
+#let html-frame-wrapper(body, block: false) = if _is-html {
+  if block {
+    html.elem("div", attrs: (class: "typst-frame-wrapper typst-frame-block"), body)
+  } else {
+    html.elem("span", attrs: (class: "typst-frame-wrapper typst-frame-inline"), body)
+  }
+} else {
+  body
+}
 
 #let ray(body, dy: 0em, tag: none) = {
   let body = pad(top: 0em, $#body$)
@@ -69,7 +66,7 @@
   reset-heading-scoped-counters()
 }
 
-// use the non-abbreviated terms for no upright.
+// use the uppercase terms for no upright.
 #let vb(x) = Vb(math.upright(x))
 #let vu(x) = Vu(vb(x))
 #let va(x) = Va(vb(x))
@@ -77,6 +74,20 @@
 #let _plain-thm-fmt = thm-fmt-block.with(
   name-fmt: x => emph(smallcaps([(#x)])),
 )
+
+#let _ams-theorem = theorem
+#let _ams-lemma = lemma
+#let _ams-proposition = proposition
+#let _ams-corollary = corollary
+#let _ams-conjecture = conjecture
+#let _ams-definition = definition
+#let _ams-problem = problem
+#let _ams-remark = remark
+#let _ams-example = example
+#let _ams-claim = claim
+#let _ams-proof = proof
+#let _ams-solution = solution
+#let qed-symbol = $square$
 
 #let _html-thm-fmt(head, css-class, numbered: true) = thm => {
   let title = if numbered and thm.number != none {
@@ -214,7 +225,7 @@
 #let Re = math.op($frak(Re)$)
 #let Im = math.op($frak(Im)$)
 #let Ind = math.op("Ind")
-#let wp = math.op($\u{2118}$)
+#let wp = $pee$ // math.op($\u{2118}$)
 
 #let extcomplex = $hat(CC)$
 #let length = $op("length")$
@@ -254,16 +265,22 @@
   )
 }
 
+#let sub-vectors(a, b) = (rel: a, to: ((0, 0), -100%, b))
+
+
 #let add-vectors(..vectors) = {
-  vectors.pos().fold((0, 0, 0), cvector.add)
+  vectors.pos().fold((0, 0, 0), (a, b) => (rel: a, to: b))
+}
+#let scale-vector(vector, scale) = {
+  ((0, 0), scale * 100%, vector)
 }
 
 #let directional_points(offset: (0, 0), angle: 0, length: 1e-6, n: 10) = {
-  let vec = cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(angle), (length, 0, 0)).slice(0, 2)
+  let vec = ((0, 0), 100%, angle, (length, 0))
   let out = ()
 
   for i in range(n + 1) {
-    out.push(cvector.add(cvector.scale(vec, i / n), offset))
+    out.push((rel: ((0, 0), i / n * 100%, vec), to: offset))
   }
   out
 }
