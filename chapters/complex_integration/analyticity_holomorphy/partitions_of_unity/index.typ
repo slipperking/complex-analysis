@@ -443,29 +443,17 @@ Note that the converse here is not necessarily true.
 
       content(
         ("label_sect_kn-2.0", 50%, "label_sect_vn-1.0"),
-        box(
-          outset: 1pt,
-          fill: luma(100%, 80%),
-          math.equation(numbering: none, block: true, $ inline(V_(n-1)) $),
-        ),
+        math-rect($V_(n-1)$),
         anchor: "center",
       )
       content(
         ("label_sect_vn-1.0", 50%, "label_sect_vn.0"),
-        box(
-          outset: 1pt,
-          fill: luma(100%, 80%),
-          math.equation(numbering: none, block: true, $ inline(V_n) $),
-        ),
+        math-rect($V_n$),
         anchor: "center",
       )
       content(
         ("label_sect_vn.0", 50%, "label_sect_vn+1.0"),
-        box(
-          outset: 1pt,
-          fill: luma(100%, 80%),
-          math.equation(numbering: none, block: true, $ inline(V_(n+1)) $),
-        ),
+        math-rect($V_(n+1)$),
         anchor: "center",
       )
 
@@ -478,11 +466,7 @@ Note that the converse here is not necessarily true.
         stroke: (thickness: 1pt),
         flip: true,
       )
-      content("wn-brace.content", box(outset: 1pt, fill: luma(100%, 80%), math.equation(
-        numbering: none,
-        block: true,
-        $ inline(W_n) $,
-      )))
+      content("wn-brace.content", math-rect($W_n$))
     }),
     caption: [Geometry of the finite subcover of $V_n subset W_n$ for some $n in NN$.],
   ) <fig:locally_finite_open_cover_existence>

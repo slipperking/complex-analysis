@@ -104,11 +104,7 @@ A fundamental problem in the theory of partial differential equations is to find
 
           content((auxiliary1, 50%, (0, 0)), anchor: "south", [$rho$])
           content((var-z, 50%, var-xi), anchor: "south", [
-            #text(10pt, box(
-              outset: 1pt,
-              fill: luma(100%, 80%),
-              math.equation(numbering: none, block: true, $ inline(eta^-) $),
-            ))
+            #text(10pt, math-rect($eta^-$))
           ])
           content((var-xi, 50%, (0, 0)), anchor: "west", [$R$])
           content((var-z, 50%, (0, 0)), anchor: "west", [$rho>R/2$])
@@ -118,13 +114,7 @@ A fundamental problem in the theory of partial differential equations is to find
           content("arc-greater-than-delta.arc-center", anchor: "south-west", [#text(10pt, $delta^+$)])
           content("arc-tau.arc-center", anchor: "west", [$tau$])
 
-          content((var-z, 50%, var-zeta), anchor: "east", [
-            #text(10pt, box(
-              outset: 1pt,
-              fill: luma(100%, 80%),
-              math.equation(numbering: none, block: true, $ inline(abs(zeta - z)^-) $),
-            ))
-          ])
+          content((var-z, 50%, var-zeta), anchor: "east", [#text(10pt, math-rect($abs(zeta - z)^-$))])
         })
       })
     },
