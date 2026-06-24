@@ -47,7 +47,8 @@
           ref(label-matches.last())
           if label-matches.len() != 0 {
             html.elem(
-              "mtext",
+              // we need the markers to not mess up links in math although they are already precarious
+              "math",
               {
                 for _label in label-matches {
                   html.elem("mtext", ref(_label), attrs: (class: "typst-multi-label"))
