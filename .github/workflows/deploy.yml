@@ -46,7 +46,7 @@ jobs:
       - name: Build Document
         run: |
           Remove-Item -Recurse -Force web/dist -ErrorAction SilentlyContinue
-          .\typst.exe compile --features bundle,html --format bundle --package-path packages main.typ web/
+          .\typst.exe compile --features bundle,html --format bundle --package-path packages main.typ web/dist
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
