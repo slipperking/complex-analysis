@@ -15,7 +15,7 @@ We have previously defined the concept of an entire function in the chapter on c
   )
 
   #proof[
-    Let $z = 1 / zeta$, and let $g(zeta) = f(1 / (zeta))$, which has a removable singularity at $zeta = 0$. By @thm:riemannremovablesingularities, $g$ can be analytically continued to all of $CC$, especially at $zeta = 0$. Let $w = g(0)$. Then, $forall epsilon > 0$, $exists delta > 0$ such that $forall zeta in D(0, delta)$, $abs(g(zeta) - w) < epsilon$. It follows that $forall abs(z) > 1 / delta$, $abs(f(z)) < abs(w) + epsilon$, and is bounded. For the complement, $forall z in overline(D(0, 1 / delta))$, $f(z)$ is continuous on a compact set, and by @thm:continuous_function_bounded_on_compact, is also bounded.
+    Let $z = 1 / zeta$, and let $g(zeta) = f(1 / (zeta))$, which has a removable singularity at $zeta = 0$. By @thm:riemannremovablesingularities, $g$ can be analytically continued to all of $CC$, especially at $zeta = 0$. Let $w = g(0)$. Then, $forall epsilon > 0$, $exists delta > 0$ such that $forall zeta in D(0, delta)$, $abs(g(zeta) - w) < epsilon$. It follows that $forall abs(z) > 1 / delta$, $abs(f(z)) < abs(w) + epsilon$, and is bounded. For the complement, $forall z in overline(D(0, 1 / delta))$, $f(z)$ is continuous on a compact set, and by @thm:continuous-function-bounded-on-compact, is also bounded.
 
     Then by Liouville's Theorem (@thm:liouville), $f$ is constant.
   ]

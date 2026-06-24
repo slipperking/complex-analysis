@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 #show: docs-subsubchapter.with(
   title: [The Wiener--Ikehara Theorem],
-  route: "wiener_ikehara_theorem",
+  route: "wiener-ikehara-theorem",
 )
 
 Previously we have seen the subtle relation between $zeta$ and $psi$. Given the properties of the Laplace transform of $psi compose exp$ and certain conditions established above, we apply now prove what is known as a _Tauberian_ theorem to extract sufficient information (such as convergence) of the function itself.
@@ -33,7 +33,7 @@ The two kernels are related by a angular unitary Fourier transform:
       cal(F){f}(x) = 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) ee^(-ii x t) dt, quad cal(F)^(-1){f} (x) = 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) ee^(ii x t) dt.
     $
   ],
-  <lem:wiener-ikehara_kernels_fouriertransform>,
+  <lem:wiener-ikehara-kernels-fourier-transform>,
 )
 
 #proof[
@@ -143,7 +143,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
     $
     is independent of $lambda > 0$, then $lim_(x -> oo) f(x) = L$.
   ],
-  <prop:wiener-ikehara_intermediatetauberiantheorem>,
+  <prop:wiener-ikehara-intermediate-tauberian-theorem>,
 )
 
 #proof[
@@ -193,7 +193,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
       $
         cal(L){f} (s) = integral_0^oo f(x) ee^(-s x) dx
       $,
-      <eq:wiener-ikehara_laplacetransform>,
+      <eq:wiener-ikehara-laplace-transform>,
     )
     converges for $Re s > 1$. Suppose that there exists some constant $c > 0$ such
     that
@@ -201,14 +201,14 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
       $
         g(t) = lim_(sigma -> 1^+) [cal(L){f} (s) - c / (s - 1)], quad s = sigma + ii t
       $,
-      <eq:wiener-ikehara_gfunction>,
+      <eq:wiener-ikehara-g-function>,
     )
     converges locally uniformly with respect to $t$ in $RR$ and is continuously differentiable. Then
     #lbl(
       $
         lim_(x -> oo) f(x) / ee^x = c.
       $,
-      <eq:wiener-ikehara_conclusion>,
+      <eq:wiener-ikehara-conclusion>,
     )
   ],
   <thm:wiener-ikehara>,
@@ -225,7 +225,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
       0 quad & t < 0,
     ).
   $
-  The convergence of @eq:wiener-ikehara_laplacetransform implies that for $epsilon, lambda > 0$, the convolution
+  The convergence of @eq:wiener-ikehara-laplace-transform implies that for $epsilon, lambda > 0$, the convolution
   $
     I_(lambda, epsilon) (x) = 1 / sqrt(2 uppi) integral_(-oo)^oo k_(lambda) (x - t) ((a(t) - A(t)) / ee^(epsilon t)) dt
   $
@@ -233,13 +233,13 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
     integral_(-oo)^oo ((a(t) - A(t)) / ee^((epsilon + ii y) t)) dt
   $
-  converges uniformly for $abs(y) < 2 lambda$, we have by virtue of @lem:wiener-ikehara_kernels_fouriertransform, that
+  converges uniformly for $abs(y) < 2 lambda$, we have by virtue of @lem:wiener-ikehara-kernels-fourier-transform, that
   $
     I_(lambda, epsilon) (x) &= 1 / (2 uppi) integral_(-oo)^oo ((a(t) - A(t)) / ee^(epsilon t)) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii (x - t) y) dy dt \
     &= 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii x y) integral_0^oo (a(t) - A(t)) / ee^((epsilon + ii y) t) dt dy \
     &= 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii x y) [cal(L){f} (1 + epsilon + ii y) - c / (epsilon + ii y)] dy.
   $
-  Now $forall epsilon' > 0$, by the local uniform convergence of $g$ in @eq:wiener-ikehara_gfunction, there exists some $delta > 0$ such that
+  Now $forall epsilon' > 0$, by the local uniform convergence of $g$ in @eq:wiener-ikehara-g-function, there exists some $delta > 0$ such that
   $
     forall abs(y) < 2 lambda, abs(cal(L){f} (1 + epsilon + ii y) - c / (epsilon + ii y) - g(y)) < (uppi epsilon') / lambda.
   $
@@ -269,7 +269,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
     $
       lim_(x -> oo) (a * k_(lambda)) (x) = c.
     $,
-    <eq:wiener-ikehara_convolutionlimit>,
+    <eq:wiener-ikehara-convolution-limit>,
   )
   Therefore, $exists x_0 > 0$ such that
   $ (a * k_(lambda)) (x) < c + 1 ==> 1 / uppi integral_(-oo)^oo ((sin t) / t)^2 a (x - t / lambda) dt < c + 1 $
@@ -283,7 +283,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
   implying that
   $ integral_(-sqrt(lambda))^(sqrt(lambda)) ((sin t) / t)^2 ee^((t - 2 sqrt(lambda)) / lambda) a(x) dt < uppi (c + 1) $ which gives $ a(x) ee^(-3 / sqrt(lambda)) integral_(-sqrt(lambda))^(sqrt(lambda)) ((sin t) / t)^2 dt < uppi (c + 1), $
-  which is satisfied for all $lambda > 0$ and $x > x_0$. Letting $lambda -> oo$, we have that $a(x) < c + 1$. Compactness shows that $a$ is bounded on $[0, x_0]$ (@thm:continuous_function_bounded_on_compact). Hence, $a$ is bounded (above) on $RR$ by some $M > 0$.
+  which is satisfied for all $lambda > 0$ and $x > x_0$. Letting $lambda -> oo$, we have that $a(x) < c + 1$. Compactness shows that $a$ is bounded on $[0, x_0]$ (@thm:continuous-function-bounded-on-compact). Hence, $a$ is bounded (above) on $RR$ by some $M > 0$.
 
   The final hypothesis required is the slow decrease of $a$: for any $epsilon > 0$, $exists delta > 0$ such that $forall x, y > 0$ with $0 < y - x < delta$, we have
   $
@@ -293,7 +293,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   If $delta$ is chosen so that $M (1 - ee^(-delta)) < epsilon$, namely $0 < delta < ln(M / (M - epsilon))$, then $a(y) - a(x) > -epsilon$,
   and $a$ then exhibits slow decrease.
 
-  The slow decrease, boundedness, and the condition in @eq:wiener-ikehara_convolutionlimit are sufficient by @prop:wiener-ikehara_intermediatetauberiantheorem, to show that $lim_(x -> oo) a(x) = c$, or equivalently, $lim_(x -> oo) f(x) / ee^x = c$.
+  The slow decrease, boundedness, and the condition in @eq:wiener-ikehara-convolution-limit are sufficient by @prop:wiener-ikehara-intermediate-tauberian-theorem, to show that $lim_(x -> oo) a(x) = c$, or equivalently, $lim_(x -> oo) f(x) / ee^x = c$.
 ]
 
 #lbl(

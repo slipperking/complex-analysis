@@ -1,11 +1,11 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Prime Number Theorem],
-  route: "prime-number_theorem",
+  route: "prime-number-theorem",
   children: [
-    #include "wiener_ikehara_theorem/index.typ"
+    #include "wiener-ikehara-theorem/index.typ"
   ],
-  label: <sec:prime-number_theorem>,
+  label: <sec:prime-number-theorem>,
 )
 Prime numbers have been a central object of study in number theory since antiquity. From the times of Euclid, it was known that there were infinitely many primes. The _prime counting function_ $pi(n)$ is defined to be the number of primes not exceeding $n$. The _Prime Number Theorem_ states formally that:
 
@@ -122,7 +122,7 @@ Hence we have for any $x > 1$,
     $
       f(s) = -1 / s (zeta'(s)) / zeta(s) ==> f(s) - 1 / (s - 1) = -1 / s ((zeta'(s)) / zeta(s) + 1 / (s - 1)) - 1 / s.wide quad
     $,
-    <eq:primenumbertheorem_laplacetransformchebyshevfunction_gfunction>,
+    <eq:prime-number-theorem-laplace-transform-chebyshev-function-g-function>,
   )
   The expression $(zeta'(s)) / zeta(s) + 1 / (s - 1)$ is meromorphic in $CC$. Because $zeta(s)$ has a simple pole at $s = 1$ with residue $1$, it follows that $ zeta(s) = 1 / (s - 1) + l(s) $ for some entire function $l:CC -> CC$. By @prop:riemannzetafunction_trivialzeros and @thm:riemannzetafunction_nozerosoncriticalstripboundary, the quantity $zeta(s) (s - 1) = 1 + (s - 1) l(s)$ does not vanish for $Re s >= 1$ (at $s = 1$, the simple pole $zeta$ cancels with the simple zero of $s - 1$). Hence,
   $

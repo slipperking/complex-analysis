@@ -30,7 +30,7 @@ The hyperbolic metric $lambda$ in @eq:poincaremetricdefinition does not increase
   )
   to generalize the Poincaré metric to $D(0, r)$. @eq:curvatureinvarianceunderholomorphicpullback gives that $K_(lambda_r) (z) = K_lambda (z / r) = -1$ for any $z in D(0, r)$. Define the real-valued function
   $ u_r (z) = (f^* rho(z))/(lambda_r (z)) quad "for" quad z in D(0, r), $
-  which is nonnegative and continuous on $D(0, r)$. The pullback metric $f^* rho = (rho compose f) abs(f')$ is continuous on $DD$ and thus bounded on $overline(D(0, r))$ (as a consequence of @thm:continuous_function_bounded_on_compact). As $abs(z) -> r^-$, $lambda_r (z) -> oo$, and hence $lim_(abs(z) -> r^-) u_r (z) = 0$. Thus,
+  which is nonnegative and continuous on $D(0, r)$. The pullback metric $f^* rho = (rho compose f) abs(f')$ is continuous on $DD$ and thus bounded on $overline(D(0, r))$ (as a consequence of @thm:continuous-function-bounded-on-compact). As $abs(z) -> r^-$, $lambda_r (z) -> oo$, and hence $lim_(abs(z) -> r^-) u_r (z) = 0$. Thus,
   $ M_r = max_(z in overline(D(0, r))) u_r (z) $
   must be attained at some $z = tau_r in D(0, r)$ (within the interior).
 

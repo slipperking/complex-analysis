@@ -255,7 +255,7 @@ $
   theorem[
     Any continuous function on a compact set $K$ is bounded on $K$.
   ],
-  <thm:continuous_function_bounded_on_compact>,
+  <thm:continuous-function-bounded-on-compact>,
 )
 
 #proof[
@@ -269,9 +269,9 @@ $
 ] <thm:extremevalue>
 
 #proof[
-  Assume that $f$ never attains its supremum $M$. Then, $f(x) < M$. Define the auxiliary function $psi(x) = 1 / (M - f(x))$, which is strictly positive and continuous as the denominator never reaches $0$. By @thm:continuous_function_bounded_on_compact, $psi(x)$ is bounded with some value of $mu > 0$ satisfying $psi(x) <= mu$. $f(x)$ also has the representation $M - 1 / (psi(x))$, and therefore,
+  Assume that $f$ never attains its supremum $M$. Then, $f(x) < M$. Define the auxiliary function $psi(x) = 1 / (M - f(x))$, which is strictly positive and continuous as the denominator never reaches $0$. By @thm:continuous-function-bounded-on-compact, $psi(x)$ is bounded with some value of $mu > 0$ satisfying $psi(x) <= mu$. $f(x)$ also has the representation $M - 1 / (psi(x))$, and therefore,
   $ f(x) <= M - 1 / mu, $
-  which means that $M$ is not the supremum. Similarly, assume that $f$ never attains its infimum $m$. Then $f(x) > m$. Let $psi(x) = 1 / (f(x) - m)$, which is strictly positive and continuous as the denominator never reaches $0$. By @thm:continuous_function_bounded_on_compact, $psi(x)$ is bounded with some value of $mu > 0$ satisfying $psi(x) <= mu$. $f(x)$ also has the representation $m + 1 / (psi(x))$, and therefore,
+  which means that $M$ is not the supremum. Similarly, assume that $f$ never attains its infimum $m$. Then $f(x) > m$. Let $psi(x) = 1 / (f(x) - m)$, which is strictly positive and continuous as the denominator never reaches $0$. By @thm:continuous-function-bounded-on-compact, $psi(x)$ is bounded with some value of $mu > 0$ satisfying $psi(x) <= mu$. $f(x)$ also has the representation $m + 1 / (psi(x))$, and therefore,
   $ f(x) >= m + 1 / mu, $
   which means that $m$ is not the infimum.
 ]
@@ -335,7 +335,7 @@ Lipschitz continuity is an important concept in real analysis and the theory of 
 )
 
 #proof[
-  Let $f : K -> RR$ be $C^1$. By @thm:continuous_function_bounded_on_compact, since $K$ is compact and $f'$ is continuous, $exists M > 0$ such that $forall x in K$, $abs(f'(x)) <= M$.
+  Let $f : K -> RR$ be $C^1$. By @thm:continuous-function-bounded-on-compact, since $K$ is compact and $f'$ is continuous, $exists M > 0$ such that $forall x in K$, $abs(f'(x)) <= M$.
 
   By the Mean Value Theorem, $forall x, y in K$, $exists c$ between $x$ and $y$ such that $f(x) - f(y) = f'(c)(x - y)$. Then, $abs(f(x) - f(y)) = abs(f'(c))abs(x - y) <= M abs(x - y)$, which means $f$ is Lipschitz continuous with Lipschitz constant less than or equal to $M$.
 ]

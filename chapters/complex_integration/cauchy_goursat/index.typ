@@ -165,7 +165,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
     <eq:pompeiu_areadiskstatement>,
   )
 
-  Notice that since $f in C^1 (overline(U))$, by @thm:continuous_function_bounded_on_compact, $exists M' in RR_(>0)$ such that $forall zeta in overline(U)$, $abs(pdv(f, overline(zeta))) <= M'$. Then,
+  Notice that since $f in C^1 (overline(U))$, by @thm:continuous-function-bounded-on-compact, $exists M' in RR_(>0)$ such that $forall zeta in overline(U)$, $abs(pdv(f, overline(zeta))) <= M'$. Then,
 
   $
     lim_(epsilon -> 0) abs(integral_(D(z, epsilon)) pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z)) <= M' lim_(epsilon -> 0) abs(integral_(D(z, epsilon)) 1 / (zeta - z) dif overline(zeta) and dzeta).
@@ -266,7 +266,7 @@ From the above result, we can directly obtain the following theorem:
 
 #proof[Split $CC$ into $CC without D (z, epsilon)$ and $overline(D (z, epsilon))$. For all $epsilon > 0$, the integral
   $ -1 / (taui) integral_(CC without D (z, epsilon)) (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta $
-  is continuous. Since $psi(zeta)$ is compactly supported over $CC$ and continuous, by @thm:continuous_function_bounded_on_compact, it is bounded. Then the limit
+  is continuous. Since $psi(zeta)$ is compactly supported over $CC$ and continuous, by @thm:continuous-function-bounded-on-compact, it is bounded. Then the limit
   $
     lim_(epsilon -> 0) (-1 / (taui) integral_(D(z, epsilon)) (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta) = 0.
   $

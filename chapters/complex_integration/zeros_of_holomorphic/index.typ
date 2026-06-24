@@ -189,7 +189,7 @@ $
 
   #lbl($ lim_(n -> oo) integral.cont_Gamma (f'_n (z)) / (f_n (z)) dz = 0. $, <eq:hurwitzsimplecase_argumentprinciple>)
 
-  Since $f$ and $f'$ are holomorphic over $gamma$, by @thm:continuous_function_bounded_on_compact, there exists a finite value $M > 0$ such that $forall z in gamma$, $max {abs(f(z)), abs(f'(z))} < M$.
+  Since $f$ and $f'$ are holomorphic over $gamma$, by @thm:continuous-function-bounded-on-compact, there exists a finite value $M > 0$ such that $forall z in gamma$, $max {abs(f(z)), abs(f'(z))} < M$.
 
   Since $gamma$ does not pass through the zeros of $f$, $exists lambda > 0$ such that $forall z in gamma$, $abs(f(z)) > lambda$. By the uniform convergence of ${f_n (z)}$, $exists N in NN$ such that
 

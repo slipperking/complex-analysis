@@ -68,7 +68,7 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
     <eq:cauchy_differentiation_formula_differenceoffirstorderdifferences>,
   )
 
-  Let $d$ be the distance from $a$ to $partial U$; then $0 < r < d$. Then since $abs(z-a) < r$ and $abs(zeta-a) gt.eq d$, $abs(zeta-z) gt.eq d-r$. Then the absolute value of the integrand of @eq:cauchy_differentiation_formula_differenceoffirstorderdifferences is bounded above by $M / (d^2(d-r))$, where $M$ is the maximum of $abs(f(zeta))$, which exists by @thm:continuous_function_bounded_on_compact. Then,
+  Let $d$ be the distance from $a$ to $partial U$; then $0 < r < d$. Then since $abs(z-a) < r$ and $abs(zeta-a) gt.eq d$, $abs(zeta-z) gt.eq d-r$. Then the absolute value of the integrand of @eq:cauchy_differentiation_formula_differenceoffirstorderdifferences is bounded above by $M / (d^2(d-r))$, where $M$ is the maximum of $abs(f(zeta))$, which exists by @thm:continuous-function-bounded-on-compact. Then,
 
   $
     abs((z-a) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)(zeta-a)^2) dzeta) <= abs(z-a) / (2 uppi) (M) / (d^2(d-r)) integral.cont_(partial U) abs(dzeta).

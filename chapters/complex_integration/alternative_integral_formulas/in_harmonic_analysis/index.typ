@@ -28,7 +28,7 @@ so that the corresponding Fourier series is
 
 $ sum_(n = -oo)^oo a_n ee^(ii n theta). $
 
-This series may diverge. Observe that continuity of $u$ on the compact set $partial DD$ implies uniform boundedness: $exists M > 0$ such that $abs(u(ee^(ii theta))) <= M$ for all $theta$ (@thm:continuous_function_bounded_on_compact). Consequently, $abs(a_n) <= M$. Introducing factors $rho^(abs(n))$ with $abs(rho) < 1$ yields a convergent series:
+This series may diverge. Observe that continuity of $u$ on the compact set $partial DD$ implies uniform boundedness: $exists M > 0$ such that $abs(u(ee^(ii theta))) <= M$ for all $theta$ (@thm:continuous-function-bounded-on-compact). Consequently, $abs(a_n) <= M$. Introducing factors $rho^(abs(n))$ with $abs(rho) < 1$ yields a convergent series:
 
 $
   sum_(n = -oo)^oo a_n ee^(ii n theta) rho^(abs(n)),
