@@ -1,10 +1,10 @@
 #import "packages.typ": *
 #import "packages.typ" as _packages
-#import "math.typ": *
 #import "graphics.typ": *
 #import "styles.typ": explicit-label, pdf-styles, web-styles
 #import "theorems.typ" as _thm
 #import "web.typ" as _web
+#import "math.typ": *
 
 #let theorem = _thm.theorem
 #let lemma = _thm.lemma

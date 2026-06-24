@@ -4,7 +4,7 @@
   route: "estimation_of_small_error_term",
 )
 The second part of the Second Fundamental Theorem is typically a suitable estimate on $S(r, f)$.
-#thm-state.thm-restate("thm:nevanlinna_second_fundamental_theorem_part_2", final: true)
+#thm-state.thm-restate("thm:nevanlinna-second-fundamental-theorem-part-2", final: true)
 Modern results vastly improve said estimations, and the search for a sharp estimation is one of the most challenging questions in Nevanlinna Theory.
 
 #lbl(
@@ -276,29 +276,31 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     Since $integral_(E_0) dr / (r_0 - r) <= 2$, there then $(rho, rho') subset.eq.not E_0$. Thus, $exists r in (rho, rho')$ such that $r in.not E_0$.#qedhere
 ]
 
-#theorem(
-  [Second Fundamental Theorem of Nevanlinna Theory, Part 2],
-  restate: true,
-  restate-keys: "thm:nevanlinna_second_fundamental_theorem_part_2",
-)[
-  Let $f : D(0, R_0) -> extcomplex$ ($0 < R_0 <= oo$) be meromorphic and non-constant. Define $S(r, f)$ as in @eq:nevanlinna_second_fundamental_theorem_part_1_small_error_term. Then
-  + If $R_0 = oo$ and $f$ has finite order, then
+#lbl(
+  theorem(
+    [Second Fundamental Theorem of Nevanlinna Theory, Part 2],
+    restate: true,
+    restate-keys: "thm:nevanlinna-second-fundamental-theorem-part-2",
+  )[
+    + If $R_0 = oo$ and $f$ has finite order, then
+    Let $f : D(0, R_0) -> extcomplex$ ($0 < R_0 <= oo$) be meromorphic and non-constant. Define $S(r, f)$ as in @eq:nevanlinna-second-fundamental-theorem-part-1_small_error_term. Then
     $
       S(r, f) = Order(log T(r, f)) + Order(log r) #tag[$(dagger)$]
     $
     as $r -> oo$ through all values.
-  + If $R_0 = oo$ and $f$ has infinite order, then $(dagger)$ holds as $r -> oo$ through all values of $r$ outside a set $E$ of finite linear measure.
-  + If $R_0 < oo$, then
-    $
-      S(r, f) = Order(logp T(r, f) + log 1 / (R_0 - r)) #tag[$(dagger.double)$]
-    $
-    as $r -> R_0^-$ outside a set $E$ satisfying
-    $
-      integral_E dr / (R_0 - r) < oo.
-    $
-    Moreover, for any $rho, rho' in (0, R_0)$ such that $R_0 - rho' < ee^(-2) (R_0 - rho)$ (implying that $rho < rho'$), $exists r in (rho, rho')$ such that $r in.not E$.
-]
-<thm:nevanlinna_second_fundamental_theorem_part_2>
+    + If $R_0 = oo$ and $f$ has infinite order, then $(dagger)$ holds as $r -> oo$ through all values of $r$ outside a set $E$ of finite linear measure.
+    + If $R_0 < oo$, then
+      $
+        S(r, f) = Order(logp T(r, f) + log 1 / (R_0 - r)) #tag[$(dagger.double)$]
+      $
+      as $r -> R_0^-$ outside a set $E$ satisfying
+      $
+        integral_E dr / (R_0 - r) < oo.
+      $
+      Moreover, for any $rho, rho' in (0, R_0)$ such that $R_0 - rho' < ee^(-2) (R_0 - rho)$ (implying that $rho < rho'$), $exists r in (rho, rho')$ such that $r in.not E$.
+  ],
+  <thm:nevanlinna-second-fundamental-theorem-part-2>,
+)
 
 #proof[
   As a function of $r$,
@@ -311,7 +313,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
       T(r, phi.alt) <= sum_(nu = 1)^q T(r, f - a_nu) = q T(r, f) + Order(1),\
       logp T(r, phi.alt) <= logp T(r, f) + Order(1)
     $,
-    <eq:nevanlinna_second_fundamental_theorem_part_2_intermediate>,
+    <eq:nevanlinna-second-fundamental-theorem-part-2_intermediate>,
   )
   by @prop:nevanlinna_characteristic_properties (product-subadditivity), @thm:nevanlinna_first_fundamental_theorem (first fundamental theorem). In the first case, where $R_0 = oo$, by @prop:nevanlinna_log_diff_proximity_estimate with $R = 2r$,
   $
@@ -320,7 +322,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     m(r, frac(phi.alt', phi.alt)) & < 4 logp T(R, phi.alt) + Order(1) + 5 logp(2r) \
                                   & = Order(logp T(2r, phi.alt)) + Order(logp r).
   $
-  Since $f$ has finite order, $T(2r, f) = Order((2r)^(rho + epsilon)) = Order(r^rho.alt)$, so $logp T(2r, f) = Order(logp r)$, thus as $r -> oo$, using @eq:nevanlinna_second_fundamental_theorem_part_2_intermediate we have
+  Since $f$ has finite order, $T(2r, f) = Order((2r)^(rho + epsilon)) = Order(r^rho.alt)$, so $logp T(2r, f) = Order(logp r)$, thus as $r -> oo$, using @eq:nevanlinna-second-fundamental-theorem-part-2_intermediate we have
   $
     m(r, (f')/f) = Order(logp T(2r, f)) + Order(logp r) = Order(log r), \ m(r, frac(phi.alt', phi.alt)) = Order(logp T(2r, phi.alt)) + Order(logp r) = Order(log r).
   $
@@ -349,7 +351,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   where the $Order(logp(r + (R_0 - r) / (ee T(r, f))))$ term has been coalesced to $Order(1)$ as $r + (R_0 - r) / (ee T(r, f))$ is bounded.
   $
     m(r, (phi.alt')/phi.alt) &= Order(logp T(r, phi.alt) + log 1 / (R_0 - r)) \
-    &<= Order(logp T(r, f) + log 1 / (R_0 - r)). #tag[(by @eq:nevanlinna_second_fundamental_theorem_part_2_intermediate)]
+    &<= Order(logp T(r, f) + log 1 / (R_0 - r)). #tag[(by @eq:nevanlinna-second-fundamental-theorem-part-2_intermediate)]
   $
   Therefore,
   $
@@ -406,21 +408,21 @@ These definitions ensure that $S(r, f)$ is generally sufficiently small:
 
 #proof[
   Assume the conditions of the theorem.
-  + Assume $R_0 = oo$ and $f$ has finite order. Then $T(r, f) = Order(r^(rho + epsilon))$, $r^(rho - epsilon) = order(T(r, f))$ (assuming that $rho > 0$), so $log r = order(T(r, f))$. Therefore, by @thm:nevanlinna_second_fundamental_theorem_part_2, it follows that through all values as $r -> oo$,
+  + Assume $R_0 = oo$ and $f$ has finite order. Then $T(r, f) = Order(r^(rho + epsilon))$, $r^(rho - epsilon) = order(T(r, f))$ (assuming that $rho > 0$), so $log r = order(T(r, f))$. Therefore, by @thm:nevanlinna-second-fundamental-theorem-part-2, it follows that through all values as $r -> oo$,
     $
       S(r, f) = Order(log T(r, f)) + Order(log r) = Order(log T(r, f)) = order(T(r, f)).
     $
     If $rho = 0$, either $log r = order(T(r, f))$ or $T(r, f) = Order(log r)$. The former case is the same as above.
 
     In the latter case, @prop:nevanlinnaorderrationalcondition gives that $f$ is rational. Hence, as $r -> oo$, $M(r, (f')/f), M(r, sum_(nu = 1)^q (f') / (f - a_nu)) -> 0$. Hence for sufficiently large $r$, $m(r, (f')/f)$ and $m(r, sum_(nu = 1)^q (f') / (f - a_nu))$ vanish and $S(r, f) = Order(1)$, therefore $S / T -> 0$.
-  + Assume $R_0 = oo$ and $f$ has infinite order. Then by @thm:nevanlinna_second_fundamental_theorem_part_2, it follows that for $r -> R_0^-$ outside a set $E_0$ of finite linear measure, $S(r, f) = Order(log T(r, f)) + Order(log r)$. Since $frac(log T(r, f), log r) -> oo$, then $log r = order(T(r, f))$, and thus $S(r, f) = order(T(r, f))$ outside this exceptional set.
+  + Assume $R_0 = oo$ and $f$ has infinite order. Then by @thm:nevanlinna-second-fundamental-theorem-part-2, it follows that for $r -> R_0^-$ outside a set $E_0$ of finite linear measure, $S(r, f) = Order(log T(r, f)) + Order(log r)$. Since $frac(log T(r, f), log r) -> oo$, then $log r = order(T(r, f))$, and thus $S(r, f) = order(T(r, f))$ outside this exceptional set.
   + Assume $R_0 < oo$. Construct two sequences ${rho_n}_n, {rho'_n}_n$ such that $rho_n < rho'_n$, $rho_n, rho'_n -> R_0^-$, and
     $
       lim_(n -> oo) T(rho_n, f) / log 1 / (R_0 - rho_n) = oo
     $
     (observe that this is no longer a limit superior) and $rho'_n = R_0 - ee^(-2) (R_0 - rho_n) / 2$, so that $R_0 - rho'_n < ee^(-2) (R_0 - rho_n)$.
 
-    Then by @thm:nevanlinna_second_fundamental_theorem_part_2, there exists some $r_n in (rho_n, rho'_n)$ such that $r_n in.not E_0$. It follows that $R_0 - rho_n > R_0 - r_n > R_0 - rho'_n = (R_0 - rho_n) / (2 ee^2)$. Then for $n -> oo$,
+    Then by @thm:nevanlinna-second-fundamental-theorem-part-2, there exists some $r_n in (rho_n, rho'_n)$ such that $r_n in.not E_0$. It follows that $R_0 - rho_n > R_0 - r_n > R_0 - rho'_n = (R_0 - rho_n) / (2 ee^2)$. Then for $n -> oo$,
     $
       1 / (R_0 - rho_n) = order(T(rho_n)) = order(T(r_n)),
     $

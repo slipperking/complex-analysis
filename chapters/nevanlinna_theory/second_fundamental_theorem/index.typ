@@ -34,21 +34,24 @@ where the precise formulation allows for a sequence ${r_n}$ diverging to $oo$ to
 
 Regarding Nevanlinna's original paper containing the result, mathematician Hermann Weyl has stated in 1943 that "the appearance of this paper has been one of the few great mathematical events of our century."
 
-#theorem[Second Fundamental Theorem of Nevanlinna Theory, Part 1][
-  Let $f: D(0, R) -> extcomplex$ be meromorphic and non-constant ($0 < R <= oo$). Suppose that $a_1, dots, a_q$ are $q >= 2$ distinct finite complex numbers. Then for any positive $delta <= min{a_mu - a_nu : 1 <= mu < nu <= q}$,
-  $
-    m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) <= 2 T(r, f) - N_1(r, f) + S(r, f),
-  $
-  where $N_1(r) = N(r, 0, f') + 2 N(r, f) - N(r, f')$ and
-  #lbl(
+#lbl(
+  theorem[Second Fundamental Theorem of Nevanlinna Theory, Part 1][
+    Let $f: D(0, R) -> extcomplex$ be meromorphic and non-constant ($0 < R <= oo$). Suppose that $a_1, dots, a_q$ are $q >= 2$ distinct finite complex numbers. Then for any positive $delta <= min{a_mu - a_nu : 1 <= mu < nu <= q}$,
     $
-      S(r, f) & = m(r, f' / f) + m(r, sum_(nu = 1)^q f' / (f - a_nu)) \
-              & quad""+ q logp ((3q) / delta) + log 2 - log abs(c'),
-    $,
-    <eq:nevanlinna_second_fundamental_theorem_part_1_small_error_term>,
-  )
-  where $c'$ is the first nonzero coefficient of the Laurent expansion of $f'$ (at the origin).
-] <thm:nevanlinnasecondfundamentaltheorempart1>
+      m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) <= 2 T(r, f) - N_1(r, f) + S(r, f),
+    $
+    where $N_1(r) = N(r, 0, f') + 2 N(r, f) - N(r, f')$ and
+    #lbl(
+      $
+        S(r, f) & = m(r, f' / f) + m(r, sum_(nu = 1)^q f' / (f - a_nu)) \
+                & quad""+ q logp ((3q) / delta) + log 2 - log abs(c'),
+      $,
+      <eq:nevanlinna-second-fundamental-theorem-part-1_small_error_term>,
+    )
+    where $c'$ is the first nonzero coefficient of the Laurent expansion of $f'$ (at the origin).
+  ],
+  <thm:nevanlinna-second-fundamental-theorem-part-1>,
+)
 
 #remark[
   For interpretive purposes, $S(r, f)$ will serve the purpose of a generally unimportant small error term. The utility of this theorem is not realized until more useful conclusions are drawn on its estimation, which will be denoted by the second part of the theorem.
@@ -92,7 +95,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
         logp abs(F(z)) & >= sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - (q - 1) logp (3 / (2 delta)) - log 2 \
                        & >= sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) - log 2.
       $,
-      <eq:nevanlinna_second_fundamental_theorem_part_1_log_p_F_lower_bound>,
+      <eq:nevanlinna-second-fundamental-theorem-part-1_log_p_F_lower_bound>,
     )
 
   + There exists no such $nu$. Then all $nu$ have the property that $abs(f(z) - a_nu) >= delta / (3q)$. It follows that
@@ -102,14 +105,14 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
       sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) & <= 0 \
                                                                          & <= logp abs(F(z)).
     $
-    Then @eq:nevanlinna_second_fundamental_theorem_part_1_log_p_F_lower_bound holds for this case trivially.
+    Then @eq:nevanlinna-second-fundamental-theorem-part-1_log_p_F_lower_bound holds for this case trivially.
 
-  Integrating the relation @eq:nevanlinna_second_fundamental_theorem_part_1_log_p_F_lower_bound (which holds in all cases) gives that
+  Integrating the relation @eq:nevanlinna-second-fundamental-theorem-part-1_log_p_F_lower_bound (which holds in all cases) gives that
   #lbl(
     $
       m(r, F) >= sum_(nu = 1)^q m(r, a_nu, f) - q logp ((3q) / delta) - log 2.
     $,
-    <eq:nevanlinnasecondfundamentaltheorempart1_proximityFlowerbound>,
+    <eq:nevanlinna-second-fundamental-theorem-part-1_proximityFlowerbound>,
   )
   Observe that
   $
@@ -134,7 +137,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     m(r, F) & <= T(r, f) - N(r, 1 / f) - log abs(c) \
             & quad""+ T(r, f' / f) - N(r, f / f') + log abs(c'') + m(r, f' F).
   $
-  Combining this with @eq:nevanlinnasecondfundamentaltheorempart1_proximityFlowerbound gives
+  Combining this with @eq:nevanlinna-second-fundamental-theorem-part-1_proximityFlowerbound gives
   $
     m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) & <= m(r, f) + m(r, F) + q logp (3q) / delta + log 2 \
                                            & <= T(r, f) - N(r, f) + q logp (3q) / delta + log 2 \
@@ -157,5 +160,5 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     & wide quad ""+ log 2 + m(r, f' / f) - N(r, 1 / f') + N(r, f') - log abs(c') + m(r, f' F) \
     & wide = 2 T(r, f) - [N(r, 1 / f') + 2 N(r, f) - N(r, f')] + S(r, f),
   $
-  where $S(r, f)$ is defined as in @eq:nevanlinna_second_fundamental_theorem_part_1_small_error_term. This concludes the proof.
+  where $S(r, f)$ is defined as in @eq:nevanlinna-second-fundamental-theorem-part-1_small_error_term. This concludes the proof.
 ]

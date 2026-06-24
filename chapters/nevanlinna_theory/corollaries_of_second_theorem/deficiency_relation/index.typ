@@ -39,7 +39,7 @@ Using these formulations, we now have
 #proof[
   For any $q$ numbers ${a_nu}_(nu = 1)^q subset CC$,
   $ m(r, f) / T(r, f) + sum_(nu = 1)^q m(r, a_nu, f) / T(r, f) + (N_1 (r, f)) / T(r, f) <= 2 + S(r, f) / T(r, f) $
-  as $r -> R_0^-$ by the Second Fundamental Theorem of Nevanlinna Theory (@thm:nevanlinnasecondfundamentaltheorempart1). Then,
+  as $r -> R_0^-$ by the Second Fundamental Theorem of Nevanlinna Theory (@thm:nevanlinna-second-fundamental-theorem-part-1). Then,
   $
     q - 1 - S(r, f) / T(r, f) & <= (N(r, f') - N(r, 1 / f') - 2 N(r, f)) / T(r, f) \
                               & quad""+ N(r, f) / T(r, f) + sum_(nu = 1)^q N(r, a_nu, f) / T(r, f).
