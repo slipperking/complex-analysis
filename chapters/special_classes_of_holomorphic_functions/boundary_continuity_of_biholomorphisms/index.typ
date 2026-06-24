@@ -376,109 +376,111 @@ In fact, it is almost always true that such an extension exists. We will give th
   #figure-wrapper([
     #lbl(
       figure(
-        grid(
-          columns: 2,
-          gutter: 1fr,
-          canvas(length: 1cm, {
-            import cetz.draw: *
+        potential-frame(
+          grid(
+            columns: 2,
+            gutter: 1fr,
+            canvas(length: 1cm, {
+              import cetz.draw: *
 
-            let lendpoint = (-1.5, -0.75)
-            let rendpoint = (1.65, -1.35)
+              let lendpoint = (-1.5, -0.75)
+              let rendpoint = (1.65, -1.35)
 
-            catmull(
-              (3.6, 0.9),
-              (2.1, 2.55),
-              (-1.2, 0.75),
-              lendpoint,
-              (-1.1, -1.3),
-              (-0.75, -1.5),
-              (0.5, -1.4),
-              rendpoint,
-              tension: 0.5,
-              close: true,
-              stroke: 1.5pt,
-            )
+              catmull(
+                (3.6, 0.9),
+                (2.1, 2.55),
+                (-1.2, 0.75),
+                lendpoint,
+                (-1.1, -1.3),
+                (-0.75, -1.5),
+                (0.5, -1.4),
+                rendpoint,
+                tension: 0.5,
+                close: true,
+                stroke: 1.5pt,
+              )
 
-            catmull(
-              (-1.5, -0.75),
-              (-1.1, -0.4),
-              (-0.6, -0.5),
-              (-0.1, 0.2),
-              (0.4, 0.5),
-              (0.9, 0.1),
-              (1.2, -0.2),
-              (1.65, -1.35),
-              tension: 0.5,
-              stroke: 0.5pt,
-            )
+              catmull(
+                (-1.5, -0.75),
+                (-1.1, -0.4),
+                (-0.6, -0.5),
+                (-0.1, 0.2),
+                (0.4, 0.5),
+                (0.9, 0.1),
+                (1.2, -0.2),
+                (1.65, -1.35),
+                tension: 0.5,
+                stroke: 0.5pt,
+              )
 
-            catmull(
-              (-1.1, -1.3),
-              (-1, -0.8),
-              (-0.5, -0.9),
-              (-0.2, -0.5),
-              (0.2, -0.7),
-              (0.7, -1.1),
-              (0.5, -1.4),
-              tension: 0.5,
-              stroke: 1.5pt,
-              name: "phi_gamma_r_j",
-            )
+              catmull(
+                (-1.1, -1.3),
+                (-1, -0.8),
+                (-0.5, -0.9),
+                (-0.2, -0.5),
+                (0.2, -0.7),
+                (0.7, -1.1),
+                (0.5, -1.4),
+                tension: 0.5,
+                stroke: 1.5pt,
+                name: "phi_gamma_r_j",
+              )
 
-            content((name: "phi_gamma_r_j", anchor: 60%), text(size: 9pt)[$phi(gamma_r_j)$], anchor: "south-west")
-            content("phi_gamma_r_j.0", math-rect($a_j$), anchor: "north-east", padding: 2pt)
-            content("phi_gamma_r_j.100%", math-rect($b_j$), anchor: "north", padding: 2pt)
-          }),
+              content((name: "phi_gamma_r_j", anchor: 60%), text(size: 9pt)[$phi(gamma_r_j)$], anchor: "south-west")
+              content("phi_gamma_r_j.0", math-rect($a_j$), anchor: "north-east", padding: 2pt)
+              content("phi_gamma_r_j.100%", math-rect($b_j$), anchor: "north", padding: 2pt)
+            }),
 
-          canvas(length: 1cm, {
-            import cetz.draw: *
+            canvas(length: 1cm, {
+              import cetz.draw: *
 
-            let lendpoint = (-1.5, -0.75)
-            let rendpoint = (1.65, -1.35)
+              let lendpoint = (-1.5, -0.75)
+              let rendpoint = (1.65, -1.35)
 
-            catmull(
-              (3.6, 0.9),
-              (2.1, 2.55),
-              (-1.2, 0.75),
-              lendpoint,
-              (-1.1, -1.3),
-              (-0.75, -1.5),
-              (0.5, -1.4),
-              rendpoint,
-              tension: 0.5,
-              close: true,
-              stroke: 1.5pt,
-            )
-            catmull(
-              (-1.51, -0.751),
-              (-1.1, -0.4),
-              (-0.6, -0.5),
-              (-0.1, 0.2),
-              (0.4, 0.5),
-              (0.9, 0.1),
-              (1.2, -0.2),
-              (1.6499, -1.3501),
-              tension: 0.5,
-              stroke: 0.5pt,
-            )
-            catmull(
-              (-0.75, -1.5),
-              (-0.8, -1.1),
-              (-0.5, -0.9),
-              (-0.2, -0.5),
-              (0.2, -0.7),
-              (0.6, -0.9),
-              (0.4, -1.0),
-              (0.4, -1.2),
-              tension: 0.5,
-              close: true,
-              stroke: 1.5pt,
-              name: "phi_gamma_r_j",
-            )
+              catmull(
+                (3.6, 0.9),
+                (2.1, 2.55),
+                (-1.2, 0.75),
+                lendpoint,
+                (-1.1, -1.3),
+                (-0.75, -1.5),
+                (0.5, -1.4),
+                rendpoint,
+                tension: 0.5,
+                close: true,
+                stroke: 1.5pt,
+              )
+              catmull(
+                (-1.51, -0.751),
+                (-1.1, -0.4),
+                (-0.6, -0.5),
+                (-0.1, 0.2),
+                (0.4, 0.5),
+                (0.9, 0.1),
+                (1.2, -0.2),
+                (1.6499, -1.3501),
+                tension: 0.5,
+                stroke: 0.5pt,
+              )
+              catmull(
+                (-0.75, -1.5),
+                (-0.8, -1.1),
+                (-0.5, -0.9),
+                (-0.2, -0.5),
+                (0.2, -0.7),
+                (0.6, -0.9),
+                (0.4, -1.0),
+                (0.4, -1.2),
+                tension: 0.5,
+                close: true,
+                stroke: 1.5pt,
+                name: "phi_gamma_r_j",
+              )
 
-            content("phi_gamma_r_j.45%", text(size: 9pt)[$phi(gamma_(r_j))$], anchor: "south-west")
-            content("phi_gamma_r_j.0", $p_j$, anchor: "north")
-          }),
+              content("phi_gamma_r_j.45%", text(size: 9pt)[$phi(gamma_(r_j))$], anchor: "south-west")
+              content("phi_gamma_r_j.0", $p_j$, anchor: "north")
+            }),
+          ),
         ),
         caption: [Two possibilities for the endpoints of $phi(gamma_(r_j))$],
       ),
@@ -710,11 +712,7 @@ In fact, it is almost always true that such an extension exists. We will give th
               content((name: "Omega_2", anchor: 90%), math-rect($partial Omega_2$), anchor: "north-west")
             }),
           )
-          context if target() == "paged" {
-            body
-          } else {
-            html.frame(body)
-          }
+          potential-frame(body)
         },
         caption: [Two line segments $alpha$ and $beta$ mapping to a Jordan curve bounding $W$],
       ),
@@ -775,255 +773,275 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
   )
   lbl(
     figure(
-      grid(
-        columns: 1,
-        rows: (auto, auto),
-        gutter: 3em,
-        {
-          import cetz: *
-          let x-max = 1.2
-          quick-plot(x-min: -x-max, x-max: x-max, y-min: -1.2, y-max: 1.2, _canvas: {
-            import cetz.draw: *
-            set-style(mark: (fill: black))
-            line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
-            catmull(
-              (-0.6, 0.7),
-              (-0.3, 1.1),
-              (0.1, 0.9),
-              (0.3, 0.7),
-              (0.9, 0),
-              (0.6, -0.5),
-              (0.3, -0.9),
-              (-0.5, -1.1),
-              (-0.7, -0.7),
-              (-0.9, 0),
-              close: true,
-              name: "partial-N2",
-              tension: 0.5,
-            )
-            catmull(
-              (-0.4, 0.6),
-              (-0.2, 0.8),
-              (0.1, 0.6),
-              (0.6, 0),
-              (0.4, -0.4),
-              (-0.3, -0.8),
-              (-0.5, -0.4),
-              (-0.6, 0),
-              close: true,
-              stroke: none,
-              tension: 0.5,
-              // fill: primary-shade,
-              name: "flattened-map-to",
-            )
-            floating(
-              merge-path(
-                {
-                  line((-x-max, 0), (x-max, 0))
-                  line((x-max, 0), (x-max, 1.5))
-                  line((x-max, 1.5), (-x-max, 1.5))
-                },
+      potential-frame(
+        grid(
+          columns: 1,
+          rows: (auto, auto),
+          gutter: 3em,
+          {
+            import cetz: *
+            let x-max = 1.2
+            quick-plot(x-min: -x-max, x-max: x-max, y-min: -1.2, y-max: 1.2, _canvas: {
+              import cetz.draw: *
+              set-style(mark: (fill: black))
+              line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
+              catmull(
+                (-0.6, 0.7),
+                (-0.3, 1.1),
+                (0.1, 0.9),
+                (0.3, 0.7),
+                (0.9, 0),
+                (0.6, -0.5),
+                (0.3, -0.9),
+                (-0.5, -1.1),
+                (-0.7, -0.7),
+                (-0.9, 0),
+                close: true,
+                name: "partial-N2",
+                tension: 0.5,
+              )
+              catmull(
+                (-0.4, 0.6),
+                (-0.2, 0.8),
+                (0.1, 0.6),
+                (0.6, 0),
+                (0.4, -0.4),
+                (-0.3, -0.8),
+                (-0.5, -0.4),
+                (-0.6, 0),
                 close: true,
                 stroke: none,
-                name: "rect-testline",
-              ),
-            )
-            boolean(
-              "rect-testline",
-              "flattened-map-to",
-              op: "intersection",
-              fill: hatch,
-              name: "N1+-region",
-            )
-            content("I.70%", math-rect($N_2 inter RR$), anchor: "south")
-            content("partial-N2.10%", math-rect($N_2$), anchor: "south", padding: 2pt)
-            hobby((x-max + 0.8, -0.3), (x-max + 1.3, -0.6), (x-max + 2.3, -0.3), mark: (end: ">>"), name: "arrow-eta2")
-            hobby((x-max + 2.3, 0.3), (x-max + 1.3, 0.5), (x-max + 0.7, 0.2), mark: (end: ">>"), name: "arrow-psi")
-            floating({
-              line((0.6, -2), (0.6, -1.1), mark: (end: ">>"), name: "arrow-F-biholomorphism", stroke: (dash: "dashed"))
-              content("arrow-F-biholomorphism.40%", math-rect($F$), anchor: "west")
-            })
-            group({
-              translate(x: x-max + 2.4, y: 0)
-              let top-left = (0, 1.2)
-              let bottom-right = (1.8, -1)
-              hobby(
-                top-left,
-                (0.5, 1.0),
-                (0.8, 0.9),
-                (1.3, 0.1),
-                (1.5, -0.6),
-                ..directional_points(offset: bottom-right, angle: -70deg),
-                stroke: 2pt,
-                name: "partial-Omega2",
-              )
-              merge-path(
-                {
-                  hobby(
-                    top-left,
-                    (0.5, 1.0),
-                    (0.8, 0.9),
-                    (1.3, 0.1),
-                    (1.5, -0.6),
-                    ..directional_points(offset: bottom-right, angle: -70deg),
-                  )
-                  line((top-left, "|-", bottom-right), top-left)
-                },
-                close: true,
-                stroke: none,
-                name: "inter Vq test",
-              )
-              anchor("q", "partial-Omega2.50%")
-              circle("q", radius: 1.8pt, fill: black)
-              content("q", math-rect($q$), anchor: "south-west", padding: 2pt)
-              content(("q", 60%, (top-left, "|-", bottom-right)), $Omega_2$)
-              hobby(
-                (0.4, 0.3),
-                (0.7, 0.7),
-                (1.1, 1.2),
-                (1.7, 0.8),
-                (2.1, 0.3),
-                (1.8, -0.1),
-                (1.3, -0.4),
-                (0.8, -0.1),
-                (0.7, 0),
-                close: true,
-                name: "Vq",
-              )
-              hobby(
-                (0.9, 0.6),
-                (1.3, 0.8),
-                (1.7, 0.2),
-                (1.6, 0.1),
-                (1, -0.1),
-                (0.8, 0.4),
-                close: true,
-                stroke: none,
+                tension: 0.5,
                 // fill: primary-shade,
-                name: "mapped-to-region",
+                name: "flattened-map-to",
               )
-              boolean("inter Vq test", "mapped-to-region", op: "intersection", fill: hatch)
-              content("arrow-eta2.50%", math-rect($eta_2$), anchor: "north")
-              content("arrow-psi.50%", math-rect($psi$), anchor: "south")
-
-              content("Vq.40%", math-rect($V_q$), anchor: "west")
-              floating({
-                line((1.2, -2.3), (1.2, -0.7), mark: (end: ">>"), name: "arrow-phi-biholomorphism")
-                content("arrow-phi-biholomorphism.40%", math-rect($phi$), anchor: "west")
-              })
-            })
-          })
-        },
-        {
-          let x-max = 1.2
-          quick-plot(x-min: -x-max, x-max: x-max, y-min: -1.2, y-max: 1.2, _canvas: {
-            import cetz.draw: *
-            set-style(mark: (fill: black))
-            line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
-            catmull(
-              (-0.6, 0.4),
-              (-0.5, 0.6),
-              (-0.3, 0.7),
-              (0.1, 0.8),
-              (0.3, 0.6),
-              (0.9, 0),
-              (0.5, -0.3),
-              (0.2, -0.8),
-              (-0.3, -0.7),
-              (-0.6, -0.3),
-              (-0.9, 0),
-              close: true,
-              name: "partial-N1",
-              tension: 0.5,
-              fill: primary-shade,
-            )
-            floating(
-              merge-path(
-                {
-                  line((-x-max, 0), (x-max, 0))
-                  line((x-max, 0), (x-max, -1.5))
-                  line((x-max, -1.5), (-x-max, -1.5))
-                },
-                close: true,
-                stroke: none,
-                name: "N1+-rect-testline",
-              ),
-            )
-            boolean(
-              "N1+-rect-testline",
-              "partial-N1",
-              op: "intersection",
-              fill: hatch,
-              name: "N1+-region",
-            )
-            content("N1+-region.90%", math-rect($N^+_1$), anchor: "south")
-            content("I.50%", math-rect($N_1 inter RR$), anchor: "south")
-            content("partial-N1.10%", math-rect($N_1$), anchor: "south", padding: 2pt)
-            hobby((x-max + 0.8, -0.3), (x-max + 1.3, -0.6), (x-max + 2.4, -0.3), mark: (end: ">>"), name: "arrow-eta1")
-            hobby((x-max + 2.4, 0.3), (x-max + 1.3, 0.5), (x-max + 0.7, 0.2), mark: (end: ">>"), name: "arrow-phi")
-            group({
-              translate(x: x-max + 2.4, y: 0)
-              let top-left = (0, 1.2)
-              let bottom-right = (1.8, -1)
-              hobby(
-                top-left,
-                (0.2, 1.1),
-                (0.3, 1),
-                (0.6, 0.7),
-                (1.2, 0.3),
-                (1.4, -0.6),
-                ..directional_points(offset: bottom-right, angle: -70deg),
-                stroke: 2pt,
-                name: "partial-Omega1",
-              )
-              anchor("p", "partial-Omega1.50%")
-              circle("p", radius: 1.8pt, fill: black)
-              content("p", math-rect($p$), anchor: "south-west", padding: 2pt)
-              content(("p", 60%, (top-left, "|-", bottom-right)), $Omega_1$)
-              hobby(
-                (0.4, 0.3),
-                (0.7, 0.7),
-                (1.1, 1.2),
-                (1.4, 0.8),
-                (1.8, 0.3),
-                (1.5, -0.1),
-                (1.1, -0.4),
-                (0.8, -0.1),
-                (0.7, 0.2),
-                close: true,
-                fill: primary-shade,
-                name: "Vp",
-              )
-              content("arrow-eta1.50%", math-rect($eta_1$), anchor: "north")
-              content("arrow-phi.50%", math-rect($phi.alt$), anchor: "south")
-
-              merge-path(
-                {
-                  hobby(
-                    top-left,
-                    (0.2, 1.1),
-                    (0.3, 1),
-                    (0.6, 0.7),
-                    (1.2, 0.3),
-                    (1.4, -0.6),
-                    ..directional_points(offset: bottom-right, angle: -70deg),
-                  )
-                  line((top-left, "|-", bottom-right), top-left)
-                },
-                close: true,
-                stroke: none,
-                name: "Omega1 inter Vp test",
+              floating(
+                merge-path(
+                  {
+                    line((-x-max, 0), (x-max, 0))
+                    line((x-max, 0), (x-max, 1.5))
+                    line((x-max, 1.5), (-x-max, 1.5))
+                  },
+                  close: true,
+                  stroke: none,
+                  name: "rect-testline",
+                ),
               )
               boolean(
-                "Omega1 inter Vp test",
-                "Vp",
+                "rect-testline",
+                "flattened-map-to",
                 op: "intersection",
                 fill: hatch,
+                name: "N1+-region",
               )
-              content("Vp.40%", math-rect($V_p$), anchor: "west")
+              content("I.70%", math-rect($N_2 inter RR$), anchor: "south")
+              content("partial-N2.10%", math-rect($N_2$), anchor: "south", padding: 2pt)
+              hobby(
+                (x-max + 0.8, -0.3),
+                (x-max + 1.3, -0.6),
+                (x-max + 2.3, -0.3),
+                mark: (end: ">>"),
+                name: "arrow-eta2",
+              )
+              hobby((x-max + 2.3, 0.3), (x-max + 1.3, 0.5), (x-max + 0.7, 0.2), mark: (end: ">>"), name: "arrow-psi")
+              floating({
+                line(
+                  (0.6, -2),
+                  (0.6, -1.1),
+                  mark: (end: ">>"),
+                  name: "arrow-F-biholomorphism",
+                  stroke: (dash: "dashed"),
+                )
+                content("arrow-F-biholomorphism.40%", math-rect($F$), anchor: "west")
+              })
+              group({
+                translate(x: x-max + 2.4, y: 0)
+                let top-left = (0, 1.2)
+                let bottom-right = (1.8, -1)
+                hobby(
+                  top-left,
+                  (0.5, 1.0),
+                  (0.8, 0.9),
+                  (1.3, 0.1),
+                  (1.5, -0.6),
+                  ..directional_points(offset: bottom-right, angle: -70deg),
+                  stroke: 2pt,
+                  name: "partial-Omega2",
+                )
+                merge-path(
+                  {
+                    hobby(
+                      top-left,
+                      (0.5, 1.0),
+                      (0.8, 0.9),
+                      (1.3, 0.1),
+                      (1.5, -0.6),
+                      ..directional_points(offset: bottom-right, angle: -70deg),
+                    )
+                    line((top-left, "|-", bottom-right), top-left)
+                  },
+                  close: true,
+                  stroke: none,
+                  name: "inter Vq test",
+                )
+                anchor("q", "partial-Omega2.50%")
+                circle("q", radius: 1.8pt, fill: black)
+                content("q", math-rect($q$), anchor: "south-west", padding: 2pt)
+                content(("q", 60%, (top-left, "|-", bottom-right)), $Omega_2$)
+                hobby(
+                  (0.4, 0.3),
+                  (0.7, 0.7),
+                  (1.1, 1.2),
+                  (1.7, 0.8),
+                  (2.1, 0.3),
+                  (1.8, -0.1),
+                  (1.3, -0.4),
+                  (0.8, -0.1),
+                  (0.7, 0),
+                  close: true,
+                  name: "Vq",
+                )
+                hobby(
+                  (0.9, 0.6),
+                  (1.3, 0.8),
+                  (1.7, 0.2),
+                  (1.6, 0.1),
+                  (1, -0.1),
+                  (0.8, 0.4),
+                  close: true,
+                  stroke: none,
+                  // fill: primary-shade,
+                  name: "mapped-to-region",
+                )
+                boolean("inter Vq test", "mapped-to-region", op: "intersection", fill: hatch)
+                content("arrow-eta2.50%", math-rect($eta_2$), anchor: "north")
+                content("arrow-psi.50%", math-rect($psi$), anchor: "south")
+
+                content("Vq.40%", math-rect($V_q$), anchor: "west")
+                floating({
+                  line((1.2, -2.3), (1.2, -0.7), mark: (end: ">>"), name: "arrow-phi-biholomorphism")
+                  content("arrow-phi-biholomorphism.40%", math-rect($phi$), anchor: "west")
+                })
+              })
             })
-          })
-        },
+          },
+          {
+            let x-max = 1.2
+            quick-plot(x-min: -x-max, x-max: x-max, y-min: -1.2, y-max: 1.2, _canvas: {
+              import cetz.draw: *
+              set-style(mark: (fill: black))
+              line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
+              catmull(
+                (-0.6, 0.4),
+                (-0.5, 0.6),
+                (-0.3, 0.7),
+                (0.1, 0.8),
+                (0.3, 0.6),
+                (0.9, 0),
+                (0.5, -0.3),
+                (0.2, -0.8),
+                (-0.3, -0.7),
+                (-0.6, -0.3),
+                (-0.9, 0),
+                close: true,
+                name: "partial-N1",
+                tension: 0.5,
+                fill: primary-shade,
+              )
+              floating(
+                merge-path(
+                  {
+                    line((-x-max, 0), (x-max, 0))
+                    line((x-max, 0), (x-max, -1.5))
+                    line((x-max, -1.5), (-x-max, -1.5))
+                  },
+                  close: true,
+                  stroke: none,
+                  name: "N1+-rect-testline",
+                ),
+              )
+              boolean(
+                "N1+-rect-testline",
+                "partial-N1",
+                op: "intersection",
+                fill: hatch,
+                name: "N1+-region",
+              )
+              content("N1+-region.90%", math-rect($N^+_1$), anchor: "south")
+              content("I.50%", math-rect($N_1 inter RR$), anchor: "south")
+              content("partial-N1.10%", math-rect($N_1$), anchor: "south", padding: 2pt)
+              hobby(
+                (x-max + 0.8, -0.3),
+                (x-max + 1.3, -0.6),
+                (x-max + 2.4, -0.3),
+                mark: (end: ">>"),
+                name: "arrow-eta1",
+              )
+              hobby((x-max + 2.4, 0.3), (x-max + 1.3, 0.5), (x-max + 0.7, 0.2), mark: (end: ">>"), name: "arrow-phi")
+              group({
+                translate(x: x-max + 2.4, y: 0)
+                let top-left = (0, 1.2)
+                let bottom-right = (1.8, -1)
+                hobby(
+                  top-left,
+                  (0.2, 1.1),
+                  (0.3, 1),
+                  (0.6, 0.7),
+                  (1.2, 0.3),
+                  (1.4, -0.6),
+                  ..directional_points(offset: bottom-right, angle: -70deg),
+                  stroke: 2pt,
+                  name: "partial-Omega1",
+                )
+                anchor("p", "partial-Omega1.50%")
+                circle("p", radius: 1.8pt, fill: black)
+                content("p", math-rect($p$), anchor: "south-west", padding: 2pt)
+                content(("p", 60%, (top-left, "|-", bottom-right)), $Omega_1$)
+                hobby(
+                  (0.4, 0.3),
+                  (0.7, 0.7),
+                  (1.1, 1.2),
+                  (1.4, 0.8),
+                  (1.8, 0.3),
+                  (1.5, -0.1),
+                  (1.1, -0.4),
+                  (0.8, -0.1),
+                  (0.7, 0.2),
+                  close: true,
+                  fill: primary-shade,
+                  name: "Vp",
+                )
+                content("arrow-eta1.50%", math-rect($eta_1$), anchor: "north")
+                content("arrow-phi.50%", math-rect($phi.alt$), anchor: "south")
+
+                merge-path(
+                  {
+                    hobby(
+                      top-left,
+                      (0.2, 1.1),
+                      (0.3, 1),
+                      (0.6, 0.7),
+                      (1.2, 0.3),
+                      (1.4, -0.6),
+                      ..directional_points(offset: bottom-right, angle: -70deg),
+                    )
+                    line((top-left, "|-", bottom-right), top-left)
+                  },
+                  close: true,
+                  stroke: none,
+                  name: "Omega1 inter Vp test",
+                )
+                boolean(
+                  "Omega1 inter Vp test",
+                  "Vp",
+                  op: "intersection",
+                  fill: hatch,
+                )
+                content("Vp.40%", math-rect($V_p$), anchor: "west")
+              })
+            })
+          },
+        ),
       ),
       caption: [The construction of $N_2$, $V_q$, $eta_2$, and $psi$, and similarly, that of $N_1$, $V_p$, $eta_1$, and $phi.alt$.],
     ),
