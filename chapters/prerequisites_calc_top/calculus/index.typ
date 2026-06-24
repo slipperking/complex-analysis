@@ -16,13 +16,13 @@ We will attempt to avoid notions involving Lebesgue integration. However, it is 
 
 The following theorems are the fundamental results of classical calculus:
 
-#theorem("Fundamental Theorem of Calculus, Differential Form")[
+#theorem[Fundamental Theorem of Calculus, Differential Form][
   Let $f(x)$ be a function continuous over $[a, b]$. For $x in [a, b]$, define
   $ Phi(x) = integral_a^x f(t) dif t. $
   Then $Phi(x)$ is differentiable over $[a, b]$, $Phi'(x) = f(x)$, and $dif Phi(x) = f(x) dx$.
 ]
 
-#theorem("Fundamental Theorem of Calculus, Integral Form")[
+#theorem[Fundamental Theorem of Calculus, Integral Form][
   Let $Phi(x)$ be a function differentiable over $[a, b]$. Let $f(x) = Phi'(x)$ over $[a, b]$. Then,
   $ integral_a^x f(t) dif t = Phi(x) - Phi(a). $
 ]
@@ -53,9 +53,12 @@ Another correspondence is the Mean Value Theorem:
 
 A curve is a one-dimensional manifold embedded within a higher dimensional space. They can be parameterized with a vector $vb(F)(t) = (P(t), Q(t), R(t))$ of one parameter. In the complex plane, a curve is a complex-valued function $gamma(t)$ for a real parameter $alpha <= t <= beta$. A curve is _closed_ if $gamma(alpha) = gamma(beta)$. It is _smooth_ if it is continuously differentiable, and its direction is defined to be the direction as $t$ increases. If it is smooth everywhere except at a finite number of points, it is _piecewise smooth_. If it is of finite length, then the curve is said to be _rectifiable_. Piecewise smooth curves are rectifiable. A curve is _simple_ if it is simple (non-self-intersecting), or if $gamma(t_1) = gamma(t_2)$ implies that $t_1 = t_2$. A simple closed curve is also called a _Jordan curve_.
 
-#theorem[Jordan Curve Theorem][
-  Let $gamma$ be a Jordan curve in $RR^2$. Then the set $RR^2 without gamma$ consists of exactly two connected subsets. One of them is the interior, denoted by $op("int")(gamma)$, and is a bounded set, while the other is the exterior, denoted by $op("ext")(gamma)$, which is unbounded. Both of the two sets share the common boundary $gamma$.
-] <thm:jordan_curve>
+#lbl(
+  theorem[Jordan Curve Theorem][
+    Let $gamma$ be a Jordan curve in $RR^2$. Then the set $RR^2 without gamma$ consists of exactly two connected subsets. One of them is the interior, denoted by $op("int")(gamma)$, and is a bounded set, while the other is the exterior, denoted by $op("ext")(gamma)$, which is unbounded. Both of the two sets share the common boundary $gamma$.
+  ],
+  <thm:jordan_curve>,
+)
 
 The theorem above seems trivial, but its rigorous proof in topology is extremely complex. The theorem itself can also be stated on $CC$ instead of $RR^2$. For a region $U$, the boundary is denoted $partial U$. If the region bounded by any closed curve in $U$ also lies in $U$, then it is a _simply connected_ region. A connected region that is not simply connected is multiply connected. A region bound by 2 non-intersecting Jordan curves is doubly connected, and a region bound by $n$ non-intersecting Jordan curves is traditionally known as $n$-connected. Lastly, any closed curve can degenerate to a single point or slit.
 
@@ -73,40 +76,55 @@ There is a difference between differentiability and continuous differentiability
 
 An important result in multivariable calculus allows the calculation of the derivatives of a definite integral with respect to its parameter.
 
-#theorem[Leibniz Integral Rule][
-  Let $f(x, u)$ be continuous on $a <= x <= b$, $c <= u <= d$, and suppose $a <= alpha(u), beta(u) <= b$ are differentiable functions of $c <= u <= d$. If $f$ is continuously differentiable with respect to $u$, then
-  $
-    dv(, u) (integral_(alpha(u))^(beta(u)) f(x, u) dx) & = integral_(alpha(u))^(beta(u)) pdv(f, u) (x, u) dx \
-                                                       & quad ""+ dv(beta, u) f(beta(u), u) - dv(alpha, u) f(alpha(u), u).
-  $
-] <thm:leibnizintegralrule>
+#lbl(
+  theorem[Leibniz Integral Rule][
+    Let $f(x, u)$ be continuous on $a <= x <= b$, $c <= u <= d$, and suppose $a <= alpha(u), beta(u) <= b$ are differentiable functions of $c <= u <= d$. If $f$ is continuously differentiable with respect to $u$, then
+    $
+      dv(, u) (integral_(alpha(u))^(beta(u)) f(x, u) dx) & = integral_(alpha(u))^(beta(u)) pdv(f, u) (x, u) dx \
+                                                         & quad ""+ dv(beta, u) f(beta(u), u) - dv(alpha, u) f(alpha(u), u).
+    $
+  ],
+  <thm:leibnizintegralrule>,
+)
 
 Four main classical theorems exist, relating a function and its line integral in 2 and 3 dimensions, line and surface (or area) integrals in 2 and 3 dimensions, and the surface and volume integrals in 3 dimensions:
 
-#theorem("Gradient Theorem")[
-  Let $gamma$ be an oriented smooth curve in $RR^3$ with boundary points $a$ and $b$. Then if $f in C^1 (gamma)$
-  $ evaluated(f)_(partial gamma)= f(b) - f(a) = integral_gamma pdv(f, x) dx + pdv(f, y) dy + pdv(f, z) dz. $
-] <thm:gradient>
+#lbl(
+  theorem("Gradient Theorem")[
+    Let $gamma$ be an oriented smooth curve in $RR^3$ with boundary points $a$ and $b$. Then if $f in C^1 (gamma)$
+    $ evaluated(f)_(partial gamma)= f(b) - f(a) = integral_gamma pdv(f, x) dx + pdv(f, y) dy + pdv(f, z) dz. $
+  ],
+  <thm:gradient>,
+)
 
-#theorem("Green's Theorem")[
-  Let $U$ be a positively oriented, multiply connected subset of $RR^2$ with a piecewise smooth oriented boundary $partial U$. Suppose that $P(x, y), Q(x, y) in C^1(overline(U))$. Then,
-  $ integral.cont_(partial U) P dx + Q dy = integral.double_U (pdv(Q, x) - pdv(P, y)) dd(x, y). $
-] <thm:real-green>
+#lbl(
+  theorem("Green's Theorem")[
+    Let $U$ be a positively oriented, multiply connected subset of $RR^2$ with a piecewise smooth oriented boundary $partial U$. Suppose that $P(x, y), Q(x, y) in C^1(overline(U))$. Then,
+    $ integral.cont_(partial U) P dx + Q dy = integral.double_U (pdv(Q, x) - pdv(P, y)) dd(x, y). $
+  ],
+  <thm:real-green>,
+)
 
-#theorem("Stokes' Theorem")[
-  Suppose that $S subset RR^3$ is a positively oriented surface with a positively oriented, piecewise smooth boundary curve $partial S$. Suppose that $P(x, y, z), Q(x, y, z), R(x, y, z) in C^1(overline(S))$. Then,
-  $
-    integral.cont_(partial S) P dx + Q dy + R dz \
-    = integral.double_S (pdv(R, y) - pdv(Q, z)) dy dz + (pdv(P, z) - pdv(R, x)) dz dx + (pdv(Q, x) - pdv(P, y)) dd(x, y).
-  $
-] <thm:kelvinstokes>
+#lbl(
+  theorem[Stokes' Theorem][
+    Suppose that $S subset RR^3$ is a positively oriented surface with a positively oriented, piecewise smooth boundary curve $partial S$. Suppose that $P(x, y, z), Q(x, y, z), R(x, y, z) in C^1(overline(S))$. Then,
+    $
+      integral.cont_(partial S) P dx + Q dy + R dz \
+      = integral.double_S (pdv(R, y) - pdv(Q, z)) dy dz + (pdv(P, z) - pdv(R, x)) dz dx + (pdv(Q, x) - pdv(P, y)) dd(x, y).
+    $
+  ],
+  <thm:kelvinstokes>,
+)
 
-#theorem("Gauss' Theorem")[
-  Suppose that $V subset RR^3$ is a positively oriented region with a positively oriented, piecewise smooth boundary surface $partial V$. Suppose that $P(x, y, z), Q(x, y, z), R(x, y, z) in C^1(overline(V))$. Then,
-  $
-    integral.surf_(partial V) P dy dz + Q dz dx + R dx dy = integral.triple_V (pdv(P, x) + pdv(Q, y) + pdv(R, z)) dd(x, y, z).
-  $
-] <thm:divergencegauss>
+#lbl(
+  theorem[Gauss' Theorem][
+    Suppose that $V subset RR^3$ is a positively oriented region with a positively oriented, piecewise smooth boundary surface $partial V$. Suppose that $P(x, y, z), Q(x, y, z), R(x, y, z) in C^1(overline(V))$. Then,
+    $
+      integral.surf_(partial V) P dy dz + Q dz dx + R dx dy = integral.triple_V (pdv(P, x) + pdv(Q, y) + pdv(R, z)) dd(x, y, z).
+    $
+  ],
+  <thm:divergencegauss>,
+)
 
 In 3-dimensional $RR^3$ space, define a scalar valued function to be a $0$-form, a linear combination of $dx$, $dy$, and $dz$ to be a $1$-form, and a linear combination of $dy and dz$, $dz and dx$, and $dx and dy$ to be a $2$-form, and $dx and dy and dz$ to be a $3$-form, where $and$ denotes an anti-commutative and associative product, where for any two differential forms $omega_1$ and $omega_2$
 $ omega_1 and omega_2 = - omega_2 and omega_1. $
@@ -129,9 +147,12 @@ Similarly, we can differentiate a $2$-form $omega = P dd(y, z, prod: and) + Q dd
 $ (pdv(P, x) + pdv(Q, y) + pdv(R, z)) dd(x, y, z, prod: and). $
 The two results above resemble the curl and divergence of $(P, Q, R)$. A differential form $omega$ is _closed_ if $dif omega = 0$, and is _exact_ if there exists $eta$ such that $omega = dif eta$.
 
-#lemma("Poincaré")[
-  For any differential form $omega$ on an open, contractible set $U subset.eq RR^n$, if $omega$ is closed, then it is also exact.
-] <lem:poincare>
+#lbl(
+  lemma[Poincaré][
+    For any differential form $omega$ on an open, contractible set $U subset.eq RR^n$, if $omega$ is closed, then it is also exact.
+  ],
+  <lem:poincare>,
+)
 
 It is true that for any set $U subset.eq RR^n$, regardless of contractibility, that for a differential form $omega$ defined on $U$, $dif(dif omega) = 0$. In other words, all exact differential forms are closed. (For a region $U$, we have $partial partial U = nothing$. This is one of many reasons for which the boundary operator is denoted by $partial$, in analogy to $dif$.)
 
@@ -139,10 +160,13 @@ The implications of this are important: if $omega$ is a $0$-form, then $curl(gra
 
 Then, the Fundamental Theorem of Calculus, the Gradient Theorem, Green's, Stokes', and Gauss' Theorems can be generalized into:
 
-#theorem[Stokes--Cartan][
-  For an oriented smooth $n$-dimensional compact manifold $M$ with boundary $partial M$, for a smooth differential $(n-1)$-form $omega$ over $overline(M)$,
-  $ integral_M dif omega = integral_(partial M) omega. $
-] <thm:stokescartan>
+#lbl(
+  theorem[Stokes--Cartan][
+    For an oriented smooth $n$-dimensional compact manifold $M$ with boundary $partial M$, for a smooth differential $(n-1)$-form $omega$ over $overline(M)$,
+    $ integral_M dif omega = integral_(partial M) omega. $
+  ],
+  <thm:stokescartan>,
+)
 
 Real analysis is the subject dedicated to rigorously defining concepts such as limits, continuity, integrability, convergence, etc. The most widely used definition of a finite limit of a function is the language of $epsilon$--$delta$, which states:
 
@@ -156,13 +180,19 @@ Real analysis is the subject dedicated to rigorously defining concepts such as l
 
 We also have the definition of the limit of a sequence:
 
-#definition[Epsilon--N][
-  Let ${a_n}_(n in NN) subset RR$ be a sequence. If $exists a_infinity in RR$ such that $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $abs(a_n - a_infinity) < epsilon$, then ${a_n}$ _converges_ to $a_infinity$.
-] <def:epsilonn>
+#lbl(
+  definition[Epsilon--N][
+    Let ${a_n}_(n in NN) subset RR$ be a sequence. If $exists a_infinity in RR$ such that $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $abs(a_n - a_infinity) < epsilon$, then ${a_n}$ _converges_ to $a_infinity$.
+  ],
+  <def:epsilon-N>,
+)
 
-#theorem("Cauchy Criterion")[
-  Let ${a_n}_(n in NN) subset RR$ be a sequence. Then ${a_n}$ is convergent iff $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$, $abs(a_n - a_m) < epsilon$.
-] <thm:cauchycriterionsequenceconvergence>
+#lbl(
+  theorem[Cauchy Criterion][
+    Let ${a_n}_(n in NN) subset RR$ be a sequence. Then ${a_n}$ is convergent iff $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$, $abs(a_n - a_m) < epsilon$.
+  ],
+  <thm:cauchycriterionsequenceconvergence>,
+)
 
 #proof[
   Assume ${a_n}$ is convergent. Then $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$, $abs(a_n - a_infinity) < epsilon / 2$ and $abs(a_m - a_infinity) < epsilon / 2$ for some $a_infinity in RR$. It follows that
@@ -195,7 +225,7 @@ We also have the definition of the limit of a sequence:
 
 #proof[
   We first prove that $a = lim_(n -> oo) a_n$ implies $limsup_(n -> oo) a_n = liminf_(n -> oo) a_n = a$.
-  By @def:epsilonn, $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$,
+  By @def:epsilon-N, $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$,
   $ abs(a_n - a) < epsilon <==> a - epsilon < a_n < a + epsilon. $
   Then from @def:limsup and @def:liminf, we have that $limsup_(n -> oo) a_n >= a$ and $liminf_(n -> oo) a_n <= a$. By the second conditions, we get $limsup_(n -> oo) a_n <= a$ and $liminf_(n -> oo) a_n >= a$. Therefore,
   $ limsup_(n -> oo) a_n = liminf_(n -> oo) a_n. $

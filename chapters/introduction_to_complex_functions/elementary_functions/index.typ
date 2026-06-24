@@ -35,10 +35,13 @@ The complex logarithm, denoted $w = log(z)$, is the solution to $z = ee^w$. We c
 
 We can also define the power function for non-integer powers with $w = z^alpha = ee^(alpha log(z))$. Then power functions can all be written in terms of exponential functions and logarithms. Letting $x = uppi$ in @eq:eulers_formula yields $ee^(ii uppi) = -1$. Furthermore, we can see that exponentiation with an imaginary number is a rotation:
 
-#theorem("De Moivre")[
-  $forall x in RR$, $forall n in NN$,
-  $ (cos(x) + ii sin(x))^n = cos(n x) + ii sin(n x). $
-] <thm:de_moivre>
+#lbl(
+  theorem[De Moivre][
+    $forall x in RR$, $forall n in NN$,
+    $ (cos(x) + ii sin(x))^n = cos(n x) + ii sin(n x). $
+  ],
+  <thm:de_moivre>,
+)
 
 Since all elementary functions can be written in terms of exponential functions and complex logarithms, we will first study the exponential function.
 

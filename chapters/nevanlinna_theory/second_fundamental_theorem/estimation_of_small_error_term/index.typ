@@ -197,25 +197,27 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   since $T(rho, f) <= T(R, f)$ (@thm:nevanlinna_characteristic_nondecreasing_convex). This proves the proposition.
 ]
 
-#lemma[Borel][
-  Let $T : [r_0, R_0) -> RR$ be an increasing, continuous function satisfying $T > 1$ on all of its domain (where $r_0 < R_0 <= oo$).
-  + If $R_0 = oo$, for $r >= r_0$ outside a set $E_0 subset.eq RR_(>= r_0)$ whose linear measure does not exceed 2 (satisfying $integral_(E_0) dr <= 2$ with respect to the Lebesgue measure#footnote["Linear measure" refers to length. Here, the condition is equivalent to the inequality given by $inf{sum_k abs(I_k) : E subset.eq union.big_k I_k} <= 2$ where ${I_k}$ are finite open intervals.]),
-    #lbl(
-      $
-        T(r + frac(1, T(r))) < 2 T(r)
-      $,
-      <eq:nevanlinna_borel_infinite_radius>,
-    )
-  + If $R_0 < oo$, then $exists E_0 subset.eq [r_0, R_0)$ satisfying $integral_(E_0) dr / (R_0 - r) <= 2$ such that for $r in [r_0, R_0) without E_0$,
-    #lbl(
-      $
-        T(r + frac(R_0 - r, ee T(r))) < 2 T(r)
-      $,
-      <eq:nevanlinna_borel_finiteradius>,
-    )
-    Moreover, for any $R, rho, rho' in (0, R_0)$ such that $R - rho' < ee^(-2) (R - rho)$ (implying that $rho < rho'$), $exists r in (rho, rho')$ such that $r in.not E_0$.
-]
-<lem:nevanlinna_borel>
+#lbl(
+  lemma[Borel][
+    Let $T : [r_0, R_0) -> RR$ be an increasing, continuous function satisfying $T > 1$ on all of its domain (where $r_0 < R_0 <= oo$).
+    + If $R_0 = oo$, for $r >= r_0$ outside a set $E_0 subset.eq RR_(>= r_0)$ whose linear measure does not exceed 2 (satisfying $integral_(E_0) dr <= 2$ with respect to the Lebesgue measure#footnote["Linear measure" refers to length. Here, the condition is equivalent to the inequality given by $inf{sum_k abs(I_k) : E subset.eq union.big_k I_k} <= 2$ where ${I_k}$ are finite open intervals.]),
+      #lbl(
+        $
+          T(r + frac(1, T(r))) < 2 T(r)
+        $,
+        <eq:nevanlinna_borel_infinite_radius>,
+      )
+    + If $R_0 < oo$, then $exists E_0 subset.eq [r_0, R_0)$ satisfying $integral_(E_0) dr / (R_0 - r) <= 2$ such that for $r in [r_0, R_0) without E_0$,
+      #lbl(
+        $
+          T(r + frac(R_0 - r, ee T(r))) < 2 T(r)
+        $,
+        <eq:nevanlinna_borel_finiteradius>,
+      )
+      Moreover, for any $R, rho, rho' in (0, R_0)$ such that $R - rho' < ee^(-2) (R - rho)$ (implying that $rho < rho'$), $exists r in (rho, rho')$ such that $r in.not E_0$.
+  ],
+  <lem:nevanlinna_borel>,
+)
 
 #proof[
   We observe the two cases separately.

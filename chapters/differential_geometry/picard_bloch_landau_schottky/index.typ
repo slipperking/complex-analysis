@@ -9,9 +9,12 @@ Recall the Casorati--Weierstrass Theorem, one of the earliest results on the val
 
 We will now prove a more advanced characterization of this distribution by methods of differential geometry.
 
-#theorem("Picard's Great Theorem", restate: true, restate-keys: ("thm:greatpicard",))[
-  Suppose $f$ is holomorphic on a punctured neighborhood $D^*(z_0, delta)$ of $z_0$. If $z_0$ is an essential singularity of $f$, then $f(D^*(z_0, delta))$ omits at most one value of $CC$.
-] <thm:greatpicard>
+#lbl(
+  theorem([Picard's Great Theorem], restate: true, restate-keys: ("thm:greatpicard",))[
+    Suppose $f$ is holomorphic on a punctured neighborhood $D^*(z_0, delta)$ of $z_0$. If $z_0$ is an essential singularity of $f$, then $f(D^*(z_0, delta))$ omits at most one value of $CC$.
+  ],
+  <thm:greatpicard>,
+)
 
 #proof[
   Without loss of generality, assume $z_0 = 0$ and that $f$ omits the values $0$ and $1$ (otherwise, consider $z |-> (1)/(beta - alpha) (f(z + z_0) - alpha)$, where $alpha$ and $beta$ are the omitted values). Define the family
@@ -68,9 +71,12 @@ More importantly, we have shown the utility of even seemingly fundamental differ
 
 The methods of differential geometry can also be used to prove the statements of the following theorems (which can also be independently used to prove the Picard theorems), but is made meaningful with the notion of Riemann surfaces.
 
-#theorem("Bloch")[
-  Let $f:DD -> CC$ be holomorphic such that $abs(f'(0)) = 1$. Then there is a region $S subset.eq DD$ on which $f$ is univalent such that $f(S)$ contains a disk with a radius of at least $sqrt(3) / 4$ (known as a schlicht disk).
-] <thm:bloch>
+#lbl(
+  theorem[Bloch][
+    Let $f:DD -> CC$ be holomorphic such that $abs(f'(0)) = 1$. Then there is a region $S subset.eq DD$ on which $f$ is univalent such that $f(S)$ contains a disk with a radius of at least $sqrt(3) / 4$ (known as a schlicht disk).
+  ],
+  <thm:bloch>,
+)
 
 #remark[
   _Bloch's constant_ $B$ is defined as the supremum of the radii of such disks that can be contained in $f(DD)$ for any holomorphic function $f:DD -> CC$ satisfying $f'(0) = 1$.
@@ -82,7 +88,7 @@ The methods of differential geometry can also be used to prove the statements of
   Grunsky and Ahlfors actually conjectured that the upper bound in their inequality is exact -- that is, $B = (Gamma((1)/(3)) Gamma((11)/(12)))/(Gamma((1)/(4))) sqrt((sqrt(3) - 1)/(2))$.
 ]
 
-#theorem("Landau")[
+#theorem[Landau][
   The image of any holomorphic function $f$ in $DD$ satisfying $f(0) = 0$ and $f'(0) = 1$ contains a disk with radius of at least $1 / 2$.
 ]
 

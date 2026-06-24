@@ -40,9 +40,12 @@ We have previously defined the concept of an entire function in the chapter on c
   The entire functions $sin(z)$, $cos(z)$, $sinh(z)$, $cosh(z)$, and $exp(z)$ are transcendental.
 ]
 
-#definition("Meromorphy")[
-  Let $U subset.eq CC$ be open, and let ${a_n}_(n in NN) subset U$ be a set of isolated points. Suppose $f:U without {a_n}_(n in NN) -> CC$ is holomorphic and has a pole at each of $z in {a_n}$. Then $f$ is _meromorphic_ in $U$.
-] <def:meromorphicfunction>
+#lbl(
+  definition[Meromorphy][
+    Let $U subset.eq CC$ be open, and let ${a_n}_(n in NN) subset U$ be a set of isolated points. Suppose $f:U without {a_n}_(n in NN) -> CC$ is holomorphic and has a pole at each of $z in {a_n}$. Then $f$ is _meromorphic_ in $U$.
+  ],
+  <def:meromorphicfunction>,
+)
 
 Similar to holomorphy, meromorphy on a compact set can be defined as meromorphy on a neighborhood of the set. In general, we imply for the set to be open unless stated otherwise. If the set is not implicitly specified, we assume meromorphy on $CC$.
 

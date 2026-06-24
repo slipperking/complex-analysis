@@ -18,9 +18,12 @@ Power series in real analysis can be generalized into complex series. Particular
   Informally, we will use the notation $f_n (z) arrows.rr f(z)$ to represent uniform convergence.
 ]
 
-#theorem("Cauchy Criterion")[
-  For a set $U subset.eq CC$, a function sequence ${f_n (z)}$ uniformly converges to a function $f(z)$ iff $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$, $forall z in U$, $abs(f_n (z) - f_m (z)) < epsilon$.
-] <thm:cauchycriterionuniformconvergence>
+#lbl(
+  theorem[Cauchy Criterion][
+    For a set $U subset.eq CC$, a function sequence ${f_n (z)}$ uniformly converges to a function $f(z)$ iff $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$, $forall z in U$, $abs(f_n (z) - f_m (z)) < epsilon$.
+  ],
+  <thm:cauchycriterionuniformconvergence>,
+)
 
 #proof[
   If $f_n (z)$ uniformly converges to $f(z)$, then for $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$ and $forall z in U$,
@@ -34,11 +37,14 @@ Power series in real analysis can be generalized into complex series. Particular
 
 Function series are defined to be a sequence formed by the partial sums of function sequences. There are many ways to verify the uniform convergence of a function series. Perhaps the most widely known is the Weierstrass $M$-Test.
 
-#theorem[Weierstrass $M$-Test][
-  Let $U subset.eq CC$ be a region and ${f_n}$ be a function sequence on $U$.
+#lbl(
+  theorem[Weierstrass $M$-Test][
+    Let $U subset.eq CC$ be a region and ${f_n}$ be a function sequence on $U$.
 
-  If $exists {M_n} subset RR_(>= 0)$ such that $forall n in NN$, $forall z in U$, $abs(f_n (z)) <= M_n$ and the series $sum_(n = 1)^oo M_n$ converges, then the series $sum_(n = 1)^oo f_n (z)$ converges uniformly and absolutely on $U$.
-] <thm:weierstrassmtest>
+    If $exists {M_n} subset RR_(>= 0)$ such that $forall n in NN$, $forall z in U$, $abs(f_n (z)) <= M_n$ and the series $sum_(n = 1)^oo M_n$ converges, then the series $sum_(n = 1)^oo f_n (z)$ converges uniformly and absolutely on $U$.
+  ],
+  <thm:weierstrassmtest>,
+)
 
 #proof[
   By the convergence of $sum_(n = 1)^oo M_n$, $forall epsilon > 0$, $exists N in NN$ such that $forall m >= n > N$,
@@ -59,20 +65,26 @@ where ${a_n}$ are constants.
 
 Let $D(a, r) = B^1(a, r) = {z in CC : abs(z - a) < r}$ denote the _open disk_ centered at $a$ with radius $r$. For simplicity, from now on we will have $DD$ denote the unit open disk, or $D(0, 1)$. We will now observe the convergence of power series.
 
-#theorem("Abel's Theorem")[
-  For a power series $f(z) = sum_(n = 0)^oo a_n z^n$, there exists a constant $R in RR_(>= 0) union {oo}$, known as the _radius of convergence_ such that:
+#lbl(
+  theorem[Abel's Theorem][
+    For a power series $f(z) = sum_(n = 0)^oo a_n z^n$, there exists a constant $R in RR_(>= 0) union {oo}$, known as the _radius of convergence_ such that:
 
-  1. $f$ absolutely converges on $D(0, R)$, and $forall 0 <= rho < R$, uniformly converges on $overline(D(0, rho))$. #enum-lbl(<itm:abels_theorem_radius_convergence>)
-  2. $f(z)$ diverges when $abs(z) > R$. #enum-lbl(<itm:abels_theorem_radius_divergence>)
-  3. $f$ is holomorphic over $D(0, R)$ and $f'(z)$ can be obtained by termwise differentiation, or $f'(z) = sum_(n = 1)^oo n a_n z^(n - 1)$, which also has a convergence radius of $R$. #enum-lbl(<itm:abels_theorem_radius_differentiation>)
-] <thm:abels_theorem_radius>
+    1. $f$ absolutely converges on $D(0, R)$, and $forall 0 <= rho < R$, uniformly converges on $overline(D(0, rho))$. #enum-lbl(<itm:abels_theorem_radius_convergence>)
+    2. $f(z)$ diverges when $abs(z) > R$. #enum-lbl(<itm:abels_theorem_radius_divergence>)
+    3. $f$ is holomorphic over $D(0, R)$ and $f'(z)$ can be obtained by termwise differentiation, or $f'(z) = sum_(n = 1)^oo n a_n z^(n - 1)$, which also has a convergence radius of $R$. #enum-lbl(<itm:abels_theorem_radius_differentiation>)
+  ],
+  <thm:abels_theorem_radius>,
+)
 
 The disk $abs(z) < R$ is known as the _disk of convergence_, a direct generalization of the _interval of convergence_ for real series. There are many ways to determine the radius of convergence:
 
-#theorem[Cauchy--Hadamard][
-  The radius of convergence of the power series in the form $sum_(n = 0)^oo a_n z^n$ can be determined by
-  #lbl($ R = 1 / (limsup_(n -> oo)root(n, abs(a_n))). $, <eq:cauchy_hadamard>)
-] <thm:cauchy_hadamard>
+#lbl(
+  theorem[Cauchy--Hadamard][
+    The radius of convergence of the power series in the form $sum_(n = 0)^oo a_n z^n$ can be determined by
+    #lbl($ R = 1 / (limsup_(n -> oo)root(n, abs(a_n))). $, <eq:cauchy_hadamard>)
+  ],
+  <thm:cauchy_hadamard>,
+)
 
 Of course, a convergence radius of $0$ implies that the series is divergent everywhere except for possibly at $0$, and a convergence radius of $oo$ means that the series absolutely converges everywhere.
 
@@ -125,9 +137,12 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
 
 Obviously, a substitution of $z = zeta - a$ where $a in CC$ translates the disk of convergence to $D(a, R)$. The subsequent results on uniform convergence hold for complex functions:
 
-#theorem("Uniform Limit")[
-  Let ${f_n (z)}_n$ be a sequence of continuous functions on $U subset.eq CC$ and uniformly convergent to $f(z)$. Then $f(z)$ is continuous on $U$.
-] <thm:uniformlimit>
+#lbl(
+  theorem[Uniform Limit][
+    Let ${f_n (z)}_n$ be a sequence of continuous functions on $U subset.eq CC$ and uniformly convergent to $f(z)$. Then $f(z)$ is continuous on $U$.
+  ],
+  <thm:uniformlimit>,
+)
 
 #proof[
   Fix $epsilon>0$ and $z_0 in U$. By uniform convergence, $exists n in NN$ such that $forall z in U$, $abs(f_n (z) - f(z)) < epsilon / 3$ and $abs(f_n (z_0) - f(z_0)) < epsilon / 3$.

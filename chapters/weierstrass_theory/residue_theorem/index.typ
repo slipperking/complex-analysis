@@ -6,20 +6,23 @@
 )
 After Riemann and Weierstrass refined the understanding of analytic functions and the formal characterization of Jordan curves, the Cauchy Residue Theorem was consequently formalized. Cauchy had the informal notion of a residue, which we will now formally introduce.
 
-#definition("Residue")[
-  For some $r in RR_(>0)$, $a in U$, suppose $f : D^*(a, r) -> CC$ is holomorphic. Then the _residue_ of $f$ at $a$, denoted by $Res_(z=a) f(z)$ or $Res(f, a)$, is equal to
-  #lbl(
+#lbl(
+  definition[Residue][
+    For some $r in RR_(>0)$, $a in U$, suppose $f : D^*(a, r) -> CC$ is holomorphic. Then the _residue_ of $f$ at $a$, denoted by $Res_(z=a) f(z)$ or $Res(f, a)$, is equal to
+    #lbl(
+      $
+        Res_(z=a) f(z) = 1 / taui integral.cont_(partial D(a, rho)) f(z) dz,
+      $,
+      <eq:residue>,
+    )
+    where $0 < rho < r$ is arbitrary. Since $f$ has a Laurent expansion at $a$, being
     $
-      Res_(z=a) f(z) = 1 / taui integral.cont_(partial D(a, rho)) f(z) dz,
-    $,
-    <eq:residue>,
-  )
-  where $0 < rho < r$ is arbitrary. Since $f$ has a Laurent expansion at $a$, being
-  $
-    sum_(n=-infinity)^infinity c_n (z - a)^n, quad c_n = 1 / taui integral.cont_(partial D(a, rho)) (f(z) dz) / (z - a)^(n+1),
-  $
-  we get that the residue of $f$ at $a$ is equal to the first term $c_(-1)$ of the principal part of its Laurent expansion.
-]<def:residue>
+      sum_(n=-infinity)^infinity c_n (z - a)^n, quad c_n = 1 / taui integral.cont_(partial D(a, rho)) (f(z) dz) / (z - a)^(n+1),
+    $
+    we get that the residue of $f$ at $a$ is equal to the first term $c_(-1)$ of the principal part of its Laurent expansion.
+  ],
+  <def:residue>,
+)
 
 It then follows that the residue at a removable singularity is 0. As a direct consequence of @eq:residue, we can derive explicit formulas for the calculation of residues at poles. If $U subset.eq CC$ is open, $a in U$ is an isolated singularity (a pole of order $m != infinity$) of $f : U without {a} -> CC$ that is holomorphic, then locally:
 $ f(z) = c_(-m) (z-a)^(-m) + c_(1-m) (z-a)^(1-m) + dots.c + c_(-1) (z-a)^(-1) + dots. $

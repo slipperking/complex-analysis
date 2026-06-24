@@ -21,16 +21,19 @@ $ abs(sum_(n=1)^oo 1/(n^s)) <= sum_(n=1)^oo 1/(n^sigma) <= sum_(n=1)^oo 1/(n^alp
 Hence, $zeta(s)$ is uniformly and absolutely convergent on ${ s in CC : Re(s)>=alpha }$ by the Weierstrass $M$--Test (@thm:weierstrassmtest). The Weierstrass Theorem (@thm:weierstrass_convergence) gives the analyticity of $zeta$ thereon. We will now explain the simple connection between $zeta$ and the prime numbers. Let $p_1=2,p_2=3,p_3=5,dots$ be the sequence of all prime numbers
 in increasing order.
 
-#theorem("Euler Product Formula")[
-  For $Re(s)=sigma>1$, we have
-  #lbl(
-    $
-      1/(zeta(s))=product_(n=1)^oo (1-1/(p_n^s)),
-    $,
-    <eq:riemannzetafunction_infiniteproduct>,
-  )
-  where $p_n$ is the $n$-th prime number.
-] <thm:riemannzetafunction_infiniteproduct>
+#lbl(
+  theorem[Euler Product Formula][
+    For $Re(s)=sigma>1$, we have
+    #lbl(
+      $
+        1/(zeta(s))=product_(n=1)^oo (1-1/(p_n^s)),
+      $,
+      <eq:riemannzetafunction_infiniteproduct>,
+    )
+    where $p_n$ is the $n$-th prime number.
+  ],
+  <thm:riemannzetafunction_infiniteproduct>,
+)
 
 #proof[
   Since $sum_(n=1)^oo abs(p_n^(-s))=sum_(n=1)^oo 1/(p_n^sigma)<sum_(n=1)^oo 1/(n^sigma)$ is an absolutely convergent sequence, it follows from @sec:construction_of_entire_and_meromorphic_functions that the infinite product in @eq:riemannzetafunction_infiniteproduct is absolutely convergent. Because
@@ -325,15 +328,18 @@ whose singularities lie within $ZZ$ (the $Gamma$-function never vanishes since $
 
 The functional equation as provided by Riemann in his original paper gives a more advanced characterization of the $zeta$-function's continuation:
 
-#theorem("Riemann's Reflection Formula")[
-  For any $s eq.not 0$, we have
-  #lbl(
-    $
-      zeta(1-s)=2 zeta(s) Gamma(s) cos(uppi/2 s) (2 uppi)^(-s).
-    $,
-    <eq:riemannzetafunction_functionalequation>,
-  )
-] <thm:riemannzetafunction_functionalequation>
+#lbl(
+  theorem[Riemann's Reflection Formula][
+    For any $s eq.not 0$, we have
+    #lbl(
+      $
+        zeta(1-s)=2 zeta(s) Gamma(s) cos(uppi/2 s) (2 uppi)^(-s).
+      $,
+      <eq:riemannzetafunction_functionalequation>,
+    )
+  ],
+  <thm:riemannzetafunction_functionalequation>,
+)
 
 #proof[
   We restrict our consideration to $s eq.not 0,-1,-2,dots$ (and the usage of limits suffices to extend the relation to all of $CC^*$). The integrand $((-z)^(s-1))/(ee^z-1)$ (as a function of $z$) has a branch cut singularity on $RR_(>=0)$ (in terms of $z$) (a region excluded by all Hankel contours and thus irrelevant to our interest). The denominator vanishes (simply) when $ee^z=1$ or when $z in 2 uppi ii ZZ$ and thus has simple poles at these points.

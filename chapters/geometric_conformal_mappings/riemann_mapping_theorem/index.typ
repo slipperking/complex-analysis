@@ -16,9 +16,12 @@ If there exists a biholomorphism $f$ between two regions, then the two regions a
   Similarly, define the _holomorphic powers_ of $Phi(z)$ to be branches of $(Phi^alpha) (z) = ee^(alpha log(Phi(z)))$, where $log(Phi(z))$ is the holomorphic logarithm.
 ]
 The path independence of the definition is provided by the simple connectivity of $U$. The result is the heuristic concatenation of several different branches of the complex logarithm, unique up to an additive factor of $2 uppi ii k$, where this additive factor is the same throughout.
-#theorem("Riemann Mapping Theorem")[
-  Let $U subset CC$ (a proper subset, in other words, $U != CC$) be a simply connected (nonempty) open region. Let $z_0 in U$ be arbitrary. Then there exists a unique biholomorphism $f:U -> DD$ such that $f(z_0) = 0$ and $f'(z_0) in RR_(> 0)$.
-] <thm:riemann_mapping>
+#lbl(
+  theorem[Riemann Mapping Theorem][
+    Let $U subset CC$ (a proper subset, in other words, $U != CC$) be a simply connected (nonempty) open region. Let $z_0 in U$ be arbitrary. Then there exists a unique biholomorphism $f:U -> DD$ such that $f(z_0) = 0$ and $f'(z_0) in RR_(> 0)$.
+  ],
+  <thm:riemann_mapping>,
+)
 
 #proof[
   First consider the case for when $U$ is a bounded region. In other words, $exists R > 0$ such that $U subset.eq D(0, R)$.

@@ -44,9 +44,12 @@ $
 $
 The derivative along $alpha = 1$, $beta = 0$, or the real axis, vanishes. Along $alpha = 0$, $beta = 1$, or the imaginary axis, it also vanishes. However, the limit is different for any other pair of $alpha$ and $beta$, and hence for other directions of approach.
 
-#definition("Holomorphy")[
-  A function $f: U -> CC$ is said to be _holomorphic_ at $z_0 in U$ if it is complex differentiable on a neighborhood of $z_0$. If $f(z)$ is holomorphic for every point in an open connected set $U$, then it is said to be holomorphic over $U$. A function is holomorphic over a compact set $K$ if it is holomorphic on a neighborhood of $K$.
-] <def:holomorphy>
+#lbl(
+  definition[Holomorphy][
+    A function $f: U -> CC$ is said to be _holomorphic_ at $z_0 in U$ if it is complex differentiable on a neighborhood of $z_0$. If $f(z)$ is holomorphic for every point in an open connected set $U$, then it is said to be holomorphic over $U$. A function is holomorphic over a compact set $K$ if it is holomorphic on a neighborhood of $K$.
+  ],
+  <def:holomorphy>,
+)
 
 Weierstrass provided the following classification:
 

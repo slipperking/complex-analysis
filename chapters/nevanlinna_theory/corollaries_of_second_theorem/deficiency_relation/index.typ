@@ -96,9 +96,12 @@ Therefore, we have
   which is an impossibility.
 ]
 
-#corollary[Picard's Little Theorem][
-  Any non-constant entire function omits at most one value.
-] <cor:picardlittletheorem>
+#lbl(
+  corollary[Picard's Little Theorem][
+    Any non-constant entire function omits at most one value.
+  ],
+  <cor:picard-little-theorem>,
+)
 
 #proof[
   Any such function can be regarded as a meromorphic function on the plane that omits $oo$. Then the conclusion follows from @cor:picardtranscendentalmeromorphic.

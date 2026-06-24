@@ -65,27 +65,30 @@ In preparation, we will introduce several relevant concepts.
   Finally, if $r > d$, then for every term in the expansion, at least one $k_j < alpha_j$, so all summands vanish identically. Thus $partial^(bold(alpha)) bold(psi) equiv 0$, verifying @itm:homogeneouspolynomialderivatives_greater.
 ]
 
-#lemma("Cartan")[
-  Let $Omega subset CC^n$ be a bounded region, and suppose that $bold(f) = (f_1, dots, f_n) : Omega -> Omega$ is holomorphic. If $exists bold(a) in Omega$ such that $bold(f)(bold(a)) = bold(a)$ and the complex Jacobian at $bold(a)$ is the identity matrix, or equivalently, if
-  #lbl(
-    $
-      bold(J)_(bold(f))(bold(a)) = mat(
-        pdv(f_1, z_1)(bold(a)), dots.c, pdv(f_1, z_n)(bold(a));
-        dots.v, dots.down, dots.v;
-        pdv(f_n, z_1)(bold(a)), dots.c, pdv(f_n, z_n)(bold(a))
-      ) = bold(I) = mat(
-        1, dots.c, 0;
-        dots.v, dots.down, dots.v;
-        0, dots.c, 1
-      ),
-    $,
-    <eq:multivarcartan1_jacobian>,
-  )
-  then $bold(f)(bold(z)) equiv bold(z)$ is the identity map.
-] <lem:multivarcartan1>
+#lbl(
+  lemma[Cartan][
+    Let $Omega subset CC^n$ be a bounded region, and suppose that $bold(f) = (f_1, dots, f_n) : Omega -> Omega$ is holomorphic. If $exists bold(a) in Omega$ such that $bold(f)(bold(a)) = bold(a)$ and the complex Jacobian at $bold(a)$ is the identity matrix, or equivalently, if
+    #lbl(
+      $
+        bold(J)_(bold(f))(bold(a)) = mat(
+          pdv(f_1, z_1)(bold(a)), dots.c, pdv(f_1, z_n)(bold(a));
+          dots.v, dots.down, dots.v;
+          pdv(f_n, z_1)(bold(a)), dots.c, pdv(f_n, z_n)(bold(a))
+        ) = bold(I) = mat(
+          1, dots.c, 0;
+          dots.v, dots.down, dots.v;
+          0, dots.c, 1
+        ),
+      $,
+      <eq:multivariable-cartan-1-jacobian>,
+    )
+    then $bold(f)(bold(z)) equiv bold(z)$ is the identity map.
+  ],
+  <lem:multivarcartan1>,
+)
 
 #proof[
-  By @thm:taylorexpansionmultivariable, we have the expansion
+  By @thm:taylor-expansion-multivariable, we have the expansion
   #lbl(
     $
       bold(f)(bold(z)) & = sum_(abs(bold(k)) = 0)^oo bold(a)_(bold(k)) (bold(z) - bold(a))^(bold(k)) = sum_(j=0)^oo bold(psi)_j (bold(z) - bold(a)) \
@@ -95,7 +98,7 @@ In preparation, we will introduce several relevant concepts.
   )
   which is absolutely convergent on some polydisk centered at $bold(a)$, where $bold(a)_(bold(k)) = (partial^(bold(k)) bold(f)(bold(a))) / (product_(j=1)^n k_j !)$ and $bold(k) = (k_1, dots, k_n)$. The terms have been rearranged (from absolute convergence) so that the inner summation is a homogeneous polynomial $bold(psi)_j$ with a zero at $bold(z) = bold(a)$ and degree $j$.
 
-  Trivially, $bold(a)_(1, 0, dots, 0) = pdv(bold(f), z_1)(bold(a)) = (1, 0, dots, 0)$ by @eq:multivarcartan1_jacobian. Similarly, $bold(a)_(0, 1, 0, dots, 0) = (0, 1, 0, dots, 0), dots, bold(a)_(0, dots, 0, 1) = (0, dots, 0, 1)$. Hence, the linear homogeneous polynomial of @eq:multivarcartan1_taylorseries equals
+  Trivially, $bold(a)_(1, 0, dots, 0) = pdv(bold(f), z_1)(bold(a)) = (1, 0, dots, 0)$ by @eq:multivariable-cartan-1-jacobian. Similarly, $bold(a)_(0, 1, 0, dots, 0) = (0, 1, 0, dots, 0), dots, bold(a)_(0, dots, 0, 1) = (0, dots, 0, 1)$. Hence, the linear homogeneous polynomial of @eq:multivarcartan1_taylorseries equals
   $
     (z_1 - a_1, dots, z_n - a_n) = bold(z) - bold(a),
   $
@@ -150,13 +153,16 @@ In preparation, we will introduce several relevant concepts.
   which diverges as $k -> oo$. Weierstrass' Convergence Theorem (@thm:weierstrassconvergencemultivar) gives that $partial^(bold(alpha)) bold(f)_(k_l) (bold(a)) -> partial^(bold(alpha)) tilde(bold(f))(bold(a))$ which must be finite by holomorphy, contradicting the divergence. Hence, the assumed value for $m$ cannot exist and hence $bold(psi)_j equiv 0$ for all $j gt.eq 2$. Thus, $bold(f)(bold(z)) equiv bold(z)$ on some polydisk centered at $bold(a)$. By the Identity Theorem (@thm:identitymultivar), $bold(f)(bold(z)) equiv bold(z)$ on $Omega$.
 ]
 
-#definition("Reinhardt Domain")[
-  An open connected domain $Omega subset.eq CC^n$ is a _Reinhardt domain_ centered at $bold(a) = (a_1, dots, a_n) in CC^n$ iff $forall bold(zeta) = (zeta_1, dots, zeta_n) in Omega$,
-  $
-    {(z_1, dots, z_n) in CC^n : abs(z_k - a_k) = abs(zeta_k - a_k), 1 <= k <= n}
-  $
-  is fully contained in $Omega$. In other words, $Omega$ is invariant under all rotations about the center $bold(a)$ in each coordinate.
-] <def:reinhardtdomain>
+#lbl(
+  definition[Reinhardt Domain][
+    An open connected domain $Omega subset.eq CC^n$ is a _Reinhardt domain_ centered at $bold(a) = (a_1, dots, a_n) in CC^n$ iff $forall bold(zeta) = (zeta_1, dots, zeta_n) in Omega$,
+    $
+      {(z_1, dots, z_n) in CC^n : abs(z_k - a_k) = abs(zeta_k - a_k), 1 <= k <= n}
+    $
+    is fully contained in $Omega$. In other words, $Omega$ is invariant under all rotations about the center $bold(a)$ in each coordinate.
+  ],
+  <def:reinhardtdomain>,
+)
 
 #lbl(
   definition[
@@ -169,13 +175,16 @@ In preparation, we will introduce several relevant concepts.
   <def:completereinhardtdomain>,
 )
 
-#definition("Circular Domain")[
-  An open connected domain $Omega subset.eq CC^n$ is a _circular domain_ centered at $bold(a) in CC^n$ iff $forall bold(zeta) in Omega$,
-  $
-    {bold(a) + ee^(ii theta) (bold(zeta) - bold(a)) : 0 <= theta < 2 uppi}
-  $
-  is fully contained in $Omega$.
-] <def:circulardomain>
+#lbl(
+  definition[Circular Domain][
+    An open connected domain $Omega subset.eq CC^n$ is a _circular domain_ centered at $bold(a) in CC^n$ iff $forall bold(zeta) in Omega$,
+    $
+      {bold(a) + ee^(ii theta) (bold(zeta) - bold(a)) : 0 <= theta < 2 uppi}
+    $
+    is fully contained in $Omega$.
+  ],
+  <def:circulardomain>,
+)
 
 #lbl(
   definition[
@@ -195,7 +204,7 @@ In preparation, we will introduce several relevant concepts.
       bold(J)_(bold(h))(bold(z)) = bold(J)_(bold(f))(bold(g)(bold(z))) dot bold(J)_(bold(g))(bold(z)).
     $
   ],
-  <prop:jacobianchainrule>,
+  <prop:jacobian-chain-rule>,
 )
 
 #proof[
@@ -233,12 +242,15 @@ In preparation, we will introduce several relevant concepts.
   $
 ]
 
-#lemma("Cartan")[
-  Let $Omega subset CC^n$ be a bounded complete circular domain centered at $bold(0)$, and suppose that $bold(f) = (f_1, dots, f_n) : Omega -> Omega$ is a biholomorphism. If $bold(f)(bold(0)) = bold(0)$, then $bold(f)$ is linear.
-] <lem:multivarcartan2>
+#lbl(
+  lemma[Cartan][
+    Let $Omega subset CC^n$ be a bounded complete circular domain centered at $bold(0)$, and suppose that $bold(f) = (f_1, dots, f_n) : Omega -> Omega$ is a biholomorphism. If $bold(f)(bold(0)) = bold(0)$, then $bold(f)$ is linear.
+  ],
+  <lem:multivariable-cartan-2>,
+)
 
 #proof[
-  Let $bold(rho)_theta (bold(z)) = ee^(ii theta) bold(z)$ for all $theta in RR$ and suppose that $bold(phi) = bold(rho)_(-theta) compose bold(f)^(-1) compose bold(rho)_theta compose bold(f)$. By @prop:jacobianchainrule, we must have that
+  Let $bold(rho)_theta (bold(z)) = ee^(ii theta) bold(z)$ for all $theta in RR$ and suppose that $bold(phi) = bold(rho)_(-theta) compose bold(f)^(-1) compose bold(rho)_theta compose bold(f)$. By @prop:jacobian-chain-rule, we must have that
   $
     bold(J)_(bold(phi))(bold(z))
     &= bold(J)_(bold(rho)_(-theta))(bold(f)^(-1) compose bold(rho)_theta compose bold(f)(bold(z))) dot bold(J)_(bold(rho)_(-theta) compose bold(f)^(-1))(bold(rho)_theta compose bold(f)(bold(z))) \
@@ -255,18 +267,18 @@ In preparation, we will introduce several relevant concepts.
     ) dot bold(J)_(bold(f))(bold(0)) \
     &= ee^(-ii theta) ee^(ii theta) (bold(J)_(bold(f)^(-1)) dot bold(J)_(bold(f)))(bold(0)) = bold(I).
   $
-  By @lem:multivarcartan1, $bold(phi)(bold(z)) equiv bold(z)$ on $Omega$. Hence, $bold(f) compose bold(rho)_theta = bold(rho)_theta compose bold(f)$ for all $theta in RR$. Together with @thm:taylorexpansionmultivariable, write
+  By @lem:multivarcartan1, $bold(phi)(bold(z)) equiv bold(z)$ on $Omega$. Hence, $bold(f) compose bold(rho)_theta = bold(rho)_theta compose bold(f)$ for all $theta in RR$. Together with @thm:taylor-expansion-multivariable, write
   #lbl(
     $
       bold(f)(bold(z)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) bold(z)^(bold(k))
     $,
-    <eq:multivarcartan2_taylorseries>,
+    <eq:multivariable-cartan-2_taylorseries>,
   )
   on a polydisk centered at $bold(0)$. Thus,
   $
     bold(f) compose bold(rho)(bold(z)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) (ee^(ii theta) bold(z))^(bold(k)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) ee^(ii theta abs(bold(k))) bold(z)^(bold(k)).
   $
-  On the other hand, composing with $bold(rho)_theta$ with @eq:multivarcartan2_taylorseries gives
+  On the other hand, composing with $bold(rho)_theta$ with @eq:multivariable-cartan-2_taylorseries gives
   $
     bold(rho)_theta compose bold(f)(bold(z)) = ee^(ii theta) sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) bold(z)^(bold(k)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) ee^(ii theta) bold(z)^(bold(k)).
   $
@@ -281,21 +293,24 @@ In preparation, we will introduce several relevant concepts.
   If $n = 1$, then $Omega = D(0, R)$ for some $R > 0$ and any automorphism $f$ with a fixed point $0$ is a rotation in the form of $z |-> ee^(ii theta) z$, hence linear, the effective statement of the Schwarz Lemma (@lem:schwarz).
 ]
 
-#theorem[The Holomorphic Automorphism Group on $DD^n$][
-  The holomorphic automorphism group of the polydisk $DD^n$ consists solely of biholomorphisms in the form of
-  #lbl(
-    $
-      bold(z) = (z_1, dots, z_n) |-> bold(P)(ee^(ii theta_1) (z_1 - a_1) / (1 - overline(a_1) z_1), dots, ee^(ii theta_n) (z_n - a_n) / (1 - overline(a_n) z_n)),
-    $,
-    <eq:holomorphicautomorphismgrouponpolydisk_statement>,
-  )
-  where $bold(P)$ is a $n times n$ permutation matrix (for coordinate permutations), $(theta_1, dots, theta_n) in RR^n$, and $(a_1, dots, a_n) in DD^n$. Moreover, every such map is indeed an automorphism.
-] <thm:holomorphicautomorphismgrouponpolydisk>
+#lbl(
+  theorem[The Holomorphic Automorphism Group on $DD^n$][
+    The holomorphic automorphism group of the polydisk $DD^n$ consists solely of biholomorphisms in the form of
+    #lbl(
+      $
+        bold(z) = (z_1, dots, z_n) |-> bold(P)(ee^(ii theta_1) (z_1 - a_1) / (1 - overline(a_1) z_1), dots, ee^(ii theta_n) (z_n - a_n) / (1 - overline(a_n) z_n)),
+      $,
+      <eq:holomorphicautomorphismgrouponpolydisk_statement>,
+    )
+    where $bold(P)$ is a $n times n$ permutation matrix (for coordinate permutations), $(theta_1, dots, theta_n) in RR^n$, and $(a_1, dots, a_n) in DD^n$. Moreover, every such map is indeed an automorphism.
+  ],
+  <thm:holomorphicautomorphismgrouponpolydisk>,
+)
 
 #proof[
   Let $bold(f) in Aut(DD^n)$ be arbitrary, and set $bold(alpha) = (alpha_1, dots, alpha_n) = bold(f)(bold(0))$. Define the Möbius transformation $bold(phi)(z_1, dots, z_n) = ((z_1 - alpha_1) / (1 - overline(alpha_1) z_1), dots, (z_n - alpha_n) / (1 - overline(alpha_n) z_n)) in Aut(DD^n)$. It follows that $bold(phi) compose bold(f)(bold(0)) = bold(0)$ and $bold(phi) compose bold(f) in Aut(DD^n)$.
 
-  By @lem:multivarcartan2, the map $bold(phi) compose bold(f)$ is linear, so $bold(phi) compose bold(f)(bold(z)) = bold(A) bold(z)$ for some invertible constant matrix $bold(A) = mat(zeta_(1,1), dots, zeta_(1,n); dots.v, dots.down, dots.v; zeta_(n,1), dots, zeta_(n,n))$, hence $bold(A) in Aut(DD^n)$. Thus,
+  By @lem:multivariable-cartan-2, the map $bold(phi) compose bold(f)$ is linear, so $bold(phi) compose bold(f)(bold(z)) = bold(A) bold(z)$ for some invertible constant matrix $bold(A) = mat(zeta_(1,1), dots, zeta_(1,n); dots.v, dots.down, dots.v; zeta_(n,1), dots, zeta_(n,n))$, hence $bold(A) in Aut(DD^n)$. Thus,
   $
     abs(sum_(j=1)^n zeta_(k,j) z_j) < 1 quad forall bold(z) in DD^n, forall k in {1, dots, n},
   $
@@ -365,9 +380,12 @@ In preparation, we will introduce several relevant concepts.
   A matrix $bold(M)$ is said to be _monomial_ iff it has exactly one nonzero entry in each row and each column.
 ]
 
-#theorem("Spectral Theorem")[
-  For any unitary matrix $bold(U)$, there exists a unitary matrix $bold(V)$ such that $bold(U) = bold(V) bold(D) bold(V)^dagger$, where $bold(D)$ is a diagonal matrix whose diagonal entries are all of unit modulus.
-] <thm:unitaryspectraltheorem>
+#lbl(
+  theorem[Spectral Theorem][
+    For any unitary matrix $bold(U)$, there exists a unitary matrix $bold(V)$ such that $bold(U) = bold(V) bold(D) bold(V)^dagger$, where $bold(D)$ is a diagonal matrix whose diagonal entries are all of unit modulus.
+  ],
+  <thm:unitary-spectral-theorem>,
+)
 
 #proof[
   Because $norm(bold(U) bold(z))^2 = bold(z)^dagger bold(U)^dagger bold(U) bold(z) = norm(bold(z))^2$ for any $bold(z) in CC^n$, any eigenvalue $lambda_1$ (existence given by the Fundamental Theorem of Algebra in @thm:fundamental-theorem-of-algebra on the characteristic equation) of $bold(U)$ must satisfy
@@ -433,7 +451,7 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
 )
 
 #proof[
-  Because $B^n$ is a bounded complete circular domain centered at $bold(0)$, from @lem:multivarcartan2 we have that $bold(f) equiv bold(U)$ for some constant invertible matrix
+  Because $B^n$ is a bounded complete circular domain centered at $bold(0)$, from @lem:multivariable-cartan-2 we have that $bold(f) equiv bold(U)$ for some constant invertible matrix
   $
     bold(U) = mat(zeta_(1,1), dots.c, zeta_(1,n); dots.v, dots.down, dots.v; zeta_(n,1), dots.c, zeta_(n,n)).
   $
@@ -500,16 +518,19 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
   Conversely, if $H$ is divisible then the same argument applied to $phi^(-1) : H -> G$ shows $G$ is divisible. Therefore divisibility is preserved under group isomorphisms.
 ]
 
-#theorem[The Holomorphic Automorphism Group on $B^n$][
-  The holomorphic automorphism group $Aut(B^n)$ consists solely of biholomorphisms in the form of
-  #lbl(
-    $
-      bold(z) |-> bold(U)^(-1) bold(phi)_a compose bold(V) bold(z),
-    $,
-    <eq:holomorphicautomorphismgrouponunitball_statement>,
-  )
-  where $bold(U), bold(V)$ are unitary matrices, $a in DD$, and $bold(phi)_a$ is defined as in @eq:unitballsimpleautomorphism_statement (and every such function lies in $Aut(B^n)$).
-] <thm:holomorphicautomorphismgrouponunitball>
+#lbl(
+  theorem[The Holomorphic Automorphism Group on $B^n$][
+    The holomorphic automorphism group $Aut(B^n)$ consists solely of biholomorphisms in the form of
+    #lbl(
+      $
+        bold(z) |-> bold(U)^(-1) bold(phi)_a compose bold(V) bold(z),
+      $,
+      <eq:holomorphicautomorphismgrouponunitball_statement>,
+    )
+    where $bold(U), bold(V)$ are unitary matrices, $a in DD$, and $bold(phi)_a$ is defined as in @eq:unitballsimpleautomorphism_statement (and every such function lies in $Aut(B^n)$).
+  ],
+  <thm:holomorphicautomorphismgrouponunitball>,
+)
 
 #proof[
   Let $bold(f) in Aut(B^n)$ be arbitrary, and set $bold(alpha) = bold(f)(bold(0))$. Then there exists a unitary matrix $bold(U)$ such that $bold(U) bold(alpha) = (norm(bold(alpha)), 0, dots, 0)$.

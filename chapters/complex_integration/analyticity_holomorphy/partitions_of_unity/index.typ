@@ -1,10 +1,10 @@
 #import "/lib.typ": *
-#show: docs-subsubchapter.with(
+#show: docs-subchapter.with(
   title: [Topology, Partitions of Unity, and the Existence of Bump Functions],
   route: "partitions_of_unity",
   label: <sec:partitions_of_unity>,
 )
-#definition("Topological Space")[
+#definition[Topological Space][
   A _topological space_ is a pair $(X, tau)$, where $X$ is a set and $tau$ is a collection of subsets of $X$ satisfying the following properties:
 
   1. $emptyset in tau$ and $X in tau$.
@@ -143,7 +143,7 @@ The function $f:[0, 2 uppi) -> S^1$ with $f(t) = (cos(t), sin(t))$ is indeed con
   $ union.big_(a in f^(-1)(A)) U_a in tau_1. #qedhere $
 ]
 
-#definition("Basis for a Topology")[
+#definition[Basis for a Topology][
   Let $X$ be a set. A _basis_ for a topology on $X$ is a collection $frak(B)$ of subsets of $X$ satisfying
 
   1. $union.big_(B in frak(B)) B = X$.
@@ -214,9 +214,12 @@ We now justify a claim whose triviality we have taken for granted.
   Since the union of open sets is open, the pre-image of any open set is open, and hence $f$ is topologically continuous.
 ]
 
-#theorem[Compact--Hausdorff][
-  Let $X$ be a compact topological space and let $Y$ be a Hausdorff space. If $f:X -> Y$ is a continuous bijection, then $f$ is a homeomorphism.
-] <thm:compact_hausdorff>
+#lbl(
+  theorem[Compact--Hausdorff][
+    Let $X$ be a compact topological space and let $Y$ be a Hausdorff space. If $f:X -> Y$ is a continuous bijection, then $f$ is a homeomorphism.
+  ],
+  <thm:compact_hausdorff>,
+)
 
 #proof[
   If $A subset.eq X$ is compact, then the pre-images of any open cover $cal(U)$ of $f(A)$ cover $A$. Hence, there is a finite subcover
@@ -263,9 +266,12 @@ We now provide a formal definition of the connectivity of sets:
 
 In a topological space $X$, a subset can be open, closed (the complement of some open set), both (clopen), or neither. The only clopen sets that exist in any topological space $X$ are $emptyset$ and $X$ iff $X$ is connected. A technique pertinent to many future proofs relies on the following fact:
 
-#theorem[Connectivity Argument][
-  A topological space $X$ is _connected_ if and only if $X$ and $emptyset$ are the only clopen subsets of $X$.
-] <thm:connected_topological_space_clopen_sets>
+#lbl(
+  theorem[Connectivity Argument][
+    A topological space $X$ is _connected_ if and only if $X$ and $emptyset$ are the only clopen subsets of $X$.
+  ],
+  <thm:connected_topological_space_clopen_sets>,
+)
 
 #example[
   The topological space $RR$ under the standard topology has only two clopen sets: $RR$ and $emptyset$.
@@ -340,10 +346,13 @@ Note that the converse here is not necessarily true.
 
     For each $t_n$, $y(t_n) = sin 1/(x(t_n)) = sin 1/(x_m_n) = 1$, and for each $tilde(t)_n$, $y(tilde(t)_n) = sin 1/(x(tilde(t)_n)) = sin 1/(tilde(x)_m_n) = -1$. Thus, there exist two sequences of $t$ that approach $t'^+$ for which $y -> 1$ and $y -> -1$. Thus $y$ and $gamma$ are not continuous (for any parameterization). #qedhere
 ]
-#definition("Exhaustion by Compact Sets")[
-  For a topological space $X$, an _exhaustion by compact sets_ is a nested sequence of compact sets ${K_n}_(n in NN) subset.eq X$ such that $K_n subset interior(K_(n + 1))$ for all $n in NN$ and
-  $ X = union.big_(n in NN) K_n. $
-] <def:exhaustionbycompact_sets>
+#lbl(
+  definition[Exhaustion by Compact Sets][
+    For a topological space $X$, an _exhaustion by compact sets_ is a nested sequence of compact sets ${K_n}_(n in NN) subset.eq X$ such that $K_n subset interior(K_(n + 1))$ for all $n in NN$ and
+    $ X = union.big_(n in NN) K_n. $
+  ],
+  <def:exhaustionbycompact_sets>,
+)
 
 #lbl(
   lemma[
@@ -516,16 +525,19 @@ Note that the converse here is not necessarily true.
   This is equivalent to @itm:locally_finite_open_cover_existence_localfiniteness in @lem:locally_finite_open_cover_existence. Indeed, if every point has such a neighborhood, then any compact $K subset Omega$ admits a finite subcover of these neighborhoods by Heine--Borel (@thm:heine_borel), so $K$ intersects finitely many sets in $S$. Conversely, for any $z in Omega$, take an open neighborhood $V$ with $z in V$ and with relatively compact closure in $Omega$; then $overline(V)$ intersects finitely many sets in $S$, and so does $V$.
 ]
 
-#theorem[Partition of Unity][
-  Let $Omega subset.eq CC$ be a nonempty open set and let ${Omega_k}_(k in NN)$ be an open cover of $Omega$. Then there exists a collection of bump functions ${alpha_j}_(j in NN) subset.eq C^oo (CC)$, each with compact support in $Omega$, satisfying:
+#lbl(
+  theorem[Partition of Unity][
+    Let $Omega subset.eq CC$ be a nonempty open set and let ${Omega_k}_(k in NN)$ be an open cover of $Omega$. Then there exists a collection of bump functions ${alpha_j}_(j in NN) subset.eq C^oo (CC)$, each with compact support in $Omega$, satisfying:
 
-  + For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.#enum-lbl(<itm:partition_of_unity_subordinate>)
-  + The collection ${supp(alpha_j)}_(j in NN)$ is locally finite.#enum-lbl(<itm:partition_of_unity_local_finiteness>)
-  + For each $j in NN$, $0 <= alpha_j <= 1$.#enum-lbl(<itm:partition_of_unity_nonnegativity>)
-  + $sum_(j = 1)^oo alpha_j equiv 1$ on $Omega$.#enum-lbl(<itm:partition_of_unity_partition_of_unity>)
+    + For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.#enum-lbl(<itm:partition_of_unity_subordinate>)
+    + The collection ${supp(alpha_j)}_(j in NN)$ is locally finite.#enum-lbl(<itm:partition_of_unity_local_finiteness>)
+    + For each $j in NN$, $0 <= alpha_j <= 1$.#enum-lbl(<itm:partition_of_unity_nonnegativity>)
+    + $sum_(j = 1)^oo alpha_j equiv 1$ on $Omega$.#enum-lbl(<itm:partition_of_unity_partition_of_unity>)
 
-  Then ${alpha_j}_(j in NN)$ is called a $C^oo$ partition of unity subordinate to ${Omega_k}_(k in NN)$.
-] <thm:partition_of_unity>
+    Then ${alpha_j}_(j in NN)$ is called a $C^oo$ partition of unity subordinate to ${Omega_k}_(k in NN)$.
+  ],
+  <thm:partition_of_unity>,
+)
 
 #proof[
   For each $z in Omega$ there exists $r_z > 0$ and $k_z in NN$ such that
@@ -558,11 +570,14 @@ Note that the converse here is not necessarily true.
   proving subordination.
 ]
 
-#theorem[Existence of Bump Functions][
-  Let $K subset CC$ be compact and $V subset CC$ an open neighborhood of $K$. Then there exists a compactly supported $phi in C^oo (CC)$ such that
-  $ 0 <= phi(z) <= 1 quad forall z in CC, $
-  $supp(phi) subset V$, and $phi equiv 1$ on some open neighborhood of $K$.
-] <thm:bumpfunctionexistence>
+#lbl(
+  theorem[Existence of Bump Functions][
+    Let $K subset CC$ be compact and $V subset CC$ an open neighborhood of $K$. Then there exists a compactly supported $phi in C^oo (CC)$ such that
+    $ 0 <= phi(z) <= 1 quad forall z in CC, $
+    $supp(phi) subset V$, and $phi equiv 1$ on some open neighborhood of $K$.
+  ],
+  <thm:bumpfunctionexistence>,
+)
 
 #proof[
   Let

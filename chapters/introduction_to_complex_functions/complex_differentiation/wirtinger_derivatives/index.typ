@@ -41,13 +41,16 @@ The Laplacian is equal to
 )
 Under this definition, we can derive the chain rule:
 
-#theorem("Chain Rule")[
-  Let $Omega subset.eq CC$ be a region such that $g in C^1(Omega)$ and $f in C^1(g(Omega))$. Writing $w = g(z)$, it follows that
-  $
-    pdv(, z)(f compose g) &= (pdv(f, w) compose g) pdv(g, z) + (pdv(f, overline(w)) compose g) pdv(overline(g), z) \
-    pdv(, overline(z))(f compose g) &= (pdv(f, w) compose g) pdv(g, overline(z)) + (pdv(f, overline(w)) compose g) pdv(overline(g), overline(z)).
-  $
-] <thm:wirtingerchainrule>
+#lbl(
+  theorem[Chain Rule][
+    Let $Omega subset.eq CC$ be a region such that $g in C^1(Omega)$ and $f in C^1(g(Omega))$. Writing $w = g(z)$, it follows that
+    $
+      pdv(, z)(f compose g) &= (pdv(f, w) compose g) pdv(g, z) + (pdv(f, overline(w)) compose g) pdv(overline(g), z) \
+      pdv(, overline(z))(f compose g) &= (pdv(f, w) compose g) pdv(g, overline(z)) + (pdv(f, overline(w)) compose g) pdv(overline(g), overline(z)).
+    $
+  ],
+  <thm:wirtingerchainrule>,
+)
 
 #proof[
   Write $z = x + ii y$. Let

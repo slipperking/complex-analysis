@@ -186,30 +186,33 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
     Letting $lambda -> oo$, we have similarly that $lim_(n -> oo) (f * k_(lambda)) (x_n - delta) <= L - epsilon / 2$, contradicting $lim_(n -> oo) (f * k_(lambda)) (x_n - delta) = L$. #qedhere
 ]
 
-#theorem[Wiener--Ikehara][
-  Let $f:RR_(>=0) -> RR$ be a nonnegative, monotonically non-decreasing function such that the Laplace transform
-  #lbl(
-    $
-      cal(L){f} (s) = integral_0^oo f(x) ee^(-s x) dx
-    $,
-    <eq:wiener-ikehara_laplacetransform>,
-  )
-  converges for $Re s > 1$. Suppose that there exists some constant $c > 0$ such
-  that
-  #lbl(
-    $
-      g(t) = lim_(sigma -> 1^+) [cal(L){f} (s) - c / (s - 1)], quad s = sigma + ii t
-    $,
-    <eq:wiener-ikehara_gfunction>,
-  )
-  converges locally uniformly with respect to $t$ in $RR$ and is continuously differentiable. Then
-  #lbl(
-    $
-      lim_(x -> oo) f(x) / ee^x = c.
-    $,
-    <eq:wiener-ikehara_conclusion>,
-  )
-] <thm:wiener-ikehara>
+#lbl(
+  theorem[Wiener--Ikehara][
+    Let $f:RR_(>=0) -> RR$ be a nonnegative, monotonically non-decreasing function such that the Laplace transform
+    #lbl(
+      $
+        cal(L){f} (s) = integral_0^oo f(x) ee^(-s x) dx
+      $,
+      <eq:wiener-ikehara_laplacetransform>,
+    )
+    converges for $Re s > 1$. Suppose that there exists some constant $c > 0$ such
+    that
+    #lbl(
+      $
+        g(t) = lim_(sigma -> 1^+) [cal(L){f} (s) - c / (s - 1)], quad s = sigma + ii t
+      $,
+      <eq:wiener-ikehara_gfunction>,
+    )
+    converges locally uniformly with respect to $t$ in $RR$ and is continuously differentiable. Then
+    #lbl(
+      $
+        lim_(x -> oo) f(x) / ee^x = c.
+      $,
+      <eq:wiener-ikehara_conclusion>,
+    )
+  ],
+  <thm:wiener-ikehara>,
+)
 
 #proof[
   Let
@@ -293,12 +296,15 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   The slow decrease, boundedness, and the condition in @eq:wiener-ikehara_convolutionlimit are sufficient by @prop:wiener-ikehara_intermediatetauberiantheorem, to show that $lim_(x -> oo) a(x) = c$, or equivalently, $lim_(x -> oo) f(x) / ee^x = c$.
 ]
 
-#theorem([Prime Number Theorem], restate-keys: ("thm:prime_number",), restate: true)[
-  The prime counting function $pi(x)$ is asymptotically equal to $x / (log x)$, i.e., $lim_(x -> oo) (pi(x) log x) / x = 1$.
-] <thm:prime_number>
+#lbl(
+  theorem([Prime Number Theorem], restate-keys: ("thm:prime-number",), restate: true)[
+    The prime counting function $pi(x)$ is asymptotically equal to $x / (log x)$, i.e., $lim_(x -> oo) (pi(x) log x) / x = 1$.
+  ],
+  <thm:prime-number>,
+)
 
 #proof[
-  By @thm:chebyshevfunctions_limsup_inflim_equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:primenumbertheorem_laplacetransformchebyshevfunction_statement. By @thm:prime_numbertheorem_laplacetransformchebyshevfunction, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuously differentiable. Hence, by the Wiener--Ikehara theorem (@thm:wiener-ikehara), we have that
+  By @thm:chebyshevfunctions_limsup_inflim_equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:primenumbertheorem_laplacetransformchebyshevfunction_statement. By @thm:prime-numbertheorem_laplacetransformchebyshevfunction, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuously differentiable. Hence, by the Wiener--Ikehara theorem (@thm:wiener-ikehara), we have that
   $ lim_(x -> oo) psi(ee^x) / ee^x = lim_(x -> oo) psi(x) / x = 1, $
   and the Prime Number Theorem follows.
 ]

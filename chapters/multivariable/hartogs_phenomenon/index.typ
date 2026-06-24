@@ -7,9 +7,12 @@ One of the most prominent results of complex function theory is _Hartogs' phenom
 
 To understand the sense of Hartogs' phenomenon, consider the simple example of $z |-> 1 / z$ in one complex variable. This function is holomorphic on $CC^*$ with a singularity at $0$ that cannot be removed. However, in the case of several complex variables, Hartogs' phenomenon asserts that if a function is holomorphic in a domain that excludes a compact subset, it can be extended to a holomorphic function on the entire domain, including the excluded subset. One immediate conclusion from this is that isolated singularities are _always_ removable in higher dimensions.
 
-#theorem("Hartogs' Extension Theorem")[
-  Let $Omega subset.eq CC^n$ ($n gt.eq 2$) be a domain and $K subset.eq Omega$ be a compact subset such that $Omega without K$ is connected. Then any holomorphic function $f : Omega without K -> CC$ has a unique extension to a holomorphic function $tilde(f) : Omega -> CC$ such that $tilde(f) equiv f$ on $Omega without K$.
-] <thm:hartogsextensiontheorem>
+#lbl(
+  theorem[Hartogs' Extension Theorem][
+    Let $Omega subset.eq CC^n$ ($n gt.eq 2$) be a domain and $K subset.eq Omega$ be a compact subset such that $Omega without K$ is connected. Then any holomorphic function $f : Omega without K -> CC$ has a unique extension to a holomorphic function $tilde(f) : Omega -> CC$ such that $tilde(f) equiv f$ on $Omega without K$.
+  ],
+  <thm:hartogsextensiontheorem>,
+)
 
 Hartogs, in 1906, first proved his extension theorem using an integral formula, but was considered to be incomplete with gaps. In 1939, Fueter gave a proof for the case $n = 2$, and later Bochner and Martinelli developed more general integral kernel methods for higher dimensions. Finally, Ehrenpreis, in 1961, provided a succinct and analytic proof using the $overline(partial)$ operator: by multiplying the function by a smooth cutoff or bump function and then solving a $overline(partial)$-problem to correct the non-holomorphy introduced by the cutoff, one can construct the desired extension.
 
@@ -80,13 +83,16 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
   By @prop:reinhardtlaurentexpansion, $f$ has an expansion matching the form of @eq:reinhardtlaurentexpansion. Now for a fixed $j in NN_(<= n)$, if not all $a_(bold(k))$'s with $k_j < 0$ are zero, then fixing all variables except $z_j$ gives a Laurent expansion that does not uniformly converge on all compact neighborhoods of $w_j bold(e)_j in Omega$ (either a pole or an essential singularity with respect to $z_j$). Thus, we are left only with $bold(k)$ containing nonnegative components, and the conclusion holds.
 ]
 
-#theorem("Hartogs' Extension Theorem for Reinhardt Domains")[
-  Let $Omega subset CC^n$ be a Reinhardt domain centered at $bold(0)$ such that $Omega$ satisfies the condition that for every $j in NN_(<= n)$, there exists a point in $Omega$ of the form $a_j bold(e)_j$ ($bold(e)_j$ is the $j$-th unit vector and $a_j in CC^*$). Let $f : Omega -> CC$ be holomorphic. Then $f(bold(z))$ can be analytically continued to the complete Reinhardt domain $tilde(Omega)$ defined by
-  $
-    tilde(Omega) = {(rho_1 z_1, rho_2 z_2, dots, rho_n z_n) in CC^n : 0 <= rho_j <= 1, j in NN_(<= n), (z_1, dots, z_n) in Omega}
-  $
-  In other words, $exists tilde(f) : tilde(Omega) -> CC$ holomorphic such that $tilde(f) equiv f$ on $Omega$.
-] <thm:hartogsextensiontheoremforreinhardtdomains>
+#lbl(
+  theorem[Hartogs' Extension Theorem for Reinhardt Domains][
+    Let $Omega subset CC^n$ be a Reinhardt domain centered at $bold(0)$ such that $Omega$ satisfies the condition that for every $j in NN_(<= n)$, there exists a point in $Omega$ of the form $a_j bold(e)_j$ ($bold(e)_j$ is the $j$-th unit vector and $a_j in CC^*$). Let $f : Omega -> CC$ be holomorphic. Then $f(bold(z))$ can be analytically continued to the complete Reinhardt domain $tilde(Omega)$ defined by
+    $
+      tilde(Omega) = {(rho_1 z_1, rho_2 z_2, dots, rho_n z_n) in CC^n : 0 <= rho_j <= 1, j in NN_(<= n), (z_1, dots, z_n) in Omega}
+    $
+    In other words, $exists tilde(f) : tilde(Omega) -> CC$ holomorphic such that $tilde(f) equiv f$ on $Omega$.
+  ],
+  <thm:hartogsextensiontheoremforreinhardtdomains>,
+)
 
 #proof[
   By @prop:hartogslaurentexpansionnonnegative, $f$ has the expansion

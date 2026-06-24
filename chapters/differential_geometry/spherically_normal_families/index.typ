@@ -22,13 +22,16 @@ Let ${a_n}_(n in NN) subset.eq extcomplex$ be a sequence. Then we say $a_n -> a_
 
 Montel's Theorem for holomorphically normal families in @thm:montel can be generalized via the spherical metric by the statement of Marty's Criterion (@thm:marty).
 
-#definition[Spherical Derivative][
-  Let $Omega subset.eq CC$ be an open region or domain. Suppose $f:Omega -> extcomplex$ is meromorphic. Then the _spherical derivative_ of $f$ is given by
-  $ f^sharp (z) = f^* sigma(z) = (2 abs(f'(z)))/(1 + abs(f(z))^2) $
-  for $f(z) != oo$ and
-  $ f^sharp (z) = lim_(zeta -> z) f^sharp (zeta) $
-  otherwise.
-] <def:sphericalderivative>
+#lbl(
+  definition[Spherical Derivative][
+    Let $Omega subset.eq CC$ be an open region or domain. Suppose $f:Omega -> extcomplex$ is meromorphic. Then the _spherical derivative_ of $f$ is given by
+    $ f^sharp (z) = f^* sigma(z) = (2 abs(f'(z)))/(1 + abs(f(z))^2) $
+    for $f(z) != oo$ and
+    $ f^sharp (z) = lim_(zeta -> z) f^sharp (zeta) $
+    otherwise.
+  ],
+  <def:sphericalderivative>,
+)
 
 #remark[
   In certain normalizations (where the Riemann sphere has north pole $(0,0,1)$ and diameter 1), the spherical derivative will instead be defined by $f^sharp (z) = (abs(f'(z)))/(1 + abs(f(z))^2)$
@@ -94,11 +97,14 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   Let $S$ be the set of all $z in Omega$ such that $f(z)$ is finite. By the argument above, $S$ is open. The complement $Omega without S$ then consists of all points where $f(z) = oo$. By the argument above, $Omega without S$ is also open. Since $Omega$ is connected, by @thm:connected_topological_space_clopen_sets, either $S = emptyset$ or $S = Omega$. In the former case, $f equiv oo$ on $Omega$, and in the latter case, $f$ is holomorphic on $Omega$.
 ]
 
-#theorem[Marty's Criterion][
-  A family of meromorphic functions $cal(F)$ on some $Omega subset.eq CC$ is spherically normal iff
-  $ {f^sharp:f in cal(F)}, $
-  or the family of spherical derivatives, is locally uniformly bounded in $Omega$.
-] <thm:marty>
+#lbl(
+  theorem[Marty's Criterion][
+    A family of meromorphic functions $cal(F)$ on some $Omega subset.eq CC$ is spherically normal iff
+    $ {f^sharp:f in cal(F)}, $
+    or the family of spherical derivatives, is locally uniformly bounded in $Omega$.
+  ],
+  <thm:marty>,
+)
 
 #proof[
   The condition is equivalent to that of
@@ -155,9 +161,12 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   In essence, for any point $z$, there exists an open disk $D_z$ centered at $z$ on which the spherical derivatives $f_(n_k)^sharp$ are bounded by some constant $M_z$ for $k > N_z$. By Heine--Borel (@thm:heine_borel), there exists a finite collection of disks ${D_(z_j)}_(1 <= j <= n)$ that cover $K$. Thus, ${f_(n_k)^sharp (z)}_(k > N)$ is uniformly bounded on $K$ by $max_(1 <= j <= n) M_(z_j)$, where $N = max_(1 <= j <= n) N_(z_j)$, contradicting the assumption that $sup_(z in K) f_n^sharp (z) > n$ for all $n in NN$.
 ]
 
-#theorem[Fundamental Normality Test][
-  Let $Omega subset.eq CC$ be a region and suppose that $cal(F)$ is a family of holomorphic functions on $Omega$. If there exist two different points $alpha, beta in CC$ such that ${alpha, beta} inter union.big_(f in cal(F)) f(Omega) = emptyset$, then $cal(F)$ must be a spherically normal family.
-] <thm:fundamentalnormalitytest>
+#lbl(
+  theorem[Fundamental Normality Test][
+    Let $Omega subset.eq CC$ be a region and suppose that $cal(F)$ is a family of holomorphic functions on $Omega$. If there exist two different points $alpha, beta in CC$ such that ${alpha, beta} inter union.big_(f in cal(F)) f(Omega) = emptyset$, then $cal(F)$ must be a spherically normal family.
+  ],
+  <thm:fundamentalnormalitytest>,
+)
 
 #proof[
   Map $alpha$ and $beta$ to $0, 1$ by a linear function $phi(z) = (z - alpha)/(beta - alpha)$. Then the family of holomorphic functions
@@ -206,9 +215,12 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   and is thus locally uniformly bounded on $Omega$. Marty's Criterion (@thm:marty) gives the normality of $tilde(cal(F))$; since $phi$ is linear, it follows that $cal(F)$ is also normal on $Omega$.
 ]
 
-#corollary[Montel--Carathéodory][
-  Let $Omega subset.eq CC$ be a region and suppose that $cal(F)$ is a family of meromorphic functions on $Omega$. If there exist three different points $alpha, beta, gamma in extcomplex$ such that ${alpha, beta, gamma} inter union.big_(f in cal(F)) f(Omega) = emptyset$, then $cal(F)$ must be a spherically normal family.
-] <cor:montelcaratheodory>
+#lbl(
+  corollary[Montel--Carathéodory][
+    Let $Omega subset.eq CC$ be a region and suppose that $cal(F)$ is a family of meromorphic functions on $Omega$. If there exist three different points $alpha, beta, gamma in extcomplex$ such that ${alpha, beta, gamma} inter union.big_(f in cal(F)) f(Omega) = emptyset$, then $cal(F)$ must be a spherically normal family.
+  ],
+  <cor:montelcaratheodory>,
+)
 
 #proof[
   Let $phi(z) = ((z - alpha)(beta - gamma))/((z - gamma)(beta - alpha))$ be a Möbius transformation mapping $alpha, beta, gamma$ to $0, 1, oo$, respectively.

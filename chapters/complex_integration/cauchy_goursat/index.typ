@@ -16,10 +16,13 @@ $
 
 Analogous to the real case, a $0$-form is defined as a scalar-valued function in the form $f (z, overline(z))$, a $1$-form in the form $omega_0 dz + omega_1 dif overline(z)$, and a $2$-form as $omega_0 dz and dif overline(z)$. The exterior differential operator for this one-dimensional case is defined as $partial + overline(partial)$, where $partial = dz and pdv(, z)$ and $overline(partial) = dif overline(z) and pdv(, overline(z))$. Occasionally, one will informally use $partial$ and $overline(partial)$ as an abbreviation for $pdv(, z)$ and $pdv(, overline(z))$ respectively.
 
-#theorem[Lusin Area Theorem][
-  For a region $U subset CC$ and $f:U -> CC$ univalent, the area of the image $f(U)$ is equal to
-  $ integral_U abs(f'(z))^2 dif A. $
-] <thm:lusin-area>
+#lbl(
+  theorem[Lusin Area Theorem][
+    For a region $U subset CC$ and $f:U -> CC$ univalent, the area of the image $f(U)$ is equal to
+    $ integral_U abs(f'(z))^2 dif A. $
+  ],
+  <thm:lusin-area>,
+)
 
 #proof[
   We aim to find
@@ -42,11 +45,14 @@ Analogous to the real case, a $0$-form is defined as a scalar-valued function in
   $
   by @eq:holomorphic_derivative_decomposition.
 ]
-#theorem[Green's Theorem, Complex Form][
-  Let $U subset CC$ be bounded with a piecewise smooth boundary $partial U$. For two scalar functions $omega_1=omega_1 (z,overline(z))$ and $omega_2=omega_2 (z,overline(z))$ satisfying $omega_1,omega_2 in C^1 (overline(U))$, define the $1$-form $omega=omega_1 dz + omega_2 dif overline(z)$. Then,
+#lbl(
+  theorem[Green's Theorem, Complex Form][
+    Let $U subset CC$ be bounded with a piecewise smooth boundary $partial U$. For two scalar functions $omega_1=omega_1 (z,overline(z))$ and $omega_2=omega_2 (z,overline(z))$ satisfying $omega_1,omega_2 in C^1 (overline(U))$, define the $1$-form $omega=omega_1 dz + omega_2 dif overline(z)$. Then,
 
-  #lbl($ integral_(partial U)omega=integral_U dif omega. $, <eq:complex_green>)
-] <thm:complex_green>
+    #lbl($ integral_(partial U)omega=integral_U dif omega. $, <eq:complex_green>)
+  ],
+  <thm:complex_green>,
+)
 
 #proof[
   For real-valued functions $xi_1,xi_2,eta_1,eta_2$, let
@@ -94,13 +100,16 @@ Analogous to the real case, a $0$-form is defined as a scalar-valued function in
 
 The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:stokescartan). However, it proves the validity of the treatment of the $partial$ and $overline(partial)$ operators, and the generalization to forms with basis $dz$ and $dif overline(z)$.
 
-#theorem[Cauchy--Pompeiu][
-  Let $U subset CC$ be bounded with a piecewise $C^1$ boundary $partial U$. Let $f(z)in C^1 (overline(U))$. Then $forall z in U without partial U$,
+#lbl(
+  theorem[Cauchy--Pompeiu][
+    Let $U subset CC$ be bounded with a piecewise $C^1$ boundary $partial U$. Let $f(z)in C^1 (overline(U))$. Then $forall z in U without partial U$,
 
-  $
-    f(z)=1/taui (integral.cont_(partial U)(f(zeta))/(zeta-z)dzeta-integral_U pdv(f(zeta), overline(zeta))(dif overline(zeta) and dzeta)/(zeta-z)).
-  $
-] <thm:pompeiu>
+    $
+      f(z)=1/taui (integral.cont_(partial U)(f(zeta))/(zeta-z)dzeta-integral_U pdv(f(zeta), overline(zeta))(dif overline(zeta) and dzeta)/(zeta-z)).
+    $
+  ],
+  <thm:pompeiu>,
+)
 
 #proof[
   Since $z in U without partial U$, $exists epsilon>0$ such that $D(z,epsilon)subset U$. Consider the complex differential form
@@ -201,25 +210,31 @@ In complex analysis, when integrating over a region that contains a singularity,
 
 From the above result, we can directly obtain the following theorem:
 
-#theorem[Cauchy's Integral Formula][
-  Let $U subset CC$ be an open region with a piecewise $C^1$ boundary $partial U$, and let $f in C^1 (overline(U))$ be holomorphic on $U$. Then for all $z in U$,
+#lbl(
+  theorem[Cauchy's Integral Formula][
+    Let $U subset CC$ be an open region with a piecewise $C^1$ boundary $partial U$, and let $f in C^1 (overline(U))$ be holomorphic on $U$. Then for all $z in U$,
 
-  #lbl(
-    $
-      f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
-    $,
-    <eq:cauchyintegralformula>,
-  )
-] <thm:cauchyintegralformula>
+    #lbl(
+      $
+        f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
+      $,
+      <eq:cauchyintegralformula>,
+    )
+  ],
+  <thm:cauchyintegralformula>,
+)
 
 #proof[
   By @eq:wirtingerderivative2, for $f (zeta,overline(zeta))$, $pdv(f, overline(zeta))=0$. Applying the Cauchy--Pompeiu Theorem (@thm:pompeiu), the area integral vanishes, and @eq:cauchyintegralformula consequently follows.
 ]
 
-#theorem[Cauchy's Integral Theorem][
-  Let $U subset CC$ be an open region with piecewise $C^1$ boundary $partial U$. For a function $f(z)in C^1 (overline(U))$ holomorphic over $U$,
-  $ integral.cont_(partial U) f(zeta) dzeta = 0. $
-] <thm:cauchyintegraltheorem>
+#lbl(
+  theorem[Cauchy's Integral Theorem][
+    Let $U subset CC$ be an open region with piecewise $C^1$ boundary $partial U$. For a function $f(z)in C^1 (overline(U))$ holomorphic over $U$,
+    $ integral.cont_(partial U) f(zeta) dzeta = 0. $
+  ],
+  <thm:cauchyintegraltheorem>,
+)
 
 #proof[
   Let $z in U$ be fixed, and suppose $psi(zeta)=(zeta-z) f(zeta)$. Applying @thm:cauchyintegralformula on $psi(zeta)$, we obtain
@@ -233,18 +248,21 @@ From the above result, we can directly obtain the following theorem:
     integral.cont_(partial U) f(zeta) dzeta = integral.cont_(partial U) omega = integral_U dif omega = integral_U pdv(f, overline(zeta)) dif overline(zeta) and dzeta = 0. #qedhere
   $]
 
-#theorem[Solution to the one-dimensional $overline(partial)$-problem][
-  For a compactly supported function $psi(z)in C^1 (CC)$, a solution satisfying $u(z)in C^1 (CC)$ to the non-homogeneous Cauchy--Riemann equation
-  $ pdv(u(z), overline(z))=psi(z) $
-  is
+#lbl(
+  theorem[Solution to the one-dimensional $overline(partial)$-problem][
+    For a compactly supported function $psi(z)in C^1 (CC)$, a solution satisfying $u(z)in C^1 (CC)$ to the non-homogeneous Cauchy--Riemann equation
+    $ pdv(u(z), overline(z))=psi(z) $
+    is
 
-  #lbl(
-    $
-      u(z) = -1 / taui integral_CC (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta.
-    $,
-    <eq:one_dimensional_partial_conjugate_solution>,
-  )
-] <thm:one_dimensional_partial_conjugate_solution>
+    #lbl(
+      $
+        u(z) = -1 / taui integral_CC (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta.
+      $,
+      <eq:one_dimensional_partial_conjugate_solution>,
+    )
+  ],
+  <thm:one_dimensional_partial_conjugate_solution>,
+)
 
 #proof[Split $CC$ into $CC without D (z, epsilon)$ and $overline(D (z, epsilon))$. For all $epsilon > 0$, the integral
   $ -1 / (taui) integral_(CC without D (z, epsilon)) (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta $
@@ -345,18 +363,19 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   $
 ]
 
-#lemma(
-  "Goursat",
-)[
-  Given a holomorphic function $f(z)$ on a simply connected region $U subset.eq CC$, for any piecewise $C^1$ closed curve $Gamma subset U$,
+#lbl(
+  lemma[Goursat][
+    Given a holomorphic function $f(z)$ on a simply connected region $U subset.eq CC$, for any piecewise $C^1$ closed curve $Gamma subset U$,
 
-  #lbl(
-    $
-      integral.cont_Gamma f(zeta)dzeta=0.
-    $,
-    <eq:cauchyintegraltheoremoversimplyconnectedset_statement>,
-  )
-] <lem:cauchyintegraltheoremoversimplyconnectedset>
+    #lbl(
+      $
+        integral.cont_Gamma f(zeta)dzeta=0.
+      $,
+      <eq:cauchyintegraltheoremoversimplyconnectedset_statement>,
+    )
+  ],
+  <lem:cauchyintegraltheoremoversimplyconnectedset>,
+)
 #figure-wrapper(
   [
     #lbl(
@@ -499,10 +518,13 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   $ M / 4^n < epsilon L / 4^n, quad M < epsilon L. $
   Since $Delta$ is rectifiable, $L$ is finite, and letting $epsilon ->0$, we find that $M ->0$. Then, for every triangle in $U$, the integral vanishes, and @eq:cauchyintegraltheoremoversimplyconnectedset_chainvanishingstatement, @eq:cauchyintegraltheoremoversimplyconnectedset_chaindefinition follow.
 ]
-#theorem[Cauchy--Goursat][
-  Let $U subset CC$ be an open region bounded with boundary $partial U$. Let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then,
-  $ integral.cont_(partial U) f(zeta) dzeta = 0. $
-] <thm:cauchygoursattheorem>
+#lbl(
+  theorem[Cauchy--Goursat][
+    Let $U subset CC$ be an open region bounded with boundary $partial U$. Let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then,
+    $ integral.cont_(partial U) f(zeta) dzeta = 0. $
+  ],
+  <thm:cauchygoursattheorem>,
+)
 #figure-wrapper(
   lbl(
     figure(
@@ -703,16 +725,19 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   is well-defined and independent of the path taken from $z_0$ to $z$. In this sense, holomorphic functions behave analogously to potential fields.
 ]
 
-#theorem[Cauchy--Goursat][
-  Let $U subset CC$ be an open region bounded with a simple closed boundary $partial U$, and let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then for all $z in U$,
+#lbl(
+  theorem[Cauchy--Goursat][
+    Let $U subset CC$ be an open region bounded with a simple closed boundary $partial U$, and let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then for all $z in U$,
 
-  #lbl(
-    $
-      f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
-    $,
-    <eq:cauchygoursatformula>,
-  )
-] <thm:cauchygoursatformula>
+    #lbl(
+      $
+        f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
+      $,
+      <eq:cauchygoursatformula>,
+    )
+  ],
+  <thm:cauchygoursatformula>,
+)
 
 #proof[
   By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem),
@@ -812,28 +837,31 @@ We have also already seen the utility of parameterization via a polar transforma
     2 uppi (product_(k = 1)^n (2k - 1)) / (product_(k = 1)^n (2k)) = 2 uppi product_(k = 1)^n (2k - 1) / (2k). #qedhere
   $]
 
-#proposition[Cauchy--Goursat Formula on the Exterior][
-  Let $gamma subset CC$ be a simple closed curve, and suppose that $f:jexterior(gamma)-> CC$ is holomorphic and continuous on $overline(jexterior(gamma))=CC without jinterior(gamma)$, where $jinterior$ and $jexterior$ respectively denote the interior and exterior as in @thm:jordan_curve.
+#lbl(
+  proposition[Cauchy--Goursat Formula on the Exterior][
+    Let $gamma subset CC$ be a simple closed curve, and suppose that $f:jexterior(gamma)-> CC$ is holomorphic and continuous on $overline(jexterior(gamma))=CC without jinterior(gamma)$, where $jinterior$ and $jexterior$ respectively denote the interior and exterior as in @thm:jordan_curve.
 
-  + If $f$ has a removable singularity at $oo$, or if $w = lim_(z -> oo) f(z)$ exists and is finite, then $forall z in CC without gamma$,
-    $
-      1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = cases(
-        w quad & "if" z in jinterior(gamma)\,,
-        w - f(z) quad & "if" z in jexterior(gamma).
-      )
-    $
-  + If $gamma$ encloses the origin, then $forall z in CC without gamma$,
-
-    #lbl(
+    + If $f$ has a removable singularity at $oo$, or if $w = lim_(z -> oo) f(z)$ exists and is finite, then $forall z in CC without gamma$,
       $
-        1 / (taui) integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = cases(
-          0 & text("if") z in jinterior(gamma)\,,
-          f(z) & text("if") z in jexterior(gamma).
+        1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = cases(
+          w quad & "if" z in jinterior(gamma)\,,
+          w - f(z) quad & "if" z in jexterior(gamma).
         )
-      $,
-      <eq:cauchy_goursat_formula_exterior_part2_statement>,
-    )
-] <ex:cauchygoursatformulaexterior>
+      $
+    + If $gamma$ encloses the origin, then $forall z in CC without gamma$,
+
+      #lbl(
+        $
+          1 / (taui) integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = cases(
+            0 & text("if") z in jinterior(gamma)\,,
+            f(z) & text("if") z in jexterior(gamma).
+          )
+        $,
+        <eq:cauchy_goursat_formula_exterior_part2_statement>,
+      )
+  ],
+  <ex:cauchygoursatformulaexterior>,
+)
 
 #proof[
   + By the compactness of $gamma$, it can be completely contained within a sufficiently large disk centered at the origin ($gamma subset D(0,R)$). Then by applying @thm:cauchygoursatformula or @thm:cauchygoursattheorem on the set $D(0,R)inter jexterior(gamma)=D(0,R)without overline(jinterior(gamma))$, we get that

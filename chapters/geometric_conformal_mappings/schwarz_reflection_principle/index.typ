@@ -5,17 +5,20 @@
 )
 We have previously considered analytic continuations over two regions with an intersection. Under certain conditions, analytic continuations can be derived across a curve, given by the following theorem.
 
-#theorem("Painlevé")[
-  Let $U_1$ and $U_2$ be two disjoint simply connected open regions in $CC$ such that $partial U_1 inter partial U_2$ is a simple curve $gamma$ without its endpoints. Let $f_1:U_1 -> CC$ and $f_2:U_2 -> CC$ be two holomorphic functions that are continuous on $U_1 union gamma$ and $U_2 union gamma$, respectively, such that $f_1 equiv f_2$ on $gamma$. Then there exists a unique holomorphic function
-  $
-    f = cases(
-      f_1 & "on" U_1,
-      f_2 & "on" U_2,
-      f_1 equiv f_2 & "on" gamma
-    ).
-  $
-  on $U_1 union U_2 union gamma$.
-] <thm:painleve>
+#lbl(
+  theorem[Painlevé][
+    Let $U_1$ and $U_2$ be two disjoint simply connected open regions in $CC$ such that $partial U_1 inter partial U_2$ is a simple curve $gamma$ without its endpoints. Let $f_1:U_1 -> CC$ and $f_2:U_2 -> CC$ be two holomorphic functions that are continuous on $U_1 union gamma$ and $U_2 union gamma$, respectively, such that $f_1 equiv f_2$ on $gamma$. Then there exists a unique holomorphic function
+    $
+      f = cases(
+        f_1 & "on" U_1,
+        f_2 & "on" U_2,
+        f_1 equiv f_2 & "on" gamma
+      ).
+    $
+    on $U_1 union U_2 union gamma$.
+  ],
+  <thm:painleve>,
+)
 
 #figure-wrapper([
   #lbl(
@@ -165,17 +168,20 @@ We have previously considered analytic continuations over two regions with an in
 
 A consequent result was discovered by Schwarz, known as the _reflection principle_, is a unique result derived from the above theorem for when the shared boundary curve lies in the real axis under certain conditions.
 
-#theorem[Schwarz Reflection Principle][
-  Let $U subset.eq CC$ be a connected region on one side of the real axis such that there exists a non-degenerate curve $gamma subset.eq partial U$ such that $gamma subset.eq RR$. Let $f:U -> CC$ be holomorphic with continuity up to $U union gamma$ such that $f$ is real-valued on $gamma$, and let $tilde(U) = { overline(z) : z in U }$ be the reflection of $U$ across the real axis. Then there exists a unique holomorphic function
-  $
-    tilde(f)(z) = cases(
-      f(z) quad & "if" z in U,
-      overline(f(overline(z))) quad & "if" z in tilde(U),
-      f(z) equiv overline(f(overline(z))) quad & "if" z in gamma
-    ).
-  $
-  on $U union tilde(U) union gamma$.
-] <thm:riemannschwarzreflection>
+#lbl(
+  theorem[Schwarz Reflection Principle][
+    Let $U subset.eq CC$ be a connected region on one side of the real axis such that there exists a non-degenerate curve $gamma subset.eq partial U$ such that $gamma subset.eq RR$. Let $f:U -> CC$ be holomorphic with continuity up to $U union gamma$ such that $f$ is real-valued on $gamma$, and let $tilde(U) = { overline(z) : z in U }$ be the reflection of $U$ across the real axis. Then there exists a unique holomorphic function
+    $
+      tilde(f)(z) = cases(
+        f(z) quad & "if" z in U,
+        overline(f(overline(z))) quad & "if" z in tilde(U),
+        f(z) equiv overline(f(overline(z))) quad & "if" z in gamma
+      ).
+    $
+    on $U union tilde(U) union gamma$.
+  ],
+  <thm:riemannschwarzreflection>,
+)
 
 #proof[
   If $z in RR$, then $overline(z) = z$, and since $f$ is real on $gamma$, it follows that $f(z) = overline(f(overline(z)))$ for $z in gamma$. Thus, we are left to prove that $z |-> overline(f(overline(z)))$ is holomorphic on $tilde(U)$. Let $z_0 in tilde(U)$. It follows that
@@ -191,7 +197,7 @@ A consequent result was discovered by Schwarz, known as the _reflection principl
 
 This conjugate-symmetry can be generalized by transforming $gamma$:
 
-#theorem("Symmetry Principle")[
+#theorem[Symmetry Principle][
   Let $L subset CC$ be an (infinite) straight line, and let $U subset CC$ be an open region lying entirely on one side of $L$. Suppose $gamma subset.eq L$ is a non-degenerate open curve contained in $partial U$. If $f$ is holomorphic on $U$, continuous on $U union gamma$, and satisfies $f(gamma) subset.eq Gamma$, where $Gamma subset CC$ is a straight line, then there exists a unique holomorphic function $tilde(f):U union tilde(U) union gamma -> CC$ such that $tilde(f) equiv f$ on $U$, where $tilde(U)$ is the reflection of $U$ across $L$. Moreover, for any pair $z_1, z_2 in U union tilde(U) union gamma$ symmetric with respect to $L$, the values $tilde(f)(z_1)$ and $tilde(f)(z_2)$ are symmetric with respect to $Gamma$.
 ]
 

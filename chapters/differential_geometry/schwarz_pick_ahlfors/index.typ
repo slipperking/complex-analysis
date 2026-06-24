@@ -9,13 +9,16 @@ In 1938, Lars Ahlfors provided a further generalization by curvature, prompting 
 
 The hyperbolic metric $lambda$ in @eq:poincaremetricdefinition does not increase under any holomorphic $f:DD -> DD$. It was realized that this was a consequence of the constant negative curvature $-1$ of $lambda$. The results we now provide are simplifications of those from~@ahlforsanextensionofschwarzlemma.
 
-#theorem[Schwarz--Ahlfors--Pick][
-  Let $f$ be holomorphic on $DD$. Suppose that $rho$ is a regular metric defined on an open neighborhood $U$, where $f(DD) subset.eq U$, $dif s_rho^2 = rho^2(w) abs(dif w)^2$, and $K_rho (w) <= -1$ for all $w in U$. Then
-  $ f^* rho(z) <= lambda(z) quad forall z in DD, $
-  where $lambda$ is the Poincaré metric, and equivalently,
-  $ dif s_(f^* rho)^2 <= dif s_lambda^2, $
-  or that the metric $rho$ does not exceed the hyperbolic metric under the map $f$.
-] <thm:schwarzahlforspick>
+#lbl(
+  theorem[Schwarz--Ahlfors--Pick][
+    Let $f$ be holomorphic on $DD$. Suppose that $rho$ is a regular metric defined on an open neighborhood $U$, where $f(DD) subset.eq U$, $dif s_rho^2 = rho^2(w) abs(dif w)^2$, and $K_rho (w) <= -1$ for all $w in U$. Then
+    $ f^* rho(z) <= lambda(z) quad forall z in DD, $
+    where $lambda$ is the Poincaré metric, and equivalently,
+    $ dif s_(f^* rho)^2 <= dif s_lambda^2, $
+    or that the metric $rho$ does not exceed the hyperbolic metric under the map $f$.
+  ],
+  <thm:schwarzahlforspick>,
+)
 
 #proof[
   Define
@@ -139,9 +142,12 @@ via the results and definitions in @eq:poincaremetriconscaleddisks.
   $ sqrt(beta) f^* rho(z) <= sqrt(alpha) lambda_r^alpha (z), quad forall z in D(0, r). #qedhere $
 ]
 
-#corollary("Generalized Liouville")[
-  If $f:CC -> U$ is entire and $U$ admits a regular metric of curvature bounded above by a negative constant, then $f$ must be constant.
-] <cor:generalizedliouville>
+#lbl(
+  corollary[Generalized Liouville][
+    If $f:CC -> U$ is entire and $U$ admits a regular metric of curvature bounded above by a negative constant, then $f$ must be constant.
+  ],
+  <cor:generalizedliouville>,
+)
 
 #proof[
   By assumption, $exists beta > 0$ such that $sup_(w in U) K_rho (w) <= -beta$. Then @cor:generalized_ahlfors gives that
@@ -222,9 +228,12 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
 
 And we have the final implication:
 
-#theorem("Picard's Little Theorem", restate: true, restate-keys: ("thm:littlepicard",))[
-  Let $f:CC -> U$ be entire such that $CC without U$ contains two or more points. Then $f$ is constant.
-] <thm:littlepicard>
+#lbl(
+  theorem([Picard's Little Theorem], restate: true, restate-keys: ("thm:littlepicard",))[
+    Let $f:CC -> U$ be entire such that $CC without U$ contains two or more points. Then $f$ is constant.
+  ],
+  <thm:littlepicard>,
+)
 
 #proof[
   By the result of @prop:conformalmetricnegativecurvatureexistencewhenomits2points, we may find a conformal metric $rho$ on $U$ such that $exists beta > 0$ satisfying $K_rho (U) subset.eq RR_(<= -beta)$. Then by the aforementioned generalization of Liouville (@cor:generalizedliouville), $f$ exhibits constancy on $CC$ and the assertion follows.

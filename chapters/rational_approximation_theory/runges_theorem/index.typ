@@ -245,12 +245,15 @@ The proof can be well-organized through the use of the results that we will now 
 
 In its full generality, we will now apply a technique to push a pole to a prescribed point, while ensuring that the resulting function remains uniformly approximated outside of a given connected compact set that contains both the original and target pole locations.
 
-#lemma("Pole-Pushing Lemma")[
-  Let $alpha, beta in CC$ and let $f(z)$ be a rational function with a single singularity, a pole at $z = alpha$, whose Laurent expansion consists solely of its principal part. Then $forall r > abs(alpha - beta)$, $forall epsilon > 0$, there exists a rational function $psi(z)$ whose only singularity is a pole at $z = beta$ such that
-  $
-    sup_(z in extcomplex without D(beta, r)) abs(f(z) - psi(z)) < epsilon.
-  $
-] <lem:simplepolepushing>
+#lbl(
+  lemma[Pole-Pushing Lemma][
+    Let $alpha, beta in CC$ and let $f(z)$ be a rational function with a single singularity, a pole at $z = alpha$, whose Laurent expansion consists solely of its principal part. Then $forall r > abs(alpha - beta)$, $forall epsilon > 0$, there exists a rational function $psi(z)$ whose only singularity is a pole at $z = beta$ such that
+    $
+      sup_(z in extcomplex without D(beta, r)) abs(f(z) - psi(z)) < epsilon.
+    $
+  ],
+  <lem:simple-pole-pushing>,
+)
 
 #proof[
   By assumption, $f$ can be expressed as a polynomial of
@@ -314,12 +317,15 @@ In its full generality, we will now apply a technique to push a pole to a prescr
   is rational with a pole at $z = beta$.
 ]
 
-#lemma("Generalized Pole-Pushing Lemma")[
-  Let $K subset.eq CC$ be compact and choose $a in CC without K$. Let $U$ be the connected component of $extcomplex without K$ containing $a$. Then $forall epsilon > 0$, $forall zeta in U$, there exists a rational function $psi$ with a pole only at $zeta$ such that
-  $
-    sup_(z in K) abs(1 / (z - a) - psi(z)) < epsilon.
-  $
-] <lem:generalpolepushing>
+#lbl(
+  lemma[Generalized Pole-Pushing Lemma][
+    Let $K subset.eq CC$ be compact and choose $a in CC without K$. Let $U$ be the connected component of $extcomplex without K$ containing $a$. Then $forall epsilon > 0$, $forall zeta in U$, there exists a rational function $psi$ with a pole only at $zeta$ such that
+    $
+      sup_(z in K) abs(1 / (z - a) - psi(z)) < epsilon.
+    $
+  ],
+  <lem:general-pole-pushing>,
+)
 
 #proof[
   Define the set
@@ -339,7 +345,7 @@ In its full generality, we will now apply a technique to push a pole to a prescr
   $
     sup_(z in K) abs(1 / (z - a) - psi(z)) < epsilon / 2.
   $
-  By @lem:simplepolepushing, there exists a rational function $phi.alt$ with a pole only at $zeta'$ such that
+  By @lem:simple-pole-pushing, there exists a rational function $phi.alt$ with a pole only at $zeta'$ such that
   $
     sup_(z in extcomplex without D(zeta, op("dist")(zeta, K))) abs(phi.alt(z) - psi(z)) < epsilon / 2,
   $
@@ -357,7 +363,7 @@ In its full generality, we will now apply a technique to push a pole to a prescr
 
   Since $U without {oo}$ is connected and $S$ is both relatively open and closed in $U without {oo}$, it follows from @thm:connected_topological_space_clopen_sets that $S = U without {oo}$, completing the proof under the assumption that $oo in.not U$.
 
-  Now suppose $oo in U$. In essence, we pole push to a point outside a disk on which we can make approximations by Taylor polynomials. Let $R > 0$ satisfy $K subset D(0, R)$ and let $b in U without ({oo} union overline(D(0, R)))$ be an arbitrary point. By @lem:simplepolepushing, there exists some rational function $tilde(psi) (z)$ with a pole at $b$ such that
+  Now suppose $oo in U$. In essence, we pole push to a point outside a disk on which we can make approximations by Taylor polynomials. Let $R > 0$ satisfy $K subset D(0, R)$ and let $b in U without ({oo} union overline(D(0, R)))$ be an arbitrary point. By @lem:simple-pole-pushing, there exists some rational function $tilde(psi) (z)$ with a pole at $b$ such that
   $
     sup_(z in K) abs(tilde(psi) (z) - 1 / (z - a)) < epsilon / 2.
   $
@@ -391,7 +397,7 @@ In its full generality, we will now apply a technique to push a pole to a prescr
     $,
     <eq:runge_intermediate1>,
   )
-  Let the poles of $phi.alt$ be ${beta_k}_(k in NN_(<= n)) subset.eq CC without K$, and as a consequence, we have $phi.alt(z) = sum_(k = 1)^n a_k / (z - beta_k) + phi(z)$ where $phi(z)$ is entire. Since $phi.alt(oo) = 0$, we have $phi equiv 0$ by Liouville's Theorem (@thm:liouville). By @lem:generalpolepushing, there exist rational functions ${psi_k}_(k in NN_(<= n))$ whose only poles lie in $E$ such that $forall k$,
+  Let the poles of $phi.alt$ be ${beta_k}_(k in NN_(<= n)) subset.eq CC without K$, and as a consequence, we have $phi.alt(z) = sum_(k = 1)^n a_k / (z - beta_k) + phi(z)$ where $phi(z)$ is entire. Since $phi.alt(oo) = 0$, we have $phi equiv 0$ by Liouville's Theorem (@thm:liouville). By @lem:general-pole-pushing, there exist rational functions ${psi_k}_(k in NN_(<= n))$ whose only poles lie in $E$ such that $forall k$,
   $
     sup_(z in K) abs(1 / (z - beta_k) - psi_k (z)) < epsilon / (2 n abs(a_k))
   $

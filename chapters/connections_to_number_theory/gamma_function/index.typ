@@ -66,15 +66,18 @@ $
 $
 We will now study two representations for the Gamma function.
 
-#theorem("Gauss")[
-  The Gamma function satisfies
-  #lbl(
-    $
-      Gamma(z) = lim_(n -> oo) (n^z n!) / (product_(k=0)^n (z+k)), quad Re z > 0.
-    $,
-    <eq:gammafunctiongaussformula>,
-  )
-] <thm:gammafunctiongaussformula>
+#lbl(
+  theorem[Gauss][
+    The Gamma function satisfies
+    #lbl(
+      $
+        Gamma(z) = lim_(n -> oo) (n^z n!) / (product_(k=0)^n (z+k)), quad Re z > 0.
+      $,
+      <eq:gammafunctiongaussformula>,
+    )
+  ],
+  <thm:gammafunctiongaussformula>,
+)
 
 #proof[
   Define the sequence of functions
@@ -139,16 +142,19 @@ We will now study two representations for the Gamma function.
 
 The _Weierstrass formula_ is a direct consequence of the Gauss formula.
 
-#theorem("Weierstrass")[
-  The reciprocal $Gamma$-function has the entire Weierstrass factorization of
-  #lbl(
-    $
-      1 / Gamma(z) = z product_(k=1)^oo [(1 + z/k) ee^(-z/k)] ee^(z upgamma),
-    $,
-    <eq:gammafunction_weierstrassformula>,
-  )
-  where $upgamma = integral_1^oo (1 / floor(x) - 1 / x) dx$.
-] <thm:gammafunction_weierstrassformula>
+#lbl(
+  theorem[Weierstrass][
+    The reciprocal $Gamma$-function has the entire Weierstrass factorization of
+    #lbl(
+      $
+        1 / Gamma(z) = z product_(k=1)^oo [(1 + z/k) ee^(-z/k)] ee^(z upgamma),
+      $,
+      <eq:gammafunction_weierstrassformula>,
+    )
+    where $upgamma = integral_1^oo (1 / floor(x) - 1 / x) dx$.
+  ],
+  <thm:gammafunction_weierstrassformula>,
+)
 
 #proof[
   Since the Gauss formula agrees with @eq:gammafunction on the right half-plane, the analytic continuation of $Gamma(z)$ is unique on the entire complex plane except for the poles at $ZZ_(<= 0)$ by the Identity Theorem (@thm:identity). Since
@@ -174,16 +180,19 @@ The _Weierstrass formula_ is a direct consequence of the Gauss formula.
 
 We have two famous identities on the $Gamma$-function:
 
-#theorem[Euler's Reflection Formula][
-  The $Gamma$-function can be analytically continued to the left half-plane with the functional equation of
-  #lbl(
-    $
-      Gamma(z) Gamma(1-z) = uppi csc(uppi z)
-    $,
-    <eq:gammafunction_eulerreflection>,
-  )
-  for $z in CC without ZZ$.
-] <thm:gammafunction_eulerreflection>
+#lbl(
+  theorem[Euler's Reflection Formula][
+    The $Gamma$-function can be analytically continued to the left half-plane with the functional equation of
+    #lbl(
+      $
+        Gamma(z) Gamma(1-z) = uppi csc(uppi z)
+      $,
+      <eq:gammafunction_eulerreflection>,
+    )
+    for $z in CC without ZZ$.
+  ],
+  <thm:gammafunction_eulerreflection>,
+)
 
 #proof[
   By the Weierstrass Formula (@thm:gammafunction_weierstrassformula), we have
@@ -212,15 +221,18 @@ We have two famous identities on the $Gamma$-function:
   and it follows that $Gamma(1/2) = sqrt(uppi)$ as it is positive.
 ]
 
-#theorem("Legendre's Duplication Formula")[
-  For any $z in CC without (-NN / 2)$, we have
-  #lbl(
-    $
-      Gamma(z) Gamma(z+1/2) = 2^(1-2z) sqrt(uppi) Gamma(2z).
-    $,
-    <eq:gammafunction_legendreduplication>,
-  )
-] <thm:gammafunction_legendreduplication>
+#lbl(
+  theorem[Legendre's Duplication Formula][
+    For any $z in CC without (-NN / 2)$, we have
+    #lbl(
+      $
+        Gamma(z) Gamma(z+1/2) = 2^(1-2z) sqrt(uppi) Gamma(2z).
+      $,
+      <eq:gammafunction_legendreduplication>,
+    )
+  ],
+  <thm:gammafunction_legendreduplication>,
+)
 
 #proof[
   From @thm:gammafunctiongaussformula, we have
@@ -240,7 +252,7 @@ We have two famous identities on the $Gamma$-function:
 
 The identity above is a special case of the following result:
 
-#theorem("Gauss Multiplication Theorem")[
+#theorem[Gauss Multiplication Theorem][
   Suppose $m in NN_(>= 2)$. Let $z in CC without (-NN / m)$. Then we have
   #lbl(
     $

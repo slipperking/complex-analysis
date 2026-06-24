@@ -5,12 +5,15 @@
 )
 The following important result can be directly obtained from the Maximum Modulus Principle.
 
-#lemma("Schwarz")[
-  If $f:DD -> DD$ is holomorphic and $f(0) = 0$, then
-  $ abs(f(z)) <= abs(z), quad abs(f'(0)) <= 1. $
+#lbl(
+  lemma[Schwarz][
+    If $f:DD -> DD$ is holomorphic and $f(0) = 0$, then
+    $ abs(f(z)) <= abs(z), quad abs(f'(0)) <= 1. $
 
-  Any one of the inequalities becomes equalities iff $f(z)$ is in the form of $z ee^(ii tau)$, where $tau in RR$. In other words, $f$ is a pure rotation.
-] <lem:schwarz>
+    Any one of the inequalities becomes equalities iff $f(z)$ is in the form of $z ee^(ii tau)$, where $tau in RR$. In other words, $f$ is a pure rotation.
+  ],
+  <lem:schwarz>,
+)
 
 #proof[
   Define the auxiliary function
@@ -75,11 +78,14 @@ Next, we will solve for the inverse of $phi_a$. Let $z = phi_a (w) = (w - a) / (
 
 It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bijective automorphism. It follows that @eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement is true. Functions in the form of $phi_a$ (where $a in DD$) are known as _Möbius transformations_, and the group of all such transformations is known as the _Möbius transformation group on the unit disk_, which is a subgroup of $Aut(DD)$. Functions in the form of $rho_tau (z) = z ee^(ii tau)$, where $tau in RR$ is constant, form a group known as the _rotation group_, which is also a subgroup of $Aut(DD)$.
 
-#theorem[The Holomorphic Automorphism Group on $DD$][
-  $forall f in Aut(DD)$, $f$ is a composition between a Möbius transformation and a rotation. In other words, $exists abs(a) < 1$ and $exists tau in RR$ such that
-  $ f(z) = phi_a compose rho_tau (z). $
-  Moreover, all such functions are in $Aut(DD)$.
-] <thm:holomorphicautomorphismgrouponunitdisk>
+#lbl(
+  theorem[The Holomorphic Automorphism Group on $DD$][
+    $forall f in Aut(DD)$, $f$ is a composition between a Möbius transformation and a rotation. In other words, $exists abs(a) < 1$ and $exists tau in RR$ such that
+    $ f(z) = phi_a compose rho_tau (z). $
+    Moreover, all such functions are in $Aut(DD)$.
+  ],
+  <thm:holomorphicautomorphismgrouponunitdisk>,
+)
 
 #proof[
   Define the auxiliary function
@@ -99,22 +105,25 @@ It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bije
 
 As a direct consequence of @thm:holomorphicautomorphismgrouponunitdisk, we have the following result:
 
-#lemma[Schwarz--Pick][
-  Let $f:DD -> DD$ be holomorphic. For all $z_1, z_2 in DD$, let $w_1 = f(z_1)$ and $w_2 = f(z_2)$. Then,
+#lbl(
+  lemma[Schwarz--Pick][
+    Let $f:DD -> DD$ be holomorphic. For all $z_1, z_2 in DD$, let $w_1 = f(z_1)$ and $w_2 = f(z_2)$. Then,
 
-  #lbl(
-    $
-      abs((w_1 - w_2) / (1 - w_1 overline(w_2))) <= abs((z_1 - z_2) / (1 - z_1 overline(z_2))).
-    $,
-    <eq:schwarzpick_statement1>,
-  )
+    #lbl(
+      $
+        abs((w_1 - w_2) / (1 - w_1 overline(w_2))) <= abs((z_1 - z_2) / (1 - z_1 overline(z_2))).
+      $,
+      <eq:schwarzpick_statement1>,
+    )
 
-  and
+    and
 
-  #lbl($ abs(dif w) / (1 - abs(w)^2) <= abs(dz) / (1 - abs(z)^2). $, <eq:schwarzpick_statement2>)
+    #lbl($ abs(dif w) / (1 - abs(w)^2) <= abs(dz) / (1 - abs(z)^2). $, <eq:schwarzpick_statement2>)
 
-  The equalities hold iff $f in Aut(DD)$.
-] <lem:schwarzpick>
+    The equalities hold iff $f in Aut(DD)$.
+  ],
+  <lem:schwarzpick>,
+)
 
 #proof[
   Let

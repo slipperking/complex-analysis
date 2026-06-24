@@ -31,9 +31,12 @@ Before the theorem, we first introduce the mean-value property of holomorphic fu
 
 Since the real and imaginary parts of holomorphic functions are real-valued harmonic functions, they also satisfy the mean-value property. Furthermore, if a real continuous function satisfies the mean-value property, it is harmonic (to be proved in @thm:mean_value_property_solutions_are_harmonic). This equivalence allows for the alternative definition of harmonic functions.
 
-#theorem[Maximum Modulus Principle][
-  Let $f(z)$ be holomorphic on an open connected region $U subset.eq CC$. If $exists z_0 in U$ and an open neighborhood $V subset.eq U$ of $z_0$ such that $forall z in V$, $abs(f(z_0)) gt.eq abs(f(z))$, then $f$ is a constant function on $U$.
-] <thm:maximum-modulus>
+#lbl(
+  theorem[Maximum Modulus Principle][
+    Let $f(z)$ be holomorphic on an open connected region $U subset.eq CC$. If $exists z_0 in U$ and an open neighborhood $V subset.eq U$ of $z_0$ such that $forall z in V$, $abs(f(z_0)) gt.eq abs(f(z))$, then $f$ is a constant function on $U$.
+  ],
+  <thm:maximum-modulus>,
+)
 
 #proof[
   Assume that $z_0$ exists. We will first prove that the set

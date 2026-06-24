@@ -9,9 +9,12 @@ then the zero at $z_0$ has multiplicity $m$.
 
 We will introduce a fundamental application of Liouville's Theorem (@thm:liouville) below.
 
-#theorem("Fundamental Theorem of Algebra")[
-  Every non-constant polynomial $p(z)$ with complex coefficients has at least one complex zero.
-] <thm:fundamental-theorem-of-algebra>
+#lbl(
+  theorem[Fundamental Theorem of Algebra][
+    Every non-constant polynomial $p(z)$ with complex coefficients has at least one complex zero.
+  ],
+  <thm:fundamental-theorem-of-algebra>,
+)
 
 #proof[
   For the sake of contradiction, suppose that $p(z)$ has no complex zeros. Then the function $f(z) = 1 / (p(z))$ is continuous and entire, because $p(z)$ has no zeros in $CC$. Moreover, as $z -> oo$, $p(z) -> oo$, so $f(z) -> 0$, and thus $f(z)$ is bounded. By Liouville's Theorem (@thm:liouville), every bounded entire function is constant. Thus, $f(z)$ is constant, and so $p(z)$ must also be constant. By contradiction, $p(z)$ has at least one complex zero.
@@ -76,23 +79,29 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   This is a trivial property of holomorphic functions that allows for the uniqueness of analytic continuations. It is oftentimes stated in the form below:
 ]
 
-#theorem[Identity Theorem][
-  Let $U subset.eq CC$ be open and connected, and define $f(z)$ and $g(z)$ to be two holomorphic functions on $U$. For a set $S subset.eq U$ with an accumulation point in $U$, if $f equiv g$ on $S$, then $f equiv g$ on $U$.
-] <thm:identity>
+#lbl(
+  theorem[Identity Theorem][
+    Let $U subset.eq CC$ be open and connected, and define $f(z)$ and $g(z)$ to be two holomorphic functions on $U$. For a set $S subset.eq U$ with an accumulation point in $U$, if $f equiv g$ on $S$, then $f equiv g$ on $U$.
+  ],
+  <thm:identity>,
+)
 
 #proof[
   Let $h = f - g$ be holomorphic over $U$. Since $S$ has an accumulation point in $U$, and $h equiv 0$ over $S$, then by @thm:identityaccumulationofzeros, $h equiv 0$ over $U$.
 ]
 
-#theorem("Holomorphic Argument Principle")[
-  Let $U subset.eq CC$ be a region and $f:U -> CC$ be holomorphic. Let $gamma subset U$ be a simple, closed, positively oriented curve that is null-homotopic in $U$. If $f$ has no zeros on $gamma$, then $f$ has finitely many zeros in the region bounded by $gamma$, and this number, counting multiplicities, is given by
+#lbl(
+  theorem[Holomorphic Argument Principle][
+    Let $U subset.eq CC$ be a region and $f:U -> CC$ be holomorphic. Let $gamma subset U$ be a simple, closed, positively oriented curve that is null-homotopic in $U$. If $f$ has no zeros on $gamma$, then $f$ has finitely many zeros in the region bounded by $gamma$, and this number, counting multiplicities, is given by
 
-  $ k = 1 / (taui) integral.cont_Gamma (f'(z)) / (f(z)) dz. $
+    $ k = 1 / (taui) integral.cont_Gamma (f'(z)) / (f(z)) dz. $
 
-  Let $Gamma$ be the image of $gamma$ under the map $w = f(z)$. Then
-  $ k = 1 / (2 uppi) Delta_Gamma arg(w), $
-  where $Delta_Gamma arg(w)$ denotes the total change in argument of $w$ as it traverses $Gamma$.
-] <thm:argumentprincipleholomorphic>
+    Let $Gamma$ be the image of $gamma$ under the map $w = f(z)$. Then
+    $ k = 1 / (2 uppi) Delta_Gamma arg(w), $
+    where $Delta_Gamma arg(w)$ denotes the total change in argument of $w$ as it traverses $Gamma$.
+  ],
+  <thm:argumentprincipleholomorphic>,
+)
 
 #proof[
   Let $z_1, dots, z_n$ be the distinct zeros of $f$ enclosed by $gamma$ with the respective multiplicities $k_1, dots, k_n$. Choose disjoint disks $D(z_j, epsilon_j)$ centered at each $z_j$ with radii $epsilon_j > 0$, each contained in the interior of $gamma$ and avoiding $gamma$. The function
@@ -209,13 +218,16 @@ $
   By the Argument Principle (@thm:argumentprincipleholomorphic), $f(z)$ has no zeros in the interior of $gamma$. Since $gamma$ was arbitrarily chosen, either $f(z) equiv 0$ on $U$ or has no zeros in $U$.
 ]
 
-#theorem("Rouché")[
-  Let $U subset.eq CC$ be open and $f, g$ be two holomorphic functions over $U$. Let $gamma subset U$ be a simple, closed, rectifiable curve, and for all $z in gamma$
+#lbl(
+  theorem[Rouché][
+    Let $U subset.eq CC$ be open and $f, g$ be two holomorphic functions over $U$. Let $gamma subset U$ be a simple, closed, rectifiable curve, and for all $z in gamma$
 
-  #lbl($ abs(f(z) - g(z)) < abs(f(z)). $, <eq:rouche>)
+    #lbl($ abs(f(z) - g(z)) < abs(f(z)). $, <eq:rouche>)
 
-  Then $f$ and $g$ have the same number of zeros enclosed by $gamma$ and do not vanish on $gamma$.
-] <thm:rouche>
+    Then $f$ and $g$ have the same number of zeros enclosed by $gamma$ and do not vanish on $gamma$.
+  ],
+  <thm:rouche>,
+)
 
 #proof[
   It is obvious that $g(z)$ has no zeros on $gamma$. Otherwise, $exists z_0 in gamma$ such that $g (z_0) = 0$, implying that $abs(f (z_0)) < abs(f (z_0))$ which is impossible. Similarly, $f(z)$ has no zeros on $gamma$, since $abs(g(z)) < 0$ is an impossibility.
@@ -254,11 +266,14 @@ By the Fundamental Theorem of Algebra (@thm:fundamental-theorem-of-algebra), any
 
 We also have the following generalization of @thm:hurwitzsimplecase, which is a heuristic restatement of @thm:hurwitzshifts:
 
-#theorem("Hurwitz")[
-  Let $U subset.eq CC$ be an open and connected set, and suppose ${f_n (z)}_(n in NN)$ is a holomorphic function sequence that uniformly converges to a non-constant function $f(z)$ on all compact sets of $U$.
+#lbl(
+  theorem[Hurwitz][
+    Let $U subset.eq CC$ be an open and connected set, and suppose ${f_n (z)}_(n in NN)$ is a holomorphic function sequence that uniformly converges to a non-constant function $f(z)$ on all compact sets of $U$.
 
-  If $z_0 in U$ and $w_0 = f (z_0)$, and the multiplicity of the zero at $z_0$ of $f - w_0$ is $m$, then for all $rho > 0$ such that $f - w_0$ is non-vanishing on $overline(D(z_0, rho)) without {z_0}$, $exists N in NN$ such that $forall n > N$, $f_n - w_0$ has $m$ zeros in $D(z_0, rho)$, counting multiplicity.
-] <thm:hurwitz>
+    If $z_0 in U$ and $w_0 = f (z_0)$, and the multiplicity of the zero at $z_0$ of $f - w_0$ is $m$, then for all $rho > 0$ such that $f - w_0$ is non-vanishing on $overline(D(z_0, rho)) without {z_0}$, $exists N in NN$ such that $forall n > N$, $f_n - w_0$ has $m$ zeros in $D(z_0, rho)$, counting multiplicity.
+  ],
+  <thm:hurwitz>,
+)
 
 #proof[
   The zero at $z_0$ is isolated by @thm:identityaccumulationofzeros. Furthermore, $abs(f - w_0)$ is continuous on $partial D(z_0, rho)$ and attains a positive infimum $delta$. In other words, on this set, $abs(f - w_0) gt.eq delta$. By uniform convergence, $exists N in NN$ such that $forall n > N$, we have $abs(f(z) - f_n (z)) < delta <= abs(f(z) - w_0)$ for any $z in partial D(z_0, rho)$.

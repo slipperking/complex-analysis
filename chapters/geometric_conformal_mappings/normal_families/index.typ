@@ -5,15 +5,21 @@
 )
 A collection of functions is better known as a _family_ of functions. One important distinguishing property of families of functions, as opposed to sequences, is that families may be uncountable and may not be indexed by the natural numbers. We will now introduce the following classification of families of functions:
 
-#definition("Normal Family")[
-  A family of holomorphic functions $cal(F)$ defined on a region $U subset.eq CC$ is said to be _normal_ if every sequence of functions in $cal(F)$ has a locally uniformly (compactly) convergent subsequence on $U$.
-] <def:normalsubfamily>
+#lbl(
+  definition[Normal Family][
+    A family of holomorphic functions $cal(F)$ defined on a region $U subset.eq CC$ is said to be _normal_ if every sequence of functions in $cal(F)$ has a locally uniformly (compactly) convergent subsequence on $U$.
+  ],
+  <def:normalsubfamily>,
+)
 
 The following notion was introduced and formalized by the Italian mathematicians Cesare Arzelà and Giulio Ascoli to formulate a clear distinction in how uniformity is applied.
 
-#definition("Equicontinuity")[
-  A family of functions $cal(F)$ defined on a region $U subset.eq CC$ is said to be _equicontinuous_ at a point $z_0 in U$ if for every $epsilon > 0$, there exists a $delta > 0$ (that may depend on $z_0$) such that for all $f in cal(F)$ and all $z in U$ with $abs(z - z_0) < delta$, we have $abs(f(z) - f(z_0)) < epsilon$.
-] <def:equicontinuity>
+#lbl(
+  definition[Equicontinuity][
+    A family of functions $cal(F)$ defined on a region $U subset.eq CC$ is said to be _equicontinuous_ at a point $z_0 in U$ if for every $epsilon > 0$, there exists a $delta > 0$ (that may depend on $z_0$) such that for all $f in cal(F)$ and all $z in U$ with $abs(z - z_0) < delta$, we have $abs(f(z) - f(z_0)) < epsilon$.
+  ],
+  <def:equicontinuity>,
+)
 
 In contrast, the uniform continuity of a function $f$ guarantees that $delta$ may be chosen independently of $z_0$. In the case of (pointwise) equicontinuity, it is chosen independently of $f in cal(F)$. A family of functions is said to be _uniformly equicontinuous_ on $U$ if $delta$ can be chosen independently of both $z_0$ and $f in cal(F)$ (in other words, it attains a positive infimum in $U$). Similar to @thm:heinecantor
 
@@ -52,9 +58,12 @@ In contrast, the uniform continuity of a function $f$ guarantees that $delta$ ma
 
 The following theorem is important in many areas of mathematical analysis and has a plethora of generalizations. It was first introduced by Ascoli (who proved the sufficiency of compactness) and later formalized by Arzelà, who proved the necessity of uniform equicontinuity and uniform boundedness.
 
-#theorem[Arzelà--Ascoli][
-  Let $cal(F)$ be a family of complex continuous functions defined on a compact subset $K subset.eq CC$. Then, $cal(F)$ is uniformly bounded and uniformly equicontinuous on $K$ iff $cal(F)$ is normal on $K$.
-] <thm:arzela_ascoli>
+#lbl(
+  theorem[Arzelà--Ascoli][
+    Let $cal(F)$ be a family of complex continuous functions defined on a compact subset $K subset.eq CC$. Then, $cal(F)$ is uniformly bounded and uniformly equicontinuous on $K$ iff $cal(F)$ is normal on $K$.
+  ],
+  <thm:arzela_ascoli>,
+)
 
 #proof[
   We will first prove the sufficiency of uniform boundedness and uniform equicontinuity. Let ${f_n}_(n in NN)$ be any sequence in $cal(F)$. By the uniform boundedness of $cal(F)$, there exists a constant $M > 0$ such that $abs(f_n (z)) <= M$ for all $z in K$ and all $n in NN$.
@@ -144,9 +153,12 @@ Lastly, we will prove Montel's Theorem in preparation of the Riemann Mapping The
 
 Obviously, the equivalence is established similarly to local finiteness and locally uniform convergence.
 
-#theorem("Montel's Theorem")[
-  Let $U subset.eq CC$ be open, and suppose that $cal(F)$ is a family of holomorphic functions on $U$. Then, $cal(F)$ is locally uniformly bounded on $U$ iff $cal(F)$ is a normal family.
-] <thm:montel>
+#lbl(
+  theorem[Montel's Theorem][
+    Let $U subset.eq CC$ be open, and suppose that $cal(F)$ is a family of holomorphic functions on $U$. Then, $cal(F)$ is locally uniformly bounded on $U$ iff $cal(F)$ is a normal family.
+  ],
+  <thm:montel>,
+)
 
 #proof[
   Obviously, if $cal(F)$ is normal on $U$, for any compact $K subset U$, it follows that $cal(F)$ is normal on $K$, and the uniform boundedness on $K$ follows from the Arzelà--Ascoli Theorem (@thm:arzela_ascoli).

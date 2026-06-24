@@ -10,36 +10,39 @@
 
 The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized into a result that equates complex integration and differentiation:
 
-#theorem[Cauchy--Goursat][
-  Let $U subset CC$ be an open region bounded by a simple closed boundary $partial U$, and let $f:U -> CC$ be holomorphic and continuous over $overline(U)$. Then $forall z in U$, $forall n in NN$, $f^((n)) (z)$ exists, and
+#lbl(
+  theorem[Cauchy--Goursat][
+    Let $U subset CC$ be an open region bounded by a simple closed boundary $partial U$, and let $f:U -> CC$ be holomorphic and continuous over $overline(U)$. Then $forall z in U$, $forall n in NN$, $f^((n)) (z)$ exists, and
 
-  #lbl(
-    $
-      f^((n)) (z)= (n!) / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(n+1)) dzeta.
-    $,
-    <eq:cauchy_differentiation_formula_statement>,
-  )
+    #lbl(
+      $
+        f^((n)) (z)= (n!) / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(n+1)) dzeta.
+      $,
+      <eq:cauchy_differentiation_formula_statement>,
+    )
 
-  Additionally, since $U$ is open, $forall a in U$, $forall r > 0$ such that the closed disk $overline(D(a, r)) subset U$, $f$ has the uniformly and absolutely convergent Taylor expansion
+    Additionally, since $U$ is open, $forall a in U$, $forall r > 0$ such that the closed disk $overline(D(a, r)) subset U$, $f$ has the uniformly and absolutely convergent Taylor expansion
 
-  #lbl(
-    $
-      f(zeta)=sum_(j = 0)^oo a_j (z-a)^j,
-    $,
-    <eq:cauchy_differentiation_formula_taylorseries>,
-  )
+    #lbl(
+      $
+        f(zeta)=sum_(j = 0)^oo a_j (z-a)^j,
+      $,
+      <eq:cauchy_differentiation_formula_taylorseries>,
+    )
 
-  where
+    where
 
-  #lbl(
-    $
-      a_j = 1 / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(j+1)) dzeta
-    $,
-    <eq:cauchy_differentiation_formula_taylorseriescoefficients>,
-  )
+    #lbl(
+      $
+        a_j = 1 / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(j+1)) dzeta
+      $,
+      <eq:cauchy_differentiation_formula_taylorseriescoefficients>,
+    )
 
-  for $z in overline(D(a, r))$.
-] <thm:cauchy_differentiation_formula>
+    for $z in overline(D(a, r))$.
+  ],
+  <thm:cauchy_differentiation_formula>,
+)
 
 #proof[
   $forall a in U$, $forall z in D(a, r) subset U$, by @thm:cauchygoursatformula,
@@ -181,19 +184,22 @@ The differentiation formula above can be thought of as a generalization of @thm:
   as desired.
 ]
 
-#theorem[Cauchy's Estimate][
-  For a function $f:U -> CC$ holomorphic over $U subset.eq CC$ and $forall z_0 in U$ and $forall R > 0$ such that $overline(D(z_0, R)) subset.eq U$, $forall n in NN$,
+#lbl(
+  theorem[Cauchy's Estimate][
+    For a function $f:U -> CC$ holomorphic over $U subset.eq CC$ and $forall z_0 in U$ and $forall R > 0$ such that $overline(D(z_0, R)) subset.eq U$, $forall n in NN$,
 
-  $
-    abs(f^((n)) (z_0)) <= (n! M) / (R^n),
-  $
+    $
+      abs(f^((n)) (z_0)) <= (n! M) / (R^n),
+    $
 
-  where
+    where
 
-  $
-    M=max_(z in overline(D(z_0, R))) abs(f(z)).
-  $
-] <thm:cauchys_estimate>
+    $
+      M=max_(z in overline(D(z_0, R))) abs(f(z)).
+    $
+  ],
+  <thm:cauchys_estimate>,
+)
 
 #proof[
   By the Differentiation Formula (@thm:cauchy_differentiation_formula), $forall n in NN$,
@@ -248,9 +254,12 @@ The differentiation formula above can be thought of as a generalization of @thm:
 
 The following theorem, albeit originally proven by Cauchy in 1844, shows a fundamental difference between holomorphic functions on proper subsets of $CC$ and entire functions.
 
-#theorem[Liouville][
-  Any bounded entire function is constant.
-] <thm:liouville>
+#lbl(
+  theorem[Liouville][
+    Any bounded entire function is constant.
+  ],
+  <thm:liouville>,
+)
 
 #proof[
   Let $f:CC -> CC$ be entire. Then, $forall z_0 in CC$, $forall R > 0$, $f$ is holomorphic over $overline(D(z_0, R))$. By @thm:cauchys_estimate,
@@ -292,15 +301,18 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   for all distinct complex $a$ and $b$. Hence, $f$ is a constant function.
 ]
 
-#theorem[Morera][
-  Let $U subset.eq CC$ and $f:U -> CC$ be continuous over $U$. If for any closed triangular contour $gamma subset U$,
+#lbl(
+  theorem[Morera][
+    Let $U subset.eq CC$ and $f:U -> CC$ be continuous over $U$. If for any closed triangular contour $gamma subset U$,
 
-  $
-    integral.cont_gamma f(zeta) dzeta = 0,
-  $
+    $
+      integral.cont_gamma f(zeta) dzeta = 0,
+    $
 
-  then $f$ is holomorphic over $U$.
-] <thm:morera>
+    then $f$ is holomorphic over $U$.
+  ],
+  <thm:morera>,
+)
 
 #proof[
   Let $a in U$ be arbitrary. Since $U$ is open, $exists r > 0$ such that $overline(D)=overline(D(a, r)) subset U$. Define
@@ -448,9 +460,12 @@ For the next theorem we will briefly introduce the concept of _analytic continua
 
 The concept of analytic continuation and its consequent problems and properties will be discussed in detail in a later chapter. For now, we will prove a theorem that is a direct consequence of the Cauchy--Goursat Differentiation Formula (@thm:cauchy_differentiation_formula) and the existence of holomorphic functions with removable singularities.
 
-#theorem[Riemann][
-  Let $D^*(z_0, r)=D(z_0, r) without {z_0}$ (known as a punctured disk), and $f:D^*(z_0, r) -> CC$ be holomorphic and bounded. Then $f$ can be analytically continued to $D(z_0, r)$.
-] <thm:riemannremovablesingularities>
+#lbl(
+  theorem[Riemann][
+    Let $D^*(z_0, r)=D(z_0, r) without {z_0}$ (known as a punctured disk), and $f:D^*(z_0, r) -> CC$ be holomorphic and bounded. Then $f$ can be analytically continued to $D(z_0, r)$.
+  ],
+  <thm:riemannremovablesingularities>,
+)
 
 #proof[
   Define the auxiliary function

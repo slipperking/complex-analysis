@@ -7,9 +7,12 @@ In @sec:conformality_introduction, it was asserted that for a holomorphic functi
 
 We have the following immediate assertion:
 
-#theorem("Open Mapping Theorem")[
-  Suppose $U subset.eq CC$ is a region (open, nonempty, and connected). Then the image of any holomorphic and non-constant function $f:U -> CC$, $f(U)$, is a region.
-] <thm:open_mapping>
+#lbl(
+  theorem[Open Mapping Theorem][
+    Suppose $U subset.eq CC$ is a region (open, nonempty, and connected). Then the image of any holomorphic and non-constant function $f:U -> CC$, $f(U)$, is a region.
+  ],
+  <thm:open_mapping>,
+)
 
 #proof[
   The nonemptiness of $f(U)$ is an immediate conclusion from the fact that $U$ is nonempty and $f$ is defined on all of $U$.
@@ -183,17 +186,20 @@ Let us now introduce some important properties of linear fractional transformati
   As in @ex:biholomorphismsupperhalfplanetounitdisk, we can consider extended straight lines in the form of $L union {oo}$ as generalized circles in the Riemann sphere. In other words, the extended line can be geometrically visualized by a circle with infinite radius. In fact, when a circle on the Riemann sphere is projected stereographically onto the complex plane, the result is always either a circle or a straight line.
 ]
 
-#definition("Cross-Ratio")[
-  Let $z_1, z_2, z_3, z_4 in extcomplex$ be points such that at least three of them are distinct. The _cross-ratio_ of these points is defined as
-  $
-    (z_1, z_2; z_3, z_4) = ((z_1 - z_3) (z_2 - z_4)) / ((z_1 - z_4) (z_2 - z_3)).
-  $
-  If at least one of the four points is $oo$, then the cross-ratio is defined by the limit:
-  $
-    (oo, z_2; z_3, z_4) & = (z_2 - z_4) / (z_2 - z_3), & (z_1, oo; z_3, z_4) & = (z_1 - z_3) / (z_1 - z_4) \
-    (z_1, z_2; oo, z_4) & = (z_2 - z_4) / (z_1 - z_4), & (z_1, z_2; z_3, oo) & = (z_1 - z_3) / (z_2 - z_3)
-  $
-] <def:crossratio>
+#lbl(
+  definition[Cross-Ratio][
+    Let $z_1, z_2, z_3, z_4 in extcomplex$ be points such that at least three of them are distinct. The _cross-ratio_ of these points is defined as
+    $
+      (z_1, z_2; z_3, z_4) = ((z_1 - z_3) (z_2 - z_4)) / ((z_1 - z_4) (z_2 - z_3)).
+    $
+    If at least one of the four points is $oo$, then the cross-ratio is defined by the limit:
+    $
+      (oo, z_2; z_3, z_4) & = (z_2 - z_4) / (z_2 - z_3), & (z_1, oo; z_3, z_4) & = (z_1 - z_3) / (z_1 - z_4) \
+      (z_1, z_2; oo, z_4) & = (z_2 - z_4) / (z_1 - z_4), & (z_1, z_2; z_3, oo) & = (z_1 - z_3) / (z_2 - z_3)
+    $
+  ],
+  <def:crossratio>,
+)
 
 One important property of the cross-ratio is that it is invariant under linear fractional transformations. In other words, if $f$ is a linear fractional transformation, then
 $

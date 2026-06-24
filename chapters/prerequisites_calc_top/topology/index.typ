@@ -23,27 +23,42 @@ The following definitions are subject to the assumption where the topological sp
   + We first prove that closedness implies the inclusion of accumulation points. Let $X$ be a closed set, and assume that some accumulation point $z_0$ of $X$ satisfies $z_0 in.not X$. Since $X$ is closed, $CC^n without X$ is open, and there exists an open ball $B^n (z_0, epsilon)$ that is fully contained in $CC^n without X$. However, this contradicts the definition of accumulation point, since $B^n (z_0, epsilon) without {z_0}$ does not intersect with $X$.
   + Assume $X$ is an arbitrary set which includes all its accumulation points. We will show that $CC^n without X$ is open, which implies that $X$ is closed. Let $z_0 in CC^n without X$. Since $z_0$ is not an accumulation point of $X$ (as otherwise $z_0 in X$), there exists an open ball $B^n (z_0, epsilon)$ such that $(B^n (z_0, epsilon) without {z_0}) inter X = emptyset$. Then, $B^n (z_0, epsilon) subset CC^n without X$, and hence $CC^n without X$ is open. #qedhere
 ]
-#definition[Closure][
-  For a set $X subset.eq CC^n$, define the _closure_ of $X$, or $overline(X)$ to be the intersection of all closed sets containing $X$. In other words, it is the union of $X$ and its accumulation points.
-] <def:closure>
+#lbl(
+  definition[Closure][
+    For a set $X subset.eq CC^n$, define the _closure_ of $X$, or $overline(X)$ to be the intersection of all closed sets containing $X$. In other words, it is the union of $X$ and its accumulation points.
+  ],
+  <def:closure>,
+)
 Because the accumulation points of $X$ all lie in $overline(X)$, the closure of $X$ is a closed set. Moreover, $X$ is closed iff $X = overline(X)$.
-#definition("Interior")[
-  For a set $X subset.eq CC^n$, the _interior_ of $X$, denoted $interior(X)$, is the union of all open sets contained in $X$, or the set of points $z in CC^n$ such that there exists an open neighborhood of $z$ that is fully contained in $X$.
-] <def:interior>
+#lbl(
+  definition[Interior][
+    For a set $X subset.eq CC^n$, the _interior_ of $X$, denoted $interior(X)$, is the union of all open sets contained in $X$, or the set of points $z in CC^n$ such that there exists an open neighborhood of $z$ that is fully contained in $X$.
+  ],
+  <def:interior>,
+)
 
-#definition("Compact Set")[
-  A set $X subset.eq CC^n$ is compact iff $X$ is closed and bounded.
-] <def:compact_sets>
+#lbl(
+  definition[Compact Set][
+    A set $X subset.eq CC^n$ is compact iff $X$ is closed and bounded.
+  ],
+  <def:compact_sets>,
+)
 
-#definition("Set Covering")[
-  A cover $cal(C)$ of a set $X$ is a collection of sets ${U_n}$ such that
-  $ union.big_(n in NN) U_n supset.eq X. $
-  A cover is _open_ if every set in the collection is open.
-]
+#lbl(
+  definition[Set Covering][
+    A cover $cal(C)$ of a set $X$ is a collection of sets ${U_n}$ such that
+    $ union.big_(n in NN) U_n supset.eq X. $
+    A cover is _open_ if every set in the collection is open.
+  ],
+  <def:set_covering>,
+)
 
-#theorem[Bolzano--Weierstrass][
-  Every infinite subset $A$ of a compact set $X subset.eq CC^n$ has an accumulation point in $X$.
-] <thm:bolzanoweierstrass>
+#lbl(
+  theorem[Bolzano--Weierstrass][
+    Every infinite subset $A$ of a compact set $X subset.eq CC^n$ has an accumulation point in $X$.
+  ],
+  <thm:bolzanoweierstrass>,
+)
 
 #proof[
   Since $X$ is bounded, there exists a closed cube $Q subset CC^n$ such that $A subset.eq X subset Q$.
@@ -66,9 +81,12 @@ Because the accumulation points of $X$ all lie in $overline(X)$, the closure of 
   But then, for sufficiently large $k$, we have $Q_k subset B^n (z_infinity, delta)$, and hence $Q_k inter X = emptyset$. This contradicts the construction of $Q_k$, which ensures that $Q_k$ contains infinitely many points of $A subset X$.
 ]
 
-#theorem[Heine--Borel][
-  A set $X subset.eq CC^n$ is compact iff every open cover has a finite subcover.
-] <thm:heine_borel>
+#lbl(
+  theorem[Heine--Borel][
+    A set $X subset.eq CC^n$ is compact iff every open cover has a finite subcover.
+  ],
+  <thm:heine_borel>,
+)
 
 #proof[
   We will first show that any set satisfying the condition is compact.
