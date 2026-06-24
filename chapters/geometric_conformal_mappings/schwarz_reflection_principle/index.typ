@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== The Reflection Principle
-
+#show: docs-subchapter.with(
+  title: [The Reflection Principle],
+  route: "schwarz_reflection_principle",
+)
 We have previously considered analytic continuations over two regions with an intersection. Under certain conditions, analytic continuations can be derived across a curve, given by the following theorem.
 
 #theorem("Painlevé")[
@@ -17,128 +18,131 @@ We have previously considered analytic continuations over two regions with an in
 ] <thm:painleve>
 
 #figure-wrapper([
-  #figure(
-    {
-      cetz.canvas({
-        import cetz.draw: *
-        import cetz.decorations: brace
+  #lbl(
+    figure(
+      {
+        canvas({
+          import cetz.draw: *
+          import cetz.decorations: brace
 
-        let var-R = 2.6
+          let var-R = 2.6
 
-        catmull(
-          (-4, -0.5),
-          (-3, -3),
-          (-1, -3),
-          (0.6, -4),
-          (1.9, -4),
-          (3, -2),
-          (4.3, 2),
-          (-1.5, 4),
-          close: true,
-          stroke: 0.7pt,
-          name: "union",
-        )
+          catmull(
+            (-4, -0.5),
+            (-3, -3),
+            (-1, -3),
+            (0.6, -4),
+            (1.9, -4),
+            (3, -2),
+            (4.3, 2),
+            (-1.5, 4),
+            close: true,
+            stroke: 0.7pt,
+            name: "union",
+          )
 
-        hide(line((-2, -4), (4, 8), name: "testline"))
-        intersections("gamma-boundaries", "testline", "union")
-        for-each-anchor("gamma-boundaries", name => {
-          circle((), radius: 1.5pt, fill: black)
-        })
-
-        catmull("gamma-boundaries.0", (0.1, -0.6), (0.2, 0.8), "gamma-boundaries.1", name: "gamma")
-
-        get-ctx(ctx => {
-          anchor("z", (name: "gamma", anchor: 45%))
-          circle("z", radius: 1.5pt, fill: black)
-          circle("z", radius: var-R, stroke: (dash: "dashed"))
-
-          let points = (
-            (-0.6, -0.2),
-            (-0.7, -0.4),
-            (-0.4, -0.7),
-            (0.1, -0.8),
-            (0.1, -0.5),
-            (-0.4, -0.2),
-            (0.7, -0.2),
-            (0.5, 0.6),
-            (-0.3, 0.8),
-            (0.3, 0.3),
-            (-0.4, 0.3),
-          ).map(point => (rel: cvector.scale(point, var-R), to: "z"))
-          catmull(..points, close: true, stroke: 0.5pt, name: "Gamma", mark: (
-            end: arrow-populate(16),
-          ))
-
-          intersections("Gamma-ints", "Gamma", "gamma", sort: (ctx, pts) => pts.sorted(key: p => p.at(1)))
-
-          for-each-anchor("Gamma-ints", name => {
+          hide(line((-2, -4), (4, 8), name: "testline"))
+          intersections("gamma-boundaries", "testline", "union")
+          for-each-anchor("gamma-boundaries", name => {
             circle((), radius: 1.5pt, fill: black)
           })
 
-          let radius-indicator-loc = (
-            rel: "z",
-            to: cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(-30deg), (
-              var-R,
-              0,
-            )),
-          )
-
-          brace(
-            ("z", 2%, radius-indicator-loc),
-            ("z", 98%, radius-indicator-loc),
-            name: "var-R-brace",
-            amplitude: 7pt,
-            stroke: (thickness: 1pt),
-            flip: true,
-          )
+          catmull("gamma-boundaries.0", (0.1, -0.6), (0.2, 0.8), "gamma-boundaries.1", name: "gamma")
 
           get-ctx(ctx => {
-            let var-gamma-int-points = ctx
-              .nodes
-              .at("Gamma-ints")
-              .at("anchors")(())
-              .map(
-                anchor => cetz.coordinate.resolve-anchor(ctx, none, "Gamma-ints." + anchor),
-              )
+            anchor("z", (name: "gamma", anchor: 45%))
+            circle("z", radius: 1.5pt, fill: black)
+            circle("z", radius: var-R, stroke: (dash: "dashed"))
 
-            for k in range(0, var-gamma-int-points.len()) {
-              if (k + 1 < var-gamma-int-points.len()) {
-                for points in (
-                  (var-gamma-int-points.at(k), var-gamma-int-points.at(k + 1)),
-                  (
-                    var-gamma-int-points.at(k + 1),
-                    var-gamma-int-points.at(k),
-                  ),
-                ) {
-                  halflength-arrow(
-                    ..points,
-                    scalar: 0.3,
-                    stroke: if calc.rem(k, 2) == 0 { (:) } else { (dash: ("dot", "dot"), thickness: 0.6pt) },
-                    mark: if calc.rem(k, 2) == 0 { (end: ">>", fill: black) } else { (end: ">>", scale: 0.5) },
-                  )
+            let points = (
+              (-0.6, -0.2),
+              (-0.7, -0.4),
+              (-0.4, -0.7),
+              (0.1, -0.8),
+              (0.1, -0.5),
+              (-0.4, -0.2),
+              (0.7, -0.2),
+              (0.5, 0.6),
+              (-0.3, 0.8),
+              (0.3, 0.3),
+              (-0.4, 0.3),
+            ).map(point => (rel: cvector.scale(point, var-R), to: "z"))
+            catmull(..points, close: true, stroke: 0.5pt, name: "Gamma", mark: (
+              end: arrow-populate(16),
+            ))
+
+            intersections("Gamma-ints", "Gamma", "gamma", sort: (ctx, pts) => pts.sorted(key: p => p.at(1)))
+
+            for-each-anchor("Gamma-ints", name => {
+              circle((), radius: 1.5pt, fill: black)
+            })
+
+            let radius-indicator-loc = (
+              rel: "z",
+              to: cmatrix.mul4x4-vec3(cmatrix.transform-rotate-z(-30deg), (
+                var-R,
+                0,
+              )),
+            )
+
+            brace(
+              ("z", 2%, radius-indicator-loc),
+              ("z", 98%, radius-indicator-loc),
+              name: "var-R-brace",
+              amplitude: 7pt,
+              stroke: (thickness: 1pt),
+              flip: true,
+            )
+
+            get-ctx(ctx => {
+              let var-gamma-int-points = ctx
+                .nodes
+                .at("Gamma-ints")
+                .at("anchors")(())
+                .map(
+                  anchor => cetz.coordinate.resolve-anchor(ctx, none, "Gamma-ints." + anchor),
+                )
+
+              for k in range(0, var-gamma-int-points.len()) {
+                if (k + 1 < var-gamma-int-points.len()) {
+                  for points in (
+                    (var-gamma-int-points.at(k), var-gamma-int-points.at(k + 1)),
+                    (
+                      var-gamma-int-points.at(k + 1),
+                      var-gamma-int-points.at(k),
+                    ),
+                  ) {
+                    halflength-arrow(
+                      ..points,
+                      scalar: 0.3,
+                      stroke: if calc.rem(k, 2) == 0 { (:) } else { (dash: ("dot", "dot"), thickness: 0.6pt) },
+                      mark: if calc.rem(k, 2) == 0 { (end: ">>", fill: black) } else { (end: ">>", scale: 0.5) },
+                    )
+                  }
                 }
               }
-            }
+            })
+
+            hide(line((rel: "z", to: (100, -20)), (rel: "z", to: (-100, 20)), name: "label-testline"))
+
+            intersections("U-label-ints", "label-testline", "union")
+
+            content("U-label-ints.0", $U_2$, anchor: "west", padding: 3pt)
+            content("U-label-ints.1", $U_1$, anchor: "west", padding: 3pt)
+
+            intersections("Gamma-label-ints", "label-testline", "Gamma")
+            content("Gamma-label-ints.0", $Gamma$, anchor: "west", padding: 2pt)
+
+            content("var-R-brace.content", $R_z$)
+            content((name: "gamma", anchor: 88%), $gamma$, anchor: "south-east", padding: 2pt)
+            content("z", $z$, anchor: "east", padding: 4pt)
           })
-
-          hide(line((rel: "z", to: (100, -20)), (rel: "z", to: (-100, 20)), name: "label-testline"))
-
-          intersections("U-label-ints", "label-testline", "union")
-
-          content("U-label-ints.0", $U_2$, anchor: "west", padding: 3pt)
-          content("U-label-ints.1", $U_1$, anchor: "west", padding: 3pt)
-
-          intersections("Gamma-label-ints", "label-testline", "Gamma")
-          content("Gamma-label-ints.0", $Gamma$, anchor: "west", padding: 2pt)
-
-          content("var-R-brace.content", $R_z$)
-          content((name: "gamma", anchor: 88%), $gamma$, anchor: "south-east", padding: 2pt)
-          content("z", $z$, anchor: "east", padding: 4pt)
         })
-      })
-    },
-    caption: [The two regions $U_1$ and $U_2$ sharing a boundary curve $gamma$, the disk $D(z,R_z)$ for $z in gamma$, and the curve#footnote[Although more accurately, they are restricted to triangular paths. Our purpose here is to show that they intersect multiple times, the validity of the treatment remains the same.] $Gamma$. Solid large arrows and arrowheads denote orientation of the $tilde(Gamma)_1$ and $tilde(Gamma)_2$ regions.],
-  ) <fig:painleve_theorem>
+      },
+      caption: [The two regions $U_1$ and $U_2$ sharing a boundary curve $gamma$, the disk $D(z,R_z)$ for $z in gamma$, and the curve#footnote[Although more accurately, they are restricted to triangular paths. Our purpose here is to show that they intersect multiple times, the validity of the treatment remains the same.] $Gamma$. Solid large arrows and arrowheads denote orientation of the $tilde(Gamma)_1$ and $tilde(Gamma)_2$ regions.],
+    ),
+    <fig:painleve_theorem>,
+  )
 ])
 
 #proof[

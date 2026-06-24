@@ -1,21 +1,28 @@
 #import "/lib.typ": *
-
-=== In Harmonic Analysis
-
+#show: docs-subsubchapter.with(
+  title: [In Harmonic Analysis],
+  route: "in_harmonic_analysis",
+)
 Consider $R = 1$, $zeta = ee^(ii tau)$, and $z = rho ee^(ii theta)$ in @eq:poissonintegralformula2:
 
-$
-  u(z)
-  &= 1 / (2 uppi) integral_0^(2 uppi) u(zeta) (1 - abs(z)^2) / abs(zeta - z)^2 dif tau \
-  &= 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau)) dif tau) / ((ee^(ii tau) - rho ee^(ii theta)) (ee^(-ii tau) - rho ee^(-ii theta))) \
-  &= 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau)) dif tau) / (1 + rho^2 - 2 rho cos(theta - tau)). 
-$<eq:poissonintegralformulatrigonometricsubstitution>
+#lbl(
+  $
+    u(z)
+    &= 1 / (2 uppi) integral_0^(2 uppi) u(zeta) (1 - abs(z)^2) / abs(zeta - z)^2 dif tau \
+    &= 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau)) dif tau) / ((ee^(ii tau) - rho ee^(ii theta)) (ee^(-ii tau) - rho ee^(-ii theta))) \
+    &= 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau)) dif tau) / (1 + rho^2 - 2 rho cos(theta - tau)).
+  $,
+  <eq:poissonintegralformulatrigonometricsubstitution>,
+)
 
 Since $u(z)$ is continuous on $partial DD$ and $u(ee^(ii theta))$ is periodic with period $2 uppi$, it admits a Fourier series representation with coefficients
 
-$
-  a_n = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) ee^(-ii n tau) dif tau,
-$ <eq:poissonintegralformulafourierseries>
+#lbl(
+  $
+    a_n = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) ee^(-ii n tau) dif tau,
+  $,
+  <eq:poissonintegralformulafourierseries>,
+)
 
 so that the corresponding Fourier series is
 
@@ -39,10 +46,13 @@ $
 
 By @thm:weierstrassmtest and @thm:limit_integral_switch,
 
-$
-  1 / (2 uppi) sum_(n = -oo)^oo integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau
-  = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) sum_(n = -oo)^oo rho^(abs(n)) ee^(ii n (theta - tau)) dif tau. 
-$<eq:poissonintegralformulafourierseriespostintegralsummationswitch>
+#lbl(
+  $
+    1 / (2 uppi) sum_(n = -oo)^oo integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau
+    = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) sum_(n = -oo)^oo rho^(abs(n)) ee^(ii n (theta - tau)) dif tau.
+  $,
+  <eq:poissonintegralformulafourierseriespostintegralsummationswitch>,
+)
 
 The summation simplifies as follows:
 
@@ -69,11 +79,14 @@ Thus, for any continuous function $u$ on $partial DD$, its Fourier series is _Ab
 
 We now establish that real-valued continuous functions satisfying the mean-value property are harmonic.
 
-#theorem[
-  Let $U subset.eq CC$ be open and $f:U -> RR$ continuous. Suppose for every $z_0 in U$, there exists $lambda > 0$ with $overline(D(z_0, lambda)) subset.eq U$ such that for all $0 < epsilon <= lambda$,
-  $ f(z_0) = 1 / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii t)) dt. $
-  Then $f$ is harmonic on $U$.
-] <thm:mean_value_property_solutions_are_harmonic>
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be open and $f:U -> RR$ continuous. Suppose for every $z_0 in U$, there exists $lambda > 0$ with $overline(D(z_0, lambda)) subset.eq U$ such that for all $0 < epsilon <= lambda$,
+    $ f(z_0) = 1 / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii t)) dt. $
+    Then $f$ is harmonic on $U$.
+  ],
+  <thm:mean_value_property_solutions_are_harmonic>,
+)
 
 #proof[
   Fix $z_0 in U$ arbitrarily and choose $lambda > 0$ such that $overline(D(z_0, lambda)) subset.eq U$. Because $f in C^0 (partial D(z_0, lambda))$, @thm:dirichlet_problem_with_laplace_equation_solution guarantees the existence of a unique harmonic function $u$ on $D(z_0, lambda)$ satisfying

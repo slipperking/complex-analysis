@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== Zeros of a Holomorphic Function
-
+#show: docs-subchapter.with(
+  title: [Zeros of a Holomorphic Function],
+  route: "zeros_of_holomorphic",
+)
 For a region $U subset.eq CC$ and a holomorphic function $f:U -> CC$, a point $z_0 in U$ is a _zero_ of $f$ iff $f (z_0) = 0$. Furthermore, if $f$ has the Taylor expansion at $z_0$ of
 $ a_m (z - z_0)^m + a_(m + 1) (z - z_0)^(m + 1) + dots.c, quad m in NN, a_m eq.not 0, $
 then the zero at $z_0$ has multiplicity $m$.
@@ -16,16 +17,19 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   For the sake of contradiction, suppose that $p(z)$ has no complex zeros. Then the function $f(z) = 1 / (p(z))$ is continuous and entire, because $p(z)$ has no zeros in $CC$. Moreover, as $z -> oo$, $p(z) -> oo$, so $f(z) -> 0$, and thus $f(z)$ is bounded. By Liouville's Theorem (@thm:liouville), every bounded entire function is constant. Thus, $f(z)$ is constant, and so $p(z)$ must also be constant. By contradiction, $p(z)$ has at least one complex zero.
 ]
 
-#theorem[
-  Let $U subset.eq CC$ be open and connected, and $f:U -> CC$ be holomorphic over $U$. Then if the set defined by
-  $ S = {z in U : f(z) = 0} $
-  has an accumulation point in $U$, then $f equiv 0$ over $U$.
-] <thm:identityaccumulationofzeros>
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be open and connected, and $f:U -> CC$ be holomorphic over $U$. Then if the set defined by
+    $ S = {z in U : f(z) = 0} $
+    has an accumulation point in $U$, then $f equiv 0$ over $U$.
+  ],
+  <thm:identityaccumulationofzeros>,
+)
 
 #proof[
   Let ${z_n}_(n in NN)$ be a subset of $S$ and assume it has an accumulation point $z_infinity$ in $U$. Since $f$ is holomorphic over $U$, $exists epsilon > 0$ such that $f$ is holomorphic over $D(z_infinity, epsilon) subset.eq U$. Then over this disk, $f$ has the Taylor expansion
 
-  $ f(z) = sum_(n = 0)^oo a_n (z - z_infinity)^n. $ <eq:identityaccumulationofzeros_taylorexpansion>
+  #lbl($ f(z) = sum_(n = 0)^oo a_n (z - z_infinity)^n. $, <eq:identityaccumulationofzeros_taylorexpansion>)
 
   By @def:accumulation_point, $exists N in NN$ such that $forall n > N$, $z_n in D(z_infinity, epsilon)$. Since $z_n$ is a zero of $f$, $f (z_n) = 0$. Then, by the continuity of $f$,
   $ lim_(n -> oo) f (z_n) = f(lim_(n -> oo) z_n) = f (z_infinity) = 0. $
@@ -144,18 +148,24 @@ $
   Ind_Gamma (z) = 1 / (taui) integral.cont_gamma dzeta / (zeta - z) = 1 / (taui) integral_0^1 (gamma'(t) dt) / (gamma(t) - z).
 $
 
-#theorem[
-  Let ${f_n (z)}$ be a sequence of holomorphic functions on the open set $U subset.eq CC$ that uniformly converges to $f(z)$ on every compact subset of $U$. If $forall n in NN$, $f_n (z)$ has no zeros in $U$, then $f$ is either identically $0$ or has no zeros in $U$.
-] <thm:hurwitzsimplecase>
+#lbl(
+  theorem[
+    Let ${f_n (z)}$ be a sequence of holomorphic functions on the open set $U subset.eq CC$ that uniformly converges to $f(z)$ on every compact subset of $U$. If $forall n in NN$, $f_n (z)$ has no zeros in $U$, then $f$ is either identically $0$ or has no zeros in $U$.
+  ],
+  <thm:hurwitzsimplecase>,
+)
 
 #proof[
   By the holomorphy of $f_n (z)$, for any simple closed rectifiable curve $gamma subset U$ (whose interior is a subset of $U$), by the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem),
   $ integral.cont_Gamma f_n (zeta) dzeta = 0. $
   Since $gamma$ is a subset of any compact subset of $U$, ${f_n (zeta)}$ uniformly converges on $gamma$, and by @thm:limit_integral_switch,
 
-  $
-    lim_(n -> oo) integral.cont_Gamma f_n (zeta) dzeta = integral.cont_Gamma lim_(n -> oo) f_n (zeta) dzeta = integral.cont_Gamma f(zeta) dzeta = 0.
-  $ <eq:hurwitzsimplecase_integrallimitswitchforholomorphy>
+  #lbl(
+    $
+      lim_(n -> oo) integral.cont_Gamma f_n (zeta) dzeta = integral.cont_Gamma lim_(n -> oo) f_n (zeta) dzeta = integral.cont_Gamma f(zeta) dzeta = 0.
+    $,
+    <eq:hurwitzsimplecase_integrallimitswitchforholomorphy>,
+  )
 
   Then by Morera's Theorem (@thm:morera), $f(z)$ is holomorphic, and $f'(z)$ is holomorphic. We aim to show that $f'_n (z) arrows.rr f'(z)$.
 
@@ -168,7 +178,7 @@ $
 
   Through the proof of @thm:identityaccumulationofzeros, if $f equiv.not 0$ over $U$, then the zeros of $f$ do not have an accumulation point in $U$ and are therefore discrete. In this case, let $gamma subset U$ be a curve that does not pass through the zeros of $f$. Since each function in the sequence $f_n$ does not contain zeros in $U$, by the Argument Principle (@thm:argumentprincipleholomorphic),
 
-  $ lim_(n -> oo) integral.cont_Gamma (f'_n (z)) / (f_n (z)) dz = 0. $ <eq:hurwitzsimplecase_argumentprinciple>
+  #lbl($ lim_(n -> oo) integral.cont_Gamma (f'_n (z)) / (f_n (z)) dz = 0. $, <eq:hurwitzsimplecase_argumentprinciple>)
 
   Since $f$ and $f'$ are holomorphic over $gamma$, by @thm:continuous_function_bounded_on_compact, there exists a finite value $M > 0$ such that $forall z in gamma$, $max {abs(f(z)), abs(f'(z))} < M$.
 
@@ -202,7 +212,7 @@ $
 #theorem("Rouché")[
   Let $U subset.eq CC$ be open and $f, g$ be two holomorphic functions over $U$. Let $gamma subset U$ be a simple, closed, rectifiable curve, and for all $z in gamma$
 
-  $ abs(f(z) - g(z)) < abs(f(z)). $ <eq:rouche>
+  #lbl($ abs(f(z) - g(z)) < abs(f(z)). $, <eq:rouche>)
 
   Then $f$ and $g$ have the same number of zeros enclosed by $gamma$ and do not vanish on $gamma$.
 ] <thm:rouche>
@@ -227,11 +237,14 @@ $
 
 By the Fundamental Theorem of Algebra (@thm:fundamental-theorem-of-algebra), any polynomial in the form $p(z) = sum_(k = 0)^n a_k z^k$ ($n in NN$, $a_n eq.not 0$, $a_k in CC$ where $k = 1, dots n$) has at least one complex zero. Consider the function $q(z) = a_n z^n$, with a zero at $z = 0$ with multiplicity $n$. By Rouché's Theorem (@thm:rouche), since $exists R in RR$ such that $abs(q(z) - p(z)) = abs(sum_(k = 0)^(n - 1) a_k z^k) < abs(a_n z^n)$ over $abs(z) = R$, $p$ and $q$ have the same number of zeros, counting multiplicity.
 
-#theorem[
-  Let $U subset.eq CC$ be open and connected, and $f(z)$ be holomorphic and non-constant on $U$.
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be open and connected, and $f(z)$ be holomorphic and non-constant on $U$.
 
-  If $z_0 in U$ and $w_0 = f (z_0)$, and the multiplicity of the zero at $z_0$ of $f - w_0$ is $m$, then for all $rho > 0$ such that $f - w_0$ is non-vanishing on $overline(D(z_0, rho)) without {z_0}$, $exists delta > 0$ such that $forall xi in D(w_0, delta)$, $f - xi$ has $m$ zeros in $D(z_0, rho)$, counting multiplicity.
-] <thm:hurwitzshifts>
+    If $z_0 in U$ and $w_0 = f (z_0)$, and the multiplicity of the zero at $z_0$ of $f - w_0$ is $m$, then for all $rho > 0$ such that $f - w_0$ is non-vanishing on $overline(D(z_0, rho)) without {z_0}$, $exists delta > 0$ such that $forall xi in D(w_0, delta)$, $f - xi$ has $m$ zeros in $D(z_0, rho)$, counting multiplicity.
+  ],
+  <thm:hurwitzshifts>,
+)
 
 #proof[
   The zero at $z_0$ is isolated by @thm:identityaccumulationofzeros. Furthermore, $abs(f - w_0)$ is continuous on $partial D(z_0, rho)$ and attains a positive infimum $delta$. In other words, on this set, $abs(f - w_0) gt.eq delta$. Hence, $forall xi in D(w_0, delta)$, we have $abs(xi - w_0) < delta <= abs(f(z) - w_0)$ for any $z in partial D(z_0, rho)$.

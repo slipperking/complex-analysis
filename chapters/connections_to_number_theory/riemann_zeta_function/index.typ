@@ -1,15 +1,20 @@
 #import "/lib.typ": *
-
-== The Riemann $zeta$-Function
+#show: docs-subchapter.with(
+  title: [The Riemann $zeta$-Function],
+  route: "riemann_zeta_function",
+)
 The $zeta$-function was first studied by Euler in the 18th century, who investigated its values at positive integers and informally discovered its connection to prime numbers through what is currently known as the _Euler Product Formula_. In the 19th century, Bernhard Riemann extended the function to complex arguments. Riemann also primarily used the related $Pi(z)=Gamma(z+1)$ and $xi(z)$-functions, to express the $zeta$-function's analytic continuation and functional equation more elegantly. While his original notations have largely been deprecated, his contributions are a fundamental part of analytic number theory.
 
 Following Riemann's personal convention, denote the primary variable with
 $s=sigma+ii t$.
 
-#definition[
-  For $s=sigma+ii t$, define the Riemann $zeta$-function by the series
-  $ zeta(s)=sum_(n=1)^oo 1/(n^s), quad sigma=Re s>1. $
-] <def:riemannzetafunction>
+#lbl(
+  definition[
+    For $s=sigma+ii t$, define the Riemann $zeta$-function by the series
+    $ zeta(s)=sum_(n=1)^oo 1/(n^s), quad sigma=Re s>1. $
+  ],
+  <def:riemannzetafunction>,
+)
 
 Let $alpha in RR_(> 1)$ be arbitrary. It is well known that $zeta(alpha)$ absolute converges by integral comparison. Therefore, $forall s=sigma+ii t:sigma>=alpha$,
 $ abs(sum_(n=1)^oo 1/(n^s)) <= sum_(n=1)^oo 1/(n^sigma) <= sum_(n=1)^oo 1/(n^alpha). $
@@ -18,9 +23,12 @@ in increasing order.
 
 #theorem("Euler Product Formula")[
   For $Re(s)=sigma>1$, we have
-  $
-    1/(zeta(s))=product_(n=1)^oo (1-1/(p_n^s)),
-  $ <eq:riemannzetafunction_infiniteproduct>
+  #lbl(
+    $
+      1/(zeta(s))=product_(n=1)^oo (1-1/(p_n^s)),
+    $,
+    <eq:riemannzetafunction_infiniteproduct>,
+  )
   where $p_n$ is the $n$-th prime number.
 ] <thm:riemannzetafunction_infiniteproduct>
 
@@ -41,12 +49,15 @@ in increasing order.
   as $n -> oo$. This completes the proof.
 ]
 
-#theorem[
-  Let $s in CC$ with $Re(s)>1$. Then
-  $
-    Gamma(s) zeta(s)=integral_0^oo x^(s-1)/(ee^x-1) dx.
-  $
-] <thm:riemannzetafunctiongammaintegral>
+#lbl(
+  theorem[
+    Let $s in CC$ with $Re(s)>1$. Then
+    $
+      Gamma(s) zeta(s)=integral_0^oo x^(s-1)/(ee^x-1) dx.
+    $
+  ],
+  <thm:riemannzetafunctiongammaintegral>,
+)
 
 #proof[
   Starting from the Euler integral for the Gamma function and rewriting the exponential factor,
@@ -69,8 +80,8 @@ in increasing order.
 ]
 
 #figure-wrapper(
-  [
-    #figure(
+  lbl(
+    figure(
       {
         quick-plot(
           x-min: -1.2,
@@ -78,7 +89,7 @@ in increasing order.
           y-min: -1.2,
           y-max: 1.2,
           scale: 1,
-          canvas: {
+          _canvas: {
             import cetz.draw: *
             let var-delta = 0.25
             let var-epsilon = 0.6
@@ -140,10 +151,12 @@ in increasing order.
         )
       },
       caption: [A Hankel contour.],
-    ) <fig:hankelcontour>
-  ],
-  [
-    #figure(
+    ),
+    <fig:hankelcontour>,
+  ),
+
+  lbl(
+    figure(
       {
         quick-plot(
           x-min: -1.5,
@@ -151,7 +164,7 @@ in increasing order.
           y-min: -1.5,
           y-max: 1.5,
           scale: 1,
-          canvas: {
+          _canvas: {
             import cetz.draw: *
 
             let var-r = 0.6
@@ -192,8 +205,9 @@ in increasing order.
         )
       },
       caption: [A keyhole contour.],
-    ) <fig:keyholecontour>
-  ],
+    ),
+    <fig:keyholecontour>,
+  ),
 )
 
 Now consider the _Hankel contour_, which consists of an arc and two rays oriented as in @fig:hankelcontour (note that this contour is not actually closed):
@@ -216,10 +230,13 @@ For any $epsilon$, define $F_epsilon=lim_(delta -> 0^+) F_(epsilon, delta)$. By 
 For brevity, let $theta.alt=arcsin(delta/epsilon)$ and let
 $tilde(delta)=sqrt(epsilon^2-delta^2)$. Then
 $F_(epsilon, delta)$ can be expanded as
-$
-  F_(epsilon, delta) (s) & =integral_(theta.alt)^(2 uppi-theta.alt) ((-epsilon ee^(ii theta))^(s-1))/(ee^(epsilon ee^(ii theta))-1) epsilon ii ee^(ii theta) dif theta\ &wide""+integral_(tilde(delta))^oo ((ii delta-x)^(s-1))/(ee^(-ii delta+x)-1) dx\ & wide wide ""-integral_(tilde(delta))^oo ((-ii delta-x)^(s-1))/(ee^(ii delta+x)-1) dx \
-  & = quad #I-num quad + quad #II-num quad + quad #III-num.
-$ <eq:riemannzetafunction_remainingthreeintegralshankelcontour>
+#lbl(
+  $
+    F_(epsilon, delta) (s) & =integral_(theta.alt)^(2 uppi-theta.alt) ((-epsilon ee^(ii theta))^(s-1))/(ee^(epsilon ee^(ii theta))-1) epsilon ii ee^(ii theta) dif theta\ &wide""+integral_(tilde(delta))^oo ((ii delta-x)^(s-1))/(ee^(-ii delta+x)-1) dx\ & wide wide ""-integral_(tilde(delta))^oo ((-ii delta-x)^(s-1))/(ee^(ii delta+x)-1) dx \
+    & = quad #I-num quad + quad #II-num quad + quad #III-num.
+  $,
+  <eq:riemannzetafunction_remainingthreeintegralshankelcontour>,
+)
 
 By the Maclaurin expansion with respect to $epsilon ee^(ii theta)$, we have
 $
@@ -240,33 +257,45 @@ $
   & <=4 uppi epsilon^(Re(s)-1) ee^(2 uppi abs(Im(s))) -> 0 quad "as" quad epsilon -> 0.
 $
 On the contrary, for fixed $epsilon$, if we assume that $0<delta<= epsilon sqrt(2)/2$, then it follows that $tilde(delta) > sqrt(2)/2 epsilon$. Then,
-$
-  #II-num + #III-num & =integral_(tilde(delta))^oo (ee^(Log(ii delta-x)(s-1)))/(ee^(-ii delta+x)-1) dx-integral_(tilde(delta))^oo (ee^(Log(-ii delta-x)(s-1)))/(ee^(ii delta+x)-1) dx \
-  abs(#II-num + #III-num) & <=integral_(tilde(delta))^oo (ee^(Re [Log(ii delta-x)(s-1)]))/(ee^x-1) dx+integral_(tilde(delta))^oo (ee^(Re [Log(-ii delta-x)(s-1)]))/(ee^x-1) dx \
-  & <=integral_(tilde(delta))^oo (ee^(Log sqrt(delta^2+x^2)(Re(s)-1)-Arg(ii delta-x) Im(s)))/(ee^x-1) dx \
-  & quad +integral_(tilde(delta))^oo (ee^(Log sqrt(delta^2+x^2)(Re(s)-1)-Arg(-ii delta-x) Im(s)))/(ee^x-1) dx \
-  & <=integral_(tilde(delta))^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx \
-  & quad +integral_(tilde(delta))^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx \
-  & <=integral_(sqrt(2)/2 epsilon)^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx \
-  & quad +integral_(sqrt(2)/2 epsilon)^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx
-$ <eq:riemannzetafunction_remainingtwointegralshankelcontour>
+#lbl(
+  $
+    #II-num + #III-num & =integral_(tilde(delta))^oo (ee^(Log(ii delta-x)(s-1)))/(ee^(-ii delta+x)-1) dx-integral_(tilde(delta))^oo (ee^(Log(-ii delta-x)(s-1)))/(ee^(ii delta+x)-1) dx \
+    abs(#II-num + #III-num) & <=integral_(tilde(delta))^oo (ee^(Re [Log(ii delta-x)(s-1)]))/(ee^x-1) dx+integral_(tilde(delta))^oo (ee^(Re [Log(-ii delta-x)(s-1)]))/(ee^x-1) dx \
+    & <=integral_(tilde(delta))^oo (ee^(Log sqrt(delta^2+x^2)(Re(s)-1)-Arg(ii delta-x) Im(s)))/(ee^x-1) dx \
+    & quad +integral_(tilde(delta))^oo (ee^(Log sqrt(delta^2+x^2)(Re(s)-1)-Arg(-ii delta-x) Im(s)))/(ee^x-1) dx \
+    & <=integral_(tilde(delta))^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx \
+    & quad +integral_(tilde(delta))^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx \
+    & <=integral_(sqrt(2)/2 epsilon)^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx \
+    & quad +integral_(sqrt(2)/2 epsilon)^oo (ee^(Log sqrt(1+x^2)(Re(s)-1)+uppi Im(s)))/(ee^x-1) dx
+  $,
+  <eq:riemannzetafunction_remainingtwointegralshankelcontour>,
+)
 where the principal branch logarithm gives that $Arg(z) in (-uppi, uppi]$.  It is trivial to see that the bounding integrals (now independent of $delta$, as the integration bounds depend only on $epsilon$) are convergent for fixed $s$. Then Lebesgue's Dominated Convergence Theorem applies to @eq:riemannzetafunction_remainingtwointegralshankelcontour as $delta -> 0^+$, resulting in
-$
-  #II-num + #III-num & ->integral_epsilon^oo (ee^((s-1)[log(x)+ii uppi]))/(ee^x-1) dx-integral_(tilde(delta))^oo (ee^((s-1)[log(x)-ii uppi]))/(ee^x-1) dx \
-  & =integral_epsilon^oo (x^(s-1) ee^(ii uppi (s-1)))/(ee^x-1) dx-integral_epsilon^oo (x^(s-1) ee^(-ii uppi (s-1)))/(ee^x-1) dx \
-  & =(ee^(-ii uppi s)-ee^(ii uppi s)) integral_epsilon^oo (x^(s-1) dx)/(ee^x-1)=-2 ii sin(uppi s) integral_epsilon^oo (x^(s-1) dx)/(ee^x-1).
-$ <eq:riemannzetafunction_remainingtwointegralslimit>
+#lbl(
+  $
+    #II-num + #III-num & ->integral_epsilon^oo (ee^((s-1)[log(x)+ii uppi]))/(ee^x-1) dx-integral_(tilde(delta))^oo (ee^((s-1)[log(x)-ii uppi]))/(ee^x-1) dx \
+    & =integral_epsilon^oo (x^(s-1) ee^(ii uppi (s-1)))/(ee^x-1) dx-integral_epsilon^oo (x^(s-1) ee^(-ii uppi (s-1)))/(ee^x-1) dx \
+    & =(ee^(-ii uppi s)-ee^(ii uppi s)) integral_epsilon^oo (x^(s-1) dx)/(ee^x-1)=-2 ii sin(uppi s) integral_epsilon^oo (x^(s-1) dx)/(ee^x-1).
+  $,
+  <eq:riemannzetafunction_remainingtwointegralslimit>,
+)
 Now under the limiting operations $delta -> 0^+$ and $epsilon -> 0^+$, we have
-$
-  F(s)&=F_epsilon (s)("constant for all" epsilon<2 uppi)=lim_(epsilon -> 0^+) F_epsilon (s)=lim_(epsilon -> 0) lim_(delta -> 0) #I-num + #II-num + #III-num \ & =-2 ii sin(uppi s) Gamma(s) zeta(s)
-$ <eq:riemannzetafunctionthreeintegralslimit>
+#lbl(
+  $
+    F(s)&=F_epsilon (s)("constant for all" epsilon<2 uppi)=lim_(epsilon -> 0^+) F_epsilon (s)=lim_(epsilon -> 0) lim_(delta -> 0) #I-num + #II-num + #III-num \ & =-2 ii sin(uppi s) Gamma(s) zeta(s)
+  $,
+  <eq:riemannzetafunctionthreeintegralslimit>,
+)
 by virtue of @thm:riemannzetafunctiongammaintegral. The integral $#I-num + #II-num + #III-num$ for any $epsilon$ and $delta$ defines an entire function of $s$---by expressing each integral in its parametric form as in @eq:riemannzetafunction_remainingthreeintegralshankelcontour, a simple calculation yields that $dv(F_epsilon (s), overline(s)) equiv 0$ (either through differentiation under the integral sign, or by Lebesgue's Dominated Convergence) and hence the entireness of each $F_epsilon$ follows.
 
 Thus @eq:riemannzetafunctionthreeintegralslimit defines an analytic
 continuation of $zeta(s)$ by
-$
-  zeta(s)=(lim_(epsilon -> 0^+) F_epsilon (s))/(-2 ii sin(uppi s) Gamma(s)),
-$ <eq:riemannzetafunction_analyticcontinuationcontourintegral>
+#lbl(
+  $
+    zeta(s)=(lim_(epsilon -> 0^+) F_epsilon (s))/(-2 ii sin(uppi s) Gamma(s)),
+  $,
+  <eq:riemannzetafunction_analyticcontinuationcontourintegral>,
+)
 whose singularities lie within $ZZ$ (the $Gamma$-function never vanishes since $1/Gamma$ is entire by its Weierstrass factorization in @thm:gammafunction_weierstrassformula). By the series definition, the singularities at $s in NN_(>=2)$ are removable and hence unimportant to our consideration, while the simple zeros of the $sin(uppi s)$ function at each $s in ZZ_(<=0)$ cancel with the simple poles of the $Gamma$-function and hence those are removable singularities of $zeta$ as well. Our final consideration is of the singularity at $s=1$:
 
 #theorem[
@@ -298,9 +327,12 @@ The functional equation as provided by Riemann in his original paper gives a mor
 
 #theorem("Riemann's Reflection Formula")[
   For any $s eq.not 0$, we have
-  $
-    zeta(1-s)=2 zeta(s) Gamma(s) cos(uppi/2 s) (2 uppi)^(-s).
-  $ <eq:riemannzetafunction_functionalequation>
+  #lbl(
+    $
+      zeta(1-s)=2 zeta(s) Gamma(s) cos(uppi/2 s) (2 uppi)^(-s).
+    $,
+    <eq:riemannzetafunction_functionalequation>,
+  )
 ] <thm:riemannzetafunction_functionalequation>
 
 #proof[
@@ -324,10 +356,13 @@ The functional equation as provided by Riemann in his original paper gives a mor
     & =4 uppi ii cos(uppi (s-1)/2) sum_(k=1)^n (2 uppi k)^(s-1).
   $
   Now as $n -> oo$,
-  $
-    abs(F_((2n+1) uppi) (s)) & <=abs(integral.cont_(partial D(0, R)) ((-z)^(s-1) dz)/(ee^z-1))\ &quad""+2 abs(sin(uppi s) integral_R^oo (x^(s-1) dx)/(ee^x-1)), quad "where" R=(2n+1) uppi \
-    & <=2 uppi R^(Re s) sup_(theta in [0, 2 uppi]) abs((-ee^(ii theta))^(s-1)) sup_(z in partial D(0, R)) 1/(abs(ee^z-1))\ & quad""+2 abs(sin(uppi s) integral_R^oo (x^(s-1) dx)/(ee^x-1)).
-  $ <eq:riemannzetafunction_functionalequation_contourintegralbound>
+  #lbl(
+    $
+      abs(F_((2n+1) uppi) (s)) & <=abs(integral.cont_(partial D(0, R)) ((-z)^(s-1) dz)/(ee^z-1))\ &quad""+2 abs(sin(uppi s) integral_R^oo (x^(s-1) dx)/(ee^x-1)), quad "where" R=(2n+1) uppi \
+      & <=2 uppi R^(Re s) sup_(theta in [0, 2 uppi]) abs((-ee^(ii theta))^(s-1)) sup_(z in partial D(0, R)) 1/(abs(ee^z-1))\ & quad""+2 abs(sin(uppi s) integral_R^oo (x^(s-1) dx)/(ee^x-1)).
+    $,
+    <eq:riemannzetafunction_functionalequation_contourintegralbound>,
+  )
   As $n -> oo$, the second integral vanishes by the definition of convergent improper integrals. Now observe that $(-ee^(ii theta))^(s-1)$ depends only on $s$ and $theta$ and is independent of $n$, and hence is insignificant. We now aim to prove that $1/(abs(ee^z-1))$ is above by a positive constant for all $z in union.big partial D(0, R)$. Observe that
   $
     abs(ee^z-1)^2 & =ee^(2x)-2 ee^x cos y+1=2 ee^x (cosh x-cos y) \
@@ -384,9 +419,12 @@ The functional equation as provided by Riemann in his original paper gives a mor
   Then the functional equation can simply be rewritten as $xi(1-s)=xi(s)$.
 ]
 
-#proposition[
-  The only zeros of the Riemann $zeta$-function not in the set defined by ${ z in CC : 0<=Re z<=1 }$ occur at the negative even integers $-2,-4,-6,dots$.
-] <prop:riemannzetafunction_trivialzeros>
+#lbl(
+  proposition[
+    The only zeros of the Riemann $zeta$-function not in the set defined by ${ z in CC : 0<=Re z<=1 }$ occur at the negative even integers $-2,-4,-6,dots$.
+  ],
+  <prop:riemannzetafunction_trivialzeros>,
+)
 
 #proof[
   By the Euler Product Formula (@thm:riemannzetafunction_infiniteproduct), $zeta$ has no zeros for $Re s>1$. Now by the functional equation
@@ -413,20 +451,26 @@ Results have already shown that an infinite number of zeros lie on this line. Fo
 
 #definition[
   Define the _von Mangoldt function_ to be
-  $
-    Lambda(n)=cases(
-      log p quad & n=p^k "for some prime" p and k in NN\,,
-      0 quad & "otherwise".
-    )
-  $ <eq:vonmangoldtfunction>
+  #lbl(
+    $
+      Lambda(n)=cases(
+        log p quad & n=p^k "for some prime" p and k in NN\,,
+        0 quad & "otherwise".
+      )
+    $,
+    <eq:vonmangoldtfunction>,
+  )
 ]
 
-#proposition[
-  For $Re s>1$,
-  $
-    sum_(n=2)^oo Lambda(n)/(n^s)=-(zeta'(s))/(zeta(s)).
-  $
-] <prop:riemannzetafunction_logarithmicderivativezetavonmangoldt>
+#lbl(
+  proposition[
+    For $Re s>1$,
+    $
+      sum_(n=2)^oo Lambda(n)/(n^s)=-(zeta'(s))/(zeta(s)).
+    $
+  ],
+  <prop:riemannzetafunction_logarithmicderivativezetavonmangoldt>,
+)
 
 #proof[
   By the logarithmic differentiation of the Euler Product Formula
@@ -438,13 +482,16 @@ Results have already shown that an infinite number of zeros lie on this line. Fo
   where the interchange of the order of summation is justified by the absolute convergence of the series for $Re s>1$.
 ]
 
-#proposition[
-  If $Phi$ is holomorphic on a neighborhood of a point $a in RR$ on which $Phi equiv.not 0$ (except for at $a$) such that $Phi(a)=0$, then
-  $
-    Re((Phi'(s))/Phi(s))>0
-  $
-  for $s > a$ near $a$.
-] <prop:positivelogarithmicderivativerealpart>
+#lbl(
+  proposition[
+    If $Phi$ is holomorphic on a neighborhood of a point $a in RR$ on which $Phi equiv.not 0$ (except for at $a$) such that $Phi(a)=0$, then
+    $
+      Re((Phi'(s))/Phi(s))>0
+    $
+    for $s > a$ near $a$.
+  ],
+  <prop:positivelogarithmicderivativerealpart>,
+)
 
 #proof[
   By assumption, $Phi$ has the local Taylor expansion
@@ -457,18 +504,24 @@ Results have already shown that an infinite number of zeros lie on this line. Fo
   for $s>a$ sufficiently close to $a$.
 ]
 
-#theorem[
-  The Riemann $zeta$-function has no zeros on the lines defined by $Re s=0$ and $Re s=1$.
-] <thm:riemannzetafunction_nozerosoncriticalstripboundary>
+#lbl(
+  theorem[
+    The Riemann $zeta$-function has no zeros on the lines defined by $Re s=0$ and $Re s=1$.
+  ],
+  <thm:riemannzetafunction_nozerosoncriticalstripboundary>,
+)
 
 #proof[
   Without loss of generality, we restrict our consideration to the line $Re s=1$ (the other line follows from the functional equation). Suppose that there exists some $a=1+ii t$ for $t in RR without {0}$ such that $zeta(a)=0$.
 
   By @prop:positivelogarithmicderivativerealpart, $exists epsilon>0$
   such that
-  $
-    Re((Phi'(sigma))/Phi(sigma))>0, quad forall 1<sigma<1+epsilon,
-  $ <eq:riemannzetafunction_nolinesofzeros_reallinepositivity>
+  #lbl(
+    $
+      Re((Phi'(sigma))/Phi(sigma))>0, quad forall 1<sigma<1+epsilon,
+    $,
+    <eq:riemannzetafunction_nolinesofzeros_reallinepositivity>,
+  )
   where we define $Phi(s)$ to be holomorphic on the real line (dependent on $t$) via
   $
     Phi(s)=zeta(s)^3 zeta(s+ii t)^4 zeta(s+2 ii t),

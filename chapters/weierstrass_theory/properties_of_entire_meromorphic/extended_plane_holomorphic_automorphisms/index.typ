@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-=== The Group of Meromorphic Automorphisms on $extcomplex$
-
+#show: docs-subsubchapter.with(
+  title: [The Group of Meromorphic Automorphisms on $extcomplex$],
+  route: "extended_plane_holomorphic_automorphisms",
+)
 It is generally common to consider a meromorphic function as a function in the form of $f: U -> extcomplex$. Let $Aut(extcomplex)$ denote the group of meromorphic automorphisms on $extcomplex$.
 
 To make more profound conclusions on the structure of $Aut(extcomplex)$, we will introduce certain concepts from group theory.
@@ -127,9 +128,12 @@ Therefore, any meromorphic automorphism on $extcomplex$ is a composition of rota
 
 The group of holomorphic automorphisms on $DD$, or $Aut(DD)$, is also a subgroup of $Aut(extcomplex)$.
 
-#proposition[
-  Suppose we have two Möbius transformations represented by the matrices $mat(a, b; c, d)$ and $mat(e, f; g, h)$. Then their composition is a Möbius transformation represented by $mat(a, b; c, d) mat(e, f; g, h)$.
-] <prop:mobiustransformationcompositionmatrixmultiplication>
+#lbl(
+  proposition[
+    Suppose we have two Möbius transformations represented by the matrices $mat(a, b; c, d)$ and $mat(e, f; g, h)$. Then their composition is a Möbius transformation represented by $mat(a, b; c, d) mat(e, f; g, h)$.
+  ],
+  <prop:mobiustransformationcompositionmatrixmultiplication>,
+)
 
 #proof[
   From simple substitution, we have

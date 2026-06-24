@@ -1,10 +1,9 @@
 #import "/lib.typ": *
-== Corollaries to the Second Fundamental Theorem
-
-#chapter-section("deficiency_relation")[
-  #include "deficiency_relation/index.typ"
-]
-
-#chapter-section("functions_sharing_values")[
-  #include "functions_sharing_values/index.typ"
-]
+#show: docs-subchapter.with(
+  title: [Corollaries to the Second Fundamental Theorem],
+  route: "corollaries_of_second_theorem",
+  children: [
+    #include "deficiency_relation/index.typ"
+    #include "functions_sharing_values/index.typ"
+  ],
+)

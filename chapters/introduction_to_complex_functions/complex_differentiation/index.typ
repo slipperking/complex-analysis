@@ -1,7 +1,11 @@
 #import "/lib.typ": *
-
-== Complex Differentiation
-
+#show: docs-subchapter.with(
+  title: [Complex Differentiation],
+  route: "complex_differentiation",
+  children: [
+    #include "wirtinger_derivatives/index.typ"
+  ],
+)
 For $U subset.eq CC$ and a complex function $f: U -> CC$, $f(z)$ is _complex differentiable_ at $z in U$ if the following limit exists, regardless of the direction $Delta z$ approaches $0$ from:
 $ lim_(Delta z -> 0) (f(z + Delta z) - f(z)) / (Delta z). $
 
@@ -24,9 +28,9 @@ $
   = pdv(v, y) - ii pdv(u, y).
 $
 By comparing the real and imaginary parts, we obtain necessary conditions for complex differentiability:
-$ pdv(u, x) = pdv(v, y) quad "and" quad pdv(v, x) = -pdv(u, y) $ <eq:cauchy_riemann_eqs_1>
+#lbl($ pdv(u, x) = pdv(v, y) quad "and" quad pdv(v, x) = -pdv(u, y) $, <eq:cauchy_riemann_eqs_1>)
 By multiplying the second equation by $ii$ and adding it to the first, we obtain the equivalent form
-$ pdv(f, x) = -ii pdv(f, y). $ <eq:cauchy_riemann_eqs_2>
+#lbl($ pdv(f, x) = -ii pdv(f, y). $, <eq:cauchy_riemann_eqs_2>)
 The identities @eq:cauchy_riemann_eqs_1 and @eq:cauchy_riemann_eqs_2 are known as the _Cauchy--Riemann equations_.
 
 Although this condition is necessary, it is not sufficient. Consider the function
@@ -52,9 +56,12 @@ Weierstrass provided the following classification:
 
 For the purpose of the following contents, a _region_ or _domain_ will denote a nonempty, open, connected subset of the complex plane.
 
-#theorem[
-  Let $U subset.eq CC$ be open, and let $f: U -> CC$ be a function. Then $f$ is holomorphic on $U$ iff $f in C^1 (U)$ and satisfies the Cauchy--Riemann equations.
-] <thm:holomorphy_condition>
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be open, and let $f: U -> CC$ be a function. Then $f$ is holomorphic on $U$ iff $f in C^1 (U)$ and satisfies the Cauchy--Riemann equations.
+  ],
+  <thm:holomorphy_condition>,
+)
 
 #proof[
   The first part is to prove that any holomorphic function on $U$ has continuous first-order partial derivatives in $U$. This requires an argument that will be covered later, specifically in @sec:analyticity_and_holomorphy, which states that the complex derivative of any holomorphic function is also holomorphic over the region.
@@ -97,32 +104,35 @@ $ laplacian = div grad = pdv(, x, 2) + pdv(, y, 2). $
 Thus, the real and complex parts of a holomorphic function are harmonic functions.
 
 Letting $x = r cos theta$, $y = r sin theta$, the Laplacian is equal to:
-$
-  laplacian & = pdv(, x, 2) + pdv(, y, 2)
-  = pdv(, x)(pdv(r, x) pdv(, r) + pdv(theta, x) pdv(, theta))
-  + pdv(, y)(pdv(r, y) pdv(, r) + pdv(theta, y) pdv(, theta)) \
-  & = pdv(, x)(x/r pdv(, r) - y/r^2 pdv(, theta))
-  + pdv(, y)(y/r pdv(, r) + x/r^2 pdv(, theta)) \
-  & = (x/r pdv(, r) - y/r^2 pdv(, theta))(x/r pdv(, r) - y/r^2 pdv(, theta)) + (y/r pdv(, r) + x/r^2 pdv(, theta))(y/r pdv(, r) + x/r^2 pdv(, theta)) \
-  & = (cos theta pdv(, r) - (sin theta)/r pdv(, theta))(cos theta pdv(, r) - (sin theta)/r pdv(, theta)) \
-  & quad"" + (sin theta pdv(, r) + (cos theta)/r pdv(, theta))(sin theta pdv(, r) + (cos theta)/r pdv(, theta)) \
-  & = cos^2 theta pdv(, r, 2)
-  - cos theta sin theta (-1/r^2 pdv(, theta) + 1/r pdv(, theta, r)) \
-  & quad"" - (sin theta)/r (-sin theta pdv(, r) + cos theta pdv(, theta, r))
-  + (sin theta)/r^2 (cos theta pdv(, theta) + sin theta pdv(, theta, 2)) \
-  & wide"" + sin^2 theta pdv(, r, 2)
-  + sin theta cos theta (-1/r^2 pdv(, theta) + 1/r pdv(, theta, r)) \
-  & quad wide"" + (cos theta)/r (cos theta pdv(, r) + sin theta pdv(, theta, r)) + (cos theta)/r^2 (-sin theta pdv(, theta) + cos theta pdv(, theta, 2)) \
-  & = pdv(, r, 2) + 1/r^2 pdv(, theta, 2) + 1/r pdv(, r).
-$ <eq:laplacianpolarform>
+#lbl(
+  $
+    laplacian & = pdv(, x, 2) + pdv(, y, 2)
+    = pdv(, x)(pdv(r, x) pdv(, r) + pdv(theta, x) pdv(, theta))
+    + pdv(, y)(pdv(r, y) pdv(, r) + pdv(theta, y) pdv(, theta)) \
+    & = pdv(, x)(x/r pdv(, r) - y/r^2 pdv(, theta))
+    + pdv(, y)(y/r pdv(, r) + x/r^2 pdv(, theta)) \
+    & = (x/r pdv(, r) - y/r^2 pdv(, theta))(x/r pdv(, r) - y/r^2 pdv(, theta)) + (y/r pdv(, r) + x/r^2 pdv(, theta))(y/r pdv(, r) + x/r^2 pdv(, theta)) \
+    & = (cos theta pdv(, r) - (sin theta)/r pdv(, theta))(cos theta pdv(, r) - (sin theta)/r pdv(, theta)) \
+    & quad"" + (sin theta pdv(, r) + (cos theta)/r pdv(, theta))(sin theta pdv(, r) + (cos theta)/r pdv(, theta)) \
+    & = cos^2 theta pdv(, r, 2)
+    - cos theta sin theta (-1/r^2 pdv(, theta) + 1/r pdv(, theta, r)) \
+    & quad"" - (sin theta)/r (-sin theta pdv(, r) + cos theta pdv(, theta, r))
+    + (sin theta)/r^2 (cos theta pdv(, theta) + sin theta pdv(, theta, 2)) \
+    & wide"" + sin^2 theta pdv(, r, 2)
+    + sin theta cos theta (-1/r^2 pdv(, theta) + 1/r pdv(, theta, r)) \
+    & quad wide"" + (cos theta)/r (cos theta pdv(, r) + sin theta pdv(, theta, r)) + (cos theta)/r^2 (-sin theta pdv(, theta) + cos theta pdv(, theta, 2)) \
+    & = pdv(, r, 2) + 1/r^2 pdv(, theta, 2) + 1/r pdv(, r).
+  $,
+  <eq:laplacianpolarform>,
+)
 
-#proposition[
-  Let $U subset.eq CC$ be open and connected and let $f: U -> RR$ be holomorphic. It follows that $f$ is constant over $U$.
-] <prop:realvaluedholomorphicfunctionconstant>
+#lbl(
+  proposition[
+    Let $U subset.eq CC$ be open and connected and let $f: U -> RR$ be holomorphic. It follows that $f$ is constant over $U$.
+  ],
+  <prop:realvaluedholomorphicfunctionconstant>,
+)
 
 #proof[
   Since $f(x, y) = u(x, y) + ii v(x, y)$ is real-valued, $v(x, y) equiv 0$ on $U$. Then by the Cauchy--Riemann equations on $U$, $pdv(u, x) = pdv(v, y) = 0$. Similarly, $pdv(u, y) = -pdv(v, x) = 0.$ Therefore, $f(z) = u(z)$ is constant.
-]
-#chapter-section("wirtinger_derivatives")[
-  #include "wirtinger_derivatives/index.typ"
 ]

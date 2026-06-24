@@ -1,6 +1,9 @@
 #import "/lib.typ": *
-
-== Gaussian Curvature of a Surface <sec:gaussiancurvatureofsurface>
+#show: docs-subchapter.with(
+  title: [Gaussian Curvature of a Surface],
+  route: "gaussian_curvature_of_surface",
+  label: <sec:gaussiancurvatureofsurface>,
+)
 #let II-matrix = $vb(I #h(-0.15em) I)$
 
 We will give a brief introduction to the curvature of a surface for heuristic intuition.
@@ -15,9 +18,12 @@ where $x, y, z in C^2 (U)$. If $va(r)'_u times va(r)'_v$ never vanishes for $(u,
 
 The square of the length of the vector infinitesimal $dif va(r)=va(r)'_u dif u + va(r)'_v dif v$, or
 
-$
-  upright(I)=dif s^2=E dif u^2 + 2 F dif u dif v + G dif v^2,
-$ <eq:firstfundamentalform>
+#lbl(
+  $
+    upright(I)=dif s^2=E dif u^2 + 2 F dif u dif v + G dif v^2,
+  $,
+  <eq:firstfundamentalform>,
+)
 
 is known as the _first fundamental form_ of $Sigma$, where $E=va(r)'_u dot va(r)'_u$, $F=va(r)'_u dot va(r)'_v$, and $G=va(r)'_v dot va(r)'_v$.
 
@@ -31,9 +37,12 @@ $
   arrow(P Q) dot vu(n)=1 / 2 (va(r)''_(u u) dot vu(n) Delta u^2 + 2 va(r)''_(u v) dot vu(n) Delta u Delta v + va(r)''_(v v) dot vu(n) Delta v^2) + Order(Delta u^3 + Delta v^3),
 $
 where the first two linear terms vanished by properties of the scalar triple product. Omitting the higher order terms and the coefficient, the _second fundamental form_ of $Sigma$ is defined as
-$
-  #II-num=L dif u^2 + 2 M dif u dif v + N dif v^2,
-$ <eq:second_fundamental_form>
+#lbl(
+  $
+    #II-num=L dif u^2 + 2 M dif u dif v + N dif v^2,
+  $,
+  <eq:second_fundamental_form>,
+)
 
 where $L=va(r)''_(u u) dot vu(n)$, $M=va(r)''_(u v) dot vu(n)$, and $N=va(r)''_(v v) dot vu(n)$. Since $va(r)'_u dot vu(n)=0$ and $va(r)'_v dot vu(n)=0$, by differentiation, we have
 
@@ -49,61 +58,64 @@ $
 $
 
 #figure-wrapper([
-  #figure(
-    {
-      cetz.canvas(length: 3cm, {
-        import cetz.draw: *
-        let para(u, v) = (u, u * u + v * v, v)
+  #lbl(
+    figure(
+      {
+        canvas(length: 3cm, {
+          import cetz.draw: *
+          let para(u, v) = (u, u * u + v * v, v)
 
-        ortho(x: 25deg, y: -25deg, {
-          let n = 10
-          let s = 20
+          ortho(x: 25deg, y: -25deg, {
+            let n = 10
+            let s = 20
 
-          for i in range(0, n + 1) {
-            let v = -1 + 2 * i / n
+            for i in range(0, n + 1) {
+              let v = -1 + 2 * i / n
+              line(
+                ..(range(0, s + 1).map(j => para(-1 + 2 * j / s, v))),
+                stroke: (paint: black.transparentize(60%), thickness: 0.3pt),
+              )
+            }
+            for i in range(0, n + 1) {
+              let u = -1 + 2 * i / n
+              line(
+                ..(range(0, s + 1).map(j => para(u, -1 + 2 * j / s))),
+                stroke: (paint: black.transparentize(60%), thickness: 0.3pt),
+              )
+            }
+
+            let tp = 5
+            for i in range(0, tp + 1) {
+              let t = -1.1 + 2.2 * i / tp
+              line((t, 0, -1.1), (t, 0, 1.1), stroke: (paint: black.transparentize(50%), thickness: 0.5pt))
+              line((-1.1, 0, t), (1.1, 0, t), stroke: (paint: black.transparentize(50%), thickness: 0.5pt))
+            }
+
+            let P = (0.0, 0.00, 0.0)
+            let Q = (0.5, 0.34, 0.3)
+            let Qp = (0.5, 0.00, 0.3)
+            anchor("P", P)
+            anchor("Q", Q)
+            anchor("Qp", Qp)
             line(
-              ..(range(0, s + 1).map(j => para(-1 + 2 * j / s, v))),
-              stroke: (paint: black.transparentize(60%), thickness: 0.3pt),
+              ..(range(0, 51).map(i => para(0.5 * i / 50, 0.3 * i / 50))),
+              stroke: (paint: black, thickness: 0.5pt),
             )
-          }
-          for i in range(0, n + 1) {
-            let u = -1 + 2 * i / n
-            line(
-              ..(range(0, s + 1).map(j => para(u, -1 + 2 * j / s))),
-              stroke: (paint: black.transparentize(60%), thickness: 0.3pt),
-            )
-          }
 
-          let tp = 5
-          for i in range(0, tp + 1) {
-            let t = -1.1 + 2.2 * i / tp
-            line((t, 0, -1.1), (t, 0, 1.1), stroke: (paint: black.transparentize(50%), thickness: 0.5pt))
-            line((-1.1, 0, t), (1.1, 0, t), stroke: (paint: black.transparentize(50%), thickness: 0.5pt))
-          }
-
-          let P = (0.0, 0.00, 0.0)
-          let Q = (0.5, 0.34, 0.3)
-          let Qp = (0.5, 0.00, 0.3)
-          anchor("P", P)
-          anchor("Q", Q)
-          anchor("Qp", Qp)
-          line(
-            ..(range(0, 51).map(i => para(0.5 * i / 50, 0.3 * i / 50))),
-            stroke: (paint: black, thickness: 0.5pt),
-          )
-
-          line(Q, Qp, stroke: (paint: black, thickness: 0.5pt, dash: "dotted"))
-          line(P, Qp, stroke: (paint: black, thickness: 0.5pt, dash: "dotted"))
+            line(Q, Qp, stroke: (paint: black, thickness: 0.5pt, dash: "dotted"))
+            line(P, Qp, stroke: (paint: black, thickness: 0.5pt, dash: "dotted"))
+          })
+          circle("P", radius: 0.022, fill: black)
+          circle("Q", radius: 0.022, fill: black)
+          content("P", $P = va(r)(u, v)$, anchor: "east", padding: 3pt)
+          content("Q", $Q = va(r)(u + Delta u, v + Delta v)$, anchor: "west", padding: 3pt)
+          content((-0.9, 0.1, -0.9), $T_P Sigma$)
         })
-        circle("P", radius: 0.022, fill: black)
-        circle("Q", radius: 0.022, fill: black)
-        content("P", $P = va(r)(u, v)$, anchor: "east", padding: 3pt)
-        content("Q", $Q = va(r)(u + Delta u, v + Delta v)$, anchor: "west", padding: 3pt)
-        content((-0.9, 0.1, -0.9), $T_P Sigma$)
-      })
-    },
-    caption: [$Q$ has a greater heuristic distance to $T_P Sigma$ for a more curved surface.],
-  ) <fig:second_fundamental_form>
+      },
+      caption: [$Q$ has a greater heuristic distance to $T_P Sigma$ for a more curved surface.],
+    ),
+    <fig:second_fundamental_form>,
+  )
 ])
 
 The second fundamental form, in a rough sense, measures the curvature of the surface $Sigma$ at $P$ (refer to @fig:second_fundamental_form). Both the first and second fundamental forms are geometric invariants; they are independent of the parameterization $va(r)$ of $Sigma$. The first fundamental form is also referred to as the _intrinsic metric_ (we will not delve into the metric tensor here) of $Sigma$, and the second fundamental form is an _extrinsic_ property of $Sigma$ as it is invariant up to the orientation of the surface (consequent direction of the normal vector).
@@ -170,9 +182,12 @@ $
 
 The first two equations can be written as
 
-$
-  mat(L - lambda E, M - lambda F; M - lambda F, N - lambda G) va(v)=vb(0).
-$ <eq:gaussiancurvaturelambdarootsmatrixvectorvanish>
+#lbl(
+  $
+    mat(L - lambda E, M - lambda F; M - lambda F, N - lambda G) va(v)=vb(0).
+  $,
+  <eq:gaussiancurvaturelambdarootsmatrixvectorvanish>,
+)
 
 Let the matrix on the left be denoted by $vb(M)$. In order for non-trivial $(vb(v) eq.not vb(0))$ to exist, we must have $det vb(M)=0$. That is,
 
@@ -232,15 +247,21 @@ $
 
 we have
 
-$
-  va(r)''_(u u) dot va(r)'_v + va(r)'_u dot va(r)''_(u v) equiv 0, quad va(r)''_(u v) dot va(r)'_v + va(r)'_u dot va(r)''_(v v) equiv 0,
-$ <eq:gaussian_curvature_of_surface_conformal_zero_differentiation>
+#lbl(
+  $
+    va(r)''_(u u) dot va(r)'_v + va(r)'_u dot va(r)''_(u v) equiv 0, quad va(r)''_(u v) dot va(r)'_v + va(r)'_u dot va(r)''_(v v) equiv 0,
+  $,
+  <eq:gaussian_curvature_of_surface_conformal_zero_differentiation>,
+)
 
 and
 
-$
-  2 va(r)''_(u u) dot va(r)'_u equiv 2 rho rho'_u equiv 2 va(r)''_(u v) dot va(r)'_v, quad 2 va(r)''_(u v) dot va(r)'_u equiv 2 rho rho'_v equiv 2 va(r)''_(v v) dot va(r)'_v.
-$ <eq:gaussian_curvature_of_surface_conformal_nonzero_differentiation>
+#lbl(
+  $
+    2 va(r)''_(u u) dot va(r)'_u equiv 2 rho rho'_u equiv 2 va(r)''_(u v) dot va(r)'_v, quad 2 va(r)''_(u v) dot va(r)'_u equiv 2 rho rho'_v equiv 2 va(r)''_(v v) dot va(r)'_v.
+  $,
+  <eq:gaussian_curvature_of_surface_conformal_nonzero_differentiation>,
+)
 
 Substituting @eq:gaussian_curvature_of_surface_conformal_nonzero_differentiation into @eq:gaussian_curvature_of_surface_conformal_zero_differentiation then gives
 
@@ -284,10 +305,13 @@ $
 
 Combining the two expressions, we have
 
-$
-  K & =(L N - M^2)/(E G - F^2)=(va(r)''_(v v) dot va(r)''_(u u) + 2 (rho'_u)^2 + 2 (rho'_v)^2 - va(r)''_(u v) dot va(r)''_(u v)) / rho^4 \
-  & = ((rho'_u)^2 + (rho'_v)^2 - rho laplacian rho) / rho^4 = -(1)/(rho^2) laplacian(log rho).
-$ <eq:gaussiancurvatureofsurface_gaussiancurvatureconformalmetricformula>
+#lbl(
+  $
+    K & =(L N - M^2)/(E G - F^2)=(va(r)''_(v v) dot va(r)''_(u u) + 2 (rho'_u)^2 + 2 (rho'_v)^2 - va(r)''_(u v) dot va(r)''_(u v)) / rho^4 \
+    & = ((rho'_u)^2 + (rho'_v)^2 - rho laplacian rho) / rho^4 = -(1)/(rho^2) laplacian(log rho).
+  $,
+  <eq:gaussiancurvatureofsurface_gaussiancurvatureconformalmetricformula>,
+)
 
 To understand the motivation for which $dif s^2$ is said to be conformal, consider two curves in the $u v$-plane, parameterized by $bold(gamma)_1 (t)=(u_1 (t), v_1 (t))$ and $bold(gamma)_2 (t)=(u_2 (t), v_2 (t))$ such that $bold(gamma)_1 (0)=bold(gamma)_2 (0)=vb(w)_0=(u_0, v_0)$. Their images via $vb(r)$ are $vb(alpha)_1 (t)=vb(r) compose bold(gamma)_1 (t)$ and $vb(alpha)_2 (t)=vb(r) compose bold(gamma)_2 (t)$ so that they intersect at some point $P in Sigma$. Let $bold(gamma)'_1 (0)=vb(v)_1=a vb(e)_u + b vb(e)_v$ and $bold(gamma)'_2 (0)=vb(v)_2=c vb(e)_u + d vb(e)_v$ be two tangent vectors. Then the corresponding vectors in $T_P Sigma$ are
 

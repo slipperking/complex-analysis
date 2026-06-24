@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-=== The Group of Holomorphic Automorphisms on $CC$
-
+#show: docs-subsubchapter.with(
+  title: [The Group of Holomorphic Automorphisms on $CC$],
+  route: "complex_plane_holomorphic_automorphisms",
+)
 In complex analysis, three main sets of interest are $DD$, $CC$, and $extcomplex$. We will now find $Aut(CC)$.
 
 #theorem[The Holomorphic Automorphism Group on $CC$][

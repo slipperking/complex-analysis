@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== Biholomorphy
-
+#show: docs-subchapter.with(
+  title: [Biholomorphy],
+  route: "biholomorphy",
+)
 In @sec:conformality_introduction, it was asserted that for a holomorphic function $f(z)$, the map $w = f(z)$ is conformal when $f'(z) != 0$.
 
 We have the following immediate assertion:
@@ -23,9 +24,12 @@ We have the following immediate assertion:
 
 Holomorphic injectivity, or univalence, satisfies the proceeding assertion:
 
-#lemma[
-  Let $U subset.eq CC$ be a region and suppose $f:U -> CC$ is univalent. Then $f'$ is non-vanishing on $U$.
-] <lem:univalentnonvanishingderivative>
+#lbl(
+  lemma[
+    Let $U subset.eq CC$ be a region and suppose $f:U -> CC$ is univalent. Then $f'$ is non-vanishing on $U$.
+  ],
+  <lem:univalentnonvanishingderivative>,
+)
 
 #proof[
   Suppose, for the sake of contradiction, that $f$ is univalent on $U$ such that $exists z_0 in U$ such that $f'(z_0) = 0$. Let $w_0 = f(z_0)$. The previous statement is equivalent to: $f(z) - w_0$ has a zero at $z_0$ with multiplicity $m >= 2$.
@@ -35,9 +39,12 @@ Holomorphic injectivity, or univalence, satisfies the proceeding assertion:
 
 Conversely, we have the following statement on local univalence and invertibility.
 
-#theorem[
-  Let $U subset.eq CC$ be a region and suppose $f:U -> CC$ is holomorphic. If $f'(z_0) != 0$ for some $z_0 in U$, then there exists an open neighborhood of $z_0$ on which $f$ is univalent.
-] <thm:nonvanishingderivativeunivalentonneighborhood>
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be a region and suppose $f:U -> CC$ is holomorphic. If $f'(z_0) != 0$ for some $z_0 in U$, then there exists an open neighborhood of $z_0$ on which $f$ is univalent.
+  ],
+  <thm:nonvanishingderivativeunivalentonneighborhood>,
+)
 
 #proof[
   Let $w_0 = f(z_0)$. Since $lim_(z -> z_0) f(z) - w_0 = 0$ and $lim_(z -> z_0) (f(z) - w_0) / (z - z_0) != 0$, it follows that $z_0$ is a simple zero of $f(z) - w_0$. Let $V$ be an open neighborhood (relatively compact in $U$) of $z_0$ whose closure does not contain other zeros of $f - w_0$. By @thm:hurwitzshifts, $exists delta > 0$ such that $forall w in D(w_0, delta)$, $f(z) = w$ has only one solution for $z$ satisfying $z in V$. Therefore, we can choose a relatively compact open subset $W$ of $V$ such that $f(W) subset.eq D(w_0, delta)$, on which $f$ is univalent.
@@ -47,9 +54,12 @@ Moreover, if $w = f(z)$ is univalent and surjective, mapping $U$ to $G$, then it
 
 We will now study holomorphic functions from a more geometric perspective.
 
-#theorem[
-  Let $Omega subset.eq CC$ be a region, and let $gamma subset Omega$ be a rectifiable simple closed counterclockwise-oriented curve that is null-homotopic in $Omega$. Denote $jinterior(gamma)$ by $U$. If $f:Omega -> CC$ is holomorphic and maps $gamma$ injectively to a simple closed curve $Gamma$, then $w = f(z)$ is univalent in $U$, $f(U) = jinterior(Gamma)$, and $Gamma$ is traversed counterclockwise.
-] <thm:boundaryofconformalmap>
+#lbl(
+  theorem[
+    Let $Omega subset.eq CC$ be a region, and let $gamma subset Omega$ be a rectifiable simple closed counterclockwise-oriented curve that is null-homotopic in $Omega$. Denote $jinterior(gamma)$ by $U$. If $f:Omega -> CC$ is holomorphic and maps $gamma$ injectively to a simple closed curve $Gamma$, then $w = f(z)$ is univalent in $U$, $f(U) = jinterior(Gamma)$, and $Gamma$ is traversed counterclockwise.
+  ],
+  <thm:boundaryofconformalmap>,
+)
 
 #proof[
   Let $w_0 in CC$. Let $k=k(w_0)$ be the number of zeros of $f - w_0$ in $U$. By the Argument Principle (@thm:argumentprincipleholomorphic), for $w_0 in.not Gamma$,
@@ -80,18 +90,27 @@ We will now give examples of biholomorphisms.
 
 #example[
   The only biholomorphisms which map $DD$ to itself are in the form of
-  $
-    w = ee^(ii theta) (z - a) / (1 - overline(a) z), quad a in DD, theta in RR.
-  $ <eq:biholomorphismunitdiskautomorphism>
+  #lbl(
+    $
+      w = ee^(ii theta) (z - a) / (1 - overline(a) z), quad a in DD, theta in RR.
+    $,
+    <eq:biholomorphismunitdiskautomorphism>,
+  )
   This follows directly from @thm:holomorphicautomorphismgrouponunitdisk.
 ]
 
-#example[
-  The only biholomorphisms which map $HH^+$ to $DD$ are in the form of
-  $
-    w = ee^(ii theta) (z - a) / (z - overline(a)), quad a in HH^+, theta in RR.
-  $ <eq:biholomorphismunitdisktoupperhalfplane>
-] <ex:biholomorphismsupperhalfplanetounitdisk>
+#lbl(
+  example[
+    The only biholomorphisms which map $HH^+$ to $DD$ are in the form of
+    #lbl(
+      $
+        w = ee^(ii theta) (z - a) / (z - overline(a)), quad a in HH^+, theta in RR.
+      $,
+      <eq:biholomorphismunitdisktoupperhalfplane>,
+    )
+  ],
+  <ex:biholomorphismsupperhalfplanetounitdisk>,
+)
 
 #proof[
   First assume $y = Im(z) > 0$. It follows that
@@ -99,9 +118,12 @@ We will now give examples of biholomorphisms.
     abs(w) = abs((z - a) / (z - overline(a))) = sqrt(((x - Re(a))^2 + (y - Im(a))^2) / ((x - Re(a))^2 + (y + Im(a))^2)) < 1.
   $
   Therefore, this transformation maps $HH^+$ to $DD$. The inverse mapping is equal to
-  $
-    z = (w overline(a) - a ee^(ii theta)) / (w - ee^(ii theta)).
-  $ <eq:biholomorphismunitdisktoupperhalfplane_inverse>
+  #lbl(
+    $
+      z = (w overline(a) - a ee^(ii theta)) / (w - ee^(ii theta)).
+    $,
+    <eq:biholomorphismunitdisktoupperhalfplane_inverse>,
+  )
 
   Assume $w in DD$. We then have
   $
@@ -122,18 +144,24 @@ We will now give examples of biholomorphisms.
 
 Let us now introduce some important properties of linear fractional transformations. By @prop:mobiustransformationcompositionmatrixmultiplication, it follows that the composition of two linear fractional transformations is also a linear fractional transformation.
 
-#theorem[
-  Let $cal(C)$ be the collection of subsets of $extcomplex$ that are circles or $L union {oo}$, where $L$ is a straight line in $CC$ (known as _generalized circles_). Then every linear fractional transformation $f:extcomplex -> extcomplex$ maps elements of $cal(C)$ to elements of $cal(C)$.
-] <thm:linear_fractional_transformation_maps_circles_to_circles>
+#lbl(
+  theorem[
+    Let $cal(C)$ be the collection of subsets of $extcomplex$ that are circles or $L union {oo}$, where $L$ is a straight line in $CC$ (known as _generalized circles_). Then every linear fractional transformation $f:extcomplex -> extcomplex$ maps elements of $cal(C)$ to elements of $cal(C)$.
+  ],
+  <thm:linear_fractional_transformation_maps_circles_to_circles>,
+)
 
 #proof[
   Since each linear fractional transformation is a composition of maps in the form of $z |-> a z$, $z |-> z + b$, and $z |-> 1 / z$, it suffices to show that these maps preserve the property of being a circle or a straight line. Consider a circle defined implicitly with
   $ alpha (x^2 + y^2) + beta x + gamma y + delta = 0, quad x, y in RR, alpha, beta, gamma, delta in RR. $
   For $z = x + ii y$, this can be rewritten as
-  $
-    &alpha z overline(z) + beta (z + overline(z)) / 2 + gamma (z - overline(z)) / (2 ii) + delta \
-    &quad""= alpha z overline(z) + xi z + overline(xi) overline(z) + delta = 0 quad "for" quad xi = beta / 2 + gamma / (2 ii).
-  $ <eq:linear_fractional_transformation_maps_circles_to_circles_circlecomplexform>
+  #lbl(
+    $
+      &alpha z overline(z) + beta (z + overline(z)) / 2 + gamma (z - overline(z)) / (2 ii) + delta \
+      &quad""= alpha z overline(z) + xi z + overline(xi) overline(z) + delta = 0 quad "for" quad xi = beta / 2 + gamma / (2 ii).
+    $,
+    <eq:linear_fractional_transformation_maps_circles_to_circles_circlecomplexform>,
+  )
 
   If $alpha = 0$, the equation represents a straight line. It is easy to see that a complex dilation or a translation of $z$ will preserve the property of being a straight line or a circle. Indeed, by letting $z = a zeta$ for nonzero $a$ in @eq:linear_fractional_transformation_maps_circles_to_circles_circlecomplexform, we have
   $

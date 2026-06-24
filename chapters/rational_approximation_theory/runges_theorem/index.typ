@@ -1,193 +1,200 @@
 #import "/lib.typ": *
-
-== Runge's Theorem
-
+#show: docs-subchapter.with(
+  title: [Runge's Theorem],
+  route: "runges_theorem",
+)
 In the earliest formulation by Carl Runge in 1885, he provided the sufficiency of the holomorphy of $f$ on $K$ (in effect, a neighborhood of $K$).
 
 The proof can be well-organized through the use of the results that we will now introduce. In essence, it involves applying Cauchy--Goursat to $f$ and the subsequent use of Riemann sums to approximate the complex line integral.
 
-#proposition[
-  Let $K subset.eq CC$ be compact and suppose $U supset K$ is a neighborhood of $K$ that is relatively compact in $CC$. Let $f:U -> CC$ be an arbitrary holomorphic function. Then for fixed $epsilon > 0$, there exists a rational function $psi(z)$ with only simple poles (all of which lie in $CC without K$) such that
-  $
-    lim_(z -> oo) psi(z) = 0, quad sup_(z in K) abs(f(z) - psi(z)) < epsilon.
-  $
-] <prop:rungesimplepolesandremovablesingularityatinfinity>
+#lbl(
+  proposition[
+    Let $K subset.eq CC$ be compact and suppose $U supset K$ is a neighborhood of $K$ that is relatively compact in $CC$. Let $f:U -> CC$ be an arbitrary holomorphic function. Then for fixed $epsilon > 0$, there exists a rational function $psi(z)$ with only simple poles (all of which lie in $CC without K$) such that
+    $
+      lim_(z -> oo) psi(z) = 0, quad sup_(z in K) abs(f(z) - psi(z)) < epsilon.
+    $
+  ],
+  <prop:rungesimplepolesandremovablesingularityatinfinity>,
+)
 
 #figure-wrapper([
-  #figure(
-    cetz.canvas({
-      import cetz.draw: *
+  #lbl(
+    figure(
+      canvas({
+        import cetz.draw: *
 
-      let filled-cells(grid) = {
-        let cells = ()
-        for (x, col) in grid.enumerate() {
-          for (y, v) in col.enumerate() {
-            if v { cells.push((x, y)) }
-          }
-        }
-        cells
-      }
-
-      let boundary-edges(grid) = {
-        let set_ = (:)
-        let rows = grid.len()
-        let cols = if rows > 0 { grid.at(0).len() } else { 0 }
-
-        let filled(x, y) = {
-          if x < 0 or y < 0 or x >= rows or y >= cols { false } else { grid.at(x).at(y) }
-        }
-
-        for (x, col) in grid.enumerate() {
-          for (y, v) in col.enumerate() {
-            if not v { continue }
-            let edges = (
-              ((x, y), (x + 1, y)),
-              ((x, y + 1), (x + 1, y + 1)),
-              ((x, y), (x, y + 1)),
-              ((x + 1, y), (x + 1, y + 1)),
-            )
-            let neighbours = (
-              filled(x, y - 1),
-              filled(x, y + 1),
-              filled(x - 1, y),
-              filled(x + 1, y),
-            )
-            for (i, edge) in edges.enumerate() {
-              if not neighbours.at(i) {
-                let k = repr(edge)
-                set_.insert(k, edge)
-              }
-            }
-          }
-        }
-        set_.values()
-      }
-
-      let adjacency(edges) = {
-        let adj = (:)
-        for (a, b) in edges {
-          let ka = repr(a)
-          let kb = repr(b)
-          adj.insert(ka, adj.at(ka, default: ()) + (b,))
-          adj.insert(kb, adj.at(kb, default: ()) + (a,))
-        }
-        adj
-      }
-
-      let trace-polygon(start, adj) = {
-        let poly = (start,)
-        let prev = none
-        let cur = start
-
-        while true {
-          let nexts = adj.at(repr(cur))
-          let next = none
-          for n in nexts {
-            if n != prev {
-              next = n
-              break
-            }
-          }
-          if next == none or next == start { break }
-          poly.push(next)
-          prev = cur
-          cur = next
-        }
-        poly
-      }
-
-      let draw-grid-shape(
-        grid,
-        cell: 1,
-        dot-stroke: (thickness: 0.3pt, dash: ("dot", "dot")),
-        poly-stroke: (thickness: 0.9pt),
-      ) = {
-        if dot-stroke != none {
+        let filled-cells(grid) = {
+          let cells = ()
           for (x, col) in grid.enumerate() {
             for (y, v) in col.enumerate() {
-              if v {
-                let x0 = cell * x
-                let y0 = cell * y
-                line(
-                  (x0, y0),
-                  (x0 + cell, y0),
-                  (x0 + cell, y0 + cell),
-                  (x0, y0 + cell),
-                  close: true,
-                  stroke: dot-stroke,
-                )
+              if v { cells.push((x, y)) }
+            }
+          }
+          cells
+        }
+
+        let boundary-edges(grid) = {
+          let set_ = (:)
+          let rows = grid.len()
+          let cols = if rows > 0 { grid.at(0).len() } else { 0 }
+
+          let filled(x, y) = {
+            if x < 0 or y < 0 or x >= rows or y >= cols { false } else { grid.at(x).at(y) }
+          }
+
+          for (x, col) in grid.enumerate() {
+            for (y, v) in col.enumerate() {
+              if not v { continue }
+              let edges = (
+                ((x, y), (x + 1, y)),
+                ((x, y + 1), (x + 1, y + 1)),
+                ((x, y), (x, y + 1)),
+                ((x + 1, y), (x + 1, y + 1)),
+              )
+              let neighbours = (
+                filled(x, y - 1),
+                filled(x, y + 1),
+                filled(x - 1, y),
+                filled(x + 1, y),
+              )
+              for (i, edge) in edges.enumerate() {
+                if not neighbours.at(i) {
+                  let k = repr(edge)
+                  set_.insert(k, edge)
+                }
               }
             }
           }
+          set_.values()
         }
-        let edges = boundary-edges(grid)
-        let adj = adjacency(edges)
 
-        let start = if edges.len() > 0 { edges.at(0).at(0) } else { none }
-        if start == none { return }
-
-        let poly-grid = trace-polygon(start, adj)
-
-        let pts = poly-grid.map(((gx, gy)) => (cell * gx, cell * gy))
-        line(..pts, close: true, stroke: poly-stroke)
-      }
-      let my-grid = {
-        let g = ()
-        for x in range(8) {
-          let col = ()
-          for y in range(8) {
-            col.push(
-              if x == 0 { y == 0 } else if x == 1 { y != 2 and y != 4 and y != 5 } else if x == 2 {
-                y != 0 and y != 7
-              } else if x == 3 { y != 0 } else if x == 4 { true } else if x == 5 { y != 7 } else if x == 6 {
-                y != 2 and y != 7
-              } else { y == 3 or y == 5 or y == 6 },
-            )
+        let adjacency(edges) = {
+          let adj = (:)
+          for (a, b) in edges {
+            let ka = repr(a)
+            let kb = repr(b)
+            adj.insert(ka, adj.at(ka, default: ()) + (b,))
+            adj.insert(kb, adj.at(kb, default: ()) + (a,))
           }
-          g.push(col)
+          adj
         }
-        g
-      }
 
-      draw-grid-shape(my-grid, cell: 0.8)
-      catmull(
-        (6.08, 4.8),
-        (3.52, 4.16),
-        (5.92, 2.72),
-        (3.68, 3.36),
-        (5.28, 0.32),
-        (3.36, 0.8),
-        (3.84, 1.28),
-        (1.92, 0.96),
-        (0.48, 0.48),
-        (2.56, 1.92),
-        (1.28, 2.72),
-        (2.4, 3.84),
-        (0.96, 5.76),
-        (2.72, 4.96),
-        (3.36, 6.24),
-        (3.68, 5.12),
-        close: true,
-        tension: 0.5,
-        stroke: 0.9pt,
-      )
+        let trace-polygon(start, adj) = {
+          let poly = (start,)
+          let prev = none
+          let cur = start
 
-      catmull(
-        (0, -0.32),
-        (0.32, 6.4),
-        (6.4, 6.24),
-        (6.24, 0),
-        close: true,
-        tension: 0.5,
-        stroke: 0.9pt,
-      )
+          while true {
+            let nexts = adj.at(repr(cur))
+            let next = none
+            for n in nexts {
+              if n != prev {
+                next = n
+                break
+              }
+            }
+            if next == none or next == start { break }
+            poly.push(next)
+            prev = cur
+            cur = next
+          }
+          poly
+        }
 
-      content((3.2, 3.2), $K$, anchor: "east")
-      content((4.8, 6.4), $partial tilde(K)$, anchor: "north")
-      content((3.2, 7.2), $partial U$, anchor: "south", padding: 3pt)
-    }),
-    caption: [The elements of $cal(G)$, relative to $K$ and its neighborhood, $U$.],
-  ) <fig:runge_simple_poles_and_removable_singularity_at_infinity_grid>
+        let draw-grid-shape(
+          grid,
+          cell: 1,
+          dot-stroke: (thickness: 0.3pt, dash: ("dot", "dot")),
+          poly-stroke: (thickness: 0.9pt),
+        ) = {
+          if dot-stroke != none {
+            for (x, col) in grid.enumerate() {
+              for (y, v) in col.enumerate() {
+                if v {
+                  let x0 = cell * x
+                  let y0 = cell * y
+                  line(
+                    (x0, y0),
+                    (x0 + cell, y0),
+                    (x0 + cell, y0 + cell),
+                    (x0, y0 + cell),
+                    close: true,
+                    stroke: dot-stroke,
+                  )
+                }
+              }
+            }
+          }
+          let edges = boundary-edges(grid)
+          let adj = adjacency(edges)
+
+          let start = if edges.len() > 0 { edges.at(0).at(0) } else { none }
+          if start == none { return }
+
+          let poly-grid = trace-polygon(start, adj)
+
+          let pts = poly-grid.map(((gx, gy)) => (cell * gx, cell * gy))
+          line(..pts, close: true, stroke: poly-stroke)
+        }
+        let my-grid = {
+          let g = ()
+          for x in range(8) {
+            let col = ()
+            for y in range(8) {
+              col.push(
+                if x == 0 { y == 0 } else if x == 1 { y != 2 and y != 4 and y != 5 } else if x == 2 {
+                  y != 0 and y != 7
+                } else if x == 3 { y != 0 } else if x == 4 { true } else if x == 5 { y != 7 } else if x == 6 {
+                  y != 2 and y != 7
+                } else { y == 3 or y == 5 or y == 6 },
+              )
+            }
+            g.push(col)
+          }
+          g
+        }
+
+        draw-grid-shape(my-grid, cell: 0.8)
+        catmull(
+          (6.08, 4.8),
+          (3.52, 4.16),
+          (5.92, 2.72),
+          (3.68, 3.36),
+          (5.28, 0.32),
+          (3.36, 0.8),
+          (3.84, 1.28),
+          (1.92, 0.96),
+          (0.48, 0.48),
+          (2.56, 1.92),
+          (1.28, 2.72),
+          (2.4, 3.84),
+          (0.96, 5.76),
+          (2.72, 4.96),
+          (3.36, 6.24),
+          (3.68, 5.12),
+          close: true,
+          tension: 0.5,
+          stroke: 0.9pt,
+        )
+
+        catmull(
+          (0, -0.32),
+          (0.32, 6.4),
+          (6.4, 6.24),
+          (6.24, 0),
+          close: true,
+          tension: 0.5,
+          stroke: 0.9pt,
+        )
+
+        content((3.2, 3.2), $K$, anchor: "east")
+        content((4.8, 6.4), $partial tilde(K)$, anchor: "north")
+        content((3.2, 7.2), $partial U$, anchor: "south", padding: 3pt)
+      }),
+      caption: [The elements of $cal(G)$, relative to $K$ and its neighborhood, $U$.],
+    ),
+    <fig:runge_simple_poles_and_removable_singularity_at_infinity_grid>,
+  )
 ])
 
 #proof[
@@ -204,9 +211,12 @@ The proof can be well-organized through the use of the results that we will now 
   (where $j$ and $k$ are integers) and let $cal(G)$ be the collection of all such squares in this grid that intersect $K$, and it follows that $tilde(K) = union.big_(Q in cal(G)) Q subset U$ (refer to @fig:runge_simple_poles_and_removable_singularity_at_infinity_grid).
 
   As a consequence of Cauchy--Goursat (@thm:cauchygoursatformula), we have
-  $
-    1 / taui integral.cont_(partial tilde(K)) (f(zeta) dzeta) / (zeta - z) = f(z)
-  $ <eq:rungesimplepolesandremovablesingularityatinfinity_cauchygoursat>
+  #lbl(
+    $
+      1 / taui integral.cont_(partial tilde(K)) (f(zeta) dzeta) / (zeta - z) = f(z)
+    $,
+    <eq:rungesimplepolesandremovablesingularityatinfinity_cauchygoursat>,
+  )
   in the case that $z in tilde(K)$. The boundary $partial tilde(K)$ may be written as the union of $n$ lines parameterized by $0 <= t <= 1$; more concretely, we have $partial tilde(K) = union.big_(j in NN_(<= n)) gamma_j ([0, 1])$. Hence we have in equivalent formulation,
   $
     f(z) = 1 / taui sum_(j = 1)^n integral_(gamma_j ([0, 1])) (f(zeta)) / (zeta - z) dzeta = 1 / taui sum_(j = 1)^n integral_0^1 (f(gamma_j (t)) gamma'_j (t)) / (gamma_j (t) - z) dt.
@@ -258,21 +268,27 @@ In its full generality, we will now apply a technique to push a pole to a prescr
     f(z) = sum_(j = 1)^m a_(-j) ((z - beta)^(-1) sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^j.
   $
   For fixed $j$ (where $a_(-j) != 0$), we aim to prove the existence of an $N in NN$ such that $forall n > N$, we have at least
-  $
-    abs(
-      & [(z - beta)^(-1) sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k]^j \
-      & quad""- [(z - beta)^(-1) sum_(k = 0)^n ((alpha - beta) / (z - beta))^k]^j
-    ) < epsilon / (m abs(a_(-j))),
-  $ <eq:simple_pole_pushing_uniform_bound_assumption>
+  #lbl(
+    $
+      abs(
+        & [(z - beta)^(-1) sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k]^j \
+        & quad""- [(z - beta)^(-1) sum_(k = 0)^n ((alpha - beta) / (z - beta))^k]^j
+      ) < epsilon / (m abs(a_(-j))),
+    $,
+    <eq:simple_pole_pushing_uniform_bound_assumption>,
+  )
   where $z in extcomplex without D(beta, r)$. Since $abs(1 / (z - beta)) < 1 / r$, we can restrict @eq:simple_pole_pushing_uniform_bound_assumption further with
   $
     abs((sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^j - (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j) < r^j epsilon / (m abs(a_(-j))).
   $
   Additionally, the difference on the left-hand side is also equal to
-  $
-    &abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k) \
-    &wide""dot abs(sum_(l = 0)^(j - 1) (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^l (sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^(j - l - 1)).
-  $ <eq:simple_pole_pushing_uniform_bound_assumption2>
+  #lbl(
+    $
+      &abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k) \
+      &wide""dot abs(sum_(l = 0)^(j - 1) (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^l (sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^(j - l - 1)).
+    $,
+    <eq:simple_pole_pushing_uniform_bound_assumption2>,
+  )
   For any $n in NN$, we have
   $
     abs(sum_(k = 0)^n ((alpha - beta) / (z - beta))^k) <= sum_(k = 0)^n abs((alpha - beta) / (z - beta))^k <= sum_(k = 0)^oo abs(alpha - beta / r)^k <= 1 / (1 - abs(alpha - beta / r)).
@@ -369,9 +385,12 @@ In its full generality, we will now apply a technique to push a pole to a prescr
 
 #proof[
   By @prop:rungesimplepolesandremovablesingularityatinfinity, there is a rational function $phi.alt$ with simple poles in $CC without K$ satisfying $phi.alt(oo) = 0$ such that
-  $
-    sup_(z in K) abs(f(z) - phi.alt(z)) < epsilon / 2.
-  $ <eq:runge_intermediate1>
+  #lbl(
+    $
+      sup_(z in K) abs(f(z) - phi.alt(z)) < epsilon / 2.
+    $,
+    <eq:runge_intermediate1>,
+  )
   Let the poles of $phi.alt$ be ${beta_k}_(k in NN_(<= n)) subset.eq CC without K$, and as a consequence, we have $phi.alt(z) = sum_(k = 1)^n a_k / (z - beta_k) + phi(z)$ where $phi(z)$ is entire. Since $phi.alt(oo) = 0$, we have $phi equiv 0$ by Liouville's Theorem (@thm:liouville). By @lem:generalpolepushing, there exist rational functions ${psi_k}_(k in NN_(<= n))$ whose only poles lie in $E$ such that $forall k$,
   $
     sup_(z in K) abs(1 / (z - beta_k) - psi_k (z)) < epsilon / (2 n abs(a_k))

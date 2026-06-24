@@ -1,13 +1,19 @@
 #import "/lib.typ": *
-== The Residue Theorem <sec:cauchyresiduetheorem>
-
+#show: docs-subchapter.with(
+  title: [The Residue Theorem],
+  route: "residue_theorem",
+  label: <sec:cauchyresiduetheorem>,
+)
 After Riemann and Weierstrass refined the understanding of analytic functions and the formal characterization of Jordan curves, the Cauchy Residue Theorem was consequently formalized. Cauchy had the informal notion of a residue, which we will now formally introduce.
 
 #definition("Residue")[
   For some $r in RR_(>0)$, $a in U$, suppose $f : D^*(a, r) -> CC$ is holomorphic. Then the _residue_ of $f$ at $a$, denoted by $Res_(z=a) f(z)$ or $Res(f, a)$, is equal to
-  $
-    Res_(z=a) f(z) = 1 / taui integral.cont_(partial D(a, rho)) f(z) dz,
-  $<eq:residue>
+  #lbl(
+    $
+      Res_(z=a) f(z) = 1 / taui integral.cont_(partial D(a, rho)) f(z) dz,
+    $,
+    <eq:residue>,
+  )
   where $0 < rho < r$ is arbitrary. Since $f$ has a Laurent expansion at $a$, being
   $
     sum_(n=-infinity)^infinity c_n (z - a)^n, quad c_n = 1 / taui integral.cont_(partial D(a, rho)) (f(z) dz) / (z - a)^(n+1),
@@ -20,9 +26,12 @@ $ f(z) = c_(-m) (z-a)^(-m) + c_(1-m) (z-a)^(1-m) + dots.c + c_(-1) (z-a)^(-1) + 
 Multiplying by $(z-a)^m$, we obtain that
 $ (z-a)^m f(z) = c_(-m) + c_(1-m) (z-a) + dots.c + c_(-1) (z-a)^(m-1) + dots. $
 By the definition of a Taylor series, we find that
-$
-  c_(-1) = Res_(z=a) f(z) = 1 / ((m-1)!) lim_(z -> a) dif^(m-1) / (dif z^(m-1)) [(z-a)^m f(z)].
-$<eq:residueatpole>
+#lbl(
+  $
+    c_(-1) = Res_(z=a) f(z) = 1 / ((m-1)!) lim_(z -> a) dif^(m-1) / (dif z^(m-1)) [(z-a)^m f(z)].
+  $,
+  <eq:residueatpole>,
+)
 Let $z = infinity$ be an isolated singularity of $f(z)$, which is holomorphic in $CC without overline(D(0, R))$, for sufficiently large finite $R$. Then for finite $rho > R$, the residue at $z = infinity$ is _defined_ as (notice the orientation)
 $ Res_(z=infinity) f(z) = 1 / taui integral.cont.cw_(partial D(0, rho)) f(z) dz. $
 Let $zeta = 1 / z$. Then we get that
@@ -62,115 +71,118 @@ This result itself is fairly trivial. Now we will explain the significance of th
 There is not a directly trivial reason for the definition of the residue at $infinity$, except for the fact that it seemingly "unifies" the Riemann sphere.
 
 #figure-wrapper([
-  #figure(
-    {
-      cetz.canvas({
-        import cetz.draw: *
+  #lbl(
+    figure(
+      {
+        canvas({
+          import cetz.draw: *
 
-        ortho(x: 35deg, y: 35deg, cull-face: none, {
-          anchor("north-pole", (0, 1, 0))
-          anchor("south-pole", (0, -1, 0))
-          let theta-steps = 60
-          let phi-steps = 30
-          let n-shading-levels = 6
+          ortho(x: 35deg, y: 35deg, cull-face: none, {
+            anchor("north-pole", (0, 1, 0))
+            anchor("south-pole", (0, -1, 0))
+            let theta-steps = 60
+            let phi-steps = 30
+            let n-shading-levels = 6
 
-          for i in range(theta-steps) {
-            for j in range(phi-steps) {
-              let theta1 = i / theta-steps * 2 * calc.pi
-              let theta2 = (i + 1) / theta-steps * 2 * calc.pi
-              let phi1 = j / phi-steps * calc.pi
-              let phi2 = (j + 1) / phi-steps * calc.pi
+            for i in range(theta-steps) {
+              for j in range(phi-steps) {
+                let theta1 = i / theta-steps * 2 * calc.pi
+                let theta2 = (i + 1) / theta-steps * 2 * calc.pi
+                let phi1 = j / phi-steps * calc.pi
+                let phi2 = (j + 1) / phi-steps * calc.pi
 
-              let p1 = (calc.sin(phi1) * calc.cos(theta1), calc.cos(phi1), calc.sin(phi1) * calc.sin(theta1))
-              let p2 = (calc.sin(phi1) * calc.cos(theta2), calc.cos(phi1), calc.sin(phi1) * calc.sin(theta2))
-              let p3 = (calc.sin(phi2) * calc.cos(theta2), calc.cos(phi2), calc.sin(phi2) * calc.sin(theta2))
-              let p4 = (calc.sin(phi2) * calc.cos(theta1), calc.cos(phi2), calc.sin(phi2) * calc.sin(theta1))
+                let p1 = (calc.sin(phi1) * calc.cos(theta1), calc.cos(phi1), calc.sin(phi1) * calc.sin(theta1))
+                let p2 = (calc.sin(phi1) * calc.cos(theta2), calc.cos(phi1), calc.sin(phi1) * calc.sin(theta2))
+                let p3 = (calc.sin(phi2) * calc.cos(theta2), calc.cos(phi2), calc.sin(phi2) * calc.sin(theta2))
+                let p4 = (calc.sin(phi2) * calc.cos(theta1), calc.cos(phi2), calc.sin(phi2) * calc.sin(theta1))
 
-              let normal = (
-                calc.sin((phi1 + phi2) / 2) * calc.cos((theta1 + theta2) / 2),
-                calc.cos((phi1 + phi2) / 2),
-                calc.sin((phi1 + phi2) / 2) * calc.sin((theta1 + theta2) / 2),
-              )
+                let normal = (
+                  calc.sin((phi1 + phi2) / 2) * calc.cos((theta1 + theta2) / 2),
+                  calc.cos((phi1 + phi2) / 2),
+                  calc.sin((phi1 + phi2) / 2) * calc.sin((theta1 + theta2) / 2),
+                )
 
-              let light-intensity = calc.max(
-                0.7,
-                calc.ceil((1 + normal.at(1)) * n-shading-levels / 2) * 0.3 / n-shading-levels + 0.7,
-              )
+                let light-intensity = calc.max(
+                  0.7,
+                  calc.ceil((1 + normal.at(1)) * n-shading-levels / 2) * 0.3 / n-shading-levels + 0.7,
+                )
 
-              let translucent-fill = color.transparentize(color.black, 100% * light-intensity)
+                let translucent-fill = color.transparentize(color.black, 100% * light-intensity)
 
-              line(p1, p2, p3, p4, close: true, fill: translucent-fill, stroke: none)
+                line(p1, p2, p3, p4, close: true, fill: translucent-fill, stroke: none)
+              }
             }
-          }
 
-          for i in range(6) {
-            let theta = i / 6 * 2 * calc.pi
-            let pts = range(61).map(j => {
-              let phi = j / 60 * calc.pi
+            for i in range(6) {
+              let theta = i / 6 * 2 * calc.pi
+              let pts = range(61).map(j => {
+                let phi = j / 60 * calc.pi
+                (calc.sin(phi) * calc.cos(theta), calc.cos(phi), calc.sin(phi) * calc.sin(theta))
+              })
+              line(..pts, stroke: (paint: black, thickness: 0.3pt, dash: ("dot", .5pt)))
+            }
+
+            let eq-pts = range(101).map(i => {
+              let t = i / 100 * 2 * calc.pi
+              (calc.cos(t), 0, calc.sin(t))
+            })
+            line(..eq-pts, stroke: (paint: black, thickness: 0.8pt, dash: ("dot", 1pt)))
+
+            let pr = 3
+            for i in range(-2 * pr, 2 * pr + 1) {
+              let index = i / 2
+              line((index, 0, -pr), (index, 0, pr), stroke: (paint: black, thickness: 0.2pt))
+              line((-pr, 0, index), (pr, 0, index), stroke: (paint: black, thickness: 0.2pt))
+            }
+
+            let phi-c = calc.pi / 3
+            let theta-c = calc.pi / 3
+            let r-nb = 0.3
+            let nbhd-pts = range(61).map(i => {
+              let t = i / 60 * 2 * calc.pi
+              let phi = phi-c + r-nb * calc.cos(t)
+              let theta = theta-c + r-nb * calc.sin(t)
               (calc.sin(phi) * calc.cos(theta), calc.cos(phi), calc.sin(phi) * calc.sin(theta))
             })
-            line(..pts, stroke: (paint: black, thickness: 0.3pt, dash: ("dot", .5pt)))
-          }
+            line(..nbhd-pts, stroke: (paint: black, thickness: 0.5pt, dash: ("dot", "dot")))
 
-          let eq-pts = range(101).map(i => {
-            let t = i / 100 * 2 * calc.pi
-            (calc.cos(t), 0, calc.sin(t))
+            let proj-pts = nbhd-pts.map(p => {
+              let (xc, yc, zc) = p
+              let d = 1 - yc
+              (xc / d, 0, zc / d)
+            })
+            line(..proj-pts, stroke: (paint: black, thickness: 0.6pt, dash: ("dot", "dot")))
+
+            let n-arrows = 6
+            for k in range(n-arrows) {
+              let i = int(k / n-arrows * 60)
+              mark(nbhd-pts.at(i), nbhd-pts.at(i + 1), ">>", fill: black, stroke: none, scale: 0.4)
+              mark(proj-pts.at(i), proj-pts.at(i + 1), ">>", fill: black, stroke: none, scale: 0.7)
+            }
+
+            let ax = 3.0
+            let ax-s = (paint: black, thickness: 0.6pt)
+
+            line((0, 0, 0), (ax, 0, 0), stroke: ax-s, mark: (end: ">>", fill: black))
+            line((0, 0, 0), (-ax, 0, 0), stroke: ax-s, mark: (end: ">>", fill: black))
+            content((ax + 0.2, 0, 0), [$x_2$])
+
+            line((0, 0, 0), (0, 0, ax), stroke: ax-s, mark: (end: ">>", fill: black))
+            line((0, 0, 0), (0, 0, -ax), stroke: ax-s, mark: (end: ">>", fill: black))
+            content((0, 0, ax + 0.2), [$x_1$])
+
+            line((0, 0, 0), (0, ax, 0), stroke: ax-s, mark: (end: ">>", fill: black))
+            line((0, 0, 0), (0, -ax, 0), stroke: ax-s, mark: (end: ">>", fill: black))
+            content((0, ax + 0.2, 0), [$x_3$])
           })
-          line(..eq-pts, stroke: (paint: black, thickness: 0.8pt, dash: ("dot", 1pt)))
-
-          let pr = 3
-          for i in range(-2 * pr, 2 * pr + 1) {
-            let index = i / 2
-            line((index, 0, -pr), (index, 0, pr), stroke: (paint: black, thickness: 0.2pt))
-            line((-pr, 0, index), (pr, 0, index), stroke: (paint: black, thickness: 0.2pt))
-          }
-
-          let phi-c = calc.pi / 3
-          let theta-c = calc.pi / 3
-          let r-nb = 0.3
-          let nbhd-pts = range(61).map(i => {
-            let t = i / 60 * 2 * calc.pi
-            let phi = phi-c + r-nb * calc.cos(t)
-            let theta = theta-c + r-nb * calc.sin(t)
-            (calc.sin(phi) * calc.cos(theta), calc.cos(phi), calc.sin(phi) * calc.sin(theta))
-          })
-          line(..nbhd-pts, stroke: (paint: black, thickness: 0.5pt, dash: ("dot", "dot")))
-
-          let proj-pts = nbhd-pts.map(p => {
-            let (xc, yc, zc) = p
-            let d = 1 - yc
-            (xc / d, 0, zc / d)
-          })
-          line(..proj-pts, stroke: (paint: black, thickness: 0.6pt, dash: ("dot", "dot")))
-
-          let n-arrows = 6
-          for k in range(n-arrows) {
-            let i = int(k / n-arrows * 60)
-            mark(nbhd-pts.at(i), nbhd-pts.at(i + 1), ">>", fill: black, stroke: none, scale: 0.4)
-            mark(proj-pts.at(i), proj-pts.at(i + 1), ">>", fill: black, stroke: none, scale: 0.7)
-          }
-
-          let ax = 3.0
-          let ax-s = (paint: black, thickness: 0.6pt)
-
-          line((0, 0, 0), (ax, 0, 0), stroke: ax-s, mark: (end: ">>", fill: black))
-          line((0, 0, 0), (-ax, 0, 0), stroke: ax-s, mark: (end: ">>", fill: black))
-          content((ax + 0.2, 0, 0), [$x_2$])
-
-          line((0, 0, 0), (0, 0, ax), stroke: ax-s, mark: (end: ">>", fill: black))
-          line((0, 0, 0), (0, 0, -ax), stroke: ax-s, mark: (end: ">>", fill: black))
-          content((0, 0, ax + 0.2), [$x_1$])
-
-          line((0, 0, 0), (0, ax, 0), stroke: ax-s, mark: (end: ">>", fill: black))
-          line((0, 0, 0), (0, -ax, 0), stroke: ax-s, mark: (end: ">>", fill: black))
-          content((0, ax + 0.2, 0), [$x_3$])
+          circle("north-pole", radius: 1.2pt, fill: black, stroke: none)
+          circle("south-pole", radius: 1.2pt, fill: black, stroke: none)
         })
-        circle("north-pole", radius: 1.2pt, fill: black, stroke: none)
-        circle("south-pole", radius: 1.2pt, fill: black, stroke: none)
-      })
-    },
-    caption: [The orientation of a neighborhood that does not enclose $infinity$ after projection.],
-  ) <fig:stereographicprojectionofneighborhood>
+      },
+      caption: [The orientation of a neighborhood that does not enclose $infinity$ after projection.],
+    ),
+    <fig:stereographicprojectionofneighborhood>,
+  )
 ])
 
 However, if we take a neighborhood of an arbitrary point in $CC$ on the Riemann sphere and traverse its boundary clockwise (from the perspective of outside the sphere), its projection onto $CC$ will be counterclockwise (@fig:stereographicprojectionofneighborhood). However, the boundary of a neighborhood of $infinity$ in $S^2$ will have a clockwise projection (hence the difference in orientation). We define its equality with the residue of $-(f(1\/zeta)) / zeta^2$ at $zeta = 0$, rather than $f(1\/zeta)$, because we compose the differential form $f(z) dz$ with the inversion, as opposed to $f(z)$.
@@ -181,58 +193,64 @@ where $z_k$ are the singularities of $f$ in $U$ and $Ind_gamma$ is the winding i
 
 Residues are extremely important as they allow for simple evaluation of definite (most commonly improper) real-valued integrals. This is because oftentimes, residues at poles are generally easy to calculate and have an integral representation. We can integrate over a contour (a smooth closed curve) that contains the important part of the real interval. Oftentimes this is the most non-trivial step.
 
-#example[
-  Evaluate the improper integral $I = integral_(-infinity)^infinity 1 / (x^2+1)^(n+1) dx$, where $n in NN$.
-]<ex:integral_1_x_2_1_n_1_dx>
+#lbl(
+  example[
+    Evaluate the improper integral $I = integral_(-infinity)^infinity 1 / (x^2+1)^(n+1) dx$, where $n in NN$.
+  ],
+  <ex:integral_1_x_2_1_n_1_dx>,
+)
 
 #figure-wrapper([
-  #figure(
-    {
-      let var-R = 3
-      let max = var-R + 0.5
-      quick-plot(scale: 1, x-min: -max, x-max: max, y-max: max, canvas: {
-        import cetz.draw: *
+  #lbl(
+    figure(
+      {
+        let var-R = 3
+        let max = var-R + 0.5
+        quick-plot(scale: 1, x-min: -max, x-max: max, y-max: max, _canvas: {
+          import cetz.draw: *
 
-        arc-through(
-          (0deg, var-R),
-          (90deg, var-R),
-          (180deg, var-R),
-          stroke: (thickness: 1.5pt),
-          mark: (
-            end: range(8)
-              .map(num => 100% * (num + 0.5) / 8)
-              .map(pos => (
-                pos: pos,
-                symbol: ">>",
-                fill: black,
-                shorten-to: none,
-              )),
-          ),
-        )
+          arc-through(
+            (0deg, var-R),
+            (90deg, var-R),
+            (180deg, var-R),
+            stroke: (thickness: 1.5pt),
+            mark: (
+              end: range(8)
+                .map(num => 100% * (num + 0.5) / 8)
+                .map(pos => (
+                  pos: pos,
+                  symbol: ">>",
+                  fill: black,
+                  shorten-to: none,
+                )),
+            ),
+          )
 
-        line(
-          (-var-R, 0),
-          (var-R, 0),
-          mark: (
-            end: range(4)
-              .map(num => 100% * (num + 0.5) / 4)
-              .map(pos => (
-                pos: pos,
-                symbol: ">>",
-                fill: black,
-                shorten-to: none,
-              )),
-          ),
-          stroke: 1.5pt,
-        )
+          line(
+            (-var-R, 0),
+            (var-R, 0),
+            mark: (
+              end: range(4)
+                .map(num => 100% * (num + 0.5) / 4)
+                .map(pos => (
+                  pos: pos,
+                  symbol: ">>",
+                  fill: black,
+                  shorten-to: none,
+                )),
+            ),
+            stroke: 1.5pt,
+          )
 
-        content((var-R, 0), anchor: "north", $R$, padding: 2pt)
-        content((-var-R, 0), anchor: "north", $-R$, padding: 2pt)
-        content((0, var-R), anchor: "south-east", $R$, padding: 2pt)
-      })
-    },
-    caption: [A semicircular contour with orientation marked.],
-  ) <fig:semicircularcontour>
+          content((var-R, 0), anchor: "north", $R$, padding: 2pt)
+          content((-var-R, 0), anchor: "north", $-R$, padding: 2pt)
+          content((0, var-R), anchor: "south-east", $R$, padding: 2pt)
+        })
+      },
+      caption: [A semicircular contour with orientation marked.],
+    ),
+    <fig:semicircularcontour>,
+  )
 ])
 
 #solution[to @ex:integral_1_x_2_1_n_1_dx][
@@ -265,52 +283,55 @@ Residues are extremely important as they allow for simple evaluation of definite
 ] <ex:dirichlet_integral>
 
 #figure-wrapper([
-  #figure(
-    {
-      let var-R = 3
-      let var-epsilon = 0.8
-      let max = var-R + 0.5
-      quick-plot(scale: 1, x-min: -max, x-max: max, y-max: max, canvas: {
-        import cetz.draw: *
-        let mark = (end: (pos: 50%, symbol: ">>", fill: black, shorten-to: none))
+  #lbl(
+    figure(
+      {
+        let var-R = 3
+        let var-epsilon = 0.8
+        let max = var-R + 0.5
+        quick-plot(scale: 1, x-min: -max, x-max: max, y-max: max, _canvas: {
+          import cetz.draw: *
+          let mark = (end: (pos: 50%, symbol: ">>", fill: black, shorten-to: none))
 
-        arc-through(
-          (180deg, var-epsilon),
-          (90deg, var-epsilon),
-          (0deg, var-epsilon),
-          stroke: (thickness: 1pt),
-          mark: mark,
-        )
+          arc-through(
+            (180deg, var-epsilon),
+            (90deg, var-epsilon),
+            (0deg, var-epsilon),
+            stroke: (thickness: 1pt),
+            mark: mark,
+          )
 
-        line((-var-R, 0), (-var-epsilon, 0), stroke: (thickness: 1pt), mark: mark)
-        line((var-epsilon, 0), (var-R, 0), stroke: (thickness: 1pt), mark: mark)
+          line((-var-R, 0), (-var-epsilon, 0), stroke: (thickness: 1pt), mark: mark)
+          line((var-epsilon, 0), (var-R, 0), stroke: (thickness: 1pt), mark: mark)
 
-        arc-through(
-          (0deg, var-R),
-          (90deg, var-R),
-          (180deg, var-R),
-          stroke: (thickness: 1.5pt),
-          mark: (
-            end: range(7)
-              .map(num => 100% * num / 7)
-              .map(pos => (
-                pos: pos,
-                symbol: ">>",
-                fill: black,
-                shorten-to: none,
-              )),
-          ),
-        )
+          arc-through(
+            (0deg, var-R),
+            (90deg, var-R),
+            (180deg, var-R),
+            stroke: (thickness: 1.5pt),
+            mark: (
+              end: range(7)
+                .map(num => 100% * num / 7)
+                .map(pos => (
+                  pos: pos,
+                  symbol: ">>",
+                  fill: black,
+                  shorten-to: none,
+                )),
+            ),
+          )
 
-        content((var-R, 0), anchor: "north", $R$, padding: 2pt)
-        content((var-epsilon, 0), anchor: "north", $epsilon$, padding: 2pt)
-        content((-var-R, 0), anchor: "north", $-R$, padding: 2pt)
-        content((-var-epsilon, 0), anchor: "north", $-epsilon$, padding: 2pt)
-        content((0, var-R), anchor: "south-east", $R$, padding: 2pt)
-      })
-    },
-    caption: [An indented semicircular contour with orientation marked.],
-  ) <fig:indentedsemicircularcontour>
+          content((var-R, 0), anchor: "north", $R$, padding: 2pt)
+          content((var-epsilon, 0), anchor: "north", $epsilon$, padding: 2pt)
+          content((-var-R, 0), anchor: "north", $-R$, padding: 2pt)
+          content((-var-epsilon, 0), anchor: "north", $-epsilon$, padding: 2pt)
+          content((0, var-R), anchor: "south-east", $R$, padding: 2pt)
+        })
+      },
+      caption: [An indented semicircular contour with orientation marked.],
+    ),
+    <fig:indentedsemicircularcontour>,
+  )
 ])
 #solution[to @ex:dirichlet_integral][
   It is common to use integration with parameters to approach this integral. However, we will now provide a solution via contour integration.
@@ -361,12 +382,12 @@ Residues are extremely important as they allow for simple evaluation of definite
 ] <ex:fresnel_integrals>
 
 #figure-wrapper(
-  [
-    #figure(
+  lbl(
+    figure(
       {
         let outer-rad = 3.5
 
-        quick-plot(x-max: 4, y-max: 3, canvas: {
+        quick-plot(x-max: 4, y-max: 3, _canvas: {
           import cetz.draw: *
           let mark = (end: (pos: 50%, symbol: ">>", fill: black, shorten-to: none))
 
@@ -398,7 +419,9 @@ Residues are extremely important as they allow for simple evaluation of definite
         })
       },
       caption: [A wedge contour with orientation marked.],
-    ) <fig:wedgecontour>],
+    ),
+    <fig:wedgecontour>,
+  ),
 )
 #solution[to @ex:fresnel_integrals][
   Let $f(z) = ee^(ii z^2)$. Choose the wedge contour composed of
@@ -407,9 +430,12 @@ Residues are extremely important as they allow for simple evaluation of definite
     C_R = {R ee^(ii theta) : 0 <= theta <= uppi/4}
   $
   as in @fig:wedgecontour. By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem), we have that
-  $
-    integral_(Gamma_1) f(z) dz + integral_(Gamma_2) f(z) dz + integral_(C_R) f(z) dz = 0.
-  $<eq:fresnelwedgecontourintegral>
+  #lbl(
+    $
+      integral_(Gamma_1) f(z) dz + integral_(Gamma_2) f(z) dz + integral_(C_R) f(z) dz = 0.
+    $,
+    <eq:fresnelwedgecontourintegral>,
+  )
   The third integral can be written as
   $ integral_(C_R) f(z) dz = R ii integral_0^(uppi\/4) exp[ii (R ee^(ii theta))^2] ee^(ii theta) dif theta. $
   Using the fact that $4/uppi theta < sin(2 theta)$ on the integration range, it can be bounded as
@@ -434,9 +460,12 @@ Residues are extremely important as they allow for simple evaluation of definite
   as desired.
 ]
 
-#example[
-  Evaluate the integrals $integral_0^(2 uppi) Phi(cos theta, sin theta) dif theta$, where $Phi(xi, eta)$ is a rational function of $xi$ and $eta$ that is continuous on $theta in [0, 2 uppi]$.
-] <ex:integral_of_rational_function_of_trig>
+#lbl(
+  example[
+    Evaluate the integrals $integral_0^(2 uppi) Phi(cos theta, sin theta) dif theta$, where $Phi(xi, eta)$ is a rational function of $xi$ and $eta$ that is continuous on $theta in [0, 2 uppi]$.
+  ],
+  <ex:integral_of_rational_function_of_trig>,
+)
 
 #solution[to @ex:integral_of_rational_function_of_trig][
   Let $z = ee^(ii theta)$. Consequently, we have $cos theta = (z + z^(-1)) / 2$, $sin theta = (z - z^(-1)) / (2 ii)$, and $dz = ii ee^(ii theta) dif theta$, implying that $dif theta = dz / (ii z)$. Therefore, by the Residue Theorem (@thm:residuethm), letting $f(z) = 1 / (ii z) Phi((z + z^(-1)) / 2, (z - z^(-1)) / (2 ii))$, we have
@@ -446,9 +475,12 @@ Residues are extremely important as they allow for simple evaluation of definite
   where $z_k$ where $k = 1, dots, n$ are the isolated singularities of $f$ in $DD$.
 ]
 
-#example[
-  Evaluate $I = integral_0^infinity x^alpha / (1 + x^beta) dx$, where $0 < alpha + 1 < beta$.
-] <ex:integral_x_alpha_1_x_beta_dx>
+#lbl(
+  example[
+    Evaluate $I = integral_0^infinity x^alpha / (1 + x^beta) dx$, where $0 < alpha + 1 < beta$.
+  ],
+  <ex:integral_x_alpha_1_x_beta_dx>,
+)
 
 #figure-wrapper(
   [
@@ -457,7 +489,7 @@ Residues are extremely important as they allow for simple evaluation of definite
         let inner-rad = 1
         let outer-rad = 3.5
 
-        quick-plot(x-max: 4, y-max: 3, canvas: {
+        quick-plot(x-max: 4, y-max: 3, _canvas: {
           import cetz.draw: *
           let mark = (end: (pos: 40%, symbol: ">>", fill: black, shorten-to: none))
 
@@ -554,54 +586,60 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
 ]
 
-#example[
-  Prove that the Fourier transform of $sech(uppi x)$ is itself, or that
-  $ I(xi) = integral_(-infinity)^infinity exp(-2 uppi ii x xi) sech(uppi x) dx = sech(uppi xi). $
-]<ex:sech_fourier_transform>
+#lbl(
+  example[
+    Prove that the Fourier transform of $sech(uppi x)$ is itself, or that
+    $ I(xi) = integral_(-infinity)^infinity exp(-2 uppi ii x xi) sech(uppi x) dx = sech(uppi xi). $
+  ],
+  <ex:sech_fourier_transform>,
+)
 
-#figure-wrapper([
-  #figure(
-    {
-      let var-h-max = 2.5
-      let var-v-max = 2
-      quick-plot(
-        x-min: -var-h-max,
-        x-max: var-h-max,
-        y-min: -1,
-        y-max: var-v-max,
-        canvas: {
-          import cetz.draw: *
+#figure-wrapper(
+  lbl(
+    figure(
+      {
+        let var-h-max = 2.5
+        let var-v-max = 2
+        quick-plot(
+          x-min: -var-h-max,
+          x-max: var-h-max,
+          y-min: -1,
+          y-max: var-v-max,
+          _canvas: {
+            import cetz.draw: *
 
-          let R = 2
-          let h = 1.5
+            let R = 2
+            let h = 1.5
 
-          let A = (-R, 0)
-          let C = (R, 0)
-          let D = (R, h)
-          let F = (-R, h)
+            let A = (-R, 0)
+            let C = (R, 0)
+            let D = (R, h)
+            let F = (-R, h)
 
-          let thick = (thickness: 1.5pt)
-          let mark = (end: (symbol: ">>", pos: 30%, fill: black, shorten-to: none))
+            let thick = (thickness: 1.5pt)
+            let mark = (end: (symbol: ">>", pos: 30%, fill: black, shorten-to: none))
 
-          line(A, C, mark: mark, stroke: thick, name: "Gamma>")
-          line(C, D, mark: mark, stroke: thick, name: "Gamma^")
-          line(D, F, mark: mark, stroke: thick, name: "Gamma<")
-          line(F, A, mark: mark, stroke: thick, name: "Gammav")
+            line(A, C, mark: mark, stroke: thick, name: "Gamma>")
+            line(C, D, mark: mark, stroke: thick, name: "Gamma^")
+            line(D, F, mark: mark, stroke: thick, name: "Gamma<")
+            line(F, A, mark: mark, stroke: thick, name: "Gammav")
 
-          content(C, $R$, anchor: "north", padding: 2pt)
-          content(A, $-R$, anchor: "north", padding: 2pt)
-          content((0, h), $i$, anchor: "north-east", padding: 2pt)
+            content(C, $R$, anchor: "north", padding: 2pt)
+            content(A, $-R$, anchor: "north", padding: 2pt)
+            content((0, h), $i$, anchor: "north-east", padding: 2pt)
 
-          content("Gamma>.mid", $Gamma^(arrow.r)$, anchor: "south-west", padding: 2pt)
-          content("Gamma<.mid", $Gamma^(arrow.l)$, anchor: "south-west", padding: 2pt)
-          content("Gammav.mid", $Gamma^(arrow.b)$, anchor: "east", padding: 2pt)
-          content("Gamma^.mid", $Gamma^(arrow.t)$, anchor: "east", padding: 2pt)
-        },
-      )
-    },
-    caption: [A rectangular contour with orientation marked.],
-  ) <fig:rectangularcontour>
-])
+            content("Gamma>.mid", $Gamma^(arrow.r)$, anchor: "south-west", padding: 2pt)
+            content("Gamma<.mid", $Gamma^(arrow.l)$, anchor: "south-west", padding: 2pt)
+            content("Gammav.mid", $Gamma^(arrow.b)$, anchor: "east", padding: 2pt)
+            content("Gamma^.mid", $Gamma^(arrow.t)$, anchor: "east", padding: 2pt)
+          },
+        )
+      },
+      caption: [A rectangular contour with orientation marked.],
+    ),
+    <fig:rectangularcontour>,
+  ),
+)
 #solution[to @ex:sech_fourier_transform][
   Fix $xi in RR$ and let $f(z) = exp(-2 uppi ii z xi) / cosh(uppi z)$. Its poles in $CC$ occur when $ee^(uppi z) + ee^(-uppi z) = 0$, or equivalently, when $z = ii (n + 1/2)$, where $n in ZZ$.
 
@@ -613,9 +651,12 @@ Residues are extremely important as they allow for simple evaluation of definite
     attach(Gamma, t: arrow.b) = {-R + ii y : y in [0,1]}, quad attach(Gamma, t: arrow.t) = {R + ii y : y in [0,1]}.
   $
   The only enclosed singularity is a simple pole at $z = ii/2$ (simple by evaluation of the Taylor expansion of the denominator). By the Residue Theorem (@thm:residuethm), we get that
-  $
-    (integral_(attach(Gamma, t: arrow.r)) + integral_(attach(Gamma, t: arrow.t)) + integral_(attach(Gamma, t: arrow.l)) + integral_(attach(Gamma, t: arrow.b))) f(z) dz = 2 uppi ii Res(f, ii/2).
-  $<eq:fouriertransformofsechpix_rectangularcontourintegral>
+  #lbl(
+    $
+      (integral_(attach(Gamma, t: arrow.r)) + integral_(attach(Gamma, t: arrow.t)) + integral_(attach(Gamma, t: arrow.l)) + integral_(attach(Gamma, t: arrow.b))) f(z) dz = 2 uppi ii Res(f, ii/2).
+    $,
+    <eq:fouriertransformofsechpix_rectangularcontourintegral>,
+  )
   By @eq:residueatpole, we have
   $
     Res(f, ii/2) & = lim_(z -> ii\/2) (z - ii/2) exp(-2 uppi ii z xi) / cosh(uppi z) \
@@ -664,10 +705,13 @@ If $f(z)$ is a constant multiple of $f(z + ii y)$ (a type of quasiperiodicity) f
 
 In the case that there are indentations along the contour, we have
 
-#theorem[
-  Let $lambda > 0$ and let $a in CC$. Suppose $f(z)$ is a holomorphic function on $D^*(a, lambda)$ with a simple pole at $z = a in U$. Let $0 < epsilon < lambda$ and define $gamma_epsilon subset.eq partial D(a, epsilon)$ be a counterclockwise-oriented, connected arc subtending an angle $theta.alt$. Then,
-  $ lim_(epsilon -> 0) integral_(gamma_epsilon) f(z) dz = ii theta.alt dot Res_(z=a) f(z). $
-]<thm:residueoverarc>
+#lbl(
+  theorem[
+    Let $lambda > 0$ and let $a in CC$. Suppose $f(z)$ is a holomorphic function on $D^*(a, lambda)$ with a simple pole at $z = a in U$. Let $0 < epsilon < lambda$ and define $gamma_epsilon subset.eq partial D(a, epsilon)$ be a counterclockwise-oriented, connected arc subtending an angle $theta.alt$. Then,
+    $ lim_(epsilon -> 0) integral_(gamma_epsilon) f(z) dz = ii theta.alt dot Res_(z=a) f(z). $
+  ],
+  <thm:residueoverarc>,
+)
 
 #proof[
   Parameterize $gamma_epsilon$ with $z = a + epsilon ee^(ii theta)$, where $theta in [alpha, beta]$ and $beta - alpha = theta.alt$. Then,
@@ -697,17 +741,23 @@ In the case that there are indentations along the contour, we have
 
 In the case that a branch point singularity is present on the contour, we may attempt to rewrite the function in a way such that the branch point is irrelevant. Otherwise, there are two types of "keyhole contours" that can be used to avoid the branch cut.
 
-#example[
-  Evaluate $I = integral_0^infinity (log(x^2+1)) / (x^2+1) dx$.
-]<ex:branch_point_pole_concurrence_integral>
+#lbl(
+  example[
+    Evaluate $I = integral_0^infinity (log(x^2+1)) / (x^2+1) dx$.
+  ],
+  <ex:branch_point_pole_concurrence_integral>,
+)
 
 #solution[to @ex:branch_point_pole_concurrence_integral][
   Notice that the integrand itself has branch points at $z = plus.minus ii$ coinciding with the poles from the denominator. We can rewrite the integral as
-  $
-    I
-    &= 1/2 integral_(-infinity)^infinity (log(x^2+1)) / (x^2+1) = integral_(-infinity)^infinity (log sqrt((x+i)(x-i))) / (x^2+1) \
-    &= integral_(-infinity)^infinity (log abs(x plus.minus i)) / (x^2+1) = Re integral_(-infinity)^infinity (log(x+i)) / (x^2+1).
-  $<eq:branch_point_pole_concurrence_integral_rewrite>
+  #lbl(
+    $
+      I
+      &= 1/2 integral_(-infinity)^infinity (log(x^2+1)) / (x^2+1) = integral_(-infinity)^infinity (log sqrt((x+i)(x-i))) / (x^2+1) \
+      &= integral_(-infinity)^infinity (log abs(x plus.minus i)) / (x^2+1) = Re integral_(-infinity)^infinity (log(x+i)) / (x^2+1).
+    $,
+    <eq:branch_point_pole_concurrence_integral_rewrite>,
+  )
   Let $gamma = Gamma union C_R$, where concretely,
   $ Gamma = {x in RR : -R <= x <= R}, quad C_R = {R ee^(ii theta) : 0 <= theta <= uppi} $
   and $R > 2$, and let $f(z) = Log(z + ii) / (z^2+1)$, where the branch for $Log$ is chosen to satisfy $[0, uppi] subset Im log(CC^*)$, such as the principal branch. The only singularity of $f$ in the upper half plane is a simple pole at $z = ii$. By the Residue Theorem (@thm:residuethm), we have

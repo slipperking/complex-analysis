@@ -1,15 +1,23 @@
 #import "/lib.typ": *
+#show: docs-subchapter.with(
+  title: [Isolated Singularities],
+  route: "isolated_singularities",
+  children: [
+    #include "at_infinity/index.typ"
 
-== Isolated Singularities
-
+  ],
+)
 An _isolated singularity_ of a complex function is a point $a in CC$ where a function $f$ is holomorphic on some open punctured neighborhood of $a$ (namely, for some $r > 0$, the punctured disk $D^*(a, r)$), but not necessarily defined or holomorphic at $a$ itself. The nature of this isolated singularity is characterized by the principal part $psi(z)$ (let $phi(z)$ be the holomorphic part) of the Laurent series of $f$ at the point $a$. Specifically, we can analyze the behavior of $f(z)$ as $z -> a$.
 
-+ If $lim_(z -> a) f(z)$ exists and is finite, then $z = a$ is a removable singularity and can be analytically continued to $D(a, r)$ by @thm:riemannremovablesingularities. Consequently, $f(z)$ has a convergent Taylor expansion and the principal part of its Laurent expansion vanishes, and $f(z) = phi(z)$. <itm:isolatedsingularities_removable>
-+ If $lim_(z -> a) f(z) = oo$, then $z = a$ is a _pole_ of $f$ (from the stereographic projection and the Riemann sphere, the $oo$ is a single point in $extcomplex$, and approaching $oo$ does not distinguish between different directions, unlike the use of $+oo$ and $-oo$). <itm:isolatedsingularities_pole>
++ If $lim_(z -> a) f(z)$ exists and is finite, then $z = a$ is a removable singularity and can be analytically continued to $D(a, r)$ by @thm:riemannremovablesingularities. Consequently, $f(z)$ has a convergent Taylor expansion and the principal part of its Laurent expansion vanishes, and $f(z) = phi(z)$. #enum-lbl(<itm:isolatedsingularities_removable>)
++ If $lim_(z -> a) f(z) = oo$, then $z = a$ is a _pole_ of $f$ (from the stereographic projection and the Riemann sphere, the $oo$ is a single point in $extcomplex$, and approaching $oo$ does not distinguish between different directions, unlike the use of $+oo$ and $-oo$). #enum-lbl(<itm:isolatedsingularities_pole>)
 
-  #theorem[
-    The condition $lim_(z -> a) f(z) = oo$ is equivalent to there being a finite number of nonzero $c_(-n)$'s, where $n in NN$.
-  ] <thm:isolatedsingularities_pole_laurentexpansion>
+  #lbl(
+    theorem[
+      The condition $lim_(z -> a) f(z) = oo$ is equivalent to there being a finite number of nonzero $c_(-n)$'s, where $n in NN$.
+    ],
+    <thm:isolatedsingularities_pole_laurentexpansion>,
+  )
 
   In other words the principal part of $f$ is equal to
   $ psi(z) = c_(-1) / (z - a) + dots.c + c_(-m) / (z - a)^m, quad c_(-m) eq.not 0 $
@@ -32,11 +40,14 @@ An _isolated singularity_ of a complex function is a point $a in CC$ where a fun
     $
     By the uniqueness of the Laurent series, the conclusion follows.
   ]
-+ If $lim_(z -> a) f(z)$ does not exist, then $a$ is known as an _essential singularity_. <itm:isolatedsingularities_essential>
++ If $lim_(z -> a) f(z)$ does not exist, then $a$ is known as an _essential singularity_. #enum-lbl(<itm:isolatedsingularities_essential>)
 
-  #example[
-    Classify the singularity of the function $ee^(1 / z)$ on the punctured plane $CC^*=CC without {0}$ at $z = 0$.
-  ] <ex:isolatedsingularities_essential_exp1z>
+  #lbl(
+    example[
+      Classify the singularity of the function $ee^(1 / z)$ on the punctured plane $CC^*=CC without {0}$ at $z = 0$.
+    ],
+    <ex:isolatedsingularities_essential_exp1z>,
+  )
 
   #solution[to @ex:isolatedsingularities_essential_exp1z][
     Observe that $lim_(x -> 0^+) ee^(1 / (x)) = oo$. Similarly, $lim_(x -> 0^-) ee^(1 / (x)) = 0$, and for $z = ii y$ with $y -> 0^+$,
@@ -74,9 +85,12 @@ A function with an essential singularity exhibits striking behavior. We will fir
 
 An analogous proof yields the following result for entire functions.
 
-#theorem[
-  The set of values that a non-constant entire function $f$ assumes is dense in $CC$.
-] <thm:casoratiweierstrassentire>
+#lbl(
+  theorem[
+    The set of values that a non-constant entire function $f$ assumes is dense in $CC$.
+  ],
+  <thm:casoratiweierstrassentire>,
+)
 
 #proof[
   For the sake of contradiction, assume there exists $w in CC$ and $epsilon > 0$ such that $D(w, epsilon) inter f(CC) = emptyset$. Define
@@ -87,5 +101,3 @@ An analogous proof yields the following result for entire functions.
 In @sec:differential_geometry, we will prove a profound generalization of the two results (@thm:greatpicard and @thm:littlepicard), which was first proved by Emile Picard in 1879:
 #thm-state.thm-restate("thm:littlepicard", final: true)
 #thm-state.thm-restate("thm:greatpicard", final: true)
-
-#include "at_infinity/index.typ"

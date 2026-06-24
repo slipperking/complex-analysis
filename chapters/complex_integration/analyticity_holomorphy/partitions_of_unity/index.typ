@@ -1,7 +1,9 @@
 #import "/lib.typ": *
-
-=== Topology, Partitions of Unity, and the Existence of Bump Functions <sec:partitions_of_unity>
-
+#show: docs-subsubchapter.with(
+  title: [Topology, Partitions of Unity, and the Existence of Bump Functions],
+  route: "partitions_of_unity",
+  label: <sec:partitions_of_unity>,
+)
 #definition("Topological Space")[
   A _topological space_ is a pair $(X, tau)$, where $X$ is a set and $tau$ is a collection of subsets of $X$ satisfying the following properties:
 
@@ -30,9 +32,12 @@ The following discussions involved with topological spaces here will always be o
   A topological space $X$ is _compact_ iff every open cover has a finite subcover. For a topological space $X$, a set $A subset.eq X$ is _compact_ iff every open cover has a finite subcover.
 ]
 
-#proposition[
-  Suppose $X$ is a Hausdorff topological space and let $A subset.eq X$ be compact. Then $A$ is closed in $X$.
-] <prop:compactinhausdorffclosed>
+#lbl(
+  proposition[
+    Suppose $X$ is a Hausdorff topological space and let $A subset.eq X$ be compact. Then $A$ is closed in $X$.
+  ],
+  <prop:compactinhausdorffclosed>,
+)
 
 #proof[
   Let $x in X without A$ be fixed. For each $a in A$, since $X$ is Hausdorff, there exist disjoint neighborhoods $U_a$ and $V_a$ with $x in U_a$ and $a in V_a$. The set
@@ -49,9 +54,12 @@ The following discussions involved with topological spaces here will always be o
   where the sandwiched union is open. Therefore, $A$ is closed.
 ]
 
-#proposition[
-  If $X$ is a compact space and $A subset.eq X$ is closed, then $A$ is compact.
-] <prop:closedincompactspacecompactset>
+#lbl(
+  proposition[
+    If $X$ is a compact space and $A subset.eq X$ is closed, then $A$ is compact.
+  ],
+  <prop:closedincompactspacecompactset>,
+)
 
 #proof[
   Let $cal(U)$ be an open cover of $A$ in $X$. Since $X without A$ is open, the set
@@ -65,9 +73,12 @@ The following discussions involved with topological spaces here will always be o
   A point $a$ is an accumulation point of a set $A$ in a topological space $X$ iff any open $U$ with $a in U$ implies that $U inter A$ contains a point other than $a$.
 ]
 
-#proposition[
-  A set $A$ in a topological space $X$ is closed iff it contains all its accumulation points.
-] <prop:closedsetcontainsaccumulation_points>
+#lbl(
+  proposition[
+    A set $A$ in a topological space $X$ is closed iff it contains all its accumulation points.
+  ],
+  <prop:closedsetcontainsaccumulation_points>,
+)
 
 #proof[
   We first prove the forward implications under the assumption that $A$ is closed. Since $X without A$ is open, and suppose for contradiction, that $a in X without A$. Then for $a in U = X without A$ open, $U inter A = emptyset$ (and hence $a$ cannot be an accumulation point by contradiction of definition).
@@ -100,14 +111,17 @@ For two topological spaces $X$ and $Y$, a function $f:X -> Y$ is a _homeomorphis
 
 The function $f:[0, 2 uppi) -> S^1$ with $f(t) = (cos(t), sin(t))$ is indeed continuous, but the inverse $f^(-1)(x_1, x_2)$ is discontinuous at $(x_1, x_2) = (1, 0)$.
 
-#proposition[
-  Let $(X, tau_1), (Y, tau_2)$ be two topological spaces. Then for $f:X -> Y$, the following conditions are equivalent:
+#lbl(
+  proposition[
+    Let $(X, tau_1), (Y, tau_2)$ be two topological spaces. Then for $f:X -> Y$, the following conditions are equivalent:
 
-  + $f$ is continuous.<itm:topologicalcontinuityequivalents_cont>
-  + If $A subset.eq Y$ is closed, then the pre-image $f^(-1)(A)$ is closed.<itm:topologicalcontinuityequivalents_closed>
-  + If $a in X$ and $A in tau_2$ is an open neighborhood of $f(a)$ in $Y$, then there is some $U in tau_1$ that is a neighborhood of $a$ such that $f(U) subset.eq A$.<itm:topologicalcontinuityequivalents_fitopenset>
+    + $f$ is continuous.#enum-lbl(<itm:topologicalcontinuityequivalents_cont>)
+    + If $A subset.eq Y$ is closed, then the pre-image $f^(-1)(A)$ is closed.#enum-lbl(<itm:topologicalcontinuityequivalents_closed>)
+    + If $a in X$ and $A in tau_2$ is an open neighborhood of $f(a)$ in $Y$, then there is some $U in tau_1$ that is a neighborhood of $a$ such that $f(U) subset.eq A$.#enum-lbl(<itm:topologicalcontinuityequivalents_fitopenset>)
 
-] <prop:topologicalcontinuityequivalents>
+  ],
+  <prop:topologicalcontinuityequivalents>,
+)
 
 #proof[
   We first show that @itm:topologicalcontinuityequivalents_cont implies @itm:topologicalcontinuityequivalents_closed. By continuity, for $A subset.eq Y$ closed, $Y without A in tau_2$, then
@@ -216,11 +230,14 @@ We now justify a claim whose triviality we have taken for granted.
 
 It is worth noting some motivating examples for which the conclusion fails when certain hypotheses are not satisfied.
 
-#example[
-  Let $I = [0, 2 uppi)$ be a topological space with a metric $abs(dot)$ under the standard topology (the subspace topology induced by the basis formed with open "balls" or symmetric intervals around each point). Equip the unit circle
-  $ S^1 = {z in CC : abs(z) = 1} $
-  with a topology generated by the metric defined by arc-length $(d_(S^1))$. Then the continuous bijection $f:I -> S^1$ defined by $f(t) = ee^(ii t)$ is not a homeomorphism.
-] <ex:continuous_injection_not_homeomorphism>
+#lbl(
+  example[
+    Let $I = [0, 2 uppi)$ be a topological space with a metric $abs(dot)$ under the standard topology (the subspace topology induced by the basis formed with open "balls" or symmetric intervals around each point). Equip the unit circle
+    $ S^1 = {z in CC : abs(z) = 1} $
+    with a topology generated by the metric defined by arc-length $(d_(S^1))$. Then the continuous bijection $f:I -> S^1$ defined by $f(t) = ee^(ii t)$ is not a homeomorphism.
+  ],
+  <ex:continuous_injection_not_homeomorphism>,
+)
 
 #solution[to @ex:continuous_injection_not_homeomorphism][
   The non-continuity of $f^(-1):S^1 -> I$ is easy to visually see, both topologically and by epsilon--delta. Topologically, select the _relatively_ open interval $[0, uppi)$ in $I$. The pre-image of this set under $f^(-1)$ is $ee^(ii [0, uppi))$, which is clearly not an open set. This proves that $f^(-1)$ is not continuous (by definition).
@@ -264,9 +281,12 @@ In a topological space $X$, a subset can be open, closed (the complement of some
   In fact, every set in $tau$ is clopen.
 ]
 
-#proposition[
-  The interval $[0, 1]$ (under the subspace topology induced by $RR$) is connected.
-] <prop:unitintervalconnectivity>
+#lbl(
+  proposition[
+    The interval $[0, 1]$ (under the subspace topology induced by $RR$) is connected.
+  ],
+  <prop:unitintervalconnectivity>,
+)
 
 #proof[
   Assume, for contradiction, that there exist two disjoint nonempty open sets $U, V subset [0, 1]$ such that
@@ -289,18 +309,24 @@ Connectivity intuitively means that a space cannot be split into two disjoint op
   A topological space $X$ is said to be _path-connected_ iff for any two points $a, b in X$, there is a continuous function $f:[0, 1] -> X$, where $[0, 1]$ is equipped with the metric topology and $f(0) = a, f(1) = b$.
 ]
 
-#theorem[
-  A path-connected topological space $X$ is connected.
-] <thm:pathconnectivityimpliesconnectivity>
+#lbl(
+  theorem[
+    A path-connected topological space $X$ is connected.
+  ],
+  <thm:pathconnectivityimpliesconnectivity>,
+)
 
 #proof[
   Assume path-connectivity and suppose $X$ is disconnected. Then two open nonempty disjoint components $U, V subset X$ can be found. Let $u in U, v in V$ be two arbitrary points. Then there exists $f:[0, 1] -> X$ such that $f(0) = u$, $f(1) = v$. By continuity, the pre-images of $U$ and $V$, namely $f^(-1)(U)$ and $f^(-1)(V)$ respectively, are disjoint open subsets of $[0, 1]$. Moreover, the pre-image are nonempty as they contain $0$ and $1$ respectively. This contradicts the connectivity of $[0, 1]$ in @prop:unitintervalconnectivity.
 ]
 
 Note that the converse here is not necessarily true.
-#example[
-  The _topologist's sine curve_ under the subspace topology from $RR^2$ (with the Euclidean metric), defined by $ T={(x,sin 1/x) : x in (0,1]} union {(0,0)}, $ (which can be thought to be the points on the graph of $y=sin 1/x$) is connected but not path-connected.
-]<ex:topologists_sine_curve>
+#lbl(
+  example[
+    The _topologist's sine curve_ under the subspace topology from $RR^2$ (with the Euclidean metric), defined by $ T={(x,sin 1/x) : x in (0,1]} union {(0,0)}, $ (which can be thought to be the points on the graph of $y=sin 1/x$) is connected but not path-connected.
+  ],
+  <ex:topologists_sine_curve>,
+)
 #solution[to @ex:topologists_sine_curve][
   + Let $ T'=T without{0} = {(x,sin 1/x) : x in (0,1]} $ under the subspace topology, which is trivially path-connected. By @thm:pathconnectivityimpliesconnectivity, this subspace is connected. If $T$ is disconnected, then there exists a non-trivial clopen set $U subset T$ including $0$ Then $U != {0}$. Then $U inter T' = U without {0}$ would be a non-trivial clopen set in $T'$, which is an impossibility. Thus, $T$ is a connected space.
   + Assume for contradiction that there exists a continuous path $gamma(t) = (x(t),y(t)):[0,1] -> T$ with $gamma(0)=(0,0)$ and $gamma(1)=(1,sin(1))$.
@@ -319,13 +345,16 @@ Note that the converse here is not necessarily true.
   $ X = union.big_(n in NN) K_n. $
 ] <def:exhaustionbycompact_sets>
 
-#lemma[
-  Let $Omega subset.eq CC$ be an open set and let $frak(B)$ be a basis for the topology on $Omega$. Then there exists a collection of sets ${U_n}_(n in NN) subset.eq frak(B)$ such that
+#lbl(
+  lemma[
+    Let $Omega subset.eq CC$ be an open set and let $frak(B)$ be a basis for the topology on $Omega$. Then there exists a collection of sets ${U_n}_(n in NN) subset.eq frak(B)$ such that
 
-  + $union.big_(n in NN) U_n = Omega$.<itm:locally_finite_open_cover_existence_cover>
-  + For every compact $K subset Omega$, $K$ intersects only finitely many sets in ${U_n}_(n in NN)$.<itm:locally_finite_open_cover_existence_localfiniteness>
+    + $union.big_(n in NN) U_n = Omega$.#enum-lbl(<itm:locally_finite_open_cover_existence_cover>)
+    + For every compact $K subset Omega$, $K$ intersects only finitely many sets in ${U_n}_(n in NN)$.#enum-lbl(<itm:locally_finite_open_cover_existence_localfiniteness>)
 
-] <lem:locally_finite_open_cover_existence>
+  ],
+  <lem:locally_finite_open_cover_existence>,
+)
 
 #proof[
   Let ${K_n}_(n in NN) subset Omega$ be an exhaustion by compact sets with $K_0 = emptyset$ and $K_n subset.eq interior(K_(n + 1))$ for all $n in NN$. For each $n in NN$, define
@@ -348,9 +377,9 @@ Note that the converse here is not necessarily true.
   so $K$ is disjoint from $V_n$ for all $n > N + 1$. Since each $V_n$ intersects only finitely many $U_j$, $K$ intersects only finitely many $U_j$. Thus the collection is locally finite.
 ]
 
-#figure-wrapper([
-  #figure(
-    cetz.canvas({
+#lbl(
+  figure(
+    canvas({
       import cetz.draw: *
       import cetz.decorations: brace
 
@@ -420,7 +449,16 @@ Note that the converse here is not necessarily true.
         ((-1.3, 2.2), (-1.8, 2.7), (-1.3, 3.6), (-0.9, 3.9), (0.2, 3.8), (-0.1, 3.0), (-1.0, 2.6)),
         ((-1.3, 2.2), (-1.8, 2.7), (-1.3, 3.6), (-0.9, 3.9), (0.2, 3.8), (-0.1, 3.0), (-1.0, 2.6)),
         ((-3.0, 0.2), (-2.7, 1.2), (-1.9, 2.8), (-1.0, 2.5), (-1.8, 1.2), (-2.3, 0.2), (-2.5, -0.6)),
-        ((-2.5, -1.3), (-0.3, -2.4), (-0.5, -1.7), (-1.5, -1.3), (-2.5, -0.5), (-2.8, 0.2), (-3.0, 0.2), (-3.2, -0.6)),
+        (
+          (-2.5, -1.3),
+          (-0.3, -2.4),
+          (-0.5, -1.7),
+          (-1.5, -1.3),
+          (-2.5, -0.5),
+          (-2.8, 0.2),
+          (-3.0, 0.2),
+          (-3.2, -0.6),
+        ),
         ((-0.5, -1.6), (1.0, -1.0), (1.5, -0.1), (2.7, -0.1), (1.0, -1.7), (-0.7, -2.2)),
         ((1.5, -0.6), (1.8, 0.4), (3.0, 1.2), (3.1, 0.2)),
         ((3.0, 0.6), (2.3, 0.7), (2.1, 2.0), (1.7, 2.6), (1.9, 3.0), (2.4, 3.1)),
@@ -469,8 +507,9 @@ Note that the converse here is not necessarily true.
       content("wn-brace.content", math-rect($W_n$))
     }),
     caption: [Geometry of the finite subcover of $V_n subset W_n$ for some $n in NN$.],
-  ) <fig:locally_finite_open_cover_existence>
-])
+  ),
+  <fig:locally_finite_open_cover_existence>,
+)
 #remark[
   The property of local finiteness of an open collection $S$ in $Omega$ is commonly stated as: for every $z in Omega$, there exists an open neighborhood of $z$ that intersects only finitely many sets in $S$.
 
@@ -480,10 +519,10 @@ Note that the converse here is not necessarily true.
 #theorem[Partition of Unity][
   Let $Omega subset.eq CC$ be a nonempty open set and let ${Omega_k}_(k in NN)$ be an open cover of $Omega$. Then there exists a collection of bump functions ${alpha_j}_(j in NN) subset.eq C^oo (CC)$, each with compact support in $Omega$, satisfying:
 
-  + For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.<itm:partition_of_unity_subordinate>
-  + The collection ${supp(alpha_j)}_(j in NN)$ is locally finite.<itm:partition_of_unity_local_finiteness>
-  + For each $j in NN$, $0 <= alpha_j <= 1$.<itm:partition_of_unity_nonnegativity>
-  + $sum_(j = 1)^oo alpha_j equiv 1$ on $Omega$.<itm:partition_of_unity_partition_of_unity>
+  + For each $j in NN$, there exists $k in NN$ such that $supp(alpha_j) subset.eq Omega_k$.#enum-lbl(<itm:partition_of_unity_subordinate>)
+  + The collection ${supp(alpha_j)}_(j in NN)$ is locally finite.#enum-lbl(<itm:partition_of_unity_local_finiteness>)
+  + For each $j in NN$, $0 <= alpha_j <= 1$.#enum-lbl(<itm:partition_of_unity_nonnegativity>)
+  + $sum_(j = 1)^oo alpha_j equiv 1$ on $Omega$.#enum-lbl(<itm:partition_of_unity_partition_of_unity>)
 
   Then ${alpha_j}_(j in NN)$ is called a $C^oo$ partition of unity subordinate to ${Omega_k}_(k in NN)$.
 ] <thm:partition_of_unity>

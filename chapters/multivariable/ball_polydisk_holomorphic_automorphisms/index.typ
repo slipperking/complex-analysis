@@ -1,6 +1,8 @@
 #import "/lib.typ": *
-
-== The Group of Holomorphic Automorphisms on $DD^n$ and $B^n$
+#show: docs-subchapter.with(
+  title: [The Group of Holomorphic Automorphisms on $DD^n$ and $B^n$],
+  route: "ball_polydisk_holomorphic_automorphisms",
+)
 A function $bold(f) : Omega subset.eq CC^m -> CC^n$ is called _holomorphic_ iff each of its component functions is holomorphic. It is important to allow for vector-valued outputs, since we are interested in automorphisms on complex domains in higher dimensions.
 
 For the aforesaid purpose, we require a generalization of the Schwarz Lemma (@lem:schwarz), which is equivalent to several results of Cartan.
@@ -18,28 +20,34 @@ In preparation, we will introduce several relevant concepts.
   where $bold(z) = (z_1, dots, z_n) in CC^n.$
 ] <def:multiindex>
 
-#definition[
-  A polynomial $bold(psi) : CC^n -> CC^m$ of several variables is said to be _homogeneous of degree $d$_ iff
-  $
-    bold(psi)(lambda bold(z)) = lambda^d bold(psi)(bold(z)) quad forall lambda in CC, bold(z) in CC^n,
-  $
-  or equivalently, iff $bold(psi)$ can be written as
-  $
-    bold(psi)(bold(z)) = sum_(abs(bold(k)) = d) bold(a)_(bold(k)) bold(z)^(bold(k))
-  $
-  where $bold(k) in ZZ_(gt.eq 0)^n$ is a multi-index.
-] <def:homogeneouspolynomial>
+#lbl(
+  definition[
+    A polynomial $bold(psi) : CC^n -> CC^m$ of several variables is said to be _homogeneous of degree $d$_ iff
+    $
+      bold(psi)(lambda bold(z)) = lambda^d bold(psi)(bold(z)) quad forall lambda in CC, bold(z) in CC^n,
+    $
+    or equivalently, iff $bold(psi)$ can be written as
+    $
+      bold(psi)(bold(z)) = sum_(abs(bold(k)) = d) bold(a)_(bold(k)) bold(z)^(bold(k))
+    $
+    where $bold(k) in ZZ_(gt.eq 0)^n$ is a multi-index.
+  ],
+  <def:homogeneouspolynomial>,
+)
 
-#proposition[
-  Let $bold(psi) : CC^n -> CC^m$ be a homogeneous polynomial of degree $d$.
-  + For any multi-index $bold(alpha) = (alpha_1, dots, alpha_n)$ with $norm(bold(alpha)) = r <= d$,
-    $
-      partial^(bold(alpha)) bold(psi)(bold(z)) = (partial^r bold(psi)) / (partial z_1^(alpha_1) dots.c partial z_n^(alpha_n))(bold(z))
-    $
-    is a homogeneous polynomial of degree $d-r$. <itm:homogeneouspolynomialderivatives_less>
-  + If $r = d != 0$, then $partial^(bold(alpha)) bold(psi)$ is constant (and there exists a multi-index $bold(alpha)$ with $norm(bold(alpha)) = d$ such that $partial^(bold(alpha)) bold(psi)$ is nonzero). <itm:homogeneouspolynomialderivatives_equality>
-  + If $r > d$, then $partial^(bold(alpha)) bold(psi) equiv 0$. <itm:homogeneouspolynomialderivatives_greater>
-] <prop:homogeneouspolynomialderivatives>
+#lbl(
+  proposition[
+    Let $bold(psi) : CC^n -> CC^m$ be a homogeneous polynomial of degree $d$.
+    + For any multi-index $bold(alpha) = (alpha_1, dots, alpha_n)$ with $norm(bold(alpha)) = r <= d$,
+      $
+        partial^(bold(alpha)) bold(psi)(bold(z)) = (partial^r bold(psi)) / (partial z_1^(alpha_1) dots.c partial z_n^(alpha_n))(bold(z))
+      $
+      is a homogeneous polynomial of degree $d-r$. #enum-lbl(<itm:homogeneouspolynomialderivatives_less>)
+    + If $r = d != 0$, then $partial^(bold(alpha)) bold(psi)$ is constant (and there exists a multi-index $bold(alpha)$ with $norm(bold(alpha)) = d$ such that $partial^(bold(alpha)) bold(psi)$ is nonzero). #enum-lbl(<itm:homogeneouspolynomialderivatives_equality>)
+    + If $r > d$, then $partial^(bold(alpha)) bold(psi) equiv 0$. #enum-lbl(<itm:homogeneouspolynomialderivatives_greater>)
+  ],
+  <prop:homogeneouspolynomialderivatives>,
+)
 
 #proof[
   Writing $bold(psi)(bold(z)) = sum_(abs(bold(k)) = d) bold(a)_(bold(k)) bold(z)^(bold(k))$ with coefficients $bold(a)_(bold(k)) in CC^m$, we compute
@@ -59,26 +67,32 @@ In preparation, we will introduce several relevant concepts.
 
 #lemma("Cartan")[
   Let $Omega subset CC^n$ be a bounded region, and suppose that $bold(f) = (f_1, dots, f_n) : Omega -> Omega$ is holomorphic. If $exists bold(a) in Omega$ such that $bold(f)(bold(a)) = bold(a)$ and the complex Jacobian at $bold(a)$ is the identity matrix, or equivalently, if
-  $
-    bold(J)_(bold(f))(bold(a)) = mat(
-      pdv(f_1, z_1)(bold(a)), dots.c, pdv(f_1, z_n)(bold(a));
-      dots.v, dots.down, dots.v;
-      pdv(f_n, z_1)(bold(a)), dots.c, pdv(f_n, z_n)(bold(a))
-    ) = bold(I) = mat(
-      1, dots.c, 0;
-      dots.v, dots.down, dots.v;
-      0, dots.c, 1
-    ),
-  $ <eq:multivarcartan1_jacobian>
+  #lbl(
+    $
+      bold(J)_(bold(f))(bold(a)) = mat(
+        pdv(f_1, z_1)(bold(a)), dots.c, pdv(f_1, z_n)(bold(a));
+        dots.v, dots.down, dots.v;
+        pdv(f_n, z_1)(bold(a)), dots.c, pdv(f_n, z_n)(bold(a))
+      ) = bold(I) = mat(
+        1, dots.c, 0;
+        dots.v, dots.down, dots.v;
+        0, dots.c, 1
+      ),
+    $,
+    <eq:multivarcartan1_jacobian>,
+  )
   then $bold(f)(bold(z)) equiv bold(z)$ is the identity map.
 ] <lem:multivarcartan1>
 
 #proof[
   By @thm:taylorexpansionmultivariable, we have the expansion
-  $
-    bold(f)(bold(z)) & = sum_(abs(bold(k)) = 0)^oo bold(a)_(bold(k)) (bold(z) - bold(a))^(bold(k)) = sum_(j=0)^oo bold(psi)_j (bold(z) - bold(a)) \
-    & = bold(a) + sum_(j=1)^oo sum_(abs(bold(k)) = j) bold(a)_(bold(k)) (bold(z) - bold(a))^(bold(k)),
-  $ <eq:multivarcartan1_taylorseries>
+  #lbl(
+    $
+      bold(f)(bold(z)) & = sum_(abs(bold(k)) = 0)^oo bold(a)_(bold(k)) (bold(z) - bold(a))^(bold(k)) = sum_(j=0)^oo bold(psi)_j (bold(z) - bold(a)) \
+      & = bold(a) + sum_(j=1)^oo sum_(abs(bold(k)) = j) bold(a)_(bold(k)) (bold(z) - bold(a))^(bold(k)),
+    $,
+    <eq:multivarcartan1_taylorseries>,
+  )
   which is absolutely convergent on some polydisk centered at $bold(a)$, where $bold(a)_(bold(k)) = (partial^(bold(k)) bold(f)(bold(a))) / (product_(j=1)^n k_j !)$ and $bold(k) = (k_1, dots, k_n)$. The terms have been rearranged (from absolute convergence) so that the inner summation is a homogeneous polynomial $bold(psi)_j$ with a zero at $bold(z) = bold(a)$ and degree $j$.
 
   Trivially, $bold(a)_(1, 0, dots, 0) = pdv(bold(f), z_1)(bold(a)) = (1, 0, dots, 0)$ by @eq:multivarcartan1_jacobian. Similarly, $bold(a)_(0, 1, 0, dots, 0) = (0, 1, 0, dots, 0), dots, bold(a)_(0, dots, 0, 1) = (0, dots, 0, 1)$. Hence, the linear homogeneous polynomial of @eq:multivarcartan1_taylorseries equals
@@ -144,13 +158,16 @@ In preparation, we will introduce several relevant concepts.
   is fully contained in $Omega$. In other words, $Omega$ is invariant under all rotations about the center $bold(a)$ in each coordinate.
 ] <def:reinhardtdomain>
 
-#definition[
-  A Reinhardt domain $Omega subset.eq CC^n$ centered at $bold(a) = (a_1, dots, a_n)$ is said to be _complete_ iff $forall bold(zeta) = (zeta_1, dots, zeta_n) in Omega$, the polydisk
-  $
-    {(z_1, dots, z_n) in CC^n : abs(z_k - a_k) <= abs(zeta_k - a_k), 1 <= k <= n}
-  $
-  is contained in $Omega$.
-] <def:completereinhardtdomain>
+#lbl(
+  definition[
+    A Reinhardt domain $Omega subset.eq CC^n$ centered at $bold(a) = (a_1, dots, a_n)$ is said to be _complete_ iff $forall bold(zeta) = (zeta_1, dots, zeta_n) in Omega$, the polydisk
+    $
+      {(z_1, dots, z_n) in CC^n : abs(z_k - a_k) <= abs(zeta_k - a_k), 1 <= k <= n}
+    $
+    is contained in $Omega$.
+  ],
+  <def:completereinhardtdomain>,
+)
 
 #definition("Circular Domain")[
   An open connected domain $Omega subset.eq CC^n$ is a _circular domain_ centered at $bold(a) in CC^n$ iff $forall bold(zeta) in Omega$,
@@ -160,20 +177,26 @@ In preparation, we will introduce several relevant concepts.
   is fully contained in $Omega$.
 ] <def:circulardomain>
 
-#definition[
-  A circular domain $Omega subset.eq CC^n$ centered at $bold(a) = (a_1, dots, a_n)$ is said to be _complete_ iff $forall bold(zeta) in Omega$,
-  $
-    {bold(a) + mu (bold(zeta) - bold(a)) : forall mu in overline(DD)}
-  $
-  is contained in $Omega$.
-] <def:completecirculardomain>
+#lbl(
+  definition[
+    A circular domain $Omega subset.eq CC^n$ centered at $bold(a) = (a_1, dots, a_n)$ is said to be _complete_ iff $forall bold(zeta) in Omega$,
+    $
+      {bold(a) + mu (bold(zeta) - bold(a)) : forall mu in overline(DD)}
+    $
+    is contained in $Omega$.
+  ],
+  <def:completecirculardomain>,
+)
 
-#proposition[
-  Let $U_0 subset.eq CC^(n_0), U_1 subset.eq CC^(n_1), U_2 subset.eq CC^(n_2)$ be open domains with $n_i gt.eq 1$ for each $i$, and let $bold(f) : U_1 -> U_2$ and $bold(g) : U_0 -> U_1$ be holomorphic maps. Define the composition $bold(h) : U_0 -> U_2$ by $bold(h)(bold(z)) = bold(f)(bold(g)(bold(z)))$. Then for every $bold(z) in U_0$, the complex Jacobian matrix of $bold(h)$ at $bold(z)$ is
-  $
-    bold(J)_(bold(h))(bold(z)) = bold(J)_(bold(f))(bold(g)(bold(z))) dot bold(J)_(bold(g))(bold(z)).
-  $
-] <prop:jacobianchainrule>
+#lbl(
+  proposition[
+    Let $U_0 subset.eq CC^(n_0), U_1 subset.eq CC^(n_1), U_2 subset.eq CC^(n_2)$ be open domains with $n_i gt.eq 1$ for each $i$, and let $bold(f) : U_1 -> U_2$ and $bold(g) : U_0 -> U_1$ be holomorphic maps. Define the composition $bold(h) : U_0 -> U_2$ by $bold(h)(bold(z)) = bold(f)(bold(g)(bold(z)))$. Then for every $bold(z) in U_0$, the complex Jacobian matrix of $bold(h)$ at $bold(z)$ is
+    $
+      bold(J)_(bold(h))(bold(z)) = bold(J)_(bold(f))(bold(g)(bold(z))) dot bold(J)_(bold(g))(bold(z)).
+    $
+  ],
+  <prop:jacobianchainrule>,
+)
 
 #proof[
   Fix $bold(z) in U_0$ and let $bold(w) = bold(g)(bold(z)) in U_1$. Write
@@ -233,9 +256,12 @@ In preparation, we will introduce several relevant concepts.
     &= ee^(-ii theta) ee^(ii theta) (bold(J)_(bold(f)^(-1)) dot bold(J)_(bold(f)))(bold(0)) = bold(I).
   $
   By @lem:multivarcartan1, $bold(phi)(bold(z)) equiv bold(z)$ on $Omega$. Hence, $bold(f) compose bold(rho)_theta = bold(rho)_theta compose bold(f)$ for all $theta in RR$. Together with @thm:taylorexpansionmultivariable, write
-  $
-    bold(f)(bold(z)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) bold(z)^(bold(k))
-  $ <eq:multivarcartan2_taylorseries>
+  #lbl(
+    $
+      bold(f)(bold(z)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) bold(z)^(bold(k))
+    $,
+    <eq:multivarcartan2_taylorseries>,
+  )
   on a polydisk centered at $bold(0)$. Thus,
   $
     bold(f) compose bold(rho)(bold(z)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) (ee^(ii theta) bold(z))^(bold(k)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) ee^(ii theta abs(bold(k))) bold(z)^(bold(k)).
@@ -257,9 +283,12 @@ In preparation, we will introduce several relevant concepts.
 
 #theorem[The Holomorphic Automorphism Group on $DD^n$][
   The holomorphic automorphism group of the polydisk $DD^n$ consists solely of biholomorphisms in the form of
-  $
-    bold(z) = (z_1, dots, z_n) |-> bold(P)(ee^(ii theta_1) (z_1 - a_1) / (1 - overline(a_1) z_1), dots, ee^(ii theta_n) (z_n - a_n) / (1 - overline(a_n) z_n)),
-  $ <eq:holomorphicautomorphismgrouponpolydisk_statement>
+  #lbl(
+    $
+      bold(z) = (z_1, dots, z_n) |-> bold(P)(ee^(ii theta_1) (z_1 - a_1) / (1 - overline(a_1) z_1), dots, ee^(ii theta_n) (z_n - a_n) / (1 - overline(a_n) z_n)),
+    $,
+    <eq:holomorphicautomorphismgrouponpolydisk_statement>,
+  )
   where $bold(P)$ is a $n times n$ permutation matrix (for coordinate permutations), $(theta_1, dots, theta_n) in RR^n$, and $(a_1, dots, a_n) in DD^n$. Moreover, every such map is indeed an automorphism.
 ] <thm:holomorphicautomorphismgrouponpolydisk>
 
@@ -285,9 +314,12 @@ In preparation, we will introduce several relevant concepts.
     (1 - 1 / k) sum_(i=1)^n abs(zeta_(j,i)) in DD.
   $
   As $k -> oo$,
-  $
-    sum_(i=1)^n abs(zeta_(j,i)) <= 1 wide forall j in {1, dots, n}.
-  $ <eq:holomorphicautomorphismgrouponpolydisk_absolutesumestimate>
+  #lbl(
+    $
+      sum_(i=1)^n abs(zeta_(j,i)) <= 1 wide forall j in {1, dots, n}.
+    $,
+    <eq:holomorphicautomorphismgrouponpolydisk_absolutesumestimate>,
+  )
   Now consider, for each $j in {1, dots, n}$, the sequence $bold(z)'_(j,k) = (0, dots, 0, 1 - 1 / k, 0, dots, 0)$, where $1 - 1 / k$ is in the $j$-th position. Then
   $
     bold(phi) compose bold(f)(bold(z)'_(j,k)) = (1 - 1 / k)(zeta_(1,j), dots, zeta_(n,j)).
@@ -363,14 +395,20 @@ In preparation, we will introduce several relevant concepts.
 
 A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$, where $bold(U)$ is a unitary matrix.
 
-#proposition[
-  For any $a in DD$,
-  $
-    bold(w) &= (w_1, dots, w_n) = bold(phi)_a (bold(z)) \
-    &=((z_1 - a) / (1 - overline(a) z_1), z_2 (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1), z_3 (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1), dots, z_n (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1))
-  $ <eq:unitballsimpleautomorphism_statement>
-  lies in $Aut(B^n)$, where $bold(z) = (z_1, dots, z_n)$. Moreover, $bold(phi)_a^(-1) = bold(phi)_(-a)$.
-] <prop:unitballsimpleautomorphism>
+#lbl(
+  proposition[
+    For any $a in DD$,
+    #lbl(
+      $
+        bold(w) &= (w_1, dots, w_n) = bold(phi)_a (bold(z)) \
+        &=((z_1 - a) / (1 - overline(a) z_1), z_2 (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1), z_3 (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1), dots, z_n (sqrt(1 - abs(a)^2)) / (1 - overline(a) z_1))
+      $,
+      <eq:unitballsimpleautomorphism_statement>,
+    )
+    lies in $Aut(B^n)$, where $bold(z) = (z_1, dots, z_n)$. Moreover, $bold(phi)_a^(-1) = bold(phi)_(-a)$.
+  ],
+  <prop:unitballsimpleautomorphism>,
+)
 
 #proof[
   For $bold(z) = (z_1, dots, z_n) in B^n$, because $sum_(k=2)^n abs(z_k)^2 < 1 - abs(z_1)^2$,
@@ -387,9 +425,12 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
   and hence $bold(phi)_a$ is bijective, admitting the inverse $bold(phi)_(-a)$. Therefore, $bold(phi)_a in Aut(B^n)$.
 ]
 
-#proposition[
-  A function $bold(f)$ is a unitary transformation iff $bold(f) in Aut(B^n)$ and $bold(f)(bold(0)) = bold(0)$.
-] <prop:unitballautomorphismfixedpointatzero>
+#lbl(
+  proposition[
+    A function $bold(f)$ is a unitary transformation iff $bold(f) in Aut(B^n)$ and $bold(f)(bold(0)) = bold(0)$.
+  ],
+  <prop:unitballautomorphismfixedpointatzero>,
+)
 
 #proof[
   Because $B^n$ is a bounded complete circular domain centered at $bold(0)$, from @lem:multivarcartan2 we have that $bold(f) equiv bold(U)$ for some constant invertible matrix
@@ -405,9 +446,12 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
     bold(U) bold(z) = (sum_(k=1)^n zeta_(1,k) z_k, dots, sum_(k=1)^n zeta_(n,k) z_k) ==> norm(bold(U) bold(z))^2 = sum_(j=1)^n abs(sum_(k=1)^n zeta_(j,k) z_k)^2.
   $
   Letting $bold(z) = bold(e)_i$ ($1 <= i <= n$) be the $i$-th unit basis vector, we obtain
-  $
-    norm(bold(U) bold(z)) = 1 = norm((zeta_(1,i), dots, zeta_(n,i)))^2 = sum_(k=1)^n abs(zeta_(k,i))^2 = sum_(k=1)^n zeta_(k,i) overline(zeta_(k,i)).
-  $ <eq:unitballautomorphismfixedpointatzero_diagonalentries>
+  #lbl(
+    $
+      norm(bold(U) bold(z)) = 1 = norm((zeta_(1,i), dots, zeta_(n,i)))^2 = sum_(k=1)^n abs(zeta_(k,i))^2 = sum_(k=1)^n zeta_(k,i) overline(zeta_(k,i)).
+    $,
+    <eq:unitballautomorphismfixedpointatzero_diagonalentries>,
+  )
   Letting $bold(z) = (sqrt(2)) / (2) (bold(e)_i + bold(e)_j)$ ($i != j$), we have
   $
     norm(bold(U) bold(z)) = 1
@@ -437,9 +481,12 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
   A group $G$ (under juxtaposition) is said to be _divisible_ iff for every $g in G$ and every positive integer $n$, there exists some $h in G$ such that $h^n = g$.
 ]
 
-#proposition[
-  The divisibility of a group is preserved under group isomorphisms.
-] <prop:groupdivisibilitypreservedunderisomorphisms>
+#lbl(
+  proposition[
+    The divisibility of a group is preserved under group isomorphisms.
+  ],
+  <prop:groupdivisibilitypreservedunderisomorphisms>,
+)
 
 #proof[
   Let $phi : G -> H$ be a group isomorphism between groups $G$ and $H$ with juxtaposition.
@@ -455,9 +502,12 @@ A _unitary transformation_ is a map in the form of $bold(z) |-> bold(U) bold(z)$
 
 #theorem[The Holomorphic Automorphism Group on $B^n$][
   The holomorphic automorphism group $Aut(B^n)$ consists solely of biholomorphisms in the form of
-  $
-    bold(z) |-> bold(U)^(-1) bold(phi)_a compose bold(V) bold(z),
-  $ <eq:holomorphicautomorphismgrouponunitball_statement>
+  #lbl(
+    $
+      bold(z) |-> bold(U)^(-1) bold(phi)_a compose bold(V) bold(z),
+    $,
+    <eq:holomorphicautomorphismgrouponunitball_statement>,
+  )
   where $bold(U), bold(V)$ are unitary matrices, $a in DD$, and $bold(phi)_a$ is defined as in @eq:unitballsimpleautomorphism_statement (and every such function lies in $Aut(B^n)$).
 ] <thm:holomorphicautomorphismgrouponunitball>
 

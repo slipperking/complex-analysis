@@ -6,14 +6,10 @@
     cetz.canvas(..args)
   }
 }
-#let cplot(..args) = context {
-  if state("render-mode").get() == "web" {
-    html.frame(cetz-plot.plot.plot(..args))
-  } else {
-    cetz-plot.plot.plot(..args)
+#let ray(body, dy: 0em, tag: none) = context {
+  if target() != "paged" {
+    return math.arrow(body)
   }
-}
-#let ray(body, dy: 0em, tag: none) = {
   let body = pad(top: 0em, $#body$)
 
   mannot.core-mark(body, tag: tag, color: none, outset: (top: 0em), overlay: (width, height, color) => {
@@ -21,8 +17,8 @@
   })
 }
 
-#let sray(body, tag: none) = {
-  return ray($script(body)$, dy: 0.3em, tag: tag)
+#let sray(body, tag: none) = context {
+  return if target() == "paged" { ray($script(body)$, dy: 0.3em, tag: tag) } else { math.arrow(body) }
 }
 
 #let halflength-arrow(start, end, scalar: 0, mark: (end: ">>", fill: black), ..args) = {
@@ -57,7 +53,7 @@
 }
 
 #let quick-plot(
-  canvas: none,
+  _canvas: none,
   extra-plot: none,
   canvas-args: none,
   scale: 1.4,
@@ -65,14 +61,13 @@
   x-max: 6,
   y-min: -1,
   y-max: 6,
-  wrap: true,
   ..args,
-) = context {
+) = {
   let x-range = x-max - x-min
   let y-range = y-max - y-min
   let size = (x-range * scale, y-range * scale)
   let plot = {
-    cplot(
+    cetz-plot.plot.plot(
       size: size,
       axis-style: "school-book",
       x-min: x-min,
@@ -85,29 +80,28 @@
       {
         cetz-plot.plot.add(x => 0, domain: (0, 0))
         extra-plot
-        cetz-plot.plot.annotate({
-          canvas
-        })
+        cetz-plot.plot.annotate(_canvas)
       },
     )
   }
-
-  if wrap {
-    return canvas(..canvas-args, plot)
-  } else {
-    return plot
-  }
+  canvas(..canvas-args, plot)
 }
 
 #let figure-wrapper(..items, columns: auto) = context {
   let figures = items.pos()
   let column-count = if columns == auto { figures.len() } else { columns }
-  grid(
-    columns: column-count, gutter: 1fr,
-    inset: 1em,
-    align: center,
-    ..figures.map(item => grid.cell([#item])),
-  )
+  if target() == "paged" {
+    grid(
+      columns: column-count, gutter: 1fr,
+      inset: 1em,
+      align: center,
+      ..figures.map(item => grid.cell([#item])),
+    )
+  } else {
+    for fig in figures {
+      fig
+    }
+  }
 }
 
 #let dot-tiling(pattern_dist: 2pt, radius: 0.4pt) = tiling(

@@ -1,13 +1,17 @@
 #import "/lib.typ": *
-
-=== Wirtinger Derivatives
-
+#show: docs-subsubchapter.with(
+  title: [Wirtinger Derivatives],
+  route: "wirtinger_derivatives",
+)
 We have previously introduced the concept of expressing a complex function as a function of $x$ and $y$. It can also be expressed in terms of $z$ and $overline(z)$, where $z = x + ii y$ and $overline(z) = x - ii y$. Then $abs(z)^2 = z overline(z)$, $x = (z + overline(z)) / 2$, and $y = (z - overline(z)) / (2 ii)$. By the rules of the derivative, it is only natural that we define
-$ pdv(, z) = pdv(, x) pdv(x, z) + pdv(, y) pdv(y, z) = 1/2 (pdv(, x) - ii pdv(, y)) $ <eq:wirtingerderivative1>
+#lbl($ pdv(, z) = pdv(, x) pdv(x, z) + pdv(, y) pdv(y, z) = 1/2 (pdv(, x) - ii pdv(, y)) $, <eq:wirtingerderivative1>)
 and
-$
-  pdv(, overline(z)) = pdv(, x) pdv(x, overline(z)) + pdv(, y) pdv(y, overline(z)) = 1/2 (pdv(, x) + ii pdv(, y)).
-$ <eq:wirtingerderivative2>
+#lbl(
+  $
+    pdv(, overline(z)) = pdv(, x) pdv(x, overline(z)) + pdv(, y) pdv(y, overline(z)) = 1/2 (pdv(, x) + ii pdv(, y)).
+  $,
+  <eq:wirtingerderivative2>,
+)
 If @eq:wirtingerderivative1 is set equal to $0$, then it is the equivalent form of the homogeneous Cauchy--Riemann Equations. Then for a holomorphic function $f(z)$, the Wirtinger derivative $pdv(f, z) = dv(f, z)$.
 
 In terms of $u$ and $v$, the two derivatives of a function $f(z)$ are equal to:
@@ -15,20 +19,26 @@ $ pdv(f, z) = 1/2 (pdv(u, x) + ii pdv(v, x) - ii pdv(u, y) + pdv(v, y)), $
 and
 $ pdv(f, overline(z)) = 1/2 (pdv(u, x) + ii pdv(v, x) + ii pdv(u, y) - pdv(v, y)). $
 If $f$ is holomorphic,
-$
-  dv(f, z) = pdv(u, x) + ii pdv(v, x) = pdv(v, y) + ii pdv(v, x) = pdv(u, x) - ii pdv(u, y) = pdv(v, y) - ii pdv(u, y).
-$ <eq:holomorphic_derivative_decomposition>
+#lbl(
+  $
+    dv(f, z) = pdv(u, x) + ii pdv(v, x) = pdv(v, y) + ii pdv(v, x) = pdv(u, x) - ii pdv(u, y) = pdv(v, y) - ii pdv(u, y).
+  $,
+  <eq:holomorphic_derivative_decomposition>,
+)
 On the contrary, by the rules of the derivative,
 $ pdv(, x) = pdv(, z) pdv(z, x) + pdv(, overline(z)) pdv(overline(z), x) = pdv(, z) + pdv(, overline(z)) $
 and
 $ pdv(, y) = pdv(, z) pdv(z, y) + pdv(, overline(z)) pdv(overline(z), y) = ii pdv(, z) - ii pdv(, overline(z)). $
 The Laplacian is equal to
-$
-  Delta = pdv(, x, 2) + pdv(, y, 2) & = (pdv(, z) + pdv(, overline(z)))^2 + (ii pdv(, z) - ii pdv(, overline(z)))^2 \
-                                    & = pdv(, z, 2) + pdv(, overline(z), 2) + 2 pdv(, z, overline(z)) \
-                                    & quad""- pdv(, z, 2) - pdv(, overline(z), 2) + 2 pdv(, z, overline(z)) \
-                                    & = 4 pdv(, z, overline(z)).
-$<eq:laplaciancomplexform>
+#lbl(
+  $
+    Delta = pdv(, x, 2) + pdv(, y, 2) & = (pdv(, z) + pdv(, overline(z)))^2 + (ii pdv(, z) - ii pdv(, overline(z)))^2 \
+                                      & = pdv(, z, 2) + pdv(, overline(z), 2) + 2 pdv(, z, overline(z)) \
+                                      & quad""- pdv(, z, 2) - pdv(, overline(z), 2) + 2 pdv(, z, overline(z)) \
+                                      & = 4 pdv(, z, overline(z)).
+  $,
+  <eq:laplaciancomplexform>,
+)
 Under this definition, we can derive the chain rule:
 
 #theorem("Chain Rule")[

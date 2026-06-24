@@ -1,15 +1,19 @@
 #import "/lib.typ": *
-
-== Further Properties of Holomorphic Functions
-
+#show: docs-subchapter.with(
+  title: [Further Properties of Holomorphic Functions],
+  route: "properties_of_holomorphic",
+)
 A useful corollary of @thm:cauchygoursatformula is the Maximum Modulus Principle.
 
 Before the theorem, we first introduce the mean-value property of holomorphic functions.
 
-#lemma[
-  Let $U subset.eq CC$ be open and simply connected, and let $f:U -> CC$ be holomorphic. Then $forall z in U$ and $forall epsilon > 0$ such that $overline(D(z, epsilon)) subset U$, $f(z)$ is the average of $f(zeta)$ where $zeta in D(z, epsilon)$ is uniform. In other words,
-  $ f(z) = 1 / (2 uppi epsilon) integral.cont_(partial D(z, epsilon)) f(zeta) abs(dzeta). $
-] <lem:holomorphicmeanvalueproperty>
+#lbl(
+  lemma[
+    Let $U subset.eq CC$ be open and simply connected, and let $f:U -> CC$ be holomorphic. Then $forall z in U$ and $forall epsilon > 0$ such that $overline(D(z, epsilon)) subset U$, $f(z)$ is the average of $f(zeta)$ where $zeta in D(z, epsilon)$ is uniform. In other words,
+    $ f(z) = 1 / (2 uppi epsilon) integral.cont_(partial D(z, epsilon)) f(zeta) abs(dzeta). $
+  ],
+  <lem:holomorphicmeanvalueproperty>,
+)
 
 #proof[
   By the Cauchy--Goursat Formula (@thm:cauchygoursatformula),
@@ -61,10 +65,13 @@ Since the real and imaginary parts of holomorphic functions are real-valued harm
 
 A similar theorem exists for real-valued harmonic functions. The proof follows in the same way as the one for holomorphic functions. We will state it formally below.
 
-#theorem[
-  Let $U subset.eq CC$ be open and connected and let $f:U -> RR$ be harmonic. Suppose that $exists z_0 in U$ and a neighborhood $V subset.eq U$ of $z_0$ such that either
-  $ f(z) gt.eq f(z_0) quad forall z in V quad "or" quad f(z_0) gt.eq f(z) quad forall z in V. $
-  Then $f$ is constant on $U$.
-] <thm:maximumprincipleforrealharmonicfunctions>
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be open and connected and let $f:U -> RR$ be harmonic. Suppose that $exists z_0 in U$ and a neighborhood $V subset.eq U$ of $z_0$ such that either
+    $ f(z) gt.eq f(z_0) quad forall z in V quad "or" quad f(z_0) gt.eq f(z) quad forall z in V. $
+    Then $f$ is constant on $U$.
+  ],
+  <thm:maximumprincipleforrealharmonicfunctions>,
+)
 
 By nature of the proof, the result holds for any continuous function satisfying the mean-value property.

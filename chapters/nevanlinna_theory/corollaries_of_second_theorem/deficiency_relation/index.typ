@@ -1,7 +1,9 @@
 #import "/lib.typ": *
-
-=== Deficiency Relation <sec:deficiency-relation>
-
+#show: docs-subsubchapter.with(
+  title: [Deficiency Relation],
+  route: "deficiency_relation",
+  label: <sec:deficiency-relation>,
+)
 One of the reformulations of the Second Fundamental Theorem is characterized in a way so that it comprises the statements of Picard-like theorems in a compact manner (of course, the conclusions are substantially more far-reaching than just the Picard theorems themselves). We first introduce the relevant terminology.
 
 #definition[
@@ -53,9 +55,12 @@ Using these formulations, we now have
   Then $ sum_nu overline(N) (r, a_nu, f) = sum_nu N(r, a_nu, f) - N_({a_nu}_nu) (r, 0, f') $ (where $N_({a_nu}_nu) (r,0,f')$ is the zero counting function of $f'$ with the condition that the points $z$ satisfy $f(z) in {a_nu}_nu$), and letting $N_0 (r, 0, f')$ count the critical points of $f$ that satisfy $f in.not {a_nu}_nu$,
   $ N_({a_nu}_nu)(r,0,f') + N_0 (r,0,f') = N(r,0,f'). $
   Hence,
-  $
-    q - 1 - S(r, f) / T(r, f) <= (overline(N) (r, f)) / T(r, f) - (N_0 (r, 0, f')) / T(r, f) + sum_(nu = 1)^q (overline(N) (r, a_nu, f)) / T(r, f).
-  $ <eq:deficiency-relation_fundamentalinequality>
+  #lbl(
+    $
+      q - 1 - S(r, f) / T(r, f) <= (overline(N) (r, f)) / T(r, f) - (N_0 (r, 0, f')) / T(r, f) + sum_(nu = 1)^q (overline(N) (r, a_nu, f)) / T(r, f).
+    $,
+    <eq:deficiency-relation_fundamentalinequality>,
+  )
   Then taking the superior limits on both side through a sequence ${r_n}$ such that $lim_(n -> oo) S(r_n, f) / T(r_n, f) = 0$ (whose existence is given by @thm:nevanlinnaadmissibilityerrortermgrowth) and loosening the inequality by removing the $N_0$ term,
   $
     q - 1 <= limsup_(n -> oo) (overline(N) (r_n, oo, f)) / T(r_n, f) + sum_(nu = 1)^q limsup_(n -> oo) (overline(N) (r_n, a_nu, f)) / T(r_n, f) \
@@ -76,9 +81,12 @@ Using these formulations, we now have
 
 Therefore, we have
 
-#corollary[
-  A non-constant meromorphic function omits at most two values on the Riemann sphere.
-] <cor:picardtranscendentalmeromorphic>
+#lbl(
+  corollary[
+    A non-constant meromorphic function omits at most two values on the Riemann sphere.
+  ],
+  <cor:picardtranscendentalmeromorphic>,
+)
 
 #proof[
   Assume there exists three values $a$, $b$, $c in extcomplex$ that meromorphic function $f$ does not ever attain. Then $N(r, a, f)$, $N(r, b, f)$, $N(r, c, f)$ all vanish identically with respect to radius while $T > 0$.

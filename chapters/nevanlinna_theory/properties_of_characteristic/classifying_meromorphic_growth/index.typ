@@ -1,10 +1,15 @@
 #import "/lib.typ": *
-=== Classifying Growth of Meromorphic Functions
-
-#theorem[
-  Let $f$ be holomorphic on $overline(D(0, R))$ for $R > 0$ and define $M(r, f)$ to be $max_(abs(z) <= r) abs(f(z)) = max_(abs(z) = r) abs(f(z))$ for $0 < r < R$; then
-  $ T(r, f) <= logp M(r, f) <= (R + r) / (R - r) T(R, f). $
-] <thm:nevanlinna_entire_function_maximum_modulus_sandwich>
+#show: docs-subsubchapter.with(
+  title: [Classifying Growth of Meromorphic Functions],
+  route: "classifying_meromorphic_growth",
+)
+#lbl(
+  theorem[
+    Let $f$ be holomorphic on $overline(D(0, R))$ for $R > 0$ and define $M(r, f)$ to be $max_(abs(z) <= r) abs(f(z)) = max_(abs(z) = r) abs(f(z))$ for $0 < r < R$; then
+    $ T(r, f) <= logp M(r, f) <= (R + r) / (R - r) T(R, f). $
+  ],
+  <thm:nevanlinna_entire_function_maximum_modulus_sandwich>,
+)
 
 #proof[
   Since $f$ is holomorphic in $D(0, r)$, $N(r, f) equiv 0$ and hence
@@ -22,11 +27,14 @@
   (The Möbius transformation-like terms of the zeros $<= 0$ since they map to the unit disk, and the second summation vanishes since there are no $b_k$ by holomorphy).
 ]
 
-#definition[
-  The _order of a meromorphic function_ $f : CC -> extcomplex$, denoted $rho = rho(f)$, is given by
-  $ rho = limsup_(r -> oo) (logp T(r, f)) / (log r), $
-  equivalent to the condition that $T(r, f) = Order(r^(rho + epsilon))$ for any $epsilon > 0$ but not for $epsilon < 0$.
-] <def:order_of_meromorphic_function>
+#lbl(
+  definition[
+    The _order of a meromorphic function_ $f : CC -> extcomplex$, denoted $rho = rho(f)$, is given by
+    $ rho = limsup_(r -> oo) (logp T(r, f)) / (log r), $
+    equivalent to the condition that $T(r, f) = Order(r^(rho + epsilon))$ for any $epsilon > 0$ but not for $epsilon < 0$.
+  ],
+  <def:order_of_meromorphic_function>,
+)
 
 #proof[of equivalent definitions][
   For any prescribed $epsilon > 0$ there exists $r' > 0$ such that for any $r > r'$,
@@ -54,12 +62,15 @@
   $ rho_T <= rho_M <= rho_T ==> rho_T = rho_M. #qedhere $
 ]
 
-#proposition[
-  Let $f : CC -> extcomplex$ be a meromorphic function of finite order $rho$. Then for every $epsilon > 0$ and every $a in extcomplex$,
-  + $m(r, a, f) = Order(r^(rho + epsilon))$. <itm:meromorphicfunctionfiniteorderestimates_proximity>
-  + $N(r, a, f) = Order(r^(rho + epsilon))$. <itm:meromorphicfunctionfiniteorderestimates_counting>
-  + $n(r, a, f) = Order(r^(rho + epsilon))$. <itm:meromorphicfunctionfiniteorderestimates_discretecounting>
-] <prop:meromorphicfunctionfiniteorderestimates>
+#lbl(
+  proposition[
+    Let $f : CC -> extcomplex$ be a meromorphic function of finite order $rho$. Then for every $epsilon > 0$ and every $a in extcomplex$,
+    + $m(r, a, f) = Order(r^(rho + epsilon))$. #enum-lbl(<itm:meromorphicfunctionfiniteorderestimates_proximity>)
+    + $N(r, a, f) = Order(r^(rho + epsilon))$. #enum-lbl(<itm:meromorphicfunctionfiniteorderestimates_counting>)
+    + $n(r, a, f) = Order(r^(rho + epsilon))$. #enum-lbl(<itm:meromorphicfunctionfiniteorderestimates_discretecounting>)
+  ],
+  <prop:meromorphicfunctionfiniteorderestimates>,
+)
 
 #proof[
   By the First Fundamental Theorem of Nevanlinna theory (@thm:nevanlinna_first_fundamental_theorem),
@@ -80,10 +91,13 @@
   and hence @itm:meromorphicfunctionfiniteorderestimates_discretecounting follows.
 ]
 
-#theorem[
-  Let $f : CC -> extcomplex$ be a meromorphic function of finite order $rho$. For $a in CC$, let $r_n (a)$ denote the moduli of the zeros of $f(z) - a$ (counted with multiplicity) in non-decreasing order, and let $r_n (oo)$ denote the moduli of the poles of $f$ in non-decreasing order. Then for every $epsilon > 0$ and every $a in extcomplex$,
-  $ sum_n 1 / (r_n (a)^(rho + epsilon)) < oo. $
-] <thm:meromorphicfunctionfiniteorderestimatessum>
+#lbl(
+  theorem[
+    Let $f : CC -> extcomplex$ be a meromorphic function of finite order $rho$. For $a in CC$, let $r_n (a)$ denote the moduli of the zeros of $f(z) - a$ (counted with multiplicity) in non-decreasing order, and let $r_n (oo)$ denote the moduli of the poles of $f$ in non-decreasing order. Then for every $epsilon > 0$ and every $a in extcomplex$,
+    $ sum_n 1 / (r_n (a)^(rho + epsilon)) < oo. $
+  ],
+  <thm:meromorphicfunctionfiniteorderestimatessum>,
+)
 
 #proof[
   Observe that

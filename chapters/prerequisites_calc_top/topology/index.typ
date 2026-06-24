@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== Topological Preliminaries
-
+#show: docs-subchapter.with(
+  title: [Topological Preliminaries],
+  route: "topology",
+)
 The following definitions are subject to the assumption where the topological space is defined to be $X = CC^n$. This is satisfactory to the main purpose of our proceeding passage, but it is noteworthy that it can be generalized to more abstract sets (which will be discussed in later sections, especially in @sec:partitions_of_unity).
 
 #definition("Open Ball")[

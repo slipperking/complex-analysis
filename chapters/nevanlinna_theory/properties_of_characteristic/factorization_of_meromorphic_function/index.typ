@@ -1,6 +1,8 @@
 #import "/lib.typ": *
-=== The Factorization of Transcendental Meromorphic Functions
-
+#show: docs-subsubchapter.with(
+  title: [The Factorization of Transcendental Meromorphic Functions],
+  route: "factorization_of_meromorphic_function",
+)
 We now give a meromorphic analog of the Hadamard Factorization Theorem:
 
 #theorem[

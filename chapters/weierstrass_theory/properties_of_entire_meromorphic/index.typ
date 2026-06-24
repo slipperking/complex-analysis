@@ -1,13 +1,24 @@
 #import "/lib.typ": *
-
-== Further Properties of Meromorphic and Entire Functions
-
-#theorem[
-  Let $U subset.eq CC$ be a region and $f:U -> CC$ be meromorphic. Let $gamma subset U$ be a positively oriented Jordan curve that is null-homotopic in $U$. If $f$ has no zeros on $gamma$, then $f$ has finitely many zeros and poles in the region bounded by $gamma$. Denote the zeros of $f$ in the bounded region by $a_1, dots, a_k$ with respective multiplicities $alpha_1, dots, alpha_k$, and the poles by $b_1, dots, b_m$ with respective orders $beta_1, dots, beta_m$. Let $psi$ be any function holomorphic on a neighborhood of the closure of the bounded region. Then
-  $
-    1 / taui integral.cont_gamma (psi(z) f'(z)) / (f(z)) dz = sum_(i = 1)^k alpha_i psi(a_i) - sum_(j = 1)^m beta_j psi(b_j).
-  $
-] <thm:generalizedargumentprinciple>
+#show: docs-subchapter.with(
+  title: [Further Properties of Meromorphic and Entire Functions],
+  route: "properties_of_entire_meromorphic",
+  children: [
+    #include "complex_plane_holomorphic_automorphisms/index.typ"
+    #include "extended_plane_holomorphic_automorphisms/index.typ"
+    #include "construction_of_entire_and_meromorphic/index.typ"
+    #include "growth_of_entire_functions/index.typ"
+    #include "hadamard_factorization_theorem/index.typ"
+  ],
+)
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be a region and $f:U -> CC$ be meromorphic. Let $gamma subset U$ be a positively oriented Jordan curve that is null-homotopic in $U$. If $f$ has no zeros on $gamma$, then $f$ has finitely many zeros and poles in the region bounded by $gamma$. Denote the zeros of $f$ in the bounded region by $a_1, dots, a_k$ with respective multiplicities $alpha_1, dots, alpha_k$, and the poles by $b_1, dots, b_m$ with respective orders $beta_1, dots, beta_m$. Let $psi$ be any function holomorphic on a neighborhood of the closure of the bounded region. Then
+    $
+      1 / taui integral.cont_gamma (psi(z) f'(z)) / (f(z)) dz = sum_(i = 1)^k alpha_i psi(a_i) - sum_(j = 1)^m beta_j psi(b_j).
+    $
+  ],
+  <thm:generalizedargumentprinciple>,
+)
 
 #proof[
   Choose disks $D(a_i, epsilon_i)$ with pairwise disjoint closures around each zero $a_i$ and $D(b_j, epsilon'_j)$ around each pole $b_j$, with $epsilon_i, epsilon'_j > 0$ sufficiently small so that these disks are contained in $jinterior(gamma)$, disjoint from $gamma$, and contained in the neighborhood where $psi$ is holomorphic. The function
@@ -80,24 +91,3 @@
     k - k' = 1 / taui integral.cont_Gamma (dif w) / w = Ind_Gamma (0). #qedhere
   $
 ]
-
-#chapter-section("complex_plane_holomorphic_automorphisms")[
-  #include "complex_plane_holomorphic_automorphisms/index.typ"
-]
-
-#chapter-section("extended_plane_holomorphic_automorphisms")[
-  #include "extended_plane_holomorphic_automorphisms/index.typ"
-]
-
-#chapter-section("construction_of_entire_and_meromorphic")[
-  #include "construction_of_entire_and_meromorphic/index.typ"
-]
-
-#chapter-section("growth_of_entire_functions")[
-  #include "growth_of_entire_functions/index.typ"
-]
-
-#chapter-section("hadamard_factorization_theorem")[
-  #include "hadamard_factorization_theorem/index.typ"
-]
-

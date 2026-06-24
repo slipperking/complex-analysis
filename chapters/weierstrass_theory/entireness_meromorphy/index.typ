@@ -1,14 +1,18 @@
 #import "/lib.typ": *
-
-== Entireness and Meromorphy
-
+#show: docs-subchapter.with(
+  title: [Entireness and Meromorphy],
+  route: "entireness_meromorphy",
+)
 We have previously defined the concept of an entire function in the chapter on complex differentiation. Let $f$ be entire with the unique Taylor expansion $sum_(n = 0)^oo c_n z^n$. Since $z = oo$ is an isolated singularity, by the uniqueness of the Laurent expansion, the expansion at $z = 0$ has the same form as the expansion at $z = oo$. We will now analyze the implications on the entire function $f$ given an isolated singularity.
 
 1. If the infinity point is a removable singularity, then $lim_(z -> oo) f(z)$ exists and is finite.
 
-  #proposition[
-    If $f(z)$ is entire and has a removable singularity at $z = oo$, then $f$ is constant.
-  ] <prop:removablesingularityatinftyentireconstant>
+  #lbl(
+    proposition[
+      If $f(z)$ is entire and has a removable singularity at $z = oo$, then $f$ is constant.
+    ],
+    <prop:removablesingularityatinftyentireconstant>,
+  )
 
   #proof[
     Let $z = 1 / zeta$, and let $g(zeta) = f(1 / (zeta))$, which has a removable singularity at $zeta = 0$. By @thm:riemannremovablesingularities, $g$ can be analytically continued to all of $CC$, especially at $zeta = 0$. Let $w = g(0)$. Then, $forall epsilon > 0$, $exists delta > 0$ such that $forall zeta in D(0, delta)$, $abs(g(zeta) - w) < epsilon$. It follows that $forall abs(z) > 1 / delta$, $abs(f(z)) < abs(w) + epsilon$, and is bounded. For the complement, $forall z in overline(D(0, 1 / delta))$, $f(z)$ is continuous on a compact set, and by @thm:continuous_function_bounded_on_compact, is also bounded.
@@ -64,9 +68,12 @@ $
 $
 Conversely, we have:
 
-#theorem[
-  If $f(z)$ is meromorphic on $CC$ and has a pole or removable singularity at $z = oo$, then $f$ is a rational function.
-] <thm:rationalmeromorphicfunctions>
+#lbl(
+  theorem[
+    If $f(z)$ is meromorphic on $CC$ and has a pole or removable singularity at $z = oo$, then $f$ is a rational function.
+  ],
+  <thm:rationalmeromorphicfunctions>,
+)
 
 #proof[
   Since $f$ is meromorphic on $CC$, its singularities are isolated poles. The assumption that $f$ has either a pole or a removable singularity at $oo$ implies that this singularity is also isolated. Thus, there exists some $R > 0$ such that $f$ is holomorphic on the punctured neighborhood ${z in CC : R < abs(z) < oo}$ of $oo$.

@@ -155,7 +155,7 @@
   if h == none { 0 } else { calc.max(0, h.level - 1) }
 }
 
-#let _page-label(page) = context {
+#let _page-label(page) = {
   let h = _first-page-heading(page)
   let number = _heading-number(h)
   let title = if h != none { h.body } else { page.title }
@@ -370,7 +370,7 @@
 
 #let _pdf-cover() = source.pdf-cover(outline-target: selector(heading).within(pdf-doc-label))
 
-#let _pdf-document(path: none) = {
+#let _pdf-document(path: none) = context {
   let body = [
     #[
       #render-mode.update("pdf")
@@ -517,8 +517,8 @@
 
 #let docs-cover(..args) = _docs-page(kind: "cover", cover: true, ..args)
 #let docs-frontmatter(..args) = _docs-page(kind: "frontmatter", ..args)
-#let docs-chapter(..args) = _docs-page(kind: "chapter", ..args)
 #let docs-section(..args) = _docs-page(kind: "section", ..args)
+#let docs-chapter(..args) = _docs-page(kind: "chapter", ..args)
 #let docs-subchapter(..args) = _docs-page(kind: "subchapter", ..args)
 #let docs-subsubchapter(..args) = _docs-page(kind: "subsubchapter", ..args)
 #let docs-appendix(..args) = _docs-page(kind: "appendix", ..args)
@@ -530,7 +530,7 @@
     _pdf-document(path: "pdf/notes.pdf")
 
     render-mode.update("web")
-    [
+    context [
       #{
         include "/chapters/index.typ"
         _not-found-page()

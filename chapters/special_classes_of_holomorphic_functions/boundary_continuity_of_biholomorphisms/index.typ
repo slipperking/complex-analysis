@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== Boundary Continuity of Biholomorphisms
-
+#show: docs-subchapter.with(
+  title: [Boundary Continuity of Biholomorphisms],
+  route: "boundary_continuity_of_biholomorphisms",
+)
 Suppose $Omega_1$ and $Omega_2$ are two regions in the complex plane such that there is a biholomorphism $phi$ from $Omega_1$ to $Omega_2$. Naturally, we are concerned about the existence of a continuous extension of $phi$ to $overline(Omega_1)$.
 
 In fact, it is almost always true that such an extension exists. We will give three examples of this phenomenon, each with increasing regularity assumptions on the boundaries $partial Omega_1$ and $partial Omega_2$:
@@ -37,9 +38,9 @@ In fact, it is almost always true that such an extension exists. We will give th
   )
 
   #figure-wrapper(
-    [
-      #figure(
-        cetz.canvas(length: 1cm, {
+    lbl(
+      figure(
+        canvas(length: 1cm, {
           import cetz.draw: *
           let var-D-rad = 1.875
           set-style(
@@ -86,11 +87,12 @@ In fact, it is almost always true that such an extension exists. We will give th
           content((name: "D", anchor: 40%), math-rect($partial DD$), anchor: "north-east")
         }),
         caption: [Configuration of $V$, and possible $mu_1, mu_2$.],
-      ) <fig:osgood_taylor_caratheodory_unitdiskandVandmu>
-    ],
-    [
-      #figure(
-        cetz.canvas(length: 1cm, {
+      ),
+      <fig:osgood_taylor_caratheodory_unitdiskandVandmu>,
+    ),
+    lbl(
+      figure(
+        canvas(length: 1cm, {
           import cetz.draw: *
           let lendpoint = (-1.5, -0.75)
           let rendpoint = (1.65, -1.35)
@@ -112,7 +114,6 @@ In fact, it is almost always true that such an extension exists. We will give th
             close: true,
             name: "Omega_2",
           )
-
 
           floating(merge-path(
             {
@@ -147,16 +148,17 @@ In fact, it is almost always true that such an extension exists. We will give th
           content((name: "Omega_2", anchor: 90%), math-rect($partial Omega_2$), anchor: "north-west")
         }),
         caption: [Possible positioning of $phi(V)$ relative to $Omega_2$.],
-      ) <fig:osgood_taylor_caratheodory_phi_of_V>
-    ],
+      ),
+      <fig:osgood_taylor_caratheodory_phi_of_V>,
+    ),
   )
 
   Let $K subset Omega_2$ be compact. Since $phi^(-1)$ is continuous, it maps $K$ to a compact set $phi^(-1)(K)$ (a function providing the compactness of the pre-image of every compact set is more generally known as _proper_). This implies that for any sequence ${z_j}_(j in NN) subset DD$ with accumulation points only in $partial DD$, ${phi(z_j)}_(j in NN)$ will have its accumulation points in $partial Omega_2$ (because otherwise, there would be a corresponding subsequence of ${z_j}_(j in NN)$ that converges to a point in $DD$). Therefore, $phi(V)$ does not have relatively compact closure in $Omega_2$ (a representation of a possible configuration in @fig:osgood_taylor_caratheodory_phi_of_V).
 
   #figure-wrapper(
-    [
-      #figure(
-        cetz.canvas(length: 1cm, {
+    lbl(
+      figure(
+        canvas(length: 1cm, {
           import cetz.draw: *
           set-style(
             mark: (fill: black),
@@ -215,11 +217,12 @@ In fact, it is almost always true that such an extension exists. We will give th
           content((name: "D", anchor: 40%), math-rect($partial DD$), anchor: "north-east")
         }),
         caption: [Possible configuration of $gamma_r$.],
-      ) <fig:osgood_taylor_caratheodory_gamma_r_configuration>
-    ],
-    [
-      #figure(
-        cetz.canvas(length: 1cm, {
+      ),
+      <fig:osgood_taylor_caratheodory_gamma_r_configuration>,
+    ),
+    lbl(
+      figure(
+        canvas(length: 1cm, {
           import cetz.draw: *
 
           let lendpoint = (-1.5, -0.75)
@@ -270,19 +273,23 @@ In fact, it is almost always true that such an extension exists. We will give th
           )
         }),
         caption: [Concept configuration of $phi(gamma_r)$],
-      ) <fig:osgood_taylor_caratheodory_subwedgeimage>
-    ],
+      ),
+      <fig:osgood_taylor_caratheodory_subwedgeimage>,
+    ),
   )
 
   For $0 < r < 1 / 2$, we now introduce polar coordinates $(r, theta)$ centered at $1$ with angles offset by $uppi$. Let $theta_0(r)$ be the supremum of $theta$ for fixed $r$ such that $1 - r ee^(ii theta) in V$. Define $gamma_r : (-theta_0(r), theta_0(r)) -> V$ to be the curve with $theta |-> 1 - r ee^(ii theta)$ (as in @fig:osgood_taylor_caratheodory_gamma_r_configuration).
 
-  #lemma[
-    Let $l_r$ be the length of $phi compose gamma_r$. Then
-    $
-      integral_0^(1 / 2) l_r^2 / (uppi r) dr
-    $
-    is finite.
-  ] <lem:osgood_taylor_caratheodory_length_integral_finiteness>
+  #lbl(
+    lemma[
+      Let $l_r$ be the length of $phi compose gamma_r$. Then
+      $
+        integral_0^(1 / 2) l_r^2 / (uppi r) dr
+      $
+      is finite.
+    ],
+    <lem:osgood_taylor_caratheodory_length_integral_finiteness>,
+  )
 
   #proof[
     Notice that
@@ -306,13 +313,16 @@ In fact, it is almost always true that such an extension exists. We will give th
   $
   which is a divergent integral. This contradicts @lem:osgood_taylor_caratheodory_length_integral_finiteness. Therefore, we must have $liminf_(r -> 0^+) l_r = 0$. Thus, there exists a sequence ${r_j}_(j in NN) subset (0, 1 / 2)$ such that $r_j -> 0$ and $l_(r_j) -> 0$ as $j -> oo$.
 
-  #proposition[
-    For each such $r_j$ as above, the limits
-    $
-      lim_(theta -> theta_0(r_j)^-) phi(1 - r_j ee^(ii theta)) quad "and" quad lim_(theta -> -theta_0(r_j)^+) phi(1 - r_j ee^(ii theta))
-    $
-    exist.
-  ] <prop:osgood_taylor_caratheodory_limits_existence>
+  #lbl(
+    proposition[
+      For each such $r_j$ as above, the limits
+      $
+        lim_(theta -> theta_0(r_j)^-) phi(1 - r_j ee^(ii theta)) quad "and" quad lim_(theta -> -theta_0(r_j)^+) phi(1 - r_j ee^(ii theta))
+      $
+      exist.
+    ],
+    <prop:osgood_taylor_caratheodory_limits_existence>,
+  )
 
   #proof[
     Since $l_(r_j)$ is finite, $forall epsilon > 0$, $exists delta > 0$ such that for $theta > theta_0(r_j) - delta$,
@@ -327,9 +337,12 @@ In fact, it is almost always true that such an extension exists. We will give th
     implying that ${phi(1 - r ee^(ii theta))}_(theta -> theta_0(r_j)^-)$ is Cauchy and hence convergent. The proof for the other limit follows symmetrically.
   ]
 
-  #lemma[
-    Let $tau = partial Omega_2$. Then there is a function $eta(delta)$ defined for sufficiently small $delta$, such that $eta(delta) -> 0$ as $delta -> 0^+$, such that for all $a, b in tau$ satisfying $abs(a - b) <= delta$, then there is exactly one curve in $tau$ with endpoints $a$ and $b$ with diameter $<= eta(delta)$.
-  ] <lem:osgood_taylor_caratheodory_jordan_curve_arc_diameter>
+  #lbl(
+    lemma[
+      Let $tau = partial Omega_2$. Then there is a function $eta(delta)$ defined for sufficiently small $delta$, such that $eta(delta) -> 0$ as $delta -> 0^+$, such that for all $a, b in tau$ satisfying $abs(a - b) <= delta$, then there is exactly one curve in $tau$ with endpoints $a$ and $b$ with diameter $<= eta(delta)$.
+    ],
+    <lem:osgood_taylor_caratheodory_jordan_curve_arc_diameter>,
+  )
 
   #proof[
     Since $tau$ is a Jordan curve, it admits a homeomorphic parameterization $psi : S^1 -> tau$, and $psi$ is a bicontinuous bijection (onto its image) between compact Hausdorff spaces, so $psi^(-1)$ is continuous.
@@ -361,127 +374,139 @@ In fact, it is almost always true that such an extension exists. We will give th
 
   By the uniqueness as described by @lem:osgood_taylor_caratheodory_jordan_curve_arc_diameter, for any two points $a, b$ sufficiently close together, we now identify the unique curve in $tau$ (joining $a$ and $b$) with diameter less than $eta(abs(a - b))$ as the _smaller arc_ of $tau$ joining $a$ and $b$, denoted by $tau_(a, b)$.
   #figure-wrapper([
-    #figure(
-      grid(
-        columns: 2,
-        gutter: 1fr,
-        cetz.canvas(length: 1cm, {
-          import cetz.draw: *
+    #lbl(
+      figure(
+        grid(
+          columns: 2,
+          gutter: 1fr,
+          canvas(length: 1cm, {
+            import cetz.draw: *
 
-          let lendpoint = (-1.5, -0.75)
-          let rendpoint = (1.65, -1.35)
+            let lendpoint = (-1.5, -0.75)
+            let rendpoint = (1.65, -1.35)
 
-          catmull(
-            (3.6, 0.9),
-            (2.1, 2.55),
-            (-1.2, 0.75),
-            lendpoint,
-            (-1.1, -1.3),
-            (-0.75, -1.5),
-            (0.5, -1.4),
-            rendpoint,
-            tension: 0.5,
-            close: true,
-            stroke: 1.5pt,
-          )
+            catmull(
+              (3.6, 0.9),
+              (2.1, 2.55),
+              (-1.2, 0.75),
+              lendpoint,
+              (-1.1, -1.3),
+              (-0.75, -1.5),
+              (0.5, -1.4),
+              rendpoint,
+              tension: 0.5,
+              close: true,
+              stroke: 1.5pt,
+            )
 
-          catmull(
-            (-1.5, -0.75),
-            (-1.1, -0.4),
-            (-0.6, -0.5),
-            (-0.1, 0.2),
-            (0.4, 0.5),
-            (0.9, 0.1),
-            (1.2, -0.2),
-            (1.65, -1.35),
-            tension: 0.5,
-            stroke: 0.5pt,
-          )
+            catmull(
+              (-1.5, -0.75),
+              (-1.1, -0.4),
+              (-0.6, -0.5),
+              (-0.1, 0.2),
+              (0.4, 0.5),
+              (0.9, 0.1),
+              (1.2, -0.2),
+              (1.65, -1.35),
+              tension: 0.5,
+              stroke: 0.5pt,
+            )
 
-          catmull(
-            (-1.1, -1.3),
-            (-1, -0.8),
-            (-0.5, -0.9),
-            (-0.2, -0.5),
-            (0.2, -0.7),
-            (0.7, -1.1),
-            (0.5, -1.4),
-            tension: 0.5,
-            stroke: 1.5pt,
-            name: "phi_gamma_r_j",
-          )
+            catmull(
+              (-1.1, -1.3),
+              (-1, -0.8),
+              (-0.5, -0.9),
+              (-0.2, -0.5),
+              (0.2, -0.7),
+              (0.7, -1.1),
+              (0.5, -1.4),
+              tension: 0.5,
+              stroke: 1.5pt,
+              name: "phi_gamma_r_j",
+            )
 
-          content((name: "phi_gamma_r_j", anchor: 60%), text(size: 9pt)[$phi(gamma_r_j)$], anchor: "south-west")
-          content("phi_gamma_r_j.0", math-rect($a_j$), anchor: "north-east", padding: 2pt)
-          content("phi_gamma_r_j.100%", math-rect($b_j$), anchor: "north", padding: 2pt)
-        }),
+            content((name: "phi_gamma_r_j", anchor: 60%), text(size: 9pt)[$phi(gamma_r_j)$], anchor: "south-west")
+            content("phi_gamma_r_j.0", math-rect($a_j$), anchor: "north-east", padding: 2pt)
+            content("phi_gamma_r_j.100%", math-rect($b_j$), anchor: "north", padding: 2pt)
+          }),
 
-        cetz.canvas(length: 1cm, {
-          import cetz.draw: *
+          canvas(length: 1cm, {
+            import cetz.draw: *
 
-          let lendpoint = (-1.5, -0.75)
-          let rendpoint = (1.65, -1.35)
+            let lendpoint = (-1.5, -0.75)
+            let rendpoint = (1.65, -1.35)
 
-          catmull(
-            (3.6, 0.9),
-            (2.1, 2.55),
-            (-1.2, 0.75),
-            lendpoint,
-            (-1.1, -1.3),
-            (-0.75, -1.5),
-            (0.5, -1.4),
-            rendpoint,
-            tension: 0.5,
-            close: true,
-            stroke: 1.5pt,
-          )
-          catmull(
-            (-1.51, -0.751),
-            (-1.1, -0.4),
-            (-0.6, -0.5),
-            (-0.1, 0.2),
-            (0.4, 0.5),
-            (0.9, 0.1),
-            (1.2, -0.2),
-            (1.6499, -1.3501),
-            tension: 0.5,
-            stroke: 0.5pt,
-          )
-          catmull(
-            (-0.75, -1.5),
-            (-0.8, -1.1),
-            (-0.5, -0.9),
-            (-0.2, -0.5),
-            (0.2, -0.7),
-            (0.6, -0.9),
-            (0.4, -1.0),
-            (0.4, -1.2),
-            tension: 0.5,
-            close: true,
-            stroke: 1.5pt,
-            name: "phi_gamma_r_j",
-          )
+            catmull(
+              (3.6, 0.9),
+              (2.1, 2.55),
+              (-1.2, 0.75),
+              lendpoint,
+              (-1.1, -1.3),
+              (-0.75, -1.5),
+              (0.5, -1.4),
+              rendpoint,
+              tension: 0.5,
+              close: true,
+              stroke: 1.5pt,
+            )
+            catmull(
+              (-1.51, -0.751),
+              (-1.1, -0.4),
+              (-0.6, -0.5),
+              (-0.1, 0.2),
+              (0.4, 0.5),
+              (0.9, 0.1),
+              (1.2, -0.2),
+              (1.6499, -1.3501),
+              tension: 0.5,
+              stroke: 0.5pt,
+            )
+            catmull(
+              (-0.75, -1.5),
+              (-0.8, -1.1),
+              (-0.5, -0.9),
+              (-0.2, -0.5),
+              (0.2, -0.7),
+              (0.6, -0.9),
+              (0.4, -1.0),
+              (0.4, -1.2),
+              tension: 0.5,
+              close: true,
+              stroke: 1.5pt,
+              name: "phi_gamma_r_j",
+            )
 
-          content("phi_gamma_r_j.45%", text(size: 9pt)[$phi(gamma_(r_j))$], anchor: "south-west")
-          content("phi_gamma_r_j.0", $p_j$, anchor: "north")
-        }),
+            content("phi_gamma_r_j.45%", text(size: 9pt)[$phi(gamma_(r_j))$], anchor: "south-west")
+            content("phi_gamma_r_j.0", $p_j$, anchor: "north")
+          }),
+        ),
+        caption: [Two possibilities for the endpoints of $phi(gamma_(r_j))$],
       ),
-      caption: [Two possibilities for the endpoints of $phi(gamma_(r_j))$],
-    ) <fig:osgood_taylor_caratheodory_curveimagetwocases>
+      <fig:osgood_taylor_caratheodory_curveimagetwocases>,
+    )
   ])
 
-  #lemma[
-    Let ${r_j}_(j in NN)$ be the sequence such that $l_(r_j) -> 0$ as $j -> oo$ (in the discussion preceding @prop:osgood_taylor_caratheodory_limits_existence). Then, for each $j in NN$, either
-    $
-      Omega_2 in.rev a_j & = lim_(theta -> theta_0(r_j)^-) phi(1 - r_j ee^(ii theta)) \
-                         & != lim_(theta -> -theta_0(r_j)^+) phi(1 - r_j ee^(ii theta)) = b_j in partial Omega_2
-    $ <eq:osgood_taylor_caratheodory_twoalternatives_differentpoints>
-    or
-    $
-      lim_(theta -> theta_0(r_j)^-) phi(1 - r_j ee^(ii theta)) = lim_(theta -> -theta_0(r_j)^+) phi(1 - r_j ee^(ii theta)) = p_j in partial Omega_2
-    $ <eq:osgood_taylor_caratheodory_twoalternatives_samepoint>
-    is satisfied. The two situations are represented in @fig:osgood_taylor_caratheodory_curveimagetwocases.
-  ] <lem:osgood_taylor_caratheodory_twoalternatives>
+  #lbl(
+    lemma[
+      Let ${r_j}_(j in NN)$ be the sequence such that $l_(r_j) -> 0$ as $j -> oo$ (in the discussion preceding @prop:osgood_taylor_caratheodory_limits_existence). Then, for each $j in NN$, either
+      #lbl(
+        $
+          Omega_2 in.rev a_j & = lim_(theta -> theta_0(r_j)^-) phi(1 - r_j ee^(ii theta)) \
+                             & != lim_(theta -> -theta_0(r_j)^+) phi(1 - r_j ee^(ii theta)) = b_j in partial Omega_2
+        $,
+        <eq:osgood_taylor_caratheodory_twoalternatives_differentpoints>,
+      )
+      or
+      #lbl(
+        $
+          lim_(theta -> theta_0(r_j)^-) phi(1 - r_j ee^(ii theta)) = lim_(theta -> -theta_0(r_j)^+) phi(1 - r_j ee^(ii theta)) = p_j in partial Omega_2
+        $,
+        <eq:osgood_taylor_caratheodory_twoalternatives_samepoint>,
+      )
+      is satisfied. The two situations are represented in @fig:osgood_taylor_caratheodory_curveimagetwocases.
+    ],
+    <lem:osgood_taylor_caratheodory_twoalternatives>,
+  )
 
   #proof[
     By virtue of @prop:osgood_taylor_caratheodory_limits_existence, both described limits exist. Similarly, since any sequences ${1 - r_j ee^(ii theta)}_(theta -> theta_0(r_j)^-)$ and ${1 - r_j ee^(ii theta)}_(theta -> -theta_0(r_j)^+)$ approach $partial DD$, their images under $phi$ approach $partial Omega_2$ by properness (refer to the discussions preceding @lem:osgood_taylor_caratheodory_length_integral_finiteness). Therefore, both limits must lie in $partial Omega_2$, and the conclusion follows.
@@ -493,26 +518,35 @@ In fact, it is almost always true that such an extension exists. We will give th
 
   For each $j$, let $V_j = {1 - r ee^(ii theta) : 0 < r < r_j, -theta_0(r) < theta < theta_0(r)}$. Since $phi(gamma_(r_j))$ is a curve with endpoints $a_j$ and $b_j$ (or $p_j$) and lies in $Omega_2$ except for its endpoints, it splits $Omega_2$ into two disconnected regions, $W_j$ or $Omega_2 without overline(W_j)$. Since $gamma_(r_j)$ splits $DD$ into two regions, one of which being $V_j$, the image $phi(V_j)$ is either $W_j$ or $Omega_2 without overline(W_j)$.
 
-  #proposition[
-    As $j -> oo$,
-    $
-      diam W_j -> 0 quad "and" quad op("area")W_j -> 0.
-    $
-  ] <prop:osgood_taylor_caratheodory_vanishing_areas_and_diameters>
+  #lbl(
+    proposition[
+      As $j -> oo$,
+      $
+        diam W_j -> 0 quad "and" quad op("area")W_j -> 0.
+      $
+    ],
+    <prop:osgood_taylor_caratheodory_vanishing_areas_and_diameters>,
+  )
 
   #proof[
     @lem:osgood_taylor_caratheodory_jordan_curve_arc_diameter provides the existence of $eta$ such that $diam tau_j <= eta(l_(r_j))$ for sufficiently large $j$ (since $abs(a_j - b_j) <= l_(r_j)$ or $0$ for the $p_j$ case) such that $eta(l_(r_j)) -> 0$ as $j -> oo$.
 
     Let $D_j = D(a_j, l_(r_j) + eta(l_(r_j)))$ (or $D_j = D(p_j, l_(r_j) + eta(l_(r_j)))$ in the case of the same point) for each $j$. By the previous diameter estimate, the entire Jordan curve $phi(gamma_(r_j)) union tau_j$ lies in $D_j$, and hence $W_j subset D_j$. This implies that
-    $
-      op("area")(W_j) <= op("area")(D_j) = uppi (l_(r_j) + eta(l_(r_j)))^2 -> 0 quad "as" quad j -> oo.
-    $ <eq:osgood_taylor_caratheodory_vanishing_areas_and_diameters_areaestimation2>
+    #lbl(
+      $
+        op("area")(W_j) <= op("area")(D_j) = uppi (l_(r_j) + eta(l_(r_j)))^2 -> 0 quad "as" quad j -> oo.
+      $,
+      <eq:osgood_taylor_caratheodory_vanishing_areas_and_diameters_areaestimation2>,
+    )
     qedhere
   ]
 
-  #lemma[
-    For sufficiently large $j in NN$, $phi(V_j) = W_j$.
-  ] <lem:osgood_taylor_caratheodory_matching_areas>
+  #lbl(
+    lemma[
+      For sufficiently large $j in NN$, $phi(V_j) = W_j$.
+    ],
+    <lem:osgood_taylor_caratheodory_matching_areas>,
+  )
 
   #proof[
     For fixed $j$, let $T_j$ be the complementary region of $V_j$ in $DD$ (as $DD without overline(V_j)$). Then for an arbitrary $w_0 in W_j$, there exists a point $z_0 in DD$ (specifically, either in $T_j$ or $V_j$) such that $phi(z_0) = w_0$.
@@ -523,9 +557,12 @@ In fact, it is almost always true that such an extension exists. We will give th
         op("area")(phi(T_j)) = op("area")(Omega_2) - op("area")(phi(V_j)) = op("area")(Omega_2) - integral.double_(V_j) abs(phi'(z)) dx dy.
       $
       Since $V_j$ shrinks to the empty set, $integral.double_(V_j) abs(phi'(z)) dx dy -> 0$ as $j -> oo$, and hence
-      $
-        op("area")(phi(T_j)) -> op("area")(Omega_2).
-      $ <eq:osgood_taylor_caratheodory_matching_areas_areaestimation>
+      #lbl(
+        $
+          op("area")(phi(T_j)) -> op("area")(Omega_2).
+        $,
+        <eq:osgood_taylor_caratheodory_matching_areas_areaestimation>,
+      )
       @prop:osgood_taylor_caratheodory_vanishing_areas_and_diameters implies that
       $
         op("area")(W_j) -> 0
@@ -533,13 +570,16 @@ In fact, it is almost always true that such an extension exists. We will give th
       as $j -> oo$. Hence, for sufficiently large $j$, we cannot have $phi(T_j) subset.eq W_j$ (by the induced contradiction with @eq:osgood_taylor_caratheodory_matching_areas_areaestimation). Therefore, $phi(T_j) = Omega_2 without overline(W_j)$ and $phi(V_j) = W_j$. qedhere
   ]
 
-  #lemma[
-    If the two complex curves $mu_1, mu_2 : [0, 1] -> overline(DD)$ map $1$ to $1$ such that $mu_1([0, 1)), mu_2([0, 1)) subset DD$, then
-    $
-      lim_(t -> 1^-) phi(mu_1(t)) = lim_(t -> 1^-) phi(mu_2(t))
-    $
-    exist and are equal.
-  ] <lem:osgood_taylor_caratheodory_limits_existence_and_equality>
+  #lbl(
+    lemma[
+      If the two complex curves $mu_1, mu_2 : [0, 1] -> overline(DD)$ map $1$ to $1$ such that $mu_1([0, 1)), mu_2([0, 1)) subset DD$, then
+      $
+        lim_(t -> 1^-) phi(mu_1(t)) = lim_(t -> 1^-) phi(mu_2(t))
+      $
+      exist and are equal.
+    ],
+    <lem:osgood_taylor_caratheodory_limits_existence_and_equality>,
+  )
 
   #proof[
     By @lem:osgood_taylor_caratheodory_matching_areas and @prop:osgood_taylor_caratheodory_vanishing_areas_and_diameters, $exists j in NN$ such that $diam W_j < epsilon$ and $phi(V_j) = W_j$. Since $mu_1(t), mu_2(t) -> 1$ as $t -> 1^-$, $exists S in (0, 1)$ such that $forall t : S < t < 1$, $abs(mu_1(t) - 1) < r_j$ and $abs(mu_2(t) - 1) < r_j$. Recall the definition of $V_j$ as the set of points ${1 - r ee^(ii theta) : 0 < r < r_j, -theta_0(r) < theta < theta_0(r)}$; then $mu_1(t), mu_2(t) in V_j$ for all $S < t < 1$. Therefore,
@@ -553,9 +593,12 @@ In fact, it is almost always true that such an extension exists. We will give th
     for all $S < t < 1$, thus equality is derived. Moreover, $inter.big_j overline(W_j)$ shrinks to a single point, which is precisely the prescribed limit.
   ]
 
-  #corollary[
-    There is a continuous extension of $phi$ to $partial DD$.
-  ] <cor:osgood_taylor_caratheodory_continuous_extension>
+  #lbl(
+    corollary[
+      There is a continuous extension of $phi$ to $partial DD$.
+    ],
+    <cor:osgood_taylor_caratheodory_continuous_extension>,
+  )
 
   #proof[
     Let $zeta in partial DD$. Let $gamma : [0, 1] -> overline(DD)$ satisfy $phi([0, 1)) subset.eq DD$ and $gamma(1) = 1$. Suppose $phi_zeta : z |-> phi compose (z zeta)$. Then by @lem:osgood_taylor_caratheodory_limits_existence_and_equality, $lim_(t -> 1^-) phi_zeta (gamma(t))$ exists and is independent of the choice of $gamma$. Now define $tilde(phi)(zeta)$ to be the _unique_ value of this limit and let $tilde(phi)|_(DD) = phi$. // show this extension is cont.
@@ -569,9 +612,12 @@ In fact, it is almost always true that such an extension exists. We will give th
     This is sufficient to show that $tilde(phi)$ is continuous at $1$. Indeed, assuming otherwise implies $exists epsilon > 0$ such that $forall delta > 0$, $exists z_delta in overline(DD)$ within $delta$ apart from $1$ such that $abs(tilde(phi)(z_delta) - tilde(phi)(1)) >= epsilon$. Let $delta_n = 1 / n$, and hence $delta_n -> 0$ with the sequence ${z_(delta_n)}_(n in NN)$ converging to $1$. By the previous result, $tilde(phi)(z_(delta_n)) -> tilde(phi)(1)$, which contradicts $abs(tilde(phi)(z_(delta_n)) - tilde(phi)(1)) >= epsilon$ for all $n in NN$. The same argument can be repeated to show that $tilde(phi)$ is continuous at every point of $partial DD$.
   ]
 
-  #proposition[
-    Let $f in C^0(overline(DD))$ such that $f$ is holomorphic on $DD$. If there exists an open arc $gamma subset.eq partial DD$ such that $f equiv c$ on $gamma$ ($c$ is some complex constant), then $f$ is constant on $DD$.
-  ] <prop:holomorphicondiskcontinuousonclosureconstantonarcconstancy>
+  #lbl(
+    proposition[
+      Let $f in C^0(overline(DD))$ such that $f$ is holomorphic on $DD$. If there exists an open arc $gamma subset.eq partial DD$ such that $f equiv c$ on $gamma$ ($c$ is some complex constant), then $f$ is constant on $DD$.
+    ],
+    <prop:holomorphicondiskcontinuousonclosureconstantonarcconstancy>,
+  )
 
   #proof[
     Without loss of generality, assume $c = 0$. If $gamma = partial DD$, then by the continuity of $abs(f)$, it attains its maximum somewhere in $overline(DD)$ (by the Extreme Value Theorem in @thm:extremevalue). If $abs(f)$ attains its maximum at some $z_0 in DD$, it must be an isolated extrema (otherwise the Identity Theorem implies constancy on all of $DD$), and thus the Maximum Modulus Principle (@thm:maximum-modulus) implies that $f$ is constant and subsequently identically zero. If $abs(f)$ attains its maximum on $partial DD$, the conclusion follows trivially.
@@ -584,88 +630,96 @@ In fact, it is almost always true that such an extension exists. We will give th
   ]
 
   #figure-wrapper([
-    #figure(
-      {
-        grid(
-          columns: 2,
-          gutter: 1fr,
-          column-gutter: 1em,
-          cetz.canvas({
-            import cetz.draw: *
-            let r = 1.875
-            circle((0, 0), radius: r, name: "D")
-            let zeta-ang = 20deg
-            let zeta-prime-ang = -30deg
-            let zeta-pt = ((0, 0), r, zeta-ang, (1, 0))
-            line(zeta-pt, (0, 0))
+    #lbl(
+      figure(
+        {
+          let body = grid(
+            columns: 2,
+            gutter: 1fr,
+            column-gutter: 1em,
+            canvas({
+              import cetz.draw: *
+              let r = 1.875
+              circle((0, 0), radius: r, name: "D")
+              let zeta-ang = 20deg
+              let zeta-prime-ang = -30deg
+              let zeta-pt = ((0, 0), r, zeta-ang, (1, 0))
+              line(zeta-pt, (0, 0))
 
-            let zeta-prime-pt = ((0, 0), r, zeta-prime-ang, (1, 0))
-            line(zeta-prime-pt, (0, 0))
+              let zeta-prime-pt = ((0, 0), r, zeta-prime-ang, (1, 0))
+              line(zeta-prime-pt, (0, 0))
 
-            content(zeta-pt, math-rect($zeta$), anchor: "west", padding: 3pt)
-            content(zeta-prime-pt, math-rect($zeta'$), anchor: "west", padding: 3pt)
-            content((0, 0), $0$, anchor: "east", padding: 3pt)
-            content("D.32%", math-rect($partial DD$), anchor: "north-east", padding: 2pt)
-            content(
-              (((0, 0), 50%, zeta-pt), 6pt, 90deg, zeta-pt),
-              math-rect($alpha$),
-              anchor: "center",
-            )
-            content(
-              (((0, 0), 50%, zeta-prime-pt), 6pt, -90deg, zeta-prime-pt),
-              math-rect($beta$),
-              anchor: "center",
-            )
-            content(((0, 0), r * 0.7, (zeta-ang + zeta-prime-ang) / 2, (1, 0)), $U_1$)
-            content((-1, 0), $U_2$)
-          }),
-          cetz.canvas({
-            import cetz.draw: *
-            catmull(
-              (3.6, 0.9),
-              (2.1, 2.55),
-              (-1.2, 0.75),
-              (-1.5, -0.75),
-              (-1.1, -1.3),
-              (-0.75, -1.5),
-              (0.5, -1.4),
-              (1.65, -1.35),
-              tension: 0.5,
-              close: true,
-              name: "Omega_2",
-            )
-            catmull(
-              (-0.75, -1.5),
-              (-0.8, -0.7),
-              (-0.4, -0.5),
-              (-0.1, 0.2),
-              (0.4, 0.5),
-              (0.7, 0.8),
-              (1.1, 1.2),
-              tension: 0.5,
-            )
-            catmull(
-              (-0.75, -1.5),
-              (-0.6, -1.1),
-              (-0.2, -0.9),
-              (0.8, -0.7),
-              (1.4, 0.1),
-              (1.8, 0.5),
-              (1.2, 0.9),
-              (1.1, 1.2),
-              tension: 0.5,
-              name: "phi-line",
-            )
+              content(zeta-pt, math-rect($zeta$), anchor: "west", padding: 3pt)
+              content(zeta-prime-pt, math-rect($zeta'$), anchor: "west", padding: 3pt)
+              content((0, 0), $0$, anchor: "east", padding: 3pt)
+              content("D.32%", math-rect($partial DD$), anchor: "north-east", padding: 2pt)
+              content(
+                (((0, 0), 50%, zeta-pt), 6pt, 90deg, zeta-pt),
+                math-rect($alpha$),
+                anchor: "center",
+              )
+              content(
+                (((0, 0), 50%, zeta-prime-pt), 6pt, -90deg, zeta-prime-pt),
+                math-rect($beta$),
+                anchor: "center",
+              )
+              content(((0, 0), r * 0.7, (zeta-ang + zeta-prime-ang) / 2, (1, 0)), $U_1$)
+              content((-1, 0), $U_2$)
+            }),
+            canvas({
+              import cetz.draw: *
+              catmull(
+                (3.6, 0.9),
+                (2.1, 2.55),
+                (-1.2, 0.75),
+                (-1.5, -0.75),
+                (-1.1, -1.3),
+                (-0.75, -1.5),
+                (0.5, -1.4),
+                (1.65, -1.35),
+                tension: 0.5,
+                close: true,
+                name: "Omega_2",
+              )
+              catmull(
+                (-0.75, -1.5),
+                (-0.8, -0.7),
+                (-0.4, -0.5),
+                (-0.1, 0.2),
+                (0.4, 0.5),
+                (0.7, 0.8),
+                (1.1, 1.2),
+                tension: 0.5,
+              )
+              catmull(
+                (-0.75, -1.5),
+                (-0.6, -1.1),
+                (-0.2, -0.9),
+                (0.8, -0.7),
+                (1.4, 0.1),
+                (1.8, 0.5),
+                (1.2, 0.9),
+                (1.1, 1.2),
+                tension: 0.5,
+                name: "phi-line",
+              )
 
-            content("phi-line.100%", $tilde(phi)(0)$, anchor: "south", padding: 2pt)
-            content("phi-line.0", $tilde(phi)(zeta) = tilde(phi)(zeta')$, anchor: "north", padding: 2pt)
-            content((0.4, -0.1), $W$, anchor: "center")
-            content((name: "Omega_2", anchor: 90%), math-rect($partial Omega_2$), anchor: "north-west")
-          }),
-        )
-      },
-      caption: [Two line segments $alpha$ and $beta$ mapping to a Jordan curve bounding $W$],
-    ) <fig:osgood_taylor_caratheodory_injectivityofextension>
+              content("phi-line.100%", $tilde(phi)(0)$, anchor: "south", padding: 2pt)
+              content("phi-line.0", $tilde(phi)(zeta) = tilde(phi)(zeta')$, anchor: "north", padding: 2pt)
+              content((0.4, -0.1), $W$, anchor: "center")
+              content((name: "Omega_2", anchor: 90%), math-rect($partial Omega_2$), anchor: "north-west")
+            }),
+          )
+          context if target() == "paged" {
+            body
+          } else {
+            html.frame(body)
+          }
+        },
+        caption: [Two line segments $alpha$ and $beta$ mapping to a Jordan curve bounding $W$],
+      ),
+      <fig:osgood_taylor_caratheodory_injectivityofextension>,
+    )
   ])
   #proof[
     Notice that $tilde(phi)(DD) = Omega_2$, and from the earlier discussion regarding properness, $tilde(phi)(S^1) subset.eq partial Omega_2$. By the biholomorphy on $DD$, it thus suffices to show that $tilde(phi)|_(partial DD)$ is one-to-one, or that for any two points $zeta, zeta' in partial DD$ such that $tilde(phi)(zeta) = tilde(phi)(zeta')$, $zeta = zeta'$. Assume, for the sake of contradiction, that $zeta != zeta'$. The straight line segment connecting $0$ to $zeta$ (denoted $alpha$), and the straight line segment joining $0$ and $zeta'$ (denoted $beta$) then split $DD$ into two domains $U_1$ and $U_2$, and $tilde(phi)(alpha) union tilde(phi)(beta)$ forms a Jordan curve enclosing some region $W$. See @fig:osgood_taylor_caratheodory_injectivityofextension. By connectivity, either $U_1$ or $U_2$ maps to $W$. Without loss of generality, assume $tilde(phi)(U_1) = W$. Since $tilde(phi)$ is continuous on $overline(U_1)$, it follows that
@@ -680,9 +734,12 @@ In fact, it is almost always true that such an extension exists. We will give th
   Thus, the preceding results gives the construction of an injective, continuous extension of $phi$ to $overline(DD)$. Moreover, the extension is onto since a continuous function maps compact sets to compact sets.
 
   Next, we show that the extension is a homeomorphism.
-  #proposition[
-    The extension $tilde(phi)$ of the biholomorphism $phi$ to $overline(DD)$ is a homeomorphism.
-  ] <prop:osgood_taylor_caratheodory_extension_homeomorphism>
+  #lbl(
+    proposition[
+      The extension $tilde(phi)$ of the biholomorphism $phi$ to $overline(DD)$ is a homeomorphism.
+    ],
+    <prop:osgood_taylor_caratheodory_extension_homeomorphism>,
+  )
 
   #proof[
     It suffices to show that the restriction $tilde(phi)|_(partial DD)$ is a homeomorphism between $partial DD$ and $partial Omega_1$. Since $partial DD$ is compact (and one under the subspace topology, a compact space) and $partial Omega_1$ is trivially Hausdorff (under the subspace topology), the continuity and injectivity of $tilde(phi)|_(partial DD)$ suffices to show that it is a homeomorphism (by @thm:compact_hausdorff).
@@ -702,271 +759,277 @@ In fact, it is almost always true that such an extension exists. We will give th
 
 The second case pertaining to $C^oo$ boundaries will be proved later. We now entertain the third.
 
-#theorem[
-  Let $Omega_1$ and $Omega_2$ be two regions in $CC$ each bounded by a single real-analytic Jordan curve. Then a biholomorphism $phi : Omega_1 -> Omega_2$ can be analytically continued to a neighborhood of $overline(Omega_1)$.
-] <thm:osgood_taylor_caratheodoryrealanalyticboundaries>
-#figure-wrapper([
-  #let primary-shade = black.transparentize(60%)
-  #let hatch = diagonal-stripes(
+#lbl(
+  theorem[
+    Let $Omega_1$ and $Omega_2$ be two regions in $CC$ each bounded by a single real-analytic Jordan curve. Then a biholomorphism $phi : Omega_1 -> Omega_2$ can be analytically continued to a neighborhood of $overline(Omega_1)$.
+  ],
+  <thm:osgood_taylor_caratheodoryrealanalyticboundaries>,
+)
+#figure-wrapper({
+  let primary-shade = black.transparentize(60%)
+  let hatch = diagonal-stripes(
     background-color: black.transparentize(100%),
     size: 3pt,
     angle: 45deg,
     thickness: 0.2pt,
   )
-  #figure(
-    grid(
-      columns: 1,
-      rows: (auto, auto),
-      gutter: 3em,
-      {
-        import cetz: *
-        let x-max = 1.2
-        quick-plot(x-min: -x-max, x-max: x-max, y-min: -1.2, y-max: 1.2, canvas: {
-          import cetz.draw: *
-          set-style(mark: (fill: black))
-          line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
-          catmull(
-            (-0.6, 0.7),
-            (-0.3, 1.1),
-            (0.1, 0.9),
-            (0.3, 0.7),
-            (0.9, 0),
-            (0.6, -0.5),
-            (0.3, -0.9),
-            (-0.5, -1.1),
-            (-0.7, -0.7),
-            (-0.9, 0),
-            close: true,
-            name: "partial-N2",
-            tension: 0.5,
-          )
-          catmull(
-            (-0.4, 0.6),
-            (-0.2, 0.8),
-            (0.1, 0.6),
-            (0.6, 0),
-            (0.4, -0.4),
-            (-0.3, -0.8),
-            (-0.5, -0.4),
-            (-0.6, 0),
-            close: true,
-            stroke: none,
-            tension: 0.5,
-            // fill: primary-shade,
-            name: "flattened-map-to",
-          )
-          floating(
-            merge-path(
-              {
-                line((-x-max, 0), (x-max, 0))
-                line((x-max, 0), (x-max, 1.5))
-                line((x-max, 1.5), (-x-max, 1.5))
-              },
+  lbl(
+    figure(
+      grid(
+        columns: 1,
+        rows: (auto, auto),
+        gutter: 3em,
+        {
+          import cetz: *
+          let x-max = 1.2
+          quick-plot(x-min: -x-max, x-max: x-max, y-min: -1.2, y-max: 1.2, _canvas: {
+            import cetz.draw: *
+            set-style(mark: (fill: black))
+            line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
+            catmull(
+              (-0.6, 0.7),
+              (-0.3, 1.1),
+              (0.1, 0.9),
+              (0.3, 0.7),
+              (0.9, 0),
+              (0.6, -0.5),
+              (0.3, -0.9),
+              (-0.5, -1.1),
+              (-0.7, -0.7),
+              (-0.9, 0),
+              close: true,
+              name: "partial-N2",
+              tension: 0.5,
+            )
+            catmull(
+              (-0.4, 0.6),
+              (-0.2, 0.8),
+              (0.1, 0.6),
+              (0.6, 0),
+              (0.4, -0.4),
+              (-0.3, -0.8),
+              (-0.5, -0.4),
+              (-0.6, 0),
               close: true,
               stroke: none,
-              name: "rect-testline",
-            ),
-          )
-          boolean(
-            "rect-testline",
-            "flattened-map-to",
-            op: "intersection",
-            fill: hatch,
-            name: "N1+-region",
-          )
-          content("I.70%", math-rect($N_2 inter RR$), anchor: "south")
-          content("partial-N2.10%", math-rect($N_2$), anchor: "south", padding: 2pt)
-          hobby((x-max + 0.8, -0.3), (x-max + 1.3, -0.6), (x-max + 2.3, -0.3), mark: (end: ">>"), name: "arrow-eta2")
-          hobby((x-max + 2.3, 0.3), (x-max + 1.3, 0.5), (x-max + 0.7, 0.2), mark: (end: ">>"), name: "arrow-psi")
-          floating({
-            line((0.6, -2), (0.6, -1.1), mark: (end: ">>"), name: "arrow-F-biholomorphism", stroke: (dash: "dashed"))
-            content("arrow-F-biholomorphism.40%", math-rect($F$), anchor: "west")
-          })
-          group({
-            translate(x: x-max + 2.4, y: 0)
-            let top-left = (0, 1.2)
-            let bottom-right = (1.8, -1)
-            hobby(
-              top-left,
-              (0.5, 1.0),
-              (0.8, 0.9),
-              (1.3, 0.1),
-              (1.5, -0.6),
-              ..directional_points(offset: bottom-right, angle: -70deg),
-              stroke: 2pt,
-              name: "partial-Omega2",
-            )
-            merge-path(
-              {
-                hobby(
-                  top-left,
-                  (0.5, 1.0),
-                  (0.8, 0.9),
-                  (1.3, 0.1),
-                  (1.5, -0.6),
-                  ..directional_points(offset: bottom-right, angle: -70deg),
-                )
-                line((top-left, "|-", bottom-right), top-left)
-              },
-              close: true,
-              stroke: none,
-              name: "inter Vq test",
-            )
-            anchor("q", "partial-Omega2.50%")
-            circle("q", radius: 1.8pt, fill: black)
-            content("q", math-rect($q$), anchor: "south-west", padding: 2pt)
-            content(("q", 60%, (top-left, "|-", bottom-right)), $Omega_2$)
-            hobby(
-              (0.4, 0.3),
-              (0.7, 0.7),
-              (1.1, 1.2),
-              (1.7, 0.8),
-              (2.1, 0.3),
-              (1.8, -0.1),
-              (1.3, -0.4),
-              (0.8, -0.1),
-              (0.7, 0),
-              close: true,
-              name: "Vq",
-            )
-            hobby(
-              (0.9, 0.6),
-              (1.3, 0.8),
-              (1.7, 0.2),
-              (1.6, 0.1),
-              (1, -0.1),
-              (0.8, 0.4),
-              close: true,
-              stroke: none,
+              tension: 0.5,
               // fill: primary-shade,
-              name: "mapped-to-region",
+              name: "flattened-map-to",
             )
-            boolean("inter Vq test", "mapped-to-region", op: "intersection", fill: hatch)
-            content("arrow-eta2.50%", math-rect($eta_2$), anchor: "north")
-            content("arrow-psi.50%", math-rect($psi$), anchor: "south")
-
-            content("Vq.40%", math-rect($V_q$), anchor: "west")
-            floating({
-              line((1.2, -2.3), (1.2, -0.7), mark: (end: ">>"), name: "arrow-phi-biholomorphism")
-              content("arrow-phi-biholomorphism.40%", math-rect($phi$), anchor: "west")
-            })
-          })
-        })
-      },
-      {
-        let x-max = 1.2
-        quick-plot(x-min: -x-max, x-max: x-max, y-min: -1.2, y-max: 1.2, canvas: {
-          import cetz.draw: *
-          set-style(mark: (fill: black))
-          line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
-          catmull(
-            (-0.6, 0.4),
-            (-0.5, 0.6),
-            (-0.3, 0.7),
-            (0.1, 0.8),
-            (0.3, 0.6),
-            (0.9, 0),
-            (0.5, -0.3),
-            (0.2, -0.8),
-            (-0.3, -0.7),
-            (-0.6, -0.3),
-            (-0.9, 0),
-            close: true,
-            name: "partial-N1",
-            tension: 0.5,
-            fill: primary-shade,
-          )
-          floating(
-            merge-path(
-              {
-                line((-x-max, 0), (x-max, 0))
-                line((x-max, 0), (x-max, -1.5))
-                line((x-max, -1.5), (-x-max, -1.5))
-              },
-              close: true,
-              stroke: none,
-              name: "N1+-rect-testline",
-            ),
-          )
-          boolean(
-            "N1+-rect-testline",
-            "partial-N1",
-            op: "intersection",
-            fill: hatch,
-            name: "N1+-region",
-          )
-          content("N1+-region.90%", math-rect($N^+_1$), anchor: "south")
-          content("I.50%", math-rect($N_1 inter RR$), anchor: "south")
-          content("partial-N1.10%", math-rect($N_1$), anchor: "south", padding: 2pt)
-          hobby((x-max + 0.8, -0.3), (x-max + 1.3, -0.6), (x-max + 2.4, -0.3), mark: (end: ">>"), name: "arrow-eta1")
-          hobby((x-max + 2.4, 0.3), (x-max + 1.3, 0.5), (x-max + 0.7, 0.2), mark: (end: ">>"), name: "arrow-phi")
-          group({
-            translate(x: x-max + 2.4, y: 0)
-            let top-left = (0, 1.2)
-            let bottom-right = (1.8, -1)
-            hobby(
-              top-left,
-              (0.2, 1.1),
-              (0.3, 1),
-              (0.6, 0.7),
-              (1.2, 0.3),
-              (1.4, -0.6),
-              ..directional_points(offset: bottom-right, angle: -70deg),
-              stroke: 2pt,
-              name: "partial-Omega1",
-            )
-            anchor("p", "partial-Omega1.50%")
-            circle("p", radius: 1.8pt, fill: black)
-            content("p", math-rect($p$), anchor: "south-west", padding: 2pt)
-            content(("p", 60%, (top-left, "|-", bottom-right)), $Omega_1$)
-            hobby(
-              (0.4, 0.3),
-              (0.7, 0.7),
-              (1.1, 1.2),
-              (1.4, 0.8),
-              (1.8, 0.3),
-              (1.5, -0.1),
-              (1.1, -0.4),
-              (0.8, -0.1),
-              (0.7, 0.2),
-              close: true,
-              fill: primary-shade,
-              name: "Vp",
-            )
-            content("arrow-eta1.50%", math-rect($eta_1$), anchor: "north")
-            content("arrow-phi.50%", math-rect($phi.alt$), anchor: "south")
-
-            merge-path(
-              {
-                hobby(
-                  top-left,
-                  (0.2, 1.1),
-                  (0.3, 1),
-                  (0.6, 0.7),
-                  (1.2, 0.3),
-                  (1.4, -0.6),
-                  ..directional_points(offset: bottom-right, angle: -70deg),
-                )
-                line((top-left, "|-", bottom-right), top-left)
-              },
-              close: true,
-              stroke: none,
-              name: "Omega1 inter Vp test",
+            floating(
+              merge-path(
+                {
+                  line((-x-max, 0), (x-max, 0))
+                  line((x-max, 0), (x-max, 1.5))
+                  line((x-max, 1.5), (-x-max, 1.5))
+                },
+                close: true,
+                stroke: none,
+                name: "rect-testline",
+              ),
             )
             boolean(
-              "Omega1 inter Vp test",
-              "Vp",
+              "rect-testline",
+              "flattened-map-to",
               op: "intersection",
               fill: hatch,
+              name: "N1+-region",
             )
-            content("Vp.40%", math-rect($V_p$), anchor: "west")
+            content("I.70%", math-rect($N_2 inter RR$), anchor: "south")
+            content("partial-N2.10%", math-rect($N_2$), anchor: "south", padding: 2pt)
+            hobby((x-max + 0.8, -0.3), (x-max + 1.3, -0.6), (x-max + 2.3, -0.3), mark: (end: ">>"), name: "arrow-eta2")
+            hobby((x-max + 2.3, 0.3), (x-max + 1.3, 0.5), (x-max + 0.7, 0.2), mark: (end: ">>"), name: "arrow-psi")
+            floating({
+              line((0.6, -2), (0.6, -1.1), mark: (end: ">>"), name: "arrow-F-biholomorphism", stroke: (dash: "dashed"))
+              content("arrow-F-biholomorphism.40%", math-rect($F$), anchor: "west")
+            })
+            group({
+              translate(x: x-max + 2.4, y: 0)
+              let top-left = (0, 1.2)
+              let bottom-right = (1.8, -1)
+              hobby(
+                top-left,
+                (0.5, 1.0),
+                (0.8, 0.9),
+                (1.3, 0.1),
+                (1.5, -0.6),
+                ..directional_points(offset: bottom-right, angle: -70deg),
+                stroke: 2pt,
+                name: "partial-Omega2",
+              )
+              merge-path(
+                {
+                  hobby(
+                    top-left,
+                    (0.5, 1.0),
+                    (0.8, 0.9),
+                    (1.3, 0.1),
+                    (1.5, -0.6),
+                    ..directional_points(offset: bottom-right, angle: -70deg),
+                  )
+                  line((top-left, "|-", bottom-right), top-left)
+                },
+                close: true,
+                stroke: none,
+                name: "inter Vq test",
+              )
+              anchor("q", "partial-Omega2.50%")
+              circle("q", radius: 1.8pt, fill: black)
+              content("q", math-rect($q$), anchor: "south-west", padding: 2pt)
+              content(("q", 60%, (top-left, "|-", bottom-right)), $Omega_2$)
+              hobby(
+                (0.4, 0.3),
+                (0.7, 0.7),
+                (1.1, 1.2),
+                (1.7, 0.8),
+                (2.1, 0.3),
+                (1.8, -0.1),
+                (1.3, -0.4),
+                (0.8, -0.1),
+                (0.7, 0),
+                close: true,
+                name: "Vq",
+              )
+              hobby(
+                (0.9, 0.6),
+                (1.3, 0.8),
+                (1.7, 0.2),
+                (1.6, 0.1),
+                (1, -0.1),
+                (0.8, 0.4),
+                close: true,
+                stroke: none,
+                // fill: primary-shade,
+                name: "mapped-to-region",
+              )
+              boolean("inter Vq test", "mapped-to-region", op: "intersection", fill: hatch)
+              content("arrow-eta2.50%", math-rect($eta_2$), anchor: "north")
+              content("arrow-psi.50%", math-rect($psi$), anchor: "south")
+
+              content("Vq.40%", math-rect($V_q$), anchor: "west")
+              floating({
+                line((1.2, -2.3), (1.2, -0.7), mark: (end: ">>"), name: "arrow-phi-biholomorphism")
+                content("arrow-phi-biholomorphism.40%", math-rect($phi$), anchor: "west")
+              })
+            })
           })
-        })
-      },
+        },
+        {
+          let x-max = 1.2
+          quick-plot(x-min: -x-max, x-max: x-max, y-min: -1.2, y-max: 1.2, _canvas: {
+            import cetz.draw: *
+            set-style(mark: (fill: black))
+            line((-.9, 0), (.9, 0), stroke: 3pt, name: "I")
+            catmull(
+              (-0.6, 0.4),
+              (-0.5, 0.6),
+              (-0.3, 0.7),
+              (0.1, 0.8),
+              (0.3, 0.6),
+              (0.9, 0),
+              (0.5, -0.3),
+              (0.2, -0.8),
+              (-0.3, -0.7),
+              (-0.6, -0.3),
+              (-0.9, 0),
+              close: true,
+              name: "partial-N1",
+              tension: 0.5,
+              fill: primary-shade,
+            )
+            floating(
+              merge-path(
+                {
+                  line((-x-max, 0), (x-max, 0))
+                  line((x-max, 0), (x-max, -1.5))
+                  line((x-max, -1.5), (-x-max, -1.5))
+                },
+                close: true,
+                stroke: none,
+                name: "N1+-rect-testline",
+              ),
+            )
+            boolean(
+              "N1+-rect-testline",
+              "partial-N1",
+              op: "intersection",
+              fill: hatch,
+              name: "N1+-region",
+            )
+            content("N1+-region.90%", math-rect($N^+_1$), anchor: "south")
+            content("I.50%", math-rect($N_1 inter RR$), anchor: "south")
+            content("partial-N1.10%", math-rect($N_1$), anchor: "south", padding: 2pt)
+            hobby((x-max + 0.8, -0.3), (x-max + 1.3, -0.6), (x-max + 2.4, -0.3), mark: (end: ">>"), name: "arrow-eta1")
+            hobby((x-max + 2.4, 0.3), (x-max + 1.3, 0.5), (x-max + 0.7, 0.2), mark: (end: ">>"), name: "arrow-phi")
+            group({
+              translate(x: x-max + 2.4, y: 0)
+              let top-left = (0, 1.2)
+              let bottom-right = (1.8, -1)
+              hobby(
+                top-left,
+                (0.2, 1.1),
+                (0.3, 1),
+                (0.6, 0.7),
+                (1.2, 0.3),
+                (1.4, -0.6),
+                ..directional_points(offset: bottom-right, angle: -70deg),
+                stroke: 2pt,
+                name: "partial-Omega1",
+              )
+              anchor("p", "partial-Omega1.50%")
+              circle("p", radius: 1.8pt, fill: black)
+              content("p", math-rect($p$), anchor: "south-west", padding: 2pt)
+              content(("p", 60%, (top-left, "|-", bottom-right)), $Omega_1$)
+              hobby(
+                (0.4, 0.3),
+                (0.7, 0.7),
+                (1.1, 1.2),
+                (1.4, 0.8),
+                (1.8, 0.3),
+                (1.5, -0.1),
+                (1.1, -0.4),
+                (0.8, -0.1),
+                (0.7, 0.2),
+                close: true,
+                fill: primary-shade,
+                name: "Vp",
+              )
+              content("arrow-eta1.50%", math-rect($eta_1$), anchor: "north")
+              content("arrow-phi.50%", math-rect($phi.alt$), anchor: "south")
+
+              merge-path(
+                {
+                  hobby(
+                    top-left,
+                    (0.2, 1.1),
+                    (0.3, 1),
+                    (0.6, 0.7),
+                    (1.2, 0.3),
+                    (1.4, -0.6),
+                    ..directional_points(offset: bottom-right, angle: -70deg),
+                  )
+                  line((top-left, "|-", bottom-right), top-left)
+                },
+                close: true,
+                stroke: none,
+                name: "Omega1 inter Vp test",
+              )
+              boolean(
+                "Omega1 inter Vp test",
+                "Vp",
+                op: "intersection",
+                fill: hatch,
+              )
+              content("Vp.40%", math-rect($V_p$), anchor: "west")
+            })
+          })
+        },
+      ),
+      caption: [The construction of $N_2$, $V_q$, $eta_2$, and $psi$, and similarly, that of $N_1$, $V_p$, $eta_1$, and $phi.alt$.],
     ),
-    caption: [The construction of $N_2$, $V_q$, $eta_2$, and $psi$, and similarly, that of $N_1$, $V_p$, $eta_1$, and $phi.alt$.],
-  ) <fig:extension_across_real_analytic_boundary_inverse_flattening_map>
-])
+    <fig:extension_across_real_analytic_boundary_inverse_flattening_map>,
+  )
+})
 #proof[
   By the Osgood--Taylor--Carathéodory Theorem (@thm:osgood_taylor_caratheodory), $phi$ extends continuously to $overline(Omega_1)$ with $phi(partial Omega_1) = partial Omega_2$; retain the name $phi$ for this extension.
 

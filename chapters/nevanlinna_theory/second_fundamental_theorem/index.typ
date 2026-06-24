@@ -1,7 +1,11 @@
 #import "/lib.typ": *
-
-== The Second Fundamental Theorem
-
+#show: docs-subchapter.with(
+  title: [The Second Fundamental Theorem],
+  route: "second_fundamental_theorem",
+  children: [
+    #include "estimation_of_small_error_term/index.typ"
+  ],
+)
 Whereas the First Fundamental Theorem gives the relation between the general size of $T$ relative to $m$ and $N$, efforts have been made to quantify the relative size of $m$ and $N$. This question was answered by R. Nevanlinna in July 1924 with considerable accuracy via the inequality
 $
   T(r, f) <= N(r, a, f) + N(r, b, f) + N(r, c, f) + S(r, f),
@@ -36,10 +40,13 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     m(r, f) + sum_(nu = 1)^q m(r, a_nu, f) <= 2 T(r, f) - N_1(r, f) + S(r, f),
   $
   where $N_1(r) = N(r, 0, f') + 2 N(r, f) - N(r, f')$ and
-  $
-    S(r, f) & = m(r, f' / f) + m(r, sum_(nu = 1)^q f' / (f - a_nu)) \
-            & quad""+ q logp ((3q) / delta) + log 2 - log abs(c'),
-  $ <eq:nevanlinna_second_fundamental_theorem_part_1_small_error_term>
+  #lbl(
+    $
+      S(r, f) & = m(r, f' / f) + m(r, sum_(nu = 1)^q f' / (f - a_nu)) \
+              & quad""+ q logp ((3q) / delta) + log 2 - log abs(c'),
+    $,
+    <eq:nevanlinna_second_fundamental_theorem_part_1_small_error_term>,
+  )
   where $c'$ is the first nonzero coefficient of the Laurent expansion of $f'$ (at the origin).
 ] <thm:nevanlinnasecondfundamentaltheorempart1>
 
@@ -80,10 +87,13 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
       logp abs(F(z)) >= logp (1 / (2 abs(f(z) - a_nu))) >= logp (1 / abs(f(z) - a_nu)) - log 2.
     $
     Observe that for each $mu != nu$, $logp abs(f(z) - a_mu)^(-1) < logp (3 / (2 delta))$, and therefore
-    $
-      logp abs(F(z)) & >= sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - (q - 1) logp (3 / (2 delta)) - log 2 \
-                     & >= sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) - log 2.
-    $ <eq:nevanlinna_second_fundamental_theorem_part_1_log_p_F_lower_bound>
+    #lbl(
+      $
+        logp abs(F(z)) & >= sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - (q - 1) logp (3 / (2 delta)) - log 2 \
+                       & >= sum_(mu = 1)^q logp (1 / abs(f(z) - a_mu)) - q logp ((3q) / delta) - log 2.
+      $,
+      <eq:nevanlinna_second_fundamental_theorem_part_1_log_p_F_lower_bound>,
+    )
 
   + There exists no such $nu$. Then all $nu$ have the property that $abs(f(z) - a_nu) >= delta / (3q)$. It follows that
     $
@@ -95,9 +105,12 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     Then @eq:nevanlinna_second_fundamental_theorem_part_1_log_p_F_lower_bound holds for this case trivially.
 
   Integrating the relation @eq:nevanlinna_second_fundamental_theorem_part_1_log_p_F_lower_bound (which holds in all cases) gives that
-  $
-    m(r, F) >= sum_(nu = 1)^q m(r, a_nu, f) - q logp ((3q) / delta) - log 2.
-  $ <eq:nevanlinnasecondfundamentaltheorempart1_proximityFlowerbound>
+  #lbl(
+    $
+      m(r, F) >= sum_(nu = 1)^q m(r, a_nu, f) - q logp ((3q) / delta) - log 2.
+    $,
+    <eq:nevanlinnasecondfundamentaltheorempart1_proximityFlowerbound>,
+  )
   Observe that
   $
     m(r, F) = m(r, 1 / f dot f / f' dot f' dot F)
@@ -145,8 +158,4 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     & wide = 2 T(r, f) - [N(r, 1 / f') + 2 N(r, f) - N(r, f')] + S(r, f),
   $
   where $S(r, f)$ is defined as in @eq:nevanlinna_second_fundamental_theorem_part_1_small_error_term. This concludes the proof.
-]
-
-#chapter-section("estimation_of_small_error_term")[
-  #include "estimation_of_small_error_term/index.typ"
 ]

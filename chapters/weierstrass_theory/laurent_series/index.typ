@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== Laurent Series
-
+#show: docs-subchapter.with(
+  title: [Laurent Series],
+  route: "laurent_series",
+)
 The Laurent series generalizes the Taylor series to holomorphic functions with isolated singularities. While Taylor series are valid within a disk centered at a point of holomorphy, Laurent series apply to annular regions surrounding a singularity, making them essential for studying functions near non-removable singularities (refer to @thm:riemannremovablesingularities).
 
 We now introduce a fundamental result in complex analysis due to Weierstrass, which formalizes the conditions under which the limit of a sequence of holomorphic functions is itself holomorphic. This theorem not only guarantees the holomorphy of the limit function but also the uniform convergence of its derivatives (its statement was used in the proof of @thm:hurwitzsimplecase).
@@ -49,17 +50,26 @@ The condition of uniform convergence on every compact subset can also be signifi
 ]
 
 We will now study Laurent series. Let $a in CC$ and ${c_n}_(n in ZZ) subset CC$ be constants. A series in the form of
-$
-  f(z) = sum_(n = -oo)^oo c_n (z - a)^n
-$ <eq:laurentseries>
+#lbl(
+  $
+    f(z) = sum_(n = -oo)^oo c_n (z - a)^n
+  $,
+  <eq:laurentseries>,
+)
 is a Laurent series at the point $a$. The series can be separated into a power series with non-negative exponents,
-$
-  phi(z) = sum_(n = 0)^oo c_n (z - a)^n,
-$ <eq:laurentseriesnonnegativeexponents>
+#lbl(
+  $
+    phi(z) = sum_(n = 0)^oo c_n (z - a)^n,
+  $,
+  <eq:laurentseriesnonnegativeexponents>,
+)
 and a power series with negative exponents,
-$
-  psi(z) = sum_(n = 1)^oo c_(-n) (z - a)^(-n).
-$ <eq:laurentseriesnegativeexponents>
+#lbl(
+  $
+    psi(z) = sum_(n = 1)^oo c_(-n) (z - a)^(-n).
+  $,
+  <eq:laurentseriesnegativeexponents>,
+)
 @eq:laurentseries is said to be convergent at $z = z_0$ if the two power series are both convergent. Let the convergence radius of @eq:laurentseriesnonnegativeexponents be
 $
   R = 1 / limsup_(n -> oo) root(n, abs(c_n))
@@ -92,18 +102,24 @@ $
 $
 converges (conditionally) on all of $partial DD without {1}$ and diverges at $z = 1$. If $r > R$, then the series is divergent on all of $CC$. The region $D(a, R) without overline(D(a, r))$ is known as the _annulus of convergence_. $f(z)$ in @eq:laurentseries is holomorphic over this annulus. The series $phi(z)$ is known as the _holomorphic part_ of $f(z)$, and $psi(z)$ is known as the _principal part_ of the Laurent series. The properties of the convergence disk in Abel's Theorem (@thm:abels_theorem_radius) can be generalized to Laurent series. In other words, $f$ is absolutely convergent on the annulus and is uniformly convergent on every compact subset of it.
 
-#theorem[
-  Let $V = {z in CC : r < abs(z - a) < R}$ for some $0 <= r < R <= oo$. Let $f$ be holomorphic on $V$. Then $f$ has the unique _Laurent expansion_
-  $
-    f(z) = sum_(n = -oo)^oo c_n (z - a)^n, quad c_n = 1 / taui integral.cont_gamma (f(zeta) dzeta) / ((zeta - a)^(n + 1)), quad z in V,
-  $ <eq:laurentexpansionofholomorphicfunction_statement>
-  for any simple closed curve $gamma subset V$ enclosing $a$. Moreover, the series converges absolutely on $V$ and uniformly on all compact subsets of $V$.
-] <thm:laurentexpansionofholomorphicfunction>
+#lbl(
+  theorem[
+    Let $V = {z in CC : r < abs(z - a) < R}$ for some $0 <= r < R <= oo$. Let $f$ be holomorphic on $V$. Then $f$ has the unique _Laurent expansion_
+    #lbl(
+      $
+        f(z) = sum_(n = -oo)^oo c_n (z - a)^n, quad c_n = 1 / taui integral.cont_gamma (f(zeta) dzeta) / ((zeta - a)^(n + 1)), quad z in V,
+      $,
+      <eq:laurentexpansionofholomorphicfunction_statement>,
+    )
+    for any simple closed curve $gamma subset V$ enclosing $a$. Moreover, the series converges absolutely on $V$ and uniformly on all compact subsets of $V$.
+  ],
+  <thm:laurentexpansionofholomorphicfunction>,
+)
 
 #figure-wrapper([
-  #figure(
-    [
-      #cetz.canvas({
+  #lbl(
+    figure(
+      canvas({
         import cetz.draw: *
         import cetz.decorations: brace
 
@@ -147,10 +163,11 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
         content("label_Rp.content", [#math-rect($R'$)], anchor: "center")
         content(center, math-rect($a$), anchor: "center")
         content((-0.8, -1.76), [$gamma$], anchor: "north")
-      })
-    ],
-    caption: [The annulus $V$, with $gamma_1$, $gamma_2$, and $gamma$.],
-  ) <fig:laurentexpansionofholomorphicfunction>
+      }),
+      caption: [The annulus $V$, with $gamma_1$, $gamma_2$, and $gamma$.],
+    ),
+    <fig:laurentexpansionofholomorphicfunction>,
+  )
 ])
 
 #proof[
@@ -160,19 +177,28 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
   $
 
   For all $zeta in gamma_1$ (or $abs(zeta - a) = r'$), $abs(zeta - a) < abs(z - a)$ and therefore, $(abs(zeta - a)) / (abs(z - a)) < 1$. It follows that
-  $
-    1 / (zeta - z) = -1 / ((z - a) (1 - (zeta - a) / (z - a))) = -sum_(n = 0)^oo (zeta - a)^n / (z - a)^(n + 1)
-  $ <eq:laurentexpansionofholomorphicfunction_kernelexpansioninside>
+  #lbl(
+    $
+      1 / (zeta - z) = -1 / ((z - a) (1 - (zeta - a) / (z - a))) = -sum_(n = 0)^oo (zeta - a)^n / (z - a)^(n + 1)
+    $,
+    <eq:laurentexpansionofholomorphicfunction_kernelexpansioninside>,
+  )
   is uniformly convergent with respect to $zeta$. Similarly, for all $zeta in gamma_2$,
   $ abs(zeta - a) > abs(z - a) <==> (abs(z - a)) / (abs(zeta - a)) < 1, $
   and it follows that
-  $
-    1 / (zeta - z) = 1 / ((zeta - a) (1 - (z - a) / (zeta - a))) = sum_(n = 0)^oo (z - a)^n / (zeta - a)^(n + 1)
-  $ <eq:laurentexpansionofholomorphicfunction_kernelexpansionoutside>
+  #lbl(
+    $
+      1 / (zeta - z) = 1 / ((zeta - a) (1 - (z - a) / (zeta - a))) = sum_(n = 0)^oo (z - a)^n / (zeta - a)^(n + 1)
+    $,
+    <eq:laurentexpansionofholomorphicfunction_kernelexpansionoutside>,
+  )
   is uniformly convergent with respect to $zeta$. By the boundedness of $f$ on $gamma_1$ and $gamma_2$ from holomorphy on a compact set, the uniform convergence from the Weierstrass $M$-Test (@thm:weierstrassmtest), gives that
-  $
-    f(z) = 1 / (taui) (sum_(n = 0)^oo integral.cont_(gamma_2) ((z - a)^n) / ((zeta - a)^(n + 1)) f(zeta) dzeta + sum_(n = 1)^oo integral.cont_(gamma_1) ((zeta - a)^(n - 1)) / ((z - a)^n) f(zeta) dzeta).
-  $ <eq:laurentexpansionofholomorphicfunction_finalstep>
+  #lbl(
+    $
+      f(z) = 1 / (taui) (sum_(n = 0)^oo integral.cont_(gamma_2) ((z - a)^n) / ((zeta - a)^(n + 1)) f(zeta) dzeta + sum_(n = 1)^oo integral.cont_(gamma_1) ((zeta - a)^(n - 1)) / ((z - a)^n) f(zeta) dzeta).
+    $,
+    <eq:laurentexpansionofholomorphicfunction_finalstep>,
+  )
 
   By the Cauchy--Goursat Theorem (@thm:cauchygoursattheorem), for a given $n$,
   $
@@ -183,9 +209,12 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
     f(z) = sum_(n = 0)^oo c_n (z - a)^n + sum_(n = 1)^oo c_(-n) (z - a)^(-n) = sum_(n = -oo)^oo c_n (z - a)^n
   $
   which converges uniformly on compact sets of $V$. The constants ${c_n}_(n in ZZ)$ are also unique in the expansion. For the sake of contradiction, assume there exists another set of constants ${c'_n}_(n in ZZ)$ such that
-  $
-    f(z) = sum_(n = -oo)^oo c'_n (z - a)^n,
-  $ <eq:laurentexpansionofholomorphicfunction_uniquenessstatement>
+  #lbl(
+    $
+      f(z) = sum_(n = -oo)^oo c'_n (z - a)^n,
+    $,
+    <eq:laurentexpansionofholomorphicfunction_uniquenessstatement>,
+  )
   where $z in V$ and the series is uniformly convergent on $gamma$. Let $m in ZZ$ be arbitrary. By Cauchy--Goursat (@thm:cauchy_differentiation_formula),
   $
     integral.cont_gamma (z - a)^k dz =

@@ -1,9 +1,10 @@
 #import "/lib.typ": *
 
 #import "/build/visual_output/mergelyan_erosion/lib.typ" as visual-data
-
-== Mergelyan's Theorem
-
+#show: docs-subchapter.with(
+  title: [Mergelyan's Theorem],
+  route: "mergelyans_theorem",
+)
 Although many mathematicians have since tried after the efforts of Weierstrass and Runge to approximation continuous functions holomorphic on the interior restriction, it was only 67 years later when Armenian mathematician provided the first widely accepted proof. The proof of Runge's Theorem (specifically in @prop:rungesimplepolesandremovablesingularityatinfinity) relied heavily on the assumption of holomorphy on a neighborhood, a rational function was created by placing poles in prescribed points of a contour that lay outside of $K$ but within its domain of holomorphy. Obviously, these assumptions are null under the context of this new formulation.
 
 The proof proposed by Mergelyan is almost trivial when compared with the results of many other mathematicians at the time. It even uses the concepts previously proposed by Runge. This begs the question: why was there such a prolonged time gap between the two similar formulations? Many mathematicians felt that the conclusion was "too good to be true"; during this elapsed time period there were many efforts of mathematicians that resulted in many technical partial results. Mergelyan's Theorem came as a surprise as it encapsulated many of those results with simplicity.
@@ -20,9 +21,12 @@ may seem to be a natural object to consider, it is quite impractical; there exis
     f^((n)) (oo) = evaluated(dv((f(1 / z)), z, n, style: "large"))_(z=0).
   $
   In the case that $n = 1$, we have
-  $
-    f'(oo) = -lim_(z -> oo) z^2 f'(z).
-  $ <eq:derivativeatinfinity>
+  #lbl(
+    $
+      f'(oo) = -lim_(z -> oo) z^2 f'(z).
+    $,
+    <eq:derivativeatinfinity>,
+  )
 ]
 
 This is precisely the first singular term of the Laurent expansion of $f$ at $oo$.
@@ -32,22 +36,31 @@ This is precisely the first singular term of the Laurent expansion of $f$ at $oo
 ]
 
 If $f$ is bijective and meromorphic on some neighborhood of a point $a in CC$ such that $f(a) = oo$, then we informally define the derivative at the pole $a$ to be
-$
-  f'(a) = 1 / ((f^(-1))'(oo)) & = -lim_(w -> oo) 1 / (w^2 (f^(-1))'(w)) \
-                              & = -lim_(w -> oo) (f'(f^(-1)(w))) / w^2.
-$ <eq:derivativeatpole1>
+#lbl(
+  $
+    f'(a) = 1 / ((f^(-1))'(oo)) & = -lim_(w -> oo) 1 / (w^2 (f^(-1))'(w)) \
+                                & = -lim_(w -> oo) (f'(f^(-1)(w))) / w^2.
+  $,
+  <eq:derivativeatpole1>,
+)
 Let $z = (f^(-1))(w)$. Then we have
-$
-  f'(a) = -lim_(z -> a) (f'(z)) / f(z)^2 = evaluated(dv((1 / f(z)), z, style: "large"))_(z=a).
-$ <eq:derivativeatpole2>
+#lbl(
+  $
+    f'(a) = -lim_(z -> a) (f'(z)) / f(z)^2 = evaluated(dv((1 / f(z)), z, style: "large"))_(z=a).
+  $,
+  <eq:derivativeatpole2>,
+)
 
-#proposition[
-  For any connected compact set $K subset.eq CC$ containing at least two distinct points such that $extcomplex without K$ is connected, let $phi.alt$ be an arbitrary biholomorphism mapping $extcomplex without K$ to $DD$ such that $phi.alt(oo) = lim_(z -> oo) phi.alt(z) = 0$. It follows that
-  $
-    abs(phi.alt'(oo)) gt.eq 1 / 4 diam(K),
-  $
-  where $diam(K) = sup_(z, zeta in K) abs(zeta - z)$.
-] <prop:complementbiholomorphismquarterestimate>
+#lbl(
+  proposition[
+    For any connected compact set $K subset.eq CC$ containing at least two distinct points such that $extcomplex without K$ is connected, let $phi.alt$ be an arbitrary biholomorphism mapping $extcomplex without K$ to $DD$ such that $phi.alt(oo) = lim_(z -> oo) phi.alt(z) = 0$. It follows that
+    $
+      abs(phi.alt'(oo)) gt.eq 1 / 4 diam(K),
+    $
+    where $diam(K) = sup_(z, zeta in K) abs(zeta - z)$.
+  ],
+  <prop:complementbiholomorphismquarterestimate>,
+)
 
 #proof[
   Denote the derivative of $phi.alt$ at the infinity to be $alpha$. By @eq:derivativeatpole1, we have
@@ -73,16 +86,19 @@ $ <eq:derivativeatpole2>
   Such a biholomorphism will always exist; for arbitrary $zeta in K$, the map $z mapsto 1 / (z - zeta)$ maps $extcomplex without K$ to a simply connected, proper subset of $CC$, which is biholomorphic to $DD$ by the Riemann Mapping Theorem (@thm:riemann_mapping).
 ]
 
-#proposition[
-  Let $a in CC$, $r > 0$, and suppose $K subset.eq D(a, r)$ is compact such that $extcomplex without K$ is connected and $diam(K) gt.eq r / 2$. Then there is a family of holomorphic functions $cal(F) = {phi_zeta}_(zeta in D(a, r))$, where $forall zeta in D(a, r)$,
-  $
-    phi_zeta:extcomplex without K -> CC,
-  $
-  and
-  + $abs(phi_zeta (z)) <= 584 / r$ for any $z in extcomplex without K$. <itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584>
-  + $abs(phi_zeta (z) - 1 / (z - zeta)) <= (4676 r^2) / abs(zeta - z)^3$ for any $z in extcomplex without (K union {zeta})$. <itm:complement_biholomorphism_584_r_4767_r2_estimates_absolutedifference4676>
-  + The function $phi(zeta, z) equiv phi_zeta (z)$ is jointly continuous in $zeta$ and $z$.
-] <prop:complement_biholomorphism_584_r_4767_r2_estimates>
+#lbl(
+  proposition[
+    Let $a in CC$, $r > 0$, and suppose $K subset.eq D(a, r)$ is compact such that $extcomplex without K$ is connected and $diam(K) gt.eq r / 2$. Then there is a family of holomorphic functions $cal(F) = {phi_zeta}_(zeta in D(a, r))$, where $forall zeta in D(a, r)$,
+    $
+      phi_zeta:extcomplex without K -> CC,
+    $
+    and
+    + $abs(phi_zeta (z)) <= 584 / r$ for any $z in extcomplex without K$. #enum-lbl(<itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584>)
+    + $abs(phi_zeta (z) - 1 / (z - zeta)) <= (4676 r^2) / abs(zeta - z)^3$ for any $z in extcomplex without (K union {zeta})$. #enum-lbl(<itm:complement_biholomorphism_584_r_4767_r2_estimates_absolutedifference4676>)
+    + The function $phi(zeta, z) equiv phi_zeta (z)$ is jointly continuous in $zeta$ and $z$.
+  ],
+  <prop:complement_biholomorphism_584_r_4767_r2_estimates>,
+)
 
 #proof[
   For brevity, assume $a = 0$.
@@ -101,7 +117,8 @@ $ <eq:derivativeatpole2>
   $
   Hence,
   $
-    abs(phi_zeta (z)) &<= abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 <= abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 \ &<= 8 / r + 9 r 64 / r^2 = 584 / r.
+    abs(phi_zeta (z)) & <= abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 <= abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 \
+                      & <= 8 / r + 9 r 64 / r^2 = 584 / r.
   $
   This is @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584. Suppose that $abs(z - zeta) > 2 r$. It follows from $abs(zeta) < r$ that $abs(z) > r$ (from the reverse triangle inequality) and hence disjoint from $K$ and $zeta$. On this infinite annulus, we have the Laurent expansion (from @thm:laurentexpansionofholomorphicfunction) that
   $
@@ -145,25 +162,34 @@ $ <eq:derivativeatpole2>
   Lastly, if $a != 0$, we may define $phi_zeta (z) = tilde(phi)_(zeta - a) (z - a)$ where ${tilde(phi)_(zeta - a)}$ is the family constructed above for the set ${z - a : z in K} subset D(0, r)$.
 ]
 
-#proposition[
-  Suppose
-  $
-    lambda(z) = cases(
-      (1 - abs(z)^2)^2 & abs(z) < 1\,,
-      0 & abs(z) gt.eq 1\,
-    ) quad lambda_r (z) = 3 / (uppi r^2) lambda(z / r) quad forall r > 0
-  $ <eq:diracdeltaapproximation_lambdadefinition>
-  For fixed $r$, the function $lambda_r$ satisfies:
-  + $integral.double_(CC) lambda_r (zeta) dif xi dif eta = 1$, where $zeta = xi + ii eta$. <itm:diracdeltaapproximation_integralto1>
-  + $lambda_r in C^1(CC)$ and is compactly supported. <itm:diracdeltaapproximation_compactsupportcontinuousdifferentiability>
-  + $integral.double_(CC) pdv(lambda_r, overline(zeta)) dif xi dif eta = 0$. <itm:diracdeltaapproximation_antiholomorphicderivativeintegral>
-  + $integral.double_(CC) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta <= (2 uppi) / r$. <itm:diracdeltaapproximation_absoluteantiholomorphicderivativeintegral>
-  + $norm(grad lambda_r (z)) <= 4 / r^3$ for all $z$, where $grad = (pdv(, x), pdv(, y))$ denotes the vector differential operator. <itm:diracdeltaapproximation_gradientstatement>
-  + For any $z in CC$ such that $f$ is a holomorphic function on $D(z, r)$, we have the integral formula. <itm:diracdeltaapproximation_integralformula>
-    $
-      f(z) = integral.double_(D(0, r)) f(z - zeta) lambda_r (zeta) dif xi dif eta.
-    $ <eq:diracdeltaapproximation_integralformula>
-] <prop:diracdeltaapproximation>
+#lbl(
+  proposition[
+    Suppose
+    #lbl(
+      $
+        lambda(z) = cases(
+          (1 - abs(z)^2)^2 & abs(z) < 1\,,
+          0 & abs(z) gt.eq 1\,
+        ) quad lambda_r (z) = 3 / (uppi r^2) lambda(z / r) quad forall r > 0
+      $,
+      <eq:diracdeltaapproximation_lambdadefinition>,
+    )
+    For fixed $r$, the function $lambda_r$ satisfies:
+    + $integral.double_(CC) lambda_r (zeta) dif xi dif eta = 1$, where $zeta = xi + ii eta$. #enum-lbl(<itm:diracdeltaapproximation_integralto1>)
+    + $lambda_r in C^1(CC)$ and is compactly supported. #enum-lbl(<itm:diracdeltaapproximation_compactsupportcontinuousdifferentiability>)
+    + $integral.double_(CC) pdv(lambda_r, overline(zeta)) dif xi dif eta = 0$. #enum-lbl(<itm:diracdeltaapproximation_antiholomorphicderivativeintegral>)
+    + $integral.double_(CC) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta <= (2 uppi) / r$. #enum-lbl(<itm:diracdeltaapproximation_absoluteantiholomorphicderivativeintegral>)
+    + $norm(grad lambda_r (z)) <= 4 / r^3$ for all $z$, where $grad = (pdv(, x), pdv(, y))$ denotes the vector differential operator. #enum-lbl(<itm:diracdeltaapproximation_gradientstatement>)
+    + For any $z in CC$ such that $f$ is a holomorphic function on $D(z, r)$, we have the integral formula. #enum-lbl(<itm:diracdeltaapproximation_integralformula>)
+      #lbl(
+        $
+          f(z) = integral.double_(D(0, r)) f(z - zeta) lambda_r (zeta) dif xi dif eta.
+        $,
+        <eq:diracdeltaapproximation_integralformula>,
+      )
+  ],
+  <prop:diracdeltaapproximation>,
+)
 
 #proof[
   Let $zeta = rho ee^(ii theta)$. Then we have
@@ -256,9 +282,12 @@ $ <eq:derivativeatpole2>
   $
 ]
 
-#corollary[
-  If $K subset.eq CC$ is compact and $f:K -> CC$ is continuous, then $exists g in C^0(CC)$ such that $g equiv f$ on $K$ and has compact support.
-] <cor:tietzeextensioncomplexcompactsupport>
+#lbl(
+  corollary[
+    If $K subset.eq CC$ is compact and $f:K -> CC$ is continuous, then $exists g in C^0(CC)$ such that $g equiv f$ on $K$ and has compact support.
+  ],
+  <cor:tietzeextensioncomplexcompactsupport>,
+)
 
 #proof[
   Let $f = u + ii v$ where $u, v:K -> RR$ are continuous. By Tietze--Urysohn--Brouwer (@thm:tietzeextension), $exists tilde(u), tilde(v) in C^0(CC)$ such that $tilde(u) equiv u$ and $tilde(v) equiv v$ on $K$. Let $R > 0$ be such that $K subset D(0, R)$, provided by compactness. Define the piecewise-linear function
@@ -282,19 +311,25 @@ $
 Because $f$ has compact support, it must be uniformly continuous; hence we have $lim_(delta -> 0^+) omega_f (delta) = 0$.
 
 For $r > 0$, define
-$
-  Phi(z) = integral.double_(CC) lambda_r (z - zeta) f(zeta) dif xi dif eta quad "where" quad zeta = xi + ii eta,
-$ <eq:integralofcontinuousextensionofholomorphic>
+#lbl(
+  $
+    Phi(z) = integral.double_(CC) lambda_r (z - zeta) f(zeta) dif xi dif eta quad "where" quad zeta = xi + ii eta,
+  $,
+  <eq:integralofcontinuousextensionofholomorphic>,
+)
 where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_lambdadefinition.
 
-#proposition[
-  The function $Phi$ as in @eq:integralofcontinuousextensionofholomorphic satisfies:
-  + $Phi in C^1(CC)$ and has compact support. <itm:integralofcontinuousextensionofholomorphicproperties_continuousdifferentiabilitycompactsupport>
-  + $Phi equiv f$ on $U = {z in K: op("dist")(z, CC without K) > r}$. <itm:integralofcontinuousextensionofholomorphicproperties_equivalenceonU>
-  + $abs(f(z) - Phi(z)) <= omega_f (r)$ for all $z in CC$. <itm:integralofcontinuousextensionofholomorphicproperties_differbymodulusofcontinuity>
-  + For all $z in CC$, $abs(pdv(Phi, overline(z))(z)) <= (4 uppi omega_f (r)) / r$. <itm:integralofcontinuousextensionofholomorphicproperties_antiholomorphicderivativebound>
-  + $Phi(z) = -1 / uppi integral.double_H pdv(Phi, overline(zeta))(zeta) (dif xi dif eta) / (zeta - z)$ for $z in CC$, where $H = supp(Phi) without U$. <itm:integralofcontinuousextensionofholomorphicproperties_integralformula>
-] <prop:integralofcontinuousextensionofholomorphicproperties>
+#lbl(
+  proposition[
+    The function $Phi$ as in @eq:integralofcontinuousextensionofholomorphic satisfies:
+    + $Phi in C^1(CC)$ and has compact support. #enum-lbl(<itm:integralofcontinuousextensionofholomorphicproperties_continuousdifferentiabilitycompactsupport>)
+    + $Phi equiv f$ on $U = {z in K: op("dist")(z, CC without K) > r}$. #enum-lbl(<itm:integralofcontinuousextensionofholomorphicproperties_equivalenceonU>)
+    + $abs(f(z) - Phi(z)) <= omega_f (r)$ for all $z in CC$. #enum-lbl(<itm:integralofcontinuousextensionofholomorphicproperties_differbymodulusofcontinuity>)
+    + For all $z in CC$, $abs(pdv(Phi, overline(z))(z)) <= (4 uppi omega_f (r)) / r$. #enum-lbl(<itm:integralofcontinuousextensionofholomorphicproperties_antiholomorphicderivativebound>)
+    + $Phi(z) = -1 / uppi integral.double_H pdv(Phi, overline(zeta))(zeta) (dif xi dif eta) / (zeta - z)$ for $z in CC$, where $H = supp(Phi) without U$. #enum-lbl(<itm:integralofcontinuousextensionofholomorphicproperties_integralformula>)
+  ],
+  <prop:integralofcontinuousextensionofholomorphicproperties>,
+)
 
 #proof[
   Because $supp(lambda_r (z - zeta)) = overline(D(z, r))$ and $supp f$ is compact, for sufficiently large $z$, the two supports will be disjoint and hence the integrand vanishes for all $zeta$. We can explicitly find that
@@ -321,11 +356,14 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
     Phi(z) = integral.double_(CC) lambda_r (z - zeta) f(zeta) dif xi dif eta = integral.double_(CC) lambda_r (zeta) f(z - zeta) dif xi dif eta,
   $
   by @itm:diracdeltaapproximation_integralto1 of @prop:diracdeltaapproximation, we have
-  $
-    abs(f(z) - Phi(z)) & <= abs(integral_(CC) f(z) lambda_r (zeta) dif xi and dif eta - integral_(CC) f(z - zeta) lambda_r (zeta) dif xi and dif eta) \
-    & = abs(integral_(CC) lambda_r (zeta) (f(z) - f(z - zeta)) dif xi and dif eta) \
-    & <= integral_(D(0, r)) lambda_r (zeta) abs(f(z) - f(z - zeta)) dif xi and dif eta <= omega_f (r),
-  $ <eq:integralofcontinuousextensionofholomorphicproperties_differencebound>
+  #lbl(
+    $
+      abs(f(z) - Phi(z)) & <= abs(integral_(CC) f(z) lambda_r (zeta) dif xi and dif eta - integral_(CC) f(z - zeta) lambda_r (zeta) dif xi and dif eta) \
+      & = abs(integral_(CC) lambda_r (zeta) (f(z) - f(z - zeta)) dif xi and dif eta) \
+      & <= integral_(D(0, r)) lambda_r (zeta) abs(f(z) - f(z - zeta)) dif xi and dif eta <= omega_f (r),
+    $,
+    <eq:integralofcontinuousextensionofholomorphicproperties_differencebound>,
+  )
   which implies @itm:integralofcontinuousextensionofholomorphicproperties_differbymodulusofcontinuity. For $z in U$, $zeta in D(0, r)$ now implies that $z - zeta in interior(K)$ and hence $f(z) - f(z - zeta)$ is holomorphic in $zeta$ on $D(z, r)$. By @itm:diracdeltaapproximation_integralformula of @prop:diracdeltaapproximation, @eq:integralofcontinuousextensionofholomorphicproperties_differencebound becomes
   $
     abs(integral_(CC) lambda_r (zeta) (f(z) - f(z - zeta)) dif xi and dif eta) = abs(f(z) - f(z - 0)) = 0,
@@ -354,106 +392,19 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
 ] <thm:mergelyan>
 
 #figure-wrapper([
-  #figure(
-    cetz.canvas({
-      import cetz.draw: *
-
-      let length-mark = (start: (pos: 5%, symbol: "|", inset: 0%), end: (pos: 5%, symbol: "|", inset: 0%))
-      let var-r-label-coordinates = (coord_from, coord_to, offset: 10pt) => {
-        (coord_from, 100%)
-      }
-
-      compound-path(
-        {
-          for region in visual-data.pre-erosion-region-list {
-            catmull(
-              ..region,
-              close: true,
-              tension: 0.5,
-            )
-          }
-        },
-        stroke: 1pt,
-        fill: diagonal-stripes(
-          background-color: black.transparentize(100%),
-          size: 3pt,
-          angle: 45deg,
-          thickness: 0.2pt,
-        ),
-        fill-rule: "even-odd",
-      )
-      compound-path(
-        {
-          for region in visual-data.eroded-region-list {
-            catmull(
-              ..region,
-              close: true,
-              tension: 0.5,
-            )
-          }
-        },
-        stroke: 0.5pt,
-        fill: dot-tiling(),
-        fill-rule: "even-odd",
-      )
-
-      content((4.2, 1.4), [$K$], anchor: "center")
-
-      for disk in visual-data.input-disk-list {
-        catmull(..disk, close: true, tension: 0.5, stroke: (dash: "dashed", thickness: 0.5pt))
-      }
-
-      for (i, center) in visual-data.input-disk-centers.enumerate(start: 1) {
-        circle(center, radius: 1pt, fill: black)
-        content(center, $p_#i$, anchor: "south", padding: 2pt)
-      }
-
-      for ind in visual-data.erosion-radius-indicator-list {
-        line(ind.at(0), ind.at(1), stroke: 0.5pt, mark: length-mark)
-        content(
-          ((ind.at(0), 50%, ind.at(1)), 4pt, 90deg, ind.at(0)),
-          [$r$],
-          anchor: "center",
-        )
-      }
-
-      line(..visual-data.input-disk-radius-indicator-list.at(0), stroke: 0.5pt, mark: length-mark)
-
-      let midpoint-coord = (
-        visual-data.input-disk-radius-indicator-list.at(0).at(0),
-        50%,
-        visual-data.input-disk-radius-indicator-list.at(0).at(1),
-      )
-      get-ctx(ctx => {
-        let midpoint-coord = cetz.coordinate.resolve(ctx, midpoint-coord).at(1)
-        let label-coord = cvector.add(midpoint-coord, (-1.5, 1))
-        line(
-          label-coord,
-          midpoint-coord,
-          mark: (end: ">>", fill: black),
-          stroke: 0.5pt,
-        )
-        content(label-coord, [$3 / 4 r$], anchor: "south")
-      })
-    }),
-    caption: [The striped region bounds $K$, while the thin lines bound the dotted region $U$.],
-  ) <fig:mergelyan_k_set_erosions>
-])
-
-#proof[
-  Let $F = {p_k}_(1 <= k <= n)$ contain precisely one point from each connected component of $extcomplex without K$ (such that each $p_k != oo$ is finite). Suppose that $r$ is chosen such that $0 < 3 / 4 r < op("dist")(K, F)$ so that for each $p_k in F$ not equal to $oo$,
-  $
-    overline(D(p_k, 3 / 4 r)) subset extcomplex without K.
-  $
-
-  #figure-wrapper([
-    #figure(
-      cetz.canvas({
+  #lbl(
+    figure(
+      canvas({
         import cetz.draw: *
+
+        let length-mark = (start: (pos: 5%, symbol: "|", inset: 0%), end: (pos: 5%, symbol: "|", inset: 0%))
+        let var-r-label-coordinates = (coord_from, coord_to, offset: 10pt) => {
+          (coord_from, 100%)
+        }
 
         compound-path(
           {
-            for region in visual-data.covered-region-list {
+            for region in visual-data.pre-erosion-region-list {
               catmull(
                 ..region,
                 close: true,
@@ -470,10 +421,9 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
           ),
           fill-rule: "even-odd",
         )
-
         compound-path(
           {
-            for region in visual-data.no-centers-region-list {
+            for region in visual-data.eroded-region-list {
               catmull(
                 ..region,
                 close: true,
@@ -482,35 +432,129 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
             }
           },
           stroke: 0.5pt,
-          fill: color.black.transparentize(70%),
+          fill: dot-tiling(),
           fill-rule: "even-odd",
         )
 
-        compound-path(
-          {
-            for center in visual-data.subcover-disk-centers {
-              circle(center, radius: visual-data.subcover-disk-radius)
-            }
-          },
-          stroke: 0.2pt,
-          fill: dot-tiling(
-            pattern_dist: 1.8pt,
-            radius: 0.16pt,
-          ),
-          fill-rule: "non-zero",
-        )
+        content((4.2, 1.4), [$K$], anchor: "center")
 
-        for center in visual-data.subcover-disk-centers {
-          n-star(center, 5, radius: 1pt, fill: black)
+        for disk in visual-data.input-disk-list {
+          catmull(..disk, close: true, tension: 0.5, stroke: (dash: "dashed", thickness: 0.5pt))
         }
 
         for (i, center) in visual-data.input-disk-centers.enumerate(start: 1) {
           circle(center, radius: 1pt, fill: black)
-          content(center, math-rect($p_#i$), anchor: "south", padding: 2pt)
+          content(center, $p_#i$, anchor: "south", padding: 2pt)
         }
+
+        for ind in visual-data.erosion-radius-indicator-list {
+          line(ind.at(0), ind.at(1), stroke: 0.5pt, mark: length-mark)
+          content(
+            ((ind.at(0), 50%, ind.at(1)), 4pt, 90deg, ind.at(0)),
+            [$r$],
+            anchor: "center",
+          )
+        }
+
+        line(..visual-data.input-disk-radius-indicator-list.at(0), stroke: 0.5pt, mark: length-mark)
+
+        let midpoint-coord = (
+          visual-data.input-disk-radius-indicator-list.at(0).at(0),
+          50%,
+          visual-data.input-disk-radius-indicator-list.at(0).at(1),
+        )
+        get-ctx(ctx => {
+          let midpoint-coord = cetz.coordinate.resolve(ctx, midpoint-coord).at(1)
+          let label-coord = cvector.add(midpoint-coord, (-1.5, 1))
+          line(
+            label-coord,
+            midpoint-coord,
+            mark: (end: ">>", fill: black),
+            stroke: 0.5pt,
+          )
+          content(label-coord, [$3 / 4 r$], anchor: "south")
+        })
       }),
-      caption: [The striped region represents $H$ while the unshaded regions represent the set which $zeta_k$ can be in, each of which are denoted by small stars. The dotted disks represent the finite subcover of $H$: notice that every striped region is also dotted.],
-    ) <fig:mergelyan_hset>
+      caption: [The striped region bounds $K$, while the thin lines bound the dotted region $U$.],
+    ),
+    <fig:mergelyan_k_set_erosions>,
+  )
+])
+
+#proof[
+  Let $F = {p_k}_(1 <= k <= n)$ contain precisely one point from each connected component of $extcomplex without K$ (such that each $p_k != oo$ is finite). Suppose that $r$ is chosen such that $0 < 3 / 4 r < op("dist")(K, F)$ so that for each $p_k in F$ not equal to $oo$,
+  $
+    overline(D(p_k, 3 / 4 r)) subset extcomplex without K.
+  $
+
+  #figure-wrapper([
+    #lbl(
+      figure(
+        canvas({
+          import cetz.draw: *
+
+          compound-path(
+            {
+              for region in visual-data.covered-region-list {
+                catmull(
+                  ..region,
+                  close: true,
+                  tension: 0.5,
+                )
+              }
+            },
+            stroke: 1pt,
+            fill: diagonal-stripes(
+              background-color: black.transparentize(100%),
+              size: 3pt,
+              angle: 45deg,
+              thickness: 0.2pt,
+            ),
+            fill-rule: "even-odd",
+          )
+
+          compound-path(
+            {
+              for region in visual-data.no-centers-region-list {
+                catmull(
+                  ..region,
+                  close: true,
+                  tension: 0.5,
+                )
+              }
+            },
+            stroke: 0.5pt,
+            fill: color.black.transparentize(70%),
+            fill-rule: "even-odd",
+          )
+
+          compound-path(
+            {
+              for center in visual-data.subcover-disk-centers {
+                circle(center, radius: visual-data.subcover-disk-radius)
+              }
+            },
+            stroke: 0.2pt,
+            fill: dot-tiling(
+              pattern_dist: 1.8pt,
+              radius: 0.16pt,
+            ),
+            fill-rule: "non-zero",
+          )
+
+          for center in visual-data.subcover-disk-centers {
+            n-star(center, 5, radius: 1pt, fill: black)
+          }
+
+          for (i, center) in visual-data.input-disk-centers.enumerate(start: 1) {
+            circle(center, radius: 1pt, fill: black)
+            content(center, math-rect($p_#i$), anchor: "south", padding: 2pt)
+          }
+        }),
+        caption: [The striped region represents $H$ while the unshaded regions represent the set which $zeta_k$ can be in, each of which are denoted by small stars. The dotted disks represent the finite subcover of $H$: notice that every striped region is also dotted.],
+      ),
+      <fig:mergelyan_hset>,
+    )
   ])
 
   Define the extension of $f$, $Phi$, $U$, and $H$ as in the previous results (see @fig:mergelyan_k_set_erosions). Hence, (see @fig:mergelyan_hset)
@@ -522,9 +566,9 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   By the connectivity of each component of $extcomplex without K$, there exists a piecewise-linear simple curve $gamma_k^((j))$ for all $1 <= k <= n$, $1 <= j <= m_k$, joining $zeta_k^((j))$ and $p_k$, which lies entirely within $extcomplex without K$. The compact disks $D(zeta_k^((j)), 3 / 4 r)$ are all disjoint from their corresponding $p_k$ since each $zeta_k^((j)) in.not overline(D(p_k, 3 / 4 r))$ by definition.
 
   #figure-wrapper(
-    [
-      #figure(
-        cetz.canvas({
+    lbl(
+      figure(
+        canvas({
           import cetz.draw: *
 
           let var-r = 2
@@ -619,11 +663,12 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
           content((name: "gamma-k-(j)-without-E-k-(j)", anchor: 50%), [$E_k^((j))$], anchor: "west", padding: 2pt)
         }),
         caption: [The construction of $E_k^j$. The entire polyline from $p_k$ to $zeta_k^((j))$ is $gamma_k^((j))$],
-      ) <fig:mergelyan_E_set_from_gamma>
-    ],
-    [
-      #figure(
-        cetz.canvas(length: 0.6cm, {
+      ),
+      <fig:mergelyan_E_set_from_gamma>,
+    ),
+    lbl(
+      figure(
+        canvas(length: 0.6cm, {
           import cetz.draw: *
           for region in visual-data.covered-disjoint-union-region-list {
             catmull(..region, close: true, tension: 0.5, stroke: 0.2pt, fill: diagonal-stripes(
@@ -635,16 +680,20 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
           }
         }),
         caption: [A conceptual construction of ${H_k^((j))}$, which unions to $H$.],
-      ) <fig:mergelyan_H_k_j_sets>
-    ],
+      ),
+      <fig:mergelyan_H_k_j_sets>,
+    ),
   )
 
   Hence, the intersection $overline(D(zeta_k^((j)), 3 / 4 r)) inter gamma_k^((j))$ consists of at least one connected component joining $zeta_k^((j))$ to a point on $partial D(zeta_k^((j)), 3 / 4 r)$. Denote the connected component of this intersection by $E_k^((j))$, satisfying $diam E_k^((j)) gt.eq 3 / 4 r > r / 2$ and $E_k^((j)) inter K = emptyset$ (see @fig:mergelyan_E_set_from_gamma).
 
   Now for each $j$ and $k$, @prop:complement_biholomorphism_584_r_4767_r2_estimates now provides the existence of a family of holomorphic functions $phi_(zeta, k)^((j)):extcomplex without E_k^((j)) -> CC$ given with $zeta in D(zeta_k^((j)), 5 / 4 r)$ such that
-  $
-    abs(phi_(zeta, k)^((j)) (z)) <= 584 / r, quad abs(phi_(zeta, k)^((j)) (z) - 1 / (z - zeta)) <= 4676 / abs(z - zeta)^3, quad forall z in extcomplex without E_k^((j)).
-  $ <eq:mergelyan_family_bounds>
+  #lbl(
+    $
+      abs(phi_(zeta, k)^((j)) (z)) <= 584 / r, quad abs(phi_(zeta, k)^((j)) (z) - 1 / (z - zeta)) <= 4676 / abs(z - zeta)^3, quad forall z in extcomplex without E_k^((j)).
+    $,
+    <eq:mergelyan_family_bounds>,
+  )
   Let $tilde(H)_k^((j)) = H inter D(zeta_k^((j)), 5 / 4 r)$, for each $j, k$ and construct the disjoint sets
   $
     H_k^((j)) = tilde(H)_k^((j)) without (union.big_(j' < j) tilde(H)_k^((j')) union union.big_(k' < k) union.big_(j' <= m_(k')) tilde(H)_(k')^((j'))) "if" j != 1, quad H_1^((1)) = tilde(H)_1^((1)).

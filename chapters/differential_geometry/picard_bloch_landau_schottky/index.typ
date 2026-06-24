@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== The Great Picard, Bloch, Landau, and Schottky Theorems
-
+#show: docs-subchapter.with(
+  title: [The Great Picard, Bloch, Landau, and Schottky Theorems],
+  route: "picard_bloch_landau_schottky",
+)
 Recall the Casorati--Weierstrass Theorem, one of the earliest results on the value distribution near essential singularities:
 
 #thm-state.thm-restate("thm:casoratiweierstrass", final: true)
@@ -36,9 +37,12 @@ We will now prove a more advanced characterization of this distribution by metho
   In either case, we have derived a meromorphic continuation of $f$ to $0$, contradicting the assumption that $0$ is an essential singularity of $f$.
 ]
 
-#corollary[
-  Suppose that $f$ is meromorphic on a punctured neighborhood $D^*(z_0, delta)$ of $z_0$. If $f(D^*(z_0, delta))$ omits at least three different values of $extcomplex$, then $f$ has a meromorphic continuation to $z_0$.
-] <cor:greatpicardmeromorphic>
+#lbl(
+  corollary[
+    Suppose that $f$ is meromorphic on a punctured neighborhood $D^*(z_0, delta)$ of $z_0$. If $f(D^*(z_0, delta))$ omits at least three different values of $extcomplex$, then $f$ has a meromorphic continuation to $z_0$.
+  ],
+  <cor:greatpicardmeromorphic>,
+)
 
 #proof[
   A linear fractional transformation maps the omitted values to $0$, $1$, and $oo$, mapping $f$ so that it exhibits holomorphy. Similar to @cor:montelcaratheodory, the preceding result is preserved under the inverse linear fractional transformation.

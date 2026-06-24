@@ -1,2 +1,5 @@
 #import "/lib.typ": *
-== Analytic Function Elements
+#show: docs-subchapter.with(
+  title: [Analytic Function Elements],
+  route: "analytic_continuation",
+)

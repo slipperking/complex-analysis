@@ -1,3 +1,5 @@
 #import "/lib.typ": *
-
-=== The Bieberbach Conjecture
+#show: docs-subsubchapter.with(
+  title: [The Bieberbach Conjecture],
+  route: "bieberbach_conjecture",
+)

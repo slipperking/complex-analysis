@@ -1,15 +1,19 @@
 #import "/lib.typ": *
-
-== Nevanlinna's Counting, Proximity, and Characteristic Functions
-
+#show: docs-subchapter.with(
+  title: [Nevanlinna's Counting, Proximity, and Characteristic Functions],
+  route: "nevanlinna_functions",
+)
 Let $f: D(0, R) -> extcomplex$ be meromorphic such that
 $ f(z) = sum_(j = k)^oo c_j z^j $
 where $c = c_k$ and $c eq.not 0$. Then $z mapsto frac(f(z), z^k, style: "horizontal")$ is holomorphic on a neighborhood of $0$ and is nonzero at $0$. By Jensen's formula (@thm:jensensformula) on $frac(f(z), z^k, style: "horizontal")$,
 
-$
-  & log abs(r^(m - n) (b_1 b_2 dots.c b_n) / (a_1 a_2 dots.c a_m)) + k log r \
-  & wide wide ""= 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta - log abs(c),
-$ <eq:nevanlinnacountingjensensformulaexposition1>
+#lbl(
+  $
+    & log abs(r^(m - n) (b_1 b_2 dots.c b_n) / (a_1 a_2 dots.c a_m)) + k log r \
+    & wide wide ""= 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta - log abs(c),
+  $,
+  <eq:nevanlinnacountingjensensformulaexposition1>,
+)
 where $a_1, dots, a_m$ and $b_1, dots, b_n$ are the zeros and poles of $f$ in $overline(D(0, r)) subset D(0, R)$ excluding those at $0$, ordered in nondecreasing moduli. Observe that
 
 $
@@ -50,9 +54,12 @@ $
 
 Then @eq:nevanlinnacountingjensensformulaexposition1 is simply
 
-$
-  N(r, 0, f) - N(r, oo, f) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta - log abs(c). quad
-$ <eq:nevanlinnacountingjensensformulaexposition2>
+#lbl(
+  $
+    N(r, 0, f) - N(r, oo, f) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta - log abs(c). quad
+  $,
+  <eq:nevanlinnacountingjensensformulaexposition2>,
+)
 
 Define the _nonnegative part of the logarithm_, denoted $logp (x)$, to be
 
@@ -60,12 +67,12 @@ $ logp (x) = max { log(x), 0 }. $
 
 #proposition[Properties of $logp$][
   The following properties hold:
-  1. $logp x gt.eq log x$ for $x > 0$. <itm:log_nonnegative_part_properties_firstproperty>
-  2. $logp x <= logp y$ for $x <= y$ (nondecreasing). <itm:log_nonnegative_part_properties_nondecreasing>
-  3. $log x = logp x - logp (1 / x)$ for $x > 0$. <itm:log_nonnegative_part_properties_differenceofreciprocallogs>
-  4. $abs(log x) = logp x + logp (1 / x)$ for $x > 0$. <itm:log_nonnegative_part_properties_sumofreciprocallogs>
-  5. $logp product_k x_k <= sum_k logp x_k$ for (finitely many) positive $x_k$. <itm:log_nonnegative_part_properties_multiplicativesubadditivity>
-  6. $logp sum_(k = 1)^n x_k <= log n + sum_(k = 1)^n logp x_k$ for (finitely many) positive $x_k$. <itm:log_nonnegative_part_properties_weaksubadditivity>
+  1. $logp x gt.eq log x$ for $x > 0$. #enum-lbl(<itm:log_nonnegative_part_properties_firstproperty>)
+  2. $logp x <= logp y$ for $x <= y$ (nondecreasing). #enum-lbl(<itm:log_nonnegative_part_properties_nondecreasing>)
+  3. $log x = logp x - logp (1 / x)$ for $x > 0$. #enum-lbl(<itm:log_nonnegative_part_properties_differenceofreciprocallogs>)
+  4. $abs(log x) = logp x + logp (1 / x)$ for $x > 0$. #enum-lbl(<itm:log_nonnegative_part_properties_sumofreciprocallogs>)
+  5. $logp product_k x_k <= sum_k logp x_k$ for (finitely many) positive $x_k$. #enum-lbl(<itm:log_nonnegative_part_properties_multiplicativesubadditivity>)
+  6. $logp sum_(k = 1)^n x_k <= log n + sum_(k = 1)^n logp x_k$ for (finitely many) positive $x_k$. #enum-lbl(<itm:log_nonnegative_part_properties_weaksubadditivity>)
 ] <prop:log_nonnegative_part_properties>
 
 #proof[
@@ -102,9 +109,12 @@ $ m(r, oo, f) - m(r, 0, f) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii
 
 Then @eq:nevanlinnacountingjensensformulaexposition2 can be written as:
 
-$
-  N(r, 0, f) + m(r, 0, f) = N(r, oo, f) + m(r, oo, f) - log abs(c). wide
-$ <eq:nevanlinnafirsttheorematzero>
+#lbl(
+  $
+    N(r, 0, f) + m(r, 0, f) = N(r, oo, f) + m(r, oo, f) - log abs(c). wide
+  $,
+  <eq:nevanlinnafirsttheorematzero>,
+)
 
 #definition[
   This motivates the sum $T(r, f)$, known as the _Nevanlinna characteristic_, defined by $T(r, f) = m(r, f) + N(r, f)$ (we will also use the notation $T(r, a, f) = m(r, a, f) + N(r, a, f)$).
@@ -112,7 +122,10 @@ $ <eq:nevanlinnafirsttheorematzero>
 
 Then @eq:nevanlinnafirsttheorematzero can be rewritten as:
 
-#proposition[
-  For any (non-constant) meromorphic $f$ on $D(0, R)$ with the innermost Laurent series $f(z) = sum_(j = k)^oo c_j z^j$ and any $0 < r < R$,
-  $ T(r, 0, f) = T(r, oo, f) - log abs(c_k). $
-] <prop:nevanlinnafirsttheorematzero>
+#lbl(
+  proposition[
+    For any (non-constant) meromorphic $f$ on $D(0, R)$ with the innermost Laurent series $f(z) = sum_(j = k)^oo c_j z^j$ and any $0 < r < R$,
+    $ T(r, 0, f) = T(r, oo, f) - log abs(c_k). $
+  ],
+  <prop:nevanlinnafirsttheorematzero>,
+)

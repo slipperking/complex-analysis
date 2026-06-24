@@ -1,14 +1,24 @@
 #import "/lib.typ": *
-== Properties of $T(r, f)$ and the First Fundamental Theorem
-#proposition[
-  If $f_k$ ($k = 1, dots, n$) are meromorphic in $D(0, R)$, then for $0 < r < R$,
-  1. $N(r, product_(k = 1)^n f_k) <= sum_(k = 1)^n N(r, f_k)$. <itm:nevanlinnathreefunctionsmiscproperties_Nprodsubadd>
-  2. $N(r, sum_(k = 1)^n f_k) <= sum_(k = 1)^n N(r, f_k)$ (subadditivity). <itm:nevanlinnathreefunctionsmiscproperties_Nsubadd>
-  3. $m(r, product_(k = 1)^n f_k) <= sum_(k = 1)^n m(r, f_k)$.  <itm:nevanlinnathreefunctionsmiscproperties_mprodsubadd>
-  4. $m(r, sum_(k = 1)^n f_k) <= log n + sum_(k = 1)^n m(r, f_k)$. <itm:nevanlinnathreefunctionsmiscproperties_msubaddconst>
-  5. $T(r, product_(k = 1)^n f_k) <= sum_(k = 1)^n T(r, f_k)$. <itm:nevanlinnathreefunctionsmiscproperties_Tprodsubadd>
-  6. $T(r, sum_(k = 1)^n f_k) <= log n + sum_(k = 1)^n T(r, f_k)$. <itm:nevanlinnathreefunctionsmiscproperties_Tsubaddconst>
-] <prop:nevanlinnathreefunctionsmiscproperties>
+#show: docs-subchapter.with(
+  title: [Properties of $T(r, f)$ and the First Fundamental Theorem],
+  route: "properties_of_characteristic",
+  children: [
+    #include "classifying_meromorphic_growth/index.typ"
+    #include "factorization_of_meromorphic_function/index.typ"
+  ],
+)
+#lbl(
+  proposition[
+    If $f_k$ ($k = 1, dots, n$) are meromorphic in $D(0, R)$, then for $0 < r < R$,
+    1. $N(r, product_(k = 1)^n f_k) <= sum_(k = 1)^n N(r, f_k)$. #enum-lbl(<itm:nevanlinnathreefunctionsmiscproperties_Nprodsubadd>)
+    2. $N(r, sum_(k = 1)^n f_k) <= sum_(k = 1)^n N(r, f_k)$ (subadditivity). #enum-lbl(<itm:nevanlinnathreefunctionsmiscproperties_Nsubadd>)
+    3. $m(r, product_(k = 1)^n f_k) <= sum_(k = 1)^n m(r, f_k)$.  #enum-lbl(<itm:nevanlinnathreefunctionsmiscproperties_mprodsubadd>)
+    4. $m(r, sum_(k = 1)^n f_k) <= log n + sum_(k = 1)^n m(r, f_k)$. #enum-lbl(<itm:nevanlinnathreefunctionsmiscproperties_msubaddconst>)
+    5. $T(r, product_(k = 1)^n f_k) <= sum_(k = 1)^n T(r, f_k)$. #enum-lbl(<itm:nevanlinnathreefunctionsmiscproperties_Tprodsubadd>)
+    6. $T(r, sum_(k = 1)^n f_k) <= log n + sum_(k = 1)^n T(r, f_k)$. #enum-lbl(<itm:nevanlinnathreefunctionsmiscproperties_Tsubaddconst>)
+  ],
+  <prop:nevanlinnathreefunctionsmiscproperties>,
+)
 
 #proof[
   Let $z$ be an arbitrary point in the disk. If $m_k$ is the pole order of $f_k$ at $z$ (0 if it is not a pole), then the pole order at $z$ of $sum_k f_k$ does not exceed $max_k m_k$. It is hence clear that $n(r, sum_k f_k) <= sum_k n(r, f_k)$.
@@ -27,19 +37,22 @@
   @itm:nevanlinnathreefunctionsmiscproperties_mprodsubadd and @itm:nevanlinnathreefunctionsmiscproperties_msubaddconst are clear from @prop:log_nonnegative_part_properties. @itm:nevanlinnathreefunctionsmiscproperties_Tprodsubadd and @itm:nevanlinnathreefunctionsmiscproperties_Tsubaddconst follow the previous inequalities.
 ]
 
-#theorem[
-  Let $f: D(0, R) -> extcomplex$ be meromorphic such that $f(z) = c z^k + Order(z^(k + 1))$. For $0 < r < R$,
-  $
-    T(r, f) &= 1 / (2 uppi) integral_0^(2 uppi) N(r, ee^(ii theta), f) dtheta + 1 / (2 uppi) integral_0^(2 uppi) log abs(c_theta) dtheta \
-    &= 1 / (2 uppi) integral_0^(2 uppi) N(r, ee^(ii theta), f) dtheta +
-    cases(
-      log abs(c) quad & "if" k < 0,
-      logp abs(c) quad & "if" k = 0,
-      0 quad & "if" k > 0,
-    ),
-  $
-  where $c_theta$ is the first nonzero coefficient of the Laurent expansion of $f - ee^(ii theta)$ at the origin.
-] <thm:nevanlinnacartanidentity>
+#lbl(
+  theorem[
+    Let $f: D(0, R) -> extcomplex$ be meromorphic such that $f(z) = c z^k + Order(z^(k + 1))$. For $0 < r < R$,
+    $
+      T(r, f) &= 1 / (2 uppi) integral_0^(2 uppi) N(r, ee^(ii theta), f) dtheta + 1 / (2 uppi) integral_0^(2 uppi) log abs(c_theta) dtheta \
+      &= 1 / (2 uppi) integral_0^(2 uppi) N(r, ee^(ii theta), f) dtheta +
+      cases(
+        log abs(c) quad & "if" k < 0,
+        logp abs(c) quad & "if" k = 0,
+        0 quad & "if" k > 0,
+      ),
+    $
+    where $c_theta$ is the first nonzero coefficient of the Laurent expansion of $f - ee^(ii theta)$ at the origin.
+  ],
+  <thm:nevanlinnacartanidentity>,
+)
 
 #proof[
   For $theta in [0, 2 uppi]$, from @eq:nevanlinnacountingjensensformulaexposition2 on $f - ee^(ii theta)$ (let $c_theta$ be the first nonzero coefficient of the Laurent series) we obtain
@@ -47,14 +60,20 @@
     log abs(c_theta) = N(r, f) - N(r, ee^(ii theta), f) + 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii phi.alt) - ee^(ii theta))) dif phi.alt.
   $
   Therefore, by integrating in $theta$,
-  $
-    1 / (2 uppi) integral_0^(2 uppi) log abs(c_theta) dtheta &= N(r, f) - 1 / (2 uppi) integral_0^(2 uppi) N(r, ee^(ii theta), f) dtheta \
-    &quad "" + 1 / (2 uppi) integral_0^(2 uppi) [integral_0^(2 uppi) log abs(f(r ee^(ii phi.alt) - ee^(ii theta))) dif phi.alt] dtheta.
-  $ <eq:nevanlinnacartanidentity_intermediate>
+  #lbl(
+    $
+      1 / (2 uppi) integral_0^(2 uppi) log abs(c_theta) dtheta &= N(r, f) - 1 / (2 uppi) integral_0^(2 uppi) N(r, ee^(ii theta), f) dtheta \
+      &quad "" + 1 / (2 uppi) integral_0^(2 uppi) [integral_0^(2 uppi) log abs(f(r ee^(ii phi.alt) - ee^(ii theta))) dif phi.alt] dtheta.
+    $,
+    <eq:nevanlinnacartanidentity_intermediate>,
+  )
   For any $w in CC^*$,
-  $
-    logp abs(w) = 1 / (2 uppi) integral_0^(2 uppi) log abs(w - ee^(ii theta)) dtheta,
-  $ <eq:jensensformulalinearcase>
+  #lbl(
+    $
+      logp abs(w) = 1 / (2 uppi) integral_0^(2 uppi) log abs(w - ee^(ii theta)) dtheta,
+    $,
+    <eq:jensensformulalinearcase>,
+  )
   which follows directly from Jensen's formula on the function $z mapsto w - z$ (by considering when $w in overline(DD)$ and $abs(w) > 1$). Letting $phi.alt in [0, 2 uppi]$, we have by setting $w = f(r ee^(ii phi.alt))$,
   $
     logp abs(f(r ee^(ii phi.alt))) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii phi.alt)) - ee^(ii theta)) dtheta.
@@ -76,15 +95,18 @@
   $
     1 / (2 uppi) integral_0^(2 uppi) log abs(c_theta) dtheta = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(0) - ee^(ii theta)) dtheta =
     cases(
-      logp abs(c) & "if" f(0) != 0\, ,
+      logp abs(c) & "if" f(0) != 0\,,
       0 & "otherwise".,
     ) #qedhere
   $
 ]
 
-#theorem[
-  For (non-constant) meromorphic $f$ in $D(0, R)$, $T(r, f)$ is a nondecreasing convex (not necessarily strictly convex) function of $log r$ (for $0 < r < R$).
-] <thm:nevanlinna_characteristic_nondecreasing_convex>
+#lbl(
+  theorem[
+    For (non-constant) meromorphic $f$ in $D(0, R)$, $T(r, f)$ is a nondecreasing convex (not necessarily strictly convex) function of $log r$ (for $0 < r < R$).
+  ],
+  <thm:nevanlinna_characteristic_nondecreasing_convex>,
+)
 
 #proof[
   Applying $dv(, log r, style: "horizontal")$ to @thm:nevanlinnacartanidentity, we have
@@ -159,13 +181,16 @@ As we have seen before, it is often pedantic and somewhat annoying to account fo
   Since $m$ is bounded in the integrated sense, if $T$ is generally large, then for most values, $N$ will be nearly equal to $T$.
 ]
 
-#proposition[
-  Let $f, g$ be meromorphic on $D(0, R)$ and suppose $m in NN$. For any $0 < r < R$, the following properties hold:
-  1. $T(r, f g) <= T(r, f) + T(r, g)$. <itm:nevanlinna_characteristic_properties_prodsubadd>
-  2. $T(r, f + g) <= T(r, f) + T(r, g) + Order(1)$. <itm:nevanlinna_characteristic_properties_subadd>
-  3. $T(r, 1 / f) = T(r, f) + Order(1)$. <itm:nevanlinna_characteristic_properties_inversion>
-  4. $T(r, f^n) = n T(r, f)$. <itm:nevanlinna_characteristic_properties_power>
-] <prop:nevanlinna_characteristic_properties>
+#lbl(
+  proposition[
+    Let $f, g$ be meromorphic on $D(0, R)$ and suppose $m in NN$. For any $0 < r < R$, the following properties hold:
+    1. $T(r, f g) <= T(r, f) + T(r, g)$. #enum-lbl(<itm:nevanlinna_characteristic_properties_prodsubadd>)
+    2. $T(r, f + g) <= T(r, f) + T(r, g) + Order(1)$. #enum-lbl(<itm:nevanlinna_characteristic_properties_subadd>)
+    3. $T(r, 1 / f) = T(r, f) + Order(1)$. #enum-lbl(<itm:nevanlinna_characteristic_properties_inversion>)
+    4. $T(r, f^n) = n T(r, f)$. #enum-lbl(<itm:nevanlinna_characteristic_properties_power>)
+  ],
+  <prop:nevanlinna_characteristic_properties>,
+)
 
 #proof[
   Since
@@ -219,12 +244,5 @@ We now provide some classical examples of the Nevanlinna characteristic:
   $ T(r) = m(r, f) + N(r, f) = r / uppi. $
   Moreover, $m(r, 0, f) = r / uppi$ and $N(r, 0, f) = 0$, whereas for $a in CC^*$, the solutions to $ee^z = a$ are in the form of $z_k = z_0 + 2 k uppi ii$, where $z_0 = x_0 + ii y_0$. The condition $abs(z_k) <= r$ is equivalent to
   $ abs(y_0 + 2 k uppi)^2 + abs(x_0)^2 <= r^2 ==> abs(y_0 + 2 k uppi) <= r + Order(1). $
-  It follows that 
+  It follows that
   $ n(r, a, f) = r / uppi + Order(1) ==> N(r, a, f) = r / uppi + Order(1), quad m(r, a, f) = Order(1). $
-
-#chapter-section("classifying_meromorphic_growth")[
-  #include "classifying_meromorphic_growth/index.typ"
-]
-#chapter-section("factorization_of_meromorphic_function")[
-  #include "factorization_of_meromorphic_function/index.typ"
-]

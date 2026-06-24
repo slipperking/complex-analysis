@@ -1,7 +1,9 @@
 #import "/lib.typ": *
-
-== The Schwarz--Christoffel Transformation<sec:schwarz_christoffel_transformation>
-
+#show: docs-subchapter.with(
+  title: [The Schwarz--Christoffel Transformation],
+  route: "schwarz_christoffel",
+  label: <sec:schwarz_christoffel_transformation>,
+)
 The Riemann Mapping Theorem is elegant in its own simplicity and definitions. However, it is only a theorem that guarantees existence of biholomorphisms. No information whatsoever can be straightforwardly extracted regarding the explicit construction of such biholomorphisms. However, in the explicit case that $U$ is the open interior of a polygon, the result is provided by the Schwarz--Christoffel Transformation.
 
 Let $a_1 < a_2 < dots.c < a_n$ be $n in NN$ distinct real numbers. Suppose $alpha_1, alpha_2, dots, alpha_n$ are $n$ positive real numbers satisfying $sum_(k = 1)^n alpha_k < n - 1$. Let
@@ -35,9 +37,12 @@ where $c in RR_(> 0)$ is fixed.
 The absolute integrability of $beta(zeta)$ along the real axis concerns only the convergence at each singularity $zeta = a_k$ and the behavior as $zeta -> plus.minus oo$. For a fixed $k$, $beta(zeta) = h_k (zeta) (zeta - a_k)^(alpha_k - 1)$ (where $h_k$ is holomorphic and nonzero in a compact neighborhood of $a_k$). Since $alpha_k - 1 > -1$, it is an integrable singularity. Since $beta(zeta) tilde zeta^(sum alpha_k - n)$ as $zeta -> plus.minus oo$ and $sum_(k = 1)^n alpha_k - n < -1$, $beta$ is integrable on $RR$.
 
 Let
-$
-  f(z) = c integral^z beta(zeta) dzeta.
-$ <eq:schwarz_christoffel_transformation_statement>
+#lbl(
+  $
+    f(z) = c integral^z beta(zeta) dzeta.
+  $,
+  <eq:schwarz_christoffel_transformation_statement>,
+)
 Since $beta$ is holomorphic on $HH^+$,
 
 // TBC

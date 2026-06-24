@@ -1,6 +1,8 @@
-﻿#import "/lib.typ": *
-
-=== The Wiener--Ikehara Theorem
+#import "/lib.typ": *
+#show: docs-subsubchapter.with(
+  title: [The Wiener--Ikehara Theorem],
+  route: "wiener_ikehara_theorem",
+)
 
 Previously we have seen the subtle relation between $zeta$ and $psi$. Given the properties of the Laplace transform of $psi compose exp$ and certain conditions established above, we apply now prove what is known as a _Tauberian_ theorem to extract sufficient information (such as convergence) of the function itself.
 
@@ -20,16 +22,19 @@ $
 $
 The two kernels are related by a angular unitary Fourier transform:
 
-#lemma[
-  For every $lambda > 0$, we have that
-  $
-    cal(F){K_(lambda)}(x) = cal(F)^(-1){K_(lambda)} (x) = k_(lambda) (x), quad cal(F) {k_(lambda)} (x) = cal(F)^(-1) {k_(lambda)} (x) = K_(lambda) (x),
-  $
-  where we define
-  $
-    cal(F){f}(x) = 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) ee^(-ii x t) dt, quad cal(F)^(-1){f} (x) = 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) ee^(ii x t) dt.
-  $
-] <lem:wiener-ikehara_kernels_fouriertransform>
+#lbl(
+  lemma[
+    For every $lambda > 0$, we have that
+    $
+      cal(F){K_(lambda)}(x) = cal(F)^(-1){K_(lambda)} (x) = k_(lambda) (x), quad cal(F) {k_(lambda)} (x) = cal(F)^(-1) {k_(lambda)} (x) = K_(lambda) (x),
+    $
+    where we define
+    $
+      cal(F){f}(x) = 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) ee^(-ii x t) dt, quad cal(F)^(-1){f} (x) = 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) ee^(ii x t) dt.
+    $
+  ],
+  <lem:wiener-ikehara_kernels_fouriertransform>,
+)
 
 #proof[
   The equivalence between the Fourier and inverse Fourier transforms follows from the evenness of both kernels. We hence prove only the forward transform equivalences.
@@ -130,13 +135,16 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $ forall x, y > x_0, 0 < y - x < delta ==> f(y) - f(x) > -epsilon. $
 ]
 
-#proposition[
-  Let $f:RR -> RR$ be a slowly decreasing function bounded by $M > 0$. If the limit of the convolution $f * k_(lambda)$ given by
-  $
-    L equiv lim_(x -> oo) (f * k_(lambda)) (x) = lim_(x -> oo) 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x - t) dt
-  $
-  is independent of $lambda > 0$, then $lim_(x -> oo) f(x) = L$.
-] <prop:wiener-ikehara_intermediatetauberiantheorem>
+#lbl(
+  proposition[
+    Let $f:RR -> RR$ be a slowly decreasing function bounded by $M > 0$. If the limit of the convolution $f * k_(lambda)$ given by
+    $
+      L equiv lim_(x -> oo) (f * k_(lambda)) (x) = lim_(x -> oo) 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x - t) dt
+    $
+    is independent of $lambda > 0$, then $lim_(x -> oo) f(x) = L$.
+  ],
+  <prop:wiener-ikehara_intermediatetauberiantheorem>,
+)
 
 #proof[
   Let $epsilon > 0$ be arbitrary. Assume, for the sake of contradiction, that $f$ does not converge to $L$ as $x -> oo$. Then there exists some sequence ${x_n}_(n in NN)$ such that $abs(f(x_n) - L) > epsilon$ for all $n$. From here, we may extract an infinite subsequence (continued to be denoted by ${x_n}$) such that one of the two cases is assumed:
@@ -180,18 +188,27 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
 
 #theorem[Wiener--Ikehara][
   Let $f:RR_(>=0) -> RR$ be a nonnegative, monotonically non-decreasing function such that the Laplace transform
-  $
-    cal(L){f} (s) = integral_0^oo f(x) ee^(-s x) dx
-  $ <eq:wiener-ikehara_laplacetransform>
+  #lbl(
+    $
+      cal(L){f} (s) = integral_0^oo f(x) ee^(-s x) dx
+    $,
+    <eq:wiener-ikehara_laplacetransform>,
+  )
   converges for $Re s > 1$. Suppose that there exists some constant $c > 0$ such
   that
-  $
-    g(t) = lim_(sigma -> 1^+) [cal(L){f} (s) - c / (s - 1)], quad s = sigma + ii t
-  $ <eq:wiener-ikehara_gfunction>
+  #lbl(
+    $
+      g(t) = lim_(sigma -> 1^+) [cal(L){f} (s) - c / (s - 1)], quad s = sigma + ii t
+    $,
+    <eq:wiener-ikehara_gfunction>,
+  )
   converges locally uniformly with respect to $t$ in $RR$ and is continuously differentiable. Then
-  $
-    lim_(x -> oo) f(x) / ee^x = c.
-  $ <eq:wiener-ikehara_conclusion>
+  #lbl(
+    $
+      lim_(x -> oo) f(x) / ee^x = c.
+    $,
+    <eq:wiener-ikehara_conclusion>,
+  )
 ] <thm:wiener-ikehara>
 
 #proof[
@@ -245,9 +262,12 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
                                                  & = (a * k_(lambda) - A * k_(lambda)) (x) -> 0
   $
   as $x -> oo$. Since $(A * k_(lambda)) (x) = c$ for all $x$, we have that
-  $
-    lim_(x -> oo) (a * k_(lambda)) (x) = c.
-  $ <eq:wiener-ikehara_convolutionlimit>
+  #lbl(
+    $
+      lim_(x -> oo) (a * k_(lambda)) (x) = c.
+    $,
+    <eq:wiener-ikehara_convolutionlimit>,
+  )
   Therefore, $exists x_0 > 0$ such that
   $ (a * k_(lambda)) (x) < c + 1 ==> 1 / uppi integral_(-oo)^oo ((sin t) / t)^2 a (x - t / lambda) dt < c + 1 $
   for all $x > x_0$. Substituting $x + 2 / sqrt(lambda)$ for $x$ in the integral, we have (after further restricting the integration bounds, which preserves the inequality)

@@ -1,7 +1,11 @@
 #import "/lib.typ": *
-
-== Schlicht Functions
-
+#show: docs-subchapter.with(
+  title: [Schlicht Functions],
+  route: "schlicht_functions",
+  children: [
+    #include "bieberbach_conjecture/index.typ"
+  ],
+)
 #definition[
   A holomorphic function $f : DD -> CC$ is called _schlicht_ iff it is univalent and satisfies $f(0) = 0$ and $f'(0) = 1$.
 ]
@@ -30,13 +34,16 @@ Both were solved in the 20th century by Louis de Branges in the affirmative. The
 
 We will introduce two of the oldest results regarding schlicht functions, namely $abs(a_2) <= 2$ and the Koebe Quarter Theorem (@thm:koebe_quarter). There are many applications of the latter, for instance, we used it in the proof of Mergelyan's Theorem (@thm:mergelyan).
 
-#lemma[
-  Let $f : DD -> CC$ be schlicht and define $h(z) = 1 / (f(z)) = 1 / z + sum_(n=0)^oo b_n z^n$. Let
-  $
-    A_r = {z in CC : r < abs(z) < 1}
-  $
-  be an annulus for $0 < r < 1$. Then $exists eta > 0$ such that $forall r>0$ sufficiently small ($eta$ independent of $r$), $h(A_r)$ lies in an ellipse with a semi-major axis $ alpha = (1 / r + abs(b_1) eta) sqrt(1 + eta r^3) $ and a semi-minor axis $ beta = (1 / r - abs(b_1) eta) sqrt(1 + eta r^3). $
-] <lem:schlicht_inverse_annulus_image_in_ellipse>
+#lbl(
+  lemma[
+    Let $f : DD -> CC$ be schlicht and define $h(z) = 1 / (f(z)) = 1 / z + sum_(n=0)^oo b_n z^n$. Let
+    $
+      A_r = {z in CC : r < abs(z) < 1}
+    $
+    be an annulus for $0 < r < 1$. Then $exists eta > 0$ such that $forall r>0$ sufficiently small ($eta$ independent of $r$), $h(A_r)$ lies in an ellipse with a semi-major axis $ alpha = (1 / r + abs(b_1) eta) sqrt(1 + eta r^3) $ and a semi-minor axis $ beta = (1 / r - abs(b_1) eta) sqrt(1 + eta r^3). $
+  ],
+  <lem:schlicht_inverse_annulus_image_in_ellipse>,
+)
 
 #proof[
   Let $ tilde(h)(z) = sqrt((overline(b_1)) / (abs(b_1))) h(z sqrt((overline(b_1)) / abs(b_1))) - sqrt((overline(b_1)) / abs(b_1)) b_0 $ (where the branch or value of the square root is the same across), so that
@@ -119,9 +126,12 @@ We will introduce two of the oldest results regarding schlicht functions, namely
 
 ]
 
-#theorem[
-  If $f : DD -> CC$ is schlicht and expands to $sum_(n=1)^oo a_n z^n$, then $abs(a_2) <= 2$.
-] <thm:schlicht_a2_leq_2>
+#lbl(
+  theorem[
+    If $f : DD -> CC$ is schlicht and expands to $sum_(n=1)^oo a_n z^n$, then $abs(a_2) <= 2$.
+  ],
+  <thm:schlicht_a2_leq_2>,
+)
 #proof[
 
 ]
@@ -129,7 +139,3 @@ We will introduce two of the oldest results regarding schlicht functions, namely
 #theorem("Koebe Quarter Theorem")[
   If $f : DD -> CC$ is schlicht, then the image $f(DD)$ contains the open disk of radius $1 / 4$ centered at $f(0)$.
 ] <thm:koebe_quarter>
-
-#chapter-section("bieberbach_conjecture")[
-  #include "bieberbach_conjecture/index.typ"
-]

@@ -1,7 +1,9 @@
 #import "/lib.typ": *
-
-== The Conformality of Holomorphic Mappings <sec:conformality_introduction>
-
+#show: docs-subchapter.with(
+  title: [The Conformality of Holomorphic Mappings],
+  route: "conformality",
+  label: <sec:conformality_introduction>,
+)
 Let $f: U -> CC$ be a holomorphic function defined on an open and connected subset $U subset.eq CC$, and let $z_0 in U$ be a point such that $f' (z_0) != 0$. Consider a differentiable curve $gamma in C^1([0, 1])$ with $gamma(0) = z_0$. The direction of the curve at $z_0$ is given by the argument of its derivative, namely $Arg(gamma'(0))$.
 
 The image of $gamma$ under $f$, defined by $sigma(t) = f(gamma(t))$, is also a smooth curve passing through $w_0 = f(z_0)$. By the chain rule, the derivative of $sigma$ at $t = 0$ is given by

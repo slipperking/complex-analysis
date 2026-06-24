@@ -1,7 +1,9 @@
 #import "/lib.typ": *
-
-== A Spherical Generalization of Normal Families <sec:spherical_generalization_of_normal_families>
-
+#show: docs-subchapter.with(
+  title: [A Spherical Generalization of Normal Families],
+  route: "spherically_normal_families",
+  label: <sec:spherical_generalization_of_normal_families>,
+)
 Picard's Great Theorem requires a more profound concept by generalizing normal families in the one-point compactification of $CC$.
 
 #definition[
@@ -32,9 +34,12 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   In certain normalizations (where the Riemann sphere has north pole $(0,0,1)$ and diameter 1), the spherical derivative will instead be defined by $f^sharp (z) = (abs(f'(z)))/(1 + abs(f(z))^2)$
 ]
 
-#proposition[
-  Any linear fractional transformation is spherically uniformly continuous on $CC$.
-] <prop:linearfractionaltransformationuniformlysphericallycontinuous>
+#lbl(
+  proposition[
+    Any linear fractional transformation is spherically uniformly continuous on $CC$.
+  ],
+  <prop:linearfractionaltransformationuniformlysphericallycontinuous>,
+)
 
 #proof[
   Let $psi(z) = (a z + b)/(c z + d)$, where $a d - b c != 0$. Then,
@@ -51,9 +56,12 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   $ d_sigma (psi(z_1), psi(z_2)) < epsilon. #qedhere $
 ]
 
-#proposition[
-  Let ${f_n}_(n in NN)$ be a sequence of holomorphic functions on a domain $Omega subset.eq CC$. If $f_n arrows.rr f$ locally uniformly spherically, then $f$ is either holomorphic on $Omega$ or identically $oo$.
-] <prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniformlimit>
+#lbl(
+  proposition[
+    Let ${f_n}_(n in NN)$ be a sequence of holomorphic functions on a domain $Omega subset.eq CC$. If $f_n arrows.rr f$ locally uniformly spherically, then $f$ is either holomorphic on $Omega$ or identically $oo$.
+  ],
+  <prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniformlimit>,
+)
 
 #proof[
   A result analogous to @thm:uniformlimit can be used to show that $f$ is spherically continuous. Let $z in Omega$ be arbitrary.
@@ -163,9 +171,12 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   as in @eq:conformalmetricnegativecurvatureexistencewhenomits2points_metric,
   $ K_rho (z) <= -beta quad forall z in CC without {0, 1}. $
   Therefore, if we let $mu = rho sqrt(beta)$, then
-  $
-    K_mu = -(laplacian(log compose mu))/(mu^2) = -(laplacian(log compose rho))/(rho^2 beta) = K_rho / beta <= -1 quad "on" quad CC without {0, 1}.
-  $ <eq:fundamentalnormalitytest_f_mu_pullback_inequality>
+  #lbl(
+    $
+      K_mu = -(laplacian(log compose mu))/(mu^2) = -(laplacian(log compose rho))/(rho^2 beta) = K_rho / beta <= -1 quad "on" quad CC without {0, 1}.
+    $,
+    <eq:fundamentalnormalitytest_f_mu_pullback_inequality>,
+  )
   Let $zeta in Omega$ be arbitrary and let $r=r_zeta > 0$ satisfy $D(zeta, r_zeta) subset.eq Omega$. By @cor:generalized_ahlfors, the pullback of $mu$ from $CC without {0, 1}$ to $D(zeta, r_zeta) subset.eq Omega$ satisfies
   $ f^* mu(z) <= lambda_(r_zeta) (z - zeta) ==> mu(f(z)) abs(f'(z)) <= (2 r_zeta)/(r_zeta^2 - abs(z - zeta)^2) $ $forall z in D(zeta, r_zeta), f in tilde(cal(F))$. Since $forall w in CC without {0, 1}$,
   $

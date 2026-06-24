@@ -1,10 +1,14 @@
 #import "/lib.typ": *
-
-== Topological Equivalence and Biholomorphic Equivalence
-
-#lemma[
-  If $bold(P)$ is a permutation matrix, and $bold(D)$ is a diagonal matrix, then there exists a diagonal matrix $bold(D)'$ such that $bold(P) bold(D) = bold(D)' bold(P)$. Similarly, there exists a diagonal matrix $bold(D)''$ such that $bold(D) bold(P) = bold(P) bold(D)''$.
-] <lem:monomial_matrix_diagonal_multiplication_commute>
+#show: docs-subchapter.with(
+  title: [Topological Equivalence and Biholomorphic Equivalence],
+  route: "topological_equiv_biholomorphic_equiv",
+)
+#lbl(
+  lemma[
+    If $bold(P)$ is a permutation matrix, and $bold(D)$ is a diagonal matrix, then there exists a diagonal matrix $bold(D)'$ such that $bold(P) bold(D) = bold(D)' bold(P)$. Similarly, there exists a diagonal matrix $bold(D)''$ such that $bold(D) bold(P) = bold(P) bold(D)''$.
+  ],
+  <lem:monomial_matrix_diagonal_multiplication_commute>,
+)
 #proof[
   Let $bold(D) = diag(d_1, dots, d_n)$ and let $sigma$ be the permutation corresponding to $bold(P)$, $bold(P) bold(e)_i = bold(e)_(sigma(i))$ for each standard basis vector $bold(e)_i$. Define $ bold(D)' = diag(d_(sigma^(-1)(1)), dots, d_(sigma^(-1)(n))). $
   Then for every $i$,
@@ -30,9 +34,12 @@
     bold(Phi)^(-1) compose Aut(B^n) compose bold(Phi) subset.eq Aut(DD^n) ==> Aut(B^n) subset.eq bold(Phi) compose Aut(DD^n) compose bold(Phi)^(-1).
   $
   Similarly, $bold(Phi) compose Aut(DD^n) compose bold(Phi)^(-1) subset.eq Aut(B^n)$. Therefore, $Aut(B^n) = bold(Phi) compose Aut(DD^n) compose bold(Phi)^(-1)$, and
-  $
-    bold(psi) |-> bold(Phi) compose bold(psi) compose bold(Phi)^(-1)
-  $ <eq:poincarepolydiskandunitball_isomorphism>
+  #lbl(
+    $
+      bold(psi) |-> bold(Phi) compose bold(psi) compose bold(Phi)^(-1)
+    $,
+    <eq:poincarepolydiskandunitball_isomorphism>,
+  )
   defines a group isomorphism between $Aut(DD^n)$ and $Aut(B^n)$. Let $Aut'(DD^n) < Aut(DD^n)$ and $Aut'(B^n) < Aut(B^n)$ be subgroups fixing $bold(0)$. Therefore, @eq:poincarepolydiskandunitball_isomorphism induces a group isomorphism between $Aut'(DD^n)$ and $Aut'(B^n)$ as well.
 
   By @thm:holomorphicautomorphismgrouponpolydisk, every element of $Aut'(DD^n)$ may be uniquely identified with a matrix in the form of

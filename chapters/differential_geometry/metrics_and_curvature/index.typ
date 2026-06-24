@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== Conformal Metrics and Curvature
-
+#show: docs-subchapter.with(
+  title: [Conformal Metrics and Curvature],
+  route: "metrics_and_curvature",
+)
 Let $Omega subset.eq CC$ be a region and let $rho in C^0 (Omega)$ be a positive function. The _conformal metric_ (in the following chapters when we refer to _metric_ we mean conformal) induced by $rho$ is given by
 
 $
@@ -18,9 +19,12 @@ where the infimum is taken over all piecewise smooth curves $gamma$ in $Omega$ j
 
 A $C^2$ metric is said to be _regular_. The (Gaussian) _curvature_ of the regular metric $rho$ at $z in Omega$ is defined as
 
-$
-  K_rho (z) = -(laplacian(log rho(z)))/(rho(z)^2),
-$ <eq:curvatureofmetric>
+#lbl(
+  $
+    K_rho (z) = -(laplacian(log rho(z)))/(rho(z)^2),
+  $,
+  <eq:curvatureofmetric>,
+)
 
 where $laplacian = pdv(, x, 2, style: "horizontal") + pdv(, y, 2, style: "horizontal") = 4 pdv(, overline(z), z, style: "horizontal")$ is the Laplacian operator. This is the same definition as the Gaussian curvature in @eq:gaussiancurvatureofsurface_gaussiancurvatureconformalmetricformula.
 
@@ -44,9 +48,12 @@ The three following metrics are of particular interest in complex differential g
 
 + The _Poincaré metric_ (also referred to as the _hyperbolic metric_) on $DD$ is given by
 
-  $
-    lambda(z) = 2 / (1 - abs(z)^2), quad dif s_lambda^2 = (4 abs(dz)^2)/((1 - abs(z)^2)^2).
-  $ <eq:poincaremetricdefinition>
+  #lbl(
+    $
+      lambda(z) = 2 / (1 - abs(z)^2), quad dif s_lambda^2 = (4 abs(dz)^2)/((1 - abs(z)^2)^2).
+    $,
+    <eq:poincaremetricdefinition>,
+  )
 
   In @lem:schwarzpick, it was shown that the metric is invariant under $Aut(DD)$.
 
@@ -120,9 +127,12 @@ The three following metrics are of particular interest in complex differential g
 
 + The _spherical metric_ (also referred to as the _elliptic metric_) on $extcomplex$ is given by
 
-  $
-    sigma(z) = 2 / (1 + abs(z)^2), quad dif s_sigma^2 = (4 abs(dz)^2)/((1 + abs(z)^2)^2).
-  $ <eq:sphericalmetricdefinition>
+  #lbl(
+    $
+      sigma(z) = 2 / (1 + abs(z)^2), quad dif s_sigma^2 = (4 abs(dz)^2)/((1 + abs(z)^2)^2).
+    $,
+    <eq:sphericalmetricdefinition>,
+  )
 
   Under the inverse stereographic projection of $S^2 -> extcomplex$, for a given $z in extcomplex$, the corresponding point in $S^2$ is
 
@@ -184,17 +194,23 @@ The importance of the selected regions lies in the uniformization to be mentione
 
 Let $Omega_1$ and $Omega_2$ be two open regions in $CC$ such that $f:Omega_1 -> Omega_2$ is univalent (implying that $f' != 0$ by @lem:univalentnonvanishingderivative). If $rho$ is a metric on $Omega_2$, then
 
-$
-  f^*rho = (rho compose f) abs(f')
-$ <eq:pullbackmetric>
+#lbl(
+  $
+    f^*rho = (rho compose f) abs(f')
+  $,
+  <eq:pullbackmetric>,
+)
 
 defines a metric on $Omega_1$, referred to as the _metric pullback of_ $rho$ _by_ $f$.
 
 Curvature as defined in @eq:curvatureofmetric is invariant under pullbacks of conformal mappings, or in the case above, we now aim to show that (under assumptions of regularity)
 
-$
-  K_rho (f(z)) = K_(f^*rho) (z).
-$ <eq:curvatureinvarianceunderholomorphicpullback>
+#lbl(
+  $
+    K_rho (f(z)) = K_(f^*rho) (z).
+  $,
+  <eq:curvatureinvarianceunderholomorphicpullback>,
+)
 
 By explicit definition,
 

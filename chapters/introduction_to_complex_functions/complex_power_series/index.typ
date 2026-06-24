@@ -1,6 +1,8 @@
 #import "/lib.typ": *
-== Complex Power Series
-
+#show: docs-subchapter.with(
+  title: [Complex Power Series],
+  route: "complex_power_series",
+)
 Power series in real analysis can be generalized into complex series. Particularly, concepts such as uniform convergence are analogous to those in real analysis:
 
 #definition("Uniform Convergence")[
@@ -60,16 +62,16 @@ Let $D(a, r) = B^1(a, r) = {z in CC : abs(z - a) < r}$ denote the _open disk_ ce
 #theorem("Abel's Theorem")[
   For a power series $f(z) = sum_(n = 0)^oo a_n z^n$, there exists a constant $R in RR_(>= 0) union {oo}$, known as the _radius of convergence_ such that:
 
-  1. $f$ absolutely converges on $D(0, R)$, and $forall 0 <= rho < R$, uniformly converges on $overline(D(0, rho))$. <itm:abels_theorem_radius_convergence>
-  2. $f(z)$ diverges when $abs(z) > R$. <itm:abels_theorem_radius_divergence>
-  3. $f$ is holomorphic over $D(0, R)$ and $f'(z)$ can be obtained by termwise differentiation, or $f'(z) = sum_(n = 1)^oo n a_n z^(n - 1)$, which also has a convergence radius of $R$. <itm:abels_theorem_radius_differentiation>
+  1. $f$ absolutely converges on $D(0, R)$, and $forall 0 <= rho < R$, uniformly converges on $overline(D(0, rho))$. #enum-lbl(<itm:abels_theorem_radius_convergence>)
+  2. $f(z)$ diverges when $abs(z) > R$. #enum-lbl(<itm:abels_theorem_radius_divergence>)
+  3. $f$ is holomorphic over $D(0, R)$ and $f'(z)$ can be obtained by termwise differentiation, or $f'(z) = sum_(n = 1)^oo n a_n z^(n - 1)$, which also has a convergence radius of $R$. #enum-lbl(<itm:abels_theorem_radius_differentiation>)
 ] <thm:abels_theorem_radius>
 
 The disk $abs(z) < R$ is known as the _disk of convergence_, a direct generalization of the _interval of convergence_ for real series. There are many ways to determine the radius of convergence:
 
 #theorem[Cauchy--Hadamard][
   The radius of convergence of the power series in the form $sum_(n = 0)^oo a_n z^n$ can be determined by
-  $ R = 1 / (limsup_(n -> oo)root(n, abs(a_n))). $ <eq:cauchy_hadamard>
+  #lbl($ R = 1 / (limsup_(n -> oo)root(n, abs(a_n))). $, <eq:cauchy_hadamard>)
 ] <thm:cauchy_hadamard>
 
 Of course, a convergence radius of $0$ implies that the series is divergent everywhere except for possibly at $0$, and a convergence radius of $oo$ means that the series absolutely converges everywhere.
@@ -95,10 +97,13 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
   $ lim_(z -> z_0) ((f(z) - f(z_0)) / (z - z_0) - f_1 (z)) = 0. $
 
   By analyzing the difference,
-  $
-    (f(z) - f(z_0)) / (z - z_0) - f_1 (z) & = [(S_n (z) - S_n (z_0)) / (z - z_0) - S'_n (z)] \
-                                          & quad ""+ S'_n (z) - f_1 (z) + (R_n (z) - R_n (z_0)) / (z - z_0).
-  $<eq:abels_theorem_radius_differentiation_intermediate>
+  #lbl(
+    $
+      (f(z) - f(z_0)) / (z - z_0) - f_1 (z) & = [(S_n (z) - S_n (z_0)) / (z - z_0) - S'_n (z)] \
+                                            & quad ""+ S'_n (z) - f_1 (z) + (R_n (z) - R_n (z_0)) / (z - z_0).
+    $,
+    <eq:abels_theorem_radius_differentiation_intermediate>,
+  )
 
   Since $S'_n (z) -> f_1 (z)$ as $n -> oo$, it follows that $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $abs(S'_n (z) - f_1 (z)) < epsilon / 3$. Since
   $
@@ -137,10 +142,13 @@ Obviously, a substitution of $z = zeta - a$ where $a in CC$ translates the disk 
 
 Lastly, the sufficient criteria to pass a limit through an integral:
 
-#theorem[
-  Let $gamma$ be a rectifiable curve on which the function sequence ${f_n}_(n in NN)$ is continuous. If ${f_n (z)}$ uniformly converges to $f$, then
-  $ lim_(n -> oo) integral_gamma f_n (z) dz = integral_gamma f(z) dz. $
-] <thm:limit_integral_switch>
+#lbl(
+  theorem[
+    Let $gamma$ be a rectifiable curve on which the function sequence ${f_n}_(n in NN)$ is continuous. If ${f_n (z)}$ uniformly converges to $f$, then
+    $ lim_(n -> oo) integral_gamma f_n (z) dz = integral_gamma f(z) dz. $
+  ],
+  <thm:limit_integral_switch>,
+)
 
 #proof[
   Since ${f_n (z)}$ uniformly converges to $f(z)$ on $gamma$, $forall epsilon > 0$, there exists $N in NN$ such that for all $n > N$,

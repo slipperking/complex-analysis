@@ -1,6 +1,8 @@
 #import "/lib.typ": *
-== The Group of Holomorphic Automorphisms on the Unit Disk
-
+#show: docs-subchapter.with(
+  title: [The Group of Holomorphic Automorphisms on the Unit Disk],
+  route: "unit_disk_holomorphic_automorphisms",
+)
 The following important result can be directly obtained from the Maximum Modulus Principle.
 
 #lemma("Schwarz")[
@@ -42,9 +44,12 @@ If $U subset.eq CC$ is connected and $f:U -> U$ is holomorphic on $U$ and biject
 
 First we will show that $forall a in DD$,
 
-$
-  phi_a (z) = (z - a) / (1 - overline(a) z) in Aut(DD).
-$ <eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement>
+#lbl(
+  $
+    phi_a (z) = (z - a) / (1 - overline(a) z) in Aut(DD).
+  $,
+  <eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement>,
+)
 
 Firstly, the function is holomorphic on $DD$ as $abs(z) <= 1$, $abs(overline(a)) < 1$, the denominator never vanishes. Additionally, $phi_a (a) = 0$.
 
@@ -66,7 +71,7 @@ $ abs(a)^2 (z_2 - z_1) = z_2 - z_1 <==> (abs(a)^2 - 1) (z_2 - z_1) = 0. $
 Since $abs(a) < 1$, then $abs(a)^2 - 1 != 0$, and we get $z_2 - z_1 = 0$. This proves the univalence of $phi_a (z)$.
 
 Next, we will solve for the inverse of $phi_a$. Let $z = phi_a (w) = (w - a) / (1 - overline(a) w)$. Then,
-$ z - overline(a) z w = w - a <==> w = (z + a) / (1 + overline(a) z). $ <eq:inversemobiustransformation>
+#lbl($ z - overline(a) z w = w - a <==> w = (z + a) / (1 + overline(a) z). $, <eq:inversemobiustransformation>)
 
 It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bijective automorphism. It follows that @eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement is true. Functions in the form of $phi_a$ (where $a in DD$) are known as _Möbius transformations_, and the group of all such transformations is known as the _Möbius transformation group on the unit disk_, which is a subgroup of $Aut(DD)$. Functions in the form of $rho_tau (z) = z ee^(ii tau)$, where $tau in RR$ is constant, form a group known as the _rotation group_, which is also a subgroup of $Aut(DD)$.
 
@@ -97,13 +102,16 @@ As a direct consequence of @thm:holomorphicautomorphismgrouponunitdisk, we have 
 #lemma[Schwarz--Pick][
   Let $f:DD -> DD$ be holomorphic. For all $z_1, z_2 in DD$, let $w_1 = f(z_1)$ and $w_2 = f(z_2)$. Then,
 
-  $
-    abs((w_1 - w_2) / (1 - w_1 overline(w_2))) <= abs((z_1 - z_2) / (1 - z_1 overline(z_2))).
-  $ <eq:schwarzpick_statement1>
+  #lbl(
+    $
+      abs((w_1 - w_2) / (1 - w_1 overline(w_2))) <= abs((z_1 - z_2) / (1 - z_1 overline(z_2))).
+    $,
+    <eq:schwarzpick_statement1>,
+  )
 
   and
 
-  $ abs(dif w) / (1 - abs(w)^2) <= abs(dz) / (1 - abs(z)^2). $ <eq:schwarzpick_statement2>
+  #lbl($ abs(dif w) / (1 - abs(w)^2) <= abs(dz) / (1 - abs(z)^2). $, <eq:schwarzpick_statement2>)
 
   The equalities hold iff $f in Aut(DD)$.
 ] <lem:schwarzpick>
@@ -132,9 +140,12 @@ As a direct consequence of @thm:holomorphicautomorphismgrouponunitdisk, we have 
   Since both derivatives are positive,
   $ abs(f'(z_1)) <= (1 - overline(w_1) w_1) / (1 - overline(z_1) z_1). $
   Since $z_1 in DD$ is arbitrary, it follows that
-  $
-    abs(dv(w, z)) <= (1 - overline(w) w) / (1 - overline(z) z) <==> abs(dif w) / (1 - overline(w) w) <= abs(dz) / (1 - overline(z) z).
-  $ <eq:schwarzpick_nonincreasingmetric>
+  #lbl(
+    $
+      abs(dv(w, z)) <= (1 - overline(w) w) / (1 - overline(z) z) <==> abs(dif w) / (1 - overline(w) w) <= abs(dz) / (1 - overline(z) z).
+    $,
+    <eq:schwarzpick_nonincreasingmetric>,
+  )
   By the Schwarz Lemma (@lem:schwarz), under the equality condition that
   $ abs(phi_(w_1)'(w_1) f'(z_1) phi_(-z_1)'(0)) = 1, $
   we have that

@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== Elementary Functions
-
+#show: docs-subchapter.with(
+  title: [Elementary Functions],
+  route: "elementary_functions",
+)
 Functions of one complex variable that are formed by compositions, sums, products, and powers of finitely many functions of the following form are known as _elementary functions_:
 
 1. Power functions including polynomials, rational functions, and their inverses.
@@ -15,7 +16,7 @@ $
        & = cos(x / ii) + ii sin(x / ii).
 $
 This is better written as
-$ ee^(ii x) = cos(x) + ii sin(x), $ <eq:eulers_formula>
+#lbl($ ee^(ii x) = cos(x) + ii sin(x), $, <eq:eulers_formula>)
 which is the famous _Euler formula_. Then for any complex number $z = x + ii y$,
 $ ee^z = ee^(x + ii y) = ee^x (cos(y) + ii sin(y)). $
 Then trigonometric functions and exponential functions can be written in terms of each other:

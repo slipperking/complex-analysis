@@ -1,7 +1,13 @@
 #import "/lib.typ": *
-
-== Elliptic Functions
-
+#show: docs-subchapter.with(
+  title: [Elliptic Functions],
+  route: "elliptic_functions",
+  children: [
+    #include "weierstrass_elliptic_functions/index.typ"
+    #include "jacobi/index.typ"
+    #include "modular_group/index.typ"
+  ],
+)
 The theory of elliptic functions is an elaborate chapter of complex analysis, with origins in seemingly trivial problems of calculus. In the 18th century, mathematicians studying the rectification (arc length calculation) of curves such as the ellipse and the lemniscate discovered that these could not be expressed in terms of elementary functions, leading to the introduction of elliptic integrals. Inverting these integrals gave rise to elliptic functions, which extend the idea of trigonometric functions by being _doubly periodic_ in the complex plane. Closely related ideas also appeared in conformal mapping, such as the Schwarz--Christoffel transformation (@sec:schwarz_christoffel_transformation) between the upper half-plane and rectangles. Henceforth, elliptic functions became a central subject related to calculus, geometry, and complex analysis.
 
 It is well-known in real analysis that a periodic function can be expressed as a Fourier series, with terms as the trivial functions $sin, cos, dots, sin(n x), cos(n x)$. Such functions are called _singly periodic_.
@@ -37,169 +43,172 @@ $
 is known as a _fundamental parallelogram of_ $Lambda$.
 
 #figure-wrapper([
-  #figure(
-    {
-      let draw-torus(
-        R: 0.55,
-        r: 0.22,
-        fill: black.transparentize(60%),
-        n-theta: 70,
-        n-phi: 100,
-        light: (0.4, -0.6, 1.0),
-      ) = {
-        import calc: cos, max, min, pi, sin, sqrt
-        let norm(v) = {
-          let (x, y, z) = v
-          let l = sqrt(x * x + y * y + z * z)
-          (x / l, y / l, z / l)
-        }
-        let dot(a, b) = a.at(0) * b.at(0) + a.at(1) * b.at(1) + a.at(2) * b.at(2)
-        let ln = norm(light)
-        for i in range(n-theta) {
-          for j in range(n-phi) {
-            let t1 = 2 * pi * i / n-theta
-            let t2 = 2 * pi * (i + 1) / n-theta
-            let p1 = 2 * pi * j / n-phi
-            let p2 = 2 * pi * (j + 1) / n-phi
-            let pt(t, p) = ((R + r * cos(p)) * cos(t), (R + r * cos(p)) * sin(t), r * sin(p))
-            let mt = (t1 + t2) / 2
-            let mp = (p1 + p2) / 2
-            let n = norm((cos(mp) * cos(mt), cos(mp) * sin(mt), sin(mp)))
-            let intensity = min(1, 0.2 + 0.8 * max(0, dot(n, ln)))
-            let c = fill.lighten(100% * (intensity - 0.5))
-            cetz.draw.line(pt(t1, p1), pt(t2, p1), pt(t2, p2), pt(t1, p2), close: true, fill: c, stroke: none)
+  #lbl(
+    figure(
+      {
+        let draw-torus(
+          R: 0.55,
+          r: 0.22,
+          fill: black.transparentize(60%),
+          n-theta: 70,
+          n-phi: 100,
+          light: (0.4, -0.6, 1.0),
+        ) = {
+          import calc: cos, max, min, pi, sin, sqrt
+          let norm(v) = {
+            let (x, y, z) = v
+            let l = sqrt(x * x + y * y + z * z)
+            (x / l, y / l, z / l)
+          }
+          let dot(a, b) = a.at(0) * b.at(0) + a.at(1) * b.at(1) + a.at(2) * b.at(2)
+          let ln = norm(light)
+          for i in range(n-theta) {
+            for j in range(n-phi) {
+              let t1 = 2 * pi * i / n-theta
+              let t2 = 2 * pi * (i + 1) / n-theta
+              let p1 = 2 * pi * j / n-phi
+              let p2 = 2 * pi * (j + 1) / n-phi
+              let pt(t, p) = ((R + r * cos(p)) * cos(t), (R + r * cos(p)) * sin(t), r * sin(p))
+              let mt = (t1 + t2) / 2
+              let mp = (p1 + p2) / 2
+              let n = norm((cos(mp) * cos(mt), cos(mp) * sin(mt), sin(mp)))
+              let intensity = min(1, 0.2 + 0.8 * max(0, dot(n, ln)))
+              let c = fill.lighten(100% * (intensity - 0.5))
+              cetz.draw.line(pt(t1, p1), pt(t2, p1), pt(t2, p2), pt(t1, p2), close: true, fill: c, stroke: none)
+            }
           }
         }
-      }
-      let draw-bent-cylinder(
-        R: 0.55,
-        r: 0.22,
-        stop-deg: 250,
-        n-lat: 100,
-        n-mer: 10,
-        n-pts: 70,
-        fill: black.transparentize(60%),
-        light: (0.4, -0.6, 1.0),
-        ring-stroke: 0.5pt + black,
-      ) = {
-        import calc: cos, max, min, pi, sin, sqrt
-        let stop = stop-deg * pi / 180
-        let norm(v) = {
-          let (x, y, z) = v
-          let l = sqrt(x * x + y * y + z * z)
-          (x / l, y / l, z / l)
-        }
-        let dot(a, b) = a.at(0) * b.at(0) + a.at(1) * b.at(1) + a.at(2) * b.at(2)
-        let ln = norm(light)
-
-        for i in range(n-lat) {
-          for j in range(n-pts) {
-            let phi1 = 2 * pi * i / n-lat
-            let phi2 = 2 * pi * (i + 1) / n-lat
-            let t1 = stop * j / n-pts
-            let t2 = stop * (j + 1) / n-pts
-
-            let rad1 = R + r * cos(phi1)
-            let z1 = r * sin(phi1)
-            let rad2 = R + r * cos(phi2)
-            let z2 = r * sin(phi2)
-
-            let pt1 = (rad1 * cos(t1), rad1 * sin(t1), z1)
-            let pt2 = (rad2 * cos(t1), rad2 * sin(t1), z2)
-            let pt3 = (rad2 * cos(t2), rad2 * sin(t2), z2)
-            let pt4 = (rad1 * cos(t2), rad1 * sin(t2), z1)
-
-            let mp = phi1 + (phi2 - phi1) / 2
-            let mt = t1 + (t2 - t1) / 2
-            let n = norm((cos(mp) * cos(mt), cos(mp) * sin(mt), sin(mp)))
-            let intensity = min(1, 0.2 + 0.8 * max(0, dot(n, ln)))
-            let c = fill.lighten(100% * (intensity - 0.5))
-
-            cetz.draw.line(pt1, pt2, pt3, pt4, close: true, fill: c, stroke: none)
+        let draw-bent-cylinder(
+          R: 0.55,
+          r: 0.22,
+          stop-deg: 250,
+          n-lat: 100,
+          n-mer: 10,
+          n-pts: 70,
+          fill: black.transparentize(60%),
+          light: (0.4, -0.6, 1.0),
+          ring-stroke: 0.5pt + black,
+        ) = {
+          import calc: cos, max, min, pi, sin, sqrt
+          let stop = stop-deg * pi / 180
+          let norm(v) = {
+            let (x, y, z) = v
+            let l = sqrt(x * x + y * y + z * z)
+            (x / l, y / l, z / l)
           }
-        }
+          let dot(a, b) = a.at(0) * b.at(0) + a.at(1) * b.at(1) + a.at(2) * b.at(2)
+          let ln = norm(light)
 
-        let draw-end-ring(t) = {
-          let n = 90
-          let ring-pt(k) = {
-            let phi = 2 * pi * k / n
-            ((R + r * cos(phi)) * cos(t), (R + r * cos(phi)) * sin(t), r * sin(phi))
+          for i in range(n-lat) {
+            for j in range(n-pts) {
+              let phi1 = 2 * pi * i / n-lat
+              let phi2 = 2 * pi * (i + 1) / n-lat
+              let t1 = stop * j / n-pts
+              let t2 = stop * (j + 1) / n-pts
+
+              let rad1 = R + r * cos(phi1)
+              let z1 = r * sin(phi1)
+              let rad2 = R + r * cos(phi2)
+              let z2 = r * sin(phi2)
+
+              let pt1 = (rad1 * cos(t1), rad1 * sin(t1), z1)
+              let pt2 = (rad2 * cos(t1), rad2 * sin(t1), z2)
+              let pt3 = (rad2 * cos(t2), rad2 * sin(t2), z2)
+              let pt4 = (rad1 * cos(t2), rad1 * sin(t2), z1)
+
+              let mp = phi1 + (phi2 - phi1) / 2
+              let mt = t1 + (t2 - t1) / 2
+              let n = norm((cos(mp) * cos(mt), cos(mp) * sin(mt), sin(mp)))
+              let intensity = min(1, 0.2 + 0.8 * max(0, dot(n, ln)))
+              let c = fill.lighten(100% * (intensity - 0.5))
+
+              cetz.draw.line(pt1, pt2, pt3, pt4, close: true, fill: c, stroke: none)
+            }
           }
 
-          let pts = range(n).map(ring-pt)
-          cetz.draw.line(..pts, close: true, stroke: ring-stroke, fill: none)
+          let draw-end-ring(t) = {
+            let n = 90
+            let ring-pt(k) = {
+              let phi = 2 * pi * k / n
+              ((R + r * cos(phi)) * cos(t), (R + r * cos(phi)) * sin(t), r * sin(phi))
+            }
 
-          let arrow-n = 20
-          let arrow-pts = range(arrow-n).map(k => ring-pt(n - arrow-n + k))
-          cetz.draw.line(
-            ..arrow-pts,
-            mark: (end: ">>", scale: 0.4, fill: black, transform-shape: false),
-            stroke: ring-stroke,
+            let pts = range(n).map(ring-pt)
+            cetz.draw.line(..pts, close: true, stroke: ring-stroke, fill: none)
+
+            let arrow-n = 20
+            let arrow-pts = range(arrow-n).map(k => ring-pt(n - arrow-n + k))
+            cetz.draw.line(
+              ..arrow-pts,
+              mark: (end: ">>", scale: 0.4, fill: black, transform-shape: false),
+              stroke: ring-stroke,
+            )
+          }
+
+          draw-end-ring(0)
+          draw-end-ring(stop)
+        }
+
+        canvas({
+          import cetz.draw: *
+
+          let thick = 0.8pt
+          let dashed = (dash: "dashed", thickness: thick)
+          let thin-dashed = (dash: "dashed", thickness: 0.5pt)
+          let arr = (end: ">>", scale: 0.4, fill: black)
+          let larr = (end: ">>", scale: 0.8, fill: black)
+
+          // rectangle
+          rect((0, 0), (1.5, 1.2), stroke: thick)
+          line((0.1, 0.2), (0.1, 1.0), stroke: dashed, mark: arr)
+          line((1.4, 0.2), (1.4, 1.0), stroke: dashed, mark: arr)
+          line((0.2, 0.1), (1.3, 0.1), stroke: thick, mark: arr)
+          line((0.2, 1.1), (1.3, 1.1), stroke: thick, mark: arr)
+
+          line((1.7, 0.6), (2.3, 0.6), stroke: thick, mark: larr)
+
+          // cylinder
+          let cx = 2.7
+          let cy = 0.6
+          let sr = 0.25
+          let lr = 0.3
+          let cl = 1.5
+          let at = 0.2
+          circle((cx, cy), radius: (sr, lr), stroke: thick)
+          line((cx, cy + lr), (cx + cl, cy + lr), stroke: thick)
+          line((cx, cy - lr), (cx + cl, cy - lr), stroke: thick)
+          arc((cx + cl, cy - lr), start: -90deg, stop: 90deg, radius: (sr, lr), stroke: thick)
+          arc((cx + cl, cy + lr), start: 90deg, stop: 270deg, radius: (sr, lr), stroke: dashed)
+          arc((cx + sr * 0.8, cy), start: 360deg, stop: 20deg, radius: (sr * 0.8, lr * 0.8), stroke: dashed, mark: arr)
+          arc(
+            (cx + sr * 0.8 + cl, cy),
+            start: 360deg,
+            stop: 20deg,
+            radius: (sr * 0.8, lr * 0.8),
+            stroke: thin-dashed,
+            mark: arr,
           )
-        }
+          line((cx + sr + at, cy), (cx + cl + sr - at, cy), stroke: thick, mark: arr)
 
-        draw-end-ring(0)
-        draw-end-ring(stop)
-      }
+          line((4.65, 0.6), (5.5, 0.6), stroke: thick, mark: larr)
 
-      cetz.canvas({
-        import cetz.draw: *
+          scope({
+            translate((6.5, 0.6))
+            ortho(x: -60deg, y: 0deg, z: -42deg, draw-bent-cylinder())
+          })
 
-        let thick = 0.8pt
-        let dashed = (dash: "dashed", thickness: thick)
-        let thin-dashed = (dash: "dashed", thickness: 0.5pt)
-        let arr = (end: ">>", scale: 0.4, fill: black)
-        let larr = (end: ">>", scale: 0.8, fill: black)
+          line((7.5, 0.6), (8.5, 0.6), stroke: thick, mark: larr)
 
-        // rectangle
-        rect((0, 0), (1.5, 1.2), stroke: thick)
-        line((0.1, 0.2), (0.1, 1.0), stroke: dashed, mark: arr)
-        line((1.4, 0.2), (1.4, 1.0), stroke: dashed, mark: arr)
-        line((0.2, 0.1), (1.3, 0.1), stroke: thick, mark: arr)
-        line((0.2, 1.1), (1.3, 1.1), stroke: thick, mark: arr)
-
-        line((1.7, 0.6), (2.3, 0.6), stroke: thick, mark: larr)
-
-        // cylinder
-        let cx = 2.7
-        let cy = 0.6
-        let sr = 0.25
-        let lr = 0.3
-        let cl = 1.5
-        let at = 0.2
-        circle((cx, cy), radius: (sr, lr), stroke: thick)
-        line((cx, cy + lr), (cx + cl, cy + lr), stroke: thick)
-        line((cx, cy - lr), (cx + cl, cy - lr), stroke: thick)
-        arc((cx + cl, cy - lr), start: -90deg, stop: 90deg, radius: (sr, lr), stroke: thick)
-        arc((cx + cl, cy + lr), start: 90deg, stop: 270deg, radius: (sr, lr), stroke: dashed)
-        arc((cx + sr * 0.8, cy), start: 360deg, stop: 20deg, radius: (sr * 0.8, lr * 0.8), stroke: dashed, mark: arr)
-        arc(
-          (cx + sr * 0.8 + cl, cy),
-          start: 360deg,
-          stop: 20deg,
-          radius: (sr * 0.8, lr * 0.8),
-          stroke: thin-dashed,
-          mark: arr,
-        )
-        line((cx + sr + at, cy), (cx + cl + sr - at, cy), stroke: thick, mark: arr)
-
-        line((4.65, 0.6), (5.5, 0.6), stroke: thick, mark: larr)
-
-        scope({
-          translate((6.5, 0.6))
-          ortho(x: -60deg, y: 0deg, z: -42deg, draw-bent-cylinder())
+          scope({
+            translate((9.5, 0.6))
+            ortho(x: -60deg, y: 0deg, draw-torus())
+          })
         })
-
-        line((7.5, 0.6), (8.5, 0.6), stroke: thick, mark: larr)
-
-        scope({
-          translate((9.5, 0.6))
-          ortho(x: -60deg, y: 0deg, draw-torus())
-        })
-      })
-    },
-    caption: [Illustration of the deformation of a homeomorphism between a rectangle with opposite sides _identified_ and a torus.],
-  ) <fig:identifiedrectagletotorushomeomorphism>
+      },
+      caption: [Illustration of the deformation of a homeomorphism between a rectangle with opposite sides _identified_ and a torus.],
+    ),
+    <fig:identifiedrectagletotorushomeomorphism>,
+  )
 ])
 
 /*
@@ -288,9 +297,12 @@ Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then
   Under the assumption that $f equiv.not 0$, the same argument shows that $1 / f$ has finitely many poles in $overline(P)$, or equivalently, that $f$ has finitely many zeros in $overline(P)$.
 ]
 
-#proposition[
-  For any elliptic function $f$ with period lattice $Lambda$, the sum of the residues of $f$ in $CC \/ Lambda$ is zero.
-] <prop:ellipticfunctionresiduesum>
+#lbl(
+  proposition[
+    For any elliptic function $f$ with period lattice $Lambda$, the sum of the residues of $f$ in $CC \/ Lambda$ is zero.
+  ],
+  <prop:ellipticfunctionresiduesum>,
+)
 
 #proof[
   Let $alpha$, $alpha + omega_1$, $alpha + omega_2$, and $alpha + omega_1 + omega_2$ be the vertices of a fundamental parallelogram $P$ of $Lambda$ such that $partial P$ does not pass through the poles $f$. By the Residue Theorem (@thm:residuethm), we have
@@ -305,9 +317,12 @@ Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then
   by the periodicity of $f$.
 ]
 
-#theorem[
-  For any non-constant elliptic function $f$ with period lattice $Lambda$, the number of zeros and poles (counting multiplicities and orders, respectively) in $CC \/ Lambda$ are equal.
-] <thm:elliptic_function_number_of_zeros_and_poles>
+#lbl(
+  theorem[
+    For any non-constant elliptic function $f$ with period lattice $Lambda$, the number of zeros and poles (counting multiplicities and orders, respectively) in $CC \/ Lambda$ are equal.
+  ],
+  <thm:elliptic_function_number_of_zeros_and_poles>,
+)
 
 #proof[
   Let $P$ be a fundamental parallelogram of $Lambda$ such that $f$ has no poles or zeros on $partial P$. By the Argument Principle (@thm:argumentprinciplemeromorphic), we have
@@ -359,14 +374,4 @@ Hence, it is only natural to quantify this number:
     &wide = plus.minus (omega_2) / (2 uppi ii) log(1) plus.minus (omega_1) / (2 uppi ii) log(1).
   $
   Since the branches of the multi-valued logarithm differ by integer multiples of $2 uppi ii$, the assertion follows.
-]
-
-#chapter-section("weierstrass_elliptic_functions")[
-  #include "weierstrass_elliptic_functions/index.typ"
-]
-#chapter-section("jacobi")[
-  #include "jacobi/index.typ"
-]
-#chapter-section("modular_group")[
-  #include "modular_group/index.typ"
 ]

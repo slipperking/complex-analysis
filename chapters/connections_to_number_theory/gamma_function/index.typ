@@ -1,16 +1,24 @@
 #import "/lib.typ": *
-
-== The $Gamma$-Function <sec:gamma_function>
-
+#show: docs-subchapter.with(
+  title: [The $Gamma$-Function],
+  route: "gamma_function",
+  label: <sec:gamma_function>,
+)
 #let upgamma = $gamma$
 
-#definition[
-  The Gamma function is defined by
-  $
-    Gamma(z) = integral_0^oo ee^(-t) t^(z-1) dt,
-  $ <eq:gammafunction>
-  where $z in CC$.
-] <def:gammafunction>
+#lbl(
+  definition[
+    The Gamma function is defined by
+    #lbl(
+      $
+        Gamma(z) = integral_0^oo ee^(-t) t^(z-1) dt,
+      $,
+      <eq:gammafunction>,
+    )
+    where $z in CC$.
+  ],
+  <def:gammafunction>,
+)
 
 By letting $z = x + ii y$ where $x, y in RR$, we have $abs(ee^(-t) t^(z-1)) = ee^(-t) t^(x-1)$. Notice that for $x > 0$,
 $
@@ -60,9 +68,12 @@ We will now study two representations for the Gamma function.
 
 #theorem("Gauss")[
   The Gamma function satisfies
-  $
-    Gamma(z) = lim_(n -> oo) (n^z n!) / (product_(k=0)^n (z+k)), quad Re z > 0.
-  $ <eq:gammafunctiongaussformula>
+  #lbl(
+    $
+      Gamma(z) = lim_(n -> oo) (n^z n!) / (product_(k=0)^n (z+k)), quad Re z > 0.
+    $,
+    <eq:gammafunctiongaussformula>,
+  )
 ] <thm:gammafunctiongaussformula>
 
 #proof[
@@ -71,24 +82,33 @@ We will now study two representations for the Gamma function.
     f_n (z) = integral_0^n (1 - t/n)^n t^(z-1) dt = n^z integral_0^1 (1-t)^n t^(z-1) dt, quad Re(z) > 0.
   $
   By integration by parts, we have
-  $
-    f_n (z) & = n^z [evaluated((t^z)/z (1-t)^n)_0^1 + n/z integral_0^1 (1-t)^(n-1) t^z dt] \
-            & = (n / (n-1))^(z+1) f_(n-1) (z+1) / z = [n^(z+1) (n-1) / ((n-2)^(z+2))] f_(n-2) (z+2) / (z(z+1)) \
-            & = n^(z+1) (n-1)! f_1 (z+n-1) / (product_(k=0)^(n-2) (z+k)) \
-            & = (n^z n!) / (product_(k=0)^n (z+k)).
-  $ <eq:gammafunctiongaussformulaprelimit>
+  #lbl(
+    $
+      f_n (z) & = n^z [evaluated((t^z)/z (1-t)^n)_0^1 + n/z integral_0^1 (1-t)^(n-1) t^z dt] \
+              & = (n / (n-1))^(z+1) f_(n-1) (z+1) / z = [n^(z+1) (n-1) / ((n-2)^(z+2))] f_(n-2) (z+2) / (z(z+1)) \
+              & = n^(z+1) (n-1)! f_1 (z+n-1) / (product_(k=0)^(n-2) (z+k)) \
+              & = (n^z n!) / (product_(k=0)^n (z+k)).
+    $,
+    <eq:gammafunctiongaussformulaprelimit>,
+  )
   Let us now analyze the difference
-  $
-    lim_(n -> oo) [integral_0^n ee^(-t) t^(z-1) dt - f_n (z)] = lim_(n -> oo) integral_0^n ee^(-t) t^(z-1) [1 - ee^t (1 - t/n)^n] dt.
-  $ <eq:gammafunction_gaussformulaintermediate1>
+  #lbl(
+    $
+      lim_(n -> oo) [integral_0^n ee^(-t) t^(z-1) dt - f_n (z)] = lim_(n -> oo) integral_0^n ee^(-t) t^(z-1) [1 - ee^t (1 - t/n)^n] dt.
+    $,
+    <eq:gammafunction_gaussformulaintermediate1>,
+  )
   Since
   $
     dv(ee^t (1 - t/n)^n, t) = ee^t (1 - t/n)^n - ee^t (1 - t/n)^(n-1) = -ee^t t/n (1 - t/n)^(n-1),
   $
   we have
-  $
-    1 - ee^t (1 - t/n)^n = 1/n integral_0^t u ee^u (1 - u/n)^(n-1) dif u.
-  $ <eq:gammafunction_gaussformulaintermediate2>
+  #lbl(
+    $
+      1 - ee^t (1 - t/n)^n = 1/n integral_0^t u ee^u (1 - u/n)^(n-1) dif u.
+    $,
+    <eq:gammafunction_gaussformulaintermediate2>,
+  )
   Additionally, since
   $
     dv(ee^u (1 - u/n)^(n-1), u) & = ee^u (1 - u/n)^(n-1) - (n-1)/n ee^u (1 - u/n)^(n-2) \
@@ -121,9 +141,12 @@ The _Weierstrass formula_ is a direct consequence of the Gauss formula.
 
 #theorem("Weierstrass")[
   The reciprocal $Gamma$-function has the entire Weierstrass factorization of
-  $
-    1 / Gamma(z) = z product_(k=1)^oo [(1 + z/k) ee^(-z/k)] ee^(z upgamma),
-  $ <eq:gammafunction_weierstrassformula>
+  #lbl(
+    $
+      1 / Gamma(z) = z product_(k=1)^oo [(1 + z/k) ee^(-z/k)] ee^(z upgamma),
+    $,
+    <eq:gammafunction_weierstrassformula>,
+  )
   where $upgamma = integral_1^oo (1 / floor(x) - 1 / x) dx$.
 ] <thm:gammafunction_weierstrassformula>
 
@@ -153,9 +176,12 @@ We have two famous identities on the $Gamma$-function:
 
 #theorem[Euler's Reflection Formula][
   The $Gamma$-function can be analytically continued to the left half-plane with the functional equation of
-  $
-    Gamma(z) Gamma(1-z) = uppi csc(uppi z)
-  $ <eq:gammafunction_eulerreflection>
+  #lbl(
+    $
+      Gamma(z) Gamma(1-z) = uppi csc(uppi z)
+    $,
+    <eq:gammafunction_eulerreflection>,
+  )
   for $z in CC without ZZ$.
 ] <thm:gammafunction_eulerreflection>
 
@@ -171,9 +197,12 @@ We have two famous identities on the $Gamma$-function:
   which confirms @eq:gammafunction_eulerreflection.
 ]
 
-#example[
-  Evaluate $Gamma(1/2)$.
-] <ex:gamma_function_one_half>
+#lbl(
+  example[
+    Evaluate $Gamma(1/2)$.
+  ],
+  <ex:gamma_function_one_half>,
+)
 
 #solution[to @ex:gamma_function_one_half][
   By the Reflection Formula (@thm:gammafunction_eulerreflection), we have that
@@ -185,9 +214,12 @@ We have two famous identities on the $Gamma$-function:
 
 #theorem("Legendre's Duplication Formula")[
   For any $z in CC without (-NN / 2)$, we have
-  $
-    Gamma(z) Gamma(z+1/2) = 2^(1-2z) sqrt(uppi) Gamma(2z).
-  $ <eq:gammafunction_legendreduplication>
+  #lbl(
+    $
+      Gamma(z) Gamma(z+1/2) = 2^(1-2z) sqrt(uppi) Gamma(2z).
+    $,
+    <eq:gammafunction_legendreduplication>,
+  )
 ] <thm:gammafunction_legendreduplication>
 
 #proof[
@@ -210,9 +242,12 @@ The identity above is a special case of the following result:
 
 #theorem("Gauss Multiplication Theorem")[
   Suppose $m in NN_(>= 2)$. Let $z in CC without (-NN / m)$. Then we have
-  $
-    Gamma(z) Gamma(z+1/m) dots.c Gamma(z+(m-1)/m) = (2 uppi)^((m-1)/2) m^(1/2-m z) Gamma(m z).
-  $ <eq:gammafunction_gaussmultiplication>
+  #lbl(
+    $
+      Gamma(z) Gamma(z+1/m) dots.c Gamma(z+(m-1)/m) = (2 uppi)^((m-1)/2) m^(1/2-m z) Gamma(m z).
+    $,
+    <eq:gammafunction_gaussmultiplication>,
+  )
 ]
 
 The Gamma function as in @eq:gammafunction is commonly referred to as the _Euler Integral of the Second Kind_. The _Euler Integral of the First Kind_ is also known as the _Beta function_, and is defined by
@@ -225,20 +260,26 @@ $
 $
 The Beta function is commonly treated as an auxiliary function in many cases of integral evaluation due to its connection with the Gamma function:
 
-#theorem[
-  For any $Re(z_1), Re(z_2) > 0$, we have
-  $
-    Beta(z_1, z_2) = (Gamma(z_1) Gamma(z_2)) / Gamma(z_1+z_2).
-  $
-] <thm:betagammafunctionrelationship>
+#lbl(
+  theorem[
+    For any $Re(z_1), Re(z_2) > 0$, we have
+    $
+      Beta(z_1, z_2) = (Gamma(z_1) Gamma(z_2)) / Gamma(z_1+z_2).
+    $
+  ],
+  <thm:betagammafunctionrelationship>,
+)
 
 #proof[
   Consider the product $Gamma(z_1) Gamma(z_2)$. By letting $s = u t$ and $v = t(u+1)$, we have
-  $
-    Gamma(z_1) Gamma(z_2) & = integral_0^oo ee^(-s) s^(z_2-1) [integral_0^oo ee^(-t) t^(z_1-1) dt] dif s \
-    & = integral_0^oo u^(z_2-1) [integral_0^oo ee^(-v) (v/(u+1))^(z_1+z_2-1) dif(v/(u+1))] dif u \
-    & = integral_0^oo (u^(z_2-1)) / ((u+1)^(z_1+z_2)) [integral_0^oo ee^(-v) v^(z_1+z_2-1) dif v] dif u.
-  $ <eq:betagammafunctionrelationship_intermediate>
+  #lbl(
+    $
+      Gamma(z_1) Gamma(z_2) & = integral_0^oo ee^(-s) s^(z_2-1) [integral_0^oo ee^(-t) t^(z_1-1) dt] dif s \
+      & = integral_0^oo u^(z_2-1) [integral_0^oo ee^(-v) (v/(u+1))^(z_1+z_2-1) dif(v/(u+1))] dif u \
+      & = integral_0^oo (u^(z_2-1)) / ((u+1)^(z_1+z_2)) [integral_0^oo ee^(-v) v^(z_1+z_2-1) dif v] dif u.
+    $,
+    <eq:betagammafunctionrelationship_intermediate>,
+  )
   Let $r = u / (u+1)$, $u = r / (1-r)$, and $dif u = 1 / (1-r)^2 dif r$. Then we have
   $
     Gamma(z_1) Gamma(z_2) = Gamma(z_1+z_2) integral_0^1 r^(z_2-1) (1-r)^(z_1-1) dif r = Gamma(z_1+z_2) Beta(z_1, z_2). #qedhere
@@ -269,12 +310,15 @@ The Beta function is commonly treated as an auxiliary function in many cases of 
   $
 ]
 
-#example[
-  Evaluate
-  $
-    I = integral_0^(uppi / 2) x sqrt(tan x) dx.
-  $
-] <ex:integral_0_pi_2_x_sqrt_tan_x_dx>
+#lbl(
+  example[
+    Evaluate
+    $
+      I = integral_0^(uppi / 2) x sqrt(tan x) dx.
+    $
+  ],
+  <ex:integral_0_pi_2_x_sqrt_tan_x_dx>,
+)
 
 #proof[of @ex:integral_0_pi_2_x_sqrt_tan_x_dx][
   Apply the substitution $u = tan x$, $s = u^2$ and the integral representation $arctan u = integral_0^u (dif v) / (1+v^2) = integral_0^1 u (dif v) / (1+u^2 v^2)$ to get

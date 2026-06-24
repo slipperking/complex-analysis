@@ -1,11 +1,13 @@
 #import "/lib.typ": *
-
-=== Classifying Growth of Entire Functions <sec:classifying_growth_of_entire_functions>
-
-#lemma[
+#show: docs-subsubchapter.with(
+  title: [Classifying Growth of Entire Functions],
+  route: "growth_of_entire_functions",
+  label: <sec:classifying_growth_of_entire_functions>,
+)
+#lbl(lemma[
   Let $f : overline(D(0,r)) -> CC^*$ (where $r > 0$) be a nowhere-vanishing holomorphic function. It follows that
   $ log abs(f(0)) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta. $
-] <lem:nonvanishingholomorphiclogarithmabsolutemeanvalueproperty>
+], <lem:nonvanishingholomorphiclogarithmabsolutemeanvalueproperty>)
 
 #proof[
   Without loss of generality, assume $r = 1$. Since $f$ is non-vanishing and $overline(DD)$ is simply connected, we may define the _holomorphic logarithm_ as
@@ -66,10 +68,10 @@ As an immediate consequence, we have:
 
 #theorem[Poisson--Jensen Formula][
   Suppose $f$ is a meromorphic function on $overline(D(0,r))$ such that $f equiv.not 0$ on $D(0,r)$ and is non-vanishing and non-infinity on $partial D(0,r)$. Let $a_1, dots, a_m$ and $b_1, dots, b_n$ be the zeros and poles of $f$ in $D(0,r)$, counted with multiplicity and order, respectively (multiplicities and orders count as multiple zeros or poles). Then it follows that
-  $
+  #lbl($
     log abs(f(z)) &= integral_0^(2 uppi) log abs(f(zeta)) P (zeta, z) dif theta \
     &quad ""+ sum_(j=1)^m log abs((r (z - a_j)) / (r^2 - overline(a_j) z)) - sum_(k=1)^n log abs((r (z - b_k)) / (r^2 - overline(b_k) z)),
-  $<eq:poisson_jensen_formula_statement>
+  $, <eq:poisson_jensen_formula_statement>)
   where $zeta = r ee^(ii theta)$, $z in D(0,r) without ({a_j}_(j=1)^m union {b_k}_(j=1)^n)$, and $P(zeta, z)$ is the Poisson kernel in @eq:poissonkernelgeneralform.
 ]<thm:poisson_jensen_formula>
 
@@ -83,11 +85,11 @@ As an immediate consequence, we have:
   $
 ]
 
-#lemma[
+#lbl(lemma[
   Let $f : DD -> CC$ be a non-constant bounded holomorphic function whose zeros are $a_1, a_2, dots$, counted according to their multiplicities, ordered such that $abs(a_n) <= abs(a_(n+1))$ for all $n in NN$. Then,
   $ sum_(n=1)^infinity (1 - abs(a_n)) $
   is convergent.
-] <lem:boundedholomorphicfunctionblaschkecondition>
+], <lem:boundedholomorphicfunctionblaschkecondition>)
 
 #proof[
   First assume $f(0) != 0$ and choose $M$ such that $abs(f) <= M$ on $DD$. Let $n(r, 0, f)$ count the number of zeros of $f$, according to multiplicities, inside $overline(D(0,r))$. By Jensen's Formula (@thm:jensensformula), we have
@@ -114,9 +116,9 @@ As an immediate consequence, we have:
 
 #theorem("Blaschke Product")[
   Let ${a_k}_(k in NN) subset DD^* = DD without {0}$ be a sequence such that the series $sum_(k=1)^infinity (1 - abs(a_k))$ is convergent (known as the _Blaschke condition_). Then the _Blaschke product_, defined by
-  $
+  #lbl($
     B(z) = product_(k=1)^infinity [-abs(a_k) / a_k phi_(a_k) (z)],
-  $<eq:blaschkeproduct_statement>
+  $, <eq:blaschkeproduct_statement>)
   (where $phi_a (z)$ is a Möbius transformation in the form of @eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement), locally uniformly converges to an analytic function on $DD$ such that $abs(B) <= 1$ on $DD$, and its only zeros are precisely at each of ${a_k}_(k in NN)$, counted according to multiplicities.
 ] <thm:blaschkeproduct>
 
@@ -145,12 +147,12 @@ As an immediate consequence, we have:
   A more general Blaschke product has an additional factor of $z^m$ to account for a zero at the origin, similar to the case of the Weierstrass product.
 ]
 
-#corollary[
+#lbl(corollary[
   Let $f : DD -> CC$ be bounded and holomorphic whose multiplicity of the zero at 0 is $m$ (if $f$ does not vanish at 0, then $m = 0$). If ${a_n}_(n in NN)$ are its zeros in $DD^*$, counting multiplicities, then
   $ f(z) = F(z) z^m product_(n=1)^infinity [-abs(a_n) / a_n phi_(a_n) (z)], $
   where $F$ is bounded, holomorphic, and non-vanishing on $DD$. Moreover,
   $ sup_(z in DD) abs(f(z)) = sup_(z in DD) abs(F(z)). $
-]<cor:blaschkeproductfactorization>
+], <cor:blaschkeproductfactorization>)
 
 #proof[
   Let
@@ -158,9 +160,9 @@ As an immediate consequence, we have:
   By construction, $F$ extends to its removable singularities to a holomorphic function that does not vanish. Because
   $ sup_(z in DD) abs(z^m product_(n=1)^infinity [-abs(a_n) / a_n phi_(a_n) (z)]) <= 1, $
   it follows that
-  $
+  #lbl($
     sup_(z in DD) abs(F(z)) gt.eq sup_(z in DD) abs(f(z)).
-  $<eq:blaschkeproductfactorization_supremuminequalities>
+  $, <eq:blaschkeproductfactorization_supremuminequalities>)
   The partial products
   $ B_n (z) = product_(k=1)^n [-abs(a_k) / a_k phi_(a_k) (z)] $
   give for fixed $theta in RR$, $epsilon > 0$, the existence of $0 < r' < 1$ such that $r' < r < 1$ implies
@@ -224,9 +226,9 @@ For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs
   $ rho(f) <= limsup_(r -> infinity) (log (log M(r, f))) / (log r) <= rho(f). #qedhere $
 ]
 
-#example[
+#lbl(example[
   The function $sin$ is of order 1, while $exp circle.small exp$ is not of finite order.
-]<ex:entire_function_finite_order_sin_exp_exp>
+], <ex:entire_function_finite_order_sin_exp_exp>)
 
 #solution[to @ex:entire_function_finite_order_sin_exp_exp][
   We consider the two examples separately:
@@ -254,10 +256,10 @@ where each $a_n$ is a zero. Specifically, the infimum of all such $k$ under whic
 
 For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r)$ according to multiplicity.
 
-#lemma[
+#lbl(lemma[
   If $f$ is entire with $f(0) = 1$, then
   $ log 2 dot n(r, 0, f) <= log M(2r, f). $
-]<lem:maximum-moduluszerocountingdoubleradius>
+], <lem:maximum-moduluszerocountingdoubleradius>)
 
 #proof[
   By Jensen's formula (@thm:jensensformula), for $r > 0$, we have
@@ -271,13 +273,13 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
   $
 ]
 
-#theorem[
+#lbl(theorem[
   For a nonzero complex sequence ${a_k}_(k in NN)$ counting multiplicities (such that $abs(a_1) <= abs(a_2)$, etc.), the sum
   $ sum_(k=1)^infinity 1 / abs(a_k)^sigma $
   converges for any
   $ sigma > limsup_(r -> infinity) (log n(r)) / (log r) $
   where $n(r)$ counts $a_k$ in the closed disk of radius $r$.
-]<thm:nonzerosequencepowersummationconvergence>
+], <thm:nonzerosequencepowersummationconvergence>)
 
 #proof[
   Choose $sigma'$ such that
@@ -294,11 +296,11 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
   $ sum_(k=1)^infinity 1 / abs(a_k)^sigma. #qedhere $
 ]
 
-#theorem[
+#lbl(theorem[
   For an entire function $f$ ($f(0) = 1$) of finite order $rho(f)$ whose zeros are at ${a_k}_(k in NN)$ counting multiplicities (such that $abs(a_1) <= abs(a_2)$, etc.), the sum
   $ sum_(k=1)^infinity 1 / abs(a_k)^(rho(f) + eta) $
   converges for any $eta > 0$.
-]<thm:entirefunctionfiniteorderzerossummationconvergence>
+], <thm:entirefunctionfiniteorderzerossummationconvergence>)
 
 #proof[
   By trivial definition, we have
@@ -345,10 +347,10 @@ The conclusion of @thm:entirefunctionfiniteorderzerossummationconvergence is tha
 
 This particular Weierstrass factorization is the _Weierstrass canonical factorization_ of $f$ (the portion corresponding to the product of elementary factors itself is the _Weierstrass canonical product_). Now that we have indulged in the implications of $rho(f)$ to its zero distribution, we now turn to the function $phi$ in the exponential.
 
-#lemma[
+#lbl(lemma[
   Let $f$ be entire with finite order such that $f(0) = 1$. Let ${a_k}_(k in NN)$ be the zeros of $f$, listed with multiplicities, such that $abs(a_1) <= abs(a_2) <= abs(a_3) <= dots$. Suppose $p > rho(f) - 1$; then for any $z in CC$,
   $ lim_(r -> infinity) sum_(k=1)^(n(r,0,f)) overline(a_k)^(p+1) (r^2 - overline(a_k) z)^(-p-1) = 0. $
-]<lem:entirefunctionfiniteorderserieslimitzero>
+], <lem:entirefunctionfiniteorderserieslimitzero>)
 
 #proof[
   For fixed $z$, let $r > 2 abs(z)$ such that $a_1, dots, a_(n(r,0,f))$ lie in $D(0,r)$. For each $k$ we obtain
@@ -367,12 +369,12 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $
 ]
 
-#theorem[
+#lbl(theorem[
   Let $f$ be entire with $f(0) = 1$. Then for $p > rho(f) - 1$ ($p$ integer) and $z in CC$,
   $
     lim_(r -> infinity) integral_0^(2 uppi) (r ee^(ii theta) log abs(f (r ee^(ii theta)))) / (r ee^(ii theta) - z)^(p+2) dif theta = 0.
   $
-]<thm:poissonjensenlogdiffintegralterm>
+], <thm:poissonjensenlogdiffintegralterm>)
 
 #proof[
   For fixed $z$, $r > 2 abs(z)$, we have
@@ -400,11 +402,11 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   at $epsilon = (p + 1 - rho(f)) / 2$. Then since $(rho(f) - p - 1) / 2 < 0$, the expression vanishes as $R -> infinity$.
 ]
 
-#proposition[
+#lbl(proposition[
   Let $f$ be entire, non-constant, and of finite order such that $f(0) = 1$. Let ${a_k}_(k in NN)$ be the zeros of $f$ counted according to multiplicities such that $abs(a_1) <= abs(a_2) <= abs(a_3) <= dots$. If $p > rho(f) - 1$ is an integer, then
   $ dif^p / (dif z^p) ((f'(z)) / (f(z))) equiv -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1) $
   for all $z in CC$.
-]<prop:entirefunctionfiniteorderlogdiffderivatives>
+], <prop:entirefunctionfiniteorderlogdiffderivatives>)
 
 #proof[
   Let $r > 2 abs(z)$. By the Poisson--Jensen Formula (@thm:poisson_jensen_formula), at each non-singular point, we have (the kernel representation derived in @eq:poissonkernelgeneralform)
@@ -413,9 +415,9 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
     &wide""+ sum_(k=1)^(n(r,0,f)) Re log ((r(z - a_k)) / (r^2 - overline(a_k) z)).
   $
   For any holomorphic $g = u + ii v$, we have
-  $
+  #lbl($
     (partial (Re g(z))) / (partial z) &= 1/2 ((partial u(z)) / (partial x) - ii (partial u(z)) / (partial y)) \ &= 1/2 ((partial u(z)) / (partial x) + ii (partial v) / (partial x)) = 1/2 (partial g(z)) / (partial x) = (g'(z)) / 2.
-  $<eq:wirtinger_derivative_of_real_part_of_holomorphic_function>
+  $, <eq:wirtinger_derivative_of_real_part_of_holomorphic_function>)
   Therefore, by differentiation under the integral sign,
   $
     (f'(z)) / f(z)

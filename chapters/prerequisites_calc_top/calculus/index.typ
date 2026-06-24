@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== Calculus
-
+#show: docs-subchapter.with(
+  title: [Calculus],
+  route: "calculus",
+)
 Since traditional complex analysis is the theory of calculus on complex functions, it is only natural that generalizations are made on classical formulas in calculus for complex functions.
 
 It is well known that a function $f : (a, b) -> RR$ is differentiable at a point $x in (a, b)$ if the limit
@@ -220,9 +221,12 @@ $
   forall epsilon > 0, exists delta > 0 "such that" forall abs((x - x_0, y - y_0)) < delta, abs(f(x, y) - f(x_0, y_0)) < epsilon.
 $
 
-#theorem[
-  Any continuous function on a compact set $K$ is bounded on $K$.
-] <thm:continuous_function_bounded_on_compact>
+#lbl(
+  theorem[
+    Any continuous function on a compact set $K$ is bounded on $K$.
+  ],
+  <thm:continuous_function_bounded_on_compact>,
+)
 
 #proof[
   Suppose for the sake of contradiction that $f : U -> RR$ is continuous and unbounded on compact $K$. Then for each $n in NN$, there exists $x_n in K$ such that $abs(f(x_n)) > n$. The sequence ${x_n}$ lies in $K$, which is compact, so by the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), ${x_n}$ has an accumulation point in $K$. In other words, there exists a convergent subsequence ${x_(n_k)}$ with $lim_(k -> oo) x_(n_k) in K$.
@@ -264,7 +268,7 @@ $
 
 #proof[
   Fix $x in K$. Since $f$ is continuous at $x$, for every $epsilon > 0$ there exists $delta_x > 0$ such that for all $zeta in D(x, delta_x) inter K$,
-  $ abs(f(zeta) - f(x)) < epsilon / 2. $ <eq:heine_cantor_pointwise>
+  #lbl($ abs(f(zeta) - f(x)) < epsilon / 2. $, <eq:heine_cantor_pointwise>)
 
   The collection of open balls ${D(x, delta_x / 2)}_(x in K)$ forms an open cover of the compact set $K$. By Heine--Borel (@thm:heine_borel), there is a finite subcover
   $ {D(x_k, delta_(x_k) / 2)}_(k=1)^n. $
@@ -293,9 +297,12 @@ Lipschitz continuity is an important concept in real analysis and the theory of 
   Let $M > 0$ be the Lipschitz constant. Then $forall epsilon > 0$, let $delta = epsilon / M$. It then follows that $forall x, y in U$ such that $abs(x - y) < delta$, $abs(f(x) - f(y)) <= M abs(x - y) < epsilon$.
 ]
 
-#proposition[
-  A $C^1$ function on a compact set $K$ is Lipschitz continuous on $K$.
-] <prop:c1_lipschitz>
+#lbl(
+  proposition[
+    A $C^1$ function on a compact set $K$ is Lipschitz continuous on $K$.
+  ],
+  <prop:c1_lipschitz>,
+)
 
 #proof[
   Let $f : K -> RR$ be $C^1$. By @thm:continuous_function_bounded_on_compact, since $K$ is compact and $f'$ is continuous, $exists M > 0$ such that $forall x in K$, $abs(f'(x)) <= M$.

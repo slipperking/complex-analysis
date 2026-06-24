@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== Consequences of Holomorphy
-
+#show: docs-subchapter.with(
+  title: [Consequences of Holomorphy],
+  route: "holomorphy_consequences",
+)
 Obviously, we will first formally define the concept of holomorphy in higher dimensions.
 
 #definition[
@@ -58,17 +59,23 @@ By the boundedness assumption for $f$, we have:
 
 Similar to the univariate case, there are Taylor expansions of holomorphic functions in several complex variables.
 
-#theorem[
-  Let $f : CC^n -> CC$ be holomorphic on (a neighborhood of) the closure $overline(Omega)$ of a polydisk $Omega = product_(k=1)^n D(a_k, r_k)$ centered at $bold(a) = (a_1, a_2, dots, a_n) in CC^n$. Then, for any $bold(z) = (z_1, z_2, dots, z_n) in Omega$, we have the expansion
-  $
-    f (bold(z)) = sum_(k_1=0)^oo dots.c sum_(k_n=0)^oo a_(k_1, dots, k_n) (z_1 - a_1)^(k_1) dots.c (z_n - a_n)^(k_n),
-  $ <eq:taylorexpansionmultivariable_series>
-  where $forall k_1, dots, k_n in ZZ_(gt.eq 0)$,
-  $
-    a_(k_1, dots, k_n) = 1 / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)).
-  $
-  The series converges absolutely and uniformly on $Omega$.
-] <thm:taylorexpansionmultivariable>
+#lbl(
+  theorem[
+    Let $f : CC^n -> CC$ be holomorphic on (a neighborhood of) the closure $overline(Omega)$ of a polydisk $Omega = product_(k=1)^n D(a_k, r_k)$ centered at $bold(a) = (a_1, a_2, dots, a_n) in CC^n$. Then, for any $bold(z) = (z_1, z_2, dots, z_n) in Omega$, we have the expansion
+    #lbl(
+      $
+        f (bold(z)) = sum_(k_1=0)^oo dots.c sum_(k_n=0)^oo a_(k_1, dots, k_n) (z_1 - a_1)^(k_1) dots.c (z_n - a_n)^(k_n),
+      $,
+      <eq:taylorexpansionmultivariable_series>,
+    )
+    where $forall k_1, dots, k_n in ZZ_(gt.eq 0)$,
+    $
+      a_(k_1, dots, k_n) = 1 / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)).
+    $
+    The series converges absolutely and uniformly on $Omega$.
+  ],
+  <thm:taylorexpansionmultivariable>,
+)
 
 #proof[
   By @thm:cauchyintegralformulapolydisks we have

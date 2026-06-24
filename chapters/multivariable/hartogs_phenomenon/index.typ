@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== Hartogs' Phenomenon
-
+#show: docs-subchapter.with(
+  title: [Hartogs' Phenomenon],
+  route: "hartogs_phenomenon",
+)
 One of the most prominent results of complex function theory is _Hartogs' phenomenon_, which reveals a fundamental difference between holomorphic functions of one variable and those of several variables. First discovered by Friedrich Hartogs in 1906, it essentially states that holomorphic functions in several complex variables exhibit a surprising rigidity.
 
 To understand the sense of Hartogs' phenomenon, consider the simple example of $z |-> 1 / z$ in one complex variable. This function is holomorphic on $CC^*$ with a singularity at $0$ that cannot be removed. However, in the case of several complex variables, Hartogs' phenomenon asserts that if a function is holomorphic in a domain that excludes a compact subset, it can be extended to a holomorphic function on the entire domain, including the excluded subset. One immediate conclusion from this is that isolated singularities are _always_ removable in higher dimensions.
@@ -16,13 +17,19 @@ The general study of complex function theory in multiple variables is made pract
 
 Only certain cases of @thm:hartogsextensiontheorem are proved here.
 
-#proposition[
-  Let $Omega subset.eq CC^n$ be a Reinhardt domain centered at $bold(0)$. Let $f : Omega -> CC$ be holomorphic. Then $f$ admits the unique Laurent expansion
-  $
-    f(bold(z)) = sum_(bold(k) in ZZ^n) a_(bold(k)) bold(z)^(bold(k)), quad a_(bold(k)) in CC,
-  $ <eq:reinhardtlaurentexpansion>
-  converging absolutely and uniformly on compact subsets of $Omega$.
-] <prop:reinhardtlaurentexpansion>
+#lbl(
+  proposition[
+    Let $Omega subset.eq CC^n$ be a Reinhardt domain centered at $bold(0)$. Let $f : Omega -> CC$ be holomorphic. Then $f$ admits the unique Laurent expansion
+    #lbl(
+      $
+        f(bold(z)) = sum_(bold(k) in ZZ^n) a_(bold(k)) bold(z)^(bold(k)), quad a_(bold(k)) in CC,
+      $,
+      <eq:reinhardtlaurentexpansion>,
+    )
+    converging absolutely and uniformly on compact subsets of $Omega$.
+  ],
+  <prop:reinhardtlaurentexpansion>,
+)
 
 #proof[
   Let $bold(w) = (w_1, dots, w_n) in Omega$ with each $w_j != 0$. Since $Omega$ is a Reinhardt domain, for every $bold(theta) = (theta_1, dots, theta_n) in [-uppi, uppi]^n$ the point
@@ -58,13 +65,16 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
   holds in a neighborhood $U_bold(w)$ of every point $bold(w)$ in $Omega$. If $K subset Omega$ is compact, then ${U_bold(w) : bold(w) in K}$ is an open cover of $K$, and hence it admits a finite subcover. Then the uniform convergence of the series on $K$ follows from the uniform convergence on each $U_bold(w)$ in the subcover. The absolute convergence follows from the absolute convergence of the one-variable Laurent expansions used in the construction.
 ] // todo: make constructions, etc more concrete
 
-#proposition[
-  Let $Omega subset CC^n$ be a Reinhardt domain centered at $bold(0)$ such that $Omega$ satisfies the condition that for every $j in NN_(<= n)$, there exists a point in $Omega$ of the form $w_j bold(e)_j$ ($bold(e)_j$ is the $j$-th unit vector and $w_j in CC^*$). Then any holomorphic function $f : Omega -> CC$ has the expansion
-  $
-    f(bold(z)) = sum_(bold(k) in ZZ_(gt.eq 0)^n) a_(bold(k)) bold(z)^(bold(k)),
-  $
-  which converges locally uniformly and absolutely on $Omega$.
-] <prop:hartogslaurentexpansionnonnegative>
+#lbl(
+  proposition[
+    Let $Omega subset CC^n$ be a Reinhardt domain centered at $bold(0)$ such that $Omega$ satisfies the condition that for every $j in NN_(<= n)$, there exists a point in $Omega$ of the form $w_j bold(e)_j$ ($bold(e)_j$ is the $j$-th unit vector and $w_j in CC^*$). Then any holomorphic function $f : Omega -> CC$ has the expansion
+    $
+      f(bold(z)) = sum_(bold(k) in ZZ_(gt.eq 0)^n) a_(bold(k)) bold(z)^(bold(k)),
+    $
+    which converges locally uniformly and absolutely on $Omega$.
+  ],
+  <prop:hartogslaurentexpansionnonnegative>,
+)
 
 #proof[
   By @prop:reinhardtlaurentexpansion, $f$ has an expansion matching the form of @eq:reinhardtlaurentexpansion. Now for a fixed $j in NN_(<= n)$, if not all $a_(bold(k))$'s with $k_j < 0$ are zero, then fixing all variables except $z_j$ gives a Laurent expansion that does not uniformly converge on all compact neighborhoods of $w_j bold(e)_j in Omega$ (either a pole or an essential singularity with respect to $z_j$). Thus, we are left only with $bold(k)$ containing nonnegative components, and the conclusion holds.

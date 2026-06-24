@@ -1,6 +1,8 @@
 #import "/lib.typ": *
-
-== The Cauchy--Goursat Theorem
+#show: docs-subchapter.with(
+  title: [The Cauchy--Goursat Theorem],
+  route: "cauchy_goursat",
+)
 Especially for area or double integrals, it becomes important to know the differential forms for a single variable complex function (as they are effectively functions of $z$ and $overline(z)$). Consider $z=x+ii y$ and $overline(z)=x-ii y$. We can then define their corresponding differentials:
 
 $ dz = dx + ii dy, quad dif overline(z) = dx - ii dy. $
@@ -43,7 +45,7 @@ Analogous to the real case, a $0$-form is defined as a scalar-valued function in
 #theorem[Green's Theorem, Complex Form][
   Let $U subset CC$ be bounded with a piecewise smooth boundary $partial U$. For two scalar functions $omega_1=omega_1 (z,overline(z))$ and $omega_2=omega_2 (z,overline(z))$ satisfying $omega_1,omega_2 in C^1 (overline(U))$, define the $1$-form $omega=omega_1 dz + omega_2 dif overline(z)$. Then,
 
-  $ integral_(partial U)omega=integral_U dif omega. $ <eq:complex_green>
+  #lbl($ integral_(partial U)omega=integral_U dif omega. $, <eq:complex_green>)
 ] <thm:complex_green>
 
 #proof[
@@ -52,22 +54,28 @@ Analogous to the real case, a $0$-form is defined as a scalar-valued function in
 
   Then,
 
-  $
-    omega & =(xi_1 + ii eta_1) dz + (xi_2 + ii eta_2) dif overline(z) \
-          & =(xi_1 + ii eta_1) (dx + ii dy) + (xi_2 + ii eta_2) (dx - ii dy) \
-          & =xi_1 dx + ii eta_1 dx + ii xi_1 dy - eta_1 dy + xi_2 dx + ii eta_2 dx - ii xi_2 dy + eta_2 dy \
-          & =[(xi_1 + xi_2) dx + (eta_2 - eta_1) dy] + ii [(eta_1 + eta_2) dx + (xi_1 - xi_2) dy]
-  $ <eq:complex_green_real_and_complex_dx_dy_intermediate>
+  #lbl(
+    $
+      omega & =(xi_1 + ii eta_1) dz + (xi_2 + ii eta_2) dif overline(z) \
+            & =(xi_1 + ii eta_1) (dx + ii dy) + (xi_2 + ii eta_2) (dx - ii dy) \
+            & =xi_1 dx + ii eta_1 dx + ii xi_1 dy - eta_1 dy + xi_2 dx + ii eta_2 dx - ii xi_2 dy + eta_2 dy \
+            & =[(xi_1 + xi_2) dx + (eta_2 - eta_1) dy] + ii [(eta_1 + eta_2) dx + (xi_1 - xi_2) dy]
+    $,
+    <eq:complex_green_real_and_complex_dx_dy_intermediate>,
+  )
 
   Each of $xi_1, xi_2, eta_1, eta_2$ are real-valued functions that can be represented with a domain of $RR^2$. By definition,
 
-  $
-    dif omega & =(partial + overline(partial)) (xi_1 + ii eta_1) dz + (partial + overline(partial)) (xi_2 + ii eta_2) dif overline(z) \
-    & =(pdv(xi_1, overline(z)) + ii pdv(eta_1, overline(z))) dif overline(z) and dz + (pdv(xi_2, z) + ii pdv(eta_2, z)) dz and dif overline(z) \
-    & =2 (ii pdv(xi_1, overline(z)) - pdv(eta_1, overline(z)) - ii pdv(xi_2, z) + pdv(eta_2, z)) dx and dy \
-    & =(ii pdv(xi_1, x) - pdv(xi_1, y) - pdv(eta_1, x) - ii pdv(eta_1, y) - ii pdv(xi_2, x) - pdv(xi_2, y) + pdv(eta_2, x) - ii pdv(eta_2, y)) dx and dy \
-    & =(pdv(eta_2, x) - pdv(xi_1, y) - pdv(eta_1, x) - pdv(xi_2, y)) dif A + ii (pdv(xi_1, x) - pdv(eta_1, y) - pdv(xi_2, x) - pdv(eta_2, y)) dif A.
-  $<eq:complex_green_exterior_derivative_result>
+  #lbl(
+    $
+      dif omega & =(partial + overline(partial)) (xi_1 + ii eta_1) dz + (partial + overline(partial)) (xi_2 + ii eta_2) dif overline(z) \
+      & =(pdv(xi_1, overline(z)) + ii pdv(eta_1, overline(z))) dif overline(z) and dz + (pdv(xi_2, z) + ii pdv(eta_2, z)) dz and dif overline(z) \
+      & =2 (ii pdv(xi_1, overline(z)) - pdv(eta_1, overline(z)) - ii pdv(xi_2, z) + pdv(eta_2, z)) dx and dy \
+      & =(ii pdv(xi_1, x) - pdv(xi_1, y) - pdv(eta_1, x) - ii pdv(eta_1, y) - ii pdv(xi_2, x) - pdv(xi_2, y) + pdv(eta_2, x) - ii pdv(eta_2, y)) dx and dy \
+      & =(pdv(eta_2, x) - pdv(xi_1, y) - pdv(eta_1, x) - pdv(xi_2, y)) dif A + ii (pdv(xi_1, x) - pdv(eta_1, y) - pdv(xi_2, x) - pdv(eta_2, y)) dif A.
+    $,
+    <eq:complex_green_exterior_derivative_result>,
+  )
 
   From @eq:complex_green_real_and_complex_dx_dy_intermediate, we can apply @thm:real-green. For the real component of $omega$, we obtain
 
@@ -100,9 +108,12 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
 
   with a singularity at $zeta=z$. Consider the region $U without D(z,epsilon)$. Since $f in C^1 (overline(U))$, by applying Green's Theorem (@thm:complex_green),
 
-  $
-    integral_(U without D(z, epsilon)) dif ((f(zeta) dzeta) / (zeta - z)) = integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral.cont_(partial D(z, epsilon)) (f(zeta) dzeta) / (zeta - z).
-  $ <eq:pompeiu_directintermediate>
+  #lbl(
+    $
+      integral_(U without D(z, epsilon)) dif ((f(zeta) dzeta) / (zeta - z)) = integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral.cont_(partial D(z, epsilon)) (f(zeta) dzeta) / (zeta - z).
+    $,
+    <eq:pompeiu_directintermediate>,
+  )
 
   By properties of $dif$, the expression is equal to
 
@@ -129,15 +140,21 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
   $
   which approaches 0 as $epsilon ->0$. Taking this limit, we obtain
 
-  $
-    taui f(z) = integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) (dif overline(zeta) and dzeta) / (zeta - z) + lim_(epsilon -> 0) integral_(D(z, epsilon)) pdv(f, overline(zeta)) (dif overline(zeta) and dzeta) / (zeta - z).
-  $ <eq:pompeiu_epsilonlimitintermediate>
+  #lbl(
+    $
+      taui f(z) = integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) (dif overline(zeta) and dzeta) / (zeta - z) + lim_(epsilon -> 0) integral_(D(z, epsilon)) pdv(f, overline(zeta)) (dif overline(zeta) and dzeta) / (zeta - z).
+    $,
+    <eq:pompeiu_epsilonlimitintermediate>,
+  )
 
   We then aim to prove that
 
-  $
-    lim_(epsilon -> 0) integral_(D(z, epsilon)) pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z) = 0.
-  $ <eq:pompeiu_areadiskstatement>
+  #lbl(
+    $
+      lim_(epsilon -> 0) integral_(D(z, epsilon)) pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z) = 0.
+    $,
+    <eq:pompeiu_areadiskstatement>,
+  )
 
   Notice that since $f in C^1 (overline(U))$, by @thm:continuous_function_bounded_on_compact, $exists M' in RR_(>0)$ such that $forall zeta in overline(U)$, $abs(pdv(f, overline(zeta))) <= M'$. Then,
 
@@ -165,10 +182,13 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
   $
 ]
 
-#corollary[Let $f:CC-> CC$ be a continuously differentiable, compactly supported function.
-  Then
-  $ f(z) = -1 / uppi integral.double_CC pdv(f, overline(zeta)) (dif xi dif eta) / (zeta - z) $
-  for all $z in CC$ where $zeta=xi+ii eta$.] <cor:pompeiuwithoutcauchyterm>
+#lbl(
+  corollary[Let $f:CC-> CC$ be a continuously differentiable, compactly supported function.
+    Then
+    $ f(z) = -1 / uppi integral.double_CC pdv(f, overline(zeta)) (dif xi dif eta) / (zeta - z) $
+    for all $z in CC$ where $zeta=xi+ii eta$.],
+  <cor:pompeiuwithoutcauchyterm>,
+)
 
 #proof[Choose $R>0$ such that $D(0,R)supset op("supp")(f)$. By the Cauchy--Pompeiu Theorem (@thm:pompeiu), we have
   $
@@ -184,9 +204,12 @@ From the above result, we can directly obtain the following theorem:
 #theorem[Cauchy's Integral Formula][
   Let $U subset CC$ be an open region with a piecewise $C^1$ boundary $partial U$, and let $f in C^1 (overline(U))$ be holomorphic on $U$. Then for all $z in U$,
 
-  $
-    f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
-  $ <eq:cauchyintegralformula>
+  #lbl(
+    $
+      f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
+    $,
+    <eq:cauchyintegralformula>,
+  )
 ] <thm:cauchyintegralformula>
 
 #proof[
@@ -215,9 +238,12 @@ From the above result, we can directly obtain the following theorem:
   $ pdv(u(z), overline(z))=psi(z) $
   is
 
-  $
-    u(z) = -1 / taui integral_CC (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta.
-  $ <eq:one_dimensional_partial_conjugate_solution>
+  #lbl(
+    $
+      u(z) = -1 / taui integral_CC (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta.
+    $,
+    <eq:one_dimensional_partial_conjugate_solution>,
+  )
 ] <thm:one_dimensional_partial_conjugate_solution>
 
 #proof[Split $CC$ into $CC without D (z, epsilon)$ and $overline(D (z, epsilon))$. For all $epsilon > 0$, the integral
@@ -231,9 +257,12 @@ From the above result, we can directly obtain the following theorem:
   $ u(z) = 1 / (taui) integral_CC (psi(zeta + z)) / zeta dif zeta and dif overline(zeta) $
   Then,
 
-  $
-    (u(z + Delta z) - u (z)) / (Delta z) = 1 / (taui) integral_CC (psi(zeta + z + Delta z) - psi (zeta + z)) / (Delta z zeta) dif zeta and dif overline(zeta).
-  $ <eq:one_dimensional_partial_conjugate_solution_differenceexpr>
+  #lbl(
+    $
+      (u(z + Delta z) - u (z)) / (Delta z) = 1 / (taui) integral_CC (psi(zeta + z + Delta z) - psi (zeta + z)) / (Delta z zeta) dif zeta and dif overline(zeta).
+    $,
+    <eq:one_dimensional_partial_conjugate_solution_differenceexpr>,
+  )
 
   For a fixed $z$, the value of
   $ (psi(zeta + z + Delta z) - psi (zeta + z)) / (Delta z) $
@@ -244,15 +273,21 @@ From the above result, we can directly obtain the following theorem:
 
   As shown above, the integrand is uniformly bounded by $M$, which has a convergent integral of $integral_K M dif zeta and dif overline(zeta)$, the limit $Delta z ->0$ may commute with the integral in @eq:one_dimensional_partial_conjugate_solution_differenceexpr. Let $zeta=xi+ii eta$. From the real axis,
 
-  $
-    pdv(u, x)(z) = 1 / taui integral_CC pdv(psi, xi) (zeta + z) (dzeta and dzetabar) / zeta = 1 / taui integral_CC pdv(psi(zeta), xi) (dzeta and dzetabar) / (zeta - z).
-  $ <eq:one_dimensional_partial_conjugate_solution_differenceexpr_realaxisderivative>
+  #lbl(
+    $
+      pdv(u, x)(z) = 1 / taui integral_CC pdv(psi, xi) (zeta + z) (dzeta and dzetabar) / zeta = 1 / taui integral_CC pdv(psi(zeta), xi) (dzeta and dzetabar) / (zeta - z).
+    $,
+    <eq:one_dimensional_partial_conjugate_solution_differenceexpr_realaxisderivative>,
+  )
 
   From the imaginary axis,
 
-  $
-    pdv(u, y)(z) = 1 / taui integral_CC pdv(psi, eta) (zeta + z) (dzeta and dzetabar) / zeta = 1 / taui integral_CC pdv(psi(zeta), eta) (dzeta and dzetabar) / (zeta - z).
-  $ <eq:one_dimensional_partial_conjugate_solution_differenceexpr_imaginaryaxisderivative>
+  #lbl(
+    $
+      pdv(u, y)(z) = 1 / taui integral_CC pdv(psi, eta) (zeta + z) (dzeta and dzetabar) / zeta = 1 / taui integral_CC pdv(psi(zeta), eta) (dzeta and dzetabar) / (zeta - z).
+    $,
+    <eq:one_dimensional_partial_conjugate_solution_differenceexpr_imaginaryaxisderivative>,
+  )
 
   Since $psi in C^1 (CC)$ and has Lipschitz constant $M$, @eq:one_dimensional_partial_conjugate_solution_differenceexpr_realaxisderivative, @eq:one_dimensional_partial_conjugate_solution_differenceexpr_imaginaryaxisderivative are both continuous (by the same argument for the continuity of $u(z)$). Thus, $u in C^1(CC)$. It follows from the two equations that
   $
@@ -274,10 +309,13 @@ From the above result, we can directly obtain the following theorem:
 
 When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, he included the necessary condition that $f(z)in C^1 (overline(U))$. It was later shown that all such holomorphic functions had holomorphic derivatives, and this condition was thus later dropped by Goursat:
 
-#lemma[
-  Let $f:G -> CC$ be a continuous function defined for a region $G subset.eq CC$. Let $Gamma subset G$ be a rectifiable piecewise smooth curve. Then $forall epsilon > 0$, there exists a polygonal chain $P subset G$ inscribing $Gamma$ (each vertex lies on $Gamma$) where
-  $ abs(integral_Gamma f(z) dz - integral_P f(z) dz) < epsilon. $
-] <lem:integralpiecewisesmoothtopolygonalchain>
+#lbl(
+  lemma[
+    Let $f:G -> CC$ be a continuous function defined for a region $G subset.eq CC$. Let $Gamma subset G$ be a rectifiable piecewise smooth curve. Then $forall epsilon > 0$, there exists a polygonal chain $P subset G$ inscribing $Gamma$ (each vertex lies on $Gamma$) where
+    $ abs(integral_Gamma f(z) dz - integral_P f(z) dz) < epsilon. $
+  ],
+  <lem:integralpiecewisesmoothtopolygonalchain>,
+)
 
 #proof[
   Because $f in C^0(G)$, there is a compact set $D subset.eq G$ enclosing $Gamma$ and is the closure of some open set. By @thm:heinecantor, $forall epsilon > 0$, $exists delta > 0$ such that $forall z', z'' in D$ satisfying $abs(z'' - z') < delta$, $abs(f (z'') - f (z')) < epsilon$. Partition $Gamma$ into $n in NN$ curves $gamma_0, gamma_1, dots, gamma_(n - 1)$ between points $z_0, z_1, dots z_n$ such that $forall k in {0, 1, dots, n - 1}$ the length of $gamma_k$ is less than $delta$. For all $k in {0, 1, dots, n - 1}$, let $l_k$ denote the straight line segment connecting $z_k$ and $z_(k + 1)$. The length of $l_k$ is less than $delta$ as well. Then let
@@ -312,97 +350,108 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 )[
   Given a holomorphic function $f(z)$ on a simply connected region $U subset.eq CC$, for any piecewise $C^1$ closed curve $Gamma subset U$,
 
-  $
-    integral.cont_Gamma f(zeta)dzeta=0.
-  $ <eq:cauchyintegraltheoremoversimplyconnectedset_statement>
+  #lbl(
+    $
+      integral.cont_Gamma f(zeta)dzeta=0.
+    $,
+    <eq:cauchyintegraltheoremoversimplyconnectedset_statement>,
+  )
 ] <lem:cauchyintegraltheoremoversimplyconnectedset>
 #figure-wrapper(
   [
-    #figure(
-      cetz.canvas({
-        import cetz.draw: *
-        let A = (0, 2)
-        let B = (2.3, 0.5)
-        let C = (4, 1)
-        let D = (5, 3.5)
-        let E = (2, 4)
+    #lbl(
+      figure(
+        canvas({
+          import cetz.draw: *
+          let A = (0, 2)
+          let B = (2.3, 0.5)
+          let C = (4, 1)
+          let D = (5, 3.5)
+          let E = (2, 4)
 
-        line(A, B, C, D, E, stroke: 1pt, close: true)
-        line(B, E, stroke: 1pt)
-        line(C, E, stroke: 1pt)
+          line(A, B, C, D, E, stroke: 1pt, close: true)
+          line(B, E, stroke: 1pt)
+          line(C, E, stroke: 1pt)
 
-        for pts in ((B, E), (E, B), (E, A), (B, C), (A, B), (C, E), (E, C), (D, E), (C, D)) {
-          halflength-arrow(..pts, scalar: 0.15)
-        }
+          for pts in ((B, E), (E, B), (E, A), (B, C), (A, B), (C, E), (E, C), (D, E), (C, D)) {
+            halflength-arrow(..pts, scalar: 0.15)
+          }
 
-        content(A, [$A$], anchor: "east", padding: .15cm)
-        content(B, [$B$], anchor: "north", padding: .15cm)
-        content(C, [$C$], anchor: "west", padding: .15cm)
-        content(D, [$D$], anchor: "south", padding: .15cm)
-        content(E, [$E$], anchor: "south", padding: .15cm)
-      }),
-      caption: [Closed triangulated polygonal chain],
+          content(A, [$A$], anchor: "east", padding: .15cm)
+          content(B, [$B$], anchor: "north", padding: .15cm)
+          content(C, [$C$], anchor: "west", padding: .15cm)
+          content(D, [$D$], anchor: "south", padding: .15cm)
+          content(E, [$E$], anchor: "south", padding: .15cm)
+        }),
+        caption: [Closed triangulated polygonal chain],
+      ),
+      <fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation>,
     )
-    <fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation>
   ],
   [
-    #figure(
-      cetz.canvas({
-        let A = (0, 0)
-        let E = (2.7, 0)
-        let F = (1.8, 2)
-        let C = (A, 200%, E)
-        let D = (rel: F, to: (rel: E, to: ((0, 0), -100%, A)))
-        let B = cvector.add(F, cvector.sub(F, A))
+    #lbl(
+      figure(
+        canvas({
+          let A = (0, 0)
+          let E = (2.7, 0)
+          let F = (1.8, 2)
+          let C = (A, 200%, E)
+          let D = (rel: F, to: (rel: E, to: ((0, 0), -100%, A)))
+          let B = cvector.add(F, cvector.sub(F, A))
 
-        cetz.draw.line(A, F, E, stroke: 1pt, close: true)
-        cetz.draw.line(B, D, F, stroke: 1pt, close: true)
-        cetz.draw.line(C, D, E, stroke: 1pt, close: true)
+          cetz.draw.line(A, F, E, stroke: 1pt, close: true)
+          cetz.draw.line(B, D, F, stroke: 1pt, close: true)
+          cetz.draw.line(C, D, E, stroke: 1pt, close: true)
 
-        for (i, points) in ((A, F, E), (B, D, F), (C, D, E), (F, D, E)).enumerate(start: 1) {
-          let result = scale-vector(points.fold((0, 0), add-vectors), 1 / (points.len()))
-          cetz.draw.content(result, [$Delta_#i$], anchor: "center")
-        }
+          for (i, points) in ((A, F, E), (B, D, F), (C, D, E), (F, D, E)).enumerate(start: 1) {
+            let result = scale-vector(points.fold((0, 0), add-vectors), 1 / (points.len()))
+            cetz.draw.content(result, [$Delta_#i$], anchor: "center")
+          }
 
-        for pts in (
-          (F, A),
-          (B, F),
-          (D, E),
-          (E, D),
-          (E, F),
-          (D, B),
-          (C, D),
-          (F, E),
-          (A, E),
-          (E, C),
-          (F, D),
-          (D, F),
-        ) {
-          halflength-arrow(
-            ..pts,
-            scalar: 0.15,
-          )
-        }
+          for pts in (
+            (F, A),
+            (B, F),
+            (D, E),
+            (E, D),
+            (E, F),
+            (D, B),
+            (C, D),
+            (F, E),
+            (A, E),
+            (E, C),
+            (F, D),
+            (D, F),
+          ) {
+            halflength-arrow(
+              ..pts,
+              scalar: 0.15,
+            )
+          }
 
-        let AE = (A, .5, E)
-        let AF = (A, .5, F)
-        let FD = (F, .5, D)
-        let BF = (B, .5, F)
-        let EC = (E, .5, C)
-      }),
-      caption: [Quadrisection of $jinterior Delta$],
-    )<fig:cauchy_integral_theorem_over_simply_connected_set_triangle_quadrisection>
+          let AE = (A, .5, E)
+          let AF = (A, .5, F)
+          let FD = (F, .5, D)
+          let BF = (B, .5, F)
+          let EC = (E, .5, C)
+        }),
+        caption: [Quadrisection of $jinterior Delta$],
+      ),
+      <fig:cauchy_integral_theorem_over_simply_connected_set_triangle_quadrisection>,
+    )
   ],
 )
 #proof[
   By @lem:integralpiecewisesmoothtopolygonalchain, $forall epsilon > 0$, there is a closed polygonal chain $P$ where
 
-  $
-    abs(integral.cont_Gamma f(z) dz - integral.cont_P f(z) dz) < epsilon.
-  $ <eq:cauchyintegraltheoremoversimplyconnectedset_chaindefinition>
+  #lbl(
+    $
+      abs(integral.cont_Gamma f(z) dz - integral.cont_P f(z) dz) < epsilon.
+    $,
+    <eq:cauchyintegraltheoremoversimplyconnectedset_chaindefinition>,
+  )
   The statement we aim to prove is equivalent to proving that
 
-  $ integral.cont_P f(z)dz=0. $ <eq:cauchyintegraltheoremoversimplyconnectedset_chainvanishingstatement>
+  #lbl($ integral.cont_P f(z)dz=0. $, <eq:cauchyintegraltheoremoversimplyconnectedset_chainvanishingstatement>)
 
   Since $P$ is a closed polygonal chain, we can triangulate the interior. For example, consider @fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation, where
   $
@@ -419,9 +468,12 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
   and recursively, choose
 
-  $
-    abs(integral.cont_(Delta^2) f(z) dz) >= M / 4^2, dots, abs(integral.cont_(Delta^n) f(z) dz) >= M / 4^n.
-  $ <eq:cauchyintegraltheoremoversimplyconnectedset_trianglelowerbound>
+  #lbl(
+    $
+      abs(integral.cont_(Delta^2) f(z) dz) >= M / 4^2, dots, abs(integral.cont_(Delta^n) f(z) dz) >= M / 4^n.
+    $,
+    <eq:cauchyintegraltheoremoversimplyconnectedset_trianglelowerbound>,
+  )
 
   Let $L$ denote the perimeter of $Delta$. Then, the perimeters of $Delta^1,Delta^2,dots$ respectively are $(L)/(2),(L)/(2^2),dots$. As $n -> oo$, $Delta_n$ shrinks to a single point $z_0$. Then, $forall n in NN$, $z_0 in Delta^n$.
 
@@ -452,8 +504,8 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   $ integral.cont_(partial U) f(zeta) dzeta = 0. $
 ] <thm:cauchygoursattheorem>
 #figure-wrapper(
-  [
-    #figure(
+  lbl(
+    figure(
       {
         import cetz.draw: *
         let maxx = 6
@@ -471,7 +523,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
         let (Mp, Np) = (M, N).map(point => cvector.add(point, (0, primeoffset)))
         let (Pp, Qp) = (P, Q).map(point => (rel: point, to: (0, -primeoffset)))
 
-        quick-plot(canvas: {
+        quick-plot(_canvas: {
           let MNpoints = offset => {
             (
               ..directional_points(angle: -90deg),
@@ -564,8 +616,9 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
       },
       kind: auto,
       caption: [A simplified region containing two vertical lines and two continuous, rectifiable curves.],
-    ) <fig:cauchy_goursat_theorem_simplified_region>
-  ],
+    ),
+    <fig:cauchy_goursat_theorem_simplified_region>,
+  ),
 )
 #proof[
   Since $partial U inter U=emptyset$ and $f(z)$ is not necessarily holomorphic over $overline(U)$, we cannot directly apply @lem:cauchyintegraltheoremoversimplyconnectedset.
@@ -584,20 +637,29 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
   and consequently,
 
-  $
-    integral_sray(M'_1 N'_1) f(z) dz -> integral_sray(M_1 N_1) f(z) dz.
-  $ <eq:cauchygoursattheorem_innerinnerhorizontaltoouterinnerhorizontal1>
+  #lbl(
+    $
+      integral_sray(M'_1 N'_1) f(z) dz -> integral_sray(M_1 N_1) f(z) dz.
+    $,
+    <eq:cauchygoursattheorem_innerinnerhorizontaltoouterinnerhorizontal1>,
+  )
 
   Under the same limit, we get
 
-  $
-    integral_sray(Q'_1 P'_1) f(z) dz -> integral_sray(Q_1 P_1) f(z) dz.
-  $ <eq:cauchygoursattheorem_innerinnerhorizontaltoouterinnerhorizontal2>
+  #lbl(
+    $
+      integral_sray(Q'_1 P'_1) f(z) dz -> integral_sray(Q_1 P_1) f(z) dz.
+    $,
+    <eq:cauchygoursattheorem_innerinnerhorizontaltoouterinnerhorizontal2>,
+  )
   By the continuity of $f(z)$ over a compact set,
 
-  $
-    integral_sray(P'_1 M'_1) f(z) dz -> integral_sray(P_1 M_1) f(z) dz, integral_sray(N'_1 Q'_1) f(z) dz -> integral_sray(N_1 Q_1) f(z) dz.
-  $ <eq:cauchygoursattheorem_innerinnerverticaltoouterinnervertical>
+  #lbl(
+    $
+      integral_sray(P'_1 M'_1) f(z) dz -> integral_sray(P_1 M_1) f(z) dz, integral_sray(N'_1 Q'_1) f(z) dz -> integral_sray(N_1 Q_1) f(z) dz.
+    $,
+    <eq:cauchygoursattheorem_innerinnerverticaltoouterinnervertical>,
+  )
 
   Then letting $epsilon -> 0$, for the same reason as @eq:cauchygoursattheorem_innerinnerverticaltoouterinnervertical, @eq:cauchygoursattheorem_innerinnerhorizontaltoouterinnerhorizontal1, @eq:cauchygoursattheorem_innerinnerhorizontaltoouterinnerhorizontal2 yield
   $
@@ -644,9 +706,12 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 #theorem[Cauchy--Goursat][
   Let $U subset CC$ be an open region bounded with a simple closed boundary $partial U$, and let $f:U -> CC$ be a holomorphic function continuous on $overline(U)$. Then for all $z in U$,
 
-  $
-    f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
-  $ <eq:cauchygoursatformula>
+  #lbl(
+    $
+      f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
+    $,
+    <eq:cauchygoursatformula>,
+  )
 ] <thm:cauchygoursatformula>
 
 #proof[
@@ -676,16 +741,22 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
 
 This profound theorem is extremely important and helpful in complex integration and essential in the evaluation of integrals, as demonstrated below.
 
-#example[
-  Evaluate the integral $integral.cont_(partial D(0, 2)) dz / (z^n - 1)$, where $n in NN_(>= 2)$.
-] <ex:cauchygoursatformulazeroofunity>
+#lbl(
+  example[
+    Evaluate the integral $integral.cont_(partial D(0, 2)) dz / (z^n - 1)$, where $n in NN_(>= 2)$.
+  ],
+  <ex:cauchygoursatformulazeroofunity>,
+)
 
 #solution[to @ex:cauchygoursatformulazeroofunity][
   Since $z^n - 1 = product_(k = 0)^(n - 1) (z - omega_n^k)$, where $omega_n^k = ee^(taui k / n)$, the integrand has singularities at every $n$-th root of unity. Then the integral is equal to:
 
-  $
-    integral.cont_(partial D(0, 2)) dz / (product_(j = 0)^(n - 1) (z - omega_j)) = integral.cont_(partial D(0, 2)) sum_(j = 0)^(n - 1) (c_j) / (z - omega_j) dz,
-  $ <eq:cauchygoursatformulazerosofunity>
+  #lbl(
+    $
+      integral.cont_(partial D(0, 2)) dz / (product_(j = 0)^(n - 1) (z - omega_j)) = integral.cont_(partial D(0, 2)) sum_(j = 0)^(n - 1) (c_j) / (z - omega_j) dz,
+    $,
+    <eq:cauchygoursatformulazerosofunity>,
+  )
 
   where $c_j$ are the coefficients of the partial fraction decomposition. By the Cauchy--Goursat Formula (@thm:cauchygoursatformula), @eq:cauchygoursatformulazerosofunity becomes:
   $ sum_(k = 0)^(n - 1) integral.cont_(partial D(0, 2)) (c_k) / (z - omega_k) dz = taui sum_(k = 0)^(n - 1) c_k. $
@@ -696,10 +767,13 @@ This profound theorem is extremely important and helpful in complex integration 
 
 We have also already seen the utility of parameterization via a polar transformation. Many useful identities in classical calculus can also be derived from concepts in its generalization:
 
-#example[
-  Prove that $forall n in NN$,
-  $ integral_0^(2 uppi) cos^(2n) theta dif theta = 2 uppi product_(k = 1)^n (2k - 1) / (2k). $
-]<ex:cosine_power_integral>
+#lbl(
+  example[
+    Prove that $forall n in NN$,
+    $ integral_0^(2 uppi) cos^(2n) theta dif theta = 2 uppi product_(k = 1)^n (2k - 1) / (2k). $
+  ],
+  <ex:cosine_power_integral>,
+)
 
 #solution[to @ex:cosine_power_integral][
   Consider the integral
@@ -750,12 +824,15 @@ We have also already seen the utility of parameterization via a polar transforma
     $
   + If $gamma$ encloses the origin, then $forall z in CC without gamma$,
 
-    $
-      1 / (taui) integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = cases(
-        0 & text("if") z in jinterior(gamma)\,,
-        f(z) & text("if") z in jexterior(gamma).
-      )
-    $ <eq:cauchy_goursat_formula_exterior_part2_statement>
+    #lbl(
+      $
+        1 / (taui) integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = cases(
+          0 & text("if") z in jinterior(gamma)\,,
+          f(z) & text("if") z in jexterior(gamma).
+        )
+      $,
+      <eq:cauchy_goursat_formula_exterior_part2_statement>,
+    )
 ] <ex:cauchygoursatformulaexterior>
 
 #proof[
@@ -790,13 +867,16 @@ We have also already seen the utility of parameterization via a polar transforma
     as expected.
   + Under the partial fraction decomposition of @eq:cauchy_goursat_formula_exterior_part2_statement, we get that
 
-    $
-      I & = integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = integral.cont_gamma ((f(zeta)) / zeta - (f(zeta)) / (zeta - z)) dzeta \
-      & = integral_0^(2 uppi) (f (R ee^(ii theta)) - (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta)))) dif theta + cases(
-        0 & text("if") z in jinterior(gamma)\,,
-        taui f(z) & text("if") z in jexterior(gamma) inter D(0, R),
-      )
-    $ <eq:cauchy_goursat_formula_exterior_part2_pre_limit_integral>
+    #lbl(
+      $
+        I & = integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = integral.cont_gamma ((f(zeta)) / zeta - (f(zeta)) / (zeta - z)) dzeta \
+        & = integral_0^(2 uppi) (f (R ee^(ii theta)) - (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta)))) dif theta + cases(
+          0 & text("if") z in jinterior(gamma)\,,
+          taui f(z) & text("if") z in jexterior(gamma) inter D(0, R),
+        )
+      $,
+      <eq:cauchy_goursat_formula_exterior_part2_pre_limit_integral>,
+    )
     when $gamma subset D(0,R)$.
     We will analyze the first integral as $R -> oo$. By the triangle and reverse triangle inequalities,
 

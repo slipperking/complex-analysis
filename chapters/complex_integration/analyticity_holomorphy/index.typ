@@ -1,26 +1,42 @@
 #import "/lib.typ": *
-
+#show: docs-subchapter.with(
+  title: [Analyticity and Holomorphy],
+  route: "analyticity_and_holomorphy",
+  children: [
+    #include "partitions_of_unity/index.typ"
+  ],
+  label: <sec:analyticity_and_holomorphy>,
+)
 
 The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized into a result that equates complex integration and differentiation:
 
 #theorem[Cauchy--Goursat][
   Let $U subset CC$ be an open region bounded by a simple closed boundary $partial U$, and let $f:U -> CC$ be holomorphic and continuous over $overline(U)$. Then $forall z in U$, $forall n in NN$, $f^((n)) (z)$ exists, and
 
-  $
-    f^((n)) (z)= (n!) / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(n+1)) dzeta.
-  $ <eq:cauchy_differentiation_formula_statement>
+  #lbl(
+    $
+      f^((n)) (z)= (n!) / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(n+1)) dzeta.
+    $,
+    <eq:cauchy_differentiation_formula_statement>,
+  )
 
   Additionally, since $U$ is open, $forall a in U$, $forall r > 0$ such that the closed disk $overline(D(a, r)) subset U$, $f$ has the uniformly and absolutely convergent Taylor expansion
 
-  $
-    f(zeta)=sum_(j = 0)^oo a_j (z-a)^j,
-  $ <eq:cauchy_differentiation_formula_taylorseries>
+  #lbl(
+    $
+      f(zeta)=sum_(j = 0)^oo a_j (z-a)^j,
+    $,
+    <eq:cauchy_differentiation_formula_taylorseries>,
+  )
 
   where
 
-  $
-    a_j = 1 / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(j+1)) dzeta
-  $ <eq:cauchy_differentiation_formula_taylorseriescoefficients>
+  #lbl(
+    $
+      a_j = 1 / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(j+1)) dzeta
+    $,
+    <eq:cauchy_differentiation_formula_taylorseriescoefficients>,
+  )
 
   for $z in overline(D(a, r))$.
 ] <thm:cauchy_differentiation_formula>
@@ -41,10 +57,13 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
 
   Since
 
-  $
-    (f(z)-f(a)) / (z-a) - 1 / taui integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-a)^2) & = 1 / taui integral.cont_(partial U) (f(zeta)) / (zeta-a) (1 / (zeta-z) - 1 / (zeta-a)) dzeta \
-    & = (z-a) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)(zeta-a)^2) dzeta,
-  $<eq:cauchy_differentiation_formula_differenceoffirstorderdifferences>
+  #lbl(
+    $
+      (f(z)-f(a)) / (z-a) - 1 / taui integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-a)^2) & = 1 / taui integral.cont_(partial U) (f(zeta)) / (zeta-a) (1 / (zeta-z) - 1 / (zeta-a)) dzeta \
+      & = (z-a) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)(zeta-a)^2) dzeta,
+    $,
+    <eq:cauchy_differentiation_formula_differenceoffirstorderdifferences>,
+  )
 
   Let $d$ be the distance from $a$ to $partial U$; then $0 < r < d$. Then since $abs(z-a) < r$ and $abs(zeta-a) gt.eq d$, $abs(zeta-z) gt.eq d-r$. Then the absolute value of the integrand of @eq:cauchy_differentiation_formula_differenceoffirstorderdifferences is bounded above by $M / (d^2(d-r))$, where $M$ is the maximum of $abs(f(zeta))$, which exists by @thm:continuous_function_bounded_on_compact. Then,
 
@@ -66,10 +85,13 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
 
   Notice the expansion of the kernel, convergent since $abs(z-z_0) < abs(zeta-a)$:
 
-  $
-    1 / (zeta-z) & =1 / (zeta-a) dot (zeta-a) / (zeta-a+a-z)=1 / (zeta-a) dot 1 / (1 - (z-a) / (zeta-a)) \
-                 & =1 / (zeta-a) sum_(j = 0)^oo ((z-a) / (zeta-a))^j.
-  $<eq:cauchy_differentiation_formula_kernelexpansion>
+  #lbl(
+    $
+      1 / (zeta-z) & =1 / (zeta-a) dot (zeta-a) / (zeta-a+a-z)=1 / (zeta-a) dot 1 / (1 - (z-a) / (zeta-a)) \
+                   & =1 / (zeta-a) sum_(j = 0)^oo ((z-a) / (zeta-a))^j.
+    $,
+    <eq:cauchy_differentiation_formula_kernelexpansion>,
+  )
 
   Then,
 
@@ -127,21 +149,27 @@ The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized 
 
 The differentiation formula above can be thought of as a generalization of @thm:cauchygoursatformula, and provides similar utility in the evaluation of integrals:
 
-#example[
-  A _Legendre polynomial_ is a polynomial whose explicit equation is given by
+#lbl(
+  example[
+    A _Legendre polynomial_ is a polynomial whose explicit equation is given by
 
-  $
-    P_n (z)=1 / (2^n n!) dv((z^2-1)^n, z, n, style: "large").
-  $ <eq:legendrepolynomialintegralformula_rodriguesformula>
+    #lbl(
+      $
+        P_n (z)=1 / (2^n n!) dv((z^2-1)^n, z, n, style: "large").
+      $,
+      <eq:legendrepolynomialintegralformula_rodriguesformula>,
+    )
 
-  Prove the integral form
+    Prove the integral form
 
-  $
-    P_n (z)=1 / taui integral.cont_gamma ((zeta^2-1)^n) / (2^n (zeta-z)^(n+1)) dzeta,
-  $
+    $
+      P_n (z)=1 / taui integral.cont_gamma ((zeta^2-1)^n) / (2^n (zeta-z)^(n+1)) dzeta,
+    $
 
-  where $gamma$ is a simple closed curve enclosing $z$.
-] <ex:legendrepolynomialintegralformula>
+    where $gamma$ is a simple closed curve enclosing $z$.
+  ],
+  <ex:legendrepolynomialintegralformula>,
+)
 
 #solution[to @ex:legendrepolynomialintegralformula][
   By applying Cauchy--Goursat (@thm:cauchy_differentiation_formula) on @eq:legendrepolynomialintegralformula_rodriguesformula, we get that
@@ -185,13 +213,16 @@ The differentiation formula above can be thought of as a generalization of @thm:
 
 @thm:nthderivativeboundedl1norm will profoundly generalize this statement significantly. The relationship between the derivatives of a holomorphic function and the function itself is an important property of holomorphic functions.
 
-#example[
-  Let $f$ be entire such that $forall z in CC$, $abs(f(z)) <= M ee^(abs(z))$. Prove that $forall n in NN$, $abs(f(0)) <= M$ and
+#lbl(
+  example[
+    Let $f$ be entire such that $forall z in CC$, $abs(f(z)) <= M ee^(abs(z))$. Prove that $forall n in NN$, $abs(f(0)) <= M$ and
 
-  $
-    abs(f^((n)) (0)) <= M n! (ee / n)^n.
-  $
-] <ex:entire_function_exponential_bounded_derivative_bound>
+    $
+      abs(f^((n)) (0)) <= M n! (ee / n)^n.
+    $
+  ],
+  <ex:entire_function_exponential_bounded_derivative_bound>,
+)
 
 #solution[to @ex:entire_function_exponential_bounded_derivative_bound][
   $abs(f(0)) <= M$ is obviously true by letting $z=0$. Then $forall R > 0$, by Cauchy's Estimate (@thm:cauchys_estimate),
@@ -299,19 +330,25 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   Thus, $F'(z)=f(z)$ for all $z in D$. Since $a$ was arbitrary, $f$ is holomorphic over $U$.
 ]
 
-#theorem[
-  Let $U subset.eq CC$ be open, let $K subset U$ be compact and $V supset K$ be open such that $overline(V) subset U$ is compact ($V supset.eq K$ is relatively compact in $U$). Let $f(z)$ be holomorphic in $U$. Then there exists a sequence ${c_n} subset RR$ dependent only on $K$ and $V$ (independent of $f$ and $z$) such that $forall n in NN$,
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be open, let $K subset U$ be compact and $V supset K$ be open such that $overline(V) subset U$ is compact ($V supset.eq K$ is relatively compact in $U$). Let $f(z)$ be holomorphic in $U$. Then there exists a sequence ${c_n} subset RR$ dependent only on $K$ and $V$ (independent of $f$ and $z$) such that $forall n in NN$,
 
-  $
-    sup_(z in K) abs(f^((n)) (z)) <= c_n norm(f)_(L^1(V)),
-  $ <eq:nthderivativeboundedl1norm_statement>
+    #lbl(
+      $
+        sup_(z in K) abs(f^((n)) (z)) <= c_n norm(f)_(L^1(V)),
+      $,
+      <eq:nthderivativeboundedl1norm_statement>,
+    )
 
-  where $norm(f)_(L^p(V))$ denotes
+    where $norm(f)_(L^p(V))$ denotes
 
-  $
-    (integral_V abs(f(z))^p dx and dy)^(1 / p).
-  $
-] <thm:nthderivativeboundedl1norm>
+    $
+      (integral_V abs(f(z))^p dx and dy)^(1 / p).
+    $
+  ],
+  <thm:nthderivativeboundedl1norm>,
+)
 
 #proof[
   Let $phi in C^oo (CC)$ satisfy $supp(phi) subset V$ and be identically equal to $1$ over some open neighborhood $W$ of $K$ relatively compact in $V$. Since $f in C^oo (U)$, by the Cauchy--Pompeiu Theorem (@thm:pompeiu) on $f(z) phi(z) in C^oo (overline(U))$,
@@ -377,13 +414,16 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   The problem now stands to prove that $phi(z)$ exists in the first place, which requires a topological argument to be later discussed in @thm:bumpfunctionexistence.
 ]
 
-#corollary[
-  Let $U subset.eq CC$ be open, let $K subset U$ be compact and $V supset K$ be open such that $overline(V) subset U$. For any holomorphic function $f(z)$ in $U$, there exist constants (independent of $z$ and $f$) ${c_n}$ such that
+#lbl(
+  corollary[
+    Let $U subset.eq CC$ be open, let $K subset U$ be compact and $V supset K$ be open such that $overline(V) subset U$. For any holomorphic function $f(z)$ in $U$, there exist constants (independent of $z$ and $f$) ${c_n}$ such that
 
-  $
-    sup_(z in K) abs(f^((n)) (z)) <= c_n sup_(z in V) abs(f(z)).
-  $
-] <cor:nthderivativeboundedsupremum>
+    $
+      sup_(z in K) abs(f^((n)) (z)) <= c_n sup_(z in V) abs(f(z)).
+    $
+  ],
+  <cor:nthderivativeboundedsupremum>,
+)
 
 #proof[
   Starting from @eq:nthderivativeboundedl1norm_statement, observe that
@@ -444,8 +484,4 @@ The concept of analytic continuation and its consequent problems and properties 
   $
 
   over the same disk of convergence. Over the punctured disk, $tilde(f)(z)=f(z)$, and therefore $tilde(f)$ is an analytic continuation of $f$.
-]
-
-#docs-subchapter(title: [Topology, Partitions of Unity, and the Existence of Bump Functions], route: "partitions_of_unity", label: <sec:partitions_of_unity>)[
-  #include "partitions_of_unity/index.typ"
 ]

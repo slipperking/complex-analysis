@@ -2,7 +2,7 @@
 #import "packages.typ" as _packages
 #import "math.typ": *
 #import "graphics.typ": *
-#import "styles.typ": pdf-styles, web-styles, explicit-label
+#import "styles.typ": explicit-label, pdf-styles, web-styles
 #import "theorems.typ" as _thm
 #import "web.typ" as _web
 
@@ -19,6 +19,7 @@
 #let proof = _thm.proof
 #let solution = _thm.solution
 #let qed-symbol = _thm.qed-symbol
+#let qedhere = h(1fr) + _thm.qed-symbol
 #let theorem-toc-entry = _thm.theorem-toc-entry
 
 #let thm-counter = _thm.thm-counter
@@ -35,8 +36,8 @@
 #let abstract = _web.abstract
 #let docs-cover = _web.docs-cover
 #let docs-frontmatter = _web.docs-frontmatter
-#let docs-chapter = _web.docs-chapter
 #let docs-section = _web.docs-section
+#let docs-chapter = _web.docs-chapter
 #let docs-subchapter = _web.docs-subchapter
 #let docs-subsubchapter = _web.docs-subsubchapter
 #let docs-appendix = _web.docs-appendix

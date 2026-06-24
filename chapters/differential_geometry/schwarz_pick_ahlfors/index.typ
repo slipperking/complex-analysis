@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== From Schwarz--Pick to Ahlfors and Value Distribution of Entire Functions
-
+#show: docs-subchapter.with(
+  title: [From Schwarz--Pick to Ahlfors and Value Distribution of Entire Functions],
+  route: "schwarz_pick_ahlfors",
+)
 While Schwarz Lemma in @lem:schwarz concerns self-maps of $DD$ with a fixed point at the origin, the Schwarz--Pick Lemma in @lem:schwarzpick generalizes this to arbitrary points in $DD$ as well as the hyperbolic contraction property of holomorphic maps.
 
 In 1938, Lars Ahlfors provided a further generalization by curvature, prompting the study of complex functions from a differential-geometric approach.
@@ -18,9 +19,12 @@ The hyperbolic metric $lambda$ in @eq:poincaremetricdefinition does not increase
 
 #proof[
   Define
-  $
-    lambda_r (z) = (z |-> z / r)^* lambda(z) = (2 r)/(r^2 - abs(z)^2), quad 0 < r < 1
-  $ <eq:poincaremetriconscaleddisks>
+  #lbl(
+    $
+      lambda_r (z) = (z |-> z / r)^* lambda(z) = (2 r)/(r^2 - abs(z)^2), quad 0 < r < 1
+    $,
+    <eq:poincaremetriconscaleddisks>,
+  )
   to generalize the Poincaré metric to $D(0, r)$. @eq:curvatureinvarianceunderholomorphicpullback gives that $K_(lambda_r) (z) = K_lambda (z / r) = -1$ for any $z in D(0, r)$. Define the real-valued function
   $ u_r (z) = (f^* rho(z))/(lambda_r (z)) quad "for" quad z in D(0, r), $
   which is nonnegative and continuous on $D(0, r)$. The pullback metric $f^* rho = (rho compose f) abs(f')$ is continuous on $DD$ and thus bounded on $overline(D(0, r))$ (as a consequence of @thm:continuous_function_bounded_on_compact). As $abs(z) -> r^-$, $lambda_r (z) -> oo$, and hence $lim_(abs(z) -> r^-) u_r (z) = 0$. Thus,
@@ -28,29 +32,38 @@ The hyperbolic metric $lambda$ in @eq:poincaremetricdefinition does not increase
   must be attained at some $z = tau_r in D(0, r)$ (within the interior).
 
   If $M_r = 0$, then $forall z in D(0, r)$, $(f^* rho(z))/(lambda_r (z)) = 0 ==> M_r = 0 <= 1$ by maximality. On the contrary, if $M_r > 0$, $f^* rho$ has well-defined Gaussian curvature at $tau_r$. Since
-  $
-    (laplacian log(u_r))(tau_r) & = (laplacian log(f^* rho))(tau_r) - (laplacian log(lambda_r))(tau_r) \
-                                & = -K_(f^* rho) (tau_r) f^* rho(tau_r)^2 + K_(lambda_r) (tau_r) lambda_r (tau_r)^2 \
-                                & = -K_(f^* rho) (tau_r) f^* rho(tau_r)^2 - lambda_r (tau_r)^2.
-  $ <eq:schwarzahlforspick_curvaturenumeratoratmaximum>
+  #lbl(
+    $
+      (laplacian log(u_r))(tau_r) & = (laplacian log(f^* rho))(tau_r) - (laplacian log(lambda_r))(tau_r) \
+                                  & = -K_(f^* rho) (tau_r) f^* rho(tau_r)^2 + K_(lambda_r) (tau_r) lambda_r (tau_r)^2 \
+                                  & = -K_(f^* rho) (tau_r) f^* rho(tau_r)^2 - lambda_r (tau_r)^2.
+    $,
+    <eq:schwarzahlforspick_curvaturenumeratoratmaximum>,
+  )
   By assumption, we have $-K_(f^* rho) (tau_r) >= 1$. Hence, $(laplacian log(u_r))(tau_r) >= f^* rho(tau_r)^2 - lambda_r (tau_r)^2$. Since $log$ is increasing in $RR$, $tau_r$ is a local maximum of $log compose u_r$ and hence $(laplacian log(u_r))(tau_r) <= 0$. Thus, we have
   $ f^* rho(tau_r)^2 - lambda_r (tau_r)^2 <= 0 <==> M_r <= 1. $
   Now let $r -> 1^-$, and it follows that $M_r -> sup_(z in DD) (f^* rho(z))/(lambda(z)) <= 1$.
 ]
 
-#theorem[
-  Let $f:DD -> U subset.eq CC$ be holomorphic. Let $dif s = rho(w) abs(dif w)$ (where $rho:U -> RR_(> 0)$) define a regular metric such that at every point $w in U$, either
+#lbl(
+  theorem[
+    Let $f:DD -> U subset.eq CC$ be holomorphic. Let $dif s = rho(w) abs(dif w)$ (where $rho:U -> RR_(> 0)$) define a regular metric such that at every point $w in U$, either
 
-  1. The second derivatives of $log lambda$ are continuous ($C^2$) and
-    $ laplacian(log lambda)(w) >= lambda^2 $
-  2. There exist two opposite directions $vu(n)'$, $vu(n)''$ such that
-    $
-      nabla_(vu(n)') (log rho)(w) + nabla_(vu(n)'') (log rho)(w) > 0
-    $ <eq:schwarzahlforspickextension1_directionalderivatives>
-    (the directional derivatives).
+    1. The second derivatives of $log lambda$ are continuous ($C^2$) and
+      $ laplacian(log lambda)(w) >= lambda^2 $
+    2. There exist two opposite directions $vu(n)'$, $vu(n)''$ such that
+      #lbl(
+        $
+          nabla_(vu(n)') (log rho)(w) + nabla_(vu(n)'') (log rho)(w) > 0
+        $,
+        <eq:schwarzahlforspickextension1_directionalderivatives>,
+      )
+      (the directional derivatives).
 
-  Then the metric $f^* rho$ does not exceed the hyperbolic metric $lambda$.
-] <thm:schwarzahlforspickextension1>
+    Then the metric $f^* rho$ does not exceed the hyperbolic metric $lambda$.
+  ],
+  <thm:schwarzahlforspickextension1>,
+)
 
 #proof[
   The first case is equivalent to $K_rho <= -1$.
@@ -69,11 +82,14 @@ The hyperbolic metric $lambda$ in @eq:poincaremetricdefinition does not increase
   by the symmetry of the hyperbolic metric and the fact that the two directions are opposite to each other. Pulling back to $rho$ contradicts with @eq:schwarzahlforspickextension1_directionalderivatives. Thus, $tau_r$ cannot both simultaneously be the location of a maximum while satisfying said inequality; therefore the theorem follows.
 ]
 
-#theorem[
-  Let $f:DD -> U$ be holomorphic. Let
-  $ rho:U subset.eq CC -> RR_(> 0), quad dif s_rho = rho(w) abs(dif w) $
-  be a continuous conformal metric (but not necessarily $C^2$) such that at each point $w$, there exists a neighborhood $V_w in.rev w$ in $U$ and a regular metric $rho_w$ thereon such that $rho_w (w) = rho(w)$ and $rho_w <= rho$ everywhere else (referred to as a "supporting metric"). If each $K_(rho_w) <= -1$ everywhere, then the conclusion of @thm:schwarzahlforspick continues to hold for $rho$.
-] <thm:schwarzahlforspicksupportingmetric>
+#lbl(
+  theorem[
+    Let $f:DD -> U$ be holomorphic. Let
+    $ rho:U subset.eq CC -> RR_(> 0), quad dif s_rho = rho(w) abs(dif w) $
+    be a continuous conformal metric (but not necessarily $C^2$) such that at each point $w$, there exists a neighborhood $V_w in.rev w$ in $U$ and a regular metric $rho_w$ thereon such that $rho_w (w) = rho(w)$ and $rho_w <= rho$ everywhere else (referred to as a "supporting metric"). If each $K_(rho_w) <= -1$ everywhere, then the conclusion of @thm:schwarzahlforspick continues to hold for $rho$.
+  ],
+  <thm:schwarzahlforspicksupportingmetric>,
+)
 
 #proof[
   By assumption, we have
@@ -86,9 +102,12 @@ The hyperbolic metric $lambda$ in @eq:poincaremetricdefinition does not increase
 @thm:schwarzahlforspick generalizes the Schwarz--Pick Theorem when $rho$ is chosen to be $lambda$ and $f$ is chosen such that $f(DD) subset.eq DD$.
 
 For the purpose of the proceeding generalization, we define the conformal metric
-$
-  lambda_r^alpha (z) = (1)/(sqrt(alpha)) (z |-> z / r)^* lambda(z) = (2 r)/(sqrt(alpha) (r^2 - abs(z)^2)), quad r > 0, z in D(0, r).
-$ <eq:poincaremetricscaledcurvature>
+#lbl(
+  $
+    lambda_r^alpha (z) = (1)/(sqrt(alpha)) (z |-> z / r)^* lambda(z) = (2 r)/(sqrt(alpha) (r^2 - abs(z)^2)), quad r > 0, z in D(0, r).
+  $,
+  <eq:poincaremetricscaledcurvature>,
+)
 Its Gaussian curvature is
 $
   K_(lambda_r^alpha) (z) & = -4 pdv([log((2 r)/(sqrt(alpha) (r^2 - abs(z)^2)))], overline(z), z, style: "large") ((sqrt(alpha) (r^2 - abs(z)^2))/(2 r))^2 \
@@ -96,13 +115,16 @@ $
 $
 via the results and definitions in @eq:poincaremetriconscaleddisks.
 
-#corollary[
-  Let $r > 0$ and suppose $f:D(0, r) -> U$ is holomorphic, where $U subset.eq CC$ is a region. For any $beta > 0$, define $rho$ to be a regular metric on $U$ with $dif s_rho^2 = rho^2(w) abs(dif w)^2$ such that
-  $ K_rho (w) <= -beta, quad forall w in U. $
-  Then $forall alpha > 0$,
-  $ f^* rho(z) <= sqrt(alpha / beta) lambda_r^alpha (z) $
-  for any $z in D(0, r)$, where $f^* rho(z) = (rho compose f) abs(f')$ is the metric pullback.
-] <cor:generalized_ahlfors>
+#lbl(
+  corollary[
+    Let $r > 0$ and suppose $f:D(0, r) -> U$ is holomorphic, where $U subset.eq CC$ is a region. For any $beta > 0$, define $rho$ to be a regular metric on $U$ with $dif s_rho^2 = rho^2(w) abs(dif w)^2$ such that
+    $ K_rho (w) <= -beta, quad forall w in U. $
+    Then $forall alpha > 0$,
+    $ f^* rho(z) <= sqrt(alpha / beta) lambda_r^alpha (z) $
+    for any $z in D(0, r)$, where $f^* rho(z) = (rho compose f) abs(f')$ is the metric pullback.
+  ],
+  <cor:generalized_ahlfors>,
+)
 
 #proof[
   Consider the $(z |-> z r)^* f^*(rho sqrt(beta))$, a conformal metric pullback of $rho sqrt(beta)$ to $DD$, which satisfies
@@ -151,19 +173,25 @@ Similar to in the proof of the Riemann Mapping Theorem (@thm:riemann_mapping), o
 
 The preceding examples show that if the omitted set is sufficiently "large" (in the sense of having positive area or disconnecting the plane in certain ways), then any entire function avoiding it must reduce to a constant. However, there are natural limits to the smallness of the omitted set. For instance, the exponential function $exp$ is an entire non-constant function whose image is $CC^*$, omitting only a single point. Thus, the property that _an entire function omits a set_ is not by itself sufficient to guarantee constancy unless that set is suitably substantial. This observation is formalized by Picard's Little Theorem (@thm:littlepicard), which as preluded to before, asserts that any non-constant entire function can omit at most one complex value.
 
-#proposition[
-  Let $U subset CC$ be an open set such that $CC without U$ contains at least two points. Then $U$ admits a conformal metric $rho in C^2(U)$, $dif s_rho^2 = rho^2(z) abs(dz)^2$ such that
-  $ K_rho (z) <= -beta < 0 quad forall z in U $
-  for some $beta > 0$.
-] <prop:conformalmetricnegativecurvatureexistencewhenomits2points>
+#lbl(
+  proposition[
+    Let $U subset CC$ be an open set such that $CC without U$ contains at least two points. Then $U$ admits a conformal metric $rho in C^2(U)$, $dif s_rho^2 = rho^2(z) abs(dz)^2$ such that
+    $ K_rho (z) <= -beta < 0 quad forall z in U $
+    for some $beta > 0$.
+  ],
+  <prop:conformalmetricnegativecurvatureexistencewhenomits2points>,
+)
 
 #proof[
   Without loss of generality, we may assume that ${0, 1} subset.eq CC without U$ (if not, a linear transformation $z |-> (z - xi_1)/(xi_2 - xi_1)$ where $xi_1, xi_2 in CC without U$ are distinct will suffice to transform $U$ to such a region).
 
   Define a regular metric with
-  $
-    rho(z) = (sqrt(1 + abs(z)^(1 / 3)) sqrt(1 + abs(z - 1)^(1 / 3))) / (abs(z)^(5 / 6) abs(z - 1)^(5 / 6)), quad dif s_rho^2 = rho(z)^2 abs(dz)^2
-  $ <eq:conformalmetricnegativecurvatureexistencewhenomits2points_metric>
+  #lbl(
+    $
+      rho(z) = (sqrt(1 + abs(z)^(1 / 3)) sqrt(1 + abs(z - 1)^(1 / 3))) / (abs(z)^(5 / 6) abs(z - 1)^(5 / 6)), quad dif s_rho^2 = rho(z)^2 abs(dz)^2
+    $,
+    <eq:conformalmetricnegativecurvatureexistencewhenomits2points_metric>,
+  )
   on $CC without {0, 1}$.
 
   Since $laplacian(log abs(z)^(5 / 6)) = (5)/(6) laplacian(log abs(z)) = (5)/(6) laplacian(Re log(z)) = 0$ by harmonicity,

@@ -1,10 +1,14 @@
 #import "/lib.typ": *
-
-=== Hadamard Factorization Theorem
-
-#theorem[
-  Let $f(z) = ee^(phi(z)) P(z)$ be the Weierstrass canonical factorization of $f$, where $f$ is entire with finite order $rho = rho(f)$ and $rho(0) = 1$. Then $phi$ is a polynomial of degree $<= rho$.
-]<thm:entirefunctionfiniteordercanonicalweierstrassfactorizationpolynomialdegree>
+#show: docs-subsubchapter.with(
+  title: [Hadamard Factorization Theorem],
+  route: "hadamard_factorization_theorem",
+)
+#lbl(
+  theorem[
+    Let $f(z) = ee^(phi(z)) P(z)$ be the Weierstrass canonical factorization of $f$, where $f$ is entire with finite order $rho = rho(f)$ and $rho(0) = 1$. Then $phi$ is a polynomial of degree $<= rho$.
+  ],
+  <thm:entirefunctionfiniteordercanonicalweierstrassfactorizationpolynomialdegree>,
+)
 
 #proof[
   By logarithmic differentiation and by taking $p > rho - 1$ subsequent derivatives, we have
@@ -18,9 +22,12 @@
   Hence, $phi$ is a polynomial of degree $<= p$. Choosing $p = 1 + floor(rho - 1) > rho - 1$ so that $p <= rho$, the assertion follows.
 ]
 
-#corollary[
-  Let $f(z) = z^m ee^(phi(z)) P(z)$ be the Weierstrass canonical factorization of $f$, where $f$ is entire with finite order $rho = rho(f)$. Then $phi$ is a polynomial of degree $<= rho$.
-]<cor:hadamardfactorizationpolynomial>
+#lbl(
+  corollary[
+    Let $f(z) = z^m ee^(phi(z)) P(z)$ be the Weierstrass canonical factorization of $f$, where $f$ is entire with finite order $rho = rho(f)$. Then $phi$ is a polynomial of degree $<= rho$.
+  ],
+  <cor:hadamardfactorizationpolynomial>,
+)
 
 #proof[
   Let $f(z) = z^m g(z)$, where $f$ and $g$ are entire, $g(0) != 0$, and $f$ has finite order $rho(f)$ and $M(r, f) = r^m M(r, g)$ for $r > 0$. For $epsilon > 0$, $exists r' > 0$ such that $r > r'$ implies
@@ -43,11 +50,14 @@ Then the results of @cor:hadamardfactorizationpolynomial and @thm:entirefunction
   Let $mu$ be the genus of $f$ and let $rho$ be the order of $f$, where $f$ is entire with finite order. Then $mu <= rho$.
 ]<thm:hadamardfactorization>
 
-#theorem[
-  The factorization
-  $ sin z = z product_(k=1)^infinity (1 - z^2 / (uppi^2 k^2)) $
-  defines an entire function and uniformly converges on any compact disk $overline(D(0,r))$.
-]<thm:sinproductformula>
+#lbl(
+  theorem[
+    The factorization
+    $ sin z = z product_(k=1)^infinity (1 - z^2 / (uppi^2 k^2)) $
+    defines an entire function and uniformly converges on any compact disk $overline(D(0,r))$.
+  ],
+  <thm:sinproductformula>,
+)
 
 #proof[
   The zeros of $sin$ are simple at each of $ZZ$. Aside from the simple zero at $z = 0$, let

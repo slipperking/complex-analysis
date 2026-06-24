@@ -1,19 +1,23 @@
 #import "/lib.typ": *
-
-== Analytic Capacity
-
+#show: docs-subchapter.with(
+  title: [Analytic Capacity],
+  route: "analytic_capacity",
+)
 The theory of rational approximation is essentially built upon the concept of _analytic capacity_, which was introduced in 1940 by Finnish mathematician Lars Ahlfors. Our purpose here is to give a brief and elementary introduction. Despite its importance, still many trivially simple results remain conjecture.
 
 The uses of analytic capacity are present in many other topics of complex analysis. Analytic capacity serves as a natural framework for general rational approximation theory. Our purpose here is to hint at how analytic capacity theory relates to the proof of @thm:mergelyan and pertinent problems in general.
 
 #definition("Analytic Capacity")[
   Let $K subset.eq CC$ be compact. The _analytic capacity_ of $K$ is defined as
-  $
-    gamma(K) = sup {abs(f'(oo)): mat(
-        delim: "[",
-        f "is holomorphic on" extcomplex without K; f(extcomplex without K) subset.eq overline(DD); f(oo) = 0
-      )},
-  $ <def:analyticcapacity>
+  #lbl(
+    $
+      gamma(K) = sup {abs(f'(oo)): mat(
+          delim: "[",
+          f "is holomorphic on" extcomplex without K; f(extcomplex without K) subset.eq overline(DD); f(oo) = 0
+        )},
+    $,
+    <def:analyticcapacity>,
+  )
   where $f'(oo)$ is defined as in @eq:derivativeatinfinity. For an arbitrary set $U subset.eq CC$, we define
   $
     sup {gamma(K): K subset.eq U and K "is compact"}.
@@ -22,17 +26,23 @@ The uses of analytic capacity are present in many other topics of complex analys
 
 Intuitively, $gamma$ measures the extent to which bounded analytic functions outside $K$ can deviate from constancy. Generally, the "larger" $K$ is, the greater the capacity is.
 
-#proposition[
-  If $K subset CC$ is a compact set of discrete points, then $lambda(K) = 0$.
-] <prop:analytic_capacity_of_discrete_points>
+#lbl(
+  proposition[
+    If $K subset CC$ is a compact set of discrete points, then $lambda(K) = 0$.
+  ],
+  <prop:analytic_capacity_of_discrete_points>,
+)
 
 #proof[
   For any $f: extcomplex without K -> CC$ holomorphic with $f(extcomplex without K) subset.eq overline(DD)$, since $f$ is bounded, the Riemann's Theorem for removable singularities (@thm:riemannremovablesingularities) allows for an analytic continuation onto all of $extcomplex$. Then Liouville's Theorem (@thm:liouville) implies that $f$ is constant and $f'(oo) = 0$. Hence $gamma(K) = 0$.
 ]
 
-#theorem[
-  For $K_1 subset.eq K_2$ both compact in $CC$, $gamma(K_1) <= gamma(K_2)$.
-] <thm:analyticcapacitymonotonicity>
+#lbl(
+  theorem[
+    For $K_1 subset.eq K_2$ both compact in $CC$, $gamma(K_1) <= gamma(K_2)$.
+  ],
+  <thm:analyticcapacitymonotonicity>,
+)
 
 #proof[
   This follows directly from the definition and the fact that any function holomorphic on $extcomplex without K_1$ is also holomorphic on $extcomplex without K_2$.
@@ -50,9 +60,12 @@ An alternative perspective of this "largeness" pertains to a certain _removabili
 
 A compact set $K subset CC$ is a _continuum_ if it is connected, $CC without K$ is connected, and if it is not a singleton ($K$ contains at least 2 distinct points).
 
-#proposition[
-  Let $K subset CC$ be a continuum. Then $gamma(K) = abs(f'(oo))$ where $f: extcomplex without K -> DD$ is a biholomorphism satisfying $f(oo) = 0$ (i. e. the maximal $abs(f'(oo))$ in the supremum of the definition of analytic capacity is attained when $f$ is biholomorphic).
-] <prop:analytic_capacity_continuum_biholomorphism>
+#lbl(
+  proposition[
+    Let $K subset CC$ be a continuum. Then $gamma(K) = abs(f'(oo))$ where $f: extcomplex without K -> DD$ is a biholomorphism satisfying $f(oo) = 0$ (i. e. the maximal $abs(f'(oo))$ in the supremum of the definition of analytic capacity is attained when $f$ is biholomorphic).
+  ],
+  <prop:analytic_capacity_continuum_biholomorphism>,
+)
 
 #proof[
   Let $f$ be the biholomorphism, $g: extcomplex without K -> DD$ be holomorphic (not necessarily surjective) mapping $oo$ to $0$. Since $h equiv g compose f^(-1): DD -> DD$ and maps $0$ to $0$, the Schwarz Lemma (@lem:schwarz) implies that
@@ -65,9 +78,12 @@ A compact set $K subset CC$ is a _continuum_ if it is connected, $CC without K$ 
   $
 ]
 
-#proposition[
-  The analytic capacity of any closed disk is the radius.
-] <prop:analyticcapacitycloseddisk>
+#lbl(
+  proposition[
+    The analytic capacity of any closed disk is the radius.
+  ],
+  <prop:analyticcapacitycloseddisk>,
+)
 
 #proof[
   Since $overline(D(a, r))$ is a continuum, a biholomorphism $f: extcomplex without overline(D(a, r)) -> DD$ such that $f(oo) = 0$. One such biholomorphism is given by
@@ -77,12 +93,15 @@ A compact set $K subset CC$ is a _continuum_ if it is connected, $CC without K$ 
   Hence, @prop:analytic_capacity_continuum_biholomorphism, gives that $gamma(overline(D(a, r))) = r$.
 ]
 
-#proposition[
-  If $K subset CC$ is a continuum, then
-  $
-    (diam K) / 4 <= gamma(K) <= diam K.
-  $
-] <prop:analyticcapacitycontinuuminequalities>
+#lbl(
+  proposition[
+    If $K subset CC$ is a continuum, then
+    $
+      (diam K) / 4 <= gamma(K) <= diam K.
+    $
+  ],
+  <prop:analyticcapacitycontinuuminequalities>,
+)
 
 #proof[
   Assume $f: extcomplex without K -> DD$ is a biholomorphism mapping $oo$ to $0$. The lower bound follows directly from @prop:complementbiholomorphismquarterestimate. Let $p in K$ be arbitrary, then for any $q in K$, we obtain $abs(p - q) <= diam K$, implying that $K subset.eq overline(D(p, diam K))$. By @prop:analyticcapacitycloseddisk, we have $gamma(overline(D(p, diam K))) = diam K$, and @thm:analyticcapacitymonotonicity consequently gives the upper bound of

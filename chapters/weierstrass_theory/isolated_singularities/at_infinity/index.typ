@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-=== At the $oo$ Point
-
+#show: docs-subsubchapter.with(
+  title: [At the $oo$ Point],
+  route: "at_infinity",
+)
 Given the one-point compactification of $CC$, $extcomplex$, we can now define and analyze the behavior of functions near the point at $oo$. Similar to the classification of isolated singularities in $CC$, we can classify $oo$ as a removable singularity, a pole, or an essential singularity of a holomorphic function.
 
 Let $f:CC without overline(D(0, R)) -> CC$ be holomorphic for some $R > 0$. Then $z = oo$ is an _isolated singularity_ of $f$. To analyze the nature of the singularity, let $zeta = 1 / z$. We define a new function $g(zeta) = f(1 / zeta) = f(z)$, which is holomorphic on $D^*(0, 1 / R)$. Then at $zeta = 0$, $g(zeta)$ has the Laurent expansion of

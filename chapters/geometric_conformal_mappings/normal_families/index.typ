@@ -1,7 +1,8 @@
 #import "/lib.typ": *
-
-== Normal Families
-
+#show: docs-subchapter.with(
+  title: [Normal Families],
+  route: "normal_families",
+)
 A collection of functions is better known as a _family_ of functions. One important distinguishing property of families of functions, as opposed to sequences, is that families may be uncountable and may not be indexed by the natural numbers. We will now introduce the following classification of families of functions:
 
 #definition("Normal Family")[
@@ -16,15 +17,21 @@ The following notion was introduced and formalized by the Italian mathematicians
 
 In contrast, the uniform continuity of a function $f$ guarantees that $delta$ may be chosen independently of $z_0$. In the case of (pointwise) equicontinuity, it is chosen independently of $f in cal(F)$. A family of functions is said to be _uniformly equicontinuous_ on $U$ if $delta$ can be chosen independently of both $z_0$ and $f in cal(F)$ (in other words, it attains a positive infimum in $U$). Similar to @thm:heinecantor
 
-#theorem[
-  A family of functions $cal(F)$ that is pointwise equicontinuous on every point $z in K subset CC$ for a compact set $K$ is uniformly equicontinuous on $K$.
-] <thm:heine_cantor_family>
+#lbl(
+  theorem[
+    A family of functions $cal(F)$ that is pointwise equicontinuous on every point $z in K subset CC$ for a compact set $K$ is uniformly equicontinuous on $K$.
+  ],
+  <thm:heine_cantor_family>,
+)
 
 #proof[
   Fix $z in K$. By pointwise equicontinuity, $forall epsilon > 0$, $exists delta_z > 0$ such that $forall f in cal(F)$, $forall zeta in D(z, delta_z) inter K$,
-  $
-    abs(f(zeta) - f(z)) < epsilon / 2.
-  $ <eq:heine_cantor_family_equicontinuityconsequence>
+  #lbl(
+    $
+      abs(f(zeta) - f(z)) < epsilon / 2.
+    $,
+    <eq:heine_cantor_family_equicontinuityconsequence>,
+  )
 
   The collection ${D(z, delta_z / 2)}_(z in K)$ forms an open cover of $K$, and by the Heine--Borel Theorem, it admits a finite subcover ${D(z_k, delta_(z_k) / 2)}_(k in NN_(<= n))$ for some finite $n in NN$. Let $delta = min_(k in NN_(<= n)) (delta_(z_k) / 2)$.
 
@@ -55,25 +62,34 @@ The following theorem is important in many areas of mathematical analysis and ha
   Let ${zeta_k}_(k in NN)$ be a countably dense subset of $K$. By the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), there exists a subsequence of ${f_n}_(n in NN)$, namely ${f_(n_(1,j))}_(j in NN)$, such that ${f_(n_(1,j)) (zeta_1)}_(j in NN)$ is convergent. The set ${f_(n_(1,j)) (zeta_2)}_(j in NN)$ is also bounded by $M$, and hence, by the Bolzano--Weierstrass Theorem, it too has a convergent subsequence ${f_(n_(2,j)) (zeta_2)}_(j in NN)$. Similarly, there exists a subsequence of ${f_(n_(2,j))}_(j in NN)$, namely ${f_(n_(3,j))}_(j in NN)$, such that ${f_(n_(3,j)) (zeta_3)}_(j in NN)$ is convergent.
 
   By the method of construction, we have:
-  $
-    n_(1,1) < n_(1,2) < dots.c < n_(1,j) < dots.c \
-    n_(2,1) < n_(2,2) < dots.c < n_(2,j) < dots.c \
-    dots.v \
-    n_(k,1) < n_(k,2) < dots.c < n_(k,j) < dots.c \
-    dots.down,
-  $ <eq:arzela_ascoli_indexsequences>
+  #lbl(
+    $
+      n_(1,1) < n_(1,2) < dots.c < n_(1,j) < dots.c \
+      n_(2,1) < n_(2,2) < dots.c < n_(2,j) < dots.c \
+      dots.v \
+      n_(k,1) < n_(k,2) < dots.c < n_(k,j) < dots.c \
+      dots.down,
+    $,
+    <eq:arzela_ascoli_indexsequences>,
+  )
   and furthermore, the sequence in each row is a subsequence of the previous row. As a result, we have
-  $
-    n_(1,1) <= n_(2,1) <= dots.c <= n_(k,1) <= dots.c \
-    n_(1,2) <= n_(2,2) <= dots.c <= n_(k,2) <= dots.c \
-    dots.v \
-    n_(1,j) <= n_(2,j) <= dots.c <= n_(k,j) <= dots.c \
-    dots.down.
-  $ <eq:arzela_ascoli_indexsequencestransposed>
+  #lbl(
+    $
+      n_(1,1) <= n_(2,1) <= dots.c <= n_(k,1) <= dots.c \
+      n_(1,2) <= n_(2,2) <= dots.c <= n_(k,2) <= dots.c \
+      dots.v \
+      n_(1,j) <= n_(2,j) <= dots.c <= n_(k,j) <= dots.c \
+      dots.down.
+    $,
+    <eq:arzela_ascoli_indexsequencestransposed>,
+  )
   We will now invoke a diagonalization argument. Since the sequences above in @eq:arzela_ascoli_indexsequences are strictly increasing and from the results of @eq:arzela_ascoli_indexsequencestransposed, it follows that ${n_(j,j)}_(j in NN)$ is strictly increasing. Let $n_(j,j)$ be denoted by $n'_j$. Since $cal(F)$ is uniformly equicontinuous on $K$, $forall epsilon > 0$, $exists delta = delta(epsilon) > 0$ such that $forall z, z' in K$ satisfying $abs(z - z') < delta$, $forall j in NN$, we have
-  $
-    abs(f_(n'_j) (z) - f_(n'_j) (z')) < epsilon / 3.
-  $ <eq:arzela_ascoli_uniform_equicontinuity_direct_consequence>
+  #lbl(
+    $
+      abs(f_(n'_j) (z) - f_(n'_j) (z')) < epsilon / 3.
+    $,
+    <eq:arzela_ascoli_uniform_equicontinuity_direct_consequence>,
+  )
   Since each ${f_(n_(k,j))}_(j in NN)$ is convergent at $zeta_k$ (for a fixed $k$) by construction, and since ${n'_j}_(j >= k)$ is a subsequence of ${n_(k,j)}_(j in NN)$, it is evident that ${f_(n'_j)}_(j in NN)$ is convergent at each $zeta_k$. We then have that $forall k in NN$, $exists N = N(epsilon, k) in NN$ such that $forall i, j > N$,
   $
     abs(f_(n'_i) (zeta_k) - f_(n'_j) (zeta_k)) < epsilon / 3.
