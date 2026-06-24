@@ -1,6 +1,7 @@
 #import "packages.typ": *
 #import "math.typ": *
 #import "theorems.typ": *
+#import "../source.typ": *
 
 #let pdf-doc-label = <pdf-notes>
 #let web-doc-label = <web-notes>
@@ -162,8 +163,8 @@
 #let web-styles(doc) = {
   show: shared-styles.with(mode: "web")
   set document(
-    title: "Notes on Complex Analysis",
-    author: "Slipper King",
+    title: title,
+    author: authors,
   )
 
   show math.equation: it => {
