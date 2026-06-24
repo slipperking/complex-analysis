@@ -1,6 +1,5 @@
 #import "/lib.typ": *
 
-== Analyticity and Holomorphy <sec:analyticity_and_holomorphy>
 
 The Cauchy--Goursat Formula (@thm:cauchygoursatformula) can also be generalized into a result that equates complex integration and differentiation:
 
@@ -447,6 +446,6 @@ The concept of analytic continuation and its consequent problems and properties 
   over the same disk of convergence. Over the punctured disk, $tilde(f)(z)=f(z)$, and therefore $tilde(f)$ is an analytic continuation of $f$.
 ]
 
-#chapter-section("partitions_of_unity")[
+#docs-subchapter(title: [Topology, Partitions of Unity, and the Existence of Bump Functions], route: "partitions_of_unity", label: <sec:partitions_of_unity>)[
   #include "partitions_of_unity/index.typ"
 ]
