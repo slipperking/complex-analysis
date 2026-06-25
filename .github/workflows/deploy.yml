@@ -31,9 +31,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          uv pip install --system `
-            numpy `
-            shapely
+          pip install numpy shapely
 
       - name: Run preprocessing script
         run: python scripts/build.py
