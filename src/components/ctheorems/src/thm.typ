@@ -699,7 +699,10 @@
 
   show metadata.where(value: "thm-qed-symbol"): {
     qed-symbol
+    if mode != "web" {
+      qed-symbol
+    }
+    html.elem("mtext", qed-symbol, attrs: (class: "qed-symbol"))
   }
-
   doc
 }
