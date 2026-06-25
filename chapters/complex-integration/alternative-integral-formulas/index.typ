@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Alternative Integral Formulas],
-  route: "alternative_integral_formulas",
+  route: "alternative-integral-formulas",
   children: [
     #include "solution-to-dirichlet-problem-on-disk/index.typ"
     #include "poisson-integral-formula-in-harmonic-analysis/index.typ"
@@ -37,14 +37,14 @@ Hence,
   $
     lim_(rho -> 1^-) 1 / (2 uppi) integral_0^(2 uppi) Phi(rho ee^(ii t)) dt = 1 / (2 uppi) integral_0^(2 uppi) Phi(ee^(ii t)) dt = Phi(0).
   $,
-  <eq:harmonicfunctionmeanvalueoverboundaryofunitdisk>,
+  <eq:harmonic-function-mean-value-over-boundary-of-unit-disk>,
 )
 
 Let $z in DD$ and notice that
 
 $ phi_z (zeta) = (zeta - z) / (1 - overline(z) zeta) in Aut(DD) $
 
-maps $partial DD$ to $partial DD$ bijectively. Let $u$ be harmonic on $DD$ and continuous on $overline(DD)$. Then $u compose phi_(-z)$ is also harmonic on $DD$, and by @eq:harmonicfunctionmeanvalueoverboundaryofunitdisk,
+maps $partial DD$ to $partial DD$ bijectively. Let $u$ be harmonic on $DD$ and continuous on $overline(DD)$. Then $u compose phi_(-z)$ is also harmonic on $DD$, and by @eq:harmonic-function-mean-value-over-boundary-of-unit-disk,
 
 $ u(z) = u compose phi_(-z) (0) = 1 / (2 uppi) integral_0^(2 uppi) u compose phi_(-z) (ee^(ii psi)) dif psi. $
 
@@ -56,10 +56,10 @@ By the univalence of $phi_z$, let $ee^(ii psi) = phi_z (ee^(ii t))$. It follows 
     dif psi & = (1 - overline(z) z) / ((1 - overline(z) ee^(ii t))^2) (1 - overline(z) ee^(ii t)) / (ee^(ii t) - z) ee^(ii t) dt \
     & = (1 - abs(z)^2) / abs(1 - overline(z) ee^(ii t))^2 dt.
   $,
-  <eq:poisson-integral-formula_differentialcomputation>,
+  <eq:poisson-integral-formula-differential-computation>,
 )
 
-Then from @eq:harmonicfunctionmeanvalueoverboundaryofunitdisk,
+Then from @eq:harmonic-function-mean-value-over-boundary-of-unit-disk,
 
 $
   u(z) = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii t)) (1 - abs(z)^2) / abs(1 - overline(z) ee^(ii t))^2 dt.
@@ -94,7 +94,7 @@ and from the bijectivity of $R ee^(ii psi) = tilde(phi)_z (R ee^(ii t))$,
     & = (1 - (abs(z)^2)/(R^2)) / (1 - (overline(z))/(R) ee^(ii t))^2 (1 - (overline(z))/(R) ee^(ii t)) / (1 - (z)/(R) ee^(-ii t)) dt \
     & = (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 dt.
   $,
-  <eq:poisson-integral-formula-2_differentialcomputation>,
+  <eq:poisson-integral-formula-2-differential-computation>,
 )
 
 Then because $tilde(phi)_z^(-1) = tilde(phi)_(-z)$,
@@ -119,7 +119,7 @@ The Poisson kernel can also be rewritten as
                & = 1 / (4 uppi) ((zeta + z) / (zeta - z) + (overline(zeta) + overline(z)) / (overline(zeta) - overline(z))) \
                & = 1 / (2 uppi) Re((zeta + z) / (zeta - z)).
   $,
-  <eq:poissonkernelgeneralform>,
+  <eq:poisson-kernel-general-form>,
 )
 
 Thus, @eq:poisson-integral-formula-2 is equivalent to
@@ -141,13 +141,13 @@ is holomorphic on $D(0, R)$: for each fixed $zeta in partial D(0, R)$, the integ
 
 $ f(z) = 1 / taui integral.cont_(partial D(0, R)) (u(zeta)) / zeta (zeta + z) / (zeta - z) dzeta + ii c, $
 
-where $c in RR$. Since $c in RR$ is holomorphic, by @prop:realvaluedholomorphicfunctionconstant, $c$ is constant. For $f(z) = u(z) + ii v(z)$,
+where $c in RR$. Since $c in RR$ is holomorphic, by @prop:real-valued-holomorphic-function-constant, $c$ is constant. For $f(z) = u(z) + ii v(z)$,
 
 #lbl(
   $
     v(z) = c + 1 / (2 uppi) integral_0^(2 uppi) u(zeta) Im((zeta + z) / (zeta - z)) dt.
   $,
-  <eq:schwarz_integral_formula_imaginary_part>,
+  <eq:schwarz-integral-formula-imaginary-part>,
 )
 
 Letting $z = 0$, the integral vanishes, and we obtain $c = v(0) = Im(f(0))$.
@@ -160,12 +160,12 @@ Then for a holomorphic function $f$ on $D(0, R)$ that is continuous on $overline
 
 #lbl(
   $ f(z) = integral.cont_(partial D(0, R)) Re(f(zeta)) S(zeta, z) dzeta + ii Im(f(0)). $,
-  <eq:schwarzintegralformula>,
+  <eq:schwarz-integral-formula>,
 )
 
 The significance of this alternative formula implies that a holomorphic function can be recovered from the real part on the boundary of a disk and the imaginary part at a single point.
 
-From @eq:schwarz_integral_formula_imaginary_part, we can rewrite
+From @eq:schwarz-integral-formula-imaginary-part, we can rewrite
 
 #lbl(
   $
@@ -173,17 +173,17 @@ From @eq:schwarz_integral_formula_imaginary_part, we can rewrite
                                 & = Im((2 z (overline(zeta) - overline(z))) / abs(zeta - z)^2) \
                                 & = (2 Im(z overline(zeta))) / abs(zeta - z)^2.
   $,
-  <eq:harmonic_conjugate>,
+  <eq:harmonic-conjugate>,
 )
 
 Let
 
 $ Q(zeta, z) = Im(z overline(zeta)) / (uppi abs(zeta - z)^2), $
 
-which is known as the _conjugate Poisson kernel_. Then @eq:schwarz_integral_formula_imaginary_part yields yet another integral representation of harmonic functions:
+which is known as the _conjugate Poisson kernel_. Then @eq:schwarz-integral-formula-imaginary-part yields yet another integral representation of harmonic functions:
 
 #lbl($ v(z) = v(0) + integral_0^(2 uppi) u(zeta) Q(zeta, z) dt. $, <eq:conjugate-poisson-integral-formula>)
 
-where $zeta = R ee^(ii t)$. Two harmonic functions are said to be _conjugate_ if they are the real and imaginary parts of a holomorphic function. As seen above, on open disks, any harmonic function will admit a unique conjugate, up to an additive constant $v(0)$. For a harmonic function $u$, we can construct its harmonic conjugate from @eq:harmonic_conjugate.
+where $zeta = R ee^(ii t)$. Two harmonic functions are said to be _conjugate_ if they are the real and imaginary parts of a holomorphic function. As seen above, on open disks, any harmonic function will admit a unique conjugate, up to an additive constant $v(0)$. For a harmonic function $u$, we can construct its harmonic conjugate from @eq:harmonic-conjugate.
 
 The Poisson kernel is important in many branches of mathematics. We will introduce two of the important uses below.

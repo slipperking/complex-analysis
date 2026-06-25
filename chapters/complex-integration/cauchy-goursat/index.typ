@@ -43,7 +43,7 @@ Analogous to the real case, a $0$-form is defined as a scalar-valued function in
   $
     mat(delim: "|", u'_x, u'_y; v'_x, v'_y) = pdv(u, x) pdv(v, y) - pdv(u, y) pdv(v, x) = (pdv(u, x))^2 + (pdv(u, y))^2 = abs(f'(z))^2
   $
-  by @eq:holomorphic_derivative_decomposition.
+  by @eq:holomorphic-derivative-decomposition.
 ]
 #lbl(
   theorem[Green's Theorem, Complex Form][
@@ -67,7 +67,7 @@ Analogous to the real case, a $0$-form is defined as a scalar-valued function in
             & =xi_1 dx + ii eta_1 dx + ii xi_1 dy - eta_1 dy + xi_2 dx + ii eta_2 dx - ii xi_2 dy + eta_2 dy \
             & =[(xi_1 + xi_2) dx + (eta_2 - eta_1) dy] + ii [(eta_1 + eta_2) dx + (xi_1 - xi_2) dy]
     $,
-    <eq:complex-green_real_and_complex_dx_dy_intermediate>,
+    <eq:complex-green-real-and-complex-dx-dy-intermediate>,
   )
 
   Each of $xi_1, xi_2, eta_1, eta_2$ are real-valued functions that can be represented with a domain of $RR^2$. By definition,
@@ -80,10 +80,10 @@ Analogous to the real case, a $0$-form is defined as a scalar-valued function in
       & =(ii pdv(xi_1, x) - pdv(xi_1, y) - pdv(eta_1, x) - ii pdv(eta_1, y) - ii pdv(xi_2, x) - pdv(xi_2, y) + pdv(eta_2, x) - ii pdv(eta_2, y)) dx and dy \
       & =(pdv(eta_2, x) - pdv(xi_1, y) - pdv(eta_1, x) - pdv(xi_2, y)) dif A + ii (pdv(xi_1, x) - pdv(eta_1, y) - pdv(xi_2, x) - pdv(eta_2, y)) dif A.
     $,
-    <eq:complex-green_exterior_derivative_result>,
+    <eq:complex-green-exterior-derivative-result>,
   )
 
-  From @eq:complex-green_real_and_complex_dx_dy_intermediate, we can apply @thm:real-green. For the real component of $omega$, we obtain
+  From @eq:complex-green-real-and-complex-dx-dy-intermediate, we can apply @thm:real-green. For the real component of $omega$, we obtain
 
   $
     integral.cont_(partial U)(xi_1+xi_2)dx+(eta_2-eta_1)dy=integral.double_U (pdv(eta_2, x)-pdv(xi_1, y)-pdv(eta_1, x)-pdv(xi_2, y))dx dy,
@@ -95,10 +95,10 @@ Analogous to the real case, a $0$-form is defined as a scalar-valued function in
     integral.cont_(partial U)(eta_1+eta_2)dx+(xi_1-xi_2)dy=integral.double_U (pdv(xi_1, x)-pdv(eta_1, y)-pdv(xi_2, x)-pdv(eta_2, y))dx dy,
   $
 
-  and the integrands on the right side both match those of @eq:complex-green_exterior_derivative_result.
+  and the integrands on the right side both match those of @eq:complex-green-exterior-derivative-result.
 ]
 
-The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:stokescartan). However, it proves the validity of the treatment of the $partial$ and $overline(partial)$ operators, and the generalization to forms with basis $dz$ and $dif overline(z)$.
+The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:stokes-cartan). However, it proves the validity of the treatment of the $partial$ and $overline(partial)$ operators, and the generalization to forms with basis $dz$ and $dif overline(z)$.
 
 #lbl(
   theorem[Cauchy--Pompeiu][
@@ -121,7 +121,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
     $
       integral_(U without D(z, epsilon)) dif ((f(zeta) dzeta) / (zeta - z)) = integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral.cont_(partial D(z, epsilon)) (f(zeta) dzeta) / (zeta - z).
     $,
-    <eq:pompeiu_directintermediate>,
+    <eq:pompeiu-direct-intermediate>,
   )
 
   By properties of $dif$, the expression is equal to
@@ -135,7 +135,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
 
   $ integral_(U without D(z, epsilon)) pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z). $
 
-  The rightmost term in @eq:pompeiu_directintermediate can be parameterized with $zeta = z + epsilon ee^(ii t)$, $t in [0, 2 uppi]$. Then,
+  The rightmost term in @eq:pompeiu-direct-intermediate can be parameterized with $zeta = z + epsilon ee^(ii t)$, $t in [0, 2 uppi]$. Then,
 
   $
     integral.cont_(partial D(z, epsilon)) (f(zeta) dzeta) / (zeta - z) &=integral_0^(2 uppi) (f (z + epsilon ee^(ii t))) / (epsilon ee^(ii t)) dot ii epsilon ee^(ii t) dt \
@@ -143,7 +143,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
     &=ii integral_0^(2 uppi) (f (z + epsilon ee^(ii t)) - f(z)) dt + ii integral_0^(2 uppi) f(z) dt.
   $
 
-  Because $f in C^1 (overline(U))$, by @prop:c1_lipschitz, $f$ is Lipschitz continuous on $overline(U)$, and $exists M in RR_(>0)$ such that $forall z_0, z_1 in overline(U)$, $abs(f(z_1) - f(z_0)) <= M abs(z_1 - z_0)$. On $partial D(z,epsilon)$, we get that $abs(f(z + epsilon ee^(ii t)) - f(z)) <= M epsilon$. Therefore,
+  Because $f in C^1 (overline(U))$, by @prop:c1-on-compact-lipschitz, $f$ is Lipschitz continuous on $overline(U)$, and $exists M in RR_(>0)$ such that $forall z_0, z_1 in overline(U)$, $abs(f(z_1) - f(z_0)) <= M abs(z_1 - z_0)$. On $partial D(z,epsilon)$, we get that $abs(f(z + epsilon ee^(ii t)) - f(z)) <= M epsilon$. Therefore,
   $
     abs(integral_0^(2 uppi) [f(z + epsilon ee^(ii t)) - f(z)] dt) <= integral_0^(2 uppi) abs(f(z + epsilon ee^(ii t)) - f(z)) dt <= 2 M uppi epsilon,
   $
@@ -153,7 +153,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
     $
       taui f(z) = integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) (dif overline(zeta) and dzeta) / (zeta - z) + lim_(epsilon -> 0) integral_(D(z, epsilon)) pdv(f, overline(zeta)) (dif overline(zeta) and dzeta) / (zeta - z).
     $,
-    <eq:pompeiu_epsilonlimitintermediate>,
+    <eq:pompeiu-epsilon-limit-intermediate>,
   )
 
   We then aim to prove that
@@ -162,7 +162,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
     $
       lim_(epsilon -> 0) integral_(D(z, epsilon)) pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z) = 0.
     $,
-    <eq:pompeiu_areadiskstatement>,
+    <eq:pompeiu-area-disk-statement>,
   )
 
   Notice that since $f in C^1 (overline(U))$, by @thm:continuous-function-bounded-on-compact, $exists M' in RR_(>0)$ such that $forall zeta in overline(U)$, $abs(pdv(f, overline(zeta))) <= M'$. Then,
@@ -184,7 +184,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
     & = 0.
   $
 
-  Then from rearranging @eq:pompeiu_epsilonlimitintermediate, we obtain:
+  Then from rearranging @eq:pompeiu-epsilon-limit-intermediate, we obtain:
 
   $
     f(z) = 1 / (taui) (integral.cont_(partial U) (f(zeta) dzeta) / (zeta - z) - integral_U pdv(f, overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta - z)). #qedhere
@@ -196,7 +196,7 @@ The theorem above is only a specific case of the Stokes--Cartan Theorem (@thm:st
     Then
     $ f(z) = -1 / uppi integral.double_CC pdv(f, overline(zeta)) (dif xi dif eta) / (zeta - z) $
     for all $z in CC$ where $zeta=xi+ii eta$.],
-  <cor:pompeiuwithoutcauchyterm>,
+  <cor:pompeiu-without-cauchy-term>,
 )
 
 #proof[Choose $R>0$ such that $D(0,R)supset op("supp")(f)$. By the Cauchy--Pompeiu Theorem (@thm:pompeiu), we have
@@ -218,14 +218,14 @@ From the above result, we can directly obtain the following theorem:
       $
         f(z) = 1 / (taui) integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta.
       $,
-      <eq:cauchyintegralformula>,
+      <eq:cauchy-integral-formula>,
     )
   ],
-  <thm:cauchyintegralformula>,
+  <thm:cauchy-integral-formula>,
 )
 
 #proof[
-  By @eq:wirtingerderivative2, for $f (zeta,overline(zeta))$, $pdv(f, overline(zeta))=0$. Applying the Cauchy--Pompeiu Theorem (@thm:pompeiu), the area integral vanishes, and @eq:cauchyintegralformula consequently follows.
+  By @eq:wirtinger-derivative-2, for $f (zeta,overline(zeta))$, $pdv(f, overline(zeta))=0$. Applying the Cauchy--Pompeiu Theorem (@thm:pompeiu), the area integral vanishes, and @eq:cauchy-integral-formula consequently follows.
 ]
 
 #lbl(
@@ -233,11 +233,11 @@ From the above result, we can directly obtain the following theorem:
     Let $U subset CC$ be an open region with piecewise $C^1$ boundary $partial U$. For a function $f(z)in C^1 (overline(U))$ holomorphic over $U$,
     $ integral.cont_(partial U) f(zeta) dzeta = 0. $
   ],
-  <thm:cauchyintegraltheorem>,
+  <thm:cauchy-integral-theorem>,
 )
 
 #proof[
-  Let $z in U$ be fixed, and suppose $psi(zeta)=(zeta-z) f(zeta)$. Applying @thm:cauchyintegralformula on $psi(zeta)$, we obtain
+  Let $z in U$ be fixed, and suppose $psi(zeta)=(zeta-z) f(zeta)$. Applying @thm:cauchy-integral-formula on $psi(zeta)$, we obtain
   $
     0 = 1 / (taui) integral.cont_(partial U) (psi(zeta)) / (zeta-z) dzeta = 1 / (taui) integral.cont_(partial U) f (zeta) dzeta.
   $
@@ -279,23 +279,23 @@ From the above result, we can directly obtain the following theorem:
     $
       (u(z + Delta z) - u (z)) / (Delta z) = 1 / (taui) integral_CC (psi(zeta + z + Delta z) - psi (zeta + z)) / (Delta z zeta) dif zeta and dif overline(zeta).
     $,
-    <eq:one-dimensional-partial-conjugate-solution_differenceexpr>,
+    <eq:one-dimensional-partial-conjugate-solution-difference-expression>,
   )
 
   For a fixed $z$, the value of
   $ (psi(zeta + z + Delta z) - psi (zeta + z)) / (Delta z) $
-  tends to $pdv(psi (zeta + z), zeta)$ as $Delta z -> 0$. Because $zeta mapsto psi(zeta + z)$ has compact support and is $C^1$, by @prop:c1_lipschitz, it is Lipschitz continuous for a constant $M$. Let $abs(Delta z) < 1$ and let $K = {w in CC : inf_(zeta in op("supp") psi) abs(w - zeta) <= 1}$ be a neighborhood of the support of $psi$. Then,
+  tends to $pdv(psi (zeta + z), zeta)$ as $Delta z -> 0$. Because $zeta mapsto psi(zeta + z)$ has compact support and is $C^1$, by @prop:c1-on-compact-lipschitz, it is Lipschitz continuous for a constant $M$. Let $abs(Delta z) < 1$ and let $K = {w in CC : inf_(zeta in op("supp") psi) abs(w - zeta) <= 1}$ be a neighborhood of the support of $psi$. Then,
   $ abs((psi(zeta + z + Delta z) - psi(zeta + z)) / (Delta z)) <= M, $
   and specifically, when $zeta + z in.not K$,
   $ (psi(zeta+z+Delta z)-psi (zeta+z))/(Delta z)=0. $
 
-  As shown above, the integrand is uniformly bounded by $M$, which has a convergent integral of $integral_K M dif zeta and dif overline(zeta)$, the limit $Delta z ->0$ may commute with the integral in @eq:one-dimensional-partial-conjugate-solution_differenceexpr. Let $zeta=xi+ii eta$. From the real axis,
+  As shown above, the integrand is uniformly bounded by $M$, which has a convergent integral of $integral_K M dif zeta and dif overline(zeta)$, the limit $Delta z ->0$ may commute with the integral in @eq:one-dimensional-partial-conjugate-solution-difference-expression. Let $zeta=xi+ii eta$. From the real axis,
 
   #lbl(
     $
       pdv(u, x)(z) = 1 / taui integral_CC pdv(psi, xi) (zeta + z) (dzeta and dzetabar) / zeta = 1 / taui integral_CC pdv(psi(zeta), xi) (dzeta and dzetabar) / (zeta - z).
     $,
-    <eq:one-dimensional-partial-conjugate-solution_differenceexpr_realaxisderivative>,
+    <eq:one-dimensional-partial-conjugate-solution-difference-expression-real-axis-derivative>,
   )
 
   From the imaginary axis,
@@ -304,35 +304,35 @@ From the above result, we can directly obtain the following theorem:
     $
       pdv(u, y)(z) = 1 / taui integral_CC pdv(psi, eta) (zeta + z) (dzeta and dzetabar) / zeta = 1 / taui integral_CC pdv(psi(zeta), eta) (dzeta and dzetabar) / (zeta - z).
     $,
-    <eq:one-dimensional-partial-conjugate-solution_differenceexpr_imaginaryaxisderivative>,
+    <eq:one-dimensional-partial-conjugate-solution-difference-expression-imaginary-axis-derivative>,
   )
 
-  Since $psi in C^1 (CC)$ and has Lipschitz constant $M$, @eq:one-dimensional-partial-conjugate-solution_differenceexpr_realaxisderivative, @eq:one-dimensional-partial-conjugate-solution_differenceexpr_imaginaryaxisderivative are both continuous (by the same argument for the continuity of $u(z)$). Thus, $u in C^1(CC)$. It follows from the two equations that
+  Since $psi in C^1 (CC)$ and has Lipschitz constant $M$, @eq:one-dimensional-partial-conjugate-solution-difference-expression-real-axis-derivative, @eq:one-dimensional-partial-conjugate-solution-difference-expression-imaginary-axis-derivative are both continuous (by the same argument for the continuity of $u(z)$). Thus, $u in C^1(CC)$. It follows from the two equations that
   $
     pdv(u, overline(z)) = 1 / (taui) integral_CC pdv(psi, overline(zeta)) dot 1 / (zeta - z) dzeta and dif overline(zeta) = 1 / (taui) integral_K pdv(psi, overline(zeta)) dot 1 / (zeta - z) dzeta and dif overline(zeta).
   $
 
-  By @cor:pompeiuwithoutcauchyterm,
+  By @cor:pompeiu-without-cauchy-term,
   $ pdv(u, overline(z))=psi(z). #qedhere $
 ]
 
 #remark[In the first part, we established that a function $psi(z)in C^0(CC)$ with compact support satisfies
   $ u(z) = -1 / (taui) integral_CC (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta in C^0(CC). $
 
-  If $psi(z)in C^1(CC)$, then the first order derivatives of $u(z)$ can be written in the same form (@eq:one-dimensional-partial-conjugate-solution_differenceexpr_realaxisderivative, @eq:one-dimensional-partial-conjugate-solution_differenceexpr_imaginaryaxisderivative) since $pdv(psi, xi),pdv(psi, eta)in C^0(CC)$ and are also compactly supported. Then they too are continuous functions, and $u(z)in C^1(CC)$.
+  If $psi(z)in C^1(CC)$, then the first order derivatives of $u(z)$ can be written in the same form (@eq:one-dimensional-partial-conjugate-solution-difference-expression-real-axis-derivative, @eq:one-dimensional-partial-conjugate-solution-difference-expression-imaginary-axis-derivative) since $pdv(psi, xi),pdv(psi, eta)in C^0(CC)$ and are also compactly supported. Then they too are continuous functions, and $u(z)in C^1(CC)$.
 
   Then using the same argument, In general, for $psi(z)in C^k (CC)$, the same process can be used recursively to find that $u(z)in C^k (CC)$ as well.
 
   If the support of $psi(z)$ is the union of infinitely many or finitely many disjoint compact sets, then the integral in @eq:one-dimensional-partial-conjugate-solution can be split into a sum of integrals over each compact set, and the same argument applies to each term.]
 
-When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, he included the necessary condition that $f(z)in C^1 (overline(U))$. It was later shown that all such holomorphic functions had holomorphic derivatives, and this condition was thus later dropped by Goursat:
+When Cauchy formalized @thm:cauchy-integral-formula, @thm:cauchy-integral-theorem, he included the necessary condition that $f(z)in C^1 (overline(U))$. It was later shown that all such holomorphic functions had holomorphic derivatives, and this condition was thus later dropped by Goursat:
 
 #lbl(
   lemma[
     Let $f:G -> CC$ be a continuous function defined for a region $G subset.eq CC$. Let $Gamma subset G$ be a rectifiable piecewise smooth curve. Then $forall epsilon > 0$, there exists a polygonal chain $P subset G$ inscribing $Gamma$ (each vertex lies on $Gamma$) where
     $ abs(integral_Gamma f(z) dz - integral_P f(z) dz) < epsilon. $
   ],
-  <lem:integralpiecewisesmoothtopolygonalchain>,
+  <lem:integral-piecewise-smooth-to-polygonal-chain>,
 )
 
 #proof[
@@ -371,10 +371,10 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
       $
         integral.cont_Gamma f(zeta)dzeta=0.
       $,
-      <eq:cauchyintegraltheoremoversimplyconnectedset_statement>,
+      <eq:cauchy-integral-theorem-over-simply-connected-set-statement>,
     )
   ],
-  <lem:cauchyintegraltheoremoversimplyconnectedset>,
+  <lem:cauchy-integral-theorem-over-simply-connected-set>,
 )
 #figure-wrapper(
   [
@@ -404,7 +404,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
         }),
         caption: [Closed triangulated polygonal chain],
       ),
-      <fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation>,
+      <fig:cauchy-integral-theorem-over-simply-connected-set-closed-polygonal-chain-triangulation>,
     )
   ],
   [
@@ -455,33 +455,33 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
         }),
         caption: [Quadrisection of $jinterior Delta$],
       ),
-      <fig:cauchy_integral_theorem_over_simply_connected_set_triangle_quadrisection>,
+      <fig:cauchy-integral-theorem-over-simply-connected-set-triangle-quadrisection>,
     )
   ],
 )
 #proof[
-  By @lem:integralpiecewisesmoothtopolygonalchain, $forall epsilon > 0$, there is a closed polygonal chain $P$ where
+  By @lem:integral-piecewise-smooth-to-polygonal-chain, $forall epsilon > 0$, there is a closed polygonal chain $P$ where
 
   #lbl(
     $
       abs(integral.cont_Gamma f(z) dz - integral.cont_P f(z) dz) < epsilon.
     $,
-    <eq:cauchyintegraltheoremoversimplyconnectedset_chaindefinition>,
+    <eq:cauchy-integral-theorem-over-simply-connected-set-chaindefinition>,
   )
   The statement we aim to prove is equivalent to proving that
 
-  #lbl($ integral.cont_P f(z)dz=0. $, <eq:cauchyintegraltheoremoversimplyconnectedset_chainvanishingstatement>)
+  #lbl($ integral.cont_P f(z)dz=0. $, <eq:cauchy-integral-theorem-over-simply-connected-set-chainvanishingstatement>)
 
-  Since $P$ is a closed polygonal chain, we can triangulate the interior. For example, consider @fig:cauchy_integral_theorem_over_simply_connected_set_closed_polygonal_chain_triangulation, where
+  Since $P$ is a closed polygonal chain, we can triangulate the interior. For example, consider @fig:cauchy-integral-theorem-over-simply-connected-set-closed-polygonal-chain-triangulation, where
   $
     integral.cont_(penta A B C D E) f(z) dz & =(integral_sray(A B) + integral_sray(B C) + integral_sray(C D) + integral_sray(D E) + integral_sray(E A)) f(z) dz \
     & quad""+(integral_sray(B E) + integral_sray(E B) + integral_sray(C E) + integral_sray(E C)) f(z) dz \
     & =integral.cont_(Delta A B E) f(z) dz + integral.cont_(Delta B C E) f(z) dz + integral.cont_(Delta C D E) f(z) dz.
   $
-  Thus, if the integral over every triangle in $U$ vanishes, then @eq:cauchyintegraltheoremoversimplyconnectedset_statement follows. Consider a triangle in $U$ with boundary $Delta$. Then define $M$ to be
+  Thus, if the integral over every triangle in $U$ vanishes, then @eq:cauchy-integral-theorem-over-simply-connected-set-statement follows. Consider a triangle in $U$ with boundary $Delta$. Then define $M$ to be
   $ M = abs(integral.cont_(Delta) f(z) dz). $
 
-  We can quadrisect the triangle bounded by $Delta$ into four triangles with boundaries $Delta_1,Delta_2,Delta_3,Delta_4$ as in @fig:cauchy_integral_theorem_over_simply_connected_set_triangle_quadrisection. Then one of $Delta_1$, $Delta_2$, $Delta_3$, or $Delta_4$ (denote this to be $Delta^1$) satisfy
+  We can quadrisect the triangle bounded by $Delta$ into four triangles with boundaries $Delta_1,Delta_2,Delta_3,Delta_4$ as in @fig:cauchy-integral-theorem-over-simply-connected-set-triangle-quadrisection. Then one of $Delta_1$, $Delta_2$, $Delta_3$, or $Delta_4$ (denote this to be $Delta^1$) satisfy
 
   $ abs(integral.cont_(Delta^1) f(z) dz) >= M / 4, $
 
@@ -491,7 +491,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
     $
       abs(integral.cont_(Delta^2) f(z) dz) >= M / 4^2, dots, abs(integral.cont_(Delta^n) f(z) dz) >= M / 4^n.
     $,
-    <eq:cauchyintegraltheoremoversimplyconnectedset_trianglelowerbound>,
+    <eq:cauchy-integral-theorem-over-simply-connected-set-trianglelowerbound>,
   )
 
   Let $L$ denote the perimeter of $Delta$. Then, the perimeters of $Delta^1,Delta^2,dots$ respectively are $(L)/(2),(L)/(2^2),dots$. As $n -> oo$, $Delta_n$ shrinks to a single point $z_0$. Then, $forall n in NN$, $z_0 in Delta^n$.
@@ -500,7 +500,7 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   $ abs((f(z) - f(z_0)) / (z - z_0) - f'(z_0)) < epsilon, $
 
   $ abs(f(z) - f(z_0) - f'(z_0) (z - z_0)) < epsilon abs(z - z_0), $
-  and $exists N in NN$ such that $forall n in NN_(>N)$, $Delta^n subset D (z_0, delta)$. By @thm:cauchyintegraltheorem, since the functions $z -> 1$ and $z -> z$ are both entire,
+  and $exists N in NN$ such that $forall n in NN_(>N)$, $Delta^n subset D (z_0, delta)$. By @thm:cauchy-integral-theorem, since the functions $z -> 1$ and $z -> z$ are both entire,
   $ integral.cont_(Delta^n)dz=0, wide integral.cont_(Delta^n)z dz=0. $
   Then
 
@@ -514,9 +514,9 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
     abs(integral.cont_(Delta^n) [f(z) - f (z_0) - f'(z_0) (z - z_0)] dz) &<= epsilon integral.cont_(Delta^n) abs(z - z_0) abs(dz) \ &= (epsilon L) / 2^n integral.cont_(Delta^n) abs(dz) = (epsilon L^2) / 4^n.
   $
 
-  Comparing the above equation with @eq:cauchyintegraltheoremoversimplyconnectedset_trianglelowerbound,
+  Comparing the above equation with @eq:cauchy-integral-theorem-over-simply-connected-set-trianglelowerbound,
   $ M / 4^n < epsilon L / 4^n, quad M < epsilon L. $
-  Since $Delta$ is rectifiable, $L$ is finite, and letting $epsilon ->0$, we find that $M ->0$. Then, for every triangle in $U$, the integral vanishes, and @eq:cauchyintegraltheoremoversimplyconnectedset_chainvanishingstatement, @eq:cauchyintegraltheoremoversimplyconnectedset_chaindefinition follow.
+  Since $Delta$ is rectifiable, $L$ is finite, and letting $epsilon ->0$, we find that $M ->0$. Then, for every triangle in $U$, the integral vanishes, and @eq:cauchy-integral-theorem-over-simply-connected-set-chainvanishingstatement, @eq:cauchy-integral-theorem-over-simply-connected-set-chaindefinition follow.
 ]
 #lbl(
   theorem[Cauchy--Goursat][
@@ -643,11 +643,11 @@ When Cauchy formalized @thm:cauchyintegralformula, @thm:cauchyintegraltheorem, h
   ),
 )
 #proof[
-  Since $partial U inter U=emptyset$ and $f(z)$ is not necessarily holomorphic over $overline(U)$, we cannot directly apply @lem:cauchyintegraltheoremoversimplyconnectedset.
+  Since $partial U inter U=emptyset$ and $f(z)$ is not necessarily holomorphic over $overline(U)$, we cannot directly apply @lem:cauchy-integral-theorem-over-simply-connected-set.
 
   First assume $U$ has the shape of $M N Q P$ in @fig:cauchy-goursat_theorem_simplified_region. That is, $U$ consists of $x = a$, $x = b$ for $a < b$, and two rectifiable $C^0$ curves $ray(M N): y = phi.alt(x)$ and $ray(Q P): y = psi(x)$ such that $phi.alt(x) < psi(x)$, $forall a <= x <= b$.
 
-  For some $epsilon > 0$, $eta > 0$, construct a new curve $M'_1N'_1Q'_1P'_1 in U$ to be the boundary of the region bounded by $P_1M_1: x = a + epsilon$, $N_1Q_1: x = b - epsilon$, $M'N': phi.alt(x) + eta$, and $Q'P': psi(x) - eta$ such that $M'_1N'_1Q'_1P'_1$ remains simple. By @lem:cauchyintegraltheoremoversimplyconnectedset,
+  For some $epsilon > 0$, $eta > 0$, construct a new curve $M'_1N'_1Q'_1P'_1 in U$ to be the boundary of the region bounded by $P_1M_1: x = a + epsilon$, $N_1Q_1: x = b - epsilon$, $M'N': phi.alt(x) + eta$, and $Q'P': psi(x) - eta$ such that $M'_1N'_1Q'_1P'_1$ remains simple. By @lem:cauchy-integral-theorem-over-simply-connected-set,
   $ integral.cont_(M'_1N'_1Q'_1P'_1)f(z)dz=0. $
 
   By @thm:heine-cantor, $f(z)$ is uniformly continuous over $overline(U)$, and therefore $forall epsilon' > 0$, we can choose $eta > 0$ so that $forall z in ray(M'_1 N'_1)$, $abs(f(z) - f(z - eta)) < epsilon'$ is satisfied. Letting $eta -> 0$ with $epsilon' -> 0$ and fixing $epsilon > 0$, we get that

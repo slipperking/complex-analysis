@@ -5,17 +5,23 @@
 )
 The following definitions are subject to the assumption where the topological space is defined to be $X = CC^n$. This is satisfactory to the main purpose of our proceeding passage, but it is noteworthy that it can be generalized to more abstract sets (which will be discussed in later sections, especially in @sec:partitions-of-unity).
 
-#definition("Open Ball")[
+#definition[Open Ball][
   Let $B^n (a, r) subset CC^n$ denote the $n$-dimensional _ball_ with radius $r$ centered at $a = (a_1, a_2, dots, a_n) in CC^n$, defined by
   $ B^n (a, r) = {(z_1, z_2, dots, z_n) in CC^n : sum_(j=1)^n abs(z_j - a_j)^2 < r^2}. $
 ]
-#definition("Open and Closed Sets")[
-  A set $U subset.eq CC^n$ is _open_ if for every $z in U$, there exists an _open ball_ centered at $z$ that is fully contained in $U$. A set $F subset.eq CC^n$ is _closed_ if its complement, $CC^n without F$, is open.
-] <def:open_closed_sets>
+#lbl(
+  definition[Open and Closed Sets][
+    A set $U subset.eq CC^n$ is _open_ if for every $z in U$, there exists an _open ball_ centered at $z$ that is fully contained in $U$. A set $F subset.eq CC^n$ is _closed_ if its complement, $CC^n without F$, is open.
+  ],
+  <def:open-closed-sets>,
+)
 (Note that these definitions hold only for the standard topology on $CC^n$ induced by the Euclidean metric. For now, this is unimportant, but will be explained later in @sec:partitions-of-unity.)
-#definition("Accumulation Point")[
-  A point $z in CC^n$ is an _accumulation point_ of $X$ if for any open set $U$ containing $z$, $(U without {z}) inter X eq.not emptyset$
-] <def:accumulation-point>
+#lbl(
+  definition[Accumulation Point][
+    A point $z in CC^n$ is an _accumulation point_ of $X$ if for any open set $U$ containing $z$, $(U without {z}) inter X eq.not emptyset$
+  ],
+  <def:accumulation-point>,
+)
 #theorem[
   A set $X subset.eq CC^n$ is closed iff $X$ contains all of its accumulation points.
 ]
@@ -85,7 +91,7 @@ Because the accumulation points of $X$ all lie in $overline(X)$, the closure of 
   theorem[Heine--Borel][
     A set $X subset.eq CC^n$ is compact iff every open cover has a finite subcover.
   ],
-  <thm:heine_borel>,
+  <thm:heine-borel>,
 )
 
 #proof[
@@ -117,9 +123,12 @@ Because the accumulation points of $X$ all lie in $overline(X)$, the closure of 
   This contradicts the assumption that for every $k$, $Q_k inter X$ has no finite subcovering, since ${U} subset cal(U)$ clearly covers $Q_k inter X$, as it is a single open set that covers a nonempty subset. Therefore by contradiction, every open cover has finite subcovering.
 ]
 
-#definition("Support of a Function")[
-  For a set $X$ and a function $f : X -> CC$, the _support_, denoted by $supp (f) = overline({z in X : f(z) eq.not 0})$, is the closure of the set for which $f$ is nonzero.
-] <def:support>
+#lbl(
+  definition[Support of a Function][
+    For a set $X$ and a function $f : X -> CC$, the _support_, denoted by $supp (f) = overline({z in X : f(z) eq.not 0})$, is the closure of the set for which $f$ is nonzero.
+  ],
+  <def:support>,
+)
 
 #remark[
   A notable classification of functions comes from the compactness of support---more specifically, its boundedness. Compactly supported functions in $C^oo (CC)$ (infinitely differentiable functions in the complex plane) are commonly referred to as _bump functions_ (see @sec:partitions-of-unity).

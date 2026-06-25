@@ -6,7 +6,7 @@
     #include "biholomorphy/index.typ"
     #include "normal-families/index.typ"
     #include "riemann-mapping-theorem/index.typ"
-    #include "schwarz_christoffel/index.typ"
+    #include "schwarz-christoffel-transformation/index.typ"
     #include "schwarz-reflection-principle/index.typ"
   ],
 )

@@ -5,7 +5,7 @@
   title: [Mergelyan's Theorem],
   route: "mergelyans-theorem",
 )
-Although many mathematicians have since tried after the efforts of Weierstrass and Runge to approximation continuous functions holomorphic on the interior restriction, it was only 67 years later when Armenian mathematician provided the first widely accepted proof. The proof of Runge's Theorem (specifically in @prop:rungesimplepolesandremovablesingularityatinfinity) relied heavily on the assumption of holomorphy on a neighborhood, a rational function was created by placing poles in prescribed points of a contour that lay outside of $K$ but within its domain of holomorphy. Obviously, these assumptions are null under the context of this new formulation.
+Although many mathematicians have since tried after the efforts of Weierstrass and Runge to approximation continuous functions holomorphic on the interior restriction, it was only 67 years later when Armenian mathematician provided the first widely accepted proof. The proof of Runge's Theorem (specifically in @prop:runge-simple-poles-and-removable-singularity-at-infinity) relied heavily on the assumption of holomorphy on a neighborhood, a rational function was created by placing poles in prescribed points of a contour that lay outside of $K$ but within its domain of holomorphy. Obviously, these assumptions are null under the context of this new formulation.
 
 The proof proposed by Mergelyan is almost trivial when compared with the results of many other mathematicians at the time. It even uses the concepts previously proposed by Runge. This begs the question: why was there such a prolonged time gap between the two similar formulations? Many mathematicians felt that the conclusion was "too good to be true"; during this elapsed time period there were many efforts of mathematicians that resulted in many technical partial results. Mergelyan's Theorem came as a surprise as it encapsulated many of those results with simplicity.
 
@@ -71,7 +71,7 @@ Let $z = (f^(-1))(w)$. Then we have
   $
     psi'(0) = -lim_(z -> 0) (alpha (phi.alt^(-1))'(z)) / (phi.alt^(-1)(z) - tau)^2 = lim_(z -> 0) (alpha (phi.alt^(-1))'(z)) / (phi.alt^(-1)(z) - tau)^2 dot (phi.alt^(-1)(z)^2) / (alpha (phi.alt^(-1))'(z)) = 1.
   $
-  By the Koebe Quarter Theorem (@thm:koebe_quarter), whose proof is independent of results of this section, in accordance, $D(0, 1 / 4) subset.eq psi(DD)$. Let $mu in K without {tau}$. Obviously, $mu in.not (phi.alt^(-1))(DD) = extcomplex without K$.
+  By the Koebe Quarter Theorem (@thm:koebe-quarter), whose proof is independent of results of this section, in accordance, $D(0, 1 / 4) subset.eq psi(DD)$. Let $mu in K without {tau}$. Obviously, $mu in.not (phi.alt^(-1))(DD) = extcomplex without K$.
 
   Let $z mapsto alpha / (z - tau)$ be injective on $extcomplex$. For the sake of contradiction, assume that $(z mapsto alpha / (z - tau))(mu) in psi(DD)$. Then $exists zeta in (phi.alt^(-1))(DD)$ such that $alpha / (zeta - tau) = alpha / (mu - tau)$. By injectivity, $zeta = mu$, which contradicts $mu in K$, and accordingly, $alpha / (mu - tau) in.not psi(DD) supset.eq D(0, 1 / 4)$.
 
@@ -235,9 +235,12 @@ Let $z = (f^(-1))(w)$. Then we have
   At $x^2 + y^2 = 1$, both partial derivatives vanish, and hence, they match the vanishing derivative on the complement of $supp(lambda)$, completing the proof of @itm:diracdeltaapproximation_compactsupportcontinuousdifferentiability.
 ]
 
-#theorem[Tietze--Urysohn--Brouwer][
-  Let $K subset.eq CC$ be compact and $f:K -> RR$ be continuous. Then $exists g in C^0(CC)$ such that $g equiv f$ on $K$.
-] <thm:tietzeextension>
+#lbl(
+  theorem[Tietze--Urysohn--Brouwer][
+    Let $K subset.eq CC$ be compact and $f:K -> RR$ be continuous. Then $exists g in C^0(CC)$ such that $g equiv f$ on $K$.
+  ],
+  <thm:tietzeextension>,
+)
 
 #proof[
   For any two disjoint closed $A, B subset.eq CC$, consider the continuous separation function
@@ -381,15 +384,18 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
     & <= omega_f (r) integral.double_(D(0, r)) norm(grad lambda_r) dif xi dif eta \
     & <= (4 omega_f (r)) / r^3 integral.double_(D(0, r)) dif xi dif eta <= (4 omega_f (r)) / r^3 dot uppi r^2 = (4 uppi omega_f (r)) / r,
   $
-  by @itm:diracdeltaapproximation_gradientstatement of @prop:diracdeltaapproximation, confirming @itm:integralofcontinuousextensionofholomorphicproperties_antiholomorphicderivativebound. Finally, @itm:integralofcontinuousextensionofholomorphicproperties_integralformula follows from @cor:pompeiuwithoutcauchyterm (since outside the support the integral trivially vanishes and within $U$, $pdv(Phi, overline(zeta))$ vanishes as a consequence of holomorphy).
+  by @itm:diracdeltaapproximation_gradientstatement of @prop:diracdeltaapproximation, confirming @itm:integralofcontinuousextensionofholomorphicproperties_antiholomorphicderivativebound. Finally, @itm:integralofcontinuousextensionofholomorphicproperties_integralformula follows from @cor:pompeiu-without-cauchy-term (since outside the support the integral trivially vanishes and within $U$, $pdv(Phi, overline(zeta))$ vanishes as a consequence of holomorphy).
 ]
 
-#theorem("Mergelyan")[
-  Let $K subset.eq CC$ be compact such that $extcomplex without K$ has finitely many connected components. Let $E subset.eq extcomplex without K$ contain exactly one point from each of the connected components of $extcomplex without K$. Suppose $f in C^0(K)$ is holomorphic on $interior(K)$. Then $forall epsilon > 0$, there exists a rational function $psi(z)$ with poles in $E$ such that
-  $
-    sup_(z in K) abs(psi(z) - f(z)) < epsilon.
-  $
-] <thm:mergelyan>
+#lbl(
+  theorem[Mergelyan][
+    Let $K subset.eq CC$ be compact such that $extcomplex without K$ has finitely many connected components. Let $E subset.eq extcomplex without K$ contain exactly one point from each of the connected components of $extcomplex without K$. Suppose $f in C^0(K)$ is holomorphic on $interior(K)$. Then $forall epsilon > 0$, there exists a rational function $psi(z)$ with poles in $E$ such that
+    $
+      sup_(z in K) abs(psi(z) - f(z)) < epsilon.
+    $
+  ],
+  <thm:mergelyan>,
+)
 
 #figure-wrapper([
   #lbl(
@@ -561,7 +567,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
     {D(zeta_k, 5 / 4 r): (forall) zeta_k in extcomplex without (K union overline(D(p_k, 3 / 4 r))), 1 <= k <= n}
   $
-  covers a (compact) $r$-neighborhood of $extcomplex without K$ (so that each $zeta_k in.not K$, and is labeled so that each $zeta_k$ is in the same connected component as $p_k$) (in the case that $p_k = oo$, let the disk inside be the empty set). Thus, the collection also covers $H$. A finite subcover ${D(zeta_k^((j)), 5 / 4 r)}_(1 <= j <= m_k\ 1 <= k <= n)$ covering $H$ exists by the Heine--Borel Theorem (@thm:heine_borel).
+  covers a (compact) $r$-neighborhood of $extcomplex without K$ (so that each $zeta_k in.not K$, and is labeled so that each $zeta_k$ is in the same connected component as $p_k$) (in the case that $p_k = oo$, let the disk inside be the empty set). Thus, the collection also covers $H$. A finite subcover ${D(zeta_k^((j)), 5 / 4 r)}_(1 <= j <= m_k\ 1 <= k <= n)$ covering $H$ exists by the Heine--Borel Theorem (@thm:heine-borel).
 
   By the connectivity of each component of $extcomplex without K$, there exists a piecewise-linear simple curve $gamma_k^((j))$ for all $1 <= k <= n$, $1 <= j <= m_k$, joining $zeta_k^((j))$ and $p_k$, which lies entirely within $extcomplex without K$. The compact disks $D(zeta_k^((j)), 3 / 4 r)$ are all disjoint from their corresponding $p_k$ since each $zeta_k^((j)) in.not overline(D(p_k, 3 / 4 r))$ by definition.
 

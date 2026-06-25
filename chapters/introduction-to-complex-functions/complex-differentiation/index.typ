@@ -133,7 +133,7 @@ Letting $x = r cos theta$, $y = r sin theta$, the Laplacian is equal to:
   proposition[
     Let $U subset.eq CC$ be open and connected and let $f: U -> RR$ be holomorphic. It follows that $f$ is constant over $U$.
   ],
-  <prop:realvaluedholomorphicfunctionconstant>,
+  <prop:real-valued-holomorphic-function-constant>,
 )
 
 #proof[

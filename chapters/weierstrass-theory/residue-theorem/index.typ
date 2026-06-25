@@ -287,9 +287,12 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
 ]
 
-#example[Dirichlet Integral][
-  Evaluate the integral $integral_0^infinity (sin x) / x dx$.
-] <ex:dirichlet-integral>
+#lbl(
+  example[Dirichlet Integral][
+    Evaluate the integral $integral_0^infinity (sin x) / x dx$.
+  ],
+  <ex:dirichlet-integral>,
+)
 
 #figure-wrapper([
   #lbl(
@@ -385,10 +388,13 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
 ]
 
-#example[Fresnel Integrals][
-  Evaluate the improper integrals
-  $ I_1 = integral_0^infinity cos(x^2) dx, quad I_2 = integral_0^infinity sin(x^2) dx. $
-] <ex:fresnel_integrals>
+#lbl(
+  example[Fresnel Integrals][
+    Evaluate the improper integrals
+    $ I_1 = integral_0^infinity cos(x^2) dx, quad I_2 = integral_0^infinity sin(x^2) dx. $
+  ],
+  <ex:fresnel-integrals>,
+)
 
 #figure-wrapper(
   lbl(
@@ -432,7 +438,7 @@ Residues are extremely important as they allow for simple evaluation of definite
     <fig:wedge-contour>,
   ),
 )
-#solution[to @ex:fresnel_integrals][
+#solution[to @ex:fresnel-integrals][
   Let $f(z) = ee^(ii z^2)$. Choose the wedge contour composed of
   $
     Gamma_1 = {x in RR : 0 <= x <= R}, quad Gamma_2 = {r ee^(ii uppi\/4) : 0 <= r <= R}, \

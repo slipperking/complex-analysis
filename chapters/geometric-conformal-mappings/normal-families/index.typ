@@ -103,7 +103,7 @@ The following theorem is important in many areas of mathematical analysis and ha
   $
     abs(f_(n'_i) (zeta_k) - f_(n'_j) (zeta_k)) < epsilon / 3.
   $
-  For the fixed value of $epsilon$, the collection ${D(zeta_k, delta)}_(k in NN)$ forms an open cover of $K$, and by the Heine--Borel Theorem (@thm:heine_borel), it admits finite subcovering ${D(zeta_k, delta)}_(k in {1, dots, l})$ for some finite $l = l(epsilon) in NN$.
+  For the fixed value of $epsilon$, the collection ${D(zeta_k, delta)}_(k in NN)$ forms an open cover of $K$, and by the Heine--Borel Theorem (@thm:heine-borel), it admits finite subcovering ${D(zeta_k, delta)}_(k in {1, dots, l})$ for some finite $l = l(epsilon) in NN$.
 
   Hence, $exists k = k(epsilon) <= l$ such that any point $z in K$ lies in $D(zeta_k, delta)$. By @eq:arzela_ascoli_uniform_equicontinuity_direct_consequence, we have that
   $
@@ -181,7 +181,7 @@ Obviously, the equivalence is established similarly to local finiteness and loca
   $
   Therefore, $cal(F)$ is uniformly equicontinuous in $overline(D(z, R_z))$ (and also in $D(z, R_z)$). Indeed, $forall epsilon > 0$, we can choose $delta_z = epsilon / c_z$ and the assertion follows.
 
-  Let $K subset U$ be compact and arbitrary. The collection ${D(z, R_z)}_(z in K)$ forms an open cover of $K$ and by the Heine--Borel Theorem (@thm:heine_borel) admits a finite subcover ${D(z_k, R_(z_k))}_(k in NN_(<= n))$ for some finite $n in NN$. If we let $delta = min_(k in NN_(<= n)) (delta_k)$, it follows that $cal(F)$ is uniformly equicontinuous on $K$. By the Arzelà--Ascoli Theorem (@thm:arzela_ascoli), any sequence ${f_n}_(n in NN) subset.eq cal(F)$ has a uniformly convergent subsequence ${f_(n_k)}_(k in NN)$ on $K$.
+  Let $K subset U$ be compact and arbitrary. The collection ${D(z, R_z)}_(z in K)$ forms an open cover of $K$ and by the Heine--Borel Theorem (@thm:heine-borel) admits a finite subcover ${D(z_k, R_(z_k))}_(k in NN_(<= n))$ for some finite $n in NN$. If we let $delta = min_(k in NN_(<= n)) (delta_k)$, it follows that $cal(F)$ is uniformly equicontinuous on $K$. By the Arzelà--Ascoli Theorem (@thm:arzela_ascoli), any sequence ${f_n}_(n in NN) subset.eq cal(F)$ has a uniformly convergent subsequence ${f_(n_k)}_(k in NN)$ on $K$.
 
   Let ${f_n}_(n in NN) subset.eq cal(F)$ be arbitrary. Let $U$ be exhausted by the compact sets ${K_n}_(n in NN)$. By the argument above, we may extract a subsequence ${f_(n_(1,j))}_(j in NN) subset.eq {f_n}_(n in NN)$ that uniformly converges on $K_1$. By the same argument, there exists a subsequence ${f_(n_(2,j))}_(j in NN) subset.eq {f_(n_(1,j))}_(j in NN)$ that uniformly converges on $K_2$. Let $n'_j = n_(j,j)$.
 

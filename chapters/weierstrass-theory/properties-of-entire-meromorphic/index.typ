@@ -72,13 +72,16 @@
   $
 ]
 
-#theorem("Argument Principle")[
-  Let $U subset.eq CC$ be a region and $f:U -> CC$ be meromorphic. Let $gamma subset U$ be a simple, closed, positively oriented curve that is null-homotopic in $U$. If $f$ has no zeros or poles on $gamma$, then $f$ has finitely many zeros and poles in the region bounded by $gamma$, and the number of zeros, $k$, minus the number of poles, $k'$, counting multiplicities and orders, is given by
-  $
-    k - k' = 1 / taui integral.cont_gamma (f'(z)) / (f(z)) dz.
-  $
-  Let $Gamma$ be the image of $gamma$ under the map $w = f(z)$. Then $k - k' = Ind_Gamma (0)$.
-] <thm:argumentprinciplemeromorphic>
+#lbl(
+  theorem[Argument Principle][
+    Let $U subset.eq CC$ be a region and $f:U -> CC$ be meromorphic. Let $gamma subset U$ be a simple, closed, positively oriented curve that is null-homotopic in $U$. If $f$ has no zeros or poles on $gamma$, then $f$ has finitely many zeros and poles in the region bounded by $gamma$, and the number of zeros, $k$, minus the number of poles, $k'$, counting multiplicities and orders, is given by
+    $
+      k - k' = 1 / taui integral.cont_gamma (f'(z)) / (f(z)) dz.
+    $
+    Let $Gamma$ be the image of $gamma$ under the map $w = f(z)$. Then $k - k' = Ind_Gamma (0)$.
+  ],
+  <thm:argument-principle-meromorphic>,
+)
 
 #proof[
   By @thm:generalized-argument-principle for $psi equiv 1$,

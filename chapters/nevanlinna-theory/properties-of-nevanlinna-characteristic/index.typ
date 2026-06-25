@@ -118,11 +118,14 @@
   by Lebesgue's Dominated Convergence Theorem. Because the counting function $n$ is non-decreasing in $r$, it is also non-decreasing in $log r$.
 ]
 
-#theorem[First Fundamental Theorem of Nevanlinna Theory][
-  Let $f$ be (non-constant) meromorphic on $D(0, R)$ where $0 < r <= oo$. Then for any $a in CC$,
-  $ T(r, a, f) = T(r, f) - log abs(c) + epsilon(r, a, f), $
-  where $abs(epsilon(r, a, f)) <= logp abs(a) + log 2$ for $0 < r < R$ and $c$ is the first nonzero coefficient of the innermost Laurent series expansion of $f(z) - a$ about the origin.
-] <thm:nevanlinna-first-fundamental-theorem>
+#lbl(
+  theorem[First Fundamental Theorem of Nevanlinna Theory][
+    Let $f$ be (non-constant) meromorphic on $D(0, R)$ where $0 < r <= oo$. Then for any $a in CC$,
+    $ T(r, a, f) = T(r, f) - log abs(c) + epsilon(r, a, f), $
+    where $abs(epsilon(r, a, f)) <= logp abs(a) + log 2$ for $0 < r < R$ and $c$ is the first nonzero coefficient of the innermost Laurent series expansion of $f(z) - a$ about the origin.
+  ],
+  <thm:nevanlinna-first-fundamental-theorem>,
+)
 
 #proof[
   Since for $z in partial D(0, r)$, by the properties of $logp$ as in @prop:log-nonnegative-part-properties,

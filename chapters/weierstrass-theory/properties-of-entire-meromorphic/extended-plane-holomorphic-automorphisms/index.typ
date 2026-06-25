@@ -121,13 +121,16 @@ is known as the _projective special linear group_ of order $2$, and is isomorphi
 
 Therefore, any meromorphic automorphism on $extcomplex$ is a composition of rotations, dilations, translations, and inversions. We will now state this formally:
 
-#theorem[The Meromorphic Automorphism Group on $extcomplex$][
-  $forall f in Aut(extcomplex)$, $f$ is a Möbius transformation. In other words, $exists a, b, c, d in CC$ satisfying $a d - b c != 0$ such that
-  $
-    f(z) = (a z + b) / (c z + d).
-  $
-  Moreover, every such Möbius transformation is in $Aut(extcomplex)$.
-] <thm:meromorphic-automorphism-group-on-extended-complex-plane>
+#lbl(
+  theorem[The Meromorphic Automorphism Group on $extcomplex$][
+    $forall f in Aut(extcomplex)$, $f$ is a Möbius transformation. In other words, $exists a, b, c, d in CC$ satisfying $a d - b c != 0$ such that
+    $
+      f(z) = (a z + b) / (c z + d).
+    $
+    Moreover, every such Möbius transformation is in $Aut(extcomplex)$.
+  ],
+  <thm:meromorphic-automorphism-group-on-extended-complex-plane>,
+)
 
 The group of holomorphic automorphisms on $DD$, or $Aut(DD)$, is also a subgroup of $Aut(extcomplex)$.
 
@@ -135,7 +138,7 @@ The group of holomorphic automorphisms on $DD$, or $Aut(DD)$, is also a subgroup
   proposition[
     Suppose we have two Möbius transformations represented by the matrices $mat(a, b; c, d)$ and $mat(e, f; g, h)$. Then their composition is a Möbius transformation represented by $mat(a, b; c, d) mat(e, f; g, h)$.
   ],
-  <prop:mobiustransformationcompositionmatrixmultiplication>,
+  <prop:mobius-transformation-composition-matrix-multiplication>,
 )
 
 #proof[

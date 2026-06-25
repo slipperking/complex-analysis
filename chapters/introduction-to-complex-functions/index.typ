@@ -6,7 +6,7 @@
     #include "extended-plane-sphericality/index.typ"
     #include "complex-differentiation/index.typ"
     #include "complex-power-series/index.typ"
-    #include "conformality/index.typ"
+    #include "conformality-of-holomorphic-mapping/index.typ"
     #include "elementary-functions/index.typ"
   ],
 )

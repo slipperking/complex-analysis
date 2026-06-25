@@ -304,7 +304,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
 )
 
 #proof[
-  By @thm:chebyshevfunctions_limsup_inflim_equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:primenumbertheorem_laplacetransformchebyshevfunction_statement. By @thm:prime-numbertheorem_laplacetransformchebyshevfunction, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuously differentiable. Hence, by the Wiener--Ikehara theorem (@thm:wiener-ikehara), we have that
+  By @thm:chebyshev-functions-limsup-liminf-limit-equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:prime-number-theorem-laplace-transform-chebyshev-function_statement. By @thm:prime-number-theorem-laplace-transform-of-chebyshev-psi-exp-function, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuously differentiable. Hence, by the Wiener--Ikehara theorem (@thm:wiener-ikehara), we have that
   $ lim_(x -> oo) psi(ee^x) / ee^x = lim_(x -> oo) psi(x) / x = 1, $
   and the Prime Number Theorem follows.
 ]

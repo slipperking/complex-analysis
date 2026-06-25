@@ -51,7 +51,7 @@ By @thm:weierstrass-m-test and @thm:limit-integral-switch,
     1 / (2 uppi) sum_(n = -oo)^oo integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau
     = 1 / (2 uppi) integral_0^(2 uppi) u(ee^(ii tau)) sum_(n = -oo)^oo rho^(abs(n)) ee^(ii n (theta - tau)) dif tau.
   $,
-  <eq:poisson-integral-formula-fourier-seriespostintegralsummationswitch>,
+  <eq:poisson-integral-formula-fourier-series-post-integral-summation-switch>,
 )
 
 The summation simplifies as follows:
@@ -65,13 +65,13 @@ $
   &= (1 - rho^2) / (1 + rho^2 - 2 rho cos(theta - tau)).
 $
 
-Substituting into @eq:poisson-integral-formula-fourier-seriespostintegralsummationswitch yields
+Substituting into @eq:poisson-integral-formula-fourier-series-post-integral-summation-switch yields
 
 $
   sum_(n = -oo)^oo a_n ee^(ii n theta) rho^(abs(n)) = 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau))) / (1 + rho^2 - 2 rho cos(theta - tau)) dif tau = u(rho ee^(ii theta)).
 $
 
-Furthermore, by the proof of @thm:dirichlet_problem_with_laplace_equation_solution (specifically @eq:dirichlet_problem_with_laplace_equation_solution_limittoboundary),
+Furthermore, by the proof of @thm:dirichlet-problem-with-laplace-equation-solution (specifically @eq:dirichlet-problem-with-laplace-equation-solution-limit-to-boundary),
 
 $ lim_(rho -> 1^-) sum_(n = -oo)^oo a_n ee^(ii n theta) rho^(abs(n)) = u(ee^(ii theta)). $
 
@@ -85,11 +85,11 @@ We now establish that real-valued continuous functions satisfying the mean-value
     $ f(z_0) = 1 / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii t)) dt. $
     Then $f$ is harmonic on $U$.
   ],
-  <thm:mean_value_property_solutions_are_harmonic>,
+  <thm:mean-value-property-solutions-are-harmonic>,
 )
 
 #proof[
-  Fix $z_0 in U$ arbitrarily and choose $lambda > 0$ such that $overline(D(z_0, lambda)) subset.eq U$. Because $f in C^0 (partial D(z_0, lambda))$, @thm:dirichlet_problem_with_laplace_equation_solution guarantees the existence of a unique harmonic function $u$ on $D(z_0, lambda)$ satisfying
+  Fix $z_0 in U$ arbitrarily and choose $lambda > 0$ such that $overline(D(z_0, lambda)) subset.eq U$. Because $f in C^0 (partial D(z_0, lambda))$, @thm:dirichlet-problem-with-laplace-equation-solution guarantees the existence of a unique harmonic function $u$ on $D(z_0, lambda)$ satisfying
   $ u(z) = integral_0^(2 uppi) f(zeta) P(zeta, z) dif tau, $
   with $u = f$ on $partial D(z_0, lambda)$. Define $psi = f - u$ on $overline(D(z_0, lambda))$. Then $psi$ is continuous, satisfies the mean-value property, and vanishes on $partial D(z_0, lambda)$. By the proof of @thm:maximum-modulus, which relies solely on the mean-value property, $psi equiv 0$ on $overline(D(z_0, lambda))$. Thus, $f equiv u$ on $overline(D(z_0, lambda))$, implying $f$ is harmonic at $z_0$. The arbitrariness of $z_0$ establishes harmonicity on $U$.
 ]

@@ -63,7 +63,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   proposition[
     Let ${f_n}_(n in NN)$ be a sequence of holomorphic functions on a domain $Omega subset.eq CC$. If $f_n arrows.rr f$ locally uniformly spherically, then $f$ is either holomorphic on $Omega$ or identically $oo$.
   ],
-  <prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniform-limit>,
+  <prop:locally-uniformly-spherically-convergent-holomorphic-sequence-uniform-limit>,
 )
 
 #proof[
@@ -94,7 +94,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
     $ d_sigma (0, f_n (zeta)) > 0. $
     Hence each $(1)/(f_n)$ is holomorphic on $D(z, delta)$ and converges locally uniformly spherically to $(1)/(f)$ on $D(z, delta)$. By Weierstrass (@thm:weierstrass-convergence), $(1)/(f)$ is holomorphic on $D(z, delta)$ and has zeros that accumulate at $z$. By the Identity Theorem, $(1)/(f) equiv 0 ==> f equiv oo$ on $D(z, delta)$.
 
-  Let $S$ be the set of all $z in Omega$ such that $f(z)$ is finite. By the argument above, $S$ is open. The complement $Omega without S$ then consists of all points where $f(z) = oo$. By the argument above, $Omega without S$ is also open. Since $Omega$ is connected, by @thm:connected_topological_space_clopen_sets, either $S = emptyset$ or $S = Omega$. In the former case, $f equiv oo$ on $Omega$, and in the latter case, $f$ is holomorphic on $Omega$.
+  Let $S$ be the set of all $z in Omega$ such that $f(z)$ is finite. By the argument above, $S$ is open. The complement $Omega without S$ then consists of all points where $f(z) = oo$. By the argument above, $Omega without S$ is also open. Since $Omega$ is connected, by @thm:connected-topological-space-clopen-sets, either $S = emptyset$ or $S = Omega$. In the former case, $f equiv oo$ on $Omega$, and in the latter case, $f$ is holomorphic on $Omega$.
 ]
 
 #lbl(
@@ -158,14 +158,14 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
       f_(n_k)^sharp (zeta) = (2 abs(-(g'_(n_k) (zeta))/(g_(n_k) (zeta)^2)))/(1 + abs(g_(n_k) (zeta))^(-2)) = (2 abs(g'_(n_k) (zeta)))/(abs(g_(n_k) (zeta))^2 + 1) <= 2 abs(g'_(n_k) (zeta)) <= 2 M, quad forall zeta in D(z, delta / 2).
     $
 
-  In essence, for any point $z$, there exists an open disk $D_z$ centered at $z$ on which the spherical derivatives $f_(n_k)^sharp$ are bounded by some constant $M_z$ for $k > N_z$. By Heine--Borel (@thm:heine_borel), there exists a finite collection of disks ${D_(z_j)}_(1 <= j <= n)$ that cover $K$. Thus, ${f_(n_k)^sharp (z)}_(k > N)$ is uniformly bounded on $K$ by $max_(1 <= j <= n) M_(z_j)$, where $N = max_(1 <= j <= n) N_(z_j)$, contradicting the assumption that $sup_(z in K) f_n^sharp (z) > n$ for all $n in NN$.
+  In essence, for any point $z$, there exists an open disk $D_z$ centered at $z$ on which the spherical derivatives $f_(n_k)^sharp$ are bounded by some constant $M_z$ for $k > N_z$. By Heine--Borel (@thm:heine-borel), there exists a finite collection of disks ${D_(z_j)}_(1 <= j <= n)$ that cover $K$. Thus, ${f_(n_k)^sharp (z)}_(k > N)$ is uniformly bounded on $K$ by $max_(1 <= j <= n) M_(z_j)$, where $N = max_(1 <= j <= n) N_(z_j)$, contradicting the assumption that $sup_(z in K) f_n^sharp (z) > n$ for all $n in NN$.
 ]
 
 #lbl(
   theorem[Fundamental Normality Test][
     Let $Omega subset.eq CC$ be a region and suppose that $cal(F)$ is a family of holomorphic functions on $Omega$. If there exist two different points $alpha, beta in CC$ such that ${alpha, beta} inter union.big_(f in cal(F)) f(Omega) = emptyset$, then $cal(F)$ must be a spherically normal family.
   ],
-  <thm:fundamentalnormalitytest>,
+  <thm:fundamental-normality-test>,
 )
 
 #proof[
@@ -184,7 +184,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
     $
       K_mu = -(laplacian(log compose mu))/(mu^2) = -(laplacian(log compose rho))/(rho^2 beta) = K_rho / beta <= -1 quad "on" quad CC without {0, 1}.
     $,
-    <eq:fundamentalnormalitytest_f_mu_pullback_inequality>,
+    <eq:fundamental-normality-test_f_mu_pullback_inequality>,
   )
   Let $zeta in Omega$ be arbitrary and let $r=r_zeta > 0$ satisfy $D(zeta, r_zeta) subset.eq Omega$. By @cor:generalized_ahlfors, the pullback of $mu$ from $CC without {0, 1}$ to $D(zeta, r_zeta) subset.eq Omega$ satisfies
   $ f^* mu(z) <= lambda_(r_zeta) (z - zeta) ==> mu(f(z)) abs(f'(z)) <= (2 r_zeta)/(r_zeta^2 - abs(z - zeta)^2) $ $forall z in D(zeta, r_zeta), f in tilde(cal(F))$. Since $forall w in CC without {0, 1}$,
@@ -198,7 +198,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   $
   Hence, there exist open neighborhoods $U_0, U_1, U_(oo)$ of $0, 1, oo$ respectively on which $(sigma)/(mu) < 1$. Since $(sigma)/(mu) in C^0(CC)$, by @thm:continuous-function-bounded-on-compact, $exists M' > 0$ such that $(sigma)/(mu) < M'$ on $CC without (U_0 union U_1 union U_(oo))$. Let $M = max(M', 1)$, and
   $ therefore sigma <= M mu quad "on" quad CC without {0, 1}. $
-  Hence, $forall f in tilde(cal(F))$, we have by virtue of @eq:fundamentalnormalitytest_f_mu_pullback_inequality,
+  Hence, $forall f in tilde(cal(F))$, we have by virtue of @eq:fundamental-normality-test_f_mu_pullback_inequality,
   $
     f^sharp (z) = sigma compose f(z) abs(f'(z)) <= M mu compose f(z) abs(f'(z)) <= (2 r_zeta M)/(r_zeta^2 - abs(z - zeta)^2)
   $
@@ -208,7 +208,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   $
   For any compact $K subset Omega$, the collection of open disks
   $ {D(zeta, r_zeta / 2)}_(zeta in K) $
-  forms an open cover of $K$. Hence, by Heine--Borel (@thm:heine_borel), it admits a finite subcover
+  forms an open cover of $K$. Hence, by Heine--Borel (@thm:heine-borel), it admits a finite subcover
   $ {D(zeta_k, r_(zeta_k) / 2)}_(1 <= k <= n) $
   for some $n in NN$. Then ${f^sharp:f in tilde(cal(F))}$ is uniformly bounded on $K$ by
   $ M_K = max{(8 M)/(3 r_(zeta_k)) : 1 <= k <= n} $
@@ -219,14 +219,14 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   corollary[Montel--Carathéodory][
     Let $Omega subset.eq CC$ be a region and suppose that $cal(F)$ is a family of meromorphic functions on $Omega$. If there exist three different points $alpha, beta, gamma in extcomplex$ such that ${alpha, beta, gamma} inter union.big_(f in cal(F)) f(Omega) = emptyset$, then $cal(F)$ must be a spherically normal family.
   ],
-  <cor:montelcaratheodory>,
+  <cor:montel-caratheodory>,
 )
 
 #proof[
   Let $phi(z) = ((z - alpha)(beta - gamma))/((z - gamma)(beta - alpha))$ be a Möbius transformation mapping $alpha, beta, gamma$ to $0, 1, oo$, respectively.
   Hence, the family of meromorphic functions
   $ tilde(cal(F)) = {phi compose f : f in cal(F)} $
-  omits $0$, $1$, and $oo$ (and hence each function is holomorphic). By the Fundamental Holomorphic Normality Test (@thm:fundamentalnormalitytest), $tilde(cal(F))$ is normal.
+  omits $0$, $1$, and $oo$ (and hence each function is holomorphic). By the Fundamental Holomorphic Normality Test (@thm:fundamental-normality-test), $tilde(cal(F))$ is normal.
 
   By @prop:linearfractionaltransformationuniformlysphericallycontinuous, $forall epsilon > 0$, $exists delta > 0$ such that $forall abs(w_1 - w_2) < delta$ in $CC$,
   $ d_sigma (phi^(-1) (w_1), phi^(-1) (w_2)) < epsilon. $

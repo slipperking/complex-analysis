@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Conformal Metrics and Curvature],
-  route: "metrics_and_curvature",
+  route: "metrics-and-curvature",
 )
 Let $Omega subset.eq CC$ be a region and let $rho in C^0 (Omega)$ be a positive function. The _conformal metric_ (in the following chapters when we refer to _metric_ we mean conformal) induced by $rho$ is given by
 
@@ -23,10 +23,10 @@ A $C^2$ metric is said to be _regular_. The (Gaussian) _curvature_ of the regula
   $
     K_rho (z) = -(laplacian(log rho(z)))/(rho(z)^2),
   $,
-  <eq:curvatureofmetric>,
+  <eq:curvature-of-metric>,
 )
 
-where $laplacian = pdv(, x, 2, style: "horizontal") + pdv(, y, 2, style: "horizontal") = 4 pdv(, overline(z), z, style: "horizontal")$ is the Laplacian operator. This is the same definition as the Gaussian curvature in @eq:gaussiancurvatureofsurface_gaussiancurvatureconformalmetricformula.
+where $laplacian = pdv(, x, 2, style: "horizontal") + pdv(, y, 2, style: "horizontal") = 4 pdv(, overline(z), z, style: "horizontal")$ is the Laplacian operator. This is the same definition as the Gaussian curvature in @eq:gaussian-curvature-of-a-surface-gaussian-curvature-conformal-metric-formula.
 
 The three following metrics are of particular interest in complex differential geometry:
 
@@ -44,7 +44,7 @@ The three following metrics are of particular interest in complex differential g
 
   is the length of the straight line segment connecting $z_1$ and $z_2$. The group formed by all transformations in the form of $z |-> ee^(ii theta) z + a$ (where $a in CC$ and $theta in RR$) is known as _the group of rigid motions_, or more abstractly, the _special Euclidean group_ of order $2$, denoted by $op("SE")(2) < Aut(CC)$, intuitively consists of all rotations and translations and their compositions, while the _Euclidean_ group $op("E")(2) > op("SE")(2)$ consists of reflections in the form of $z |-> ee^(ii theta) overline(z) + a$. Obviously, the Euclidean metric is invariant under both groups.
 
-  From @eq:curvatureofmetric, we find that Euclidean metric has curvature $K = 0$.
+  From @eq:curvature-of-metric, we find that Euclidean metric has curvature $K = 0$.
 
 + The _Poincaré metric_ (also referred to as the _hyperbolic metric_) on $DD$ is given by
 
@@ -55,7 +55,7 @@ The three following metrics are of particular interest in complex differential g
     <eq:poincare-metric-definition>,
   )
 
-  In @lem:schwarzpick, it was shown that the metric is invariant under $Aut(DD)$.
+  In @lem:schwarz-pick, it was shown that the metric is invariant under $Aut(DD)$.
 
   We will now calculate the Poincaré distance between two points $z_1,z_2 in CC$. First assume the case where $z_1 = 0$ and $z_2 = R in (0, 1)$. Consider a piecewise smooth curve $gamma subset DD$ parameterized by $z(t)$ connecting $z_1$ and $z_2$; or in other words
 
@@ -83,7 +83,7 @@ The three following metrics are of particular interest in complex differential g
     d (0, R) = log((1 + R)/(1 - R))
   $
 
-  and the straight line segment connecting the two points is a _geodesic_ (path of least length under a metric or other criteria). For fixed $theta in RR$ since $z |-> z ee^(ii theta) in Aut(DD)$, by the Schwarz--Pick Lemma (@lem:schwarzpick), we have
+  and the straight line segment connecting the two points is a _geodesic_ (path of least length under a metric or other criteria). For fixed $theta in RR$ since $z |-> z ee^(ii theta) in Aut(DD)$, by the Schwarz--Pick Lemma (@lem:schwarz-pick), we have
 
   $
     d (0, R) = d (0, R ee^(ii theta)) = log((1 + R)/(1 - R))
@@ -107,9 +107,9 @@ The three following metrics are of particular interest in complex differential g
     z(t) = phi_(z_1)^(-1) ((z_2 - z_1)/(1 - overline(z_1) z_2) t)
   $
 
-  for $t in [0, 1]$. By @thm:linear_fractional_transformation_maps_circles_to_circles, the geodesic is either an arc or a straight line segment passing through $z_1$ and $z_2$. Since $partial DD$ is orthogonal to the straight line passing through $0$ and $(z_2 - z_1)/(1 - overline(z_1) z_2)$, by the conformality of $phi_(z_1)^(-1)$, $phi_(z_1)^(-1)(partial DD) = partial DD$ is orthogonal to the circular (or straight line) extension of the geodesic curve.
+  for $t in [0, 1]$. By @thm:linear-fractional-transformation-maps-circles-to-circles, the geodesic is either an arc or a straight line segment passing through $z_1$ and $z_2$. Since $partial DD$ is orthogonal to the straight line passing through $0$ and $(z_2 - z_1)/(1 - overline(z_1) z_2)$, by the conformality of $phi_(z_1)^(-1)$, $phi_(z_1)^(-1)(partial DD) = partial DD$ is orthogonal to the circular (or straight line) extension of the geodesic curve.
 
-  As a consequence of the Schwarz--Pick Lemma (@lem:schwarzpick), for any $f:DD -> DD$ is holomorphic, we have
+  As a consequence of the Schwarz--Pick Lemma (@lem:schwarz-pick), for any $f:DD -> DD$ is holomorphic, we have
 
   $
     d (f (z_1), f (z_2)) <= d (z_1, z_2),
@@ -131,7 +131,7 @@ The three following metrics are of particular interest in complex differential g
     $
       sigma(z) = 2 / (1 + abs(z)^2), quad dif s_sigma^2 = (4 abs(dz)^2)/((1 + abs(z)^2)^2).
     $,
-    <eq:sphericalmetricdefinition>,
+    <eq:spherical-metric-definition>,
   )
 
   Under the inverse stereographic projection of $S^2 -> extcomplex$, for a given $z in extcomplex$, the corresponding point in $S^2$ is
@@ -170,7 +170,7 @@ The three following metrics are of particular interest in complex differential g
     lim_(Delta z -> 0) abs((d (z, z + Delta z))/(Delta z)) = 2 / (abs(z)^2 + 1),
   $
 
-  the metric as defined in @eq:sphericalmetricdefinition has a clear geometric meaning: the distance between two points $z$ and $tilde(z)$ under the metric in @eq:sphericalmetricdefinition is the shortest distance between the corresponding points in $S^2$, or their spherical distance.
+  the metric as defined in @eq:spherical-metric-definition has a clear geometric meaning: the distance between two points $z$ and $tilde(z)$ under the metric in @eq:spherical-metric-definition is the shortest distance between the corresponding points in $S^2$, or their spherical distance.
 
   Thus, if curve $gamma$ joins $z$ and $tilde(z)$, we have
 
@@ -192,24 +192,24 @@ The three following metrics are of particular interest in complex differential g
 
 The importance of the selected regions lies in the uniformization to be mentioned in @ sec:riemannsurfaces.
 
-Let $Omega_1$ and $Omega_2$ be two open regions in $CC$ such that $f:Omega_1 -> Omega_2$ is univalent (implying that $f' != 0$ by @lem:univalentnonvanishingderivative). If $rho$ is a metric on $Omega_2$, then
+Let $Omega_1$ and $Omega_2$ be two open regions in $CC$ such that $f:Omega_1 -> Omega_2$ is univalent (implying that $f' != 0$ by @lem:univalent-non-vanishing-derivative). If $rho$ is a metric on $Omega_2$, then
 
 #lbl(
   $
     f^*rho = (rho compose f) abs(f')
   $,
-  <eq:pullbackmetric>,
+  <eq:metric-pullback>,
 )
 
 defines a metric on $Omega_1$, referred to as the _metric pullback of_ $rho$ _by_ $f$.
 
-Curvature as defined in @eq:curvatureofmetric is invariant under pullbacks of conformal mappings, or in the case above, we now aim to show that (under assumptions of regularity)
+Curvature as defined in @eq:curvature-of-metric is invariant under pullbacks of conformal mappings, or in the case above, we now aim to show that (under assumptions of regularity)
 
 #lbl(
   $
     K_rho (f(z)) = K_(f^*rho) (z).
   $,
-  <eq:curvatureinvarianceunderholomorphicpullback>,
+  <eq:curvature-invariance-under-holomorphic-pullback>,
 )
 
 By explicit definition,

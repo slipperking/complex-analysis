@@ -45,12 +45,12 @@ Grouping by primes, we see that this is in fact equivalent to
   $
     psi(x) &= sum_(p <= x \ p "prime") sum_(k: p^k <= x \ k in NN) log p = sum_(p <= x \ p "prime") sum_(forall k <= log_p x) log p \ &= sum_(p <= x \ p "prime") sum_(k = 1)^(floor((log x) / (log p))) log p = sum_(p <= x \ p "prime") floor((log x) / (log p)) log p<=sum_(p<= x\ p "prime") log x.
   $,
-  <eq:chebyshevfunction_psi_floor>,
+  <eq:chebyshev-function-psi-floor>,
 )
 
 Hence we have for any $x > 1$,
 
-#lbl($ 0 <= theta.alt(x) <= psi(x) <= pi(x) log x. $, <eq:chebyshevfunctions_bounds_primecounting>)
+#lbl($ 0 <= theta.alt(x) <= psi(x) <= pi(x) log x. $, <eq:chebyshev-functions-bounds-with-prime-counting-function>)
 
 #lbl(
   theorem[
@@ -59,17 +59,17 @@ Hence we have for any $x > 1$,
       $
         limsup_(x -> oo) (pi(x) log x) / x = limsup_(x -> oo) psi(x) / x = limsup_(x -> oo) theta.alt(x) / x
       $,
-      <eq:chebyshevfunctions_limsup_inflim_equivalences_limsup>,
+      <eq:chebyshev-functions-limsup-liminf-limit-equivalences-superior>,
     )
     and
     #lbl(
       $
         liminf_(x -> oo) (pi(x) log x) / x = liminf_(x -> oo) psi(x) / x = liminf_(x -> oo) theta.alt(x) / x.
       $,
-      <eq:chebyshevfunctions_limsup_inflim_equivalences_liminf>,
+      <eq:chebyshev-functions-limsup-liminf-limit-equivalences-inferior>,
     )
   ],
-  <thm:chebyshevfunctions_limsup_inflim_equivalences>,
+  <thm:chebyshev-functions-limsup-liminf-limit-equivalences>,
 )
 
 #proof[
@@ -84,14 +84,14 @@ Hence we have for any $x > 1$,
     $
       (alpha pi(x) log x) / x - alpha x^(alpha - 1) log x < theta.alt(x) / x <= psi(x) / x <= (pi(x) log x) / x
     $,
-    <eq:chebyshevfunctions_limsup_inflim_equivalences_inequalities>,
+    <eq:chebyshev-functions-limsup-liminf-limit-equivalences-inequalities>,
   )
-  by virtue of @eq:chebyshevfunctions_bounds_primecounting. Letting $x -> oo$ and taking the limit supremum yields
+  by virtue of @eq:chebyshev-functions-bounds-with-prime-counting-function. Letting $x -> oo$ and taking the limit supremum yields
   $
     alpha limsup_(x -> oo) ((pi(x) log x) / x - x^(alpha - 1) log x) &= alpha limsup_(x -> oo) (pi(x) log x) / x <= limsup_(x -> oo) theta.alt(x) / x \
     &<= limsup_(x -> oo) psi(x) / x <= limsup_(x -> oo) (pi(x) log x) / x.
   $
-  Letting $alpha -> 1^-$ yields @eq:chebyshevfunctions_limsup_inflim_equivalences_limsup. The proof of @eq:chebyshevfunctions_limsup_inflim_equivalences_liminf follows similarly by taking limit infimums in @eq:chebyshevfunctions_limsup_inflim_equivalences_inequalities and $alpha -> 1^-$.
+  Letting $alpha -> 1^-$ yields @eq:chebyshev-functions-limsup-liminf-limit-equivalences-superior. The proof of @eq:chebyshev-functions-limsup-liminf-limit-equivalences-inferior follows similarly by taking limit infimums in @eq:chebyshev-functions-limsup-liminf-limit-equivalences-inequalities and $alpha -> 1^-$.
 ]
 
 #lbl(
@@ -99,13 +99,13 @@ Hence we have for any $x > 1$,
     The Laplace transform of $psi compose exp$ defined as
     #lbl(
       $ f(s) = integral_0^oo psi(ee^t) ee^(-s t) dt $,
-      <eq:primenumbertheorem_laplacetransformchebyshevfunction_statement>,
+      <eq:prime-number-theorem-laplace-transform-chebyshev-function_statement>,
     )
     converges for $Re s > 1$ and defines a holomorphic function on this domain. Moreover, the function $g$ defined by
     $ g(t) = lim_(sigma -> 1^+) [f(s) - 1 / (s - 1)], s = sigma + ii t $
     converges uniformly with respect to $t$ on compact subsets of $RR$ and is continuously differentiable thereon.
   ],
-  <thm:prime-numbertheorem_laplacetransformchebyshevfunction>,
+  <thm:prime-number-theorem-laplace-transform-of-chebyshev-psi-exp-function>,
 )
 
 #proof[
@@ -117,14 +117,14 @@ Hence we have for any $x > 1$,
     & = 1 / s sum_(m=1)^oo Lambda(m) sum_(n=m)^oo [n^(-s) - (n+1)^(-s)] \
     & = 1 / s sum_(m=1)^oo Lambda(m) m^(-s) = 1 / s sum_(n=1)^oo Lambda(n) / (n^s).
   $
-  by absolute convergence and the fact that the inner summation "telescopes." By @prop:riemannzetafunction_logarithmicderivativezetavonmangoldt, we have that for $Re s > 1$,
+  by absolute convergence and the fact that the inner summation "telescopes." By @prop:riemann-zeta-function-logarithmic-derivative-zeta-von-mangoldt, we have that for $Re s > 1$,
   #lbl(
     $
       f(s) = -1 / s (zeta'(s)) / zeta(s) ==> f(s) - 1 / (s - 1) = -1 / s ((zeta'(s)) / zeta(s) + 1 / (s - 1)) - 1 / s.wide quad
     $,
     <eq:prime-number-theorem-laplace-transform-chebyshev-function-g-function>,
   )
-  The expression $(zeta'(s)) / zeta(s) + 1 / (s - 1)$ is meromorphic in $CC$. Because $zeta(s)$ has a simple pole at $s = 1$ with residue $1$, it follows that $ zeta(s) = 1 / (s - 1) + l(s) $ for some entire function $l:CC -> CC$. By @prop:riemannzetafunction_trivialzeros and @thm:riemannzetafunction_nozerosoncriticalstripboundary, the quantity $zeta(s) (s - 1) = 1 + (s - 1) l(s)$ does not vanish for $Re s >= 1$ (at $s = 1$, the simple pole $zeta$ cancels with the simple zero of $s - 1$). Hence,
+  The expression $(zeta'(s)) / zeta(s) + 1 / (s - 1)$ is meromorphic in $CC$. Because $zeta(s)$ has a simple pole at $s = 1$ with residue $1$, it follows that $ zeta(s) = 1 / (s - 1) + l(s) $ for some entire function $l:CC -> CC$. By @prop:riemann-zeta-function-trivial-zeros and @thm:riemann-zeta-function_nozerosoncriticalstripboundary, the quantity $zeta(s) (s - 1) = 1 + (s - 1) l(s)$ does not vanish for $Re s >= 1$ (at $s = 1$, the simple pole $zeta$ cancels with the simple zero of $s - 1$). Hence,
   $
     (zeta'(s)) / zeta(s) + 1 / (s - 1) &= (zeta'(s) (s - 1) + zeta(s)) / (zeta(s) (s - 1)) = (dv(, s)(zeta(s) (s - 1))) / (1 + (s - 1) l(s)) \
     &= (l'(s) (s - 1) + l(s)) / (1 + (s - 1) l(s))

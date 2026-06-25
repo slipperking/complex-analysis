@@ -72,7 +72,7 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
   $ tilde(S) = inter.big_(k in ZZ_(gt.eq 0)) S_k $
   and each of $S_k$ is closed in $U$, $tilde(S)$ is the intersection of closed sets and consequently closed.
 
-  Since $tilde(S)$ is nonempty and clopen in the connected set $U$, $tilde(S) = U$ (by @thm:connected_topological_space_clopen_sets). It follows that $f equiv 0$ on $U$.
+  Since $tilde(S)$ is nonempty and clopen in the connected set $U$, $tilde(S) = U$ (by @thm:connected-topological-space-clopen-sets). It follows that $f equiv 0$ on $U$.
 ]
 
 #remark[
@@ -242,7 +242,7 @@ $
   Let $w = h(z) = (g(z)) / (f(z))$ with $Gamma = h(gamma)$. Then,
   $ k_g - k_f = integral.cont_Gamma (dif w) / (w). $
 
-  From @eq:rouche, by dividing both sides by $f(z)$, we obtain $abs(w - 1) < 1$. Then $Gamma$ lies in the open disk $D(1, 1)$, which will never intersect or enclose $0$. Then by @lem:cauchyintegraltheoremoversimplyconnectedset,
+  From @eq:rouche, by dividing both sides by $f(z)$, we obtain $abs(w - 1) < 1$. Then $Gamma$ lies in the open disk $D(1, 1)$, which will never intersect or enclose $0$. Then by @lem:cauchy-integral-theorem-over-simply-connected-set,
   $ k_g - k_f = integral.cont_Gamma (dif w) / (w) = 0, $
   as desired.
 ]

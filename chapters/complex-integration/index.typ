@@ -8,7 +8,7 @@
     #include "zeros-of-a-holomorphic-function/index.typ"
     #include "properties-of-holomorphic-functions/index.typ"
     #include "unit-disk-holomorphic-automorphisms/index.typ"
-    #include "alternative_integral_formulas/index.typ"
+    #include "alternative-integral-formulas/index.typ"
   ],
 )
 While differentiability in the complex plane is substantially more restrictive than in the real setting, this rigidity gives rise to powerful integral theorems that govern the behavior of holomorphic functions.

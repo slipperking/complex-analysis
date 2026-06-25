@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [The Great Picard, Bloch, Landau, and Schottky Theorems],
-  route: "picard_bloch_landau_schottky",
+  route: "picard-bloch-landau-schottky",
 )
 Recall the Casorati--Weierstrass Theorem, one of the earliest results on the value distribution near essential singularities:
 
@@ -19,7 +19,7 @@ We will now prove a more advanced characterization of this distribution by metho
 #proof[
   Without loss of generality, assume $z_0 = 0$ and that $f$ omits the values $0$ and $1$ (otherwise, consider $z |-> (1)/(beta - alpha) (f(z + z_0) - alpha)$, where $alpha$ and $beta$ are the omitted values). Define the family
   $ cal(F) = {z |-> f(z / n): n in NN} $
-  of holomorphic functions on $D^*(0, delta)$. Since $f$ omits $0$ and $1$, each element of $cal(F)$ does as well. By the Fundamental Normality Test (@thm:fundamentalnormalitytest), $cal(F)$ is spherically normal. Thus, there exists a subsequence ${f_(n_k)}_(k in NN) subset.eq cal(F)$ that converges locally uniformly on $D^*(0, delta)$ in the spherical metric. By @prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniform-limit, this subsequence converges locally uniformly either to a holomorphic function on $D^*(0, delta)$ or to $oo$ thereon.
+  of holomorphic functions on $D^*(0, delta)$. Since $f$ omits $0$ and $1$, each element of $cal(F)$ does as well. By the Fundamental Normality Test (@thm:fundamental-normality-test), $cal(F)$ is spherically normal. Thus, there exists a subsequence ${f_(n_k)}_(k in NN) subset.eq cal(F)$ that converges locally uniformly on $D^*(0, delta)$ in the spherical metric. By @prop:locally-uniformly-spherically-convergent-holomorphic-sequence-uniform-limit, this subsequence converges locally uniformly either to a holomorphic function on $D^*(0, delta)$ or to $oo$ thereon.
 
   1. Suppose ${f_(n_k)}_(k in NN)$ converges locally uniformly to a holomorphic function on $D^*(0, delta)$. Then ${f_(n_k)}_(k in NN)$ is uniformly bounded on $partial D(0, delta / 2)$. Hence, there exists $M > 0$ such that
     $ abs(f(z / (n_k))) = abs(f_(n_k) (z)) < M quad forall z in partial D(0, delta / 2), k in NN. $
@@ -44,11 +44,11 @@ We will now prove a more advanced characterization of this distribution by metho
   corollary[
     Suppose that $f$ is meromorphic on a punctured neighborhood $D^*(z_0, delta)$ of $z_0$. If $f(D^*(z_0, delta))$ omits at least three different values of $extcomplex$, then $f$ has a meromorphic continuation to $z_0$.
   ],
-  <cor:great-picardmeromorphic>,
+  <cor:great-picard-meromorphic>,
 )
 
 #proof[
-  A linear fractional transformation maps the omitted values to $0$, $1$, and $oo$, mapping $f$ so that it exhibits holomorphy. Similar to @cor:montelcaratheodory, the preceding result is preserved under the inverse linear fractional transformation.
+  A linear fractional transformation maps the omitted values to $0$, $1$, and $oo$, mapping $f$ so that it exhibits holomorphy. Similar to @cor:montel-caratheodory, the preceding result is preserved under the inverse linear fractional transformation.
 ]
 
 #remark[
@@ -83,7 +83,7 @@ The methods of differential geometry can also be used to prove the statements of
 
   The precise value of $B$ remains unknown to this day. In 1937, H. Grunsky and L. Ahlfors established the bound
   $ B <= (Gamma((1)/(3)) Gamma((11)/(12)))/(Gamma((1)/(4))) sqrt((sqrt(3) - 1)/(2)), $
-  where $Gamma$ denotes the Gamma function (as in @eq:gammafunction). Later the lower bound of $sqrt(3) / 4$ was given, then to be refined to $B >= sqrt(3) / 4 + (10^(-12))/(13)$ by M. Bonk, which was further improved to $B >= sqrt(3) / 4 + 1 / 5000$ in 1996 by H. Chen and P. M. Gauthier.
+  where $Gamma$ denotes the Gamma function (as in @eq:gamma-function). Later the lower bound of $sqrt(3) / 4$ was given, then to be refined to $B >= sqrt(3) / 4 + (10^(-12))/(13)$ by M. Bonk, which was further improved to $B >= sqrt(3) / 4 + 1 / 5000$ in 1996 by H. Chen and P. M. Gauthier.
 
   Grunsky and Ahlfors actually conjectured that the upper bound in their inequality is exact -- that is, $B = (Gamma((1)/(3)) Gamma((11)/(12)))/(Gamma((1)/(4))) sqrt((sqrt(3) - 1)/(2))$.
 ]
@@ -113,15 +113,15 @@ Hence, for simplicity, we entertain a much simpler case without algebraic branch
 
   For every point $w_0 in f(DD)$, the bounding circle corresponding to $phi.alt(w_0)$ passes through a (at least one) boundary point, denoted by $b = b_(w_0)$. Let $phi.alt_(w_0) (w) = abs(w - b)$ and let
   $ rho_(w_0) (w) = A / (sqrt(phi.alt_(w_0) (w)) (A^2 - phi.alt_(w_0) (w))), quad w in D(w_0, phi.alt(w_0)). $
-  By the definition of $phi.alt$, we have $phi.alt_(w_0) >= phi.alt$ everywhere in this neighborhood. Since $rho_(w_0) = (phi.alt_(w_0) |-> sqrt(phi.alt_(w_0)))^* (phi |-> (2 A)/(A^2 - phi^2))$ is the pullback of the hyperbolic metric in @eq:poincaremetricscaledcurvature, the metric $rho_(w_0) (w)$ has the constant negative curvature of $-1$.
+  By the definition of $phi.alt$, we have $phi.alt_(w_0) >= phi.alt$ everywhere in this neighborhood. Since $rho_(w_0) = (phi.alt_(w_0) |-> sqrt(phi.alt_(w_0)))^* (phi |-> (2 A)/(A^2 - phi^2))$ is the pullback of the hyperbolic metric in @eq:poincare-metric-scaled-curvature, the metric $rho_(w_0) (w)$ has the constant negative curvature of $-1$.
 
-  Our goal is to construct $rho_(w_0)$ so that it is the function of a supporting metric for $rho$ (satisfies the criteria for @thm:schwarz-ahlfors-picksupportingmetric). For $rho_(w_0) <= rho$ to be satisfied, we consider
+  Our goal is to construct $rho_(w_0)$ so that it is the function of a supporting metric for $rho$ (satisfies the criteria for @thm:schwarz-ahlfors-pick-supporting-metric). For $rho_(w_0) <= rho$ to be satisfied, we consider
   $
     sqrt(phi.alt_(w_0) (w)) (A^2 - phi.alt_(w_0) (w)) >= sqrt(phi.alt(w)) (A^2 - phi.alt(w)), quad phi.alt_(w_0) (w) >= phi.alt(w).
   $
   In particular, we want
   $ t |-> sqrt(t) (A^2 - t) $
-  to be increasing on $[0, phi.alt(w_0) + delta]$ for arbitrary $delta > 0$. The function itself can be calculated to be increasing for $t <= A^2 / 3$ by elementary methods (using derivative tests). Therefore, the conditions for a supporting metric are satisfied if $A^2 / 3 >= sup_(w in f(DD)) phi.alt(w) + delta >= phi.alt(w_0) + delta$. Without loss of generality we let $delta -> 0^+$ and thus, under the condition that $A^2 / 3 > sup_w phi.alt(w)$, @thm:schwarz-ahlfors-picksupportingmetric gives that
+  to be increasing on $[0, phi.alt(w_0) + delta]$ for arbitrary $delta > 0$. The function itself can be calculated to be increasing for $t <= A^2 / 3$ by elementary methods (using derivative tests). Therefore, the conditions for a supporting metric are satisfied if $A^2 / 3 >= sup_(w in f(DD)) phi.alt(w) + delta >= phi.alt(w_0) + delta$. Without loss of generality we let $delta -> 0^+$ and thus, under the condition that $A^2 / 3 > sup_w phi.alt(w)$, @thm:schwarz-ahlfors-pick-supporting-metric gives that
   $ rho(w) abs(dif w) <= (2 abs(dz)) / (1 - abs(z)^2). $
   Let $z = 0$, $w = f(0)$, so that by the theorem conditions, $abs(dv(w, z)) = 1$, and therefore
   $ rho(f(0)) <= 2 ==> A <= 2 sqrt(phi.alt(f(0))) [A^2 - phi.alt(f(0))]. $

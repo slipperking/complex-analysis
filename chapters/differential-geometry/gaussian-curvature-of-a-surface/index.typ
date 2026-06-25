@@ -1,8 +1,8 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Gaussian Curvature of a Surface],
-  route: "gaussian_curvature_of_surface",
-  label: <sec:gaussiancurvatureofsurface>,
+  route: "gaussian-curvature-of-a-surface",
+  label: <sec:gaussian-curvature-of-a-surface>,
 )
 #let II-matrix = $vb(I #h(-0.15em) I)$
 
@@ -22,7 +22,7 @@ The square of the length of the vector infinitesimal $dif va(r)=va(r)'_u dif u +
   $
     upright(I)=dif s^2=E dif u^2 + 2 F dif u dif v + G dif v^2,
   $,
-  <eq:firstfundamentalform>,
+  <eq:first-fundamental-form>,
 )
 
 is known as the _first fundamental form_ of $Sigma$, where $E=va(r)'_u dot va(r)'_u$, $F=va(r)'_u dot va(r)'_v$, and $G=va(r)'_v dot va(r)'_v$.
@@ -41,7 +41,7 @@ where the first two linear terms vanished by properties of the scalar triple pro
   $
     #II-num=L dif u^2 + 2 M dif u dif v + N dif v^2,
   $,
-  <eq:second_fundamental_form>,
+  <eq:second-fundamental-form>,
 )
 
 where $L=va(r)''_(u u) dot vu(n)$, $M=va(r)''_(u v) dot vu(n)$, and $N=va(r)''_(v v) dot vu(n)$. Since $va(r)'_u dot vu(n)=0$ and $va(r)'_v dot vu(n)=0$, by differentiation, we have
@@ -114,11 +114,11 @@ $
       },
       caption: [$Q$ has a greater heuristic distance to $T_P Sigma$ for a more curved surface.],
     ),
-    <fig:second_fundamental_form>,
+    <fig:second-fundamental-form>,
   )
 ])
 
-The second fundamental form, in a rough sense, measures the curvature of the surface $Sigma$ at $P$ (refer to @fig:second_fundamental_form). Both the first and second fundamental forms are geometric invariants; they are independent of the parameterization $va(r)$ of $Sigma$. The first fundamental form is also referred to as the _intrinsic metric_ (we will not delve into the metric tensor here) of $Sigma$, and the second fundamental form is an _extrinsic_ property of $Sigma$ as it is invariant up to the orientation of the surface (consequent direction of the normal vector).
+The second fundamental form, in a rough sense, measures the curvature of the surface $Sigma$ at $P$ (refer to @fig:second-fundamental-form). Both the first and second fundamental forms are geometric invariants; they are independent of the parameterization $va(r)$ of $Sigma$. The first fundamental form is also referred to as the _intrinsic metric_ (we will not delve into the metric tensor here) of $Sigma$, and the second fundamental form is an _extrinsic_ property of $Sigma$ as it is invariant up to the orientation of the surface (consequent direction of the normal vector).
 
 Let $gamma subset Sigma$ be a curve parameterized by arc length, $va(r)(s)=va(r)(u(s), v(s))$. Then the unit tangent vector at $P=va(r)(s)$ is
 
@@ -186,7 +186,7 @@ The first two equations can be written as
   $
     mat(L - lambda E, M - lambda F; M - lambda F, N - lambda G) va(v)=vb(0).
   $,
-  <eq:gaussiancurvaturelambdarootsmatrixvectorvanish>,
+  <eq:gaussian-curvature-lambda-roots-matrix-vector-vanish>,
 )
 
 Let the matrix on the left be denoted by $vb(M)$. In order for non-trivial $(vb(v) eq.not vb(0))$ to exist, we must have $det vb(M)=0$. That is,
@@ -202,7 +202,7 @@ $
   grad(va(v)^top #II-matrix va(v))=lambda grad(va(v)^top vb(I) va(v))
 $
 
-it is apparent that the roots $lambda_1, lambda_2 in RR$. Moreover, from @eq:gaussiancurvaturelambdarootsmatrixvectorvanish we have
+it is apparent that the roots $lambda_1, lambda_2 in RR$. Moreover, from @eq:gaussian-curvature-lambda-roots-matrix-vector-vanish we have
 
 $
   #II-matrix va(v)=lambda vb(I) va(v) ==> lambda=(va(v)^top #II-matrix va(v))/(va(v)^top vb(I) va(v)).
@@ -251,7 +251,7 @@ we have
   $
     va(r)''_(u u) dot va(r)'_v + va(r)'_u dot va(r)''_(u v) equiv 0, quad va(r)''_(u v) dot va(r)'_v + va(r)'_u dot va(r)''_(v v) equiv 0,
   $,
-  <eq:gaussian_curvature_of_surface_conformal_zero_differentiation>,
+  <eq:gaussian-curvature-of-a-surface-conformal-zero-differentiation>,
 )
 
 and
@@ -260,10 +260,10 @@ and
   $
     2 va(r)''_(u u) dot va(r)'_u equiv 2 rho rho'_u equiv 2 va(r)''_(u v) dot va(r)'_v, quad 2 va(r)''_(u v) dot va(r)'_u equiv 2 rho rho'_v equiv 2 va(r)''_(v v) dot va(r)'_v.
   $,
-  <eq:gaussian_curvature_of_surface_conformal_nonzero_differentiation>,
+  <eq:gaussian-curvature-of-a-surface-conformal-nonzero-differentiation>,
 )
 
-Substituting @eq:gaussian_curvature_of_surface_conformal_nonzero_differentiation into @eq:gaussian_curvature_of_surface_conformal_zero_differentiation then gives
+Substituting @eq:gaussian-curvature-of-a-surface-conformal-nonzero-differentiation into @eq:gaussian-curvature-of-a-surface-conformal-zero-differentiation then gives
 
 $
   va(r)''_(u u) dot va(r)'_v=-rho rho'_v, quad (va(r)''_(v v) dot va(r)'_u=-rho rho'_u).
@@ -275,7 +275,7 @@ $
   va(r)'''_(u u v) dot va(r)'_v + va(r)''_(u u) dot va(r)_(v v)=- (rho'_v)^2 - rho rho''_(v v), \ (va(r)'''_(v v u) dot va(r)'_u + va(r)''_(v v) dot va(r)_(u u)=- (rho'_u)^2 - rho rho''_(u u)).
 $
 
-Differentiating the inner two expressions of @eq:gaussian_curvature_of_surface_conformal_nonzero_differentiation, we have
+Differentiating the inner two expressions of @eq:gaussian-curvature-of-a-surface-conformal-nonzero-differentiation, we have
 
 $
   va(r)'''_(u u v) dot va(r)'_v + va(r)''_(u v) dot va(r)_(u v)=(rho'_u)^2 + rho rho''_(u u), \ (va(r)'''_(v v u) dot va(r)'_u + va(r)''_(u v) dot va(r)_(u v)=(rho'_v)^2 + rho rho''_(v v)).
@@ -310,7 +310,7 @@ Combining the two expressions, we have
     K & =(L N - M^2)/(E G - F^2)=(va(r)''_(v v) dot va(r)''_(u u) + 2 (rho'_u)^2 + 2 (rho'_v)^2 - va(r)''_(u v) dot va(r)''_(u v)) / rho^4 \
     & = ((rho'_u)^2 + (rho'_v)^2 - rho laplacian rho) / rho^4 = -(1)/(rho^2) laplacian(log rho).
   $,
-  <eq:gaussiancurvatureofsurface_gaussiancurvatureconformalmetricformula>,
+  <eq:gaussian-curvature-of-a-surface-gaussian-curvature-conformal-metric-formula>,
 )
 
 To understand the motivation for which $dif s^2$ is said to be conformal, consider two curves in the $u v$-plane, parameterized by $bold(gamma)_1 (t)=(u_1 (t), v_1 (t))$ and $bold(gamma)_2 (t)=(u_2 (t), v_2 (t))$ such that $bold(gamma)_1 (0)=bold(gamma)_2 (0)=vb(w)_0=(u_0, v_0)$. Their images via $vb(r)$ are $vb(alpha)_1 (t)=vb(r) compose bold(gamma)_1 (t)$ and $vb(alpha)_2 (t)=vb(r) compose bold(gamma)_2 (t)$ so that they intersect at some point $P in Sigma$. Let $bold(gamma)'_1 (0)=vb(v)_1=a vb(e)_u + b vb(e)_v$ and $bold(gamma)'_2 (0)=vb(v)_2=c vb(e)_u + d vb(e)_v$ be two tangent vectors. Then the corresponding vectors in $T_P Sigma$ are

@@ -10,7 +10,7 @@ and
   $
     pdv(, overline(z)) = pdv(, x) pdv(x, overline(z)) + pdv(, y) pdv(y, overline(z)) = 1/2 (pdv(, x) + ii pdv(, y)).
   $,
-  <eq:wirtingerderivative2>,
+  <eq:wirtinger-derivative-2>,
 )
 If @eq:wirtingerderivative1 is set equal to $0$, then it is the equivalent form of the homogeneous Cauchy--Riemann Equations. Then for a holomorphic function $f(z)$, the Wirtinger derivative $pdv(f, z) = dv(f, z)$.
 
@@ -23,7 +23,7 @@ If $f$ is holomorphic,
   $
     dv(f, z) = pdv(u, x) + ii pdv(v, x) = pdv(v, y) + ii pdv(v, x) = pdv(u, x) - ii pdv(u, y) = pdv(v, y) - ii pdv(u, y).
   $,
-  <eq:holomorphic_derivative_decomposition>,
+  <eq:holomorphic-derivative-decomposition>,
 )
 On the contrary, by the rules of the derivative,
 $ pdv(, x) = pdv(, z) pdv(z, x) + pdv(, overline(z)) pdv(overline(z), x) = pdv(, z) + pdv(, overline(z)) $
@@ -37,7 +37,7 @@ The Laplacian is equal to
                                       & quad""- pdv(, z, 2) - pdv(, overline(z), 2) + 2 pdv(, z, overline(z)) \
                                       & = 4 pdv(, z, overline(z)).
   $,
-  <eq:laplaciancomplexform>,
+  <eq:laplacian-complex-form>,
 )
 Under this definition, we can derive the chain rule:
 
@@ -80,7 +80,7 @@ Under this definition, we can derive the chain rule:
   The terms in brackets equal $pdv(g, z)$ and $pdv(overline(g), z)$. Thus,
   $ pdv(h, z) = (pdv(f, w) compose g) pdv(g, z) + (pdv(f, overline(w)) compose g) pdv(overline(g), z). $
 
-  A similar calculation using @eq:wirtingerderivative2 gives
+  A similar calculation using @eq:wirtinger-derivative-2 gives
   $
     pdv(, overline(z))(f compose g) = (pdv(f, w) compose g) pdv(g, overline(z)) + (pdv(f, overline(w)) compose g) pdv(overline(g), overline(z)).
   $

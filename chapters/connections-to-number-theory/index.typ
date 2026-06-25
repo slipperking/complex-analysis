@@ -3,8 +3,8 @@
   title: [Precise Connections to Number Theory],
   route: "connections-to-number-theory",
   children: [
-    #include "gamma_function/index.typ"
-    #include "riemann_zeta_function/index.typ"
+    #include "gamma-function/index.typ"
+    #include "riemann-zeta-function/index.typ"
     #include "prime-number-theorem/index.typ"
   ],
 )

@@ -14,7 +14,7 @@ The proof can be well-organized through the use of the results that we will now 
       lim_(z -> oo) psi(z) = 0, quad sup_(z in K) abs(f(z) - psi(z)) < epsilon.
     $
   ],
-  <prop:rungesimplepolesandremovablesingularityatinfinity>,
+  <prop:runge-simple-poles-and-removable-singularity-at-infinity>,
 )
 
 #figure-wrapper([
@@ -215,7 +215,7 @@ The proof can be well-organized through the use of the results that we will now 
     $
       1 / taui integral.cont_(partial tilde(K)) (f(zeta) dzeta) / (zeta - z) = f(z)
     $,
-    <eq:rungesimplepolesandremovablesingularityatinfinity_cauchygoursat>,
+    <eq:runge-simple-poles-and-removable-singularity-at-infinity_cauchygoursat>,
   )
   in the case that $z in tilde(K)$. The boundary $partial tilde(K)$ may be written as the union of $n$ lines parameterized by $0 <= t <= 1$; more concretely, we have $partial tilde(K) = union.big_(j in NN_(<= n)) gamma_j ([0, 1])$. Hence we have in equivalent formulation,
   $
@@ -223,7 +223,7 @@ The proof can be well-organized through the use of the results that we will now 
   $
   The distance between $K$ and $partial tilde(K)$ is strictly positive. Suppose instead that the distance were zero. Then some point of $K$ would lie on the boundary of a square $Q in cal(G)$ that intersects $partial tilde(K)$. If this point lies on an edge of $Q$ (but not at a vertex), then the square adjacent along that edge must also intersect $K$, and hence belong to $cal(G)$, contradicting the assumption that the point lies on $partial tilde(K)$. If the point lies at a vertex of $Q$, then all three adjacent squares also intersect $K$, so they too belong to $cal(G)$, leading to the same contradiction. Thus, the distance must be positive.
 
-  Hence, each integrand as defined in @eq:rungesimplepolesandremovablesingularityatinfinity_cauchygoursat is jointly continuous for $t in [0, 1]$ and $z in K$. By compactness of the product, it is in fact uniformly continuous by Heine--Cantor (@thm:heine-cantor).
+  Hence, each integrand as defined in @eq:runge-simple-poles-and-removable-singularity-at-infinity_cauchygoursat is jointly continuous for $t in [0, 1]$ and $z in K$. By compactness of the product, it is in fact uniformly continuous by Heine--Cantor (@thm:heine-cantor).
 
   Hence, $forall epsilon > 0$, $exists delta > 0$ such that $forall z in K$, $forall 1 <= j <= n$ (uniform in $j$ as we can take the minimum of each $delta_j$), and $forall t_1, t_2 in [0, 1]$ satisfying $abs(t_1 - t_2) < delta$,
   $
@@ -278,9 +278,9 @@ In its full generality, we will now apply a technique to push a pole to a prescr
         & quad""- [(z - beta)^(-1) sum_(k = 0)^n ((alpha - beta) / (z - beta))^k]^j
       ) < epsilon / (m abs(a_(-j))),
     $,
-    <eq:simple_pole_pushing_uniform_bound_assumption>,
+    <eq:simple-pole-pushing-uniform-bound-assumption>,
   )
-  where $z in extcomplex without D(beta, r)$. Since $abs(1 / (z - beta)) < 1 / r$, we can restrict @eq:simple_pole_pushing_uniform_bound_assumption further with
+  where $z in extcomplex without D(beta, r)$. Since $abs(1 / (z - beta)) < 1 / r$, we can restrict @eq:simple-pole-pushing-uniform-bound-assumption further with
   $
     abs((sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^j - (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j) < r^j epsilon / (m abs(a_(-j))).
   $
@@ -290,7 +290,7 @@ In its full generality, we will now apply a technique to push a pole to a prescr
       &abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k) \
       &wide""dot abs(sum_(l = 0)^(j - 1) (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^l (sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^(j - l - 1)).
     $,
-    <eq:simple_pole_pushing_uniform_bound_assumption2>,
+    <eq:simple-pole-pushing-uniform-bound-assumption-2>,
   )
   For any $n in NN$, we have
   $
@@ -300,11 +300,11 @@ In its full generality, we will now apply a technique to push a pole to a prescr
   $
     M = r / (r - abs(alpha - beta))
   $
-  on $extcomplex without D(beta, r)$. Thus, @eq:simple_pole_pushing_uniform_bound_assumption2 is bounded by $M^(j - 1) j abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k)$, and we apply further restriction by setting this to be bounded by $r^j epsilon / (m abs(a_(-j)))$. By uniform convergence, for any $epsilon > 0$, $exists N_j in NN$ such that $forall n > N_j$,
+  on $extcomplex without D(beta, r)$. Thus, @eq:simple-pole-pushing-uniform-bound-assumption-2 is bounded by $M^(j - 1) j abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k)$, and we apply further restriction by setting this to be bounded by $r^j epsilon / (m abs(a_(-j)))$. By uniform convergence, for any $epsilon > 0$, $exists N_j in NN$ such that $forall n > N_j$,
   $
     abs(sum_(k = n + 1)^oo ((alpha - beta) / (z - beta))^k) < r^j epsilon / (M^(j - 1) j m abs(a_(-j))).
   $
-  For $n > N_j$, @eq:simple_pole_pushing_uniform_bound_assumption is satisfied, and $forall n > max_(j in NN_(<= m) \ a_(-j) != 0) (N_j)$, $z in extcomplex without D(beta, r)$, we have
+  For $n > N_j$, @eq:simple-pole-pushing-uniform-bound-assumption is satisfied, and $forall n > max_(j in NN_(<= m) \ a_(-j) != 0) (N_j)$, $z in extcomplex without D(beta, r)$, we have
   $
     &abs(f(z) - sum_(j = 1)^m a_(-j) ((1 / (z - beta) sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j)) \
     &wide""<= sum_(j = 1 \ a_(-j) != 0)^m abs(a_(-j)) abs((sum_(k = 0)^oo ((alpha - beta) / (z - beta))^k)^j - (sum_(k = 0)^n ((alpha - beta) / (z - beta))^k)^j) \
@@ -361,7 +361,7 @@ In its full generality, we will now apply a technique to push a pole to a prescr
 
   Now, consider $zeta in U without (S union {oo})$. Suppose there exists $zeta' in D(zeta, op("dist")(zeta, K)) inter S$. By repeated application of the preceding argument, this would imply $zeta in S$, contradicting the assumption that $zeta in U without (S union {oo})$. Therefore, no such $zeta'$ exists, and $S$ is relatively closed in $U without {oo}$.
 
-  Since $U without {oo}$ is connected and $S$ is both relatively open and closed in $U without {oo}$, it follows from @thm:connected_topological_space_clopen_sets that $S = U without {oo}$, completing the proof under the assumption that $oo in.not U$.
+  Since $U without {oo}$ is connected and $S$ is both relatively open and closed in $U without {oo}$, it follows from @thm:connected-topological-space-clopen-sets that $S = U without {oo}$, completing the proof under the assumption that $oo in.not U$.
 
   Now suppose $oo in U$. In essence, we pole push to a point outside a disk on which we can make approximations by Taylor polynomials. Let $R > 0$ satisfy $K subset D(0, R)$ and let $b in U without ({oo} union overline(D(0, R)))$ be an arbitrary point. By @lem:simple-pole-pushing, there exists some rational function $tilde(psi) (z)$ with a pole at $b$ such that
   $
@@ -382,20 +382,23 @@ In its full generality, we will now apply a technique to push a pole to a prescr
   $
 ]
 
-#theorem("Runge")[
-  Let $K subset.eq CC$ be compact such that $extcomplex without K$ has finitely many connected components and suppose $f$ is holomorphic on a neighborhood of $K$. Let $E$ be a subset of $extcomplex without K$ containing one point from each of its connected components. Then $forall epsilon > 0$, there is a rational function $psi$ whose poles lie in $E$ such that
-  $
-    sup_(z in K) abs(f(z) - psi(z)) < epsilon.
-  $
-] <thm:runge>
+#lbl(
+  theorem[Runge][
+    Let $K subset.eq CC$ be compact such that $extcomplex without K$ has finitely many connected components and suppose $f$ is holomorphic on a neighborhood of $K$. Let $E$ be a subset of $extcomplex without K$ containing one point from each of its connected components. Then $forall epsilon > 0$, there is a rational function $psi$ whose poles lie in $E$ such that
+    $
+      sup_(z in K) abs(f(z) - psi(z)) < epsilon.
+    $
+  ],
+  <thm:runge>,
+)
 
 #proof[
-  By @prop:rungesimplepolesandremovablesingularityatinfinity, there is a rational function $phi.alt$ with simple poles in $CC without K$ satisfying $phi.alt(oo) = 0$ such that
+  By @prop:runge-simple-poles-and-removable-singularity-at-infinity, there is a rational function $phi.alt$ with simple poles in $CC without K$ satisfying $phi.alt(oo) = 0$ such that
   #lbl(
     $
       sup_(z in K) abs(f(z) - phi.alt(z)) < epsilon / 2.
     $,
-    <eq:runge_intermediate1>,
+    <eq:runge-intermediate-1>,
   )
   Let the poles of $phi.alt$ be ${beta_k}_(k in NN_(<= n)) subset.eq CC without K$, and as a consequence, we have $phi.alt(z) = sum_(k = 1)^n a_k / (z - beta_k) + phi(z)$ where $phi(z)$ is entire. Since $phi.alt(oo) = 0$, we have $phi equiv 0$ by Liouville's Theorem (@thm:liouville). By @lem:general-pole-pushing, there exist rational functions ${psi_k}_(k in NN_(<= n))$ whose only poles lie in $E$ such that $forall k$,
   $
@@ -405,7 +408,7 @@ In its full generality, we will now apply a technique to push a pole to a prescr
   $
     sup_(z in K) abs(phi.alt(z) - sum_(k = 1)^n a_k psi_k (z)) <= sup_(z in K) sum_(k = 1)^n abs(a_k / (z - beta_k) - a_k psi_k (z)) < epsilon / 2.
   $
-  Let $psi(z) = sum_(k = 1)^n a_k psi_k (z)$. From @eq:runge_intermediate1, we have
+  Let $psi(z) = sum_(k = 1)^n a_k psi_k (z)$. From @eq:runge-intermediate-1, we have
   $
     sup_(z in K) abs(f(z) - psi(z)) <= sup_(z in K) abs(f(z) - phi.alt(z)) + sup_(z in K) abs(phi.alt(z) - psi(z)) < epsilon. #qedhere
   $

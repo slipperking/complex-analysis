@@ -29,7 +29,7 @@ Before the theorem, we first introduce the mean-value property of holomorphic fu
   and the conclusion follows.
 ]
 
-Since the real and imaginary parts of holomorphic functions are real-valued harmonic functions, they also satisfy the mean-value property. Furthermore, if a real continuous function satisfies the mean-value property, it is harmonic (to be proved in @thm:mean_value_property_solutions_are_harmonic). This equivalence allows for the alternative definition of harmonic functions.
+Since the real and imaginary parts of holomorphic functions are real-valued harmonic functions, they also satisfy the mean-value property. Furthermore, if a real continuous function satisfies the mean-value property, it is harmonic (to be proved in @thm:mean-value-property-solutions-are-harmonic). This equivalence allows for the alternative definition of harmonic functions.
 
 #lbl(
   theorem[Maximum Modulus Principle][
@@ -59,7 +59,7 @@ Since the real and imaginary parts of holomorphic functions are real-valued harm
   $
   From the equality of the last two integrals,
   $ integral_0^(2 uppi) [abs(f(z)) - abs(f(z + epsilon ee^(ii t)))] dt = 0. $
-  Since this integrand is strictly non-negative, we have equality. Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$. Therefore, $S$ is open and $S = V$ as it is a nonempty clopen subset (@thm:connected_topological_space_clopen_sets). Since $V$ is nonempty and open, it has an accumulation point in $U$. It follows that $f(z) equiv f(z_0)$ over $U$ by the Identity Theorem (@thm:identity).
+  Since this integrand is strictly non-negative, we have equality. Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$. Therefore, $S$ is open and $S = V$ as it is a nonempty clopen subset (@thm:connected-topological-space-clopen-sets). Since $V$ is nonempty and open, it has an accumulation point in $U$. It follows that $f(z) equiv f(z_0)$ over $U$ by the Identity Theorem (@thm:identity).
 ]
 
 #remark[

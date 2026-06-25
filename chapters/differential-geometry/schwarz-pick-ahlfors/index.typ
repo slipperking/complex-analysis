@@ -3,7 +3,7 @@
   title: [From Schwarz--Pick to Ahlfors and Value Distribution of Entire Functions],
   route: "schwarz-pick-ahlfors",
 )
-While Schwarz Lemma in @lem:schwarz concerns self-maps of $DD$ with a fixed point at the origin, the Schwarz--Pick Lemma in @lem:schwarzpick generalizes this to arbitrary points in $DD$ as well as the hyperbolic contraction property of holomorphic maps.
+While Schwarz Lemma in @lem:schwarz concerns self-maps of $DD$ with a fixed point at the origin, the Schwarz--Pick Lemma in @lem:schwarz-pick generalizes this to arbitrary points in $DD$ as well as the hyperbolic contraction property of holomorphic maps.
 
 In 1938, Lars Ahlfors provided a further generalization by curvature, prompting the study of complex functions from a differential-geometric approach.
 
@@ -28,7 +28,7 @@ The hyperbolic metric $lambda$ in @eq:poincare-metric-definition does not increa
     $,
     <eq:poincaremetriconscaleddisks>,
   )
-  to generalize the Poincaré metric to $D(0, r)$. @eq:curvatureinvarianceunderholomorphicpullback gives that $K_(lambda_r) (z) = K_lambda (z / r) = -1$ for any $z in D(0, r)$. Define the real-valued function
+  to generalize the Poincaré metric to $D(0, r)$. @eq:curvature-invariance-under-holomorphic-pullback gives that $K_(lambda_r) (z) = K_lambda (z / r) = -1$ for any $z in D(0, r)$. Define the real-valued function
   $ u_r (z) = (f^* rho(z))/(lambda_r (z)) quad "for" quad z in D(0, r), $
   which is nonnegative and continuous on $D(0, r)$. The pullback metric $f^* rho = (rho compose f) abs(f')$ is continuous on $DD$ and thus bounded on $overline(D(0, r))$ (as a consequence of @thm:continuous-function-bounded-on-compact). As $abs(z) -> r^-$, $lambda_r (z) -> oo$, and hence $lim_(abs(z) -> r^-) u_r (z) = 0$. Thus,
   $ M_r = max_(z in overline(D(0, r))) u_r (z) $
@@ -91,7 +91,7 @@ The hyperbolic metric $lambda$ in @eq:poincare-metric-definition does not increa
     $ rho:U subset.eq CC -> RR_(> 0), quad dif s_rho = rho(w) abs(dif w) $
     be a continuous conformal metric (but not necessarily $C^2$) such that at each point $w$, there exists a neighborhood $V_w in.rev w$ in $U$ and a regular metric $rho_w$ thereon such that $rho_w (w) = rho(w)$ and $rho_w <= rho$ everywhere else (referred to as a "supporting metric"). If each $K_(rho_w) <= -1$ everywhere, then the conclusion of @thm:schwarz-ahlfors-pick continues to hold for $rho$.
   ],
-  <thm:schwarz-ahlfors-picksupportingmetric>,
+  <thm:schwarz-ahlfors-pick-supporting-metric>,
 )
 
 #proof[
@@ -109,7 +109,7 @@ For the purpose of the proceeding generalization, we define the conformal metric
   $
     lambda_r^alpha (z) = (1)/(sqrt(alpha)) (z |-> z / r)^* lambda(z) = (2 r)/(sqrt(alpha) (r^2 - abs(z)^2)), quad r > 0, z in D(0, r).
   $,
-  <eq:poincaremetricscaledcurvature>,
+  <eq:poincare-metric-scaled-curvature>,
 )
 Its Gaussian curvature is
 $
@@ -174,7 +174,7 @@ Similar to in the proof of the Riemann Mapping Theorem (@thm:riemann_mapping), o
 #proof[
   Consider the biholomorphism $phi (z) = 1 / z$, mapping $CC without {x in RR: 0 <= x <= 1}$ to $CC^* without RR_(>= 1)$. By simple connectivity of $CC without RR_(>= 1)$, there exists a univalent branch $psi$ of $z |-> sqrt(z - 1)$ on $CC without RR_(>= 1)$. Now omitting the origin, it is trivially realized that $psi(CC^* without RR_(>= 1)) inter -psi(CC^* without RR_(>= 1)) = emptyset$. If otherwise, then $exists xi in psi(CC^* without RR_(>= 1))$ such that $-xi in psi(CC^* without RR_(>= 1))$, implying that $exists z_1, z_2 in CC^* without RR_(>= 1)$ such that $phi.alt (z_1) = xi$ and $phi.alt (z_2) = -xi$, implying that $z_1 = z_2$ and $xi = 0 ==> z_1 = z_2 = 1$, which does not lie in $psi(CC^* without RR_(>= 1))$.
 
-  Now fix $xi in psi(CC^* without RR_(>= 1))$. By the Open Mapping Theorem (@thm:open_mapping), $exists epsilon > 0$ such that $D(xi, epsilon) subset.eq psi(CC^* without RR_(>= 1))$. Consequently, $D(-xi, epsilon) inter psi(CC^* without RR_(>= 1)) = emptyset$. Lastly, the function $phi.alt(z) = epsilon / (z + xi)$ maps $psi(CC^* without RR_(>= 1))$ to $DD$. By Liouville (@thm:liouville), $phi.alt compose psi compose phi compose f$ is constant, which implies $f$ is constant by the injectivity of $phi.alt$, $psi$, and $phi$.
+  Now fix $xi in psi(CC^* without RR_(>= 1))$. By the Open Mapping Theorem (@thm:open-mapping), $exists epsilon > 0$ such that $D(xi, epsilon) subset.eq psi(CC^* without RR_(>= 1))$. Consequently, $D(-xi, epsilon) inter psi(CC^* without RR_(>= 1)) = emptyset$. Lastly, the function $phi.alt(z) = epsilon / (z + xi)$ maps $psi(CC^* without RR_(>= 1))$ to $DD$. By Liouville (@thm:liouville), $phi.alt compose psi compose phi compose f$ is constant, which implies $f$ is constant by the injectivity of $phi.alt$, $psi$, and $phi$.
 ]
 
 The preceding examples show that if the omitted set is sufficiently "large" (in the sense of having positive area or disconnecting the plane in certain ways), then any entire function avoiding it must reduce to a constant. However, there are natural limits to the smallness of the omitted set. For instance, the exponential function $exp$ is an entire non-constant function whose image is $CC^*$, omitting only a single point. Thus, the property that _an entire function omits a set_ is not by itself sufficient to guarantee constancy unless that set is suitably substantial. This observation is formalized by Picard's Little Theorem (@thm:little-picard), which as preluded to before, asserts that any non-constant entire function can omit at most one complex value.
@@ -222,7 +222,7 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
   + $lim_(z -> 1) K_rho (z) = -1/(36)$.
   + $lim_(z -> oo) K_rho (z) = -oo$ in any direction (as in the one-point compactification).
 
-  Hence, $exists delta > 0$ such that $abs(K_rho (z) + 1 / 36) < 1 / 72$ for any $z in D^*(0, delta) union D^*(1, delta)$ and $exists R > 0$ such that $K_rho (z) < -1$ for any $z$ satisfying $abs(z) > R$. By compactness of $overline(D(0, R)) without (D(0, delta) union D(1, delta))$ and continuity, it attains its supremum of some value $-M < 0$ by @thm:extremevalue. Let $-beta = max{-1 / 72, -M} < 0$.
+  Hence, $exists delta > 0$ such that $abs(K_rho (z) + 1 / 36) < 1 / 72$ for any $z in D^*(0, delta) union D^*(1, delta)$ and $exists R > 0$ such that $K_rho (z) < -1$ for any $z$ satisfying $abs(z) > R$. By compactness of $overline(D(0, R)) without (D(0, delta) union D(1, delta))$ and continuity, it attains its supremum of some value $-M < 0$ by @thm:extreme-value. Let $-beta = max{-1 / 72, -M} < 0$.
   $ therefore quad K_rho (z) <= -beta < 0 quad forall z in CC without {0, 1}. #qedhere $
 ]
 

@@ -168,7 +168,7 @@ The counterexample we now provide due to~@gamelin2001, we provide the constructi
   $
     (integral.cont_(partial DD) - sum_(j = 1)^oo integral.cont_(partial D(z_j, r_j))) psi(z) dz = 0
   $
-  by @thm:cauchyintegraltheorem. The summation's convergence follows from $abs(sum integral.cont_(partial D(z_j, r_j)) psi(z) dz)$ being termwise absolutely bounded by $sum 2 uppi M r_j$, which converges by construction. Now, if $abs(overline(z) - psi(z)) < 1 / 4$ on $K$, then
+  by @thm:cauchy-integral-theorem. The summation's convergence follows from $abs(sum integral.cont_(partial D(z_j, r_j)) psi(z) dz)$ being termwise absolutely bounded by $sum 2 uppi M r_j$, which converges by construction. Now, if $abs(overline(z) - psi(z)) < 1 / 4$ on $K$, then
   $
     uppi &<= abs((integral.cont_(partial DD) - sum_(j = 1)^oo integral.cont_(partial D(z_j, r_j))) overline(z) dz) <= abs(integral.cont_(partial DD) - sum_(j = 1)^oo integral.cont_(partial D(z_j, r_j))) abs(psi(z) - overline(z)) abs(dz) \
     &<= 2 uppi (1 - sum_(j = 1)^oo r_j) 1 / 4 <= uppi / 2,

@@ -84,7 +84,7 @@ An important result in multivariable calculus allows the calculation of the deri
                                                          & quad ""+ dv(beta, u) f(beta(u), u) - dv(alpha, u) f(alpha(u), u).
     $
   ],
-  <thm:leibnizintegralrule>,
+  <thm:leibniz-integral-rule>,
 )
 
 Four main classical theorems exist, relating a function and its line integral in 2 and 3 dimensions, line and surface (or area) integrals in 2 and 3 dimensions, and the surface and volume integrals in 3 dimensions:
@@ -165,18 +165,21 @@ Then, the Fundamental Theorem of Calculus, the Gradient Theorem, Green's, Stokes
     For an oriented smooth $n$-dimensional compact manifold $M$ with boundary $partial M$, for a smooth differential $(n-1)$-form $omega$ over $overline(M)$,
     $ integral_M dif omega = integral_(partial M) omega. $
   ],
-  <thm:stokescartan>,
+  <thm:stokes-cartan>,
 )
 
 Real analysis is the subject dedicated to rigorously defining concepts such as limits, continuity, integrability, convergence, etc. The most widely used definition of a finite limit of a function is the language of $epsilon$--$delta$, which states:
 
-#definition[Epsilon--Delta][
-  Let $f : U -> RR$ be a function defined over an open set $U subset.eq RR$ such that $a$ is an accumulation point of $U$. We say that $lim_(x -> a) f(x) = L$ if $forall epsilon > 0$, $exists delta > 0$ such that for all $x in U$ with $0 < abs(x - a) < delta$, we have $abs(f(x) - L) < epsilon$.
+#lbl(
+  definition[Epsilon--Delta][
+    Let $f : U -> RR$ be a function defined over an open set $U subset.eq RR$ such that $a$ is an accumulation point of $U$. We say that $lim_(x -> a) f(x) = L$ if $forall epsilon > 0$, $exists delta > 0$ such that for all $x in U$ with $0 < abs(x - a) < delta$, we have $abs(f(x) - L) < epsilon$.
 
-  Similarly, we define the _right-handed limit_ $lim_(x -> a^+) f(x) = L$ if for every $epsilon > 0$, there exists $delta > 0$ such that for all $x in U$ with $0 < x - a < delta$, we have $abs(f(x) - L) < epsilon$.
+    Similarly, we define the _right-handed limit_ $lim_(x -> a^+) f(x) = L$ if for every $epsilon > 0$, there exists $delta > 0$ such that for all $x in U$ with $0 < x - a < delta$, we have $abs(f(x) - L) < epsilon$.
 
-  Likewise, the _left-hand limit_ $lim_(x -> a^-) f(x) = L$ exists if for every $epsilon > 0$, there exists $delta > 0$ such that for all $x in U$ with $-delta < x - a < 0$, we have $abs(f(x) - L) < epsilon$.
-] <def:epsilondelta>
+    Likewise, the _left-hand limit_ $lim_(x -> a^-) f(x) = L$ exists if for every $epsilon > 0$, there exists $delta > 0$ such that for all $x in U$ with $-delta < x - a < 0$, we have $abs(f(x) - L) < epsilon$.
+  ],
+  <def:epsilon-delta>,
+)
 
 We also have the definition of the limit of a sequence:
 
@@ -203,21 +206,27 @@ We also have the definition of the limit of a sequence:
   Hence, ${a_n}$ converges to $a_infinity$.
 ]
 
-#definition("Limit Superior")[
-  For a number sequence ${a_n} subset RR$, if $exists a in RR$ such that:
-  + $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $a_n < a + epsilon$,
-  + $forall epsilon > 0$, $forall N in NN$, $exists n > N$ such that $a_n > a - epsilon$,
+#lbl(
+  definition[Limit Superior][
+    For a number sequence ${a_n} subset RR$, if $exists a in RR$ such that:
+    + $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $a_n < a + epsilon$,
+    + $forall epsilon > 0$, $forall N in NN$, $exists n > N$ such that $a_n > a - epsilon$,
 
-  then the _superior limit_ of ${a_n}$ is $a$, denoted by $limsup_(n -> oo) a_n = a$.
-] <def:limsup>
+    then the _superior limit_ of ${a_n}$ is $a$, denoted by $limsup_(n -> oo) a_n = a$.
+  ],
+  <def:limsup>,
+)
 
-#definition("Limit Inferior")[
-  For a number sequence ${a_n} subset RR$, if $exists a in RR$ such that:
-  + $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $a_n > a - epsilon$,
-  + $forall epsilon > 0$, $forall N in NN$, $exists n > N$ such that $a_n < a + epsilon$,
+#lbl(
+  definition[Limit Inferior][
+    For a number sequence ${a_n} subset RR$, if $exists a in RR$ such that:
+    + $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $a_n > a - epsilon$,
+    + $forall epsilon > 0$, $forall N in NN$, $exists n > N$ such that $a_n < a + epsilon$,
 
-  then the _inferior limit_ of ${a_n}$ is $a$, denoted by $liminf_(n -> oo) a_n = a$.
-] <def:liminf>
+    then the _inferior limit_ of ${a_n}$ is $a$, denoted by $liminf_(n -> oo) a_n = a$.
+  ],
+  <def:liminf>,
+)
 
 #lemma[
   A number sequence ${a_n}$ is convergent iff $limsup_(n -> oo) a_n = liminf_(n -> oo) a_n$.
@@ -267,9 +276,12 @@ $
   Since $f$ is continuous, $lim_(k -> oo) f(x_(n_k)) = f(lim_(k -> oo) x_(n_k))$, which is well-defined because $lim_(k -> oo) x_(n_k) in K$. However, this contradicts $abs(f(x_(n_k))) > n_k -> oo$, hence $f$ must be bounded on $K$.
 ]
 
-#theorem("Extreme Value")[
-  A continuous function $f(x)$ defined on a compact set $K$ attains its infimum and supremum in $K$.
-] <thm:extremevalue>
+#lbl(
+  theorem[Extreme Value][
+    A continuous function $f(x)$ defined on a compact set $K$ attains its infimum and supremum in $K$.
+  ],
+  <thm:extreme-value>,
+)
 
 #proof[
   Assume that $f$ never attains its supremum $M$. Then, $f(x) < M$. Define the auxiliary function $psi(x) = 1 / (M - f(x))$, which is strictly positive and continuous as the denominator never reaches $0$. By @thm:continuous-function-bounded-on-compact, $psi(x)$ is bounded with some value of $mu > 0$ satisfying $psi(x) <= mu$. $f(x)$ also has the representation $M - 1 / (psi(x))$, and therefore,
@@ -279,9 +291,12 @@ $
   which means that $m$ is not the infimum.
 ]
 
-#definition("Uniform Continuity")[
-  A function $f : U -> RR$, defined on a set $U subset.eq RR$, is uniformly continuous iff $forall epsilon > 0$, $exists delta > 0$ such that $forall x, y in U$ where $abs(x - y) < delta$, $abs(f(x) - f(y)) < epsilon$.
-] <def:uniformcontinuity>
+#lbl(
+  definition[Uniform Continuity][
+    A function $f : U -> RR$, defined on a set $U subset.eq RR$, is uniformly continuous iff $forall epsilon > 0$, $exists delta > 0$ such that $forall x, y in U$ where $abs(x - y) < delta$, $abs(f(x) - f(y)) < epsilon$.
+  ],
+  <def:uniform-continuity>,
+)
 
 #example[
   The function $f(x) = 1 / x$ is not uniformly continuous over $(0, 1)$.
@@ -295,21 +310,24 @@ $
   Then $forall delta > 0$, $exists n > 1$ where $abs(x - y) < delta$, since $lim_(n -> oo) abs(x - y) = 0$. Additionally, $abs(f(x) - f(y)) = 1 >= epsilon$. This satisfies the negation, and thus, $f(x) = 1 / x$ is not uniformly continuous over $(0, 1)$.
 ]
 
-#theorem[Heine--Cantor][
-  A continuous function on a compact set $K$ is uniformly continuous on $K$.
-] <thm:heine-cantor>
+#lbl(
+  theorem[Heine--Cantor][
+    A continuous function on a compact set $K$ is uniformly continuous on $K$.
+  ],
+  <thm:heine-cantor>,
+)
 
 #proof[
   Fix $x in K$. Since $f$ is continuous at $x$, for every $epsilon > 0$ there exists $delta_x > 0$ such that for all $zeta in D(x, delta_x) inter K$,
-  #lbl($ abs(f(zeta) - f(x)) < epsilon / 2. $, <eq:heine_cantor_pointwise>)
+  #lbl($ abs(f(zeta) - f(x)) < epsilon / 2. $, <eq:heine-cantor-pointwise>)
 
-  The collection of open balls ${D(x, delta_x / 2)}_(x in K)$ forms an open cover of the compact set $K$. By Heine--Borel (@thm:heine_borel), there is a finite subcover
+  The collection of open balls ${D(x, delta_x / 2)}_(x in K)$ forms an open cover of the compact set $K$. By Heine--Borel (@thm:heine-borel), there is a finite subcover
   $ {D(x_k, delta_(x_k) / 2)}_(k=1)^n. $
   Set
   $ delta = min_(1 <= k <= n) delta_(x_k) / 2. $
   Now let $x, y in K$ satisfy $abs(x - y) < delta$. Then there exists an index $j in {1, dots.c, n}$ such that $x in D(x_j, delta_(x_j) / 2)$. Consequently,
   $ abs(x_j - y) <= abs(x_j - x) + abs(x - y) < delta_(x_j) / 2 + delta <= delta_(x_j). $
-  Applying @eq:heine_cantor_pointwise to the points $x$ and $y$ through $x_j$, we obtain
+  Applying @eq:heine-cantor-pointwise to the points $x$ and $y$ through $x_j$, we obtain
   $ abs(f(x_j) - f(x)) < epsilon / 2, quad abs(f(x_j) - f(y)) < epsilon / 2. $
   Therefore,
   $ abs(f(x) - f(y)) <= abs(f(x) - f(x_j)) + abs(f(x_j) - f(y)) < epsilon. $
@@ -334,7 +352,7 @@ Lipschitz continuity is an important concept in real analysis and the theory of 
   proposition[
     A $C^1$ function on a compact set $K$ is Lipschitz continuous on $K$.
   ],
-  <prop:c1_lipschitz>,
+  <prop:c1-on-compact-lipschitz>,
 )
 
 #proof[

@@ -32,7 +32,7 @@ where $a_n = (f^((n)) (0)) / (n !)$ for $n gt.eq 2$. Two historic results regard
 
 Both were solved in the 20th century by Louis de Branges in the affirmative. The second statement is known as the _Bieberbach Conjecture_ as it was originally hypothesized by Ludwig Bieberbach.
 
-We will introduce two of the oldest results regarding schlicht functions, namely $abs(a_2) <= 2$ and the Koebe Quarter Theorem (@thm:koebe_quarter). There are many applications of the latter, for instance, we used it in the proof of Mergelyan's Theorem (@thm:mergelyan).
+We will introduce two of the oldest results regarding schlicht functions, namely $abs(a_2) <= 2$ and the Koebe Quarter Theorem (@thm:koebe-quarter). There are many applications of the latter, for instance, we used it in the proof of Mergelyan's Theorem (@thm:mergelyan).
 
 #lbl(
   lemma[
@@ -71,7 +71,7 @@ We will introduce two of the oldest results regarding schlicht functions, namely
 
   Since $h(0) = oo$, it follows that $h$ (which is injective by the univalence of $f$) maps $D(0,r)$ to a neighborhood of $oo$ and maps $partial D(0,r)$ to the interior of the previous ellipse.
 
-  By the Jordan Curve Theorem (@thm:jordan-curve), $CC without h(partial D(0,r))$ contains two connected regions. Since $h$ maps a neighborhood $U$ of $partial D(0,r)$ to a neighborhood of $h(partial D(0,r))$ by the Open Mapping Theorem (@thm:open_mapping), for a point $w in h(partial D(0,r))$, there exists a disk $D(w,epsilon) subset.eq h(U)$, which intersects both $jinterior h(partial D(0,r))$ and $jexterior h(partial D(0,r))$ (because $w$ is an accumulation point of both sets as it lies in the boundary).
+  By the Jordan Curve Theorem (@thm:jordan-curve), $CC without h(partial D(0,r))$ contains two connected regions. Since $h$ maps a neighborhood $U$ of $partial D(0,r)$ to a neighborhood of $h(partial D(0,r))$ by the Open Mapping Theorem (@thm:open-mapping), for a point $w in h(partial D(0,r))$, there exists a disk $D(w,epsilon) subset.eq h(U)$, which intersects both $jinterior h(partial D(0,r))$ and $jexterior h(partial D(0,r))$ (because $w$ is an accumulation point of both sets as it lies in the boundary).
 
   Thus, there exist points in $U$ which map into $jinterior h(partial D(0,r))$, (hence map to points in the ellipse). Because $h$ maps connected sets to connected sets, and no point in $h(D(0,r))$ can map to $jinterior h(partial D(0,r))$ (as otherwise the set would be disconnected), therefore all points inside $A_r$ map into $jinterior h(partial D(0,r))$.
 ]
@@ -136,6 +136,9 @@ We will introduce two of the oldest results regarding schlicht functions, namely
 
 ]
 
-#theorem("Koebe Quarter Theorem")[
-  If $f : DD -> CC$ is schlicht, then the image $f(DD)$ contains the open disk of radius $1 / 4$ centered at $f(0)$.
-] <thm:koebe_quarter>
+#lbl(
+  theorem[Koebe Quarter Theorem][
+    If $f : DD -> CC$ is schlicht, then the image $f(DD)$ contains the open disk of radius $1 / 4$ centered at $f(0)$.
+  ],
+  <thm:koebe-quarter>,
+)

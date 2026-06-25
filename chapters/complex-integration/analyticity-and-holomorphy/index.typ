@@ -350,7 +350,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
       $
         sup_(z in K) abs(f^((n)) (z)) <= c_n norm(f)_(L^1(V)),
       $,
-      <eq:nth-derivative-bounded-L1-norm_statement>,
+      <eq:nth-derivative-bounded-L1-norm-statement>,
     )
 
     where $norm(f)_(L^p(V))$ denotes
@@ -438,7 +438,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 )
 
 #proof[
-  Starting from @eq:nth-derivative-bounded-L1-norm_statement, observe that
+  Starting from @eq:nth-derivative-bounded-L1-norm-statement, observe that
 
   $
     c_n norm(f)_(L^1(V)) <= c_n op("area")(V) sup_(z in V) abs(f(z)),
@@ -450,7 +450,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 For the next theorem we will briefly introduce the concept of _analytic continuation_.
 
 #lbl(
-  definition("Analytic Continuation")[
+  definition[Analytic Continuation][
     Let $U subset.eq CC$ be open, and let $f:U -> CC$ be holomorphic. Let $V subset.eq CC$ be open with $U subset.eq V$. A function
     $ F : V -> CC $
     is an _analytic continuation_ of $f$ to $V$ if:
@@ -458,7 +458,7 @@ For the next theorem we will briefly introduce the concept of _analytic continua
     + $F$ is holomorphic on $V$, and
     + $F equiv f$ on $U$.
   ],
-  <def:analyticcontinuation>,
+  <def:analytic-continuation>,
 )
 
 The concept of analytic continuation and its consequent problems and properties will be discussed in detail in a later chapter. For now, we will prove a theorem that is a direct consequence of the Cauchy--Goursat Differentiation Formula (@thm:cauchy-differentiation-formula) and the existence of holomorphic functions with removable singularities.

@@ -19,9 +19,12 @@ In fact, it is almost always true that such an extension exists. We will give th
   extends continuously but not differentiably to $plus.minus 1$. The boundary of $DD inter HH^+$ is piecewise $C^oo$.
 ]
 
-#theorem[Osgood--Taylor--Carathéodory][
-  Suppose that $Omega_1$ and $Omega_2$ are two bounded regions in $CC$ such that $partial Omega_1$ and $partial Omega_2$ each comprises a single Jordan curve. If $phi : Omega_1 -> Omega_2$ is a biholomorphism (provided by the Riemann Mapping Theorem in @thm:riemann_mapping), then $exists tilde(phi) : overline(Omega_1) -> overline(Omega_2)$ homeomorphic such that $tilde(phi)|_(Omega_1) equiv phi$ (the restriction of $tilde(phi)$ to $Omega_1$ agrees with $phi$).
-] <thm:osgood_taylor_caratheodory>
+#lbl(
+  theorem[Osgood--Taylor--Carathéodory][
+    Suppose that $Omega_1$ and $Omega_2$ are two bounded regions in $CC$ such that $partial Omega_1$ and $partial Omega_2$ each comprises a single Jordan curve. If $phi : Omega_1 -> Omega_2$ is a biholomorphism (provided by the Riemann Mapping Theorem in @thm:riemann_mapping), then $exists tilde(phi) : overline(Omega_1) -> overline(Omega_2)$ homeomorphic such that $tilde(phi)|_(Omega_1) equiv phi$ (the restriction of $tilde(phi)$ to $Omega_1$ agrees with $phi$).
+  ],
+  <thm:osgood_taylor_caratheodory>,
+)
 
 #proof[
   The theorem will be first proven in the case that $Omega_1$ is the unit disk $DD$. The general case will then be reduced to this special case.
@@ -622,9 +625,9 @@ In fact, it is almost always true that such an extension exists. We will give th
   )
 
   #proof[
-    Without loss of generality, assume $c = 0$. If $gamma = partial DD$, then by the continuity of $abs(f)$, it attains its maximum somewhere in $overline(DD)$ (by the Extreme Value Theorem in @thm:extremevalue). If $abs(f)$ attains its maximum at some $z_0 in DD$, it must be an isolated extrema (otherwise the Identity Theorem implies constancy on all of $DD$), and thus the Maximum Modulus Principle (@thm:maximum-modulus) implies that $f$ is constant and subsequently identically zero. If $abs(f)$ attains its maximum on $partial DD$, the conclusion follows trivially.
+    Without loss of generality, assume $c = 0$. If $gamma = partial DD$, then by the continuity of $abs(f)$, it attains its maximum somewhere in $overline(DD)$ (by the Extreme Value Theorem in @thm:extreme-value). If $abs(f)$ attains its maximum at some $z_0 in DD$, it must be an isolated extrema (otherwise the Identity Theorem implies constancy on all of $DD$), and thus the Maximum Modulus Principle (@thm:maximum-modulus) implies that $f$ is constant and subsequently identically zero. If $abs(f)$ attains its maximum on $partial DD$, the conclusion follows trivially.
 
-    Hence we may assume that $exists z in partial DD$ such that $f(z) != 0$. Without loss of generality, we assume $z = -1$ (generality by applying a rotation). Then the Möbius transform $phi.alt : z |-> ii (1 - z) / (1 + z)$ (in the inverse form of @ex:biholomorphismsupperhalfplanetounitdisk) maps $gamma$ bijectively to a connected segment $Gamma subset RR$. Then the function $f compose phi.alt^(-1)$ maps $Gamma = phi.alt(gamma)$ to ${0}$ and is continuous on $HH^+ union RR$ and holomorphic on $HH^+$. Let $U$ define the upper half-disk with diameter $Gamma$. By the Schwarz Reflection Principle (@thm:riemannschwarzreflection), $f compose phi.alt^(-1)$ may be analytically continued to a function $tilde(g)$ on $U union Gamma union {overline(z) : z in U}$. Since the zero set $Gamma$ has an accumulation point in $U union Gamma union {overline(z) : z in U}$, the Identity Theorem (@thm:identity) implies that $g$ vanishes on all of $U union Gamma union {overline(z) : z in U} -> U -> HH^+$, or equivalently, that $f$ vanishes on $DD$.
+    Hence we may assume that $exists z in partial DD$ such that $f(z) != 0$. Without loss of generality, we assume $z = -1$ (generality by applying a rotation). Then the Möbius transform $phi.alt : z |-> ii (1 - z) / (1 + z)$ (in the inverse form of @ex:biholomorphisms-upper-half-plane-to-unit-disk) maps $gamma$ bijectively to a connected segment $Gamma subset RR$. Then the function $f compose phi.alt^(-1)$ maps $Gamma = phi.alt(gamma)$ to ${0}$ and is continuous on $HH^+ union RR$ and holomorphic on $HH^+$. Let $U$ define the upper half-disk with diameter $Gamma$. By the Schwarz Reflection Principle (@thm:riemann-schwarz-reflection), $f compose phi.alt^(-1)$ may be analytically continued to a function $tilde(g)$ on $U union Gamma union {overline(z) : z in U}$. Since the zero set $Gamma$ has an accumulation point in $U union Gamma union {overline(z) : z in U}$, the Identity Theorem (@thm:identity) implies that $g$ vanishes on all of $U union Gamma union {overline(z) : z in U} -> U -> HH^+$, or equivalently, that $f$ vanishes on $DD$.
   ]
 
   #lemma[
@@ -740,7 +743,7 @@ In fact, it is almost always true that such an extension exists. We will give th
   )
 
   #proof[
-    It suffices to show that the restriction $tilde(phi)|_(partial DD)$ is a homeomorphism between $partial DD$ and $partial Omega_1$. Since $partial DD$ is compact (and one under the subspace topology, a compact space) and $partial Omega_1$ is trivially Hausdorff (under the subspace topology), the continuity and injectivity of $tilde(phi)|_(partial DD)$ suffices to show that it is a homeomorphism (by @thm:compact_hausdorff).
+    It suffices to show that the restriction $tilde(phi)|_(partial DD)$ is a homeomorphism between $partial DD$ and $partial Omega_1$. Since $partial DD$ is compact (and one under the subspace topology, a compact space) and $partial Omega_1$ is trivially Hausdorff (under the subspace topology), the continuity and injectivity of $tilde(phi)|_(partial DD)$ suffices to show that it is a homeomorphism (by @thm:compact-hausdorff).
   ]
   #proof[(Alternate)][
     We show that the inverse of $tilde(phi)|_(partial DD)$ is continuous, which also suffices to show that $tilde(phi)|_(partial DD)$ is a homeomorphism.
@@ -1051,7 +1054,7 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
 #proof[
   By the Osgood--Taylor--Carathéodory Theorem (@thm:osgood_taylor_caratheodory), $phi$ extends continuously to $overline(Omega_1)$ with $phi(partial Omega_1) = partial Omega_2$; retain the name $phi$ for this extension.
 
-  Fix $p in partial Omega_1$ and set $q = phi(p) in partial Omega_2$. Since $partial Omega_2$ is real-analytic, the function $eta_2$ defined by a locally injective power series on a subset of the real axis extends (by power series) to a biholomorphism $eta_2 : N_2 -> V_q$ from a region $N_2 in.rev 0$ onto a neighborhood $V_q in.rev q$, with $eta_2(0) = q$ and $eta_2(N_2 inter RR) = V_q inter partial Omega_2$ (existence by real-analyticity and biholomorphy by @thm:nonvanishingderivativeunivalentonneighborhood).
+  Fix $p in partial Omega_1$ and set $q = phi(p) in partial Omega_2$. Since $partial Omega_2$ is real-analytic, the function $eta_2$ defined by a locally injective power series on a subset of the real axis extends (by power series) to a biholomorphism $eta_2 : N_2 -> V_q$ from a region $N_2 in.rev 0$ onto a neighborhood $V_q in.rev q$, with $eta_2(0) = q$ and $eta_2(N_2 inter RR) = V_q inter partial Omega_2$ (existence by real-analyticity and biholomorphy by @thm:non-vanishing-derivative-univalent-on-neighborhood).
   Set $psi = eta_2^(-1) : V_q -> N_2$.
 
   Since $phi$ is continuous at $p$ and $phi(p) = q in V_q$, the set $phi^(-1)(V_q)$ is an open neighborhood of $p$. Since $partial Omega_1$ is real-analytic, choose a biholomorphism $eta_1 : N_1 -> V_p$ from a region $N_1 in.rev 0$ onto a neighborhood $V_p in.rev p$ contained in $phi^(-1)(V_q)$, with $eta_1(0) = p$ and $eta_1(N_1 inter RR) = V_p inter partial Omega_1$. Set $phi.alt = eta_1^(-1) : V_p -> N_1$. Denote by $N_1^+$ the component of $N_1 without RR$ whose image under $eta_1$ is $V_p inter Omega_1$. See @fig:extension_across_real_analytic_boundary_inverse_flattening_map.
@@ -1066,7 +1069,7 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
   $
   Since $psi(V_q inter Omega_2)$ is connected and disjoint from $RR$, the image $F(N_1^+) subset psi(V_q inter Omega_2)$ lies entirely in one component of $CC without RR$; without loss of generality $F(N_1^+) subset HH^+$.
 
-  Thus $F : N_1^+ -> HH^+$ is univalent, continuous up to $N_1 inter RR$, and real-valued there. The Schwarz Reflection Principle (@thm:riemannschwarzreflection) extends $F$ biholomorphically to
+  Thus $F : N_1^+ -> HH^+$ is univalent, continuous up to $N_1 inter RR$, and real-valued there. The Schwarz Reflection Principle (@thm:riemann-schwarz-reflection) extends $F$ biholomorphically to
   $
     U = N_1^+ union (N_1 inter RR) union {overline(z) : z in N_1^+}
   $
@@ -1083,7 +1086,7 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
 
   Applying this construction at every $z in partial Omega_1$ yields an open neighborhood $W_z in.rev z$ and a holomorphic map $phi_z$ extending $phi|_(overline(Omega_1))$.
 
-  The collection of all $W_z$'s form an open cover of $partial Omega_1$; thus the Heine--Borel Theorem (@thm:heine_borel) gives the existence of a finite subcover $cal(W) = {W_(z_k)}_k$ where each $z_k in partial Omega_1$.
+  The collection of all $W_z$'s form an open cover of $partial Omega_1$; thus the Heine--Borel Theorem (@thm:heine-borel) gives the existence of a finite subcover $cal(W) = {W_(z_k)}_k$ where each $z_k in partial Omega_1$.
 
   For two sets $W_1, W_2 in cal(W)$ where $W_1 inter W_2 != emptyset$, both $phi_(z_1)$ and $phi_(z_2)$ agree with $phi$ on the nonempty open connected set $W_(z_1) inter W_(z_2) inter Omega_1$, so the Identity Theorem (@thm:identity) gives $phi_(z_1) equiv phi_(z_2)$ on
   $W_(z_1) inter W_(z_2)$.

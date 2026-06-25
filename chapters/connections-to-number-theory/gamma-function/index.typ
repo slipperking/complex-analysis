@@ -1,8 +1,8 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [The $Gamma$-Function],
-  route: "gamma_function",
-  label: <sec:gamma_function>,
+  route: "gamma-function",
+  label: <sec:gamma-function>,
 )
 #let upgamma = $gamma$
 
@@ -13,11 +13,11 @@
       $
         Gamma(z) = integral_0^oo ee^(-t) t^(z-1) dt,
       $,
-      <eq:gammafunction>,
+      <eq:gamma-function>,
     )
     where $z in CC$.
   ],
-  <def:gammafunction>,
+  <def:gamma-function>,
 )
 
 By letting $z = x + ii y$ where $x, y in RR$, we have $abs(ee^(-t) t^(z-1)) = ee^(-t) t^(x-1)$. Notice that for $x > 0$,
@@ -73,10 +73,10 @@ We will now study two representations for the Gamma function.
       $
         Gamma(z) = lim_(n -> oo) (n^z n!) / (product_(k=0)^n (z+k)), quad Re z > 0.
       $,
-      <eq:gammafunctiongaussformula>,
+      <eq:gamma-functiongaussformula>,
     )
   ],
-  <thm:gammafunctiongaussformula>,
+  <thm:gamma-functiongaussformula>,
 )
 
 #proof[
@@ -92,14 +92,14 @@ We will now study two representations for the Gamma function.
               & = n^(z+1) (n-1)! f_1 (z+n-1) / (product_(k=0)^(n-2) (z+k)) \
               & = (n^z n!) / (product_(k=0)^n (z+k)).
     $,
-    <eq:gammafunctiongaussformulaprelimit>,
+    <eq:gamma-functiongaussformulaprelimit>,
   )
   Let us now analyze the difference
   #lbl(
     $
       lim_(n -> oo) [integral_0^n ee^(-t) t^(z-1) dt - f_n (z)] = lim_(n -> oo) integral_0^n ee^(-t) t^(z-1) [1 - ee^t (1 - t/n)^n] dt.
     $,
-    <eq:gammafunction_gaussformulaintermediate1>,
+    <eq:gamma-function_gaussformulaintermediate1>,
   )
   Since
   $
@@ -110,7 +110,7 @@ We will now study two representations for the Gamma function.
     $
       1 - ee^t (1 - t/n)^n = 1/n integral_0^t u ee^u (1 - u/n)^(n-1) dif u.
     $,
-    <eq:gammafunction_gaussformulaintermediate2>,
+    <eq:gamma-function_gaussformulaintermediate2>,
   )
   Additionally, since
   $
@@ -125,7 +125,7 @@ We will now study two representations for the Gamma function.
   $
     (ee^n)/(n^(n-1)) (n-u)^(n-3) (n-2) (n-1) -> 0^+
   $
-  as $u -> n^-$, $ee^u (1 - u/n)^(n-1)$ attains its maximum of $ee ((n-1)/n)^(n-1)$ at $u = 1$. For $n > 1$, $ee ((n-1)/n)^(n-1) <= ee$. From @eq:gammafunction_gaussformulaintermediate2, we have
+  as $u -> n^-$, $ee^u (1 - u/n)^(n-1)$ attains its maximum of $ee ((n-1)/n)^(n-1)$ at $u = 1$. For $n > 1$, $ee ((n-1)/n)^(n-1) <= ee$. From @eq:gamma-function_gaussformulaintermediate2, we have
   $
     1 - ee^t (1 - t/n)^n <= (ee t^2)/(2n).
   $
@@ -133,11 +133,11 @@ We will now study two representations for the Gamma function.
   $
     u ee^u (1 - u/n)^(n-1) > 0,
   $
-  it follows that $1 - ee^t (1 - t/n)^n$ is positive. By @eq:gammafunction_gaussformulaintermediate1, we have
+  it follows that $1 - ee^t (1 - t/n)^n$ is positive. By @eq:gamma-function_gaussformulaintermediate1, we have
   $
     abs(integral_0^n ee^(-t) t^(z-1) [1 - ee^t (1 - t/n)^n] dt) <= ee/(2n) abs(integral_0^n ee^(-t) t^(z+1) dt) < 1/(2n) abs(Gamma(z+2)) -> 0
   $
-  as $n -> oo$. From @eq:gammafunctiongaussformulaprelimit, we have $Gamma(z) = lim_(n -> oo) (n^z n!) / (product_(k=0)^n (z+k))$, or @eq:gammafunctiongaussformula
+  as $n -> oo$. From @eq:gamma-functiongaussformulaprelimit, we have $Gamma(z) = lim_(n -> oo) (n^z n!) / (product_(k=0)^n (z+k))$, or @eq:gamma-functiongaussformula
 ]
 
 The _Weierstrass formula_ is a direct consequence of the Gauss formula.
@@ -149,15 +149,15 @@ The _Weierstrass formula_ is a direct consequence of the Gauss formula.
       $
         1 / Gamma(z) = z product_(k=1)^oo [(1 + z/k) ee^(-z/k)] ee^(z upgamma),
       $,
-      <eq:gammafunction_weierstrassformula>,
+      <eq:gamma-function_weierstrassformula>,
     )
     where $upgamma = integral_1^oo (1 / floor(x) - 1 / x) dx$.
   ],
-  <thm:gammafunction_weierstrassformula>,
+  <thm:gamma-function_weierstrassformula>,
 )
 
 #proof[
-  Since the Gauss formula agrees with @eq:gammafunction on the right half-plane, the analytic continuation of $Gamma(z)$ is unique on the entire complex plane except for the poles at $ZZ_(<= 0)$ by the Identity Theorem (@thm:identity). Since
+  Since the Gauss formula agrees with @eq:gamma-function on the right half-plane, the analytic continuation of $Gamma(z)$ is unique on the entire complex plane except for the poles at $ZZ_(<= 0)$ by the Identity Theorem (@thm:identity). Since
   $
     (n^z n!) / (product_(k=0)^n (z+k)) & = exp(z log(n)) / (z product_(k=1)^n (1 + z/k)) \
     & = exp(z integral_1^n dx / x) / (z product_(k=1)^n (1 + z/k)) (exp(-z sum_(k=1)^n 1/k)) / (product_(k=1)^n exp(-z/k)) \
@@ -187,15 +187,15 @@ We have two famous identities on the $Gamma$-function:
       $
         Gamma(z) Gamma(1-z) = uppi csc(uppi z)
       $,
-      <eq:gammafunction_eulerreflection>,
+      <eq:gamma-function_eulerreflection>,
     )
     for $z in CC without ZZ$.
   ],
-  <thm:gammafunction_eulerreflection>,
+  <thm:gamma-function_eulerreflection>,
 )
 
 #proof[
-  By the Weierstrass Formula (@thm:gammafunction_weierstrassformula), we have
+  By the Weierstrass Formula (@thm:gamma-function_weierstrassformula), we have
   $
     1 / Gamma(z) = z product_(k=1)^n [(1 + z/k) ee^(-z/k)] ee^(z upgamma), quad 1 / Gamma(-z) = -z product_(k=1)^n [(1 - z/k) ee^(z/k)] ee^(-z upgamma).
   $
@@ -203,18 +203,18 @@ We have two famous identities on the $Gamma$-function:
   $
     1 / (Gamma(z) Gamma(1-z)) = -1 / (z Gamma(z) Gamma(-z)) = z product_(k=1)^n (1 - z^2 / k^2) = sin(uppi z) / uppi,
   $
-  which confirms @eq:gammafunction_eulerreflection.
+  which confirms @eq:gamma-function_eulerreflection.
 ]
 
 #lbl(
   example[
     Evaluate $Gamma(1/2)$.
   ],
-  <ex:gamma_function_one_half>,
+  <ex:gamma-function_one_half>,
 )
 
-#solution[to @ex:gamma_function_one_half][
-  By the Reflection Formula (@thm:gammafunction_eulerreflection), we have that
+#solution[to @ex:gamma-function_one_half][
+  By the Reflection Formula (@thm:gamma-function_eulerreflection), we have that
   $
     Gamma(1/2)^2 = uppi csc(uppi / 2) = uppi,
   $
@@ -228,14 +228,14 @@ We have two famous identities on the $Gamma$-function:
       $
         Gamma(z) Gamma(z+1/2) = 2^(1-2z) sqrt(uppi) Gamma(2z).
       $,
-      <eq:gammafunction_legendreduplication>,
+      <eq:gamma-function_legendreduplication>,
     )
   ],
-  <thm:gammafunction_legendreduplication>,
+  <thm:gamma-function_legendreduplication>,
 )
 
 #proof[
-  From @thm:gammafunctiongaussformula, we have
+  From @thm:gamma-functiongaussformula, we have
   $
     Gamma(z) Gamma(z+1/2) = lim_(n -> oo) (n^(2z+1/2) n!^2) / (product_(k=0)^n (z+k) (z+k+1/2)) = lim_(n -> oo) (2^(2n+2) n^(2z+1/2) n!^2) / (product_(k=0)^(2n+1) (2z+k))
   $
@@ -247,7 +247,7 @@ We have two famous identities on the $Gamma$-function:
     & = 2^(1-2z) Gamma(2z) Gamma(1/2) \
     & = 2^(1-2z) Gamma(2z) sqrt(uppi),
   $
-  where the last step is derived from @ex:gamma_function_one_half.
+  where the last step is derived from @ex:gamma-function_one_half.
 ]
 
 The identity above is a special case of the following result:
@@ -258,11 +258,11 @@ The identity above is a special case of the following result:
     $
       Gamma(z) Gamma(z+1/m) dots.c Gamma(z+(m-1)/m) = (2 uppi)^((m-1)/2) m^(1/2-m z) Gamma(m z).
     $,
-    <eq:gammafunction_gaussmultiplication>,
+    <eq:gamma-function_gaussmultiplication>,
   )
 ]
 
-The Gamma function as in @eq:gammafunction is commonly referred to as the _Euler Integral of the Second Kind_. The _Euler Integral of the First Kind_ is also known as the _Beta function_, and is defined by
+The Gamma function as in @eq:gamma-function is commonly referred to as the _Euler Integral of the Second Kind_. The _Euler Integral of the First Kind_ is also known as the _Beta function_, and is defined by
 $
   Beta(z_1, z_2) = integral_0^1 t^(z_1-1) (1-t)^(z_2-1) dt.
 $
@@ -279,7 +279,7 @@ The Beta function is commonly treated as an auxiliary function in many cases of 
       Beta(z_1, z_2) = (Gamma(z_1) Gamma(z_2)) / Gamma(z_1+z_2).
     $
   ],
-  <thm:betagammafunctionrelationship>,
+  <thm:betagamma-functionrelationship>,
 )
 
 #proof[
@@ -290,7 +290,7 @@ The Beta function is commonly treated as an auxiliary function in many cases of 
       & = integral_0^oo u^(z_2-1) [integral_0^oo ee^(-v) (v/(u+1))^(z_1+z_2-1) dif(v/(u+1))] dif u \
       & = integral_0^oo (u^(z_2-1)) / ((u+1)^(z_1+z_2)) [integral_0^oo ee^(-v) v^(z_1+z_2-1) dif v] dif u.
     $,
-    <eq:betagammafunctionrelationship_intermediate>,
+    <eq:betagamma-functionrelationship_intermediate>,
   )
   Let $r = u / (u+1)$, $u = r / (1-r)$, and $dif u = 1 / (1-r)^2 dif r$. Then we have
   $
@@ -315,11 +315,11 @@ The Beta function is commonly treated as an auxiliary function in many cases of 
                                                                       & = integral_0^oo u^(1/3) dif u / (u+1)^2 \
                                                                       & = Beta(4/3, 2/3),
   $
-  where the last step recognizes the form of @eq:betagammafunctionrelationship_intermediate. @thm:betagammafunctionrelationship then gives
+  where the last step recognizes the form of @eq:betagamma-functionrelationship_intermediate. @thm:betagamma-functionrelationship then gives
   $
     I = (Gamma(2/3) Gamma(4/3)) / Gamma(2) = 1/3 Gamma(1/3) Gamma(2/3).
   $
-  Lastly, the Reflection Formula (@thm:gammafunction_eulerreflection) gives that
+  Lastly, the Reflection Formula (@thm:gamma-function_eulerreflection) gives that
   $
     I = uppi / (3 sin(uppi / 3)) = (2 uppi sqrt(3)) / 9. #qedhere
   $
@@ -352,7 +352,7 @@ The Beta function is commonly treated as an auxiliary function in many cases of 
     J(beta) & = integral_0^oo s^beta (dif s) / (1+s) - integral_0^oo s^beta c^beta (dif s) / (1+s) \
             & = (1-c^beta) Beta(-beta, beta+1) = (c^beta-1) uppi csc(uppi beta)
   $
-  by the reflection formula (@thm:gammafunction_eulerreflection), which derives an analytic continuation of $J|_(-1 < Re beta < 1)$ to everywhere in $CC without ZZ$.
+  by the reflection formula (@thm:gamma-function_eulerreflection), which derives an analytic continuation of $J|_(-1 < Re beta < 1)$ to everywhere in $CC without ZZ$.
 
   One can show by differentiation under the integral sign, that the integral $J(beta)$ is holomorphic for $-1 < Re beta < 1$. The identity theorem (@thm:identity) then allows the computed cosecant expression to be assigned to $J(beta)$:
   $

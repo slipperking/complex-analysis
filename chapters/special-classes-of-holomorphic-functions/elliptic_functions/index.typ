@@ -8,7 +8,7 @@
     #include "modular_group/index.typ"
   ],
 )
-The theory of elliptic functions is an elaborate chapter of complex analysis, with origins in seemingly trivial problems of calculus. In the 18th century, mathematicians studying the rectification (arc length calculation) of curves such as the ellipse and the lemniscate discovered that these could not be expressed in terms of elementary functions, leading to the introduction of elliptic integrals. Inverting these integrals gave rise to elliptic functions, which extend the idea of trigonometric functions by being _doubly periodic_ in the complex plane. Closely related ideas also appeared in conformal mapping, such as the Schwarz--Christoffel transformation (@sec:schwarz_christoffel_transformation) between the upper half-plane and rectangles. Henceforth, elliptic functions became a central subject related to calculus, geometry, and complex analysis.
+The theory of elliptic functions is an elaborate chapter of complex analysis, with origins in seemingly trivial problems of calculus. In the 18th century, mathematicians studying the rectification (arc length calculation) of curves such as the ellipse and the lemniscate discovered that these could not be expressed in terms of elementary functions, leading to the introduction of elliptic integrals. Inverting these integrals gave rise to elliptic functions, which extend the idea of trigonometric functions by being _doubly periodic_ in the complex plane. Closely related ideas also appeared in conformal mapping, such as the Schwarz--Christoffel transformation (@sec:schwarz-christoffel-transformation) between the upper half-plane and rectangles. Henceforth, elliptic functions became a central subject related to calculus, geometry, and complex analysis.
 
 It is well-known in real analysis that a periodic function can be expressed as a Fourier series, with terms as the trivial functions $sin, cos, dots, sin(n x), cos(n x)$. Such functions are called _singly periodic_.
 
@@ -283,9 +283,12 @@ The properties of an elliptic function can be more easily observed on its fundam
 
 Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then, the quotient group $CC \/ Lambda$ is compact as it is homeomorphic to a torus, which is endowed with a compact topology. Hence, Liouville (@thm:liouville) implies that if $f$ does not have poles, then it must be constant:
 
-#theorem[Liouville][
-  Any elliptic function $f$ with period lattice $Lambda$ that is holomorphic on $CC$ is constant.
-] <thm:liouville-elliptic>
+#lbl(
+  theorem[Liouville][
+    Any elliptic function $f$ with period lattice $Lambda$ that is holomorphic on $CC$ is constant.
+  ],
+  <thm:liouville-elliptic>,
+)
 
 #proposition[
   The number of zeros and poles (counting multiplicities and orders) of a non-constant elliptic function $f$ in $CC \/ Lambda$ is finite, where $Lambda$ is the period lattice of $f$.
@@ -325,7 +328,7 @@ Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then
 )
 
 #proof[
-  Let $P$ be a fundamental parallelogram of $Lambda$ such that $f$ has no poles or zeros on $partial P$. By the Argument Principle (@thm:argumentprinciplemeromorphic), we have
+  Let $P$ be a fundamental parallelogram of $Lambda$ such that $f$ has no poles or zeros on $partial P$. By the Argument Principle (@thm:argument-principle-meromorphic), we have
   $
     1 / taui integral.cont_(partial P) (f'(z)) / (f(z)) dz = "# of zeros in" P - "# of poles in" P
   $

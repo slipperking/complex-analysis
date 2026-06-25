@@ -3,7 +3,7 @@
   title: [Biholomorphy],
   route: "biholomorphy",
 )
-In @sec:conformality_introduction, it was asserted that for a holomorphic function $f(z)$, the map $w = f(z)$ is conformal when $f'(z) != 0$.
+In @sec:conformality-of-holomorphic-mapping, it was asserted that for a holomorphic function $f(z)$, the map $w = f(z)$ is conformal when $f'(z) != 0$.
 
 We have the following immediate assertion:
 
@@ -11,7 +11,7 @@ We have the following immediate assertion:
   theorem[Open Mapping Theorem][
     Suppose $U subset.eq CC$ is a region (open, nonempty, and connected). Then the image of any holomorphic and non-constant function $f:U -> CC$, $f(U)$, is a region.
   ],
-  <thm:open_mapping>,
+  <thm:open-mapping>,
 )
 
 #proof[
@@ -31,7 +31,7 @@ Holomorphic injectivity, or univalence, satisfies the proceeding assertion:
   lemma[
     Let $U subset.eq CC$ be a region and suppose $f:U -> CC$ is univalent. Then $f'$ is non-vanishing on $U$.
   ],
-  <lem:univalentnonvanishingderivative>,
+  <lem:univalent-non-vanishing-derivative>,
 )
 
 #proof[
@@ -46,7 +46,7 @@ Conversely, we have the following statement on local univalence and invertibilit
   theorem[
     Let $U subset.eq CC$ be a region and suppose $f:U -> CC$ is holomorphic. If $f'(z_0) != 0$ for some $z_0 in U$, then there exists an open neighborhood of $z_0$ on which $f$ is univalent.
   ],
-  <thm:nonvanishingderivativeunivalentonneighborhood>,
+  <thm:non-vanishing-derivative-univalent-on-neighborhood>,
 )
 
 #proof[
@@ -61,7 +61,7 @@ We will now study holomorphic functions from a more geometric perspective.
   theorem[
     Let $Omega subset.eq CC$ be a region, and let $gamma subset Omega$ be a rectifiable simple closed counterclockwise-oriented curve that is null-homotopic in $Omega$. Denote $jinterior(gamma)$ by $U$. If $f:Omega -> CC$ is holomorphic and maps $gamma$ injectively to a simple closed curve $Gamma$, then $w = f(z)$ is univalent in $U$, $f(U) = jinterior(Gamma)$, and $Gamma$ is traversed counterclockwise.
   ],
-  <thm:boundaryofconformalmap>,
+  <thm:boundary-of-conformal-map>,
 )
 
 #proof[
@@ -75,7 +75,7 @@ We will now study holomorphic functions from a more geometric perspective.
 
   + If $w_0$ lies on $Gamma$, then it can be shown that $f - w_0$ has no zeros in $U$.
 
-    Indeed, for the sake of contradiction, assume that $exists z_0 in U$ such that $f(z_0) = w_0$. By the Open Mapping Theorem (@thm:open_mapping), $exists delta > 0$ such that $D(w_0, delta) subset.eq f(U)$, or equivalently, $forall w in D(w_0, delta)$, $f - w$ has zeros in $U$. Since $w_0$ lies on $Gamma$, a subset of $D(w_0, delta)$ lies in the exterior of $Gamma$. It was previously established that $f - w$ has no zeros if $w in D(w_0, delta) inter jexterior(Gamma)$. Thus, we have a contradiction, and no such $z_0$ exists, implying $k=0$.
+    Indeed, for the sake of contradiction, assume that $exists z_0 in U$ such that $f(z_0) = w_0$. By the Open Mapping Theorem (@thm:open-mapping), $exists delta > 0$ such that $D(w_0, delta) subset.eq f(U)$, or equivalently, $forall w in D(w_0, delta)$, $f - w$ has zeros in $U$. Since $w_0$ lies on $Gamma$, a subset of $D(w_0, delta)$ lies in the exterior of $Gamma$. It was previously established that $f - w$ has no zeros if $w in D(w_0, delta) inter jexterior(Gamma)$. Thus, we have a contradiction, and no such $z_0$ exists, implying $k=0$.
 
   We then have
   $
@@ -97,7 +97,7 @@ We will now give examples of biholomorphisms.
     $
       w = ee^(ii theta) (z - a) / (1 - overline(a) z), quad a in DD, theta in RR.
     $,
-    <eq:biholomorphismunitdiskautomorphism>,
+    <eq:biholomorphism-unit-disk-automorphism>,
   )
   This follows directly from @thm:holomorphic-automorphism-group-on-unit-disk.
 ]
@@ -109,10 +109,10 @@ We will now give examples of biholomorphisms.
       $
         w = ee^(ii theta) (z - a) / (z - overline(a)), quad a in HH^+, theta in RR.
       $,
-      <eq:biholomorphismunitdisktoupperhalfplane>,
+      <eq:biholomorphism-upper-half-plane-to-unit-disk>,
     )
   ],
-  <ex:biholomorphismsupperhalfplanetounitdisk>,
+  <ex:biholomorphisms-upper-half-plane-to-unit-disk>,
 )
 
 #proof[
@@ -125,7 +125,7 @@ We will now give examples of biholomorphisms.
     $
       z = (w overline(a) - a ee^(ii theta)) / (w - ee^(ii theta)).
     $,
-    <eq:biholomorphismunitdisktoupperhalfplane_inverse>,
+    <eq:biholomorphism-upper-half-plane-to-unit-disk-inverse>,
   )
 
   Assume $w in DD$. We then have
@@ -142,16 +142,16 @@ We will now give examples of biholomorphisms.
     & = ee^(ii theta) (z (1 - a) / (1 - overline(a)) + ii (a + 1) / (overline(a) - 1)) / (z - ii (overline(a) + 1) / (overline(a) - 1)) \
     & = ee^(ii theta) (1 - a) / (1 - overline(a)) (z - ii (a + 1) / (1 - a)) / (z - overline(ii (a + 1) / (1 - a))).
   $
-  Obviously, $ee^(ii theta) (1 - a) / (1 - overline(a))$ attains every value on the unit disk for varying $a$ and $theta$. Similarly, the values attained by $ii (a + 1) / (1 - a)$ cover the upper half-plane for $a in DD$ (since it is in the form of @eq:biholomorphismunitdisktoupperhalfplane_inverse). Thus, all biholomorphisms from $HH^+$ to $DD$ are in the form of @eq:biholomorphismunitdisktoupperhalfplane.
+  Obviously, $ee^(ii theta) (1 - a) / (1 - overline(a))$ attains every value on the unit disk for varying $a$ and $theta$. Similarly, the values attained by $ii (a + 1) / (1 - a)$ cover the upper half-plane for $a in DD$ (since it is in the form of @eq:biholomorphism-upper-half-plane-to-unit-disk-inverse). Thus, all biholomorphisms from $HH^+$ to $DD$ are in the form of @eq:biholomorphism-upper-half-plane-to-unit-disk.
 ]
 
-Let us now introduce some important properties of linear fractional transformations. By @prop:mobiustransformationcompositionmatrixmultiplication, it follows that the composition of two linear fractional transformations is also a linear fractional transformation.
+Let us now introduce some important properties of linear fractional transformations. By @prop:mobius-transformation-composition-matrix-multiplication, it follows that the composition of two linear fractional transformations is also a linear fractional transformation.
 
 #lbl(
   theorem[
     Let $cal(C)$ be the collection of subsets of $extcomplex$ that are circles or $L union {oo}$, where $L$ is a straight line in $CC$ (known as _generalized circles_). Then every linear fractional transformation $f:extcomplex -> extcomplex$ maps elements of $cal(C)$ to elements of $cal(C)$.
   ],
-  <thm:linear_fractional_transformation_maps_circles_to_circles>,
+  <thm:linear-fractional-transformation-maps-circles-to-circles>,
 )
 
 #proof[
@@ -163,14 +163,14 @@ Let us now introduce some important properties of linear fractional transformati
       &alpha z overline(z) + beta (z + overline(z)) / 2 + gamma (z - overline(z)) / (2 ii) + delta \
       &quad""= alpha z overline(z) + xi z + overline(xi) overline(z) + delta = 0 quad "for" quad xi = beta / 2 + gamma / (2 ii).
     $,
-    <eq:linear_fractional_transformation_maps_circles_to_circles_circlecomplexform>,
+    <eq:linear-fractional-transformation-maps-circles-to-circles-circle-complex-form>,
   )
 
-  If $alpha = 0$, the equation represents a straight line. It is easy to see that a complex dilation or a translation of $z$ will preserve the property of being a straight line or a circle. Indeed, by letting $z = a zeta$ for nonzero $a$ in @eq:linear_fractional_transformation_maps_circles_to_circles_circlecomplexform, we have
+  If $alpha = 0$, the equation represents a straight line. It is easy to see that a complex dilation or a translation of $z$ will preserve the property of being a straight line or a circle. Indeed, by letting $z = a zeta$ for nonzero $a$ in @eq:linear-fractional-transformation-maps-circles-to-circles-circle-complex-form, we have
   $
     alpha abs(a)^2 zeta overline(zeta) + xi a zeta + overline(xi) overline(a) overline(zeta) + delta = 0,
   $
-  which is trivially in the form of @eq:linear_fractional_transformation_maps_circles_to_circles_circlecomplexform. Similarly, if we substitute $z = zeta + b$, we have
+  which is trivially in the form of @eq:linear-fractional-transformation-maps-circles-to-circles-circle-complex-form. Similarly, if we substitute $z = zeta + b$, we have
   $
     alpha (zeta + b) (overline(zeta) + overline(b)) + xi (zeta + b) + overline(xi) (overline(zeta) + overline(b)) + delta = 0 \
     alpha zeta overline(zeta) + (xi + alpha overline(b)) zeta + (overline(xi) + alpha b) overline(zeta) + alpha abs(b)^2 + 2 Re(xi b) + delta = 0.
@@ -179,11 +179,11 @@ Let us now introduce some important properties of linear fractional transformati
   $
     delta zeta overline(zeta) + xi overline(zeta) + overline(xi) zeta + alpha = 0,
   $
-  which is in the form of @eq:linear_fractional_transformation_maps_circles_to_circles_circlecomplexform.
+  which is in the form of @eq:linear-fractional-transformation-maps-circles-to-circles-circle-complex-form.
 ]
 
 #remark[
-  As in @ex:biholomorphismsupperhalfplanetounitdisk, we can consider extended straight lines in the form of $L union {oo}$ as generalized circles in the Riemann sphere. In other words, the extended line can be geometrically visualized by a circle with infinite radius. In fact, when a circle on the Riemann sphere is projected stereographically onto the complex plane, the result is always either a circle or a straight line.
+  As in @ex:biholomorphisms-upper-half-plane-to-unit-disk, we can consider extended straight lines in the form of $L union {oo}$ as generalized circles in the Riemann sphere. In other words, the extended line can be geometrically visualized by a circle with infinite radius. In fact, when a circle on the Riemann sphere is projected stereographically onto the complex plane, the result is always either a circle or a straight line.
 ]
 
 #lbl(
@@ -198,7 +198,7 @@ Let us now introduce some important properties of linear fractional transformati
       (z_1, z_2; oo, z_4) & = (z_2 - z_4) / (z_1 - z_4), & (z_1, z_2; z_3, oo) & = (z_1 - z_3) / (z_2 - z_3)
     $
   ],
-  <def:crossratio>,
+  <def:cross-ratio>,
 )
 
 One important property of the cross-ratio is that it is invariant under linear fractional transformations. In other words, if $f$ is a linear fractional transformation, then

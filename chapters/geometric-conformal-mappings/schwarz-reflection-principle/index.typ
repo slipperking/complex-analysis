@@ -144,7 +144,7 @@ We have previously considered analytic continuations over two regions with an in
       },
       caption: [The two regions $U_1$ and $U_2$ sharing a boundary curve $gamma$, the disk $D(z,R_z)$ for $z in gamma$, and the curve#footnote[Although more accurately, they are restricted to triangular paths. Our purpose here is to show that they intersect multiple times, the validity of the treatment remains the same.] $Gamma$. Solid large arrows and arrowheads denote orientation of the $tilde(Gamma)_1$ and $tilde(Gamma)_2$ regions.],
     ),
-    <fig:painleve_theorem>,
+    <fig:painleve-theorem>,
   )
 ])
 
@@ -159,7 +159,7 @@ We have previously considered analytic continuations over two regions with an in
   $
     integral.cont_(Gamma) f(z) dz = integral.cont_(Gamma) f_2 (z) dz = 0.
   $
-  If $Gamma$ intersects $gamma$, then we can decompose $Gamma = Gamma_1 union Gamma_2$, where $Gamma_1$ is the part of $Gamma$ that lies in $U_1 union gamma$ and $Gamma_2$ is the part of $Gamma$ that lies in $U_2 union gamma$. The set $tilde(Gamma) = gamma inter jinterior(Gamma)$ closes $Gamma_1$ and $Gamma_2$ in the sense that $tilde(Gamma)_1 = Gamma_1 union tilde(Gamma)$ and $tilde(Gamma)_2 = Gamma_2 union tilde(Gamma)$ are both simple closed curves, or unions of simple closed curves (where $tilde(Gamma)$ in each of the two curves have opposite orientations, see @fig:painleve_theorem). By Cauchy--Goursat (@thm:cauchy-goursat-theorem), we have
+  If $Gamma$ intersects $gamma$, then we can decompose $Gamma = Gamma_1 union Gamma_2$, where $Gamma_1$ is the part of $Gamma$ that lies in $U_1 union gamma$ and $Gamma_2$ is the part of $Gamma$ that lies in $U_2 union gamma$. The set $tilde(Gamma) = gamma inter jinterior(Gamma)$ closes $Gamma_1$ and $Gamma_2$ in the sense that $tilde(Gamma)_1 = Gamma_1 union tilde(Gamma)$ and $tilde(Gamma)_2 = Gamma_2 union tilde(Gamma)$ are both simple closed curves, or unions of simple closed curves (where $tilde(Gamma)$ in each of the two curves have opposite orientations, see @fig:painleve-theorem). By Cauchy--Goursat (@thm:cauchy-goursat-theorem), we have
   $
     integral.cont.ccw_(Gamma) f(z) dz = (integral_(Gamma_1) + integral_(Gamma_2) + integral_(tilde(Gamma)) - integral_(tilde(Gamma))) f(z) dz = (integral.cont.ccw_(tilde(Gamma)_1) + integral.cont.ccw_(tilde(Gamma)_2)) f(z) dz = 0.
   $
@@ -180,7 +180,7 @@ A consequent result was discovered by Schwarz, known as the _reflection principl
     $
     on $U union tilde(U) union gamma$.
   ],
-  <thm:riemannschwarzreflection>,
+  <thm:riemann-schwarz-reflection>,
 )
 
 #proof[
@@ -202,5 +202,5 @@ This conjugate-symmetry can be generalized by transforming $gamma$:
 ]
 
 #proof[
-  There exist $a, c in CC^*$ and $b, d in CC$ such that $phi.alt(z) = a z + b$ maps $L$ to $RR$ and $psi(z) = c z + d$ maps $Gamma$ to $RR$. Let $U' = phi.alt(U)$, which lies entirely on one side of the real axis, and let $gamma' = phi.alt(gamma)$, a curve on the real axis. The function $phi = psi compose f compose phi.alt^(-1)$ is holomorphic on $U'$ and continuous on $U' union gamma'$. By the Schwarz Reflection Principle (@thm:riemannschwarzreflection), there exists a unique holomorphic function $tilde(phi):U' union tilde(U') union gamma' -> CC$ such that $tilde(phi) equiv phi$ on $U'$, where $tilde(U')$ is the reflection of $U'$ across the real axis. Then $tilde(f) = psi^(-1) compose tilde(phi) compose phi.alt$ is a holomorphic function on $U union tilde(U) union gamma$ such that $tilde(f) equiv f$ on $U$. Since linear transformations preserves symmetry, for any pair $z_1, z_2 in U union tilde(U) union gamma$ symmetric with respect to $L$, we have $phi.alt(z_1) = overline(phi.alt(z_2))$, and thus $tilde(phi) compose phi.alt(z_1)$ and $tilde(phi) compose phi.alt(z_2)$ are symmetric with respect to $RR$. Hence, $tilde(f)(z_1)$ and $tilde(f)(z_2)$ are symmetric with respect to $psi^(-1)(RR) = Gamma$.
+  There exist $a, c in CC^*$ and $b, d in CC$ such that $phi.alt(z) = a z + b$ maps $L$ to $RR$ and $psi(z) = c z + d$ maps $Gamma$ to $RR$. Let $U' = phi.alt(U)$, which lies entirely on one side of the real axis, and let $gamma' = phi.alt(gamma)$, a curve on the real axis. The function $phi = psi compose f compose phi.alt^(-1)$ is holomorphic on $U'$ and continuous on $U' union gamma'$. By the Schwarz Reflection Principle (@thm:riemann-schwarz-reflection), there exists a unique holomorphic function $tilde(phi):U' union tilde(U') union gamma' -> CC$ such that $tilde(phi) equiv phi$ on $U'$, where $tilde(U')$ is the reflection of $U'$ across the real axis. Then $tilde(f) = psi^(-1) compose tilde(phi) compose phi.alt$ is a holomorphic function on $U union tilde(U) union gamma$ such that $tilde(f) equiv f$ on $U$. Since linear transformations preserves symmetry, for any pair $z_1, z_2 in U union tilde(U) union gamma$ symmetric with respect to $L$, we have $phi.alt(z_1) = overline(phi.alt(z_2))$, and thus $tilde(phi) compose phi.alt(z_1)$ and $tilde(phi) compose phi.alt(z_2)$ are symmetric with respect to $RR$. Hence, $tilde(f)(z_1)$ and $tilde(f)(z_2)$ are symmetric with respect to $psi^(-1)(RR) = Gamma$.
 ]

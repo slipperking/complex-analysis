@@ -67,10 +67,13 @@
 
 As an immediate consequence, we have:
 
-#corollary[Jensen's Inequality][
-  Let $f$ be holomorphic on $overline(D(0,r))$ such that $f equiv.not 0$ and $f(0) != 0$. It follows that
-  $ log abs(f(0)) <= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta. $
-] <cor:jensens-inequality>
+#lbl(
+  corollary[Jensen's Inequality][
+    Let $f$ be holomorphic on $overline(D(0,r))$ such that $f equiv.not 0$ and $f(0) != 0$. It follows that
+    $ log abs(f(0)) <= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta. $
+  ],
+  <cor:jensens-inequality>,
+)
 
 #lbl(
   theorem[Poisson--Jensen Formula][
@@ -82,7 +85,7 @@ As an immediate consequence, we have:
       $,
       <eq:poisson-jensen-formula_statement>,
     )
-    where $zeta = r ee^(ii theta)$, $z in D(0,r) without ({a_j}_(j=1)^m union {b_k}_(j=1)^n)$, and $P(zeta, z)$ is the Poisson kernel in @eq:poissonkernelgeneralform.
+    where $zeta = r ee^(ii theta)$, $z in D(0,r) without ({a_j}_(j=1)^m union {b_k}_(j=1)^n)$, and $P(zeta, z)$ is the Poisson kernel in @eq:poisson-kernel-general-form.
   ],
   <thm:poisson-jensen-formula>,
 )
@@ -457,7 +460,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
 )
 
 #proof[
-  Let $r > 2 abs(z)$. By the Poisson--Jensen Formula (@thm:poisson-jensen-formula), at each non-singular point, we have (the kernel representation derived in @eq:poissonkernelgeneralform)
+  Let $r > 2 abs(z)$. By the Poisson--Jensen Formula (@thm:poisson-jensen-formula), at each non-singular point, we have (the kernel representation derived in @eq:poisson-kernel-general-form)
   $
     Re log f(z) &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) Re ((r ee^(ii theta) + z) / (r ee^(ii theta) - z)) dif theta \
     &wide""+ sum_(k=1)^(n(r,0,f)) Re log ((r(z - a_k)) / (r^2 - overline(a_k) z)).
