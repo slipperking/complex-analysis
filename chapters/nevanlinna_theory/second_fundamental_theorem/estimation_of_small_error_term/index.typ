@@ -283,11 +283,11 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     restate-keys: "thm:nevanlinna-second-fundamental-theorem-part-2",
   )[
     + If $R_0 = oo$ and $f$ has finite order, then
-    Let $f : D(0, R_0) -> extcomplex$ ($0 < R_0 <= oo$) be meromorphic and non-constant. Define $S(r, f)$ as in @eq:nevanlinna-second-fundamental-theorem-part-1_small_error_term. Then
-    $
-      S(r, f) = Order(log T(r, f)) + Order(log r) #tag[$(dagger)$]
-    $
-    as $r -> oo$ through all values.
+      Let $f : D(0, R_0) -> extcomplex$ ($0 < R_0 <= oo$) be meromorphic and non-constant. Define $S(r, f)$ as in @eq:nevanlinna-second-fundamental-theorem-part-1_small_error_term. Then
+      $
+        S(r, f) = Order(log T(r, f)) + Order(log r) #tag[$(dagger)$]
+      $
+      as $r -> oo$ through all values.
     + If $R_0 = oo$ and $f$ has infinite order, then $(dagger)$ holds as $r -> oo$ through all values of $r$ outside a set $E$ of finite linear measure.
     + If $R_0 < oo$, then
       $
