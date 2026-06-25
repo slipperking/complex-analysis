@@ -1,26 +1,35 @@
 # Notes on Complex Analysis
 
-This repository contains a Typst version of the notes *Notes on Complex Analysis* by Slipper King.
+This repository contains a Typst version of typesetted notes on complex analysis by
+Slipper King. The project relies on the experimental `html` and `bundle` export formats of the Typst compiler.
 
 ## Build
 
-To build both the HTML and PDF, run:
+The full site build has two steps:
 
-```bash
-uv run web/build.py
+```powershell
+python scripts/build.py
+.\typst.exe compile --features bundle,html --format bundle --package-path packages main.typ web/dist
 ```
 
-The script relies on Typst 0.15. To build just the PDF directly, run:
+`scripts/build.py` runs preprocessing scripts. Currently, this includes generating
+Typst data for regions in visuals for Mergelyan's Theorem. The bundled `typst.exe` is used because the convergence passes (default of five) are augmented to 25 (for safety) to ensure convergence.
 
-```bash
-typst compile --features html --package-path packages main.typ main.pdf
-```
+The `--package-path packages` argument points Typst at the repository's local
+package directory. Currently, all custom packages have been incorporated or refactored in a way such that this is not currently necessary.
 
 ## Project Layout
 
-- `main.typ` is the document entry point.
-- `chapters/` contains the chapter content.
-- `lib.typ` and `show-rules.typ` hold shared formatting and helpers.
+- `main.typ` is the entry point, importing `notes()` from
+  `src/components/web.typ`.
+- `chapters/` contains the mathematical content, organized as routed sections
+  with various helpers such as `docs-chapter`, `docs-subchapter`, and `docs-appendix`.
+- `src/source.typ` stores document metadata, cover content, and source links.
+- `src/components/` is the custom Typst framework for this project. These are generalizations of general functionality and can be directly reused for other projects, containing math helpers, graphics helpers, web helpers, and custom integrations.
+- `src/components/ctheorems/` is the local theorem environment implementation used instead of the Typst Universe package for modified functionality.
+- `src/assets/` contains CSS, JavaScript, and icons that are directly embedded into the Typst bundle with `asset(...)`.
+- `scripts/` contains preprocessing scripts.
+- `packages/` is the local Typst package path passed with `--package-path packages` during compilation.
 - `references.bib` stores bibliography entries.
 
 ## License
