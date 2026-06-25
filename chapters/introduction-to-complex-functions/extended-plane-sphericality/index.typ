@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [The Extended Complex Plane and its Spherical Representation],
-  route: "extended_plane_sphericality",
+  route: "extended-plane-sphericality",
   label: <sec:extended-plane-and-sphericality>,
 )
 All complex numbers form a field that extends the real number field. A complex number $alpha + ii beta$ can be visualized on a rectangular plane as the point $(alpha, beta)$, with two axes: the real axis and the imaginary axis. It is well known that any complex number also has the polar form $r ee^(ii theta) = r (cos theta + ii sin theta)$.
@@ -16,7 +16,7 @@ $ b dot.c oo = oo dot.c b = oo, quad a / oo = 0. $
 Let
 $ S^2 = {(x_1, x_2, x_3) in RR^3 : x_1^2 + x_2^2 + x_3^2 = 1}. $
 There exists a _stereographic projection_ of $S^2$ onto $extcomplex$. For every point other than $(0, 0, 1)$, there is a corresponding complex number
-#lbl($ z = (x_1 + ii x_2) / (1 - x_3). $, <eq:extcomplexformula1>)
+#lbl($ z = (x_1 + ii x_2) / (1 - x_3). $, <eq:extended-complex-plane-stereographic-projection-formula-1>)
 This correspondence between $CC$ and $S^2 without {(0, 0, 1)}$ is injective. In fact, the inverse can be solved for:
 $ abs(z)^2 = (1 - x_3^2) / (1 - x_3)^2 = (1 + x_3) / (1 - x_3), $
 which results in

@@ -68,7 +68,7 @@ The following theorem is important in many areas of mathematical analysis and ha
 #proof[
   We will first prove the sufficiency of uniform boundedness and uniform equicontinuity. Let ${f_n}_(n in NN)$ be any sequence in $cal(F)$. By the uniform boundedness of $cal(F)$, there exists a constant $M > 0$ such that $abs(f_n (z)) <= M$ for all $z in K$ and all $n in NN$.
 
-  Let ${zeta_k}_(k in NN)$ be a countably dense subset of $K$. By the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), there exists a subsequence of ${f_n}_(n in NN)$, namely ${f_(n_(1,j))}_(j in NN)$, such that ${f_(n_(1,j)) (zeta_1)}_(j in NN)$ is convergent. The set ${f_(n_(1,j)) (zeta_2)}_(j in NN)$ is also bounded by $M$, and hence, by the Bolzano--Weierstrass Theorem, it too has a convergent subsequence ${f_(n_(2,j)) (zeta_2)}_(j in NN)$. Similarly, there exists a subsequence of ${f_(n_(2,j))}_(j in NN)$, namely ${f_(n_(3,j))}_(j in NN)$, such that ${f_(n_(3,j)) (zeta_3)}_(j in NN)$ is convergent.
+  Let ${zeta_k}_(k in NN)$ be a countably dense subset of $K$. By the Bolzano--Weierstrass Theorem (@thm:bolzano-weierstrass), there exists a subsequence of ${f_n}_(n in NN)$, namely ${f_(n_(1,j))}_(j in NN)$, such that ${f_(n_(1,j)) (zeta_1)}_(j in NN)$ is convergent. The set ${f_(n_(1,j)) (zeta_2)}_(j in NN)$ is also bounded by $M$, and hence, by the Bolzano--Weierstrass Theorem, it too has a convergent subsequence ${f_(n_(2,j)) (zeta_2)}_(j in NN)$. Similarly, there exists a subsequence of ${f_(n_(2,j))}_(j in NN)$, namely ${f_(n_(3,j))}_(j in NN)$, such that ${f_(n_(3,j)) (zeta_3)}_(j in NN)$ is convergent.
 
   By the method of construction, we have:
   #lbl(
@@ -114,11 +114,11 @@ The following theorem is important in many areas of mathematical analysis and ha
     abs(f_(n'_j) (z) - f_(n'_i) (z)) & <= abs(f_(n'_j) (z) - f_(n'_j) (zeta_k)) + abs(f_(n'_j) (zeta_k) - f_(n'_i) (zeta_k)) \ & wide"" + abs(f_(n'_i) (zeta_k) - f_(n'_i) (z)) \
     & = epsilon / 3 + epsilon / 3 + epsilon / 3 = epsilon.
   $
-  Hence, the sequence is uniformly convergent on $K$ by the Cauchy Criterion (@thm:cauchycriterionuniformconvergence).
+  Hence, the sequence is uniformly convergent on $K$ by the Cauchy Criterion (@thm:cauchy-criterion-uniform-convergence).
 
   For the proof of the necessity, we will first assume the normality of $cal(F)$ in $K$.
 
-  For the sake of contradiction, assume that $cal(F)$ is not uniformly bounded. Then $forall n in NN$, $exists f_n in cal(F)$ and $exists z_n in K$ such that $abs(f_n (z_n)) > n$. By assumption, this sequence has a subsequence ${f_(n_k)}_(k in NN)$ that uniformly converges. Hence, $exists N in NN$ such that $forall k > N$, $forall z in K$, $abs(f_(n_k) (z) - f(z)) < 1$. By the reverse triangle inequality, it follows that $abs(f_(n_k) (z)) < abs(f(z)) + 1$. Since $f$ is continuous on $K$ by @thm:uniformlimit, it is bounded by some $M_1$ (@thm:continuous-function-bounded-on-compact). Let $M_2 = max_(k in NN_(<= N)) sup_(z in K) abs(f_(n_k) (z))$. It follows that this subsequence is uniformly bounded by $max{M_1 + 1, M_2}$. However, since $abs(f_(n_k) (z_(n_k))) > n_k -> oo$ for any $k$, this subsequence cannot be uniformly bounded, and hence we have a contradiction.
+  For the sake of contradiction, assume that $cal(F)$ is not uniformly bounded. Then $forall n in NN$, $exists f_n in cal(F)$ and $exists z_n in K$ such that $abs(f_n (z_n)) > n$. By assumption, this sequence has a subsequence ${f_(n_k)}_(k in NN)$ that uniformly converges. Hence, $exists N in NN$ such that $forall k > N$, $forall z in K$, $abs(f_(n_k) (z) - f(z)) < 1$. By the reverse triangle inequality, it follows that $abs(f_(n_k) (z)) < abs(f(z)) + 1$. Since $f$ is continuous on $K$ by @thm:uniform-limit, it is bounded by some $M_1$ (@thm:continuous-function-bounded-on-compact). Let $M_2 = max_(k in NN_(<= N)) sup_(z in K) abs(f_(n_k) (z))$. It follows that this subsequence is uniformly bounded by $max{M_1 + 1, M_2}$. However, since $abs(f_(n_k) (z_(n_k))) > n_k -> oo$ for any $k$, this subsequence cannot be uniformly bounded, and hence we have a contradiction.
 
   We will now assume that $cal(F)$ is not pointwise equicontinuous at some arbitrary point $z_0 in K$. In other words, $exists epsilon > 0$ such that $forall delta > 0$, $exists f in cal(F)$, $exists z in K$ such that $abs(z - z_0) < delta$ satisfying
   $
@@ -128,7 +128,7 @@ The following theorem is important in many areas of mathematical analysis and ha
   $
     abs(f_n (z_n) - f_n (z_0)) > epsilon.
   $
-  Since $cal(F)$ is assumed to be normal, the sequence ${f_n}_(n in NN)$ has a uniformly convergent subsequence ${f_(n_k)}_(k in NN)$ converging to a continuous function $f$. In particular, since uniform convergence preserves continuity (@thm:uniformlimit), the limit $f$ is continuous at $z_0$, and hence,
+  Since $cal(F)$ is assumed to be normal, the sequence ${f_n}_(n in NN)$ has a uniformly convergent subsequence ${f_(n_k)}_(k in NN)$ converging to a continuous function $f$. In particular, since uniform convergence preserves continuity (@thm:uniform-limit), the limit $f$ is continuous at $z_0$, and hence,
   $
     f_(n_k) (z_0) - f(z_0) -> 0, quad f(z_0) - f(z_(n_k)) -> 0, quad f_(n_k) (z_(n_k)) - f(z_(n_k)) -> 0,
   $

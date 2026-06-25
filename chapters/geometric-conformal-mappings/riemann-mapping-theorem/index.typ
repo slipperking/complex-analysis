@@ -34,7 +34,7 @@ The path independence of the definition is provided by the simple connectivity o
   $
   maps $U$ to $DD$, and it is linear and univalent. This shows that $alpha in cal(F)$. It is easy to prove that $cal(F)$ is infinite; any function in the form of $z |-> (z - z_0) / zeta$ for $zeta >= 2 R$ also lies in $cal(F)$.
 
-  Since $cal(F)$ is uniformly bounded on $U$, by Montel's Theorem (@thm:montel), $cal(F)$ is a normal family. Let $r > 0$ satisfy $overline(D(z_0, r)) subset U$. Then by Cauchy's Estimate (@thm:cauchys_estimate), $forall alpha in cal(F)$, $abs(alpha') <= 1 / r$ on $overline(D(z_0, r))$. Hence, we have
+  Since $cal(F)$ is uniformly bounded on $U$, by Montel's Theorem (@thm:montel), $cal(F)$ is a normal family. Let $r > 0$ satisfy $overline(D(z_0, r)) subset U$. Then by Cauchy's Estimate (@thm:cauchys-estimate), $forall alpha in cal(F)$, $abs(alpha') <= 1 / r$ on $overline(D(z_0, r))$. Hence, we have
   #lbl(
     $
       0 < M = sup_(alpha in cal(F)) abs(alpha'(z_0)) <= 1 / r,
@@ -45,7 +45,7 @@ The path independence of the definition is provided by the simple connectivity o
 
   If $M$ is an accumulation point of ${abs(alpha'(z_0))}_(alpha in cal(F))$, there exists a sequence ${alpha_n}_(n in NN) subset.eq cal(F)$ such that ${abs(alpha'_n (z_0))}_(n in NN)$ converges to $M$. If $M$ is attained as a maximum or that $abs(alpha'(z_0)) = M$ for some $alpha in cal(F)$, we may let each $alpha_n equiv alpha$.
 
-  By the normality of $cal(F)$, there exists a subsequence ${alpha_(n_k) (z)}_(k in NN) subset.eq {alpha_n (z)}_(n in NN)$ such that ${alpha_(n_k) (z)}_(k in NN)$ is locally uniformly convergent in $U$ to a function $doubletilde(alpha)(z)$ (holomorphy of which is provided by @thm:weierstrass_convergence). By definition, $abs(doubletilde(alpha)'(z_0)) = M$, and define a function sequence with $tilde(alpha)_(n_k) = alpha_(n_k) abs(doubletilde(alpha)'(z_0)) / (doubletilde(alpha)'(z_0)) in cal(F)$, whose locally uniform limit is $f$. It follows that $f$ is a rotation of $doubletilde(alpha)$ such that $f'(z_0) = M$.
+  By the normality of $cal(F)$, there exists a subsequence ${alpha_(n_k) (z)}_(k in NN) subset.eq {alpha_n (z)}_(n in NN)$ such that ${alpha_(n_k) (z)}_(k in NN)$ is locally uniformly convergent in $U$ to a function $doubletilde(alpha)(z)$ (holomorphy of which is provided by @thm:weierstrass-convergence). By definition, $abs(doubletilde(alpha)'(z_0)) = M$, and define a function sequence with $tilde(alpha)_(n_k) = alpha_(n_k) abs(doubletilde(alpha)'(z_0)) / (doubletilde(alpha)'(z_0)) in cal(F)$, whose locally uniform limit is $f$. It follows that $f$ is a rotation of $doubletilde(alpha)$ such that $f'(z_0) = M$.
 
   Let $zeta_1, zeta_2 in U$ be arbitrary and different. Choose $r' > 0$ to satisfy $0 < r' < abs(zeta_1 - zeta_2)$, and let $psi_k (z) = tilde(alpha)_(n_k) (z) - tilde(alpha)_(n_k) (zeta_2)$. Since each $tilde(alpha)_(n_k)$ is univalent in $U$, it follows that each $psi_k$ is non-vanishing in $U without {zeta_2}$ and consequently, in $overline(D(zeta_1, r'))$. By @thm:hurwitz-simple-case, it follows that the locally uniform limit of $psi_k$, or $psi = f(z) - f(zeta_2)$, is either non-vanishing or is identically zero in $overline(D(zeta_1, r'))$. The latter is an impossibility since $psi'(z_0) = M > 0$. Hence, $f(z) = f(zeta_2)$ has no solutions for $z in overline(D(zeta_1, r'))$. In particular, $f(zeta_1) != f(zeta_2)$. By the arbitrariness of $zeta_1$ and $zeta_2$, the univalence of $f$ follows.
 

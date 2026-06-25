@@ -1,20 +1,20 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Nevanlinna's Counting, Proximity, and Characteristic Functions],
-  route: "nevanlinna_functions",
+  route: "nevanlinna-counting-proximity-characteristic-functions",
 )
 Let $f: D(0, R) -> extcomplex$ be meromorphic such that
 $ f(z) = sum_(j = k)^oo c_j z^j $
-where $c = c_k$ and $c eq.not 0$. Then $z mapsto frac(f(z), z^k, style: "horizontal")$ is holomorphic on a neighborhood of $0$ and is nonzero at $0$. By Jensen's formula (@thm:jensensformula) on $frac(f(z), z^k, style: "horizontal")$,
+where $c = c_k$ and $c eq.not 0$. Then $z mapsto frac(f(z), z^k, style: "horizontal")$ is holomorphic on a neighborhood of $0$ and is nonzero at $0$. By Jensen's formula (@thm:jensens-formula) on $frac(f(z), z^k, style: "horizontal")$,
 
 #lbl(
   $
     & log abs(r^(m - n) (b_1 b_2 dots.c b_n) / (a_1 a_2 dots.c a_m)) + k log r \
     & wide wide ""= 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta - log abs(c),
   $,
-  <eq:nevanlinnacountingjensensformulaexposition1>,
+  <eq:nevanlinna-counting-jensens-formula-exposition-1>,
 )
-where $a_1, dots, a_m$ and $b_1, dots, b_n$ are the zeros and poles of $f$ in $overline(D(0, r)) subset D(0, R)$ excluding those at $0$, ordered in nondecreasing moduli. Observe that
+where $a_1, dots, a_m$ and $b_1, dots, b_n$ are the zeros and poles of $f$ in $overline(D(0, r)) subset D(0, R)$ excluding those at $0$, ordered in non-decreasing moduli. Observe that
 
 $
   log abs(r^m / (a_1 a_2 dots.c a_m))
@@ -52,13 +52,13 @@ $
   where $n(x, a, f)$ counts the number of times $f$ attains $a$ in $overline(D(0, x))$, counting orders (multiplicities of zeros of $f - a$, or poles of $f$ if $a = oo$). In the event that $a$ is elided, assume $a = oo$.
 ]
 
-Then @eq:nevanlinnacountingjensensformulaexposition1 is simply
+Then @eq:nevanlinna-counting-jensens-formula-exposition-1 is simply
 
 #lbl(
   $
     N(r, 0, f) - N(r, oo, f) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta - log abs(c). quad
   $,
-  <eq:nevanlinnacountingjensensformulaexposition2>,
+  <eq:nevanlinna-counting-jensens-formula-exposition-2>,
 )
 
 Define the _nonnegative part of the logarithm_, denoted $logp (x)$, to be
@@ -68,18 +68,18 @@ $ logp (x) = max { log(x), 0 }. $
 #lbl(
   proposition[Properties of $logp$][
     The following properties hold:
-    1. $logp x gt.eq log x$ for $x > 0$. #enum-lbl(<itm:log_nonnegative_part_properties_firstproperty>)
-    2. $logp x <= logp y$ for $x <= y$ (nondecreasing). #enum-lbl(<itm:log_nonnegative_part_properties_nondecreasing>)
-    3. $log x = logp x - logp (1 / x)$ for $x > 0$. #enum-lbl(<itm:log_nonnegative_part_properties_differenceofreciprocallogs>)
-    4. $abs(log x) = logp x + logp (1 / x)$ for $x > 0$. #enum-lbl(<itm:log_nonnegative_part_properties_sumofreciprocallogs>)
-    5. $logp product_k x_k <= sum_k logp x_k$ for (finitely many) positive $x_k$. #enum-lbl(<itm:log_nonnegative_part_properties_multiplicativesubadditivity>)
-    6. $logp sum_(k = 1)^n x_k <= log n + sum_(k = 1)^n logp x_k$ for (finitely many) positive $x_k$. #enum-lbl(<itm:log_nonnegative_part_properties_weaksubadditivity>)
+    1. $logp x gt.eq log x$ for $x > 0$. #enum-lbl(<itm:log-nonnegative-part-properties-first-property>)
+    2. $logp x <= logp y$ for $x <= y$ (non-decreasing). #enum-lbl(<itm:log-nonnegative-part-properties-non-decreasing>)
+    3. $log x = logp x - logp (1 / x)$ for $x > 0$. #enum-lbl(<itm:log-nonnegative-part-properties-difference-of-reciprocal-logs>)
+    4. $abs(log x) = logp x + logp (1 / x)$ for $x > 0$. #enum-lbl(<itm:log-nonnegative-part-properties-sum-of-reciprocal-logs>)
+    5. $logp product_k x_k <= sum_k logp x_k$ for (finitely many) positive $x_k$. #enum-lbl(<itm:log-nonnegative-part-properties-multiplicative-subadditivity>)
+    6. $logp sum_(k = 1)^n x_k <= log n + sum_(k = 1)^n logp x_k$ for (finitely many) positive $x_k$. #enum-lbl(<itm:log-nonnegative-part-properties-weak-subadditivity>)
   ],
-  <prop:log_nonnegative_part_properties>,
+  <prop:log-nonnegative-part-properties>,
 )
 
 #proof[
-  The first five properties are trivial. We now prove @itm:log_nonnegative_part_properties_weaksubadditivity. Observing that $x_k <= ee^(logp x_k)$, it follows that
+  The first five properties are trivial. We now prove @itm:log-nonnegative-part-properties-weak-subadditivity. Observing that $x_k <= ee^(logp x_k)$, it follows that
 
   $
     logp sum_(k = 1)^n x_k & <= logp sum_(k = 1)^n ee^(logp x_k)
@@ -110,25 +110,25 @@ this implies
 
 $ m(r, oo, f) - m(r, 0, f) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta. $
 
-Then @eq:nevanlinnacountingjensensformulaexposition2 can be written as:
+Then @eq:nevanlinna-counting-jensens-formula-exposition-2 can be written as:
 
 #lbl(
   $
     N(r, 0, f) + m(r, 0, f) = N(r, oo, f) + m(r, oo, f) - log abs(c). wide
   $,
-  <eq:nevanlinnafirsttheorematzero>,
+  <eq:nevanlinna-first-theorem-at-zero>,
 )
 
 #definition[
   This motivates the sum $T(r, f)$, known as the _Nevanlinna characteristic_, defined by $T(r, f) = m(r, f) + N(r, f)$ (we will also use the notation $T(r, a, f) = m(r, a, f) + N(r, a, f)$).
 ]
 
-Then @eq:nevanlinnafirsttheorematzero can be rewritten as:
+Then @eq:nevanlinna-first-theorem-at-zero can be rewritten as:
 
 #lbl(
   proposition[
     For any (non-constant) meromorphic $f$ on $D(0, R)$ with the innermost Laurent series $f(z) = sum_(j = k)^oo c_j z^j$ and any $0 < r < R$,
     $ T(r, 0, f) = T(r, oo, f) - log abs(c_k). $
   ],
-  <prop:nevanlinnafirsttheorematzero>,
+  <prop:nevanlinna-first-theorem-at-zero>,
 )

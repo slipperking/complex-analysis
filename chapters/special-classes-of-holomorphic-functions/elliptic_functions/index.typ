@@ -283,16 +283,16 @@ The properties of an elliptic function can be more easily observed on its fundam
 
 Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then, the quotient group $CC \/ Lambda$ is compact as it is homeomorphic to a torus, which is endowed with a compact topology. Hence, Liouville (@thm:liouville) implies that if $f$ does not have poles, then it must be constant:
 
-#theorem("Liouville")[
+#theorem[Liouville][
   Any elliptic function $f$ with period lattice $Lambda$ that is holomorphic on $CC$ is constant.
-] <thm:liouvilleelliptic>
+] <thm:liouville-elliptic>
 
 #proposition[
   The number of zeros and poles (counting multiplicities and orders) of a non-constant elliptic function $f$ in $CC \/ Lambda$ is finite, where $Lambda$ is the period lattice of $f$.
 ]
 
 #proof[
-  Let $P$ be a fundamental parallelogram of $Lambda$. It suffices to show that $f$ has finitely many zeros and poles in $overline(P)$. If there are infinitely many poles in $overline(P)$, then by the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), there exists an accumulation point $z_0 in overline(P)$ of poles. Hence, $z_0$ cannot be an isolated singularity, contradicting meromorphy (more succinctly, $z_0$ is then an essential singularity on the Riemann sphere).
+  Let $P$ be a fundamental parallelogram of $Lambda$. It suffices to show that $f$ has finitely many zeros and poles in $overline(P)$. If there are infinitely many poles in $overline(P)$, then by the Bolzano--Weierstrass Theorem (@thm:bolzano-weierstrass), there exists an accumulation point $z_0 in overline(P)$ of poles. Hence, $z_0$ cannot be an isolated singularity, contradicting meromorphy (more succinctly, $z_0$ is then an essential singularity on the Riemann sphere).
 
   Under the assumption that $f equiv.not 0$, the same argument shows that $1 / f$ has finitely many poles in $overline(P)$, or equivalently, that $f$ has finitely many zeros in $overline(P)$.
 ]
@@ -301,11 +301,11 @@ Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then
   proposition[
     For any elliptic function $f$ with period lattice $Lambda$, the sum of the residues of $f$ in $CC \/ Lambda$ is zero.
   ],
-  <prop:ellipticfunctionresiduesum>,
+  <prop:elliptic-function-residue-sum>,
 )
 
 #proof[
-  Let $alpha$, $alpha + omega_1$, $alpha + omega_2$, and $alpha + omega_1 + omega_2$ be the vertices of a fundamental parallelogram $P$ of $Lambda$ such that $partial P$ does not pass through the poles $f$. By the Residue Theorem (@thm:residuethm), we have
+  Let $alpha$, $alpha + omega_1$, $alpha + omega_2$, and $alpha + omega_1 + omega_2$ be the vertices of a fundamental parallelogram $P$ of $Lambda$ such that $partial P$ does not pass through the poles $f$. By the Residue Theorem (@thm:residue-theorem), we have
   $
     2 uppi ii sum_(z_k in P) Res_(z = z_k) f(z) = integral.cont_(partial P) f(z) dz,
   $
@@ -329,7 +329,7 @@ Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then
   $
     1 / taui integral.cont_(partial P) (f'(z)) / (f(z)) dz = "# of zeros in" P - "# of poles in" P
   $
-  where the sums are over all zeros and poles of $f$ in $CC \/ Lambda$ (effectively $P$) counted with multiplicities and orders, respectively. By assumption, $f' equiv.not 0$, and hence $f' / f$ is non-constant and elliptic with period lattice $Lambda$. By @prop:ellipticfunctionresiduesum, the integral vanishes and hence the assertion follows.
+  where the sums are over all zeros and poles of $f$ in $CC \/ Lambda$ (effectively $P$) counted with multiplicities and orders, respectively. By assumption, $f' equiv.not 0$, and hence $f' / f$ is non-constant and elliptic with period lattice $Lambda$. By @prop:elliptic-function-residue-sum, the integral vanishes and hence the assertion follows.
 ]
 
 #proposition[
@@ -351,7 +351,7 @@ Hence, it is only natural to quantify this number:
 ]
 
 #proof[
-  If $f$ is of order $1$, then $f$ has a simple pole at some $z_0$ in a fundamental parallelogram of its period lattice $Lambda$. By the simplicity of the pole, it must have a nonzero residue there. By @prop:ellipticfunctionresiduesum, this is an impossibility.
+  If $f$ is of order $1$, then $f$ has a simple pole at some $z_0$ in a fundamental parallelogram of its period lattice $Lambda$. By the simplicity of the pole, it must have a nonzero residue there. By @prop:elliptic-function-residue-sum, this is an impossibility.
 ]
 
 #theorem[

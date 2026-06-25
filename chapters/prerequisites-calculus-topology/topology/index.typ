@@ -57,7 +57,7 @@ Because the accumulation points of $X$ all lie in $overline(X)$, the closure of 
   theorem[Bolzano--Weierstrass][
     Every infinite subset $A$ of a compact set $X subset.eq CC^n$ has an accumulation point in $X$.
   ],
-  <thm:bolzanoweierstrass>,
+  <thm:bolzano-weierstrass>,
 )
 
 #proof[

@@ -576,7 +576,7 @@ Note that the converse here is not necessarily true.
     $ 0 <= phi(z) <= 1 quad forall z in CC, $
     $supp(phi) subset V$, and $phi equiv 1$ on some open neighborhood of $K$.
   ],
-  <thm:bumpfunctionexistence>,
+  <thm:bump-function-existence>,
 )
 
 #proof[

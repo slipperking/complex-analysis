@@ -30,16 +30,19 @@ The following important result can be directly obtained from the Maximum Modulus
 
 To discuss the main topic of this section, we will first introduce the concept of a _group_.
 
-#definition("Group")[
-  A group is a nonempty set $G$ and a binary operation (we will denote this as $*$) satisfying the four _group axioms_:
+#lbl(
+  definition("Group")[
+    A group is a nonempty set $G$ and a binary operation (we will denote this as $*$) satisfying the four _group axioms_:
 
-  - _Closure_: $forall a, b in G$, $a * b in G$.
-  - _Associativity_: $forall a, b, c in G$, $(a * b) * c = a * (b * c)$.
-  - _Identity Element_: $exists e in G$ such that $forall a in G$, $a * e = e * a = a$. Note that $e$ is unique; if $e, f in G$ were both identity elements, then $e * f = f * e = e = f$, and are equal.
-  - _Inverse Element_: $forall a in G$, $exists a^(-1) in G$ such that $a * a^(-1) = e = a^(-1) * a$, where $e$ is the identity element. Note that $a^(-1)$ is unique. Assume $b, c$ were both inverses of $a$. Then, $b = b * e = b * (a * c) = (b * a) * c = c$, and are equal.
+    - _Closure_: $forall a, b in G$, $a * b in G$.
+    - _Associativity_: $forall a, b, c in G$, $(a * b) * c = a * (b * c)$.
+    - _Identity Element_: $exists e in G$ such that $forall a in G$, $a * e = e * a = a$. Note that $e$ is unique; if $e, f in G$ were both identity elements, then $e * f = f * e = e = f$, and are equal.
+    - _Inverse Element_: $forall a in G$, $exists a^(-1) in G$ such that $a * a^(-1) = e = a^(-1) * a$, where $e$ is the identity element. Note that $a^(-1)$ is unique. Assume $b, c$ were both inverses of $a$. Then, $b = b * e = b * (a * c) = (b * a) * c = c$, and are equal.
 
-  A _subgroup_ $H$ of $G$ is a subset of $G$ that is also a group under the same operation as $G$. This relationship is denoted by $H <= G$ or $H < G$ for _proper subgroups_.
-] <def:group>
+    A _subgroup_ $H$ of $G$ is a subset of $G$ that is also a group under the same operation as $G$. This relationship is denoted by $H <= G$ or $H < G$ for _proper subgroups_.
+  ],
+  <def:group>,
+)
 
 Group operations are not necessarily commutative. In the case that they are, (specifically if $a, b in G ==> a * b = b * a$), then $G$ is an _abelian group_.
 
@@ -51,7 +54,7 @@ First we will show that $forall a in DD$,
   $
     phi_a (z) = (z - a) / (1 - overline(a) z) in Aut(DD).
   $,
-  <eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement>,
+  <eq:mobius-transformation-group-of-holomorphic-automorphisms-unit-disk-statement>,
 )
 
 Firstly, the function is holomorphic on $DD$ as $abs(z) <= 1$, $abs(overline(a)) < 1$, the denominator never vanishes. Additionally, $phi_a (a) = 0$.
@@ -76,7 +79,7 @@ Since $abs(a) < 1$, then $abs(a)^2 - 1 != 0$, and we get $z_2 - z_1 = 0$. This p
 Next, we will solve for the inverse of $phi_a$. Let $z = phi_a (w) = (w - a) / (1 - overline(a) w)$. Then,
 #lbl($ z - overline(a) z w = w - a <==> w = (z + a) / (1 + overline(a) z). $, <eq:inversemobiustransformation>)
 
-It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bijective automorphism. It follows that @eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement is true. Functions in the form of $phi_a$ (where $a in DD$) are known as _Möbius transformations_, and the group of all such transformations is known as the _Möbius transformation group on the unit disk_, which is a subgroup of $Aut(DD)$. Functions in the form of $rho_tau (z) = z ee^(ii tau)$, where $tau in RR$ is constant, form a group known as the _rotation group_, which is also a subgroup of $Aut(DD)$.
+It follows that $phi_(-a) = (phi_a)^(-1)$. Thus $phi_a$ is surjective and a bijective automorphism. It follows that @eq:mobius-transformation-group-of-holomorphic-automorphisms-unit-disk-statement is true. Functions in the form of $phi_a$ (where $a in DD$) are known as _Möbius transformations_, and the group of all such transformations is known as the _Möbius transformation group on the unit disk_, which is a subgroup of $Aut(DD)$. Functions in the form of $rho_tau (z) = z ee^(ii tau)$, where $tau in RR$ is constant, form a group known as the _rotation group_, which is also a subgroup of $Aut(DD)$.
 
 #lbl(
   theorem[The Holomorphic Automorphism Group on $DD$][

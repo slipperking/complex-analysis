@@ -12,11 +12,11 @@ We now provide a second formulation of the first fundamental theorem, given by A
       $
         I = integral.cont_(partial U) nabla_(vu(n)) G(abs(f(z))) abs(dz) = integral_U g(abs(f(z))) abs(f'(z))^2 r dr and dtheta,
       $,
-      <eq:ahlfors-shimizu_green_statement>,
+      <eq:ahlfors-shimizu-green-statement>,
     )
     where $z = r ee^(ii theta)$, $g(R) = G''(R) + 1 / R G'(R)$, and $vu(n)$ is the unit normal vector pointing towards the exterior of $partial U$.
   ],
-  <lem:ahlfors-shimizu_green>,
+  <lem:ahlfors-shimizu-green>,
 )
 
 #proof[
@@ -31,7 +31,7 @@ We now provide a second formulation of the first fundamental theorem, given by A
     $
       I &= (integral.cont_(partial U) + sum_(k=1)^n integral.cont_(partial D(z_k, epsilon))) grad G(abs(f(z))) dot vu(n) abs(dz) \ &= integral.double_(U without union.big D(z_k, epsilon)) laplacian G(abs(f(z))) r dr dtheta.
     $,
-    <eq:ahlfors-shimizu_green_greensapplication>,
+    <eq:ahlfors-shimizu-green-greens-application>,
   )
   Letting $R = abs(f(z)) = sqrt(f(z) overline(f(z)))$ and adopting the elliptical notations $partial_z = pdv(, z, style: "horizontal")$, $partial_(overline(z)) = pdv(, overline(z), style: "horizontal")$ etc.,
   $
@@ -50,17 +50,17 @@ We now provide a second formulation of the first fundamental theorem, given by A
     partial_(z overline(z)) G(R) = partial_z G'(R) partial_(overline(z)) R + G'(R) partial_(overline(z) z) R &= G''(R) (f' overline(f)) / (2R) dot (f overline(f')) / (2R) + G'(R) abs(f')^2 / (4R) \
     &= abs(f')^2 / 4 (G''(R) + (G'(R)) / R),
   $
-  it follows that $laplacian G(abs(f(z))) = g(R) abs(f')^2$. Substituting this in @eq:ahlfors-shimizu_green_greensapplication gives
+  it follows that $laplacian G(abs(f(z))) = g(R) abs(f')^2$. Substituting this in @eq:ahlfors-shimizu-green-greens-application gives
   $
     (integral.cont_(partial U) + sum_(k=1)^n integral.cont_(partial D(z_k, epsilon))) grad G(abs(f(z))) dot vu(n) abs(dz) = integral.double_(U without union.big D(z_k, epsilon)) laplacian G(abs(f(z))) r dr dtheta.
   $
-  As $epsilon -> 0^+$, the right-hand side is simply the desired quantity in @eq:ahlfors-shimizu_green_statement. By the continuous differentiability of $G$, $exists M > 0$ such that $abs(grad G dot vu(n)) <= M$ on $union.big_k overline(D(z_k, epsilon))$, thus
+  As $epsilon -> 0^+$, the right-hand side is simply the desired quantity in @eq:ahlfors-shimizu-green-statement. By the continuous differentiability of $G$, $exists M > 0$ such that $abs(grad G dot vu(n)) <= M$ on $union.big_k overline(D(z_k, epsilon))$, thus
   $
     abs(integral.cont_(partial D(z_k, epsilon)) grad G dot vu(n) dif s) <= integral_0^(2 uppi) M epsilon dtheta -> 0 quad "as" quad epsilon -> 0^+.
   $
-  Thus, the left-hand side expression of @eq:ahlfors-shimizu_green_greensapplication also tends to that of @eq:ahlfors-shimizu_green_statement.
+  Thus, the left-hand side expression of @eq:ahlfors-shimizu-green-greens-application also tends to that of @eq:ahlfors-shimizu-green-statement.
 ]
-We apply @lem:ahlfors-shimizu_green to
+We apply @lem:ahlfors-shimizu-green to
 $
   G(R) = log (sqrt(1 + R^2) / 2) ==> g(R) = (1 - R^2) / (1 + R^2)^2 + 1/R (R / (1 + R^2)) = 2 / (1 + R^2)^2.
 $
@@ -111,21 +111,21 @@ By dividing by $r$, changing variables, and integrating from $0$ to $r$, we have
     &= lim_(epsilon -> 0^+) integral_epsilon^r n(0, f) / t dt - 1 / (2 uppi) integral_0^(2 uppi) log (sqrt(1 + abs(f(epsilon ee^(ii theta)))^2) / 2) dtheta \
     &quad "" + N(r, f) - n(0, f) log r + 1 / (2 uppi) integral_0^(2 uppi) log(sqrt(1 + abs(f(r ee^(ii theta)))^2)/2) dtheta.
   $,
-  <eq:ahlforsshimizuderivation_convergentintegral>,
+  <eq:ahlfors-shimizu-derivation-convergent-integral>,
 )
-The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is written in its present form to ensure convergence in the event of a pole.
+The limit expression of @eq:ahlfors-shimizu-derivation-convergent-integral is written in its present form to ensure convergence in the event of a pole.
 #definition[Ahlfors--Shimizu Proximity Function][
   For $a in extcomplex$, define the _Ahlfors--Shimizu proximity function_ to be equal to:
-  #lbl($ m_0(r, a, f) = 1 / (2 uppi) integral_0^(2 uppi) log(1 / k(f(r ee^(ii theta)), a)) dtheta $, <eq:ahlforsshimizuproximity>) for finite $a$ and
+  #lbl($ m_0(r, a, f) = 1 / (2 uppi) integral_0^(2 uppi) log(1 / k(f(r ee^(ii theta)), a)) dtheta $, <eq:ahlfors-shimizu-proximity>) for finite $a$ and
   $ m_0(r, f) = 1/(2 uppi) integral_0^(2 uppi) log (1 / k(f(r,ee^(ii theta)), oo)) dtheta $ for $a = oo$,
   where #lbl($ k(w, a) = cases(
     (2 abs(w - a)) / sqrt((1 + abs(w)^2)(1 + abs(a)^2)) quad & a!= oo and w != oo\,,
     2 / sqrt(1 + abs(w)^2) quad & a = oo and w != oo\,,
     2/sqrt(1 + abs(a)^2) quad & w= oo and a != oo\,,
     0 quad & w= oo and a = oo.
-  ) $, <eq:ahlforsshimizuchordaldistance>)
+  ) $, <eq:ahlfors-shimizu-chordal-distance>)
 ]
-#theorem[Ahlfors--Shimizu Characteristic Function][
+#definition[Ahlfors--Shimizu Characteristic Function][
   The _Ahlfors--Shimizu characteristic function_ $T_0(r, f)$ is defined by
   $
     T_0(r, f) = integral_0^r (A(t, f) dt) / t.
@@ -140,14 +140,14 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
   <thm:nevanlinna-first-fundamental-theorem-ahlfors-shimizu-simple-case>,
 )
 #proof[
-  In the first case for $f(0) != oo$, from @eq:ahlforsshimizuderivation_convergentintegral, we have
+  In the first case for $f(0) != oo$, from @eq:ahlfors-shimizu-derivation-convergent-integral, we have
   #lbl(
     $
       integral_0^r (A(t, f) dt) / t & = 1 / (2 uppi) integral_0^(2 uppi) log(sqrt(1 + abs(f(r ee^(ii theta)))^2)/2) dtheta \
                                     & quad ""- 1 / (2 uppi) integral_0^(2 uppi) log(sqrt(1 + abs(f(0))^2)/2) dtheta + N(r, f) \
                           T_0(r, f) & = N(r, f) + m_0(r, f) - m_0(0, f).
     $,
-    <eq:ahlforsshimizuderivation_regularcase>,
+    <eq:ahlfors-shimizu-derivation-regular-case>,
   )
   Now assume a pole; let $f(z) = c z^k + Order(z^(k+1))$, where $k < 0$ and $c != 0$. It follows that
   $
@@ -166,14 +166,14 @@ The limit expression of @eq:ahlforsshimizuderivation_convergentintegral is writt
     &wide wide = -k log r - log abs(c) + Order(epsilon) + log 2 \
     &wide wide -> n(0, f) log r - log abs(c/2) quad "as" quad epsilon -> 0.
   $
-  Hence, from @eq:ahlforsshimizuderivation_convergentintegral,
+  Hence, from @eq:ahlfors-shimizu-derivation-convergent-integral,
   #lbl(
     $
       integral_0^r (A(t, f) dt) / t &= N(r, f) - log abs(c/2) \
       &quad ""+ 1 / (2 uppi) integral_0^(2 uppi) log(sqrt(1 + abs(f(r ee^(ii theta)))^2)/2) dtheta \
       T_0(r, f) & = N(r, f) + m_0(r, f) - log abs(c/2). #qedhere
     $,
-    <eq:ahlforsshimizuderivation_singularcase>,
+    <eq:ahlfors-shimizu-derivation-singular-case>,
   )
 ]
 #lbl(

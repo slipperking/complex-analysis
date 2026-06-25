@@ -161,7 +161,7 @@ via the results and definitions in @eq:poincaremetriconscaleddisks.
 
 It is understood that an entire function is guaranteed to be constant if it is bounded. This is a statement of sufficiency, but it begs the question of the capacity for possible generalization of boundedness under which constancy is still always satisfied.
 
-Consider an entire function $f:CC -> U$, where $U$ is an unbounded region such that $CC without U$ has positive area. Fix $zeta in jinterior(CC without U)$. Then the map $z |-> 1 / (z - zeta)$ maps $U$ to a bounded region and hence $z |-> 1 / (f(z) - zeta)$ is constant by Liouville's Theorem (@thm:liouville), implying the constancy of $f$ (the essential proof of @thm:casorati-weierstrassentire).
+Consider an entire function $f:CC -> U$, where $U$ is an unbounded region such that $CC without U$ has positive area. Fix $zeta in jinterior(CC without U)$. Then the map $z |-> 1 / (z - zeta)$ maps $U$ to a bounded region and hence $z |-> 1 / (f(z) - zeta)$ is constant by Liouville's Theorem (@thm:liouville), implying the constancy of $f$ (the essential proof of @thm:casorati-weierstrass-entire).
 
 In contrast, if $f:CC -> U$ is entire and $CC without U$ has zero area (one readily considers sets consisting of curves or isolated points), we must be more specific in determining sufficient conditions that still imply constancy of $f$.
 
@@ -177,7 +177,7 @@ Similar to in the proof of the Riemann Mapping Theorem (@thm:riemann_mapping), o
   Now fix $xi in psi(CC^* without RR_(>= 1))$. By the Open Mapping Theorem (@thm:open_mapping), $exists epsilon > 0$ such that $D(xi, epsilon) subset.eq psi(CC^* without RR_(>= 1))$. Consequently, $D(-xi, epsilon) inter psi(CC^* without RR_(>= 1)) = emptyset$. Lastly, the function $phi.alt(z) = epsilon / (z + xi)$ maps $psi(CC^* without RR_(>= 1))$ to $DD$. By Liouville (@thm:liouville), $phi.alt compose psi compose phi compose f$ is constant, which implies $f$ is constant by the injectivity of $phi.alt$, $psi$, and $phi$.
 ]
 
-The preceding examples show that if the omitted set is sufficiently "large" (in the sense of having positive area or disconnecting the plane in certain ways), then any entire function avoiding it must reduce to a constant. However, there are natural limits to the smallness of the omitted set. For instance, the exponential function $exp$ is an entire non-constant function whose image is $CC^*$, omitting only a single point. Thus, the property that _an entire function omits a set_ is not by itself sufficient to guarantee constancy unless that set is suitably substantial. This observation is formalized by Picard's Little Theorem (@thm:littlepicard), which as preluded to before, asserts that any non-constant entire function can omit at most one complex value.
+The preceding examples show that if the omitted set is sufficiently "large" (in the sense of having positive area or disconnecting the plane in certain ways), then any entire function avoiding it must reduce to a constant. However, there are natural limits to the smallness of the omitted set. For instance, the exponential function $exp$ is an entire non-constant function whose image is $CC^*$, omitting only a single point. Thus, the property that _an entire function omits a set_ is not by itself sufficient to guarantee constancy unless that set is suitably substantial. This observation is formalized by Picard's Little Theorem (@thm:little-picard), which as preluded to before, asserts that any non-constant entire function can omit at most one complex value.
 
 #lbl(
   proposition[
@@ -229,10 +229,10 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
 And we have the final implication:
 
 #lbl(
-  theorem([Picard's Little Theorem], restate: true, restate-keys: ("thm:littlepicard",))[
+  theorem([Picard's Little Theorem], restate: true, restate-keys: ("thm:little-picard",))[
     Let $f:CC -> U$ be entire such that $CC without U$ contains two or more points. Then $f$ is constant.
   ],
-  <thm:littlepicard>,
+  <thm:little-picard>,
 )
 
 #proof[

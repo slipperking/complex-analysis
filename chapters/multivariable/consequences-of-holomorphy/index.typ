@@ -24,7 +24,7 @@ If we consider $f$ to be a function of $z_1, overline(z_1), z_2, overline(z_2), 
 )
 
 #proof[
-  By Cauchy--Goursat (@thm:cauchy_differentiation_formula), we have
+  By Cauchy--Goursat (@thm:cauchy-differentiation-formula), we have
   $
     pdv(, z_1, [k_1]) f(bold(z)) = (k_1 !) / (2 uppi ii) integral.cont_(partial D(a_1, r_1)) (f (zeta_1, z_2, dots, z_n)) / ((zeta_1 - z_1)^(k_1 + 1)) dzeta_1
   $
@@ -46,7 +46,7 @@ By the boundedness assumption for $f$, we have:
     $
     for any $bold(z) = (z_1, z_2, dots, z_n) in Omega$.
   ],
-  <cor:cauchys_estimatepolydisks>,
+  <cor:cauchys-estimatepolydisks>,
 )
 
 #proof[
@@ -109,7 +109,7 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
   $
     a_(k_1, dots, k_n) = 1 / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)),
   $
-  then @eq:taylor-expansion-multivariable_series follows. Cauchy's Estimate (@cor:cauchys_estimatepolydisks) gives that
+  then @eq:taylor-expansion-multivariable_series follows. Cauchy's Estimate (@cor:cauchys-estimatepolydisks) gives that
   $
     abs(a_(k_1, dots, k_n)) <= M product_(j=1)^n (1 / (rho_j^(k_j))),
   $
@@ -120,14 +120,14 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
     &<= M sum_(k_1=0)^oo dots.c sum_(k_n=0)^oo product_(j=1)^n abs((r_j) / (rho_j))^(k_j) \
     &= M product_(j=1)^n sum_(k_j=0)^oo abs((r_j) / (rho_j))^(k_j) < oo.
   $
-  By the Weierstrass $M$--Test (@thm:weierstrassmtest), the series converges absolutely and uniformly on $Omega$.
+  By the Weierstrass $M$--Test (@thm:weierstrass-m-test), the series converges absolutely and uniformly on $Omega$.
 ]
 
 #lbl(
   theorem[Identity][
     Let $f$ be a holomorphic function on $Omega subset.eq CC^n$. If the set ${z in Omega : f (z) = 0}$ has an accumulation point in $Omega$, then $f equiv 0$ on $Omega$.
   ],
-  <thm:identitymultivar>,
+  <thm:identity-multivariable>,
 )
 
 #theorem[Maximum Modulus Principle][
@@ -146,12 +146,12 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
     $
     on compact subsets of $Omega$.
   ],
-  <thm:weierstrassconvergencemultivar>,
+  <thm:weierstrass-convergence-multivariable>,
 )
 
 #lbl(
   theorem[Montel][
     A family $cal(F)$ of holomorphic functions on some region $Omega subset.eq CC^n$ is normal iff it is locally uniformly bounded on $Omega$.
   ],
-  <thm:montelmultivar>,
+  <thm:montel-multivariable>,
 )

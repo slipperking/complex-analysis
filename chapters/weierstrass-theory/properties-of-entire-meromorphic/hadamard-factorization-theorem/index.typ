@@ -7,7 +7,7 @@
   theorem[
     Let $f(z) = ee^(phi(z)) P(z)$ be the Weierstrass canonical factorization of $f$, where $f$ is entire with finite order $rho = rho(f)$ and $rho(0) = 1$. Then $phi$ is a polynomial of degree $<= rho$.
   ],
-  <thm:entirefunctionfiniteordercanonicalweierstrassfactorizationpolynomialdegree>,
+  <thm:entire-function-finite-order-canonical-weierstrass-factorization-polynomial-degree>,
 )
 
 #proof[
@@ -15,7 +15,7 @@
   $
     (f'(z)) / f(z) = phi'(z) + (P'(z)) / P(z) ==> dif^p / (dif z^p) ((f'(z)) / f(z)) = phi^((p+1)) (z) + dif^p / (dif z^p) ((P'(z)) / P(z)).
   $
-  By applying @prop:entirefunctionfiniteorderlogdiffderivatives and @lem:entire_function_weierstrass_product_finite_order_log_diff_derivatives, we have
+  By applying @prop:entire-function-finite-order-log-diff-derivatives and @lem:entire-function-weierstrass-product-finite-order-log-diff-derivatives, we have
   $
     -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1) = phi^((p+1)) (z) - sum_(k=1)^infinity (p!) / (a_k - z)^(p+1) ==> phi^((p+1)) equiv 0.
   $
@@ -26,7 +26,7 @@
   corollary[
     Let $f(z) = z^m ee^(phi(z)) P(z)$ be the Weierstrass canonical factorization of $f$, where $f$ is entire with finite order $rho = rho(f)$. Then $phi$ is a polynomial of degree $<= rho$.
   ],
-  <cor:hadamardfactorizationpolynomial>,
+  <cor:hadamard-factorization-polynomial>,
 )
 
 #proof[
@@ -40,15 +40,18 @@
   $ r^epsilon - (m log r) / r^(rho(f) - 2 epsilon) > 1. $
   Hence, $rho(g) gt.eq rho(f) - 2 epsilon$. Letting $epsilon -> 0^+$ implies $rho(f) = rho(g)$. Let $g(z) = c h(z)$ where $c$ is a constant, so that $h(0) = 1$. It is also trivial that $rho(g) = rho(h)$. Explicitly, we have $h(z) = ee^(phi - Log c) P(z)$.
 
-  By @thm:entirefunctionfiniteordercanonicalweierstrassfactorizationpolynomialdegree on $h$, $phi - Log c$ is a polynomial of degree $<= rho$, and so is $phi$.
+  By @thm:entire-function-finite-order-canonical-weierstrass-factorization-polynomial-degree on $h$, $phi - Log c$ is a polynomial of degree $<= rho$, and so is $phi$.
 ]
 
 // TODO
-Then the results of @cor:hadamardfactorizationpolynomial and @thm:entirefunctionfiniteorderzerossummationconvergence may be consolidated into a single statement:
+Then the results of @cor:hadamard-factorization-polynomial and @thm:entire-function-finite-order-zeros-summation-convergence may be consolidated into a single statement:
 
-#theorem("Hadamard Factorization Theorem")[
-  Let $mu$ be the genus of $f$ and let $rho$ be the order of $f$, where $f$ is entire with finite order. Then $mu <= rho$.
-]<thm:hadamardfactorization>
+#lbl(
+  theorem[Hadamard Factorization Theorem][
+    Let $mu$ be the genus of $f$ and let $rho$ be the order of $f$, where $f$ is entire with finite order. Then $mu <= rho$.
+  ],
+  <thm:hadamard-factorization>,
+)
 
 #lbl(
   theorem[
@@ -56,7 +59,7 @@ Then the results of @cor:hadamardfactorizationpolynomial and @thm:entirefunction
     $ sin z = z product_(k=1)^infinity (1 - z^2 / (uppi^2 k^2)) $
     defines an entire function and uniformly converges on any compact disk $overline(D(0,r))$.
   ],
-  <thm:sinproductformula>,
+  <thm:sin-product-formula>,
 )
 
 #proof[
@@ -67,7 +70,7 @@ Then the results of @cor:hadamardfactorizationpolynomial and @thm:entirefunction
       uppi (k+1) \/ 2 & "if" k in NN without 2 NN,
     )
   $
-  enumerate the zeros of $sin$. By @ex:entire_function_finite_order_sin_exp_exp, and the Hadamard Factorization Theorem (@thm:hadamardfactorization), the order of $sin$ is 1, the genus does not exceed 1, and
+  enumerate the zeros of $sin$. By @ex:entire-function-finite-order-sin-exp-exp, and the Hadamard Factorization Theorem (@thm:hadamard-factorization), the order of $sin$ is 1, the genus does not exceed 1, and
   $
     sin z = z ee^(phi(z)) product_(k=1)^infinity E_1 (z / a_k) = z ee^(phi(z)) product_(k=1)^infinity (1 - z / a_k) exp(z / a_k),
   $

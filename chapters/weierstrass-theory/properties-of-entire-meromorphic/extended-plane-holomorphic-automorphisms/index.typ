@@ -7,17 +7,20 @@ It is generally common to consider a meromorphic function as a function in the f
 
 To make more profound conclusions on the structure of $Aut(extcomplex)$, we will introduce certain concepts from group theory.
 
-#definition[Coset][
-  Let $G$ be a group, and let $H <= G$ be a subgroup (operation denoted by juxtaposition). Then the _left coset_ of $H$ in $G$ with respect to $g in G$ is defined as
-  $
-    g H = { g h : h in H }.
-  $
-  The _right coset_ is defined as
-  $
-    H g = { h g : h in H }.
-  $
-  The subgroup $H$ is _normal_ iff the left and right cosets are equal. The notation $H lt.closed.eq G$ is used to represent a normal subgroup. Cosets, like groups and sets, are unordered.
-] <def:coset>
+#lbl(
+  definition[Coset][
+    Let $G$ be a group, and let $H <= G$ be a subgroup (operation denoted by juxtaposition). Then the _left coset_ of $H$ in $G$ with respect to $g in G$ is defined as
+    $
+      g H = { g h : h in H }.
+    $
+    The _right coset_ is defined as
+    $
+      H g = { h g : h in H }.
+    $
+    The subgroup $H$ is _normal_ iff the left and right cosets are equal. The notation $H lt.closed.eq G$ is used to represent a normal subgroup. Cosets, like groups and sets, are unordered.
+  ],
+  <def:coset>,
+)
 
 #theorem[
   Let $G$ be a group and $N <= G$ a subgroup. The set of left cosets

@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Complex Differentiation],
-  route: "complex_differentiation",
+  route: "complex-differentiation",
   children: [
     #include "wirtinger_derivatives/index.typ"
   ],

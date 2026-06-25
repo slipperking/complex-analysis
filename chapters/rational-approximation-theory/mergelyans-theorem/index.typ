@@ -111,7 +111,7 @@ Let $z = (f^(-1))(w)$. Then we have
   $
     phi_zeta (z) = phi(z) + (zeta - beta) phi^2(z), quad z in extcomplex without K
   $
-  where $beta = (phi''(oo)) / 2$. The application of Cauchy's Estimate (@thm:cauchys_estimate) on $(z mapsto 1 / z)(extcomplex without D(0, r)) = D(0, 1 / r)$ gives:
+  where $beta = (phi''(oo)) / 2$. The application of Cauchy's Estimate (@thm:cauchys-estimate) on $(z mapsto 1 / z)(extcomplex without D(0, r)) = D(0, 1 / r)$ gives:
   $
     abs(beta) = 1 / 2 abs(evaluated(dv(phi(1 / z), z, 2, style: "large"))_(z=0)) <= (sup_(D(0, 1 / r)) abs(phi(1 / z))) / (op("dist")(0, partial D(0, 1 / r))^2) = 8 r.
   $
@@ -148,7 +148,7 @@ Let $z = (f^(-1))(w)$. Then we have
   $
     abs(phi_zeta (z) - 1 / (z - zeta)) < M / abs(z - zeta)^3 <==> abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 < M
   $
-  for all $z$ satisfying $abs(z - zeta) > 2 r$. By @thm:riemannremovablesingularities, $(phi_zeta (z) - 1 / (z - zeta)) (z - zeta)^3$ has a removable singularity at $oo$. On the other hand, for $abs(z - zeta) <= 2 r$ such that $z in extcomplex without (K union {zeta})$, we have
+  for all $z$ satisfying $abs(z - zeta) > 2 r$. By @thm:riemann-removable-singularities, $(phi_zeta (z) - 1 / (z - zeta)) (z - zeta)^3$ has a removable singularity at $oo$. On the other hand, for $abs(z - zeta) <= 2 r$ such that $z in extcomplex without (K union {zeta})$, we have
   $
     abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 & <= abs(phi_zeta (z)) abs(z - zeta)^3 + abs(z - zeta)^2 \
                                                        & <= 584 / r (2 r)^3 + (2 r)^2 = 4676 r^2
@@ -276,7 +276,7 @@ Let $z = (f^(-1))(w)$. Then we have
   $
     abs(g(z)) <= sum_(n = 0)^oo abs(g_n (z)) <= 1 / 3 sum_(n = 0)^oo 2^n / 3^n = 1 quad forall z in CC,
   $
-  the Weierstrass $M$--Test (@thm:weierstrassmtest) implies that the series $sum_(n = 0)^oo g_n (z)$ converges uniformly on $CC$ to $g$. Since each $g_n$ is continuous, @thm:uniformlimit gives the continuity of $g$ on $CC$. Finally, for any $z in K$, we have
+  the Weierstrass $M$--Test (@thm:weierstrass-m-test) implies that the series $sum_(n = 0)^oo g_n (z)$ converges uniformly on $CC$ to $g$. Since each $g_n$ is continuous, @thm:uniform-limit gives the continuity of $g$ on $CC$. Finally, for any $z in K$, we have
   $
     abs(f(z) - g(z)) <= lim_(n -> oo) 2^(n + 1) / 3^(n + 1) = 0. #qedhere
   $

@@ -3,13 +3,13 @@
   title: [An Introduction to Nevanlinna Theory],
   route: "nevanlinna-theory",
   children: [
-    #include "nevanlinna_functions/index.typ"
+    #include "nevanlinna-counting-proximity-characteristic-functions/index.typ"
     #include "properties-of-nevanlinna-characteristic/index.typ"
     #include "ahlfors-shimizu/index.typ"
     #include "second-fundamental-theorem/index.typ"
-    #include "corollaries_of_second_theorem/index.typ"
+    #include "corollaries-to-the-second-fundamental-theorem/index.typ"
   ],
-  label: <sec:nevanlinnatheory>,
+  label: <sec:nevanlinna-theory>,
 )
 The information we present here is primarily based on @holland1973introduction and some structural remarks of @charak2009meromorphicvaluedistribution.
 

@@ -18,7 +18,7 @@ $s=sigma+ii t$.
 
 Let $alpha in RR_(> 1)$ be arbitrary. It is well known that $zeta(alpha)$ absolute converges by integral comparison. Therefore, $forall s=sigma+ii t:sigma>=alpha$,
 $ abs(sum_(n=1)^oo 1/(n^s)) <= sum_(n=1)^oo 1/(n^sigma) <= sum_(n=1)^oo 1/(n^alpha). $
-Hence, $zeta(s)$ is uniformly and absolutely convergent on ${ s in CC : Re(s)>=alpha }$ by the Weierstrass $M$--Test (@thm:weierstrassmtest). The Weierstrass Theorem (@thm:weierstrass_convergence) gives the analyticity of $zeta$ thereon. We will now explain the simple connection between $zeta$ and the prime numbers. Let $p_1=2,p_2=3,p_3=5,dots$ be the sequence of all prime numbers
+Hence, $zeta(s)$ is uniformly and absolutely convergent on ${ s in CC : Re(s)>=alpha }$ by the Weierstrass $M$--Test (@thm:weierstrass-m-test). The Weierstrass Theorem (@thm:weierstrass-convergence) gives the analyticity of $zeta$ thereon. We will now explain the simple connection between $zeta$ and the prime numbers. Let $p_1=2,p_2=3,p_3=5,dots$ be the sequence of all prime numbers
 in increasing order.
 
 #lbl(
@@ -297,7 +297,7 @@ continuation of $zeta(s)$ by
   $
     zeta(s)=(lim_(epsilon -> 0^+) F_epsilon (s))/(-2 ii sin(uppi s) Gamma(s)),
   $,
-  <eq:riemannzetafunction_analyticcontinuationcontourintegral>,
+  <eq:riemannzetafunction_analyticcontinuationcontour-integral>,
 )
 whose singularities lie within $ZZ$ (the $Gamma$-function never vanishes since $1/Gamma$ is entire by its Weierstrass factorization in @thm:gammafunction_weierstrassformula). By the series definition, the singularities at $s in NN_(>=2)$ are removable and hence unimportant to our consideration, while the simple zeros of the $sin(uppi s)$ function at each $s in ZZ_(<=0)$ cancel with the simple poles of the $Gamma$-function and hence those are removable singularities of $zeta$ as well. Our final consideration is of the singularity at $s=1$:
 
@@ -312,14 +312,14 @@ whose singularities lie within $ZZ$ (the $Gamma$-function never vanishes since $
   $
     #I-num ->integral.cont_(partial D(0, epsilon)) dz/(ee^z-1)=taui Res_(z=0) 1/(ee^z-1)
   $
-  as $delta -> 0^+$, the integrand has a simple pole at $z=0$. Its residue, calculated via @eq:residueatpole, is equal to
+  as $delta -> 0^+$, the integrand has a simple pole at $z=0$. Its residue, calculated via @eq:residue-at-pole, is equal to
   $
     Res_(z=0) 1/(ee^z-1)=lim_(z -> 0) z/(ee^z-1)=lim_(z -> 0) 1/(ee^z)=1.
   $
   Hence, $F(1)=taui$. Now the expression
   $zeta(1)=-(uppi)/(sin(uppi) Gamma(1))$ shows that the singularity at
   $s=1$ is a simple pole (contributed from the simple zero of $sin$). By
-  @eq:residueatpole once more, the residue at $s=1$ is equal to
+  @eq:residue-at-pole once more, the residue at $s=1$ is equal to
   $
     Res_(s=1) zeta(s) & =lim_(s -> 1) (s-1) zeta(s)=lim_(s -> 1) (1-s) ((F_epsilon (s))/(2 ii sin(uppi s) Gamma(s))) \
     & =taui/(2 ii Gamma(1)) lim_(s -> 1) (1-s)/(sin(uppi s))=-uppi lim_(s -> 1) 1/(uppi cos(uppi s))=1. #qedhere
@@ -344,11 +344,11 @@ The functional equation as provided by Riemann in his original paper gives a mor
 #proof[
   We restrict our consideration to $s eq.not 0,-1,-2,dots$ (and the usage of limits suffices to extend the relation to all of $CC^*$). The integrand $((-z)^(s-1))/(ee^z-1)$ (as a function of $z$) has a branch cut singularity on $RR_(>=0)$ (in terms of $z$) (a region excluded by all Hankel contours and thus irrelevant to our interest). The denominator vanishes (simply) when $ee^z=1$ or when $z in 2 uppi ii ZZ$ and thus has simple poles at these points.
 
-  Suppose that $Re s<0$. Now the Residue Theorem (@thm:residuethm) gives that
+  Suppose that $Re s<0$. Now the Residue Theorem (@thm:residue-theorem) gives that
   $
     F_((2n+1) uppi) (s)-F_epsilon (s) = lim_(delta -> 0^+) integral.cont_gamma ((-z)^(s-1))/(ee^z-1) dz = lim_(delta -> 0^+) taui sum_(z in 2 uppi ii ZZ \ z in jinterior gamma) Res_z ((-z)^(s-1))/(ee^z-1)
   $
-  where $gamma$ is the keyhole contour in @fig:keyholecontour with a larger radius of $(2n+1) uppi$ and a smaller one of $epsilon < 2pi$ whose lateral segments are $2delta$ apart from each other. Since $delta<epsilon<2pi$, the choice of $gamma$ does not affect the enclosed singularities. Then we have, by virtue of @eq:residueatpole:
+  where $gamma$ is the keyhole contour in @fig:keyholecontour with a larger radius of $(2n+1) uppi$ and a smaller one of $epsilon < 2pi$ whose lateral segments are $2delta$ apart from each other. Since $delta<epsilon<2pi$, the choice of $gamma$ does not affect the enclosed singularities. Then we have, by virtue of @eq:residue-at-pole:
   $
     & 1/taui (F_((2n+1) uppi) (s)-F_epsilon (s)) = sum_(k=-n \ k eq.not 0)^n lim_(zeta -> 2 uppi ii k) ((zeta-2 uppi ii k)(-zeta)^(s-1))/(ee^zeta-1) \
     &wide quad= sum_(k=-n \ k eq.not 0)^n lim_(zeta -> 2 uppi ii k) (2 uppi ii k (s-1) (-zeta)^(s-2)+s (-zeta)^(s-1))/(ee^zeta) \
@@ -367,7 +367,7 @@ The functional equation as provided by Riemann in his original paper gives a mor
       abs(F_((2n+1) uppi) (s)) & <=abs(integral.cont_(partial D(0, R)) ((-z)^(s-1) dz)/(ee^z-1))\ &quad""+2 abs(sin(uppi s) integral_R^oo (x^(s-1) dx)/(ee^x-1)), quad "where" R=(2n+1) uppi \
       & <=2 uppi R^(Re s) sup_(theta in [0, 2 uppi]) abs((-ee^(ii theta))^(s-1)) sup_(z in partial D(0, R)) 1/(abs(ee^z-1))\ & quad""+2 abs(sin(uppi s) integral_R^oo (x^(s-1) dx)/(ee^x-1)).
     $,
-    <eq:riemannzetafunction_functionalequation_contourintegralbound>,
+    <eq:riemannzetafunction_functionalequation_contour-integralbound>,
   )
   As $n -> oo$, the second integral vanishes by the definition of convergent improper integrals. Now observe that $(-ee^(ii theta))^(s-1)$ depends only on $s$ and $theta$ and is independent of $n$, and hence is insignificant. We now aim to prove that $1/(abs(ee^z-1))$ is above by a positive constant for all $z in union.big partial D(0, R)$. Observe that
   $
@@ -404,12 +404,12 @@ The functional equation as provided by Riemann in his original paper gives a mor
   $
     min { 1-ee^(-2), 2/ee cos(2/uppi) }>0
   $
-  for all $z in union.big_(n=1)^oo partial D(0, (2n+1) uppi)$ (and hence $1/(abs(ee^z-1))$ is bounded). Therefore, from @eq:riemannzetafunction_functionalequation_contourintegralbound we have that $abs(F_((2n+1) uppi) (s))->0$ as $n -> oo$ for $Re s<0$. Hence, we may deduce that for $Re s<0$,
+  for all $z in union.big_(n=1)^oo partial D(0, (2n+1) uppi)$ (and hence $1/(abs(ee^z-1))$ is bounded). Therefore, from @eq:riemannzetafunction_functionalequation_contour-integralbound we have that $abs(F_((2n+1) uppi) (s))->0$ as $n -> oo$ for $Re s<0$. Hence, we may deduce that for $Re s<0$,
   $
     -F_epsilon (s) & =4 uppi ii cos(uppi/2 (s-1))(2 uppi)^(s-1) sum_(k=1)^n k^(s-1) \
                    & =4 uppi ii cos(uppi/2 (s-1))(2 uppi)^(s-1) zeta(1-s).
   $
-  The left-hand side can be simplified by @eq:riemannzetafunction_analyticcontinuationcontourintegral to give
+  The left-hand side can be simplified by @eq:riemannzetafunction_analyticcontinuationcontour-integral to give
   $
     sin(uppi s) Gamma(s) zeta(s) =cos(uppi/2 (s-1))(2 uppi)^s zeta(1-s)=sin(uppi/2 s)(2 uppi)^s zeta(1-s) \
     2 sin(uppi/2 s) cos(uppi/2 s)(2 uppi)^(-s) =sin(uppi/2 s) zeta(1-s),

@@ -5,12 +5,15 @@
 )
 In complex analysis, three main sets of interest are $DD$, $CC$, and $extcomplex$. We will now find $Aut(CC)$.
 
-#theorem[The Holomorphic Automorphism Group on $CC$][
-  $forall f in Aut(CC)$, $f$ is linear and non-constant. In other words, $exists a in CC without {0}$ and $exists b in CC$ such that
-  $
-    f(z) = a z + b.
-  $
-] <thm:holomorphic-automorphism-group-on-complex-plane>
+#lbl(
+  theorem[The Holomorphic Automorphism Group on $CC$][
+    $forall f in Aut(CC)$, $f$ is linear and non-constant. In other words, $exists a in CC without {0}$ and $exists b in CC$ such that
+    $
+      f(z) = a z + b.
+    $
+  ],
+  <thm:holomorphic-automorphism-group-on-complex-plane>,
+)
 
 #proof[
   First, assume that $oo$ is not an essential singularity of $f(z)$, which we will prove later. Then $oo$ must be a pole by trichotomy, as a removable singularity implies boundedness (@prop:removable-singularity-at-infinity-entire-constant). Therefore, $f(z)$ is a polynomial of degree $m$, where $m in NN$.

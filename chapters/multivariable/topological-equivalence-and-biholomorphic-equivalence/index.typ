@@ -7,7 +7,7 @@
   lemma[
     If $bold(P)$ is a permutation matrix, and $bold(D)$ is a diagonal matrix, then there exists a diagonal matrix $bold(D)'$ such that $bold(P) bold(D) = bold(D)' bold(P)$. Similarly, there exists a diagonal matrix $bold(D)''$ such that $bold(D) bold(P) = bold(P) bold(D)''$.
   ],
-  <lem:monomial_matrix_diagonal_multiplication_commute>,
+  <lem:monomial-matrix-diagonal-multiplication-commute>,
 )
 #proof[
   Let $bold(D) = diag(d_1, dots, d_n)$ and let $sigma$ be the permutation corresponding to $bold(P)$, $bold(P) bold(e)_i = bold(e)_(sigma(i))$ for each standard basis vector $bold(e)_i$. Define $ bold(D)' = diag(d_(sigma^(-1)(1)), dots, d_(sigma^(-1)(n))). $
@@ -22,9 +22,12 @@
   Now apply this result to $bold(P)^top$, and thus, $(bold(P)^top bold(D))^top = (bold(D)'' bold(P)^top)^top <==> bold(D)^top bold(P) = bold(P) bold(D)''^top <==> bold(D P) = bold(P D)''$ since diagonal matrices are invariant under transposition.
 ]
 
-#theorem("Poincaré")[
-  For any $n gt.eq 2$, the $n$-dimensional unit ball $B^n$ and the $n$-dimensional polydisk $DD^n$ are not biholomorphically equivalent.
-] <thm:poincarepolydiskandunitball>
+#lbl(
+  theorem[Poincaré][
+    For any $n gt.eq 2$, the $n$-dimensional unit ball $B^n$ and the $n$-dimensional polydisk $DD^n$ are not biholomorphically equivalent.
+  ],
+  <thm:poincare-polydisk-and-unit-ball>,
+)
 
 #proof[
   Suppose, for the sake of contradiction, that there exists a biholomorphism $bold(phi) : DD^n -> B^n$. Let $bold(alpha) = bold(phi)(bold(0)) in B^n$, and define $bold(Phi) = bold(phi)_(norm(bold(alpha))) compose bold(U) compose bold(phi)$, where $bold(U)$ is a unitary matrix such that $bold(U) bold(alpha) = (norm(bold(alpha)), 0, dots, 0)$ and $bold(phi)_(norm(bold(alpha)))$ is as in @prop:unit-ball-simple-automorphism.
@@ -38,9 +41,9 @@
     $
       bold(psi) |-> bold(Phi) compose bold(psi) compose bold(Phi)^(-1)
     $,
-    <eq:poincarepolydiskandunitball_isomorphism>,
+    <eq:poincare-polydisk-and-unit-ball-isomorphism>,
   )
-  defines a group isomorphism between $Aut(DD^n)$ and $Aut(B^n)$. Let $Aut'(DD^n) < Aut(DD^n)$ and $Aut'(B^n) < Aut(B^n)$ be subgroups fixing $bold(0)$. Therefore, @eq:poincarepolydiskandunitball_isomorphism induces a group isomorphism between $Aut'(DD^n)$ and $Aut'(B^n)$ as well.
+  defines a group isomorphism between $Aut(DD^n)$ and $Aut(B^n)$. Let $Aut'(DD^n) < Aut(DD^n)$ and $Aut'(B^n) < Aut(B^n)$ be subgroups fixing $bold(0)$. Therefore, @eq:poincare-polydisk-and-unit-ball-isomorphism induces a group isomorphism between $Aut'(DD^n)$ and $Aut'(B^n)$ as well.
 
   By @thm:holomorphic-automorphism-group-on-polydisk, every element of $Aut'(DD^n)$ may be uniquely identified with a matrix in the form of
   $
@@ -74,15 +77,15 @@
   $
     bold(P)_sigma bold(D) bold(P)_sigma bold(D) = bold(P)_tau ==> bold(P)_sigma bold(P)_sigma bold(D)'bold(D) = bold(P)_tau ==> bold(P)_sigma^2 bold(D)'' = bold(P)_tau,
   $
-  where $bold(D)'$ and $bold(D)''$ are diagonal matrices, where the former existence is given by @lem:monomial_matrix_diagonal_multiplication_commute. Thus, $bold(P)_sigma^2 = bold(P)_tau$ (and $bold(D)'' = bold(I)$) since their permutation parts must match. This is an impossibility since $bold(P)_sigma^2$ corresponds to an even permutation, while $bold(P)_tau$ corresponds to an odd permutation. Thus, the unitary monomial group is not divisible.
+  where $bold(D)'$ and $bold(D)''$ are diagonal matrices, where the former existence is given by @lem:monomial-matrix-diagonal-multiplication-commute. Thus, $bold(P)_sigma^2 = bold(P)_tau$ (and $bold(D)'' = bold(I)$) since their permutation parts must match. This is an impossibility since $bold(P)_sigma^2$ corresponds to an even permutation, while $bold(P)_tau$ corresponds to an odd permutation. Thus, the unitary monomial group is not divisible.
 
   By @prop:group-divisibility-preserved-under-isomorphisms, the two groups cannot be isomorphic to each other.
 
-  This contradicts the existence of @eq:poincarepolydiskandunitball_isomorphism, and therefore, no such biholomorphism $bold(phi)$ exists.
+  This contradicts the existence of @eq:poincare-polydisk-and-unit-ball-isomorphism, and therefore, no such biholomorphism $bold(phi)$ exists.
 ]
 
 #remark[
-  A more succinct proof of the nonexistence of an isomorphism in the proof of @thm:poincarepolydiskandunitball can be briefly described by means of topology:
+  A more succinct proof of the nonexistence of an isomorphism in the proof of @thm:poincare-polydisk-and-unit-ball can be briefly described by means of topology:
 
   #quote(block: true)[
     Let $M_n$ denote the subgroup of all monomial matrices in $upright("U")(n)$, or the subgroup of unitary matrices with exactly one nonzero entry in each row and each column, and those nonzero entries lying in $upright("U")(1)$.

@@ -46,7 +46,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
         S(r, f) & = m(r, f' / f) + m(r, sum_(nu = 1)^q f' / (f - a_nu)) \
                 & quad""+ q logp ((3q) / delta) + log 2 - log abs(c'),
       $,
-      <eq:nevanlinna-second-fundamental-theorem-part-1_small_error_term>,
+      <eq:nevanlinna-second-fundamental-theorem-part-1-small-error-term>,
     )
     where $c'$ is the first nonzero coefficient of the Laurent expansion of $f'$ (at the origin).
   ],
@@ -85,7 +85,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
       logp (1 / abs(f(z) - a_nu)) & = logp (2 dot 1 / (2 abs(f(z) - a_nu))) \
                                   & <= log 2 + log (1 / (2 abs(f(z) - a_nu)))
     $
-    from @prop:log_nonnegative_part_properties, it follows that
+    from @prop:log-nonnegative-part-properties, it follows that
     $
       logp abs(F(z)) >= logp (1 / (2 abs(f(z) - a_nu))) >= logp (1 / abs(f(z) - a_nu)) - log 2.
     $
@@ -144,7 +144,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
                                            & quad "" + T(r, f) - N(r, 1 / f) - log abs(c) + m(r, f' / f) \
                                            & quad "" + N(r, f' / f) - N(r, f / f') + log abs(c'') + m(r, f' F)
   $
-  Using @eq:nevanlinnacountingjensensformulaexposition2 three times gives that
+  Using @eq:nevanlinna-counting-jensens-formula-exposition-2 three times gives that
   $
     N(r, f' / f) - N(r, f / f')
     &= 1 / (2 uppi) integral_0^(2 uppi)
@@ -160,5 +160,5 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
     & wide quad ""+ log 2 + m(r, f' / f) - N(r, 1 / f') + N(r, f') - log abs(c') + m(r, f' F) \
     & wide = 2 T(r, f) - [N(r, 1 / f') + 2 N(r, f) - N(r, f')] + S(r, f),
   $
-  where $S(r, f)$ is defined as in @eq:nevanlinna-second-fundamental-theorem-part-1_small_error_term. This concludes the proof.
+  where $S(r, f)$ is defined as in @eq:nevanlinna-second-fundamental-theorem-part-1-small-error-term. This concludes the proof.
 ]

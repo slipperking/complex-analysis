@@ -40,7 +40,7 @@ Therefore, $Gamma(x)$ is convergent on $RR_(> 0)$. It follows that $Gamma(z)$ is
     integral.cont_gamma Gamma(z) dz & = integral.cont_gamma (integral_0^oo ee^(-t) t^(z-1) dt) dz \
                                     & = integral_0^oo ee^(-t) (integral.cont_gamma t^(z-1) dz) dt = 0,
   $
-  where the integral exchange is justified by uniform convergence of $Gamma$ on compact subsets of ${ z in CC : Re(z) > 0 }$ (by the Weierstrass $M$--Test, @thm:weierstrassmtest).
+  where the integral exchange is justified by uniform convergence of $Gamma$ on compact subsets of ${ z in CC : Re(z) > 0 }$ (by the Weierstrass $M$--Test, @thm:weierstrass-m-test).
 ]
 
 From integration by parts, we obtain
@@ -60,7 +60,7 @@ $
 $
 Since the numerator is holomorphic on $Re(z) > -n$ and $n$ was arbitrary, the analytic continuation of $Gamma$ has simple poles at each of $ZZ_(<= 0)$. Hence, $Gamma(z)$ is meromorphic on $CC$.
 
-By @eq:residueatpole, the residue at each pole is equal to
+By @eq:residue-at-pole, the residue at each pole is equal to
 $
   Res_(z = -n) Gamma(z) = lim_(z -> -n) Gamma(z+n+1) / (product_(k=0)^(n-1) (z+k)) = 1 / (product_(k=1)^n (-k)) = ((-1)^n) / (n!).
 $
@@ -171,7 +171,7 @@ The _Weierstrass formula_ is a direct consequence of the Gauss formula.
   $
   The constant $upgamma = integral_1^oo (1 / floor(x) - 1 / x) dx$ is known as the _Euler--Mascheroni constant_. For each $x$, $0 <= 1 / floor(x) - 1 / x < 1 / floor(x) - 1 / (floor(x)+1)$, and the integral is bounded by $sum_(n=1)^oo (1/n - 1/(n+1)) < 1$, and hence the integral is convergent. The properties of $upgamma$ still largely remain unknown.
 
-  By the Weierstrass Factorization Theorem (@thm:weierstrassfactorization), if we let $a_n = -n$ and $p_n = 1$, it follows that
+  By the Weierstrass Factorization Theorem (@thm:weierstrass-factorization), if we let $a_n = -n$ and $p_n = 1$, it follows that
   $
     sum_(n=1)^oo abs(R / a_n)^(p_n+1) = R^2 sum_(n=1)^oo 1/n^2 = (R^2 uppi^2) / 6
   $
@@ -199,7 +199,7 @@ We have two famous identities on the $Gamma$-function:
   $
     1 / Gamma(z) = z product_(k=1)^n [(1 + z/k) ee^(-z/k)] ee^(z upgamma), quad 1 / Gamma(-z) = -z product_(k=1)^n [(1 - z/k) ee^(z/k)] ee^(-z upgamma).
   $
-  Since the Weierstrass elementary factors form an absolutely convergent infinite product, we may rearrange its terms. Hence, by @thm:sinproductformula, we have
+  Since the Weierstrass elementary factors form an absolutely convergent infinite product, we may rearrange its terms. Hence, by @thm:sin-product-formula, we have
   $
     1 / (Gamma(z) Gamma(1-z)) = -1 / (z Gamma(z) Gamma(-z)) = z product_(k=1)^n (1 - z^2 / k^2) = sin(uppi z) / uppi,
   $
@@ -298,12 +298,15 @@ The Beta function is commonly treated as an auxiliary function in many cases of 
   $
 ]
 
-#example("MIT Integration Bee 2023 Finals #1")[
-  Evaluate
-  $
-    integral_0^(uppi / 2) (tan(x)^(1/3)) / (sin(x) + cos(x))^2 dx.
-  $
-] <ex:mit_integration_bee_2023_finals_1>
+#lbl(
+  example[MIT Integration Bee 2023 Finals \#1][
+    Evaluate
+    $
+      integral_0^(uppi / 2) (tan(x)^(1/3)) / (sin(x) + cos(x))^2 dx.
+    $
+  ],
+  <ex:mit_integration_bee_2023_finals_1>,
+)
 
 #solution[to @ex:mit_integration_bee_2023_finals_1][
   By rewriting the integral, and letting $u = tan(x)$, we have

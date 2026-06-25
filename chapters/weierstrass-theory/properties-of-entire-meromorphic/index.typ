@@ -6,7 +6,7 @@
     #include "complex-plane-holomorphic-automorphisms/index.typ"
     #include "extended-plane-holomorphic-automorphisms/index.typ"
     #include "construction-of-entire-and-meromorphic-functions/index.typ"
-    #include "growth-of-entire-functions/index.typ"
+    #include "classifying-growth-of-entire-functions/index.typ"
     #include "hadamard-factorization-theorem/index.typ"
   ],
 )

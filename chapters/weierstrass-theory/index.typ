@@ -3,9 +3,9 @@
   title: [The Theory of Weierstrass],
   route: "weierstrass-theory",
   children: [
-    #include "laurent_series/index.typ"
-    #include "isolated_singularities/index.typ"
-    #include "entireness_meromorphy/index.typ"
+    #include "laurent-series/index.typ"
+    #include "isolated-singularities/index.typ"
+    #include "entireness-and-meromorphy/index.typ"
     #include "properties-of-entire-meromorphic/index.typ"
     #include "residue-theorem/index.typ"
   ],

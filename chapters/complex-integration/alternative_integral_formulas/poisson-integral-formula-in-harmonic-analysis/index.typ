@@ -44,7 +44,7 @@ $
   &= 1 / (2 uppi) sum_(n = -oo)^oo integral_0^(2 uppi) rho^(abs(n)) u(ee^(ii tau)) ee^(ii n (theta - tau)) dif tau.
 $
 
-By @thm:weierstrassmtest and @thm:limit-integral-switch,
+By @thm:weierstrass-m-test and @thm:limit-integral-switch,
 
 #lbl(
   $

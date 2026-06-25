@@ -191,14 +191,14 @@ We also have the definition of the limit of a sequence:
   theorem[Cauchy Criterion][
     Let ${a_n}_(n in NN) subset RR$ be a sequence. Then ${a_n}$ is convergent iff $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$, $abs(a_n - a_m) < epsilon$.
   ],
-  <thm:cauchycriterionsequenceconvergence>,
+  <thm:cauchy-criterion-sequence-convergence>,
 )
 
 #proof[
   Assume ${a_n}$ is convergent. Then $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$, $abs(a_n - a_infinity) < epsilon / 2$ and $abs(a_m - a_infinity) < epsilon / 2$ for some $a_infinity in RR$. It follows that
   $ abs(a_n - a_m) <= abs(a_n - a_infinity) + abs(a_m - a_infinity) = epsilon. $
 
-  Conversely, ${a_n}$ is bounded (fixing $N$, $forall n > N$, $abs(a_n - a_(N+1)) < epsilon$). By the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), ${a_n}_(n in NN)$ has a subsequence ${a_(n_k)}_(k in NN)$ that converges to $a_infinity$. Therefore, $forall epsilon > 0$, $exists N in NN$ and $exists M in NN$ such that $forall k > M$, $n_k > N$, and $forall n > N$, $abs(a_n - a_(n_k)) < epsilon / 2$ and $abs(a_(n_k) - a_infinity) < epsilon / 2$. Then
+  Conversely, ${a_n}$ is bounded (fixing $N$, $forall n > N$, $abs(a_n - a_(N+1)) < epsilon$). By the Bolzano--Weierstrass Theorem (@thm:bolzano-weierstrass), ${a_n}_(n in NN)$ has a subsequence ${a_(n_k)}_(k in NN)$ that converges to $a_infinity$. Therefore, $forall epsilon > 0$, $exists N in NN$ and $exists M in NN$ such that $forall k > M$, $n_k > N$, and $forall n > N$, $abs(a_n - a_(n_k)) < epsilon / 2$ and $abs(a_(n_k) - a_infinity) < epsilon / 2$. Then
   $ abs(a_n - a_infinity) <= abs(a_n - a_(n_k)) + abs(a_(n_k) - a_infinity) < epsilon. $
   Hence, ${a_n}$ converges to $a_infinity$.
 ]
@@ -233,10 +233,13 @@ We also have the definition of the limit of a sequence:
   For the converse, assume $limsup_(n -> oo) a_n = liminf_(n -> oo) a_n$. Since $exists N_1 in NN$ such that $forall n > N_1$, $a_n < a + epsilon$. $exists N_2 in NN$ such that $forall n > N_2$, $a_n > a - epsilon$. Then $forall n > max {N_1, N_2}$, $abs(a_n - a) < epsilon$, as expected.
 ]
 
-#definition("Continuity")[
-  A function $f : U -> RR$, defined on an open set $U subset.eq RR$ containing a point $a in U$, is said to be continuous at $a$ iff
-  $ lim_(x -> a) f(x) = f(a). $
-] <def:continuity>
+#lbl(
+  definition[Continuity][
+    A function $f : U -> RR$, defined on an open set $U subset.eq RR$ containing a point $a in U$, is said to be continuous at $a$ iff
+    $ lim_(x -> a) f(x) = f(a). $
+  ],
+  <def:continuity>,
+)
 
 It is important to note that in the case of multiple _explicit_ variables, a distinction is made between (separate) continuity (where there are two $delta$'s on which variable varies, and does not guarantee a single $delta$ for when both variables vary simultaneously) and _joint_ continuity (where a single $delta$ controls both variables at once). To illustrate this, let $(x_0, y_0)$ be fixed. The former is commonly written as
 $
@@ -259,7 +262,7 @@ $
 )
 
 #proof[
-  Suppose for the sake of contradiction that $f : U -> RR$ is continuous and unbounded on compact $K$. Then for each $n in NN$, there exists $x_n in K$ such that $abs(f(x_n)) > n$. The sequence ${x_n}$ lies in $K$, which is compact, so by the Bolzano--Weierstrass Theorem (@thm:bolzanoweierstrass), ${x_n}$ has an accumulation point in $K$. In other words, there exists a convergent subsequence ${x_(n_k)}$ with $lim_(k -> oo) x_(n_k) in K$.
+  Suppose for the sake of contradiction that $f : U -> RR$ is continuous and unbounded on compact $K$. Then for each $n in NN$, there exists $x_n in K$ such that $abs(f(x_n)) > n$. The sequence ${x_n}$ lies in $K$, which is compact, so by the Bolzano--Weierstrass Theorem (@thm:bolzano-weierstrass), ${x_n}$ has an accumulation point in $K$. In other words, there exists a convergent subsequence ${x_(n_k)}$ with $lim_(k -> oo) x_(n_k) in K$.
 
   Since $f$ is continuous, $lim_(k -> oo) f(x_(n_k)) = f(lim_(k -> oo) x_(n_k))$, which is well-defined because $lim_(k -> oo) x_(n_k) in K$. However, this contradicts $abs(f(x_(n_k))) > n_k -> oo$, hence $f$ must be bounded on $K$.
 ]

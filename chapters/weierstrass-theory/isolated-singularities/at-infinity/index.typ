@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 #show: docs-subsubchapter.with(
-  title: [At the $oo$ Point],
-  route: "at_infinity",
+  title: [Isolated Singularities at the $oo$ Point],
+  route: "at-infinity",
 )
 Given the one-point compactification of $CC$, $extcomplex$, we can now define and analyze the behavior of functions near the point at $oo$. Similar to the classification of isolated singularities in $CC$, we can classify $oo$ as a removable singularity, a pole, or an essential singularity of a holomorphic function.
 

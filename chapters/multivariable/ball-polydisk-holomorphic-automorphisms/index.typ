@@ -9,16 +9,19 @@ For the aforesaid purpose, we require a generalization of the Schwarz Lemma (@le
 
 In preparation, we will introduce several relevant concepts.
 
-#definition[Multi-Index Notation][
-  A _multi-index_ is an $n$-tuple of nonnegative integers $bold(k) = (k_1, dots, k_n) in ZZ_(gt.eq 0)^n$.
-  We define
-  $
-    abs(bold(k)) = sum_(j=1)^n k_j, quad
-    bold(z)^(bold(k)) = product_(j=1)^n z_j^(k_j), quad
-    partial^(bold(k)) = (partial^(abs(bold(k)))) / (partial z_1^(k_1) dots.c partial z_n^(k_n)) = product_(j=1)^n pdv(, z_j, [k_j]),
-  $
-  where $bold(z) = (z_1, dots, z_n) in CC^n.$
-] <def:multi-index>
+#lbl(
+  definition[Multi-Index Notation][
+    A _multi-index_ is an $n$-tuple of nonnegative integers $bold(k) = (k_1, dots, k_n) in ZZ_(gt.eq 0)^n$.
+    We define
+    $
+      abs(bold(k)) = sum_(j=1)^n k_j, quad
+      bold(z)^(bold(k)) = product_(j=1)^n z_j^(k_j), quad
+      partial^(bold(k)) = (partial^(abs(bold(k)))) / (partial z_1^(k_1) dots.c partial z_n^(k_n)) = product_(j=1)^n pdv(, z_j, [k_j]),
+    $
+    where $bold(z) = (z_1, dots, z_n) in CC^n.$
+  ],
+  <def:multi-index>,
+)
 
 #lbl(
   definition[
@@ -43,8 +46,8 @@ In preparation, we will introduce several relevant concepts.
         partial^(bold(alpha)) bold(psi)(bold(z)) = (partial^r bold(psi)) / (partial z_1^(alpha_1) dots.c partial z_n^(alpha_n))(bold(z))
       $
       is a homogeneous polynomial of degree $d-r$. #enum-lbl(<itm:homogeneous-polynomial-derivatives-less>)
-    + If $r = d != 0$, then $partial^(bold(alpha)) bold(psi)$ is constant (and there exists a multi-index $bold(alpha)$ with $norm(bold(alpha)) = d$ such that $partial^(bold(alpha)) bold(psi)$ is nonzero). #enum-lbl(<itm:homogeneous-polynomial-derivatives_equality>)
-    + If $r > d$, then $partial^(bold(alpha)) bold(psi) equiv 0$. #enum-lbl(<itm:homogeneous-polynomial-derivatives_greater>)
+    + If $r = d != 0$, then $partial^(bold(alpha)) bold(psi)$ is constant (and there exists a multi-index $bold(alpha)$ with $norm(bold(alpha)) = d$ such that $partial^(bold(alpha)) bold(psi)$ is nonzero). #enum-lbl(<itm:homogeneous-polynomial-derivatives-equality>)
+    + If $r > d$, then $partial^(bold(alpha)) bold(psi) equiv 0$. #enum-lbl(<itm:homogeneous-polynomial-derivatives-greater>)
   ],
   <prop:homogeneous-polynomial-derivatives>,
 )
@@ -60,9 +63,9 @@ In preparation, we will introduce several relevant concepts.
   $
   Hence, $partial^(bold(alpha)) bold(psi)$ is a homogeneous polynomial of degree $d - norm(bold(alpha))$, establishing @itm:homogeneous-polynomial-derivatives-less.
 
-  If $r = d$, every surviving monomial has degree $0$, so $partial^(bold(alpha)) bold(psi)$ is constant. Moreover, since $bold(psi)$ has degree exactly $d$, there exists some multi-index $bold(k)$ with $abs(bold(k)) = d$ and $bold(a)_(bold(k)) != bold(0)$; choosing $bold(alpha) = bold(k)$ yields a nonzero constant derivative. This proves @itm:homogeneous-polynomial-derivatives_equality.
+  If $r = d$, every surviving monomial has degree $0$, so $partial^(bold(alpha)) bold(psi)$ is constant. Moreover, since $bold(psi)$ has degree exactly $d$, there exists some multi-index $bold(k)$ with $abs(bold(k)) = d$ and $bold(a)_(bold(k)) != bold(0)$; choosing $bold(alpha) = bold(k)$ yields a nonzero constant derivative. This proves @itm:homogeneous-polynomial-derivatives-equality.
 
-  Finally, if $r > d$, then for every term in the expansion, at least one $k_j < alpha_j$, so all summands vanish identically. Thus $partial^(bold(alpha)) bold(psi) equiv 0$, verifying @itm:homogeneous-polynomial-derivatives_greater.
+  Finally, if $r > d$, then for every term in the expansion, at least one $k_j < alpha_j$, so all summands vanish identically. Thus $partial^(bold(alpha)) bold(psi) equiv 0$, verifying @itm:homogeneous-polynomial-derivatives-greater.
 ]
 
 #lbl(
@@ -136,7 +139,7 @@ In preparation, we will introduce several relevant concepts.
     &= bold(z) + (k + 1) bold(psi)_m (bold(z) - bold(a))\
     &quad""+ ("degree" > m "homogeneous polynomials")(bold(z) - bold(a)).
   $
-  Since $bold(f)_k (Omega) subset.eq Omega$ for any $k$, the sequence ${bold(f)_k}_(k in NN)$ is uniformly bounded on $Omega$. By Montel's Theorem (@thm:montelmultivar), there exists a subsequence ${bold(f)_(k_l)}_(l in NN)$ that converges locally uniformly to some holomorphic function $tilde(bold(f))$ by virtue of Weierstrass (@thm:weierstrassconvergencemultivar).
+  Since $bold(f)_k (Omega) subset.eq Omega$ for any $k$, the sequence ${bold(f)_k}_(k in NN)$ is uniformly bounded on $Omega$. By Montel's Theorem (@thm:montel-multivariable), there exists a subsequence ${bold(f)_(k_l)}_(l in NN)$ that converges locally uniformly to some holomorphic function $tilde(bold(f))$ by virtue of Weierstrass (@thm:weierstrass-convergence-multivariable).
 
   Since $bold(psi)_m equiv.not 0$, there exists $bold(alpha)$ satisfying $norm(bold(alpha)) = m$ such that
   $
@@ -150,7 +153,7 @@ In preparation, we will introduce several relevant concepts.
   $
     partial^(bold(alpha)) bold(f)_k (bold(a)) = k bold(c),
   $
-  which diverges as $k -> oo$. Weierstrass' Convergence Theorem (@thm:weierstrassconvergencemultivar) gives that $partial^(bold(alpha)) bold(f)_(k_l) (bold(a)) -> partial^(bold(alpha)) tilde(bold(f))(bold(a))$ which must be finite by holomorphy, contradicting the divergence. Hence, the assumed value for $m$ cannot exist and hence $bold(psi)_j equiv 0$ for all $j gt.eq 2$. Thus, $bold(f)(bold(z)) equiv bold(z)$ on some polydisk centered at $bold(a)$. By the Identity Theorem (@thm:identitymultivar), $bold(f)(bold(z)) equiv bold(z)$ on $Omega$.
+  which diverges as $k -> oo$. Weierstrass' Convergence Theorem (@thm:weierstrass-convergence-multivariable) gives that $partial^(bold(alpha)) bold(f)_(k_l) (bold(a)) -> partial^(bold(alpha)) tilde(bold(f))(bold(a))$ which must be finite by holomorphy, contradicting the divergence. Hence, the assumed value for $m$ cannot exist and hence $bold(psi)_j equiv 0$ for all $j gt.eq 2$. Thus, $bold(f)(bold(z)) equiv bold(z)$ on some polydisk centered at $bold(a)$. By the Identity Theorem (@thm:identity-multivariable), $bold(f)(bold(z)) equiv bold(z)$ on $Omega$.
 ]
 
 #lbl(
@@ -161,7 +164,7 @@ In preparation, we will introduce several relevant concepts.
     $
     is fully contained in $Omega$. In other words, $Omega$ is invariant under all rotations about the center $bold(a)$ in each coordinate.
   ],
-  <def:reinhardtdomain>,
+  <def:reinhardt-domain>,
 )
 
 #lbl(
@@ -172,7 +175,7 @@ In preparation, we will introduce several relevant concepts.
     $
     is contained in $Omega$.
   ],
-  <def:completereinhardtdomain>,
+  <def:complete-reinhardt-domain>,
 )
 
 #lbl(
@@ -183,7 +186,7 @@ In preparation, we will introduce several relevant concepts.
     $
     is fully contained in $Omega$.
   ],
-  <def:circulardomain>,
+  <def:circular-domain>,
 )
 
 #lbl(
@@ -194,7 +197,7 @@ In preparation, we will introduce several relevant concepts.
     $
     is contained in $Omega$.
   ],
-  <def:completecirculardomain>,
+  <def:complete-circular-domain>,
 )
 
 #lbl(
@@ -272,13 +275,13 @@ In preparation, we will introduce several relevant concepts.
     $
       bold(f)(bold(z)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) bold(z)^(bold(k))
     $,
-    <eq:multivariable-cartan-2_taylorseries>,
+    <eq:multivariable-cartan-2-taylor-series>,
   )
   on a polydisk centered at $bold(0)$. Thus,
   $
     bold(f) compose bold(rho)(bold(z)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) (ee^(ii theta) bold(z))^(bold(k)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) ee^(ii theta abs(bold(k))) bold(z)^(bold(k)).
   $
-  On the other hand, composing with $bold(rho)_theta$ with @eq:multivariable-cartan-2_taylorseries gives
+  On the other hand, composing with $bold(rho)_theta$ with @eq:multivariable-cartan-2-taylor-series gives
   $
     bold(rho)_theta compose bold(f)(bold(z)) = ee^(ii theta) sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) bold(z)^(bold(k)) = sum_(bold(k) : abs(bold(k)) = 0)^oo bold(a)_(bold(k)) ee^(ii theta) bold(z)^(bold(k)).
   $

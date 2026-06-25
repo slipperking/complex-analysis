@@ -91,7 +91,7 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
     $
     In other words, $exists tilde(f) : tilde(Omega) -> CC$ holomorphic such that $tilde(f) equiv f$ on $Omega$.
   ],
-  <thm:hartogsextensiontheoremforreinhardtdomains>,
+  <thm:hartogsextensiontheoremforreinhardt-domains>,
 )
 
 #proof[
@@ -111,5 +111,5 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
   $
     Omega(r) = B^n without r overline(B^n) = {bold(z) : r < norm(bold(z)) < 1}
   $
-  define a Reinhardt domain. Then any holomorphic function $f : Omega(r) -> CC$ can be analytically continued to the entire unit ball $B^n$ by @thm:hartogsextensiontheoremforreinhardtdomains.
+  define a Reinhardt domain. Then any holomorphic function $f : Omega(r) -> CC$ can be analytically continued to the entire unit ball $B^n$ by @thm:hartogsextensiontheoremforreinhardt-domains.
 ]

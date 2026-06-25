@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Elementary Functions],
-  route: "elementary_functions",
+  route: "elementary-functions",
 )
 Functions of one complex variable that are formed by compositions, sums, products, and powers of finitely many functions of the following form are known as _elementary functions_:
 

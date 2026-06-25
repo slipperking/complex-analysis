@@ -1,15 +1,18 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Laurent Series],
-  route: "laurent_series",
+  route: "laurent-series",
 )
-The Laurent series generalizes the Taylor series to holomorphic functions with isolated singularities. While Taylor series are valid within a disk centered at a point of holomorphy, Laurent series apply to annular regions surrounding a singularity, making them essential for studying functions near non-removable singularities (refer to @thm:riemannremovablesingularities).
+The Laurent series generalizes the Taylor series to holomorphic functions with isolated singularities. While Taylor series are valid within a disk centered at a point of holomorphy, Laurent series apply to annular regions surrounding a singularity, making them essential for studying functions near non-removable singularities (refer to @thm:riemann-removable-singularities).
 
 We now introduce a fundamental result in complex analysis due to Weierstrass, which formalizes the conditions under which the limit of a sequence of holomorphic functions is itself holomorphic. This theorem not only guarantees the holomorphy of the limit function but also the uniform convergence of its derivatives (its statement was used in the proof of @thm:hurwitz-simple-case).
 
-#theorem("Weierstrass")[
-  Let ${f_n (z)}_(n in NN)$ be a sequence of holomorphic functions on an open region $U subset.eq CC$ that converges uniformly to $f(z)$ on every compact subset of $U$. Then $f(z)$ is holomorphic on $U$, and $forall k in NN$, the sequence ${f_n^(k) (z)}_(n in NN)$ uniformly converges to $f^((k)) (z)$ on all compact subsets of $U$.
-] <thm:weierstrass_convergence>
+#lbl(
+  theorem[Weierstrass][
+    Let ${f_n (z)}_(n in NN)$ be a sequence of holomorphic functions on an open region $U subset.eq CC$ that converges uniformly to $f(z)$ on every compact subset of $U$. Then $f(z)$ is holomorphic on $U$, and $forall k in NN$, the sequence ${f_n^(k) (z)}_(n in NN)$ uniformly converges to $f^((k)) (z)$ on all compact subsets of $U$.
+  ],
+  <thm:weierstrass-convergence>,
+)
 
 #proof[
   By Morera's Theorem (@thm:morera) and the uniform convergence of ${f_n (z)}$, the holomorphy of $f(z)$ follows (refer to @eq:hurwitz-simple-case-integral-limit-switch-for-holomorphy and preceding explanations).
@@ -32,7 +35,7 @@ The condition of uniform convergence on every compact subset can also be signifi
 ]
 
 #proof[
-  By the converse statement of the Cauchy Criterion (@thm:cauchycriterionuniformconvergence), $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$,
+  By the converse statement of the Cauchy Criterion (@thm:cauchy-criterion-uniform-convergence), $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$,
   $
     sup_(z in partial K) abs(f_n (z) - f_m (z)) < epsilon.
   $
@@ -42,11 +45,11 @@ The condition of uniform convergence on every compact subset can also be signifi
     sup_(z in partial K) abs(f_n (z) - f_m (z)) = sup_(z in K) abs(f_n (z) - f_m (z)) < epsilon.
   $
 
-  It follows that $f_n (z) arrows.rr f(z)$ on $K$ by @thm:cauchycriterionuniformconvergence.
+  It follows that $f_n (z) arrows.rr f(z)$ on $K$ by @thm:cauchy-criterion-uniform-convergence.
 ]
 
 #remark[
-  From the above result, the uniform convergence on every compact subset in @thm:weierstrass_convergence can therefore be loosened to the uniform convergence on every simple closed curve.
+  From the above result, the uniform convergence on every compact subset in @thm:weierstrass-convergence can therefore be loosened to the uniform convergence on every simple closed curve.
 ]
 
 We will now study Laurent series. Let $a in CC$ and ${c_n}_(n in ZZ) subset CC$ be constants. A series in the form of
@@ -100,7 +103,7 @@ diverges on all of $partial DD$, while
 $
   sum_(n = -oo \ n != 0)^oo z^n / n
 $
-converges (conditionally) on all of $partial DD without {1}$ and diverges at $z = 1$. If $r > R$, then the series is divergent on all of $CC$. The region $D(a, R) without overline(D(a, r))$ is known as the _annulus of convergence_. $f(z)$ in @eq:laurentseries is holomorphic over this annulus. The series $phi(z)$ is known as the _holomorphic part_ of $f(z)$, and $psi(z)$ is known as the _principal part_ of the Laurent series. The properties of the convergence disk in Abel's Theorem (@thm:abels_theorem_radius) can be generalized to Laurent series. In other words, $f$ is absolutely convergent on the annulus and is uniformly convergent on every compact subset of it.
+converges (conditionally) on all of $partial DD without {1}$ and diverges at $z = 1$. If $r > R$, then the series is divergent on all of $CC$. The region $D(a, R) without overline(D(a, r))$ is known as the _annulus of convergence_. $f(z)$ in @eq:laurentseries is holomorphic over this annulus. The series $phi(z)$ is known as the _holomorphic part_ of $f(z)$, and $psi(z)$ is known as the _principal part_ of the Laurent series. The properties of the convergence disk in Abel's Theorem (@thm:abels-theorem-radius) can be generalized to Laurent series. In other words, $f$ is absolutely convergent on the annulus and is uniformly convergent on every compact subset of it.
 
 #lbl(
   theorem[
@@ -192,7 +195,7 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
     $,
     <eq:laurentexpansionofholomorphicfunction_kernelexpansionoutside>,
   )
-  is uniformly convergent with respect to $zeta$. By the boundedness of $f$ on $gamma_1$ and $gamma_2$ from holomorphy on a compact set, the uniform convergence from the Weierstrass $M$-Test (@thm:weierstrassmtest), gives that
+  is uniformly convergent with respect to $zeta$. By the boundedness of $f$ on $gamma_1$ and $gamma_2$ from holomorphy on a compact set, the uniform convergence from the Weierstrass $M$-Test (@thm:weierstrass-m-test), gives that
   #lbl(
     $
       f(z) = 1 / (taui) (sum_(n = 0)^oo integral.cont_(gamma_2) ((z - a)^n) / ((zeta - a)^(n + 1)) f(zeta) dzeta + sum_(n = 1)^oo integral.cont_(gamma_1) ((zeta - a)^(n - 1)) / ((z - a)^n) f(zeta) dzeta).
@@ -215,7 +218,7 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
     $,
     <eq:laurentexpansionofholomorphicfunction_uniquenessstatement>,
   )
-  where $z in V$ and the series is uniformly convergent on $gamma$. Let $m in ZZ$ be arbitrary. By Cauchy--Goursat (@thm:cauchy_differentiation_formula),
+  where $z in V$ and the series is uniformly convergent on $gamma$. Let $m in ZZ$ be arbitrary. By Cauchy--Goursat (@thm:cauchy-differentiation-formula),
   $
     integral.cont_gamma (z - a)^k dz =
     cases(

@@ -63,11 +63,11 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   proposition[
     Let ${f_n}_(n in NN)$ be a sequence of holomorphic functions on a domain $Omega subset.eq CC$. If $f_n arrows.rr f$ locally uniformly spherically, then $f$ is either holomorphic on $Omega$ or identically $oo$.
   ],
-  <prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniformlimit>,
+  <prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniform-limit>,
 )
 
 #proof[
-  A result analogous to @thm:uniformlimit can be used to show that $f$ is spherically continuous. Let $z in Omega$ be arbitrary.
+  A result analogous to @thm:uniform-limit can be used to show that $f$ is spherically continuous. Let $z in Omega$ be arbitrary.
 
   1. If $f(z) != oo$, then by spherical continuity, $exists delta > 0$ such that $forall zeta in D(z, delta)$,
     $ d_sigma (f(zeta), f(z)) < (1)/(2) d_sigma (oo, f(z)). $
@@ -77,7 +77,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
     $ d_sigma (oo, f(z)) - d_sigma (f(z), f_n (zeta)) > 0. $
     By the reverse triangle inequality, we have
     $ d_sigma (oo, f_n (zeta)) > 0. $
-    By Weierstrass (@thm:weierstrass_convergence), $f$ is holomorphic on $D(z, delta)$.
+    By Weierstrass (@thm:weierstrass-convergence), $f$ is holomorphic on $D(z, delta)$.
   2. Consider $f(z) = oo$. Assume, for the sake of contradiction, $z$ is an isolated pole of $f$. Hence, $exists delta$ such that $f$ is holomorphic on $D^*(z, delta)$.
 
     Because each $f_n$ is holomorphic on $D(z, delta)$, by the Maximum Modulus Principle (@thm:maximum-modulus), $forall n in NN$,
@@ -92,7 +92,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
     $ uppi - d_sigma (oo, f_n (zeta)) = d_sigma (oo, 0) - d_sigma (oo, f_n (zeta)) > 0. $
     By the reverse triangle inequality, we have
     $ d_sigma (0, f_n (zeta)) > 0. $
-    Hence each $(1)/(f_n)$ is holomorphic on $D(z, delta)$ and converges locally uniformly spherically to $(1)/(f)$ on $D(z, delta)$. By Weierstrass (@thm:weierstrass_convergence), $(1)/(f)$ is holomorphic on $D(z, delta)$ and has zeros that accumulate at $z$. By the Identity Theorem, $(1)/(f) equiv 0 ==> f equiv oo$ on $D(z, delta)$.
+    Hence each $(1)/(f_n)$ is holomorphic on $D(z, delta)$ and converges locally uniformly spherically to $(1)/(f)$ on $D(z, delta)$. By Weierstrass (@thm:weierstrass-convergence), $(1)/(f)$ is holomorphic on $D(z, delta)$ and has zeros that accumulate at $z$. By the Identity Theorem, $(1)/(f) equiv 0 ==> f equiv oo$ on $D(z, delta)$.
 
   Let $S$ be the set of all $z in Omega$ such that $f(z)$ is finite. By the argument above, $S$ is open. The complement $Omega without S$ then consists of all points where $f(z) = oo$. By the argument above, $Omega without S$ is also open. Since $Omega$ is connected, by @thm:connected_topological_space_clopen_sets, either $S = emptyset$ or $S = Omega$. In the former case, $f equiv oo$ on $Omega$, and in the latter case, $f$ is holomorphic on $Omega$.
 ]
@@ -115,7 +115,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
 
   Conversely, assume for the sake of contradiction that $cal(F)$ is a normal family such that conclusion is not satisfied. Then, $exists K subset Omega$ compact and a sequence ${f_n}_(n in NN) subset.eq cal(F)$ such that the sequence
   $ {sup_(z in K) f_n^sharp (z)}_(n in NN) $
-  tends to $oo$ (specifically, suppose that $forall n in NN$, $sup_(z in K) f_n^sharp (z) > n$). By normality, we may extract a locally uniformly spherically convergent subsequence ${f_(n_k)}_(k in NN) subset.eq {f_n}_(n in NN)$. By @thm:uniformlimit under the spherical metric, the uniform spherical limit of ${f_(n_k)}_(k in NN)$, $f$, is spherically continuous on $Omega$. For every point $z in Omega$, there are two possibilities:
+  tends to $oo$ (specifically, suppose that $forall n in NN$, $sup_(z in K) f_n^sharp (z) > n$). By normality, we may extract a locally uniformly spherically convergent subsequence ${f_(n_k)}_(k in NN) subset.eq {f_n}_(n in NN)$. By @thm:uniform-limit under the spherical metric, the uniform spherical limit of ${f_(n_k)}_(k in NN)$, $f$, is spherically continuous on $Omega$. For every point $z in Omega$, there are two possibilities:
 
   1. If $f(z) != oo$, then by continuity, $exists delta > 0$ such that $forall zeta in D(z, delta)$,
     $ d_sigma (f(zeta), f(z)) < (1)/(2) d_sigma (oo, f(z)). $
@@ -125,7 +125,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
     $ d_sigma (oo, f(z)) - d_sigma (f(z), f_(n_k) (zeta)) > 0. $
     By the reverse triangle inequality, we have
     $ d_sigma (oo, f_(n_k) (zeta)) > 0. $
-    Hence, the meromorphy of each $f_(n_k)$ is actually holomorphy. By continuity, $f$ is locally uniformly bounded on $D(z, delta)$. Hence, ${f_(n_k)}_(k > N)$ locally uniformly converges on $D(z, delta)$. By a result of Weierstrass (@thm:weierstrass_convergence), $f$ is holomorphic on $D(z, delta)$ and the sequence ${f'_(n_k)}_(k > N)$ locally uniformly converges to $f'$ on $D(z, delta)$.
+    Hence, the meromorphy of each $f_(n_k)$ is actually holomorphy. By continuity, $f$ is locally uniformly bounded on $D(z, delta)$. Hence, ${f_(n_k)}_(k > N)$ locally uniformly converges on $D(z, delta)$. By a result of Weierstrass (@thm:weierstrass-convergence), $f$ is holomorphic on $D(z, delta)$ and the sequence ${f'_(n_k)}_(k > N)$ locally uniformly converges to $f'$ on $D(z, delta)$.
 
     By holomorphy of $f'$ on $overline(D(z, delta / 2))$, $exists M' > 0$ such that $sup_(zeta in overline(D(z, delta / 2))) abs(f'(zeta)) < M'$. Uniform convergence of ${f'_(n_k)}_(k > N)$ gives the existence of some $N' > N$ such that $forall k > N'$,
     $
@@ -145,7 +145,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
     $ uppi - d_sigma (oo, f_(n_k) (zeta)) = d_sigma (oo, 0) - d_sigma (oo, f_(n_k) (zeta)) > 0. $
     By the reverse triangle inequality, we have
     $ d_sigma (0, f_(n_k) (zeta)) > 0. $
-    Hence, each $g_(n_k) = (1)/(f_(n_k))$ is holomorphic on $D(z, delta)$. By continuity, $g = (1)/(f)$ is locally uniformly bounded on $D(z, delta)$. It can also be realized that ${g_(n_k)}_(k > N)$ locally uniformly converges on $D(z, delta)$. By a result of Weierstrass (@thm:weierstrass_convergence), $g$ is holomorphic on $D(z, delta)$ and the sequence ${g'_(n_k)}_(k > N)$ locally uniformly converges to $g'$ on $D(z, delta)$.
+    Hence, each $g_(n_k) = (1)/(f_(n_k))$ is holomorphic on $D(z, delta)$. By continuity, $g = (1)/(f)$ is locally uniformly bounded on $D(z, delta)$. It can also be realized that ${g_(n_k)}_(k > N)$ locally uniformly converges on $D(z, delta)$. By a result of Weierstrass (@thm:weierstrass-convergence), $g$ is holomorphic on $D(z, delta)$ and the sequence ${g'_(n_k)}_(k > N)$ locally uniformly converges to $g'$ on $D(z, delta)$.
 
     By holomorphy of $g'$ on $overline(D(z, delta / 2))$, $exists M' > 0$ such that $sup_(zeta in overline(D(z, delta / 2))) abs(g'(zeta)) < M'$. Uniform convergence of ${g'_(n_k)}_(k > N)$ gives the existence of some $N' > N$ such that $forall k > N'$,
     $

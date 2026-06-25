@@ -18,7 +18,7 @@ The Cauchy--Goursat Formula (@thm:cauchy-goursat-formula) can also be generalize
       $
         f^((n)) (z)= (n!) / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(n+1)) dzeta.
       $,
-      <eq:cauchy_differentiation_formula_statement>,
+      <eq:cauchy-differentiation-formula-statement>,
     )
 
     Additionally, since $U$ is open, $forall a in U$, $forall r > 0$ such that the closed disk $overline(D(a, r)) subset U$, $f$ has the uniformly and absolutely convergent Taylor expansion
@@ -27,7 +27,7 @@ The Cauchy--Goursat Formula (@thm:cauchy-goursat-formula) can also be generalize
       $
         f(zeta)=sum_(j = 0)^oo a_j (z-a)^j,
       $,
-      <eq:cauchy_differentiation_formula_taylorseries>,
+      <eq:cauchy-differentiation-formula-taylor-series>,
     )
 
     where
@@ -36,12 +36,12 @@ The Cauchy--Goursat Formula (@thm:cauchy-goursat-formula) can also be generalize
       $
         a_j = 1 / taui integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(j+1)) dzeta
       $,
-      <eq:cauchy_differentiation_formula_taylorseriescoefficients>,
+      <eq:cauchy-differentiation-formula-taylor-series-coefficients>,
     )
 
     for $z in overline(D(a, r))$.
   ],
-  <thm:cauchy_differentiation_formula>,
+  <thm:cauchy-differentiation-formula>,
 )
 
 #proof[
@@ -65,10 +65,10 @@ The Cauchy--Goursat Formula (@thm:cauchy-goursat-formula) can also be generalize
       (f(z)-f(a)) / (z-a) - 1 / taui integral.cont_(partial U) (f(zeta) dzeta) / ((zeta-a)^2) & = 1 / taui integral.cont_(partial U) (f(zeta)) / (zeta-a) (1 / (zeta-z) - 1 / (zeta-a)) dzeta \
       & = (z-a) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)(zeta-a)^2) dzeta,
     $,
-    <eq:cauchy_differentiation_formula_differenceoffirstorderdifferences>,
+    <eq:cauchy-differentiation-formula-difference-of-first-order-differences>,
   )
 
-  Let $d$ be the distance from $a$ to $partial U$; then $0 < r < d$. Then since $abs(z-a) < r$ and $abs(zeta-a) gt.eq d$, $abs(zeta-z) gt.eq d-r$. Then the absolute value of the integrand of @eq:cauchy_differentiation_formula_differenceoffirstorderdifferences is bounded above by $M / (d^2(d-r))$, where $M$ is the maximum of $abs(f(zeta))$, which exists by @thm:continuous-function-bounded-on-compact. Then,
+  Let $d$ be the distance from $a$ to $partial U$; then $0 < r < d$. Then since $abs(z-a) < r$ and $abs(zeta-a) gt.eq d$, $abs(zeta-z) gt.eq d-r$. Then the absolute value of the integrand of @eq:cauchy-differentiation-formula-difference-of-first-order-differences is bounded above by $M / (d^2(d-r))$, where $M$ is the maximum of $abs(f(zeta))$, which exists by @thm:continuous-function-bounded-on-compact. Then,
 
   $
     abs((z-a) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)(zeta-a)^2) dzeta) <= abs(z-a) / (2 uppi) (M) / (d^2(d-r)) integral.cont_(partial U) abs(dzeta).
@@ -80,7 +80,7 @@ The Cauchy--Goursat Formula (@thm:cauchy-goursat-formula) can also be generalize
     f'(z_0)=1/taui integral.cont_(partial U) (f(zeta)) / ((zeta-a)^2) dzeta.
   $
 
-  Now inductively assume that @eq:cauchy_differentiation_formula_statement is true for a given $n=k in NN$, or
+  Now inductively assume that @eq:cauchy-differentiation-formula-statement is true for a given $n=k in NN$, or
 
   $
     f^((k)) (z)= (k!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)^(k+1)) dzeta.
@@ -93,7 +93,7 @@ The Cauchy--Goursat Formula (@thm:cauchy-goursat-formula) can also be generalize
       1 / (zeta-z) & =1 / (zeta-a) dot (zeta-a) / (zeta-a+a-z)=1 / (zeta-a) dot 1 / (1 - (z-a) / (zeta-a)) \
                    & =1 / (zeta-a) sum_(j = 0)^oo ((z-a) / (zeta-a))^j.
     $,
-    <eq:cauchy_differentiation_formula_kernelexpansion>,
+    <eq:cauchy-differentiation-formula-kernel-expansion>,
   )
 
   Then,
@@ -123,7 +123,7 @@ The Cauchy--Goursat Formula (@thm:cauchy-goursat-formula) can also be generalize
     f^((k+1)) (a)=((k+1)!) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta - a)^(k+2)) dzeta.
   $
 
-  By induction, @eq:cauchy_differentiation_formula_statement is valid. By substituting @eq:cauchy_differentiation_formula_kernelexpansion into @thm:cauchy-goursat-formula, we obtain
+  By induction, @eq:cauchy-differentiation-formula-statement is valid. By substituting @eq:cauchy-differentiation-formula-kernel-expansion into @thm:cauchy-goursat-formula, we obtain
 
   $
     f(z) & =1 / taui integral.cont_(partial U) (f(zeta)) / (zeta - a) sum_(j = 0)^oo ((z - a) / (zeta - a))^j dzeta \
@@ -136,18 +136,18 @@ The Cauchy--Goursat Formula (@thm:cauchy-goursat-formula) can also be generalize
     sum_(j = 0)^oo M c^j / r.
   $
 
-  By the Weierstrass $M$--Test (@thm:weierstrassmtest), the integrand uniformly converges, and we can justify
+  By the Weierstrass $M$--Test (@thm:weierstrass-m-test), the integrand uniformly converges, and we can justify
 
   $
     1 / taui integral.cont_(partial U) sum_(j = 0)^oo (z-z_0)^j (f(zeta)) / ((zeta-z_0)^(j+1)) dzeta &= 1 / taui sum_(j = 0)^oo integral.cont_(partial U) (z-z_0)^j (f(zeta)) / ((zeta-z_0)^(j+1)) dzeta \
     &= sum_(j = 0)^oo a_j (z-z_0)^j,
   $
 
-  which verifies @eq:cauchy_differentiation_formula_taylorseries and @eq:cauchy_differentiation_formula_taylorseriescoefficients.
+  which verifies @eq:cauchy-differentiation-formula-taylor-series and @eq:cauchy-differentiation-formula-taylor-series-coefficients.
 ]
 
 #remark[
-  By induction, we have shown that assuming the existence of the first order derivative of a holomorphic function $f$, the $n$-th order derivative of $f$ exists $forall n in NN$ and is holomorphic over the same region as $f^((n-1))$. Furthermore, if $f$ is holomorphic, then $forall z in U$, there exists an open disk enclosing $z$ such that $f$ has a convergent Taylor series expansion. This property is known as _analyticity_, and @thm:cauchy_differentiation_formula tells us that all holomorphic functions are analytic. Analytic functions can be expanded into power series, which are termwise differentiable, and therefore complex differentiable. Thus, analyticity and holomorphy are logically equivalent, which is a fundamental difference between real and complex functions.
+  By induction, we have shown that assuming the existence of the first order derivative of a holomorphic function $f$, the $n$-th order derivative of $f$ exists $forall n in NN$ and is holomorphic over the same region as $f^((n-1))$. Furthermore, if $f$ is holomorphic, then $forall z in U$, there exists an open disk enclosing $z$ such that $f$ has a convergent Taylor series expansion. This property is known as _analyticity_, and @thm:cauchy-differentiation-formula tells us that all holomorphic functions are analytic. Analytic functions can be expanded into power series, which are termwise differentiable, and therefore complex differentiable. Thus, analyticity and holomorphy are logically equivalent, which is a fundamental difference between real and complex functions.
 ]
 
 The differentiation formula above can be thought of as a generalization of @thm:cauchy-goursat-formula, and provides similar utility in the evaluation of integrals:
@@ -160,7 +160,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
       $
         P_n (z)=1 / (2^n n!) dv((z^2-1)^n, z, n, style: "large").
       $,
-      <eq:legendrepolynomialintegralformula_rodriguesformula>,
+      <eq:legendre-polynomial-integral-formula-rodrigues-formula>,
     )
 
     Prove the integral form
@@ -171,11 +171,11 @@ The differentiation formula above can be thought of as a generalization of @thm:
 
     where $gamma$ is a simple closed curve enclosing $z$.
   ],
-  <ex:legendrepolynomialintegralformula>,
+  <ex:legendre-polynomial-integral-formula>,
 )
 
-#solution[to @ex:legendrepolynomialintegralformula][
-  By applying Cauchy--Goursat (@thm:cauchy_differentiation_formula) on @eq:legendrepolynomialintegralformula_rodriguesformula, we get that
+#solution[to @ex:legendre-polynomial-integral-formula][
+  By applying Cauchy--Goursat (@thm:cauchy-differentiation-formula) on @eq:legendre-polynomial-integral-formula-rodrigues-formula, we get that
 
   $
     P_n (z)=1 / (2^(n+1) uppi ii) integral.cont_gamma ((zeta^2-1)^n) / ((zeta-z)^(n+1)) dzeta,
@@ -198,11 +198,11 @@ The differentiation formula above can be thought of as a generalization of @thm:
       M=max_(z in overline(D(z_0, R))) abs(f(z)).
     $
   ],
-  <thm:cauchys_estimate>,
+  <thm:cauchys-estimate>,
 )
 
 #proof[
-  By the Differentiation Formula (@thm:cauchy_differentiation_formula), $forall n in NN$,
+  By the Differentiation Formula (@thm:cauchy-differentiation-formula), $forall n in NN$,
 
   $
     f^((n)) (z_0)= (n!) / (2 uppi ii) integral.cont_(partial D(z_0, R)) (f(zeta)) / ((zeta-z_0)^(n+1)) dzeta.
@@ -217,7 +217,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
   as desired.
 ]
 
-@thm:nthderivativeboundedl1norm will profoundly generalize this statement significantly. The relationship between the derivatives of a holomorphic function and the function itself is an important property of holomorphic functions.
+@thm:nth-derivative-bounded-L1-norm will profoundly generalize this statement significantly. The relationship between the derivatives of a holomorphic function and the function itself is an important property of holomorphic functions.
 
 #lbl(
   example[
@@ -227,11 +227,11 @@ The differentiation formula above can be thought of as a generalization of @thm:
       abs(f^((n)) (0)) <= M n! (ee / n)^n.
     $
   ],
-  <ex:entire_function_exponential_bounded_derivative_bound>,
+  <ex:entire-function-exponential-bounded-derivative-bound>,
 )
 
-#solution[to @ex:entire_function_exponential_bounded_derivative_bound][
-  $abs(f(0)) <= M$ is obviously true by letting $z=0$. Then $forall R > 0$, by Cauchy's Estimate (@thm:cauchys_estimate),
+#solution[to @ex:entire-function-exponential-bounded-derivative-bound][
+  $abs(f(0)) <= M$ is obviously true by letting $z=0$. Then $forall R > 0$, by Cauchy's Estimate (@thm:cauchys-estimate),
 
   $
     abs(f^((n)) (0)) <= M n! (ee^R) / (R^n).
@@ -262,7 +262,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 )
 
 #proof[
-  Let $f:CC -> CC$ be entire. Then, $forall z_0 in CC$, $forall R > 0$, $f$ is holomorphic over $overline(D(z_0, R))$. By @thm:cauchys_estimate,
+  Let $f:CC -> CC$ be entire. Then, $forall z_0 in CC$, $forall R > 0$, $f$ is holomorphic over $overline(D(z_0, R))$. By @thm:cauchys-estimate,
 
   $
     abs(f'(z_0)) <= M / R,
@@ -350,7 +350,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
       $
         sup_(z in K) abs(f^((n)) (z)) <= c_n norm(f)_(L^1(V)),
       $,
-      <eq:nthderivativeboundedl1norm_statement>,
+      <eq:nth-derivative-bounded-L1-norm_statement>,
     )
 
     where $norm(f)_(L^p(V))$ denotes
@@ -359,7 +359,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
       (integral_V abs(f(z))^p dx and dy)^(1 / p).
     $
   ],
-  <thm:nthderivativeboundedl1norm>,
+  <thm:nth-derivative-bounded-L1-norm>,
 )
 
 #proof[
@@ -423,7 +423,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
     abs(f^((n)) (z)) <= c_n integral_(K_1) abs(f(zeta)) abs(dx and dy) <= c_n integral_V abs(f(zeta)) abs(dx and dy).
   $
 
-  The problem now stands to prove that $phi(z)$ exists in the first place, which requires a topological argument to be later discussed in @thm:bumpfunctionexistence.
+  The problem now stands to prove that $phi(z)$ exists in the first place, which requires a topological argument to be later discussed in @thm:bump-function-existence.
 ]
 
 #lbl(
@@ -438,7 +438,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 )
 
 #proof[
-  Starting from @eq:nthderivativeboundedl1norm_statement, observe that
+  Starting from @eq:nth-derivative-bounded-L1-norm_statement, observe that
 
   $
     c_n norm(f)_(L^1(V)) <= c_n op("area")(V) sup_(z in V) abs(f(z)),
@@ -449,22 +449,25 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 
 For the next theorem we will briefly introduce the concept of _analytic continuation_.
 
-#definition("Analytic Continuation")[
-  Let $U subset.eq CC$ be open, and let $f:U -> CC$ be holomorphic. Let $V subset.eq CC$ be open with $U subset.eq V$. A function
-  $ F : V -> CC $
-  is an _analytic continuation_ of $f$ to $V$ if:
+#lbl(
+  definition("Analytic Continuation")[
+    Let $U subset.eq CC$ be open, and let $f:U -> CC$ be holomorphic. Let $V subset.eq CC$ be open with $U subset.eq V$. A function
+    $ F : V -> CC $
+    is an _analytic continuation_ of $f$ to $V$ if:
 
-  + $F$ is holomorphic on $V$, and
-  + $F equiv f$ on $U$.
-] <def:analyticcontinuation>
+    + $F$ is holomorphic on $V$, and
+    + $F equiv f$ on $U$.
+  ],
+  <def:analyticcontinuation>,
+)
 
-The concept of analytic continuation and its consequent problems and properties will be discussed in detail in a later chapter. For now, we will prove a theorem that is a direct consequence of the Cauchy--Goursat Differentiation Formula (@thm:cauchy_differentiation_formula) and the existence of holomorphic functions with removable singularities.
+The concept of analytic continuation and its consequent problems and properties will be discussed in detail in a later chapter. For now, we will prove a theorem that is a direct consequence of the Cauchy--Goursat Differentiation Formula (@thm:cauchy-differentiation-formula) and the existence of holomorphic functions with removable singularities.
 
 #lbl(
   theorem[Riemann][
     Let $D^*(z_0, r)=D(z_0, r) without {z_0}$ (known as a punctured disk), and $f:D^*(z_0, r) -> CC$ be holomorphic and bounded. Then $f$ can be analytically continued to $D(z_0, r)$.
   ],
-  <thm:riemannremovablesingularities>,
+  <thm:riemann-removable-singularities>,
 )
 
 #proof[
@@ -486,7 +489,7 @@ The concept of analytic continuation and its consequent problems and properties 
     phi'(z)=2 (z-z_0) f(z) + (z-z_0)^2 f'(z).
   $
 
-  As $z -> z_0$, $phi(z) -> 0$, meaning that $phi$ is holomorphic over $D(z_0, r)$. By @thm:cauchy_differentiation_formula,
+  As $z -> z_0$, $phi(z) -> 0$, meaning that $phi$ is holomorphic over $D(z_0, r)$. By @thm:cauchy-differentiation-formula,
 
   $
     phi(z)=sum_(j = 2)^oo a_j (z-z_0)^j,

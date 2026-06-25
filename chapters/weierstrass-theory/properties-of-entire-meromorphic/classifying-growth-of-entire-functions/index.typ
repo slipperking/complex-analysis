@@ -2,14 +2,14 @@
 #show: docs-subsubchapter.with(
   title: [Classifying Growth of Entire Functions],
   route: "growth-of-entire-functions",
-  label: <sec:classifying_growth-of-entire-functions>,
+  label: <sec:classifying-growth-of-entire-functions>,
 )
 #lbl(
   lemma[
     Let $f : overline(D(0,r)) -> CC^*$ (where $r > 0$) be a nowhere-vanishing holomorphic function. It follows that
     $ log abs(f(0)) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta. $
   ],
-  <lem:nonvanishingholomorphiclogarithmabsolutemeanvalueproperty>,
+  <lem:non-vanishing-holomorphic-logarithm-absolute-mean-value-property>,
 )
 
 #proof[
@@ -20,19 +20,22 @@
   Hence, $log abs(f(z)) = Re [log (f(z))]$ and is therefore harmonic. The assertion then follows from the mean-value property.
 ]
 
-#theorem("Jensen's Formula")[
-  Let $f : overline(D(0,r)) -> CC$ be meromorphic such that $f(0) != 0$. If $a_1, dots, a_m$, $b_1, dots, b_n$ are the zeros and poles of $f$ in $overline(D(0,r))$, counted with multiplicities and orders, respectively, then
-  $
-    log abs(f(0)) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta + sum_(k=1)^m log abs(a_k / r) - sum_(k=1)^n log abs(b_k / r).
-  $
-] <thm:jensensformula>
+#lbl(
+  theorem[Jensen's Formula][
+    Let $f : overline(D(0,r)) -> CC$ be meromorphic such that $f(0) != 0$. If $a_1, dots, a_m$, $b_1, dots, b_n$ are the zeros and poles of $f$ in $overline(D(0,r))$, counted with multiplicities and orders, respectively, then
+    $
+      log abs(f(0)) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta + sum_(k=1)^m log abs(a_k / r) - sum_(k=1)^n log abs(b_k / r).
+    $
+  ],
+  <thm:jensens-formula>,
+)
 
 #proof[
   For simplicity, assume $a_1, dots, a_(m_0)$ are the zeros in $D(0,r)$ and $a_(m_0+1), dots, a_m$ are the zeros on $partial D(0,r)$. Similarly, let $b_1, dots, b_(n_0)$ be the poles in $D(0,r)$ and $b_(n_0+1), dots, b_n$ be the poles on $partial D(0,r)$. Let
   $ f(z) = g(z) (product_(j=1)^m (z - a_j)) / (product_(k=1)^n (z - b_k)), $
   where $g$ is holomorphic and non-vanishing on $overline(D(0,r))$. Since
   $ log abs(f(0)) = log abs(g(0)) + sum_(j=1)^m log abs(a_j) - sum_(k=1)^n log abs(b_k), $
-  by @lem:nonvanishingholomorphiclogarithmabsolutemeanvalueproperty on $g$,
+  by @lem:non-vanishing-holomorphic-logarithm-absolute-mean-value-property on $g$,
   $
     log abs(f(0))
     &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta)) (product_(k=1)^n (r ee^(ii theta) - b_k)) / (product_(j=1)^m (r ee^(ii theta) - a_j))) dif theta \
@@ -64,27 +67,30 @@
 
 As an immediate consequence, we have:
 
-#corollary("Jensen's Inequality")[
+#corollary[Jensen's Inequality][
   Let $f$ be holomorphic on $overline(D(0,r))$ such that $f equiv.not 0$ and $f(0) != 0$. It follows that
   $ log abs(f(0)) <= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta. $
-] <cor:jensensinequality>
+] <cor:jensens-inequality>
 
-#theorem[Poisson--Jensen Formula][
-  Suppose $f$ is a meromorphic function on $overline(D(0,r))$ such that $f equiv.not 0$ on $D(0,r)$ and is non-vanishing and non-infinity on $partial D(0,r)$. Let $a_1, dots, a_m$ and $b_1, dots, b_n$ be the zeros and poles of $f$ in $D(0,r)$, counted with multiplicity and order, respectively (multiplicities and orders count as multiple zeros or poles). Then it follows that
-  #lbl(
-    $
-      log abs(f(z)) &= integral_0^(2 uppi) log abs(f(zeta)) P (zeta, z) dif theta \
-      &quad ""+ sum_(j=1)^m log abs((r (z - a_j)) / (r^2 - overline(a_j) z)) - sum_(k=1)^n log abs((r (z - b_k)) / (r^2 - overline(b_k) z)),
-    $,
-    <eq:poisson-jensen-formula_statement>,
-  )
-  where $zeta = r ee^(ii theta)$, $z in D(0,r) without ({a_j}_(j=1)^m union {b_k}_(j=1)^n)$, and $P(zeta, z)$ is the Poisson kernel in @eq:poissonkernelgeneralform.
-]<thm:poisson-jensen-formula>
+#lbl(
+  theorem[Poisson--Jensen Formula][
+    Suppose $f$ is a meromorphic function on $overline(D(0,r))$ such that $f equiv.not 0$ on $D(0,r)$ and is non-vanishing and non-infinity on $partial D(0,r)$. Let $a_1, dots, a_m$ and $b_1, dots, b_n$ be the zeros and poles of $f$ in $D(0,r)$, counted with multiplicity and order, respectively (multiplicities and orders count as multiple zeros or poles). Then it follows that
+    #lbl(
+      $
+        log abs(f(z)) &= integral_0^(2 uppi) log abs(f(zeta)) P (zeta, z) dif theta \
+        &quad ""+ sum_(j=1)^m log abs((r (z - a_j)) / (r^2 - overline(a_j) z)) - sum_(k=1)^n log abs((r (z - b_k)) / (r^2 - overline(b_k) z)),
+      $,
+      <eq:poisson-jensen-formula_statement>,
+    )
+    where $zeta = r ee^(ii theta)$, $z in D(0,r) without ({a_j}_(j=1)^m union {b_k}_(j=1)^n)$, and $P(zeta, z)$ is the Poisson kernel in @eq:poissonkernelgeneralform.
+  ],
+  <thm:poisson-jensen-formula>,
+)
 
 #proof[
   For fixed $z in D(0,r)$ not at zeros or poles, let
   $ g_z (zeta) = f (r phi_(- z / r) (zeta / r)) $
-  where $phi_(-a) = (phi_a)^(-1)$ is the unit disk automorphism sending 0 to $a$. Then $g_z$ maps 0 to $f (z)$, and has zeros at $r phi_(- z/r) (zeta / r) = a_k$ or $zeta = r phi_(z/r) (a_k / r)$ and poles at $r phi_(- z/r) (zeta / r) = b_k$ or $zeta = r phi_(z/r) (b_k / r)$. By Jensen's formula (@thm:jensensformula),
+  where $phi_(-a) = (phi_a)^(-1)$ is the unit disk automorphism sending 0 to $a$. Then $g_z$ maps 0 to $f (z)$, and has zeros at $r phi_(- z/r) (zeta / r) = a_k$ or $zeta = r phi_(z/r) (a_k / r)$ and poles at $r phi_(- z/r) (zeta / r) = b_k$ or $zeta = r phi_(z/r) (b_k / r)$. By Jensen's formula (@thm:jensens-formula),
   $
     log abs(g_z (0)) & = log abs(f(z)) = 1 / (2 uppi) integral_0^(2 uppi) log abs(g_z (r ee^(ii theta))) dif theta \
                      & quad ""+ sum_(k=1)^m abs(phi_(z/r) (a_k / r)) - sum_(k=1)^n abs(phi_(z/r) (b_k / r)). #qedhere
@@ -97,11 +103,11 @@ As an immediate consequence, we have:
     $ sum_(n=1)^infinity (1 - abs(a_n)) $
     is convergent.
   ],
-  <lem:boundedholomorphicfunctionblaschkecondition>,
+  <lem:bounded-holomorphic-function-blaschke-condition>,
 )
 
 #proof[
-  First assume $f(0) != 0$ and choose $M$ such that $abs(f) <= M$ on $DD$. Let $n(r, 0, f)$ count the number of zeros of $f$, according to multiplicities, inside $overline(D(0,r))$. By Jensen's Formula (@thm:jensensformula), we have
+  First assume $f(0) != 0$ and choose $M$ such that $abs(f) <= M$ on $DD$. Let $n(r, 0, f)$ count the number of zeros of $f$, according to multiplicities, inside $overline(D(0,r))$. By Jensen's Formula (@thm:jensens-formula), we have
   $
     log abs(f(0)) & = 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta \
                   & quad ""+ sum_(k=1)^(n(r,0,f)) log abs(a_k / r) <= log(M) + sum_(k=1)^(n(r,0,f)) log abs(a_k / r).
@@ -123,21 +129,24 @@ As an immediate consequence, we have:
   If $f$ has a zero of multiplicity $m$ at $0$, then the argument applies to $z |-> f(z) / z^m$.
 ]
 
-#theorem("Blaschke Product")[
-  Let ${a_k}_(k in NN) subset DD^* = DD without {0}$ be a sequence such that the series $sum_(k=1)^infinity (1 - abs(a_k))$ is convergent (known as the _Blaschke condition_). Then the _Blaschke product_, defined by
-  #lbl(
-    $
-      B(z) = product_(k=1)^infinity [-abs(a_k) / a_k phi_(a_k) (z)],
-    $,
-    <eq:blaschkeproduct_statement>,
-  )
-  (where $phi_a (z)$ is a Möbius transformation in the form of @eq:mobiustransformationgroupofholomorphicautomorphismsunitdisk_statement), locally uniformly converges to an analytic function on $DD$ such that $abs(B) <= 1$ on $DD$, and its only zeros are precisely at each of ${a_k}_(k in NN)$, counted according to multiplicities.
-] <thm:blaschkeproduct>
+#lbl(
+  theorem[Blaschke Product][
+    Let ${a_k}_(k in NN) subset DD^* = DD without {0}$ be a sequence such that the series $sum_(k=1)^infinity (1 - abs(a_k))$ is convergent (known as the _Blaschke condition_). Then the _Blaschke product_, defined by
+    #lbl(
+      $
+        B(z) = product_(k=1)^infinity [-abs(a_k) / a_k phi_(a_k) (z)],
+      $,
+      <eq:blaschke-product-statement>,
+    )
+    (where $phi_a (z)$ is a Möbius transformation in the form of @eq:mobius-transformation-group-of-holomorphic-automorphisms-unit-disk-statement), locally uniformly converges to an analytic function on $DD$ such that $abs(B) <= 1$ on $DD$, and its only zeros are precisely at each of ${a_k}_(k in NN)$, counted according to multiplicities.
+  ],
+  <thm:blaschke-product>,
+)
 
 #proof[
   If it can be shown that
   $ sum_(k=1)^infinity abs(abs(a_k) / a_k (a_k - z) / (1 - overline(a_k) z) - 1) $
-  locally uniformly converges, we can use @lem:infiniteproductlocallyuniformconvergencecriterion2 to show that the infinite product converges uniformly on compact subsets of $DD$. Let $overline(D(0,r)) subset DD$ be a compact subset. The summand can be bounded with
+  locally uniformly converges, we can use @lem:infinite-product-locally-uniform-convergence-criterion-2 to show that the infinite product converges uniformly on compact subsets of $DD$. Let $overline(D(0,r)) subset DD$ be a compact subset. The summand can be bounded with
   $
     abs(abs(a_k) / a_k (a_k - z) / (1 - overline(a_k) z) - 1)
     &= abs(overline(a_k) / abs(a_k) (a_k - z) / (1 - overline(a_k) z) - 1) = abs((abs(a_k)^2 - overline(a_k) z) / (abs(a_k) (1 - overline(a_k) z)) - 1) \
@@ -150,7 +159,7 @@ As an immediate consequence, we have:
   $
     sum_(k=1)^infinity abs(abs(a_k) / a_k (a_k - z) / (1 - overline(a_k) z) - 1) < (1 + r) / (1 - r) sum_(k=1)^infinity (1 - abs(a_k))
   $
-  is convergent (Blaschke condition), by the Weierstrass $M$-Test (@thm:weierstrassmtest), $sum_(k=1)^infinity abs(abs(a_k)/a_k (a_k - z)/(1 - overline(a_k) z) - 1)$ converges uniformly on $overline(D(0,r))$. By @lem:infiniteproductlocallyuniformconvergencecriterion2, the infinite product in @eq:blaschkeproduct_statement converges uniformly on compact subsets of $DD$. The properties of its zeros follow from the lemma.
+  is convergent (Blaschke condition), by the Weierstrass $M$-Test (@thm:weierstrass-m-test), $sum_(k=1)^infinity abs(abs(a_k)/a_k (a_k - z)/(1 - overline(a_k) z) - 1)$ converges uniformly on $overline(D(0,r))$. By @lem:infinite-product-locally-uniform-convergence-criterion-2, the infinite product in @eq:blaschke-product-statement converges uniformly on compact subsets of $DD$. The properties of its zeros follow from the lemma.
 
   Lastly, since $abs(phi_(a_k)) <= 1$ and each partial product is bounded by 1, it follows that $abs(B(z)) <= 1$ on $DD$.
 ]
@@ -166,7 +175,7 @@ As an immediate consequence, we have:
     where $F$ is bounded, holomorphic, and non-vanishing on $DD$. Moreover,
     $ sup_(z in DD) abs(f(z)) = sup_(z in DD) abs(F(z)). $
   ],
-  <cor:blaschkeproductfactorization>,
+  <cor:blaschke-product-factorization>,
 )
 
 #proof[
@@ -179,7 +188,7 @@ As an immediate consequence, we have:
     $
       sup_(z in DD) abs(F(z)) gt.eq sup_(z in DD) abs(f(z)).
     $,
-    <eq:blaschkeproductfactorization_supremuminequalities>,
+    <eq:blaschke-product-factorization-supremum-inequalities>,
   )
   The partial products
   $ B_n (z) = product_(k=1)^n [-abs(a_k) / a_k phi_(a_k) (z)] $
@@ -191,7 +200,7 @@ As an immediate consequence, we have:
   $
   as $r -> 1^-$. Letting $epsilon -> 0^+$, $n -> infinity$ gives
   $ sup_(z in DD) abs(F(z)) <= sup_(z in DD) abs(f(z)), $
-  which in conjunction with @eq:blaschkeproductfactorization_supremuminequalities, completes the final assertion.
+  which in conjunction with @eq:blaschke-product-factorization-supremum-inequalities, completes the final assertion.
 ]
 
 From the results above, a recurring theme in complex analysis is hinted at; the rate of growth of functions provides insight towards the distribution of its zeros.
@@ -200,7 +209,7 @@ The subjects to be discussed here are relevant and preliminary to Nevanlinna the
 
 For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs(z) <= r) abs(f(z))$ (by the Maximum Modulus Principle in @thm:maximum-modulus).
 
-#definition("Growth Order of Entire Functions")[
+#definition[Growth Order of Entire Functions][
   An entire function $f$ is said to be of _finite order_ if there exists $alpha, r_alpha in RR$ such that
   $ M(r, f) <= exp(r^alpha), quad forall r > r_alpha, $
   or in loose terms, $f$ is of finite order if it grows at most exponentially for large $z$. The _order_ of $f$, or $rho(f)$ is defined to be the infimum of all $alpha$ satisfying the previous condition.
@@ -248,10 +257,10 @@ For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs
   example[
     The function $sin$ is of order 1, while $exp circle.small exp$ is not of finite order.
   ],
-  <ex:entire_function_finite_order_sin_exp_exp>,
+  <ex:entire-function-finite-order-sin-exp-exp>,
 )
 
-#solution[to @ex:entire_function_finite_order_sin_exp_exp][
+#solution[to @ex:entire-function-finite-order-sin-exp-exp][
   We consider the two examples separately:
   + Observe that
     $
@@ -271,7 +280,7 @@ For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs
     $
 ]
 
-The utility of $rho$ is that it gives implications on the rate of which the zeros of an entire function tend to $infinity$. The order for meromorphic functions is more general and is pertinent in Nevanlinna Theory (@sec:nevanlinnatheory). This is quantified technically by the convergence range of the sum given by
+The utility of $rho$ is that it gives implications on the rate of which the zeros of an entire function tend to $infinity$. The order for meromorphic functions is more general and is pertinent in Nevanlinna Theory (@sec:nevanlinna-theory). This is quantified technically by the convergence range of the sum given by
 $ sum_(n=1)^infinity 1 / abs(a_n)^(k+1), $
 where each $a_n$ is a zero. Specifically, the infimum of all such $k$ under which the prescribed sum converges correlates to this right. For example, let $a_n = n$ for each $n$. Then for any $k > 0$, the integral test gives the convergence of the series, while if $a_n = sqrt(a_n)$ (corresponding to a slower approach to $infinity$), the series converges for $k > 1$.
 
@@ -286,7 +295,7 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
 )
 
 #proof[
-  By Jensen's formula (@thm:jensensformula), for $r > 0$, we have
+  By Jensen's formula (@thm:jensens-formula), for $r > 0$, we have
   $
     sum_(k=1)^(n(2r,0,f)) log abs((2r) / a_k) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f (2r ee^(ii theta))) dif theta,
   $
@@ -305,7 +314,7 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
     $ sigma > limsup_(r -> infinity) (log n(r)) / (log r) $
     where $n(r)$ counts $a_k$ in the closed disk of radius $r$.
   ],
-  <thm:nonzerosequencepowersummationconvergence>,
+  <thm:nonzero-sequence-power-summation-convergence>,
 )
 
 #proof[
@@ -329,7 +338,7 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
     $ sum_(k=1)^infinity 1 / abs(a_k)^(rho(f) + eta) $
     converges for any $eta > 0$.
   ],
-  <thm:entirefunctionfiniteorderzerossummationconvergence>,
+  <thm:entire-function-finite-order-zeros-summation-convergence>,
 )
 
 #proof[
@@ -357,7 +366,7 @@ Therefore, for any $r > 0$, the series
 $
   sum_(k=1)^infinity abs(r / a_k)^(rho(f) + eta) <= sum_(k=1)^infinity abs(r / a_k)^(floor(rho) + 1) quad "for sufficiently small" eta
 $
-converges. Then by the Weierstrass Factorization Theorem (@thm:weierstrassfactorization),
+converges. Then by the Weierstrass Factorization Theorem (@thm:weierstrass-factorization),
 $ f(z) = z^m ee^(phi(z)) product_(k=1)^infinity E_(floor(rho)) (z / a_k) $
 locally uniformly converges on $CC$, where $phi$ is entire.
 
@@ -367,10 +376,10 @@ locally uniformly converges on $CC$, where $phi$ is entire.
   converges, where ${a_k}_k$ are its zeros in $CC^*$.
 ]
 
-The conclusion of @thm:entirefunctionfiniteorderzerossummationconvergence is that the rank of an entire function with finite order is finite. Moreover, the rank $<= floor(rho)$.
+The conclusion of @thm:entire-function-finite-order-zeros-summation-convergence is that the rank of an entire function with finite order is finite. Moreover, the rank $<= floor(rho)$.
 
 #definition[
-  Let $f$ be entire of finite rank $p$. By the Weierstrass Factorization theorem (@thm:weierstrassfactorization),
+  Let $f$ be entire of finite rank $p$. By the Weierstrass Factorization theorem (@thm:weierstrass-factorization),
   $ f(z) = z^m ee^(phi(z)) product_(k=1)^infinity E_p (z / a_k). $
   If $phi$ is a polynomial of degree $q$, then $f$ is said to be of finite _genus_ $mu = max{p, q}$.
 ]
@@ -417,7 +426,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $
     integral_0^(2 uppi) (ii r ee^(ii theta) dif theta) / (r ee^(ii theta) - z)^(p+2) = integral.cont.ccw_(partial D(0,r)) (dif w) / (w - z)^(p+2) = 2 uppi ii Res_(w=z) 1 / (w - z)^(p+2)
   $
-  by the Residue Theorem (@thm:residuethm). Since $p + 2 > rho(f) + 1 gt.eq 1$ where $p$ is an integer, we must have $p + 2 gt.eq 2$ and thus
+  by the Residue Theorem (@thm:residue-theorem). Since $p + 2 > rho(f) + 1 gt.eq 1$ where $p$ is an integer, we must have $p + 2 gt.eq 2$ and thus
   $ integral_0^(2 uppi) (r ee^(ii theta) dif theta) / (r ee^(ii theta) - z)^(p+2) = 0. $
   Therefore,
   $
@@ -427,7 +436,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
     &wide wide""= 2^(p+3) r^(-p-1) [2 uppi log M(r, f) - integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta] \
     &wide wide""<= 2^(p+4) r^(-p-1) uppi log M(r, f),
   $
-  where the last expression uses the inequality derived from Jensen's formula (@cor:jensensinequality) on the remaining integral.
+  where the last expression uses the inequality derived from Jensen's formula (@cor:jensens-inequality) on the remaining integral.
 
   Now by assumption, we have
   $ log M(r, f) <= r^(rho + epsilon) $
@@ -444,7 +453,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
     $ dif^p / (dif z^p) ((f'(z)) / (f(z))) equiv -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1) $
     for all $z in CC$.
   ],
-  <prop:entirefunctionfiniteorderlogdiffderivatives>,
+  <prop:entire-function-finite-order-log-diff-derivatives>,
 )
 
 #proof[
@@ -458,7 +467,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
     $
       (partial (Re g(z))) / (partial z) &= 1/2 ((partial u(z)) / (partial x) - ii (partial u(z)) / (partial y)) \ &= 1/2 ((partial u(z)) / (partial x) + ii (partial v) / (partial x)) = 1/2 (partial g(z)) / (partial x) = (g'(z)) / 2.
     $,
-    <eq:wirtinger_derivative_of_real_part_of_holomorphic_function>,
+    <eq:wirtinger-derivative-of-real-part-of-holomorphic-function>,
   )
   Therefore, by differentiation under the integral sign,
   $
@@ -483,7 +492,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
     $ dif^p / (dif z^p) ((P'(z)) / P(z)) equiv -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1) $
     for all $z in CC$.
   ],
-  <lem:entire_function_weierstrass_product_finite_order_log_diff_derivatives>,
+  <lem:entire-function-weierstrass-product-finite-order-log-diff-derivatives>,
 )
 
 #proof[
@@ -497,13 +506,13 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $
   Since the polynomial in the rightmost term has degree at most $max j - 1 = op("rank") f - 1$, and because $p > floor(rho) - 1 gt.eq op("rank") f - 1$, after $p$ derivatives each term of the expression vanishes. For an arbitrarily chosen compact $K subset CC$ avoiding $a_k$, some $N in NN$ such that $abs(a_k) gt.eq max_(z in K) abs(z)$ for all $k > N$, we have $forall z in K$, $abs(a_k - z) <= abs(a_k) + abs(z) <= 2 abs(a_k)$. Then the convergence of
   $ sum_(k=1)^infinity 1 / (2 abs(a_k)^(p+1)) $
-  from @thm:entirefunctionfiniteorderzerossummationconvergence implies the absolute convergence of
+  from @thm:entire-function-finite-order-zeros-summation-convergence implies the absolute convergence of
   $ sum_(k=1)^infinity 1 / (a_k - z)^(p+1) $
-  in $K$. Moreover, it can be shown that the uniform convergence of $P_n -> P$ (from the Weierstrass factorization) and $P'_n -> P'_n$ (by the Weierstrass Convergence Theorem, @thm:weierstrass_convergence) in $K$ implies that of $(P'(z)) / P(z)$. Hence, the Weierstrass Convergence Theorem implies that
+  in $K$. Moreover, it can be shown that the uniform convergence of $P_n -> P$ (from the Weierstrass factorization) and $P'_n -> P'_n$ (by the Weierstrass Convergence Theorem, @thm:weierstrass-convergence) in $K$ implies that of $(P'(z)) / P(z)$. Hence, the Weierstrass Convergence Theorem implies that
   $
     lim_(n -> infinity) dif^p / (dif z^p) ((P'_n (z)) / (P_n (z))) &= (P'(z)) / P(z) = -lim_(n -> infinity) sum_(k=1)^n (p!) / (a_k - z)^(p+1) \
     &= -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1). #qedhere
   $
 ]
 
-The two preceding results are similar in conclusion, but @lem:entire_function_weierstrass_product_finite_order_log_diff_derivatives is not a special case of @prop:entirefunctionfiniteorderlogdiffderivatives since we have not asserted that the canonical product is of finite order.
+The two preceding results are similar in conclusion, but @lem:entire-function-weierstrass-product-finite-order-log-diff-derivatives is not a special case of @prop:entire-function-finite-order-log-diff-derivatives since we have not asserted that the canonical product is of finite order.

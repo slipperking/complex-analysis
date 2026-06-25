@@ -34,7 +34,7 @@ Intuitively, $gamma$ measures the extent to which bounded analytic functions out
 )
 
 #proof[
-  For any $f: extcomplex without K -> CC$ holomorphic with $f(extcomplex without K) subset.eq overline(DD)$, since $f$ is bounded, the Riemann's Theorem for removable singularities (@thm:riemannremovablesingularities) allows for an analytic continuation onto all of $extcomplex$. Then Liouville's Theorem (@thm:liouville) implies that $f$ is constant and $f'(oo) = 0$. Hence $gamma(K) = 0$.
+  For any $f: extcomplex without K -> CC$ holomorphic with $f(extcomplex without K) subset.eq overline(DD)$, since $f$ is bounded, the Riemann's Theorem for removable singularities (@thm:riemann-removable-singularities) allows for an analytic continuation onto all of $extcomplex$. Then Liouville's Theorem (@thm:liouville) implies that $f$ is constant and $f'(oo) = 0$. Hence $gamma(K) = 0$.
 ]
 
 #lbl(

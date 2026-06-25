@@ -12,7 +12,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     Let $z in CC$ be arbitrary and fixed and suppose $0 < r < oo$. Let $ E_k = {theta : -uppi < theta < uppi and abs(z - r ee^(ii theta)) < k r} $ for each $0 < k <= 1$. It follows that
     $ I = integral_(E_k) log abs(frac(r, z - r ee^(ii theta))) dtheta < uppi k (1 - log k). $
   ],
-  <lem:nevanlinna_small_error_term_estimation_1>,
+  <lem:nevanlinna-small-error-term-estimation-1>,
 )
 
 #proof[
@@ -42,7 +42,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
       frac(1, 2 uppi) integral_0^(2 uppi) logp r / (delta(r ee^(ii theta))) dtheta <= 2 log n + 1 / 2
     $
   ],
-  <lem:nevanlinna_small_error_term_estimation2>,
+  <lem:nevanlinna-small-error-term-estimation-2>,
 )
 
 #proof[
@@ -62,23 +62,23 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     logp r / (delta(r ee^(ii theta))) &= log_0(frac(r, delta(r ee^(ii theta)))) = log_0(frac(r, min_(nu in NN_(<= n)) abs(r ee^(ii theta) - z_nu))) \
     &<= sum_(nu = 1)^n log_0(frac(r, abs(r ee^(ii theta) - z_nu))).
   $
-  Since $0 < 1 / n <= 1$, by virtue of @lem:nevanlinna_small_error_term_estimation_1 for $k = 1 / n$,
+  Since $0 < 1 / n <= 1$, by virtue of @lem:nevanlinna-small-error-term-estimation-1 for $k = 1 / n$,
   #lbl(
     $
       frac(1, 2 uppi) integral_E logp r / (delta(r ee^(ii theta))) dtheta &<= frac(1, 2 uppi) sum_(nu = 1)^n integral_0^(2 uppi) log_0(frac(r, abs(r ee^(ii theta) - z_nu))) dtheta \
       & = frac(1, 2 uppi) sum_(nu = 1)^n integral_0^(2 uppi) log(frac(r, abs(r ee^(ii theta) - z_nu))) dtheta \
       &< frac(1, 2 uppi) sum_(nu = 1)^n frac(uppi, n) (1 + log n) = 1 / 2 + (log n) / 2.
     $,
-    <eq:nevanlinna_small_error_term_estimation_2_E_set>,
+    <eq:nevanlinna-small-error-term-estimation-2-E-set>,
   )
   For $theta in.not E$, for each $nu$ we have $abs(z_nu - r ee^(ii theta)) >= r / n$ and thus $delta(r ee^(ii theta)) >= r / n$. It follows that
   #lbl(
     $
       frac(1, 2 uppi) integral_(theta in.not E) logp r / (delta(r ee^(ii theta))) dtheta <= 1 / (2 uppi) integral_0^(2 uppi) logp n dtheta <= log n.
     $,
-    <eq:nevanlinna_small_error_term_estimation2_E_complement>,
+    <eq:nevanlinna-small-error-term-estimation-2-E-complement>,
   )
-  Combining @eq:nevanlinna_small_error_term_estimation_2_E_set, @eq:nevanlinna_small_error_term_estimation2_E_complement gives the desired result.
+  Combining @eq:nevanlinna-small-error-term-estimation-2-E-set, @eq:nevanlinna-small-error-term-estimation-2-E-complement gives the desired result.
 ]
 
 #lbl(
@@ -89,7 +89,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
                    & quad""+ 5 logp R + 6 logp 1 / (R - r) + logp 1 / r + 14.
     $
   ],
-  <prop:nevanlinna_log_diff_proximity_estimate>,
+  <prop:nevanlinna-log-diff-proximity-estimate>,
 )
 
 #proof[
@@ -98,7 +98,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     Re log f(z) & = frac(1, 2 uppi) integral_0^(2 uppi) log abs(f(rho ee^(ii theta))) Re(frac(rho ee^(ii theta) + z, rho ee^(ii theta) - z)) dtheta \
     & quad "" + sum_(k = 1)^(n(rho, 0, f)) Re log(frac(rho (z - a_k), rho^2 - overline(a_k) z)) \ &wide""- sum_(j = 1)^(n(rho, f)) Re log(frac(rho (z - b_j), rho^2 - overline(b_j) z)),
   $
-  where ${a_k}$ and ${b_j}$ are the respective zeros and poles in the disk. By @eq:wirtinger_derivative_of_real_part_of_holomorphic_function, we have $pdv(, z) (Re g(z)) = 1 / 2 g'(z)$ for all holomorphic $g$. Applying this with differentiation under the integral sign, we have that
+  where ${a_k}$ and ${b_j}$ are the respective zeros and poles in the disk. By @eq:wirtinger-derivative-of-real-part-of-holomorphic-function, we have $pdv(, z) (Re g(z)) = 1 / 2 g'(z)$ for all holomorphic $g$. Applying this with differentiation under the integral sign, we have that
   $
     (f'(z)) / (f(z)) & = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(rho ee^(ii theta))) frac(2 rho ee^(ii theta) dtheta, (rho ee^(ii theta) - z)^2) \
     & quad "" + sum_(k = 1)^(n(rho, 0, f)) (frac(overline(a_k), rho^2 - overline(a_k) z) - frac(1, a_k - z)) + sum_(j = 1)^(n(rho, f)) (frac(1, b_j - z) - frac(overline(b_j), rho^2 - overline(b_j) z)).
@@ -117,14 +117,14 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     $
       abs(frac(overline(a_k), rho^2 - overline(a_k) z)),abs(frac(overline(b_j), rho^2 - overline(b_j) z)) <= frac(rho, rho^2 - r rho) = frac(1, rho - r),
     $,
-    <eq:nevanlinna_log_diff_proximity_estimate_mobius_bounds>,
+    <eq:nevanlinna-log-diff-proximity-estimate-mobius-bounds>,
   )
   and additionally,
   #lbl(
     $
       abs(frac(1, b_j - z)) <= frac(1, delta(z)), quad abs(frac(1, a_k - z)) <= frac(1, delta(z)).
     $,
-    <eq:nevanlinna_log_diff_proximity_estimate_inversionbounds>,
+    <eq:nevanlinna-log-diff-proximity-estimate-inversion-bounds>,
   )
   Furthermore,
   #lbl(
@@ -132,15 +132,15 @@ Modern results vastly improve said estimations, and the search for a sharp estim
       abs(frac(1, 2 uppi) integral_0^(2 uppi) log abs(f(rho ee^(ii theta))) frac(2 rho ee^(ii theta) dtheta, (rho ee^(ii theta) - z)^2)) <= frac(1, 2 uppi) frac(2 rho, (rho - r)^2) integral_0^(2 uppi) abs(log abs(f(rho ee^(ii theta)))) dtheta \
       = frac(2 rho, (rho - r)^2) [m(rho, f) + m(rho, frac(1, f))].
     $,
-    <eq:nevanlinna_log_diff_proximity_estimate_integralbounds>,
+    <eq:nevanlinna-log-diff-proximity-estimate-integral-bounds>,
   )
-  by @itm:log_nonnegative_part_properties_sumofreciprocallogs of @prop:log_nonnegative_part_properties. Combining @eq:nevanlinna_log_diff_proximity_estimate_mobius_bounds, @eq:nevanlinna_log_diff_proximity_estimate_inversionbounds, @eq:nevanlinna_log_diff_proximity_estimate_integralbounds, we have
+  by @itm:log-nonnegative-part-properties-sum-of-reciprocal-logs of @prop:log-nonnegative-part-properties. Combining @eq:nevanlinna-log-diff-proximity-estimate-mobius-bounds, @eq:nevanlinna-log-diff-proximity-estimate-inversion-bounds, @eq:nevanlinna-log-diff-proximity-estimate-integral-bounds, we have
   $
     abs(frac(f'(z), f(z))) & <= frac(2 rho, (rho - r)^2) [m(rho, f) + m(rho, 1 / f)] \
     &quad""+ sum_(k = 1)^(n(rho, 0, f)) (frac(1, rho - r) + frac(1, delta(z))) + sum_(j = 1)^(n(rho, f)) (frac(1, rho - r) + frac(1, delta(z))) \
     & = frac(2 rho, (rho - r)^2) [m(rho, f) + m(rho, 1 / f)] + n (1 / (rho - r) + 1 / delta(z)).
   $
-  By @prop:nevanlinnafirsttheorematzero, we have $T(rho, 0, f) = T(rho, f) - log abs(c)$, where $c$ is the first nonzero coefficient of the Laurent expansion of $f$ about the origin. It follows that $m(rho, frac(1, f)) = T(rho, f) - log abs(c) - N(rho, 0, f)$ and $m(rho, f) = T(rho, f) - N(rho, f)$, thus
+  By @prop:nevanlinna-first-theorem-at-zero, we have $T(rho, 0, f) = T(rho, f) - log abs(c)$, where $c$ is the first nonzero coefficient of the Laurent expansion of $f$ about the origin. It follows that $m(rho, frac(1, f)) = T(rho, f) - log abs(c) - N(rho, 0, f)$ and $m(rho, f) = T(rho, f) - N(rho, f)$, thus
   $
     m(rho, frac(1, f)) + m(rho, f) & = 2 T(rho, f) - log abs(c) - N(rho, frac(1, f)) \
                                    & quad""- N(rho, f) <= 2 T(rho, f) + 2 logp abs(1 / c),
@@ -149,7 +149,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   $
     abs(frac(f'(z), f(z))) <= frac(4 rho, (rho - r)^2) [T(rho, f) + logp abs(1 / c)] + frac(n, r) (frac(r, rho - r) + frac(r, delta(z))).
   $
-  By the subadditive properties of @prop:log_nonnegative_part_properties, we have
+  By the subadditive properties of @prop:log-nonnegative-part-properties, we have
   $
     logp abs(frac(f'(z), f(z))) & <= logp [frac(4 rho, (rho - r)^2) [T(rho, f) + logp abs(1 / c)]] \
                                 & quad ""+ logp [frac(n, r) (frac(r, rho - r) + frac(r, delta(z)))] + log 2 \
@@ -158,7 +158,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
                                 & <= logp rho + 2 logp 1 / (rho - r) + logp T(rho, f) + logp logp abs(1 / c) \
                                 & quad "" + logp n/r + logp r / (rho - r) + logp r/(delta(z)) + 5 log 2.
   $
-  Integrating on $abs(z) = r$ with @lem:nevanlinna_small_error_term_estimation2 gives
+  Integrating on $abs(z) = r$ with @lem:nevanlinna-small-error-term-estimation-2 gives
   #lbl(
     $
       m(r, (f')/f) & <= logp rho + 2 logp 1 / (rho - r) + logp T(rho, f) + logp logp abs(1 / c) \
@@ -166,7 +166,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
       & <= logp rho + 3 logp 1 / (rho - r) + logp T(rho, f) + logp logp abs(1 / c) \
       & quad "" + 3 logp n + logp 1 / r + logp r + 1 / 2 + 5 log 2.
     $,
-    <eq:nevanlinna_log_diff_proximity_estimate_proximity_primary_estimate>,
+    <eq:nevanlinna-log-diff-proximity-estimate_proximity_primary_estimate>,
   )
   To derive a more useful estimate for $n$, we note that
   $
@@ -184,7 +184,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     logp n & <= logp (2 R) / (R - rho) + logp T(R, f) + logp logp abs(1 / c) + log 2 \
            & <= logp R + logp 1 / (R - rho) + logp T(R, f) + logp logp abs(1 / c) + 2 log 2
   $
-  Substituting this into @eq:nevanlinna_log_diff_proximity_estimate_proximity_primary_estimate, and using $R - rho = rho - r = (R - r) / 2$ we have that (recognizing $logp r, logp rho < logp R$)
+  Substituting this into @eq:nevanlinna-log-diff-proximity-estimate_proximity_primary_estimate, and using $R - rho = rho - r = (R - r) / 2$ we have that (recognizing $logp r, logp rho < logp R$)
   $
     m(r, (f')/f) & <= logp rho + 3 logp 2 / (R - r) + logp T(rho, f) + logp logp abs(1 / c) + logp 1 / r \
                  & quad "" + logp r + 1 / 2 + 5 log 2 + 3 logp R + 3 logp 2 / (R - r) \
@@ -194,7 +194,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
                  & <= 5 logp R + 17 log 2 + 6 logp 1 / (R - r) + 4 logp T(R, f) \
                  & quad""+ 4 logp logp abs(1 / c) + logp 1 / r + 1 / 2,
   $
-  since $T(rho, f) <= T(R, f)$ (@thm:nevanlinna_characteristic_nondecreasing_convex). This proves the proposition.
+  since $T(rho, f) <= T(R, f)$ (@thm:nevanlinna-characteristic-non-decreasing-convex). This proves the proposition.
 ]
 
 #lbl(
@@ -205,37 +205,37 @@ Modern results vastly improve said estimations, and the search for a sharp estim
         $
           T(r + frac(1, T(r))) < 2 T(r)
         $,
-        <eq:nevanlinna_borel_infinite_radius>,
+        <eq:nevanlinna-borel-infinite-radius>,
       )
     + If $R_0 < oo$, then $exists E_0 subset.eq [r_0, R_0)$ satisfying $integral_(E_0) dr / (R_0 - r) <= 2$ such that for $r in [r_0, R_0) without E_0$,
       #lbl(
         $
           T(r + frac(R_0 - r, ee T(r))) < 2 T(r)
         $,
-        <eq:nevanlinna_borel_finiteradius>,
+        <eq:nevanlinna-borel-finite-radius>,
       )
       Moreover, for any $R, rho, rho' in (0, R_0)$ such that $R - rho' < ee^(-2) (R - rho)$ (implying that $rho < rho'$), $exists r in (rho, rho')$ such that $r in.not E_0$.
   ],
-  <lem:nevanlinna_borel>,
+  <lem:nevanlinna-borel>,
 )
 
 #proof[
   We observe the two cases separately.
   + Assume $R_0 = oo$. Then define $r'_0 = r_0 + 1 / T(r_0)$, and
     $
-      r_1 = inf{r > r'_0 : #[@eq:nevanlinna_borel_infinite_radius fails]}, quad r'_1 = r_1 + 1 / T(r_1) > r_1,
+      r_1 = inf{r > r'_0 : #[@eq:nevanlinna-borel-infinite-radius fails]}, quad r'_1 = r_1 + 1 / T(r_1) > r_1,
     $
     and let
     $
-      r_2 = inf{r > r'_1 : #[@eq:nevanlinna_borel_infinite_radius fails]}, quad r'_2 = r_2 + 1 / T(r_2) > r_2,
+      r_2 = inf{r > r'_1 : #[@eq:nevanlinna-borel-infinite-radius fails]}, quad r'_2 = r_2 + 1 / T(r_2) > r_2,
     $
     repeating this process recursively by
     $
-      r_n = inf{r > r'_(n - 1) : #[@eq:nevanlinna_borel_infinite_radius fails]}, quad r'_n = r_n + 1 / T(r_n) > r_n.
+      r_n = inf{r > r'_(n - 1) : #[@eq:nevanlinna-borel-infinite-radius fails]}, quad r'_n = r_n + 1 / T(r_n) > r_n.
     $
     It follows that $r_n >= r'_(n - 1) > r_(n - 1)$, and $r_n - r_(n - 1) >= r'_(n - 1) - r_(n - 1)$.
 
-    Let $N in NN union {oo}$ be the largest $n$ for which the infimum in $r_n$ is defined. Observe that by the definition of the infimum, for each $n$, @eq:nevanlinna_borel_infinite_radius must be satisfied throughout each $(r'_(n - 1), r_n)$. Indeed, if there exists some value within this interval for which @eq:nevanlinna_borel_infinite_radius fails, then $r_n$, which was defined by an infimum, would then be at most this new value, contradicting the assertion that it lay within the interval. It follows that the exceptional set must lie outside of the disjoint union; in other words,
+    Let $N in NN union {oo}$ be the largest $n$ for which the infimum in $r_n$ is defined. Observe that by the definition of the infimum, for each $n$, @eq:nevanlinna-borel-infinite-radius must be satisfied throughout each $(r'_(n - 1), r_n)$. Indeed, if there exists some value within this interval for which @eq:nevanlinna-borel-infinite-radius fails, then $r_n$, which was defined by an infimum, would then be at most this new value, contradicting the assertion that it lay within the interval. It follows that the exceptional set must lie outside of the disjoint union; in other words,
     $
       E_0 subset.eq RR_(>= r_0) without union.big_(n = 1)^N (r'_(n - 1), r_n) = union.big_(n = 0)^N [r_n, r'_n].
     $
@@ -263,7 +263,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     $
       integral_(E_0) dr / (R_0 - r) <= 2, quad T(R_0 - (R_0 - r) ee^(-1 / T(r))) < 2 T(r) quad forall r in.not E_0.
     $
-    We are left to bound the inequality to be in the form of @eq:nevanlinna_borel_finiteradius. For $x in (0, 1)$, $ ee^(-x) < 1 - (ee - 1) / ee x < 1 - x / ee, $
+    We are left to bound the inequality to be in the form of @eq:nevanlinna-borel-finite-radius. For $x in (0, 1)$, $ ee^(-x) < 1 - (ee - 1) / ee x < 1 - x / ee, $
     thus for $r$ within $[r_0, R_0)$ outside $E_0$, we have from $ee^(-1 / T(r)) < 1 - 1 / (ee T(r))$. Hence,
     $
       T(R_0 - (R_0 - r) ee^(-1 / T(r))) & >= T(R_0 - (R_0 - r) (1 - 1 / (ee T(r)))) \
@@ -283,7 +283,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     restate-keys: "thm:nevanlinna-second-fundamental-theorem-part-2",
   )[
     + If $R_0 = oo$ and $f$ has finite order, then
-      Let $f : D(0, R_0) -> extcomplex$ ($0 < R_0 <= oo$) be meromorphic and non-constant. Define $S(r, f)$ as in @eq:nevanlinna-second-fundamental-theorem-part-1_small_error_term. Then
+      Let $f : D(0, R_0) -> extcomplex$ ($0 < R_0 <= oo$) be meromorphic and non-constant. Define $S(r, f)$ as in @eq:nevanlinna-second-fundamental-theorem-part-1-small-error-term. Then
       $
         S(r, f) = Order(log T(r, f)) + Order(log r) #tag[$(dagger)$]
       $
@@ -315,7 +315,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     $,
     <eq:nevanlinna-second-fundamental-theorem-part-2_intermediate>,
   )
-  by @prop:nevanlinna_characteristic_properties (product-subadditivity), @thm:nevanlinna_first_fundamental_theorem (first fundamental theorem). In the first case, where $R_0 = oo$, by @prop:nevanlinna_log_diff_proximity_estimate with $R = 2r$,
+  by @prop:nevanlinna-characteristic-properties (product-subadditivity), @thm:nevanlinna-first-fundamental-theorem (first fundamental theorem). In the first case, where $R_0 = oo$, by @prop:nevanlinna-log-diff-proximity-estimate with $R = 2r$,
   $
                      m(r, (f')/f) & < 4 logp T(R, f) + Order(1) + 5 logp(2r) \
                                   & = Order(logp T(2r, f)) + Order(logp r). \
@@ -328,12 +328,12 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   $
   Then $S(r, f) = Order(log r)$, clearly satisfying $(dagger)$.
 
-  Now assume $f$ is not necessarily of finite order and $R_0 = oo$. Then by @prop:nevanlinna_log_diff_proximity_estimate with $R = r + 1 / T(r)$,
+  Now assume $f$ is not necessarily of finite order and $R_0 = oo$. Then by @prop:nevanlinna-log-diff-proximity-estimate with $R = r + 1 / T(r)$,
   $
     m(r, (f')/f) < Order(logp T(r + 1 / T(r, f), f)) + Order(1) + Order(logp r) \
     m(r, frac(phi.alt', phi.alt)) < Order(logp T(r + 1 / T(r, phi.alt), phi.alt)) + Order(1) + Order(logp r)
   $
-  By @lem:nevanlinna_borel, there exist some exceptional sets $E_1, E_2$ each of linear measure not exceeding 2 such that for $r in.not E_1 union E_2$,
+  By @lem:nevanlinna-borel, there exist some exceptional sets $E_1, E_2$ each of linear measure not exceeding 2 such that for $r in.not E_1 union E_2$,
   $
     logp T(r + 1 / T(r, f), f) <= logp T(r, f) + Order(1) \ logp T(r + 1 / T(r, phi.alt), phi.alt) <= logp T(r, phi.alt) + Order(1)
   $
@@ -341,7 +341,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
   $
     S(r, f) = Order(logp T(r, f)) + Order(logp r).
   $
-  Lastly, assume that $R_0 < oo$. Now apply @prop:nevanlinna_log_diff_proximity_estimate with $R = r + (R_0 - r) / (ee T(r, f))$ and $R = r + (R_0 - r) / (ee T(r, phi.alt))$, so that for $r$ outside some exceptional set satisfying $integral_E dr / (R_0 - r) <= 4 < oo$, by @lem:nevanlinna_borel,
+  Lastly, assume that $R_0 < oo$. Now apply @prop:nevanlinna-log-diff-proximity-estimate with $R = r + (R_0 - r) / (ee T(r, f))$ and $R = r + (R_0 - r) / (ee T(r, phi.alt))$, so that for $r$ outside some exceptional set satisfying $integral_E dr / (R_0 - r) <= 4 < oo$, by @lem:nevanlinna-borel,
   $
     m(r, (f')/f) & < Order(logp T(r + (R_0 - r) / (ee T(r, f)), f)) + Order(1) \
                  & quad "" + Order(logp(r + (R_0 - r) / (ee T(r, f)))) + Order(logp (ee T(r, f)) / (R_0 - r)), \
@@ -378,11 +378,11 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     T(r, g) = m(r, g) <= logp M(r, g) = Order(log r),
   $
   then
-  $ log M(r, h) <= 3 T(2r, h) = Order(log r). #tag[(by @thm:nevanlinna_entire_function_maximum_modulus_sandwich with $R = 2r$)] $ Then
+  $ log M(r, h) <= 3 T(2r, h) = Order(log r). #tag[(by @thm:nevanlinna-entire-function-maximum-modulus-sandwich with $R = 2r$)] $ Then
   $
     M(r, h) <= a r^b + c quad forall r>0,
   $
-  where $a, b, c$ are constants. Thus the growth of $h$ may not exceed that of a polynomial. By Cauchy's Estimate (@thm:cauchys_estimate), for any natural number $n$ and positive $r$,
+  where $a, b, c$ are constants. Thus the growth of $h$ may not exceed that of a polynomial. By Cauchy's Estimate (@thm:cauchys-estimate), for any natural number $n$ and positive $r$,
   $
     abs(h^((n)) (0)) <= (n!(a r^b + c)) / r^n = Order(r^(b-n)).
   $

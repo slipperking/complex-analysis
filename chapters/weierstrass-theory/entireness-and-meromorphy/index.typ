@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Entireness and Meromorphy],
-  route: "entireness_meromorphy",
+  route: "entireness-and-meromorphy",
 )
 We have previously defined the concept of an entire function in the chapter on complex differentiation. Let $f$ be entire with the unique Taylor expansion $sum_(n = 0)^oo c_n z^n$. Since $z = oo$ is an isolated singularity, by the uniqueness of the Laurent expansion, the expansion at $z = 0$ has the same form as the expansion at $z = oo$. We will now analyze the implications on the entire function $f$ given an isolated singularity.
 
@@ -15,7 +15,7 @@ We have previously defined the concept of an entire function in the chapter on c
   )
 
   #proof[
-    Let $z = 1 / zeta$, and let $g(zeta) = f(1 / (zeta))$, which has a removable singularity at $zeta = 0$. By @thm:riemannremovablesingularities, $g$ can be analytically continued to all of $CC$, especially at $zeta = 0$. Let $w = g(0)$. Then, $forall epsilon > 0$, $exists delta > 0$ such that $forall zeta in D(0, delta)$, $abs(g(zeta) - w) < epsilon$. It follows that $forall abs(z) > 1 / delta$, $abs(f(z)) < abs(w) + epsilon$, and is bounded. For the complement, $forall z in overline(D(0, 1 / delta))$, $f(z)$ is continuous on a compact set, and by @thm:continuous-function-bounded-on-compact, is also bounded.
+    Let $z = 1 / zeta$, and let $g(zeta) = f(1 / (zeta))$, which has a removable singularity at $zeta = 0$. By @thm:riemann-removable-singularities, $g$ can be analytically continued to all of $CC$, especially at $zeta = 0$. Let $w = g(0)$. Then, $forall epsilon > 0$, $exists delta > 0$ such that $forall zeta in D(0, delta)$, $abs(g(zeta) - w) < epsilon$. It follows that $forall abs(z) > 1 / delta$, $abs(f(z)) < abs(w) + epsilon$, and is bounded. For the complement, $forall z in overline(D(0, 1 / delta))$, $f(z)$ is continuous on a compact set, and by @thm:continuous-function-bounded-on-compact, is also bounded.
 
     Then by Liouville's Theorem (@thm:liouville), $f$ is constant.
   ]
@@ -75,7 +75,7 @@ Conversely, we have:
   theorem[
     If $f(z)$ is meromorphic on $CC$ and has a pole or removable singularity at $z = oo$, then $f$ is a rational function.
   ],
-  <thm:rationalmeromorphicfunctions>,
+  <thm:rational-meromorphic-functions>,
 )
 
 #proof[
@@ -91,7 +91,7 @@ Conversely, we have:
   $
   which is a polynomial (identically zero if degree is $0$).
 
-  Next, observe that $f$ has only finitely many poles in the closed disk $overline(D(0, R)) = {z : abs(z) <= R}$. Suppose otherwise. Then the set of poles in $overline(D(0, R))$ would be infinite. By Bolzano--Weierstrass (@thm:bolzanoweierstrass), this set would have an accumulation point in $overline(D(0, R))$. At such an accumulation point, $f$ would have a non-isolated singularity, a contradiction of the meromorphy of $f$ on $CC$.
+  Next, observe that $f$ has only finitely many poles in the closed disk $overline(D(0, R)) = {z : abs(z) <= R}$. Suppose otherwise. Then the set of poles in $overline(D(0, R))$ would be infinite. By Bolzano--Weierstrass (@thm:bolzano-weierstrass), this set would have an accumulation point in $overline(D(0, R))$. At such an accumulation point, $f$ would have a non-isolated singularity, a contradiction of the meromorphy of $f$ on $CC$.
 
   Let $z_1, dots, z_n$ denote these finitely many poles in $overline(D(0, R))$. For each $k = 1, dots, n$, the Laurent expansion of $f$ at $z_k$ has principal part
   $

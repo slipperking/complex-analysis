@@ -31,10 +31,13 @@ $
 
 Using these formulations, we now have
 
-#theorem[Deficiency Relation][
-  Suppose $f: D(0, R_0) -> extcomplex$ ($0 < R_0 <= oo$) is meromorphic and admissible. Then $S = {a in extcomplex : Theta(a, f) > 0}$ is a countable set and
-  $ sum_(a in S) [delta(a, f) + theta(a, f)] <= sum_(a in S) Theta(a, f) <= 2. $
-] <thm:deficiency-relation>
+#lbl(
+  theorem[Deficiency Relation][
+    Suppose $f: D(0, R_0) -> extcomplex$ ($0 < R_0 <= oo$) is meromorphic and admissible. Then $S = {a in extcomplex : Theta(a, f) > 0}$ is a countable set and
+    $ sum_(a in S) [delta(a, f) + theta(a, f)] <= sum_(a in S) Theta(a, f) <= 2. $
+  ],
+  <thm:deficiency-relation>,
+)
 
 #proof[
   For any $q$ numbers ${a_nu}_(nu = 1)^q subset CC$,

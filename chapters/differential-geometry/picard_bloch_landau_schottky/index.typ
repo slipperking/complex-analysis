@@ -10,16 +10,16 @@ Recall the Casorati--Weierstrass Theorem, one of the earliest results on the val
 We will now prove a more advanced characterization of this distribution by methods of differential geometry.
 
 #lbl(
-  theorem([Picard's Great Theorem], restate: true, restate-keys: ("thm:greatpicard",))[
+  theorem([Picard's Great Theorem], restate: true, restate-keys: ("thm:great-picard",))[
     Suppose $f$ is holomorphic on a punctured neighborhood $D^*(z_0, delta)$ of $z_0$. If $z_0$ is an essential singularity of $f$, then $f(D^*(z_0, delta))$ omits at most one value of $CC$.
   ],
-  <thm:greatpicard>,
+  <thm:great-picard>,
 )
 
 #proof[
   Without loss of generality, assume $z_0 = 0$ and that $f$ omits the values $0$ and $1$ (otherwise, consider $z |-> (1)/(beta - alpha) (f(z + z_0) - alpha)$, where $alpha$ and $beta$ are the omitted values). Define the family
   $ cal(F) = {z |-> f(z / n): n in NN} $
-  of holomorphic functions on $D^*(0, delta)$. Since $f$ omits $0$ and $1$, each element of $cal(F)$ does as well. By the Fundamental Normality Test (@thm:fundamentalnormalitytest), $cal(F)$ is spherically normal. Thus, there exists a subsequence ${f_(n_k)}_(k in NN) subset.eq cal(F)$ that converges locally uniformly on $D^*(0, delta)$ in the spherical metric. By @prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniformlimit, this subsequence converges locally uniformly either to a holomorphic function on $D^*(0, delta)$ or to $oo$ thereon.
+  of holomorphic functions on $D^*(0, delta)$. Since $f$ omits $0$ and $1$, each element of $cal(F)$ does as well. By the Fundamental Normality Test (@thm:fundamentalnormalitytest), $cal(F)$ is spherically normal. Thus, there exists a subsequence ${f_(n_k)}_(k in NN) subset.eq cal(F)$ that converges locally uniformly on $D^*(0, delta)$ in the spherical metric. By @prop:locallyuniformlysphericallyconvergentholomorphicsequenceuniform-limit, this subsequence converges locally uniformly either to a holomorphic function on $D^*(0, delta)$ or to $oo$ thereon.
 
   1. Suppose ${f_(n_k)}_(k in NN)$ converges locally uniformly to a holomorphic function on $D^*(0, delta)$. Then ${f_(n_k)}_(k in NN)$ is uniformly bounded on $partial D(0, delta / 2)$. Hence, there exists $M > 0$ such that
     $ abs(f(z / (n_k))) = abs(f_(n_k) (z)) < M quad forall z in partial D(0, delta / 2), k in NN. $
@@ -27,7 +27,7 @@ We will now prove a more advanced characterization of this distribution by metho
     $
       union.big_(k in NN) overline(D(0, delta / (2 n_k))) without D(0, delta / (2 n_(k + 1))) = overline(D(0, delta / (2 n_1))) without {0},
     $
-    it follows that $f$ is bounded on $D^*(0, delta / 2)$. By Riemann's Removable Singularity Theorem (@thm:riemannremovablesingularities), $f$ therefore extends holomorphically to $0$.
+    it follows that $f$ is bounded on $D^*(0, delta / 2)$. By Riemann's Removable Singularity Theorem (@thm:riemann-removable-singularities), $f$ therefore extends holomorphically to $0$.
 
   2. Suppose ${f_(n_k)}_(k in NN)$ converges locally uniformly to $oo$ on $D^*(0, delta)$. Then, for every $epsilon > 0$, there exists $N in NN$ such that, for all $k > N$,
     $ abs((1)/(f(z / (n_k)))) = abs((1)/(f_(n_k) (z))) < epsilon quad forall z in partial D(0, delta / 2). $
@@ -44,7 +44,7 @@ We will now prove a more advanced characterization of this distribution by metho
   corollary[
     Suppose that $f$ is meromorphic on a punctured neighborhood $D^*(z_0, delta)$ of $z_0$. If $f(D^*(z_0, delta))$ omits at least three different values of $extcomplex$, then $f$ has a meromorphic continuation to $z_0$.
   ],
-  <cor:greatpicardmeromorphic>,
+  <cor:great-picardmeromorphic>,
 )
 
 #proof[
@@ -55,10 +55,10 @@ We will now prove a more advanced characterization of this distribution by metho
   An accumulation point of poles is an essential singularity on the Riemann sphere.
 ]
 
-Picard's Great Theorem is also a generalization of Picard's Little Theorem (@thm:littlepicard):
-#thm-state.thm-restate("thm:littlepicard", final: true)
+Picard's Great Theorem is also a generalization of Picard's Little Theorem (@thm:little-picard):
+#thm-state.thm-restate("thm:little-picard", final: true)
 #proof[
-  Let $g(z) = f(1 / z)$ with an isolated singularity at $0$ and a removable singularity at $oo$. By Picard's Great Theorem (@thm:greatpicard), $g(z)$ has a meromorphic extension to $z = 0$. If $z = 0$ is removable, by virtue of @prop:removable-singularity-at-infinity-entire-constant and @thm:liouville, the constancy of $g$ and $f$ follows.
+  Let $g(z) = f(1 / z)$ with an isolated singularity at $0$ and a removable singularity at $oo$. By Picard's Great Theorem (@thm:great-picard), $g(z)$ has a meromorphic extension to $z = 0$. If $z = 0$ is removable, by virtue of @prop:removable-singularity-at-infinity-entire-constant and @thm:liouville, the constancy of $g$ and $f$ follows.
 
   If instead $z = 0$ is a pole of $g$, then $z = oo$ is a pole of $f$, and hence $f$ is a polynomial. Assume, for the sake of contradiction that $f$ is non-constant. Then $forall w in CC$, the Fundamental Theorem of Algebra (@thm:fundamental-theorem-of-algebra) gives the existence of some $z in CC$ such that $f(z) = w$. Hence, $f$ attains every value $w in CC$. This contradicts the statement and hence $f$ is constant.
 ]

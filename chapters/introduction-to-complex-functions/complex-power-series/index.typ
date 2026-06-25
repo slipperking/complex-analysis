@@ -1,11 +1,11 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Complex Power Series],
-  route: "complex_power_series",
+  route: "complex-power-series",
 )
 Power series in real analysis can be generalized into complex series. Particularly, concepts such as uniform convergence are analogous to those in real analysis:
 
-#definition("Uniform Convergence")[
+#definition[Uniform Convergence][
   For a set $U subset.eq CC$, a function sequence ${f_n (z)}$ _uniformly converges_ to a function $f(z)$ on $U$ iff $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $forall z in U$, $abs(f_n (z) - f(z)) < epsilon$.
 ]
 
@@ -22,7 +22,7 @@ Power series in real analysis can be generalized into complex series. Particular
   theorem[Cauchy Criterion][
     For a set $U subset.eq CC$, a function sequence ${f_n (z)}$ uniformly converges to a function $f(z)$ iff $forall epsilon > 0$, $exists N in NN$ such that $forall n, m > N$, $forall z in U$, $abs(f_n (z) - f_m (z)) < epsilon$.
   ],
-  <thm:cauchycriterionuniformconvergence>,
+  <thm:cauchy-criterion-uniform-convergence>,
 )
 
 #proof[
@@ -32,7 +32,7 @@ Power series in real analysis can be generalized into complex series. Particular
   Then,
   $ abs(f_m (z) - f_n (z)) <= abs(f_n (z) - f(z)) + abs(f_m (z) - f(z)) < epsilon. $
 
-  For the converse, refer to the analogous proof in @thm:cauchycriterionsequenceconvergence.
+  For the converse, refer to the analogous proof in @thm:cauchy-criterion-sequence-convergence.
 ]
 
 Function series are defined to be a sequence formed by the partial sums of function sequences. There are many ways to verify the uniform convergence of a function series. Perhaps the most widely known is the Weierstrass $M$-Test.
@@ -43,7 +43,7 @@ Function series are defined to be a sequence formed by the partial sums of funct
 
     If $exists {M_n} subset RR_(>= 0)$ such that $forall n in NN$, $forall z in U$, $abs(f_n (z)) <= M_n$ and the series $sum_(n = 1)^oo M_n$ converges, then the series $sum_(n = 1)^oo f_n (z)$ converges uniformly and absolutely on $U$.
   ],
-  <thm:weierstrassmtest>,
+  <thm:weierstrass-m-test>,
 )
 
 #proof[
@@ -54,7 +54,7 @@ Function series are defined to be a sequence formed by the partial sums of funct
   $
     abs(f_m (z) + f_(m - 1)(z) + dots.c + f_(n + 1)(z)) <= abs(M_m + M_(m - 1) + dots.c + M_(n + 1)) < epsilon,
   $
-  and the result follows from @thm:cauchycriterionuniformconvergence.
+  and the result follows from @thm:cauchy-criterion-uniform-convergence.
 ]
 
 The concept of uniform convergence is generalized to improper integrals with parameters, and the same theorems from series have a corresponding counterpart.
@@ -69,11 +69,11 @@ Let $D(a, r) = B^1(a, r) = {z in CC : abs(z - a) < r}$ denote the _open disk_ ce
   theorem[Abel's Theorem][
     For a power series $f(z) = sum_(n = 0)^oo a_n z^n$, there exists a constant $R in RR_(>= 0) union {oo}$, known as the _radius of convergence_ such that:
 
-    1. $f$ absolutely converges on $D(0, R)$, and $forall 0 <= rho < R$, uniformly converges on $overline(D(0, rho))$. #enum-lbl(<itm:abels_theorem_radius_convergence>)
-    2. $f(z)$ diverges when $abs(z) > R$. #enum-lbl(<itm:abels_theorem_radius_divergence>)
-    3. $f$ is holomorphic over $D(0, R)$ and $f'(z)$ can be obtained by termwise differentiation, or $f'(z) = sum_(n = 1)^oo n a_n z^(n - 1)$, which also has a convergence radius of $R$. #enum-lbl(<itm:abels_theorem_radius_differentiation>)
+    1. $f$ absolutely converges on $D(0, R)$, and $forall 0 <= rho < R$, uniformly converges on $overline(D(0, rho))$. #enum-lbl(<itm:abels-theorem-radius_convergence>)
+    2. $f(z)$ diverges when $abs(z) > R$. #enum-lbl(<itm:abels-theorem-radius_divergence>)
+    3. $f$ is holomorphic over $D(0, R)$ and $f'(z)$ can be obtained by termwise differentiation, or $f'(z) = sum_(n = 1)^oo n a_n z^(n - 1)$, which also has a convergence radius of $R$. #enum-lbl(<itm:abels-theorem-radius_differentiation>)
   ],
-  <thm:abels_theorem_radius>,
+  <thm:abels-theorem-radius>,
 )
 
 The disk $abs(z) < R$ is known as the _disk of convergence_, a direct generalization of the _interval of convergence_ for real series. There are many ways to determine the radius of convergence:
@@ -88,18 +88,18 @@ The disk $abs(z) < R$ is known as the _disk of convergence_, a direct generaliza
 
 Of course, a convergence radius of $0$ implies that the series is divergent everywhere except for possibly at $0$, and a convergence radius of $oo$ means that the series absolutely converges everywhere.
 
-#proof[of @thm:abels_theorem_radius and @thm:cauchy_hadamard][
-  We will prove that the value in @eq:cauchy_hadamard satisfies the criteria in @thm:abels_theorem_radius.
+#proof[of @thm:abels-theorem-radius and @thm:cauchy_hadamard][
+  We will prove that the value in @eq:cauchy_hadamard satisfies the criteria in @thm:abels-theorem-radius.
 
   Assume $abs(z) < R$. Then $forall rho in (abs(z), R)$, and consequently, $1 / rho > 1 / R$. By @def:limsup and @eq:cauchy_hadamard, $exists N in NN$ such that $forall n > N$, $root(n, abs(a_n)) < 1 / rho$ and $abs(a_n) < 1 / rho^n$. It follows that $abs(a_n z^n) < abs(z)^n / rho^n < 1$ for all $n > N$. Then $sum_(n = 0)^oo abs(a_n z^n)$ converges.
 
-  Let $rho' in (rho, R)$. Similarly, $exists N' in NN$ such that $forall n > N'$, $root(n, abs(a_n)) < 1 / rho'$, and $abs(a_n) < 1 / rho'^n$. Then $abs(a_n z^n) < abs(a_n rho^n) < rho^n / rho'^n$. By the Weierstrass $M$-Test (@thm:weierstrassmtest), $sum_(n = 0)^oo abs(a_n z^n)$ is uniformly bounded for $n > N'$ by the convergent series $sum_(n = 0)^oo a_n rho^n$, and thus uniformly converges on $abs(z) < rho$. This proves @itm:abels_theorem_radius_convergence.
+  Let $rho' in (rho, R)$. Similarly, $exists N' in NN$ such that $forall n > N'$, $root(n, abs(a_n)) < 1 / rho'$, and $abs(a_n) < 1 / rho'^n$. Then $abs(a_n z^n) < abs(a_n rho^n) < rho^n / rho'^n$. By the Weierstrass $M$-Test (@thm:weierstrass-m-test), $sum_(n = 0)^oo abs(a_n z^n)$ is uniformly bounded for $n > N'$ by the convergent series $sum_(n = 0)^oo a_n rho^n$, and thus uniformly converges on $abs(z) < rho$. This proves @itm:abels-theorem-radius_convergence.
 
   Assume that $abs(z) > R$. For all $rho in (R, abs(z))$, $1 / rho < 1 / R$. By @def:limsup, $forall N in NN$, $exists n_N > N$ such that $root(n_N, abs(a_(n_N))) > 1 / rho$. It follows that $abs(a_(n_N) z^(n_N)) > abs(z^(n_N)) / rho^(n_N) > 1$. Since $forall N in NN$,
   $ abs(sum_(k = 0)^(n_N) a_k z^k - sum_(k = 0)^(n_N - 1) a_k z^k) > 1, $
-  by the Cauchy Criterion (@thm:cauchycriterionsequenceconvergence), $sum_(n = 0)^oo a_n z^n$ is divergent. Thus, @itm:abels_theorem_radius_divergence is satisfied.
+  by the Cauchy Criterion (@thm:cauchy-criterion-sequence-convergence), $sum_(n = 0)^oo a_n z^n$ is divergent. Thus, @itm:abels-theorem-radius_divergence is satisfied.
 
-  To prove @itm:abels_theorem_radius_differentiation, first observe that $sum_(n = 1)^oo n a_n z^n$ and $sum_(n = 1)^oo a_n z^n$ have the same convergence radius since $limsup_(n -> oo) root(n, n) = 1$. For $z in D(0, R)$, let $f(z) = S_n (z) + R_n (z)$, where
+  To prove @itm:abels-theorem-radius_differentiation, first observe that $sum_(n = 1)^oo n a_n z^n$ and $sum_(n = 1)^oo a_n z^n$ have the same convergence radius since $limsup_(n -> oo) root(n, n) = 1$. For $z in D(0, R)$, let $f(z) = S_n (z) + R_n (z)$, where
   $ S_n (z) = sum_(k = 0)^(n - 1) a_k z^k, quad R_n (z) = sum_(k = n)^oo a_k z^k. $
 
   Let
@@ -114,7 +114,7 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
       (f(z) - f(z_0)) / (z - z_0) - f_1 (z) & = [(S_n (z) - S_n (z_0)) / (z - z_0) - S'_n (z)] \
                                             & quad ""+ S'_n (z) - f_1 (z) + (R_n (z) - R_n (z_0)) / (z - z_0).
     $,
-    <eq:abels_theorem_radius_differentiation_intermediate>,
+    <eq:abels-theorem-radius_differentiation_intermediate>,
   )
 
   Since $S'_n (z) -> f_1 (z)$ as $n -> oo$, it follows that $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $abs(S'_n (z) - f_1 (z)) < epsilon / 3$. Since
@@ -130,9 +130,9 @@ Of course, a convergence radius of $0$ implies that the series is divergent ever
   Finally, for a fixed $n > max(N, N')$, $exists delta > 0$ such that $forall z in D(z_0, delta) without {z_0}$,
   $ abs((S_n (z) - S_n (z_0)) / (z - z_0) - S'_n (z)) < epsilon / 3. $
 
-  From @eq:abels_theorem_radius_differentiation_intermediate, we get
+  From @eq:abels-theorem-radius_differentiation_intermediate, we get
   $ abs((f(z) - f(z_0)) / (z - z_0) - f_1 (z)) < epsilon, $
-  confirming @itm:abels_theorem_radius_differentiation.
+  confirming @itm:abels-theorem-radius_differentiation.
 ]
 
 Obviously, a substitution of $z = zeta - a$ where $a in CC$ translates the disk of convergence to $D(a, R)$. The subsequent results on uniform convergence hold for complex functions:
@@ -141,7 +141,7 @@ Obviously, a substitution of $z = zeta - a$ where $a in CC$ translates the disk 
   theorem[Uniform Limit][
     Let ${f_n (z)}_n$ be a sequence of continuous functions on $U subset.eq CC$ and uniformly convergent to $f(z)$. Then $f(z)$ is continuous on $U$.
   ],
-  <thm:uniformlimit>,
+  <thm:uniform-limit>,
 )
 
 #proof[

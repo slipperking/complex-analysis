@@ -277,7 +277,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
     integral_(-sqrt(lambda))^(sqrt(lambda)) ((sin t) / t)^2 a (x + (2 sqrt(lambda) - t) / lambda) dt < uppi (c + 1)
   $
-  Since $ee^u a(u) = f(u)$ (for $u = x + (2 sqrt(lambda) - t) / lambda > 0$) is nondecreasing in $u$, it is bounded below by $f(x + sqrt(lambda) / lambda) > f(x)$. Thus, we have
+  Since $ee^u a(u) = f(u)$ (for $u = x + (2 sqrt(lambda) - t) / lambda > 0$) is non-decreasing in $u$, it is bounded below by $f(x + sqrt(lambda) / lambda) > f(x)$. Thus, we have
   $
     integral_(-sqrt(lambda))^(sqrt(lambda)) ((sin t) / t)^2 exp((t - 2 sqrt(lambda)) / lambda - x) f(x) dt < uppi (c + 1),
   $

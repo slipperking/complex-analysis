@@ -128,7 +128,7 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
     $,
     <eq:weierstrass_p_functionconvergence_intermediateseries>,
   )
-  is termwise bounded by a series $sum_(omega in Lambda, omega in.not overline(D(0, 2 R))) (10 R) / omega^3$, which is convergent by @prop:weierstrass_p_function_intermediate_series_convergence. Weierstrass $M$--Test (@thm:weierstrassmtest) gives the uniform convergence of @eq:weierstrass_p_functionconvergence_intermediateseries on $D(0, R)$. Since we have omitted only finitely many terms, @eq:weierstrass_p_function_intermediate_series_convergence_statement converges uniformly on $D(0, R) without Lambda$.
+  is termwise bounded by a series $sum_(omega in Lambda, omega in.not overline(D(0, 2 R))) (10 R) / omega^3$, which is convergent by @prop:weierstrass_p_function_intermediate_series_convergence. Weierstrass $M$--Test (@thm:weierstrass-m-test) gives the uniform convergence of @eq:weierstrass_p_functionconvergence_intermediateseries on $D(0, R)$. Since we have omitted only finitely many terms, @eq:weierstrass_p_function_intermediate_series_convergence_statement converges uniformly on $D(0, R) without Lambda$.
 
   Let $K subset CC without Lambda$ be compact and arbitrary. By boundedness, $exists R > 0$ such that $K subset D(0, R) without Lambda$, on which it uniformly converges.
 ]
@@ -143,7 +143,7 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
   )
 ] <def:weierstrass_p_function>
 
-By @prop:weierstrass_p_functionconvergence, @thm:weierstrass_convergence, $wp$ is well-defined and meromorphic on $CC$. By @thm:weierstrass_convergence, we can use termwise differentiation to get
+By @prop:weierstrass_p_functionconvergence, @thm:weierstrass-convergence, $wp$ is well-defined and meromorphic on $CC$. By @thm:weierstrass-convergence, we can use termwise differentiation to get
 $
   wp'(z) = -2 / z^3 - sum_(omega in Lambda without {0}) 2 / (z - omega)^3 = -2 sum_(omega in Lambda) 1 / (z - omega)^3,
 $
@@ -159,7 +159,7 @@ At $z = -(omega_1) / 2, -(omega_2) / 2$, we have
 $
   wp(-(omega_1) / 2) + c_1 = wp(omega_1 / 2), quad wp(-(omega_2) / 2) + c_2 = wp(omega_2 / 2)
 $
-By evenness of $wp$, we must have $c_1 = c_2 = 0$. Therefore, $wp$ is also an elliptic function with period lattice $Lambda$. Moreover, each isolated singularity $omega in Lambda$ is a pole of order two with residue $0$ (by @prop:ellipticfunctionresiduesum). The quotient group $CC \/ Lambda$, may be represented by a fundamental parallelogram $P$ of $Lambda$ with vertices at $0$, $omega_1$, $omega_2$, and $omega_1 + omega_2$, which by identification, are homeomorphic to a single point on the torus.
+By evenness of $wp$, we must have $c_1 = c_2 = 0$. Therefore, $wp$ is also an elliptic function with period lattice $Lambda$. Moreover, each isolated singularity $omega in Lambda$ is a pole of order two with residue $0$ (by @prop:elliptic-function-residue-sum). The quotient group $CC \/ Lambda$, may be represented by a fundamental parallelogram $P$ of $Lambda$ with vertices at $0$, $omega_1$, $omega_2$, and $omega_1 + omega_2$, which by identification, are homeomorphic to a single point on the torus.
 
 #proposition[
   At $z = 0$, $wp$ has a double pole with Laurent expansion
@@ -187,7 +187,7 @@ By evenness of $wp$, we must have $c_1 = c_2 = 0$. Therefore, $wp$ is also an el
   which for $abs(omega) > 2 R$ (which comprises all $omega$ except for finitely many) is bounded by $sum_(omega in Lambda, abs(omega) > 2 R) (10 R) / abs(omega)^3$ (estimates derived in the proof of @prop:weierstrass_p_functionconvergence), which is convergent by @prop:weierstrass_p_function_intermediate_series_convergence. Hence, the series converges absolutely for $abs(z) < R$ and the summation exchange (and the Cauchy product) is valid. By the symmetry of the period lattice, it is trivial that $c_(2 m + 1) = 0$ for all $m in NN$. Hence, the assertion follows.
 ]
 
-Termwise differentiation (provided by @thm:weierstrass_convergence) now gives
+Termwise differentiation (provided by @thm:weierstrass-convergence) now gives
 $
   wp'(z) = -2 / z^3 + sum_(n=1)^oo 2 n c_(2 n) z^(2 n - 1).
 $

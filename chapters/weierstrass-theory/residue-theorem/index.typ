@@ -33,7 +33,7 @@ By the definition of a Taylor series, we find that
   $
     c_(-1) = Res_(z=a) f(z) = 1 / ((m-1)!) lim_(z -> a) dif^(m-1) / (dif z^(m-1)) [(z-a)^m f(z)].
   $,
-  <eq:residueatpole>,
+  <eq:residue-at-pole>,
 )
 Let $z = infinity$ be an isolated singularity of $f(z)$, which is holomorphic in $CC without overline(D(0, R))$, for sufficiently large finite $R$. Then for finite $rho > R$, the residue at $z = infinity$ is _defined_ as (notice the orientation)
 $ Res_(z=infinity) f(z) = 1 / taui integral.cont.cw_(partial D(0, rho)) f(z) dz. $
@@ -47,10 +47,13 @@ In this definition, if
 $ f(z) = sum_(n=-infinity)^infinity c_n z^n <==> (f(1 \/ zeta)) / zeta^2 = sum_(n=-infinity)^infinity c_n zeta^(-n-2), $
 the residue at $z = infinity$ is equal to $-c_(-1)$. We will later explain the reasoning behind this definition.
 
-#theorem[Residue Theorem][
-  Let $U subset CC$ be an open set with a simple closed boundary curve $partial U$. Suppose ${z_n} subset U$ is a finite set and $f(z)$ is holomorphic on $U without {z_n}$ and continuous on $overline(U) without {z_n}$. Then,
-  $ integral.cont_(partial U) f(z) dz = 2 uppi ii sum_(k=1)^n Res_(z=z_k) f(z) $
-]<thm:residuethm>
+#lbl(
+  theorem[Residue Theorem][
+    Let $U subset CC$ be an open set with a simple closed boundary curve $partial U$. Suppose ${z_n} subset U$ is a finite set and $f(z)$ is holomorphic on $U without {z_n}$ and continuous on $overline(U) without {z_n}$. Then,
+    $ integral.cont_(partial U) f(z) dz = 2 uppi ii sum_(k=1)^n Res_(z=z_k) f(z) $
+  ],
+  <thm:residue-theorem>,
+)
 
 #proof[
   Since $U$ is open, there exists a small disk centered at each isolated singularity $z_k$ of radii $delta_k$. By the Cauchy--Goursat Theorem (@thm:cauchy-goursat-theorem), we get that
@@ -60,15 +63,18 @@ the residue at $z = infinity$ is equal to $-c_(-1)$. We will later explain the r
 
 This result itself is fairly trivial. Now we will explain the significance of the residue at infinity.
 
-#theorem("Global Residue Theorem")[
-  If ${z_1, dots z_n, infinity}$ is discrete and finite, and $f : extcomplex without {z_1, dots z_n, infinity} -> CC$ is holomorphic, and these points are the isolated singularities of $f$, then the sum of the residues at each of these isolated singularities is zero, or
-  $ sum_(k=1)^n Res_(z=z_k) f(z) + Res_(z=infinity) f(z) = 0. $
-]<thm:globalresiduethm>
+#lbl(
+  theorem[Global Residue Theorem][
+    If ${z_1, dots z_n, infinity}$ is discrete and finite, and $f : extcomplex without {z_1, dots z_n, infinity} -> CC$ is holomorphic, and these points are the isolated singularities of $f$, then the sum of the residues at each of these isolated singularities is zero, or
+    $ sum_(k=1)^n Res_(z=z_k) f(z) + Res_(z=infinity) f(z) = 0. $
+  ],
+  <thm:global-residue-theorem>,
+)
 
 #proof[
-  Let $R > max_(j in NN_(<= n)) abs(z_n)$ be arbitrary. By the Residue Theorem (@thm:residuethm),
+  Let $R > max_(j in NN_(<= n)) abs(z_n)$ be arbitrary. By the Residue Theorem (@thm:residue-theorem),
   $ -Res_(z=infinity) f(z) = 1 / taui integral.cont_(partial D(0,R)) f(z) dz = sum_(k=1)^n Res_(z=z_k) f(z) $
-  as desired. This is merely a restatement of @thm:residuethm.
+  as desired. This is merely a restatement of @thm:residue-theorem.
 ]
 
 There is not a directly trivial reason for the definition of the residue at $infinity$, except for the fact that it seemingly "unifies" the Riemann sphere.
@@ -184,11 +190,11 @@ There is not a directly trivial reason for the definition of the residue at $inf
       },
       caption: [The orientation of a neighborhood that does not enclose $infinity$ after projection.],
     ),
-    <fig:stereographicprojectionofneighborhood>,
+    <fig:stereographic-projection-of-neighborhood>,
   )
 ])
 
-However, if we take a neighborhood of an arbitrary point in $CC$ on the Riemann sphere and traverse its boundary clockwise (from the perspective of outside the sphere), its projection onto $CC$ will be counterclockwise (@fig:stereographicprojectionofneighborhood). However, the boundary of a neighborhood of $infinity$ in $S^2$ will have a clockwise projection (hence the difference in orientation). We define its equality with the residue of $-(f(1\/zeta)) / zeta^2$ at $zeta = 0$, rather than $f(1\/zeta)$, because we compose the differential form $f(z) dz$ with the inversion, as opposed to $f(z)$.
+However, if we take a neighborhood of an arbitrary point in $CC$ on the Riemann sphere and traverse its boundary clockwise (from the perspective of outside the sphere), its projection onto $CC$ will be counterclockwise (@fig:stereographic-projection-of-neighborhood). However, the boundary of a neighborhood of $infinity$ in $S^2$ will have a clockwise projection (hence the difference in orientation). We define its equality with the residue of $-(f(1\/zeta)) / zeta^2$ at $zeta = 0$, rather than $f(1\/zeta)$, because we compose the differential form $f(z) dz$ with the inversion, as opposed to $f(z)$.
 
 For any closed rectifiable curve $gamma subset U$ (here we are not bound under the assumption of simpleness), the Residue Theorem can be generalized into:
 $ integral.cont_gamma f(z) dz = 2 uppi ii sum_k Ind_gamma (z_k) Res_(z=z_k) f(z) $
@@ -200,7 +206,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   example[
     Evaluate the improper integral $I = integral_(-infinity)^infinity 1 / (x^2+1)^(n+1) dx$, where $n in NN$.
   ],
-  <ex:integral_1_x_2_1_n_1_dx>,
+  <ex:integral-1-x-2-1-n-1-dx>,
 )
 
 #figure-wrapper([
@@ -252,18 +258,18 @@ Residues are extremely important as they allow for simple evaluation of definite
       },
       caption: [A semicircular contour with orientation marked.],
     ),
-    <fig:semicircularcontour>,
+    <fig:semicircular-contour>,
   )
 ])
 
-#solution[to @ex:integral_1_x_2_1_n_1_dx][
-  Consider $gamma$ to be a closed semicircle with radius $R gt.eq 2$ as in @fig:semicircularcontour. Notice that the function $z |-> 1 / (z^2+1)^(n+1)$ has singularities at only $z = ii$ and $z = -ii$, both of which are poles of order $n+1$. By @eq:residueatpole, the residue at $z = ii$ is
+#solution[to @ex:integral-1-x-2-1-n-1-dx][
+  Consider $gamma$ to be a closed semicircle with radius $R gt.eq 2$ as in @fig:semicircular-contour. Notice that the function $z |-> 1 / (z^2+1)^(n+1)$ has singularities at only $z = ii$ and $z = -ii$, both of which are poles of order $n+1$. By @eq:residue-at-pole, the residue at $z = ii$ is
   $
     Res_(z=ii) 1 / (z^2+1)^(n+1)
     &= evaluated(1 / (n!) dv(, z, n) (z + ii)^(-n-1))_(z=ii) = 1 / (n!) ((-1)^n product_(k=1)^n (n+k)) / (2 ii)^(2n+1) \
     &= ((-1)^n (2n)!) / ((n!)^2 (2 ii)^(2n+1)) = ((2n)!) / (2^(2n+1) ii (n!)^2).
   $
-  The singularity at $z = -ii$ is not relevant, as it is not enclosed by the contour. By the Residue Theorem (@thm:residuethm), we have
+  The singularity at $z = -ii$ is not relevant, as it is not enclosed by the contour. By the Residue Theorem (@thm:residue-theorem), we have
   $
     integral.cont_gamma 1 / (z^2+1)^(n+1) dz
     &= integral_(-R)^R 1 / (x^2+1)^(n+1) dx + integral_0^uppi (R ii) / (R^2 ee^(2 ii theta) + 1)^(n+1) ee^(ii theta) dif theta \
@@ -283,7 +289,7 @@ Residues are extremely important as they allow for simple evaluation of definite
 
 #example[Dirichlet Integral][
   Evaluate the integral $integral_0^infinity (sin x) / x dx$.
-] <ex:dirichlet_integral>
+] <ex:dirichlet-integral>
 
 #figure-wrapper([
   #lbl(
@@ -333,13 +339,13 @@ Residues are extremely important as they allow for simple evaluation of definite
       },
       caption: [An indented semicircular contour with orientation marked.],
     ),
-    <fig:indentedsemicircularcontour>,
+    <fig:indented-semicircular-contour>,
   )
 ])
-#solution[to @ex:dirichlet_integral][
+#solution[to @ex:dirichlet-integral][
   It is common to use integration with parameters to approach this integral. However, we will now provide a solution via contour integration.
 
-  Let $f(z) = ee^(ii z) / z$. Consider a closed contour $gamma$ in the form of @fig:indentedsemicircularcontour, consisting of a semicircle of radius $R$ in $overline(HH^+)$ ($C_R$), a line segment from $-R$ to $-epsilon$, a smaller semicircle of radius $epsilon$ in the upper half-plane ($C_epsilon$), and a line segment from $epsilon$ to $R$.
+  Let $f(z) = ee^(ii z) / z$. Consider a closed contour $gamma$ in the form of @fig:indented-semicircular-contour, consisting of a semicircle of radius $R$ in $overline(HH^+)$ ($C_R$), a line segment from $-R$ to $-epsilon$, a smaller semicircle of radius $epsilon$ in the upper half-plane ($C_epsilon$), and a line segment from $epsilon$ to $R$.
 
   By the Cauchy--Goursat Theorem (@thm:cauchy-goursat-theorem), we have that
   $
@@ -423,7 +429,7 @@ Residues are extremely important as they allow for simple evaluation of definite
       },
       caption: [A wedge contour with orientation marked.],
     ),
-    <fig:wedgecontour>,
+    <fig:wedge-contour>,
   ),
 )
 #solution[to @ex:fresnel_integrals][
@@ -432,12 +438,12 @@ Residues are extremely important as they allow for simple evaluation of definite
     Gamma_1 = {x in RR : 0 <= x <= R}, quad Gamma_2 = {r ee^(ii uppi\/4) : 0 <= r <= R}, \
     C_R = {R ee^(ii theta) : 0 <= theta <= uppi/4}
   $
-  as in @fig:wedgecontour. By the Cauchy--Goursat Theorem (@thm:cauchy-goursat-theorem), we have that
+  as in @fig:wedge-contour. By the Cauchy--Goursat Theorem (@thm:cauchy-goursat-theorem), we have that
   #lbl(
     $
       integral_(Gamma_1) f(z) dz + integral_(Gamma_2) f(z) dz + integral_(C_R) f(z) dz = 0.
     $,
-    <eq:fresnelwedgecontourintegral>,
+    <eq:fresnel-wedge-contour-integral>,
   )
   The third integral can be written as
   $ integral_(C_R) f(z) dz = R ii integral_0^(uppi\/4) exp[ii (R ee^(ii theta))^2] ee^(ii theta) dif theta. $
@@ -451,7 +457,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
     lim_(R -> infinity) integral_(Gamma_2) f(z) dz = integral_infinity^0 exp[ii (r ee^(ii uppi\/4))^2] ee^(ii uppi\/4) dr = ee^(ii uppi\/4) integral_infinity^0 exp(-r^2) dr.
   $
-  From @eq:fresnelwedgecontourintegral, we have that
+  From @eq:fresnel-wedge-contour-integral, we have that
   $ integral_0^infinity ee^(ii r^2) dr = ee^(ii uppi\/4) integral_0^infinity ee^(-r^2) dr. $
   Since $integral_0^infinity ee^(-r^2) dr = sqrt(uppi)/2$, we have
   $ integral_0^infinity ee^(ii r^2) dr = (sqrt(2)/2 + ii sqrt(2)/2) sqrt(uppi)/2. $
@@ -467,11 +473,11 @@ Residues are extremely important as they allow for simple evaluation of definite
   example[
     Evaluate the integrals $integral_0^(2 uppi) Phi(cos theta, sin theta) dif theta$, where $Phi(xi, eta)$ is a rational function of $xi$ and $eta$ that is continuous on $theta in [0, 2 uppi]$.
   ],
-  <ex:integral_of_rational_function_of_trig>,
+  <ex:definite-integral-of-rational-function-of-trigonometric-functions>,
 )
 
-#solution[to @ex:integral_of_rational_function_of_trig][
-  Let $z = ee^(ii theta)$. Consequently, we have $cos theta = (z + z^(-1)) / 2$, $sin theta = (z - z^(-1)) / (2 ii)$, and $dz = ii ee^(ii theta) dif theta$, implying that $dif theta = dz / (ii z)$. Therefore, by the Residue Theorem (@thm:residuethm), letting $f(z) = 1 / (ii z) Phi((z + z^(-1)) / 2, (z - z^(-1)) / (2 ii))$, we have
+#solution[to @ex:definite-integral-of-rational-function-of-trigonometric-functions][
+  Let $z = ee^(ii theta)$. Consequently, we have $cos theta = (z + z^(-1)) / 2$, $sin theta = (z - z^(-1)) / (2 ii)$, and $dz = ii ee^(ii theta) dif theta$, implying that $dif theta = dz / (ii z)$. Therefore, by the Residue Theorem (@thm:residue-theorem), letting $f(z) = 1 / (ii z) Phi((z + z^(-1)) / 2, (z - z^(-1)) / (2 ii))$, we have
   $
     integral_0^(2 uppi) Phi(cos theta, sin theta) dif theta = integral.cont_(partial DD) f(z) dz = 2 uppi ii sum_(k=1)^n Res_(z=z_k) f(z),
   $
@@ -482,7 +488,7 @@ Residues are extremely important as they allow for simple evaluation of definite
   example[
     Evaluate $I = integral_0^infinity x^alpha / (1 + x^beta) dx$, where $0 < alpha + 1 < beta$.
   ],
-  <ex:integral_x_alpha_1_x_beta_dx>,
+  <ex:integral-x-alpha-1-x-beta-dx>,
 )
 
 #figure-wrapper(
@@ -539,24 +545,24 @@ Residues are extremely important as they allow for simple evaluation of definite
       },
       caption: [An indented wedge contour with orientation marked.],
     )
-    <fig:indentedwedgecontour>
+    <fig:indented-wedge-contour>
   ],
 )
-#solution[to @ex:integral_x_alpha_1_x_beta_dx][
+#solution[to @ex:integral-x-alpha-1-x-beta-dx][
   Let $f(z) = z^alpha / (1 + z^beta)$ and let $-uppi < Arg(z) <= uppi$ in the principal branches of $z^alpha = ee^(alpha Log(z))$ and $z^beta = ee^(beta Log(z))$. Then except for at the zeros of $1 + z^beta$, $f$ is holomorphic.
 
-  The solutions to $z^beta = -1$ are $z = exp(ii uppi/beta + 2 ii k uppi/beta)$. Choose an indented wedge contour (as there is a logarithmic branch point singularity at the origin) with an angle of $2 uppi / beta$ (as in @fig:wedgecontour). The only singularity it encloses is $exp(ii uppi/beta)$. Since it is a simple zero of $1/f$, this singularity is a simple pole.
+  The solutions to $z^beta = -1$ are $z = exp(ii uppi/beta + 2 ii k uppi/beta)$. Choose an indented wedge contour (as there is a logarithmic branch point singularity at the origin) with an angle of $2 uppi / beta$ (as in @fig:wedge-contour). The only singularity it encloses is $exp(ii uppi/beta)$. Since it is a simple zero of $1/f$, this singularity is a simple pole.
 
   The contour is the union of the following curves:
   $
     Gamma_1 = {x in RR : epsilon <= x <= R}, quad Gamma_2 = {r exp(ii 2 uppi\/beta) : epsilon <= r <= R}, \
     C_R = {R ee^(ii theta) : 0 <= theta <= 2 uppi\/beta}, quad C_epsilon = {epsilon ee^(ii theta) : 0 <= theta <= 2 uppi\/beta}
   $
-  where $R > 1$ and $0 < epsilon < 1$. By the Residue Theorem (@thm:residuethm), we get that
+  where $R > 1$ and $0 < epsilon < 1$. By the Residue Theorem (@thm:residue-theorem), we get that
   $
     lim_(epsilon -> 0) lim_(R -> infinity) (integral_(Gamma_1) + integral_(Gamma_2) + integral_(C_R) + integral_(C_epsilon)) f(z) dz = 2 uppi ii Res[f, exp(ii uppi/beta)].
   $
-  By @eq:residueatpole, it follows that
+  By @eq:residue-at-pole, it follows that
   $
     Res [f, exp(ii uppi\/beta)] & = lim_(z -> exp(ii uppi\/beta)) (z - exp(ii uppi\/beta)) / ((1 + z^beta) \/ z^alpha) \
                                 & = lim_(z -> exp(ii uppi\/beta)) (dif / (dif z) (z^(-alpha) + z^(beta - alpha)))^(-1) \
@@ -594,7 +600,7 @@ Residues are extremely important as they allow for simple evaluation of definite
     Prove that the Fourier transform of $sech(uppi x)$ is itself, or that
     $ I(xi) = integral_(-infinity)^infinity exp(-2 uppi ii x xi) sech(uppi x) dx = sech(uppi xi). $
   ],
-  <ex:sech_fourier_transform>,
+  <ex:sech-fourier-transform>,
 )
 
 #figure-wrapper(
@@ -640,27 +646,27 @@ Residues are extremely important as they allow for simple evaluation of definite
       },
       caption: [A rectangular contour with orientation marked.],
     ),
-    <fig:rectangularcontour>,
+    <fig:rectangular-contour>,
   ),
 )
-#solution[to @ex:sech_fourier_transform][
+#solution[to @ex:sech-fourier-transform][
   Fix $xi in RR$ and let $f(z) = exp(-2 uppi ii z xi) / cosh(uppi z)$. Its poles in $CC$ occur when $ee^(uppi z) + ee^(-uppi z) = 0$, or equivalently, when $z = ii (n + 1/2)$, where $n in ZZ$.
 
   Since
   $ cosh(uppi (z + ii)) = -cosh(uppi z), quad exp(-2 uppi ii (z + ii) xi) = exp(2 uppi xi) exp(-2 uppi ii z xi), $
-  we have that $f(z)$ is a constant multiple of $f(z + ii)$. In particular, $f(z + ii) = -exp(2 uppi xi) f(z)$. Therefore, we can use a rectangular contour as shown in @fig:rectangularcontour. Let the sides be denoted by
+  we have that $f(z)$ is a constant multiple of $f(z + ii)$. In particular, $f(z + ii) = -exp(2 uppi xi) f(z)$. Therefore, we can use a rectangular contour as shown in @fig:rectangular-contour. Let the sides be denoted by
   $
     attach(Gamma, t: arrow.l) = {x + ii : -R <= x <= R, x in RR}, quad attach(Gamma, t: arrow.r) = {x in RR : -R <= x <= R} \
     attach(Gamma, t: arrow.b) = {-R + ii y : y in [0,1]}, quad attach(Gamma, t: arrow.t) = {R + ii y : y in [0,1]}.
   $
-  The only enclosed singularity is a simple pole at $z = ii/2$ (simple by evaluation of the Taylor expansion of the denominator). By the Residue Theorem (@thm:residuethm), we get that
+  The only enclosed singularity is a simple pole at $z = ii/2$ (simple by evaluation of the Taylor expansion of the denominator). By the Residue Theorem (@thm:residue-theorem), we get that
   #lbl(
     $
       (integral_(attach(Gamma, t: arrow.r)) + integral_(attach(Gamma, t: arrow.t)) + integral_(attach(Gamma, t: arrow.l)) + integral_(attach(Gamma, t: arrow.b))) f(z) dz = 2 uppi ii Res(f, ii/2).
     $,
-    <eq:fouriertransformofsechpix_rectangularcontourintegral>,
+    <eq:fourier-transform-of-sech-pi-x-rectangular-contour-integral>,
   )
-  By @eq:residueatpole, we have
+  By @eq:residue-at-pole, we have
   $
     Res(f, ii/2) & = lim_(z -> ii\/2) (z - ii/2) exp(-2 uppi ii z xi) / cosh(uppi z) \
                  & = lim_(z -> ii\/2) dif / (dif z) (cosh(uppi z) / exp(-2 uppi ii z xi))^(-1) \
@@ -693,18 +699,18 @@ Residues are extremely important as they allow for simple evaluation of definite
   $
   Since the integrands are continuous and uniformly convergent to $0$ with respect to $z$, we have
   $ integral_(attach(Gamma, t: arrow.t)) f(z) dz + integral_(attach(Gamma, t: arrow.b)) f(z) dz -> 0 $
-  as $R -> infinity$. By rearrangement of @eq:fouriertransformofsechpix_rectangularcontourintegral,
+  as $R -> infinity$. By rearrangement of @eq:fourier-transform-of-sech-pi-x-rectangular-contour-integral,
   $ I(xi) (1 + ee^(2 uppi xi)) = 2 exp(uppi xi), $
   or that
   $ I(xi) = 2 / (ee^(-uppi xi) + ee^(uppi xi)) = sech(uppi xi), $
   which proves the result.
 ]
 
-Contour integration provides a powerful method for evaluating real improper integrals by leveraging the Residue Theorem (@thm:residuethm). The primary challenge often lies in constructing a suitable contour in the complex plane that encloses the relevant singularities of the integrand $f$ while ensuring that the contribution from the contributions from the remaining segments of the contour either vanishes or can be calculated with ease.
+Contour integration provides a powerful method for evaluating real improper integrals by leveraging the Residue Theorem (@thm:residue-theorem). The primary challenge often lies in constructing a suitable contour in the complex plane that encloses the relevant singularities of the integrand $f$ while ensuring that the contribution from the contributions from the remaining segments of the contour either vanishes or can be calculated with ease.
 
-If the function $f$ is even and integrated on a domain such as $RR_(gt.eq 0)$, then the integral can be extended to the entire real axis. If $f$ decays sufficiently rapidly in the upper half plane $HH^+$, a semicircular contour is generally preferable, as illustrated in @fig:semicircularcontour. In the presence of singularities on the contour itself, we can insert arc indentations around them, as shown in @fig:indentedsemicircularcontour.
+If the function $f$ is even and integrated on a domain such as $RR_(gt.eq 0)$, then the integral can be extended to the entire real axis. If $f$ decays sufficiently rapidly in the upper half plane $HH^+$, a semicircular contour is generally preferable, as illustrated in @fig:semicircular-contour. In the presence of singularities on the contour itself, we can insert arc indentations around them, as shown in @fig:indented-semicircular-contour.
 
-If $f(z)$ is a constant multiple of $f(z + ii y)$ (a type of quasiperiodicity) for some $y in RR$, it is a strong indication to use a rectangular contour. If $f(z)$ is a constant multiple of $f(z ee^(ii tau))$ for some $tau in RR$, a wedge-shaped contour is an appropriate choice.
+If $f(z)$ is a constant multiple of $f(z + ii y)$ (a type of _quasi-periodicity_) for some $y in RR$, it is a strong indication to use a rectangular contour. If $f(z)$ is a constant multiple of $f(z ee^(ii tau))$ for some $tau in RR$, a wedge-shaped contour is an appropriate choice.
 
 In the case that there are indentations along the contour, we have
 
@@ -713,7 +719,7 @@ In the case that there are indentations along the contour, we have
     Let $lambda > 0$ and let $a in CC$. Suppose $f(z)$ is a holomorphic function on $D^*(a, lambda)$ with a simple pole at $z = a in U$. Let $0 < epsilon < lambda$ and define $gamma_epsilon subset.eq partial D(a, epsilon)$ be a counterclockwise-oriented, connected arc subtending an angle $theta.alt$. Then,
     $ lim_(epsilon -> 0) integral_(gamma_epsilon) f(z) dz = ii theta.alt dot Res_(z=a) f(z). $
   ],
-  <thm:residueoverarc>,
+  <thm:residue-over-arc>,
 )
 
 #proof[
@@ -748,10 +754,10 @@ In the case that a branch point singularity is present on the contour, we may at
   example[
     Evaluate $I = integral_0^infinity (log(x^2+1)) / (x^2+1) dx$.
   ],
-  <ex:branch_point_pole_concurrence_integral>,
+  <ex:branch-point-pole-concurrence-integral>,
 )
 
-#solution[to @ex:branch_point_pole_concurrence_integral][
+#solution[to @ex:branch-point-pole-concurrence-integral][
   Notice that the integrand itself has branch points at $z = plus.minus ii$ coinciding with the poles from the denominator. We can rewrite the integral as
   #lbl(
     $
@@ -759,15 +765,15 @@ In the case that a branch point singularity is present on the contour, we may at
       &= 1/2 integral_(-infinity)^infinity (log(x^2+1)) / (x^2+1) = integral_(-infinity)^infinity (log sqrt((x+i)(x-i))) / (x^2+1) \
       &= integral_(-infinity)^infinity (log abs(x plus.minus i)) / (x^2+1) = Re integral_(-infinity)^infinity (log(x+i)) / (x^2+1).
     $,
-    <eq:branch_point_pole_concurrence_integral_rewrite>,
+    <eq:branch-point-pole-concurrence-integral-rewrite>,
   )
   Let $gamma = Gamma union C_R$, where concretely,
   $ Gamma = {x in RR : -R <= x <= R}, quad C_R = {R ee^(ii theta) : 0 <= theta <= uppi} $
-  and $R > 2$, and let $f(z) = Log(z + ii) / (z^2+1)$, where the branch for $Log$ is chosen to satisfy $[0, uppi] subset Im log(CC^*)$, such as the principal branch. The only singularity of $f$ in the upper half plane is a simple pole at $z = ii$. By the Residue Theorem (@thm:residuethm), we have
+  and $R > 2$, and let $f(z) = Log(z + ii) / (z^2+1)$, where the branch for $Log$ is chosen to satisfy $[0, uppi] subset Im log(CC^*)$, such as the principal branch. The only singularity of $f$ in the upper half plane is a simple pole at $z = ii$. By the Residue Theorem (@thm:residue-theorem), we have
   $
     lim_(R -> infinity) integral.cont_gamma f(z) dz = lim_(R -> infinity) (integral_Gamma + integral_(C_R)) f(z) dz = 2 uppi ii Res_(z=ii) f(z).
   $
-  By @eq:residueatpole, we have
+  By @eq:residue-at-pole, we have
   $
     Res_(z=ii) f(z) = lim_(z -> ii) (z - ii) (log(z+ii)) / (z^2+1) = lim_(z -> ii) (log(z+ii)) / (z+ii) = (log(2 ii)) / (2 ii) = uppi/4 - ii (log(2)) / 2.
   $
@@ -775,5 +781,5 @@ In the case that a branch point singularity is present on the contour, we may at
 
   Since $lim_(R -> infinity) integral_Gamma f(z) dz = integral_(-infinity)^infinity f(z) dz$ and
   $ integral_(-infinity)^infinity f(z) dz = (uppi^2 ii) / 2 + uppi log(2), $
-  by @eq:branch_point_pole_concurrence_integral_rewrite, we have $I = Re integral_(-infinity)^infinity f(z) dz = uppi log(2)$.
+  by @eq:branch-point-pole-concurrence-integral-rewrite, we have $I = Re integral_(-infinity)^infinity f(z) dz = uppi log(2)$.
 ]

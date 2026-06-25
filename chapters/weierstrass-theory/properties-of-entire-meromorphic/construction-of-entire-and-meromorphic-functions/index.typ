@@ -30,7 +30,7 @@ Similar to series, absolute convergence is a stronger condition than convergence
 ]
 
 #proof[
-  Let ${u_k}_(k in NN)$ be a complex sequence such that $sum_(k = 1)^oo abs(u_k)$ is convergent. Then $product_(k = 1)^oo (1 + u_k)$ is absolutely convergent. Let $Q_n$ denote the partial products of $product_(k = 1)^n (1 + abs(u_k))$ and let $P_n$ denote the partial products of $product_(k = 1)^n (1 + u_k)$. By the Cauchy Criterion (@thm:cauchycriterionsequenceconvergence), we have that $forall epsilon > 0$, $exists N in NN$ such that $forall n > m > N$, $abs(Q_m - Q_n) < epsilon$. Let us now analyze the absolute difference between $P_n$ and $P_m$:
+  Let ${u_k}_(k in NN)$ be a complex sequence such that $sum_(k = 1)^oo abs(u_k)$ is convergent. Then $product_(k = 1)^oo (1 + u_k)$ is absolutely convergent. Let $Q_n$ denote the partial products of $product_(k = 1)^n (1 + abs(u_k))$ and let $P_n$ denote the partial products of $product_(k = 1)^n (1 + u_k)$. By the Cauchy Criterion (@thm:cauchy-criterion-sequence-convergence), we have that $forall epsilon > 0$, $exists N in NN$ such that $forall n > m > N$, $abs(Q_m - Q_n) < epsilon$. Let us now analyze the absolute difference between $P_n$ and $P_m$:
   $
     abs(P_n - P_m) & = abs(product_(k = 1)^n (1 + u_k) - product_(k = 1)^m (1 + u_k)) \
                    & = abs(product_(k = 1)^m (1 + u_k) product_(k = m + 1)^n (1 + u_k) - product_(k = 1)^m (1 + u_k)) \
@@ -38,7 +38,7 @@ Similar to series, absolute convergence is a stronger condition than convergence
                    & <= product_(k = 1)^m (1 + abs(u_k)) dot abs(product_(k = m + 1)^n (1 + abs(u_k)) - 1) \
                    & = abs(Q_n - Q_m) < epsilon,
   $
-  which therefore satisfies @thm:cauchycriterionsequenceconvergence.
+  which therefore satisfies @thm:cauchy-criterion-sequence-convergence.
 ]
 
 We will now provide the following assertions on the _locally uniform convergence_ of infinite products:
@@ -51,7 +51,7 @@ We will now provide the following assertions on the _locally uniform convergence
     $
     is uniformly convergent on compact subsets of $U$.
   ],
-  <lem:infiniteproductlocallyuniformconvergencecriterion>,
+  <lem:infinite-product-locally-uniform-convergence-criterion>,
 )
 
 #proof[
@@ -59,7 +59,7 @@ We will now provide the following assertions on the _locally uniform convergence
   $
     abs(product_(k = 1)^n exp(f_k (z)) - product_(k = 1)^m exp(f_k (z))) = abs(exp(sum_(k = 1)^n f_k (z)) - exp(sum_(k = 1)^m f_k (z))).
   $
-  By @thm:weierstrass_convergence, the uniform limit $sum_(k = 1)^oo f_k (z)$ is holomorphic on $U$. By continuity and @thm:continuous-function-bounded-on-compact, this limit is bounded on $K$. It follows that each partial sum is uniformly bounded on $K$. Since the exponential function is Lipschitz continuous on compact subsets of $CC$, there exists a finite constant $M > 0$ such that
+  By @thm:weierstrass-convergence, the uniform limit $sum_(k = 1)^oo f_k (z)$ is holomorphic on $U$. By continuity and @thm:continuous-function-bounded-on-compact, this limit is bounded on $K$. It follows that each partial sum is uniformly bounded on $K$. Since the exponential function is Lipschitz continuous on compact subsets of $CC$, there exists a finite constant $M > 0$ such that
   $
     abs(exp(sum_(k = 1)^n f_k (z)) - exp(sum_(k = 1)^m f_k (z))) <= M abs(sum_(k = m + 1)^n f_k (z)) < M epsilon. #qedhere
   $
@@ -79,11 +79,11 @@ We also have:
     $
     is uniformly convergent on compact subsets of $U$ to a holomorphic function, which vanishes only at a point $z$ if and only if $f_k (z) = -1$ for some $k in NN$. The multiplicity at each such zero $z$ is the sum of the multiplicities of $1 + f_k$ at $z$ for all $k$ satisfying $f_k (z) = -1$.
   ],
-  <lem:infiniteproductlocallyuniformconvergencecriterion2>,
+  <lem:infinite-product-locally-uniform-convergence-criterion-2>,
 )
 
 #proof[
-  Let $K subset U$ be an arbitrary compact set. By the uniform convergence of $sum_(k = 1)^oo abs(f_k (z))$ on $K$, it follows that the uniform limit is continuous by the Uniform Limit Theorem (@thm:uniformlimit). By continuity on a compact set, it follows that the limit is bounded by some constant $M'$. Additionally, $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $sum_(k = 1)^n abs(f_k (z)) < M' + epsilon$. It follows that the partial sums are uniformly bounded on $K$ by
+  Let $K subset U$ be an arbitrary compact set. By the uniform convergence of $sum_(k = 1)^oo abs(f_k (z))$ on $K$, it follows that the uniform limit is continuous by the Uniform Limit Theorem (@thm:uniform-limit). By continuity on a compact set, it follows that the limit is bounded by some constant $M'$. Additionally, $forall epsilon > 0$, $exists N in NN$ such that $forall n > N$, $sum_(k = 1)^n abs(f_k (z)) < M' + epsilon$. It follows that the partial sums are uniformly bounded on $K$ by
   $
     M = max{ max_(1 <= k <= N) max_(z in K) abs(f_k (z)), M' + epsilon }.
   $
@@ -139,7 +139,7 @@ We will now study the construction of an entire function $f(z)$ via its zeros. W
     $
       f(z) = p(z) exp(phi(z)),
     $,
-    <eq:weierstrassfactorization_finitezeros>,
+    <eq:weierstrass-factorization-finite-zeros>,
   )
   where $p(z)$ is a polynomial with zeros at $a_k$ with respective multiplicities $m_k$. The entire functions $p(z)$ and $f(z)$ both have the same zeros with matching multiplicities.
 
@@ -159,13 +159,13 @@ We will now study the construction of an entire function $f(z)$ via its zeros. W
       Q_p (z) = log(1 - z) + P_p (z) \
       E_p (z) = exp(Q_p (z)) = (1 - z) exp(P_p (z)).
     $,
-    <eq:weierstrasselementaryfactor>,
+    <eq:weierstrass-elementary-factor>,
   )
   Therefore, we can rewrite @eq:infinite-product-weierstrass-factorization-intermediate as
   $
     product_(n = 1)^oo E_(p_n) (z / a_n).
   $
-  The expression in @eq:weierstrasselementaryfactor is known as the $p$-th _Weierstrass elementary factor_.
+  The expression in @eq:weierstrass-elementary-factor is known as the $p$-th _Weierstrass elementary factor_.
 
   By $epsilon--N$, for a fixed $R > 0$, $exists N in NN$ such that $forall n >= N$, $abs(a_n) > 2 R$. Consider the product $product_(n = N)^oo E_(p_n) (z / a_n)$. For $z in overline(D(0, R))$ and $n >= N$, we have $abs(z / a_n) <= 1 / 2$. The Taylor expansion
   $
@@ -179,13 +179,13 @@ We will now study the construction of an entire function $f(z)$ via its zeros. W
                              & <= sum_(k = p_n + 1)^oo abs(z / a_n)^k = abs(z / a_n)^(p_n + 1) 1 / (1 - abs(z / a_n)) \
                              & <= 2 abs(R / a_n)^(p_n + 1).
     $,
-    <eq:infiniteproductweierstrassfactorizationuniformbound>,
+    <eq:infinite-product-weierstrass-factorization-uniform-bound>,
   )
-  By the definition of ${p_n}_(n in NN)$, the series $2 sum_(n = 1)^oo abs(R / a_n)^(p_n + 1)$ converges. Therefore, $sum_(n = 1)^oo Q_(p_n) (z / a_n)$ is uniformly and absolutely convergent on $overline(D(0, R))$ by the Weierstrass $M$-Test (@thm:weierstrassmtest). We then get that
+  By the definition of ${p_n}_(n in NN)$, the series $2 sum_(n = 1)^oo abs(R / a_n)^(p_n + 1)$ converges. Therefore, $sum_(n = 1)^oo Q_(p_n) (z / a_n)$ is uniformly and absolutely convergent on $overline(D(0, R))$ by the Weierstrass $M$-Test (@thm:weierstrass-m-test). We then get that
   $
     product_(n = N)^oo E_(p_n) (z / a_n) = exp(sum_(n = N)^oo Q_(p_n) (z / a_n)),
   $
-  and it uniformly converges on $overline(D(0, R))$ to a nonzero holomorphic function $f(z)$ on $D(0, R)$ by @lem:infiniteproductlocallyuniformconvergencecriterion, @thm:weierstrass_convergence, and @thm:hurwitz-simple-case.
+  and it uniformly converges on $overline(D(0, R))$ to a nonzero holomorphic function $f(z)$ on $D(0, R)$ by @lem:infinite-product-locally-uniform-convergence-criterion, @thm:weierstrass-convergence, and @thm:hurwitz-simple-case.
 
   The zeros of
   $
@@ -195,7 +195,7 @@ We will now study the construction of an entire function $f(z)$ via its zeros. W
   $
     abs(exp(zeta) - 1) <= exp(abs(zeta)) - 1 <= (ee - 1) abs(zeta).
   $
-  By @eq:infiniteproductweierstrassfactorizationuniformbound above, we get that $abs(Q_(p_n) (z / a_n)) <= 1$ when $n >= N$.
+  By @eq:infinite-product-weierstrass-factorization-uniform-bound above, we get that $abs(Q_(p_n) (z / a_n)) <= 1$ when $n >= N$.
 
   Therefore, we have
   $
@@ -204,43 +204,49 @@ We will now study the construction of an entire function $f(z)$ via its zeros. W
   $
   which has a convergent series by definition. Therefore, $product_(n = N)^oo E_(p_n) (z / a_n)$ is absolutely convergent on $overline(D(0, R))$. Letting $R -> oo$, we obtain the following result:
 
-  #theorem("Weierstrass Product Theorem")[
-    Let ${a_n}_(n in NN)$ be a sequence of nonzero complex numbers satisfying $a_n -> oo$ as $n -> oo$ and $0 < abs(a_n) <= abs(a_(n + 1))$ (equality of $a_n$ and $a_(n + 1)$ treated as multiplicities) for all $n$. Then there exists a sequence ${p_n}_(n in NN)$ of nonnegative integers such that $forall R > 0$, $sum_(n = 1)^oo abs(R / a_n)^(p_n + 1)$ converges. For such a prescribed sequence, the function
-    #lbl(
-      $
-        f(z) = product_(n = 1)^oo E_(p_n) (z / a_n)
-      $,
-      <eq:entirefunctionconstructedfrominfinitelymanyzeros>,
-    )
-    defines an entire function with zeros at each element of the sequence of multiplicities matching the number of times an element is repeated. Moreover, the product converges uniformly on any compact disk $overline(D(0, R))$.
-  ] <thm:weierstrassproduct>
+  #lbl(
+    theorem[Weierstrass Product Theorem][
+      Let ${a_n}_(n in NN)$ be a sequence of nonzero complex numbers satisfying $a_n -> oo$ as $n -> oo$ and $0 < abs(a_n) <= abs(a_(n + 1))$ (equality of $a_n$ and $a_(n + 1)$ treated as multiplicities) for all $n$. Then there exists a sequence ${p_n}_(n in NN)$ of nonnegative integers such that $forall R > 0$, $sum_(n = 1)^oo abs(R / a_n)^(p_n + 1)$ converges. For such a prescribed sequence, the function
+      #lbl(
+        $
+          f(z) = product_(n = 1)^oo E_(p_n) (z / a_n)
+        $,
+        <eq:entire-function-constructed-from-infinitely-many-zeros>,
+      )
+      defines an entire function with zeros at each element of the sequence of multiplicities matching the number of times an element is repeated. Moreover, the product converges uniformly on any compact disk $overline(D(0, R))$.
+    ],
+    <thm:weierstrass-product>,
+  )
 
   The following result is then apparent:
 
-  #theorem("Weierstrass Factorization Theorem")[
-    Suppose $f(z)$ is an entire function. Let ${a_n}_(n in NN)$ be the sequence of all nonzero zeros of $f$ satisfying $a_n -> oo$ as $n -> oo$ and $0 < abs(a_n) <= abs(a_(n + 1))$ (equality of $a_n$ and $a_(n + 1)$ treated as multiplicities) for all $n$. Let $m$ be the multiplicity of $f(z)$ at $z = 0$ (let $m = 0$ if there is no zero at $0$). Then there exists a sequence ${p_n}_(n in NN)$ of nonnegative integers such that $forall R > 0$, $sum_(n = 1)^oo abs(R / a_n)^(p_n + 1)$ converges. Then, we can write
-    #lbl(
+  #lbl(
+    theorem[Weierstrass Factorization Theorem][
+      Suppose $f(z)$ is an entire function. Let ${a_n}_(n in NN)$ be the sequence of all nonzero zeros of $f$ satisfying $a_n -> oo$ as $n -> oo$ and $0 < abs(a_n) <= abs(a_(n + 1))$ (equality of $a_n$ and $a_(n + 1)$ treated as multiplicities) for all $n$. Let $m$ be the multiplicity of $f(z)$ at $z = 0$ (let $m = 0$ if there is no zero at $0$). Then there exists a sequence ${p_n}_(n in NN)$ of nonnegative integers such that $forall R > 0$, $sum_(n = 1)^oo abs(R / a_n)^(p_n + 1)$ converges. Then, we can write
+      #lbl(
+        $
+          f(z) = z^m ee^(phi(z)) product_(n = 1)^oo E_(p_n) (z / a_n)
+        $,
+        <eq:weierstrass-factorization-statement>,
+      )
+      on $D(0, R)$, where $E_p (z)$ is the $p$-th Weierstrass elementary factor defined in @eq:weierstrass-elementary-factor and $phi(z)$ is an entire function. The infinite product converges uniformly on $overline(D(0, R))$ and converges absolutely on $CC$. If we let $p_n = n$, we can write
       $
-        f(z) = z^m ee^(phi(z)) product_(n = 1)^oo E_(p_n) (z / a_n)
-      $,
-      <eq:weierstrassfactorization_statement>,
-    )
-    on $D(0, R)$, where $E_p (z)$ is the $p$-th Weierstrass elementary factor defined in @eq:weierstrasselementaryfactor and $phi(z)$ is an entire function. The infinite product converges uniformly on $overline(D(0, R))$ and converges absolutely on $CC$. If we let $p_n = n$, we can write
-    $
-      f(z) = z^m ee^(phi(z)) product_(n = 1)^oo (1 - z / a_n) exp(z / a_n + 1 / 2 (z / a_n)^2 + dots.c + 1 / n (z / a_n)^n).
-    $
-  ] <thm:weierstrassfactorization>
+        f(z) = z^m ee^(phi(z)) product_(n = 1)^oo (1 - z / a_n) exp(z / a_n + 1 / 2 (z / a_n)^2 + dots.c + 1 / n (z / a_n)^n).
+      $
+    ],
+    <thm:weierstrass-factorization>,
+  )
 
   #proof[
     By the Weierstrass Product Theorem, construct $psi(z)$ to be entire and have zeros at ${a_n}_(n in NN)$. Thus, $z^m psi(z)$ and $f(z)$ have the same zeros and corresponding multiplicities. Then the function
     $
       z^m psi(z) / f(z)
     $
-    has removable singularities on all of ${a_n}_(n in NN) union {0}$ and has an analytic continuation (@thm:riemannremovablesingularities) to an entire and non-vanishing function. Therefore, it can be written as
+    has removable singularities on all of ${a_n}_(n in NN) union {0}$ and has an analytic continuation (@thm:riemann-removable-singularities) to an entire and non-vanishing function. Therefore, it can be written as
     $
       z^m psi(z) / f(z) = ee^(phi.alt(z)),
     $
-    where $phi.alt$ is entire. Let $phi = -phi.alt$, and from rearrangement, we obtain @eq:weierstrassfactorization_statement.
+    where $phi.alt$ is entire. Let $phi = -phi.alt$, and from rearrangement, we obtain @eq:weierstrass-factorization-statement.
   ]
 
 #corollary[
@@ -248,7 +254,7 @@ We will now study the construction of an entire function $f(z)$ via its zeros. W
 ]
 
 #proof[
-  Let $phi(z)$ be any entire function with zeros only at each pole of $f$ (with multiplicities matching the order of each pole). If there are infinitely many poles, we can explicitly construct such a $phi$ by the Weierstrass Product Theorem (@thm:weierstrassproduct). If there are finitely many poles, construct $phi$ using @eq:weierstrassfactorization_finitezeros. It follows that $phi f$ can be analytically continued on its removable singularities to an entire function $phi.alt(z)$ with the same zeros as $f(z)$. Hence,
+  Let $phi(z)$ be any entire function with zeros only at each pole of $f$ (with multiplicities matching the order of each pole). If there are infinitely many poles, we can explicitly construct such a $phi$ by the Weierstrass Product Theorem (@thm:weierstrass-product). If there are finitely many poles, construct $phi$ using @eq:weierstrass-factorization-finite-zeros. It follows that $phi f$ can be analytically continued on its removable singularities to an entire function $phi.alt(z)$ with the same zeros as $f(z)$. Hence,
   $
     f(z) phi(z) = phi.alt(z) <==> f(z) = phi.alt(z) / phi(z),
   $
@@ -264,13 +270,13 @@ Suppose $n in NN$ and ${a_k}_(k = 1)^n subset CC$ is a sequence of distinct valu
   $
     psi_k (z) = sum_(j = m_k)^(p_k) c_(k, j) / (z - a_k)^j,
   $,
-  <eq:meromorphicfunctionconstructionprincipalparts>,
+  <eq:meromorphic-function-construction-principal-parts>,
 )
 where $p_k >= m_k$ are finite integer constants and ${c_(k, j)}$ are complex constants.
 
 Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles. Therefore, $f$ has an isolated singularity at $oo$. We have two cases:
 
-1. If $z = oo$ is a removable singularity or a pole, by the given proof of @thm:rationalmeromorphicfunctions, we may construct $f(z)$ to have poles at each of ${a_k}_(k = 1)^n$ such that the principal parts of $f$ at each of ${a_k}_(k = 1)^n$ are ${psi_k (z)}_(k = 1)^n$. It can be explicitly written as
+1. If $z = oo$ is a removable singularity or a pole, by the given proof of @thm:rational-meromorphic-functions, we may construct $f(z)$ to have poles at each of ${a_k}_(k = 1)^n$ such that the principal parts of $f$ at each of ${a_k}_(k = 1)^n$ are ${psi_k (z)}_(k = 1)^n$. It can be explicitly written as
   $
     f(z) = p(z) + sum_(k = 1)^n psi_k (z)
   $
@@ -290,25 +296,28 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
 
 3. The existence of a transcendental meromorphic function $f$ whose poles have an accumulation point at $z = oo$ is the concern of the following theorem:
 
-  #theorem[Mittag--Leffler][
-    Let ${a_n}_(n in NN) subset CC$ be a sequence of distinct complex numbers such that $forall n in NN$, $abs(a_n) <= abs(a_(n + 1))$ and $lim_(n -> oo) a_n = oo$. Let ${psi_n}_(n in NN)$ be a function sequence, each in the form of @eq:meromorphicfunctionconstructionprincipalparts. Then the following hold.
+  #lbl(
+    theorem[Mittag--Leffler][
+      Let ${a_n}_(n in NN) subset CC$ be a sequence of distinct complex numbers such that $forall n in NN$, $abs(a_n) <= abs(a_(n + 1))$ and $lim_(n -> oo) a_n = oo$. Let ${psi_n}_(n in NN)$ be a function sequence, each in the form of @eq:meromorphic-function-construction-principal-parts. Then the following hold.
 
-    First, a meromorphic function $f(z)$ on $CC$ can be constructed such that $forall n in NN$, $f$ has a pole at $a_n$ with principal part $psi_n$ at $a_n$.
+      First, a meromorphic function $f(z)$ on $CC$ can be constructed such that $forall n in NN$, $f$ has a pole at $a_n$ with principal part $psi_n$ at $a_n$.
 
-    Second, the function $f(z)$ satisfying the criteria above can be explicitly represented as
-    #lbl(
-      $
-        f(z) = phi(z) + sum_(n = 1)^oo (psi_n (z) - p_n (z))
-      $,
-      <eq:mittagleffler_construction_statement>,
-    )
-    for some sequence of polynomials ${p_n (z)}$ and an arbitrary entire function $phi(z)$.
-  ] <thm:mittagleffler>
+      Second, the function $f(z)$ satisfying the criteria above can be explicitly represented as
+      #lbl(
+        $
+          f(z) = phi(z) + sum_(n = 1)^oo (psi_n (z) - p_n (z))
+        $,
+        <eq:mittag-leffler-construction-statement>,
+      )
+      for some sequence of polynomials ${p_n (z)}$ and an arbitrary entire function $phi(z)$.
+    ],
+    <thm:mittag-leffler>,
+  )
 
   #proof[
-    The classical proof for this theorem allows for a more explicit construction, as in @eq:mittagleffler_construction_statement. As for the existence statement, we can prove the first assertion by use of the $overline(partial)$-problem.
+    The classical proof for this theorem allows for a more explicit construction, as in @eq:mittag-leffler-construction-statement. As for the existence statement, we can prove the first assertion by use of the $overline(partial)$-problem.
 
-    Fix $n in NN$, and let $U_n$ be an open neighborhood of $a_n$ such that $forall i, j in NN$ where $i != j$, $overline(U_i) inter overline(U_j) = emptyset$. Let $V_n$ be a neighborhood of $a_n$ that is relatively compact in $U_n$. By @thm:bumpfunctionexistence, for each $n$, there is a $C^oo$ function $phi_n$ satisfying
+    Fix $n in NN$, and let $U_n$ be an open neighborhood of $a_n$ such that $forall i, j in NN$ where $i != j$, $overline(U_i) inter overline(U_j) = emptyset$. Let $V_n$ be a neighborhood of $a_n$ that is relatively compact in $U_n$. By @thm:bump-function-existence, for each $n$, there is a $C^oo$ function $phi_n$ satisfying
     $
       phi_n (z) = cases(
         1 & "if" z in overline(V_n)\,,
@@ -326,7 +335,7 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
         0 & "if" z in {a_k}_(k in NN).
       )
     $
-    Since $partialderivative(u, overline(z), style: "horizontal") equiv partialderivative(psi_n, overline(z), style: "horizontal") equiv 0$ and is $C^oo$ on $overline(V_n) without {a_n}$ and $phi.alt$ vanishes on ${a_k}_(k in NN)$, $phi.alt in C^oo (CC)$. By the discussion preceding @thm:one_dimensional_partial_conjugate_solution, there exists a $C^oo$ function $v(z)$ such that $pdv(v, overline(z)) = phi.alt(z)$ on $CC$. Since $phi.alt$ is $C^oo$, it follows that $v$ is also $C^oo$. Define $f(z) = u(z) - v(z)$. Then
+    Since $pdv(u, overline(z), style: "horizontal") equiv partialderivative(psi_n, overline(z), style: "horizontal") equiv 0$ and is $C^oo$ on $overline(V_n) without {a_n}$ and $phi.alt$ vanishes on ${a_k}_(k in NN)$, $phi.alt in C^oo (CC)$. By the discussion preceding @thm:one-dimensional-partial-conjugate-solution, there exists a $C^oo$ function $v(z)$ such that $pdv(v, overline(z)) = phi.alt(z)$ on $CC$. Since $phi.alt$ is $C^oo$, it follows that $v$ is also $C^oo$. Define $f(z) = u(z) - v(z)$. Then
     $
       pdv(f, overline(z)) = pdv(u, overline(z)) - pdv(v, overline(z)) = phi.alt(z) - phi.alt(z) = 0,
     $
@@ -337,7 +346,7 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
       psi_n (z) = sum_(k = 0)^oo (psi_n^((k))(0)) / (k!) z^k.
     $
 
-    By @thm:abels_theorem_radius, this series is uniformly convergent on $D(0, abs(a_n / 2))$. Hence, $exists lambda_n in NN$ such that
+    By @thm:abels-theorem-radius, this series is uniformly convergent on $D(0, abs(a_n / 2))$. Hence, $exists lambda_n in NN$ such that
     $
       abs(psi_n (z) - sum_(k = 0)^(lambda_n) (psi_n^((k))(0)) / (k!) z^k) < epsilon_n.
     $
@@ -350,30 +359,30 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
       abs(psi_n (z) - p_n (z)) < epsilon_n.
     $
 
-    By the convergence of $sum_(n = N + 1)^oo epsilon_n$, by the Weierstrass $M$-Test (@thm:weierstrassmtest), the series
+    By the convergence of $sum_(n = N + 1)^oo epsilon_n$, by the Weierstrass $M$-Test (@thm:weierstrass-m-test), the series
     #lbl(
       $
         Phi_N (z) = sum_(n = N + 1)^oo (psi_n (z) - p_n (z))
       $,
-      <eq:mittagleffler_construction_uniformlyconvergentseries>,
+      <eq:mittag-leffler-construction-uniformly-convergent-series>,
     )
-    converges uniformly on $D(0, R)$. Since $z < R < abs(a_n / 2) < abs(a_n)$ when $n > N$, the pole of $psi_n (z)$, namely $z = a_n$, is not in $D(0, R)$ when $n > N$. By @thm:weierstrass_convergence, @eq:mittagleffler_construction_uniformlyconvergentseries is holomorphic on $D(0, R)$. Let
+    converges uniformly on $D(0, R)$. Since $z < R < abs(a_n / 2) < abs(a_n)$ when $n > N$, the pole of $psi_n (z)$, namely $z = a_n$, is not in $D(0, R)$ when $n > N$. By @thm:weierstrass-convergence, @eq:mittag-leffler-construction-uniformly-convergent-series is holomorphic on $D(0, R)$. Let
     $
       Psi(z) = sum_(n = 1)^N (psi_n (z) - p_n (z)) + Phi_N (z).
     $
     The poles of $Psi(z)$ in $D(0, R)$ are all of the $a_n$ with corresponding principal parts $psi_n (z)$, where $n in NN$ and $a_n in D(0, R)$. Since $R$ was arbitrarily chosen, $Psi$ has poles at each $a_n$ with the corresponding principal part $psi_n (z)$ on $CC$. Let $phi(z) = f(z) - Psi(z)$ be analytically continued onto each of ${a_n}_(n in NN)$. Then $phi(z)$ is an entire function (since the Laurent expansions of $phi$ at each of ${a_n}_(n in NN)$ vanish). By rearrangement, we obtain our desired result. #qedhere
   ]
 
-The Mittag--Leffler Theorem (@thm:mittagleffler) can also be generalized as follows:
+The Mittag--Leffler Theorem (@thm:mittag-leffler) can also be generalized as follows:
 
 #lbl(
   theorem[
-    Let $U subset CC$ be an open set with a simple closed boundary $partial U$ and let $E = {a_n}_(n in NN) subset U$ be a sequence of distinct complex numbers whose accumulation points lie on $partial U$. Let ${psi_n}_(n in NN)$ be a sequence of functions in the form of @eq:meromorphicfunctionconstructionprincipalparts. Then there exists a meromorphic function $f: U -> CC$ with poles at each $a_n$ with principal parts $psi_n$ at each $a_n$.
+    Let $U subset CC$ be an open set with a simple closed boundary $partial U$ and let $E = {a_n}_(n in NN) subset U$ be a sequence of distinct complex numbers whose accumulation points lie on $partial U$. Let ${psi_n}_(n in NN)$ be a sequence of functions in the form of @eq:meromorphic-function-construction-principal-parts. Then there exists a meromorphic function $f: U -> CC$ with poles at each $a_n$ with principal parts $psi_n$ at each $a_n$.
   ],
-  <thm:mittaglefflerboundary>,
+  <thm:mittag-leffler-boundary>,
 )
 
-Indeed, since $partial U inter U = emptyset$, each $a_n$ is not an accumulation point of $E$. In other words, for each $n in NN$, there exist neighborhoods $U_n$ of $a_n$ that are relatively compact in $U$ with disjoint closures. The proceeding proof is analogous to that of the existence part in @thm:mittagleffler.
+Indeed, since $partial U inter U = emptyset$, each $a_n$ is not an accumulation point of $E$. In other words, for each $n in NN$, there exist neighborhoods $U_n$ of $a_n$ that are relatively compact in $U$ with disjoint closures. The proceeding proof is analogous to that of the existence part in @thm:mittag-leffler.
 
 Finally, we will examine the construction of entire functions interpolating prescribed values and derivatives at given points.
 
@@ -392,32 +401,32 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
       $
         f^((n)) (z_k) = n! w_(k, n).
       $,
-      <eq:generalinterpolationexistence_statement>,
+      <eq:general-interpolation-existence-statement>,
     )
     In other words, an entire function can be constructed by the given first $n_k$ coefficients of the Taylor expansion at each $z_k$.
   ],
-  <thm:generalinterpolationexistence>,
+  <thm:general-interpolation-existence>,
 )
 
 #proof[
-  According to the Weierstrass Product Theorem (@thm:weierstrassproduct), we can construct an entire function $Phi(z)$ with zeros at each of ${z_k}_(k in NN)$ with corresponding multiplicities ${n_k}_(k in NN)$. By the discreteness of ${z_k}_(k in NN)$, there exists a corresponding sequence of radii ${epsilon_k}_(k in NN)$ such that each $overline(D(z_k, 2 epsilon_k))$ is disjoint.
+  According to the Weierstrass Product Theorem (@thm:weierstrass-product), we can construct an entire function $Phi(z)$ with zeros at each of ${z_k}_(k in NN)$ with corresponding multiplicities ${n_k}_(k in NN)$. By the discreteness of ${z_k}_(k in NN)$, there exists a corresponding sequence of radii ${epsilon_k}_(k in NN)$ such that each $overline(D(z_k, 2 epsilon_k))$ is disjoint.
 
   Define a complex function sequence ${phi.alt_k (z)}_(k in NN)$ by
   $
     phi.alt_k (z) = sum_(n = 0)^(n_k - 1) w_(k, n) (z - z_k)^n,
   $
-  where $k in NN$. By @thm:bumpfunctionexistence, we can construct a $C^oo$ sequence of functions ${phi_k (z)}_(k in NN)$ such that $forall k in NN$, $supp(phi_k) subset D(z_k, 2 epsilon_k)$, $phi_k equiv 1$ on $overline(D(z_k, epsilon_k))$, and $0 <= phi_k <= 1$ on $CC$.
+  where $k in NN$. By @thm:bump-function-existence, we can construct a $C^oo$ sequence of functions ${phi_k (z)}_(k in NN)$ such that $forall k in NN$, $supp(phi_k) subset D(z_k, 2 epsilon_k)$, $phi_k equiv 1$ on $overline(D(z_k, epsilon_k))$, and $0 <= phi_k <= 1$ on $CC$.
 
   Let $Psi in C^oo (CC)$, and construct
   #lbl(
     $
       f(z) = -Phi(z) Psi(z) + sum_(k = 1)^oo phi.alt_k (z) phi_k (z).
     $,
-    <eq:generalinterpolationexistence_constructionstatement>,
+    <eq:general-interpolation-existence-construction-statement>,
   )
   Under what conditions on $Psi$ will $f$ be entire? Since the supports of each $phi_k$ are disjoint, the summation $sum_(k = 1)^oo phi.alt_k (z) phi_k (z)$ contains at most one nonzero term and is convergent and well-defined. To construct $f$ to be entire, we must have $pdv(f, overline(z)) = 0$. In other words, we want
   $
-    partialderivative((sum_(k = 1)^oo phi.alt_k phi_k), overline(z), style: "large") = pdv(, overline(z))(Phi Psi) <==> sum_(k = 1)^oo phi.alt_k partialderivative(phi_k, overline(z)) = Phi partialderivative(Psi, overline(z))
+    pdv((sum_(k = 1)^oo phi.alt_k phi_k), overline(z), style: "large") = pdv(, overline(z))(Phi Psi) <==> sum_(k = 1)^oo phi.alt_k pdv(phi_k, overline(z)) = Phi pdv(Psi, overline(z))
   $
   on all of $CC$. Let
   $
@@ -429,13 +438,13 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
   $
     g(z) / Phi(z) = pdv(Psi, overline(z)),
   $
-  which has removable singularities at each $z_k$. Define $g(z) / Phi(z) = 0$ at $z = z_k$. Under this assertion, we have $g(z) / Phi(z) in C^oo (CC)$. Since the support of $g(z) / Phi(z)$ is the union of disjoint compact sets, by @thm:one_dimensional_partial_conjugate_solution, there exists a function $Psi in C^oo (CC)$ satisfying
+  which has removable singularities at each $z_k$. Define $g(z) / Phi(z) = 0$ at $z = z_k$. Under this assertion, we have $g(z) / Phi(z) in C^oo (CC)$. Since the support of $g(z) / Phi(z)$ is the union of disjoint compact sets, by @thm:one-dimensional-partial-conjugate-solution, there exists a function $Psi in C^oo (CC)$ satisfying
   $
     g(z) / Phi(z) = pdv(Psi, overline(z)).
   $
   Since $g$ vanishes on $union.big_(k = 1)^oo overline(D(z_k, epsilon_k))$, it follows that $g / Phi$ vanishes on $union.big_(k = 1)^oo overline(D(z_k, epsilon_k))$, and $Psi$ is holomorphic on $union.big_(k = 1)^oo D(z_k, epsilon_k)$.
 
-  Fix $k in NN$ and let $n in {0, dots, n_k - 1}$. For $z in D(z_k, epsilon_k)$, from @eq:generalinterpolationexistence_constructionstatement, we have
+  Fix $k in NN$ and let $n in {0, dots, n_k - 1}$. For $z in D(z_k, epsilon_k)$, from @eq:general-interpolation-existence-construction-statement, we have
   $
     f(z) = -Phi(z) Psi(z) + phi.alt_k (z).
   $
@@ -461,10 +470,10 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
     $
     for $z in CC without ZZ$.
   ],
-  <ex:csc_pole_expansion>,
+  <ex:csc-pole-expansion>,
 )
 
-#solution[to @ex:csc_pole_expansion][
+#solution[to @ex:csc-pole-expansion][
   Let the simple poles of $uppi csc(uppi z)$ at each integer be enumerated by
   $
     a_n = cases(
