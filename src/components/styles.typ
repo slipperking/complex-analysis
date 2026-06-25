@@ -1,7 +1,7 @@
 #import "packages.typ": *
 #import "math.typ": *
 #import "theorems.typ": *
-#import "../source.typ": *
+#import "../source.typ" : *
 
 #let pdf-doc-label = <pdf-notes>
 #let web-doc-label = <web-notes>
