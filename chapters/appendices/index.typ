@@ -1,1 +1,1 @@
-#include "list_of_theorems/index.typ"
+#include "list-of-theorems/index.typ"

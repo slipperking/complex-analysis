@@ -3,10 +3,10 @@
   title: [A Glimpse into the Function Theory of Multiple Complex Variables],
   route: "multivariable",
   children: [
-    #include "holomorphy_consequences/index.typ"
-    #include "ball_polydisk_holomorphic_automorphisms/index.typ"
-    #include "topological_equiv_biholomorphic_equiv/index.typ"
-    #include "hartogs_phenomenon/index.typ"
+    #include "consequences-of-holomorphy/index.typ"
+    #include "ball-polydisk-holomorphic-automorphisms/index.typ"
+    #include "topological-equivalence-and-biholomorphic-equivalence/index.typ"
+    #include "hartogs-phenomenon/index.typ"
   ],
   label: <sec:multivariatecomplexanalysis>,
 )
