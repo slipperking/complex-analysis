@@ -151,7 +151,7 @@
 
       var top = anchors.reduce(function (sum, anchor) {
         var rect = anchor.getBoundingClientRect();
-        return sum + rect.top - wrapperRect.top - (parseFloat(getComputedStyle(group).lineHeight) || 0) / 2;
+        return sum + rect.top - wrapperRect.top - (parseFloat(getComputedStyle(group).fontSize) || 0) / 2;
 }, 0) / anchors.length;
 
       group.style.top = top + "px";
