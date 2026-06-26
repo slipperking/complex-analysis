@@ -1,9 +1,11 @@
 .topbar-search {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   min-width: 0;
   width: min(13rem, 24vw);
   margin-left: auto;
+  margin-right: 0.55rem;
 }
 
 .search-input {
@@ -162,5 +164,6 @@
     min-width: 0;
     width: 100%;
     margin-left: 0;
+    margin-right: 0;
   }
 }
