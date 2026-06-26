@@ -302,7 +302,7 @@ $
   1/(4 uppi) integral.double_(bold(sigma)(f(D(0,r)))) dif A_S &= 1 /(2 uppi ii) integral.double_D(0,r) ((overline(f'(z)) dzbar) and (f'(z) dz)) / (abs(f(z))^2 + 1)^2 \
   &= 1 / (4 uppi) integral.double_D(0,r) f^sharp (z)^2 dif x dif y\
   &=#[[area of $f$'s image on $S^2$ with multiplicities]] / #[[area of $S^2$ (Riemann sphere)]]\
-  &= A(r) #tag[$(star.stroked)$]
+  &= A(r,f) #tag[$(star.stroked)$]
 $
 or the area of the image of $f$ on the Riemann sphere, counted according to multiplicities (referring to overlaps when not univalent), divided by the area of the Riemann sphere ($4 uppi$). In some sense, $A$ measures the amount by which the image of $f$ covers the Riemann sphere.
 
