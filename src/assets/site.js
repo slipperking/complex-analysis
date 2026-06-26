@@ -169,21 +169,21 @@
       placeEquationTagGroups(wrapper);
       return;
     }
-
-    var tags = Array.from(wrapper.querySelectorAll(".eq-tag, .equation-tag")).filter(function (tag) {
-      return !tag.closest(".equation-tag-layer");
+  
+    var tags = Array.from(wrapper.querySelectorAll(".eq-tag,.equation-tag")).filter(function (tag) {
+      return!tag.closest(".equation-tag-layer");
     });
     if (tags.length === 0) return;
-
+  
     var mathmlNs = "http://www.w3.org/1998/Math/MathML";
     var wrapperRect = wrapper.getBoundingClientRect();
     var items = tags.map(function (tag) {
       var tagRect = tag.getBoundingClientRect();
       var isInsideMath = math.contains(tag);
       var anchor = tag;
-
+  
       tag.classList.add("equation-tag");
-
+  
       if (isInsideMath) {
         anchor = document.createElementNS(mathmlNs, "mspace");
         anchor.setAttribute("class", "equation-tag-space");
@@ -193,25 +193,25 @@
         anchor = document.createElement("span");
         anchor.className = "equation-tag-anchor";
         var parent = tag.parentNode;
-        var holder = parent && parent !== wrapper && parent.children.length === 1 ? parent : tag;
+        var holder = parent && parent!== wrapper && parent.children.length === 1? parent : tag;
         holder.parentNode.insertBefore(anchor, holder);
-        if (holder !== tag) {
+        if (holder!== tag) {
           holder.classList.add("equation-tag-holder");
         }
       }
-
+  
       tag._equationTagAnchor = anchor;
       return {
         tag: tag,
         anchor: anchor,
-        top: tagRect.top - wrapperRect.top + wrapper.scrollTop
+        top: tagRect.top - wrapperRect.top + tagRect.height / 2 + wrapper.scrollTop
       };
     }).sort(function (a, b) {
       return a.top - b.top;
     });
-
+  
     var groups = [];
-    var lineThreshold = 12;
+    var lineThreshold = 3;
     items.forEach(function (item) {
       var last = groups[groups.length - 1];
       if (last && Math.abs(item.top - tagGroupTop(last)) <= lineThreshold) {
@@ -220,11 +220,11 @@
         groups.push([item]);
       }
     });
-
+  
     var layer = document.createElement("div");
     layer.className = "equation-tag-layer";
     wrapper.appendChild(layer);
-
+  
     groups.forEach(function (groupItems) {
       var group = document.createElement("div");
       group.className = "equation-tag-group";
@@ -233,7 +233,7 @@
       });
       layer.appendChild(group);
     });
-
+  
     wrapper.dataset.equationTagsReady = "true";
     placeEquationTagGroups(wrapper);
   }
