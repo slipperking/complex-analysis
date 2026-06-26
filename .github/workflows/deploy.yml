@@ -42,6 +42,9 @@ jobs:
           Remove-Item -Recurse -Force dist -ErrorAction SilentlyContinue
           .\typst.exe compile --features bundle,html --format bundle --package-path packages main.typ dist
 
+      - name: Build Search Index
+        run: python scripts/build_search_index.py
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

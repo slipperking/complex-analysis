@@ -349,6 +349,23 @@
     })
     html.elem("a", attrs: (class: "topbar-title", href: _href-from(current.path, "index.html")), notes-title)
   })
+  html.elem("form", attrs: (
+    class: "topbar-search",
+    "data-search-form": "true",
+    role: "search",
+    action: _href-from(current.path, "search/index.html"),
+    method: "get",
+  ), {
+    html.elem("input", attrs: (
+      class: "search-input",
+      type: "search",
+      name: "q",
+      placeholder: "Search...",
+      autocomplete: "off",
+      "aria-label": "Search the site",
+    ))
+    html.elem("button", attrs: (class: "search-submit", type: "submit"), [Search])
+  })
   html.elem("div", attrs: (class: "topbar-right"), {
     html.elem("button", attrs: (class: "icon-button theme-toggle", "aria-label": "Toggle theme"), {
       _icon("Theme", _asset-href(current.path, "assets/theme.svg"))
@@ -393,6 +410,7 @@
     #counter(math.equation).update(0)
     #thm-counter.thm-counters.update((:))
     #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/site.css")))
+    #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/search.css")))
     #_topbar(page)
     #html.elem("div", attrs: (class: "layout"))[
       #html.elem("aside", attrs: (class: "sidebar-left"))[
@@ -411,6 +429,7 @@
     ]
     #html.elem("div", attrs: (class: "sidebar-backdrop", id: "sidebar-backdrop"))
     #html.elem("script", attrs: (src: _asset-href(page.path, "assets/site.js")), [])
+    #html.elem("script", attrs: (src: _asset-href(page.path, "assets/search.js")), [])
   ] #label("doc-" + page.id)
 ]
 
@@ -430,6 +449,7 @@
   document(page.doc-path, title: _plain-text(page.title))[
     #show: web-styles
     #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/site.css")))
+    #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/search.css")))
     #_topbar(page)
     #html.elem("div", attrs: (class: "layout"))[
       #html.elem("aside", attrs: (class: "sidebar-left"))[
@@ -459,6 +479,7 @@
     ]
     #html.elem("div", attrs: (class: "sidebar-backdrop", id: "sidebar-backdrop"))
     #html.elem("script", attrs: (src: _asset-href(page.path, "assets/site.js")), [])
+    #html.elem("script", attrs: (src: _asset-href(page.path, "assets/search.js")), [])
   ]
 }
 

@@ -1,5 +1,7 @@
 #asset("assets/site.css", read("/src/assets/site.css"))
 #asset("assets/site.js", read("/src/assets/site.js"))
+#asset("assets/search.css", read("/src/assets/search.css"))
+#asset("assets/search.js", read("/src/assets/search.js"))
 #asset("assets/github.svg", read("/src/assets/github.svg"))
 #asset("assets/theme.svg", read("/src/assets/theme.svg"))
 #asset("assets/menu.svg", read("/src/assets/menu.svg"))

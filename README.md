@@ -10,10 +10,13 @@ The full site build has two steps:
 ```powershell
 python scripts/build.py
 .\typst.exe compile --features bundle,html --format bundle --package-path packages main.typ dist
+python scripts/build_search_index.py
 ```
 
 `scripts/build.py` runs preprocessing scripts. Currently, this includes generating
 Typst data for regions in visuals for Mergelyan's Theorem. The bundled `typst.exe` is used because the convergence passes (default of five) are augmented to 25 (for safety) to ensure convergence.
+
+`scripts/build_search_index.py` is a post-build step that scans the generated HTML in `dist/`, keeps both prose and MathML snippets, and writes a static search index plus `dist/search/index.html`.
 
 The `--package-path packages` argument points Typst at the repository's local
 package directory. Currently, all custom packages have been incorporated or refactored in a way such that this is not currently necessary.
