@@ -9,7 +9,7 @@ The full site build has two steps:
 
 ```powershell
 python scripts/build.py
-.\typst.exe compile --features bundle,html --format bundle --package-path packages main.typ web/dist
+.\typst.exe compile --features bundle,html --format bundle --package-path packages main.typ dist
 ```
 
 `scripts/build.py` runs preprocessing scripts. Currently, this includes generating

@@ -39,12 +39,13 @@ jobs:
       - name: Build Document
         run: |
           Remove-Item -Recurse -Force web/dist -ErrorAction SilentlyContinue
-          .\typst.exe compile --features bundle,html --format bundle --package-path packages main.typ web/dist
+          Remove-Item -Recurse -Force dist -ErrorAction SilentlyContinue
+          .\typst.exe compile --features bundle,html --format bundle --package-path packages main.typ dist
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: web/dist
+          path: dist
 
   deploy:
     needs: build
