@@ -2,6 +2,11 @@ import os
 import subprocess
 import sys
 
+SKIP_FILES = {
+    "build.py",
+    "build_search_index.py",
+}
+
 
 def main() -> None:
     root = os.path.dirname(os.path.abspath(__file__))
@@ -10,9 +15,9 @@ def main() -> None:
     for dirpath, _, files in os.walk(root):
         for file_name in files:
             if file_name.endswith(".py"):
-                path = os.path.join(dirpath, file_name)
-                if os.path.abspath(path) == os.path.abspath(__file__):
+                if file_name in SKIP_FILES:
                     continue
+                path = os.path.join(dirpath, file_name)
                 py_files.append(path)
 
     py_files.sort()
