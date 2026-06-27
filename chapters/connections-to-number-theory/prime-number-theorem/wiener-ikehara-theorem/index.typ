@@ -79,7 +79,7 @@ The two kernels are related by a angular unitary Fourier transform:
   $ #I-num = uppi / 4 sgn(x + 2 lambda), quad #II-num = uppi / 4 sgn(x - 2 lambda). $
   Similarly, $#III-num = uppi / 2 sgn(x)$. Hence,
   $
-    dv(I, x) = uppi / 4 [sgn(x + 2 lambda) + sgn(x - 2 lambda) - 2 sgn(x)] = uppi / 4 cases(
+    dv(I, x) = uppi / 4 [sgn(x + 2 lambda) + sgn(x - 2 lambda) - 2 sgn(x)] = uppi / 2 cases(
       0 quad & abs(x) > 2 lambda,
       1 quad & -2 lambda < x < 0,
       -1 quad & 0 < x < 2 lambda,
@@ -101,7 +101,7 @@ The two kernels are related by a angular unitary Fourier transform:
       -lambda quad & x < -2 lambda,
       x / 2 quad & -2 lambda < x < 0,
       -x / 2 quad & 0 < x < 2 lambda,
-      lambda quad & x > 2 lambda,
+      -lambda quad & x > 2 lambda,
     ).
   $
   Since
