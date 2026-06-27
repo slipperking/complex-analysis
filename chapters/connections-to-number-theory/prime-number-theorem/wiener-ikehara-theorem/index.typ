@@ -162,7 +162,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
     Because
     $
       1 / sqrt(2 uppi) integral_(-oo)^oo k_(lambda) (t) dt &= lambda / uppi integral_(-oo)^oo ((sin(lambda t)) / (lambda t))^2 dt = 1 / uppi integral_(-oo)^oo ((sin t) / t)^2 dt \
-      &= -evaluated((sin^2 t) / (uppi t))_(-oo)^oo + integral_(-oo)^oo d(sin^2 t) / (uppi t) dt = integral_(-oo)^oo (sin(2 t)) / (uppi t) dt = 1,
+      &= -evaluated((sin^2 t) / (uppi t))_(-oo)^oo + integral_(t in RR) (dd(sin^2 t)) / (uppi t) = integral_(-oo)^oo (sin(2 t)) / (uppi t) dt = 1,
     $
     we then have for any $n > N$, that
     $
