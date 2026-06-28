@@ -204,7 +204,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
       $,
       <eq:wiener-ikehara-g-function>,
     )
-    converges locally uniformly with respect to $t$ in $RR$ and is continuously differentiable. Then
+    converges locally uniformly with respect to $t$ in $RR$ and is continuous. Then
     #lbl(
       $
         lim_(x -> oo) f(x) / ee^x = c.
@@ -252,18 +252,21 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
     lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii x y) g(y) dy,
   $
-  or when the limit is exchanged with the integral. By parts, we have that
-  $
-    lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 1 / (2 uppi) (evaluated(K_(lambda) (y) g(y) ee^(ii x y) / (ii x))_(-2 lambda)^(2 lambda) - 1 / (ii x) integral_(-2 lambda)^(2 lambda) (K_(lambda) g)'(y) ee^(ii x y) dy).
-  $
-  This implies that $lim_(x -> oo) lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) equiv 0$. On the other hand, manual calculation yields
+  (effectively, we have exchanged the limit with the integral). By Lebesgue's Dominated Convergence Theorem,
+  #lbl(
+    $
+      lim_(x -> oo) lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) lim_(x -> oo) K_(lambda) (y) ee^(ii x y) g(y) dy = 0.
+    $,
+    <eq:wiener-ikehara-intermediate-vanishing-from-dominated-convergence>
+  )
+  On the other hand, a manual calculation yields
   $
     lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = lim_(epsilon -> 0^+) 1 / sqrt(2 uppi) (& integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt \ & wide"" - integral_0^oo k_(lambda) (x - t) A(t) ee^(-epsilon t) dt).
   $
   The Lebesgue's Dominated Convergence Theorem then gives
   $
     lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) & = 1 / sqrt(2 uppi) integral_0^oo k_(lambda) (x - t) (a(t) - A(t)) dt \
-                                                 & = (a * k_(lambda) - A * k_(lambda)) (x) -> 0
+                                                 & = (a * k_(lambda) - A * k_(lambda)) (x) -> 0 #tag[(by @eq:wiener-ikehara-intermediate-vanishing-from-dominated-convergence)]
   $
   as $x -> oo$. Since $(A * k_(lambda)) (x) = c$ for all $x$, we have that
   #lbl(
