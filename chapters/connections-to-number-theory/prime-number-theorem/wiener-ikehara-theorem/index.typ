@@ -188,6 +188,18 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
 ]
 
 #lbl(
+  #lemma[Riemann--Lebesgue][
+    Let $a,b in RR$ with $a<b$. Let $f:[a,b] -> RR$ be continuous. Then
+    $ lim_(x -> oo) integral_a^b f(t) ee^(-ii x t) dt = 0. $
+  ],
+  <lem:riemann-lebesgue>
+)
+
+#proof[
+  #lorem(60)
+]
+
+#lbl(
   theorem[Wiener--Ikehara][
     Let $f:RR_(>=0) -> RR$ be a nonnegative, monotonically non-decreasing function such that the Laplace transform
     #lbl(
@@ -252,12 +264,12 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
     lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii x y) g(y) dy,
   $
-  (effectively, we have exchanged the limit with the integral). By Lebesgue's Dominated Convergence Theorem,
+  (effectively, we have exchanged the limit with the integral). Then by the Riemann--Lebesgue Lemma (@lem:riemann-lebesgue),
   #lbl(
     $
-      lim_(x -> oo) lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) lim_(x -> oo) K_(lambda) (y) ee^(ii x y) g(y) dy = 0.
+      lim_(x -> oo) lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 0.
     $,
-    <eq:wiener-ikehara-intermediate-vanishing-from-dominated-convergence>
+    <eq:wiener-ikehara-intermediate-vanishing>
   )
   On the other hand, a manual calculation yields
   $
@@ -266,7 +278,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   The Lebesgue's Dominated Convergence Theorem then gives
   $
     lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) & = 1 / sqrt(2 uppi) integral_0^oo k_(lambda) (x - t) (a(t) - A(t)) dt \
-                                                 & = (a * k_(lambda) - A * k_(lambda)) (x) -> 0 #tag[(by @eq:wiener-ikehara-intermediate-vanishing-from-dominated-convergence)]
+                                                 & = (a * k_(lambda) - A * k_(lambda)) (x) -> 0 #tag[(by @eq:wiener-ikehara-intermediate-vanishing)]
   $
   as $x -> oo$. Since $(A * k_(lambda)) (x) = c$ for all $x$, we have that
   #lbl(
