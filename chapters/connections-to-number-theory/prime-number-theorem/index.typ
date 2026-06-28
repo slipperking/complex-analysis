@@ -103,7 +103,7 @@ Hence we have for any $x > 1$,
     )
     converges for $Re s > 1$ and defines a holomorphic function on this domain. Moreover, the function $g$ defined by
     $ g(t) = lim_(sigma -> 1^+) [f(s) - 1 / (s - 1)], s = sigma + ii t $
-    converges uniformly with respect to $t$ on compact subsets of $RR$ and is continuously differentiable thereon.
+    converges uniformly with respect to $t$ on compact subsets of $RR$ and is continuous thereon.
   ],
   <thm:prime-number-theorem-laplace-transform-of-chebyshev-psi-exp-function>,
 )
@@ -135,5 +135,5 @@ Hence we have for any $x > 1$,
   $ abs(f(s_1) - 1 / (s_1 - 1) - f(s_2) + 1 / (s_2 - 1)) < epsilon. $
   In particular, for $sigma_1 = 1$ such that $t_2 = t_1$ ($= t$), we have
   $ s=sigma+ ii t in K: abs(sigma-1)<delta ==> abs(f(1 + ii t) - 1 / (ii t) - f(s) + 1 / (s - 1)) < epsilon, $
-  where $delta$ is chosen independently of $t$. Therefore, $g(t)$ converges uniformly on compact subsets of $RR$ and is continuously differentiable thereon.
+  where $delta$ is chosen independently of $t$. Therefore, $g(t)$ converges uniformly on compact subsets of $RR$ and is continuous thereon.
 ]
