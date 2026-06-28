@@ -234,13 +234,13 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
     integral_(-oo)^oo ((a(t) - A(t)) / ee^((epsilon + ii y) t)) dt
   $
-  converges uniformly for $abs(y) < 2 lambda$, we have by virtue of @lem:wiener-ikehara-kernels-fourier-transform, that
+  converges uniformly for $abs(y) < 2 lambda$ (as the integrand is uniformly bounded by $abs(a(t))ee^(-epsilon t) + abs(A(t)) ee^(-epsilon t)$, where both terms have convergent integrals), we have by virtue of @lem:wiener-ikehara-kernels-fourier-transform, that
   $
     I_(lambda, epsilon) (x) &= 1 / (2 uppi) integral_(-oo)^oo ((a(t) - A(t)) / ee^(epsilon t)) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii (x - t) y) dy dt \
     &= 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii x y) integral_0^oo (a(t) - A(t)) / ee^((epsilon + ii y) t) dt dy \
     &= 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii x y) [cal(L){f} (1 + epsilon + ii y) - c / (epsilon + ii y)] dy.
   $
-  Now $forall epsilon' > 0$, by the local uniform convergence of $g$ in @eq:wiener-ikehara-g-function, there exists some $delta > 0$ such that
+  Now $forall epsilon' > 0$, by the local uniform convergence of $g$ in @eq:wiener-ikehara-g-function, there exists some $delta > 0$ such that for any $epsilon < delta$,
   $
     forall abs(y) < 2 lambda, abs(cal(L){f} (1 + epsilon + ii y) - c / (epsilon + ii y) - g(y)) < (uppi epsilon') / lambda.
   $
