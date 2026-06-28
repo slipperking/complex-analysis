@@ -189,35 +189,33 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
 
 #lbl(
   lemma[Riemann--Lebesgue][
-    Let $a,b in RR$ with $a<b$. Let $f:[a,b] -> RR$ be continuous. Then
+    Let $a,b in RR$ with $a<b$. Let $f:[a,b] -> CC$ be continuous. Then
     $ lim_(x -> oo) integral_a^b f(t) ee^(ii x t) dt = 0. $
   ],
   <lem:riemann-lebesgue>
 )
 
 #proof[
-  Let $M = max_(t in [a,b]) abs(f(t))$, which exists by @thm:extreme-value. Moreover, by @thm:heine-cantor, it is uniformly continuous. Hence, for any $epsilon > 0$, there exists a partition
+  By the Heine--Cantor Theorem (@thm:heine-cantor), $f$ is uniformly continuous. Hence, for any $epsilon > 0$, there exists a partition
   $ a = t_0 < t_1 < dots < t_n = b $
   such that
   $ abs(f(t) - f(t_k)) < epsilon / (2 (b - a)) $
   whenever $t_k <= t <= t_(k + 1)$. Writing
 	$
 	  integral_a^b f(t) ee^(ii x t) dt &= sum_(k = 0)^(n - 1) integral_(t_k)^(t_(k + 1)) f(t) ee^(ii x t) dt \
-	  &= sum_(k = 0)^(n - 1) integral_(t_k)^(t_(k + 1)) (f(t) - f(t_k)) ee^(ii x t) dt \
-	  &quad""+ sum_(k = 0)^(n - 1) f(t_k) integral_(t_k)^(t_(k + 1)) ee^(ii x t) dt,
+	  &= sum_(k = 0)^(n - 1) integral_(t_k)^(t_(k + 1)) (f(t) - f(t_k)) ee^(ii x t) dt + sum_(k = 0)^(n - 1) f(t_k) integral_(t_k)^(t_(k + 1)) ee^(ii x t) dt,
 	$
 	we obtain
 	$
-	  abs(sum_(k = 0)^(n - 1) integral_(t_k)^(t_(k + 1)) (f(t) - f(t_k)) ee^(ii x t) dt) &<= sum_(k = 0)^(n - 1) integral_(t_k)^(t_(k + 1)) abs(f(t) - f(t_k)) dt \
-	  &< epsilon / 2.
+	  abs(sum_(k = 0)^(n - 1) integral_(t_k)^(t_(k + 1)) (f(t) - f(t_k)) ee^(ii x t) dt) <= sum_(k = 0)^(n - 1) integral_(t_k)^(t_(k + 1)) abs(f(t) - f(t_k)) dt < epsilon / 2.
 	$
   Moreover,
   $
-    integral_(t_k)^(t_(k + 1)) ee^(ii x t) dt = (ee^(ii x t_k) - ee^(ii x t_(k + 1))) / (ii x),
+    integral_(t_k)^(t_(k + 1)) ee^(ii x t) dt = (ee^(ii x t_(k+1)) - ee^(ii x t_k)) / (ii x),
   $
   and therefore
   $
-    abs(sum_(k = 0)^(n - 1) f(t_k) integral_(t_k)^(t_(k + 1)) ee^(-ii x t) dt) &<= 2 / x sum_(k = 0)^(n - 1) abs(f(t_k)).
+    abs(sum_(k = 0)^(n - 1) f(t_k) integral_(t_k)^(t_(k + 1)) ee^(ii x t) dt) &<= 2 / x sum_(k = 0)^(n - 1) abs(f(t_k)).
   $
   Since the latter tends to $0$ as $x -> oo$, there exists $x_0 > 0$ such that
   $
@@ -230,7 +228,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
   for all $x > x_0$. Since $epsilon > 0$ was arbitrary, it follows that
   $
-    lim_(x -> oo) integral_a^b f(t) ee^(ii x t) dt = 0.
+    lim_(x -> oo) integral_a^b f(t) ee^(ii x t) dt = 0. #qedhere
   $
 ]
 
@@ -355,7 +353,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
 )
 
 #proof[
-  By @thm:chebyshev-functions-limsup-liminf-limit-equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:prime-number-theorem-laplace-transform-chebyshev-function_statement. By @thm:prime-number-theorem-laplace-transform-of-chebyshev-psi-exp-function, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuously differentiable. Hence, by the Wiener--Ikehara theorem (@thm:wiener-ikehara), we have that
+  By @thm:chebyshev-functions-limsup-liminf-limit-equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:prime-number-theorem-laplace-transform-chebyshev-function_statement. By @thm:prime-number-theorem-laplace-transform-of-chebyshev-psi-exp-function, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuous. Hence, by the Wiener--Ikehara theorem (@thm:wiener-ikehara), we have that
   $ lim_(x -> oo) psi(ee^x) / ee^x = lim_(x -> oo) psi(x) / x = 1, $
   and the Prime Number Theorem follows.
 ]
