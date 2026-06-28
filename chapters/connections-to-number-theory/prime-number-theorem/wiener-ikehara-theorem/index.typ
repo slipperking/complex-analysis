@@ -308,20 +308,20 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
   Using that $integral_0^oo k_(lambda) (x - t) A(t) dt$ dominates the second integrand and forms a convergent integral, Lebesgue's Dominated Convergence Theorem then gives
   $
-    lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) & = lim_(epsilon -> 0^+) 1 / sqrt(2 uppi) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt - A * k_(lambda)) (x) 
+    lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) & = lim_(epsilon -> 0^+) 1 / sqrt(2 uppi) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt - (A * k_(lambda)) (x) 
   $
   Since for any postive $t_0$, 
   $
     integral_0^(t_0) k_(lambda) (x - t) a(t) ee^(-epsilon t) dt <= integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt
   $
-  where the left-hand side is dominated by the finite integral $integral_0^(t_0) k_(lambda) (x - t) a(t) dt$, letting $epsilon -> 0^+$ gives 
+  where the left-hand side is dominated by the finite integral $integral_0^(t_0) k_(lambda) (x - t) a(t) dt$, letting $epsilon -> 0^+$ (which now may be passed through the left-hand side integral) gives 
   $
-    integral_0^(t_0) k_(lambda) (x - t) a(t) <= lim_(epsilon -> 0^+) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt
+    integral_0^(t_0) k_(lambda) (x - t) a(t) dt <= lim_(epsilon -> 0^+) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt
   $
-  Since this holds for all $t_0$, letting $t_0 -> oo$ gives $ integral_0^oo k_(lambda) (x - t) a(t) <= lim_(epsilon -> 0^+) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt $
+  Since this holds for all $t_0$, letting $t_0 -> oo$ gives $ integral_0^oo k_(lambda) (x - t) a(t) dt <= lim_(epsilon -> 0^+) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt $
   Additionally, the reverse inequality
   $
-    lim_(epsilon -> 0^+) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt <= integral_0^oo k_(lambda) (x - t) a(t)
+    lim_(epsilon -> 0^+) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt <= integral_0^oo k_(lambda) (x - t) a(t) dt
   $ is also true as $ee^(-epsilon t) < 1$. Thus, we attain an equality. Therefore, 
   $ lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = (a * k_(lambda) - A * k_(lambda)) (x) -> 0 #tag[(by @eq:wiener-ikehara-intermediate-vanishing)]
   $
