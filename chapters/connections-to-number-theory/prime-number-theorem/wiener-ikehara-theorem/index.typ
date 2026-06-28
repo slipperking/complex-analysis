@@ -220,9 +220,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   Since the latter tends to $0$ as $x -> oo$, there exists $x_0 > 0$ such that
   $
     2 / x sum_(k = 0)^(n - 1) abs(f(t_k)) < epsilon / 2
-  $ for all $x > x_0$.
-
-  Consequently,
+  $ for all $x > x_0$. Consequently,
   $
     abs(integral_a^b f(t) ee^(ii x t) dt) < epsilon
   $
@@ -313,7 +311,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
     lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) & = 1 / sqrt(2 uppi) integral_0^oo k_(lambda) (x - t) (a(t) - A(t)) dt \
                                                  & = (a * k_(lambda) - A * k_(lambda)) (x) -> 0 #tag[(by @eq:wiener-ikehara-intermediate-vanishing)]
   $
-  as $x -> oo$. Since $ (A * k_(lambda)) (x) = c integal_(-oo)^x k_lambda (u) dif u -> c $ as $x -> oo$, we have that
+  as $x -> oo$. Since $ (A * k_(lambda)) (x) = c integral_(-oo)^x k_lambda (u) dif u -> c $ as $x -> oo$, we have that
   #lbl(
     $
       lim_(x -> oo) (a * k_(lambda)) (x) = c.
