@@ -313,7 +313,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
     lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) & = 1 / sqrt(2 uppi) integral_0^oo k_(lambda) (x - t) (a(t) - A(t)) dt \
                                                  & = (a * k_(lambda) - A * k_(lambda)) (x) -> 0 #tag[(by @eq:wiener-ikehara-intermediate-vanishing)]
   $
-  as $x -> oo$. Since $(A * k_(lambda)) (x) = c$ for all $x$, we have that
+  as $x -> oo$. Since $ (A * k_(lambda)) (x) = c integal_(-oo)^x k_lambda (u) dif u -> c $ as $x -> oo$, we have that
   #lbl(
     $
       lim_(x -> oo) (a * k_(lambda)) (x) = c.
