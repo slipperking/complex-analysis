@@ -147,28 +147,29 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
 )
 
 #proof[
-  Let $epsilon > 0$ be arbitrary. Assume, for the sake of contradiction, that $f$ does not converge to $L$ as $x -> oo$. Then there exists some sequence ${x_n}_(n in NN)$ such that $abs(f(x_n) - L) > epsilon$ for all $n$. From here, we may extract an infinite subsequence (continued to be denoted by ${x_n}$) such that one of the two cases is assumed:
+  Let $epsilon > 0$ be arbitrary. Assume, for the sake of contradiction, that $f$ does not converge to $L$ as $x -> oo$. Then there exists some sequence ${x_n}_(n in NN)$ ($x_n -> oo$) such that $abs(f(x_n) - L) > epsilon$ for all $n$. From here, by the infinite pigeonhole principle we may extract an infinite subsequence (continued to be denoted by ${x_n}$) such that one of the two cases is assumed:
   + $f(x_n) - L > epsilon$ for all $n in NN$. By the slow decrease of $f$, there exist $delta > 0$ and $N in NN$ such that
     $ f(y) > f(x_n) - epsilon / 2 > L + epsilon / 2 $
-    for any $n > N$ and $0 < y - x_n < 2 delta$. Then we have
+    for any $n > N$ and $0 < y - x_n < 2 delta$. Then we have for any such $n$ and $y = x_n + delta$, that
     $
-      (f * k_(lambda)) (x + delta) &= 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x + delta - t) dt \
-      &= 1 / sqrt(2 uppi) (integral_x^(x + 2 delta) + integral_(-oo)^x + integral_(x + 2 delta)^oo) f(t) k_(lambda) (x + delta - t) dt \
-      & > 1 / sqrt(2 uppi) integral_x^(x + 2 delta) (L + epsilon / 2) k_(lambda) (x + delta - t) dt \
-      & quad"" - M / sqrt(2 uppi) (integral_(-oo)^x + integral_(x + 2 delta)^oo) k_(lambda) (x + delta - t) dt \
-      & > (2 L + epsilon) / (2 sqrt(2 uppi)) integral_x^(x + 2 delta) k_(lambda) (x + delta - t) dt \
+      (f * k_(lambda)) (x_n + delta) &= 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x_n + delta - t) dt \
+      &= 1 / sqrt(2 uppi) (integral_(x_n)^(x_n + 2 delta) + integral_(-oo)^(x_n) + integral_(x_n + 2 delta)^oo) f(t) k_(lambda) (x_n + delta - t) dt \
+      & > 1 / sqrt(2 uppi) integral_(x_n)^(x_n + 2 delta) (L + epsilon / 2) k_(lambda) (x_n + delta - t) dt \
+      & quad"" - M / sqrt(2 uppi) (integral_(-oo)^(x_n) + integral_(x_n + 2 delta)^oo) k_(lambda) (x_n + delta - t) dt \
+      & > (2 L + epsilon) / (2 sqrt(2 uppi)) integral_(x_n)^(x_n + 2 delta) k_(lambda) (x_n + delta - t) dt \
       &quad ""- M / sqrt(2 uppi) (integral_delta^oo + integral_(-oo)^(-delta)) k_(lambda) (u) dif u.
     $
+    Now observe that
+    #lbl(
+      $
+        integral_(-oo)^oo ((sin t) / t)^2 dt &= -evaluated((sin^2 t) / t)_(-oo)^oo + integral_(t in RR) (dd(sin^2 t)) / t \ &= integral_(-oo)^oo (sin(2 t)) / t dt = uppi.
+      $, <eq:wiener-ikehara-intermediate-tauberian-theorem-integral-of-dirichlet-squared>
+    )
     Because
     $
-      1 / sqrt(2 uppi) integral_(-oo)^oo k_(lambda) (t) dt &= lambda / uppi integral_(-oo)^oo ((sin(lambda t)) / (lambda t))^2 dt = 1 / uppi integral_(-oo)^oo ((sin t) / t)^2 dt \
-      &= -evaluated((sin^2 t) / (uppi t))_(-oo)^oo + integral_(t in RR) (dd(sin^2 t)) / (uppi t) = integral_(-oo)^oo (sin(2 t)) / (uppi t) dt = 1,
+      (f * k_(lambda)) (x_n + delta) &>= (2 L + epsilon) / (2 sqrt(2 uppi)) integral_(-delta)^delta (2 lambda) / sqrt(2 uppi) ((sin(lambda u)) / (lambda u))^2 dif u \ & wide ""- (2 M) / uppi integral_(delta lambda)^oo ((sin t) / t)^2 dt,
     $
-    we then have for any $n > N$, that
-    $
-      lim_(n -> oo) (f * k_(lambda)) (x_n + delta) &>= (2 L + epsilon) / (2 sqrt(2 uppi)) integral_(-delta)^delta (2 lambda) / sqrt(2 uppi) ((sin(lambda u)) / (lambda u))^2 dif u \ & wide ""- (2 M) / uppi integral_(delta lambda)^oo ((sin t) / t)^2 dt.
-    $
-    Letting $lambda -> oo$, we have
+    by letting $lambda -> oo$ (which retains the inequality by the independence assumption), we have from @eq:wiener-ikehara-intermediate-tauberian-theorem-integral-of-dirichlet-squared, that
     $
       &(2 L + epsilon) / (2 uppi) integral_(-delta lambda)^(delta lambda) ((sin t) / t)^2 dt - (2 M) / uppi integral_(delta lambda)^oo ((sin t) / t)^2 dt \ & wide ""-> (2 L + epsilon) / (2 uppi) integral_(-oo)^oo ((sin t) / t)^2 dt = L + epsilon / 2.
     $
