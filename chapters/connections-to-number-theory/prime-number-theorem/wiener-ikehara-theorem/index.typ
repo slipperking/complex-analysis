@@ -332,12 +332,12 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   as $x -> oo$, we have that
   #lbl(
     $
-      lim_(x -> oo) (a * k_(lambda)) (x) = c.
+      lim_(x -> oo) 1 / sqrt(2 uppi) (a * k_(lambda)) (x) = c.
     $,
     <eq:wiener-ikehara-convolution-limit>,
   )
   Therefore, $exists x_0 > 0$ such that
-  $ (a * k_(lambda)) (x) < c + 1 ==> 1 / uppi integral_(-oo)^oo ((sin t) / t)^2 a (x - t / lambda) dt < c + 1 $
+  $ 1 / sqrt(2 uppi) (a * k_(lambda)) (x) < c + 1 ==> 1 / uppi integral_(-oo)^oo ((sin t) / t)^2 a (x - t / lambda) dt < c + 1 $
   for all $x > x_0$. Substituting $x + 2 / sqrt(lambda)$ for $x$ in the integral, we have (after further restricting the integration bounds, which preserves the inequality)
   $
     integral_(-sqrt(lambda))^(sqrt(lambda)) ((sin t) / t)^2 a (x + (2 sqrt(lambda) - t) / lambda) dt < uppi (c + 1)
