@@ -325,7 +325,11 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $ is also true as $ee^(-epsilon t) < 1$. Thus, we attain an equality. Therefore, 
   $ lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 1 / sqrt(2 uppi) (a * k_(lambda) - A * k_(lambda)) (x) -> 0 #tag[(by @eq:wiener-ikehara-intermediate-vanishing)]
   $
-  as $x -> oo$. Since $ (A * k_(lambda)) (x) = c integral_(-oo)^x k_lambda (u) dif u -> c $ as $x -> oo$, we have that
+  as $x -> oo$. Since 
+  $
+    1 / sqrt(2 uppi) (A * k_(lambda)) (x) &= c / sqrt(2 uppi) integral_(-oo)^x k_lambda (u) dif u -> c / sqrt(2 uppi) integral_(-oo)^oo k_lambda (u) dif u \ &= c / sqrt(2 uppi) integral_(-oo)^oo sqrt(2 / uppi) (sin u / u)^2 dif u \ &= c #tag[(by @eq:wiener-ikehara-intermediate-tauberian-theorem-integral-of-dirichlet-squared)]
+  $
+  as $x -> oo$, we have that
   #lbl(
     $
       lim_(x -> oo) (a * k_(lambda)) (x) = c.
