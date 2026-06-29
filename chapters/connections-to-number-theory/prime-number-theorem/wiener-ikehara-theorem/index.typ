@@ -139,7 +139,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   proposition[
     Let $f:RR -> RR$ be a slowly decreasing function bounded by $M > 0$. If the limit of the convolution $f * k_(lambda)$ given by
     $
-      L equiv lim_(x -> oo) (f * k_(lambda)) (x) = lim_(x -> oo) 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x - t) dt
+      L equiv lim_(x -> oo) 1 / sqrt(2 uppi) (f * k_(lambda)) (x) = lim_(x -> oo) 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x - t) dt
     $
     is independent of $lambda > 0$, then $lim_(x -> oo) f(x) = L$.
   ],
@@ -152,7 +152,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
     $ f(y) > f(x_n) - epsilon / 2 > L + epsilon / 2 $
     for any $n > N$ and $0 < y - x_n < 2 delta$. Then we have for any such $n$ and $y = x_n + delta$, that
     $
-      (f * k_(lambda)) (x_n + delta) &= 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x_n + delta - t) dt \
+      1 / sqrt(2 uppi) (f * k_(lambda)) (x_n + delta) &= 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x_n + delta - t) dt \
       &= 1 / sqrt(2 uppi) (integral_(x_n)^(x_n + 2 delta) + integral_(-oo)^(x_n) + integral_(x_n + 2 delta)^oo) f(t) k_(lambda) (x_n + delta - t) dt \
       & > 1 / sqrt(2 uppi) integral_(x_n)^(x_n + 2 delta) (L + epsilon / 2) k_(lambda) (x_n + delta - t) dt \
       & quad"" - M / sqrt(2 uppi) (integral_(-oo)^(x_n) + integral_(x_n + 2 delta)^oo) k_(lambda) (x_n + delta - t) dt \
@@ -167,24 +167,24 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
     )
     Because
     $
-      (f * k_(lambda)) (x_n + delta) &>= (2 L + epsilon) / (2 sqrt(2 uppi)) integral_(-delta)^delta (2 lambda) / sqrt(2 uppi) ((sin(lambda u)) / (lambda u))^2 dif u \ & wide ""- (2 M) / uppi integral_(delta lambda)^oo ((sin t) / t)^2 dt,
+      1 / sqrt(2 uppi) (f * k_(lambda)) (x_n + delta) &>= (2 L + epsilon) / (2 sqrt(2 uppi)) integral_(-delta)^delta (2 lambda) / sqrt(2 uppi) ((sin(lambda u)) / (lambda u))^2 dif u \ & wide ""- (2 M) / uppi integral_(delta lambda)^oo ((sin t) / t)^2 dt,
     $
     by letting $lambda -> oo$ (which retains the inequality by the independence assumption), we have from @eq:wiener-ikehara-intermediate-tauberian-theorem-integral-of-dirichlet-squared, that
     $
       &(2 L + epsilon) / (2 uppi) integral_(-delta lambda)^(delta lambda) ((sin t) / t)^2 dt - (2 M) / uppi integral_(delta lambda)^oo ((sin t) / t)^2 dt \ & wide ""-> (2 L + epsilon) / (2 uppi) integral_(-oo)^oo ((sin t) / t)^2 dt = L + epsilon / 2.
     $
-    Because $lim_(n -> oo) (f * k_(lambda)) (x_n + delta) = L >= L + epsilon / 2$, we reach a contradiction.
+    Because $lim_(n -> oo) 1 / sqrt(2 uppi) (f * k_(lambda)) (x_n + delta) = L >= L + epsilon / 2$, we reach a contradiction.
   + $f(x_n) - L < -epsilon$. Then there exist $delta > 0$, $N in NN$ such that
     $ f(x_n) - f(y) > -epsilon / 2 ==> f(y) < f(x_n) + epsilon / 2 < L - epsilon / 2 $
     for any $n > N$ and $0 < x_n - y < 2 delta$. Splitting the convolution integral into $integral_(-oo)^(x_n - 2 delta)$, $integral_(x_n - 2 delta)^(x_n)$, and $integral_(x_n)^oo$, we have
     $
-      (f * k_(lambda)) (x_n - delta) &= 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x_n - delta - t) dt \
+      1 / sqrt(2 uppi) (f * k_(lambda)) (x_n - delta) &= 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x_n - delta - t) dt \
       &= 1 / sqrt(2 uppi) (integral_(-oo)^(x_n - 2 delta) + integral_(x_n - 2 delta)^(x_n) + integral_(x_n)^oo) f(t) k_(lambda) (x_n - delta - t) dt \
       & < M / sqrt(2 uppi) (integral_(-oo)^(x_n - 2 delta) + integral_(x_n)^oo) k_(lambda) (x_n - delta - t) dt \
       & quad + 1 / sqrt(2 uppi) integral_(x_n - 2 delta)^(x_n) (L - epsilon / 2) k_(lambda) (x_n - delta - t) dt \
       & < M / sqrt(2 uppi) (integral_(-oo)^(-delta) + integral_delta^oo) k_(lambda) (u) dif u + (2 L - epsilon) / (2 sqrt(2 uppi)) integral_(-delta)^delta k_(lambda) (u) dif u.
     $
-    Letting $lambda -> oo$, we have similarly that $lim_(n -> oo) (f * k_(lambda)) (x_n - delta) <= L - epsilon / 2$, contradicting $lim_(n -> oo) (f * k_(lambda)) (x_n - delta) = L$. #qedhere
+    Letting $lambda -> oo$, we have similarly that $lim_(n -> oo) 1 / sqrt(2 uppi) (f * k_(lambda)) (x_n - delta) <= L - epsilon / 2$, contradicting $lim_(n -> oo) (f * k_(lambda)) (x_n - delta) = L$. #qedhere
 ]
 
 #lbl(
@@ -306,9 +306,9 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
     lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = lim_(epsilon -> 0^+) 1 / sqrt(2 uppi) (& integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt \ & wide"" - integral_0^oo k_(lambda) (x - t) A(t) ee^(-epsilon t) dt).
   $
-  Using that $integral_0^oo k_(lambda) (x - t) A(t) dt$ dominates the second integrand and forms a convergent integral, Lebesgue's Dominated Convergence Theorem then gives
+  Using that $integral_0^oo k_(lambda) (x - t) c dt$ dominates the second integrand and forms a convergent integral, Lebesgue's Dominated Convergence Theorem then gives
   $
-    lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) & = lim_(epsilon -> 0^+) 1 / sqrt(2 uppi) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt - (A * k_(lambda)) (x) 
+    lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) & = lim_(epsilon -> 0^+) 1 / sqrt(2 uppi) [integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt - (A * k_(lambda)) (x)]
   $
   Since for any postive $t_0$, 
   $
@@ -323,7 +323,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
     lim_(epsilon -> 0^+) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt <= integral_0^oo k_(lambda) (x - t) a(t) dt
   $ is also true as $ee^(-epsilon t) < 1$. Thus, we attain an equality. Therefore, 
-  $ lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = (a * k_(lambda) - A * k_(lambda)) (x) -> 0 #tag[(by @eq:wiener-ikehara-intermediate-vanishing)]
+  $ lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 1 / sqrt(2 uppi) (a * k_(lambda) - A * k_(lambda)) (x) -> 0 #tag[(by @eq:wiener-ikehara-intermediate-vanishing)]
   $
   as $x -> oo$. Since $ (A * k_(lambda)) (x) = c integral_(-oo)^x k_lambda (u) dif u -> c $ as $x -> oo$, we have that
   #lbl(
