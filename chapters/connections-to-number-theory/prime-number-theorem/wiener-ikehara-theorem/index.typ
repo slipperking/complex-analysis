@@ -327,7 +327,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
   as $x -> oo$. Since 
   $
-    1 / sqrt(2 uppi) (A * k_(lambda)) (x) &= c / sqrt(2 uppi) integral_(-oo)^x k_lambda (u) dif u -> c / sqrt(2 uppi) integral_(-oo)^oo k_lambda (u) dif u \ &= c / sqrt(2 uppi) integral_(-oo)^oo sqrt(2 / uppi) (sin u / u)^2 dif u \ &= c #tag[(by @eq:wiener-ikehara-intermediate-tauberian-theorem-integral-of-dirichlet-squared)]
+    1 / sqrt(2 uppi) (A * k_(lambda)) (x) &= c / sqrt(2 uppi) integral_(-oo)^x k_lambda (u) dif u -> c / sqrt(2 uppi) integral_(-oo)^oo k_lambda (u) dif u \ &= c / sqrt(2 uppi) integral_(-oo)^oo sqrt(2 / uppi) ((sin u) / u)^2 dif u \ &= c #tag[(by @eq:wiener-ikehara-intermediate-tauberian-theorem-integral-of-dirichlet-squared)]
   $
   as $x -> oo$, we have that
   #lbl(
