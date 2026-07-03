@@ -63,7 +63,7 @@ In preparation, we will introduce several relevant concepts.
   $
   Hence, $partial^(bold(alpha)) bold(psi)$ is a homogeneous polynomial of degree $d - abs(bold(alpha))$, establishing @itm:homogeneous-polynomial-derivatives-less.
 
-  If $abs(bold(alpha)) = d$, every surviving monomial has degree $0$, so $partial^(bold(alpha)) bold(psi)$ is constant. Moreover, since $bold(psi)$ has degree exactly $d$, there exists some multi-index $vb(k)$ with $abs(vb(k)) = d$ and $bold(a)_(vb(k)) != bold(0)$; choosing $bold(alpha) = vb(k)$ yields a nonzero constant derivative. This proves @itm:homogeneous-polynomial-derivatives-equality.
+  If $abs(bold(alpha)) = d$, every surviving monomial has degree $0$, so $partial^(bold(alpha)) bold(psi)$ is constant. Moreover, since $bold(psi)$ has degree exactly $d$, there exists some multi-index $bold(k)$ with $abs(bold(k)) = d$ and $bold(a)_(bold(k)) != bold(0)$; choosing $bold(alpha)' = bold(k)$ yields a nonzero constant derivative. This proves @itm:homogeneous-polynomial-derivatives-equality.
 
   Finally, if $abs(bold(alpha)) > d$, then for every term in the expansion, at least one $k_j < alpha_j$, so all summands vanish identically. Thus $partial^(bold(alpha)) bold(psi) equiv 0$, verifying @itm:homogeneous-polynomial-derivatives-greater.
 ]
