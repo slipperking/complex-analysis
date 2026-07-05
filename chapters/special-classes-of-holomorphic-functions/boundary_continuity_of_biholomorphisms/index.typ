@@ -539,11 +539,10 @@ In fact, it is almost always true that such an extension exists. We will give th
     Let $D_j = D(a_j, l_(r_j) + eta(l_(r_j)))$ (or $D_j = D(p_j, l_(r_j) + eta(l_(r_j)))$ in the case of the same point) for each $j$. By the previous diameter estimate, the entire Jordan curve $phi(gamma_(r_j)) union tau_j$ lies in $D_j$, and hence $W_j subset D_j$. This implies that
     #lbl(
       $
-        op("area")(W_j) <= op("area")(D_j) = uppi (l_(r_j) + eta(l_(r_j)))^2 -> 0 quad "as" quad j -> oo.
+        op("area")(W_j) <= op("area")(D_j) = uppi (l_(r_j) + eta(l_(r_j)))^2 -> 0 quad "as" quad j -> oo. qedhere
       $,
       <eq:osgood_taylor_caratheodory_vanishing_areas_and_diameters_areaestimation2>,
     )
-    qedhere
   ]
 
   #lbl(
@@ -572,7 +571,7 @@ In fact, it is almost always true that such an extension exists. We will give th
       $
         op("area")(W_j) -> 0
       $
-      as $j -> oo$. Hence, for sufficiently large $j$, we cannot have $phi(T_j) subset.eq W_j$ (by the induced contradiction with @eq:osgood_taylor_caratheodory_matching_areas_areaestimation). Therefore, $phi(T_j) = Omega_2 without overline(W_j)$ and $phi(V_j) = W_j$. qedhere
+      as $j -> oo$. Hence, for sufficiently large $j$, we cannot have $phi(T_j) subset.eq W_j$ (by the induced contradiction with @eq:osgood_taylor_caratheodory_matching_areas_areaestimation). Therefore, $phi(T_j) = Omega_2 without overline(W_j)$ and $phi(V_j) = W_j$. #qedhere
   ]
 
   #lbl(
