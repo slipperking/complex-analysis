@@ -569,7 +569,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
   covers a (compact) $r$-neighborhood of $extcomplex without K$ (so that each $zeta_k in.not K$, and is labeled so that each $zeta_k$ is in the same connected component as $p_k$) (in the case that $p_k = oo$, let the disk inside be the empty set). Thus, the collection also covers $H$. A finite subcover ${D(zeta_k^((j)), 5 / 4 r)}_(1 <= j <= m_k\ 1 <= k <= n)$ covering $H$ exists by the Heine--Borel Theorem (@thm:heine-borel).
 
-  By the connectivity of each component of $extcomplex without K$, there exists a piecewise-linear simple curve $gamma_k^((j))$ for all $1 <= k <= n$, $1 <= j <= m_k$, joining $zeta_k^((j))$ and $p_k$, which lies entirely within $extcomplex without K$. The compact disks $overline(D(zeta_k^((j)), 3 / 4 r))$ are all disjoint from their corresponding $p_k$ since each $zeta_k^((j)) in.not overline(D(p_k, 3 / 4 r))$ by definition.
+  By the connectivity of each component of $extcomplex without K$, there exists a piecewise-linear simple curve $gamma_k^((j))$ for all $1 <= k <= n$, $1 <= j <= m_k$, joining $zeta_k^((j))$ and $p_k$, which lies entirely within $extcomplex without K$. Since each $zeta_k^((j)) in.not overline(D(p_k, 3 / 4 r))$ by definition, it follows that $abs(p_k - zeta_k^((j))) > 3 / 4 r$.
 
   #figure-wrapper(
     lbl(
@@ -702,7 +702,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   )
   Let $tilde(H)_k^((j)) = H inter D(zeta_k^((j)), 5 / 4 r)$, for each $j, k$ and construct the disjoint sets
   $
-    H_k^((j)) = tilde(H)_k^((j)) without (union.big_(j' < j) tilde(H)_k^((j')) union union.big_(k' < k) union.big_(j' <= m_(k')) tilde(H)_(k')^((j'))) "if" j != 1, quad H_1^((1)) = tilde(H)_1^((1)).
+    H_k^((j)) = tilde(H)_k^((j)) without (union.big_(j' < j) tilde(H)_k^((j')) union union.big_(k' < k) union.big_(j' <= m_(k')) tilde(H)_(k')^((j'))) "if" (j, k) != (1, 1), quad H_1^((1)) = tilde(H)_1^((1)).
   $
   as done in @fig:mergelyan_H_k_j_sets. Thus the union
   $
