@@ -194,14 +194,14 @@ Let $z = (f^(-1))(w)$. Then we have
 #proof[
   Let $zeta = rho ee^(ii theta)$. Then we have
   $
-    integral.double_(CC) lambda_r (zeta) dif xi dif eta & = integral_0^(2 uppi) integral_0^r lambda_r (rho ee^(ii theta)) rho dr d theta \
-    &= integral_0^(2 uppi) integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 dr d theta \
+    integral.double_(CC) lambda_r (zeta) dif xi dif eta & = integral_0^(2 uppi) integral_0^r lambda_r (rho ee^(ii theta)) rho dr dtheta \
+    &= integral_0^(2 uppi) integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 dr dtheta \
     & = 6 / r^2 integral_0^r (rho + rho^5 / r^4 - 2 rho^3 / r^2) dr \ &= 6 / r^2 (r^2 / 2 + r^6 / (6 r^4) - r^4 / (2 r^2)) = 1,
   $
   which confirms @itm:diracdeltaapproximation_integralto1. Let $z in CC$ be arbitrary. The integral in @eq:diracdeltaapproximation_integralformula is equal to
   $
     &integral.double_(D(0, R)) f(z - zeta) lambda_r (zeta) dif xi dif eta \
-    & wide"" = integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 integral_0^(2 uppi) f(z - rho ee^(ii theta)) d theta dr \
+    & wide"" = integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 integral_0^(2 uppi) f(z - rho ee^(ii theta)) dtheta dr \
     & wide""= 2 uppi f(z) integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 dr = f(z)
   $
   by the mean-value property (@lem:holomorphicmeanvalueproperty), proving @itm:diracdeltaapproximation_integralformula. For $z in DD$, we have
@@ -739,10 +739,10 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
     & <= 18704 r omega_f (r) integral.double_(abs(zeta) > 2 r) (dif xi dif eta) / abs(zeta)^3 \
     & quad""+ (4 omega_f (r)) / r integral.double_(abs(zeta) < 2 r) (584 / r + 1 / abs(zeta)) dif xi dif eta
   $
-  through a linear change of variables. Now evaluation via polar coordinates (with $rho ee^(ii theta) = xi + ii eta$, $dif xi and dif eta = rho dr and d theta$) yields a revised upper bound of
+  through a linear change of variables. Now evaluation via polar coordinates (with $rho ee^(ii theta) = xi + ii eta$, $dif xi and dif eta = rho dr and dtheta$) yields a revised upper bound of
   $
     &18704 r omega_f (r) integral_0^(2 uppi) integral_(2 r)^oo (dr dtheta) / rho^2 \
-    &wide""+ (4 omega_f (r)) / r (584 / r op("area") D(0, 2 r) + integral_0^(2 uppi) integral_0^(2 r) dr d theta) \
+    &wide""+ (4 omega_f (r)) / r (584 / r op("area") D(0, 2 r) + integral_0^(2 uppi) integral_0^(2 r) dr dtheta) \
     &quad""= evaluated(18704 r omega_f (r) 2 uppi 1 / rho)_oo^(2 r) + (9344 uppi omega_f (r) r^2) / r^2 + (4 omega_f (r)) / r 4 r uppi \
     &quad""= 18704 uppi omega_f (r) + 9344 uppi omega_f (r) + 16 uppi omega_f (r) = 28064 uppi omega_f (r).
   $
