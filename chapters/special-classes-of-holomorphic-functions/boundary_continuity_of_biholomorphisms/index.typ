@@ -334,7 +334,7 @@ In fact, it is almost always true that such an extension exists. We will give th
     $
     Then for any $theta', theta'' in (theta_0(r) - delta, theta_0(r))$,
     $
-      abs(phi(1 - r ee^(ii theta')) - phi(1 - r ee^(ii theta''))) <= length(phi(gamma_r([theta', theta'']))) \
+      abs(phi(1 - r ee^(ii theta')) - phi(1 - r ee^(ii theta''))) <= length(phi(gamma_r ([theta', theta'']))) \
       = integral_(theta')^(theta'') r abs(phi'(1 - r ee^(ii theta.alt))) dif theta.alt < epsilon,
     $
     implying that ${phi(1 - r ee^(ii theta))}_(theta -> theta_0(r_j)^-)$ is Cauchy and hence convergent. The proof for the other limit follows symmetrically.
