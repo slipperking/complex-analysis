@@ -117,7 +117,7 @@ The limit expression of @eq:ahlfors-shimizu-derivation-convergent-integral is wr
 #definition[Ahlfors--Shimizu Proximity Function][
   For $a in extcomplex$, define the _Ahlfors--Shimizu proximity function_ to be equal to:
   #lbl($ m_0(r, a, f) = 1 / (2 uppi) integral_0^(2 uppi) log(1 / k(f(r ee^(ii theta)), a)) dtheta $, <eq:ahlfors-shimizu-proximity>) for finite $a$ and
-  $ m_0(r, f) = 1/(2 uppi) integral_0^(2 uppi) log (1 / k(f(r,ee^(ii theta)), oo)) dtheta $ for $a = oo$,
+  $ m_0(r, f) = 1/(2 uppi) integral_0^(2 uppi) log (1 / k(f(r ee^(ii theta)), oo)) dtheta $ for $a = oo$,
   where #lbl($ k(w, a) = cases(
     (2 abs(w - a)) / sqrt((1 + abs(w)^2)(1 + abs(a)^2)) quad & a!= oo and w != oo\,,
     2 / sqrt(1 + abs(w)^2) quad & a = oo and w != oo\,,
@@ -192,8 +192,8 @@ The limit expression of @eq:ahlfors-shimizu-derivation-convergent-integral is wr
 #proof[
   For $a != oo$, consider the Möbius transformation $W=(1 + overline(a) w) / (w - a)$, where $w = f(z)$, and denote the function $W = F(z)$. Then
   $
-    abs(F'(z)) &= abs(dv(W, w) dv(w, z)) = abs((overline(a)(w-a) - (1+overline(a) w)) / (w - a)^2)abs(f'(z)) = (1 + abs(a)^2) / abs(w-a)^2 abs(f'(z))\
-    (2 abs(F'(z))) / (1+abs(F(z))^2) &= 2 / (1+abs((1 + overline(a) w) / (w - a))^2) (1+abs(a)^2)/abs(w-a)^2 = (2 abs(w - a)^2) / (abs(w - a)^2+abs(1 + overline(a) w)^2) (1+abs(a)^2)/abs(w-a)^2 \
+    abs(F'(z)) &= abs(dv(W, w) dv(w, z)) = abs((overline(a)(w - a) - (1 + overline(a) w)) / (w - a)^2) abs(f'(z)) = (1 + abs(a)^2) / abs(w-a)^2 abs(f'(z))\
+    (2 abs(F'(z))) / (1+abs(F(z))^2) &= (2 (1 + abs(a)^2)/abs(w - a)^2) / (1+abs((1 + overline(a) w) / (w - a))^2) abs(dv(w, z)) = (2 abs(w - a)^2) / (abs(w - a)^2+abs(1 + overline(a) w)^2) (1+abs(a)^2)/abs(w-a)^2 abs(dv(w, z)) \
     &=2 (abs(a)^2 + 1) / ((w - a)(overline(w)-overline(a))+(1 + overline(a) w)(1+a overline(w))) abs(dv(w, z))\
     &=2 (abs(a)^2 + 1) / (abs(w)^2 + abs(a)^2 - a overline(w) - overline(a) w+ 1+abs(a)^2 abs(w)^2 + overline(a)w + a overline(w)) abs(dv(w, z))\
     &=(2(abs(a)^2 + 1)) / ((abs(w)^2+1)(abs(a)^2+1)) abs(dv(w, z)) = (2 abs(f'(z))) / (1 + abs(f(z))^2). #tag[$(dagger)$]
