@@ -1,5 +1,6 @@
 #import "/lib.typ": *
 #import "/src/components/web.typ": theorem-heading
+#import "/src/components/styles.typ": paged-link-with-html-indicator
 
 #show: docs-appendix.with(
   title: "List of Theorems",
@@ -7,8 +8,17 @@
   description: "Collected theorem-like statements from the notes.",
 )
 
-#let theorem-entry(thm) = [
-  #link(thm.loc, [#theorem-heading(thm)~#box(width: 1fr, repeat[.])~#thm.loc.page()])\
+#let theorem-entry-paged(web-thm, pdf-thm) = [
+  #link(
+    pdf-thm.loc,
+    [#theorem-heading(pdf-thm)~#box(width: 1fr, repeat[.])],
+  )~#paged-link-with-html-indicator(
+    link(
+      pdf-thm.loc,
+      [#pdf-thm.loc.page()],
+    ),
+    web-thm.loc,
+  )\
 ]
 
 #let theorem-entry-web(web-thm, pdf-thm) = {
@@ -30,14 +40,14 @@
 }
 
 #let theorem-list() = context {
-  if render-mode.get() == "web" {
-    let web-thms = query(selector(<meta:thm-env-counter>).within(web-doc-label))
-      .map(marker => marker.value)
-      .filter(theorem-filter)
-    let pdf-thms = query(selector(<meta:thm-env-counter>).within(pdf-doc-label))
-      .map(marker => marker.value)
-      .filter(theorem-filter)
+  let web-thms = query(selector(<meta:thm-env-counter>).within(web-doc-label))
+    .map(marker => marker.value)
+    .filter(theorem-filter)
+  let pdf-thms = query(selector(<meta:thm-env-counter>).within(pdf-doc-label))
+    .map(marker => marker.value)
+    .filter(theorem-filter)
 
+  if render-mode.get() == "web" {
     html.elem("div", attrs: (id: "theorem-list", class: "theorem-list"), {
       for i in range(web-thms.len()) {
         let web-thm = web-thms.at(i)
@@ -46,7 +56,11 @@
       }
     })
   } else {
-    thm-state.thm-display(theorem-filter, final: true, fmt: theorem-entry)
+    for i in range(web-thms.len()) {
+      let web-thm = web-thms.at(i)
+      let pdf-thm = pdf-thms.at(i, default: none)
+      theorem-entry-paged(web-thm, pdf-thm)
+    }
   }
 }
 

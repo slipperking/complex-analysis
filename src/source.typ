@@ -30,6 +30,18 @@
     title: "Notes on Complex Analysis",
     author: "Slipper King",
   )
+  #set page(background: rotate(30deg, {
+    let f(n) = {
+      if n <= 1 {
+        $#box($script(integral)$)$
+      } else {
+        let prev = f(n - 1)
+        $#prev _(#prev)^(#prev)$
+      }
+    }
+
+    text(fill: black.transparentize(70%))[$#f(8)$]
+  }))
   #align(center)[
     #v(2cm)
     #text(size: 24pt, weight: "bold")[Notes on Complex Analysis]
@@ -43,4 +55,5 @@
 
   #block(inset: 10pt)[#abstract]
   #outline(target: outline-target)
+  #set page(background: none)
 ]

@@ -33,6 +33,10 @@
   link(eq.location(), [(#_scoped-number(eq-num, loc: eq.location()))])
 }
 
+#let paged-link-with-html-indicator(base, html-link) = {
+  $#base^#text(link(html-link, $dagger.triple$ * 3), size: 0.8em)$
+}
+
 #let shared-styles(doc, mode: "pdf") = {
   show: layout-limiter.with(max-iterations: 5)
   show ref: it => {
@@ -70,7 +74,10 @@
             let html-label = if label-matches.len() > 0 and label-matches.last() != first-match {
               label-matches.last()
             }
-            $#ref(first-match)^#text(link(html-label, $dagger.triple$ * 3), size: 0.8em)$
+            paged-link-with-html-indicator(
+              ref(first-match),
+              html-label,
+            )
           } else {
             ref(first-match)
           }
