@@ -141,6 +141,8 @@
     }
   }
 
+  set par(justify: true)
+
   if mode == "pdf" {
     set page(numbering: "1", margin: 1.75in)
 
@@ -159,6 +161,7 @@
       counter(figure.where(kind: raw)).update(0)
       it
     }
+    doc
   } else if mode == "web" {
     set document(
       title: title,
@@ -199,8 +202,6 @@
       } else { it }
     }
     show figure.where(kind: "thm-env"): it => it.body
+    doc
   }
-
-  set par(justify: true)
-  doc
 }
