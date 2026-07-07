@@ -79,7 +79,7 @@ The two kernels are related by a angular unitary Fourier transform:
   $ #I-num = uppi / 4 sgn(x + 2 lambda), quad #II-num = uppi / 4 sgn(x - 2 lambda). $
   Similarly, $#III-num = uppi / 2 sgn(x)$. Hence,
   $
-    dv(I, x) = uppi / 4 [sgn(x + 2 lambda) + sgn(x - 2 lambda) - 2 sgn(x)] = uppi / 4 cases(
+    dv(I, x) = uppi / 4 [sgn(x + 2 lambda) + sgn(x - 2 lambda) - 2 sgn(x)] = uppi / 2 cases(
       0 quad & abs(x) > 2 lambda,
       1 quad & -2 lambda < x < 0,
       -1 quad & 0 < x < 2 lambda,
@@ -101,7 +101,7 @@ The two kernels are related by a angular unitary Fourier transform:
       -lambda quad & x < -2 lambda,
       x / 2 quad & -2 lambda < x < 0,
       -x / 2 quad & 0 < x < 2 lambda,
-      lambda quad & x > 2 lambda,
+      -lambda quad & x > 2 lambda,
     ).
   $
   Since
@@ -139,7 +139,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   proposition[
     Let $f:RR -> RR$ be a slowly decreasing function bounded by $M > 0$. If the limit of the convolution $f * k_(lambda)$ given by
     $
-      L equiv lim_(x -> oo) (f * k_(lambda)) (x) = lim_(x -> oo) 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x - t) dt
+      L equiv lim_(x -> oo) 1 / sqrt(2 uppi) (f * k_(lambda)) (x) = lim_(x -> oo) 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x - t) dt
     $
     is independent of $lambda > 0$, then $lim_(x -> oo) f(x) = L$.
   ],
@@ -147,43 +147,87 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
 )
 
 #proof[
-  Let $epsilon > 0$ be arbitrary. Assume, for the sake of contradiction, that $f$ does not converge to $L$ as $x -> oo$. Then there exists some sequence ${x_n}_(n in NN)$ such that $abs(f(x_n) - L) > epsilon$ for all $n$. From here, we may extract an infinite subsequence (continued to be denoted by ${x_n}$) such that one of the two cases is assumed:
+  Let $epsilon > 0$ be arbitrary. Assume, for the sake of contradiction, that $f$ does not converge to $L$ as $x -> oo$. Then there exists some sequence ${x_n}_(n in NN)$ ($x_n -> oo$) such that $abs(f(x_n) - L) > epsilon$ for all $n$. From here, by the infinite pigeonhole principle we may extract an infinite subsequence (continued to be denoted by ${x_n}$) such that one of the two cases is assumed:
   + $f(x_n) - L > epsilon$ for all $n in NN$. By the slow decrease of $f$, there exist $delta > 0$ and $N in NN$ such that
     $ f(y) > f(x_n) - epsilon / 2 > L + epsilon / 2 $
-    for any $n > N$ and $0 < y - x_n < 2 delta$. Then we have
+    for any $n > N$ and $0 < y - x_n < 2 delta$. Then we have for any such $n$ and $y = x_n + delta$, that
     $
-      (f * k_(lambda)) (x + delta) &= 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x + delta - t) dt \
-      &= 1 / sqrt(2 uppi) (integral_x^(x + 2 delta) + integral_(-oo)^x + integral_(x + 2 delta)^oo) f(t) k_(lambda) (x + delta - t) dt \
-      & > 1 / sqrt(2 uppi) integral_x^(x + 2 delta) (L + epsilon / 2) k_(lambda) (x + delta - t) dt \
-      & quad"" - M / sqrt(2 uppi) (integral_(-oo)^x + integral_(x + 2 delta)^oo) k_(lambda) (x + delta - t) dt \
-      & > (2 L + epsilon) / (2 sqrt(2 uppi)) integral_x^(x + 2 delta) k_(lambda) (x + delta - t) dt \
+      1 / sqrt(2 uppi) (f * k_(lambda)) (x_n + delta) &= 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x_n + delta - t) dt \
+      &= 1 / sqrt(2 uppi) (integral_(x_n)^(x_n + 2 delta) + integral_(-oo)^(x_n) + integral_(x_n + 2 delta)^oo) f(t) k_(lambda) (x_n + delta - t) dt \
+      & > 1 / sqrt(2 uppi) integral_(x_n)^(x_n + 2 delta) (L + epsilon / 2) k_(lambda) (x_n + delta - t) dt \
+      & quad"" - M / sqrt(2 uppi) (integral_(-oo)^(x_n) + integral_(x_n + 2 delta)^oo) k_(lambda) (x_n + delta - t) dt \
+      & > (2 L + epsilon) / (2 sqrt(2 uppi)) integral_(x_n)^(x_n + 2 delta) k_(lambda) (x_n + delta - t) dt \
       &quad ""- M / sqrt(2 uppi) (integral_delta^oo + integral_(-oo)^(-delta)) k_(lambda) (u) dif u.
     $
+    Now observe that
+    #lbl(
+      $
+        integral_(-oo)^oo ((sin t) / t)^2 dt &= -evaluated((sin^2 t) / t)_(-oo)^oo + integral_(t in RR) (dd(sin^2 t)) / t \ &= integral_(-oo)^oo (sin(2 t)) / t dt = uppi.
+      $, <eq:wiener-ikehara-intermediate-tauberian-theorem-integral-of-dirichlet-squared>
+    )
     Because
     $
-      1 / sqrt(2 uppi) integral_(-oo)^oo k_(lambda) (t) dt &= lambda / uppi integral_(-oo)^oo ((sin(lambda t)) / (lambda t))^2 dt = 1 / uppi integral_(-oo)^oo ((sin t) / t)^2 dt \
-      &= -evaluated((sin^2 t) / (uppi t))_(-oo)^oo + integral_(-oo)^oo d(sin^2 t) / (uppi t) dt = integral_(-oo)^oo (sin(2 t)) / (uppi t) dt = 1,
+      1 / sqrt(2 uppi) (f * k_(lambda)) (x_n + delta) &>= (2 L + epsilon) / (2 sqrt(2 uppi)) integral_(-delta)^delta (2 lambda) / sqrt(2 uppi) ((sin(lambda u)) / (lambda u))^2 dif u \ & wide ""- (2 M) / uppi integral_(delta lambda)^oo ((sin t) / t)^2 dt,
     $
-    we then have for any $n > N$, that
-    $
-      lim_(n -> oo) (f * k_(lambda)) (x_n + delta) &>= (2 L + epsilon) / (2 sqrt(2 uppi)) integral_(-delta)^delta (2 lambda) / sqrt(2 uppi) ((sin(lambda u)) / (lambda u))^2 dif u \ & wide ""- (2 M) / uppi integral_(delta lambda)^oo ((sin t) / t)^2 dt.
-    $
-    Letting $lambda -> oo$, we have
+    by letting $lambda -> oo$ (which retains the inequality by the independence assumption), we have from @eq:wiener-ikehara-intermediate-tauberian-theorem-integral-of-dirichlet-squared, that
     $
       &(2 L + epsilon) / (2 uppi) integral_(-delta lambda)^(delta lambda) ((sin t) / t)^2 dt - (2 M) / uppi integral_(delta lambda)^oo ((sin t) / t)^2 dt \ & wide ""-> (2 L + epsilon) / (2 uppi) integral_(-oo)^oo ((sin t) / t)^2 dt = L + epsilon / 2.
     $
-    Because $lim_(n -> oo) (f * k_(lambda)) (x_n + delta) = L >= L + epsilon / 2$, we reach a contradiction.
+    Because $lim_(n -> oo) 1 / sqrt(2 uppi) (f * k_(lambda)) (x_n + delta) = L >= L + epsilon / 2$, we reach a contradiction.
   + $f(x_n) - L < -epsilon$. Then there exist $delta > 0$, $N in NN$ such that
     $ f(x_n) - f(y) > -epsilon / 2 ==> f(y) < f(x_n) + epsilon / 2 < L - epsilon / 2 $
     for any $n > N$ and $0 < x_n - y < 2 delta$. Splitting the convolution integral into $integral_(-oo)^(x_n - 2 delta)$, $integral_(x_n - 2 delta)^(x_n)$, and $integral_(x_n)^oo$, we have
     $
-      (f * k_(lambda)) (x_n - delta) &= 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x_n - delta - t) dt \
+      1 / sqrt(2 uppi) (f * k_(lambda)) (x_n - delta) &= 1 / sqrt(2 uppi) integral_(-oo)^oo f(t) k_(lambda) (x_n - delta - t) dt \
       &= 1 / sqrt(2 uppi) (integral_(-oo)^(x_n - 2 delta) + integral_(x_n - 2 delta)^(x_n) + integral_(x_n)^oo) f(t) k_(lambda) (x_n - delta - t) dt \
       & < M / sqrt(2 uppi) (integral_(-oo)^(x_n - 2 delta) + integral_(x_n)^oo) k_(lambda) (x_n - delta - t) dt \
       & quad + 1 / sqrt(2 uppi) integral_(x_n - 2 delta)^(x_n) (L - epsilon / 2) k_(lambda) (x_n - delta - t) dt \
       & < M / sqrt(2 uppi) (integral_(-oo)^(-delta) + integral_delta^oo) k_(lambda) (u) dif u + (2 L - epsilon) / (2 sqrt(2 uppi)) integral_(-delta)^delta k_(lambda) (u) dif u.
     $
-    Letting $lambda -> oo$, we have similarly that $lim_(n -> oo) (f * k_(lambda)) (x_n - delta) <= L - epsilon / 2$, contradicting $lim_(n -> oo) (f * k_(lambda)) (x_n - delta) = L$. #qedhere
+    Letting $lambda -> oo$, we have similarly that $lim_(n -> oo) 1 / sqrt(2 uppi) (f * k_(lambda)) (x_n - delta) <= L - epsilon / 2$, contradicting $lim_(n -> oo) (f * k_(lambda)) (x_n - delta) = L$. #qedhere
+]
+
+#lbl(
+  lemma[Riemann--Lebesgue][
+    Let $a,b in RR$ with $a<b$. Let $f:[a,b] -> CC$ be continuous. Then
+    $ lim_(x -> oo) integral_a^b f(t) ee^(ii x t) dt = 0. $
+  ],
+  <lem:riemann-lebesgue>
+)
+
+#proof[
+  By the Heine--Cantor Theorem (@thm:heine-cantor), $f$ is uniformly continuous. Hence, for any $epsilon > 0$, there exists a partition
+  $ a = t_0 < t_1 < dots < t_n = b $
+  such that
+  $ abs(f(t) - f(t_k)) < epsilon / (2 (b - a)) $
+  whenever $t_k <= t <= t_(k + 1)$. Writing
+	$
+	  integral_a^b f(t) ee^(ii x t) dt &= sum_(k = 0)^(n - 1) integral_(t_k)^(t_(k + 1)) f(t) ee^(ii x t) dt \
+	  &= sum_(k = 0)^(n - 1) integral_(t_k)^(t_(k + 1)) (f(t) - f(t_k)) ee^(ii x t) dt + sum_(k = 0)^(n - 1) f(t_k) integral_(t_k)^(t_(k + 1)) ee^(ii x t) dt,
+	$
+	we obtain
+	$
+	  abs(sum_(k = 0)^(n - 1) integral_(t_k)^(t_(k + 1)) (f(t) - f(t_k)) ee^(ii x t) dt) <= sum_(k = 0)^(n - 1) integral_(t_k)^(t_(k + 1)) abs(f(t) - f(t_k)) dt < epsilon / 2.
+	$
+  Moreover,
+  $
+    integral_(t_k)^(t_(k + 1)) ee^(ii x t) dt = (ee^(ii x t_(k+1)) - ee^(ii x t_k)) / (ii x),
+  $
+  and therefore
+  $
+    abs(sum_(k = 0)^(n - 1) f(t_k) integral_(t_k)^(t_(k + 1)) ee^(ii x t) dt) &<= 2 / x sum_(k = 0)^(n - 1) abs(f(t_k)).
+  $
+  Since the latter tends to $0$ as $x -> oo$, there exists $x_0 > 0$ such that
+  $
+    2 / x sum_(k = 0)^(n - 1) abs(f(t_k)) < epsilon / 2
+  $ for all $x > x_0$. Consequently,
+  $
+    abs(integral_a^b f(t) ee^(ii x t) dt) < epsilon
+  $
+  for all $x > x_0$. Since $epsilon > 0$ was arbitrary, it follows that
+  $
+    lim_(x -> oo) integral_a^b f(t) ee^(ii x t) dt = 0. #qedhere
+  $
 ]
 
 #lbl(
@@ -203,7 +247,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
       $,
       <eq:wiener-ikehara-g-function>,
     )
-    converges locally uniformly with respect to $t$ in $RR$ and is continuously differentiable. Then
+    converges locally uniformly with respect to $t$ in $RR$ and is continuous. Then
     #lbl(
       $
         lim_(x -> oo) f(x) / ee^x = c.
@@ -233,13 +277,13 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
     integral_(-oo)^oo ((a(t) - A(t)) / ee^((epsilon + ii y) t)) dt
   $
-  converges uniformly for $abs(y) < 2 lambda$, we have by virtue of @lem:wiener-ikehara-kernels-fourier-transform, that
+  converges uniformly for $abs(y) < 2 lambda$ (as the integrand is uniformly bounded by $abs(a(t))ee^(-epsilon t) + abs(A(t)) ee^(-epsilon t)$, where both terms have convergent integrals), we have by virtue of @lem:wiener-ikehara-kernels-fourier-transform, that
   $
     I_(lambda, epsilon) (x) &= 1 / (2 uppi) integral_(-oo)^oo ((a(t) - A(t)) / ee^(epsilon t)) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii (x - t) y) dy dt \
     &= 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii x y) integral_0^oo (a(t) - A(t)) / ee^((epsilon + ii y) t) dt dy \
     &= 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii x y) [cal(L){f} (1 + epsilon + ii y) - c / (epsilon + ii y)] dy.
   $
-  Now $forall epsilon' > 0$, by the local uniform convergence of $g$ in @eq:wiener-ikehara-g-function, there exists some $delta > 0$ such that
+  Now $forall epsilon' > 0$, by the local uniform convergence of $g$ in @eq:wiener-ikehara-g-function, there exists some $delta > 0$ such that for any $epsilon < delta$,
   $
     forall abs(y) < 2 lambda, abs(cal(L){f} (1 + epsilon + ii y) - c / (epsilon + ii y) - g(y)) < (uppi epsilon') / lambda.
   $
@@ -251,28 +295,49 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
   $
     lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 1 / (2 uppi) integral_(-2 lambda)^(2 lambda) K_(lambda) (y) ee^(ii x y) g(y) dy,
   $
-  or when the limit is exchanged with the integral. By parts, we have that
-  $
-    lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 1 / (2 uppi) (evaluated(K_(lambda) (y) g(y) ee^(ii x y) / (ii x))_(-2 lambda)^(2 lambda) - 1 / (ii x) integral_(-2 lambda)^(2 lambda) (K_(lambda) g)'(y) ee^(ii x y) dy).
-  $
-  This implies that $lim_(x -> oo) lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) equiv 0$. On the other hand, manual calculation yields
+  (effectively, we have exchanged the limit with the integral). Then by the Riemann--Lebesgue Lemma (@lem:riemann-lebesgue),
+  #lbl(
+    $
+      lim_(x -> oo) lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 0.
+    $,
+    <eq:wiener-ikehara-intermediate-vanishing>
+  )
+  On the other hand, a manual calculation while restricting the integation range yields
   $
     lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = lim_(epsilon -> 0^+) 1 / sqrt(2 uppi) (& integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt \ & wide"" - integral_0^oo k_(lambda) (x - t) A(t) ee^(-epsilon t) dt).
   $
-  The Lebesgue's Dominated Convergence Theorem then gives
+  Using that $integral_0^oo k_(lambda) (x - t) c dt$ dominates the second integrand and forms a convergent integral, Lebesgue's Dominated Convergence Theorem then gives
   $
-    lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) & = 1 / sqrt(2 uppi) integral_0^oo k_(lambda) (x - t) (a(t) - A(t)) dt \
-                                                 & = (a * k_(lambda) - A * k_(lambda)) (x) -> 0
+    lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) & = lim_(epsilon -> 0^+) 1 / sqrt(2 uppi) [integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt - (A * k_(lambda)) (x)]
   $
-  as $x -> oo$. Since $(A * k_(lambda)) (x) = c$ for all $x$, we have that
+  Since for any postive $t_0$, 
+  $
+    integral_0^(t_0) k_(lambda) (x - t) a(t) ee^(-epsilon t) dt <= integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt
+  $
+  where the left-hand side is dominated by the finite integral $integral_0^(t_0) k_(lambda) (x - t) a(t) dt$, letting $epsilon -> 0^+$ (which now may be passed through the left-hand side integral) gives 
+  $
+    integral_0^(t_0) k_(lambda) (x - t) a(t) dt <= lim_(epsilon -> 0^+) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt
+  $
+  Since this holds for all $t_0$, letting $t_0 -> oo$ gives $ integral_0^oo k_(lambda) (x - t) a(t) dt <= lim_(epsilon -> 0^+) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt $
+  Additionally, the reverse inequality
+  $
+    lim_(epsilon -> 0^+) integral_0^oo k_(lambda) (x - t) a(t) ee^(-epsilon t) dt <= integral_0^oo k_(lambda) (x - t) a(t) dt
+  $ is also true as $ee^(-epsilon t) < 1$. Thus, we attain an equality. Therefore, 
+  $ lim_(epsilon -> 0^+) I_(lambda, epsilon) (x) = 1 / sqrt(2 uppi) (a * k_(lambda) - A * k_(lambda)) (x) -> 0 #tag[(by @eq:wiener-ikehara-intermediate-vanishing)]
+  $
+  as $x -> oo$. Since 
+  $
+    1 / sqrt(2 uppi) (A * k_(lambda)) (x) &= c / sqrt(2 uppi) integral_(-oo)^x k_lambda (u) dif u -> c / sqrt(2 uppi) integral_(-oo)^oo k_lambda (u) dif u \ &= c / sqrt(2 uppi) integral_(-oo)^oo sqrt(2 / uppi) ((sin u) / u)^2 dif u \ &= c #tag[(by @eq:wiener-ikehara-intermediate-tauberian-theorem-integral-of-dirichlet-squared)]
+  $
+  as $x -> oo$, we have that
   #lbl(
     $
-      lim_(x -> oo) (a * k_(lambda)) (x) = c.
+      lim_(x -> oo) 1 / sqrt(2 uppi) (a * k_(lambda)) (x) = c.
     $,
     <eq:wiener-ikehara-convolution-limit>,
   )
   Therefore, $exists x_0 > 0$ such that
-  $ (a * k_(lambda)) (x) < c + 1 ==> 1 / uppi integral_(-oo)^oo ((sin t) / t)^2 a (x - t / lambda) dt < c + 1 $
+  $ 1 / sqrt(2 uppi) (a * k_(lambda)) (x) < c + 1 ==> 1 / uppi integral_(-oo)^oo ((sin t) / t)^2 a (x - t / lambda) dt < c + 1 $
   for all $x > x_0$. Substituting $x + 2 / sqrt(lambda)$ for $x$ in the integral, we have (after further restricting the integration bounds, which preserves the inequality)
   $
     integral_(-sqrt(lambda))^(sqrt(lambda)) ((sin t) / t)^2 a (x + (2 sqrt(lambda) - t) / lambda) dt < uppi (c + 1)
@@ -304,7 +369,7 @@ We note that, in a distribution-theoretic treatment, it would suffice to prove o
 )
 
 #proof[
-  By @thm:chebyshev-functions-limsup-liminf-limit-equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:prime-number-theorem-laplace-transform-chebyshev-function_statement. By @thm:prime-number-theorem-laplace-transform-of-chebyshev-psi-exp-function, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuously differentiable. Hence, by the Wiener--Ikehara theorem (@thm:wiener-ikehara), we have that
+  By @thm:chebyshev-functions-limsup-liminf-limit-equivalences, it suffices to show that $lim_(x -> oo) psi(x) / x = 1$. Consider the Laplace transform of $psi compose exp$ in @eq:prime-number-theorem-laplace-transform-chebyshev-function_statement. By @thm:prime-number-theorem-laplace-transform-of-chebyshev-psi-exp-function, the function $g$ defined therein converges uniformly on compact subsets of $RR$ and is continuous. Hence, by the Wiener--Ikehara theorem (@thm:wiener-ikehara), we have that
   $ lim_(x -> oo) psi(ee^x) / ee^x = lim_(x -> oo) psi(x) / x = 1, $
   and the Prime Number Theorem follows.
 ]

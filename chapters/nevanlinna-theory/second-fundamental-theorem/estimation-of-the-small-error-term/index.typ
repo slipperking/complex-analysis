@@ -255,11 +255,11 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     $
       r'_n - r_n = frac(1, T(r_n)) <= frac(1, 2^n T(r_0)) \ sum_(n = 0)^N (r'_n - r_n) <= frac(1, T(r_0)) sum_(n = 0)^oo frac(1, 2^n) = 2 / T(r_0) <= 2.
     $
-  + Suppose $R_0 < oo$ in the theorem statement. Let $T_0 (rho) = T(R_0 - ee^(-rho))$, where $rho_0 = log 1 / (R_0 - r_0) <= rho < oo$, so that $T_0$ is an increasing function on $[rho_0, oo)$. By the result above, $exists E_0' subset.eq [rho_0, oo)$ such that
+  + Suppose $R_0 < oo$ in the theorem statement. Let $T_0 (rho) = T(R_0 - ee^(-rho))$, where $rho_0 = log 1 / (R_0 - r_0) <= rho < oo$, so that $T_0$ is an increasing function on $[rho_0, oo)$. By the result above, $exists E'_0 subset.eq [rho_0, oo)$ such that
     $
       integral_(E_0') dif rho <= 2, quad T_0 (rho + frac(1, T_0 (rho))) < 2 T_0 (rho) quad forall rho in.not E'_0.
     $
-    Substitute $rho = log 1 / (R_0 - r)$, $r = R_0 - ee^(-rho)$, $E_0 = (rho mapsto R_0 - ee^rho)(E'_0)$, so that $T_0 (rho) = T(r)$, and
+    Substitute $rho = log 1 / (R_0 - r)$, $r = R_0 - ee^(-rho)$, $E_0 = (rho mapsto R_0 - ee^(-rho))(E'_0)$, so that $T_0 (rho) = T(r)$, and
     $
       integral_(E_0) dr / (R_0 - r) <= 2, quad T(R_0 - (R_0 - r) ee^(-1 / T(r))) < 2 T(r) quad forall r in.not E_0.
     $

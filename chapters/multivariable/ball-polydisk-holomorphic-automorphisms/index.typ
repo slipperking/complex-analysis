@@ -40,14 +40,14 @@ In preparation, we will introduce several relevant concepts.
 
 #lbl(
   proposition[
-    Let $bold(psi) : CC^n -> CC^m$ be a homogeneous polynomial of degree $d$.
-    + For any multi-index $bold(alpha) = (alpha_1, dots, alpha_n)$ with $norm(bold(alpha)) = r <= d$,
+    Let $bold(psi) : CC^n -> CC^m$ be a homogeneous polynomial of degree $d$ (not identically zero).
+    + For any multi-index $bold(alpha) = (alpha_1, dots, alpha_n)$ with $abs(bold(alpha)) <= d$,
       $
-        partial^(bold(alpha)) bold(psi)(bold(z)) = (partial^r bold(psi)) / (partial z_1^(alpha_1) dots.c partial z_n^(alpha_n))(bold(z))
+        partial^(bold(alpha)) bold(psi)(bold(z)) = (partial^abs(bold(alpha)) bold(psi)) / (partial z_1^(alpha_1) dots.c partial z_n^(alpha_n))(bold(z))
       $
-      is a homogeneous polynomial of degree $d-r$. #enum-lbl(<itm:homogeneous-polynomial-derivatives-less>)
-    + If $r = d != 0$, then $partial^(bold(alpha)) bold(psi)$ is constant (and there exists a multi-index $bold(alpha)$ with $norm(bold(alpha)) = d$ such that $partial^(bold(alpha)) bold(psi)$ is nonzero). #enum-lbl(<itm:homogeneous-polynomial-derivatives-equality>)
-    + If $r > d$, then $partial^(bold(alpha)) bold(psi) equiv 0$. #enum-lbl(<itm:homogeneous-polynomial-derivatives-greater>)
+      is a homogeneous polynomial of degree $d-abs(bold(alpha))$. #enum-lbl(<itm:homogeneous-polynomial-derivatives-less>)
+    + If $abs(bold(alpha)) = d != 0$, then $partial^(bold(alpha)) bold(psi)$ is constant (and there exists a multi-index $bold(alpha)'$ with $abs(bold(alpha)') = d$ such that $partial^(bold(alpha)') bold(psi)$ is nonzero). #enum-lbl(<itm:homogeneous-polynomial-derivatives-equality>)
+    + If $abs(bold(alpha)) > d$, then $partial^(bold(alpha)) bold(psi) equiv 0$. #enum-lbl(<itm:homogeneous-polynomial-derivatives-greater>)
   ],
   <prop:homogeneous-polynomial-derivatives>,
 )
@@ -57,15 +57,15 @@ In preparation, we will introduce several relevant concepts.
   $
     partial^(bold(alpha)) bold(psi)(bold(z)) = sum_(abs(bold(k)) = d) bold(a)_(bold(k)) product_(j=1)^n (k_j !) / ((k_j - alpha_j) !) z_j^(k_j - alpha_j), quad bold(k) = (k_1, dots, k_n),
   $
-  where terms with $k_j < alpha_j$ vanish. For each remaining term, the total degree is
+  where the terms with $k_j < alpha_j$ vanish. For each remaining term, the total degree is
   $
-    (k_1 - alpha_1) + dots.c + (k_n - alpha_n) = d - norm(bold(alpha)).
+    (k_1 - alpha_1) + dots.c + (k_n - alpha_n) = d - abs(bold(alpha)).
   $
-  Hence, $partial^(bold(alpha)) bold(psi)$ is a homogeneous polynomial of degree $d - norm(bold(alpha))$, establishing @itm:homogeneous-polynomial-derivatives-less.
+  Hence, $partial^(bold(alpha)) bold(psi)$ is a homogeneous polynomial of degree $d - abs(bold(alpha))$, establishing @itm:homogeneous-polynomial-derivatives-less.
 
-  If $r = d$, every surviving monomial has degree $0$, so $partial^(bold(alpha)) bold(psi)$ is constant. Moreover, since $bold(psi)$ has degree exactly $d$, there exists some multi-index $bold(k)$ with $abs(bold(k)) = d$ and $bold(a)_(bold(k)) != bold(0)$; choosing $bold(alpha) = bold(k)$ yields a nonzero constant derivative. This proves @itm:homogeneous-polynomial-derivatives-equality.
+  If $abs(bold(alpha)) = d$, every surviving monomial has degree $0$, so $partial^(bold(alpha)) bold(psi)$ is constant. Moreover, since $bold(psi)$ has degree exactly $d$, there exists some multi-index $bold(k)$ with $abs(bold(k)) = d$ and $bold(a)_(bold(k)) != bold(0)$; choosing $bold(alpha)' = bold(k)$ yields a nonzero constant derivative. This proves @itm:homogeneous-polynomial-derivatives-equality.
 
-  Finally, if $r > d$, then for every term in the expansion, at least one $k_j < alpha_j$, so all summands vanish identically. Thus $partial^(bold(alpha)) bold(psi) equiv 0$, verifying @itm:homogeneous-polynomial-derivatives-greater.
+  Finally, if $abs(bold(alpha)) > d$, then for every term in the expansion, at least one $k_j < alpha_j$, so all summands vanish identically. Thus $partial^(bold(alpha)) bold(psi) equiv 0$, verifying @itm:homogeneous-polynomial-derivatives-greater.
 ]
 
 #lbl(

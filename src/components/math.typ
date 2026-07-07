@@ -32,7 +32,7 @@
 #let va(x) = Va(vb(x))
 #let overline(..args) = context {
   if target() == "paged" {
-    std.overline(..args)
+    math.overline(..args)
   } else {
     math.dash(..args)
   }

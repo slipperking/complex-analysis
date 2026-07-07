@@ -95,11 +95,15 @@
   let figures = items.pos()
   let column-count = if columns == auto { figures.len() } else { columns }
   if target() == "paged" {
-    grid(
-      columns: column-count, gutter: 1fr,
-      inset: 1em,
-      align: center,
-      ..figures.map(item => grid.cell([#item])),
+    place(
+      top + center,
+			float: true,
+      grid(
+	      columns: column-count, gutter: 1fr,
+	      inset: 1em,
+	      align: center,
+	      ..figures.map(item => grid.cell([#item])),
+	    )
     )
   } else {
     for fig in figures {
