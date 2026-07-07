@@ -1,4 +1,4 @@
-#import "styles.typ": explicit-label, pdf-doc-label, pdf-styles, web-doc-label, web-styles
+#import "styles.typ": document-styles, explicit-label, pdf-doc-label, web-doc-label
 #import "theorems.typ": *
 #import "/src/source.typ" as source
 
@@ -391,7 +391,7 @@
   let body = [
     #[
       #render-mode.update("pdf")
-      #show: pdf-styles
+      #show: document-styles.with(mode: "pdf")
       #include "/chapters/index.typ"
     ] #pdf-doc-label
   ]
@@ -406,7 +406,7 @@
 #let _html-page(page, body) = [
   #metadata(_metadata-page(page)) <page-meta>
   #document(page.doc-path, title: _plain-text(page.title))[
-    #show: web-styles
+    #show: document-styles.with(mode: "web")
     #counter(math.equation).update(0)
     #thm-counter.thm-counters.update((:))
     #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/site.css")))
@@ -437,7 +437,7 @@
   let main-classes = ("content", main-class).filter(value => value != none).join(" ")
 
   document(page.doc-path, title: _plain-text(page.title))[
-    #show: web-styles
+    #show: document-styles.with(mode: "web")
     #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/site.css")))
     #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/search.css")))
     #_topbar(page)
@@ -525,7 +525,7 @@
   let target = "https://slipperking.github.io/complex-analysis/page-not-found"
 
   document("/404.html", title: "Redirecting…")[
-    #show: web-styles
+    #show: document-styles.with(mode: "web")
     #html.elem("meta", attrs: ("http-equiv": "refresh", content: "0; url=" + target))
     #html.elem("meta", attrs: (name: "robots", content: "noindex"))
     #html.elem("link", attrs: (rel: "canonical", href: target))
