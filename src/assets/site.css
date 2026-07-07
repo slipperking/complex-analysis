@@ -903,6 +903,22 @@ figure svg {
   height: auto !important;
 }
 
+.figure-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 1.5rem 0;
+}
+
+.figure-wrapper>figure {
+  flex: 1 0 auto;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+}
+
 [data-theme="dark"] figure svg {
   filter: invert(1) hue-rotate(180deg);
 }

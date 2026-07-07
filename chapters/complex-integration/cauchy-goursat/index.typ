@@ -393,7 +393,7 @@ When Cauchy formalized @thm:cauchy-integral-formula, @thm:cauchy-integral-theore
           line(C, E, stroke: 1pt)
 
           for pts in ((B, E), (E, B), (E, A), (B, C), (A, B), (C, E), (E, C), (D, E), (C, D)) {
-            halflength-arrow(..pts, scalar: 0.15)
+            half-length-arrow(..pts, scalar: 0.15)
           }
 
           content(A, [$A$], anchor: "east", padding: .15cm)
@@ -441,7 +441,7 @@ When Cauchy formalized @thm:cauchy-integral-formula, @thm:cauchy-integral-theore
             (F, D),
             (D, F),
           ) {
-            halflength-arrow(
+            half-length-arrow(
               ..pts,
               scalar: 0.15,
             )

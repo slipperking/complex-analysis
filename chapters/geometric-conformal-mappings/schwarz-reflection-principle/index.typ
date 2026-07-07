@@ -115,7 +115,7 @@ We have previously considered analytic continuations over two regions with an in
                       var-gamma-int-points.at(k),
                     ),
                   ) {
-                    halflength-arrow(
+                    half-length-arrow(
                       ..points,
                       scalar: 0.3,
                       stroke: if calc.rem(k, 2) == 0 { (:) } else { (dash: ("dot", "dot"), thickness: 0.6pt) },
