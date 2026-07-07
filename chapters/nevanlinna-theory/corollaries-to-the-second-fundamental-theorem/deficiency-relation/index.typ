@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 #show: docs-subsubchapter.with(
   title: [Deficiency Relation],
-  route: "deficiency_relation",
+  route: "deficiency-relation",
   label: <sec:deficiency-relation>,
 )
 One of the reformulations of the Second Fundamental Theorem is characterized in a way so that it comprises the statements of Picard-like theorems in a compact manner (of course, the conclusions are substantially more far-reaching than just the Picard theorems themselves). We first introduce the relevant terminology.
@@ -62,9 +62,9 @@ Using these formulations, we now have
     $
       q - 1 - S(r, f) / T(r, f) <= (overline(N) (r, f)) / T(r, f) - (N_0 (r, 0, f')) / T(r, f) + sum_(nu = 1)^q (overline(N) (r, a_nu, f)) / T(r, f).
     $,
-    <eq:deficiency-relation_fundamentalinequality>,
+    <eq:deficiency-relation-fundamental-inequality>,
   )
-  Then taking the superior limits on both side through a sequence ${r_n}$ such that $lim_(n -> oo) S(r_n, f) / T(r_n, f) = 0$ (whose existence is given by @thm:nevanlinnaadmissibilityerrortermgrowth) and loosening the inequality by removing the $N_0$ term,
+  Then taking the superior limits on both side through a sequence ${r_n}$ such that $lim_(n -> oo) S(r_n, f) / T(r_n, f) = 0$ (whose existence is given by @thm:nevanlinna-admissibility-error-term-growth) and loosening the inequality by removing the $N_0$ term,
   $
     q - 1 <= limsup_(n -> oo) (overline(N) (r_n, oo, f)) / T(r_n, f) + sum_(nu = 1)^q limsup_(n -> oo) (overline(N) (r_n, a_nu, f)) / T(r_n, f) \
     <= limsup_(r -> R_0^-) (overline(N) (r, oo, f)) / T(r, f) + sum_(nu = 1)^q limsup_(r -> R_0^-) (overline(N) (r, a_nu, f)) / T(r, f) \
@@ -88,7 +88,7 @@ Therefore, we have
   corollary[
     A non-constant meromorphic function omits at most two values on the Riemann sphere.
   ],
-  <cor:picardtranscendentalmeromorphic>,
+  <cor:picard-transcendental-meromorphic>,
 )
 
 #proof[
@@ -107,7 +107,7 @@ Therefore, we have
 )
 
 #proof[
-  Any such function can be regarded as a meromorphic function on the plane that omits $oo$. Then the conclusion follows from @cor:picardtranscendentalmeromorphic.
+  Any such function can be regarded as a meromorphic function on the plane that omits $oo$. Then the conclusion follows from @cor:picard-transcendental-meromorphic.
 ]
 
 The use of spherically normal families in the proof of the Great Picard Theorem for more general domains is unavoidable. For further treatment, refer to @hayman1964meromorphic.

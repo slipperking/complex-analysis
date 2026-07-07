@@ -403,7 +403,7 @@ These definitions ensure that $S(r, f)$ is generally sufficiently small:
     + If $R_0 = oo$ and $f$ has infinite order, then $S(r, f) = order(T(r, f))$ for $r -> R_0^-$ outside a set $E_0$ of finite linear measure, which depends on $f$ but not on ${a_nu}$ and $q$.
     + If $R_0 < oo$, then $S(r, f) = order(T(r, f))$ for $r -> R_0^-$ through any sequence ${r_n}_n$ dependent on $f$ but not on ${a_nu}$ and $q$.
   ],
-  <thm:nevanlinnaadmissibilityerrortermgrowth>,
+  <thm:nevanlinna-admissibility-error-term-growth>,
 )
 
 #proof[
