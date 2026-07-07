@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 #show: docs-subsubchapter.with(
   title: [The Modular Group],
-  route: "modular_group",
+  route: "modular-group",
 )
 Any two bases of

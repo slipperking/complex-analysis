@@ -1,9 +1,9 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Schlicht Functions],
-  route: "schlicht_functions",
+  route: "schlicht-functions",
   children: [
-    #include "bieberbach_conjecture/index.typ"
+    #include "bieberbach-conjecture/index.typ"
   ],
 )
 #definition[
@@ -42,7 +42,7 @@ We will introduce two of the oldest results regarding schlicht functions, namely
     $
     be an annulus for $0 < r < 1$. Then $exists eta > 0$ such that $forall r>0$ sufficiently small ($eta$ independent of $r$), $h(A_r)$ lies in an ellipse with a semi-major axis $ alpha = (1 / r + abs(b_1) eta) sqrt(1 + eta r^3) $ and a semi-minor axis $ beta = (1 / r - abs(b_1) eta) sqrt(1 + eta r^3). $
   ],
-  <lem:schlicht_inverse_annulus_image_in_ellipse>,
+  <lem:schlicht-inverse-annulus-image-in-ellipse>,
 )
 
 #proof[
@@ -82,7 +82,7 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   then $sum_(j=0)^oo j abs(b_j)^2 <= 1$.
 ]
 #proof[
-  By @lem:schlicht_inverse_annulus_image_in_ellipse, for sufficiently small $r>0$, $h(A_r)$ lies in an ellipse $E_r$ with a semi-major axis $ alpha = (1 / r + abs(b_1) eta) sqrt(1 + eta r^3) $ and a semi-minor axis $ beta = (1 / r - abs(b_1) eta) sqrt(1 + eta r^3). $ The area of the ellipse is given by $uppi alpha beta = uppi (1 / r^2 - abs(b_1)^2 eta^2) (1 + eta r^3)$. On the other hand,
+  By @lem:schlicht-inverse-annulus-image-in-ellipse, for sufficiently small $r>0$, $h(A_r)$ lies in an ellipse $E_r$ with a semi-major axis $ alpha = (1 / r + abs(b_1) eta) sqrt(1 + eta r^3) $ and a semi-minor axis $ beta = (1 / r - abs(b_1) eta) sqrt(1 + eta r^3). $ The area of the ellipse is given by $uppi alpha beta = uppi (1 / r^2 - abs(b_1)^2 eta^2) (1 + eta r^3)$. On the other hand,
   $
     uppi/r^2 (1+eta r^3) >= uppi (1 / r^2 - abs(b_1)^2 eta^2) (1 + eta r^3) & = op("area")(E_r) \
                                                                             & >= op("area")(h(A_r)),
@@ -130,7 +130,7 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   theorem[
     If $f : DD -> CC$ is schlicht and expands to $sum_(n=1)^oo a_n z^n$, then $abs(a_2) <= 2$.
   ],
-  <thm:schlicht_a2_leq_2>,
+  <thm:schlicht-a-2-leq-2>,
 )
 #proof[
 

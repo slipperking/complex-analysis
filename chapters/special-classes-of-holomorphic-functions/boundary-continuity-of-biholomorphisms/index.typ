@@ -97,47 +97,49 @@ In fact, it is almost always true that such an extension exists. We will give th
       figure(
         canvas(length: 1cm, {
           import cetz.draw: *
-          let lendpoint = (-1.5, -0.75)
-          let rendpoint = (1.65, -1.35)
-          let lendpoint-ext-ang = -150deg
-          let rendpoint-ext-ang = -30deg
-          let lendpoint-ext = (lendpoint, 6, lendpoint-ext-ang, (rel: lendpoint, to: (1, 0)))
-          let rendpoint-ext = (rendpoint, 6, rendpoint-ext-ang, (rel: rendpoint, to: (1, 0)))
+          let left-endpoint = (-1.5, -0.75)
+          let right-endpoint = (1.65, -1.35)
+          let left-endpoint-ext-ang = -150deg
+          let right-endpoint-ext-ang = -30deg
+          let left-endpoint-ext = (left-endpoint, 6, left-endpoint-ext-ang, (rel: left-endpoint, to: (1, 0)))
+          let right-endpoint-ext = (right-endpoint, 6, right-endpoint-ext-ang, (rel: right-endpoint, to: (1, 0)))
 
           catmull(
             (3.6, 0.9),
             (2.1, 2.55),
             (-1.2, 0.75),
-            lendpoint,
+            left-endpoint,
             (-1.1, -1.3),
             (-0.75, -1.5),
             (0.5, -1.4),
-            rendpoint,
+            right-endpoint,
             tension: 0.5,
             close: true,
             name: "Omega_2",
           )
 
-          floating(merge-path(
-            {
-              catmull(
-                lendpoint,
-                (-1.1, -0.4),
-                (-0.6, -0.5),
-                (-0.1, 0.2),
-                (0.4, 0.5),
-                (0.9, 0.1),
-                (1.2, -0.2),
-                rendpoint,
-                tension: 0.5,
-              )
-              line(rendpoint, rendpoint-ext)
-              line(rendpoint-ext, lendpoint-ext)
-            },
-            name: "phi(V)-ext-test-line",
-            close: true,
-            stroke: none,
-          ))
+          floating(
+            merge-path(
+              {
+                catmull(
+                  left-endpoint,
+                  (-1.1, -0.4),
+                  (-0.6, -0.5),
+                  (-0.1, 0.2),
+                  (0.4, 0.5),
+                  (0.9, 0.1),
+                  (1.2, -0.2),
+                  right-endpoint,
+                  tension: 0.5,
+                )
+                line(right-endpoint, right-endpoint-ext)
+                line(right-endpoint-ext, left-endpoint-ext)
+              },
+              name: "phi(V)-ext-test-line",
+              close: true,
+              stroke: none,
+            ),
+          )
 
           boolean(
             "Omega_2",
@@ -228,31 +230,31 @@ In fact, it is almost always true that such an extension exists. We will give th
         canvas(length: 1cm, {
           import cetz.draw: *
 
-          let lendpoint = (-1.5, -0.75)
-          let rendpoint = (1.65, -1.35)
+          let left-endpoint = (-1.5, -0.75)
+          let right-endpoint = (1.65, -1.35)
 
           catmull(
             (3.6, 0.9),
             (2.1, 2.55),
             (-1.2, 0.75),
-            lendpoint,
+            left-endpoint,
             (-1.1, -1.3),
             (-0.75, -1.5),
             (0.5, -1.4),
-            rendpoint,
+            right-endpoint,
             tension: 0.5,
             close: true,
             name: "Omega_2",
           )
           catmull(
-            lendpoint,
+            left-endpoint,
             (-1.1, -0.4),
             (-0.6, -0.5),
             (-0.1, 0.2),
             (0.4, 0.5),
             (0.9, 0.1),
             (1.2, -0.2),
-            rendpoint,
+            right-endpoint,
             tension: 0.5,
           )
 
@@ -386,18 +388,18 @@ In fact, it is almost always true that such an extension exists. We will give th
             canvas(length: 1cm, {
               import cetz.draw: *
 
-              let lendpoint = (-1.5, -0.75)
-              let rendpoint = (1.65, -1.35)
+              let left-endpoint = (-1.5, -0.75)
+              let right-endpoint = (1.65, -1.35)
 
               catmull(
                 (3.6, 0.9),
                 (2.1, 2.55),
                 (-1.2, 0.75),
-                lendpoint,
+                left-endpoint,
                 (-1.1, -1.3),
                 (-0.75, -1.5),
                 (0.5, -1.4),
-                rendpoint,
+                right-endpoint,
                 tension: 0.5,
                 close: true,
                 stroke: 1.5pt,
@@ -437,18 +439,18 @@ In fact, it is almost always true that such an extension exists. We will give th
             canvas(length: 1cm, {
               import cetz.draw: *
 
-              let lendpoint = (-1.5, -0.75)
-              let rendpoint = (1.65, -1.35)
+              let left-endpoint = (-1.5, -0.75)
+              let right-endpoint = (1.65, -1.35)
 
               catmull(
                 (3.6, 0.9),
                 (2.1, 2.55),
                 (-1.2, 0.75),
-                lendpoint,
+                left-endpoint,
                 (-1.1, -1.3),
                 (-0.75, -1.5),
                 (0.5, -1.4),
-                rendpoint,
+                right-endpoint,
                 tension: 0.5,
                 close: true,
                 stroke: 1.5pt,
@@ -582,7 +584,7 @@ In fact, it is almost always true that such an extension exists. We will give th
       $
       exist and are equal.
     ],
-    <lem:osgood-taylor-caratheodory-limits-existence_and_equality>,
+    <lem:osgood-taylor-caratheodory-limits-existence-and-equality>,
   )
 
   #proof[
@@ -601,11 +603,11 @@ In fact, it is almost always true that such an extension exists. We will give th
     corollary[
       There is a continuous extension of $phi$ to $partial DD$.
     ],
-    <cor:osgood-taylor-caratheodory_continuous_extension>,
+    <cor:osgood-taylor-caratheodory-continuous-extension>,
   )
 
   #proof[
-    Let $zeta in partial DD$. Let $gamma : [0, 1] -> overline(DD)$ satisfy $phi([0, 1)) subset.eq DD$ and $gamma(1) = 1$. Suppose $phi_zeta : z |-> phi compose (z zeta)$. Then by @lem:osgood-taylor-caratheodory-limits-existence_and_equality, $lim_(t -> 1^-) phi_zeta (gamma(t))$ exists and is independent of the choice of $gamma$. Now define $tilde(phi)(zeta)$ to be the _unique_ value of this limit and let $tilde(phi)|_(DD) = phi$. // show this extension is cont.
+    Let $zeta in partial DD$. Let $gamma : [0, 1] -> overline(DD)$ satisfy $phi([0, 1)) subset.eq DD$ and $gamma(1) = 1$. Suppose $phi_zeta : z |-> phi compose (z zeta)$. Then by @lem:osgood-taylor-caratheodory-limits-existence-and-equality, $lim_(t -> 1^-) phi_zeta (gamma(t))$ exists and is independent of the choice of $gamma$. Now define $tilde(phi)(zeta)$ to be the _unique_ value of this limit and let $tilde(phi)|_(DD) = phi$. // show this extension is cont.
 
     Fix $epsilon > 0$ and suppose ${z_n}_(n in NN) subset overline(DD)$ be a sequence such that $z_n -> 1$ as $n -> oo$. By @lem:osgood-taylor-caratheodory-matching-areas and @prop:osgood-taylor-caratheodory-vanishing-areas-and-diameters, $exists j in NN$ such that $diam W_j < epsilon$ and $phi(V_j) = W_j$. By the geometry of $V_j$, $exists N in NN$ such that $forall n > N$, there exists some $0 < t_0 = t_0(n) < 1$ such that the line segment $(t_0 z_n, z_n)$ lies in $V_j$. By the previous result, we have
     $
@@ -738,7 +740,7 @@ In fact, it is almost always true that such an extension exists. We will give th
     proposition[
       The extension $tilde(phi)$ of the biholomorphism $phi$ to $overline(DD)$ is a homeomorphism.
     ],
-    <prop:osgood-taylor-caratheodory_extension_homeomorphism>,
+    <prop:osgood-taylor-caratheodory-extension-homeomorphism>,
   )
 
   #proof[
@@ -747,7 +749,7 @@ In fact, it is almost always true that such an extension exists. We will give th
   #proof[(Alternate)][
     We show that the inverse of $tilde(phi)|_(partial DD)$ is continuous, which also suffices to show that $tilde(phi)|_(partial DD)$ is a homeomorphism.
 
-    By the final argument of the proof of @cor:osgood-taylor-caratheodory_continuous_extension, it suffices to show that any sequence ${z_n}_(n in NN) subset partial Omega_2$ that converges to a point $z in partial Omega_2$ has a corresponding sequence ${w_n}_(n in NN) = {(tilde(phi)|_(partial DD))^(-1)(z_n)}_(n in NN)$ in $partial DD$ which converges to $w = (tilde(phi)|_(partial DD))^(-1)(z)$. Assume, for contradiction, that some sequence as labeled above does not converge to $w$. By the Bolzano--Weierstrass Theorem (@thm:bolzano-weierstrass), some subsequence of ${w_n}_(n in NN)$, denoted by ${w_(n_k)}_(k in NN)$, converges to $w_oo in partial DD$ (which is not equal to $w$). Then $tilde(phi)(w_(n_k)) -> tilde(phi)(w_oo)$ as $k -> oo$ by the continuity of $(tilde(phi))$. However, each $tilde(phi)(w_(n_k)) = z_(n_k) -> z = tilde(phi)(w)$. Hence, $tilde(phi)(w) = tilde(phi)(w_oo)$ which by injectivity, implies $w = w_oo$, which is a contradiction. Thus $tilde(phi)$ establishes a homeomorphism between $overline(DD)$ and $overline(Omega_1)$.
+    By the final argument of the proof of @cor:osgood-taylor-caratheodory-continuous-extension, it suffices to show that any sequence ${z_n}_(n in NN) subset partial Omega_2$ that converges to a point $z in partial Omega_2$ has a corresponding sequence ${w_n}_(n in NN) = {(tilde(phi)|_(partial DD))^(-1)(z_n)}_(n in NN)$ in $partial DD$ which converges to $w = (tilde(phi)|_(partial DD))^(-1)(z)$. Assume, for contradiction, that some sequence as labeled above does not converge to $w$. By the Bolzano--Weierstrass Theorem (@thm:bolzano-weierstrass), some subsequence of ${w_n}_(n in NN)$, denoted by ${w_(n_k)}_(k in NN)$, converges to $w_oo in partial DD$ (which is not equal to $w$). Then $tilde(phi)(w_(n_k)) -> tilde(phi)(w_oo)$ as $k -> oo$ by the continuity of $(tilde(phi))$. However, each $tilde(phi)(w_(n_k)) = z_(n_k) -> z = tilde(phi)(w)$. Hence, $tilde(phi)(w) = tilde(phi)(w_oo)$ which by injectivity, implies $w = w_oo$, which is a contradiction. Thus $tilde(phi)$ establishes a homeomorphism between $overline(DD)$ and $overline(Omega_1)$.
   ]
 
   Now consider the general case for arbitrary $Omega_1$ as in the theorem statement. Let $phi : Omega_1 -> Omega_2$ be a biholomorphism.
@@ -866,7 +868,7 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
                   (0.8, 0.9),
                   (1.3, 0.1),
                   (1.5, -0.6),
-                  ..directional_points(offset: bottom-right, angle: -70deg),
+                  ..directional-points(offset: bottom-right, angle: -70deg),
                   stroke: 2pt,
                   name: "partial-Omega2",
                 )
@@ -878,7 +880,7 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
                       (0.8, 0.9),
                       (1.3, 0.1),
                       (1.5, -0.6),
-                      ..directional_points(offset: bottom-right, angle: -70deg),
+                      ..directional-points(offset: bottom-right, angle: -70deg),
                     )
                     line((top-left, "|-", bottom-right), top-left)
                   },
@@ -991,7 +993,7 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
                   (0.6, 0.7),
                   (1.2, 0.3),
                   (1.4, -0.6),
-                  ..directional_points(offset: bottom-right, angle: -70deg),
+                  ..directional-points(offset: bottom-right, angle: -70deg),
                   stroke: 2pt,
                   name: "partial-Omega1",
                 )
@@ -1025,7 +1027,7 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
                       (0.6, 0.7),
                       (1.2, 0.3),
                       (1.4, -0.6),
-                      ..directional_points(offset: bottom-right, angle: -70deg),
+                      ..directional-points(offset: bottom-right, angle: -70deg),
                     )
                     line((top-left, "|-", bottom-right), top-left)
                   },

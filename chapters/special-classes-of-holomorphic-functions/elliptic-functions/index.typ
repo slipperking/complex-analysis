@@ -1,11 +1,11 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Elliptic Functions],
-  route: "elliptic_functions",
+  route: "elliptic-functions",
   children: [
-    #include "weierstrass_elliptic_functions/index.typ"
+    #include "weierstrass-elliptic-functions/index.typ"
     #include "jacobi/index.typ"
-    #include "modular_group/index.typ"
+    #include "modular-group/index.typ"
   ],
 )
 The theory of elliptic functions is an elaborate chapter of complex analysis, with origins in seemingly trivial problems of calculus. In the 18th century, mathematicians studying the rectification (arc length calculation) of curves such as the ellipse and the lemniscate discovered that these could not be expressed in terms of elementary functions, leading to the introduction of elliptic integrals. Inverting these integrals gave rise to elliptic functions, which extend the idea of trigonometric functions by being _doubly periodic_ in the complex plane. Closely related ideas also appeared in conformal mapping, such as the Schwarz--Christoffel transformation (@sec:schwarz-christoffel-transformation) between the upper half-plane and rectangles. Henceforth, elliptic functions became a central subject related to calculus, geometry, and complex analysis.
@@ -324,7 +324,7 @@ Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then
   theorem[
     For any non-constant elliptic function $f$ with period lattice $Lambda$, the number of zeros and poles (counting multiplicities and orders, respectively) in $CC \/ Lambda$ are equal.
   ],
-  <thm:elliptic_function_number_of_zeros_and_poles>,
+  <thm:elliptic_function-number-of-zeros-and-poles>,
 )
 
 #proof[
@@ -340,7 +340,7 @@ Let $CC$ be closed under addition and let $Lambda$ be the subgroup of $CC$. Then
 ]
 
 #proof[
-  Assume that $z != oo$ and suppose $P$ is a fundamental parallelogram that does not pass through a pole. Then the number of times $zeta |-> f(zeta) - z$ attains $0$ and $oo$ in $CC \/ Lambda$ are equal by @thm:elliptic_function_number_of_zeros_and_poles. In other words, $f$ has the same number of poles as the number of times it attains any finite complex number.
+  Assume that $z != oo$ and suppose $P$ is a fundamental parallelogram that does not pass through a pole. Then the number of times $zeta |-> f(zeta) - z$ attains $0$ and $oo$ in $CC \/ Lambda$ are equal by @thm:elliptic_function-number-of-zeros-and-poles. In other words, $f$ has the same number of poles as the number of times it attains any finite complex number.
 ]
 
 Hence, it is only natural to quantify this number:

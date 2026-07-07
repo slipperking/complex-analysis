@@ -548,23 +548,23 @@ When Cauchy formalized @thm:cauchy-integral-formula, @thm:cauchy-integral-theore
         quick-plot(_canvas: {
           let MNpoints = offset => {
             (
-              ..directional_points(angle: -90deg),
+              ..directional-points(angle: -90deg),
               (width * .25, slantoffset * .3),
               (width * .4, -slantoffset * .2),
               (width * .7, slantoffset * .2),
               (width * .85, slantoffset * .1),
-              ..directional_points(offset: (width, slantoffset), angle: -90deg).rev(),
+              ..directional-points(offset: (width, slantoffset), angle: -90deg).rev(),
             ).map(point => (rel: point, to: offset))
           }
 
           let PQpoints = offset => {
             (
-              ..directional_points(angle: 90deg),
+              ..directional-points(angle: 90deg),
               (width * .25, slantoffset * .2),
               (width * .4, slantoffset * .2),
               (width * .6, slantoffset * 1.2),
               (width * .8, slantoffset * 1.1),
-              ..directional_points(offset: (width, slantoffset), angle: 90deg).rev(),
+              ..directional-points(offset: (width, slantoffset), angle: 90deg).rev(),
             ).map(point => (rel: point, to: offset))
           }
 

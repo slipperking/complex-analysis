@@ -46,7 +46,7 @@
   ((0, 0), scale * 100%, vector)
 }
 
-#let directional_points(offset: (0, 0), angle: 0, length: 1e-6, n: 10) = {
+#let directional-points(offset: (0, 0), angle: 0, length: 1e-6, n: 10) = {
   let vec = ((0, 0), 100%, angle, (length, 0))
   let out = ()
 

@@ -1,11 +1,11 @@
 #import "/lib.typ": *
 #show: docs-subsubchapter.with(
   title: [Weierstrass Elliptic Functions],
-  route: "weierstrass_elliptic_functions",
+  route: "weierstrass-elliptic-functions",
 )
 Since any (non-constant) elliptic function has order greater than one, it is natural to next consider elliptic functions of order two.
 
-Within a fundamental parallelogram, by @thm:elliptic_function_number_of_zeros_and_poles, such a function either has two simple poles or a single double pole. This distinction is the key difference between the Weierstrass theory of elliptic functions (the former case) and the Jacobi theory (the latter case).
+Within a fundamental parallelogram, by @thm:elliptic_function-number-of-zeros-and-poles, such a function either has two simple poles or a single double pole. This distinction is the key difference between the Weierstrass theory of elliptic functions (the former case) and the Jacobi theory (the latter case).
 
 In practice, elliptic functions derived from the Jacobi formulation often have more practical use cases, whereas the Weierstrass theory tends to be more convenient in theoretical analysis.
 
@@ -16,11 +16,11 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
       $
         sum_(omega in Lambda without {0}) 1 / abs(omega)^alpha
       $,
-      <eq:weierstrass-p-function_intermediate_series_convergence_statement>,
+      <eq:weierstrass-p-function-intermediate-series-convergence-statement>,
     )
     is (absolutely) convergent for $alpha > 2$.
   ],
-  <prop:weierstrass-p-function_intermediate_series_convergence>,
+  <prop:weierstrass-p-function-intermediate-series-convergence>,
 )
 #figure-wrapper(
   lbl(
@@ -85,11 +85,11 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
       },
       caption: [The parallelogram $P_1$ with 8 periods on its boundary with lattice $Lambda$.],
     ),
-    <fig:weierstrass-p-function_intermediate_series_convergence_parallelogram>,
+    <fig:weierstrass-p-function-intermediate-series-convergence-parallelogram>,
   ),
 )
 #proof[
-  Let $P_n$ be a parallelogram whose center is $0$ and has $n(omega_1 + omega_2)$ as a vertex (the specific case of $n = 1$ is illustrated in @fig:weierstrass-p-function_intermediate_series_convergence_parallelogram). For each $n in NN$, there exist $8 n$ periods (points in $Lambda$) on $partial P_n$.
+  Let $P_n$ be a parallelogram whose center is $0$ and has $n(omega_1 + omega_2)$ as a vertex (the specific case of $n = 1$ is illustrated in @fig:weierstrass-p-function-intermediate-series-convergence-parallelogram). For each $n in NN$, there exist $8 n$ periods (points in $Lambda$) on $partial P_n$.
 
   Let $delta$ be the distance from $0$ to $partial P_1$. Hence, the distance from $0$ to $partial P_n$ is $n delta$. Since each $omega in Lambda^* = Lambda without {0}$ lies in a unique $partial P_n$, it follows that $abs(omega)^alpha gt.eq n^alpha delta^alpha$ for all $alpha > 0$. Hence,
   $
@@ -105,7 +105,7 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
       $
         sum_(omega in Lambda without {0}) [1 / (z - omega)^2 - 1 / omega^2]
       $,
-      <eq:weierstrass-p-function-convergence_statement>,
+      <eq:weierstrass-p-function-convergence-statement>,
     )
     locally uniformly converges on $CC without Lambda$.
   ],
@@ -121,14 +121,14 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
   $
     abs(1 / (z - omega)^2 - 1 / omega^2) = abs((2 omega z - z^2) / (omega^2 (z - omega)^2)) = abs((z (2 - z / omega)) / (omega^3 (z / omega - 1)^2)) < abs((5 / 2 z) / (1 / 4 omega^3)) <= (10 R) / abs(omega)^3.
   $
-  Hence, by @prop:weierstrass-p-function_intermediate_series_convergence,
+  Hence, by @prop:weierstrass-p-function-intermediate-series-convergence,
   #lbl(
     $
       sum_(omega in Lambda \ omega in.not overline(D(0, 2 R))) [1 / (z - omega)^2 - 1 / omega^2]
     $,
-    <eq:weierstrass-p-function-convergence_intermediateseries>,
+    <eq:weierstrass-p-function-convergence-intermediate-series>,
   )
-  is termwise bounded by a series $sum_(omega in Lambda, omega in.not overline(D(0, 2 R))) (10 R) / omega^3$, which is convergent by @prop:weierstrass-p-function_intermediate_series_convergence. Weierstrass $M$--Test (@thm:weierstrass-m-test) gives the uniform convergence of @eq:weierstrass-p-function-convergence_intermediateseries on $D(0, R)$. Since we have omitted only finitely many terms, @eq:weierstrass-p-function_intermediate_series_convergence_statement converges uniformly on $D(0, R) without Lambda$.
+  is termwise bounded by a series $sum_(omega in Lambda, omega in.not overline(D(0, 2 R))) (10 R) / omega^3$, which is convergent by @prop:weierstrass-p-function-intermediate-series-convergence. Weierstrass $M$--Test (@thm:weierstrass-m-test) gives the uniform convergence of @eq:weierstrass-p-function-convergence-intermediate-series on $D(0, R)$. Since we have omitted only finitely many terms, @eq:weierstrass-p-function-intermediate-series-convergence-statement converges uniformly on $D(0, R) without Lambda$.
 
   Let $K subset CC without Lambda$ be compact and arbitrary. By boundedness, $exists R > 0$ such that $K subset D(0, R) without Lambda$, on which it uniformly converges.
 ]
@@ -187,7 +187,7 @@ By evenness of $wp$, we must have $c_1 = c_2 = 0$. Therefore, $wp$ is also an el
   $
     abs(sum_(omega in Lambda^*) sum_(m=1)^oo (m + 1) / omega^(m + 2) z^m) <= sum_(omega in Lambda^*) (2 abs(z omega) - abs(z)^2) / ((abs(omega) - abs(z))^2 abs(omega)^2) = sum_(omega in Lambda^*) (abs(z) (2 - abs(z / omega))) / (abs(omega)^3 (abs(z / omega) - 1)^2),
   $
-  which for $abs(omega) > 2 R$ (which comprises all $omega$ except for finitely many) is bounded by $sum_(omega in Lambda, abs(omega) > 2 R) (10 R) / abs(omega)^3$ (estimates derived in the proof of @prop:weierstrass-p-function-convergence), which is convergent by @prop:weierstrass-p-function_intermediate_series_convergence. Hence, the series converges absolutely for $abs(z) < R$ and the summation exchange (and the Cauchy product) is valid. By the symmetry of the period lattice, it is trivial that $c_(2 m + 1) = 0$ for all $m in NN$. Hence, the assertion follows.
+  which for $abs(omega) > 2 R$ (which comprises all $omega$ except for finitely many) is bounded by $sum_(omega in Lambda, abs(omega) > 2 R) (10 R) / abs(omega)^3$ (estimates derived in the proof of @prop:weierstrass-p-function-convergence), which is convergent by @prop:weierstrass-p-function-intermediate-series-convergence. Hence, the series converges absolutely for $abs(z) < R$ and the summation exchange (and the Cauchy product) is valid. By the symmetry of the period lattice, it is trivial that $c_(2 m + 1) = 0$ for all $m in NN$. Hence, the assertion follows.
 ]
 
 Termwise differentiation (provided by @thm:weierstrass-convergence) now gives
