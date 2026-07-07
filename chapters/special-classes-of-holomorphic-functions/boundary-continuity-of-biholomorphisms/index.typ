@@ -1,15 +1,15 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Boundary Continuity of Biholomorphisms],
-  route: "boundary_continuity_of_biholomorphisms",
+  route: "boundary-continuity-of-biholomorphisms",
 )
 Suppose $Omega_1$ and $Omega_2$ are two regions in the complex plane such that there is a biholomorphism $phi$ from $Omega_1$ to $Omega_2$. Naturally, we are concerned about the existence of a continuous extension of $phi$ to $overline(Omega_1)$.
 
 In fact, it is almost always true that such an extension exists. We will give three examples of this phenomenon, each with increasing regularity assumptions on the boundaries $partial Omega_1$ and $partial Omega_2$:
 
-1. If $partial Omega_1$ and $partial Omega_2$ are two Jordan curves, then $phi$ (whose existence is given by the Riemann Mapping Theorem or @thm:riemann-mapping) extends homeomorphically to $partial Omega_1$ (@thm:osgood_taylor_caratheodory).
+1. If $partial Omega_1$ and $partial Omega_2$ are two Jordan curves, then $phi$ (whose existence is given by the Riemann Mapping Theorem or @thm:riemann-mapping) extends homeomorphically to $partial Omega_1$ (@thm:osgood-taylor-caratheodory).
 2. If $partial Omega_1$ and $Omega_2$ are $C^oo$, then $phi$ extends continuously and injectively to $partial Omega_1$ and is $C^oo$ on $overline(Omega_1)$.
-3. If $partial Omega_1$ and $partial Omega_2$ are real-analytic (the boundary is parameterizable by functions such that at every point, there is a power series expansion that converge to the function on a neighborhood), then $phi$ extends analytically past $partial Omega_1$ (@thm:osgood_taylor_caratheodoryrealanalyticboundaries).
+3. If $partial Omega_1$ and $partial Omega_2$ are real-analytic (the boundary is parameterizable by functions such that at every point, there is a power series expansion that converge to the function on a neighborhood), then $phi$ extends analytically past $partial Omega_1$ (@thm:osgood-taylor-caratheodory-real-analytic-boundaries).
 
 #example[
   The biholomorphism $phi : DD -> DD inter HH^+$ defined by
@@ -23,13 +23,13 @@ In fact, it is almost always true that such an extension exists. We will give th
   theorem[Osgood--Taylor--Carathéodory][
     Suppose that $Omega_1$ and $Omega_2$ are two bounded regions in $CC$ such that $partial Omega_1$ and $partial Omega_2$ each comprises a single Jordan curve. If $phi : Omega_1 -> Omega_2$ is a biholomorphism (provided by the Riemann Mapping Theorem in @thm:riemann-mapping), then $exists tilde(phi) : overline(Omega_1) -> overline(Omega_2)$ homeomorphic such that $tilde(phi)|_(Omega_1) equiv phi$ (the restriction of $tilde(phi)$ to $Omega_1$ agrees with $phi$).
   ],
-  <thm:osgood_taylor_caratheodory>,
+  <thm:osgood-taylor-caratheodory>,
 )
 
 #proof[
   The theorem will be first proven in the case that $Omega_1$ is the unit disk $DD$. The general case will then be reduced to this special case.
 
-  Let $mu_1, mu_2 : [0, 1] -> overline(DD)$ be two curves such that $mu_1([0, 1)), mu_2([0, 1)) subset DD$ and $mu_1(1) = 1$, $mu_2(1) = 1$ (as in @fig:osgood_taylor_caratheodory_unitdiskandVandmu). We now aim to show that $lim_(t -> 1^-) phi(mu_1(t)) = lim_(t -> 1^-) phi(mu_2(t))$ (existence and equality).
+  Let $mu_1, mu_2 : [0, 1] -> overline(DD)$ be two curves such that $mu_1([0, 1)), mu_2([0, 1)) subset DD$ and $mu_1(1) = 1$, $mu_2(1) = 1$ (as in @fig:osgood-taylor-caratheodory-unit-disk-and-V-and-mu). We now aim to show that $lim_(t -> 1^-) phi(mu_1(t)) = lim_(t -> 1^-) phi(mu_2(t))$ (existence and equality).
 
   Let $V = DD inter D(1, 1 / 2)$, which has a finite area. Since $phi$ is a biholomorphism, $phi(V) subset Omega_2$ also has a finite area (call this $M$) and is simply connected since its complement in $Omega_2$, $phi(DD without V)$, is connected.
 
@@ -91,7 +91,7 @@ In fact, it is almost always true that such an extension exists. We will give th
         }),
         caption: [Configuration of $V$, and possible $mu_1, mu_2$.],
       ),
-      <fig:osgood_taylor_caratheodory_unitdiskandVandmu>,
+      <fig:osgood-taylor-caratheodory-unit-disk-and-V-and-mu>,
     ),
     lbl(
       figure(
@@ -134,14 +134,14 @@ In fact, it is almost always true that such an extension exists. We will give th
               line(rendpoint, rendpoint-ext)
               line(rendpoint-ext, lendpoint-ext)
             },
-            name: "phi(V)-ext-testline",
+            name: "phi(V)-ext-test-line",
             close: true,
             stroke: none,
           ))
 
           boolean(
             "Omega_2",
-            "phi(V)-ext-testline",
+            "phi(V)-ext-test-line",
             op: "intersection",
             fill: hatch,
             name: "phi(V)",
@@ -152,11 +152,11 @@ In fact, it is almost always true that such an extension exists. We will give th
         }),
         caption: [Possible positioning of $phi(V)$ relative to $Omega_2$.],
       ),
-      <fig:osgood_taylor_caratheodory_phi_of_V>,
+      <fig:osgood-taylor-caratheodory-phi-of-V>,
     ),
   )
 
-  Let $K subset Omega_2$ be compact. Since $phi^(-1)$ is continuous, it maps $K$ to a compact set $phi^(-1)(K)$ (a function providing the compactness of the pre-image of every compact set is more generally known as _proper_). This implies that for any sequence ${z_j}_(j in NN) subset DD$ with accumulation points only in $partial DD$, ${phi(z_j)}_(j in NN)$ will have its accumulation points in $partial Omega_2$ (because otherwise, there would be a corresponding subsequence of ${z_j}_(j in NN)$ that converges to a point in $DD$). Therefore, $phi(V)$ does not have relatively compact closure in $Omega_2$ (a representation of a possible configuration in @fig:osgood_taylor_caratheodory_phi_of_V).
+  Let $K subset Omega_2$ be compact. Since $phi^(-1)$ is continuous, it maps $K$ to a compact set $phi^(-1)(K)$ (a function providing the compactness of the pre-image of every compact set is more generally known as _proper_). This implies that for any sequence ${z_j}_(j in NN) subset DD$ with accumulation points only in $partial DD$, ${phi(z_j)}_(j in NN)$ will have its accumulation points in $partial Omega_2$ (because otherwise, there would be a corresponding subsequence of ${z_j}_(j in NN)$ that converges to a point in $DD$). Therefore, $phi(V)$ does not have relatively compact closure in $Omega_2$ (a representation of a possible configuration in @fig:osgood-taylor-caratheodory-phi-of-V).
 
   #figure-wrapper(
     lbl(
@@ -221,7 +221,7 @@ In fact, it is almost always true that such an extension exists. We will give th
         }),
         caption: [Possible configuration of $gamma_r$.],
       ),
-      <fig:osgood_taylor_caratheodory_gamma_r_configuration>,
+      <fig:osgood-taylor-caratheodory-gamma-r-configuration>,
     ),
     lbl(
       figure(
@@ -277,11 +277,11 @@ In fact, it is almost always true that such an extension exists. We will give th
         }),
         caption: [Concept configuration of $phi(gamma_r)$],
       ),
-      <fig:osgood_taylor_caratheodory_subwedgeimage>,
+      <fig:osgood-taylor-caratheodory-sub-wedge-image>,
     ),
   )
 
-  For $0 < r < 1 / 2$, we now introduce polar coordinates $(r, theta)$ centered at $1$ with angles offset by $uppi$. Let $theta_0(r)$ be the supremum of $theta$ for fixed $r$ such that $1 - r ee^(ii theta) in V$. Define $gamma_r : (-theta_0(r), theta_0(r)) -> V$ to be the curve with $theta |-> 1 - r ee^(ii theta)$ (as in @fig:osgood_taylor_caratheodory_gamma_r_configuration).
+  For $0 < r < 1 / 2$, we now introduce polar coordinates $(r, theta)$ centered at $1$ with angles offset by $uppi$. Let $theta_0(r)$ be the supremum of $theta$ for fixed $r$ such that $1 - r ee^(ii theta) in V$. Define $gamma_r : (-theta_0(r), theta_0(r)) -> V$ to be the curve with $theta |-> 1 - r ee^(ii theta)$ (as in @fig:osgood-taylor-caratheodory-gamma-r-configuration).
 
   #lbl(
     lemma[
@@ -291,7 +291,7 @@ In fact, it is almost always true that such an extension exists. We will give th
       $
       is finite.
     ],
-    <lem:osgood_taylor_caratheodory_length_integral_finiteness>,
+    <lem:osgood-taylor-caratheodory-length-integral-finiteness>,
   )
 
   #proof[
@@ -314,7 +314,7 @@ In fact, it is almost always true that such an extension exists. We will give th
   $
     integral_0^(1 / 2) l_r^2 / (uppi r) dr >= integral_0^epsilon l_r^2 / (uppi r) dr >= integral_0^epsilon c^2 / (uppi r) dr = c^2 / uppi integral_0^epsilon dr / r,
   $
-  which is a divergent integral. This contradicts @lem:osgood_taylor_caratheodory_length_integral_finiteness. Therefore, we must have $liminf_(r -> 0^+) l_r = 0$. Thus, there exists a sequence ${r_j}_(j in NN) subset (0, 1 / 2)$ such that $r_j -> 0$ and $l_(r_j) -> 0$ as $j -> oo$.
+  which is a divergent integral. This contradicts @lem:osgood-taylor-caratheodory-length-integral-finiteness. Therefore, we must have $liminf_(r -> 0^+) l_r = 0$. Thus, there exists a sequence ${r_j}_(j in NN) subset (0, 1 / 2)$ such that $r_j -> 0$ and $l_(r_j) -> 0$ as $j -> oo$.
 
   #lbl(
     proposition[
@@ -324,7 +324,7 @@ In fact, it is almost always true that such an extension exists. We will give th
       $
       exist.
     ],
-    <prop:osgood_taylor_caratheodory_limits_existence>,
+    <prop:osgood-taylor-caratheodory-limits-existence>,
   )
 
   #proof[
@@ -344,7 +344,7 @@ In fact, it is almost always true that such an extension exists. We will give th
     lemma[
       Let $tau = partial Omega_2$. Then there is a function $eta(delta)$ defined for sufficiently small $delta$, such that $eta(delta) -> 0$ as $delta -> 0^+$, such that for all $a, b in tau$ satisfying $abs(a - b) <= delta$, then there is exactly one curve in $tau$ with endpoints $a$ and $b$ with diameter $<= eta(delta)$.
     ],
-    <lem:osgood_taylor_caratheodory_jordan-curve_arc_diameter>,
+    <lem:osgood-taylor-caratheodory-jordan-curve-arc-diameter>,
   )
 
   #proof[
@@ -375,7 +375,7 @@ In fact, it is almost always true that such an extension exists. We will give th
     Thus, exactly one arc's image (specifically, the image of the shorter arc on $S^1$) has diameter $<= eta(delta)$.
   ]
 
-  By the uniqueness as described by @lem:osgood_taylor_caratheodory_jordan-curve_arc_diameter, for any two points $a, b$ sufficiently close together, we now identify the unique curve in $tau$ (joining $a$ and $b$) with diameter less than $eta(abs(a - b))$ as the _smaller arc_ of $tau$ joining $a$ and $b$, denoted by $tau_(a, b)$.
+  By the uniqueness as described by @lem:osgood-taylor-caratheodory-jordan-curve-arc-diameter, for any two points $a, b$ sufficiently close together, we now identify the unique curve in $tau$ (joining $a$ and $b$) with diameter less than $eta(abs(a - b))$ as the _smaller arc_ of $tau$ joining $a$ and $b$, denoted by $tau_(a, b)$.
   #figure-wrapper([
     #lbl(
       figure(
@@ -487,39 +487,39 @@ In fact, it is almost always true that such an extension exists. We will give th
         ),
         caption: [Two possibilities for the endpoints of $phi(gamma_(r_j))$],
       ),
-      <fig:osgood_taylor_caratheodory_curveimagetwocases>,
+      <fig:osgood-taylor-caratheodory-curve-image-two-cases>,
     )
   ])
 
   #lbl(
     lemma[
-      Let ${r_j}_(j in NN)$ be the sequence such that $l_(r_j) -> 0$ as $j -> oo$ (in the discussion preceding @prop:osgood_taylor_caratheodory_limits_existence). Then, for each $j in NN$, either
+      Let ${r_j}_(j in NN)$ be the sequence such that $l_(r_j) -> 0$ as $j -> oo$ (in the discussion preceding @prop:osgood-taylor-caratheodory-limits-existence). Then, for each $j in NN$, either
       #lbl(
         $
           Omega_2 in.rev a_j & = lim_(theta -> theta_0(r_j)^-) phi(1 - r_j ee^(ii theta)) \
                              & != lim_(theta -> -theta_0(r_j)^+) phi(1 - r_j ee^(ii theta)) = b_j in partial Omega_2
         $,
-        <eq:osgood_taylor_caratheodory_twoalternatives_differentpoints>,
+        <eq:osgood-taylor-caratheodory-two-alternatives-different-points>,
       )
       or
       #lbl(
         $
           lim_(theta -> theta_0(r_j)^-) phi(1 - r_j ee^(ii theta)) = lim_(theta -> -theta_0(r_j)^+) phi(1 - r_j ee^(ii theta)) = p_j in partial Omega_2
         $,
-        <eq:osgood_taylor_caratheodory_twoalternatives_samepoint>,
+        <eq:osgood-taylor-caratheodory-two-alternatives-same-point>,
       )
-      is satisfied. The two situations are represented in @fig:osgood_taylor_caratheodory_curveimagetwocases.
+      is satisfied. The two situations are represented in @fig:osgood-taylor-caratheodory-curve-image-two-cases.
     ],
-    <lem:osgood_taylor_caratheodory_twoalternatives>,
+    <lem:osgood-taylor-caratheodory-two-alternatives>,
   )
 
   #proof[
-    By virtue of @prop:osgood_taylor_caratheodory_limits_existence, both described limits exist. Similarly, since any sequences ${1 - r_j ee^(ii theta)}_(theta -> theta_0(r_j)^-)$ and ${1 - r_j ee^(ii theta)}_(theta -> -theta_0(r_j)^+)$ approach $partial DD$, their images under $phi$ approach $partial Omega_2$ by properness (refer to the discussions preceding @lem:osgood_taylor_caratheodory_length_integral_finiteness). Therefore, both limits must lie in $partial Omega_2$, and the conclusion follows.
+    By virtue of @prop:osgood-taylor-caratheodory-limits-existence, both described limits exist. Similarly, since any sequences ${1 - r_j ee^(ii theta)}_(theta -> theta_0(r_j)^-)$ and ${1 - r_j ee^(ii theta)}_(theta -> -theta_0(r_j)^+)$ approach $partial DD$, their images under $phi$ approach $partial Omega_2$ by properness (refer to the discussions preceding @lem:osgood-taylor-caratheodory-length-integral-finiteness). Therefore, both limits must lie in $partial Omega_2$, and the conclusion follows.
   ]
 
-  For fixed $r_j$, in the case of @eq:osgood_taylor_caratheodory_twoalternatives_differentpoints, let $phi(gamma_(r_j))$ be the described curve joining $a_j$ and $b_j$ (where $gamma_(r_j)$ is represented by the arc as labeled in @fig:osgood_taylor_caratheodory_subwedgeimage). Except for the two boundary points, the curve $phi(gamma_(r_j))$ lies entirely in $Omega_2$ since $gamma_(r_j) subset V subset DD$. Let the _shorter_ arc on $Omega_2$ joining the two points $a_j$ and $b_j$ be denoted by $tau_j$. Therefore, the curve $phi(gamma_(r_j)) union tau_j$ forms a Jordan curve (simplicity by injectivity).
+  For fixed $r_j$, in the case of @eq:osgood-taylor-caratheodory-two-alternatives-different-points, let $phi(gamma_(r_j))$ be the described curve joining $a_j$ and $b_j$ (where $gamma_(r_j)$ is represented by the arc as labeled in @fig:osgood-taylor-caratheodory-sub-wedge-image). Except for the two boundary points, the curve $phi(gamma_(r_j))$ lies entirely in $Omega_2$ since $gamma_(r_j) subset V subset DD$. Let the _shorter_ arc on $Omega_2$ joining the two points $a_j$ and $b_j$ be denoted by $tau_j$. Therefore, the curve $phi(gamma_(r_j)) union tau_j$ forms a Jordan curve (simplicity by injectivity).
 
-  In the event that @eq:osgood_taylor_caratheodory_twoalternatives_samepoint is assumed, let $tau_j = {p_j}$, and $phi(gamma_(r_j))(union tau_j)$ forms a Jordan curve. By the Jordan Curve Theorem (@thm:jordan-curve), the selected curve bounds a region, which we will denote by $W_j subset.eq Omega_2$.
+  In the event that @eq:osgood-taylor-caratheodory-two-alternatives-same-point is assumed, let $tau_j = {p_j}$, and $phi(gamma_(r_j))(union tau_j)$ forms a Jordan curve. By the Jordan Curve Theorem (@thm:jordan-curve), the selected curve bounds a region, which we will denote by $W_j subset.eq Omega_2$.
 
   For each $j$, let $V_j = {1 - r ee^(ii theta) : 0 < r < r_j, -theta_0(r) < theta < theta_0(r)}$. Since $phi(gamma_(r_j))$ is a curve with endpoints $a_j$ and $b_j$ (or $p_j$) and lies in $Omega_2$ except for its endpoints, it splits $Omega_2$ into two disconnected regions, $W_j$ or $Omega_2 without overline(W_j)$. Since $gamma_(r_j)$ splits $DD$ into two regions, one of which being $V_j$, the image $phi(V_j)$ is either $W_j$ or $Omega_2 without overline(W_j)$.
 
@@ -530,18 +530,18 @@ In fact, it is almost always true that such an extension exists. We will give th
         diam W_j -> 0 quad "and" quad op("area")W_j -> 0.
       $
     ],
-    <prop:osgood_taylor_caratheodory_vanishing_areas_and_diameters>,
+    <prop:osgood-taylor-caratheodory-vanishing-areas-and-diameters>,
   )
 
   #proof[
-    @lem:osgood_taylor_caratheodory_jordan-curve_arc_diameter provides the existence of $eta$ such that $diam tau_j <= eta(l_(r_j))$ for sufficiently large $j$ (since $abs(a_j - b_j) <= l_(r_j)$ or $0$ for the $p_j$ case) such that $eta(l_(r_j)) -> 0$ as $j -> oo$.
+    @lem:osgood-taylor-caratheodory-jordan-curve-arc-diameter provides the existence of $eta$ such that $diam tau_j <= eta(l_(r_j))$ for sufficiently large $j$ (since $abs(a_j - b_j) <= l_(r_j)$ or $0$ for the $p_j$ case) such that $eta(l_(r_j)) -> 0$ as $j -> oo$.
 
     Let $D_j = D(a_j, l_(r_j) + eta(l_(r_j)))$ (or $D_j = D(p_j, l_(r_j) + eta(l_(r_j)))$ in the case of the same point) for each $j$. By the previous diameter estimate, the entire Jordan curve $phi(gamma_(r_j)) union tau_j$ lies in $D_j$, and hence $W_j subset D_j$. This implies that
     #lbl(
       $
         op("area")(W_j) <= op("area")(D_j) = uppi (l_(r_j) + eta(l_(r_j)))^2 -> 0 quad "as" quad j -> oo. qedhere
       $,
-      <eq:osgood_taylor_caratheodory_vanishing_areas_and_diameters_areaestimation2>,
+      <eq:osgood-taylor-caratheodory-vanishing-areas-and-diameters-area-estimation-2>,
     )
   ]
 
@@ -549,7 +549,7 @@ In fact, it is almost always true that such an extension exists. We will give th
     lemma[
       For sufficiently large $j in NN$, $phi(V_j) = W_j$.
     ],
-    <lem:osgood_taylor_caratheodory_matching_areas>,
+    <lem:osgood-taylor-caratheodory-matching-areas>,
   )
 
   #proof[
@@ -565,13 +565,13 @@ In fact, it is almost always true that such an extension exists. We will give th
         $
           op("area")(phi(T_j)) -> op("area")(Omega_2).
         $,
-        <eq:osgood_taylor_caratheodory_matching_areas_areaestimation>,
+        <eq:osgood-taylor-caratheodory-matching-areas-area-estimation>,
       )
-      @prop:osgood_taylor_caratheodory_vanishing_areas_and_diameters implies that
+      @prop:osgood-taylor-caratheodory-vanishing-areas-and-diameters implies that
       $
         op("area")(W_j) -> 0
       $
-      as $j -> oo$. Hence, for sufficiently large $j$, we cannot have $phi(T_j) subset.eq W_j$ (by the induced contradiction with @eq:osgood_taylor_caratheodory_matching_areas_areaestimation). Therefore, $phi(T_j) = Omega_2 without overline(W_j)$ and $phi(V_j) = W_j$. #qedhere
+      as $j -> oo$. Hence, for sufficiently large $j$, we cannot have $phi(T_j) subset.eq W_j$ (by the induced contradiction with @eq:osgood-taylor-caratheodory-matching-areas-area-estimation). Therefore, $phi(T_j) = Omega_2 without overline(W_j)$ and $phi(V_j) = W_j$. #qedhere
   ]
 
   #lbl(
@@ -582,11 +582,11 @@ In fact, it is almost always true that such an extension exists. We will give th
       $
       exist and are equal.
     ],
-    <lem:osgood_taylor_caratheodory_limits_existence_and_equality>,
+    <lem:osgood-taylor-caratheodory-limits-existence_and_equality>,
   )
 
   #proof[
-    By @lem:osgood_taylor_caratheodory_matching_areas and @prop:osgood_taylor_caratheodory_vanishing_areas_and_diameters, $exists j in NN$ such that $diam W_j < epsilon$ and $phi(V_j) = W_j$. Since $mu_1(t), mu_2(t) -> 1$ as $t -> 1^-$, $exists S in (0, 1)$ such that $forall t : S < t < 1$, $abs(mu_1(t) - 1) < r_j$ and $abs(mu_2(t) - 1) < r_j$. Recall the definition of $V_j$ as the set of points ${1 - r ee^(ii theta) : 0 < r < r_j, -theta_0(r) < theta < theta_0(r)}$; then $mu_1(t), mu_2(t) in V_j$ for all $S < t < 1$. Therefore,
+    By @lem:osgood-taylor-caratheodory-matching-areas and @prop:osgood-taylor-caratheodory-vanishing-areas-and-diameters, $exists j in NN$ such that $diam W_j < epsilon$ and $phi(V_j) = W_j$. Since $mu_1(t), mu_2(t) -> 1$ as $t -> 1^-$, $exists S in (0, 1)$ such that $forall t : S < t < 1$, $abs(mu_1(t) - 1) < r_j$ and $abs(mu_2(t) - 1) < r_j$. Recall the definition of $V_j$ as the set of points ${1 - r ee^(ii theta) : 0 < r < r_j, -theta_0(r) < theta < theta_0(r)}$; then $mu_1(t), mu_2(t) in V_j$ for all $S < t < 1$. Therefore,
     $
       phi(mu_1(t)), phi(mu_2(t)) in W_j
     $
@@ -601,13 +601,13 @@ In fact, it is almost always true that such an extension exists. We will give th
     corollary[
       There is a continuous extension of $phi$ to $partial DD$.
     ],
-    <cor:osgood_taylor_caratheodory_continuous_extension>,
+    <cor:osgood-taylor-caratheodory_continuous_extension>,
   )
 
   #proof[
-    Let $zeta in partial DD$. Let $gamma : [0, 1] -> overline(DD)$ satisfy $phi([0, 1)) subset.eq DD$ and $gamma(1) = 1$. Suppose $phi_zeta : z |-> phi compose (z zeta)$. Then by @lem:osgood_taylor_caratheodory_limits_existence_and_equality, $lim_(t -> 1^-) phi_zeta (gamma(t))$ exists and is independent of the choice of $gamma$. Now define $tilde(phi)(zeta)$ to be the _unique_ value of this limit and let $tilde(phi)|_(DD) = phi$. // show this extension is cont.
+    Let $zeta in partial DD$. Let $gamma : [0, 1] -> overline(DD)$ satisfy $phi([0, 1)) subset.eq DD$ and $gamma(1) = 1$. Suppose $phi_zeta : z |-> phi compose (z zeta)$. Then by @lem:osgood-taylor-caratheodory-limits-existence_and_equality, $lim_(t -> 1^-) phi_zeta (gamma(t))$ exists and is independent of the choice of $gamma$. Now define $tilde(phi)(zeta)$ to be the _unique_ value of this limit and let $tilde(phi)|_(DD) = phi$. // show this extension is cont.
 
-    Fix $epsilon > 0$ and suppose ${z_n}_(n in NN) subset overline(DD)$ be a sequence such that $z_n -> 1$ as $n -> oo$. By @lem:osgood_taylor_caratheodory_matching_areas and @prop:osgood_taylor_caratheodory_vanishing_areas_and_diameters, $exists j in NN$ such that $diam W_j < epsilon$ and $phi(V_j) = W_j$. By the geometry of $V_j$, $exists N in NN$ such that $forall n > N$, there exists some $0 < t_0 = t_0(n) < 1$ such that the line segment $(t_0 z_n, z_n)$ lies in $V_j$. By the previous result, we have
+    Fix $epsilon > 0$ and suppose ${z_n}_(n in NN) subset overline(DD)$ be a sequence such that $z_n -> 1$ as $n -> oo$. By @lem:osgood-taylor-caratheodory-matching-areas and @prop:osgood-taylor-caratheodory-vanishing-areas-and-diameters, $exists j in NN$ such that $diam W_j < epsilon$ and $phi(V_j) = W_j$. By the geometry of $V_j$, $exists N in NN$ such that $forall n > N$, there exists some $0 < t_0 = t_0(n) < 1$ such that the line segment $(t_0 z_n, z_n)$ lies in $V_j$. By the previous result, we have
     $
       phi(t z_n) in W_j ==> tilde(phi)(z_n) = lim_(t -> 1^-) phi(t z_n) in overline(W_j).
     $
@@ -620,7 +620,7 @@ In fact, it is almost always true that such an extension exists. We will give th
     proposition[
       Let $f in C^0(overline(DD))$ such that $f$ is holomorphic on $DD$. If there exists an open arc $gamma subset.eq partial DD$ such that $f equiv c$ on $gamma$ ($c$ is some complex constant), then $f$ is constant on $DD$.
     ],
-    <prop:holomorphicondiskcontinuousonclosureconstantonarcconstancy>,
+    <prop:holomorphic-on-disk-continuous-on-closure-constant-on-arc-implies-constancy>,
   )
 
   #proof[
@@ -718,15 +718,15 @@ In fact, it is almost always true that such an extension exists. We will give th
         },
         caption: [Two line segments $alpha$ and $beta$ mapping to a Jordan curve bounding $W$],
       ),
-      <fig:osgood_taylor_caratheodory_injectivityofextension>,
+      <fig:osgood-taylor-caratheodory-injectivity-of-extension>,
     )
   ])
   #proof[
-    Notice that $tilde(phi)(DD) = Omega_2$, and from the earlier discussion regarding properness, $tilde(phi)(S^1) subset.eq partial Omega_2$. By the biholomorphy on $DD$, it thus suffices to show that $tilde(phi)|_(partial DD)$ is one-to-one, or that for any two points $zeta, zeta' in partial DD$ such that $tilde(phi)(zeta) = tilde(phi)(zeta')$, $zeta = zeta'$. Assume, for the sake of contradiction, that $zeta != zeta'$. The straight line segment connecting $0$ to $zeta$ (denoted $alpha$), and the straight line segment joining $0$ and $zeta'$ (denoted $beta$) then split $DD$ into two domains $U_1$ and $U_2$, and $tilde(phi)(alpha) union tilde(phi)(beta)$ forms a Jordan curve enclosing some region $W$. See @fig:osgood_taylor_caratheodory_injectivityofextension. By connectivity, either $U_1$ or $U_2$ maps to $W$. Without loss of generality, assume $tilde(phi)(U_1) = W$. Since $tilde(phi)$ is continuous on $overline(U_1)$, it follows that
+    Notice that $tilde(phi)(DD) = Omega_2$, and from the earlier discussion regarding properness, $tilde(phi)(S^1) subset.eq partial Omega_2$. By the biholomorphy on $DD$, it thus suffices to show that $tilde(phi)|_(partial DD)$ is one-to-one, or that for any two points $zeta, zeta' in partial DD$ such that $tilde(phi)(zeta) = tilde(phi)(zeta')$, $zeta = zeta'$. Assume, for the sake of contradiction, that $zeta != zeta'$. The straight line segment connecting $0$ to $zeta$ (denoted $alpha$), and the straight line segment joining $0$ and $zeta'$ (denoted $beta$) then split $DD$ into two domains $U_1$ and $U_2$, and $tilde(phi)(alpha) union tilde(phi)(beta)$ forms a Jordan curve enclosing some region $W$. See @fig:osgood-taylor-caratheodory-injectivity-of-extension. By connectivity, either $U_1$ or $U_2$ maps to $W$. Without loss of generality, assume $tilde(phi)(U_1) = W$. Since $tilde(phi)$ is continuous on $overline(U_1)$, it follows that
     $
       tilde(phi)(partial DD inter partial U_1) subset.eq partial Omega_2 inter partial W = {tilde(phi)(zeta)} = {tilde(phi)(zeta')}.
     $
-    Then the arc of $partial DD$ in $partial U_1$ maps to a constant, which by @prop:holomorphicondiskcontinuousonclosureconstantonarcconstancy, implies that $tilde(phi)$ is constant, which is an impossibility. (The same argument is used for $U_2$)
+    Then the arc of $partial DD$ in $partial U_1$ maps to a constant, which by @prop:holomorphic-on-disk-continuous-on-closure-constant-on-arc-implies-constancy, implies that $tilde(phi)$ is constant, which is an impossibility. (The same argument is used for $U_2$)
 
     Therefore, by the induced contradiction, we must have $zeta = zeta'$, which implies the injectivity of $tilde(phi)$.
   ]
@@ -738,7 +738,7 @@ In fact, it is almost always true that such an extension exists. We will give th
     proposition[
       The extension $tilde(phi)$ of the biholomorphism $phi$ to $overline(DD)$ is a homeomorphism.
     ],
-    <prop:osgood_taylor_caratheodory_extension_homeomorphism>,
+    <prop:osgood-taylor-caratheodory_extension_homeomorphism>,
   )
 
   #proof[
@@ -747,7 +747,7 @@ In fact, it is almost always true that such an extension exists. We will give th
   #proof[(Alternate)][
     We show that the inverse of $tilde(phi)|_(partial DD)$ is continuous, which also suffices to show that $tilde(phi)|_(partial DD)$ is a homeomorphism.
 
-    By the final argument of the proof of @cor:osgood_taylor_caratheodory_continuous_extension, it suffices to show that any sequence ${z_n}_(n in NN) subset partial Omega_2$ that converges to a point $z in partial Omega_2$ has a corresponding sequence ${w_n}_(n in NN) = {(tilde(phi)|_(partial DD))^(-1)(z_n)}_(n in NN)$ in $partial DD$ which converges to $w = (tilde(phi)|_(partial DD))^(-1)(z)$. Assume, for contradiction, that some sequence as labeled above does not converge to $w$. By the Bolzano--Weierstrass Theorem (@thm:bolzano-weierstrass), some subsequence of ${w_n}_(n in NN)$, denoted by ${w_(n_k)}_(k in NN)$, converges to $w_oo in partial DD$ (which is not equal to $w$). Then $tilde(phi)(w_(n_k)) -> tilde(phi)(w_oo)$ as $k -> oo$ by the continuity of $(tilde(phi))$. However, each $tilde(phi)(w_(n_k)) = z_(n_k) -> z = tilde(phi)(w)$. Hence, $tilde(phi)(w) = tilde(phi)(w_oo)$ which by injectivity, implies $w = w_oo$, which is a contradiction. Thus $tilde(phi)$ establishes a homeomorphism between $overline(DD)$ and $overline(Omega_1)$.
+    By the final argument of the proof of @cor:osgood-taylor-caratheodory_continuous_extension, it suffices to show that any sequence ${z_n}_(n in NN) subset partial Omega_2$ that converges to a point $z in partial Omega_2$ has a corresponding sequence ${w_n}_(n in NN) = {(tilde(phi)|_(partial DD))^(-1)(z_n)}_(n in NN)$ in $partial DD$ which converges to $w = (tilde(phi)|_(partial DD))^(-1)(z)$. Assume, for contradiction, that some sequence as labeled above does not converge to $w$. By the Bolzano--Weierstrass Theorem (@thm:bolzano-weierstrass), some subsequence of ${w_n}_(n in NN)$, denoted by ${w_(n_k)}_(k in NN)$, converges to $w_oo in partial DD$ (which is not equal to $w$). Then $tilde(phi)(w_(n_k)) -> tilde(phi)(w_oo)$ as $k -> oo$ by the continuity of $(tilde(phi))$. However, each $tilde(phi)(w_(n_k)) = z_(n_k) -> z = tilde(phi)(w)$. Hence, $tilde(phi)(w) = tilde(phi)(w_oo)$ which by injectivity, implies $w = w_oo$, which is a contradiction. Thus $tilde(phi)$ establishes a homeomorphism between $overline(DD)$ and $overline(Omega_1)$.
   ]
 
   Now consider the general case for arbitrary $Omega_1$ as in the theorem statement. Let $phi : Omega_1 -> Omega_2$ be a biholomorphism.
@@ -763,7 +763,7 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
   theorem[
     Let $Omega_1$ and $Omega_2$ be two regions in $CC$ each bounded by a single real-analytic Jordan curve. Then a biholomorphism $phi : Omega_1 -> Omega_2$ can be analytically continued to a neighborhood of $overline(Omega_1)$.
   ],
-  <thm:osgood_taylor_caratheodoryrealanalyticboundaries>,
+  <thm:osgood-taylor-caratheodory-real-analytic-boundaries>,
 )
 #figure-wrapper({
   let primary-shade = black.transparentize(60%)
@@ -826,11 +826,11 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
                   },
                   close: true,
                   stroke: none,
-                  name: "rect-testline",
+                  name: "rect-test-line",
                 ),
               )
               boolean(
-                "rect-testline",
+                "rect-test-line",
                 "flattened-map-to",
                 op: "intersection",
                 fill: hatch,
@@ -959,11 +959,11 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
                   },
                   close: true,
                   stroke: none,
-                  name: "N1+-rect-testline",
+                  name: "N1+-rect-test-line",
                 ),
               )
               boolean(
-                "N1+-rect-testline",
+                "N1+-rect-test-line",
                 "partial-N1",
                 op: "intersection",
                 fill: hatch,
@@ -1047,22 +1047,22 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
       ),
       caption: [The construction of $N_2$, $V_q$, $eta_2$, and $psi$, and similarly, that of $N_1$, $V_p$, $eta_1$, and $phi.alt$.],
     ),
-    <fig:extension_across_real_analytic_boundary_inverse_flattening_map>,
+    <fig:extension-across-real-analytic-boundary-inverse-flattening-map>,
   )
 })
 #proof[
-  By the Osgood--Taylor--Carathéodory Theorem (@thm:osgood_taylor_caratheodory), $phi$ extends continuously to $overline(Omega_1)$ with $phi(partial Omega_1) = partial Omega_2$; retain the name $phi$ for this extension.
+  By the Osgood--Taylor--Carathéodory Theorem (@thm:osgood-taylor-caratheodory), $phi$ extends continuously to $overline(Omega_1)$ with $phi(partial Omega_1) = partial Omega_2$; retain the name $phi$ for this extension.
 
   Fix $p in partial Omega_1$ and set $q = phi(p) in partial Omega_2$. Since $partial Omega_2$ is real-analytic, the function $eta_2$ defined by a locally injective power series on a subset of the real axis extends (by power series) to a biholomorphism $eta_2 : N_2 -> V_q$ from a region $N_2 in.rev 0$ onto a neighborhood $V_q in.rev q$, with $eta_2(0) = q$ and $eta_2(N_2 inter RR) = V_q inter partial Omega_2$ (existence by real-analyticity and biholomorphy by @thm:non-vanishing-derivative-univalent-on-neighborhood).
   Set $psi = eta_2^(-1) : V_q -> N_2$.
 
-  Since $phi$ is continuous at $p$ and $phi(p) = q in V_q$, the set $phi^(-1)(V_q)$ is an open neighborhood of $p$. Since $partial Omega_1$ is real-analytic, choose a biholomorphism $eta_1 : N_1 -> V_p$ from a region $N_1 in.rev 0$ onto a neighborhood $V_p in.rev p$ contained in $phi^(-1)(V_q)$, with $eta_1(0) = p$ and $eta_1(N_1 inter RR) = V_p inter partial Omega_1$. Set $phi.alt = eta_1^(-1) : V_p -> N_1$. Denote by $N_1^+$ the component of $N_1 without RR$ whose image under $eta_1$ is $V_p inter Omega_1$. See @fig:extension_across_real_analytic_boundary_inverse_flattening_map.
+  Since $phi$ is continuous at $p$ and $phi(p) = q in V_q$, the set $phi^(-1)(V_q)$ is an open neighborhood of $p$. Since $partial Omega_1$ is real-analytic, choose a biholomorphism $eta_1 : N_1 -> V_p$ from a region $N_1 in.rev 0$ onto a neighborhood $V_p in.rev p$ contained in $phi^(-1)(V_q)$, with $eta_1(0) = p$ and $eta_1(N_1 inter RR) = V_p inter partial Omega_1$. Set $phi.alt = eta_1^(-1) : V_p -> N_1$. Denote by $N_1^+$ the component of $N_1 without RR$ whose image under $eta_1$ is $V_p inter Omega_1$. See @fig:extension-across-real-analytic-boundary-inverse-flattening-map.
 
   By construction $phi(V_p inter overline(Omega_1)) subset.eq V_q$, so the composition $F = psi compose phi compose eta_1$ is defined on
   $
-    N_1^+ union (N_1 inter RR) #[(the striped region with the thick line in @fig:extension_across_real_analytic_boundary_inverse_flattening_map)].
+    N_1^+ union (N_1 inter RR) #[(the striped region with the thick line in @fig:extension-across-real-analytic-boundary-inverse-flattening-map)].
   $
-  On $N_1^+$, $eta_1$ maps to $V_p inter Omega_1$ on which $phi$ is holomorphic, and $phi compose eta_1$ maps to a subset of $V_q inter Omega_2$, on which $psi$ is holomorphic, so $F$ is holomorphic on $N_1^+$ (the regions mapped from here are visualized in @fig:extension_across_real_analytic_boundary_inverse_flattening_map with striped lines). By Osgood--Taylor--Carathéodory (@thm:osgood_taylor_caratheodory), $F$ is continuous up to $N_1 inter RR$ with
+  On $N_1^+$, $eta_1$ maps to $V_p inter Omega_1$ on which $phi$ is holomorphic, and $phi compose eta_1$ maps to a subset of $V_q inter Omega_2$, on which $psi$ is holomorphic, so $F$ is holomorphic on $N_1^+$ (the regions mapped from here are visualized in @fig:extension-across-real-analytic-boundary-inverse-flattening-map with striped lines). By Osgood--Taylor--Carathéodory (@thm:osgood-taylor-caratheodory), $F$ is continuous up to $N_1 inter RR$ with
   $
     F(N_1 inter RR) = psi(phi(eta_1(N_1 inter RR))) subset.eq psi(V_q inter partial Omega_2) = N_2 inter RR.
   $

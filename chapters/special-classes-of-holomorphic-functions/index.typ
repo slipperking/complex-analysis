@@ -5,6 +5,6 @@
   children: [
     #include "elliptic_functions/index.typ"
     #include "schlicht_functions/index.typ"
-    #include "boundary_continuity_of_biholomorphisms/index.typ"
+    #include "boundary-continuity-of-biholomorphisms/index.typ"
   ],
 )

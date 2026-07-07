@@ -4,7 +4,6 @@ import sys
 
 SKIP_FILES = {
     "build.py",
-    "build_search_index.py",
 }
 
 

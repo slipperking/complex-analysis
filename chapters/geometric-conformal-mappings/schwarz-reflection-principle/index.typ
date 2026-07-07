@@ -44,8 +44,8 @@ We have previously considered analytic continuations over two regions with an in
             name: "union",
           )
 
-          hide(line((-2, -4), (4, 8), name: "testline"))
-          intersections("gamma-boundaries", "testline", "union")
+          hide(line((-2, -4), (4, 8), name: "test-line"))
+          intersections("gamma-boundaries", "test-line", "union")
           for-each-anchor("gamma-boundaries", name => {
             circle((), radius: 1.5pt, fill: black)
           })
@@ -126,14 +126,14 @@ We have previously considered analytic continuations over two regions with an in
               }
             })
 
-            hide(line((rel: "z", to: (100, -20)), (rel: "z", to: (-100, 20)), name: "label-testline"))
+            hide(line((rel: "z", to: (100, -20)), (rel: "z", to: (-100, 20)), name: "label-test-line"))
 
-            intersections("U-label-ints", "label-testline", "union")
+            intersections("U-label-ints", "label-test-line", "union")
 
             content("U-label-ints.0", $U_2$, anchor: "west", padding: 3pt)
             content("U-label-ints.1", $U_1$, anchor: "west", padding: 3pt)
 
-            intersections("Gamma-label-ints", "label-testline", "Gamma")
+            intersections("Gamma-label-ints", "label-test-line", "Gamma")
             content("Gamma-label-ints.0", $Gamma$, anchor: "west", padding: 2pt)
 
             content("var-R-brace.content", $R_z$)
