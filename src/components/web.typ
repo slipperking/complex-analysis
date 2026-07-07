@@ -433,18 +433,8 @@
   ] #label("doc-" + page.id)
 ]
 
-#let _not-found-page() = {
-  let page = (
-    id: "not-found",
-    title: "Page Not Found",
-    route: "/404/",
-    path: "404.html",
-    doc-path: "/404.html",
-    kind: "not-found",
-    level: 1,
-    heading-level: 1,
-    description: none,
-  )
+#let _standalone-page(page, main-class: none, extra-scripts: (), body) = {
+  let main-classes = ("content", main-class).filter(value => value != none).join(" ")
 
   document(page.doc-path, title: _plain-text(page.title))[
     #show: web-styles
@@ -455,31 +445,98 @@
       #html.elem("aside", attrs: (class: "sidebar-left"))[
         #_global-nav(page)
       ]
-      #html.elem("main", attrs: (class: "content not-found", id: "main"))[
-        #html.elem("h1", attrs: (class: "page-title"), [Page Not Found])
-        #html.elem("p", attrs: (class: "not-found-copy"), [
-          This page is not part of the current build.
-        ])
-        #html.elem("div", attrs: (class: "not-found-actions"))[
-          #html.elem("a", attrs: (class: "button", href: _href-from(page.path, "index.html")), [Home])
-          #html.elem(
-            "button",
-            attrs: (
-              class: "button button-secondary",
-              type: "button",
-              onclick: "if (history.length > 1) history.back(); else location.href = 'index.html';",
-            ),
-            [Back],
-          )
-        ]
+      #html.elem("main", attrs: (class: main-classes, id: "main"))[
+        #body
       ]
       #html.elem("aside", attrs: (class: "sidebar-right"))[
         #_local-toc(page)
       ]
     ]
     #html.elem("div", attrs: (class: "sidebar-backdrop", id: "sidebar-backdrop"))
+    #for script-path in extra-scripts {
+      html.elem("script", attrs: (src: _asset-href(page.path, script-path)), [])
+    }
     #html.elem("script", attrs: (src: _asset-href(page.path, "assets/site.js")), [])
     #html.elem("script", attrs: (src: _asset-href(page.path, "assets/search.js")), [])
+  ]
+}
+
+#let _search-page() = {
+  let page = (
+    id: "search",
+    title: "Search",
+    route: "/search/",
+    path: "search/index.html",
+    doc-path: "/search/index.html",
+    kind: "search",
+    level: 1,
+    heading-level: 1,
+    description: none,
+  )
+
+  _standalone-page(page, main-class: "search-page", extra-scripts: ("assets/search-index.js",))[
+    #html.elem("h1", attrs: (class: "page-title"), [Search])
+    #html.elem("p", attrs: (class: "search-warning"), [
+      Search functionality is still experimental, and math expressions do not work well yet.
+    ])
+    #html.elem("p", attrs: (class: "search-summary", id: "search-summary"), [
+      Enter a word or phrase to search the notes.
+    ])
+    #html.elem("section", attrs: (class: "search-results", id: "search-results", "aria-live": "polite"))[
+      #html.elem("div", attrs: (class: "search-empty"), [Search results will appear here.])
+    ]
+  ]
+}
+
+#let _not-found-page() = {
+  let page = (
+    id: "not-found",
+    title: "Page Not Found",
+    route: "/page-not-found/",
+    path: "page-not-found/index.html",
+    doc-path: "/page-not-found/index.html",
+    kind: "not-found",
+    level: 1,
+    heading-level: 1,
+    description: none,
+  )
+
+  _standalone-page(page, main-class: "not-found")[
+    #html.elem("h1", attrs: (class: "page-title"), [Page Not Found])
+    #html.elem("p", attrs: (class: "not-found-copy"), [
+      This page is not part of the current build.
+    ])
+    #html.elem("div", attrs: (class: "not-found-actions"))[
+      #html.elem("a", attrs: (class: "button", href: _href-from(page.path, "index.html")), [Home])
+      #html.elem(
+        "button",
+        attrs: (
+          class: "button button-secondary",
+          type: "button",
+          onclick: "if (history.length > 1) history.back(); else location.href = 'index.html';",
+        ),
+        [Back],
+      )
+    ]
+  ]
+}
+
+#let _redirect-404-page() = {
+  let target = "https://slipperking.github.io/complex-analysis/page-not-found"
+
+  document("/404.html", title: "Redirecting…")[
+    #show: web-styles
+    #html.elem("meta", attrs: ("http-equiv": "refresh", content: "0; url=" + target))
+    #html.elem("meta", attrs: (name: "robots", content: "noindex"))
+    #html.elem("link", attrs: (rel: "canonical", href: target))
+    #html.elem("main", attrs: (class: "content not-found", id: "main"))[
+      #html.elem("h1", attrs: (class: "page-title"), [Redirecting…])
+      #html.elem("p", attrs: (class: "not-found-copy"), [
+        This page has moved to
+        #html.elem("a", attrs: (href: target), [ the new not-found page ])
+        .
+      ])
+    ]
   ]
 }
 
@@ -554,7 +611,9 @@
     context [
       #{
         include "/chapters/index.typ"
+        _search-page()
         _not-found-page()
+        _redirect-404-page()
       } #web-doc-label
     ]
   } else {

@@ -9,24 +9,12 @@
     return normalizeWhitespace(value).toLowerCase();
   }
 
-  function normalizeMathMarkup(value) {
-    return (value || "")
-      .replace(/>\s+</g, "><")
-      .replace(/\s+/g, " ")
-      .trim()
-      .toLowerCase();
-  }
-
   function tokenize(value) {
-    return normalizeText(value).split(/[^0-9\p{L}\p{N}<>/=+\-^*_]+/u).filter(Boolean);
+    return normalizeText(value).split(/[^0-9\p{L}\p{N}]+/u).filter(Boolean);
   }
 
   function escapeRegex(value) {
     return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  }
-
-  function isMathLikeQuery(query) {
-    return /<math|<\/?[a-z]+>|[=+\-*/^_()[\]{}<>]|[∞∫∮∑∏√ΓΔΘΛΞΠΣΦΨΩα-ω𝔸-𝕫ℂℍℕℙℚℝℤ]/u.test(query);
   }
 
   function escapeHtml(value) {
@@ -64,11 +52,8 @@
     return match ? match.index + match[1].length : -1;
   }
 
-  function blockScore(block, query, tokens, mathQuery, queryIsMathLike) {
+  function blockScore(block, query, tokens) {
     var text = block.textNormalized || "";
-    var mathText = block.mathTextNormalized || "";
-    var mathMarkup = block.mathMarkupNormalized || "";
-    var aliases = block.aliasNormalized || "";
     var score = 0;
     var matched = false;
 
@@ -79,19 +64,6 @@
       matched = true;
     } else if (text.indexOf(query) !== -1) {
       score += 900;
-      matched = true;
-    }
-
-    if (mathQuery && mathMarkup.indexOf(mathQuery) !== -1) {
-      score += queryIsMathLike ? 1200 : 600;
-      matched = true;
-    }
-    if (mathText && mathText.indexOf(query) !== -1) {
-      score += queryIsMathLike ? 900 : 420;
-      matched = true;
-    }
-    if (aliases.indexOf(query) !== -1) {
-      score += queryIsMathLike ? 850 : 520;
       matched = true;
     }
 
@@ -113,12 +85,6 @@
         } else if (text.indexOf(token) !== -1) {
           partialHits += substringCount(text, token);
           matched = true;
-        } else if (mathText.indexOf(token) !== -1 || mathMarkup.indexOf(token) !== -1) {
-          partialHits += 1;
-          matched = true;
-        } else if (aliases.indexOf(token) !== -1) {
-          partialHits += substringCount(aliases, token);
-          matched = true;
         }
       });
 
@@ -130,17 +96,13 @@
     if (!matched) return 0;
 
     if (block.kind === "heading") score -= 120;
-    if (block.kind === "math") score += queryIsMathLike ? 140 : 20;
 
     return score;
   }
 
-  function pageScore(page, query, tokens, mathQuery, queryIsMathLike) {
+  function pageScore(page, query, tokens) {
     var title = page.titleNormalized || "";
     var text = page.textNormalized || "";
-    var mathText = page.mathTextNormalized || "";
-    var mathMarkup = page.mathMarkupNormalized || "";
-    var aliases = page.aliasNormalized || "";
     var score = 0;
     var matched = false;
 
@@ -155,41 +117,24 @@
       score += 820;
       matched = true;
     }
-    if (mathText.indexOf(query) !== -1) {
-      score += queryIsMathLike ? 850 : 260;
-      matched = true;
-    }
-    if (mathQuery && mathMarkup.indexOf(mathQuery) !== -1) {
-      score += queryIsMathLike ? 1250 : 420;
-      matched = true;
-    }
-    if (aliases.indexOf(query) !== -1) {
-      score += queryIsMathLike ? 900 : 560;
-      matched = true;
-    }
 
     if (tokens.length > 0) {
       var titleWholeHits = 0;
       var textWholeHits = 0;
-      var aliasWholeHits = 0;
       var titlePartialHits = 0;
       var textPartialHits = 0;
-      var aliasPartialHits = 0;
       var cursor = -1;
       var ordered = 0;
 
       tokens.forEach(function (token) {
         var titleWhole = wholeWordCount(title, token);
         var textWhole = wholeWordCount(text, token);
-        var aliasWhole = wholeWordCount(aliases, token);
         titleWholeHits += titleWhole;
         textWholeHits += textWhole;
-        aliasWholeHits += aliasWhole;
         if (titleWhole === 0 && title.indexOf(token) !== -1) titlePartialHits += substringCount(title, token);
         if (textWhole === 0 && text.indexOf(token) !== -1) textPartialHits += substringCount(text, token);
-        if (aliasWhole === 0 && aliases.indexOf(token) !== -1) aliasPartialHits += substringCount(aliases, token);
-        if (titleWhole > 0 || textWhole > 0 || aliasWhole > 0) matched = true;
-        if (titleWhole === 0 && textWhole === 0 && aliasWhole === 0 && (title.indexOf(token) !== -1 || text.indexOf(token) !== -1 || aliases.indexOf(token) !== -1)) {
+        if (titleWhole > 0 || textWhole > 0) matched = true;
+        if (titleWhole === 0 && textWhole === 0 && (title.indexOf(token) !== -1 || text.indexOf(token) !== -1)) {
           matched = true;
         }
         var next = textWhole > 0 ? firstWholeWordIndex(text.slice(cursor + 1), token) : -1;
@@ -202,9 +147,7 @@
       if (titleWholeHits >= tokens.length) score += 1100;
       if (ordered === tokens.length && tokens.length > 1) score += 780;
       score += titleWholeHits * 200 + textWholeHits * 90;
-      score += aliasWholeHits * 140;
       score += titlePartialHits * 45 + textPartialHits * 18;
-      score += aliasPartialHits * 22;
     }
 
     var bestBlock = null;
@@ -212,7 +155,7 @@
     var bestSnippetBlock = null;
     var bestSnippetScore = 0;
     (page.blocks || []).forEach(function (block) {
-      var scoreForBlock = blockScore(block, query, tokens, mathQuery, queryIsMathLike);
+      var scoreForBlock = blockScore(block, query, tokens);
       if (scoreForBlock > bestBlockScore) {
         bestBlockScore = scoreForBlock;
         bestBlock = block;
@@ -258,6 +201,58 @@
 
     var regex = new RegExp("(" + pattern + ")", "giu");
     return escapeHtml(text).replace(regex, '<mark class="search-highlight">$1</mark>');
+  }
+
+  function firstTokenIndex(text, tokens) {
+    var normalized = normalizeText(text);
+    var best = -1;
+
+    tokens.forEach(function (token) {
+      var whole = firstWholeWordIndex(normalized, token);
+      if (whole !== -1 && (best === -1 || whole < best)) {
+        best = whole;
+        return;
+      }
+
+      var partial = normalized.indexOf(token);
+      if (partial !== -1 && (best === -1 || partial < best)) {
+        best = partial;
+      }
+    });
+
+    return best;
+  }
+
+  function textSnippet(text, tokens, maxLength) {
+    var value = normalizeWhitespace(text || "");
+    if (!value) return "";
+
+    var limit = maxLength || 220;
+    if (value.length <= limit) return value;
+
+    var matchIndex = firstTokenIndex(value, tokens);
+    if (matchIndex === -1) {
+      return value.slice(0, limit - 1).trimEnd() + "…";
+    }
+
+    var start = Math.max(0, matchIndex - Math.floor(limit * 0.35));
+    var end = Math.min(value.length, start + limit);
+
+    if (end - start < limit && start > 0) {
+      start = Math.max(0, end - limit);
+    }
+
+    while (start > 0 && /\S/.test(value.charAt(start - 1))) {
+      start -= 1;
+    }
+    while (end < value.length && /\S/.test(value.charAt(end))) {
+      end += 1;
+    }
+
+    var snippet = value.slice(start, end).trim();
+    if (start > 0) snippet = "…" + snippet;
+    if (end < value.length) snippet += "…";
+    return snippet;
   }
 
   function highlightHtmlSnippet(html, tokens) {
@@ -311,6 +306,13 @@
 
   function snippetHtmlForBlock(block, tokens) {
     if (!block) return "";
+    if ((block.html || "").indexOf("<math") !== -1) {
+      return highlightHtmlSnippet(block.html || "", tokens);
+    }
+    var snippet = textSnippet(block.text || "", tokens, 220);
+    if (snippet) {
+      return "<p>" + highlightText(snippet, tokens) + "</p>";
+    }
     if (block.kind === "heading") {
       return "<p>" + highlightText(block.text || "", tokens) + "</p>";
     }
@@ -379,24 +381,23 @@
     var pages = rawIndex && rawIndex.pages ? rawIndex.pages : [];
     var normalizedQuery = normalizeText(query);
     var tokens = tokenize(query);
-    var mathQuery = normalizeMathMarkup(query);
-    var queryIsMathLike = isMathLikeQuery(query);
 
     if (!normalizedQuery) {
-      summary.textContent = "Enter prose, a symbol, or MathML to search the notes.";
+      summary.textContent = "Enter a word or phrase to search the notes.";
       renderEmpty(resultsRoot, "Search results will appear here.");
       return;
     }
 
     var ranked = pages.map(function (page) {
-      var scored = pageScore(page, normalizedQuery, tokens, mathQuery, queryIsMathLike);
+      var scored = pageScore(page, normalizedQuery, tokens);
       return {
         page: page,
         score: scored.score,
-        block: scored.bestSnippetBlock
+        block: scored.bestSnippetBlock,
+        titleMatch: (page.titleNormalized || "").indexOf(normalizedQuery) !== -1
       };
     }).filter(function (entry) {
-      return entry.score > 0;
+      return entry.score > 0 && (entry.block || entry.titleMatch);
     }).sort(function (a, b) {
       if (b.score !== a.score) return b.score - a.score;
       return a.page.title.localeCompare(b.page.title);
@@ -405,7 +406,7 @@
     summary.textContent = ranked.length + " result" + (ranked.length === 1 ? "" : "s") + ' for "' + query + '"';
 
     if (ranked.length === 0) {
-      renderEmpty(resultsRoot, "No matches found. Try a shorter prose phrase, a page title, visible math text, or raw MathML.");
+      renderEmpty(resultsRoot, "No matches found. Try a shorter phrase or a page title.");
       return;
     }
 
@@ -436,13 +437,13 @@
   }
 
   function initSearchPage() {
-    if (!document.body || document.body.dataset.pageType !== "search") return;
+    if (!document.getElementById("search-summary") || !document.getElementById("search-results")) return;
     var params = new URLSearchParams(window.location.search);
     renderResults(params.get("q") || "");
   }
 
   function initPageHighlights() {
-    if (!document.body || document.body.dataset.pageType === "search") return;
+    if (document.getElementById("search-summary") && document.getElementById("search-results")) return;
     var params = new URLSearchParams(window.location.search);
     var query = params.get("search") || "";
     if (!query) return;

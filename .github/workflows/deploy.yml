@@ -31,7 +31,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install numpy shapely
+          pip install numpy shapely beautifulsoup4
 
       - name: Run preprocessing script
         run: python scripts/build.py
@@ -43,7 +43,7 @@ jobs:
           .\typst.exe compile --features bundle,html --format bundle --package-path packages main.typ dist
 
       - name: Build Search Index
-        run: python scripts/build_search_index.py
+        run: python build-search-index.py
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
