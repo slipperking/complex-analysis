@@ -1,6 +1,6 @@
 #import "/lib.typ": *
 
-#import "/build/visual_output/mergelyan_erosion/lib.typ" as visual-data
+#import "/build/visual-output/mergelyans-theorem/lib.typ" as visual-data
 #show: docs-subchapter.with(
   title: [Mergelyan's Theorem],
   route: "mergelyans-theorem",
@@ -25,7 +25,7 @@ may seem to be a natural object to consider, it is quite impractical; there exis
     $
       f'(oo) = -lim_(z -> oo) z^2 f'(z).
     $,
-    <eq:derivativeatinfinity>,
+    <eq:derivative-at-infinity>,
   )
 ]
 
@@ -41,14 +41,14 @@ If $f$ is bijective and meromorphic on some neighborhood of a point $a in CC$ su
     f'(a) = 1 / ((f^(-1))'(oo)) & = -lim_(w -> oo) 1 / (w^2 (f^(-1))'(w)) \
                                 & = -lim_(w -> oo) (f'(f^(-1)(w))) / w^2.
   $,
-  <eq:derivativeatpole1>,
+  <eq:derivative-at-pole-1>,
 )
 Let $z = (f^(-1))(w)$. Then we have
 #lbl(
   $
     f'(a) = -lim_(z -> a) (f'(z)) / f(z)^2 = evaluated(dv((1 / f(z)), z, style: "large"))_(z=a).
   $,
-  <eq:derivativeatpole2>,
+  <eq:derivative-at-pole-2>,
 )
 
 #lbl(
@@ -59,11 +59,11 @@ Let $z = (f^(-1))(w)$. Then we have
     $
     where $diam(K) = sup_(z, zeta in K) abs(zeta - z)$.
   ],
-  <prop:complementbiholomorphismquarterestimate>,
+  <prop:complement-biholomorphism-quarter-estimate>,
 )
 
 #proof[
-  Denote the derivative of $phi.alt$ at the infinity to be $alpha$. By @eq:derivativeatpole1, we have
+  Denote the derivative of $phi.alt$ at the infinity to be $alpha$. By @eq:derivative-at-pole-1, we have
   $
     (phi.alt^(-1))'(0) = 1 / (phi.alt'(oo)) = 1 / alpha = -lim_(z -> 0) ((phi.alt^(-1))'(z)) / (phi.alt^(-1)(z)^2) <==> -lim_(z -> 0) (phi.alt^(-1)(z)^2) / (alpha (phi.alt^(-1))'(z)) = 1.
   $
@@ -83,7 +83,7 @@ Let $z = (f^(-1))(w)$. Then we have
 ]
 
 #remark[
-  Such a biholomorphism will always exist; for arbitrary $zeta in K$, the map $z mapsto 1 / (z - zeta)$ maps $extcomplex without K$ to a simply connected, proper subset of $CC$, which is biholomorphic to $DD$ by the Riemann Mapping Theorem (@thm:riemann_mapping).
+  Such a biholomorphism will always exist; for arbitrary $zeta in K$, the map $z mapsto 1 / (z - zeta)$ maps $extcomplex without K$ to a simply connected, proper subset of $CC$, which is biholomorphic to $DD$ by the Riemann Mapping Theorem (@thm:riemann-mapping).
 ]
 
 #lbl(
@@ -93,17 +93,17 @@ Let $z = (f^(-1))(w)$. Then we have
       phi_zeta:extcomplex without K -> CC,
     $
     and
-    + $abs(phi_zeta (z)) <= 584 / r$ for any $z in extcomplex without K$. #enum-lbl(<itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584>)
-    + $abs(phi_zeta (z) - 1 / (z - zeta)) <= (4676 r^2) / abs(zeta - z)^3$ for any $z in extcomplex without (K union {zeta})$. #enum-lbl(<itm:complement_biholomorphism_584_r_4767_r2_estimates_absolutedifference4676>)
+    + $abs(phi_zeta (z)) <= 584 / r$ for any $z in extcomplex without K$. #enum-lbl(<itm:complement-biholomorphism-584-r-4767-r-2-estimates_absolute584>)
+    + $abs(phi_zeta (z) - 1 / (z - zeta)) <= (4676 r^2) / abs(zeta - z)^3$ for any $z in extcomplex without (K union {zeta})$. #enum-lbl(<itm:complement-biholomorphism-584-r-4767-r-2-estimates-absolute-difference-4676>)
     + The function $phi(zeta, z) equiv phi_zeta (z)$ is jointly continuous in $zeta$ and $z$.
   ],
-  <prop:complement_biholomorphism_584_r_4767_r2_estimates>,
+  <prop:complement-biholomorphism-584-r-4767-r-2-estimates>,
 )
 
 #proof[
   For brevity, assume $a = 0$.
 
-  Let $tilde(phi)$ be a conformal mapping from $extcomplex without K$ to $DD$, such that $tilde(phi)(oo) = 0$ and $alpha = tilde(phi)'(oo) in RR_(> 0)$. Let $phi(z) = 1 / alpha tilde(phi)(z)$. It follows that $phi'(oo) = 1$, $phi(oo) = 0$. By @prop:complementbiholomorphismquarterestimate,
+  Let $tilde(phi)$ be a conformal mapping from $extcomplex without K$ to $DD$, such that $tilde(phi)(oo) = 0$ and $alpha = tilde(phi)'(oo) in RR_(> 0)$. Let $phi(z) = 1 / alpha tilde(phi)(z)$. It follows that $phi'(oo) = 1$, $phi(oo) = 0$. By @prop:complement-biholomorphism-quarter-estimate,
   $
     abs(alpha) gt.eq 1 / 4 diam(K) <==> abs(phi(z)) <= (4 abs(tilde(phi)(z))) / diam(K).
   $
@@ -120,7 +120,7 @@ Let $z = (f^(-1))(w)$. Then we have
     abs(phi_zeta (z)) & <= abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 <= abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 \
                       & <= 8 / r + 9 r 64 / r^2 = 584 / r.
   $
-  This is @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584. Suppose that $abs(z - zeta) > 2 r$. It follows from $abs(zeta) < r$ that $abs(z) > r$ (from the reverse triangle inequality) and hence disjoint from $K$ and $zeta$. On this infinite annulus, we have the Laurent expansion (from @thm:laurentexpansionofholomorphicfunction) that
+  This is @itm:complement-biholomorphism-584-r-4767-r-2-estimates_absolute584. Suppose that $abs(z - zeta) > 2 r$. It follows from $abs(zeta) < r$ that $abs(z) > r$ (from the reverse triangle inequality) and hence disjoint from $K$ and $zeta$. On this infinite annulus, we have the Laurent expansion (from @thm:laurent-expansion-of-holomorphic-function) that
   $
     phi(z) = sum_(k = 1)^oo mu_k / (z - zeta)^k = 1 / (z - zeta) + mu / (z - zeta)^2 + Order(1 / (z - zeta)^3)
   $
@@ -153,11 +153,11 @@ Let $z = (f^(-1))(w)$. Then we have
     abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 & <= abs(phi_zeta (z)) abs(z - zeta)^3 + abs(z - zeta)^2 \
                                                        & <= 584 / r (2 r)^3 + (2 r)^2 = 4676 r^2
   $
-  from @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolute584. The Maximum Modulus Principle (@thm:maximum-modulus) implies that
+  from @itm:complement-biholomorphism-584-r-4767-r-2-estimates_absolute584. The Maximum Modulus Principle (@thm:maximum-modulus) implies that
   $
     sup_(abs(z - zeta) > 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 <= sup_(abs(z - zeta) = 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 <= 4676 r^2
   $
-  and thus @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolutedifference4676 follows. The joint continuity of $phi_zeta$ is immediate from the definition.
+  and thus @itm:complement-biholomorphism-584-r-4767-r-2-estimates-absolute-difference-4676 follows. The joint continuity of $phi_zeta$ is immediate from the definition.
 
   Lastly, if $a != 0$, we may define $phi_zeta (z) = tilde(phi)_(zeta - a) (z - a)$ where ${tilde(phi)_(zeta - a)}$ is the family constructed above for the set ${z - a : z in K} subset D(0, r)$.
 ]
@@ -325,13 +325,13 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
 #lbl(
   proposition[
     The function $Phi$ as in @eq:integralofcontinuousextensionofholomorphic satisfies:
-    + $Phi in C^1(CC)$ and has compact support. #enum-lbl(<itm:integralofcontinuousextensionofholomorphicproperties_continuousdifferentiabilitycompactsupport>)
-    + $Phi equiv f$ on $U = {z in K: op("dist")(z, CC without K) > r}$. #enum-lbl(<itm:integralofcontinuousextensionofholomorphicproperties_equivalenceonU>)
-    + $abs(f(z) - Phi(z)) <= omega_f (r)$ for all $z in CC$. #enum-lbl(<itm:integralofcontinuousextensionofholomorphicproperties_differbymodulusofcontinuity>)
-    + For all $z in CC$, $abs(pdv(Phi, overline(z))(z)) <= (4 uppi omega_f (r)) / r$. #enum-lbl(<itm:integralofcontinuousextensionofholomorphicproperties_antiholomorphicderivativebound>)
-    + $Phi(z) = -1 / uppi integral.double_H pdv(Phi, overline(zeta))(zeta) (dif xi dif eta) / (zeta - z)$ for $z in CC$, where $H = supp(Phi) without U$. #enum-lbl(<itm:integralofcontinuousextensionofholomorphicproperties_integralformula>)
+    + $Phi in C^1(CC)$ and has compact support. #enum-lbl(<itm:integral-of-continuous-extension-of-holomorphic-properties_continuousdifferentiabilitycompactsupport>)
+    + $Phi equiv f$ on $U = {z in K: op("dist")(z, CC without K) > r}$. #enum-lbl(<itm:integral-of-continuous-extension-of-holomorphic-properties_equivalenceonU>)
+    + $abs(f(z) - Phi(z)) <= omega_f (r)$ for all $z in CC$. #enum-lbl(<itm:integral-of-continuous-extension-of-holomorphic-properties-differ-by-modulus-of-continuity>)
+    + For all $z in CC$, $abs(pdv(Phi, overline(z))(z)) <= (4 uppi omega_f (r)) / r$. #enum-lbl(<itm:integral-of-continuous-extension-of-holomorphic-properties_antiholomorphicderivativebound>)
+    + $Phi(z) = -1 / uppi integral.double_H pdv(Phi, overline(zeta))(zeta) (dif xi dif eta) / (zeta - z)$ for $z in CC$, where $H = supp(Phi) without U$. #enum-lbl(<itm:integral-of-continuous-extension-of-holomorphic-properties_integralformula>)
   ],
-  <prop:integralofcontinuousextensionofholomorphicproperties>,
+  <prop:integral-of-continuous-extension-of-holomorphic-properties>,
 )
 
 #proof[
@@ -354,7 +354,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
     pdv(Phi, y) = integral_(CC) pdv(lambda_r, y)(z - zeta) f(zeta) dif xi and dif eta.
   $
-  Hence, $Phi in C^1(CC)$ and this is @itm:integralofcontinuousextensionofholomorphicproperties_continuousdifferentiabilitycompactsupport. Because
+  Hence, $Phi in C^1(CC)$ and this is @itm:integral-of-continuous-extension-of-holomorphic-properties_continuousdifferentiabilitycompactsupport. Because
   $
     Phi(z) = integral.double_(CC) lambda_r (z - zeta) f(zeta) dif xi dif eta = integral.double_(CC) lambda_r (zeta) f(z - zeta) dif xi dif eta,
   $
@@ -365,13 +365,13 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
       & = abs(integral_(CC) lambda_r (zeta) (f(z) - f(z - zeta)) dif xi and dif eta) \
       & <= integral_(D(0, r)) lambda_r (zeta) abs(f(z) - f(z - zeta)) dif xi and dif eta <= omega_f (r),
     $,
-    <eq:integralofcontinuousextensionofholomorphicproperties_differencebound>,
+    <eq:integral-of-continuous-extension-of-holomorphic-properties_differencebound>,
   )
-  which implies @itm:integralofcontinuousextensionofholomorphicproperties_differbymodulusofcontinuity. For $z in U$, $zeta in D(0, r)$ now implies that $z - zeta in interior(K)$ and hence $f(z) - f(z - zeta)$ is holomorphic in $zeta$ on $D(z, r)$. By @itm:diracdeltaapproximation_integralformula of @prop:diracdeltaapproximation, @eq:integralofcontinuousextensionofholomorphicproperties_differencebound becomes
+  which implies @itm:integral-of-continuous-extension-of-holomorphic-properties-differ-by-modulus-of-continuity. For $z in U$, $zeta in D(0, r)$ now implies that $z - zeta in interior(K)$ and hence $f(z) - f(z - zeta)$ is holomorphic in $zeta$ on $D(z, r)$. By @itm:diracdeltaapproximation_integralformula of @prop:diracdeltaapproximation, @eq:integral-of-continuous-extension-of-holomorphic-properties_differencebound becomes
   $
     abs(integral_(CC) lambda_r (zeta) (f(z) - f(z - zeta)) dif xi and dif eta) = abs(f(z) - f(z - 0)) = 0,
   $
-  which proves @itm:integralofcontinuousextensionofholomorphicproperties_equivalenceonU. Because $forall z in CC$,
+  which proves @itm:integral-of-continuous-extension-of-holomorphic-properties_equivalenceonU. Because $forall z in CC$,
   $
     pdv(Phi, overline(z))(z) & = 1 / 2 (pdv(Phi, x) + ii pdv(Phi, y)) = integral_(CC) pdv(lambda_r, overline(z))(z - zeta) f(zeta) dif xi and dif eta \
     & = integral_(CC) pdv(lambda_r, overline(zeta))(zeta) f(z - zeta) dif xi and dif eta \
@@ -384,7 +384,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
     & <= omega_f (r) integral.double_(D(0, r)) norm(grad lambda_r) dif xi dif eta \
     & <= (4 omega_f (r)) / r^3 integral.double_(D(0, r)) dif xi dif eta <= (4 omega_f (r)) / r^3 dot uppi r^2 = (4 uppi omega_f (r)) / r,
   $
-  by @itm:diracdeltaapproximation_gradientstatement of @prop:diracdeltaapproximation, confirming @itm:integralofcontinuousextensionofholomorphicproperties_antiholomorphicderivativebound. Finally, @itm:integralofcontinuousextensionofholomorphicproperties_integralformula follows from @cor:pompeiu-without-cauchy-term (since outside the support the integral trivially vanishes and within $U$, $pdv(Phi, overline(zeta))$ vanishes as a consequence of holomorphy).
+  by @itm:diracdeltaapproximation_gradientstatement of @prop:diracdeltaapproximation, confirming @itm:integral-of-continuous-extension-of-holomorphic-properties_antiholomorphicderivativebound. Finally, @itm:integral-of-continuous-extension-of-holomorphic-properties_integralformula follows from @cor:pompeiu-without-cauchy-term (since outside the support the integral trivially vanishes and within $U$, $pdv(Phi, overline(zeta))$ vanishes as a consequence of holomorphy).
 ]
 
 #lbl(
@@ -483,7 +483,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
       }),
       caption: [The striped region bounds $K$, while the thin lines bound the dotted region $U$.],
     ),
-    <fig:mergelyan_k_set_erosions>,
+    <fig:mergelyan-K-set-erosions>,
   )
 ])
 
@@ -559,11 +559,11 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
         }),
         caption: [The striped region represents $H$ while the unshaded regions represent the set which $zeta_k$ can be in, each of which are denoted by small stars. The dotted disks represent the finite subcover of $H$: notice that every striped region is also dotted.],
       ),
-      <fig:mergelyan_hset>,
+      <fig:mergelyan-H-set>,
     )
   ])
 
-  Define the extension of $f$, $Phi$, $U$, and $H$ as in the previous results (see @fig:mergelyan_k_set_erosions). Hence, (see @fig:mergelyan_hset)
+  Define the extension of $f$, $Phi$, $U$, and $H$ as in the previous results (see @fig:mergelyan-K-set-erosions). Hence, (see @fig:mergelyan-H-set)
   $
     {D(zeta_k, 5 / 4 r): (forall) zeta_k in extcomplex without (K union overline(D(p_k, 3 / 4 r))), 1 <= k <= n}
   $
@@ -670,7 +670,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
         }),
         caption: [The construction of $E_k^j$. The entire polyline from $p_k$ to $zeta_k^((j))$ is $gamma_k^((j))$],
       ),
-      <fig:mergelyan_E_set_from_gamma>,
+      <fig:mergelyan-E-set-from-gamma>,
     ),
     lbl(
       figure(
@@ -687,24 +687,24 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
         }),
         caption: [A conceptual construction of ${H_k^((j))}$, which unions to $H$.],
       ),
-      <fig:mergelyan_H_k_j_sets>,
+      <fig:mergelyan-H-k-j-sets>,
     ),
   )
 
-  Hence, the intersection $overline(D(zeta_k^((j)), 3 / 4 r)) inter gamma_k^((j))$ consists of at least one connected component joining $zeta_k^((j))$ to a point on $partial D(zeta_k^((j)), 3 / 4 r)$. Denote the connected component of this intersection by $E_k^((j))$, satisfying $diam E_k^((j)) gt.eq 3 / 4 r > r / 2$ and $E_k^((j)) inter K = emptyset$ (see @fig:mergelyan_E_set_from_gamma).
+  Hence, the intersection $overline(D(zeta_k^((j)), 3 / 4 r)) inter gamma_k^((j))$ consists of at least one connected component joining $zeta_k^((j))$ to a point on $partial D(zeta_k^((j)), 3 / 4 r)$. Denote the connected component of this intersection by $E_k^((j))$, satisfying $diam E_k^((j)) gt.eq 3 / 4 r > r / 2$ and $E_k^((j)) inter K = emptyset$ (see @fig:mergelyan-E-set-from-gamma).
 
-  Now for each $j$ and $k$, @prop:complement_biholomorphism_584_r_4767_r2_estimates now provides the existence of a family of holomorphic functions $phi_(zeta, k)^((j)):extcomplex without E_k^((j)) -> CC$ given with $zeta in D(zeta_k^((j)), 5 / 4 r)$ such that
+  Now for each $j$ and $k$, @prop:complement-biholomorphism-584-r-4767-r-2-estimates now provides the existence of a family of holomorphic functions $phi_(zeta, k)^((j)):extcomplex without E_k^((j)) -> CC$ given with $zeta in D(zeta_k^((j)), 5 / 4 r)$ such that
   #lbl(
     $
       abs(phi_(zeta, k)^((j)) (z)) <= 584 / r, quad abs(phi_(zeta, k)^((j)) (z) - 1 / (z - zeta)) <= 4676 / abs(z - zeta)^3, quad forall z in extcomplex without E_k^((j)).
     $,
-    <eq:mergelyan_family_bounds>,
+    <eq:mergelyan-family-bounds>,
   )
   Let $tilde(H)_k^((j)) = H inter D(zeta_k^((j)), 5 / 4 r)$, for each $j, k$ and construct the disjoint sets
   $
     H_k^((j)) = tilde(H)_k^((j)) without (union.big_(j' < j) tilde(H)_k^((j')) union union.big_(k' < k) union.big_(j' <= m_(k')) tilde(H)_(k')^((j'))) "if" j != 1, quad H_1^((1)) = tilde(H)_1^((1)).
   $
-  as done in @fig:mergelyan_H_k_j_sets. Thus the union
+  as done in @fig:mergelyan-H-k-j-sets. Thus the union
   $
     union.big_(k = 1)^n union.big_(j = 1)^(m_k) H_k^((j)) = H inter (union.big D(zeta_k^((j)), 5 / 4 r)) = H
   $
@@ -716,7 +716,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
     (Psi(z + Delta x) - Psi(z)) / (Delta x) = 1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) integral_(H_k^((j))) pdv(Phi, overline(zeta)) (phi_(zeta, k)^((j)) (z + Delta x) - phi_(zeta, k)^((j)) (z)) / (Delta x) dif xi and dif eta,
   $
-  and both $partialderivative(Phi, overline(zeta), style: "horizontal")$ and the integrand is continuous on a set (we only need to consider the factors involving $phi_(zeta, k)^((j))$ since $partialderivative(Phi, overline(zeta), style: "horizontal")$ is independent from $z$) by Cauchy's Estimates and the first bound of @eq:mergelyan_family_bounds, Lebesgue's Dominated Convergence gives that
+  and both $pdv(Phi, overline(zeta), style: "horizontal")$ and the integrand is continuous on a set (we only need to consider the factors involving $phi_(zeta, k)^((j))$ since $pdv(Phi, overline(zeta), style: "horizontal")$ is independent from $z$) by Cauchy's Estimates and the first bound of @eq:mergelyan-family-bounds, Lebesgue's Dominated Convergence gives that
   $
     pdv(Psi, x) = 1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) integral_(H_k^((j))) pdv(Phi, overline(zeta)) pdv(phi_(zeta, k)^((j)), x)(z) dif xi and dif eta,
   $
@@ -724,7 +724,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
     pdv(Psi, y) = 1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) integral_(H_k^((j))) pdv(Phi, overline(zeta)) pdv(phi_(zeta, k)^((j)), y)(z) dif xi and dif eta.
   $
-  Hence, $Psi$ is holomorphic on $extcomplex without union.big_(k = 1)^n union.big_(j = 1)^(m_k) E_k^((j))$, a neighborhood of $K$. Since $forall z in extcomplex without union.big E_k^((j))$, by @itm:complement_biholomorphism_584_r_4767_r2_estimates_absolutedifference4676 of @prop:complement_biholomorphism_584_r_4767_r2_estimates,
+  Hence, $Psi$ is holomorphic on $extcomplex without union.big_(k = 1)^n union.big_(j = 1)^(m_k) E_k^((j))$, a neighborhood of $K$. Since $forall z in extcomplex without union.big E_k^((j))$, by @itm:complement-biholomorphism-584-r-4767-r-2-estimates-absolute-difference-4676 of @prop:complement-biholomorphism-584-r-4767-r-2-estimates,
   $
     abs(Psi(z) - Phi(z)) & = abs(1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) integral.double_(H_k^((j))) pdv(Phi, overline(zeta)) phi_(zeta, k)^((j)) (z) dif xi dif eta - 1 / uppi integral.double_H pdv(Phi, overline(zeta)) (dif xi dif eta) / (z - zeta)) \
     & = 1 / uppi abs(sum_(k = 1)^n sum_(j = 1)^(m_k) integral.double_(H_k^((j))) pdv(Phi, overline(zeta)) (phi_(zeta, k)^((j)) (z) - 1 / (z - zeta)) dif xi dif eta) \
@@ -732,7 +732,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
     & <= 1 / uppi sum_(k = 1)^n sum_(j = 1)^(m_k) (integral.double_(H_k^((j)) inter D(z, 2 r)) + integral.double_(H_k^((j)) without D(z, 2 r)))\
     &wide""dot abs(pdv(Phi, overline(zeta))) abs(phi_(zeta, k)^((j)) (z) - 1 / (z - zeta)) dif xi dif eta
   $
-  The estimates in @itm:integralofcontinuousextensionofholomorphicproperties_antiholomorphicderivativebound of @prop:integralofcontinuousextensionofholomorphicproperties, in tandem with those from @eq:mergelyan_family_bounds now give that
+  The estimates in @itm:integral-of-continuous-extension-of-holomorphic-properties_antiholomorphicderivativebound of @prop:integral-of-continuous-extension-of-holomorphic-properties, in tandem with those from @eq:mergelyan-family-bounds now give that
   $
     abs(Psi(z) - Phi(z)) & <= 18704 r omega_f (r) sum_(k = 1)^n sum_(j = 1)^(m_k) integral.double_(H_k^((j)) without D(z, 2 r)) 1 / abs(z - zeta)^3 dif xi dif eta \
     & quad ""+ (4 omega_f (r)) / r sum_(k = 1)^n sum_(j = 1)^(m_k) integral.double_(H_k^((j)) inter D(z, 2 r)) (584 / r + 1 / abs(z - zeta)) dif xi dif eta \
@@ -750,7 +750,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
     sup_(z in K) abs(psi(z) - Psi(z)) <= uppi omega_f (r)
   $
-  since $Psi$ is holomorphic on a neighborhood of $K$ (to assure this bound is positive, we assume $f$ is not identically zero, otherwise the assertion is trivial). Therefore, for all $z in K$, we have (the third supremum term coming from @itm:integralofcontinuousextensionofholomorphicproperties_differbymodulusofcontinuity of @prop:integralofcontinuousextensionofholomorphicproperties)
+  since $Psi$ is holomorphic on a neighborhood of $K$ (to assure this bound is positive, we assume $f$ is not identically zero, otherwise the assertion is trivial). Therefore, for all $z in K$, we have (the third supremum term coming from @itm:integral-of-continuous-extension-of-holomorphic-properties-differ-by-modulus-of-continuity of @prop:integral-of-continuous-extension-of-holomorphic-properties)
   $
     sup_(z in K) abs(psi(z) - f(z)) & <= sup_(z in K) abs(psi(z) - Psi(z)) + abs(Psi(z) - Phi(z)) + abs(Phi(z)-f(z)) \
                                     & <= 28065 uppi omega_f (r) + omega_f (r) <= 28066 uppi omega_f (r).

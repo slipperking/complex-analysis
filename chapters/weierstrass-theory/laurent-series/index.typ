@@ -112,11 +112,11 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
       $
         f(z) = sum_(n = -oo)^oo c_n (z - a)^n, quad c_n = 1 / taui integral.cont_gamma (f(zeta) dzeta) / ((zeta - a)^(n + 1)), quad z in V,
       $,
-      <eq:laurentexpansionofholomorphicfunction_statement>,
+      <eq:laurent-expansion-of-holomorphic-function_statement>,
     )
     for any simple closed curve $gamma subset V$ enclosing $a$. Moreover, the series converges absolutely on $V$ and uniformly on all compact subsets of $V$.
   ],
-  <thm:laurentexpansionofholomorphicfunction>,
+  <thm:laurent-expansion-of-holomorphic-function>,
 )
 
 #figure-wrapper([
@@ -169,7 +169,7 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
       }),
       caption: [The annulus $V$, with $gamma_1$, $gamma_2$, and $gamma$.],
     ),
-    <fig:laurentexpansionofholomorphicfunction>,
+    <fig:laurent-expansion-of-holomorphic-function>,
   )
 ])
 
@@ -184,7 +184,7 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
     $
       1 / (zeta - z) = -1 / ((z - a) (1 - (zeta - a) / (z - a))) = -sum_(n = 0)^oo (zeta - a)^n / (z - a)^(n + 1)
     $,
-    <eq:laurentexpansionofholomorphicfunction_kernelexpansioninside>,
+    <eq:laurent-expansion-of-holomorphic-function_kernelexpansioninside>,
   )
   is uniformly convergent with respect to $zeta$. Similarly, for all $zeta in gamma_2$,
   $ abs(zeta - a) > abs(z - a) <==> (abs(z - a)) / (abs(zeta - a)) < 1, $
@@ -193,21 +193,21 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
     $
       1 / (zeta - z) = 1 / ((zeta - a) (1 - (z - a) / (zeta - a))) = sum_(n = 0)^oo (z - a)^n / (zeta - a)^(n + 1)
     $,
-    <eq:laurentexpansionofholomorphicfunction_kernelexpansionoutside>,
+    <eq:laurent-expansion-of-holomorphic-function_kernelexpansionoutside>,
   )
   is uniformly convergent with respect to $zeta$. By the boundedness of $f$ on $gamma_1$ and $gamma_2$ from holomorphy on a compact set, the uniform convergence from the Weierstrass $M$-Test (@thm:weierstrass-m-test), gives that
   #lbl(
     $
       f(z) = 1 / (taui) (sum_(n = 0)^oo integral.cont_(gamma_2) ((z - a)^n) / ((zeta - a)^(n + 1)) f(zeta) dzeta + sum_(n = 1)^oo integral.cont_(gamma_1) ((zeta - a)^(n - 1)) / ((z - a)^n) f(zeta) dzeta).
     $,
-    <eq:laurentexpansionofholomorphicfunction_finalstep>,
+    <eq:laurent-expansion-of-holomorphic-function_finalstep>,
   )
 
   By the Cauchy--Goursat Theorem (@thm:cauchy-goursat-theorem), for a given $n$,
   $
     integral_(gamma_2^+ union gamma^-) (f(zeta) dzeta) / ((zeta - a)^n) = 0 quad "and" quad integral_(gamma^+ union gamma_1^-) f(zeta) (zeta - a)^n dzeta = 0.
   $
-  In other words, the integrals in @eq:laurentexpansionofholomorphicfunction_finalstep are the same as on $gamma$. Hence, we obtain the absolutely convergent expansion
+  In other words, the integrals in @eq:laurent-expansion-of-holomorphic-function_finalstep are the same as on $gamma$. Hence, we obtain the absolutely convergent expansion
   $
     f(z) = sum_(n = 0)^oo c_n (z - a)^n + sum_(n = 1)^oo c_(-n) (z - a)^(-n) = sum_(n = -oo)^oo c_n (z - a)^n
   $
@@ -216,7 +216,7 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
     $
       f(z) = sum_(n = -oo)^oo c'_n (z - a)^n,
     $,
-    <eq:laurentexpansionofholomorphicfunction_uniquenessstatement>,
+    <eq:laurent-expansion-of-holomorphic-function_uniquenessstatement>,
   )
   where $z in V$ and the series is uniformly convergent on $gamma$. Let $m in ZZ$ be arbitrary. By Cauchy--Goursat (@thm:cauchy-differentiation-formula),
   $
@@ -231,7 +231,7 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
       taui & "if" k = -1.
     )
   $
-  Multiplying @eq:laurentexpansionofholomorphicfunction_uniquenessstatement by $(z - a)^(-m - 1)$ and from integrating over $gamma$, we get that
+  Multiplying @eq:laurent-expansion-of-holomorphic-function_uniquenessstatement by $(z - a)^(-m - 1)$ and from integrating over $gamma$, we get that
   $
     integral.cont_gamma (f(z) dz) / ((z - a)^(m + 1)) = integral.cont_gamma sum_(n = -oo)^oo c'_n (z - a)^(n - m - 1) dz,
   $

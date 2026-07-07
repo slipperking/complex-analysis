@@ -51,7 +51,7 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
   $
     Omega(bold(w), epsilon) = {bold(z) = (z_1, dots, z_n) in CC^n : abs(w_j) - epsilon < abs(z_j) < abs(w_j) + epsilon, j in NN_(<= n)}
   $
-  is contained in $Omega$. On this set one may perform one-variable Laurent expansions (@thm:laurentexpansionofholomorphicfunction) successively in each coordinate, holding the others fixed. Since $f$ is holomorphic on $Omega$, this procedure yields
+  is contained in $Omega$. On this set one may perform one-variable Laurent expansions (@thm:laurent-expansion-of-holomorphic-function) successively in each coordinate, holding the others fixed. Since $f$ is holomorphic on $Omega$, this procedure yields
   $
     f(bold(z)) = sum_(bold(k) in ZZ^n) a_(bold(k)) (bold(w)) bold(z)^(bold(k)),
   $

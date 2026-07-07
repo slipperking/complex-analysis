@@ -7,7 +7,7 @@ Suppose $Omega_1$ and $Omega_2$ are two regions in the complex plane such that t
 
 In fact, it is almost always true that such an extension exists. We will give three examples of this phenomenon, each with increasing regularity assumptions on the boundaries $partial Omega_1$ and $partial Omega_2$:
 
-1. If $partial Omega_1$ and $partial Omega_2$ are two Jordan curves, then $phi$ (whose existence is given by the Riemann Mapping Theorem or @thm:riemann_mapping) extends homeomorphically to $partial Omega_1$ (@thm:osgood_taylor_caratheodory).
+1. If $partial Omega_1$ and $partial Omega_2$ are two Jordan curves, then $phi$ (whose existence is given by the Riemann Mapping Theorem or @thm:riemann-mapping) extends homeomorphically to $partial Omega_1$ (@thm:osgood_taylor_caratheodory).
 2. If $partial Omega_1$ and $Omega_2$ are $C^oo$, then $phi$ extends continuously and injectively to $partial Omega_1$ and is $C^oo$ on $overline(Omega_1)$.
 3. If $partial Omega_1$ and $partial Omega_2$ are real-analytic (the boundary is parameterizable by functions such that at every point, there is a power series expansion that converge to the function on a neighborhood), then $phi$ extends analytically past $partial Omega_1$ (@thm:osgood_taylor_caratheodoryrealanalyticboundaries).
 
@@ -21,7 +21,7 @@ In fact, it is almost always true that such an extension exists. We will give th
 
 #lbl(
   theorem[Osgood--Taylor--Carathéodory][
-    Suppose that $Omega_1$ and $Omega_2$ are two bounded regions in $CC$ such that $partial Omega_1$ and $partial Omega_2$ each comprises a single Jordan curve. If $phi : Omega_1 -> Omega_2$ is a biholomorphism (provided by the Riemann Mapping Theorem in @thm:riemann_mapping), then $exists tilde(phi) : overline(Omega_1) -> overline(Omega_2)$ homeomorphic such that $tilde(phi)|_(Omega_1) equiv phi$ (the restriction of $tilde(phi)$ to $Omega_1$ agrees with $phi$).
+    Suppose that $Omega_1$ and $Omega_2$ are two bounded regions in $CC$ such that $partial Omega_1$ and $partial Omega_2$ each comprises a single Jordan curve. If $phi : Omega_1 -> Omega_2$ is a biholomorphism (provided by the Riemann Mapping Theorem in @thm:riemann-mapping), then $exists tilde(phi) : overline(Omega_1) -> overline(Omega_2)$ homeomorphic such that $tilde(phi)|_(Omega_1) equiv phi$ (the restriction of $tilde(phi)$ to $Omega_1$ agrees with $phi$).
   ],
   <thm:osgood_taylor_caratheodory>,
 )
@@ -753,7 +753,7 @@ In fact, it is almost always true that such an extension exists. We will give th
 
   Now consider the general case for arbitrary $Omega_1$ as in the theorem statement. Let $phi : Omega_1 -> Omega_2$ be a biholomorphism.
 
-  By the Riemann Mapping Theorem (@thm:riemann_mapping), there exist biholomorphisms $phi_1 : DD -> Omega_1$ and $phi_2 : DD -> Omega_2$, which extend homeomorphically to $tilde(phi)_1$ and $tilde(phi)_2$, respectively, by the preceding results.
+  By the Riemann Mapping Theorem (@thm:riemann-mapping), there exist biholomorphisms $phi_1 : DD -> Omega_1$ and $phi_2 : DD -> Omega_2$, which extend homeomorphically to $tilde(phi)_1$ and $tilde(phi)_2$, respectively, by the preceding results.
 
   Thus, $psi = phi_2^(-1) compose phi compose phi_1 in Aut(DD)$, which by @thm:holomorphic-automorphism-group-on-unit-disk, is the composition of a Möbius transformation and a rotation, which extends homeomorphically to some function $tilde(psi)$ on $overline(DD)$. Thus, we define $tilde(phi) = tilde(phi)_2 compose tilde(psi) compose tilde(phi)_1^(-1)$ to be the composition of three continuous functions, defining a continuous extension of $phi$, completing the proof.
 ]

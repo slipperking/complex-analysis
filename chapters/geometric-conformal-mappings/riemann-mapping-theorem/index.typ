@@ -20,7 +20,7 @@ The path independence of the definition is provided by the simple connectivity o
   theorem[Riemann Mapping Theorem][
     Let $U subset CC$ (a proper subset, in other words, $U != CC$) be a simply connected (nonempty) open region. Let $z_0 in U$ be arbitrary. Then there exists a unique biholomorphism $f:U -> DD$ such that $f(z_0) = 0$ and $f'(z_0) in RR_(> 0)$.
   ],
-  <thm:riemann_mapping>,
+  <thm:riemann-mapping>,
 )
 
 #proof[
@@ -39,7 +39,7 @@ The path independence of the definition is provided by the simple connectivity o
     $
       0 < M = sup_(alpha in cal(F)) abs(alpha'(z_0)) <= 1 / r,
     $,
-    <eq:riemann_mapping_fixedpointderivativesupremum>,
+    <eq:riemann-mapping_fixedpointderivativesupremum>,
   )
   where we can assure that $M$ is positive since each $alpha in cal(F)$ is univalent at $z_0$ and by @lem:univalent-non-vanishing-derivative.
 
@@ -69,7 +69,7 @@ The path independence of the definition is provided by the simple connectivity o
   $
     (sqrt(abs(xi)) - 1)^2 > 0 <==> 1 + abs(xi) > 2 sqrt(abs(xi)) <==> (1 + abs(xi)) / (2 sqrt(abs(xi))) > 1,
   $
-  it follows that $tilde(eta)'(z_0) > M$, which is a contradiction of @eq:riemann_mapping_fixedpointderivativesupremum.
+  it follows that $tilde(eta)'(z_0) > M$, which is a contradiction of @eq:riemann-mapping_fixedpointderivativesupremum.
 
   Hence, $f:U -> DD$ is biholomorphic. To prove the uniqueness of $f$, suppose $g:U -> DD$ is an arbitrary biholomorphism such that $g(z_0) = 0$ and $g'(z_0) > 0$. Then, $phi = f compose g^(-1) in Aut(DD)$, and by @thm:holomorphic-automorphism-group-on-unit-disk, $phi(z) = phi_a (z ee^(ii theta))$ for some $a in DD$ and $0 <= theta < 2 uppi$. Since $phi(0) = 0$, it follows that $a = 0$. Since $phi'(0) = f'(z_0) (g^(-1))'(0) = f'(z_0) / (g'(z_0)) > 0$, and $phi'(0) = phi'_0 (0) ee^(ii theta) = ee^(ii theta) > 0$, it follows that $theta = 0$. Hence, we have $phi(z) = z$ and $f equiv g$.
 

@@ -165,7 +165,7 @@ Consider an entire function $f:CC -> U$, where $U$ is an unbounded region such t
 
 In contrast, if $f:CC -> U$ is entire and $CC without U$ has zero area (one readily considers sets consisting of curves or isolated points), we must be more specific in determining sufficient conditions that still imply constancy of $f$.
 
-Similar to in the proof of the Riemann Mapping Theorem (@thm:riemann_mapping), one may use holomorphic square roots or other transformations to reduce to the bounded setting.
+Similar to in the proof of the Riemann Mapping Theorem (@thm:riemann-mapping), one may use holomorphic square roots or other transformations to reduce to the bounded setting.
 
 #proposition[
   If $f:CC -> CC without {x in RR: 0 <= x <= 1}$ is entire, then $f$ must be constant.

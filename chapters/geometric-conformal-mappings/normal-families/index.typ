@@ -145,7 +145,7 @@ The notions and results introduced have profound implications and uses in the th
 
 In the definition of equicontinuity used in the Arzelà--Ascoli theorem, the distance is taken with respect to the Euclidean metric. However, the theorem continues to hold for other metrics as well, with the proof requiring little modification. We will rely on this formulation in @sec:spherical-generalization-of-normal-families.
 
-Lastly, we will prove Montel's Theorem in preparation of the Riemann Mapping Theorem (@thm:riemann_mapping).
+Lastly, we will prove Montel's Theorem in preparation of the Riemann Mapping Theorem (@thm:riemann-mapping).
 
 #definition[
   Let $cal(F)$ be a family of functions defined on an open set $U subset.eq CC$. The family $cal(F)$ is said to be _locally uniformly bounded_ if, for every point $z in U$, there exists a neighborhood $V subset.eq U$ of $z$ such that $cal(F)$ is uniformly bounded on $V$. This condition is equivalent to the condition that $cal(F)$ is uniformly bounded on all compact subsets $K$ of $U$.

@@ -27,7 +27,7 @@ We have previously defined the concept of an entire function in the chapter on c
     $
       f(z) = c_m z^m + c_(m - 1) z^(m - 1) + dots.c + c_0 + c_(-1) / z + dots.c.
     $
-    Since $f(z)$ is entire, it is holomorphic at $z = 0$ and has a convergent Taylor expansion. By the uniqueness of Laurent expansions (@thm:laurentexpansionofholomorphicfunction), the two expansions are equivalent and therefore all terms with negative exponents vanish, and
+    Since $f(z)$ is entire, it is holomorphic at $z = 0$ and has a convergent Taylor expansion. By the uniqueness of Laurent expansions (@thm:laurent-expansion-of-holomorphic-function), the two expansions are equivalent and therefore all terms with negative exponents vanish, and
     $
       f(z) = c_m z^m + c_(m - 1) z^(m - 1) + dots.c + c_0,
     $

@@ -18,7 +18,7 @@ The uses of analytic capacity are present in many other topics of complex analys
     $,
     <def:analyticcapacity>,
   )
-  where $f'(oo)$ is defined as in @eq:derivativeatinfinity. For an arbitrary set $U subset.eq CC$, we define
+  where $f'(oo)$ is defined as in @eq:derivative-at-infinity. For an arbitrary set $U subset.eq CC$, we define
   $
     sup {gamma(K): K subset.eq U and K "is compact"}.
   $
@@ -104,7 +104,7 @@ A compact set $K subset CC$ is a _continuum_ if it is connected, $CC without K$ 
 )
 
 #proof[
-  Assume $f: extcomplex without K -> DD$ is a biholomorphism mapping $oo$ to $0$. The lower bound follows directly from @prop:complementbiholomorphismquarterestimate. Let $p in K$ be arbitrary, then for any $q in K$, we obtain $abs(p - q) <= diam K$, implying that $K subset.eq overline(D(p, diam K))$. By @prop:analyticcapacitycloseddisk, we have $gamma(overline(D(p, diam K))) = diam K$, and @thm:analyticcapacitymonotonicity consequently gives the upper bound of
+  Assume $f: extcomplex without K -> DD$ is a biholomorphism mapping $oo$ to $0$. The lower bound follows directly from @prop:complement-biholomorphism-quarter-estimate. Let $p in K$ be arbitrary, then for any $q in K$, we obtain $abs(p - q) <= diam K$, implying that $K subset.eq overline(D(p, diam K))$. By @prop:analyticcapacitycloseddisk, we have $gamma(overline(D(p, diam K))) = diam K$, and @thm:analyticcapacitymonotonicity consequently gives the upper bound of
   $
     gamma(K) <= diam K. #qedhere
   $
