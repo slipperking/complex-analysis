@@ -9,7 +9,7 @@ To understand the sense of Hartogs' phenomenon, consider the simple example of $
 
 #lbl(
   theorem[Hartogs' Extension Theorem][
-    Let $Omega subset.eq CC^n$ ($n gt.eq 2$) be a domain and $K subset.eq Omega$ be a compact subset such that $Omega without K$ is connected. Then any holomorphic function $f : Omega without K -> CC$ has a unique extension to a holomorphic function $tilde(f) : Omega -> CC$ such that $tilde(f) equiv f$ on $Omega without K$.
+    Let $Omega subset.eq CC^n$ ($n >= 2$) be a domain and $K subset.eq Omega$ be a compact subset such that $Omega without K$ is connected. Then any holomorphic function $f : Omega without K -> CC$ has a unique extension to a holomorphic function $tilde(f) : Omega -> CC$ such that $tilde(f) equiv f$ on $Omega without K$.
   ],
   <thm:hartogsextensiontheorem>,
 )
@@ -72,7 +72,7 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
   proposition[
     Let $Omega subset CC^n$ be a Reinhardt domain centered at $bold(0)$ such that $Omega$ satisfies the condition that for every $j in NN_(<= n)$, there exists a point in $Omega$ of the form $w_j bold(e)_j$ ($bold(e)_j$ is the $j$-th unit vector and $w_j in CC^*$). Then any holomorphic function $f : Omega -> CC$ has the expansion
     $
-      f(bold(z)) = sum_(bold(k) in ZZ_(gt.eq 0)^n) a_(bold(k)) bold(z)^(bold(k)),
+      f(bold(z)) = sum_(bold(k) in ZZ_(>= 0)^n) a_(bold(k)) bold(z)^(bold(k)),
     $
     which converges locally uniformly and absolutely on $Omega$.
   ],
@@ -97,11 +97,11 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
 #proof[
   By @prop:hartogslaurentexpansionnonnegative, $f$ has the expansion
   $
-    f(bold(z)) = sum_(bold(k) in ZZ_(gt.eq 0)^n) a_(bold(k)) bold(z)^(bold(k)),
+    f(bold(z)) = sum_(bold(k) in ZZ_(>= 0)^n) a_(bold(k)) bold(z)^(bold(k)),
   $
   which absolutely converges on $Omega$. Substituting $(rho_1 z_1, dots, rho_n z_n)$ for $bold(z) in Omega$ with $0 <= rho_j <= 1$ for each $j in NN_(<= n)$ gives
   $
-    abs(tilde(f)(rho_1 z_1, dots, rho_n z_n)) = abs(sum_(bold(k) in ZZ_(gt.eq 0)^n) a_(bold(k)) (rho_1 z_1)^(k_1) dots.c (rho_n z_n)^(k_n)) <= sum_(bold(k) in ZZ_(gt.eq 0)^n) abs(a_(bold(k)) bold(z)^(bold(k))),
+    abs(tilde(f)(rho_1 z_1, dots, rho_n z_n)) = abs(sum_(bold(k) in ZZ_(>= 0)^n) a_(bold(k)) (rho_1 z_1)^(k_1) dots.c (rho_n z_n)^(k_n)) <= sum_(bold(k) in ZZ_(>= 0)^n) abs(a_(bold(k)) bold(z)^(bold(k))),
   $
   which converges. The function $tilde(f) : tilde(Omega) -> CC$ is then holomorphic as it is given by a power series expansion, and it satisfies $tilde(f) equiv f$ on $Omega$.
 ]

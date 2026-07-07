@@ -189,7 +189,7 @@ The first two equations can be written as
   <eq:gaussian-curvature-lambda-roots-matrix-vector-vanish>,
 )
 
-Let the matrix on the left be denoted by $vb(M)$. In order for non-trivial $(vb(v) eq.not vb(0))$ to exist, we must have $det vb(M)=0$. That is,
+Let the matrix on the left be denoted by $vb(M)$. In order for non-trivial $(vb(v) != vb(0))$ to exist, we must have $det vb(M)=0$. That is,
 
 $
   & (L - lambda E)(N - lambda G) - (M - lambda F)^2 \

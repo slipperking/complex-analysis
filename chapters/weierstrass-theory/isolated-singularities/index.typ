@@ -20,7 +20,7 @@ An _isolated singularity_ of a complex function is a point $a in CC$ where a fun
   )
 
   In other words the principal part of $f$ is equal to
-  $ psi(z) = c_(-1) / (z - a) + dots.c + c_(-m) / (z - a)^m, quad c_(-m) eq.not 0 $
+  $ psi(z) = c_(-1) / (z - a) + dots.c + c_(-m) / (z - a)^m, quad c_(-m) != 0 $
   for some $m in NN$. Therefore,
   $ f(z) = phi(z) + psi(z) = sum_(n = -m)^oo c_n (z - a)^n = g(z) / (z - a)^m $
   on the punctured disk $D^*(a, r)$, where
@@ -34,7 +34,7 @@ An _isolated singularity_ of a complex function is a point $a in CC$ where a fun
     $ g(z) = phi(z) (z - a)^m, $
     where $phi(z)$ is holomorphic and nonzero at $z = a$. Then there exists a $delta' > 0$ such that $phi$ is nonzero on $D(a, delta')$. It follows that $1 / (phi)$ is holomorphic and nonzero on $D(a, delta')$. We can then write its Taylor expansion as
     $ 1 / (phi(z)) = c_(-m) + c_(1 - m) (z - a) + dots.c, $
-    where $c_(-m) eq.not 0$. It follows that
+    where $c_(-m) != 0$. It follows that
     $
       f(z) = 1 / (g(z)) = (z - a)^(-m) / (phi(z)) = c_(-m) (z - a)^(-m) + dots.c + c_0 + dots.c.
     $
@@ -83,7 +83,7 @@ A function with an essential singularity exhibits striking behavior. We will fir
   $ c_(-m) / (z - a)^m + dots.c + c_0 + c_1 (z - a) + dots.c $
   for some $m in NN$. It follows that
   $ f(z) = c_(-m) / (z - a)^(m - 1) + dots.c + c_(-1) + w + c_0 (z - a) + dots.c. $
-  If $m = 1$, then $f$ has a removable singularity at $a$. If $m gt.eq 2$, then $f$ has a pole at $a$. Hence, we have a contradiction.
+  If $m = 1$, then $f$ has a removable singularity at $a$. If $m >= 2$, then $f$ has a pole at $a$. Hence, we have a contradiction.
 ]
 
 An analogous proof yields the following result for entire functions.

@@ -18,7 +18,7 @@ The following definitions are subject to the assumption where the topological sp
 (Note that these definitions hold only for the standard topology on $CC^n$ induced by the Euclidean metric. For now, this is unimportant, but will be explained later in @sec:partitions-of-unity.)
 #lbl(
   definition[Accumulation Point][
-    A point $z in CC^n$ is an _accumulation point_ of $X$ if for any open set $U$ containing $z$, $(U without {z}) inter X eq.not emptyset$
+    A point $z in CC^n$ is an _accumulation point_ of $X$ if for any open set $U$ containing $z$, $(U without {z}) inter X != emptyset$
   ],
   <def:accumulation-point>,
 )
@@ -125,7 +125,7 @@ Because the accumulation points of $X$ all lie in $overline(X)$, the closure of 
 
 #lbl(
   definition[Support of a Function][
-    For a set $X$ and a function $f : X -> CC$, the _support_, denoted by $supp (f) = overline({z in X : f(z) eq.not 0})$, is the closure of the set for which $f$ is nonzero.
+    For a set $X$ and a function $f : X -> CC$, the _support_, denoted by $supp (f) = overline({z in X : f(z) != 0})$, is the closure of the set for which $f$ is nonzero.
   ],
   <def:support>,
 )

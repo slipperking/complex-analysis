@@ -202,6 +202,15 @@
       } else { it }
     }
     show figure.where(kind: "thm-env"): it => it.body
+
+    // overline needs a temporary alternative
+    show math.overline: it => context {
+      if target() != "paged" {
+        math.dash(it.body)
+      } else {
+        it
+      }
+    }
     doc
   }
 }

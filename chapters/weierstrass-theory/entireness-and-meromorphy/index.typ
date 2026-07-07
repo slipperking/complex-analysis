@@ -64,9 +64,9 @@ we have
 $
   lim_(z -> oo) f(z) =
   cases(
-    a_n / b_m & "if" n = m,
-    0 & "if" n < m,
-    oo & "if" n > m.
+    a_n / b_m & quad "if" n = m,
+    0 & quad "if" n < m,
+    oo & quad "if" n > m.
   )
 $
 Conversely, we have:

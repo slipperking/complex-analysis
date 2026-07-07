@@ -11,7 +11,7 @@ In preparation, we will introduce several relevant concepts.
 
 #lbl(
   definition[Multi-Index Notation][
-    A _multi-index_ is an $n$-tuple of nonnegative integers $bold(k) = (k_1, dots, k_n) in ZZ_(gt.eq 0)^n$.
+    A _multi-index_ is an $n$-tuple of nonnegative integers $bold(k) = (k_1, dots, k_n) in ZZ_(>= 0)^n$.
     We define
     $
       abs(bold(k)) = sum_(j=1)^n k_j, quad
@@ -33,7 +33,7 @@ In preparation, we will introduce several relevant concepts.
     $
       bold(psi)(bold(z)) = sum_(abs(bold(k)) = d) bold(a)_(bold(k)) bold(z)^(bold(k))
     $
-    where $bold(k) in ZZ_(gt.eq 0)^n$ is a multi-index.
+    where $bold(k) in ZZ_(>= 0)^n$ is a multi-index.
   ],
   <def:homogeneous-polynomial>,
 )
@@ -113,7 +113,7 @@ In preparation, we will introduce several relevant concepts.
   $
     bold(f)_1 = bold(f), quad bold(f)_(k+1) = bold(f)_k compose bold(f) quad forall k in NN.
   $
-  Assume the existence of some $m in NN$, the smallest $j gt.eq 2$ such that $bold(psi)$ is not identically zero. Because
+  Assume the existence of some $m in NN$, the smallest $j >= 2$ such that $bold(psi)$ is not identically zero. Because
   $
     bold(f)_1 (z) = bold(z) + bold(psi)_m (bold(z) - bold(a)) + sum_(j > m) bold(psi)_j (bold(z) - bold(a)),
   $
@@ -121,7 +121,7 @@ In preparation, we will introduce several relevant concepts.
   $
     bold(f)_2 (bold(z))
     &= bold(z) + bold(psi)_m (bold(z) - bold(a)) + sum_(j > m) bold(psi)_j (bold(z) - bold(a)) \
-    &quad""+ bold(psi)_m (bold(z) - bold(a) + sum_(j gt.eq m) bold(psi)_j (bold(z) - bold(a))) + sum_(j > m) bold(psi)_j (bold(f)(bold(z)) - bold(a)) \
+    &quad""+ bold(psi)_m (bold(z) - bold(a) + sum_(j >= m) bold(psi)_j (bold(z) - bold(a))) + sum_(j > m) bold(psi)_j (bold(f)(bold(z)) - bold(a)) \
     &= bold(z) + 2 bold(psi)_m (bold(z) - bold(a)) \
     &quad""+ ("homogeneous polynomials of degree" > m)(bold(z) - bold(a)).
   $
@@ -133,8 +133,8 @@ In preparation, we will introduce several relevant concepts.
   Then we have
   $
     bold(f)_(k+1) (bold(z))
-    &= bold(z) + sum_(j gt.eq m) bold(psi)_j (bold(z) - bold(a)) \
-    &quad"" + k bold(psi)_m (bold(z) - bold(a) + sum_(j gt.eq m) ("degree" j "hom. polynomial")(bold(z) - bold(a))) \
+    &= bold(z) + sum_(j >= m) bold(psi)_j (bold(z) - bold(a)) \
+    &quad"" + k bold(psi)_m (bold(z) - bold(a) + sum_(j >= m) ("degree" j "hom. polynomial")(bold(z) - bold(a))) \
     &wide ""+ sum_(j > m) ("homogeneous polynomial of degree" j)(bold(f)(bold(z)) - bold(a)) \
     &= bold(z) + (k + 1) bold(psi)_m (bold(z) - bold(a))\
     &quad""+ ("degree" > m "homogeneous polynomials")(bold(z) - bold(a)).
@@ -149,11 +149,11 @@ In preparation, we will introduce several relevant concepts.
   $
     partial^(bold(alpha)) ("homogeneous polynomials of degree" > m)(bold(z) - bold(a))
   $
-  is a homogeneous polynomial with degree $gt.eq 1$ and thus vanishes as $bold(z) -> bold(a)$. Similarly, $bold(z) |-> bold(z)$ is homogeneous with degree $1 < m$ and thus $partial^(bold(alpha)) z$ vanishes. Therefore,
+  is a homogeneous polynomial with degree $>= 1$ and thus vanishes as $bold(z) -> bold(a)$. Similarly, $bold(z) |-> bold(z)$ is homogeneous with degree $1 < m$ and thus $partial^(bold(alpha)) z$ vanishes. Therefore,
   $
     partial^(bold(alpha)) bold(f)_k (bold(a)) = k bold(c),
   $
-  which diverges as $k -> oo$. Weierstrass' Convergence Theorem (@thm:weierstrass-convergence-multivariable) gives that $partial^(bold(alpha)) bold(f)_(k_l) (bold(a)) -> partial^(bold(alpha)) tilde(bold(f))(bold(a))$ which must be finite by holomorphy, contradicting the divergence. Hence, the assumed value for $m$ cannot exist and hence $bold(psi)_j equiv 0$ for all $j gt.eq 2$. Thus, $bold(f)(bold(z)) equiv bold(z)$ on some polydisk centered at $bold(a)$. By the Identity Theorem (@thm:identity-multivariable), $bold(f)(bold(z)) equiv bold(z)$ on $Omega$.
+  which diverges as $k -> oo$. Weierstrass' Convergence Theorem (@thm:weierstrass-convergence-multivariable) gives that $partial^(bold(alpha)) bold(f)_(k_l) (bold(a)) -> partial^(bold(alpha)) tilde(bold(f))(bold(a))$ which must be finite by holomorphy, contradicting the divergence. Hence, the assumed value for $m$ cannot exist and hence $bold(psi)_j equiv 0$ for all $j >= 2$. Thus, $bold(f)(bold(z)) equiv bold(z)$ on some polydisk centered at $bold(a)$. By the Identity Theorem (@thm:identity-multivariable), $bold(f)(bold(z)) equiv bold(z)$ on $Omega$.
 ]
 
 #lbl(
@@ -202,7 +202,7 @@ In preparation, we will introduce several relevant concepts.
 
 #lbl(
   proposition[
-    Let $U_0 subset.eq CC^(n_0), U_1 subset.eq CC^(n_1), U_2 subset.eq CC^(n_2)$ be open domains with $n_i gt.eq 1$ for each $i$, and let $bold(f) : U_1 -> U_2$ and $bold(g) : U_0 -> U_1$ be holomorphic maps. Define the composition $bold(h) : U_0 -> U_2$ by $bold(h)(bold(z)) = bold(f)(bold(g)(bold(z)))$. Then for every $bold(z) in U_0$, the complex Jacobian matrix of $bold(h)$ at $bold(z)$ is
+    Let $U_0 subset.eq CC^(n_0), U_1 subset.eq CC^(n_1), U_2 subset.eq CC^(n_2)$ be open domains with $n_i >= 1$ for each $i$, and let $bold(f) : U_1 -> U_2$ and $bold(g) : U_0 -> U_1$ be holomorphic maps. Define the composition $bold(h) : U_0 -> U_2$ by $bold(h)(bold(z)) = bold(f)(bold(g)(bold(z)))$. Then for every $bold(z) in U_0$, the complex Jacobian matrix of $bold(h)$ at $bold(z)$ is
     $
       bold(J)_(bold(h))(bold(z)) = bold(J)_(bold(f))(bold(g)(bold(z))) dot bold(J)_(bold(g))(bold(z)).
     $

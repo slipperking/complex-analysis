@@ -44,9 +44,9 @@
       T(r, f) &= 1 / (2 uppi) integral_0^(2 uppi) N(r, ee^(ii theta), f) dtheta + 1 / (2 uppi) integral_0^(2 uppi) log abs(c_theta) dtheta \
       &= 1 / (2 uppi) integral_0^(2 uppi) N(r, ee^(ii theta), f) dtheta +
       cases(
-        log abs(c) quad & "if" k < 0,
-        logp abs(c) quad & "if" k = 0,
-        0 quad & "if" k > 0,
+        log abs(c) & quad "if" k < 0,
+        logp abs(c) & quad "if" k = 0,
+        0 & quad "if" k > 0,
       ),
     $
     where $c_theta$ is the first nonzero coefficient of the Laurent expansion of $f - ee^(ii theta)$ at the origin.
@@ -95,8 +95,8 @@
   $
     1 / (2 uppi) integral_0^(2 uppi) log abs(c_theta) dtheta = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(0) - ee^(ii theta)) dtheta =
     cases(
-      logp abs(c) & "if" f(0) != 0\,,
-      0 & "otherwise".,
+      logp abs(c) & quad "if" f(0) != 0\,,
+      0 & quad "otherwise".,
     ) #qedhere
   $
 ]

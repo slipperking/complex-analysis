@@ -263,7 +263,7 @@ Residues are extremely important as they allow for simple evaluation of definite
 ])
 
 #solution[to @ex:integral-1-x-2-1-n-1-dx][
-  Consider $gamma$ to be a closed semicircle with radius $R gt.eq 2$ as in @fig:semicircular-contour. Notice that the function $z |-> 1 / (z^2+1)^(n+1)$ has singularities at only $z = ii$ and $z = -ii$, both of which are poles of order $n+1$. By @eq:residue-at-pole, the residue at $z = ii$ is
+  Consider $gamma$ to be a closed semicircle with radius $R >= 2$ as in @fig:semicircular-contour. Notice that the function $z |-> 1 / (z^2+1)^(n+1)$ has singularities at only $z = ii$ and $z = -ii$, both of which are poles of order $n+1$. By @eq:residue-at-pole, the residue at $z = ii$ is
   $
     Res_(z=ii) 1 / (z^2+1)^(n+1)
     &= evaluated(1 / (n!) dv(, z, n) (z + ii)^(-n-1))_(z=ii) = 1 / (n!) ((-1)^n product_(k=1)^n (n+k)) / (2 ii)^(2n+1) \
@@ -275,7 +275,7 @@ Residues are extremely important as they allow for simple evaluation of definite
     &= integral_(-R)^R 1 / (x^2+1)^(n+1) dx + integral_0^uppi (R ii) / (R^2 ee^(2 ii theta) + 1)^(n+1) ee^(ii theta) dif theta \
     &= 2 uppi ii Res_(z=ii) 1 / (z^2+1)^(n+1) = ((2n)! uppi) / (2^(2n) (n!)^2).
   $
-  We will now show that the integral over the semicircle vanishes as $R -> infinity$. Under the assumption that $R gt.eq 2$, since
+  We will now show that the integral over the semicircle vanishes as $R -> infinity$. Under the assumption that $R >= 2$, since
   $
     abs((R ii ee^(ii theta)) / (R^2 ee^(2 ii theta) + 1)^(n+1)) = R / abs(R^2 ee^(2 ii theta) + 1)^(n+1) <= R / abs(R^2 - 1) <= 2/3,
   $
@@ -714,7 +714,7 @@ Residues are extremely important as they allow for simple evaluation of definite
 
 Contour integration provides a powerful method for evaluating real improper integrals by leveraging the Residue Theorem (@thm:residue-theorem). The primary challenge often lies in constructing a suitable contour in the complex plane that encloses the relevant singularities of the integrand $f$ while ensuring that the contribution from the contributions from the remaining segments of the contour either vanishes or can be calculated with ease.
 
-If the function $f$ is even and integrated on a domain such as $RR_(gt.eq 0)$, then the integral can be extended to the entire real axis. If $f$ decays sufficiently rapidly in the upper half plane $HH^+$, a semicircular contour is generally preferable, as illustrated in @fig:semicircular-contour. In the presence of singularities on the contour itself, we can insert arc indentations around them, as shown in @fig:indented-semicircular-contour.
+If the function $f$ is even and integrated on a domain such as $RR_(>= 0)$, then the integral can be extended to the entire real axis. If $f$ decays sufficiently rapidly in the upper half plane $HH^+$, a semicircular contour is generally preferable, as illustrated in @fig:semicircular-contour. In the presence of singularities on the contour itself, we can insert arc indentations around them, as shown in @fig:indented-semicircular-contour.
 
 If $f(z)$ is a constant multiple of $f(z + ii y)$ (a type of _quasi-periodicity_) for some $y in RR$, it is a strong indication to use a rectangular contour. If $f(z)$ is a constant multiple of $f(z ee^(ii tau))$ for some $tau in RR$, a wedge-shaped contour is an appropriate choice.
 

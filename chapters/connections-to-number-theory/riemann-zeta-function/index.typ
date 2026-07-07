@@ -330,7 +330,7 @@ The functional equation as provided by Riemann in his original paper gives a mor
 
 #lbl(
   theorem[Riemann's Reflection Formula][
-    For any $s eq.not 0$, we have
+    For any $s != 0$, we have
     #lbl(
       $
         zeta(1-s)=2 zeta(s) Gamma(s) cos(uppi/2 s) (2 uppi)^(-s).
@@ -342,7 +342,7 @@ The functional equation as provided by Riemann in his original paper gives a mor
 )
 
 #proof[
-  We restrict our consideration to $s eq.not 0,-1,-2,dots$ (and the usage of limits suffices to extend the relation to all of $CC^*$). The integrand $((-z)^(s-1))/(ee^z-1)$ (as a function of $z$) has a branch cut singularity on $RR_(>=0)$ (in terms of $z$) (a region excluded by all Hankel contours and thus irrelevant to our interest). The denominator vanishes (simply) when $ee^z=1$ or when $z in 2 uppi ii ZZ$ and thus has simple poles at these points.
+  We restrict our consideration to $s != 0,-1,-2,dots$ (and the usage of limits suffices to extend the relation to all of $CC^*$). The integrand $((-z)^(s-1))/(ee^z-1)$ (as a function of $z$) has a branch cut singularity on $RR_(>=0)$ (in terms of $z$) (a region excluded by all Hankel contours and thus irrelevant to our interest). The denominator vanishes (simply) when $ee^z=1$ or when $z in 2 uppi ii ZZ$ and thus has simple poles at these points.
 
   Suppose that $Re s<0$. Now the Residue Theorem (@thm:residue-theorem) gives that
   $
@@ -350,9 +350,9 @@ The functional equation as provided by Riemann in his original paper gives a mor
   $
   where $gamma$ is the keyhole contour in @fig:keyholecontour with a larger radius of $(2n+1) uppi$ and a smaller one of $epsilon < 2pi$ whose lateral segments are $2delta$ apart from each other. Since $delta<epsilon<2pi$, the choice of $gamma$ does not affect the enclosed singularities. Then we have, by virtue of @eq:residue-at-pole:
   $
-    & 1/taui (F_((2n+1) uppi) (s)-F_epsilon (s)) = sum_(k=-n \ k eq.not 0)^n lim_(zeta -> 2 uppi ii k) ((zeta-2 uppi ii k)(-zeta)^(s-1))/(ee^zeta-1) \
-    &wide quad= sum_(k=-n \ k eq.not 0)^n lim_(zeta -> 2 uppi ii k) (2 uppi ii k (s-1) (-zeta)^(s-2)+s (-zeta)^(s-1))/(ee^zeta) \
-    &wide quad= sum_(k=-n \ k eq.not 0)^n [2 uppi ii k (s-1) (-2 uppi ii k)^(s-2)+s (-2 uppi ii k)^(s-1)]=sum_(k=-n \ k eq.not 0)^n (-2 uppi ii k)^(s-1),
+    & 1/taui (F_((2n+1) uppi) (s)-F_epsilon (s)) = sum_(k=-n \ k != 0)^n lim_(zeta -> 2 uppi ii k) ((zeta-2 uppi ii k)(-zeta)^(s-1))/(ee^zeta-1) \
+    &wide quad= sum_(k=-n \ k != 0)^n lim_(zeta -> 2 uppi ii k) (2 uppi ii k (s-1) (-zeta)^(s-2)+s (-zeta)^(s-1))/(ee^zeta) \
+    &wide quad= sum_(k=-n \ k != 0)^n [2 uppi ii k (s-1) (-2 uppi ii k)^(s-2)+s (-2 uppi ii k)^(s-1)]=sum_(k=-n \ k != 0)^n (-2 uppi ii k)^(s-1),
   $
   where by definition, uses the principal branch:
   $

@@ -33,7 +33,7 @@ Since the real and imaginary parts of holomorphic functions are real-valued harm
 
 #lbl(
   theorem[Maximum Modulus Principle][
-    Let $f(z)$ be holomorphic on an open connected region $U subset.eq CC$. If $exists z_0 in U$ and an open neighborhood $V subset.eq U$ of $z_0$ such that $forall z in V$, $abs(f(z_0)) gt.eq abs(f(z))$, then $f$ is a constant function on $U$.
+    Let $f(z)$ be holomorphic on an open connected region $U subset.eq CC$. If $exists z_0 in U$ and an open neighborhood $V subset.eq U$ of $z_0$ such that $forall z in V$, $abs(f(z_0)) >= abs(f(z))$, then $f$ is a constant function on $U$.
   ],
   <thm:maximum-modulus>,
 )
@@ -71,7 +71,7 @@ A similar theorem exists for real-valued harmonic functions. The proof follows i
 #lbl(
   theorem[
     Let $U subset.eq CC$ be open and connected and let $f:U -> RR$ be harmonic. Suppose that $exists z_0 in U$ and a neighborhood $V subset.eq U$ of $z_0$ such that either
-    $ f(z) gt.eq f(z_0) quad forall z in V quad "or" quad f(z_0) gt.eq f(z) quad forall z in V. $
+    $ f(z) >= f(z_0) quad forall z in V quad "or" quad f(z_0) >= f(z) quad forall z in V. $
     Then $f$ is constant on $U$.
   ],
   <thm:maximum-principle-for-real-harmonic-functions>,

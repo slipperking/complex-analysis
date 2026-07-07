@@ -18,7 +18,7 @@ which by assumption, simplifies to
 $
   f(z) = z + sum_(n=2)^oo a_n z^n, quad z in DD,
 $
-where $a_n = (f^((n)) (0)) / (n !)$ for $n gt.eq 2$. Two historic results regarding schlicht functions state that
+where $a_n = (f^((n)) (0)) / (n !)$ for $n >= 2$. Two historic results regarding schlicht functions state that
 
 + The only schlicht functions satisfying $exists n in NN$ with $abs(a_n) = n$ are the Koebe functions in the form of
   $

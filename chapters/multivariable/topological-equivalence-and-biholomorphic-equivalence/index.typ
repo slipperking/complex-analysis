@@ -24,7 +24,7 @@
 
 #lbl(
   theorem[Poincaré][
-    For any $n gt.eq 2$, the $n$-dimensional unit ball $B^n$ and the $n$-dimensional polydisk $DD^n$ are not biholomorphically equivalent.
+    For any $n >= 2$, the $n$-dimensional unit ball $B^n$ and the $n$-dimensional polydisk $DD^n$ are not biholomorphically equivalent.
   ],
   <thm:poincare-polydisk-and-unit-ball>,
 )
@@ -108,7 +108,7 @@
     $
     is a diagonal unitary matrix and $bold(V) in upright("U")(n)$. Then there exists a connected path connecting $(theta_1, dots, theta_n)$ to $(0, dots, 0)$, which corresponds to the matrix $bold(V) bold(I) bold(V)^dagger = bold(I)$. Because every matrix is path-connected to the identity, $upright("U")(n)$ is connected.
 
-    Consequently for $n gt.eq 2$, the subgroup $M_n$ (which has more than one connected component) cannot be isomorphic to $upright("U")(n)$ as a topological group.
+    Consequently for $n >= 2$, the subgroup $M_n$ (which has more than one connected component) cannot be isomorphic to $upright("U")(n)$ as a topological group.
   ]
   Although we do not justify these topological claims in detail here, it is worth noting, heuristically, why such topological considerations naturally arise.
 

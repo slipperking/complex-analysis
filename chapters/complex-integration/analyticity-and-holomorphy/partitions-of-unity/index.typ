@@ -24,7 +24,7 @@ The implied topology of a subspace $A$ of $(X, tau)$ is given by the intersectio
 
 It is immediate from definition that the trivial sets $X$ and $emptyset$ are always closed. It is equally trivial from definition that the union of finitely many closed sets is closed, and the intersection of any collection of closed sets is closed.
 
-If $exists U in tau$ such that $x in U$, then $U$ is an (open) _neighborhood_ of $x$. If $forall x, y in X$ (such that $x eq.not y$) have disjoint neighborhoods, then $X$ is a _Hausdorff space_.
+If $exists U in tau$ such that $x in U$, then $U$ is an (open) _neighborhood_ of $x$. If $forall x, y in X$ (such that $x != y$) have disjoint neighborhoods, then $X$ is a _Hausdorff space_.
 
 The following discussions involved with topological spaces here will always be of Hausdorff spaces, although making such distinction is important for future extensibility.
 
@@ -100,7 +100,7 @@ For the case of metric spaces, this generalizes the epsilon--delta notion of con
 
 #example[
   Consider the function $f:RR -> RR$ defined by
-  $ f(x) = cases(1 & "if" x gt.eq 0, 0 & "if" x < 0.) $
+  $ f(x) = cases(1 & quad "if" x >= 0\,, 0 & quad "if" x < 0.) $
 
   We equip both the domain and codomain with the standard topology on $RR$. Let $V = (.5, 1.5) subset.eq RR$. Then the pre-image of $V$ is
   $ f^(-1)(V) = {x in RR : f(x) in V} = RR_(>= 0), $
@@ -156,18 +156,18 @@ The function $f:[0, 2 uppi) -> S^1$ with $f(t) = (cos(t), sin(t))$ is indeed con
 #definition[
   A _metric space_ is a pair $(X, d)$, where $X$ is a set and $d$ is a function from $X times X$ to $RR_(>= 0)$, called a _metric_, such that for all $x, y, z in X$ the following properties hold:
 
-  1. $d(x, y) gt.eq 0$ and $d(x, y) = 0$ iff $x = y$ (positivity).
+  1. $d(x, y) >= 0$ and $d(x, y) = 0$ iff $x = y$ (positivity).
   2. $d(x, y) = d(y, x)$ (symmetry).
   3. $d(x, z) <= d(x, y) + d(y, z)$ (triangle inequality).
 ]
 
 This in turn implies the reverse triangle inequality:
 $
-  d(x, z) <= d(x, y) + d(y, z) ==> d(x, y) gt.eq d(x, z) - d(y, z),
+  d(x, z) <= d(x, y) + d(y, z) ==> d(x, y) >= d(x, z) - d(y, z),
 $
 and similarly,
 $
-  d(y, z) <= d(x, y) + d(x, z) ==> d(x, y) gt.eq d(y, z) - d(x, z).
+  d(y, z) <= d(x, y) + d(x, z) ==> d(x, y) >= d(y, z) - d(x, z).
 $
 
 #definition[
@@ -306,7 +306,7 @@ In a topological space $X$, a subset can be open, closed (the complement of some
   $ a - delta / 2 in V, $
   which contradicts $a$ being a lower bound of $V$.
 
-  Therefore, $a = 0$. However, since $[0, delta)$ lies in $U$ for some $delta > 0$, $a gt.eq delta > 0$. Thus, we arrive at a contradiction, and thus $V$ is the empty set. This then shows that $[0, 1]$ is connected.
+  Therefore, $a = 0$. However, since $[0, delta)$ lies in $U$ for some $delta > 0$, $a >= delta > 0$. Thus, we arrive at a contradiction, and thus $V$ is the empty set. This then shows that $[0, 1]$ is connected.
 ]
 
 Connectivity intuitively means that a space cannot be split into two disjoint open subsets, but is not meaningful in terms of how points within the space relate to each other. In many geometric situations, the notion of _path-connectivity_ requires that any two points be joined by a continuous path. We will see that this more concrete condition forces the space to be topologically connected.
@@ -550,7 +550,7 @@ Note that the converse here is not necessarily true.
   $ D(z_j, r_(z_j)) subset overline(D(z_j, r_(z_j))) subset Omega_(k_(z_j)), quad forall j in NN. $
 
   Define the standard bump function
-  $ theta(z) = cases(ee^(1 / (abs(z)^2 - 1)) & "if" abs(z) < 1, 0 & "if" abs(z) gt.eq 1.) $
+  $ theta(z) = cases(ee^(1 / (abs(z)^2 - 1)) & "if" abs(z) < 1, 0 & "if" abs(z) >= 1.) $
   For $epsilon > 0$ let
   $ theta_epsilon(z) = theta(z / epsilon), $
   which has support $overline(D(0, epsilon))$.

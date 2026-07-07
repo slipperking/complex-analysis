@@ -91,7 +91,7 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
 #proof[
   Let $P_n$ be a parallelogram whose center is $0$ and has $n(omega_1 + omega_2)$ as a vertex (the specific case of $n = 1$ is illustrated in @fig:weierstrass-p-function-intermediate-series-convergence-parallelogram). For each $n in NN$, there exist $8 n$ periods (points in $Lambda$) on $partial P_n$.
 
-  Let $delta$ be the distance from $0$ to $partial P_1$. Hence, the distance from $0$ to $partial P_n$ is $n delta$. Since each $omega in Lambda^* = Lambda without {0}$ lies in a unique $partial P_n$, it follows that $abs(omega)^alpha gt.eq n^alpha delta^alpha$ for all $alpha > 0$. Hence,
+  Let $delta$ be the distance from $0$ to $partial P_1$. Hence, the distance from $0$ to $partial P_n$ is $n delta$. Since each $omega in Lambda^* = Lambda without {0}$ lies in a unique $partial P_n$, it follows that $abs(omega)^alpha >= n^alpha delta^alpha$ for all $alpha > 0$. Hence,
   $
     sum_(omega in Lambda^*) 1 / abs(omega)^alpha <= sum_(n=1)^oo (8 n) / (n^alpha delta^alpha) = 8 / delta^alpha sum_(n=1)^oo 1 / n^(alpha - 1),
   $
@@ -115,7 +115,7 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
 #proof[
   Let $R > 0$ be arbitrary. Then $forall z in D(0, R)$, and for $abs(omega) > 2 R$, we have
   $
-    abs(z) / abs(omega) < 1 / 2, quad abs(2 - z / omega) <= 2 + abs(z) / abs(omega) < 5 / 2, quad abs(1 - z / omega)^2 gt.eq (1 - abs(z / omega))^2 > 1 / 4.
+    abs(z) / abs(omega) < 1 / 2, quad abs(2 - z / omega) <= 2 + abs(z) / abs(omega) < 5 / 2, quad abs(1 - z / omega)^2 >= (1 - abs(z / omega))^2 > 1 / 4.
   $
   It follows that
   $

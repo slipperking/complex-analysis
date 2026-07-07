@@ -34,11 +34,11 @@
   $ M(r, f) = r^m M(r, g) <= ee^(r^(rho(f) + epsilon)) ==> M(r, g) <= ee^(r^(rho(f) + epsilon)). $
   Thus, $rho(g) <= rho(f)$ by letting $epsilon -> 0^+$. Additionally, for any $epsilon > 0$, $forall r' > 0$, $exists r > r'$ such that
   $
-    M(r, f) gt.eq ee^(r^(rho(f) - epsilon)) ==> M(r, g) gt.eq exp(r^(rho(f) - 2 epsilon) (r^epsilon - (m log r) / r^(rho(f) - 2 epsilon))) gt.eq ee^(r^(rho(f) - 2 epsilon))
+    M(r, f) >= ee^(r^(rho(f) - epsilon)) ==> M(r, g) >= exp(r^(rho(f) - 2 epsilon) (r^epsilon - (m log r) / r^(rho(f) - 2 epsilon))) >= ee^(r^(rho(f) - 2 epsilon))
   $
   because for sufficiently large $r$,
   $ r^epsilon - (m log r) / r^(rho(f) - 2 epsilon) > 1. $
-  Hence, $rho(g) gt.eq rho(f) - 2 epsilon$. Letting $epsilon -> 0^+$ implies $rho(f) = rho(g)$. Let $g(z) = c h(z)$ where $c$ is a constant, so that $h(0) = 1$. It is also trivial that $rho(g) = rho(h)$. Explicitly, we have $h(z) = ee^(phi - Log c) P(z)$.
+  Hence, $rho(g) >= rho(f) - 2 epsilon$. Letting $epsilon -> 0^+$ implies $rho(f) = rho(g)$. Let $g(z) = c h(z)$ where $c$ is a constant, so that $h(0) = 1$. It is also trivial that $rho(g) = rho(h)$. Explicitly, we have $h(z) = ee^(phi - Log c) P(z)$.
 
   By @thm:entire-function-finite-order-canonical-weierstrass-factorization-polynomial-degree on $h$, $phi - Log c$ is a polynomial of degree $<= rho$, and so is $phi$.
 ]

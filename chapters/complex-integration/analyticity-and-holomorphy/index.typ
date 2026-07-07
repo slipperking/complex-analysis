@@ -68,7 +68,7 @@ The Cauchy--Goursat Formula (@thm:cauchy-goursat-formula) can also be generalize
     <eq:cauchy-differentiation-formula-difference-of-first-order-differences>,
   )
 
-  Let $d$ be the distance from $a$ to $partial U$; then $0 < r < d$. Then since $abs(z-a) < r$ and $abs(zeta-a) gt.eq d$, $abs(zeta-z) gt.eq d-r$. Then the absolute value of the integrand of @eq:cauchy-differentiation-formula-difference-of-first-order-differences is bounded above by $M / (d^2(d-r))$, where $M$ is the maximum of $abs(f(zeta))$, which exists by @thm:continuous-function-bounded-on-compact. Then,
+  Let $d$ be the distance from $a$ to $partial U$; then $0 < r < d$. Then since $abs(z-a) < r$ and $abs(zeta-a) >= d$, $abs(zeta-z) >= d-r$. Then the absolute value of the integrand of @eq:cauchy-differentiation-formula-difference-of-first-order-differences is bounded above by $M / (d^2(d-r))$, where $M$ is the maximum of $abs(f(zeta))$, which exists by @thm:continuous-function-bounded-on-compact. Then,
 
   $
     abs((z-a) / (2 uppi ii) integral.cont_(partial U) (f(zeta)) / ((zeta-z)(zeta-a)^2) dzeta) <= abs(z-a) / (2 uppi) (M) / (d^2(d-r)) integral.cont_(partial U) abs(dzeta).
@@ -474,7 +474,10 @@ The concept of analytic continuation and its consequent problems and properties 
   Define the auxiliary function
 
   $
-    phi(z)=cases((z-z_0)^2 f(z) & "if" z in D^*(z_0, r), 0 & "if" z = z_0.)
+    phi(z) = cases(
+      (z-z_0)^2 f(z) & quad "if" z in D^*(z_0, r)\,,
+      0 & quad "if" z = z_0.
+    )
   $
 
   $phi(z)$ is bounded and continuously differentiable on $D(z_0, r)$ and satisfies the Cauchy--Riemann Equations since

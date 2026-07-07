@@ -222,13 +222,13 @@ converges (conditionally) on all of $partial DD without {1}$ and diverges at $z 
   $
     integral.cont_gamma (z - a)^k dz =
     cases(
-      0 & "if" k >= 0,
-      taui dv(, z, -k - 1)(1) & "if" k <= -1,
+      0 & quad "if" k >= 0,
+      taui dv(, z, -k - 1)(1) & quad "if" k <= -1,
     )
     =
     cases(
-      0 & "if" k != -1,
-      taui & "if" k = -1.
+      0 & quad "if" k != -1,
+      taui & quad "if" k = -1.
     )
   $
   Multiplying @eq:laurent-expansion-of-holomorphic-function_uniquenessstatement by $(z - a)^(-m - 1)$ and from integrating over $gamma$, we get that

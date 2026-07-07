@@ -350,7 +350,7 @@ Hence, it is only natural to quantify this number:
 ]
 
 #proposition[
-  A non-constant elliptic function $f$ is of order $gt.eq 2$.
+  A non-constant elliptic function $f$ is of order $>= 2$.
 ]
 
 #proof[

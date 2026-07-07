@@ -14,7 +14,7 @@ If we consider $f$ to be a function of $z_1, overline(z_1), z_2, overline(z_2), 
 #lbl(
   theorem[Cauchy's Integral Formula on Polydisks][
     Fix $bold(a) = (a_1, dots, a_n) in CC^n$ arbitrarily and suppose $r_1, r_2, dots, r_n > 0$ are the radii of the polydisk defined by $Omega = product_(k=1)^n D(a_k, r_k)$ (where the product here is the Cartesian product).
-    Suppose $f : overline(Omega) -> CC$ is holomorphic. For fixed $k_1, k_2, dots, k_n in ZZ_(gt.eq 0)$, we have that
+    Suppose $f : overline(Omega) -> CC$ is holomorphic. For fixed $k_1, k_2, dots, k_n in ZZ_(>= 0)$, we have that
     $
       (product_(j=1)^n pdv(, z_j, [k_j])) f(bold(z)) = (product_(j=1)^n k_j !) / ((2 uppi ii)^n) integral.cont_(partial D(a_1, r_1)) dots.c integral.cont_(partial D(a_n, r_n)) (f (zeta_1, dots, zeta_n)dzeta_n dots.c dzeta_1) / (product_(j=1)^n (zeta_j - z_j)^(k_j + 1))
     $
@@ -40,7 +40,7 @@ By the boundedness assumption for $f$, we have:
 #lbl(
   corollary[Cauchy's Estimate on Polydisks][
     Let $bold(a) = (a_1, a_2, dots, a_n) in CC^n$ be fixed and suppose $r_1, r_2, dots, r_n > 0$ are the radii of the polydisk defined by $Omega = product_(k=1)^n D(a_k, r_k)$ (where the product here is the Cartesian product).
-    Suppose $f : overline(Omega) -> CC$ is holomorphic. For fixed $k_1, k_2, dots, k_n in ZZ_(gt.eq 0)$, we have that
+    Suppose $f : overline(Omega) -> CC$ is holomorphic. For fixed $k_1, k_2, dots, k_n in ZZ_(>= 0)$, we have that
     $
       abs((product_(j=1)^n (partial^(k_j)) / (partial z_j^(k_j))) f (bold(z))) <= product_(j=1)^n ((k_j !) / (r_j^(k_j))) sup_(bold(zeta) in product_(j=1)^n partial D(a_j, r_j)) abs(f(bold(zeta)))
     $
@@ -74,7 +74,7 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
       $,
       <eq:taylor-expansion-multivariable_series>,
     )
-    where $forall k_1, dots, k_n in ZZ_(gt.eq 0)$,
+    where $forall k_1, dots, k_n in ZZ_(>= 0)$,
     $
       a_(k_1, dots, k_n) = 1 / (product_(j=1)^n k_j !) (product_(j=1)^n pdv(, z_j, [k_j])) f (bold(a)).
     $
@@ -140,7 +140,7 @@ Similar to the univariate case, there are Taylor expansions of holomorphic funct
 
 #lbl(
   theorem[Weierstrass][
-    Suppose that $Omega subset.eq CC^n$ is a region and that ${f_k}_(k in NN)$ is a sequence of holomorphic functions $Omega -> CC$. If ${f_k}_(k in NN)$ converges locally uniformly to $f$ on $Omega$, then $f$ is holomorphic on $Omega$. Moreover, $forall k_1, dots, k_n in ZZ_(gt.eq 0)$,
+    Suppose that $Omega subset.eq CC^n$ is a region and that ${f_k}_(k in NN)$ is a sequence of holomorphic functions $Omega -> CC$. If ${f_k}_(k in NN)$ converges locally uniformly to $f$ on $Omega$, then $f$ is holomorphic on $Omega$. Moreover, $forall k_1, dots, k_n in ZZ_(>= 0)$,
     $
       (product_(j=1)^n pdv(, z_j, [k_j])) f_k arrows.rr (product_(j=1)^n pdv(, z_j, [k_j])) f
     $

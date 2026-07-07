@@ -5,7 +5,7 @@
 )
 Let $f: D(0, R) -> extcomplex$ be meromorphic such that
 $ f(z) = sum_(j = k)^oo c_j z^j $
-where $c = c_k$ and $c eq.not 0$. Then $z mapsto frac(f(z), z^k, style: "horizontal")$ is holomorphic on a neighborhood of $0$ and is nonzero at $0$. By Jensen's formula (@thm:jensens-formula) on $frac(f(z), z^k, style: "horizontal")$,
+where $c = c_k$ and $c != 0$. Then $z mapsto frac(f(z), z^k, style: "horizontal")$ is holomorphic on a neighborhood of $0$ and is nonzero at $0$. By Jensen's formula (@thm:jensens-formula) on $frac(f(z), z^k, style: "horizontal")$,
 
 #lbl(
   $
@@ -68,7 +68,7 @@ $ logp (x) = max { log(x), 0 }. $
 #lbl(
   proposition[Properties of $logp$][
     The following properties hold:
-    1. $logp x gt.eq log x$ for $x > 0$. #enum-lbl(<itm:log-nonnegative-part-properties-first-property>)
+    1. $logp x >= log x$ for $x > 0$. #enum-lbl(<itm:log-nonnegative-part-properties-first-property>)
     2. $logp x <= logp y$ for $x <= y$ (non-decreasing). #enum-lbl(<itm:log-nonnegative-part-properties-non-decreasing>)
     3. $log x = logp x - logp (1 / x)$ for $x > 0$. #enum-lbl(<itm:log-nonnegative-part-properties-difference-of-reciprocal-logs>)
     4. $abs(log x) = logp x + logp (1 / x)$ for $x > 0$. #enum-lbl(<itm:log-nonnegative-part-properties-sum-of-reciprocal-logs>)
@@ -87,7 +87,7 @@ $ logp (x) = max { log(x), 0 }. $
                            & = log n + max_k logp x_k.
   $
 
-  The last step uses the fact that $logp$ is simply $log$ when the argument $gt.eq 1$.
+  The last step uses the fact that $logp$ is simply $log$ when the argument $>= 1$.
 ]
 
 #definition[

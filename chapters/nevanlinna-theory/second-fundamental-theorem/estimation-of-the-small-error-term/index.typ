@@ -273,7 +273,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     $
       integral_(rho)^(rho') dr / (R_0 - r) = log(frac(R_0 - rho, R_0 - rho')) > log(ee^2) = 2.
     $
-    Since $integral_(E_0) dr / (r_0 - r) <= 2$, there then $(rho, rho') subset.eq.not E_0$. Thus, $exists r in (rho, rho')$ such that $r in.not E_0$.#qedhere
+    Since $integral_(E_0) dr / (r_0 - r) <= 2$, there then $(rho, rho') subset.!= E_0$. Thus, $exists r in (rho, rho')$ such that $r in.not E_0$.#qedhere
 ]
 
 #lbl(

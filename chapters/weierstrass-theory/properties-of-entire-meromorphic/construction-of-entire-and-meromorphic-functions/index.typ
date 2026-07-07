@@ -320,8 +320,8 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
     Fix $n in NN$, and let $U_n$ be an open neighborhood of $a_n$ such that $forall i, j in NN$ where $i != j$, $overline(U_i) inter overline(U_j) = emptyset$. Let $V_n$ be a neighborhood of $a_n$ that is relatively compact in $U_n$. By @thm:bump-function-existence, for each $n$, there is a $C^oo$ function $phi_n$ satisfying
     $
       phi_n (z) = cases(
-        1 & "if" z in overline(V_n)\,,
-        0 & "if" z in CC without U_n.
+        1 & quad "if" z in overline(V_n)\,,
+        0 & quad "if" z in CC without U_n.
       )
     $
     Let
@@ -331,11 +331,11 @@ Suppose that $f(z)$ is meromorphic on $CC$ such that $f$ has finitely many poles
     which is an element of $C^oo (CC without {a_k}_(k in NN))$. For a fixed $n in NN$, it is true that $u equiv psi_n$ on $overline(V_n) without {a_n}$. Hence, although $u$ is not meromorphic, it does have the required principal part near each $a_k$. Let
     $
       phi.alt(z) = cases(
-        pdv(u, overline(z)) & "if" z in CC without {a_k}_(k in NN)\,,
-        0 & "if" z in {a_k}_(k in NN).
+        pdv(u, overline(z)) & quad "if" z in CC without {a_k}_(k in NN)\,,
+        0 & quad "if" z in {a_k}_(k in NN).
       )
     $
-    Since $pdv(u, overline(z), style: "horizontal") equiv partialderivative(psi_n, overline(z), style: "horizontal") equiv 0$ and is $C^oo$ on $overline(V_n) without {a_n}$ and $phi.alt$ vanishes on ${a_k}_(k in NN)$, $phi.alt in C^oo (CC)$. By the discussion preceding @thm:one-dimensional-partial-conjugate-solution, there exists a $C^oo$ function $v(z)$ such that $pdv(v, overline(z)) = phi.alt(z)$ on $CC$. Since $phi.alt$ is $C^oo$, it follows that $v$ is also $C^oo$. Define $f(z) = u(z) - v(z)$. Then
+    Since $pdv(u, overline(z), style: "horizontal") equiv pdv(psi_n, overline(z), style: "horizontal") equiv 0$ and is $C^oo$ on $overline(V_n) without {a_n}$ and $phi.alt$ vanishes on ${a_k}_(k in NN)$, $phi.alt in C^oo (CC)$. By the discussion preceding @thm:one-dimensional-partial-conjugate-solution, there exists a $C^oo$ function $v(z)$ such that $pdv(v, overline(z)) = phi.alt(z)$ on $CC$. Since $phi.alt$ is $C^oo$, it follows that $v$ is also $C^oo$. Define $f(z) = u(z) - v(z)$. Then
     $
       pdv(f, overline(z)) = pdv(u, overline(z)) - pdv(v, overline(z)) = phi.alt(z) - phi.alt(z) = 0,
     $
@@ -477,8 +477,8 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
   Let the simple poles of $uppi csc(uppi z)$ at each integer be enumerated by
   $
     a_n = cases(
-      -n / 2 & "if" n in 2 NN\,,
-      (n + 1) / 2 & "if" n in NN without 2 NN.
+      -n / 2 & quad "if" n in 2 NN\,,
+      (n + 1) / 2 & quad "if" n in NN without 2 NN.
     )
   $
   // TBC

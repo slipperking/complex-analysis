@@ -55,7 +55,7 @@ Let $z = (f^(-1))(w)$. Then we have
   proposition[
     For any connected compact set $K subset.eq CC$ containing at least two distinct points such that $extcomplex without K$ is connected, let $phi.alt$ be an arbitrary biholomorphism mapping $extcomplex without K$ to $DD$ such that $phi.alt(oo) = lim_(z -> oo) phi.alt(z) = 0$. It follows that
     $
-      abs(phi.alt'(oo)) gt.eq 1 / 4 diam(K),
+      abs(phi.alt'(oo)) >= 1 / 4 diam(K),
     $
     where $diam(K) = sup_(z, zeta in K) abs(zeta - z)$.
   ],
@@ -77,7 +77,7 @@ Let $z = (f^(-1))(w)$. Then we have
 
   Hence,
   $
-    abs(alpha / (mu - tau)) gt.eq 1 / 4 <==> abs(alpha) gt.eq abs(mu - tau) / 4.
+    abs(alpha / (mu - tau)) >= 1 / 4 <==> abs(alpha) >= abs(mu - tau) / 4.
   $
   By taking the supremum for $mu, tau in K$, the proof is complete.
 ]
@@ -88,7 +88,7 @@ Let $z = (f^(-1))(w)$. Then we have
 
 #lbl(
   proposition[
-    Let $a in CC$, $r > 0$, and suppose $K subset.eq D(a, r)$ is compact such that $extcomplex without K$ is connected and $diam(K) gt.eq r / 2$. Then there is a family of holomorphic functions $cal(F) = {phi_zeta}_(zeta in D(a, r))$, where $forall zeta in D(a, r)$,
+    Let $a in CC$, $r > 0$, and suppose $K subset.eq D(a, r)$ is compact such that $extcomplex without K$ is connected and $diam(K) >= r / 2$. Then there is a family of holomorphic functions $cal(F) = {phi_zeta}_(zeta in D(a, r))$, where $forall zeta in D(a, r)$,
     $
       phi_zeta:extcomplex without K -> CC,
     $
@@ -105,7 +105,7 @@ Let $z = (f^(-1))(w)$. Then we have
 
   Let $tilde(phi)$ be a conformal mapping from $extcomplex without K$ to $DD$, such that $tilde(phi)(oo) = 0$ and $alpha = tilde(phi)'(oo) in RR_(> 0)$. Let $phi(z) = 1 / alpha tilde(phi)(z)$. It follows that $phi'(oo) = 1$, $phi(oo) = 0$. By @prop:complement-biholomorphism-quarter-estimate,
   $
-    abs(alpha) gt.eq 1 / 4 diam(K) <==> abs(phi(z)) <= (4 abs(tilde(phi)(z))) / diam(K).
+    abs(alpha) >= 1 / 4 diam(K) <==> abs(phi(z)) <= (4 abs(tilde(phi)(z))) / diam(K).
   $
   Consequently, we have the crucial estimate of $phi(extcomplex without K) subset.eq D(0, 4 / diam(K)) subset.eq D(0, 8 / r)$. For fixed $zeta in D(0, r)$, define
   $
@@ -168,8 +168,8 @@ Let $z = (f^(-1))(w)$. Then we have
     #lbl(
       $
         lambda(z) = cases(
-          (1 - abs(z)^2)^2 & abs(z) < 1\,,
-          0 & abs(z) gt.eq 1\,
+          (1 - abs(z)^2)^2 & quad "if" abs(z) < 1\,,
+          0 & quad "if" abs(z) >= 1\,
         ) quad lambda_r (z) = 3 / (uppi r^2) lambda(z / r) quad forall r > 0
       $,
       <eq:diracdeltaapproximation_lambdadefinition>,
@@ -200,7 +200,7 @@ Let $z = (f^(-1))(w)$. Then we have
   $
   which confirms @itm:diracdeltaapproximation_integralto1. Let $z in CC$ be arbitrary. The integral in @eq:diracdeltaapproximation_integralformula is equal to
   $
-    &integral.double_(D(0, R)) f(z - zeta) lambda_r (zeta) dif xi dif eta \
+    & integral.double_(D(0, R)) f(z - zeta) lambda_r (zeta) dif xi dif eta \
     & wide"" = integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 integral_0^(2 uppi) f(z - rho ee^(ii theta)) dtheta dr \
     & wide""= 2 uppi f(z) integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 dr = f(z)
   $
@@ -255,7 +255,7 @@ Let $z = (f^(-1))(w)$. Then we have
   $
   In the case that $n = 0$, define the disjoint closed sets
   $
-    A_0 = {z in K: f(z) <= -1 / 3} quad "and" quad B_0 = {z in K: f(z) gt.eq 1 / 3}.
+    A_0 = {z in K: f(z) <= -1 / 3} quad "and" quad B_0 = {z in K: f(z) >= 1 / 3}.
   $
   Let $g_0(z) = 1 / 3 eta_(A_0, B_0)(z)$. It is clear that $abs(g_0) <= 1 / 3$ on $CC$. If $z in A_0$, then $-1 <= f(z) <= -1 / 3$, $g_0(z) = -1 / 3$, and hence $abs(f - g_0) <= 2 / 3$. If $z in B_0$, then $1 / 3 <= f(z) <= 1$, $g_0(z) = 1 / 3$, and thus $abs(f - g_0) <= 2 / 3$. If $z in.not A_0 union B_0$, then $-1 / 3 < f(z) < 1 / 3$ and $abs(f - g_0) <= abs(f) + abs(g_0) < 1 / 3 + 1 / 3 = 2 / 3$. Thus, $forall z in K$,
   $
@@ -266,7 +266,7 @@ Let $z = (f^(-1))(w)$. Then we have
     h_n (z) = f(z) - sum_(k = 0)^(n - 1) g_k (z)
   $
   for $z in K$. By the inductive hypothesis, we have $abs(h_n) <= (2 / 3)^n$ on $K$. Define the disjoint closed sets
-  $ A_n = {z in K: -(2^n) / 3^n <= h_n (z) <= -(2^n) / 3^(n + 1)} $ and $ B_n = {z in K: (2^n) / 3^n gt.eq h_n (z) gt.eq (2^n) / 3^(n + 1)}. $
+  $ A_n = {z in K: -(2^n) / 3^n <= h_n (z) <= -(2^n) / 3^(n + 1)} $ and $ B_n = {z in K: (2^n) / 3^n >= h_n (z) >= (2^n) / 3^(n + 1)}. $
   Let $g_n (z) = 2^n / 3^(n + 1) eta_(A_n, B_n)(z)$, so that $abs(g_n) <= 2^n / 3^(n + 1)$ on $CC$, and
   $
     abs(h_n (z) - g_n (z)) <= 2^(n + 1) / 3^(n + 1)
@@ -296,9 +296,9 @@ Let $z = (f^(-1))(w)$. Then we have
   Let $f = u + ii v$ where $u, v:K -> RR$ are continuous. By Tietze--Urysohn--Brouwer (@thm:tietzeextension), $exists tilde(u), tilde(v) in C^0(CC)$ such that $tilde(u) equiv u$ and $tilde(v) equiv v$ on $K$. Let $R > 0$ be such that $K subset D(0, R)$, provided by compactness. Define the piecewise-linear function
   $
     psi(z) = cases(
-      1 & abs(z) <= R\,,
-      2 - abs(z) / R & R < abs(z) < 2 R\,,
-      0 & abs(z) gt.eq 2 R,
+      1 & quad "if" abs(z) <= R\,,
+      2 - abs(z) / R & quad "if" R < abs(z) < 2 R\,,
+      0 & quad "if" abs(z) >= 2 R,
     )
   $
   such that $psi in C^0(CC)$ and is compactly supported. Let $g(z) = (tilde(u)(z) + ii tilde(v)(z)) psi(z)$, and the assertion follows.
@@ -691,7 +691,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
     ),
   )
 
-  Hence, the intersection $overline(D(zeta_k^((j)), 3 / 4 r)) inter gamma_k^((j))$ consists of at least one connected component joining $zeta_k^((j))$ to a point on $partial D(zeta_k^((j)), 3 / 4 r)$. Denote the connected component of this intersection by $E_k^((j))$, satisfying $diam E_k^((j)) gt.eq 3 / 4 r > r / 2$ and $E_k^((j)) inter K = emptyset$ (see @fig:mergelyan-E-set-from-gamma).
+  Hence, the intersection $overline(D(zeta_k^((j)), 3 / 4 r)) inter gamma_k^((j))$ consists of at least one connected component joining $zeta_k^((j))$ to a point on $partial D(zeta_k^((j)), 3 / 4 r)$. Denote the connected component of this intersection by $E_k^((j))$, satisfying $diam E_k^((j)) >= 3 / 4 r > r / 2$ and $E_k^((j)) inter K = emptyset$ (see @fig:mergelyan-E-set-from-gamma).
 
   Now for each $j$ and $k$, @prop:complement-biholomorphism-584-r-4767-r-2-estimates now provides the existence of a family of holomorphic functions $phi_(zeta, k)^((j)):extcomplex without E_k^((j)) -> CC$ given with $zeta in D(zeta_k^((j)), 5 / 4 r)$ such that
   #lbl(

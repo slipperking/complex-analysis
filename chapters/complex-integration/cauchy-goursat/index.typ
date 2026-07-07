@@ -818,8 +818,8 @@ We have also already seen the utility of parameterization via a polar transforma
 
   $
     integral.cont_(partial bb(D)) z^(2k - 2n - 1) dz = ii integral_0^(2 uppi) ee^(2 ii theta (k - n)) dif theta = cases(
-      0 & text("if") k < n\,,
-      taui & text("if") k = n.
+      0 & quad "if" k < n\,,
+      taui & quad "if" k = n.
     )
   $
 
@@ -853,8 +853,8 @@ We have also already seen the utility of parameterization via a polar transforma
       #lbl(
         $
           1 / (taui) integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = cases(
-            0 & text("if") z in jinterior(gamma)\,,
-            f(z) & text("if") z in jexterior(gamma).
+            0 & quad "if" z in jinterior(gamma)\,,
+            f(z) & quad "if" z in jexterior(gamma).
           )
         $,
         <eq:cauchy-goursat-formula-exterior-part-2-statement>,
@@ -867,16 +867,16 @@ We have also already seen the utility of parameterization via a polar transforma
   + By the compactness of $gamma$, it can be completely contained within a sufficiently large disk centered at the origin ($gamma subset D(0,R)$). Then by applying @thm:cauchy-goursat-formula or @thm:cauchy-goursat-theorem on the set $D(0,R)inter jexterior(gamma)=D(0,R)without overline(jinterior(gamma))$, we get that
     $
       1 / (taui) integral.cont_(partial D(0, R)) (f(zeta)) / (zeta - z) dzeta = 1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta + cases(
-        0 & "if" z in jinterior(gamma)\,,
-        f(z) & "if" z in D(0, R) inter jexterior(gamma).
+        0 & quad "if" z in jinterior(gamma)\,,
+        f(z) & quad "if" z in D(0, R) inter jexterior(gamma).
       )
     $
 
     By letting $R -> oo$ and letting $zeta = R ee^(ii theta)$, we get that
     $
       1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = 1 / (2 uppi) lim_(R -> oo) integral_0^(2 uppi) (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta))) dif theta - cases(
-        0 & text("if") z in jinterior(gamma)\,,
-        f(z) & text("if") z in jexterior(gamma).
+        0 & quad "if" z in jinterior(gamma)\,,
+        f(z) & quad "if" z in jexterior(gamma).
       )
     $
 
@@ -884,12 +884,12 @@ We have also already seen the utility of parameterization via a polar transforma
 
     $
       1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta & = 1 / (2 uppi) integral_0^(2 uppi) w / (1 - lim_(R -> oo) z / (R ee^(ii theta))) dif theta - cases(
-                                                                      0 & text("if") z in jinterior(gamma)\,,
-                                                                      f(z) & text("if") z in jexterior(gamma),
+                                                                      0 & quad "if" z in jinterior(gamma)\,,
+                                                                      f(z) & quad "if" z in jexterior(gamma),
                                                                     ) \
                                                                   & = cases(
-                                                                      w & text("if") z in jinterior(gamma)\,,
-                                                                      w - f(z) & text("if") z in jexterior(gamma),
+                                                                      w & quad "if" z in jinterior(gamma)\,,
+                                                                      w - f(z) & quad "if" z in jexterior(gamma),
                                                                     )
     $
     as expected.
@@ -899,8 +899,8 @@ We have also already seen the utility of parameterization via a polar transforma
       $
         I & = integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = integral.cont_gamma ((f(zeta)) / zeta - (f(zeta)) / (zeta - z)) dzeta \
         & = integral_0^(2 uppi) (f (R ee^(ii theta)) - (f (R ee^(ii theta))) / (1 - z / (R ee^(ii theta)))) dif theta + cases(
-          0 & text("if") z in jinterior(gamma)\,,
-          taui f(z) & text("if") z in jexterior(gamma) inter D(0, R),
+          0 & quad "if" z in jinterior(gamma)\,,
+          taui f(z) & quad "if" z in jexterior(gamma) inter D(0, R),
         )
       $,
       <eq:cauchy-goursat-formula-exterior-part-2-pre-limit-integral>,
@@ -916,8 +916,8 @@ We have also already seen the utility of parameterization via a polar transforma
     By substituting the result into @eq:cauchy-goursat-formula-exterior-part-2-pre-limit-integral, and letting $R -> oo$, we get that
     $
       1 / (taui) integral.cont_gamma (z f(zeta)) / (z zeta - zeta^2) dzeta = cases(
-        0 & "if" z in jinterior(gamma)\,,
-        f(z) & "if" z in jexterior(gamma),
+        0 & quad "if" z in jinterior(gamma)\,,
+        f(z) & quad "if" z in jexterior(gamma),
       )
     $
     as desired. #qedhere

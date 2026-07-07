@@ -17,7 +17,12 @@ The following important result can be directly obtained from the Maximum Modulus
 
 #proof[
   Define the auxiliary function
-  $ g(z) = cases((f(z)) / (z) & "if" z eq.not 0, f'(0) & "if" z = 0.) $
+  $
+    g(z) = cases(
+      (f(z)) / z & quad "if" z != 0\,,
+      f'(0) & quad "if" z = 0.
+    )
+  $
 
   Because $lim_(z -> 0) (f(z)) / (z) = f'(0)$, $g(z)$ is holomorphic on $DD$. Since $f$ is an automorphism on the open disk, $forall abs(z) < 1$, $abs(f(z)) < 1$. By the Maximum Modulus Principle (@thm:maximum-modulus), $forall 0 < epsilon < 1$, $forall z in D(0, epsilon)$,
   $ abs(g(z)) <= max_(z_epsilon in partial D(0, epsilon)) abs(f(z_epsilon)) / (epsilon) < 1 / (epsilon). $

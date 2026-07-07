@@ -4,7 +4,7 @@
   route: "zeros-of-a-holomorphic-function",
 )
 For a region $U subset.eq CC$ and a holomorphic function $f:U -> CC$, a point $z_0 in U$ is a _zero_ of $f$ iff $f (z_0) = 0$. Furthermore, if $f$ has the Taylor expansion at $z_0$ of
-$ a_m (z - z_0)^m + a_(m + 1) (z - z_0)^(m + 1) + dots.c, quad m in NN, a_m eq.not 0, $
+$ a_m (z - z_0)^m + a_(m + 1) (z - z_0)^(m + 1) + dots.c, quad m in NN, a_m != 0, $
 then the zero at $z_0$ has multiplicity $m$.
 
 We will introduce a fundamental application of Liouville's Theorem (@thm:liouville) below.
@@ -44,7 +44,7 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
 
   $ f_1 (z) = sum_(n = 0)^oo a_(n + 1) (z - z_infinity)^n. $
 
-  Let $z = z_n eq.not z_infinity$ for some $n > N$. Then $f_1$ vanishes, leaving
+  Let $z = z_n != z_infinity$ for some $n > N$. Then $f_1$ vanishes, leaving
   $ 0 = a_1 + Order(z_n - z_infinity). $
 
   Letting $n -> oo$, $z_n -> z_infinity$, and $a_1 = 0$. Define
@@ -54,22 +54,22 @@ We will introduce a fundamental application of Liouville's Theorem (@thm:liouvil
 
   Similarly, $a_2 = 0$. Letting
   $ f_n (z) = (f(z)) / ((z - z_infinity)^n), $
-  the sequence ${a_n}_(n in ZZ_(gt.eq 0))$ vanishes, and $f equiv 0$ on $D(z_infinity, epsilon)$.
+  the sequence ${a_n}_(n in ZZ_(>= 0))$ vanishes, and $f equiv 0$ on $D(z_infinity, epsilon)$.
 
   Let
-  $ tilde(S) = {z in U : forall n in ZZ_(gt.eq 0), f^((n))(z) = 0}. $
+  $ tilde(S) = {z in U : forall n in ZZ_(>= 0), f^((n))(z) = 0}. $
   For all $z in D(z_infinity, epsilon)$, since $f(z)$ locally vanishes (and has vanishing derivatives as a consequence),
   $ D(z_infinity, epsilon) subset.eq tilde(S). $
   Furthermore, for all $z' in tilde(S)$, $exists epsilon' > 0$ such that $f(z)$ has a convergent Taylor series with vanishing coefficients on $D(z', epsilon') subset.eq U$. Then $f equiv 0$ on $D(z', epsilon')$. Then for all $z in D(z', epsilon')$, since $f$ is constant at $z$, it also has vanishing derivatives. It follows that
   $ D(z', epsilon') subset.eq tilde(S). $
   Since every point in $tilde(S)$ has an open neighborhood also in $tilde(S)$, $tilde(S)$ is open.
 
-  It is evident that for all $k in ZZ_(gt.eq 0)$, $f^((k))$ is continuous in $U$ by the holomorphy of $f$. Let
+  It is evident that for all $k in ZZ_(>= 0)$, $f^((k))$ is continuous in $U$ by the holomorphy of $f$. Let
   $ S_k = {z in U : f^((k))(z) = 0}. $
   For any sequence ${tilde(z)_n} in S_k$ converging to some $tilde(z)_infinity in U$, by the continuity of $f$,
   $ lim_(n -> oo) f^((k))(tilde(z)_n) = f^((k))(lim_(n -> oo) tilde(z)_n) = f^((k))(tilde(z)_infinity) = 0, $
   and therefore $tilde(z)_infinity in S_k$. Thus, $S_k$ contains all of its accumulation points in $U$ and is therefore closed in $U$ (if $tilde(z)_infinity in.not U$, then it is no longer relevant; we are concerned about it being closed within $U$). Since
-  $ tilde(S) = inter.big_(k in ZZ_(gt.eq 0)) S_k $
+  $ tilde(S) = inter.big_(k in ZZ_(>= 0)) S_k $
   and each of $S_k$ is closed in $U$, $tilde(S)$ is the intersection of closed sets and consequently closed.
 
   Since $tilde(S)$ is nonempty and clopen in the connected set $U$, $tilde(S) = U$ (by @thm:connected-topological-space-clopen-sets). It follows that $f equiv 0$ on $U$.
@@ -247,7 +247,7 @@ $
   as desired.
 ]
 
-By the Fundamental Theorem of Algebra (@thm:fundamental-theorem-of-algebra), any polynomial in the form $p(z) = sum_(k = 0)^n a_k z^k$ ($n in NN$, $a_n eq.not 0$, $a_k in CC$ where $k = 1, dots n$) has at least one complex zero. Consider the function $q(z) = a_n z^n$, with a zero at $z = 0$ with multiplicity $n$. By Rouché's Theorem (@thm:rouche), since $exists R in RR$ such that $abs(q(z) - p(z)) = abs(sum_(k = 0)^(n - 1) a_k z^k) < abs(a_n z^n)$ over $abs(z) = R$, $p$ and $q$ have the same number of zeros, counting multiplicity.
+By the Fundamental Theorem of Algebra (@thm:fundamental-theorem-of-algebra), any polynomial in the form $p(z) = sum_(k = 0)^n a_k z^k$ ($n in NN$, $a_n != 0$, $a_k in CC$ where $k = 1, dots n$) has at least one complex zero. Consider the function $q(z) = a_n z^n$, with a zero at $z = 0$ with multiplicity $n$. By Rouché's Theorem (@thm:rouche), since $exists R in RR$ such that $abs(q(z) - p(z)) = abs(sum_(k = 0)^(n - 1) a_k z^k) < abs(a_n z^n)$ over $abs(z) = R$, $p$ and $q$ have the same number of zeros, counting multiplicity.
 
 #lbl(
   theorem[
@@ -259,7 +259,7 @@ By the Fundamental Theorem of Algebra (@thm:fundamental-theorem-of-algebra), any
 )
 
 #proof[
-  The zero at $z_0$ is isolated by @thm:identity-accumulation-of-zeros. Furthermore, $abs(f - w_0)$ is continuous on $partial D(z_0, rho)$ and attains a positive infimum $delta$. In other words, on this set, $abs(f - w_0) gt.eq delta$. Hence, $forall xi in D(w_0, delta)$, we have $abs(xi - w_0) < delta <= abs(f(z) - w_0)$ for any $z in partial D(z_0, rho)$.
+  The zero at $z_0$ is isolated by @thm:identity-accumulation-of-zeros. Furthermore, $abs(f - w_0)$ is continuous on $partial D(z_0, rho)$ and attains a positive infimum $delta$. In other words, on this set, $abs(f - w_0) >= delta$. Hence, $forall xi in D(w_0, delta)$, we have $abs(xi - w_0) < delta <= abs(f(z) - w_0)$ for any $z in partial D(z_0, rho)$.
 
   By Rouché's Theorem, since $abs((f(z) - w_0) - (f(z) - xi)) < abs(f(z) - w_0)$, it follows that $f - xi$ and $f - w_0$ have the same number of zeros in $D(z_0, rho)$.
 ]
@@ -276,7 +276,7 @@ We also have the following generalization of @thm:hurwitz-simple-case, which is 
 )
 
 #proof[
-  The zero at $z_0$ is isolated by @thm:identity-accumulation-of-zeros. Furthermore, $abs(f - w_0)$ is continuous on $partial D(z_0, rho)$ and attains a positive infimum $delta$. In other words, on this set, $abs(f - w_0) gt.eq delta$. By uniform convergence, $exists N in NN$ such that $forall n > N$, we have $abs(f(z) - f_n (z)) < delta <= abs(f(z) - w_0)$ for any $z in partial D(z_0, rho)$.
+  The zero at $z_0$ is isolated by @thm:identity-accumulation-of-zeros. Furthermore, $abs(f - w_0)$ is continuous on $partial D(z_0, rho)$ and attains a positive infimum $delta$. In other words, on this set, $abs(f - w_0) >= delta$. By uniform convergence, $exists N in NN$ such that $forall n > N$, we have $abs(f(z) - f_n (z)) < delta <= abs(f(z) - w_0)$ for any $z in partial D(z_0, rho)$.
 
   By Rouché's Theorem (@thm:rouche), since
   $ abs((f(z) - w_0) - (f_n (z) - w_0)) < abs(f(z) - w_0), $

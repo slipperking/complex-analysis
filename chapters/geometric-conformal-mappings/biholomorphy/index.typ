@@ -37,7 +37,7 @@ Holomorphic injectivity, or univalence, satisfies the proceeding assertion:
 #proof[
   Suppose, for the sake of contradiction, that $f$ is univalent on $U$ such that $exists z_0 in U$ such that $f'(z_0) = 0$. Let $w_0 = f(z_0)$. The previous statement is equivalent to: $f(z) - w_0$ has a zero at $z_0$ with multiplicity $m >= 2$.
 
-  Since $f$ is univalent, neither $f-w_0$ nor $f'$ may have accumulation points in $U$. Thus, $exists rho > 0$ such that $z_0$ is the only zero of either $f - w_0$ and $f'$ contained in $overline(D(z_0, rho)) subset U$. By @thm:hurwitz-shifts, $exists delta > 0$ such that $forall w in D^*(w_0, delta)=D(w_0, delta) without {w_0}$, the equation $f(z) = w$ has $m$ solutions in $overline(D(z_0, rho))$, which cannot lie all at a single point (unless that point is $z_0$ itself, which cannot be the case as $z_0$ already maps to $w_0 eq.not w$), as otherwise $z_0$ would not be the only zero of $f'$ in $overline(D(z_0,rho))$. This contradicts the univalence of $f$.
+  Since $f$ is univalent, neither $f-w_0$ nor $f'$ may have accumulation points in $U$. Thus, $exists rho > 0$ such that $z_0$ is the only zero of either $f - w_0$ and $f'$ contained in $overline(D(z_0, rho)) subset U$. By @thm:hurwitz-shifts, $exists delta > 0$ such that $forall w in D^*(w_0, delta)=D(w_0, delta) without {w_0}$, the equation $f(z) = w$ has $m$ solutions in $overline(D(z_0, rho))$, which cannot lie all at a single point (unless that point is $z_0$ itself, which cannot be the case as $z_0$ already maps to $w_0 != w$), as otherwise $z_0$ would not be the only zero of $f'$ in $overline(D(z_0,rho))$. This contradicts the univalence of $f$.
 ]
 
 Conversely, we have the following statement on local univalence and invertibility.
@@ -80,13 +80,13 @@ We will now study holomorphic functions from a more geometric perspective.
   We then have
   $
     k = cases(
-      0 & "if" w_0 in overline(jexterior(Gamma)),
-      1 & "if" w_0 in jinterior(Gamma)
+      0 & quad "if" w_0 in overline(jexterior(Gamma)),
+      1 & quad "if" w_0 in jinterior(Gamma)
     ).
   $
   Hence, $f$ is univalent in $U$ (since for each $w_0$, $k$ is at most one).
 
-  Moreover, any point $z_0 in U$ must map to either $jinterior(Gamma)$ or $overline(jexterior(Gamma))$. The latter is an impossibility since otherwise $k eq.not 0$. This $f(U)=jinterior(Gamma)$.
+  Moreover, any point $z_0 in U$ must map to either $jinterior(Gamma)$ or $overline(jexterior(Gamma))$. The latter is an impossibility since otherwise $k != 0$. This $f(U) = jinterior(Gamma)$.
 ]
 
 We will now give examples of biholomorphisms.

@@ -115,16 +115,16 @@ As an immediate consequence, we have:
     log abs(f(0)) & = 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) dif theta \
                   & quad ""+ sum_(k=1)^(n(r,0,f)) log abs(a_k / r) <= log(M) + sum_(k=1)^(n(r,0,f)) log abs(a_k / r).
   $
-  For any fixed positive integer $k$, choose $r$ such that $abs(a_k) < r < 1$. Then $n(r, 0, f) gt.eq k$ and
+  For any fixed positive integer $k$, choose $r$ such that $abs(a_k) < r < 1$. Then $n(r, 0, f) >= k$ and
   $ sum_(k=1)^(n(r,0,f)) log abs(a_j / r) <= sum_(j=1)^k log abs(a_j / r), $
   since each $log abs(a_j / r) < 0$ for $j = k+1, dots, n(r,0,f)$. Therefore,
   $ log abs(f(0)) <= log M + sum_(j=1)^k log abs(a_j / r) = log M + sum_(j=1)^k log abs(a_j) - k log r. $
   Rearranging,
-  $ sum_(j=1)^k log abs(a_j) gt.eq log abs(f(0)) - log M + k log r. $
+  $ sum_(j=1)^k log abs(a_j) >= log abs(f(0)) - log M + k log r. $
   Now let $r -> 1^-$ with $r > abs(a_k)$. Since $k log r -> 0$, it follows that
-  $ sum_(j=1)^k log abs(a_j) gt.eq log abs(f(0)) - log M. $
+  $ sum_(j=1)^k log abs(a_j) >= log abs(f(0)) - log M. $
   This holds for every $k$. Since $log abs(a_j) < 0$ for all $j$, the partial sums $sum_(j=1)^k log abs(a_j)$ are decreasing and bounded below by $log abs(f(0)) - log M$, hence converge to some finite limit, and
-  $ sum_(j=1)^infinity log abs(a_j) gt.eq log abs(f(0)) - log M, $
+  $ sum_(j=1)^infinity log abs(a_j) >= log abs(f(0)) - log M, $
   or equivalently,
   $ log abs(f(0)) <= log abs(M) + sum_(k=1)^infinity log abs(a_k). $
   For any $0 < a < 1$, we have $-log(a) = 1 - a + sum_(n=2)^infinity (1-a)^n a^n > 1 - a$. Hence,
@@ -189,7 +189,7 @@ As an immediate consequence, we have:
   it follows that
   #lbl(
     $
-      sup_(z in DD) abs(F(z)) gt.eq sup_(z in DD) abs(f(z)).
+      sup_(z in DD) abs(F(z)) >= sup_(z in DD) abs(f(z)).
     $,
     <eq:blaschke-product-factorization-supremum-inequalities>,
   )
@@ -226,13 +226,13 @@ For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs
 
 #proof[
   For $epsilon > 0$, since $r^epsilon -> infinity$ as $r -> infinity$, for any $epsilon > 0$, there exists $r_epsilon$ such that
-  $ r^epsilon gt.eq 2a ==> 1/2 r^(alpha + epsilon) gt.eq a r^alpha $
+  $ r^epsilon >= 2a ==> 1/2 r^(alpha + epsilon) >= a r^alpha $
   for $r > r_epsilon$. There exists $r'_epsilon > 0$ such that
-  $ r > r'_epsilon ==> 1/2 r^(alpha + epsilon) gt.eq b. $
+  $ r > r'_epsilon ==> 1/2 r^(alpha + epsilon) >= b. $
   For simplicity, let the value $max{r_epsilon, r'_epsilon}$ be denoted by $r_epsilon$. Then
   $ r > r_epsilon ==> a r^alpha + b <= 1/2 r^(alpha + epsilon) + 1/2 r^(alpha + epsilon) = r^(alpha + epsilon). $
   By assumption, we have
-  $ M(r, f) <= exp(a r^alpha + b) <= exp(r^(alpha + epsilon)) ==> alpha + epsilon gt.eq rho(f). $
+  $ M(r, f) <= exp(a r^alpha + b) <= exp(r^(alpha + epsilon)) ==> alpha + epsilon >= rho(f). $
   Letting $epsilon -> 0^+$, the assertion follows.
 ]
 
@@ -250,7 +250,7 @@ For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs
   $
   as $epsilon' -> 0$. Moreover, for any $epsilon > 0$, $r' > 0$, $exists r > r'$ such that
   $
-    M(r, f) > exp(r^(rho(f) - epsilon)) ==> limsup_(r -> infinity) (log (log M(r, f))) / (log r) gt.eq rho(f) - epsilon -> rho(f)
+    M(r, f) > exp(r^(rho(f) - epsilon)) ==> limsup_(r -> infinity) (log (log M(r, f))) / (log r) >= rho(f) - epsilon -> rho(f)
   $
   as $epsilon -> 0$. Therefore,
   $ rho(f) <= limsup_(r -> infinity) (log (log M(r, f))) / (log r) <= rho(f). #qedhere $
@@ -277,9 +277,9 @@ For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs
     $
   + Let $z = r$, then
     $
-      sup_(abs(z) = r) abs(exp circle.small exp) gt.eq exp(exp(r))
-      &==> log circle.small log sup_(abs(z) = r) abs(f(z)) gt.eq r \
-      &==> rho(f) gt.eq limsup_(r -> infinity) r / (log r) = infinity. #qedhere
+      sup_(abs(z) = r) abs(exp circle.small exp) >= exp(exp(r))
+      &==> log circle.small log sup_(abs(z) = r) abs(f(z)) >= r \
+      &==> rho(f) >= limsup_(r -> infinity) r / (log r) = infinity. #qedhere
     $
 ]
 
@@ -329,7 +329,7 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
   $ k <= n(abs(a_k) + delta) <= (abs(a_k) + delta)^(sigma') $
   for sufficiently small $delta$. As $delta -> 0^+$, we have
   $
-    k <= abs(a_k)^(sigma') ==> 1/k gt.eq 1 / abs(a_k)^(sigma') ==> 1 / k^(sigma \/ sigma') gt.eq 1 / abs(a_k)^sigma.
+    k <= abs(a_k)^(sigma') ==> 1/k >= 1 / abs(a_k)^(sigma') ==> 1 / k^(sigma \/ sigma') >= 1 / abs(a_k)^sigma.
   $
   By the comparison test, we then have the convergence of
   $ sum_(k=1)^infinity 1 / abs(a_k)^sigma. #qedhere $
@@ -359,7 +359,7 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
   $ k <= n(abs(a_k) + delta, 0, f) <= (abs(a_k) + delta)^(rho(f) + 2 epsilon) $
   for sufficiently small $delta$. As $delta -> 0^+$, we have
   $
-    k <= abs(a_k)^(rho(f) + 2 epsilon) ==> 1/k gt.eq 1 / abs(a_k)^(rho(f) + 2 epsilon) ==> 1 / k^((rho(f) + eta) \/ (rho(f) + 2 epsilon)) gt.eq 1 / abs(a_k)^(rho(f) + eta).
+    k <= abs(a_k)^(rho(f) + 2 epsilon) ==> 1/k >= 1 / abs(a_k)^(rho(f) + 2 epsilon) ==> 1 / k^((rho(f) + eta) \/ (rho(f) + 2 epsilon)) >= 1 / abs(a_k)^(rho(f) + eta).
   $
   The left-hand side as a summation is convergent for $2 epsilon < eta$ or lower, and hence we have the convergence of
   $ sum_(k=1)^infinity 1 / abs(a_k)^(rho(f) + eta). #qedhere $
@@ -374,7 +374,7 @@ $ f(z) = z^m ee^(phi(z)) product_(k=1)^infinity E_(floor(rho)) (z / a_k) $
 locally uniformly converges on $CC$, where $phi$ is entire.
 
 #definition[
-  The _rank_ of an entire function is the smallest $p in ZZ_(gt.eq 0)$ for which the associated sum
+  The _rank_ of an entire function is the smallest $p in ZZ_(>= 0)$ for which the associated sum
   $ sum_(k=1)^infinity 1 / abs(a_k)^(p+1) $
   converges, where ${a_k}_k$ are its zeros in $CC^*$.
 ]
@@ -400,9 +400,9 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
 #proof[
   For fixed $z$, let $r > 2 abs(z)$ such that $a_1, dots, a_(n(r,0,f))$ lie in $D(0,r)$. For each $k$ we obtain
   $
-    abs(r^2 - overline(a_k) z) gt.eq r^2 - abs(a_k) abs(z) > r^2 - r dot r/2 = r^2/2 \ ==> abs(a_k)^(p+1) abs(r^2 - overline(a_k) z)^(-p-1) < (2/r)^(p+1)
+    abs(r^2 - overline(a_k) z) >= r^2 - abs(a_k) abs(z) > r^2 - r dot r/2 = r^2/2 \ ==> abs(a_k)^(p+1) abs(r^2 - overline(a_k) z)^(-p-1) < (2/r)^(p+1)
   $
-  since $rho(f) gt.eq 0$ by the logarithm formula. Now by definition of $rho(f)$, @lem:maximum-moduluszerocountingdoubleradius gives the estimate for sufficiently large $r$ and arbitrarily small $epsilon > 0$:
+  since $rho(f) >= 0$ by the logarithm formula. Now by definition of $rho(f)$, @lem:maximum-moduluszerocountingdoubleradius gives the estimate for sufficiently large $r$ and arbitrarily small $epsilon > 0$:
   $ n(r, 0, f) r^(-p-1) <= (log M(2r, 0, f)) / (log 2) r^(-p-1) <= ((2r)^(rho(f) + epsilon) r^(-p-1)) / (log 2). $
   Thus,
   $
@@ -429,7 +429,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $
     integral_0^(2 uppi) (ii r ee^(ii theta) dif theta) / (r ee^(ii theta) - z)^(p+2) = integral.cont.ccw_(partial D(0,r)) (dif w) / (w - z)^(p+2) = 2 uppi ii Res_(w=z) 1 / (w - z)^(p+2)
   $
-  by the Residue Theorem (@thm:residue-theorem). Since $p + 2 > rho(f) + 1 gt.eq 1$ where $p$ is an integer, we must have $p + 2 gt.eq 2$ and thus
+  by the Residue Theorem (@thm:residue-theorem). Since $p + 2 > rho(f) + 1 >= 1$ where $p$ is an integer, we must have $p + 2 >= 2$ and thus
   $ integral_0^(2 uppi) (r ee^(ii theta) dif theta) / (r ee^(ii theta) - z)^(p+2) = 0. $
   Therefore,
   $
@@ -507,7 +507,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $
     dif^p / (dif z^p) ((P'_n (z)) / (P_n (z))) = -sum_(k=1)^n (p!) / (a_k - z)^(p+1) + dif^p / (dif z^p) sum_(j=1)^(op("rank") f) sum_(k=1)^n z^(j-1) / a_k^j.
   $
-  Since the polynomial in the rightmost term has degree at most $max j - 1 = op("rank") f - 1$, and because $p > floor(rho) - 1 gt.eq op("rank") f - 1$, after $p$ derivatives each term of the expression vanishes. For an arbitrarily chosen compact $K subset CC$ avoiding $a_k$, some $N in NN$ such that $abs(a_k) gt.eq max_(z in K) abs(z)$ for all $k > N$, we have $forall z in K$, $abs(a_k - z) <= abs(a_k) + abs(z) <= 2 abs(a_k)$. Then the convergence of
+  Since the polynomial in the rightmost term has degree at most $max j - 1 = op("rank") f - 1$, and because $p > floor(rho) - 1 >= op("rank") f - 1$, after $p$ derivatives each term of the expression vanishes. For an arbitrarily chosen compact $K subset CC$ avoiding $a_k$, some $N in NN$ such that $abs(a_k) >= max_(z in K) abs(z)$ for all $k > N$, we have $forall z in K$, $abs(a_k - z) <= abs(a_k) + abs(z) <= 2 abs(a_k)$. Then the convergence of
   $ sum_(k=1)^infinity 1 / (2 abs(a_k)^(p+1)) $
   from @thm:entire-function-finite-order-zeros-summation-convergence implies the absolute convergence of
   $ sum_(k=1)^infinity 1 / (a_k - z)^(p+1) $
