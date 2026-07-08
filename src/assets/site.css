@@ -629,7 +629,7 @@ p {
   background: color-mix(in srgb, var(--paper) 97%, transparent);
   box-shadow: 0 0.85rem 2rem rgba(0, 0, 0, 0.16);
   backdrop-filter: blur(10px);
-  text-align: justified;
+  text-align: justify;
 }
 
 .ref-preview[hidden] {
@@ -665,7 +665,6 @@ p {
   color: var(--ink);
   font-size: 0.92rem;
   line-height: 1.55;
-  text-align: left;
 }
 
 .ref-preview-frame {
