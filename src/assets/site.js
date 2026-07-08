@@ -176,6 +176,32 @@
     });
   }
 
+  function normalizeDisplayMathIn(root) {
+    if (!root || !root.querySelectorAll) return;
+    flattenDisplayMathWrappersIn(root);
+    root.querySelectorAll('math[display="block"]').forEach(function (math) {
+      var wrapper = math.closest(".display-math");
+      if (!wrapper && math.parentNode) {
+        wrapper = document.createElement("div");
+        wrapper.className = "display-math";
+        math.parentNode.insertBefore(wrapper, math);
+        wrapper.appendChild(math);
+      }
+
+      if (!wrapper) return;
+
+      var scroll = math.closest(".equation-scroll");
+      if (!scroll || !wrapper.contains(scroll)) {
+        scroll = document.createElement("div");
+        scroll.className = "equation-scroll";
+        math.parentNode.insertBefore(scroll, math);
+        scroll.appendChild(math);
+      }
+
+      setupDisplayMathTags(wrapper, math);
+    });
+  }
+
   function tagGroupTop(items) {
     return items.reduce(function (sum, item) {
       return sum + item.top;
@@ -641,26 +667,56 @@
     function resolvePreviewAnchor(target) {
       if (!target) return null;
 
-      var direct = target.closest && target.closest(".thm-box, .thm-proof, .display-math, figure, li, p, h1, h2, h3, h4, h5, h6");
+      function previewBlockSelector() {
+        return ".thm-box, .thm-proof, .display-math, figure, li, p, h1, h2, h3, h4, h5, h6";
+      }
+
+      function nextPreviewBlockWithin(start, boundary) {
+        var next = start.nextElementSibling;
+        while (next) {
+          if (next.matches("span[id^='loc-']")) {
+            next = next.nextElementSibling;
+            continue;
+          }
+          if (next.matches(previewBlockSelector())) {
+            return next;
+          }
+          if (boundary && next.closest && next.closest(".thm-box, .thm-proof") !== boundary) {
+            return null;
+          }
+          next = next.nextElementSibling;
+        }
+        return null;
+      }
+
+      if (target.matches && target.matches("span[id^='loc-']")) {
+        var immediateBoundary = target.parentElement && target.parentElement.closest
+          ? target.parentElement.closest(".thm-box, .thm-proof")
+          : null;
+        var immediateLocalMatch = nextPreviewBlockWithin(target, immediateBoundary);
+        if (immediateLocalMatch) return immediateLocalMatch;
+        var immediateFallbackMatch = nextPreviewBlockWithin(target, null);
+        if (immediateFallbackMatch) return immediateFallbackMatch;
+      }
+
+      var direct = target.closest && target.closest(previewBlockSelector());
       if (direct) return direct;
 
       var cursor = target;
       while (cursor) {
-        if (cursor.matches && cursor.matches(".thm-box, .thm-proof, .display-math, figure, li, p, h1, h2, h3, h4, h5, h6")) {
+        if (cursor.matches && cursor.matches(previewBlockSelector())) {
           return cursor;
         }
         if (cursor.matches && cursor.matches("span[id^='loc-']")) {
-          var next = cursor.nextElementSibling;
-          while (next) {
-            if (next.matches(".thm-box, .thm-proof, .display-math, figure, li, p, h1, h2, h3, h4, h5, h6")) {
-              return next;
-            }
-            if (next.matches("span[id^='loc-']")) {
-              next = next.nextElementSibling;
-              continue;
-            }
-            break;
+          var localBoundary = cursor.parentElement && cursor.parentElement.closest
+            ? cursor.parentElement.closest(".thm-box, .thm-proof")
+            : null;
+          var localMatch = nextPreviewBlockWithin(cursor, localBoundary);
+          if (localMatch) {
+            return localMatch;
           }
+          var fallbackMatch = nextPreviewBlockWithin(cursor, null);
+          if (fallbackMatch) return fallbackMatch;
         }
         cursor = cursor.parentElement;
       }
@@ -708,7 +764,7 @@
       clonePreviewNodes(doc, target).forEach(function (node) {
         wrapper.appendChild(node);
       });
-      flattenDisplayMathWrappersIn(wrapper);
+      normalizeDisplayMathIn(wrapper);
       wrapper.querySelectorAll(".typst-multi-label-list,.ref-tooltip,.ref-preview").forEach(function (node) {
         node.remove();
       });

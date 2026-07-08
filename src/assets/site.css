@@ -629,6 +629,7 @@ p {
   background: color-mix(in srgb, var(--paper) 97%, transparent);
   box-shadow: 0 0.85rem 2rem rgba(0, 0, 0, 0.16);
   backdrop-filter: blur(10px);
+  text-align: justified;
 }
 
 .ref-preview[hidden] {
@@ -689,23 +690,6 @@ p {
   margin: 0;
 }
 
-.ref-preview-content .display-math {
-  width: max-content;
-  max-width: none;
-}
-
-.ref-preview-content .display-math>.equation-scroll {
-  min-width: 0;
-  width: max-content;
-  max-width: none;
-  overflow: visible;
-}
-
-.ref-preview-content .equation-scroll>math[display="block"] {
-  min-width: 0;
-  width: max-content;
-  max-width: none;
-}
 
 .display-math {
   display: grid;
