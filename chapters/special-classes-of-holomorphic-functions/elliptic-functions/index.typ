@@ -4,7 +4,7 @@
   route: "elliptic-functions",
   children: [
     #include "weierstrass-elliptic-functions/index.typ"
-    #include "jacobi/index.typ"
+    #include "jacobi-elliptic-functions/index.typ"
     #include "modular-group/index.typ"
   ],
 )

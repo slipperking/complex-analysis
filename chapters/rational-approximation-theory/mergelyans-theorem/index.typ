@@ -93,7 +93,7 @@ Let $z = (f^(-1))(w)$. Then we have
       phi_zeta:extcomplex without K -> CC,
     $
     and
-    + $abs(phi_zeta (z)) <= 584 / r$ for any $z in extcomplex without K$. #enum-lbl(<itm:complement-biholomorphism-584-r-4767-r-2-estimates_absolute584>)
+    + $abs(phi_zeta (z)) <= 584 / r$ for any $z in extcomplex without K$. #enum-lbl(<itm:complement-biholomorphism-584-r-4767-r-2-estimates-absolute-584>)
     + $abs(phi_zeta (z) - 1 / (z - zeta)) <= (4676 r^2) / abs(zeta - z)^3$ for any $z in extcomplex without (K union {zeta})$. #enum-lbl(<itm:complement-biholomorphism-584-r-4767-r-2-estimates-absolute-difference-4676>)
     + The function $phi(zeta, z) equiv phi_zeta (z)$ is jointly continuous in $zeta$ and $z$.
   ],
@@ -120,7 +120,7 @@ Let $z = (f^(-1))(w)$. Then we have
     abs(phi_zeta (z)) & <= abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 <= abs(phi(z)) + abs(zeta - beta) abs(phi(z))^2 \
                       & <= 8 / r + 9 r 64 / r^2 = 584 / r.
   $
-  This is @itm:complement-biholomorphism-584-r-4767-r-2-estimates_absolute584. Suppose that $abs(z - zeta) > 2 r$. It follows from $abs(zeta) < r$ that $abs(z) > r$ (from the reverse triangle inequality) and hence disjoint from $K$ and $zeta$. On this infinite annulus, we have the Laurent expansion (from @thm:laurent-expansion-of-holomorphic-function) that
+  This is @itm:complement-biholomorphism-584-r-4767-r-2-estimates-absolute-584. Suppose that $abs(z - zeta) > 2 r$. It follows from $abs(zeta) < r$ that $abs(z) > r$ (from the reverse triangle inequality) and hence disjoint from $K$ and $zeta$. On this infinite annulus, we have the Laurent expansion (from @thm:laurent-expansion-of-holomorphic-function) that
   $
     phi(z) = sum_(k = 1)^oo mu_k / (z - zeta)^k = 1 / (z - zeta) + mu / (z - zeta)^2 + Order(1 / (z - zeta)^3)
   $
@@ -153,7 +153,7 @@ Let $z = (f^(-1))(w)$. Then we have
     abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 & <= abs(phi_zeta (z)) abs(z - zeta)^3 + abs(z - zeta)^2 \
                                                        & <= 584 / r (2 r)^3 + (2 r)^2 = 4676 r^2
   $
-  from @itm:complement-biholomorphism-584-r-4767-r-2-estimates_absolute584. The Maximum Modulus Principle (@thm:maximum-modulus) implies that
+  from @itm:complement-biholomorphism-584-r-4767-r-2-estimates-absolute-584. The Maximum Modulus Principle (@thm:maximum-modulus) implies that
   $
     sup_(abs(z - zeta) > 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 <= sup_(abs(z - zeta) = 2 r) abs(phi_zeta (z) - 1 / (z - zeta)) abs(z - zeta)^3 <= 4676 r^2
   $
@@ -172,23 +172,23 @@ Let $z = (f^(-1))(w)$. Then we have
           0 & quad "if" abs(z) >= 1\,
         ) quad lambda_r (z) = 3 / (uppi r^2) lambda(z / r) quad forall r > 0
       $,
-      <eq:diracdeltaapproximation_lambdadefinition>,
+      <eq:dirac-delta-approximation-lambda-definition>,
     )
     For fixed $r$, the function $lambda_r$ satisfies:
-    + $integral.double_(CC) lambda_r (zeta) dif xi dif eta = 1$, where $zeta = xi + ii eta$. #enum-lbl(<itm:diracdeltaapproximation_integralto1>)
-    + $lambda_r in C^1(CC)$ and is compactly supported. #enum-lbl(<itm:diracdeltaapproximation_compactsupportcontinuousdifferentiability>)
-    + $integral.double_(CC) pdv(lambda_r, overline(zeta)) dif xi dif eta = 0$. #enum-lbl(<itm:diracdeltaapproximation_antiholomorphicderivativeintegral>)
-    + $integral.double_(CC) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta <= (2 uppi) / r$. #enum-lbl(<itm:diracdeltaapproximation_absoluteantiholomorphicderivativeintegral>)
-    + $norm(grad lambda_r (z)) <= 4 / r^3$ for all $z$, where $grad = (pdv(, x), pdv(, y))$ denotes the vector differential operator. #enum-lbl(<itm:diracdeltaapproximation_gradientstatement>)
-    + For any $z in CC$ such that $f$ is a holomorphic function on $D(z, r)$, we have the integral formula. #enum-lbl(<itm:diracdeltaapproximation_integralformula>)
+    + $integral.double_(CC) lambda_r (zeta) dif xi dif eta = 1$, where $zeta = xi + ii eta$. #enum-lbl(<itm:dirac-delta-approximation-integral-to-1>)
+    + $lambda_r in C^1(CC)$ and is compactly supported. #enum-lbl(<itm:dirac-delta-approximation-compact-support-continuous-differentiability>)
+    + $integral.double_(CC) pdv(lambda_r, overline(zeta)) dif xi dif eta = 0$. #enum-lbl(<itm:dirac-delta-approximation-antiholomorphic-derivative-integral>)
+    + $integral.double_(CC) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta <= (2 uppi) / r$. #enum-lbl(<itm:dirac-delta-approximation-absolute-antiholomorphic-derivative-integral>)
+    + $norm(grad lambda_r (z)) <= 4 / r^3$ for all $z$, where $grad = (pdv(, x), pdv(, y))$ denotes the vector differential operator. #enum-lbl(<itm:dirac-delta-approximation-gradient-statement>)
+    + For any $z in CC$ such that $f$ is a holomorphic function on $D(z, r)$, we have the integral formula. #enum-lbl(<itm:dirac-delta-approximation-integral-formula>)
       #lbl(
         $
           f(z) = integral.double_(D(0, r)) f(z - zeta) lambda_r (zeta) dif xi dif eta.
         $,
-        <eq:diracdeltaapproximation_integralformula>,
+        <eq:dirac-delta-approximation-integral-formula>,
       )
   ],
-  <prop:diracdeltaapproximation>,
+  <prop:dirac-delta-approximation>,
 )
 
 #proof[
@@ -198,13 +198,13 @@ Let $z = (f^(-1))(w)$. Then we have
     &= integral_0^(2 uppi) integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 dr dtheta \
     & = 6 / r^2 integral_0^r (rho + rho^5 / r^4 - 2 rho^3 / r^2) dr \ &= 6 / r^2 (r^2 / 2 + r^6 / (6 r^4) - r^4 / (2 r^2)) = 1,
   $
-  which confirms @itm:diracdeltaapproximation_integralto1. Let $z in CC$ be arbitrary. The integral in @eq:diracdeltaapproximation_integralformula is equal to
+  which confirms @itm:dirac-delta-approximation-integral-to-1. Let $z in CC$ be arbitrary. The integral in @eq:dirac-delta-approximation-integral-formula is equal to
   $
     & integral.double_(D(0, R)) f(z - zeta) lambda_r (zeta) dif xi dif eta \
     & wide"" = integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 integral_0^(2 uppi) f(z - rho ee^(ii theta)) dtheta dr \
     & wide""= 2 uppi f(z) integral_0^r (3 rho) / (uppi r^2) (1 - (rho / r)^2)^2 dr = f(z)
   $
-  by the mean-value property (@lem:holomorphicmeanvalueproperty), proving @itm:diracdeltaapproximation_integralformula. For $z in DD$, we have
+  by the mean-value property (@lem:holomorphic-mean-value-property), proving @itm:dirac-delta-approximation-integral-formula. For $z in DD$, we have
   $
     norm(grad lambda(z)) & = 2 (1 - abs(z)^2) norm(grad(abs(z)^2)) \
                          & = 2 (1 - abs(z)^2) 2 abs(z) norm(grad sqrt(x^2 + y^2)) = 4 (1 - abs(z)^2) abs(z).
@@ -214,13 +214,13 @@ Let $z = (f^(-1))(w)$. Then we have
     norm(grad lambda_r (z)) & = 3 / (uppi r^2) norm(grad(lambda(z / r))) = 3 / (uppi r^2) norm((grad lambda)(z / r)) 1 / r \
                             & = 12 / (uppi r^3) (1 - abs(z)^2) abs(z) < 4 / r^3,
   $
-  which confirms @itm:diracdeltaapproximation_gradientstatement. Since $abs(pdv(lambda_r, overline(zeta))) = abs(1 / 2 (pdv(lambda_r, xi) + ii pdv(lambda_r, eta))) = 1 / 2 norm(grad lambda_r (zeta)) < 2 / r^3$, we have
+  which confirms @itm:dirac-delta-approximation-gradient-statement. Since $abs(pdv(lambda_r, overline(zeta))) = abs(1 / 2 (pdv(lambda_r, xi) + ii pdv(lambda_r, eta))) = 1 / 2 norm(grad lambda_r (zeta)) < 2 / r^3$, we have
   $
     integral.double_(CC) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta = integral.double_(D(0, r)) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta < uppi r^2 2 / r^3 = (2 uppi) / r
   $
-  since $supp(lambda_r) = overline(D(0, r))$ which verifies the inequality in @itm:diracdeltaapproximation_absoluteantiholomorphicderivativeintegral.
+  since $supp(lambda_r) = overline(D(0, r))$ which verifies the inequality in @itm:dirac-delta-approximation-absolute-antiholomorphic-derivative-integral.
 
-  The @itm:diracdeltaapproximation_antiholomorphicderivativeintegral is also true since
+  The @itm:dirac-delta-approximation-antiholomorphic-derivative-integral is also true since
   $
     integral.double_(CC) pdv(lambda_r, overline(zeta)) dif xi dif eta & = 1 / 2 integral_(-r)^r integral_(-r)^r pdv(lambda_r, xi) dif xi dif eta + ii / 2 integral_(-r)^r integral_(-r)^r pdv(lambda_r, eta) dif eta dif xi \
     & = 1 / 2 integral_(-r)^r [lambda_r (r + ii eta) - lambda(-r + ii eta)] dif eta \
@@ -232,14 +232,14 @@ Let $z = (f^(-1))(w)$. Then we have
   $
     pdv(lambda, x) = -4 (1 - x^2 - y^2) x, quad pdv(lambda, y) = -4 (1 - x^2 - y^2) y.
   $
-  At $x^2 + y^2 = 1$, both partial derivatives vanish, and hence, they match the vanishing derivative on the complement of $supp(lambda)$, completing the proof of @itm:diracdeltaapproximation_compactsupportcontinuousdifferentiability.
+  At $x^2 + y^2 = 1$, both partial derivatives vanish, and hence, they match the vanishing derivative on the complement of $supp(lambda)$, completing the proof of @itm:dirac-delta-approximation-compact-support-continuous-differentiability.
 ]
 
 #lbl(
   theorem[Tietze--Urysohn--Brouwer][
     Let $K subset.eq CC$ be compact and $f:K -> RR$ be continuous. Then $exists g in C^0(CC)$ such that $g equiv f$ on $K$.
   ],
-  <thm:tietzeextension>,
+  <thm:tietze-extension>,
 )
 
 #proof[
@@ -289,11 +289,11 @@ Let $z = (f^(-1))(w)$. Then we have
   corollary[
     If $K subset.eq CC$ is compact and $f:K -> CC$ is continuous, then $exists g in C^0(CC)$ such that $g equiv f$ on $K$ and has compact support.
   ],
-  <cor:tietzeextensioncomplexcompactsupport>,
+  <cor:tietze-extension-complex-compact-support>,
 )
 
 #proof[
-  Let $f = u + ii v$ where $u, v:K -> RR$ are continuous. By Tietze--Urysohn--Brouwer (@thm:tietzeextension), $exists tilde(u), tilde(v) in C^0(CC)$ such that $tilde(u) equiv u$ and $tilde(v) equiv v$ on $K$. Let $R > 0$ be such that $K subset D(0, R)$, provided by compactness. Define the piecewise-linear function
+  Let $f = u + ii v$ where $u, v:K -> RR$ are continuous. By Tietze--Urysohn--Brouwer (@thm:tietze-extension), $exists tilde(u), tilde(v) in C^0(CC)$ such that $tilde(u) equiv u$ and $tilde(v) equiv v$ on $K$. Let $R > 0$ be such that $K subset D(0, R)$, provided by compactness. Define the piecewise-linear function
   $
     psi(z) = cases(
       1 & quad "if" abs(z) <= R\,,
@@ -304,7 +304,7 @@ Let $z = (f^(-1))(w)$. Then we have
   such that $psi in C^0(CC)$ and is compactly supported. Let $g(z) = (tilde(u)(z) + ii tilde(v)(z)) psi(z)$, and the assertion follows.
 ]
 
-Let $f in C^0(K)$ be holomorphic on $interior(K)$. Then $f$ has a continuous extension to all of $CC$ by virtue of @cor:tietzeextensioncomplexcompactsupport. Define the _modulus of continuity_ of $f$ to be the function $omega_f:RR_(>= 0) -> RR_(>= 0)$ with
+Let $f in C^0(K)$ be holomorphic on $interior(K)$. Then $f$ has a continuous extension to all of $CC$ by virtue of @cor:tietze-extension-complex-compact-support. Define the _modulus of continuity_ of $f$ to be the function $omega_f:RR_(>= 0) -> RR_(>= 0)$ with
 $
   omega_f (delta) = sup_(
   z, zeta in CC \
@@ -320,7 +320,7 @@ For $r > 0$, define
   $,
   <eq:integralofcontinuousextensionofholomorphic>,
 )
-where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_lambdadefinition.
+where $lambda_r$ employs the same definition as in @eq:dirac-delta-approximation-lambda-definition.
 
 #lbl(
   proposition[
@@ -329,7 +329,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
     + $Phi equiv f$ on $U = {z in K: op("dist")(z, CC without K) > r}$. #enum-lbl(<itm:integral-of-continuous-extension-of-holomorphic-properties_equivalenceonU>)
     + $abs(f(z) - Phi(z)) <= omega_f (r)$ for all $z in CC$. #enum-lbl(<itm:integral-of-continuous-extension-of-holomorphic-properties-differ-by-modulus-of-continuity>)
     + For all $z in CC$, $abs(pdv(Phi, overline(z))(z)) <= (4 uppi omega_f (r)) / r$. #enum-lbl(<itm:integral-of-continuous-extension-of-holomorphic-properties_antiholomorphicderivativebound>)
-    + $Phi(z) = -1 / uppi integral.double_H pdv(Phi, overline(zeta))(zeta) (dif xi dif eta) / (zeta - z)$ for $z in CC$, where $H = supp(Phi) without U$. #enum-lbl(<itm:integral-of-continuous-extension-of-holomorphic-properties_integralformula>)
+    + $Phi(z) = -1 / uppi integral.double_H pdv(Phi, overline(zeta))(zeta) (dif xi dif eta) / (zeta - z)$ for $z in CC$, where $H = supp(Phi) without U$. #enum-lbl(<itm:integral-of-continuous-extension-of-holomorphic-properties_integral-formula>)
   ],
   <prop:integral-of-continuous-extension-of-holomorphic-properties>,
 )
@@ -346,7 +346,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
     Delta x in RR
     ) integral_(CC) (lambda_r (z + Delta x - zeta) - lambda_r (z - zeta)) / (Delta x) f(zeta) dif xi and dif eta.
   $
-  Because $f$ is continuous and vanishes on a compact set, it is bounded. Similarly, @itm:diracdeltaapproximation_compactsupportcontinuousdifferentiability of @prop:diracdeltaapproximation implies that $pdv(lambda_r, x)$ is bounded. Hence, by Lebesgue's Dominated Convergence Theorem, we have
+  Because $f$ is continuous and vanishes on a compact set, it is bounded. Similarly, @itm:dirac-delta-approximation-compact-support-continuous-differentiability of @prop:dirac-delta-approximation implies that $pdv(lambda_r, x)$ is bounded. Hence, by Lebesgue's Dominated Convergence Theorem, we have
   $
     pdv(Phi, x) = integral_(CC) pdv(lambda_r, x)(z - zeta) f(zeta) dif xi and dif eta,
   $
@@ -358,7 +358,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
   $
     Phi(z) = integral.double_(CC) lambda_r (z - zeta) f(zeta) dif xi dif eta = integral.double_(CC) lambda_r (zeta) f(z - zeta) dif xi dif eta,
   $
-  by @itm:diracdeltaapproximation_integralto1 of @prop:diracdeltaapproximation, we have
+  by @itm:dirac-delta-approximation-integral-to-1 of @prop:dirac-delta-approximation, we have
   #lbl(
     $
       abs(f(z) - Phi(z)) & <= abs(integral_(CC) f(z) lambda_r (zeta) dif xi and dif eta - integral_(CC) f(z - zeta) lambda_r (zeta) dif xi and dif eta) \
@@ -367,7 +367,7 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
     $,
     <eq:integral-of-continuous-extension-of-holomorphic-properties_differencebound>,
   )
-  which implies @itm:integral-of-continuous-extension-of-holomorphic-properties-differ-by-modulus-of-continuity. For $z in U$, $zeta in D(0, r)$ now implies that $z - zeta in interior(K)$ and hence $f(z) - f(z - zeta)$ is holomorphic in $zeta$ on $D(z, r)$. By @itm:diracdeltaapproximation_integralformula of @prop:diracdeltaapproximation, @eq:integral-of-continuous-extension-of-holomorphic-properties_differencebound becomes
+  which implies @itm:integral-of-continuous-extension-of-holomorphic-properties-differ-by-modulus-of-continuity. For $z in U$, $zeta in D(0, r)$ now implies that $z - zeta in interior(K)$ and hence $f(z) - f(z - zeta)$ is holomorphic in $zeta$ on $D(z, r)$. By @itm:dirac-delta-approximation-integral-formula of @prop:dirac-delta-approximation, @eq:integral-of-continuous-extension-of-holomorphic-properties_differencebound becomes
   $
     abs(integral_(CC) lambda_r (zeta) (f(z) - f(z - zeta)) dif xi and dif eta) = abs(f(z) - f(z - 0)) = 0,
   $
@@ -378,13 +378,13 @@ where $lambda_r$ employs the same definition as in @eq:diracdeltaapproximation_l
     & = integral_(CC) pdv(lambda_r, overline(zeta))(zeta) f(z - zeta) dif xi and dif eta - f(z) integral_(CC) pdv(lambda_r, overline(zeta)) dif xi and dif eta \
     & = integral_(CC) pdv(lambda_r, overline(zeta))(zeta) (f(z - zeta) - f(z)) dif xi and dif eta
   $
-  by @itm:diracdeltaapproximation_antiholomorphicderivativeintegral of @prop:diracdeltaapproximation. Hence,
+  by @itm:dirac-delta-approximation-antiholomorphic-derivative-integral of @prop:dirac-delta-approximation. Hence,
   $
     abs(pdv(Phi, overline(z))) & <= integral.double_(D(0, r)) abs(pdv(lambda_r, overline(zeta))) abs(f(z - zeta) - f(z)) dif xi dif eta \
     & <= omega_f (r) integral.double_(D(0, r)) norm(grad lambda_r) dif xi dif eta \
     & <= (4 omega_f (r)) / r^3 integral.double_(D(0, r)) dif xi dif eta <= (4 omega_f (r)) / r^3 dot uppi r^2 = (4 uppi omega_f (r)) / r,
   $
-  by @itm:diracdeltaapproximation_gradientstatement of @prop:diracdeltaapproximation, confirming @itm:integral-of-continuous-extension-of-holomorphic-properties_antiholomorphicderivativebound. Finally, @itm:integral-of-continuous-extension-of-holomorphic-properties_integralformula follows from @cor:pompeiu-without-cauchy-term (since outside the support the integral trivially vanishes and within $U$, $pdv(Phi, overline(zeta))$ vanishes as a consequence of holomorphy).
+  by @itm:dirac-delta-approximation-gradient-statement of @prop:dirac-delta-approximation, confirming @itm:integral-of-continuous-extension-of-holomorphic-properties_antiholomorphicderivativebound. Finally, @itm:integral-of-continuous-extension-of-holomorphic-properties_integral-formula follows from @cor:pompeiu-without-cauchy-term (since outside the support the integral trivially vanishes and within $U$, $pdv(Phi, overline(zeta))$ vanishes as a consequence of holomorphy).
 ]
 
 #lbl(

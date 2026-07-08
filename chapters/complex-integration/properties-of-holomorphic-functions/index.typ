@@ -12,7 +12,7 @@ Before the theorem, we first introduce the mean-value property of holomorphic fu
     Let $U subset.eq CC$ be open and simply connected, and let $f:U -> CC$ be holomorphic. Then $forall z in U$ and $forall epsilon > 0$ such that $overline(D(z, epsilon)) subset U$, $f(z)$ is the average of $f(zeta)$ where $zeta in D(z, epsilon)$ is uniform. In other words,
     $ f(z) = 1 / (2 uppi epsilon) integral.cont_(partial D(z, epsilon)) f(zeta) abs(dzeta). $
   ],
-  <lem:holomorphicmeanvalueproperty>,
+  <lem:holomorphic-mean-value-property>,
 )
 
 #proof[
@@ -47,7 +47,7 @@ Since the real and imaginary parts of holomorphic functions are real-valued harm
   $ lim_(n -> oo) f(z_n) = f(lim_(n -> oo) z_n) = f(z_infinity) = f(z_0), $
   and $z_infinity in S$. Thus, $S$ contains all of its accumulation points in $V$ and is therefore closed (if $z_infinity in.not V$, then it is no longer relevant; we are concerned with its relative closedness in $V$).
 
-  Since $S subset.eq V$ and $V$ are both open, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq V$. By @lem:holomorphicmeanvalueproperty, $forall 0 < epsilon < lambda$,
+  Since $S subset.eq V$ and $V$ are both open, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq V$. By @lem:holomorphic-mean-value-property, $forall 0 < epsilon < lambda$,
   $
     abs(f(z)) & = abs(1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii t)) dt) <= 1 / (2 uppi) integral_0^(2 uppi) abs(f(z + epsilon ee^(ii t))) dt \
     & <= 1 / (2 uppi) integral_0^(2 uppi) abs(f(z)) dt = abs(f(z)).

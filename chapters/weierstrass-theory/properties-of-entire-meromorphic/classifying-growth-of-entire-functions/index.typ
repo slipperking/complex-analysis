@@ -83,7 +83,7 @@ As an immediate consequence, we have:
         log abs(f(z)) &= integral_0^(2 uppi) log abs(f(zeta)) P (zeta, z) dif theta \
         &quad ""+ sum_(j=1)^m log abs((r (z - a_j)) / (r^2 - overline(a_j) z)) - sum_(k=1)^n log abs((r (z - b_k)) / (r^2 - overline(b_k) z)),
       $,
-      <eq:poisson-jensen-formula_statement>,
+      <eq:poisson-jensen-formula-statement>,
     )
     where $zeta = r ee^(ii theta)$, $z in D(0,r) without ({a_j}_(j=1)^m union {b_k}_(j=1)^n)$, and $P(zeta, z)$ is the Poisson kernel in @eq:poisson-kernel-general-form.
   ],
@@ -294,7 +294,7 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
     If $f$ is entire with $f(0) = 1$, then
     $ log 2 dot n(r, 0, f) <= log M(2r, f). $
   ],
-  <lem:maximum-moduluszerocountingdoubleradius>,
+  <lem:maximum-modulus-zero-counting-double-radius>,
 )
 
 #proof[
@@ -347,7 +347,7 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
 #proof[
   By trivial definition, we have
   $ M(2r, f) <= exp((2r)^(rho + epsilon)) $
-  for all $epsilon' > 0$ and some $0 < epsilon < epsilon'$. @lem:maximum-moduluszerocountingdoubleradius gives that for any $r > 0$,
+  for all $epsilon' > 0$ and some $0 < epsilon < epsilon'$. @lem:maximum-modulus-zero-counting-double-radius gives that for any $r > 0$,
   $ log 2 dot n(r, 0, f) <= log M(2r, f). $
   Hence,
   $
@@ -394,7 +394,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
     Let $f$ be entire with finite order such that $f(0) = 1$. Let ${a_k}_(k in NN)$ be the zeros of $f$, listed with multiplicities, such that $abs(a_1) <= abs(a_2) <= abs(a_3) <= dots$. Suppose $p > rho(f) - 1$; then for any $z in CC$,
     $ lim_(r -> infinity) sum_(k=1)^(n(r,0,f)) overline(a_k)^(p+1) (r^2 - overline(a_k) z)^(-p-1) = 0. $
   ],
-  <lem:entirefunctionfiniteorderserieslimitzero>,
+  <lem:entire-function-finite-order-series-limit-zero>,
 )
 
 #proof[
@@ -402,7 +402,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $
     abs(r^2 - overline(a_k) z) >= r^2 - abs(a_k) abs(z) > r^2 - r dot r/2 = r^2/2 \ ==> abs(a_k)^(p+1) abs(r^2 - overline(a_k) z)^(-p-1) < (2/r)^(p+1)
   $
-  since $rho(f) >= 0$ by the logarithm formula. Now by definition of $rho(f)$, @lem:maximum-moduluszerocountingdoubleradius gives the estimate for sufficiently large $r$ and arbitrarily small $epsilon > 0$:
+  since $rho(f) >= 0$ by the logarithm formula. Now by definition of $rho(f)$, @lem:maximum-modulus-zero-counting-double-radius gives the estimate for sufficiently large $r$ and arbitrarily small $epsilon > 0$:
   $ n(r, 0, f) r^(-p-1) <= (log M(2r, 0, f)) / (log 2) r^(-p-1) <= ((2r)^(rho(f) + epsilon) r^(-p-1)) / (log 2). $
   Thus,
   $
@@ -421,7 +421,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
       lim_(r -> infinity) integral_0^(2 uppi) (r ee^(ii theta) log abs(f (r ee^(ii theta)))) / (r ee^(ii theta) - z)^(p+2) dif theta = 0.
     $
   ],
-  <thm:poissonjensenlogdiffintegralterm>,
+  <thm:poisson-jensen-log-diff-integral-term>,
 )
 
 #proof[
@@ -484,7 +484,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
     &= 1 / uppi integral_0^(2 uppi) log abs(f (r ee^(ii theta))) (r ee^(ii theta) (p+1)! dif theta) / (r ee^(ii theta) - z)^(p+2) \
     &quad + sum_(k=1)^(n(r,0,f)) (overline(a_k)^(p+1) p!) / (r^2 - overline(a_k) z)^(p+1) - sum_(k=1)^(n(r,0,f)) (p!) / (a_k - z)^(p+1).
   $
-  The first two terms vanish as $r -> infinity$ by @thm:poissonjensenlogdiffintegralterm and @lem:entirefunctionfiniteorderserieslimitzero.
+  The first two terms vanish as $r -> infinity$ by @thm:poisson-jensen-log-diff-integral-term and @lem:entire-function-finite-order-series-limit-zero.
 ]
 
 #lbl(

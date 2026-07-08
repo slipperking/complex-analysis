@@ -17,7 +17,7 @@ $ f(z) = integral.cont_(partial U) f(zeta) H(zeta, z) dzeta. $
 
 There also exist other integral formulas for functions, varying in the kernel of the expression.
 
-Let $Phi:DD -> RR$ be harmonic such that $Phi$ is continuous on $overline(DD)$. By the mean-value property introduced in @lem:holomorphicmeanvalueproperty, we have
+Let $Phi:DD -> RR$ be harmonic such that $Phi$ is continuous on $overline(DD)$. By the mean-value property introduced in @lem:holomorphic-mean-value-property, we have
 
 $ Phi(0) = 1 / (2 uppi) integral_0^(2 uppi) Phi(rho ee^(ii t)) dt, $
 

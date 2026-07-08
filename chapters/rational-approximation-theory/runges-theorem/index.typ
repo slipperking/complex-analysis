@@ -193,7 +193,7 @@ The proof can be well-organized through the use of the results that we will now 
       }),
       caption: [The elements of $cal(G)$, relative to $K$ and its neighborhood, $U$.],
     ),
-    <fig:runge_simple_poles_and_removable_singularity_at_infinity_grid>,
+    <fig:runge-simple-poles-and-removable-singularity-at-infinity-grid>,
   )
 ])
 
@@ -208,14 +208,14 @@ The proof can be well-organized through the use of the results that we will now 
   $
     {x + ii y : j / 2^m <= x <= (j + 1) / 2^m, k / 2^m <= y <= (k + 1) / 2^m}
   $
-  (where $j$ and $k$ are integers) and let $cal(G)$ be the collection of all such squares in this grid that intersect $K$, and it follows that $tilde(K) = union.big_(Q in cal(G)) Q subset U$ (refer to @fig:runge_simple_poles_and_removable_singularity_at_infinity_grid).
+  (where $j$ and $k$ are integers) and let $cal(G)$ be the collection of all such squares in this grid that intersect $K$, and it follows that $tilde(K) = union.big_(Q in cal(G)) Q subset U$ (refer to @fig:runge-simple-poles-and-removable-singularity-at-infinity-grid).
 
   As a consequence of Cauchy--Goursat (@thm:cauchy-goursat-formula), we have
   #lbl(
     $
       1 / taui integral.cont_(partial tilde(K)) (f(zeta) dzeta) / (zeta - z) = f(z)
     $,
-    <eq:runge-simple-poles-and-removable-singularity-at-infinity_cauchygoursat>,
+    <eq:runge-simple-poles-and-removable-singularity-at-infinity-cauchy-goursat>,
   )
   in the case that $z in tilde(K)$. The boundary $partial tilde(K)$ may be written as the union of $n$ lines parameterized by $0 <= t <= 1$; more concretely, we have $partial tilde(K) = union.big_(j in NN_(<= n)) gamma_j ([0, 1])$. Hence we have in equivalent formulation,
   $
@@ -223,7 +223,7 @@ The proof can be well-organized through the use of the results that we will now 
   $
   The distance between $K$ and $partial tilde(K)$ is strictly positive. Suppose instead that the distance were zero. Then some point of $K$ would lie on the boundary of a square $Q in cal(G)$ that intersects $partial tilde(K)$. If this point lies on an edge of $Q$ (but not at a vertex), then the square adjacent along that edge must also intersect $K$, and hence belong to $cal(G)$, contradicting the assumption that the point lies on $partial tilde(K)$. If the point lies at a vertex of $Q$, then all three adjacent squares also intersect $K$, so they too belong to $cal(G)$, leading to the same contradiction. Thus, the distance must be positive.
 
-  Hence, each integrand as defined in @eq:runge-simple-poles-and-removable-singularity-at-infinity_cauchygoursat is jointly continuous for $t in [0, 1]$ and $z in K$. By compactness of the product, it is in fact uniformly continuous by Heine--Cantor (@thm:heine-cantor).
+  Hence, each integrand as defined in @eq:runge-simple-poles-and-removable-singularity-at-infinity-cauchy-goursat is jointly continuous for $t in [0, 1]$ and $z in K$. By compactness of the product, it is in fact uniformly continuous by Heine--Cantor (@thm:heine-cantor).
 
   Hence, $forall epsilon > 0$, $exists delta > 0$ such that $forall z in K$, $forall 1 <= j <= n$ (uniform in $j$ as we can take the minimum of each $delta_j$), and $forall t_1, t_2 in [0, 1]$ satisfying $abs(t_1 - t_2) < delta$,
   $

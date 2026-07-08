@@ -26,7 +26,7 @@ The hyperbolic metric $lambda$ in @eq:poincare-metric-definition does not increa
     $
       lambda_r (z) = (z |-> z / r)^* lambda(z) = (2 r)/(r^2 - abs(z)^2), quad 0 < r < 1
     $,
-    <eq:poincaremetriconscaleddisks>,
+    <eq:poincare-metric-on-scaled-disks>,
   )
   to generalize the Poincaré metric to $D(0, r)$. @eq:curvature-invariance-under-holomorphic-pullback gives that $K_(lambda_r) (z) = K_lambda (z / r) = -1$ for any $z in D(0, r)$. Define the real-valued function
   $ u_r (z) = (f^* rho(z))/(lambda_r (z)) quad "for" quad z in D(0, r), $
@@ -59,13 +59,13 @@ The hyperbolic metric $lambda$ in @eq:poincare-metric-definition does not increa
         $
           nabla_(vu(n)') (log rho)(w) + nabla_(vu(n)'') (log rho)(w) > 0
         $,
-        <eq:schwarz-ahlfors-pickextension1_directionalderivatives>,
+        <eq:schwarz-ahlfors-pick-extension-1-directional-derivatives>,
       )
       (the directional derivatives).
 
     Then the metric $f^* rho$ does not exceed the hyperbolic metric $lambda$.
   ],
-  <thm:schwarz-ahlfors-pickextension1>,
+  <thm:schwarz-ahlfors-pick-extension-1>,
 )
 
 #proof[
@@ -82,7 +82,7 @@ The hyperbolic metric $lambda$ in @eq:poincare-metric-definition does not increa
     & nabla_(vu(n)') (log f^* rho)(tau_r) + nabla_(vu(n)'') (log f^* rho)(tau_r) \
     & wide""<= nabla_(vu(n)') (log lambda_r)(tau_r) + nabla_(vu(n)'') (log lambda_r)(tau_r) = 0
   $
-  by the symmetry of the hyperbolic metric and the fact that the two directions are opposite to each other. Pulling back to $rho$ contradicts with @eq:schwarz-ahlfors-pickextension1_directionalderivatives. Thus, $tau_r$ cannot both simultaneously be the location of a maximum while satisfying said inequality; therefore the theorem follows.
+  by the symmetry of the hyperbolic metric and the fact that the two directions are opposite to each other. Pulling back to $rho$ contradicts with @eq:schwarz-ahlfors-pick-extension-1-directional-derivatives. Thus, $tau_r$ cannot both simultaneously be the location of a maximum while satisfying said inequality; therefore the theorem follows.
 ]
 
 #lbl(
@@ -116,7 +116,7 @@ $
   K_(lambda_r^alpha) (z) & = -4 pdv([log((2 r)/(sqrt(alpha) (r^2 - abs(z)^2)))], overline(z), z, style: "large") ((sqrt(alpha) (r^2 - abs(z)^2))/(2 r))^2 \
   & = -4 alpha pdv([log((2 r)/(r^2 - abs(z)^2))], overline(z), z, style: "large") ((r^2 - abs(z)^2)/(2 r))^2 = alpha K_(lambda_r) (z) = -alpha,
 $
-via the results and definitions in @eq:poincaremetriconscaleddisks.
+via the results and definitions in @eq:poincare-metric-on-scaled-disks.
 
 #lbl(
   corollary[
@@ -126,7 +126,7 @@ via the results and definitions in @eq:poincaremetriconscaleddisks.
     $ f^* rho(z) <= sqrt(alpha / beta) lambda_r^alpha (z) $
     for any $z in D(0, r)$, where $f^* rho(z) = (rho compose f) abs(f')$ is the metric pullback.
   ],
-  <cor:generalized_ahlfors>,
+  <cor:generalized-ahlfors>,
 )
 
 #proof[
@@ -146,17 +146,17 @@ via the results and definitions in @eq:poincaremetriconscaleddisks.
   corollary[Generalized Liouville][
     If $f:CC -> U$ is entire and $U$ admits a regular metric of curvature bounded above by a negative constant, then $f$ must be constant.
   ],
-  <cor:generalizedliouville>,
+  <cor:generalized-liouville>,
 )
 
 #proof[
-  By assumption, $exists beta > 0$ such that $sup_(w in U) K_rho (w) <= -beta$. Then @cor:generalized_ahlfors gives that
+  By assumption, $exists beta > 0$ such that $sup_(w in U) K_rho (w) <= -beta$. Then @cor:generalized-ahlfors gives that
   $ f^* rho(z) <= (1)/(sqrt(beta)) lambda_r (z) quad forall z in D(0, r) $
   for any $r > 0$. As $r -> oo$, $lambda_r -> 0$. Hence, $f^* rho(z) = 0$, implying that $(rho compose f)(z) abs(f') = 0$. Hence, $f$ is constant.
 ]
 
 #remark[
-  @cor:generalizedliouville implies Liouville's Theorem (@thm:liouville). To justify this differential-geometric generalization, suppose $f:CC -> U$ is entire such that $U$ is bounded. There then exists some $R > 0$ such that $U subset.eq D(0, R)$. The metric $lambda_R$ has constant negative curvature $K = -1$ on $D(0, R)$, and hence, under $beta = 1$, @cor:generalizedliouville implies that $f$ is constant.
+  @cor:generalized-liouville implies Liouville's Theorem (@thm:liouville). To justify this differential-geometric generalization, suppose $f:CC -> U$ is entire such that $U$ is bounded. There then exists some $R > 0$ such that $U subset.eq D(0, R)$. The metric $lambda_R$ has constant negative curvature $K = -1$ on $D(0, R)$, and hence, under $beta = 1$, @cor:generalized-liouville implies that $f$ is constant.
 ]
 
 It is understood that an entire function is guaranteed to be constant if it is bounded. This is a statement of sufficiency, but it begs the question of the capacity for possible generalization of boundedness under which constancy is still always satisfied.
@@ -185,7 +185,7 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
     $ K_rho (z) <= -beta < 0 quad forall z in U $
     for some $beta > 0$.
   ],
-  <prop:conformalmetricnegativecurvatureexistencewhenomits2points>,
+  <prop:conformal-metric-negative-curvature-existence-when-omits-2-points>,
 )
 
 #proof[
@@ -196,7 +196,7 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
     $
       rho(z) = (sqrt(1 + abs(z)^(1 / 3)) sqrt(1 + abs(z - 1)^(1 / 3))) / (abs(z)^(5 / 6) abs(z - 1)^(5 / 6)), quad dif s_rho^2 = rho(z)^2 abs(dz)^2
     $,
-    <eq:conformalmetricnegativecurvatureexistencewhenomits2points_metric>,
+    <eq:conformal-metric-negative-curvature-existence-when-omits-2-points-metric>,
   )
   on $CC without {0, 1}$.
 
@@ -236,7 +236,7 @@ And we have the final implication:
 )
 
 #proof[
-  By the result of @prop:conformalmetricnegativecurvatureexistencewhenomits2points, we may find a conformal metric $rho$ on $U$ such that $exists beta > 0$ satisfying $K_rho (U) subset.eq RR_(<= -beta)$. Then by the aforementioned generalization of Liouville (@cor:generalizedliouville), $f$ exhibits constancy on $CC$ and the assertion follows.
+  By the result of @prop:conformal-metric-negative-curvature-existence-when-omits-2-points, we may find a conformal metric $rho$ on $U$ such that $exists beta > 0$ satisfying $K_rho (U) subset.eq RR_(<= -beta)$. Then by the aforementioned generalization of Liouville (@cor:generalized-liouville), $f$ exhibits constancy on $CC$ and the assertion follows.
 ]
 
 #remark[

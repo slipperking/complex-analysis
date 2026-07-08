@@ -173,11 +173,11 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   $ tilde(cal(F)) = {phi compose f:f in cal(F)} $
   omits $0$ and $1$ for all $z in Omega$.
 
-  By @prop:conformalmetricnegativecurvatureexistencewhenomits2points, $exists beta > 0$ such that for
+  By @prop:conformal-metric-negative-curvature-existence-when-omits-2-points, $exists beta > 0$ such that for
   $
     rho(z) = (sqrt(1 + abs(z)^((1)/(3))) sqrt(1 + abs(z - 1)^((1)/(3))))/(abs(z)^((5)/(6)) abs(z - 1)^((5)/(6))), quad dif s_rho^2 = rho(z)^2 abs(dz)^2
   $
-  as in @eq:conformalmetricnegativecurvatureexistencewhenomits2points_metric,
+  as in @eq:conformal-metric-negative-curvature-existence-when-omits-2-points-metric,
   $ K_rho (z) <= -beta quad forall z in CC without {0, 1}. $
   Therefore, if we let $mu = rho sqrt(beta)$, then
   #lbl(
@@ -186,7 +186,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
     $,
     <eq:fundamental-normality-test_f_mu_pullback_inequality>,
   )
-  Let $zeta in Omega$ be arbitrary and let $r=r_zeta > 0$ satisfy $D(zeta, r_zeta) subset.eq Omega$. By @cor:generalized_ahlfors, the pullback of $mu$ from $CC without {0, 1}$ to $D(zeta, r_zeta) subset.eq Omega$ satisfies
+  Let $zeta in Omega$ be arbitrary and let $r=r_zeta > 0$ satisfy $D(zeta, r_zeta) subset.eq Omega$. By @cor:generalized-ahlfors, the pullback of $mu$ from $CC without {0, 1}$ to $D(zeta, r_zeta) subset.eq Omega$ satisfies
   $ f^* mu(z) <= lambda_(r_zeta) (z - zeta) ==> mu(f(z)) abs(f'(z)) <= (2 r_zeta)/(r_zeta^2 - abs(z - zeta)^2) $ $forall z in D(zeta, r_zeta), f in tilde(cal(F))$. Since $forall w in CC without {0, 1}$,
   $
     (sigma)/(mu) = ((2)/(1 + abs(w)^2))/((sqrt(1 + abs(w)^((1)/(3))) sqrt(1 + abs(w - 1)^((1)/(3))))/(abs(w)^((5)/(6)) abs(w - 1)^((5)/(6)))) ->
