@@ -625,7 +625,6 @@ p {
   overflow: auto;
   padding: 0.8rem;
   border: 1px solid var(--line-strong);
-  border-radius: 4px;
   background: color-mix(in srgb, var(--paper) 97%, transparent);
   box-shadow: 0 0.85rem 2rem rgba(0, 0, 0, 0.16);
   backdrop-filter: blur(10px);
