@@ -31,7 +31,7 @@ If $rho > R - abs(z_1 - z_0)$, then $f$ extends analytically to $D(z_0, R) union
   theorem[
     Let $f(z) = sum_(n=0)^oo c_n (z - z_0)^n$ have radius of convergence $R > 0$. Then $partial D(z_0, R)$ contains at least one singularity of $f$.
   ],
-  <thm:boundarysingularity>,
+  <thm:convergence-circle-contains-singularity>,
 )
 #proof[
   Assume $f$ can be analytically continued from every $zeta in partial D(z_0, R)$. Then for each $zeta$, there exists $r_zeta > 0$ and a holomorphic $f_zeta$ on $D(zeta, r_zeta)$ agreeing with $f$ on $D(zeta, r_zeta) inter D(z_0, R)$.
@@ -47,15 +47,14 @@ If $rho > R - abs(z_1 - z_0)$, then $f$ extends analytically to $D(z_0, R) union
       Phi(z) & quad "if" quad z in V\,
     )
   $
-  is holomorphic on $D(z_0, R) union V supset.eq D(z_0, R + rho)$,
-  contradicting the maximality of $R$.
+  is holomorphic on $D(z_0, R) union V supset.eq D(z_0, R + rho)$, contradicting the maximality of $R$.
 ]
 
 #lbl(
   definition[
     A _maximal analytic continuation_ ${ (f, U) }$ of an analytic function element $(tilde(f), tilde(U))$ is obtained by all possible succesive analytic continuations of $(tilde(f), tilde(U))$. The union of every $U$ is known as the _domain of holomorphy_ of $tilde(f)$. The boundary set $partial U$ is known as a _natural boundary_. The continuation defines a function $f$, known a _global analytic function_, which can be multi-valued.
   ],
-  <def:maximalanalyticcontinuation>,
+  <def:maximal-analytic-continuation>,
 )
 
 #lbl(
@@ -67,18 +66,13 @@ If $rho > R - abs(z_1 - z_0)$, then $f$ extends analytically to $D(z_0, R) union
 #proof[
   By Cauchy--Hadamard (@thm:cauchy-hadamard), $limsup_(n->oo) root(n, abs(c_n)) = 1$ since $c_n = 1$ if $n = k!$ and $0$ otherwise. Thus, $R = 1$.
 
-  Fix $zeta in partial DD$. Suppose $f$ extends analytically to a
-  disk $D(zeta, delta)$. Since $exp(2 uppi ii QQ)$ is dense in
-  $partial DD$, there exists $zeta' = exp(2 uppi ii p / q) in
-  D(zeta, delta) inter partial DD$ for coprime integers $p, q$. The
-  extension $g$ of $f$ to $D(zeta, delta)$ would satisfy:
+  Fix $zeta in partial DD$. Suppose $f$ extends analytically to a disk $D(zeta, delta)$. Since $exp(2 uppi ii QQ)$ is dense in $partial DD$, there exists $zeta' = exp(2 uppi ii p / q) in D(zeta, delta) inter partial DD$ for coprime integers $p, q$. The extension $g$ of $f$ to $D(zeta, delta)$ would satisfy:
   $ lim_(r->1^-) f(r zeta') = g(zeta'). $
   However, for $0 < r < 1$:
   $ f(r zeta') = sum_(k=0)^(q-1) (r zeta')^(k!) + sum_(k=q)^oo r^(k!) (zeta')^(k!). $
   The second summation is unbounded since
   $ sum_(k=q)^oo r^(k!) (zeta')^(k!) = sum_(k=q)^oo r^(k!) > sum_(k=q)^N r^(k!) > (N - q + 1) r^(N!) $
-  for any integer with $N > q$. Hence, as $r->1^-$, $sum_(k=q)^oo
-  r^(k!) -> oo$. Hence, $zeta$ is a singularity.
+  for any integer with $N > q$. Hence, as $r->1^-$, $sum_(k=q)^oo r^(k!) -> oo$. Hence, $zeta$ is a singularity.
 ]
 
 #example[
@@ -87,10 +81,7 @@ If $rho > R - abs(z_1 - z_0)$, then $f$ extends analytically to $D(z_0, R) union
 #proof[
   Trivially, at $z = 1$, the series diverges. Therefore, $DD$ is its convergence disk. Observe that $f(z) = sum_(n=0)^oo (z^2)^(2^(n-1)) = sum_(n=0)^oo (z^2)^(2^n) + z = f(z^2) + z$. Hence, we have
   $ f(z) = f(z^2) + z = f(z^4) + z^2 + z = f(z^8) + z^4 + z^2 + z dots.c, $
-  which diverges at each $z^2, z^4, z^8, dots = 1$. The solutions form a dense set
-  in $partial DD$. By the same reasoning as
-  @ex:factorial-lacunary-series, $f$ cannot be analytically continued to
-  the outside of $DD$.
+  which diverges at each $z^2, z^4, z^8, dots = 1$. The solutions form a dense set in $partial DD$. By the same reasoning as @ex:factorial-lacunary-series, $f$ cannot be analytically continued to the outside of $DD$.
 ]
 
 #lbl(
@@ -110,13 +101,9 @@ If $rho > R - abs(z_1 - z_0)$, then $f$ extends analytically to $D(z_0, R) union
   $
     (z |-> 1 / ((1 - z) (1 - (z alpha - z) / (1 - z))), CC without { 1, 1 / alpha }) = (z |-> 1 / (1 - alpha z), CC without { 1, 1 / alpha }),
   $
-  which is a direction analytic continuation of $(z |-> 1 / (1 - alpha z), CC without { 1 / alpha })$. Therefore, $f$ and
-  $tilde(f)$ are analytic continuations of each other.
+  which is a direction analytic continuation of $(z |-> 1 / (1 - alpha z), CC without { 1 / alpha })$. Therefore, $f$ and $tilde(f)$ are analytic continuations of each other.
 ]
 
 In @ex:complex-logarithm-analytic-continuation, we showed that two analytic function elements can on the same domain can be analytic continuations even if they do not agree on the entire domain. In this case, the two elements are on different branches of the function. Hence, depending on the chain of function elements chosen, we may obtain two different analytic function elements that have the same domain.
 
-This is a common issue when it comes to the problem of analytic continuation.
-This question of non-ambiguity can be explained by planar topology;
-specifically the concept of homotopy. We will now introduce the concept of
-analytic continuation along a given curve.
+This is a common issue when it comes to the problem of analytic continuation. This question of non-ambiguity can be explained by planar topology; specifically the concept of homotopy. We will now introduce the concept of analytic continuation along a given curve.

@@ -364,11 +364,19 @@
       autocomplete: "off",
       "aria-label": "Search the site",
     ))
-    html.elem("button", attrs: (class: "search-submit", type: "submit"), [Search])
+    html.elem("button", attrs: (class: "search-submit icon-button", type: "submit", "aria-label": "Search"), {
+      _icon("Search", _asset-href(current.path, "assets/search.svg"))
+    })
   })
   html.elem("div", attrs: (class: "topbar-right"), {
     html.elem("button", attrs: (class: "icon-button theme-toggle", "aria-label": "Toggle theme"), {
       _icon("Theme", _asset-href(current.path, "assets/theme.svg"))
+    })
+    html.elem("button", attrs: (class: "icon-button print-button", type: "button", "aria-label": "Print page", title: "Print"), {
+      _icon("Print", _asset-href(current.path, "assets/print.svg"))
+    })
+    html.elem("a", attrs: (class: "icon-button export-pdf-link", href: _href-from(current.path, "pdf/notes.pdf"), "aria-label": "Export PDF", title: "Export PDF"), {
+      _icon("Export PDF", _asset-href(current.path, "assets/download.svg"))
     })
     html.elem("a", attrs: (class: "icon-button github-link", href: source-url, "aria-label": "GitHub source"), {
       _icon("GitHub", _asset-href(current.path, "assets/github.svg"))
