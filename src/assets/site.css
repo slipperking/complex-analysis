@@ -689,12 +689,6 @@ p {
   margin: 0;
 }
 
-.ref-preview-content figure,
-.ref-preview-content .display-math {
-  margin-left: 0;
-  margin-right: 0;
-}
-
 .ref-preview-content .display-math {
   width: max-content;
   max-width: none;
