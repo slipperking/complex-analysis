@@ -77,7 +77,7 @@ and a power series with negative exponents,
 $
   R = 1 / limsup_(n -> oo) root(n, abs(c_n))
 $
-by the Cauchy--Hadamard Theorem (@thm:cauchy_hadamard). It follows that $phi$ is holomorphic on $D(a, R)$. Let $zeta = (z - a)^(-1)$. Then @eq:laurentseriesnegativeexponents becomes
+by the Cauchy--Hadamard Theorem (@thm:cauchy-hadamard). It follows that $phi$ is holomorphic on $D(a, R)$. Let $zeta = (z - a)^(-1)$. Then @eq:laurentseriesnegativeexponents becomes
 $
   sum_(n = 1)^oo c_(-n) zeta^n.
 $

@@ -190,7 +190,7 @@ The three following metrics are of particular interest in complex differential g
 
   where $sigma'_z = pdv(sigma, z, style: "horizontal")$ and $sigma'_(overline(z)) = pdv(sigma, overline(z), style: "horizontal")$. This can also be verified by computing the principal curvatures of the unit sphere, which are both one.
 
-The importance of the selected regions lies in the uniformization to be mentioned in @ sec:riemannsurfaces.
+The importance of the selected regions lies in the uniformization to be mentioned in @sec:analytic-continuation-and-riemann-surfaces.
 
 Let $Omega_1$ and $Omega_2$ be two open regions in $CC$ such that $f:Omega_1 -> Omega_2$ is univalent (implying that $f' != 0$ by @lem:univalent-non-vanishing-derivative). If $rho$ is a metric on $Omega_2$, then
 
