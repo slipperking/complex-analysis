@@ -6,6 +6,7 @@
   var themeButtonIcon = themeButton ? themeButton.querySelector(".icon") : null;
   var assetIcon = document.querySelector(".icon");
   var storedTheme = localStorage.getItem("theme") || "auto";
+  var printThemeOverrideActive = false;
   var THEME_ICON_FILES = {
     light: "sun.svg",
     dark: "moon.svg",
@@ -22,7 +23,7 @@
   function applyTheme(mode) {
     storedTheme = mode;
     localStorage.setItem("theme", mode);
-    document.documentElement.dataset.theme = resolvedTheme(mode);
+    document.documentElement.dataset.theme = printThemeOverrideActive ? "light" : resolvedTheme(mode);
     if (themeButton) {
       themeButton.title = "Theme: " + mode.charAt(0).toUpperCase() + mode.slice(1);
       themeButton.setAttribute("aria-label", themeButton.title);
@@ -44,7 +45,7 @@
 
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
     if (storedTheme === "auto") {
-      document.documentElement.dataset.theme = resolvedTheme("auto");
+      document.documentElement.dataset.theme = printThemeOverrideActive ? "light" : resolvedTheme("auto");
     }
   });
 
@@ -468,6 +469,17 @@
       details.open = wasOpen;
       delete details.dataset.printWasOpen;
     });
+  }
+
+  function applyPrintThemeOverride() {
+    printThemeOverrideActive = true;
+    document.documentElement.dataset.theme = "light";
+  }
+
+  function clearPrintThemeOverride() {
+    if (!printThemeOverrideActive) return;
+    printThemeOverrideActive = false;
+    document.documentElement.dataset.theme = resolvedTheme(storedTheme);
   }
 
   function tocDepthForHeading(heading) {
@@ -951,6 +963,8 @@
   setupPrintButton();
   addEventListener("beforeprint", expandSolutionsForPrint);
   addEventListener("afterprint", restoreSolutionsAfterPrint);
+  addEventListener("beforeprint", applyPrintThemeOverride);
+  addEventListener("afterprint", clearPrintThemeOverride);
   fillTheoremLeaders(document);
   addEventListener("resize", function () {
     fillTheoremLeaders(document);
