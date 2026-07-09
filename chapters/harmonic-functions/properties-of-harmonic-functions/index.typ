@@ -1,7 +1,7 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Basic Properties of Harmonic Functions],
-  route: "basic-properties-of-harmonic-functions",
+  route: "properties-of-harmonic-functions",
 )
 The first question we answer here is the cases when a harmonic function can be represented as the real part of a holomorphic function. We will see that this is always the case locally, and thus harmonic functions are locally the real parts of holomorphic functions. However, this is not always the case globally, and we will see examples of this later.
 
