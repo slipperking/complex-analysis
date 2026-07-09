@@ -23,7 +23,7 @@
     ],
     "tinymist.typstExtraArgs": [
         "--features",
-        "html",
+        "html,bundle",
         "--package-path",
         "packages"
     ]

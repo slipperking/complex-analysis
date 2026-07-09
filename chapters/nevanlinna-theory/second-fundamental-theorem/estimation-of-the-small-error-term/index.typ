@@ -392,7 +392,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
 #definition[
   Let $f : D(0, R_0) -> extcomplex$ be meromorphic for $R_0 in RR_(> 0) union {oo}$. Then $f$ is said to be _admissible_ if either of the following are true:
   + $R_0 = oo$ and $f$ is non-constant.
-  + $R_0 < oo$ and $limsup_(r -> R_0^-) T(r, f) / (log frac(1, R_0 - r)) = oo$.
+  + $R_0 < oo$ and $limsup_(r -> R_0^-) T(r, f) / (log 1 / (R_0 - r)) = oo$.
 ]
 
 These definitions ensure that $S(r, f)$ is generally sufficiently small:
@@ -415,10 +415,10 @@ These definitions ensure that $S(r, f)$ is generally sufficiently small:
     If $rho = 0$, either $log r = order(T(r, f))$ or $T(r, f) = Order(log r)$. The former case is the same as above.
 
     In the latter case, @prop:nevanlinnaorderrationalcondition gives that $f$ is rational. Hence, as $r -> oo$, $M(r, (f')/f), M(r, sum_(nu = 1)^q (f') / (f - a_nu)) -> 0$. Hence for sufficiently large $r$, $m(r, (f')/f)$ and $m(r, sum_(nu = 1)^q (f') / (f - a_nu))$ vanish and $S(r, f) = Order(1)$, therefore $S / T -> 0$.
-  + Assume $R_0 = oo$ and $f$ has infinite order. Then by @thm:nevanlinna-second-fundamental-theorem-part-2, it follows that for $r -> R_0^-$ outside a set $E_0$ of finite linear measure, $S(r, f) = Order(log T(r, f)) + Order(log r)$. Since $frac(log T(r, f), log r) -> oo$, then $log r = order(T(r, f))$, and thus $S(r, f) = order(T(r, f))$ outside this exceptional set.
+  + Assume $R_0 = oo$ and $f$ has infinite order. Then by @thm:nevanlinna-second-fundamental-theorem-part-2, it follows that for $r -> R_0^-$ outside a set $E_0$ of finite linear measure, $S(r, f) = Order(log T(r, f)) + Order(log r)$. Since $(log T(r, f)) / (log r) -> oo$, then $log r = order(T(r, f))$, and thus $S(r, f) = order(T(r, f))$ outside this exceptional set.
   + Assume $R_0 < oo$. Construct two sequences ${rho_n}_n, {rho'_n}_n$ such that $rho_n < rho'_n$, $rho_n, rho'_n -> R_0^-$, and
     $
-      lim_(n -> oo) T(rho_n, f) / log 1 / (R_0 - rho_n) = oo
+      lim_(n -> oo) T(rho_n, f) / (log 1 / (R_0 - rho_n)) = oo
     $
     (observe that this is no longer a limit superior) and $rho'_n = R_0 - ee^(-2) (R_0 - rho_n) / 2$, so that $R_0 - rho'_n < ee^(-2) (R_0 - rho_n)$.
 
