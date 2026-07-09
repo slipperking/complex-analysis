@@ -180,13 +180,13 @@ Let $z = (f^(-1))(w)$. Then we have
     + $integral.double_(CC) pdv(lambda_r, overline(zeta)) dif xi dif eta = 0$. #enum-lbl(<itm:dirac-delta-approximation-antiholomorphic-derivative-integral>)
     + $integral.double_(CC) abs(pdv(lambda_r, overline(zeta))) dif xi dif eta <= (2 uppi) / r$. #enum-lbl(<itm:dirac-delta-approximation-absolute-antiholomorphic-derivative-integral>)
     + $norm(grad lambda_r (z)) <= 4 / r^3$ for all $z$, where $grad = (pdv(, x), pdv(, y))$ denotes the vector differential operator. #enum-lbl(<itm:dirac-delta-approximation-gradient-statement>)
-    + For any $z in CC$ such that $f$ is a holomorphic function on $D(z, r)$, we have the integral formula. #enum-lbl(<itm:dirac-delta-approximation-integral-formula>)
+    + For any $z in CC$ such that $f$ is a holomorphic function on $D(z, r)$, we have the following integral formula:
       #lbl(
         $
           f(z) = integral.double_(D(0, r)) f(z - zeta) lambda_r (zeta) dif xi dif eta.
         $,
         <eq:dirac-delta-approximation-integral-formula>,
-      )
+      )#enum-lbl(<itm:dirac-delta-approximation-integral-formula>)
   ],
   <prop:dirac-delta-approximation>,
 )
