@@ -726,9 +726,17 @@
       }
 
       var wrapper = doc.createElement("div");
-      clonePreviewNodes(doc, target).forEach(function (node) {
+      var previewNodes = clonePreviewNodes(doc, target);
+      previewNodes.forEach(function (node) {
         wrapper.appendChild(node);
       });
+      if (previewNodes.length === 1 && previewNodes[0].tagName && previewNodes[0].tagName.toLowerCase() === "li") {
+        var li = previewNodes[0];
+        var paragraph = doc.createElement("p");
+        paragraph.innerHTML = li.innerHTML;
+        wrapper.textContent = "";
+        wrapper.appendChild(paragraph);
+      }
       enhanceContent(wrapper);
       wrapper.querySelectorAll(".typst-multi-label-list,.ref-tooltip,.ref-preview").forEach(function (node) {
         node.remove();
