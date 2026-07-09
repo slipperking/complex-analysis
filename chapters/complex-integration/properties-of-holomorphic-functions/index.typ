@@ -5,11 +5,11 @@
 )
 A useful corollary of @thm:cauchy-goursat-formula is the Maximum Modulus Principle.
 
-Before the theorem, we first introduce the mean-value property of holomorphic functions.
+In preparation of the result, we first introduce the mean-value property of functions.
 
 #lbl(
   lemma[
-    Let $U subset.eq CC$ be open and simply connected, and let $f:U -> CC$ be holomorphic. Then $forall z in U$ and $forall epsilon > 0$ such that $overline(D(z, epsilon)) subset U$, $f(z)$ is the average of $f(zeta)$ where $zeta in D(z, epsilon)$ is uniform. In other words,
+    Let $U subset.eq CC$ be open and connected, and let $f:U -> CC$ be holomorphic. Then $forall z in U$ and $forall epsilon > 0$ such that $overline(D(z, epsilon)) subset U$, $f(z)$ is the average of all $f(zeta)$ for $zeta in partial D(z, epsilon)$. In other words,
     $ f(z) = 1 / (2 uppi epsilon) integral.cont_(partial D(z, epsilon)) f(zeta) abs(dzeta). $
   ],
   <lem:holomorphic-mean-value-property>,
@@ -28,8 +28,6 @@ Before the theorem, we first introduce the mean-value property of holomorphic fu
   $
   and the conclusion follows.
 ]
-
-Since the real and imaginary parts of holomorphic functions are real-valued harmonic functions, they also satisfy the mean-value property. Furthermore, if a real continuous function satisfies the mean-value property, it is harmonic (to be proved in @thm:mean-value-property-solutions-are-harmonic). This equivalence allows for the alternative definition of harmonic functions.
 
 #lbl(
   theorem[Maximum Modulus Principle][
@@ -66,7 +64,47 @@ Since the real and imaginary parts of holomorphic functions are real-valued harm
   If $f$ is holomorphic and non-constant on an open region $U subset.eq CC$, then for any compact set $K subset U$, the maximum of $f$ in $K$ lies on $partial K$. Otherwise, $f$ would attain a maximum at some $z in interior(K)$, and contradict the statement of @thm:maximum-modulus under the assumption of being non-constant.
 ]
 
-A similar theorem exists for real-valued harmonic functions. The proof follows in the same way as the one for holomorphic functions. We will state it formally below.
+By nature of the proof, it follows that a similar theorem holds for any continuous function that satisfies the mean-value property.
+
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be open and connected and let $f:U -> RR$ be continuous such that $forall z in U$ and $forall epsilon > 0$ such that $overline(D(z, epsilon)) subset U$,
+    $ f(z) = 1 / (2 uppi epsilon) integral.cont_(partial D(z, epsilon)) f(zeta) abs(dzeta) $ is true. Suppose that $exists z_0 in U$ and a neighborhood $V subset.eq U$ of $z_0$ such that either
+    $ f(z) >= f(z_0) quad forall z in V quad "or" quad f(z_0) >= f(z) quad forall z in V. $
+    Then $f$ is constant on $U$.
+  ],
+  <thm:maximum-principle-for-real-functions-satisfying-mean-value-property>,
+)
+
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be an open disk centered at $z_0$. If $u: U -> RR$ is harmonic, then there exists a holomorphic function $f: U -> CC$ such that $u equiv Re f$.
+  ],
+  <thm:harmonic-conjugate-existence-on-a-disk>,
+)
+
+#proof[
+  Let $u$ be harmonic on the open disk $U$. Then define a complex-valued function $g: U -> CC$ by
+  $ g equiv pdv(u, x) - ii pdv(u, y). $
+  Then
+  $
+    pdv(g, overline(z)) equiv 1 / 2 [pdv(, x) (pdv(u, x) - ii pdv(u, y)) + ii pdv(, y) (pdv(u, x) - ii pdv(u, y))] equiv 0
+  $
+  because $u$ is harmonic. Therefore, $g$ is holomorphic. Since $U$ is simply connected, $g$ has a holomorphic antiderivative. Then let
+  $ f(z) = integral_(z_0)^z g(zeta) dzeta + u(z_0). $
+  Then for all $z in U$, letting $zeta = xi + ii eta$, $z_0 = x_0 + ii y_0$, $z = x + ii y$, and integrating on the curve $z_0 -> x + ii y_0 -> z$, we have
+  $
+    Re f(z) & = Re integral_(z_0)^z (pdv(u, xi) - ii pdv(u, eta)) (dif xi + ii dif eta) + u(z_0) \
+            & = integral_(x_0)^x pdv(u(xi + ii y_0), xi) dif xi + integral_(y_0)^y pdv(u(x + ii eta), eta) dif eta + u(z_0) \
+            & = u(x + ii y_0) - u(x_0 + ii y_0) + u(x + ii y) - u(x+ ii y_0) + u(z_0) \
+            & = u(z)
+  $
+  by the Fundamental Theorem of Calculus.
+]
+
+Therefore, for any real harmonic function $u$ on an open region $U$, in each small disk $D subset.eq U$, there exists a holomorphic function $f: D -> CC$ such that $u equiv Re f$. Then taking the real part of both sides in @lem:holomorphic-mean-value-property on $f$, we find that $u$ satisfies the mean value property as well.
+
+Because harmonic functions satisfy the mean-value property, @thm:maximum-principle-for-real-functions-satisfying-mean-value-property is equivalent to:
 
 #lbl(
   theorem[
@@ -76,5 +114,3 @@ A similar theorem exists for real-valued harmonic functions. The proof follows i
   ],
   <thm:maximum-principle-for-real-harmonic-functions>,
 )
-
-By nature of the proof, the result holds for any continuous function satisfying the mean-value property.

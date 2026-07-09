@@ -126,7 +126,7 @@ Letting $x = r cos theta$, $y = r sin theta$, the Laplacian is equal to:
     & quad wide"" + (cos theta)/r (cos theta pdv(, r) + sin theta pdv(, theta, r)) + (cos theta)/r^2 (-sin theta pdv(, theta) + cos theta pdv(, theta, 2)) \
     & = pdv(, r, 2) + 1/r^2 pdv(, theta, 2) + 1/r pdv(, r).
   $,
-  <eq:laplacianpolarform>,
+  <eq:laplacian-polar-form>,
 )
 
 #lbl(

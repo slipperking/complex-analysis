@@ -509,14 +509,15 @@
     var preview = document.createElement("aside");
     preview.className = "ref-preview";
     preview.hidden = true;
-    preview.innerHTML = '<button class="ref-preview-close" type="button" aria-label="Close preview" title="Close">×</button><div class="ref-preview-content"></div>';
+    preview.innerHTML = '<div class="ref-preview-content"></div>';
     document.body.appendChild(preview);
-    var previewClose = preview.querySelector(".ref-preview-close");
     var previewContent = preview.querySelector(".ref-preview-content");
 
     var activeTrigger = null;
     var hideTimer = null;
     var previewPinned = false;
+    var previewDragged = false;
+    var previewDragState = null;
 
     function clearHideTimer() {
       if (hideTimer) {
@@ -595,7 +596,18 @@
       }
     }
 
+    function hasDraggedPreviewPosition() {
+      return !!(previewDragged && previewDragState && typeof previewDragState.left === "number" && typeof previewDragState.top === "number");
+    }
+
     function placePreview(trigger) {
+      if (hasDraggedPreviewPosition()) {
+        preview.style.left = previewDragState.left + "px";
+        preview.style.top = previewDragState.top + "px";
+        preview.style.right = "";
+        return;
+      }
+
       var triggerRect = trigger.getBoundingClientRect();
       var previewRect = preview.getBoundingClientRect();
       var gap = 12;
@@ -630,6 +642,30 @@
       } else {
         preview.style.left = Math.max(gap, triggerRect.left - previewRect.width - gap) + "px";
       }
+    }
+
+    function clampPreviewPosition(left, top) {
+      var rect = preview.getBoundingClientRect();
+      var gap = 8;
+      var minTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--topbar-height")) + gap;
+      var maxLeft = Math.max(gap, window.innerWidth - rect.width - gap);
+      var maxTop = Math.max(minTop, window.innerHeight - rect.height - gap);
+      return {
+        left: Math.max(gap, Math.min(left, maxLeft)),
+        top: Math.max(minTop, Math.min(top, maxTop))
+      };
+    }
+
+    function applyDraggedPreviewPosition(left, top) {
+      var clamped = clampPreviewPosition(left, top);
+      if (!previewDragState) {
+        previewDragState = {};
+      }
+      previewDragState.left = clamped.left;
+      previewDragState.top = clamped.top;
+      preview.style.left = clamped.left + "px";
+      preview.style.top = clamped.top + "px";
+      preview.style.right = "";
     }
 
     function previewSourceUrl(linksData) {
@@ -811,6 +847,7 @@
         previewContent.innerHTML = markup;
         preview.hidden = false;
         previewPinned = true;
+        preview.classList.remove("dragging");
         placePreview(trigger);
       });
     }
@@ -820,6 +857,8 @@
       tooltip.hidden = true;
       preview.hidden = true;
       previewPinned = false;
+      previewDragged = false;
+      previewDragState = null;
       activeTrigger = null;
     }
 
@@ -865,11 +904,42 @@
     preview.addEventListener("mouseleave", scheduleHide);
     preview.addEventListener("focusin", clearHideTimer);
     preview.addEventListener("focusout", scheduleHide);
-    if (previewClose) {
-      previewClose.addEventListener("click", function () {
-        hideTooltip();
-      });
+    preview.addEventListener("pointerdown", function (event) {
+      if (event.button !== 0) return;
+      if (event.target.closest("a, button, input, textarea, select")) return;
+      clearHideTimer();
+      var rect = preview.getBoundingClientRect();
+      previewDragged = true;
+      previewDragState = {
+        left: rect.left,
+        top: rect.top,
+        pointerId: event.pointerId,
+        offsetX: event.clientX - rect.left,
+        offsetY: event.clientY - rect.top
+      };
+      preview.setPointerCapture(event.pointerId);
+      preview.classList.add("dragging");
+      event.preventDefault();
+    });
+    preview.addEventListener("pointermove", function (event) {
+      if (!previewDragState || previewDragState.pointerId !== event.pointerId) return;
+      applyDraggedPreviewPosition(
+        event.clientX - previewDragState.offsetX,
+        event.clientY - previewDragState.offsetY
+      );
+    });
+    function stopPreviewDrag(event) {
+      if (!previewDragState || previewDragState.pointerId !== event.pointerId) return;
+      if (preview.hasPointerCapture && preview.hasPointerCapture(event.pointerId)) {
+        preview.releasePointerCapture(event.pointerId);
+      }
+      previewDragState.pointerId = null;
+      delete previewDragState.offsetX;
+      delete previewDragState.offsetY;
+      preview.classList.remove("dragging");
     }
+    preview.addEventListener("pointerup", stopPreviewDrag);
+    preview.addEventListener("pointercancel", stopPreviewDrag);
     document.addEventListener("pointerdown", function (event) {
       if (tooltip.hidden && preview.hidden) return;
       var target = event.target;
@@ -890,7 +960,11 @@
         placeTooltip(activeTrigger);
       }
       if (!preview.hidden && activeTrigger) {
-        placePreview(activeTrigger);
+        if (hasDraggedPreviewPosition()) {
+          applyDraggedPreviewPosition(previewDragState.left, previewDragState.top);
+        } else {
+          placePreview(activeTrigger);
+        }
       }
     });
     document.addEventListener("keydown", function (event) {

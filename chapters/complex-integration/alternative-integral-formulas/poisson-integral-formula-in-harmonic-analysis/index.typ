@@ -89,7 +89,7 @@ We now establish that real-valued continuous functions satisfying the mean-value
 )
 
 #proof[
-  Fix $z_0 in U$ arbitrarily and choose $lambda > 0$ such that $overline(D(z_0, lambda)) subset.eq U$. Because $f in C^0 (partial D(z_0, lambda))$, @thm:dirichlet-problem-with-laplace-equation-solution guarantees the existence of a unique harmonic function $u$ on $D(z_0, lambda)$ satisfying
-  $ u(z) = integral_0^(2 uppi) f(zeta) P(zeta, z) dif tau, $
-  with $u = f$ on $partial D(z_0, lambda)$. Define $psi = f - u$ on $overline(D(z_0, lambda))$. Then $psi$ is continuous, satisfies the mean-value property, and vanishes on $partial D(z_0, lambda)$. By the proof of @thm:maximum-modulus, which relies solely on the mean-value property, $psi equiv 0$ on $overline(D(z_0, lambda))$. Thus, $f equiv u$ on $overline(D(z_0, lambda))$, implying $f$ is harmonic at $z_0$. The arbitrariness of $z_0$ establishes harmonicity on $U$.
+  Fix $z_0 in U$ arbitrarily and choose $lambda > 0$ such that $overline(D(z_0, lambda)) subset.eq U$. Because $f in C^0 (partial D(z_0, lambda))$, @thm:dirichlet-problem-with-laplace-equation-solution guarantees the existence of a unique harmonic function $u$ on $D(z_0, lambda)$ satisfying $u equiv f$ on $partial D(z_0, lambda)$ with
+  $ u(z) = integral_0^(2 uppi) f(zeta) P(zeta, z) dif tau. $
+  Define $psi = f - u$ on $overline(D(z_0, lambda))$. Then $psi$ is continuous, satisfies the mean-value property, and vanishes on $partial D(z_0, lambda)$. By @thm:maximum-principle-for-real-functions-satisfying-mean-value-property, $psi equiv 0$ on $overline(D(z_0, lambda))$. Thus, $f equiv u$ on $overline(D(z_0, lambda))$, implying $f$ is harmonic at $z_0$. The arbitrariness of $z_0$ establishes harmonicity on $U$.
 ]

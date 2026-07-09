@@ -629,35 +629,17 @@ p {
   box-shadow: 0 0.85rem 2rem rgba(0, 0, 0, 0.16);
   backdrop-filter: blur(10px);
   text-align: justify;
+  cursor: grab;
+  touch-action: none;
 }
 
 .ref-preview[hidden] {
   display: none;
 }
 
-.ref-preview-close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 0.8rem;
-  height: 0.8rem;
-  border: 1px solid transparent;
-  background: transparent;
-  border-radius: 3px;
-  color: var(--muted);
-  cursor: pointer;
-  font: 700 0.95rem/1 var(--sans);
-  padding: 0.2rem;
-  z-index: 99999;
-}
-
-.ref-preview-close:hover,
-.ref-preview-close:focus-visible {
-  color: var(--ink);
-  outline: none;
+.ref-preview.dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 
 .ref-preview-content {
