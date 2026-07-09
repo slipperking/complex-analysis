@@ -1,7 +1,8 @@
 #import "/lib.typ": *
 #show: docs-subchapter.with(
   title: [Further Properties of Holomorphic Functions],
-  route: "properties-of-holomorphic-functions",
+  route: "further-properties-of-holomorphic-functions",
+  label: <sec:further-properties-of-holomorphic-functions>,
 )
 A useful corollary of @thm:cauchy-goursat-formula is the Maximum Modulus Principle.
 
@@ -69,8 +70,8 @@ By nature of the proof, it follows that a similar theorem holds for any continuo
 #lbl(
   theorem[
     Let $U subset.eq CC$ be open and connected and let $f:U -> RR$ be continuous such that $forall z in U$ and $forall epsilon > 0$ such that $overline(D(z, epsilon)) subset U$,
-    $ f(z) = 1 / (2 uppi epsilon) integral.cont_(partial D(z, epsilon)) f(zeta) abs(dzeta) $ is true. Suppose that $exists z_0 in U$ and a neighborhood $V subset.eq U$ of $z_0$ such that either
-    $ f(z) >= f(z_0) quad forall z in V quad "or" quad f(z_0) >= f(z) quad forall z in V. $
+    $ f(z) = 1 / (2 uppi epsilon) integral.cont_(partial D(z, epsilon)) f(zeta) abs(dzeta) $ is true. Suppose that $exists z_0 in U$ and a neighborhood $V subset.eq U$ of $z_0$ such that
+    $ f(z_0) >= f(z) quad forall z in V. $
     Then $f$ is constant on $U$.
   ],
   <thm:maximum-principle-for-real-functions-satisfying-mean-value-property>,
@@ -102,15 +103,15 @@ By nature of the proof, it follows that a similar theorem holds for any continuo
   by the Fundamental Theorem of Calculus.
 ]
 
-Therefore, for any real harmonic function $u$ on an open region $U$, in each small disk $D subset.eq U$, there exists a holomorphic function $f: D -> CC$ such that $u equiv Re f$. Then taking the real part of both sides in @lem:holomorphic-mean-value-property on $f$, we find that $u$ satisfies the mean value property as well.
+Therefore, for any real harmonic function $u$ on an open region $U$, in each small disk $D subset.eq U$, there exists a holomorphic function $f: D -> CC$ such that $u equiv Re f$. Then taking the real part of both sides in @lem:holomorphic-mean-value-property on $f$, we find that $u$ satisfies the mean value-property as well.
 
 Because harmonic functions satisfy the mean-value property, @thm:maximum-principle-for-real-functions-satisfying-mean-value-property is equivalent to:
 
 #lbl(
-  theorem[
-    Let $U subset.eq CC$ be open and connected and let $f:U -> RR$ be harmonic. Suppose that $exists z_0 in U$ and a neighborhood $V subset.eq U$ of $z_0$ such that either
-    $ f(z) >= f(z_0) quad forall z in V quad "or" quad f(z_0) >= f(z) quad forall z in V. $
-    Then $f$ is constant on $U$.
+  theorem[Maximum Principle for Harmonic Functions][
+    Let $U subset.eq CC$ be open and connected and let $u:U -> RR$ be harmonic. Suppose that $exists z_0 in U$ and a neighborhood $V subset.eq U$ of $z_0$ such that
+    $ u(z) <= u(z_0) quad forall z in V. $
+    Then $u$ is constant on $U$.
   ],
   <thm:maximum-principle-for-real-harmonic-functions>,
 )

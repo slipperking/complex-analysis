@@ -2,6 +2,7 @@
 #show: docs-subsubchapter.with(
   title: [The Poisson Integral Formula in Harmonic Analysis],
   route: "poisson-integral-formula-in-harmonic-analysis",
+  label: <sec:poisson-integral-formula-in-harmonic-analysis>,
 )
 Consider $R = 1$, $zeta = ee^(ii tau)$, and $z = rho ee^(ii theta)$ in @eq:poisson-integral-formula-2:
 

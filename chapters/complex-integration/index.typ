@@ -6,7 +6,7 @@
     #include "cauchy-goursat/index.typ"
     #include "analyticity-and-holomorphy/index.typ"
     #include "zeros-of-a-holomorphic-function/index.typ"
-    #include "properties-of-holomorphic-functions/index.typ"
+    #include "further-properties-of-holomorphic-functions/index.typ"
     #include "unit-disk-holomorphic-automorphisms/index.typ"
     #include "alternative-integral-formulas/index.typ"
   ],

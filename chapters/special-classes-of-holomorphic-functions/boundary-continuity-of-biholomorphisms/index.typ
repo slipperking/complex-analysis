@@ -1062,7 +1062,7 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
 
   By construction $phi(V_p inter overline(Omega_1)) subset.eq V_q$, so the composition $F = psi compose phi compose eta_1$ is defined on
   $
-    N_1^+ union (N_1 inter RR) #tag[(the striped region with the thick line in @fig:extension-across-real-analytic-boundary-inverse-flattening-map)].
+    N_1^+ union (N_1 inter RR). #tag[(the striped region with the thick line in @fig:extension-across-real-analytic-boundary-inverse-flattening-map)]
   $
   On $N_1^+$, $eta_1$ maps to $V_p inter Omega_1$ on which $phi$ is holomorphic, and $phi compose eta_1$ maps to a subset of $V_q inter Omega_2$, on which $psi$ is holomorphic, so $F$ is holomorphic on $N_1^+$ (the regions mapped from here are visualized in @fig:extension-across-real-analytic-boundary-inverse-flattening-map with striped lines). By Osgood--Taylor--Carathéodory (@thm:osgood-taylor-caratheodory), $F$ is continuous up to $N_1 inter RR$ with
   $
