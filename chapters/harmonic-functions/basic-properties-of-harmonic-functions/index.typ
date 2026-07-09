@@ -23,7 +23,7 @@ As a refresher, we restate @thm:harmonic-conjugate-existence-on-a-disk:
   For each point $a in U$, there is a disk $D(a, r_a) subset U$ and a holomorphic function $f_a : D(a, r_a) -> CC$ such that $u equiv Re(f_a)$ on $D(a, r_a)$. Since $f_a$ is holomorphic, it is infinitely differentiable, and thus $u$ is infinitely differentiable on $D(a, r_a)$. Since $a in U$ was arbitrary, $u$ is infinitely differentiable on $U$.
 ]
 
-In @sec:poisson-integral-formula-in-harmonic-analysis and @sec:further-properties-of-holomorphic-functions, we proved the equivalence between $laplacian u equiv 0$ and the mean-value property on small circles. Moreover, the statement of the maximum principle (@maximum-principle-for-real-harmonic-functions) can be extended to:
+In @sec:poisson-integral-formula-in-harmonic-analysis and @sec:further-properties-of-holomorphic-functions, we proved the equivalence between $laplacian u equiv 0$ and the mean-value property on small circles. Moreover, the statement of the maximum principle (@thm:maximum-principle-for-real-harmonic-functions) can be extended to:
 #lbl(
   theorem[Minimum Principle for Harmonic Functions][
     Let $U subset.eq CC$ be open and connected and let $u:U -> RR$ be harmonic. Suppose that $exists z_0 in U$ and a neighborhood $V subset.eq U$ of $z_0$ such that either
@@ -32,7 +32,7 @@ In @sec:poisson-integral-formula-in-harmonic-analysis and @sec:further-propertie
   ],
   <thm:minimum-principle-for-real-harmonic-functions>,
 )
-This can be obtained by applying @maximum-principle-for-real-harmonic-functions to $-u$. Then it follows that
+This can be obtained by applying @thm:maximum-principle-for-real-harmonic-functions to $-u$. Then it follows that
 $
   max_(z in overline(U)) u(z) = max_(z in partial U) u(z) quad "and" quad min_(z in overline(U)) u(z) = min_(z in partial U) u(z),
 $
