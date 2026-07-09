@@ -104,7 +104,9 @@
     }
   });
 
-  function fillTheoremLeaders() {
+  function fillTheoremLeaders(root) {
+    root = root || document;
+    if (!root.querySelectorAll) return;
     var ruler = document.createElement("span");
     ruler.style.cssText = "position:absolute;visibility:hidden;font-family:var(--sans);white-space:nowrap;";
     ruler.textContent = "..........";
@@ -112,7 +114,7 @@
     var dotWidth = Math.max(1, ruler.getBoundingClientRect().width / 10);
     ruler.remove();
 
-    document.querySelectorAll(".theorem-list-entry").forEach(function (entry) {
+    root.querySelectorAll(".theorem-list-entry").forEach(function (entry) {
       var dots = entry.querySelector(".theorem-list-dots");
       var marker = entry.querySelector(".theorem-list-end");
       var page = entry.querySelector(".theorem-list-page");
@@ -128,57 +130,9 @@
     });
   }
 
-  function flattenDisplayMathWrappers() {
-    document.querySelectorAll(".display-math > .display-math").forEach(function (inner) {
-      var outer = inner.parentNode;
-      if (!outer || !outer.classList.contains("display-math")) return;
-      while (inner.firstChild) {
-        outer.insertBefore(inner.firstChild, inner);
-      }
-      inner.remove();
-    });
-  }
-
-  function flattenDisplayMathWrappersIn(root) {
-    if (!root || !root.querySelectorAll) return;
-    root.querySelectorAll(".display-math > .display-math").forEach(function (inner) {
-      var outer = inner.parentNode;
-      if (!outer || !outer.classList.contains("display-math")) return;
-      while (inner.firstChild) {
-        outer.insertBefore(inner.firstChild, inner);
-      }
-      inner.remove();
-    });
-  }
-
-  function normalizeDisplayMath() {
-    flattenDisplayMathWrappers();
-    document.querySelectorAll('math[display="block"]').forEach(function (math) {
-      var wrapper = math.closest(".display-math");
-      if (!wrapper && math.parentNode) {
-        wrapper = document.createElement("div");
-        wrapper.className = "display-math";
-        math.parentNode.insertBefore(wrapper, math);
-        wrapper.appendChild(math);
-      }
-
-      if (!wrapper) return;
-
-      var scroll = math.closest(".equation-scroll");
-      if (!scroll || !wrapper.contains(scroll)) {
-        scroll = document.createElement("div");
-        scroll.className = "equation-scroll";
-        math.parentNode.insertBefore(scroll, math);
-        scroll.appendChild(math);
-      }
-
-      setupDisplayMathTags(wrapper, math);
-    });
-  }
-
-  function normalizeDisplayMathIn(root) {
-    if (!root || !root.querySelectorAll) return;
-    flattenDisplayMathWrappersIn(root);
+  function normalizeDisplayMath(root) {
+    root = root || document;
+    if (!root.querySelectorAll) return;
     root.querySelectorAll('math[display="block"]').forEach(function (math) {
       var wrapper = math.closest(".display-math");
       if (!wrapper && math.parentNode) {
@@ -189,6 +143,10 @@
       }
 
       if (!wrapper) return;
+      if (wrapper.dataset.displayMathProcessed === "true") {
+        placeEquationTagGroups(wrapper);
+        return;
+      }
 
       var scroll = math.closest(".equation-scroll");
       if (!scroll || !wrapper.contains(scroll)) {
@@ -199,6 +157,7 @@
       }
 
       setupDisplayMathTags(wrapper, math);
+      wrapper.dataset.displayMathProcessed = "true";
     });
   }
 
@@ -228,7 +187,7 @@
       var top = anchors.reduce(function (sum, anchor) {
         var rect = anchor.getBoundingClientRect();
         return sum + rect.top - wrapperRect.top - (parseFloat(getComputedStyle(group).fontSize) || 0) / 2;
-}, 0) / anchors.length;
+      }, 0) / anchors.length;
 
       group.style.top = top + "px";
       var width = group.getBoundingClientRect().width;
@@ -245,21 +204,21 @@
       placeEquationTagGroups(wrapper);
       return;
     }
-  
+
     var tags = Array.from(wrapper.querySelectorAll(".eq-tag,.equation-tag")).filter(function (tag) {
-      return!tag.closest(".equation-tag-layer");
+      return !tag.closest(".equation-tag-layer");
     });
     if (tags.length === 0) return;
-  
+
     var mathmlNs = "http://www.w3.org/1998/Math/MathML";
     var wrapperRect = wrapper.getBoundingClientRect();
     var items = tags.map(function (tag) {
       var tagRect = tag.getBoundingClientRect();
       var isInsideMath = math.contains(tag);
       var anchor = tag;
-  
+
       tag.classList.add("equation-tag");
-  
+
       if (isInsideMath) {
         anchor = document.createElementNS(mathmlNs, "mspace");
         anchor.setAttribute("class", "equation-tag-space");
@@ -269,13 +228,13 @@
         anchor = document.createElement("span");
         anchor.className = "equation-tag-anchor";
         var parent = tag.parentNode;
-        var holder = parent && parent!== wrapper && parent.children.length === 1? parent : tag;
+        var holder = parent && parent !== wrapper && parent.children.length === 1 ? parent : tag;
         holder.parentNode.insertBefore(anchor, holder);
-        if (holder!== tag) {
+        if (holder !== tag) {
           holder.classList.add("equation-tag-holder");
         }
       }
-  
+
       tag._equationTagAnchor = anchor;
       return {
         tag: tag,
@@ -285,7 +244,7 @@
     }).sort(function (a, b) {
       return a.top - b.top;
     });
-  
+
     var groups = [];
     var lineThreshold = 3;
     items.forEach(function (item) {
@@ -296,11 +255,11 @@
         groups.push([item]);
       }
     });
-  
+
     var layer = document.createElement("div");
     layer.className = "equation-tag-layer";
     wrapper.appendChild(layer);
-  
+
     groups.forEach(function (groupItems) {
       var group = document.createElement("div");
       group.className = "equation-tag-group";
@@ -309,7 +268,7 @@
       });
       layer.appendChild(group);
     });
-  
+
     wrapper.dataset.equationTagsReady = "true";
     placeEquationTagGroups(wrapper);
   }
@@ -433,10 +392,12 @@
     }
   }
 
-  function upgradeMathLinks() {
+  function upgradeMathLinks(root) {
+    root = root || document;
+    if (!root.querySelectorAll) return;
     var mathmlNs = "http://www.w3.org/1998/Math/MathML";
 
-    document.querySelectorAll("math a[href]").forEach(function (anchor) {
+    root.querySelectorAll("math a[href]").forEach(function (anchor) {
       var mtext = document.createElementNS(mathmlNs, "mtext");
       mtext.setAttribute("class", "math-link");
       mtext.setAttribute("role", "link");
@@ -468,8 +429,11 @@
     }
   }
 
-  function setupLocalTocRowNavigation() {
-    document.querySelectorAll(".local-toc li").forEach(function (item) {
+  function setupLocalTocRowNavigation(root) {
+    root = root || document;
+    if (!root.querySelectorAll) return;
+    root.querySelectorAll(".local-toc li").forEach(function (item) {
+      if (item.dataset.rowNavProcessed === "true") return;
       var primary = item.querySelector("a[href]");
       if (!primary) return;
 
@@ -479,6 +443,7 @@
 
         window.location.href = primary.href;
       });
+      item.dataset.rowNavProcessed = "true";
     });
   }
 
@@ -764,7 +729,7 @@
       clonePreviewNodes(doc, target).forEach(function (node) {
         wrapper.appendChild(node);
       });
-      normalizeDisplayMathIn(wrapper);
+      enhanceContent(wrapper);
       wrapper.querySelectorAll(".typst-multi-label-list,.ref-tooltip,.ref-preview").forEach(function (node) {
         node.remove();
       });
@@ -838,34 +803,39 @@
       activeTrigger = null;
     }
 
-    document.querySelectorAll(".typst-multi-label-list").forEach(function (source) {
-      let trigger = source.previousElementSibling;
-      while (trigger && !(trigger.matches("a[href]") || trigger.matches(".math-link"))) {
-        trigger = trigger.previousElementSibling;
-      }
-      if (!trigger) return;
+    function bindReferenceTooltips(root) {
+      if (!root || !root.querySelectorAll) return;
+      root.querySelectorAll(".typst-multi-label-list").forEach(function (source) {
+        if (source.dataset.refTooltipProcessed === "true") return;
+        let trigger = source.previousElementSibling;
+        while (trigger && !(trigger.matches("a[href]") || trigger.matches(".math-link"))) {
+          trigger = trigger.previousElementSibling;
+        }
+        if (!trigger) return;
 
-      var links = Array.from(source.querySelectorAll("a[href], .math-link"));
-      var linksData = links.map(function (link, index) {
-        return {
-          href: link.getAttribute("href") || link.getAttribute("data-href"),
-          label: linkLabel(link, index, links)
-        };
+        var links = Array.from(source.querySelectorAll("a[href], .math-link"));
+        var linksData = links.map(function (link, index) {
+          return {
+            href: link.getAttribute("href") || link.getAttribute("data-href"),
+            label: linkLabel(link, index, links)
+          };
+        });
+
+        source.dataset.refTooltipProcessed = "true";
+        source.remove();
+
+        trigger.classList.add("ref-with-tooltip");
+
+        trigger.addEventListener("mouseenter", function () {
+          showTooltip(trigger, linksData);
+        });
+        trigger.addEventListener("mouseleave", scheduleHide);
+        trigger.addEventListener("focus", function () {
+          showTooltip(trigger, linksData);
+        });
+        trigger.addEventListener("blur", scheduleHide);
       });
-
-      source.remove();
-
-      trigger.classList.add("ref-with-tooltip");
-
-      trigger.addEventListener("mouseenter", function () {
-        showTooltip(trigger, linksData);
-      });
-      trigger.addEventListener("mouseleave", scheduleHide);
-      trigger.addEventListener("focus", function () {
-        showTooltip(trigger, linksData);
-      });
-      trigger.addEventListener("blur", scheduleHide);
-    });
+    }
 
     tooltip.addEventListener("mouseenter", clearHideTimer);
     tooltip.addEventListener("mouseleave", scheduleHide);
@@ -910,6 +880,19 @@
     });
 
     addEventListener("beforeprint", hideTooltip);
+    bindReferenceTooltips(document);
+    setupReferenceTooltips.bindInto = bindReferenceTooltips;
+  }
+
+  function enhanceContent(root) {
+    if (!root) return;
+    upgradeMathLinks(root);
+    normalizeDisplayMath(root);
+    fillTheoremLeaders(root);
+    setupLocalTocRowNavigation(root);
+    if (setupReferenceTooltips.bindInto) {
+      setupReferenceTooltips.bindInto(root);
+    }
   }
 
   function setupPrintButton() {
@@ -950,23 +933,23 @@
     });
   }
 
-  normalizeDisplayMath();
+  normalizeDisplayMath(document);
   setupGlobalNavCollapse();
-  setupLocalTocRowNavigation();
+  setupLocalTocRowNavigation(document);
   whenDomReady(moveFootnotesAbovePageNav);
-  upgradeMathLinks();
+  upgradeMathLinks(document);
   setupReferenceTooltips();
   setupMathLinkNavigation();
   setupPrintButton();
   addEventListener("beforeprint", expandSolutionsForPrint);
   addEventListener("afterprint", restoreSolutionsAfterPrint);
-  fillTheoremLeaders();
+  fillTheoremLeaders(document);
   addEventListener("resize", function () {
-    fillTheoremLeaders();
+    fillTheoremLeaders(document);
     document.querySelectorAll(".display-math").forEach(placeEquationTagGroups);
   });
   addEventListener("load", function () {
-    fillTheoremLeaders();
+    fillTheoremLeaders(document);
     document.querySelectorAll(".display-math").forEach(placeEquationTagGroups);
   });
 })();
