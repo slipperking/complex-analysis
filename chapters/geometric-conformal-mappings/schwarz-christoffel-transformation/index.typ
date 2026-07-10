@@ -86,15 +86,20 @@ $
 where each $w_(k - 1)$ is defined as in @eq:schwarz-christoffel-transformation-polygon-vertices (and observe that $w_(k-1) = f(a_(k-1))$). Therefore,
 #lbl(
   $
-    arg[f(x) - w_(k - 1)] = uppi (-n + k - 1 + sum_(j = k)^n alpha_j) quad "and" quad abs(f(x) - w_(k-1)) = c integral_(a_(k-1))^x abs(beta(t)) dt
+    arg[f(x) - w_(k - 1)] = uppi (-n + k - 1 + sum_(j = k)^n alpha_j)
   $,
-  <eq:schwarz-christoffel-transformation-beta-argument-modulus>,
+  <eq:schwarz-christoffel-transformation-f-difference-argument>,
+)
+and
+#lbl(
+  $ abs(f(x) - w_(k-1)) = c integral_(a_(k-1))^x abs(beta(t)) dt $,
+  <eq:schwarz-christoffel-transformation-f-difference-modulus>,
 )
 for $x in (a_(k - 1), a_k)$. Define
 $
   l_k = c integral_(a_(k-1))^(a_k) abs(beta(t)) dt quad "and" quad Delta_k = f([a_(k-1), a_k])
 $
-for $1<= k <= n+1$. Note that $Delta_k$ is a curve from $w_(k-1)$ to $w_k$. By @eq:schwarz-christoffel-transformation-beta-argument-modulus, since $arg[f(x) - w_(k - 1)]$ is constant for $a_(k-1) < x < a_k$, $Delta_k$ is a straight line segment. Furthermore, $l_k$ measures the length of said segment and its slope angle is given by
+for $1<= k <= n+1$. Note that $Delta_k$ is a curve from $w_(k-1)$ to $w_k$. By @eq:schwarz-christoffel-transformation-f-difference-argument, since $arg[f(x) - w_(k - 1)]$ is constant for $a_(k-1) < x < a_k$, $Delta_k$ is a straight line segment. Furthermore, by @eq:schwarz-christoffel-transformation-f-difference-modulus with $x = a_k$, $l_k$ measures the length of said segment and its slope angle is given by
 $
   theta_k = arg[w_k - w_(k-1)] = uppi (-n + k - 1 + sum_(j = k)^n alpha_j).
 $
