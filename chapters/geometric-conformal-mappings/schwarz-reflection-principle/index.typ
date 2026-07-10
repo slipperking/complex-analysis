@@ -180,7 +180,7 @@ A consequent result was discovered by Schwarz, known as the _reflection principl
     $
     on $U union tilde(U) union gamma$.
   ],
-  <thm:riemann-schwarz-reflection>,
+  <thm:schwarz-reflection-principle>,
 )
 
 #proof[
@@ -202,5 +202,5 @@ This conjugate-symmetry can be generalized by transforming $gamma$:
 ]
 
 #proof[
-  There exist $a, c in CC^*$ and $b, d in CC$ such that $phi.alt(z) = a z + b$ maps $L$ to $RR$ and $psi(z) = c z + d$ maps $Gamma$ to $RR$. Let $U' = phi.alt(U)$, which lies entirely on one side of the real axis, and let $gamma' = phi.alt(gamma)$, a curve on the real axis. The function $phi = psi compose f compose phi.alt^(-1)$ is holomorphic on $U'$ and continuous on $U' union gamma'$. By the Schwarz Reflection Principle (@thm:riemann-schwarz-reflection), there exists a unique holomorphic function $tilde(phi):U' union tilde(U') union gamma' -> CC$ such that $tilde(phi) equiv phi$ on $U'$, where $tilde(U')$ is the reflection of $U'$ across the real axis. Then $tilde(f) = psi^(-1) compose tilde(phi) compose phi.alt$ is a holomorphic function on $U union tilde(U) union gamma$ such that $tilde(f) equiv f$ on $U$. Since linear transformations preserves symmetry, for any pair $z_1, z_2 in U union tilde(U) union gamma$ symmetric with respect to $L$, we have $phi.alt(z_1) = overline(phi.alt(z_2))$, and thus $tilde(phi) compose phi.alt(z_1)$ and $tilde(phi) compose phi.alt(z_2)$ are symmetric with respect to $RR$. Hence, $tilde(f)(z_1)$ and $tilde(f)(z_2)$ are symmetric with respect to $psi^(-1)(RR) = Gamma$.
+  There exist $a, c in CC^*$ and $b, d in CC$ such that $phi.alt(z) = a z + b$ maps $L$ to $RR$ and $psi(z) = c z + d$ maps $Gamma$ to $RR$. Let $U' = phi.alt(U)$, which lies entirely on one side of the real axis, and let $gamma' = phi.alt(gamma)$, a curve on the real axis. The function $phi = psi compose f compose phi.alt^(-1)$ is holomorphic on $U'$ and continuous on $U' union gamma'$. By the Schwarz Reflection Principle (@thm:schwarz-reflection-principle), there exists a unique holomorphic function $tilde(phi):U' union tilde(U') union gamma' -> CC$ such that $tilde(phi) equiv phi$ on $U'$, where $tilde(U')$ is the reflection of $U'$ across the real axis. Then $tilde(f) = psi^(-1) compose tilde(phi) compose phi.alt$ is a holomorphic function on $U union tilde(U) union gamma$ such that $tilde(f) equiv f$ on $U$. Since linear transformations preserves symmetry, for any pair $z_1, z_2 in U union tilde(U) union gamma$ symmetric with respect to $L$, we have $phi.alt(z_1) = overline(phi.alt(z_2))$, and thus $tilde(phi) compose phi.alt(z_1)$ and $tilde(phi) compose phi.alt(z_2)$ are symmetric with respect to $RR$. Hence, $tilde(f)(z_1)$ and $tilde(f)(z_2)$ are symmetric with respect to $psi^(-1)(RR) = Gamma$.
 ]

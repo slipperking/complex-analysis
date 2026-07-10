@@ -37,3 +37,22 @@ $
   max_(z in overline(U)) u(z) = max_(z in partial U) u(z) quad "and" quad min_(z in overline(U)) u(z) = min_(z in partial U) u(z),
 $
 as otherwise, the maximum (or minimum) would be attained within $U$ itself, which implies constancy.
+
+We have seen that many holomorphic properties have harmonic analogs. This is also the case for the Schwarz Reflection Principle (@thm:schwarz-reflection-principle), for which we now provide an approach that yields an alternative proof.
+#lbl(
+  theorem[Schwarz Reflection Principle for Harmonic Functions][
+    Let $U subset.eq CC$ be a connected region on one side of the real axis such that there exists a non-degenerate curve $gamma subset.eq partial U$ such that $gamma subset.eq RR$. Let $u:U -> RR$ be harmonic with continuity up to $U union gamma$ such that $u$ vanishes on $gamma$, and let $tilde(U) = { overline(z) : z in U }$ be the reflection of $U$ across the real axis. Then there exists a unique harmonic function
+    $
+      tilde(u)(z) = cases(
+        u(z) quad & "if" z in U,
+        -u(overline(z)) quad & "if" z in tilde(U),
+        0 quad & "if" z in gamma
+      ).
+    $
+    on $U union tilde(U) union gamma$.
+  ],
+  <thm:schwarz-reflection-principle-harmonic>,
+)
+#proof[
+  Because satisfying the Laplace equation is equivalent to satisfying the mean-value property on small circles, it suffices to show that $tilde(u)$ satisfies the mean-value property on small circles.
+]

@@ -2,7 +2,7 @@
 #show: docs-subchapter.with(
   title: [The Residue Theorem],
   route: "residue-theorem",
-  label: <sec:cauchyresiduetheorem>,
+  label: <sec:residue-theorem>,
 )
 After Riemann and Weierstrass refined the understanding of analytic functions and the formal characterization of Jordan curves, the Cauchy Residue Theorem was consequently formalized. Cauchy had the informal notion of a residue, which we will now formally introduce.
 

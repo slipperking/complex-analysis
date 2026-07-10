@@ -121,7 +121,7 @@ As a direct consequence of @thm:holomorphic-automorphism-group-on-unit-disk, we 
       $
         abs((w_1 - w_2) / (1 - w_1 overline(w_2))) <= abs((z_1 - z_2) / (1 - z_1 overline(z_2))).
       $,
-      <eq:schwarz-pick_statement1>,
+      <eq:schwarz-pick-statement-1>,
     )
 
     and
@@ -144,7 +144,7 @@ As a direct consequence of @thm:holomorphic-automorphism-group-on-unit-disk, we 
   $ abs(phi_(w_1) compose f compose phi_(-z_1)(z)) <= abs(z). $
   Let $z_2 = phi_(-z_1)(z)$. Then,
   $ abs(phi_(w_1) compose f(z_2)) <= abs(phi_(z_1)(z_2)) <==> abs(phi_(w_1)(w_2)) <= abs(phi_(z_1)(z_2)), $
-  confirming @eq:schwarz-pick_statement1. By the second statement of the Schwarz Lemma (@lem:schwarz), $abs((phi_(w_1) compose f compose phi_(-z_1))'(0)) <= 1$.
+  confirming @eq:schwarz-pick-statement-1. By the second statement of the Schwarz Lemma (@lem:schwarz), $abs((phi_(w_1) compose f compose phi_(-z_1))'(0)) <= 1$.
 
   By the chain rule,
   $ abs(phi_(w_1)'(w_1) f'(z_1) phi_(-z_1)'(0)) <= 1. $

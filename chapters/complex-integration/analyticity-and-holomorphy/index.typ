@@ -303,7 +303,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 
 #lbl(
   theorem[Morera][
-    Let $U subset.eq CC$ and $f:U -> CC$ be continuous over $U$. If for any closed triangular contour $gamma subset U$,
+    Let $U subset.eq CC$ be a region and $f:U -> CC$ be continuous over $U$. If for any closed triangular contour $gamma subset U$,
 
     $
       integral.cont_gamma f(zeta) dzeta = 0,

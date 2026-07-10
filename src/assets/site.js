@@ -509,8 +509,9 @@
     var preview = document.createElement("aside");
     preview.className = "ref-preview";
     preview.hidden = true;
-    preview.innerHTML = '<div class="ref-preview-content"></div>';
+    preview.innerHTML = '<button class="ref-preview-close" type="button" aria-label="Close preview">×</button><div class="ref-preview-content"></div>';
     document.body.appendChild(preview);
+    var previewClose = preview.querySelector(".ref-preview-close");
     var previewContent = preview.querySelector(".ref-preview-content");
 
     var activeTrigger = null;
@@ -518,6 +519,7 @@
     var previewPinned = false;
     var previewDragged = false;
     var previewDragState = null;
+    var previewAnchorKey = "";
 
     function clearHideTimer() {
       if (hideTimer) {
@@ -598,6 +600,14 @@
 
     function hasDraggedPreviewPosition() {
       return !!(previewDragged && previewDragState && typeof previewDragState.left === "number" && typeof previewDragState.top === "number");
+    }
+
+    function resetDraggedPreviewPosition() {
+      previewDragged = false;
+      previewDragState = null;
+      preview.style.left = "";
+      preview.style.top = "";
+      preview.style.right = "";
     }
 
     function placePreview(trigger) {
@@ -762,7 +772,20 @@
       return [anchor.cloneNode(true)];
     }
 
-    function renderPreviewFromDocument(doc, url) {
+  function preparePreviewContent(root) {
+    if (!root) return;
+    upgradeMathLinks(root);
+    fillTheoremLeaders(root);
+    setupLocalTocRowNavigation(root);
+    if (setupReferenceTooltips.bindInto) {
+      setupReferenceTooltips.bindInto(root);
+    }
+    root.querySelectorAll(".typst-multi-label-list,.ref-tooltip,.ref-preview").forEach(function (node) {
+      node.remove();
+    });
+  }
+
+  function renderPreviewFromDocument(doc, url) {
       if (!url.hash) {
         return "";
       }
@@ -785,10 +808,7 @@
         wrapper.textContent = "";
         wrapper.appendChild(paragraph);
       }
-      enhanceContent(wrapper);
-      wrapper.querySelectorAll(".typst-multi-label-list,.ref-tooltip,.ref-preview").forEach(function (node) {
-        node.remove();
-      });
+      preparePreviewContent(wrapper);
       return wrapper.innerHTML || "";
     }
 
@@ -838,6 +858,12 @@
         return;
       }
 
+      var nextAnchorKey = url.href + "::" + (trigger.getAttribute("href") || trigger.getAttribute("data-href") || trigger.textContent || "");
+      if (previewAnchorKey && previewAnchorKey !== nextAnchorKey) {
+        resetDraggedPreviewPosition();
+      }
+      previewAnchorKey = nextAnchorKey;
+
       previewMarkupForUrl(url.href).then(function (markup) {
         if (activeTrigger !== trigger || !markup) {
           preview.hidden = true;
@@ -846,9 +872,12 @@
         }
         previewContent.innerHTML = markup;
         preview.hidden = false;
+        preview.style.visibility = "hidden";
+        enhanceContent(previewContent);
         previewPinned = true;
         preview.classList.remove("dragging");
         placePreview(trigger);
+        preview.style.visibility = "";
       });
     }
 
@@ -857,8 +886,8 @@
       tooltip.hidden = true;
       preview.hidden = true;
       previewPinned = false;
-      previewDragged = false;
-      previewDragState = null;
+      previewAnchorKey = "";
+      resetDraggedPreviewPosition();
       activeTrigger = null;
     }
 
@@ -940,11 +969,9 @@
     }
     preview.addEventListener("pointerup", stopPreviewDrag);
     preview.addEventListener("pointercancel", stopPreviewDrag);
-    document.addEventListener("pointerdown", function (event) {
-      if (tooltip.hidden && preview.hidden) return;
-      var target = event.target;
-      if ((tooltip.contains && tooltip.contains(target)) || (preview.contains && preview.contains(target))) return;
-      if (activeTrigger && activeTrigger.contains && activeTrigger.contains(target)) return;
+    previewClose.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
       hideTooltip();
     });
     addEventListener("scroll", function () {
