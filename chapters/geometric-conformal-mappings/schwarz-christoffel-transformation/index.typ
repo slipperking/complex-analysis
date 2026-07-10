@@ -29,9 +29,12 @@ $
   arg(beta(zeta)) = 0.
 $
 Therefore, we can define $n + 2$ complex numbers via
-$
-  w_0 = c integral_0^(-oo) beta(zeta) dzeta, quad w_k = c integral_0^(a_k) beta(zeta) dzeta, quad w_(n + 1) = c integral_0^oo beta(zeta) dzeta
-$
+#lbl(
+  $
+    w_k = c integral_0^(a_k) beta(zeta) dzeta
+  $,
+  <eq:schwarz-christoffel-transformation-polygon-vertices>,
+)
 where $c in RR_(> 0)$ is a fixed constant.
 
 The absolute integrability of $beta(zeta)$ along the real axis concerns only the convergence at each singularity $zeta = a_k$ and the behavior as $zeta -> plus.minus oo$. For each fixed $k$,
@@ -78,12 +81,23 @@ For $x in RR$ where $x in (a_(k - 1), a_k)$ (where $1 <= k <= n + 1$) and $a_0 =
 $
   f(x) & = c integral_0^x beta(t) dt = w_(k - 1) + integral_(a_(k - 1))^x beta(t) dt \
        & = w_(k - 1) + c integral_(a_(k - 1))^x abs(beta(t)) e^(ii arg(beta(t))) dt \
-       & = w_(k - 1) + c exp[ii arg(uppi (-n + k - 1 + sum_(j = k)^n alpha_j))] integral_(a_(k - 1))^x abs(beta(t)) dt.
+       & = w_(k - 1) + c exp[ii arg(uppi (-n + k - 1 + sum_(j = k)^n alpha_j))] integral_(a_(k - 1))^x abs(beta(t)) dt,
 $
-Therefore,
+where each $w_(k - 1)$ is defined as in @eq:schwarz-christoffel-transformation-polygon-vertices (and observe that $w_(k-1) = f(a_(k-1))$). Therefore,
+#lbl(
+  $
+    arg[f(x) - w_(k - 1)] = uppi (-n + k - 1 + sum_(j = k)^n alpha_j) quad "and" quad abs(f(x) - w_(k-1)) = c integral_(a_(k-1))^x abs(beta(t)) dt
+  $,
+  <eq:schwarz-christoffel-transformation-beta-argument-modulus>,
+)
+for $x in (a_(k - 1), a_k)$. Define
 $
-  arg[f(x) - w_(k - 1)] = uppi (-n + k - 1 + sum_(j = k)^n alpha_j) quad "for" quad x in (a_(k - 1), a_k).
+  l_k = c integral_(a_(k-1))^(a_k) abs(beta(t)) dt quad "and" quad Delta_k = f([a_(k-1), a_k])
 $
-
-
+for $1<= k <= n+1$. Note that $Delta_k$ is a curve from $w_(k-1)$ to $w_k$. By @eq:schwarz-christoffel-transformation-beta-argument-modulus, since $arg[f(x) - w_(k - 1)]$ is constant for $a_(k-1) < x < a_k$, $Delta_k$ is a straight line segment. Furthermore, $l_k$ measures the length of said segment and its slope angle is given by
+$
+  theta_k = arg[w_k - w_(k-1)] = uppi (-n + k - 1 + sum_(j = k)^n alpha_j).
+$
+Therefore, $f$ maps the real axis $RR$ to a polygonal chain with vertices at $w_0, w_1, dots.c, w_n, w_(n+1)$. We now aim to prove that $w_0 = w_(n + 1)$.
+// add figure?
 // TBC
