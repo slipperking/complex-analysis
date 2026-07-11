@@ -28,14 +28,13 @@ If $zeta > a_n$, we have
 $
   arg(beta(zeta)) = 0.
 $
-Therefore, we can define $n + 2$ complex numbers via
+Then, we define $n + 2$ complex numbers via
 #lbl(
   $
-    w_k = c integral_0^(a_k) beta(zeta) dzeta
+    w_k = integral_0^(a_k) beta(zeta) dzeta.
   $,
   <eq:schwarz-christoffel-transformation-polygon-vertices>,
 )
-where $c in RR_(> 0)$ is a fixed constant.
 
 The absolute integrability of $beta(zeta)$ along the real axis concerns only the convergence at each singularity $zeta = a_k$ and the behavior as $zeta -> plus.minus oo$. For each fixed $k$,
 $
@@ -51,7 +50,7 @@ and therefore $zeta = a_k$ is an integrable singularity. Since $beta(zeta) tilde
 Let
 #lbl(
   $
-    f(z) = c integral_0^z beta(zeta) dzeta.
+    f(z) = integral_0^z beta(zeta) dzeta.
   $,
   <eq:schwarz-christoffel-transformation-statement>,
 )
@@ -73,15 +72,15 @@ Hence, $integral.cont_Gamma beta(zeta) dzeta = 0$ for any piecewise $C^1$ Jordan
 
 The holomorphy of $f$ in $HH^+$ is equally evident: choosing the polygonal chain $0 -> ii -> z$ and applying $pdv(, overline(z))$ gives
 $
-  pdv(f, overline(z)) = c pdv(, overline(z)) integral_ii^z beta(zeta) dzeta = c integral_ii^z pdv(, overline(z)) beta(zeta) dzeta = 0,
+  pdv(f, overline(z)) = pdv(, overline(z)) integral_ii^z beta(zeta) dzeta = integral_ii^z pdv(, overline(z)) beta(zeta) dzeta = 0,
 $
 since $beta(zeta)$ is bounded on compact subsets of $HH^+$ (this is the reason for which we choose $0 -> ii -> z$, as $beta$ may be unbounded near $0$). Thus $f$ is holomorphic on $HH^+$; it is also trivial that $f$ is continuous on $overline(HH^+)$.
 
 For $x in RR$ where $x in (a_(k - 1), a_k)$ (where $1 <= k <= n + 1$) and $a_0 = -oo$ and $a_(n + 1) = oo$,
 $
-  f(x) & = c integral_0^x beta(t) dt = w_(k - 1) + integral_(a_(k - 1))^x beta(t) dt \
-       & = w_(k - 1) + c integral_(a_(k - 1))^x abs(beta(t)) e^(ii arg(beta(t))) dt \
-       & = w_(k - 1) + c exp[ii arg(uppi (-n + k - 1 + sum_(j = k)^n alpha_j))] integral_(a_(k - 1))^x abs(beta(t)) dt,
+  f(x) & = integral_0^x beta(t) dt = w_(k - 1) + integral_(a_(k - 1))^x beta(t) dt \
+       & = w_(k - 1) + integral_(a_(k - 1))^x abs(beta(t)) e^(ii arg(beta(t))) dt \
+       & = w_(k - 1) + exp[ii arg(uppi (-n + k - 1 + sum_(j = k)^n alpha_j))] integral_(a_(k - 1))^x abs(beta(t)) dt,
 $
 where each $w_(k - 1)$ is defined as in @eq:schwarz-christoffel-transformation-polygon-vertices (and observe that $w_(k-1) = f(a_(k-1))$). Therefore,
 #lbl(
@@ -92,17 +91,47 @@ where each $w_(k - 1)$ is defined as in @eq:schwarz-christoffel-transformation-p
 )
 and
 #lbl(
-  $ abs(f(x) - w_(k-1)) = c integral_(a_(k-1))^x abs(beta(t)) dt $,
+  $ abs(f(x) - w_(k-1)) = integral_(a_(k-1))^x abs(beta(t)) dt $,
   <eq:schwarz-christoffel-transformation-f-difference-modulus>,
 )
 for $x in (a_(k - 1), a_k)$. Define
 $
-  l_k = c integral_(a_(k-1))^(a_k) abs(beta(t)) dt quad "and" quad Delta_k = f([a_(k-1), a_k])
+  l_k = integral_(a_(k-1))^(a_k) abs(beta(t)) dt quad "and" quad Delta_k = f([a_(k-1), a_k])
 $
-for $1<= k <= n+1$. Note that $Delta_k$ is a curve from $w_(k-1)$ to $w_k$. By @eq:schwarz-christoffel-transformation-f-difference-argument, since $arg[f(x) - w_(k - 1)]$ is constant for $a_(k-1) < x < a_k$, $Delta_k$ is a straight line segment. Furthermore, by @eq:schwarz-christoffel-transformation-f-difference-modulus with $x = a_k$, $l_k$ measures the length of said segment and its slope angle is given by
+for $1 <= k <= n+1$. Note that $Delta_k$ is a curve from $w_(k-1)$ to $w_k$. By @eq:schwarz-christoffel-transformation-f-difference-argument, since $arg[f(x) - w_(k - 1)]$ is constant for $a_(k-1) < x < a_k$, $Delta_k$ is a straight line segment. Furthermore, by @eq:schwarz-christoffel-transformation-f-difference-modulus with $x = a_k$, $l_k$ measures the length of said segment and its slope angle is given by
 $
   theta_k = arg[w_k - w_(k-1)] = uppi (-n + k - 1 + sum_(j = k)^n alpha_j).
 $
-Therefore, $f$ maps the real axis $RR$ to a polygonal chain with vertices at $w_0, w_1, dots.c, w_n, w_(n+1)$. We now aim to prove that $w_0 = w_(n + 1)$.
+Therefore, $f$ maps the real axis $RR$ to a polygonal chain with vertices at $w_0, w_1, dots.c, w_n, w_(n+1)$. We now aim to prove that $w_0 = w_(n + 1)$, which is equivalent to showing
+$
+  w_(n + 1) - w_0 = integral_(-oo)^oo beta(t) dt = 0.
+$
+Let $R'>max_(k in NN_(<= n)) abs(a_k)$ be arbitrary; then $exists epsilon'>0$ such that
+$
+  union.big_(k in NN_(<= n)) overline(D(a_k, epsilon')) subset.eq D(0, R') inter HH^+
+$
+and each $overline(D(a_k, epsilon'))$ are disjoint. Moreover, $forall R> R'$, $forall epsilon in (0, epsilon')$,
+$
+  union.big_(k in NN_(<= n)) overline(D(a_k, epsilon)) subset.eq D(0, R) inter HH^+.
+$
+Therefore, we may define a closed (indented semicircle) contour (oriented counterclockwise)
+$
+  Gamma &= {R ee^(ii theta) : 0 <= theta <= uppi} union ([-R, R] without union.big_(k in NN_(<= n)) (a_k - epsilon, a_k + epsilon)) union union.big_(k in NN_(<= n)) (partial D(a_k, epsilon) union overline(HH^+)) \
+  &= C_R quad union quad I_R quad union quad C_epsilon,
+$
+such that $beta$ is continuous on $overline(jinterior Gamma)$ and holomorphic on $jinterior Gamma$. By Cauchy--Goursat (@thm:cauchy-goursat-theorem), $ integral.cont.ccw_Gamma beta(zeta) dzeta = 0, $
+and moreover, taking $R -> oo$ and $epsilon -> 0^+$ gives
+$
+  integral_(-oo)^oo beta(t) dt = -lim_(R -> oo) integral_(C_R) beta(zeta) dzeta - lim_(epsilon -> 0^+) integral_(C_epsilon) beta(zeta) dzeta.
+$
+By @eq:schwarz-christoffel-transformation-beta-singularity-order-expression, we know that integrals over small indentations vanish; therefore
+$
+  abs(w_(n + 1) - w_0) &= lim_(R -> oo) abs(integral_(C_R) beta(zeta) dzeta) <= lim_(R -> oo) R integral_0^uppi abs(product_(k = 1)^n (R ee^(ii theta) - a_k)^(alpha_k - 1)) dtheta \
+  &= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n abs(R ee^(ii theta) - a_k)^(alpha_k - 1) dtheta <= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n (R + abs(a_k))^(alpha_k - 1) dtheta \
+  &<= lim_(R -> oo) R uppi (2R)^(-n + sum_(j = 1)^n alpha_j) = lim_(R -> oo) Order(R^(1 - n + sum_(j = 1)^n alpha_j)) = 0
+$
+since $sum_(k = 1)^n alpha_k < n - 1$ (by assumption). Hence, $w_0 = w_(n + 1)$ and $f$ maps $hat(RR) = RR union {oo}$ to a closed polygon with $n+1$ sides ($Delta_k$). For $k in NN_(<= n)$, at the vertex $w_k$ connecting $Delta_k$ and $Delta_(k+1)$, the tangent angle changes from $theta_k$ to $theta_(k+1)$, with an exterior angle of $theta_(k+1) - theta_k = uppi - uppi alpha_k$. Then at this vertex, the polygon has an interior angle of $uppi alpha_k$.
+
+At the vertex $w_0 = w_(n + 1)$, the polygon has an interior angle of $uppi(n - 1) - sum_(k=1)^n uppi alpha_k = uppi(n - 1 - sum_(k=1)^n alpha_k) > 0$, since the interior angles of the polygon add to $uppi(n - 1)$.
 // add figure?
 // TBC
