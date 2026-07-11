@@ -31,10 +31,11 @@ $
 Then, we define $n + 2$ complex numbers via
 #lbl(
   $
-    w_k = integral_0^(a_k) beta(zeta) dzeta.
+    w_k = integral_0^(a_k) beta(zeta) dzeta,
   $,
   <eq:schwarz-christoffel-transformation-polygon-vertices>,
 )
+where we integrate over the real line as an improper Riemann integral.
 
 The absolute integrability of $beta(zeta)$ along the real axis concerns only the convergence at each singularity $zeta = a_k$ and the behavior as $zeta -> plus.minus oo$. For each fixed $k$,
 $
@@ -72,7 +73,8 @@ Hence, $integral.cont_Gamma beta(zeta) dzeta = 0$ for any piecewise $C^1$ Jordan
 
 The holomorphy of $f$ in $HH^+$ is equally evident: choosing the polygonal chain $0 -> ii -> z$ and applying $pdv(, overline(z))$ gives
 $
-  pdv(f, overline(z)) = pdv(, overline(z)) integral_ii^z beta(zeta) dzeta = integral_ii^z pdv(, overline(z)) beta(zeta) dzeta = 0,
+  pdv(f, overline(z)) &= pdv(, overline(z)) integral_ii^z beta(zeta) dzeta = pdv(, overline(z)) (z-ii) integral_0^1 beta(ii + (z-ii) t) dt\
+  & = (z-ii) integral_0^1 pdv(, overline(z)) beta(ii + (z-ii) t) dt = 0,
 $
 since $beta(zeta)$ is bounded on compact subsets of $HH^+$ (this is the reason for which we choose $0 -> ii -> z$, as $beta$ may be unbounded near $0$). Thus $f$ is holomorphic on $HH^+$; it is also trivial that $f$ is continuous on $overline(HH^+)$.
 
@@ -80,7 +82,7 @@ For $x in RR$ where $x in (a_(k - 1), a_k)$ (where $1 <= k <= n + 1$) and $a_0 =
 $
   f(x) & = integral_0^x beta(t) dt = w_(k - 1) + integral_(a_(k - 1))^x beta(t) dt \
        & = w_(k - 1) + integral_(a_(k - 1))^x abs(beta(t)) e^(ii arg(beta(t))) dt \
-       & = w_(k - 1) + exp[ii arg(uppi (-n + k - 1 + sum_(j = k)^n alpha_j))] integral_(a_(k - 1))^x abs(beta(t)) dt,
+       & = w_(k - 1) + exp[ii uppi (-n + k - 1 + sum_(j = k)^n alpha_j)] integral_(a_(k - 1))^x abs(beta(t)) dt,
 $
 where each $w_(k - 1)$ is defined as in @eq:schwarz-christoffel-transformation-polygon-vertices (and observe that $w_(k-1) = f(a_(k-1))$). Therefore,
 #lbl(
@@ -116,7 +118,7 @@ $
 $
 Therefore, we may define a closed (indented semicircle) contour (oriented counterclockwise)
 $
-  Gamma &= {R ee^(ii theta) : 0 <= theta <= uppi} union ([-R, R] without union.big_(k in NN_(<= n)) (a_k - epsilon, a_k + epsilon)) union union.big_(k in NN_(<= n)) (partial D(a_k, epsilon) union overline(HH^+)) \
+  Gamma &= {R ee^(ii theta) : 0 <= theta <= uppi} union ([-R, R] without union.big_(k in NN_(<= n)) (a_k - epsilon, a_k + epsilon)) union union.big_(k in NN_(<= n)) (partial D(a_k, epsilon) inter overline(HH^+)) \
   &= C_R quad union quad I_R quad union quad C_epsilon,
 $
 such that $beta$ is continuous on $overline(jinterior Gamma)$ and holomorphic on $jinterior Gamma$. By Cauchy--Goursat (@thm:cauchy-goursat-theorem), $ integral.cont.ccw_Gamma beta(zeta) dzeta = 0, $
@@ -127,10 +129,12 @@ $
 By @eq:schwarz-christoffel-transformation-beta-singularity-order-expression, we know that integrals over small indentations vanish; therefore
 $
   abs(w_(n + 1) - w_0) &= lim_(R -> oo) abs(integral_(C_R) beta(zeta) dzeta) <= lim_(R -> oo) R integral_0^uppi abs(product_(k = 1)^n (R ee^(ii theta) - a_k)^(alpha_k - 1)) dtheta \
-  &= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n abs(R ee^(ii theta) - a_k)^(alpha_k - 1) dtheta <= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n (R + abs(a_k))^(alpha_k - 1) dtheta \
-  &<= lim_(R -> oo) R uppi (2R)^(-n + sum_(j = 1)^n alpha_j) = lim_(R -> oo) Order(R^(1 - n + sum_(j = 1)^n alpha_j)) = 0
+  &= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n abs(R ee^(ii theta) - a_k)^(alpha_k - 1) dtheta <= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n max{(R + abs(a_k))^(alpha_k - 1), abs(R - abs(a_k))^(alpha_k - 1)} dtheta \
+  &<= lim_(R -> oo) R uppi Order(R)^(-n + sum_(j = 1)^n alpha_j) = lim_(R -> oo) Order(R^(1 - n + sum_(j = 1)^n alpha_j)) = 0,
 $
-since $sum_(k = 1)^n alpha_k < n - 1$ (by assumption). Hence, $w_0 = w_(n + 1)$ and $f$ maps $hat(RR) = RR union {oo}$ to a closed polygon with $n+1$ sides ($Delta_k$). For $k in NN_(<= n)$, at the vertex $w_k$ connecting $Delta_k$ and $Delta_(k+1)$, the tangent angle changes from $theta_k$ to $theta_(k+1)$, with an exterior angle of $theta_(k+1) - theta_k = uppi - uppi alpha_k$. Then at this vertex, the polygon has an interior angle of $uppi alpha_k$.
+since $sum_(k = 1)^n alpha_k < n - 1$ (by assumption). Here, we developed the upper bound $max{(R + abs(a_k))^(alpha_k - 1), abs(R - abs(a_k))^(alpha_k - 1)} dtheta$, as the first part accounts solely for $alpha_k - 1 >= 0$ and the second for $alpha_k - 1 <= 0$ (although here it made little difference),.
+
+Hence, $w_0 = w_(n + 1)$ and $f$ maps $hat(RR) = RR union {oo}$ to a closed polygon with $n+1$ sides ($Delta_k$). For $k in NN_(<= n)$, at the vertex $w_k$ connecting $Delta_k$ and $Delta_(k+1)$, the tangent angle changes from $theta_k$ to $theta_(k+1)$, with an exterior angle of $theta_(k+1) - theta_k = uppi - uppi alpha_k$. Then at this vertex, the polygon has an interior angle of $uppi alpha_k$.
 
 At the vertex $w_0 = w_(n + 1)$, the polygon has an interior angle of $uppi(n - 1) - sum_(k=1)^n uppi alpha_k = uppi(n - 1 - sum_(k=1)^n alpha_k) > 0$, since the interior angles of the polygon add to $uppi(n - 1)$.
 // add figure?
