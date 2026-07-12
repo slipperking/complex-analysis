@@ -137,5 +137,7 @@ since $sum_(k = 1)^n alpha_k < n - 1$ (by assumption). Here, we developed the up
 Hence, $w_0 = w_(n + 1)$ and $f$ maps $hat(RR) = RR union {oo}$ to a closed polygon with $n+1$ sides ($Delta_k$). For $k in NN_(<= n)$, at the vertex $w_k$ connecting $Delta_k$ and $Delta_(k+1)$, the tangent angle changes from $theta_k$ to $theta_(k+1)$, with an exterior angle of $theta_(k+1) - theta_k = uppi - uppi alpha_k$. Then at this vertex, the polygon has an interior angle of $uppi alpha_k$.
 
 At the vertex $w_0 = w_(n + 1)$, the polygon has an interior angle of $uppi(n - 1) - sum_(k=1)^n uppi alpha_k = uppi(n - 1 - sum_(k=1)^n alpha_k) > 0$, since the interior angles of the polygon add to $uppi(n - 1)$.
+
+If the values ${alpha_k}$ are chosen such that $sum_(k=1)^n uppi alpha_k = n - 2$, then the interior angle at vertex $w_0=w_(n + 1)$ can be considered to be $uppi$; the vertex then is simply a straight line and we have a $n$-gon instead.
 // add figure?
 // TBC

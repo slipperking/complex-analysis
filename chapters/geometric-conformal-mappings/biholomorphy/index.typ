@@ -71,7 +71,7 @@ We will now study holomorphic functions from a more geometric perspective.
   $
   + If $w_0 in jexterior(Gamma)$, the expression vanishes since $Ind_Gamma (w_0)=0$. Then $f(z) = w_0$ has no solution in $U$ (i.e. $k=0$).
 
-  + If $w_0 in jinterior(Gamma)$, then $Gamma$ winds around $w_0$ exactly once, and hence, in other words, $forall w_0 in jinterior(Gamma)$, $f(z) = w_0$ has a unique solution in $U$ (i.e. $k=1$).
+  + If $w_0 in jinterior(Gamma)$, then $Gamma$ winds around $w_0$ exactly once, and hence, in other words, $forall w_0 in jinterior(Gamma)$, $f(z) = w_0$ has a unique solution in $U$ (i.e. $k=1$). Moreover, $Gamma$ must be oriented counterclockwise for $k > 0$ to be true.
 
   + If $w_0$ lies on $Gamma$, then it can be shown that $f - w_0$ has no zeros in $U$.
 
