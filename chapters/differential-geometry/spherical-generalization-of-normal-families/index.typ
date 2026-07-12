@@ -191,9 +191,9 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   $
     (sigma)/(mu) = ((2)/(1 + abs(w)^2))/((sqrt(1 + abs(w)^((1)/(3))) sqrt(1 + abs(w - 1)^((1)/(3))))/(abs(w)^((5)/(6)) abs(w - 1)^((5)/(6)))) ->
     cases(
-      0 & "as" w -> 0,
-      0 & "as" w -> 1,
-      (2 abs(w)^(-2))/(abs(w)^(-(4)/(3))) -> 0 & "as" w -> oo,
+      0 & quad "as" w -> 0,
+      0 & quad "as" w -> 1,
+      (2 abs(w)^(-2))/(abs(w)^(-(4)/(3))) -> 0 & quad "as" w -> oo,
     ).
   $
   Hence, there exist open neighborhoods $U_0, U_1, U_(oo)$ of $0, 1, oo$ respectively on which $(sigma)/(mu) < 1$. Since $(sigma)/(mu) in C^0(CC)$, by @thm:continuous-function-bounded-on-compact, $exists M' > 0$ such that $(sigma)/(mu) < M'$ on $CC without (U_0 union U_1 union U_(oo))$. Let $M = max(M', 1)$, and

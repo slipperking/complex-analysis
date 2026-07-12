@@ -844,8 +844,8 @@ We have also already seen the utility of parameterization via a polar transforma
     + If $f$ has a removable singularity at $oo$, or if $w = lim_(z -> oo) f(z)$ exists and is finite, then $forall z in CC without gamma$,
       $
         1 / (taui) integral.cont_gamma (f(zeta)) / (zeta - z) dzeta = cases(
-          w quad & "if" z in jinterior(gamma)\,,
-          w - f(z) quad & "if" z in jexterior(gamma).
+          w & quad "if" z in jinterior(gamma)\,,
+          w - f(z) & quad "if" z in jexterior(gamma).
         )
       $
     + If $gamma$ encloses the origin, then $forall z in CC without gamma$,

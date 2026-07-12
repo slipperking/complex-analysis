@@ -10,9 +10,9 @@ We have previously considered analytic continuations over two regions with an in
     Let $U_1$ and $U_2$ be two disjoint simply connected open regions in $CC$ such that $partial U_1 inter partial U_2$ is a simple curve $gamma$ without its endpoints. Let $f_1:U_1 -> CC$ and $f_2:U_2 -> CC$ be two holomorphic functions that are continuous on $U_1 union gamma$ and $U_2 union gamma$, respectively, such that $f_1 equiv f_2$ on $gamma$. Then there exists a unique holomorphic function
     $
       f = cases(
-        f_1 & "on" U_1,
-        f_2 & "on" U_2,
-        f_1 equiv f_2 & "on" gamma
+        f_1 & quad "on" U_1,
+        f_2 & quad "on" U_2,
+        f_1 equiv f_2 & quad "on" gamma
       ).
     $
     on $U_1 union U_2 union gamma$.

@@ -66,8 +66,8 @@ Then the results of @cor:hadamard-factorization-polynomial and @thm:entire-funct
   The zeros of $sin$ are simple at each of $ZZ$. Aside from the simple zero at $z = 0$, let
   $
     a_k = cases(
-      -uppi k \/ 2 & "if" k in 2 NN\,,
-      uppi (k+1) \/ 2 & "if" k in NN without 2 NN,
+      -uppi k \/ 2 & quad "if" k in 2 NN\,,
+      uppi (k+1) \/ 2 & quad "if" k in NN without 2 NN,
     )
   $
   enumerate the zeros of $sin$. By @ex:entire-function-finite-order-sin-exp-exp, and the Hadamard Factorization Theorem (@thm:hadamard-factorization), the order of $sin$ is 1, the genus does not exceed 1, and

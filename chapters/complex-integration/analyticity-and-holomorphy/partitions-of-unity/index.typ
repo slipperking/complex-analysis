@@ -550,7 +550,12 @@ Note that the converse here is not necessarily true.
   $ D(z_j, r_(z_j)) subset overline(D(z_j, r_(z_j))) subset Omega_(k_(z_j)), quad forall j in NN. $
 
   Define the standard bump function
-  $ theta(z) = cases(ee^(1 / (abs(z)^2 - 1)) & "if" abs(z) < 1, 0 & "if" abs(z) >= 1.) $
+  $
+    theta(z) = cases(
+      ee^(1 / (abs(z)^2 - 1)) & quad "if" abs(z) < 1,
+      0 & quad "if" abs(z) >= 1.
+    )
+  $
   For $epsilon > 0$ let
   $ theta_epsilon(z) = theta(z / epsilon), $
   which has support $overline(D(0, epsilon))$.

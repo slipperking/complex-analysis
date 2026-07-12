@@ -89,6 +89,39 @@ We will now study holomorphic functions from a more geometric perspective.
   Moreover, any point $z_0 in U$ must map to either $jinterior(Gamma)$ or $overline(jexterior(Gamma))$. The latter is an impossibility since otherwise $k != 0$. This $f(U) = jinterior(Gamma)$.
 ]
 
+The condition that $f$ be holomorphic on a neighborhood of the boundary can be weakened especially when the domain is a disk.
+
+#lbl(
+  theorem[
+    Let $f in C^0(overline(DD))$ be holomorphic on $DD$, and suppose that the restriction $evaluated(f)_(partial DD)$ is injective. If $Gamma = f(partial DD)$, then $f$ is univalent on $DD$, $f(DD) = jinterior(Gamma)$, and $evaluated(f)_(partial DD)$ traverses $Gamma$ in the same direction as $partial DD$.
+  ],
+  <thm:boundary-of-conformal-map-closed-disk>,
+)
+
+#proof[
+  For $0 < r < 1$, define $f_r (z) = f(r z)$. Each $f_r$ is holomorphic on the disk $D(0,1/r)$, which is a neighborhood of $overline(DD)$. Since $f$ is uniformly continuous on $overline(DD)$ (by Heine--Cantor or @thm:heine-cantor),
+  $
+    max_(z in partial DD) abs(f_r (z) - f(z)) -> 0
+  $
+  as $r -> 1^-$. Fix $w_0 in.not Gamma$ and set $d = op("dist")(w_0,Gamma)>0$. For all $r$ sufficiently close to $1$, the preceding maximum is less than $d$. Consequently, (for sufficiently large $r<1$)
+  $
+    Ind_(f_r (partial DD))(w_0) = Ind_Gamma (w_0)
+  $
+  (heuristically, the condition $max_(z in partial DD) abs(f_r (z) - f(z)) < d$ means that $w_0$ can not lie in between the two curves; a smooth homotopy or deformation exists between the two curves, leaving the winding indices invariant).
+
+  Let $k_r = k_r (w_0)$ be the number of zeros of $f_r-w_0$ in $DD$, counting multiplicities. Assume $partial DD$ is positively oriented. Then by the Argument Principle (@thm:argument-principle-holomorphic),
+  $
+    k_r = Ind_(f_r (partial DD))(w_0) = Ind_Gamma (w_0).
+  $
+  The zeros of $f_r-w_0$ in $DD$ correspond, with the same multiplicities, to the zeros of $f-w_0$ in $D(0,r)$. Moreover, since $f-w_0$ is nonzero on $partial DD$ and is continuous on $overline(DD)$, it is nonzero throughout some annular neighborhood of $partial DD$ in $overline(DD)$. Thus, for $r$ sufficiently close to $1$, $k_r$ is the number $k=k(w_0)$ of all zeros of $f-w_0$ in $DD$. We have therefore shown that (for sufficiently large $r<1$)
+  $
+    k(w_0) = k_r (w_0) = Ind_Gamma (w_0).
+  $
+  Since $Gamma$ is a Jordan curve, its index vanishes for $w_0 in jexterior(Gamma)$ and is $plus.minus 1$ for $w_0 in jinterior(Gamma)$. The latter index cannot be negative because it is equal to the number $k(w_0)$ of zeros. It is therefore $1$, which then shows that $evaluated(f)_(partial DD)$ traverses $Gamma$ counterclockwise. Hence $f-w_0$ has exactly one zero in $DD$ when $w_0 in jinterior(Gamma)$, and no zeros there when $w_0 in jexterior(Gamma)$.
+
+  Finally, suppose $w_0 in Gamma$ and $f(z_0)=w_0$ for some $z_0 in DD$. By the Open Mapping Theorem (@thm:open-mapping), $f(DD)$ contains a disk centered at $w_0$. Such a disk contains a point in $jexterior(Gamma)$, contradicting our earlier assertion. Thus no point of $Gamma$ lies in $f(DD)$. It follows that $f(DD) = jinterior(Gamma)$, and as $k<= 1$ in all cases, $f$ is univalent therein.
+]
+
 We will now give examples of biholomorphisms.
 
 #example[

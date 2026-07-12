@@ -132,12 +132,33 @@ $
   &= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n abs(R ee^(ii theta) - a_k)^(alpha_k - 1) dtheta <= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n max{(R + abs(a_k))^(alpha_k - 1), abs(R - abs(a_k))^(alpha_k - 1)} dtheta \
   &<= lim_(R -> oo) R uppi Order(R)^(-n + sum_(j = 1)^n alpha_j) = lim_(R -> oo) Order(R^(1 - n + sum_(j = 1)^n alpha_j)) = 0,
 $
-since $sum_(k = 1)^n alpha_k < n - 1$ (by assumption). Here, we developed the upper bound $max{(R + abs(a_k))^(alpha_k - 1), abs(R - abs(a_k))^(alpha_k - 1)} dtheta$, as the first part accounts solely for $alpha_k - 1 >= 0$ and the second for $alpha_k - 1 <= 0$ (although here it made little difference),.
+since $sum_(k = 1)^n alpha_k < n - 1$ (by assumption). Here, we developed the upper bound $max{(R + abs(a_k))^(alpha_k - 1), abs(R - abs(a_k))^(alpha_k - 1)} dtheta$, as the first part accounts solely for $alpha_k - 1 >= 0$ and the second for $alpha_k - 1 <= 0$ (although here it made little difference).
 
-Hence, $w_0 = w_(n + 1)$ and $f$ maps $hat(RR) = RR union {oo}$ to a closed polygon with $n+1$ sides ($Delta_k$). For $k in NN_(<= n)$, at the vertex $w_k$ connecting $Delta_k$ and $Delta_(k+1)$, the tangent angle changes from $theta_k$ to $theta_(k+1)$, with an exterior angle of $theta_(k+1) - theta_k = uppi - uppi alpha_k$. Then at this vertex, the polygon has an interior angle of $uppi alpha_k$.
+Hence, $w_0 = w_(n + 1)$ and $f$ maps $hat(RR) = RR union {oo}$ to a closed polygonal chain with $n+1$ sides ($Delta_k$). For $k in NN_(<= n)$, at the vertex $w_k$ connecting $Delta_k$ and $Delta_(k+1)$, the tangent angle changes from $theta_k$ to $theta_(k+1)$, with an exterior angle of $theta_(k+1) - theta_k = uppi - uppi alpha_k$. Then at this vertex, the polygon has an interior angle of $uppi alpha_k$.
 
 At the vertex $w_0 = w_(n + 1)$, the polygon has an interior angle of $uppi(n - 1) - sum_(k=1)^n uppi alpha_k = uppi(n - 1 - sum_(k=1)^n alpha_k) > 0$, since the interior angles of the polygon add to $uppi(n - 1)$.
 
 If the values ${alpha_k}$ are chosen such that $sum_(k=1)^n uppi alpha_k = n - 2$, then the interior angle at vertex $w_0=w_(n + 1)$ can be considered to be $uppi$; the vertex then is simply a straight line and we have a $n$-gon instead.
+
+It remains to show that $f$ maps $HH^+$ biholomorphically onto the polygon interior. First, the continuity of $f$ at infinity must be established (we have established that the limits exist from only the real line, which is insufficient to prove that a $delta$-infimum exists in every direction). As $abs(z) -> oo$ (uniformly in all directions),
+#lbl(
+  $ beta(z) = Order(abs(z)^(sum_(k=1)^n alpha_k - n)). $,
+  <eq:schwarz-christoffel-transformation-beta-bound-at-infinity>,
+)
+Let $z = r ee^(ii theta) in overline(HH^+)$, where $0 <= theta <= uppi$. Join $z in overline(HH^+)$ to $r in RR$ along the circular arc of radius $r$, and then join $r$ to infinity along the positive real axis. By @eq:schwarz-christoffel-transformation-beta-bound-at-infinity,
+$
+  abs(w_(n+1) - f(z)) & <= abs(f(r) - f(z)) + abs(w_(n+1) - f(r)) \
+                      & <= integral_0^theta abs(beta(r ee^(ii t))) r dif t + integral_r^oo abs(beta(t)) dif t \
+                      & <= Order(r^(sum_(k=1)^n alpha_k - n + 1)) + integral_r^oo Order(t^(sum_(k=1)^n alpha_k - n)) dif t
+                        = Order(r^(sum_(k=1)^n alpha_k - n + 1)) -> 0 quad "as" quad r -> oo.
+$
+Thus, defining $f(oo)=w_(n+1)=w_0$ gives a continuous extension of $f$ to $overline(HH^+) union {oo}$.
+
+Let $psi(z)=(z-ii)/(z+ii)$ be the Cayley transform from $HH^+$ onto $DD$, extended by $psi(oo)=1$, and define
+$
+  g = f compose psi^(-1).
+$
+The preceding continuity at infinity shows that $g in C^0(overline(DD))$, while $g$ is holomorphic on $DD$. Furthermore, $g|_(partial DD)$ maps $partial DD$ injectively onto the polygonal boundary $union.big_k Delta_k$. Therefore, by @thm:boundary-of-conformal-map-closed-disk, $g$ maps $DD$ univalently and surjectively onto $jinterior union.big_k Delta_k$. Since $psi$ is a biholomorphism, it follows that $f$ maps $HH^+$ biholomorphically onto the polygon.
+
 // add figure?
-// TBC
+// todo: what if the polygon is not simple/overlaps
