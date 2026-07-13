@@ -33,5 +33,5 @@
 #include "appendices/index.typ"
 
 #docs-backmatter(title: [Bibliography], route: "bibliography")[
-  #bibliography("/references.bib", full: true)
+  #context bibliography("/references.bib", full: true, group: state("render-mode").get())
 ]
