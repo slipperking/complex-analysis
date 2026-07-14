@@ -10,5 +10,3 @@
 
 #let cvector = cetz.vector
 #let cmatrix = cetz.matrix
-
-#let is-web-target() = target() == "html" or target() == "bundle" or sys.inputs.at("html", default: "false") == "true"

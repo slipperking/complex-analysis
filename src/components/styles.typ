@@ -209,7 +209,10 @@
     // overline needs a temporary alternative
     show math.overline: it => context {
       if target() != "paged" {
-        math.dash(it.body)
+        html.elem("mover", attrs: (accent: "true"), {
+          html.elem("mrow", it.body)
+          math.op("\u{203E}")
+        })
       } else {
         it
       }

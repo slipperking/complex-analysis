@@ -1,5 +1,5 @@
 #import "/lib.typ": *
-#show: docs-subchapter.with(
+#show: docs-subsubchapter.with(
   title: [Topology, Partitions of Unity, and the Existence of Bump Functions],
   route: "partitions-of-unity",
   label: <sec:partitions-of-unity>,

@@ -211,7 +211,7 @@ The differentiation formula above can be thought of as a generalization of @thm:
   Because $f(z)$ is continuous over the boundary $partial D(z_0, R)$, it is bounded by $M$. Thus,
 
   $
-    abs(f^((n)) (z_0)) <= (n!) / (2 uppi) integral_0^(2 uppi) M / ((ee^(ii theta) R)^(n+1)) ee^(ii theta) R dif theta = (n! M) / (R^n),
+    abs(f^((n)) (z_0)) <= (n!) / (2 uppi) integral_0^(2 uppi) abs(M / ((ee^(ii theta) R)^(n+1)) ee^(ii theta) R) dtheta = (n! M) / (R^n),
   $
 
   as desired.
@@ -268,7 +268,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
     abs(f'(z_0)) <= M / R,
   $
 
-  where $M=sup_(z in CC) abs(f(z))$. By letting $R -> oo$, $f'(z_0)$ where $z_0$ is any arbitrary value in $CC$. Therefore, $f(z)$ is constant.
+  where $M=sup_(z in CC) abs(f(z))$. By letting $R -> oo$, it follows that $f'(z_0) = 0$ where $z_0$ is any arbitrary value in $CC$. Therefore, $f(z)$ is constant.
 ]
 
 #proof[(Alternative)][
@@ -353,7 +353,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
       <eq:nth-derivative-bounded-L1-norm-statement>,
     )
 
-    where $norm(f)_(L^p(V))$ denotes
+    where $norm(f)_(L^p (V))$ denotes
 
     $
       (integral_V abs(f(z))^p dx and dy)^(1 / p).
