@@ -23,6 +23,7 @@
 #let thm-counter = _thm.thm-counter
 #let thm-state = _thm.thm-state
 #let render-mode = _web.render-mode
+#let route-prefix = _web.route-prefix
 #let route-folders = _web.route-folders
 #let pdf-doc-label = _web.pdf-doc-label
 #let web-doc-label = _web.web-doc-label

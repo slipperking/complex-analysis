@@ -1,5 +1,6 @@
 #import "/lib.typ": *
 #set heading(numbering: none)
+#route-prefix.update(())
 #route-folders.update(())
 #thm-counter.thm-counters.update((:))
 #thm-state.thm-stored.update(())
@@ -29,7 +30,7 @@
 
 #set heading(numbering: "A.1")
 #counter(heading).update(0)
-#route-folders.update(("appendices",))
+#route-prefix.update(("appendices",))
 #include "appendices/index.typ"
 
 #docs-backmatter(title: [Bibliography], route: "bibliography")[

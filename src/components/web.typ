@@ -10,6 +10,7 @@
 #let abstract = source.abstract
 
 #let render-mode = state("render-mode", "web")
+#let route-prefix = state("route-prefix", ())
 #let route-folders = state("route-folders", ())
 
 #let _normalize-route(route) = {
@@ -117,6 +118,7 @@
   kind: "section",
   level: 1,
   heading-level: 1,
+  heading-format: (number, title) => if number != none { [#number #title] } else { [#title] },
   description: none,
   label: none,
 ) = {
@@ -132,6 +134,7 @@
     kind: kind,
     level: level,
     heading-level: heading-level,
+    heading-format: heading-format,
     description: description,
     label: label,
   )
@@ -160,48 +163,11 @@
   let number = _heading-number(h)
   let title = if h != none { h.body } else { page.title }
 
-  if page.kind == "chapter" and number != none {
-    [Chapter #number: #title]
-  } else if (page.kind == "section" or page.kind == "subchapter" or page.kind == "subsubchapter") and number != none {
-    [#sym.section#number #title]
-  } else if page.kind == "appendix" and number != none {
-    [Appendix #number: #title]
-  } else if number != none {
-    [#number #title]
-  } else {
-    [#title]
-  }
-}
-
-#let _default-page-level(kind) = if kind == "cover" {
-  0
-} else if kind == "chapter" or kind == "appendix" or kind == "frontmatter" or kind == "backmatter" {
-  1
-} else if kind == "subchapter" {
-  2
-} else if kind == "subsubchapter" {
-  3
-} else if kind == "section" {
-  2
-} else {
-  1
-}
-
-#let _resolve-page-level(kind, level) = {
-  let default = _default-page-level(kind)
-  let value = if level == auto {
-    default
-  } else if type(level) == function {
-    level(default)
-  } else {
-    level
-  }
-  value
+  (page.heading-format)(number, title)
 }
 
 #let _set-route-folders(level, route) = route-folders.update(folders => {
-  let prefix-depth = if folders.len() > 0 and folders.first() == "appendices" { 1 } else { 0 }
-  let keep = calc.min(folders.len(), calc.max(0, prefix-depth + level - 1))
+  let keep = calc.min(folders.len(), calc.max(0, level - 1))
   let next = folders.slice(0, keep)
   let segment = _route-segment(route)
   if segment != none {
@@ -267,18 +233,13 @@
 
 #let _heading-toc-entry(h, page) = {
   let number = _heading-number(h)
-  if number == none {
-    h.body
-  } else if h.level > 1 {
+  let page-heading = _first-page-heading(page)
+  if page-heading != none and h.location() == page-heading.location() {
+    (page.heading-format)(number, h.body)
+  } else if number != none {
     [#sym.section#number #h.body]
   } else {
-    if page.kind == "chapter" {
-      [Chapter #number: #h.body]
-    } else if page.kind == "appendix" {
-      [Appendix #number: #h.body]
-    } else {
-      [#number #h.body]
-    }
+    h.body
   }
 }
 
@@ -349,35 +310,52 @@
     })
     html.elem("a", attrs: (class: "topbar-title", href: _href-from(current.path, "index.html")), notes-title)
   })
-  html.elem("form", attrs: (
-    class: "topbar-search",
-    "data-search-form": "true",
-    role: "search",
-    action: _href-from(current.path, "search/index.html"),
-    method: "get",
-  ), {
-    html.elem("input", attrs: (
-      class: "search-input",
-      type: "search",
-      name: "q",
-      placeholder: "Search...",
-      autocomplete: "off",
-      "aria-label": "Search the site",
-    ))
-    html.elem("button", attrs: (class: "search-submit icon-button", type: "submit", "aria-label": "Search"), {
-      _icon("Search", _asset-href(current.path, "assets/search.svg"))
-    })
-  })
+  html.elem(
+    "form",
+    attrs: (
+      class: "topbar-search",
+      "data-search-form": "true",
+      role: "search",
+      action: _href-from(current.path, "search/index.html"),
+      method: "get",
+    ),
+    {
+      html.elem("input", attrs: (
+        class: "search-input",
+        type: "search",
+        name: "q",
+        placeholder: "Search...",
+        autocomplete: "off",
+        "aria-label": "Search the site",
+      ))
+      html.elem("button", attrs: (class: "search-submit icon-button", type: "submit", "aria-label": "Search"), {
+        _icon("Search", _asset-href(current.path, "assets/search.svg"))
+      })
+    },
+  )
   html.elem("div", attrs: (class: "topbar-right"), {
     html.elem("button", attrs: (class: "icon-button theme-toggle", "aria-label": "Toggle theme"), {
       _icon("Theme", _asset-href(current.path, "assets/theme.svg"))
     })
-    html.elem("button", attrs: (class: "icon-button print-button", type: "button", "aria-label": "Print page", title: "Print"), {
-      _icon("Print", _asset-href(current.path, "assets/print.svg"))
-    })
-    html.elem("a", attrs: (class: "icon-button export-pdf-link", href: _href-from(current.path, "pdf/notes.pdf"), "aria-label": "Export PDF", title: "Export PDF"), {
-      _icon("Export PDF", _asset-href(current.path, "assets/download.svg"))
-    })
+    html.elem(
+      "button",
+      attrs: (class: "icon-button print-button", type: "button", "aria-label": "Print page", title: "Print"),
+      {
+        _icon("Print", _asset-href(current.path, "assets/print.svg"))
+      },
+    )
+    html.elem(
+      "a",
+      attrs: (
+        class: "icon-button export-pdf-link",
+        href: _href-from(current.path, "pdf/notes.pdf"),
+        "aria-label": "Export PDF",
+        title: "Export PDF",
+      ),
+      {
+        _icon("Export PDF", _asset-href(current.path, "assets/download.svg"))
+      },
+    )
     html.elem("a", attrs: (class: "icon-button github-link", href: source-url, "aria-label": "GitHub source"), {
       _icon("GitHub", _asset-href(current.path, "assets/github.svg"))
     })
@@ -552,7 +530,8 @@
   title: none,
   route: none,
   kind: "section",
-  level: auto,
+  level: 1,
+  heading-format: (number, title) => if number != none { [#number #title] } else { [#title] },
   description: none,
   cover: false,
   heading: true,
@@ -560,17 +539,18 @@
   label: none,
   body,
 ) = {
-  let page-level = _resolve-page-level(kind, level)
-  _set-route-folders(page-level, route)
+  assert(type(heading-format) == function, message: "heading-format must be a function")
+  _set-route-folders(level, route)
   context {
     let mode = render-mode.get()
-    let route = _route-from-folders(route-folders.get())
+    let route = _route-from-folders(route-prefix.get() + route-folders.get())
     let page = _page-info(
       title: title,
       route: route,
       kind: kind,
-      level: page-level,
-      heading-level: page-level,
+      level: level,
+      heading-level: level,
+      heading-format: heading-format,
       description: description,
       label: label,
     )
@@ -601,14 +581,35 @@
   }
 }
 
-#let docs-cover(..args) = _docs-page(kind: "cover", cover: true, ..args)
-#let docs-frontmatter(..args) = _docs-page(kind: "frontmatter", ..args)
-#let docs-section(..args) = _docs-page(kind: "section", ..args)
-#let docs-chapter(..args) = _docs-page(kind: "chapter", ..args)
-#let docs-subchapter(..args) = _docs-page(kind: "subchapter", ..args)
-#let docs-subsubchapter(..args) = _docs-page(kind: "subsubchapter", ..args)
-#let docs-appendix(..args) = _docs-page(kind: "appendix", ..args)
-#let docs-backmatter(..args) = _docs-page(kind: "backmatter", heading: false, ..args)
+#let _plain-heading-format(number, title) = if number != none { [#number #title] } else { [#title] }
+#let _chapter-heading-format(number, title) = if number != none { [Chapter #number: #title] } else { [#title] }
+#let _section-heading-format(number, title) = if number != none { [#sym.section#number #title] } else { [#title] }
+#let _appendix-heading-format(number, title) = if number != none { [Appendix #number: #title] } else { [#title] }
+
+#let docs-cover(..args) = _docs-page(
+  kind: "cover",
+  level: 0,
+  cover: true,
+  heading-format: _plain-heading-format,
+  ..args,
+)
+#let docs-frontmatter(..args) = _docs-page(kind: "frontmatter", level: 1, heading-format: _plain-heading-format, ..args)
+#let docs-chapter(..args) = _docs-page(kind: "chapter", level: 1, heading-format: _chapter-heading-format, ..args)
+#let docs-subchapter(..args) = _docs-page(kind: "subchapter", level: 2, heading-format: _section-heading-format, ..args)
+#let docs-subsubchapter(..args) = _docs-page(
+  kind: "subsubchapter",
+  level: 3,
+  heading-format: _section-heading-format,
+  ..args,
+)
+#let docs-appendix(..args) = _docs-page(kind: "appendix", level: 1, heading-format: _appendix-heading-format, ..args)
+#let docs-backmatter(..args) = _docs-page(
+  kind: "backmatter",
+  level: 1,
+  heading: false,
+  heading-format: _plain-heading-format,
+  ..args,
+)
 
 #let notes() = context {
   if target() == "bundle" {
