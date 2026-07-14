@@ -28,7 +28,6 @@
 #let pdf-doc-label = _web.pdf-doc-label
 #let web-doc-label = _web.web-doc-label
 #let notes-title = _web.notes-title
-#let course = _web.course
 #let authors = _web.authors
 #let date = _web.date
 #let source-url = _web.source-url

@@ -3,7 +3,6 @@
 #import "/src/source.typ" as source
 
 #let notes-title = source.title
-#let course = source.course
 #let authors = source.authors
 #let date = source.date
 #let source-url = source.source-url

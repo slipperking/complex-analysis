@@ -41,7 +41,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   proposition[
     Any linear fractional transformation is spherically uniformly continuous on $CC$.
   ],
-  <prop:linearfractionaltransformationuniformlysphericallycontinuous>,
+  <prop:linear-fractional-transformation-uniformly-spherically-continuous>,
 )
 
 #proof[
@@ -228,7 +228,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   $ tilde(cal(F)) = {phi compose f : f in cal(F)} $
   omits $0$, $1$, and $oo$ (and hence each function is holomorphic). By the Fundamental Holomorphic Normality Test (@thm:fundamental-normality-test), $tilde(cal(F))$ is normal.
 
-  By @prop:linearfractionaltransformationuniformlysphericallycontinuous, $forall epsilon > 0$, $exists delta > 0$ such that $forall abs(w_1 - w_2) < delta$ in $CC$,
+  By @prop:linear-fractional-transformation-uniformly-spherically-continuous, $forall epsilon > 0$, $exists delta > 0$ such that $forall abs(w_1 - w_2) < delta$ in $CC$,
   $ d_sigma (phi^(-1) (w_1), phi^(-1) (w_2)) < epsilon. $
   Let ${tilde(f)_n}_(n in NN)$ be any function sequence in $cal(F)$ and let ${tilde(f)_(n_k)}_(k in NN)$ be locally uniformly convergent to $tilde(f)$ on a compact set $K subset Omega$. Then $exists N in NN$ such that $forall k > N$,
   $ abs(tilde(f)_(n_k) (z) - tilde(f)(z)) < delta wide forall z in K. $
