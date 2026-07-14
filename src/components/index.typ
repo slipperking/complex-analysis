@@ -35,7 +35,6 @@
 #let abstract = _web.abstract
 #let docs-cover = _web.docs-cover
 #let docs-frontmatter = _web.docs-frontmatter
-#let docs-section = _web.docs-section
 #let docs-chapter = _web.docs-chapter
 #let docs-subchapter = _web.docs-subchapter
 #let docs-subsubchapter = _web.docs-subsubchapter
