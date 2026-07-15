@@ -37,3 +37,25 @@ $
   <eq:test>,
 )
 #lorem(90)
+#figure-wrapper(
+  figure(
+    potential-frame[
+      #let t = tiling(
+        size: (30pt, 30pt),
+        offset: (7pt, 11pt),
+        relative: "parent",
+        square(size: 30pt, fill: gradient.conic(..color.map.rainbow)),
+      )
+
+
+
+      #box(
+        [
+          #set text(size: 28pt, fill: t)
+          OFFSET OFFSET
+        ],
+        fill: t,
+      )
+    ],
+  ),
+)
