@@ -499,28 +499,35 @@
     return depth;
   }
 
-  function setupReferenceTooltips() {
+    function setupReferenceTooltips() {
     var tooltip = document.createElement("div");
     tooltip.className = "ref-tooltip";
     tooltip.setAttribute("role", "tooltip");
     tooltip.hidden = true;
     document.body.appendChild(tooltip);
 
-    var preview = document.createElement("aside");
-    preview.className = "ref-preview";
-    preview.hidden = true;
-    preview.innerHTML = '<button class="ref-preview-close" type="button" aria-label="Close preview">×</button><div class="ref-preview-content"></div>';
-    document.body.appendChild(preview);
-    var previewClose = preview.querySelector(".ref-preview-close");
-    var previewContent = preview.querySelector(".ref-preview-content");
-
     var activeTrigger = null;
     var hideTimer = null;
-    var previewPinned = false;
-    var previewDragged = false;
-    var previewDragState = null;
-    var previewAnchorKey = "";
+    
+    var activePreviews = new Map(); // url -> previewObject
 
+    var previewResizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        var el = entries[i].target;
+        var contentEl = el.querySelector(".ref-preview-content");
+        if (!contentEl) continue;
+        
+        var style = getComputedStyle(el);
+        var padTop = parseFloat(style.paddingTop) || 0;
+        var padBottom = parseFloat(style.paddingBottom) || 0;
+        var borderTop = parseFloat(style.borderTopWidth) || 0;
+        var borderBottom = parseFloat(style.borderBottomWidth) || 0;
+        
+        var intrinsicHeight = contentEl.offsetHeight + padTop + padBottom + borderTop + borderBottom;
+        
+        el.style.maxHeight = "min(" + intrinsicHeight + "px, calc(100vh - var(--topbar-height) - 1.7rem))";
+      }
+    }) : null;
     function clearHideTimer() {
       if (hideTimer) {
         clearTimeout(hideTimer);
@@ -532,10 +539,7 @@
       clearHideTimer();
       hideTimer = setTimeout(function () {
         tooltip.hidden = true;
-        if (!previewPinned) {
-          preview.hidden = true;
-          activeTrigger = null;
-        }
+        activeTrigger = null;
       }, 300);
     }
 
@@ -598,28 +602,16 @@
       }
     }
 
-    function hasDraggedPreviewPosition() {
-      return !!(previewDragged && previewDragState && typeof previewDragState.left === "number" && typeof previewDragState.top === "number");
-    }
-
-    function resetDraggedPreviewPosition() {
-      previewDragged = false;
-      previewDragState = null;
-      preview.style.left = "";
-      preview.style.top = "";
-      preview.style.right = "";
-    }
-
-    function placePreview(trigger) {
-      if (hasDraggedPreviewPosition()) {
-        preview.style.left = previewDragState.left + "px";
-        preview.style.top = previewDragState.top + "px";
-        preview.style.right = "";
+    function placePreview(trigger, previewObj) {
+      if (previewObj.hasDragged()) {
+        previewObj.element.style.left = previewObj.dragState.left + "px";
+        previewObj.element.style.top = previewObj.dragState.top + "px";
+        previewObj.element.style.right = "";
         return;
       }
 
       var triggerRect = trigger.getBoundingClientRect();
-      var previewRect = preview.getBoundingClientRect();
+      var previewRect = previewObj.element.getBoundingClientRect();
       var gap = 12;
       var minTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--topbar-height")) + 12;
       var maxTop = window.innerHeight - previewRect.height - gap;
@@ -629,9 +621,9 @@
       var aboveSpace = triggerRect.top - minTop - gap;
       var preferVertical = window.innerWidth < 720 || Math.max(rightSpace, leftSpace) < previewRect.width;
 
-      preview.style.left = "";
-      preview.style.right = "";
-      preview.style.top = "";
+      previewObj.element.style.left = "";
+      previewObj.element.style.right = "";
+      previewObj.element.style.top = "";
 
       if (preferVertical && (belowSpace >= previewRect.height || aboveSpace >= previewRect.height || belowSpace > 140 || aboveSpace > 140)) {
         var top;
@@ -641,20 +633,20 @@
           top = Math.max(minTop, triggerRect.top - previewRect.height - gap);
         }
         var centeredLeft = triggerRect.left + triggerRect.width / 2 - previewRect.width / 2;
-        preview.style.left = Math.max(gap, Math.min(window.innerWidth - previewRect.width - gap, centeredLeft)) + "px";
-        preview.style.top = top + "px";
+        previewObj.element.style.left = Math.max(gap, Math.min(window.innerWidth - previewRect.width - gap, centeredLeft)) + "px";
+        previewObj.element.style.top = top + "px";
         return;
       }
 
-      preview.style.top = Math.max(minTop, Math.min(triggerRect.top, maxTop)) + "px";
+      previewObj.element.style.top = Math.max(minTop, Math.min(triggerRect.top, maxTop)) + "px";
       if (rightSpace >= previewRect.width || rightSpace >= leftSpace) {
-        preview.style.left = Math.max(gap, Math.min(window.innerWidth - previewRect.width - gap, triggerRect.right + gap)) + "px";
+        previewObj.element.style.left = Math.max(gap, Math.min(window.innerWidth - previewRect.width - gap, triggerRect.right + gap)) + "px";
       } else {
-        preview.style.left = Math.max(gap, triggerRect.left - previewRect.width - gap) + "px";
+        previewObj.element.style.left = Math.max(gap, triggerRect.left - previewRect.width - gap) + "px";
       }
     }
 
-    function clampPreviewPosition(left, top) {
+    function clampPreviewPosition(left, top, preview) {
       var rect = preview.getBoundingClientRect();
       var gap = 8;
       var minTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--topbar-height")) + gap;
@@ -666,16 +658,16 @@
       };
     }
 
-    function applyDraggedPreviewPosition(left, top) {
-      var clamped = clampPreviewPosition(left, top);
-      if (!previewDragState) {
-        previewDragState = {};
+    function applyDraggedPreviewPosition(left, top, previewObj) {
+      var clamped = clampPreviewPosition(left, top, previewObj.element);
+      if (!previewObj.dragState) {
+        previewObj.dragState = {};
       }
-      previewDragState.left = clamped.left;
-      previewDragState.top = clamped.top;
-      preview.style.left = clamped.left + "px";
-      preview.style.top = clamped.top + "px";
-      preview.style.right = "";
+      previewObj.dragState.left = clamped.left;
+      previewObj.dragState.top = clamped.top;
+      previewObj.element.style.left = clamped.left + "px";
+      previewObj.element.style.top = clamped.top + "px";
+      previewObj.element.style.right = "";
     }
 
     function previewSourceUrl(linksData) {
@@ -772,20 +764,20 @@
       return [anchor.cloneNode(true)];
     }
 
-  function preparePreviewContent(root) {
-    if (!root) return;
-    upgradeMathLinks(root);
-    fillTheoremLeaders(root);
-    setupLocalTocRowNavigation(root);
-    if (setupReferenceTooltips.bindInto) {
-      setupReferenceTooltips.bindInto(root);
+    function preparePreviewContent(root) {
+      if (!root) return;
+      upgradeMathLinks(root);
+      fillTheoremLeaders(root);
+      setupLocalTocRowNavigation(root);
+      if (setupReferenceTooltips.bindInto) {
+        setupReferenceTooltips.bindInto(root);
+      }
+      root.querySelectorAll(".typst-multi-label-list,.ref-tooltip,.ref-preview").forEach(function (node) {
+        node.remove();
+      });
     }
-    root.querySelectorAll(".typst-multi-label-list,.ref-tooltip,.ref-preview").forEach(function (node) {
-      node.remove();
-    });
-  }
 
-  function renderPreviewFromDocument(doc, url) {
+    function renderPreviewFromDocument(doc, url) {
       if (!url.hash) {
         return "";
       }
@@ -841,54 +833,138 @@
       });
     }
 
+    function createPreviewObj(urlHref) {
+      var element = document.createElement("aside");
+      element.className = "ref-preview";
+      element.innerHTML = '<button class="ref-preview-close" type="button" aria-label="Close preview">×</button><div class="ref-preview-content"></div>';
+      document.body.appendChild(element);
+      if (previewResizeObserver) {
+        previewResizeObserver.observe(element);
+      }
+
+      var previewClose = element.querySelector(".ref-preview-close");
+      var previewContent = element.querySelector(".ref-preview-content");
+
+      var obj = {
+        urlHref: urlHref,
+        element: element,
+        content: previewContent,
+        dragged: false,
+        dragState: null,
+        hasDragged: function() {
+          return !!(this.dragged && this.dragState && typeof this.dragState.left === "number" && typeof this.dragState.top === "number");
+        },
+        destroy: function() {
+          if (previewResizeObserver) {
+            previewResizeObserver.unobserve(element);
+          }
+          element.remove();
+          activePreviews.delete(urlHref);
+        }
+      };
+
+      previewClose.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        obj.destroy();
+      });
+
+      element.addEventListener("pointerdown", function (event) {
+        if (event.button !== 0) return;
+        if (event.target !== element) return; // Only drag on the padding/edges
+
+        var rect = element.getBoundingClientRect();
+        
+        // Prevent drag on the bottom-right resize handle
+        var isResizeHandle = (event.clientX - rect.left >= rect.width - 24) && 
+                             (event.clientY - rect.top >= rect.height - 24);
+        if (isResizeHandle) return;
+
+        obj.dragged = true;
+        obj.dragState = {
+          left: rect.left,
+          top: rect.top,
+          pointerId: event.pointerId,
+          offsetX: event.clientX - rect.left,
+          offsetY: event.clientY - rect.top
+        };
+        element.setPointerCapture(event.pointerId);
+        element.classList.add("dragging");
+        event.preventDefault();
+      });
+
+      element.addEventListener("pointermove", function (event) {
+        if (!obj.dragState || obj.dragState.pointerId !== event.pointerId) return;
+        applyDraggedPreviewPosition(
+          event.clientX - obj.dragState.offsetX,
+          event.clientY - obj.dragState.offsetY,
+          obj
+        );
+      });
+
+      function stopPreviewDrag(event) {
+        if (!obj.dragState || obj.dragState.pointerId !== event.pointerId) return;
+        if (element.hasPointerCapture && element.hasPointerCapture(event.pointerId)) {
+          element.releasePointerCapture(event.pointerId);
+        }
+        obj.dragState.pointerId = null;
+        delete obj.dragState.offsetX;
+        delete obj.dragState.offsetY;
+        element.classList.remove("dragging");
+      }
+
+      element.addEventListener("pointerup", stopPreviewDrag);
+      element.addEventListener("pointercancel", stopPreviewDrag);
+
+      return obj;
+    }
+
     function showPreview(trigger, linksData) {
       var href = previewSourceUrl(linksData);
-      if (!href) {
-        preview.hidden = true;
-        previewPinned = false;
-        return;
-      }
+      if (!href) return;
 
       var url;
       try {
         url = new URL(href, window.location.href);
       } catch (_error) {
-        preview.hidden = true;
-        previewPinned = false;
+        return;
+      }
+      
+      var normalizedUrl = url.href;
+
+      if (activePreviews.has(normalizedUrl)) {
+        // Toggle off if already open
+        activePreviews.get(normalizedUrl).destroy();
         return;
       }
 
-      var nextAnchorKey = url.href + "::" + (trigger.getAttribute("href") || trigger.getAttribute("data-href") || trigger.textContent || "");
-      if (previewAnchorKey && previewAnchorKey !== nextAnchorKey) {
-        resetDraggedPreviewPosition();
-      }
-      previewAnchorKey = nextAnchorKey;
-
-      previewMarkupForUrl(url.href).then(function (markup) {
-        if (activeTrigger !== trigger || !markup) {
-          preview.hidden = true;
-          previewPinned = false;
-          return;
-        }
-        previewContent.innerHTML = markup;
-        preview.hidden = false;
-        preview.style.visibility = "hidden";
-        enhanceContent(previewContent);
-        previewPinned = true;
-        preview.classList.remove("dragging");
-        placePreview(trigger);
-        preview.style.visibility = "";
+      previewMarkupForUrl(normalizedUrl).then(function (markup) {
+        if (!markup) return;
+        
+        // Before creating, check if it was opened during the fetch
+        if (activePreviews.has(normalizedUrl)) return;
+        
+        var previewObj = createPreviewObj(normalizedUrl);
+        activePreviews.set(normalizedUrl, previewObj);
+        
+        previewObj.content.innerHTML = markup;
+        previewObj.element.style.visibility = "hidden";
+        enhanceContent(previewObj.content);
+        placePreview(trigger, previewObj);
+        previewObj.element.style.visibility = "";
       });
     }
 
     function hideTooltip() {
       clearHideTimer();
       tooltip.hidden = true;
-      preview.hidden = true;
-      previewPinned = false;
-      previewAnchorKey = "";
-      resetDraggedPreviewPosition();
       activeTrigger = null;
+    }
+
+    function hideAllPreviews() {
+      activePreviews.forEach(function (obj) {
+        obj.destroy();
+      });
     }
 
     function bindReferenceTooltips(root) {
@@ -929,81 +1005,37 @@
     tooltip.addEventListener("mouseleave", scheduleHide);
     tooltip.addEventListener("focusin", clearHideTimer);
     tooltip.addEventListener("focusout", scheduleHide);
-    preview.addEventListener("mouseenter", clearHideTimer);
-    preview.addEventListener("mouseleave", scheduleHide);
-    preview.addEventListener("focusin", clearHideTimer);
-    preview.addEventListener("focusout", scheduleHide);
-    preview.addEventListener("pointerdown", function (event) {
-      if (event.button !== 0) return;
-      if (event.target.closest("a, button, input, textarea, select")) return;
-      clearHideTimer();
-      var rect = preview.getBoundingClientRect();
-      previewDragged = true;
-      previewDragState = {
-        left: rect.left,
-        top: rect.top,
-        pointerId: event.pointerId,
-        offsetX: event.clientX - rect.left,
-        offsetY: event.clientY - rect.top
-      };
-      preview.setPointerCapture(event.pointerId);
-      preview.classList.add("dragging");
-      event.preventDefault();
-    });
-    preview.addEventListener("pointermove", function (event) {
-      if (!previewDragState || previewDragState.pointerId !== event.pointerId) return;
-      applyDraggedPreviewPosition(
-        event.clientX - previewDragState.offsetX,
-        event.clientY - previewDragState.offsetY
-      );
-    });
-    function stopPreviewDrag(event) {
-      if (!previewDragState || previewDragState.pointerId !== event.pointerId) return;
-      if (preview.hasPointerCapture && preview.hasPointerCapture(event.pointerId)) {
-        preview.releasePointerCapture(event.pointerId);
-      }
-      previewDragState.pointerId = null;
-      delete previewDragState.offsetX;
-      delete previewDragState.offsetY;
-      preview.classList.remove("dragging");
-    }
-    preview.addEventListener("pointerup", stopPreviewDrag);
-    preview.addEventListener("pointercancel", stopPreviewDrag);
-    previewClose.addEventListener("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      hideTooltip();
-    });
+    
     addEventListener("scroll", function () {
       if (!tooltip.hidden && activeTrigger) {
         placeTooltip(activeTrigger);
       }
-      if (!preview.hidden && activeTrigger) {
-        placePreview(activeTrigger);
-      }
     }, { passive: true });
+    
     addEventListener("resize", function () {
       if (!tooltip.hidden && activeTrigger) {
         placeTooltip(activeTrigger);
       }
-      if (!preview.hidden && activeTrigger) {
-        if (hasDraggedPreviewPosition()) {
-          applyDraggedPreviewPosition(previewDragState.left, previewDragState.top);
-        } else {
-          placePreview(activeTrigger);
+      activePreviews.forEach(function (obj) {
+        if (obj.hasDragged()) {
+          applyDraggedPreviewPosition(obj.dragState.left, obj.dragState.top, obj);
         }
-      }
+      });
     });
+    
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape") {
         hideTooltip();
+        hideAllPreviews();
       }
     });
 
     addEventListener("beforeprint", hideTooltip);
+    addEventListener("beforeprint", hideAllPreviews);
     bindReferenceTooltips(document);
     setupReferenceTooltips.bindInto = bindReferenceTooltips;
   }
+
 
   function enhanceContent(root) {
     if (!root) return;

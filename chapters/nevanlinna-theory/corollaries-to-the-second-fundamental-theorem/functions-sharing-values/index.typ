@@ -25,21 +25,23 @@ In Nevanlinna's explanation of the various applications of the Second Fundamenta
 
   Now assuming that $f_1$, $f_2$ are not identically equal, we have
   $
-    sum_(nu = 1)^5 N_nu (r) <= N(r, Psi) <= T(r, Psi) = T(r, f_2 - f_1) + Order(1) <= T(r, f_1) + T(r, f_2) + Order(1)
+    sum_(nu = 1)^5 N_nu (r) & <= N(r, Psi) <= T(r, Psi) = T(r, f_2 - f_1) + Order(1) \
+                            & <= T(r, f_1) + T(r, f_2) + Order(1)
   $
   trivially by the First Fundamental Theorem (@thm:nevanlinna-first-fundamental-theorem) and the properties of the characteristic. Applying @eq:deficiency-relation-fundamental-inequality gives
   $
-    4 T(r, f_j) - S(r, f_j) &<= overline(N) (r, f_j) + sum_(nu = 1)^5 N_nu (r) - N_0 (r, 0, f_j') quad j = 1, 2, \
-    3 T(r, f_j) &<= S(r, f_j) + sum_(nu = 1)^5 N_nu (r).
+    4 T(r, f_j) - S(r, f_j) & <= overline(N) (r, f_j) + sum_(nu = 1)^5 N_nu (r) - N_0 (r, 0, f_j') quad j = 1, 2, \
+                3 T(r, f_j) & <= S(r, f_j) + sum_(nu = 1)^5 N_nu (r).
   $
   Summing this inequality for both values of $j$ and applying the upper bound gives
   $
-    T(r, f_1) + T(r, f_2) &<= 1 / 3 [S(r, f_1) + S(r, f_2)] + 2 / 3 sum_(nu = 1)^5 N_nu (r) \
-                           &<= 1 / 3 [S(r, f_1) + S(r, f_2)] + 2 / 3 [T(r, f_1) + T(r, f_2)] + Order(1).
+    T(r, f_1) + T(r, f_2) & <= 1 / 3 [S(r, f_1) + S(r, f_2)] + 2 / 3 sum_(nu = 1)^5 N_nu (r) \
+                          & <= 1 / 3 [S(r, f_1) + S(r, f_2)] + 2 / 3 [T(r, f_1) + T(r, f_2)] + Order(1).
   $
-  If $R_0 < oo$, then outside a set $E_0$ of logarithmic measure not exceeding $4$, or $integral_(E_0) dr / (R_0 - r) <= 4$, by the Second Fundamental Theorem estimates (@thm:nevanlinna-second-fundamental-theorem-part-2) and the fact that $logp T(r, f) = o(T(r, f))$,
+  If $R_0 < oo$, then outside a set $E_0$ of logarithmic measure not exceeding $4$, or $integral_(E_0) dr / (R_0 - r) <= 4$, by the Second Fundamental Theorem estimates (@thm:nevanlinna-second-fundamental-theorem-part-2) and the fact that $logp T(r, f) = order(T(r, f))$,
   $
-    (1 - o(1)) [T(r, f_1) + T(r, f_2)] <= Order(log 1 / (R_0 - r)) ==> limsup_(r -> R_0^- \ r in.not E_0) T(r, f_j) / (log 1 / (R_0 - r)) = Order(1).
+    (1 - order(1)) [T(r, f_1) + T(r, f_2)] & <= Order(log 1 / (R_0 - r)) \
+    & ==> limsup_(r -> R_0^- \ r in.not E_0) T(r, f_j) / (log 1 / (R_0 - r)) = Order(1).
   $
   We now aim to extend this outside of $E_0$.
 
@@ -51,17 +53,25 @@ In Nevanlinna's explanation of the various applications of the Second Fundamenta
   $
   This shows that
   $ limsup_(r -> R_0^-) T(r, f_j) / (log 1 / (R_0 - r)) = Order(1), $
-  which contradicts the admissibility of $f_j$. Hence, our original assumption that $f_1 in.not equiv f_2$ is false, completing the first statement of the theorem.
+  which contradicts the admissibility of $f_j$. Hence, our original assumption that $f_1 equiv.not f_2$ is false, completing the first statement of the theorem.
 
-  On the other hand, if $R_0 = oo$, then outside a set $E_0$ of linear measure not exceeding $4$, by the Second Fundamental Theorem estimates (@thm:nevanlinna-second-fundamental-theorem-part-2), $S(r, f_j) = o(T(r, f_j))$, and thus
+  On the other hand, if $R_0 = oo$, then outside a set $E_0$ of linear measure not exceeding $4$, by the Second Fundamental Theorem estimates (@thm:nevanlinna-second-fundamental-theorem-part-2), $S(r, f_j) = order(T(r, f_j))$, and thus
   $
-    T(r, f_1) + T(r, f_2) <= o(T(r, f_1)) + o(T(r, f_2)) + Order(1) ==> T(r, f_1) + T(r, f_2) = Order(1).
+    T(r, f_1) + T(r, f_2) & <= order(T(r, f_1)) + order(T(r, f_2)) + Order(1) \
+                          & ==> T(r, f_1) + T(r, f_2) = Order(1).
   $
-  Then $f_1, f_2$ are constant, or the assumption that $f_1 in.not equiv f_2$ was false. This concludes the theorem.
+  Then $f_1, f_2$ are constant, or the assumption that $f_1 equiv.not f_2$ was false. This concludes the theorem.
 ]
 
 #remark[
-  The functions $f_1 : z mapsto exp(z)$ and $f_2 : z mapsto exp(-z)$ imply that five cannot be sharpened to four. Indeed, $E_1 (0) = E_2 (0) = emptyset = E_1 (oo) = E_2 (oo)$, $E_1 (1) = E_2 (1) = {2 uppi ii k}_(k in ZZ)$, and $E_1 (-1) = E_2 (-1) = {2 uppi ii k + uppi ii}_(k in ZZ)$. It can be verified algebraically that $0$, $oo$, $1$, $-1$ are the only "shared" values; the first two are omitted values while any solution must satisfy $ee^(2 z) = 1$, which corresponds to points where $exp$ attains $1$ and $-1$.
+  The functions $f_1 : z mapsto exp(z)$ and $f_2 : z mapsto exp(-z)$ imply that five cannot be sharpened to four. Indeed,
+  $
+    E_1 (0) = E_2 (0) = emptyset = E_1 (oo) = E_2 (oo),
+  $
+  $ E_1 (1) = E_2 (1) = {2 uppi ii k}_(k in ZZ), $
+  and
+  $ E_1 (-1) = E_2 (-1) = {2 uppi ii k + uppi ii}_(k in ZZ). $
+  It can be verified algebraically that $0$, $oo$, $1$, $-1$ are the only "shared" values; the first two are omitted values while any solution must satisfy $ee^(2 z) = 1$, which corresponds to points where $exp$ attains $1$ and $-1$.
 ]
 
 The recent developments of Nevanlinna has generalized preexisting results to more arbitrary domains such as annuli. A generalization of the Five-Value theorem on annuli is given in @xuwang2016.
