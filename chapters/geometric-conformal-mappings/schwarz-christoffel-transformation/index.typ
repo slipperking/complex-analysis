@@ -118,8 +118,10 @@ $
 $
 Therefore, we may define a closed (indented semicircle) contour (oriented counterclockwise)
 $
-  Gamma &= {R ee^(ii theta) : 0 <= theta <= uppi} union ([-R, R] without union.big_(k in NN_(<= n)) (a_k - epsilon, a_k + epsilon)) union union.big_(k in NN_(<= n)) (partial D(a_k, epsilon) inter overline(HH^+)) \
-  &= C_R quad union quad I_R quad union quad C_epsilon,
+  Gamma & = {R ee^(ii theta) : 0 <= theta <= uppi} \
+        & quad union ([-R, R] without union.big_(k in NN_(<= n)) (a_k - epsilon, a_k + epsilon)) \
+        & wide union union.big_(k in NN_(<= n)) (partial D(a_k, epsilon) inter overline(HH^+)) \
+        & = C_R quad union quad I_R quad union quad C_epsilon,
 $
 such that $beta$ is continuous on $overline(jinterior Gamma)$ and holomorphic on $jinterior Gamma$. By Cauchy--Goursat (@thm:cauchy-goursat-theorem), $ integral.cont.ccw_Gamma beta(zeta) dzeta = 0, $
 and moreover, taking $R -> oo$ and $epsilon -> 0^+$ gives
@@ -139,6 +141,8 @@ Hence, $w_0 = w_(n + 1)$ and $f$ maps $hat(RR) = RR union {oo}$ to a closed poly
 At the vertex $w_0 = w_(n + 1)$, the polygon has an interior angle of $uppi(n - 1) - sum_(k=1)^n uppi alpha_k = uppi(n - 1 - sum_(k=1)^n alpha_k) > 0$, since the interior angles of the polygon add to $uppi(n - 1)$.
 
 If the values ${alpha_k}$ are chosen such that $sum_(k=1)^n uppi alpha_k = n - 2$, then the interior angle at vertex $w_0=w_(n + 1)$ can be considered to be $uppi$; the vertex then is simply a straight line and we have a $n$-gon instead.
+
+Now assume that the polygonal chain is simple (therefore, we concern ourselves only when there is a polygonal interior).
 
 It remains to show that $f$ maps $HH^+$ biholomorphically onto the polygon interior. First, the continuity of $f$ at infinity must be established (we have established that the limits exist from only the real line, which is insufficient to prove that a $delta$-infimum exists in every direction). As $abs(z) -> oo$ (uniformly in all directions),
 #lbl(
@@ -160,5 +164,20 @@ $
 $
 The preceding continuity at infinity shows that $g in C^0(overline(DD))$, while $g$ is holomorphic on $DD$. Furthermore, $g|_(partial DD)$ maps $partial DD$ injectively onto the polygonal boundary $union.big_k Delta_k$. Therefore, by @thm:boundary-of-conformal-map-closed-disk, $g$ maps $DD$ univalently and surjectively onto $jinterior union.big_k Delta_k$. Since $psi$ is a biholomorphism, it follows that $f$ maps $HH^+$ biholomorphically onto the polygon.
 
+The definition in @eq:schwarz-christoffel-transformation-statement is known as the _Schwarz--Christoffel Transformation_, which maps the upper-half plane to a polygon with specified angles. The side lengths can be controlled by numerically computing suitable values for ${a_k}$. Note that for any $c in CC$, $c' in CC^*$, $z mapsto c + c' f(z)$ also suffices as such a transformation.
+#lbl(
+  example[
+    Let $ Q = {z : max{abs(Re z), abs(Im z)} < 1} $ be a square centered at the origin with side length $2$. Find a biholomorphism between $DD$ and $Q$.
+  ],
+  <ex:unit-disk-to-square-biholomorphism>,
+)
+#solution[to @ex:unit-disk-to-square-biholomorphism][
+  By the Cayley transform, it suffices to construct a biholomorphism from $HH^+$ to $Q$.
+
+  Since the interior angles of a square are $uppi / 2$ and @eq:schwarz-christoffel-transformation-statement maps to an $n+1$-gon, we define the three exponents
+  $ alpha_k = 1 / 2 quad "for" quad k = 1, 2, 3. $
+  Then the biholomorphism is given by $ F(z) = c' integral_0^z dzeta / sqrt((zeta - a_1)(zeta - a_2)(zeta - a_3)) + c, $
+  where $a_1, a_2, a_3, (plus.minus oo)$ are prevertices on the real line.
+]
 // add figure?
 // todo: what if the polygon is not simple/overlaps
