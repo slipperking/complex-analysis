@@ -97,9 +97,12 @@ and
   <eq:schwarz-christoffel-transformation-f-difference-modulus>,
 )
 for $x in (a_(k - 1), a_k)$. Define
-$
-  l_k = integral_(a_(k-1))^(a_k) abs(beta(t)) dt quad "and" quad Delta_k = f([a_(k-1), a_k])
-$
+#lbl(
+  $
+    l_k = integral_(a_(k-1))^(a_k) abs(beta(t)) dt quad "and" quad Delta_k = f([a_(k-1), a_k])
+  $,
+  <eq:schwarz-christoffel-transformation-side-lengths>,
+)
 for $1 <= k <= n+1$. Note that $Delta_k$ is a curve from $w_(k-1)$ to $w_k$. By @eq:schwarz-christoffel-transformation-f-difference-argument, since $arg[f(x) - w_(k - 1)]$ is constant for $a_(k-1) < x < a_k$, $Delta_k$ is a straight line segment. Furthermore, by @eq:schwarz-christoffel-transformation-f-difference-modulus with $x = a_k$, $l_k$ measures the length of said segment and its slope angle is given by
 $
   theta_k = arg[w_k - w_(k-1)] = uppi (-n + k - 1 + sum_(j = k)^n alpha_j).
@@ -177,7 +180,14 @@ The definition in @eq:schwarz-christoffel-transformation-statement is known as t
   Since the interior angles of a square are $uppi / 2$ and @eq:schwarz-christoffel-transformation-statement maps to an $n+1$-gon, we define the three exponents
   $ alpha_k = 1 / 2 quad "for" quad k = 1, 2, 3. $
   Then the biholomorphism is given by $ F(z) = c' integral_0^z dzeta / sqrt((zeta - a_1)(zeta - a_2)(zeta - a_3)) + c, $
-  where $a_1, a_2, a_3, (plus.minus oo)$ are prevertices on the real line.
+  where $a_1 < a_2 < a_3, (plus.minus oo)$ are prevertices on the real line.
+
+  Since all side lengths are equal, we get from @eq:schwarz-christoffel-transformation-side-lengths that
+  $
+    integral_(-oo)^(a_1) dt / sqrt(abs(t - a_1)abs(t - a_2)abs(t - a_3)) = integral_(a_3)^oo dt / sqrt(abs(t - a_1)abs(t - a_2)abs(t - a_3)),
+  $
+  which from symmetry, implies that $integral_(a_1)^(a_3) dt / sqrt(abs(t - a_1)abs(t - a_2)abs(t - a_3)) = 0,$
+  implying that $a_1 = a_3$.
 ]
 // add figure?
 // todo: what if the polygon is not simple/overlaps

@@ -768,8 +768,8 @@ In the case that a branch point singularity is present on the contour, we may at
   #lbl(
     $
       I
-      &= 1/2 integral_(-infinity)^infinity (log(x^2+1)) / (x^2+1) = integral_(-infinity)^infinity (log sqrt((x+i)(x-i))) / (x^2+1) \
-      &= integral_(-infinity)^infinity (log abs(x plus.minus i)) / (x^2+1) = Re integral_(-infinity)^infinity (log(x+i)) / (x^2+1).
+      &= 1/2 integral_(-infinity)^infinity (log(x^2+1)) / (x^2+1) = integral_(-infinity)^infinity (log sqrt((x+ii)(x-ii))) / (x^2+1) \
+      &= integral_(-infinity)^infinity (log abs(x plus.minus ii)) / (x^2+1) = Re integral_(-infinity)^infinity (log(x+ii)) / (x^2+1).
     $,
     <eq:branch-point-pole-concurrence-integral-rewrite>,
   )
@@ -783,7 +783,7 @@ In the case that a branch point singularity is present on the contour, we may at
   $
     Res_(z=ii) f(z) = lim_(z -> ii) (z - ii) (log(z+ii)) / (z^2+1) = lim_(z -> ii) (log(z+ii)) / (z+ii) = (log(2 ii)) / (2 ii) = uppi/4 - ii (log(2)) / 2.
   $
-  Additionally, for $z in C_R$, since as $R -> infinity$, $abs(f(z)) = abs(Log(z+i) / (z^2+1)) <= (abs(log abs(z+i)) + uppi) / (R^2-1) <= (log abs(R+1) + uppi) / (R^2-1) < (R+1+uppi) / (R^2-1) -> 0$ by virtue of $R > 2$, it follows that $integral_(C_R) f(z) dz -> 0$.
+  Additionally, for $z in C_R$, since as $R -> infinity$, $abs(f(z)) = abs(Log(z+ii) / (z^2+1)) <= (abs(log abs(z+ii)) + uppi) / (R^2-1) <= (log abs(R+1) + uppi) / (R^2-1) < (R+1+uppi) / (R^2-1) -> 0$ by virtue of $R > 2$, it follows that $integral_(C_R) f(z) dz -> 0$.
 
   Since $lim_(R -> infinity) integral_Gamma f(z) dz = integral_(-infinity)^infinity f(z) dz$ and
   $ integral_(-infinity)^infinity f(z) dz = (uppi^2 ii) / 2 + uppi log(2), $
