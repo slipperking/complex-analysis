@@ -555,7 +555,7 @@
         var intrinsicHeight = contentEl.offsetHeight + padTop + padBottom + borderTop + borderBottom;
 
         // Add a small buffer to prevent an infinitesimal scrollbar in some browsers
-        var adjustedHeight = intrinsicHeight + 1;
+        var adjustedHeight = intrinsicHeight + 2;
         el.style.maxHeight = "min(" + adjustedHeight + "px, calc(100vh - var(--topbar-height) - 1.7rem))";
       }
     }) : null;
@@ -906,13 +906,9 @@
 
         var rect = element.getBoundingClientRect();
 
-        // Prevent drag on the bottom-right, bottom-left, and top-left resize handles
-        var xOff = event.clientX - rect.left;
-        var yOff = event.clientY - rect.top;
-        var isBottomRight = (xOff >= rect.width - 24) && (yOff >= rect.height - 24);
-        var isTopLeft = (xOff <= 24) && (yOff <= 24);
-        var isBottomLeft = (xOff <= 24) && (yOff >= rect.height - 24);
-        var isResizeHandle = isBottomRight || isTopLeft || isBottomLeft;
+        // Prevent drag on the bottom-right resize handle
+        var isResizeHandle = (event.clientX - rect.left >= rect.width - 24) && 
+                             (event.clientY - rect.top >= rect.height - 24);
         if (isResizeHandle) return;
 
         obj.dragged = true;
