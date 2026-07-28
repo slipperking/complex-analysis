@@ -15,7 +15,7 @@ YS = np.linspace(-0.9, 0.9, 18)
 SAMPLES_PER_LINE = 41
 BOUNDARY_SAMPLES = 121
 INSET_FACTOR = 0.999
-OUTPUT_SCALE = 2.5
+OUTPUT_SCALE = 2.3
 
 Gamma = mp.gamma
 C_mp = 4 * mp.sqrt(2 * mp.pi) / (Gamma(mp.mpf(1)/4) ** 2)

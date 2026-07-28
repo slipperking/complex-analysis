@@ -194,7 +194,7 @@ The definition in @eq:schwarz-christoffel-transformation-statement is known as t
             }
           }),
           canvas({
-            cetz.draw.line((0, 0), (1, 0), mark: (end: ">>"))
+            cetz.draw.line((0, 0), (1, 0), mark: (end: ">>", fill: black))
           }),
           canvas({
             import cetz.draw: *
@@ -207,7 +207,7 @@ The definition in @eq:schwarz-christoffel-transformation-statement is known as t
           }),
         ),
       ),
-      caption: [The biholomorphism between $DD$ and $Q$ via $F$],
+      caption: [The biholomorphism between $DD$ and $Q$ via $F$.],
     ),
     <fig:unit-disk-to-square-biholomorphism>,
   )

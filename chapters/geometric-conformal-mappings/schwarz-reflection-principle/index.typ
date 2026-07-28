@@ -142,7 +142,7 @@ We have previously considered analytic continuations over two regions with an in
           })
         })
       },
-      caption: [The two regions $U_1$ and $U_2$ sharing a boundary curve $gamma$, the disk $D(z,R_z)$ for $z in gamma$, and the curve#footnote[Although more accurately, they are restricted to triangular paths. Our purpose here is to show that they intersect multiple times, the validity of the treatment remains the same.] $Gamma$. Solid large arrows and arrowheads denote orientation of the $tilde(Gamma)_1$ and $tilde(Gamma)_2$ regions.],
+      caption: [The two regions $U_1$ and $U_2$ sharing a boundary curve $gamma$, the disk $D(z,R_z)$ for $z in gamma$, and the curve#footnote[Although more accurately, they are restricted to triangular paths. Our purpose here is to show that even if they intersect multiple times, the validity of the treatment remains the same.] $Gamma$. Solid large arrows and arrowheads denote orientation of the $tilde(Gamma)_1$ and $tilde(Gamma)_2$ regions.],
     ),
     <fig:painleve-theorem>,
   )

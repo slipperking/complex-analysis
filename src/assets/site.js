@@ -528,7 +528,7 @@
     return depth;
   }
 
-    function setupReferenceTooltips() {
+  function setupReferenceTooltips() {
     var tooltip = document.createElement("div");
     tooltip.className = "ref-tooltip";
     tooltip.setAttribute("role", "tooltip");
@@ -537,24 +537,26 @@
 
     var activeTrigger = null;
     var hideTimer = null;
-    
+
     var activePreviews = new Map(); // url -> previewObject
 
-    var previewResizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(function(entries) {
+    var previewResizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(function (entries) {
       for (var i = 0; i < entries.length; i++) {
         var el = entries[i].target;
         var contentEl = el.querySelector(".ref-preview-content");
         if (!contentEl) continue;
-        
+
         var style = getComputedStyle(el);
         var padTop = parseFloat(style.paddingTop) || 0;
         var padBottom = parseFloat(style.paddingBottom) || 0;
         var borderTop = parseFloat(style.borderTopWidth) || 0;
         var borderBottom = parseFloat(style.borderBottomWidth) || 0;
-        
+
         var intrinsicHeight = contentEl.offsetHeight + padTop + padBottom + borderTop + borderBottom;
-        
-        el.style.maxHeight = "min(" + intrinsicHeight + "px, calc(100vh - var(--topbar-height) - 1.7rem))";
+
+        // Add a small buffer to prevent an infinitesimal scrollbar in some browsers
+        var adjustedHeight = intrinsicHeight + 1;
+        el.style.maxHeight = "min(" + adjustedHeight + "px, calc(100vh - var(--topbar-height) - 1.7rem))";
       }
     }) : null;
     function clearHideTimer() {
@@ -880,10 +882,10 @@
         content: previewContent,
         dragged: false,
         dragState: null,
-        hasDragged: function() {
+        hasDragged: function () {
           return !!(this.dragged && this.dragState && typeof this.dragState.left === "number" && typeof this.dragState.top === "number");
         },
-        destroy: function() {
+        destroy: function () {
           if (previewResizeObserver) {
             previewResizeObserver.unobserve(element);
           }
@@ -903,10 +905,14 @@
         if (event.target !== element) return; // Only drag on the padding/edges
 
         var rect = element.getBoundingClientRect();
-        
-        // Prevent drag on the bottom-right resize handle
-        var isResizeHandle = (event.clientX - rect.left >= rect.width - 24) && 
-                             (event.clientY - rect.top >= rect.height - 24);
+
+        // Prevent drag on the bottom-right, bottom-left, and top-left resize handles
+        var xOff = event.clientX - rect.left;
+        var yOff = event.clientY - rect.top;
+        var isBottomRight = (xOff >= rect.width - 24) && (yOff >= rect.height - 24);
+        var isTopLeft = (xOff <= 24) && (yOff <= 24);
+        var isBottomLeft = (xOff <= 24) && (yOff >= rect.height - 24);
+        var isResizeHandle = isBottomRight || isTopLeft || isBottomLeft;
         if (isResizeHandle) return;
 
         obj.dragged = true;
@@ -958,7 +964,7 @@
       } catch (_error) {
         return;
       }
-      
+
       var normalizedUrl = url.href;
 
       if (activePreviews.has(normalizedUrl)) {
@@ -969,13 +975,13 @@
 
       previewMarkupForUrl(normalizedUrl).then(function (markup) {
         if (!markup) return;
-        
+
         // Before creating, check if it was opened during the fetch
         if (activePreviews.has(normalizedUrl)) return;
-        
+
         var previewObj = createPreviewObj(normalizedUrl);
         activePreviews.set(normalizedUrl, previewObj);
-        
+
         previewObj.content.innerHTML = markup;
         previewObj.element.style.visibility = "hidden";
         enhanceContent(previewObj.content);
@@ -1034,13 +1040,13 @@
     tooltip.addEventListener("mouseleave", scheduleHide);
     tooltip.addEventListener("focusin", clearHideTimer);
     tooltip.addEventListener("focusout", scheduleHide);
-    
+
     addEventListener("scroll", function () {
       if (!tooltip.hidden && activeTrigger) {
         placeTooltip(activeTrigger);
       }
     }, { passive: true });
-    
+
     addEventListener("resize", function () {
       if (!tooltip.hidden && activeTrigger) {
         placeTooltip(activeTrigger);
@@ -1051,7 +1057,7 @@
         }
       });
     });
-    
+
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape") {
         hideTooltip();
