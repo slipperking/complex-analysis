@@ -365,6 +365,35 @@
       });
     });
 
+    var currentPathName = window.location.pathname.replace(/\/index\.html$/, "/");
+    var currentItemIndex = items.findIndex(function (item) {
+      var link = item.querySelector("a[href]");
+      return link && navStorageKeyForLink(link) === currentPathName;
+    });
+
+    if (currentItemIndex >= 0) {
+      var currentDepth = navItemDepth(items[currentItemIndex]);
+      var ancestorDepth = currentDepth;
+      var modified = false;
+      for (var i = currentItemIndex - 1; i >= 0; i--) {
+        var depth = navItemDepth(items[i]);
+        if (depth < ancestorDepth) {
+          var link = items[i].querySelector("a[href]");
+          if (link) {
+            var key = navStorageKeyForLink(link);
+            if (collapsed.has(key)) {
+              collapsed.delete(key);
+              modified = true;
+            }
+          }
+          ancestorDepth = depth;
+        }
+      }
+      if (modified) {
+        safeWriteJson(storageKey, Array.from(collapsed));
+      }
+    }
+
     function applyGlobalNavCollapse() {
       var collapsedDepths = [];
       items.forEach(function (item) {
@@ -1086,6 +1115,20 @@
     });
   }
 
+  function setupSidebarScroll() {
+    var left = document.querySelector(".sidebar-left");
+    if (!left) return;
+
+    var savedScroll = sessionStorage.getItem("sidebarScroll");
+    if (savedScroll !== null) {
+      left.scrollTop = parseInt(savedScroll, 10);
+    }
+
+    window.addEventListener("beforeunload", function () {
+      sessionStorage.setItem("sidebarScroll", left.scrollTop);
+    });
+  }
+
   normalizeDisplayMath(document);
   setupGlobalNavCollapse();
   setupLocalTocRowNavigation(document);
@@ -1094,6 +1137,7 @@
   setupReferenceTooltips();
   setupMathLinkNavigation();
   setupPrintButton();
+  setupSidebarScroll();
   addEventListener("beforeprint", expandSolutionsForPrint);
   addEventListener("afterprint", restoreSolutionsAfterPrint);
   addEventListener("beforeprint", applyPrintThemeOverride);

@@ -187,11 +187,11 @@ We have two famous identities on the $Gamma$-function:
       $
         Gamma(z) Gamma(1-z) = uppi csc(uppi z)
       $,
-      <eq:gamma-function_eulerreflection>,
+      <eq:gamma-function-euler-reflection>,
     )
     for $z in CC without ZZ$.
   ],
-  <thm:gamma-function_eulerreflection>,
+  <thm:gamma-function-euler-reflection>,
 )
 
 #proof[
@@ -203,18 +203,18 @@ We have two famous identities on the $Gamma$-function:
   $
     1 / (Gamma(z) Gamma(1-z)) = -1 / (z Gamma(z) Gamma(-z)) = z product_(k=1)^n (1 - z^2 / k^2) = sin(uppi z) / uppi,
   $
-  which confirms @eq:gamma-function_eulerreflection.
+  which confirms @eq:gamma-function-euler-reflection.
 ]
 
 #lbl(
   example[
     Evaluate $Gamma(1/2)$.
   ],
-  <ex:gamma-function_one_half>,
+  <ex:gamma-function-one-half>,
 )
 
-#solution[to @ex:gamma-function_one_half][
-  By the Reflection Formula (@thm:gamma-function_eulerreflection), we have that
+#solution[to @ex:gamma-function-one-half][
+  By the Reflection Formula (@thm:gamma-function-euler-reflection), we have that
   $
     Gamma(1/2)^2 = uppi csc(uppi / 2) = uppi,
   $
@@ -247,7 +247,7 @@ We have two famous identities on the $Gamma$-function:
     & = 2^(1-2z) Gamma(2z) Gamma(1/2) \
     & = 2^(1-2z) Gamma(2z) sqrt(uppi),
   $
-  where the last step is derived from @ex:gamma-function_one_half.
+  where the last step is derived from @ex:gamma-function-one-half.
 ]
 
 The identity above is a special case of the following result:
@@ -258,14 +258,19 @@ The identity above is a special case of the following result:
     $
       Gamma(z) Gamma(z+1/m) dots.c Gamma(z+(m-1)/m) = (2 uppi)^((m-1)/2) m^(1/2-m z) Gamma(m z).
     $,
-    <eq:gamma-function_gaussmultiplication>,
+    <eq:gamma-function-gauss-multiplication>,
   )
 ]
 
-The Gamma function as in @eq:gamma-function is commonly referred to as the _Euler Integral of the Second Kind_. The _Euler Integral of the First Kind_ is also known as the _Beta function_, and is defined by
-$
-  Beta(z_1, z_2) = integral_0^1 t^(z_1-1) (1-t)^(z_2-1) dt.
-$
+The Gamma function as in @eq:gamma-function is commonly referred to as the _Euler Integral of the Second Kind_.
+#lbl(
+  definition[Beta Function][
+    The _Euler Integral of the First Kind_ is also known as the _Beta function_, and is defined by
+    $
+      Beta(z_1, z_2) = integral_0^1 t^(z_1-1) (1-t)^(z_2-1) dt.
+    $],
+  <def:beta-function>,
+)
 By a change of variables (by letting $tau = 1 - t$), we derive the symmetry of the Beta function:
 $
   Beta(z_1, z_2) = integral_0^1 tau^(z_2-1) (1-tau)^(z_1-1) dif tau = Beta(z_2, z_1).
@@ -319,7 +324,7 @@ The Beta function is commonly treated as an auxiliary function in many cases of 
   $
     I = (Gamma(2/3) Gamma(4/3)) / Gamma(2) = 1/3 Gamma(1/3) Gamma(2/3).
   $
-  Lastly, the Reflection Formula (@thm:gamma-function_eulerreflection) gives that
+  Lastly, the Reflection Formula (@thm:gamma-function-euler-reflection) gives that
   $
     I = uppi / (3 sin(uppi / 3)) = (2 uppi sqrt(3)) / 9. #qedhere
   $
@@ -352,7 +357,7 @@ The Beta function is commonly treated as an auxiliary function in many cases of 
     J(beta) & = integral_0^oo s^beta (dif s) / (1+s) - integral_0^oo s^beta c^beta (dif s) / (1+s) \
             & = (1-c^beta) Beta(-beta, beta+1) = (c^beta-1) uppi csc(uppi beta)
   $
-  by the reflection formula (@thm:gamma-function_eulerreflection), which derives an analytic continuation of $J|_(-1 < Re beta < 1)$ to everywhere in $CC without ZZ$.
+  by the reflection formula (@thm:gamma-function-euler-reflection), which derives an analytic continuation of $J|_(-1 < Re beta < 1)$ to everywhere in $CC without ZZ$.
 
   One can show by differentiation under the integral sign, that the integral $J(beta)$ is holomorphic for $-1 < Re beta < 1$. The identity theorem (@thm:identity) then allows the computed cosecant expression to be assigned to $J(beta)$:
   $

@@ -155,8 +155,8 @@ It remains to show that $f$ maps $HH^+$ biholomorphically onto the polygon inter
 Let $z = r ee^(ii theta) in overline(HH^+)$, where $0 <= theta <= uppi$. Join $z in overline(HH^+)$ to $r in RR$ along the circular arc of radius $r$, and then join $r$ to infinity along the positive real axis. By @eq:schwarz-christoffel-transformation-beta-bound-at-infinity,
 $
   abs(w_(n+1) - f(z)) & <= abs(f(r) - f(z)) + abs(w_(n+1) - f(r)) \
-                      & <= integral_0^theta abs(beta(r ee^(ii t))) r dif t + integral_r^oo abs(beta(t)) dif t \
-                      & <= Order(r^(sum_(k=1)^n alpha_k - n + 1)) + integral_r^oo Order(t^(sum_(k=1)^n alpha_k - n)) dif t
+                      & <= integral_0^theta abs(beta(r ee^(ii t))) r dt + integral_r^oo abs(beta(t)) dt \
+                      & <= Order(r^(sum_(k=1)^n alpha_k - n + 1)) + integral_r^oo Order(t^(sum_(k=1)^n alpha_k - n)) dt
                         = Order(r^(sum_(k=1)^n alpha_k - n + 1)) -> 0 quad "as" quad r -> oo.
 $
 Thus, defining $f(oo)=w_(n+1)=w_0$ gives a continuous extension of $f$ to $overline(HH^+) union {oo}$.
@@ -174,20 +174,106 @@ The definition in @eq:schwarz-christoffel-transformation-statement is known as t
   ],
   <ex:unit-disk-to-square-biholomorphism>,
 )
+#import "/build/visual-output/schwarz-christoffel-transformation/lib.typ" as visual-data
+#figure-wrapper([
+  #lbl(
+    figure(
+      potential-frame(
+        grid(
+          columns: 3,
+          gutter: 1.5em,
+          align: horizon,
+          canvas({
+            import cetz.draw: *
+            for curve in visual-data.input-vertical-curves + visual-data.input-horizontal-curves {
+              catmull(..curve, stroke: 0.5pt)
+            }
+            for curve in visual-data.input-boundary-curve {
+              catmull(..curve, close: true, stroke: 1pt)
+            }
+          }),
+          canvas({
+            cetz.draw.line((0, 0), (1, 0), mark: (end: ">>"))
+          }),
+          canvas({
+            import cetz.draw: *
+            for curve in visual-data.output-vertical-curves + visual-data.output-horizontal-curves {
+              catmull(..curve, stroke: 0.5pt)
+            }
+            for curve in visual-data.output-boundary-curve {
+              catmull(..curve, close: true, stroke: 1pt)
+            }
+          }),
+        ),
+      ),
+      caption: [The biholomorphism between $DD$ and $Q$ via $F$],
+    ),
+    <fig:unit-disk-to-square-biholomorphism>,
+  )
+])
 #solution[to @ex:unit-disk-to-square-biholomorphism][
   By the Cayley transform, it suffices to construct a biholomorphism from $HH^+$ to $Q$.
 
   Since the interior angles of a square are $uppi / 2$ and @eq:schwarz-christoffel-transformation-statement maps to an $n+1$-gon, we define the three exponents
   $ alpha_k = 1 / 2 quad "for" quad k = 1, 2, 3. $
-  Then the biholomorphism is given by $ F(z) = c' integral_0^z dzeta / sqrt((zeta - a_1)(zeta - a_2)(zeta - a_3)) + c, $
-  where $a_1 < a_2 < a_3, (plus.minus oo)$ are prevertices on the real line.
+  Then a biholomorphism is given by
+  $
+    f_(a_1,a_2,a_3)(z) = integral_0^z beta(zeta) dzeta = integral_0^z dzeta / (sqrt(zeta - a_1)sqrt(zeta - a_2)sqrt(zeta - a_3)),
+  $
+  where $a_1 < a_2 < a_3, (plus.minus oo)$ are finite prevertices on the real line. Observe that by the restrictions set upon $alpha_k$, any such configuration of $a_1,a_2,a_3$ will give a rectangle. Therefore, we want to find a configuration of prevertices that ensures equal side lengths. From the rectangularity of the boundary, it is already known that
+  #lbl(
+    $ l_1 = l_3 quad "and" quad l_2 = l_4, $,
+    <eq:unit-disk-to-square-biholomorphism-rectangle-side-length-equalities>,
+  )
+  where
+  $
+    l_1 = integral_(-oo)^(a_1) abs(beta(t)) dt,quad l_2 = integral_(a_1)^(a_2) abs(beta(t)) dt,\
+    l_3 = integral_(a_2)^(a_3) abs(beta(t)) dt, quad l_4 = integral_(a_3)^(a_4) abs(beta(t)) dt
+  $
+  correspond to the side lengths of the rectangle.
 
-  Since all side lengths are equal, we get from @eq:schwarz-christoffel-transformation-side-lengths that
+  Fix $a_1, a_3$. We now aim to find $a_2$ in terms of $a_1$ and $a_3$ such that $l_1 = l_2$ (which would then imply $l_1=l_2=l_3=l_4$). Define a linear affine map that sends $-1 -> a_1$, $1 -> a_3$, namely $phi(z) = z(a_3-a_1) / 2 + (a_3 + a_1) / 2$. By a substitution,
   $
-    integral_(-oo)^(a_1) dt / sqrt(abs(t - a_1)abs(t - a_2)abs(t - a_3)) = integral_(a_3)^oo dt / sqrt(abs(t - a_1)abs(t - a_2)abs(t - a_3)),
+    l_1 = integral_(-oo)^(a_1) abs(beta(t)) dt &= (a_3-a_1) / 2 integral_(-oo)^(-1) dt / sqrt(abs(phi(t) - a_1)abs(phi(t) - a_2)abs(phi(t) - a_3)) \
+    &= integral_(-oo)^(-1) dt / (sqrt((t^2 - 1)abs(t(a_3-a_1) / 2 + (a_3 + a_1 - 2 a_2) / 2))),\
+    &= integral_1^oo dt / (sqrt((t^2 - 1)abs(t(a_1-a_3) / 2 + (a_3 + a_1 - 2 a_2) / 2))), #tag[(1)]\
+    l_4 = integral_(a_3)^oo abs(beta(t)) dt &= (a_3-a_1) / 2 integral_1^oo dt / sqrt(abs(phi(t) - a_1)abs(phi(t) - a_2)abs(phi(t) - a_3)) \
+    &= integral_1^oo dt / (sqrt((t^2 - 1)abs(t(a_3-a_1) / 2 + (a_3 + a_1 - 2 a_2) / 2))). #tag[(2)]
   $
-  which from symmetry, implies that $integral_(a_1)^(a_3) dt / sqrt(abs(t - a_1)abs(t - a_2)abs(t - a_3)) = 0,$
-  implying that $a_1 = a_3$.
+  Now force $l_1 = l_4$.
+
+  Our aim is to show that $a_2$ lies at the midpoint between $a_1$ and $a_3$. For the sake of contradiction, assume $a_3 + a_1 - 2 a_2 > 0$. Then for all $t>1$, $ t(a_1-a_3) / 2 + (a_3 + a_1 - 2 a_2) / 2 < a_1 - a_2 < 0, $
+  implying that $ abs(t(a_1-a_3) / 2 + (a_3 + a_1 - 2 a_2) / 2) = t(a_3-a_1) / 2 - (a_3 + a_1 - 2 a_2) / 2 < t(a_3-a_1) / 2, $
+  while $ abs(t(a_3-a_1) / 2 + (a_3 + a_1 - 2 a_2) / 2) = t(a_3-a_1) / 2 + (a_3 + a_1 - 2 a_2) / 2 > t(a_3-a_1) / 2. $
+  Then we obtain that (1) is strictly greater than (2). Similarly, $a_3 + a_1 - 2 a_2 < 0$ forces $l_1 < l_4$. Therefore, for this equality to hold, we must have $a_2 = (a_1 + a_3) / 2$.
+
+  Then the general biholomorphism between $HH^+$ and a square is in the form of
+  #lbl($ c' f_(a_1, (a_1 + a_3) / 2, a_3) (z) + c. $, <eq:unit-disk-to-square-biholomorphism-general>)
+  Without loss of generality, assume $a_1 = -1, a_3 = 1, a_2 = 0$ and write $f(z) = f_(-1,0,1) (z)$. Let
+  $
+    l & = l_1 = dots.c = l_4 = integral_(-1)^0 abs(beta(t)) dt = integral_0^1 dt / sqrt(t(1-t^2)) \
+    & = integral_0^1 dt / (2 sqrt(t) sqrt(sqrt(t)(1-t))) = 1/2 integral_0^1 t^(-3/4)(1-t)^(-1/2) dt = 1 / 2 Beta(1/4, 1/2) = (Gamma(1/4) Gamma(1/2)) / (2 Gamma(3/4)) = Gamma(1/4)^2 / (2 sqrt(2 uppi))
+  $
+  by @def:beta-function, @thm:gamma-function-euler-reflection (the Gamma and Beta function identities). Traversing $RR$ from $-oo$ to $+oo$, by using @eq:schwarz-christoffel-transformation-f-difference-argument,
+  $
+    integral_(-oo)^(-1) beta = ii l, quad integral_(-1)^0 beta = -l, quad integral_0^1 beta = -ii l, quad integral_1^oo beta = l.
+  $
+  Hence,
+  $ f(-1)=l, quad w(0)=0, quad w(1)=-ii l, quad f(oo)=l-ii l = f(-oo). $
+  The four distinct vertices $0, l, l-ii l, -ii l$ bound
+  $ S = {x+ii y: 0<x<l, -l<y<0}, $
+  a square of side $l$. Thus $f(HH^+)=S$. The center of $S$ is $l/2 - ii l/2$. Thus translate and dilate to $Q=(-1,1) times (-1,1)$ as in @eq:unit-disk-to-square-biholomorphism-general, to obtain
+  $ Phi(z) = 2/l f(z) - 1 + ii = 2/l integral_0^z dzeta/(sqrt(zeta+1) sqrt(zeta) sqrt(zeta-1)) -1 + ii. $
+  Then $Phi: HH^+ -> Q$ is biholomorphic with an extension to $Phi(0)=-1+ii, Phi(-1)=1+ii, Phi(plus.minus oo)=1-ii, Phi(1F)=-1-ii$.
+
+  Finally $psi(z)=(z-ii)/(z+ii)$ maps $HH^+$ onto $DD$ with inverse $psi^(-1)(w)=ii(1+w)/(1-w)$. Hence
+  #lbl(
+    $
+      F(w) = Phi compose psi^(-1)(w) = (4 sqrt(2 pi))/Gamma(1/4)^2 integral_0^(ii(1+w)/(1-w)) dzeta/(sqrt(zeta+1) sqrt(zeta) sqrt(zeta-1)) -1 + ii
+    $,
+    <eq:unit-disk-to-square-biholomorphism-final>,
+  )
+  gives the required biholomorphism, where the square root branches are selected such that their corresponding logarithms have imaginary parts in $lr((-uppi/2, (3uppi) / 2])$. A visualization of this conformal map has been provided in @fig:unit-disk-to-square-biholomorphism.
 ]
 // add figure?
 // todo: what if the polygon is not simple/overlaps
