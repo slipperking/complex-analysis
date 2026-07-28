@@ -134,7 +134,8 @@ $
 By @eq:schwarz-christoffel-transformation-beta-singularity-order-expression, we know that integrals over small indentations vanish; therefore
 $
   abs(w_(n + 1) - w_0) &= lim_(R -> oo) abs(integral_(C_R) beta(zeta) dzeta) <= lim_(R -> oo) R integral_0^uppi abs(product_(k = 1)^n (R ee^(ii theta) - a_k)^(alpha_k - 1)) dtheta \
-  &= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n abs(R ee^(ii theta) - a_k)^(alpha_k - 1) dtheta <= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n max{(R + abs(a_k))^(alpha_k - 1), abs(R - abs(a_k))^(alpha_k - 1)} dtheta \
+  &= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n abs(R ee^(ii theta) - a_k)^(alpha_k - 1) dtheta \
+  &<= lim_(R -> oo) R integral_0^uppi product_(k = 1)^n max{(R + abs(a_k))^(alpha_k - 1), abs(R - abs(a_k))^(alpha_k - 1)} dtheta \
   &<= lim_(R -> oo) R uppi Order(R)^(-n + sum_(j = 1)^n alpha_j) = lim_(R -> oo) Order(R^(1 - n + sum_(j = 1)^n alpha_j)) = 0,
 $
 since $sum_(k = 1)^n alpha_k < n - 1$ (by assumption). Here, we developed the upper bound $max{(R + abs(a_k))^(alpha_k - 1), abs(R - abs(a_k))^(alpha_k - 1)} dtheta$, as the first part accounts solely for $alpha_k - 1 >= 0$ and the second for $alpha_k - 1 <= 0$ (although here it made little difference).
@@ -156,8 +157,8 @@ Let $z = r ee^(ii theta) in overline(HH^+)$, where $0 <= theta <= uppi$. Join $z
 $
   abs(w_(n+1) - f(z)) & <= abs(f(r) - f(z)) + abs(w_(n+1) - f(r)) \
                       & <= integral_0^theta abs(beta(r ee^(ii t))) r dt + integral_r^oo abs(beta(t)) dt \
-                      & <= Order(r^(sum_(k=1)^n alpha_k - n + 1)) + integral_r^oo Order(t^(sum_(k=1)^n alpha_k - n)) dt
-                        = Order(r^(sum_(k=1)^n alpha_k - n + 1)) -> 0 quad "as" quad r -> oo.
+                      & <= Order(r^(sum_(k=1)^n alpha_k - n + 1)) + integral_r^oo Order(t^(sum_(k=1)^n alpha_k - n)) dt \
+                      & = Order(r^(sum_(k=1)^n alpha_k - n + 1)) -> 0 quad "as" quad r -> oo.
 $
 Thus, defining $f(oo)=w_(n+1)=w_0$ gives a continuous extension of $f$ to $overline(HH^+) union {oo}$.
 
@@ -252,7 +253,8 @@ The definition in @eq:schwarz-christoffel-transformation-statement is known as t
   Without loss of generality, assume $a_1 = -1, a_3 = 1, a_2 = 0$ and write $f(z) = f_(-1,0,1) (z)$. Let
   $
     l & = l_1 = dots.c = l_4 = integral_(-1)^0 abs(beta(t)) dt = integral_0^1 dt / sqrt(t(1-t^2)) \
-    & = integral_0^1 dt / (2 sqrt(t) sqrt(sqrt(t)(1-t))) = 1/2 integral_0^1 t^(-3/4)(1-t)^(-1/2) dt = 1 / 2 Beta(1/4, 1/2) = (Gamma(1/4) Gamma(1/2)) / (2 Gamma(3/4)) = Gamma(1/4)^2 / (2 sqrt(2 uppi))
+      & = integral_0^1 dt / (2 sqrt(t) sqrt(sqrt(t)(1-t))) = 1/2 integral_0^1 t^(-3/4)(1-t)^(-1/2) dt \
+      & = 1 / 2 Beta(1/4, 1/2) = (Gamma(1/4) Gamma(1/2)) / (2 Gamma(3/4)) = Gamma(1/4)^2 / (2 sqrt(2 uppi))
   $
   by @def:beta-function, @thm:gamma-function-euler-reflection (the Gamma and Beta function identities). Traversing $RR$ from $-oo$ to $+oo$, by using @eq:schwarz-christoffel-transformation-f-difference-argument,
   $
