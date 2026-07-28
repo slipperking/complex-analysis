@@ -266,7 +266,7 @@ The definition in @eq:schwarz-christoffel-transformation-statement is known as t
   $ S = {x+ii y: 0<x<l, -l<y<0}, $
   a square of side $l$. Thus $f(HH^+)=S$. The center of $S$ is $l/2 - ii l/2$. Thus translate and dilate to $Q=(-1,1) times (-1,1)$ as in @eq:unit-disk-to-square-biholomorphism-general, to obtain
   $ Phi(z) = 2/l f(z) - 1 + ii = 2/l integral_0^z dzeta/(sqrt(zeta+1) sqrt(zeta) sqrt(zeta-1)) -1 + ii. $
-  Then $Phi: HH^+ -> Q$ is biholomorphic with an extension to $Phi(0)=-1+ii, Phi(-1)=1+ii, Phi(plus.minus oo)=1-ii, Phi(1F)=-1-ii$.
+  Then $Phi: HH^+ -> Q$ is biholomorphic with an extension to $Phi(0)=-1+ii, Phi(-1)=1+ii, Phi(plus.minus oo)=1-ii, Phi(1)=-1-ii$.
 
   Finally $psi(z)=(z-ii)/(z+ii)$ maps $HH^+$ onto $DD$ with inverse $psi^(-1)(w)=ii(1+w)/(1-w)$. Hence
   #lbl(
