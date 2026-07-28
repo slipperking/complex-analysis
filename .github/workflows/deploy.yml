@@ -31,7 +31,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install numpy shapely beautifulsoup4
+          pip install -r requirements.txt
 
       - name: Run preprocessing script
         run: python scripts/build.py
