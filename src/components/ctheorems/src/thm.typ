@@ -504,7 +504,12 @@
   context {
     if thm-qed-done.get().last() == false {
       if state("render-mode").get() != "web" {
+        box(width: 0pt)
         h(1fr)
+        sym.wj
+        sym.space.nobreak
+      } else {
+        sym.wj
       }
       thm-qed-show-float
     }

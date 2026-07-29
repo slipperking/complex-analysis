@@ -72,33 +72,6 @@
   }
 }
 
-#let _plain-text(value) = {
-  if value == none {
-    ""
-  } else if type(value) == str {
-    value
-  } else if type(value) == content {
-    let fields = value.fields()
-    if fields.keys().contains("text") {
-      fields.text
-    } else if fields.keys().contains("children") {
-      fields.children.map(_plain-text).join("")
-    } else if fields.keys().contains("body") {
-      _plain-text(fields.body)
-    } else if fields.keys().contains("child") {
-      _plain-text(fields.child)
-    } else if value.func() == [ ].func() {
-      " "
-    } else {
-      ""
-    }
-  } else {
-    str(value)
-  }
-}
-
-#let _metadata-page(page) = page + (title: _plain-text(page.title))
-
 #let _dirs-for(path) = path.split("/").slice(0, path.split("/").len() - 1).filter(part => part != "")
 #let _root-prefix(path) = range(_dirs-for(path).len()).map(_ => "../").join("")
 #let _pretty-path(path) = if path == "index.html" {
@@ -389,8 +362,8 @@
 }
 
 #let _html-page(page, body) = [
-  #metadata(_metadata-page(page)) <page-meta>
-  #document(page.doc-path, title: _plain-text(page.title))[
+  #metadata(page) <page-meta>
+  #document(page.doc-path, title: [#_page-label(page) | #notes-title])[
     #show: document-styles.with(mode: "web")
     #counter(math.equation).update(0)
     #thm-counter.thm-counters.update((:))
@@ -421,7 +394,7 @@
 #let _standalone-page(page, main-class: none, extra-scripts: (), body) = {
   let main-classes = ("content", main-class).filter(value => value != none).join(" ")
 
-  document(page.doc-path, title: _plain-text(page.title))[
+  document(page.doc-path, title: [#page.title | #notes-title])[
     #show: document-styles.with(mode: "web")
     #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/site.css")))
     #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/search.css")))

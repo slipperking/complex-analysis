@@ -164,10 +164,7 @@
     }
     doc
   } else if mode == "web" {
-    set document(
-      title: title,
-      author: authors,
-    )
+    set document(author: authors)
 
     show math.equation: it => {
       if it.block and it.numbering != none {

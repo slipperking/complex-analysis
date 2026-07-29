@@ -46,5 +46,7 @@ Due to the perceived similarity between properties of holomorphic functions and 
 #proof[
   First assume that there exists a point $p in U$ such that $u_n (p) -> oo$. Then $exists n in NN$ such that $u_n (p) > 0$ (and by the increasing nature of the sequence, for any $n' > n$, $u_(n') (p) > 0$ is also necessarily true).
 
-
+  By the harmonicity of $u_(n')$, there exists some closed disk $overline(D(p, r))$ in $U$ on which $u_(n')$ is positive. Then for any $z$ within the smaller disk $D(p,r/2)$ and any $n>n'$, we have that
+  $ (r - r/2) / (r + r/2) u_j (p) <= u_j (z) ==> u_j (z) >= 1/3 u_j(p) -> oo $
+  by @thm:harnack-inequality.
 ]
