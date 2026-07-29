@@ -3,9 +3,9 @@
   title: [Nevanlinna's Counting, Proximity, and Characteristic Functions],
   route: "nevanlinna-counting-proximity-characteristic-functions",
 )
-Let $f: D(0, R) -> extcomplex$ be meromorphic such that
+Let $f: D(0, R) -> extcomplex$ be meromorphic with a Laurent expansion
 $ f(z) = sum_(j = k)^oo c_j z^j $
-where $c = c_k$ and $c != 0$. Then $z mapsto frac(f(z), z^k, style: "horizontal")$ is holomorphic on a neighborhood of $0$ and is nonzero at $0$. By Jensen's formula (@thm:jensens-formula) on $frac(f(z), z^k, style: "horizontal")$,
+where $c = c_k$ and $c != 0$, such that the annulus of convergence has an inner radius of $0$ (we effectively take the innermost expansion). Then $z mapsto frac(f(z), z^k, style: "horizontal")$ is holomorphic on a neighborhood of $0$ and is nonzero at $0$. By Jensen's formula (@thm:jensens-formula) on $frac(f(z), z^k, style: "horizontal")$,
 
 #lbl(
   $

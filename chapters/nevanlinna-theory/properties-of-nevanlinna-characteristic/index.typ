@@ -49,13 +49,13 @@
         0 & quad "if" k > 0,
       ),
     $
-    where $c_theta$ is the first nonzero coefficient of the Laurent expansion of $f - ee^(ii theta)$ at the origin.
+    where $c_theta$ is the first nonzero coefficient of the innermost Laurent expansion of $f - ee^(ii theta)$ at the origin.
   ],
   <thm:nevanlinna-cartan-identity>,
 )
 
 #proof[
-  For $theta in [0, 2 uppi]$, from @eq:nevanlinna-counting-jensens-formula-exposition-2 on $f - ee^(ii theta)$ (let $c_theta$ be the first nonzero coefficient of the Laurent series) we obtain
+  For $theta in [0, 2 uppi]$, from @eq:nevanlinna-counting-jensens-formula-exposition-2 on $f - ee^(ii theta)$ (let $c_theta$ be the first nonzero coefficient of the innermost Laurent series) we obtain
   $
     log abs(c_theta) = N(r, f) - N(r, ee^(ii theta), f) + 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii phi.alt) - ee^(ii theta))) dif phi.alt.
   $
@@ -87,7 +87,7 @@
   $
     T(r, f) = 1 / (2 uppi) integral_0^(2 uppi) N(r, ee^(ii theta), f) dtheta + 1 / (2 uppi) integral_0^(2 uppi) log abs(c_theta) dtheta.
   $
-  If $f(0) = oo$, then subtracting $ee^(ii theta)$ from $f$ does not modify the first nonzero coefficient of the Laurent series ($c = c_theta$). Thus, in this case
+  If $f(0) = oo$, then subtracting $ee^(ii theta)$ from $f$ does not modify the first nonzero coefficient of the innermost Laurent series ($c = c_theta$). Thus, in this case
   $
     T(r, f) = 1 / (2 uppi) integral_0^(2 uppi) N(r, ee^(ii theta), f) dtheta + log abs(c)
   $

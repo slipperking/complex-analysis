@@ -48,7 +48,7 @@ Regarding Nevanlinna's original paper containing the result, mathematician Herma
       $,
       <eq:nevanlinna-second-fundamental-theorem-part-1-small-error-term>,
     )
-    where $c'$ is the first nonzero coefficient of the Laurent expansion of $f'$ (at the origin).
+    where $c'$ is the first nonzero coefficient of the innermost Laurent expansion of $f'$ (at the origin).
   ],
   <thm:nevanlinna-second-fundamental-theorem-part-1>,
 )

@@ -83,7 +83,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
 
 #lbl(
   proposition[
-    If $f$ is meromorphic on $D(0, R)$, then for $0 < r < R$, letting $c$ be the first nonzero coefficient of the Laurent of expansion of $f$ about the origin,
+    If $f$ is meromorphic on $D(0, R)$, then for $0 < r < R$, letting $c$ be the first nonzero coefficient of the innermost Laurent expansion of $f$ about the origin,
     $
       m(r, (f')/f) & < 4 logp T(R, f) + 4 logp logp abs(1 / c) \
                    & quad""+ 5 logp R + 6 logp 1 / (R - r) + logp 1 / r + 14.
@@ -140,7 +140,7 @@ Modern results vastly improve said estimations, and the search for a sharp estim
     &quad""+ sum_(k = 1)^(n(rho, 0, f)) (frac(1, rho - r) + frac(1, delta(z))) + sum_(j = 1)^(n(rho, f)) (frac(1, rho - r) + frac(1, delta(z))) \
     & = frac(2 rho, (rho - r)^2) [m(rho, f) + m(rho, 1 / f)] + n (1 / (rho - r) + 1 / delta(z)).
   $
-  By @prop:nevanlinna-first-theorem-at-zero, we have $T(rho, 0, f) = T(rho, f) - log abs(c)$, where $c$ is the first nonzero coefficient of the Laurent expansion of $f$ about the origin. It follows that $m(rho, frac(1, f)) = T(rho, f) - log abs(c) - N(rho, 0, f)$ and $m(rho, f) = T(rho, f) - N(rho, f)$, thus
+  By @prop:nevanlinna-first-theorem-at-zero, we have $T(rho, 0, f) = T(rho, f) - log abs(c)$, where $c$ is the first nonzero coefficient of the innermost Laurent expansion of $f$ about the origin. It follows that $m(rho, frac(1, f)) = T(rho, f) - log abs(c) - N(rho, 0, f)$ and $m(rho, f) = T(rho, f) - N(rho, f)$, thus
   $
     m(rho, frac(1, f)) + m(rho, f) & = 2 T(rho, f) - log abs(c) - N(rho, frac(1, f)) \
                                    & quad""- N(rho, f) <= 2 T(rho, f) + 2 logp abs(1 / c),
