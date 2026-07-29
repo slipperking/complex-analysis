@@ -25,7 +25,7 @@ In contrast, the uniform continuity of a function $f$ guarantees that $delta$ ma
 
 #lbl(
   theorem[
-    A family of functions $cal(F)$ that is pointwise equicontinuous on every point $z in K subset CC$ for a compact set $K$ is uniformly equicontinuous on $K$.
+    A family of functions $cal(F)$ that is pointwise equicontinuous on every point $z in K subset.double CC$ for a compact set $K$ is uniformly equicontinuous on $K$.
   ],
   <thm:heine_cantor_family>,
 )
@@ -161,7 +161,7 @@ Obviously, the equivalence is established similarly to local finiteness and loca
 )
 
 #proof[
-  Obviously, if $cal(F)$ is normal on $U$, for any compact $K subset U$, it follows that $cal(F)$ is normal on $K$, and the uniform boundedness on $K$ follows from the Arzelà--Ascoli Theorem (@thm:arzela_ascoli).
+  Obviously, if $cal(F)$ is normal on $U$, for any compact $K subset.double U$, it follows that $cal(F)$ is normal on $K$, and the uniform boundedness on $K$ follows from the Arzelà--Ascoli Theorem (@thm:arzela_ascoli).
 
   Conversely, we will first assume that $cal(F)$ is locally uniformly bounded. Let $z in U$ be arbitrary, and choose $R_z > 0$ such that $overline(D(z, R_z)) subset U$. Therefore, it follows that $CC without U$ is closed and disjoint from $overline(D(z, R_z))$ and the distance between them is positive. Let this distance be
   $
@@ -181,9 +181,9 @@ Obviously, the equivalence is established similarly to local finiteness and loca
   $
   Therefore, $cal(F)$ is uniformly equicontinuous in $overline(D(z, R_z))$ (and also in $D(z, R_z)$). Indeed, $forall epsilon > 0$, we can choose $delta_z = epsilon / c_z$ and the assertion follows.
 
-  Let $K subset U$ be compact and arbitrary. The collection ${D(z, R_z)}_(z in K)$ forms an open cover of $K$ and by the Heine--Borel Theorem (@thm:heine-borel) admits a finite subcover ${D(z_k, R_(z_k))}_(k in NN_(<= n))$ for some finite $n in NN$. If we let $delta = min_(k in NN_(<= n)) (delta_k)$, it follows that $cal(F)$ is uniformly equicontinuous on $K$. By the Arzelà--Ascoli Theorem (@thm:arzela_ascoli), any sequence ${f_n}_(n in NN) subset.eq cal(F)$ has a uniformly convergent subsequence ${f_(n_k)}_(k in NN)$ on $K$.
+  Let $K subset.double U$ be compact and arbitrary. The collection ${D(z, R_z)}_(z in K)$ forms an open cover of $K$ and by the Heine--Borel Theorem (@thm:heine-borel) admits a finite subcover ${D(z_k, R_(z_k))}_(k in NN_(<= n))$ for some finite $n in NN$. If we let $delta = min_(k in NN_(<= n)) (delta_k)$, it follows that $cal(F)$ is uniformly equicontinuous on $K$. By the Arzelà--Ascoli Theorem (@thm:arzela_ascoli), any sequence ${f_n}_(n in NN) subset.eq cal(F)$ has a uniformly convergent subsequence ${f_(n_k)}_(k in NN)$ on $K$.
 
   Let ${f_n}_(n in NN) subset.eq cal(F)$ be arbitrary. Let $U$ be exhausted by the compact sets ${K_n}_(n in NN)$. By the argument above, we may extract a subsequence ${f_(n_(1,j))}_(j in NN) subset.eq {f_n}_(n in NN)$ that uniformly converges on $K_1$. By the same argument, there exists a subsequence ${f_(n_(2,j))}_(j in NN) subset.eq {f_(n_(1,j))}_(j in NN)$ that uniformly converges on $K_2$. Let $n'_j = n_(j,j)$.
 
-  We will now invoke the same diagonalization argument as in the proof of the Arzelà--Ascoli Theorem (@thm:arzela_ascoli). Let $K subset U$ be an arbitrary compact set. It follows that for some $k in NN$, $K_k supset.eq K$. Since ${f_(n'_j)}_(j >= k) subset.eq {f_(n_(k,j))}_(j in NN)$ is the subsequence of a sequence that converges on $K$, the assertion follows.
+  We will now invoke the same diagonalization argument as in the proof of the Arzelà--Ascoli Theorem (@thm:arzela_ascoli). Let $K subset.double U$ be an arbitrary compact set. It follows that for some $k in NN$, $K_k supset.eq K$. Since ${f_(n'_j)}_(j >= k) subset.eq {f_(n_(k,j))}_(j in NN)$ is the subsequence of a sequence that converges on $K$, the assertion follows.
 ]

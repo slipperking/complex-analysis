@@ -359,7 +359,7 @@ Note that the converse here is not necessarily true.
     Let $Omega subset.eq CC$ be an open set and let $frak(B)$ be a basis for the topology on $Omega$. Then there exists a collection of sets ${U_n}_(n in NN) subset.eq frak(B)$ such that
 
     + $union.big_(n in NN) U_n = Omega$.#enum-lbl(<itm:locally-finite-open-cover-existence-cover>)
-    + For every compact $K subset Omega$, $K$ intersects only finitely many sets in ${U_n}_(n in NN)$.#enum-lbl(<itm:locally-finite-open-cover-existence-local-finiteness>)
+    + For every compact $K subset.double Omega$, $K$ intersects only finitely many sets in ${U_n}_(n in NN)$.#enum-lbl(<itm:locally-finite-open-cover-existence-local-finiteness>)
 
   ],
   <lem:locally-finite-open-cover-existence>,
@@ -381,8 +381,8 @@ Note that the converse here is not necessarily true.
   $ union.big_(j in NN) U_j = Omega, $
   proving @itm:locally-finite-open-cover-existence-cover.
 
-  For 2, let $K subset Omega$ be compact. There exists $N in NN$ such that
-  $ K subset interior(K_N), $
+  For 2, let $K subset.double Omega$ be compact. There exists $N in NN$ such that
+  $ K subset.double interior(K_N), $
   so $K$ is disjoint from $V_n$ for all $n > N + 1$. Since each $V_n$ intersects only finitely many $U_j$, $K$ intersects only finitely many $U_j$. Thus the collection is locally finite.
 ]
 

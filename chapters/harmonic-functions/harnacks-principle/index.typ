@@ -69,16 +69,33 @@ First we provide a result that in many ways resembles @thm:weierstrass-convergen
   <thm:harnacks-principle>,
 )
 #proof[
-  First assume that there exists a point $p in U$ such that $u_n (p) -> oo$. Then $exists n in NN$ such that $u_n (p) > 0$ (and by the increasing nature of the sequence, for any $n' > n$, $u_(n') (p) > 0$ is also necessarily true).
+  First assume that there exists a point $p in U$ such that $u_n (p) -> oo$. Then $exists n' in NN$ such that $u_(n') (p) > 0$ (and by the increasing nature of the sequence, for any $n > n'$, $u_n (p) > 0$ is also necessarily true).
 
-  By the harmonicity of $u_(n')$, there exists some closed disk $overline(D(p, r))$ in $U$ on which $u_(n')$ is positive. Then for any $z$ within the smaller disk $D(p,r/2)$ and any $n>n'$, we have that
-  $ (r - r/2) / (r + r/2) u_j (p) <= u_j (z) ==> u_j (z) >= 1/3 u_j(p) -> oo $
-  by @thm:harnack-inequality.
+  By the continuity of each $u_n > u_(n')$, there exists some closed disk $overline(D(p, r))$ in $U$ on which $u_n$ is positive. Then for any $z$ within the smaller disk $D(p,r/2)$ and any $n>n'$, we have that
+  $ (r - r/2) / (r + r/2) u_n (p) <= u_n (z) ==> u_n (z) >= 1/3 u_n(p) -> oo $
+  by @thm:harnack-inequality. Therefore, $u_n arrows oo$ uniformly on a neighborhood of $p$.
 
   Contrarily, if the sequence converges to a finite limit at a point $p' in U$ (so $u_n (p') -> L$), let $r'>0$ be chosen such that $overline(D(p',r')) subset.double U$. Then for any $z in D(p',r'/2)$
   $
-    lim_(N -> oo) sup_(n>m >N) u_n (z) - u_m (z) &<= lim_(N -> oo) sup_(n>m >N) (r + abs(z - p')) / (r - abs(z - p')) (u_n (p') - u_m (p')) \
+    lim_(N -> oo) sup_(n>m >N) abs(u_n (z) - u_m (z)) &=lim_(N -> oo) sup_(n>m >N) u_n (z) - u_m (z) \
+    &<= lim_(N -> oo) sup_(n>m >N) (r' + abs(z - p')) / (r' - abs(z - p')) (u_n (p') - u_m (p')) \
     &<=lim_(N -> oo) sup_(n>m >N) 3 (u_n (p') - u_m (p')) = 0,
   $
-  where @thm:harnack-inequality gives the harmonicity of $u_n - u_m$ and the final limit is obtained from the Cauchy Criterion (@thm:cauchy-criterion-sequence-convergence). Therefore, ${u_n}$ uniformly converges (to a harmonic function by @thm:weierstrass-convergence-harmonic) on $D(p',r'/2)$ by the Cauchy Criterion for functions (@thm:cauchy-criterion-uniform-convergence).
+  where @thm:harnack-inequality is justified by the harmonicity of $u_n - u_m$ and the final limit is obtained from the Cauchy Criterion (@thm:cauchy-criterion-sequence-convergence). Therefore, ${u_n}$ uniformly converges (to a harmonic function by @thm:weierstrass-convergence-harmonic) on $D(p',r'/2)$ by the Cauchy Criterion for functions (@thm:cauchy-criterion-uniform-convergence).
+
+  Therefore, we have
+  $
+    A & = {p: u_n (p) --> oo} \
+      & = {p: u_n arrows oo "uniformly on a neighborhood of" p}
+  $
+  and
+  $
+    B & = {p' : u_n (p') "converges"} \
+      & = {p': u_n "uniformly converges on a neighborhood of" p}.
+  $
+  Moreover, $A$ and $B$ are disjoint by definition and $A union B = U$ because any nondecreasing real sequence has an accumulation point in $RR union {+oo}$ by the Monotone Convergence Theorem.
+
+  Then by the connectivity argument (@thm:connected-topological-space-clopen-sets), exactly one of these two sets is $U$ by the connectivity of $U$.
+
+  Then either $u_n arrows oo$ locally uniformly in $U$ or $u_n$ locally uniformly converges in $U$ to a harmonic function by @thm:weierstrass-convergence-harmonic.
 ]

@@ -178,7 +178,7 @@ $
 
   Then by Morera's Theorem (@thm:morera), $f(z)$ is holomorphic, and $f'(z)$ is holomorphic. We aim to show that $f'_n (z) arrows.rr f'(z)$.
 
-  Let $K subset U$ be arbitrary and compact and $V supset K$ be open and relatively compact in $U$. Since ${f'_n (z)}$ is holomorphic, by @cor:n-th-derivative-bounded-supremum, there exists a finite constant $c > 0$ such that
+  Let $K subset.double U$ be arbitrary and compact and $V supset K$ be open and relatively compact in $U$. Since ${f'_n (z)}$ is holomorphic, by @cor:n-th-derivative-bounded-supremum, there exists a finite constant $c > 0$ such that
   $
     lim_(n -> oo) sup_(z in K) abs(f'_n (z) - f'(z)) <= c lim_(n -> oo) sup_(z in V) abs(f_n (z) - f(z)).
   $
@@ -187,7 +187,10 @@ $
 
   Through the proof of @thm:identity-accumulation-of-zeros, if $f equiv.not 0$ over $U$, then the zeros of $f$ do not have an accumulation point in $U$ and are therefore discrete. In this case, let $gamma subset U$ be a curve that does not pass through the zeros of $f$. Since each function in the sequence $f_n$ does not contain zeros in $U$, by the Argument Principle (@thm:argument-principle-holomorphic),
 
-  #lbl($ lim_(n -> oo) integral.cont_Gamma (f'_n (z)) / (f_n (z)) dz = 0. $, <eq:hurwitz-simple-case-argument-principle>)
+  #lbl(
+    $ lim_(n -> oo) integral.cont_Gamma (f'_n (z)) / (f_n (z)) dz = 0. $,
+    <eq:hurwitz-simple-case-argument-principle>,
+  )
 
   Since $f$ and $f'$ are holomorphic over $gamma$, by @thm:continuous-function-bounded-on-compact, there exists a finite value $M > 0$ such that $forall z in gamma$, $max {abs(f(z)), abs(f'(z))} < M$.
 

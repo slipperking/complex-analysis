@@ -58,11 +58,11 @@ We now give some quantifying examples of how analytic capacity measures a type o
 
 An alternative perspective of this "largeness" pertains to a certain _removability_ of sets. A compact set $K subset CC$ is considered to be _removable_ if every bounded holomorphic function on the complement can be extended to $CC$. For instance, the analytic capacity $gamma({a})$ of any singleton ${a}$ (any singular point) or set of discrete points is 0, as evidenced by @prop:analytic-capacity_of_discrete_points; and moreover, any singleton or compact set of discrete points is a removable set. In a heuristic sense, analytic capacity measures the irremovability of a set, and larger sets tend to be "less removable."
 
-A compact set $K subset CC$ is a _continuum_ if it is connected, $CC without K$ is connected, and if it is not a singleton ($K$ contains at least 2 distinct points).
+A compact set $K subset.double CC$ is a _continuum_ if it is connected, $CC without K$ is connected, and if it is not a singleton ($K$ contains at least 2 distinct points).
 
 #lbl(
   proposition[
-    Let $K subset CC$ be a continuum. Then $gamma(K) = abs(f'(oo))$ where $f: extcomplex without K -> DD$ is a biholomorphism satisfying $f(oo) = 0$ (i. e. the maximal $abs(f'(oo))$ in the supremum of the definition of analytic capacity is attained when $f$ is biholomorphic).
+    Let $K subset.double CC$ be a continuum. Then $gamma(K) = abs(f'(oo))$ where $f: extcomplex without K -> DD$ is a biholomorphism satisfying $f(oo) = 0$ (i. e. the maximal $abs(f'(oo))$ in the supremum of the definition of analytic capacity is attained when $f$ is biholomorphic).
   ],
   <prop:analytic-capacity_continuum_biholomorphism>,
 )

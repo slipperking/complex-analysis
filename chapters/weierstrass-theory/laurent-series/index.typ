@@ -17,7 +17,7 @@ We now introduce a fundamental result in complex analysis due to Weierstrass, wh
 #proof[
   By Morera's Theorem (@thm:morera) and the uniform convergence of ${f_n (z)}$, the holomorphy of $f(z)$ follows (refer to @eq:hurwitz-simple-case-integral-limit-switch-for-holomorphy and preceding explanations).
 
-  Following the same logic, by @cor:n-th-derivative-bounded-supremum, $forall k in NN$ and for all compact $K subset U$ and open $V supset K$ relatively compact in $U$ there exists a finite constant $c_k > 0$ such that
+  Following the same logic, by @cor:n-th-derivative-bounded-supremum, $forall k in NN$ and for all compact $K subset.double U$ and open $V supset K$ relatively compact in $U$ there exists a finite constant $c_k > 0$ such that
   $
     lim_(n -> oo) sup_(z in K) abs(f_n^((k)) (z) - f^((k)) (z)) <= c_k lim_(n -> oo) sup_(z in V) abs(f_n (z) - f(z)).
   $
@@ -31,7 +31,7 @@ We now introduce a fundamental result in complex analysis due to Weierstrass, wh
 The condition of uniform convergence on every compact subset can also be significantly loosened, by the fact demonstrated below:
 
 #proposition[
-  Let $U subset.eq CC$ be an open bounded region, and let ${f_n (z)}$ be holomorphic on $U$. Let $K subset U$ be compact. If $f_n (z) arrows.rr f(z)$ on $partial K$, then $f_n (z) arrows.rr f(z)$ on $K$.
+  Let $U subset.eq CC$ be an open bounded region, and let ${f_n (z)}$ be holomorphic on $U$. Let $K subset.double U$ be compact. If $f_n (z) arrows.rr f(z)$ on $partial K$, then $f_n (z) arrows.rr f(z)$ on $K$.
 ]
 
 #proof[

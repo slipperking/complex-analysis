@@ -62,7 +62,7 @@ In preparation of the result, we first introduce the mean-value property of func
 ]
 
 #remark[
-  If $f$ is holomorphic and non-constant on an open region $U subset.eq CC$, then for any compact set $K subset U$, the maximum of $f$ in $K$ lies on $partial K$. Otherwise, $f$ would attain a maximum at some $z in interior(K)$, and contradict the statement of @thm:maximum-modulus under the assumption of being non-constant.
+  If $f$ is holomorphic and non-constant on an open region $U subset.eq CC$, then for any compact set $K subset.double U$, the maximum of $f$ in $K$ lies on $partial K$. Otherwise, $f$ would attain a maximum at some $z in interior(K)$, and contradict the statement of @thm:maximum-modulus under the assumption of being non-constant.
 ]
 
 By nature of the proof, it follows that a similar theorem holds for any continuous function that satisfies the mean-value property.
