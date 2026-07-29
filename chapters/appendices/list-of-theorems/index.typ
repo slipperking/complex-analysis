@@ -11,13 +11,27 @@
 #let theorem-entry-paged(web-thm, pdf-thm) = [
   #link(
     pdf-thm.loc,
-    [#theorem-heading(pdf-thm)~#box(width: 1fr, repeat[.])],
-  )~#paged-link-with-html-indicator(
-    link(
-      pdf-thm.loc,
-      [#pdf-thm.loc.page()],
-    ),
-    web-thm.loc,
+    {
+      theorem-heading(pdf-thm)
+      sym.wj
+      sym.space.nobreak
+      (
+        {
+          box(width: 0pt)
+          box(width: 1fr, repeat[.])
+        }
+          * 2
+      )
+      sym.wj
+      sym.space.nobreak
+      paged-link-with-html-indicator(
+        link(
+          pdf-thm.loc,
+          [#pdf-thm.loc.page()],
+        ),
+        web-thm.loc,
+      )
+    },
   )\
 ]
 
