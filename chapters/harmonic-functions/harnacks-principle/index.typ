@@ -22,7 +22,7 @@ First we provide a result that in many ways resembles @thm:weierstrass-convergen
   $
   By the mean-value property,
   $
-    1 / (2 uppi) integral_0^(2 uppi) u_n (a + r ee^(ii theta)) dtheta = u_n (a) implies 1 / (2 uppi) integral_0^(2 uppi) u(a + r ee^(ii theta)) dtheta = u(a).
+    1 / (2 uppi) integral_0^(2 uppi) u_n (a + r ee^(ii theta)) dtheta = u_n (a) ==> 1 / (2 uppi) integral_0^(2 uppi) u(a + r ee^(ii theta)) dtheta = u(a).
   $
   Thus, $u$ is harmonic as it satisfies the mean-value property on all disks in $U$.
 ]
