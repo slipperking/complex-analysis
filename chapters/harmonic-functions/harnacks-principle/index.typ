@@ -71,7 +71,7 @@ First we provide a result that in many ways resembles @thm:weierstrass-convergen
 #proof[
   First assume that there exists a point $p in U$ such that $u_n (p) -> oo$. Then $exists n' in NN$ such that $u_(n') (p) > 0$ (and by the increasing nature of the sequence, for any $n > n'$, $u_n (p) > 0$ is also necessarily true).
 
-  By the continuity of each $u_n > u_(n')$, there exists some closed disk $overline(D(p, r))$ in $U$ on which $u_n$ is positive. Then for any $z$ within the smaller disk $D(p,r/2)$ and any $n>n'$, we have that
+  By the continuity of each $u_n >= u_(n')$, there exists some closed disk $overline(D(p, r))$ in $U$ on which $u_n$ is positive. Then for any $z$ within the smaller disk $D(p,r/2)$ and any $n>n'$, we have that
   $ (r - r/2) / (r + r/2) u_n (p) <= u_n (z) ==> u_n (z) >= 1/3 u_n(p) -> oo $
   by @thm:harnack-inequality. Therefore, $u_n arrows oo$ uniformly on a neighborhood of $p$.
 
