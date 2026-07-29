@@ -3,7 +3,7 @@
   title: [Complex Differentiation],
   route: "complex-differentiation",
   children: [
-    #include "wirtinger_derivatives/index.typ"
+    #include "wirtinger-derivatives/index.typ"
   ],
 )
 For $U subset.eq CC$ and a complex function $f: U -> CC$, $f(z)$ is _complex differentiable_ at $z in U$ if the following limit exists, regardless of the direction $Delta z$ approaches $0$ from:

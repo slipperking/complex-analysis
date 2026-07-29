@@ -1,10 +1,10 @@
 #import "/lib.typ": *
 #show: docs-subsubchapter.with(
   title: [Wirtinger Derivatives],
-  route: "wirtinger_derivatives",
+  route: "wirtinger-derivatives",
 )
 We have previously introduced the concept of expressing a complex function as a function of $x$ and $y$. It can also be expressed in terms of $z$ and $overline(z)$, where $z = x + ii y$ and $overline(z) = x - ii y$. Then $abs(z)^2 = z overline(z)$, $x = (z + overline(z)) / 2$, and $y = (z - overline(z)) / (2 ii)$. By the rules of the derivative, it is only natural that we define
-#lbl($ pdv(, z) = pdv(, x) pdv(x, z) + pdv(, y) pdv(y, z) = 1/2 (pdv(, x) - ii pdv(, y)) $, <eq:wirtingerderivative1>)
+#lbl($ pdv(, z) = pdv(, x) pdv(x, z) + pdv(, y) pdv(y, z) = 1/2 (pdv(, x) - ii pdv(, y)) $, <eq:wirtinger-derivative-1>)
 and
 #lbl(
   $
@@ -12,7 +12,7 @@ and
   $,
   <eq:wirtinger-derivative-2>,
 )
-If @eq:wirtingerderivative1 is set equal to $0$, then it is the equivalent form of the homogeneous Cauchy--Riemann Equations. Then for a holomorphic function $f(z)$, the Wirtinger derivative $pdv(f, z) = dv(f, z)$.
+If @eq:wirtinger-derivative-1 is set equal to $0$, then it is the equivalent form of the homogeneous Cauchy--Riemann Equations. Then for a holomorphic function $f(z)$, the Wirtinger derivative $pdv(f, z) = dv(f, z)$.
 
 In terms of $u$ and $v$, the two derivatives of a function $f(z)$ are equal to:
 $ pdv(f, z) = 1/2 (pdv(u, x) + ii pdv(v, x) - ii pdv(u, y) + pdv(v, y)), $
@@ -49,7 +49,7 @@ Under this definition, we can derive the chain rule:
       pdv(, overline(z))(f compose g) &= (pdv(f, w) compose g) pdv(g, overline(z)) + (pdv(f, overline(w)) compose g) pdv(overline(g), overline(z)).
     $
   ],
-  <thm:wirtingerchainrule>,
+  <thm:wirtinger-chain-rule>,
 )
 
 #proof[
