@@ -55,4 +55,5 @@ We have seen that many holomorphic properties have harmonic analogs. This is als
 )
 #proof[
   Because satisfying the Laplace equation is equivalent to satisfying the mean-value property on small circles, it suffices to show that $tilde(u)$ satisfies the mean-value property on small circles.
+
 ]

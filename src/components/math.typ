@@ -26,7 +26,6 @@
   reset-heading-scoped-counters()
 }
 
-// Use the uppercase terms for no upright.
 #let vb(x) = Vb(math.upright(x))
 #let vu(x) = Vu(vb(x))
 #let va(x) = Va(vb(x))
@@ -52,12 +51,12 @@
 #let Re = math.op($frak(Re)$)
 #let Im = math.op($frak(Im)$)
 #let Ind = math.op("Ind")
+#let length = math.op("length")
+#let jinterior = math.op("int")
+#let jexterior = math.op("ext")
 #let wp = $pee$
 
 #let extcomplex = $hat(CC)$
-#let length = $op("length")$
-#let jinterior = $op("int")$
-#let jexterior = $op("ext")$
 #let uppi = $upright(pi)$
 #let I-num = $upright(I)$
 #let II-num = $upright(I #h(-0.15em) I)$

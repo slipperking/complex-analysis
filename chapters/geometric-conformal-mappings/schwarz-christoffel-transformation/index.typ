@@ -233,7 +233,7 @@ The definition in @eq:schwarz-christoffel-transformation-statement is known as t
   $
   correspond to the side lengths of the rectangle.
 
-  Fix $a_1, a_3$. We now aim to find $a_2$ in terms of $a_1$ and $a_3$ such that $l_1 = l_2$ (which would then imply $l_1=l_2=l_3=l_4$). Define a linear affine map that sends $-1 -> a_1$, $1 -> a_3$, namely $phi(z) = z(a_3-a_1) / 2 + (a_3 + a_1) / 2$. By a substitution,
+  Fix $a_1, a_3$. We now aim to find $a_2$ in terms of $a_1$ and $a_3$ such that $l_1 = l_2$ (which would then imply $l_1=l_2=l_3=l_4$ from @eq:unit-disk-to-square-biholomorphism-rectangle-side-length-equalities). Define a linear affine map that sends $-1 -> a_1$, $1 -> a_3$, namely $phi(z) = z(a_3-a_1) / 2 + (a_3 + a_1) / 2$. By a substitution,
   $
     l_1 = integral_(-oo)^(a_1) abs(beta(t)) dt &= (a_3-a_1) / 2 integral_(-oo)^(-1) dt / sqrt(abs(phi(t) - a_1)abs(phi(t) - a_2)abs(phi(t) - a_3)) \
     &= integral_(-oo)^(-1) dt / (sqrt((t^2 - 1)abs(t(a_3-a_1) / 2 + (a_3 + a_1 - 2 a_2) / 2))),\
@@ -266,7 +266,7 @@ The definition in @eq:schwarz-christoffel-transformation-statement is known as t
   $ S = {x+ii y: 0<x<l, -l<y<0}, $
   a square of side $l$. Thus $f(HH^+)=S$. The center of $S$ is $l/2 - ii l/2$. Thus translate and dilate to $Q=(-1,1) times (-1,1)$ as in @eq:unit-disk-to-square-biholomorphism-general, to obtain
   $ Phi(z) = 2/l f(z) - 1 + ii = 2/l integral_0^z dzeta/(sqrt(zeta+1) sqrt(zeta) sqrt(zeta-1)) -1 + ii. $
-  Then $Phi: HH^+ -> Q$ is biholomorphic with an extension to $Phi(0)=-1+ii, Phi(-1)=1+ii, Phi(plus.minus oo)=1-ii, Phi(1)=-1-ii$.
+  Then $Phi: HH^+ -> Q$ is biholomorphic with an extension to $Phi(0)=-1+ii$, $Phi(-1)=1+ii$, $Phi(plus.minus oo)=1-ii$, $Phi(1)=-1-ii$.
 
   Finally $psi(z)=(z-ii)/(z+ii)$ maps $HH^+$ onto $DD$ with inverse $psi^(-1)(w)=ii(1+w)/(1-w)$. Hence
   #lbl(
@@ -277,5 +277,3 @@ The definition in @eq:schwarz-christoffel-transformation-statement is known as t
   )
   gives the required biholomorphism, where the square root branches are selected such that their corresponding logarithms have imaginary parts in $lr((-uppi/2, (3uppi) / 2])$. A visualization of this conformal map has been provided in @fig:unit-disk-to-square-biholomorphism.
 ]
-// add figure?
-// todo: what if the polygon is not simple/overlaps

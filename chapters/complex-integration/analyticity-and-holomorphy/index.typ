@@ -344,7 +344,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 
 #lbl(
   theorem[
-    Let $U subset.eq CC$ be open, let $K subset U$ be compact and $V supset K$ be open such that $overline(V) subset U$ is compact ($V supset.eq K$ is relatively compact in $U$). Let $f(z)$ be holomorphic in $U$. Then there exists a sequence ${c_n} subset RR$ dependent only on $K$ and $V$ (independent of $f$ and $z$) such that $forall n in NN$,
+    Let $U subset.eq CC$ be open, let $K subset.double U$ be compact and $V supset K$ be open such that $overline(V) subset U$ is compact ($V supset.eq K$ is relatively compact in $U$). Let $f(z)$ be holomorphic in $U$. Then there exists a sequence ${c_n} subset RR$ dependent only on $K$ and $V$ (independent of $f$ and $z$) such that $forall n in NN$,
 
     #lbl(
       $
@@ -428,7 +428,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 
 #lbl(
   corollary[
-    Let $U subset.eq CC$ be open, let $K subset U$ be compact and $V supset K$ be open such that $overline(V) subset U$. For any holomorphic function $f(z)$ in $U$, there exist constants (independent of $z$ and $f$) ${c_n}$ such that
+    Let $U subset.eq CC$ be open, let $K subset.double U$ be compact and $V supset K$ be open such that $overline(V) subset U$. For any holomorphic function $f(z)$ in $U$, there exist constants (independent of $z$ and $f$) ${c_n}$ such that
 
     $
       sup_(z in K) abs(f^((n)) (z)) <= c_n sup_(z in V) abs(f(z)).
