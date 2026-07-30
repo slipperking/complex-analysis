@@ -99,3 +99,4 @@ First we provide a result that in many ways resembles @thm:weierstrass-convergen
 
   Then either $u_n arrows oo$ locally uniformly in $U$ or $u_n$ locally uniformly converges in $U$ to a harmonic function by @thm:weierstrass-convergence-harmonic.
 ]
+// alternate proof? unsure...
