@@ -24,3 +24,27 @@ In fact, the solution will not always exist.
   where $c in RR$ is a constant. Then there exists some second constant $c' in RR$ such that $u(r ee^(ii theta)) = c log r + c'$. Setting $r = 0$ shows that no choice of $c,c'$ allows an extension to $f$.
 ]
 So clearly, there are necessary conditions on $f$ and/or the domain $U$ for a solution to exist. Physically, forcibly fixing the temperature of a single isolated point carries too little weight to influence the nearby points. Furthermore, we found that the radial solution would attain an infinity at the $0$ point (or otherwise constancy), similar to how point masses have infinite density (colloquially modeled by the Dirac delta function).
+
+The following section proves solvability when $partial U$ consists of sufficiently smooth curves (consisting of points which will be deemed to be "regular"). In fact, this hypothesis is much stronger than necessary: for planar domains, the Dirichlet problem is solvable for every continuous boundary function whenever every connected component of $partial U$ contains at least two points. The punctured disk from the previous example fails this condition, since the isolated point 0 forms a singleton boundary component.
+
+The remainder of this section will be dedicated to introducing the concepts and characterizations that are precursory to the proof.
+#lbl(
+  definition[Subharmonicity][
+    Let $U subset.eq CC$ be an open region and let $f:U -> RR$ be continuous.
+
+    We say that f is subharmonic if, whenever $overline(D(p, r)) subset.double U$ and $u : overline(D(p, r)) --> RR$ is harmonic (on a neighborhood) with
+    $ f<= u quad "on" quad partial D(p,r), $
+    it follows that
+    $ f<= u quad "throughout" quad D(p,r). $
+  ],
+  <def:subharmonicity>,
+)
+At first glance, the definition may seem a little bloated. However, we aim to provide sufficient intuition. Firstly, the one-dimensional analog of a harmonic function $u$ is one satisfying $dv(u, x, 2) equiv 0 ==> dv(u, x) equiv a ==> u(x) = a x + b$. Consider an arbitrary continuous function $f: I -> RR$, where $I subset.eq RR$ is an open connected set. Then the analogous scenario is: $f$ is subharmonic iff: for any $a, b in I$ and any harmonic (linear) function such that $f(a) <= u(a)$ and $f(b) <= u(b)$, it follows that $f(x) <= u(x)$ for all $x in (a,b)$. This is the criteria for convexity. Therefore, subharmonicity is a higher-dimension generalization of convexity.
+#proposition[
+  A harmonic function $f: U -> RR$ (where $U subset.eq CC$ is an open region) is subharmonic.
+]
+#proof[
+  For any $overline(D(p, r)) subset.double U$ and $u : overline(D(p, r)) --> RR$ harmonic such that $f <= u$ on $partial D(p,r)$, $f - u$ is harmonic on $overline(D(p,r))$ and non-positive on the boundary circle. By the Maximum Principle, for any $z in D(p,r)$,
+  $ (f - u)(z) <= sup_(zeta in partial D(p,r)) (f-u)(zeta) <= 0 ==> f(z) <= u(z). $
+  Then $f$ is subharmonic.
+]
