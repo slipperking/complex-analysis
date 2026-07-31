@@ -159,6 +159,23 @@
 #let _pages() = query(<page-meta>).map(it => it.value)
 #let _icon(name, path) = html.elem("img", attrs: (class: "icon", src: path, alt: name))
 
+#let _todo-description(body) = if body == none { [No description provided.] } else { body }
+
+#let todo(..args) = context {
+  assert(args.pos().len() <= 1, message: "todo accepts at most one content argument")
+  let body = args.pos().first(default: none)
+  let description = _todo-description(body)
+  if render-mode.get() == "web" {
+    [
+      #metadata((description: description)) <todo-marker>
+      #html.elem("aside", attrs: (class: "todo-callout", role: "note", "aria-label": "Todo"), {
+        link(<sec:todo>, html.elem("em", attrs: (class: "proof-head"), [Todo.#sym.space.nobreak]))
+        html.elem("span", attrs: (class: "todo-callout-description"), description)
+      })
+    ]
+  }
+}
+
 #let _nav-link(current, page) = context {
   let depth = _page-depth(page)
   let cls = (
@@ -446,6 +463,42 @@
   ]
 }
 
+#let _todo-page() = context {
+  let page = (
+    id: "todo",
+    title: "Todos",
+    route: "/todo/",
+    path: "todo/index.html",
+    doc-path: "/todo/index.html",
+    kind: "todo",
+    level: 1,
+    heading-level: 1,
+    description: none,
+  )
+  let todos = query(selector(<todo-marker>).within(web-doc-label))
+
+  _standalone-page(page, main-class: "todo-page")[
+    #html.elem("h1", attrs: (class: "page-title"), [Todos]) <sec:todo>
+    #if todos.len() == 0 {
+      html.elem("p", attrs: (class: "todo-empty"), [No todos are currently marked.])
+    } else {
+      html.elem(
+        "p",
+        attrs: (class: "todo-summary"),
+        [#todos.len() open #if todos.len() == 1 { [todo] } else { [todos] }.],
+      )
+      html.elem("ol", attrs: (class: "todo-list"), {
+        for item in todos {
+          html.elem("li", attrs: (class: "todo-list-item"), {
+            link(item.location(), html.elem("em", attrs: (class: "proof-head"), [Todo.#sym.space.nobreak]))
+            html.elem("span", attrs: (class: "todo-list-description"), item.value.description)
+          })
+        }
+      })
+    }
+  ]
+}
+
 #let _not-found-page() = {
   let page = (
     id: "not-found",
@@ -593,6 +646,7 @@
       #{
         include "/chapters/index.typ"
         _search-page()
+        _todo-page()
         _not-found-page()
         _redirect-404-page()
       } #web-doc-label

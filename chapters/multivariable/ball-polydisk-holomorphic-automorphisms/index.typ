@@ -325,7 +325,7 @@ In preparation, we will introduce several relevant concepts.
   $
   where we informally let $abs(zeta_(j,i)) / zeta_(j,i) = 0$ if $zeta_(j,i) = 0$. Then, for all $j in {1, dots, n}$ and $k in NN$,
   $
-    bold(phi) compose bold(f)(bold(z)_(j,k)) = (1 - 1 / k)mat(display(sum_(i=1)^n (abs(zeta_(j,i)) / zeta_(j,i)) zeta_(1,i)); dots.v; display(sum_(i=1)^n (abs(zeta_(j,i)) / zeta_(j,i)) zeta_(j,i)); dots.v; display(sum_(i=1)^n (abs(zeta_(j,i)) / zeta_(j,i)) zeta_(n,i))) in DD^n.
+    bold(phi) compose bold(f)(bold(z)_(j,k)) = (1 - 1 / k) vec(display(sum_(i=1)^n (abs(zeta_(j,i)) / zeta_(j,i)) zeta_(1,i)), dots.v, display(sum_(i=1)^n (abs(zeta_(j,i)) / zeta_(j,i)) zeta_(j,i)), dots.v, display(sum_(i=1)^n (abs(zeta_(j,i)) / zeta_(j,i)) zeta_(n,i))) in DD^n.
   $
   In particular, the $j$-th component is
   $

@@ -57,10 +57,11 @@ By the boundedness assumption for $f$, we have:
   For each $j$, let $zeta_j = a_j + r_j ee^(ii t_j)$, and it follows that $dif zeta_j = ii r_j ee^(ii t_j) dif t_j$. Because $abs(zeta_j - z_j) > epsilon_j$, we have, after substitution,
   $
     &abs((product_(j=1)^n pdv(, z_j, [k_j])) f(bold(z)))<= (product_(j=1)^n (r_j k_j !)) / (2 uppi)^n integral_0^(2 uppi) dots.c integral_0^(2 uppi) abs((f (zeta_1, dots, zeta_n)) / (product_(j=1)^n epsilon_j^(k_j + 1))) dif t_n dots.c dif t_1 \
-    &wide""<= product_(j=1)^n ((r_j k_j !) / (2 uppi epsilon_j^(k_j + 1))) sup_(bold(zeta) in product_(j=1)^n partial D(a_j, r_j)) abs(f(bold(zeta))) integral #h(-0.3em) dots.c #h(-0.3em) integral_([0, 2 uppi]^n) dif t_n dots.c dif t_1 \ // TODO: make the iterated integral bounds align correctly
+    &wide""<= product_(j=1)^n ((r_j k_j !) / (2 uppi epsilon_j^(k_j + 1))) sup_(bold(zeta) in product_(j=1)^n partial D(a_j, r_j)) abs(f(bold(zeta))) integral #h(-0.3em) dots.c #h(-0.3em) integral_([0, 2 uppi]^n) dif t_n dots.c dif t_1 \
     &wide""<= product_(j=1)^n ((k_j !) / (r_j^(k_j))) sup_(bold(zeta) in product_(j=1)^n partial D(a_j, r_j)) abs(f (bold(zeta))),
   $
   since $epsilon_j <= r_j$ for all $j$.
+  #todo[Make iterated integral bounds align better (pdf)]
 ]
 
 Similar to the univariate case, there are Taylor expansions of holomorphic functions in several complex variables.

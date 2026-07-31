@@ -39,6 +39,7 @@ NOISE_SELECTORS = [
 SKIP_PATHS = {
     "404.html",
     "search/index.html",
+    "todo/index.html",
     "page-not-found/index.html",
 }
 

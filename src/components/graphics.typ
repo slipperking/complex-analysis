@@ -106,7 +106,6 @@
       ),
     )
   } else {
-    // todo: make this a grid too, but if the viewport is small, stack instead
     let body = for fig in figures {
       fig
     }

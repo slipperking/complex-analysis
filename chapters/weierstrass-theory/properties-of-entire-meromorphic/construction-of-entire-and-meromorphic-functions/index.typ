@@ -481,5 +481,5 @@ As it turns out, an entire function can in fact be constructed for infinitely ma
       (n + 1) / 2 & quad "if" n in NN without 2 NN.
     )
   $
-  // TBC
+  #todo()
 ]

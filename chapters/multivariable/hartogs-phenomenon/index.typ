@@ -66,7 +66,8 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
     f(bold(z)) = sum_(bold(k) in ZZ^n) a_(bold(k)) bold(z)^(bold(k))
   $
   holds in a neighborhood $U_bold(w)$ of every point $bold(w)$ in $Omega$. If $K subset Omega$ is compact, then ${U_bold(w) : bold(w) in K}$ is an open cover of $K$, and hence it admits a finite subcover. Then the uniform convergence of the series on $K$ follows from the uniform convergence on each $U_bold(w)$ in the subcover. The absolute convergence follows from the absolute convergence of the one-variable Laurent expansions used in the construction.
-] // todo: make constructions, etc more concrete
+  #todo[Rethink this, make constructions more explicit and clear.]
+]
 
 #lbl(
   proposition[

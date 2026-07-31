@@ -39,6 +39,7 @@
 #let docs-subsubchapter = _web.docs-subsubchapter
 #let docs-appendix = _web.docs-appendix
 #let docs-backmatter = _web.docs-backmatter
+#let todo = _web.todo
 
 #let lbl = explicit-label
 #let enum-lbl = explicit-label.with(metadata((type: "typst-enum-item-label")))

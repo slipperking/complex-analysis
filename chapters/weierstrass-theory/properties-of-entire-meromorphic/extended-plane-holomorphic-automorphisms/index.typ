@@ -152,3 +152,4 @@ The group of holomorphic automorphisms on $DD$, or $Aut(DD)$, is also a subgroup
 ]
 
 We have now introduced three of the most important regions in complex analysis: $DD$, $CC$, and $extcomplex$. Their importance will be later explained by the Uniformization Theorem (@ thm:uniformization).
+#todo[Resolve reference]

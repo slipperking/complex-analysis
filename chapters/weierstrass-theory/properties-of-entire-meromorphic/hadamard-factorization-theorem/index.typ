@@ -43,7 +43,7 @@
   By @thm:entire-function-finite-order-canonical-weierstrass-factorization-polynomial-degree on $h$, $phi - Log c$ is a polynomial of degree $<= rho$, and so is $phi$.
 ]
 
-// TODO
+#todo[Figure out whether or not this approach is valid, and do the upper bound.]
 Then the results of @cor:hadamard-factorization-polynomial and @thm:entire-function-finite-order-zeros-summation-convergence may be consolidated into a single statement:
 
 #lbl(

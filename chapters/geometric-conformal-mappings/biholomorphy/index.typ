@@ -22,7 +22,7 @@ We have the following immediate assertion:
   By @thm:hurwitz-shifts, then there exists $delta > 0$ such that $forall epsilon in D(0, delta)$, $f(z) - w_0 - epsilon$ has exactly one zero in $overline(D(z_0, rho))$. In other words, $forall w_0 in f(U)$, $exists delta > 0$ such that $forall w in D(w_0, delta)$, $exists! z in overline(D(z_0, rho))$ such that $f(z) = w$. Thus, $D(w_0, delta) subset.eq f(U)$. Thus, $f(U)$ is an open set since each contained point has a fully contained open neighborhood.
 
   Let $w_1, w_2 in f(U)$ be arbitrary and distinct. Then there exist $z_1, z_2 in U$ such that $f(z_1) = w_1$ and $f(z_2) = w_2$. By the connectivity of $U$, there exists a path $gamma subset U$ that connects $z_1$ and $z_2$. Then $f(gamma) subset f(U)$ is a curve that joins $w_1$ and $w_2$. Thus, $f(U)$ is connected.
-  // todo, have some result to justify path connectedness and connectedness
+  #todo[Deal with connectivity vs path connectivity]
 ]
 
 Holomorphic injectivity, or univalence, satisfies the proceeding assertion:
