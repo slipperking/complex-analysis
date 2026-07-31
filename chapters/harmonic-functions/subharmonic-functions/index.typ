@@ -92,8 +92,8 @@ By the Maximum Principle, we have the following characterization:
     $
       M'(epsilon) & = 1 / (2 uppi epsilon) integral.cont.ccw_(partial D(z_0, epsilon)) nabla_(vu(n)) f(zeta) abs(dzeta)
     $
-    Then letting $zeta = xi + ii eta$, using $ nabla_(vu(n)) f(zeta) abs(dzeta) = grad f(zeta) dot vb(n) abs(dzeta) = grad f(zeta) dot vec(dd(eta), -dd(xi)) $
-    (since $vb(n) abs(dzeta)$ points in the direction $uppi/2$ clockwise of $dzeta$), we obtain
+    Then letting $zeta = xi + ii eta$, using $ nabla_(vu(n)) f(zeta) abs(dzeta) = grad f(zeta) dot vu(n) abs(dzeta) = grad f(zeta) dot vec(dd(eta), -dd(xi)) $
+    (since $vu(n) abs(dzeta)$ points in the direction $uppi/2$ clockwise of $dzeta$), we obtain
     $
       2 uppi epsilon M'(epsilon) & = integral.cont.ccw_(partial D(z_0, epsilon)) f'_xi (zeta) dd(eta) - f'_eta (zeta) dd(xi) \
       & = integral_(D(z_0, epsilon)) dd((f'_xi (zeta) dd(eta) - f'_eta (zeta) dd(xi))) \
@@ -111,7 +111,7 @@ By the Maximum Principle, we have the following characterization:
     $
       laplacian v_epsilon = laplacian v + 4 epsilon pdv(, z, overline(z), 2)[(z-z_0)overline((z-z_0))]= laplacian v + 4 epsilon > 0 quad "strictly",
     $
-    which means that $v_epsilon$ cannot attain a local maximum within $D(z_0, r)$ (as one would require $laplacian v_epsilon <= 0$). Therefore, we have $v_epsilon (z) <= 0$ for all $z in overline(D(z_0, r))$, and letting $epsilon -> 0^+$ gives $v <= 0 => f <= u$ thereon as well.
+    which means that $v_epsilon$ cannot attain a local maximum within $D(z_0, r)$ (as one would require $laplacian v_epsilon <= 0$). Therefore, we have $v_epsilon (z) <= 0$ for all $z in overline(D(z_0, r))$, and letting $epsilon -> 0^+$ gives $v <= 0 => f <= u$ thereon as well. #qedhere
     #remark[
       The purpose here of defining $v_epsilon$ as opposed to directly using $v$ is that without adding a small subharmonic (convex) paraboloid to $v$, $laplacian v_epsilon$ could still vanish at some point in the interior (in which case we cannot directly determine that it is not a maximum).
     ]
