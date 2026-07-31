@@ -71,13 +71,33 @@ By the Maximum Principle, we have the following characterization:
   $ (f - u)(z) <= sup_(zeta in partial D(p,r)) (f-u)(zeta) <= 0 ==> f(z) <= u(z). $
   Then $f$ is subharmonic.
 ]
+#lbl(
+  theorem[
+    A subharmonic function $f:U -> RR$ (where $U subset.eq CC$ is an open region) is subharmonic iff for each $overline(D(p, r)) subset.double U$,
+    #lbl(
+      $ f(p) <= 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta. $,
+      <eq:subharmonic-function-sub-mean-value-property>,
+    )
+  ],
+  <thm:subharmonic-function-sub-mean-value-property>,
+)
+#proof[
+  + We first prove the forward direction (subharmonic ==> sub-mean-value property).
+
+    For each $overline(D(p, r)) subset.double U$, by the Poisson Integral Formula, $exists! u in C^0(overline(D(p, r))) -> RR$ harmonic in $D(p, r)$ such that $lr(u|)_(partial D(p, r)) equiv lr(f|)_(partial D(p, r))$. By @prop:subharmonicity-weakened-to-continuity-on-boundary-harmonicity-in-interior, $f <= u$ in $D(p, r)$. Therefore, $ f(p) <= u(p) = 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta. $
+  + Conversely (sub-mean-value property ==> subharmonic), first assume @eq:subharmonic-function-sub-mean-value-property holds at all points and all valid radii such that $f$ is not subharmonic.
+
+    Then there exists a disk $overline(D(p, r)) subset.double U$ and a harmonic function $u: overline(D(p, r)) -> RR$ such that $u >= f$ on $partial D(p, r)$ but $u(z_0) < f(z_0)$ for some $z_0 in D(p, r)$. Now let $g equiv f - u$.
+
+    Observe that $lr(g|)_(partial D(p, r)) <= 0$ whilst $g(z_0) > 0$. Let $M = max_(z in overline(D(p, r))) g(z)$ (and by assumption $M >= g(z_0) > 0$). Moreover, $K = {z in overline(D(p,r)) : g(z) = M}$ is not all of $D(p,r)$, because importantly, by continuity, there exists some $delta$ such that for any $z in D(p, r) without overline(D(p, r- delta))$, $g(z) <= M / 2$ (since $g$ is non-positive on the boundary). // TO BE CONTINUED
+]
 #theorem[
   A function real-valued function $f in C^2 (U)$ (where $U subset.eq CC$ is an open region) is subharmonic iff $laplacian f >= 0$ in $U$.
 ]
 #proof[
   + Assume $f$ is subharmonic, we first show the nonnegativity of its Laplacian.
 
-    For the sake of contradiction, assume $exists z_0 in U$ such that $laplacian f (z_0) < 0$; then $exists epsilon' > 0$ such that $overline(D(z_0, epsilon')) subset.double U$ and $laplacian f < 0$ on $overline(D(z_0, epsilon'))$ (by continuity). By the Poisson Integral Formula, for each $0<epsilon< epsilon'$, $exists! u in C^0(overline(D(z_0, epsilon))) -> RR$ harmonic in $D(z_0, epsilon)$ such that $lr(u|)_(partial D(z_0, epsilon)) equiv lr(f|)_(partial D(z_0, epsilon))$. By @prop:subharmonicity-weakened-to-continuity-on-boundary-harmonicity-in-interior, $f <= u$ in $D(z_0, epsilon)$. Therefore, $ f(z_0) <= u(z_0) = 1 / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii theta)) dtheta. $
+    For the sake of contradiction, assume $exists z_0 in U$ such that $laplacian f (z_0) < 0$; then $exists epsilon' > 0$ such that $overline(D(z_0, epsilon')) subset.double U$ and $laplacian f < 0$ on $overline(D(z_0, epsilon'))$ (by continuity). By @thm:subharmonic-function-sub-mean-value-property, for each $0<epsilon< epsilon'$, $ f(z_0) <= 1 / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii theta)) dtheta. $
     Define the right-hand side to be a function of $epsilon$, namely $M(epsilon)$; and let $M(0) = lim_(epsilon -> 0^+) M(epsilon) = u(z_0)$. Then
     #lbl(
       $ f(z_0) <= M(epsilon) $,
@@ -98,7 +118,7 @@ By the Maximum Principle, we have the following characterization:
       2 uppi epsilon M'(epsilon) & = integral.cont.ccw_(partial D(z_0, epsilon)) f'_xi (zeta) dd(eta) - f'_eta (zeta) dd(xi) \
       & = integral_(D(z_0, epsilon)) dd((f'_xi (zeta) dd(eta) - f'_eta (zeta) dd(xi))) \
       & = integral_(D(z_0, epsilon)) f''_(xi xi) (zeta) dd(xi, eta, prod: and) - f''_(eta eta) (zeta) dd(eta, xi, prod: and) #tag[(by @thm:complex-green)] \
-      & = integral.double_(D(z_0, epsilon)) laplacian_zeta f(zeta) dd(A(zeta)).
+      & = integral.double_(D(z_0, epsilon)) laplacian_zeta f(zeta) dd(A_zeta).
     $
     Since $laplacian f < 0$ on $overline(D(z_0, epsilon'))$, we obtain that for each $epsilon in (0, epsilon')$, $M'(epsilon) < 0$, meaning that $M$ is a strictly decreasing function of $epsilon$. Therefore, for any such $epsilon$,
     $ f(z_0) = M(0) > M(epsilon), $ which is impossible since we previously have asserted that $f(z_0) <= M(epsilon)$ in @eq:subharmonic-twice-continuously-differentiable-subharmonic-laplacian-forward-implication-contradicted-expression. Thus, there exists no point $z_0 in U$ at which the Laplacian of $f$ is negative.
