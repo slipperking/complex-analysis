@@ -31,13 +31,17 @@ For a fixed curve, such analytic continuations are unique in the following sense
   Obviously, $S$ is a connected set. Indeed, for any $t_0$ in $S$, any $0 <= t < t_0$ also lies in $S$ by definition.
 
   Let $t_infinity = sup(S)$, and choose an increasing sequence ${t_n}_(n in NN) subset.eq S$ that converges to $t_infinity$. By @itm:analytic-continuation-along-curve-pointwise-equivalence of @def:analytic-continuation-along-curve, $exists delta > 0$ such that $forall n in NN$ satisfying $abs(t_infinity - t_n) < delta$,
-  $ f_(t_n) equiv f_(t_infinity) quad "on" quad U_(t_n) inter U_(t_infinity). $
+  $ f_(t_n) equiv f_(t_infinity) quad "on" quad U_(t_n) inter U_(t_infinity) in.rev gamma(t_n). $
   Similarly, $exists tilde(delta) > 0$ such that $forall n in NN$ satisfying $abs(t_infinity - t_n) < tilde(delta)$,
-  $ tilde(f)_(t_n) equiv tilde(f)_(t_infinity) quad "on" quad tilde(U)_(t_n) inter tilde(U)_(t_infinity). $
-  Choose $n$ arbitrarily to satisfy $abs(t_infinity - t_n) < min(delta, tilde(delta))$. By definition,
+  $
+    tilde(f)_(t_n) equiv tilde(f)_(t_infinity) quad "on" quad tilde(U)_(t_n) inter tilde(U)_(t_infinity) in.rev gamma(t_n).
+  $
+  Choose $n$ arbitrarily to satisfy $abs(t_infinity - t_n) < min(delta, tilde(delta))$. By the conditions on $delta,tilde(delta)$ set by @itm:analytic-continuation-along-curve-pointwise-equivalence of @def:analytic-continuation-along-curve,
   $ gamma(t_n) in U_(t_infinity) quad "and" quad gamma(t_n) in tilde(U)_(t_infinity). $
   Hence, $tilde(U)_(t_infinity) inter U_(t_infinity) inter tilde(U)_(t_n) inter U_(t_n) != emptyset$. Since $t_n in S$, it follows that $tilde(f)_(t_n) equiv f_(t_n)$ on $tilde(U)_(t_n) inter U_(t_n)$. Thus,
-  $ f_(t_infinity) equiv tilde(f)_(t_infinity) quad "on" quad tilde(U)_(t_infinity) inter U_(t_infinity) inter tilde(U)_(t_n) inter U_(t_n). $
+  $
+    f_(t_infinity) equiv tilde(f)_(t_infinity) quad "on" quad tilde(U)_(t_infinity) inter U_(t_infinity) inter tilde(U)_(t_n) inter U_(t_n).
+  $
   By the Identity Theorem (@thm:identity), this equality holds on the entire intersection $tilde(U)_(t_infinity) inter U_(t_infinity)$. It follows that $t_infinity in S$ and thus $S$ is closed.
 
   Let $tilde(S) = [0, 1] without S$, and assume that it is nonempty (if not, our result is proven). Suppose ${t_n}_(n in NN) subset tilde(S)$ is an arbitrary sequence that converges to $t_infinity$. For each $n in NN$, since $t_n in.not S$, by definition, there exists $0 <= s_n <= t_n$ such that $f_(s_n) equiv.not tilde(f)_(s_n)$ on $U_(s_n) inter tilde(U)_(s_n)$ (otherwise $t_n in S$ would be satisfied).
