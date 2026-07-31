@@ -77,8 +77,8 @@ By the Maximum Principle, we have the following characterization:
 #proof[
   + Assume $f$ is subharmonic, we first show the nonnegativity of its Laplacian.
 
-    For the sake of contradiction, assume $exists z_0 in U$ such that $laplacian f (z_0) < 0$; then $exists epsilon' > 0$ such that $overline(D(z_0, epsilon')) subset.double U$ and $laplacian f < 0$ on $overline(D(z_0, epsilon'))$ (by continuity). By the Poisson Integral Formula, for each $0<epsilon< epsilon'$, $exists! u : D(z_0, epsilon) -> RR$ harmonic extending continuously to $lr(f|)_(partial D(z_0, epsilon))$. By @prop:subharmonicity-weakened-to-continuity-on-boundary-harmonicity-in-interior, $f <= u$ in $D(z_0, epsilon)$. Therefore, $ f(z_0) <= u(z_0) = 1 / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii theta)) dtheta. $
-    Define the right-hand side to be a function of $epsilon$, namely $M(epsilon)$. Then
+    For the sake of contradiction, assume $exists z_0 in U$ such that $laplacian f (z_0) < 0$; then $exists epsilon' > 0$ such that $overline(D(z_0, epsilon')) subset.double U$ and $laplacian f < 0$ on $overline(D(z_0, epsilon'))$ (by continuity). By the Poisson Integral Formula, for each $0<epsilon< epsilon'$, $exists! u in C^0(overline(D(z_0, epsilon))) -> RR$ harmonic in $D(z_0, epsilon)$ such that $lr(u|)_(partial D(z_0, epsilon)) equiv lr(f|)_(partial D(z_0, epsilon))$. By @prop:subharmonicity-weakened-to-continuity-on-boundary-harmonicity-in-interior, $f <= u$ in $D(z_0, epsilon)$. Therefore, $ f(z_0) <= u(z_0) = 1 / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii theta)) dtheta. $
+    Define the right-hand side to be a function of $epsilon$, namely $M(epsilon)$; and let $M(0) = lim_(epsilon -> 0^+) M(epsilon) = u(z_0)$. Then
     #lbl(
       $ f(z_0) <= M(epsilon) $,
       <eq:subharmonic-twice-continuously-differentiable-subharmonic-laplacian-forward-implication-contradicted-expression>,
@@ -104,7 +104,7 @@ By the Maximum Principle, we have the following characterization:
     $ f(z_0) = M(0) > M(epsilon), $ which is impossible since we previously have asserted that $f(z_0) <= M(epsilon)$ in @eq:subharmonic-twice-continuously-differentiable-subharmonic-laplacian-forward-implication-contradicted-expression. Thus, there exists no point $z_0 in U$ at which the Laplacian of $f$ is negative.
   + Now assume $laplacian f >= 0$ everywhere. We aim to show subharmonicity.
 
-    Let $overline(D(z_0, r)) subset.double U$ be arbitrary, and let $u:overline(D(z_0, r)) -> RR$ be harmonic such that $u >= f$ on $partial D(z_0, r)$. Then letting $v = f - u$, it follows that $laplacian v equiv laplacian f >= 0$ everywhere, while $v <= 0$ everywhere in $partial D(z_0, r)$.
+    Let $overline(D(z_0, r)) subset.double U$ be arbitrary, and let $u:overline(D(z_0, r)) -> RR$ be harmonic such that $u >= f$ on $partial D(z_0, r)$. Then letting $v = f - u$, it follows that $laplacian v equiv laplacian f >= 0$ everywhere, while $v <= 0$ everywhere on $partial D(z_0, r)$.
 
     For each $epsilon > 0$, let $v_epsilon (z) = v(z) + epsilon(abs(z - z_0)^2 - r^2)$. Then it follows that for $z in partial D(z_0, r)$, $v_epsilon (z) = v(z) <= 0,$
     while $forall z in D(z_0, r)$,
@@ -113,7 +113,7 @@ By the Maximum Principle, we have the following characterization:
     $
     which means that $v_epsilon$ cannot attain a local maximum within $D(z_0, r)$ (as one would require $laplacian v_epsilon <= 0$). Therefore, we have $v_epsilon (z) <= 0$ for all $z in overline(D(z_0, r))$, and letting $epsilon -> 0^+$ gives $v <= 0 => f <= u$ thereon as well. #qedhere
     #remark[
-      The purpose here of defining $v_epsilon$ as opposed to directly using $v$ is that without adding a small subharmonic (convex) paraboloid to $v$, $laplacian v_epsilon$ could still vanish at some point in the interior (in which case we cannot directly determine that it is not a maximum).
+      The purpose here of defining $v_epsilon$ as opposed to directly using $v$ is that without adding a small subharmonic (convex) paraboloid to $v$, $laplacian v$ could still vanish at some point in the interior (in which case we cannot directly determine that it is not a maximum).
     ]
 ]
 (Notice that convexity in the one-dimensional case for $C^2$ functions is equivalent to the condition that $f'' >= 0$ everywhere.)
