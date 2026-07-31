@@ -85,7 +85,7 @@ First we provide a result that in many ways resembles @thm:weierstrass-convergen
 
   Therefore, we have
   $
-    A & = {p: u_n (p) --> oo} \
+    A & = {p: u_n (p) -> oo} \
       & = {p: u_n arrows oo "uniformly on a neighborhood of" p}
   $
   and

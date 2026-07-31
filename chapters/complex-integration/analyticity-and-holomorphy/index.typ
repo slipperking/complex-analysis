@@ -21,7 +21,7 @@ The Cauchy--Goursat Formula (@thm:cauchy-goursat-formula) can also be generalize
       <eq:cauchy-differentiation-formula-statement>,
     )
 
-    Additionally, since $U$ is open, $forall a in U$, $forall r > 0$ such that the closed disk $overline(D(a, r)) subset U$, $f$ has the uniformly and absolutely convergent Taylor expansion
+    Additionally, since $U$ is open, $forall a in U$, $forall r > 0$ such that the closed disk $overline(D(a, r)) subset.double U$, $f$ has the uniformly and absolutely convergent Taylor expansion
 
     #lbl(
       $

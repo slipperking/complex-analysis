@@ -82,7 +82,7 @@ We now establish that real-valued continuous functions satisfying the mean-value
 
 #lbl(
   theorem[
-    Let $U subset.eq CC$ be open and $f:U -> RR$ continuous. Suppose for every $z_0 in U$, there exists $lambda > 0$ with $overline(D(z_0, lambda)) subset.eq U$ such that for all $0 < epsilon <= lambda$,
+    Let $U subset.eq CC$ be an open region and $f:U -> RR$ continuous. Suppose for every $z_0 in U$, there exists $lambda > 0$ with $overline(D(z_0, lambda)) subset.double U$ such that for all $0 < epsilon <= lambda$,
     $ f(z_0) = 1 / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii t)) dt. $
     Then $f$ is harmonic on $U$.
   ],
@@ -90,7 +90,7 @@ We now establish that real-valued continuous functions satisfying the mean-value
 )
 
 #proof[
-  Fix $z_0 in U$ arbitrarily and choose $lambda > 0$ such that $overline(D(z_0, lambda)) subset.eq U$. Because $f in C^0 (partial D(z_0, lambda))$, @thm:dirichlet-problem-with-laplace-equation-solution guarantees the existence of a unique harmonic function $u$ on $D(z_0, lambda)$ satisfying $u equiv f$ on $partial D(z_0, lambda)$ with
+  Fix $z_0 in U$ arbitrarily and choose $lambda > 0$ such that $overline(D(z_0, lambda)) subset.double U$. Because $f in C^0 (partial D(z_0, lambda))$, @thm:dirichlet-problem-with-laplace-equation-solution guarantees the existence of a unique harmonic function $u$ on $D(z_0, lambda)$ satisfying $u equiv f$ on $partial D(z_0, lambda)$ with
   $ u(z) = integral_0^(2 uppi) f(zeta) P(zeta, z) dif tau. $
   Define $psi = f - u$ on $overline(D(z_0, lambda))$. Then $psi$ is continuous, satisfies the mean-value property, and vanishes on $partial D(z_0, lambda)$. By @thm:maximum-principle-for-real-functions-satisfying-mean-value-property, $psi equiv 0$ on $overline(D(z_0, lambda))$. Thus, $f equiv u$ on $overline(D(z_0, lambda))$, implying $f$ is harmonic at $z_0$. The arbitrariness of $z_0$ establishes harmonicity on $U$.
 ]

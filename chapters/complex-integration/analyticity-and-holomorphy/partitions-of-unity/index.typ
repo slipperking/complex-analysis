@@ -547,7 +547,7 @@ Note that the converse here is not necessarily true.
   is an open basis for $Omega$. By @lem:locally-finite-open-cover-existence there exists a locally finite open cover
   $ {D(z_j, r_(z_j))}_(j in NN) subset.eq frak(B) $
   of $Omega$ with
-  $ D(z_j, r_(z_j)) subset overline(D(z_j, r_(z_j))) subset Omega_(k_(z_j)), quad forall j in NN. $
+  $ D(z_j, r_(z_j)) subset overline(D(z_j, r_(z_j))) subset.double Omega_(k_(z_j)), quad forall j in NN. $
 
   Define the standard bump function
   $

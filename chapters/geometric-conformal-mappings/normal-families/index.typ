@@ -155,7 +155,7 @@ Obviously, the equivalence is established similarly to local finiteness and loca
 
 #lbl(
   theorem[Montel's Theorem][
-    Let $U subset.eq CC$ be open, and suppose that $cal(F)$ is a family of holomorphic functions on $U$. Then, $cal(F)$ is locally uniformly bounded on $U$ iff $cal(F)$ is a normal family.
+    Let $U subset.eq CC$ be an open region, and suppose that $cal(F)$ is a family of holomorphic functions on $U$. Then, $cal(F)$ is locally uniformly bounded on $U$ iff $cal(F)$ is a normal family.
   ],
   <thm:montel>,
 )
@@ -163,7 +163,7 @@ Obviously, the equivalence is established similarly to local finiteness and loca
 #proof[
   Obviously, if $cal(F)$ is normal on $U$, for any compact $K subset.double U$, it follows that $cal(F)$ is normal on $K$, and the uniform boundedness on $K$ follows from the Arzelà--Ascoli Theorem (@thm:arzela_ascoli).
 
-  Conversely, we will first assume that $cal(F)$ is locally uniformly bounded. Let $z in U$ be arbitrary, and choose $R_z > 0$ such that $overline(D(z, R_z)) subset U$. Therefore, it follows that $CC without U$ is closed and disjoint from $overline(D(z, R_z))$ and the distance between them is positive. Let this distance be
+  Conversely, we will first assume that $cal(F)$ is locally uniformly bounded. Let $z in U$ be arbitrary, and choose $R_z > 0$ such that $overline(D(z, R_z)) subset.double U$. Therefore, it follows that $CC without U$ is closed and disjoint from $overline(D(z, R_z))$ and the distance between them is positive. Let this distance be
   $
     d_z = inf{abs(zeta - zeta') : zeta in CC without U, zeta' in overline(D(z, R_z))}.
   $
