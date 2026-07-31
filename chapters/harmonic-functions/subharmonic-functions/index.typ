@@ -101,10 +101,19 @@ By the Maximum Principle, we have the following characterization:
       & = integral.double_(D(z_0, epsilon)) laplacian_zeta f(zeta) dd(A(zeta)).
     $
     Since $laplacian f < 0$ on $overline(D(z_0, epsilon'))$, we obtain that for each $epsilon in (0, epsilon')$, $M'(epsilon) < 0$, meaning that $M$ is a strictly decreasing function of $epsilon$. Therefore, for any such $epsilon$,
-    $ f(z_0) = M(0) > M(epsilon), $ which is impossible since we previously have asserted that $f(z_0) <= M(epsilon)$ in @eq:subharmonic-twice-continuously-differentiable-subharmonic-laplacian-forward-implication-contradicted-expression.
-
-    Thus, there exists no point $z_0 in U$ at which the Laplacian of $f$ is negative.
+    $ f(z_0) = M(0) > M(epsilon), $ which is impossible since we previously have asserted that $f(z_0) <= M(epsilon)$ in @eq:subharmonic-twice-continuously-differentiable-subharmonic-laplacian-forward-implication-contradicted-expression. Thus, there exists no point $z_0 in U$ at which the Laplacian of $f$ is negative.
   + Now assume $laplacian f >= 0$ everywhere. We aim to show subharmonicity.
-  // wip, try to prove submean, but need to first check proposition on subharmonicity that allows harm. on int., cont. on clos..
+
+    Let $overline(D(z_0, r)) subset.double U$ be arbitrary, and let $u:overline(D(z_0, r)) -> RR$ be harmonic such that $u >= f$ on $partial D(z_0, r)$. Then letting $v = f - u$, it follows that $laplacian v equiv laplacian f >= 0$ everywhere, while $v <= 0$ everywhere in $partial D(z_0, r)$.
+
+    For each $epsilon > 0$, let $v_epsilon (z) = v(z) + epsilon(abs(z - z_0)^2 - r^2)$. Then it follows that for $z in partial D(z_0, r)$, $v_epsilon (z) = v(z) <= 0,$
+    while $forall z in D(z_0, r)$,
+    $
+      laplacian v_epsilon = laplacian v + 4 epsilon pdv(, z, overline(z), 2)[(z-z_0)overline((z-z_0))]= laplacian v + 4 epsilon > 0 quad "strictly",
+    $
+    which means that $v_epsilon$ cannot attain a local maximum within $D(z_0, r)$ (as one would require $laplacian v_epsilon <= 0$). Therefore, we have $v_epsilon (z) <= 0$ for all $z in overline(D(z_0, r))$, and letting $epsilon -> 0^+$ gives $v <= 0 => f <= u$ thereon as well.
+    #remark[
+      The purpose here of defining $v_epsilon$ as opposed to directly using $v$ is that without adding a small subharmonic (convex) paraboloid to $v$, $laplacian v_epsilon$ could still vanish at some point in the interior (in which case we cannot directly determine that it is not a maximum).
+    ]
 ]
 (Notice that convexity in the one-dimensional case for $C^2$ functions is equivalent to the condition that $f'' >= 0$ everywhere.)
