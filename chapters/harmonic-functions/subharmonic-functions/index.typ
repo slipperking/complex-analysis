@@ -96,7 +96,7 @@ By the Maximum Principle, we have the following characterization:
     Let $eta' = op("dist") (z_K, partial D(p,r))$. Then $exists a in D(z_k, eta') inter (D(p,r) without K)$. Then letting $eta = abs(a - z_K)$, $overline(D(z_K, eta))$ lies within $D(p, r)$ since $eta < eta'$, and $partial D(z_K, eta) inter (D(p,r) without K)$ consists of a connected open arc $C$ containing $a$ subtending an angle $theta.alt$, on which $g(z) < M$. Then by the sub-mean-value property assumption,
     $
       M &= f(z_K) - u(z_K) <= 1 / (2 uppi) integral_0^(2 uppi) f(z_K + eta ee^(ii theta)) dtheta - u(z_K) \
-      &= 1 / (2 uppi) [integral_0^(2 uppi) f(z_K + eta ee^(ii theta)) dtheta - integral_0^(2 uppi) u(z_K + eta ee^(ii theta))] #tag[(by the harmonicity of $u$)]\
+      &= 1 / (2 uppi) integral_0^(2 uppi) [f(z_K + eta ee^(ii theta)) - u(z_K + eta ee^(ii theta))] dtheta #tag[(by the harmonicity of $u$)]\
       &= 1 / (2 uppi) integral_0^(2 uppi) g(z_K + eta ee^(ii theta))\
       &= 1 / (2 uppi) [integral_([0, 2 uppi] without C) g(z_K + eta ee^(ii theta)) dtheta + integral_C g(z_K + eta ee^(ii theta)) dtheta] \
       & < 1 / (2 uppi) [(2 uppi - theta.alt) M + theta.alt M] = M,

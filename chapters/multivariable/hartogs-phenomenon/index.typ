@@ -11,14 +11,14 @@ To understand the sense of Hartogs' phenomenon, consider the simple example of $
   theorem[Hartogs' Extension Theorem][
     Let $Omega subset.eq CC^n$ ($n >= 2$) be a domain and $K subset.eq Omega$ be a compact subset such that $Omega without K$ is connected. Then any holomorphic function $f : Omega without K -> CC$ has a unique extension to a holomorphic function $tilde(f) : Omega -> CC$ such that $tilde(f) equiv f$ on $Omega without K$.
   ],
-  <thm:hartogsextensiontheorem>,
+  <thm:hartogs-extension-theorem>,
 )
 
 Hartogs, in 1906, first proved his extension theorem using an integral formula, but was considered to be incomplete with gaps. In 1939, Fueter gave a proof for the case $n = 2$, and later Bochner and Martinelli developed more general integral kernel methods for higher dimensions. Finally, Ehrenpreis, in 1961, provided a succinct and analytic proof using the $overline(partial)$ operator: by multiplying the function by a smooth cutoff or bump function and then solving a $overline(partial)$-problem to correct the non-holomorphy introduced by the cutoff, one can construct the desired extension.
 
 The general study of complex function theory in multiple variables is made practical with the definition of differential forms in multiple variables and in particular the $overline(partial)$-problem, whose utility in a single variable has already been preluded to many times before.
 
-Only certain cases of @thm:hartogsextensiontheorem are proved here.
+Only certain cases of @thm:hartogs-extension-theorem are proved here.
 
 #lbl(
   proposition[
@@ -27,11 +27,11 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
       $
         f(bold(z)) = sum_(bold(k) in ZZ^n) a_(bold(k)) bold(z)^(bold(k)), quad a_(bold(k)) in CC,
       $,
-      <eq:reinhardtlaurentexpansion>,
+      <eq:reinhardt-domain-laurent-expansion>,
     )
     converging absolutely and uniformly on compact subsets of $Omega$.
   ],
-  <prop:reinhardtlaurentexpansion>,
+  <prop:reinhardt-domain-laurent-expansion>,
 )
 
 #proof[
@@ -77,11 +77,11 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
     $
     which converges locally uniformly and absolutely on $Omega$.
   ],
-  <prop:hartogslaurentexpansionnonnegative>,
+  <prop:hartogs-laurent-expansion-nonnegative>,
 )
 
 #proof[
-  By @prop:reinhardtlaurentexpansion, $f$ has an expansion matching the form of @eq:reinhardtlaurentexpansion. Now for a fixed $j in NN_(<= n)$, if not all $a_(bold(k))$'s with $k_j < 0$ are zero, then fixing all variables except $z_j$ gives a Laurent expansion that does not uniformly converge on all compact neighborhoods of $w_j bold(e)_j in Omega$ (either a pole or an essential singularity with respect to $z_j$). Thus, we are left only with $bold(k)$ containing nonnegative components, and the conclusion holds.
+  By @prop:reinhardt-domain-laurent-expansion, $f$ has an expansion matching the form of @eq:reinhardt-domain-laurent-expansion. Now for a fixed $j in NN_(<= n)$, if not all $a_(bold(k))$'s with $k_j < 0$ are zero, then fixing all variables except $z_j$ gives a Laurent expansion that does not uniformly converge on all compact neighborhoods of $w_j bold(e)_j in Omega$ (either a pole or an essential singularity with respect to $z_j$). Thus, we are left only with $bold(k)$ containing nonnegative components, and the conclusion holds.
 ]
 
 #lbl(
@@ -92,11 +92,11 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
     $
     In other words, $exists tilde(f) : tilde(Omega) -> CC$ holomorphic such that $tilde(f) equiv f$ on $Omega$.
   ],
-  <thm:hartogsextensiontheoremforreinhardt-domains>,
+  <thm:hartogs-extension-theorem-for-reinhardt-domains>,
 )
 
 #proof[
-  By @prop:hartogslaurentexpansionnonnegative, $f$ has the expansion
+  By @prop:hartogs-laurent-expansion-nonnegative, $f$ has the expansion
   $
     f(bold(z)) = sum_(bold(k) in ZZ_(>= 0)^n) a_(bold(k)) bold(z)^(bold(k)),
   $
@@ -112,5 +112,5 @@ Only certain cases of @thm:hartogsextensiontheorem are proved here.
   $
     Omega(r) = B^n without r overline(B^n) = {bold(z) : r < norm(bold(z)) < 1}
   $
-  define a Reinhardt domain. Then any holomorphic function $f : Omega(r) -> CC$ can be analytically continued to the entire unit ball $B^n$ by @thm:hartogsextensiontheoremforreinhardt-domains.
+  define a Reinhardt domain. Then any holomorphic function $f : Omega(r) -> CC$ can be analytically continued to the entire unit ball $B^n$ by @thm:hartogs-extension-theorem-for-reinhardt-domains.
 ]
