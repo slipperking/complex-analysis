@@ -109,7 +109,7 @@ By the Maximum Principle, we have the following characterization:
     For each $epsilon > 0$, let $v_epsilon (z) = v(z) + epsilon(abs(z - z_0)^2 - r^2)$. Then it follows that for $z in partial D(z_0, r)$, $v_epsilon (z) = v(z) <= 0,$
     while $forall z in D(z_0, r)$,
     $
-      laplacian v_epsilon = laplacian v + 4 epsilon pdv(, z, overline(z), 2)[(z-z_0)overline((z-z_0))]= laplacian v + 4 epsilon > 0 quad "strictly",
+      laplacian v_epsilon = laplacian v + 4 epsilon pdv(, z, overline(z))[(z-z_0)overline((z-z_0))]= laplacian v + 4 epsilon > 0 quad "strictly",
     $
     which means that $v_epsilon$ cannot attain a local maximum within $D(z_0, r)$ (as one would require $laplacian v_epsilon <= 0$). Therefore, we have $v_epsilon (z) <= 0$ for all $z in overline(D(z_0, r))$, and letting $epsilon -> 0^+$ gives $v <= 0 => f <= u$ thereon as well. #qedhere
     #remark[
