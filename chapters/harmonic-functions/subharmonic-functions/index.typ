@@ -101,7 +101,7 @@ By the Maximum Principle, we have the following characterization:
       &= 1 / (2 uppi) [integral_([0, 2 uppi] without C) g(z_K + eta ee^(ii theta)) dtheta + integral_C g(z_K + eta ee^(ii theta)) dtheta] \
       & < 1 / (2 uppi) [(2 uppi - theta.alt) M + theta.alt M] = M,
     $
-    which is an impossibility (the purpose of extracting a Jordan arc was to ensure a strict inequality). Therefore, $f$ must be subharmonic.
+    which is an impossibility (the purpose of extracting a Jordan arc was to ensure a strict inequality). Therefore, $f$ must be subharmonic. #qedhere
 ]
 #theorem[
   A real-valued function $f in C^2 (U)$ (where $U subset.eq CC$ is an open region) is subharmonic iff $laplacian f >= 0$ in $U$.
