@@ -37,8 +37,8 @@
   --mono: "Cascadia Mono", "Fira Code", Consolas, monospace;
   --sans: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   --math:
-    /*"Noto Sans Math", */
-    /* "Fira Math", */
+    "Noto Sans Math",
+    "Fira Math",
     "New Computer Modern Math",
     math;
   --topbar-height: 3.5rem;
