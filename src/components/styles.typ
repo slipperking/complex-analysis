@@ -143,25 +143,25 @@
   }
 
   set par(justify: true)
+  show figure.caption: it => context [
+    *#it.supplement~#it.counter.display()#it.separator*#it.body
+  ]
+
+  show heading: it => [#it#heading-reset-marker(it.level)]
+  set figure(numbering: (n, ..) => {
+    numbering("1.1", counter(heading).get().first(), n)
+  })
+  show heading.where(level: 1): it => {
+    counter(figure.where(kind: image)).update(0)
+    counter(figure.where(kind: table)).update(0)
+    counter(figure.where(kind: raw)).update(0)
+    it
+  }
 
   if mode == "pdf" {
     set page(numbering: "1", margin: 1.75in)
 
     set figure(placement: alignment.top)
-    show figure.caption: it => context [
-      *#it.supplement~#it.counter.display()#it.separator*#it.body
-    ]
-
-    show heading: it => [#it#heading-reset-marker(it.level)]
-    set figure(numbering: (n, ..) => {
-      numbering("1.1", counter(heading).get().first(), n)
-    })
-    show heading.where(level: 1): it => {
-      counter(figure.where(kind: image)).update(0)
-      counter(figure.where(kind: table)).update(0)
-      counter(figure.where(kind: raw)).update(0)
-      it
-    }
     doc
   } else if mode == "web" {
     set document(author: authors)
@@ -191,7 +191,6 @@
       set enum(start: 1)
       enum(..items)
     }
-    show heading: it => [#it#heading-reset-marker(it.level)]
     show math.equation.where(block: true): it => context {
       // prevent double wrapping with previous numbering show rule.
       // also, in figures, html will be paged, so no div.
