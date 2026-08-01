@@ -143,9 +143,6 @@
   }
 
   set par(justify: true)
-  show figure.caption: it => context [
-    *#it.supplement~#it.counter.display()#it.separator*#it.body
-  ]
 
   show heading: it => [#it#heading-reset-marker(it.level)]
   set figure(numbering: (n, ..) => {
@@ -162,6 +159,9 @@
     set page(numbering: "1", margin: 1.75in)
 
     set figure(placement: alignment.top)
+    show figure.caption: it => context [
+      *#it.supplement~#it.counter.display()#it.separator*#it.body
+    ]
     doc
   } else if mode == "web" {
     set document(author: authors)
