@@ -169,7 +169,8 @@
     [
       #metadata((description: description)) <todo-marker>
       #html.elem("aside", attrs: (class: "todo-callout", role: "note", "aria-label": "Todo"), {
-        link(<sec:todo>, html.elem("em", attrs: (class: "proof-head"), [Todo.#sym.space.nobreak]))
+        link(<sec:todo>, html.elem("em", attrs: (class: "proof-head"), [Todo.]))
+        sym.space.nobreak
         html.elem("span", attrs: (class: "todo-callout-description"), description)
       })
     ]
@@ -490,7 +491,8 @@
       html.elem("ol", attrs: (class: "todo-list"), {
         for item in todos {
           html.elem("li", attrs: (class: "todo-list-item"), {
-            link(item.location(), html.elem("em", attrs: (class: "proof-head"), [Todo.#sym.space.nobreak]))
+            link(item.location(), html.elem("em", attrs: (class: "proof-head"), [Todo.]))
+            sym.space.nobreak
             html.elem("span", attrs: (class: "todo-list-description"), item.value.description)
           })
         }
