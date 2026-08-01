@@ -56,6 +56,27 @@ We have seen that many holomorphic properties have harmonic analogs. This is als
   <thm:schwarz-reflection-principle-harmonic>,
 )
 #proof[
-  Because satisfying the Laplace equation is equivalent to satisfying the mean-value property on small circles, it suffices to show that $tilde(u)$ satisfies the mean-value property on small circles.
+  Because satisfying the Laplace equation is equivalent to satisfying the mean-value property on small circles, it suffices to show that $tilde(u)$ satisfies the mean-value property on small circles (@thm:mean-value-property-solutions-are-harmonic).
 
+  + For all $z in U$, there exists $epsilon' > 0$ such that $overline(D(z, epsilon')) subset.double U$ (without crossing $RR$). Then for all $epsilon in (0,epsilon')$, $tilde(u)$ satisfies the mean-value property on $partial D(z,epsilon)$ since $u$ is harmonic.
+  + For all $z in tilde(U)$, there exists $epsilon' > 0$ such that $overline(D(z, epsilon')) subset.double tilde(U)$ (without crossing $RR$). Then for all $epsilon in (0,epsilon')$, we get that
+    $
+      tilde(u)(z) & = -u(overline(z)) = - 1 / (2 uppi) integral_0^(2 uppi) u(overline(z) + epsilon ee^(ii theta)) dtheta \
+                  & = - 1 / (2 uppi) integral_0^(2 uppi) u(overline(z) + epsilon ee^(ii theta)) dtheta \
+                  & = 1 / (2 uppi) integral_0^(2 uppi) tilde(u)(z + epsilon ee^(-ii theta)) dtheta \
+                  & = 1 / (2 uppi) integral_0^(2 uppi) tilde(u)(z + epsilon ee^(ii theta)) dtheta.
+    $
+    Therefore, for all $epsilon in (0,epsilon')$, $tilde(u)$ satisfies the mean-value property on $partial D(z,epsilon)$.
+  + For all $z in gamma$ (so $z = overline(z)$), for any $epsilon > 0$ such that
+    $ overline(D(z, epsilon)) subset.double U union tilde(U) union gamma, $
+    $
+      1 / (2 uppi) integral_0^(2 uppi) tilde(u)(z + epsilon ee^(ii theta)) dtheta =& 1 / (2 uppi) [integral_0^uppi u(z + epsilon ee^(ii theta)) dtheta - integral_uppi^(2 uppi) u(overline(z) + epsilon ee^(-ii theta)) dtheta] \
+      &= 1 / (2 uppi) [integral_0^uppi u(z + epsilon ee^(ii theta)) dtheta - integral_uppi^(2 uppi) u(z + epsilon ee^(-ii theta)) dtheta] \
+      &space#[(by substituting $theta -> 2 uppi - theta$)] \
+      &= 1 / (2 uppi) [integral_0^uppi u(z + epsilon ee^(ii theta)) dtheta + integral_uppi^0 u(z + epsilon ee^(-ii (2 uppi - theta))) dtheta]\
+      &= 1 / (2 uppi) [integral_0^uppi u(z + epsilon ee^(ii theta)) dtheta - integral_0^uppi u(z + epsilon ee^(ii theta)) dtheta] \
+      &= 0 = tilde(u)(z).
+    $
+    Then $tilde(u)$ satisfies the mean-value property on $partial D(z,epsilon)$.
+  Then by @thm:mean-value-property-solutions-are-harmonic, $tilde(u)$ is harmonic.
 ]
