@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "Noto Sans Math";
+  src: url("fonts/NotoSansMath-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Math";
+  src: url("fonts/FiraMath-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "New Computer Modern Math";
+  src: url("fonts/NewCMMath-Book.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
 :root {
   --bg: #fafafa;
   --paper: #fff;
@@ -12,6 +36,11 @@
   --gold: #8a5a12;
   --mono: "Cascadia Mono", "Fira Code", Consolas, monospace;
   --sans: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --math:
+    /*"Noto Sans Math", */
+    /* "Fira Math", */
+    "New Computer Modern Math",
+    math;
   --topbar-height: 3.5rem;
   --left-width: 18rem;
   --right-width: 16rem;
@@ -463,6 +492,10 @@ p {
   flex-wrap: wrap;
   gap: 0.65rem;
   margin-top: 1.15rem;
+}
+
+math {
+  font-family: var(--math);
 }
 
 .todo-callout {
