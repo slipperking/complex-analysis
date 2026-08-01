@@ -81,6 +81,60 @@ By the Maximum Principle, we have the following characterization:
   ],
   <thm:subharmonic-function-sub-mean-value-property>,
 )
+#figure-wrapper([
+  #lbl(
+    figure(
+      canvas({
+        import cetz.draw: *
+        circle((0, 0), radius: 5, name: "D(p,r)")
+        let hatch = diagonal-stripes(
+          background-color: black.transparentize(100%),
+          size: 3pt,
+          angle: 45deg,
+          thickness: 0.2pt,
+        )
+        let blob(center, base-r: 0.6, wobble: 0.42, n: 14, seed: 0) = {
+          let p0r = base-r * (1 + wobble * calc.sin(seed * 91deg))
+          let p0 = (center.at(0) + p0r * calc.cos(0deg), center.at(1) + p0r * calc.sin(0deg))
+          let angle-enforcer = directional-points(offset: p0, angle: 90deg, length: 1e-6, n: 4)
+          let raw = range(1, n).map(i => {
+            let ang = 360deg * i / n + 26deg * calc.sin(seed * 113deg + i * 67.3deg)
+            let r = base-r * (1 + wobble * calc.sin(seed * 97deg + i * 137.5deg + i * 13.7deg))
+            let pt = (center.at(0) + r * calc.cos(ang), center.at(1) + r * calc.sin(ang))
+            (ang: ang, pt: pt)
+          })
+          let sorted = raw.sorted(key: v => v.ang)
+          let body = sorted.map(v => v.pt)
+          hobby(..angle-enforcer, ..body, ..angle-enforcer, closed: true)
+        }
+        compound-path(
+          {
+            blob((-1.7, 0.8), base-r: 2, seed: 56431)
+            blob((2.6, -0.5), base-r: 1.3, seed: 32423)
+          },
+          name: "partial-K",
+          fill: hatch,
+        )
+        anchor("z_K", "partial-K.30%")
+        circle("z_K", radius: 2pt, fill: black)
+        circle((0, 0), radius: 2pt, fill: black)
+        hide(line((0, 0), ((0, 0), 100, "z_K"), name: "z_K-radius-test-line"))
+        intersections("D(p,r)-boundary-point-intersections", "z_K-radius-test-line", "D(p,r)")
+        circle("z_K", "D(p,r)-boundary-point-intersections.0", stroke: (dash: "dashed"))
+        line(
+          ("D(p,r)-boundary-point-intersections.0", 2pt, "z_K"),
+          ("z_K", 2pt, "D(p,r)-boundary-point-intersections.0"),
+          mark: (end: "|", start: "|"),
+          name: "eta-prime-label",
+        )
+        content(("eta-prime-label.50%", 6pt, 90deg, "z_K"), $eta_1$)
+      }),
+      caption: [The construction of the arc subtending a positive angle on which $g(z) < M$. The shaded region is $K$.],
+    ),
+    <fig:subharmonic-function-sub-mean-value-property-arc-construction>,
+  )
+])
+#todo[Finish drawing figure components.]
 #proof[
   + We first prove the forward direction (subharmonic #sym.arrow.double.long sub-mean-value property).
 
