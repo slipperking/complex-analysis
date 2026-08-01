@@ -115,21 +115,51 @@ By the Maximum Principle, we have the following characterization:
           name: "partial-K",
           fill: hatch,
         )
-        anchor("z_K", "partial-K.30%")
+        anchor("z_K", "partial-K.27%")
         circle("z_K", radius: 2pt, fill: black)
         circle((0, 0), radius: 2pt, fill: black)
         hide(line((0, 0), ((0, 0), 100, "z_K"), name: "z_K-radius-test-line"))
         intersections("D(p,r)-boundary-point-intersections", "z_K-radius-test-line", "D(p,r)")
-        circle("z_K", "D(p,r)-boundary-point-intersections.0", stroke: (dash: "dashed"))
+        circle("z_K", "D(p,r)-boundary-point-intersections.0", stroke: (dash: "dotted"))
         line(
-          ("D(p,r)-boundary-point-intersections.0", 2pt, "z_K"),
-          ("z_K", 2pt, "D(p,r)-boundary-point-intersections.0"),
-          mark: (end: "|", start: "|"),
+          "D(p,r)-boundary-point-intersections.0",
+          "z_K",
+          mark: (
+            end: (pos: 3pt, symbol: "|", inset: 0%),
+            start: (pos: 3pt, symbol: "|", inset: 0%),
+          ),
           name: "eta-prime-label",
         )
-        content(("eta-prime-label.50%", 6pt, 90deg, "z_K"), $eta_1$)
+        content(("eta-prime-label.50%", 7pt, 90deg, "z_K"), math-rect($eta'$))
+        content("z_K", anchor: "north", math-rect($z_K$), padding: 3pt)
+        anchor("a", ("z_K", 60%, -50deg, "D(p,r)-boundary-point-intersections.0"))
+        hide(circle("z_K", "a", name: "arc-circle"))
+        intersections("arc-endpoints-test", "arc-circle", "partial-K")
+        anchor("end1", "arc-endpoints-test.0")
+        anchor("end2", "arc-endpoints-test.1")
+        // circle("end1", radius: 2pt, fill: black)
+        // circle("end2", radius: 2pt, fill: black)
+
+        arc-through("end1", "a", "end2", stroke: 1.5pt, name: "arc", mark: (
+          end: (pos: 2%, symbol: "o", inset: 0%),
+          start: (pos: 2%, symbol: "o", inset: 0%),
+        ))
+        anchor("true-end-1", "arc.0%")
+        anchor("true-end-2", "arc.100%")
+        line(
+          "a",
+          "z_K",
+          mark: (
+            end: (pos: 3pt, symbol: "|", inset: 0%),
+            start: (pos: 3pt, symbol: "|", inset: 0%),
+          ),
+          name: "eta-label-line",
+        )
+        content(("eta-label-line.50%", 7pt, 90deg, "z_K"), math-rect($eta$))
+        circle("a", radius: 2pt, fill: black)
+        content("a", math-rect($a$), anchor: "south", padding: 3pt)
       }),
-      caption: [The construction of the arc subtending a positive angle on which $g(z) < M$. The shaded region is $K$.],
+      caption: [The construction of the arc subtending a positive angle on which $g(z) < M$. The striped region is $K$.],
     ),
     <fig:subharmonic-function-sub-mean-value-property-arc-construction>,
   )
