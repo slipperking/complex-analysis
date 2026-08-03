@@ -337,3 +337,21 @@ Our proof will remain the same as @thm:maximum-modulus, aside from the sole diff
 #remark[
   Note that there is no corresponding "minimum" principle as with harmonic functions: subharmonicity is sufficiently restrictive in a "one-sided" way. If one were to instead define a "superharmonic function," there would not be a maximum principle but instead, only a minimum principle. Although this is a widely recognized definition, it is somewhat unnecessary for our purposes as any superharmonic function could be trivially made into a subharmonic function by negation (from $f$ to $z |-> -f(z)$).
 ]
+The utility of using subharmonic functions, as opposed to harmonic or holomorphic functions is due to its flexibility as we now show:
+#lbl(
+  proposition[
+    Suppose $U subset.eq CC$ is an open region and let $f, g: U -> RR$ be two subharmonic functions. Then the function $phi$ defined by
+    $ phi(z) = max{f(z), g(z)} quad forall z in U $
+    is subharmonic on $U$ as well.
+  ],
+  <prop:subharmonic-pointwise-maximum-is-subharmonic>,
+)
+#proof[
+  By a simple application of the sub-mean-value-property on any disk $overline(D(z, r)) subset.double U$:
+  $
+    phi(z) &<= max{1 / (2 uppi) integral_0^(2 uppi) f(z + r ee^(ii theta)) dtheta, 1 / (2 uppi) integral_0^(2 uppi) g(z + r ee^(ii theta)) dtheta} \
+    &<= 1 / (2 uppi) integral_0^(2 uppi) max{f(z + r ee^(ii theta)) dtheta}, g(z + r ee^(ii theta)) dtheta}} dtheta \
+    &= 1 / (2 uppi) integral_0^(2 uppi) phi(z + r ee^(ii theta)) dtheta.
+  $
+  Applying @thm:subharmonic-function-sub-mean-value-property gives the subharmonicity of $phi$.
+]
