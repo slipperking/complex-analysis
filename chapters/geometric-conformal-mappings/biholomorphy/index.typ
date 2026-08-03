@@ -93,7 +93,7 @@ The condition that $f$ be holomorphic on a neighborhood of the boundary can be w
 
 #lbl(
   theorem[
-    Let $f in C^0(overline(DD))$ be holomorphic on $DD$, and suppose that the restriction $evaluated(f)_(partial DD)$ is injective. If $Gamma = f(partial DD)$, then $f$ is univalent on $DD$, $f(DD) = jinterior(Gamma)$, and $evaluated(f)_(partial DD)$ traverses $Gamma$ in the same direction as $partial DD$.
+    Let $f in C(overline(DD))$ be holomorphic on $DD$, and suppose that the restriction $evaluated(f)_(partial DD)$ is injective. If $Gamma = f(partial DD)$, then $f$ is univalent on $DD$, $f(DD) = jinterior(Gamma)$, and $evaluated(f)_(partial DD)$ traverses $Gamma$ in the same direction as $partial DD$.
   ],
   <thm:boundary-of-conformal-map-closed-disk>,
 )

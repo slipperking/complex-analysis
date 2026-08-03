@@ -620,7 +620,7 @@ In fact, it is almost always true that such an extension exists. We will give th
 
   #lbl(
     proposition[
-      Let $f in C^0(overline(DD))$ such that $f$ is holomorphic on $DD$. If there exists an open arc $gamma subset.eq partial DD$ such that $f equiv c$ on $gamma$ ($c$ is some complex constant), then $f$ is constant on $DD$.
+      Let $f in C(overline(DD))$ such that $f$ is holomorphic on $DD$. If there exists an open arc $gamma subset.eq partial DD$ such that $f equiv c$ on $gamma$ ($c$ is some complex constant), then $f$ is constant on $DD$.
     ],
     <prop:holomorphic-on-disk-continuous-on-closure-constant-on-arc-implies-constancy>,
   )

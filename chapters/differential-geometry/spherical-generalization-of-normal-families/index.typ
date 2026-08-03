@@ -53,7 +53,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
   $
   where $gamma$ joins $z_1$ and $z_2$. The spherical distance is bounded by the integral over the Euclidean straight line $gamma'$ joining $z_1$ and $z_2$:
   $ d_sigma (w_1, w_2) <= integral_(gamma') (2 abs(a d - b c))/(abs(c z + d)^2 + abs(a z + b)^2) abs(dz). $
-  Since $(2 abs(a d - b c))/(abs(c z + d)^2 + abs(a z + b)^2) -> 0$ as $z -> oo$ and $z |-> (2 abs(a d - b c))/(abs(c z + d)^2 + abs(a z + b)^2) in C^0(CC)$, it is bounded by some constant $M$ on $CC$. Hence, we have
+  Since $(2 abs(a d - b c))/(abs(c z + d)^2 + abs(a z + b)^2) -> 0$ as $z -> oo$ and $z |-> (2 abs(a d - b c))/(abs(c z + d)^2 + abs(a z + b)^2) in C(CC)$, it is bounded by some constant $M$ on $CC$. Hence, we have
   $ d_sigma (w_1, w_2) <= M abs(z_1 - z_2). $
   Hence, $forall epsilon > 0$, $forall abs(z_1 - z_2) < epsilon / M$,
   $ d_sigma (psi(z_1), psi(z_2)) < epsilon. #qedhere $
@@ -196,7 +196,7 @@ Montel's Theorem for holomorphically normal families in @thm:montel can be gener
       (2 abs(w)^(-2))/(abs(w)^(-(4)/(3))) -> 0 & quad "as" w -> oo,
     ).
   $
-  Hence, there exist open neighborhoods $U_0, U_1, U_(oo)$ of $0, 1, oo$ respectively on which $(sigma)/(mu) < 1$. Since $(sigma)/(mu) in C^0(CC)$, by @thm:continuous-function-bounded-on-compact, $exists M' > 0$ such that $(sigma)/(mu) < M'$ on $CC without (U_0 union U_1 union U_(oo))$. Let $M = max(M', 1)$, and
+  Hence, there exist open neighborhoods $U_0, U_1, U_(oo)$ of $0, 1, oo$ respectively on which $(sigma)/(mu) < 1$. Since $(sigma)/(mu) in C(CC)$, by @thm:continuous-function-bounded-on-compact, $exists M' > 0$ such that $(sigma)/(mu) < M'$ on $CC without (U_0 union U_1 union U_(oo))$. Let $M = max(M', 1)$, and
   $ therefore sigma <= M mu quad "on" quad CC without {0, 1}. $
   Hence, $forall f in tilde(cal(F))$, we have by virtue of @eq:fundamental-normality-test_f_mu_pullback_inequality,
   $

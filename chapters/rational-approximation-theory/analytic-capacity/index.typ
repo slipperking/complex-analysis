@@ -117,11 +117,11 @@ We outline the precise connections to rational approximation:
   $
     gamma(D(p, delta) without K) >= c delta.
   $
-  Then $forall f in C^0(K)$ holomorphic on $interior(K)$ can be uniformly and rationally approximated on $K$ with poles in $extcomplex without K$.
+  Then $forall f in C(K)$ holomorphic on $interior(K)$ can be uniformly and rationally approximated on $K$ with poles in $extcomplex without K$.
 ]
 
 #corollary[
-  Let $K subset.eq CC$ be compact. If the connected components $U_j$ of $extcomplex without K$ give the uniform existence of some $delta > 0$ such that $forall j$, $diam U_j >= delta$, then $forall f in C^0(K)$ holomorphic on $interior(K)$ can be uniformly and rationally approximated on $K$ with poles in $extcomplex without K$.
+  Let $K subset.eq CC$ be compact. If the connected components $U_j$ of $extcomplex without K$ give the uniform existence of some $delta > 0$ such that $forall j$, $diam U_j >= delta$, then $forall f in C(K)$ holomorphic on $interior(K)$ can be uniformly and rationally approximated on $K$ with poles in $extcomplex without K$.
 ]
 
 Notice here that no restrictions are imposed on the finiteness of the number of connected components of the complement. The general conclusion given for Mergelyan's Theorem is not true for more general compact sets.
@@ -129,7 +129,7 @@ Notice here that no restrictions are imposed on the finiteness of the number of 
 The counterexample we now provide due to~@gamelin2001, we provide the construction of the compact set $K$.
 
 #example[
-  There exists a compact set $K subset.eq CC$ and $f in C^0(K)$, such that $f$ is holomorphic on $interior(K)$ and cannot be rationally approximated on $K$.
+  There exists a compact set $K subset.eq CC$ and $f in C(K)$, such that $f$ is holomorphic on $interior(K)$ and cannot be rationally approximated on $K$.
 ]
 
 #proof[
@@ -151,7 +151,7 @@ The counterexample we now provide due to~@gamelin2001, we provide the constructi
   $
     K = overline(DD) without union.big_(j = 1)^oo D(z_j, r_j),
   $
-  which is compact. For any point $z in K$, no disk centered at $z$ exists such that $D(z, delta)$ is contained in $K$, since a subsequence of $S$ accumulating to $z$ in $overline(DD)$ is removed from $K$. Hence, $interior(K) = emptyset$. Hence, any $f in C^0(K)$ is holomorphic on the interior.
+  which is compact. For any point $z in K$, no disk centered at $z$ exists such that $D(z, delta)$ is contained in $K$, since a subsequence of $S$ accumulating to $z$ in $overline(DD)$ is removed from $K$. Hence, $interior(K) = emptyset$. Hence, any $f in C(K)$ is holomorphic on the interior.
 
   (This general construction of $K$ is known as the _Swiss cheese set_)
 

@@ -3,7 +3,7 @@
   title: [Conformal Metrics and Curvature],
   route: "metrics-and-curvature",
 )
-Let $Omega subset.eq CC$ be a region and let $rho in C^0 (Omega)$ be a positive function. The _conformal metric_ (in the following chapters when we refer to _metric_ we mean conformal) induced by $rho$ is given by
+Let $Omega subset.eq CC$ be a region and let $rho in C(Omega)$ be a positive function. The _conformal metric_ (in the following chapters when we refer to _metric_ we mean conformal) induced by $rho$ is given by
 
 $
   dif s = rho(z) abs(dz) quad "or" quad dif s^2 = rho(z)^2 abs(dz)^2.

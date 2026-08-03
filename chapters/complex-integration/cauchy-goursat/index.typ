@@ -316,10 +316,10 @@ From the above result, we can directly obtain the following theorem:
   $ pdv(u, overline(z))=psi(z). #qedhere $
 ]
 
-#remark[In the first part, we established that a function $psi(z)in C^0(CC)$ with compact support satisfies
-  $ u(z) = -1 / (taui) integral_CC (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta in C^0(CC). $
+#remark[In the first part, we established that a function $psi(z)in C(CC)$ with compact support satisfies
+  $ u(z) = -1 / (taui) integral_CC (psi(zeta)) / (zeta - z) dif overline(zeta) and dzeta in C(CC). $
 
-  If $psi(z)in C^1(CC)$, then the first order derivatives of $u(z)$ can be written in the same form (@eq:one-dimensional-partial-conjugate-solution-difference-expression-real-axis-derivative, @eq:one-dimensional-partial-conjugate-solution-difference-expression-imaginary-axis-derivative) since $pdv(psi, xi),pdv(psi, eta)in C^0(CC)$ and are also compactly supported. Then they too are continuous functions, and $u(z)in C^1(CC)$.
+  If $psi(z)in C^1(CC)$, then the first order derivatives of $u(z)$ can be written in the same form (@eq:one-dimensional-partial-conjugate-solution-difference-expression-real-axis-derivative, @eq:one-dimensional-partial-conjugate-solution-difference-expression-imaginary-axis-derivative) since $pdv(psi, xi),pdv(psi, eta)in C(CC)$ and are also compactly supported. Then they too are continuous functions, and $u(z)in C^1(CC)$.
 
   Then using the same argument, In general, for $psi(z)in C^k (CC)$, the same process can be used recursively to find that $u(z)in C^k (CC)$ as well.
 
@@ -336,7 +336,7 @@ When Cauchy formalized @thm:cauchy-integral-formula, @thm:cauchy-integral-theore
 )
 
 #proof[
-  Because $f in C^0(G)$, there is a compact set $D subset.eq G$ enclosing $Gamma$ and is the closure of some open set. By @thm:heine-cantor, $forall epsilon > 0$, $exists delta > 0$ such that $forall z', z'' in D$ satisfying $abs(z'' - z') < delta$, $abs(f (z'') - f (z')) < epsilon$. Partition $Gamma$ into $n in NN$ curves $gamma_0, gamma_1, dots, gamma_(n - 1)$ between points $z_0, z_1, dots z_n$ such that $forall k in {0, 1, dots, n - 1}$ the length of $gamma_k$ is less than $delta$. For all $k in {0, 1, dots, n - 1}$, let $l_k$ denote the straight line segment connecting $z_k$ and $z_(k + 1)$. The length of $l_k$ is less than $delta$ as well. Then let
+  Because $f in C(G)$, there is a compact set $D subset.eq G$ enclosing $Gamma$ and is the closure of some open set. By @thm:heine-cantor, $forall epsilon > 0$, $exists delta > 0$ such that $forall z', z'' in D$ satisfying $abs(z'' - z') < delta$, $abs(f (z'') - f (z')) < epsilon$. Partition $Gamma$ into $n in NN$ curves $gamma_0, gamma_1, dots, gamma_(n - 1)$ between points $z_0, z_1, dots z_n$ such that $forall k in {0, 1, dots, n - 1}$ the length of $gamma_k$ is less than $delta$. For all $k in {0, 1, dots, n - 1}$, let $l_k$ denote the straight line segment connecting $z_k$ and $z_(k + 1)$. The length of $l_k$ is less than $delta$ as well. Then let
   $ P=union.big_(k=0)^(n-1)l_k. $
   Over the partition formed with $gamma_k$, the integral
 
@@ -707,7 +707,7 @@ When Cauchy formalized @thm:cauchy-integral-formula, @thm:cauchy-integral-theore
     ""- ii (integral_(psi(a + epsilon))^(y_(phi.alt)) + integral_(y_psi)^(phi.alt(a + epsilon))) f(a + epsilon + ii y).
   $
 
-  The first term vanishes by uniform continuity, through the same argument used for $M'_1N'_1 -> M_1N_1$, and the remaining four integrals all tend to $0$ because they are taken over degenerating intervals. As $epsilon -> 0$, $y_(phi.alt) -> phi.alt(a)$ and $y_psi -> psi(a)$ because $phi.alt, psi in C^0$. Therefore,
+  The first term vanishes by uniform continuity, through the same argument used for $M'_1N'_1 -> M_1N_1$, and the remaining four integrals all tend to $0$ because they are taken over degenerating intervals. As $epsilon -> 0$, $y_(phi.alt) -> phi.alt(a)$ and $y_psi -> psi(a)$ because $phi.alt, psi in C([a,b])$. Therefore,
   $ integral_sray(P_1 M_1) f(z) dz -> integral_sray(P M) f(z) dz, $
 
   and through similar logic,
@@ -750,7 +750,7 @@ When Cauchy formalized @thm:cauchy-integral-formula, @thm:cauchy-integral-theore
     integral.cont_(partial U) (f(zeta)) / (zeta - z) dzeta = taui f(z) + ii integral_0^(2 uppi) [f (z + epsilon ee^(ii t)) - f(z)] dt.
   $
 
-  Since $f in C^0(partial D(z,epsilon))$, as $epsilon ->0$,
+  Since $f in C(partial D(z,epsilon))$, as $epsilon ->0$,
 
   $
     abs(integral_0^(2 uppi) [f (z + epsilon ee^(ii t)) - f(z)] dt) & <= integral_0^(2 uppi) abs(f (z + epsilon ee^(ii t)) - f(z)) dt \

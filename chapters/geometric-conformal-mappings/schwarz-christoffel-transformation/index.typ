@@ -166,7 +166,7 @@ Let $psi(z)=(z-ii)/(z+ii)$ be the Cayley transform from $HH^+$ onto $DD$, extend
 $
   g = f compose psi^(-1).
 $
-The preceding continuity at infinity shows that $g in C^0(overline(DD))$, while $g$ is holomorphic on $DD$. Furthermore, $g|_(partial DD)$ maps $partial DD$ injectively onto the polygonal boundary $union.big_k Delta_k$. Therefore, by @thm:boundary-of-conformal-map-closed-disk, $g$ maps $DD$ univalently and surjectively onto $jinterior union.big_k Delta_k$. Since $psi$ is a biholomorphism, it follows that $f$ maps $HH^+$ biholomorphically onto the polygon.
+The preceding continuity at infinity shows that $g in C(overline(DD))$, while $g$ is holomorphic on $DD$. Furthermore, $g|_(partial DD)$ maps $partial DD$ injectively onto the polygonal boundary $union.big_k Delta_k$. Therefore, by @thm:boundary-of-conformal-map-closed-disk, $g$ maps $DD$ univalently and surjectively onto $jinterior union.big_k Delta_k$. Since $psi$ is a biholomorphism, it follows that $f$ maps $HH^+$ biholomorphically onto the polygon.
 
 The definition in @eq:schwarz-christoffel-transformation-statement is known as the _Schwarz--Christoffel Transformation_, which maps the upper-half plane to a polygon with specified angles. The side lengths can be controlled by numerically computing suitable values for ${a_k}$. Note that for any $c in CC$, $c' in CC^*$, $z mapsto c + c' f(z)$ also suffices as such a transformation.
 #lbl(

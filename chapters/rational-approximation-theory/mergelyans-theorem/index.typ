@@ -237,7 +237,7 @@ Let $z = (f^(-1))(w)$. Then we have
 
 #lbl(
   theorem[Tietze--Urysohn--Brouwer][
-    Let $K subset.eq CC$ be compact and $f:K -> RR$ be continuous. Then $exists g in C^0(CC)$ such that $g equiv f$ on $K$.
+    Let $K subset.eq CC$ be compact and $f:K -> RR$ be continuous. Then $exists g in C(CC)$ such that $g equiv f$ on $K$.
   ],
   <thm:tietze-extension>,
 )
@@ -287,13 +287,13 @@ Let $z = (f^(-1))(w)$. Then we have
 
 #lbl(
   corollary[
-    If $K subset.eq CC$ is compact and $f:K -> CC$ is continuous, then $exists g in C^0(CC)$ such that $g equiv f$ on $K$ and has compact support.
+    If $K subset.eq CC$ is compact and $f:K -> CC$ is continuous, then $exists g in C(CC)$ such that $g equiv f$ on $K$ and has compact support.
   ],
   <cor:tietze-extension-complex-compact-support>,
 )
 
 #proof[
-  Let $f = u + ii v$ where $u, v:K -> RR$ are continuous. By Tietze--Urysohn--Brouwer (@thm:tietze-extension), $exists tilde(u), tilde(v) in C^0(CC)$ such that $tilde(u) equiv u$ and $tilde(v) equiv v$ on $K$. Let $R > 0$ be such that $K subset D(0, R)$, provided by compactness. Define the piecewise-linear function
+  Let $f = u + ii v$ where $u, v:K -> RR$ are continuous. By Tietze--Urysohn--Brouwer (@thm:tietze-extension), $exists tilde(u), tilde(v) in C(CC)$ such that $tilde(u) equiv u$ and $tilde(v) equiv v$ on $K$. Let $R > 0$ be such that $K subset D(0, R)$, provided by compactness. Define the piecewise-linear function
   $
     psi(z) = cases(
       1 & quad "if" abs(z) <= R\,,
@@ -301,10 +301,10 @@ Let $z = (f^(-1))(w)$. Then we have
       0 & quad "if" abs(z) >= 2 R,
     )
   $
-  such that $psi in C^0(CC)$ and is compactly supported. Let $g(z) = (tilde(u)(z) + ii tilde(v)(z)) psi(z)$, and the assertion follows.
+  such that $psi in C(CC)$ and is compactly supported. Let $g(z) = (tilde(u)(z) + ii tilde(v)(z)) psi(z)$, and the assertion follows.
 ]
 
-Let $f in C^0(K)$ be holomorphic on $interior(K)$. Then $f$ has a continuous extension to all of $CC$ by virtue of @cor:tietze-extension-complex-compact-support. Define the _modulus of continuity_ of $f$ to be the function $omega_f:RR_(>= 0) -> RR_(>= 0)$ with
+Let $f in C(K)$ be holomorphic on $interior(K)$. Then $f$ has a continuous extension to all of $CC$ by virtue of @cor:tietze-extension-complex-compact-support. Define the _modulus of continuity_ of $f$ to be the function $omega_f:RR_(>= 0) -> RR_(>= 0)$ with
 $
   omega_f (delta) = sup_(
   z, zeta in CC \
@@ -389,7 +389,7 @@ where $lambda_r$ employs the same definition as in @eq:dirac-delta-approximation
 
 #lbl(
   theorem[Mergelyan][
-    Let $K subset.eq CC$ be compact such that $extcomplex without K$ has finitely many connected components. Let $E subset.eq extcomplex without K$ contain exactly one point from each of the connected components of $extcomplex without K$. Suppose $f in C^0(K)$ is holomorphic on $interior(K)$. Then $forall epsilon > 0$, there exists a rational function $psi(z)$ with poles in $E$ such that
+    Let $K subset.eq CC$ be compact such that $extcomplex without K$ has finitely many connected components. Let $E subset.eq extcomplex without K$ contain exactly one point from each of the connected components of $extcomplex without K$. Suppose $f in C(K)$ is holomorphic on $interior(K)$. Then $forall epsilon > 0$, there exists a rational function $psi(z)$ with poles in $E$ such that
     $
       sup_(z in K) abs(psi(z) - f(z)) < epsilon.
     $

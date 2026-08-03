@@ -216,7 +216,7 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
   $
   and that
 
-  + $K_rho in C^0(CC without {0, 1})$.
+  + $K_rho in C(CC without {0, 1})$.
   + $forall z in CC without {0, 1}$, $K_rho (z) < 0$.
   + $lim_(z -> 0) K_rho (z) = -1/(36)$.
   + $lim_(z -> 1) K_rho (z) = -1/(36)$.

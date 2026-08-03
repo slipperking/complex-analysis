@@ -10,11 +10,14 @@ $ pdv(u, t) equiv k laplacian_(x y) u. $
 If the plate is in thermal equilibrium, we have $pdv(u, t) equiv laplacian u equiv 0$, or that its temperature is modeled by a harmonic function. Now artificially fix temperatures at each point along its boundary. Eventually, as time passes, the points within the material will reach thermal equilibrium, and at the same time, there is a harmonic temperature function solving the Dirichlet problem. Therefore, physically, it is very plausible for the solution to exist (and therefore also be unique from the Maximum Principle). However, the situation is considerably more complicated from a rigorous mathematical standpoint.
 
 In fact, the solution will not always exist.
-#example[
-  Let $U = DD^* = DD without {0}$,
-  $ f(z) = cases(1& quad "if" abs(z) = 1, 0& quad "if" z = 0). $
-  Then there exists no harmonic function in $DD^*$ with a continuous extension to $f$.
-]
+#lbl(
+  example[
+    Let $U = DD^* = DD without {0}$,
+    $ f(z) = cases(1& quad "if" abs(z) = 1, 0& quad "if" z = 0). $
+    Then there exists no harmonic function in $DD^*$ with a continuous extension to $f$.
+  ],
+  <ex:dirichlet-problem-solution-dne-on-punctured-disk>,
+)
 #proof[
   For the sake of contradiction, assume the existence of a solution $u$.
 
@@ -44,7 +47,7 @@ At first glance, the definition may seem a little bloated. However, we aim to pr
 Additionally, we note that the harmonicity of $u : overline(D(p, r)) -> RR$ can be weakened to simply $D(p,r)$ with continuity up to $partial D(p,r)$:
 #lbl(
   proposition[
-    Let $U subset.eq CC$ be an open region and let $f:U -> RR$ be continuous. Then $f$ is _subharmonic_ iff: whenever $overline(D(p, r)) subset.double U$ and $u in C^0 (overline(D(p, r)))$ is real-harmonic in $D(p, r)$ with
+    Let $U subset.eq CC$ be an open region and let $f:U -> RR$ be continuous. Then $f$ is _subharmonic_ iff: whenever $overline(D(p, r)) subset.double U$ and $u in C(overline(D(p, r)))$ is real-harmonic in $D(p, r)$ with
     $ f<= u quad "on" quad partial D(p,r), $
     it follows that
     $ f<= u quad "throughout" quad D(p,r). $
@@ -54,7 +57,7 @@ Additionally, we note that the harmonicity of $u : overline(D(p, r)) -> RR$ can 
 #proof[
   The reverse implication (stated condition implies @def:subharmonicity) is immediate: if the stated condition holds for $f$ and $u$ is harmonic on a neighborhood of $overline(D(p,r))$, then $u$ is also continuous on $overline(D(p,r))$ and harmonic in $D(p,r)$ and therefore the stated inequality can be obtained. Thus the stated condition implies the definition of subharmonicity.
 
-  Conversely, suppose that $f$ is subharmonic in the sense of @def:subharmonicity. Let $overline(D(p,r)) subset.double U$, and let $u in C^0(overline(D(p,r)))$ be real-harmonic in $D(p,r)$ such that $f <= u$ on $partial D(p,r)$. We must show that the stated condition holds, or that $f <= u$ throughout $D(p,r)$.
+  Conversely, suppose that $f$ is subharmonic in the sense of @def:subharmonicity. Let $overline(D(p,r)) subset.double U$, and let $u in C(overline(D(p,r)))$ be real-harmonic in $D(p,r)$ such that $f <= u$ on $partial D(p,r)$. We must show that the stated condition holds, or that $f <= u$ throughout $D(p,r)$.
 
   Fix $epsilon > 0$. Since $f-u$ is uniformly continuous on $overline(D(p,r))$ and satisfies $f-u <= 0$ on $partial D(p,r)$, there exists $rho in (0,r)$, sufficiently close to $r$, such that $f-u <= epsilon$ on $partial D(p,rho)$. Equivalently, $f <= u + epsilon$ on $partial D(p,rho)$.
 
@@ -171,7 +174,7 @@ By the Maximum Principle, we have the following characterization:
 #proof[
   + We first prove the forward direction (subharmonic #sym.arrow.double.long sub-mean-value property).
 
-    For each $overline(D(p, r)) subset.double U$, by the Poisson Integral Formula, $exists! u in C^0(overline(D(p, r))) -> RR$ harmonic in $D(p, r)$ such that $lr(u|)_(partial D(p, r)) equiv lr(f|)_(partial D(p, r))$. By @prop:subharmonicity-weakened-to-continuity-on-boundary-harmonicity-in-interior, $f <= u$ in $D(p, r)$. Therefore, $ f(p) <= u(p) = 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta. $
+    For each $overline(D(p, r)) subset.double U$, by the Poisson Integral Formula, $exists! u in C(overline(D(p, r))) -> RR$ harmonic in $D(p, r)$ such that $lr(u|)_(partial D(p, r)) equiv lr(f|)_(partial D(p, r))$. By @prop:subharmonicity-weakened-to-continuity-on-boundary-harmonicity-in-interior, $f <= u$ in $D(p, r)$. Therefore, $ f(p) <= u(p) = 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta. $
   + Conversely (sub-mean-value property #sym.arrow.double.long subharmonic), first assume @eq:subharmonic-function-sub-mean-value-property holds at all points and all valid radii such that $f$ is not subharmonic.
 
     Then there exists a disk $overline(D(p, r)) subset.double U$ and a harmonic function $u: overline(D(p, r)) -> RR$ such that $u >= f$ on $partial D(p, r)$ but $u(z_0) < f(z_0)$ for some $z_0 in D(p, r)$. Now let $g equiv f - u$.
@@ -305,7 +308,7 @@ Here, we must alert the reader to an important difference between the properties
 ]
 #lbl(
   theorem[Maximum Principle for Subharmonic Functions][
-    Let $U subset.eq CC$ be an open region and let $f in C^0 (U, RR)$ be subharmonic. Then if $exists z_0 in U$ such that for all $z in U$, $ f(z_0) >= f(z) $
+    Let $U subset.eq CC$ be an open region and let $f in C(U, RR)$ be subharmonic. Then if $exists z_0 in U$ such that for all $z in U$, $ f(z_0) >= f(z) $
     holds, then $f$ is the constant function on $U$.
   ],
   <thm:maximum-principle-for-subharmonic-functions>,
@@ -313,14 +316,14 @@ Here, we must alert the reader to an important difference between the properties
 Our proof will remain the same as @thm:maximum-modulus, aside from the sole difference that the sub-mean-value property will be used (in contrast to the mean-value property), which will not change the proof by any significant amount.
 #proof[
   Assume that $z_0$ exists. We aim to show that the set
-  $ S = {z : f(z) = f(z_0), z in U} $
+  $ S = {z : f(z) = f(z_0) and z in U} $
   is all of $U$. This is equivalent to proving that $S$ is nonempty, open, and relatively closed in $U$ by the connectivity argument.
 
   Nonemptiness follows directly from $z_0 in S$.
 
   For any sequence ${z_n} in S$ converging to some $z_infinity in U$, by the continuity of $f$,
   $ lim_(n -> oo) f(z_n) = f(lim_(n -> oo) z_n) = f(z_infinity) = f(z_0), $
-  and $z_infinity in S$. Thus, $S$ contains all of its accumulation points in $U$ and is closed.
+  and $z_infinity in S$. Thus, $S$ contains all of its accumulation points in $U$ and is closed therein.
 
   Since $U$ is open, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq V$. By the sub-mean-value property, $forall 0 < epsilon < lambda$,
   $
@@ -335,7 +338,7 @@ Our proof will remain the same as @thm:maximum-modulus, aside from the sole diff
   Since this integrand is strictly non-negative, it must vanish everywhere. Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$, giving the openness of $S$ in $U$. Therefore, $S = U$ by the connectivity argument (@thm:connected-topological-space-clopen-sets).
 ]
 #remark[
-  Note that there is no corresponding "minimum" principle as with harmonic functions: subharmonicity is sufficiently restrictive in a "one-sided" way. If one were to instead define a "superharmonic function," there would not be a maximum principle but instead, only a minimum principle. Although this is a widely recognized definition, it is somewhat unnecessary for our purposes as any superharmonic function could be trivially made into a subharmonic function by negation (from $f$ to $z |-> -f(z)$).
+  Note that there is no corresponding "minimum" principle as with harmonic functions: subharmonicity is sufficiently restrictive in a "one-sided" way. If one were to instead define a "superharmonic function," there would not be a maximum principle but instead a sole minimum principle. Although this is a widely recognized definition, it is somewhat unnecessary for our purposes as any superharmonic function could be trivially made into a subharmonic function by negation (from $f$ to $z |-> -f(z)$).
 ]
 The utility of using subharmonic functions, as opposed to harmonic or holomorphic functions is due to its flexibility as we now show:
 #lbl(
@@ -355,3 +358,16 @@ The utility of using subharmonic functions, as opposed to harmonic or holomorphi
   $
   Applying @thm:subharmonic-function-sub-mean-value-property gives the subharmonicity of $phi$.
 ]
+Before venturing into the the proof-specific definitions of the Perron Method, we remark that subharmonicity is also preserved under addition and scaling by a positive constant.
+
+We next introduce the concept of a _barrier_ in the establishing of a condition on the boundary of a domain which will help us avoid the situation previously described in @ex:dirichlet-problem-solution-dne-on-punctured-disk (a situation leading to the insolvability of the Dirichlet problem).
+#definition[Barrier][
+  Let $U subset.double CC$ be an open region and let $p in partial U$ be arbitrary. Then a function $b:U -> RR$ is said to be a _barrier_ iff the following conditions are satisfied:
+  + $b in C(overline(U))$.
+  + $b$ is subharmonic in $U$.
+  + $b(p) = 0$ and $forall z in partial U without {p}$, $b(z) != 0$.
+  + $b$ is non-positive in $overline(U)$.
+]
+Although the definition of a barrier here is somewhat technical, it is the precise definition that will later allow for the construction of a solution to the Dirichlet problem.
+
+The way in which this helps rule out the case of @ex:dirichlet-problem-solution-dne-on-punctured-disk is by analyzing the existence of these barriers.
