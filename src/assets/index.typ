@@ -2,6 +2,7 @@
 #asset("assets/site.js", read("/src/assets/site.js"))
 #asset("assets/search.css", read("/src/assets/search.css"))
 #asset("assets/search.js", read("/src/assets/search.js"))
+#asset("assets/fonts/NotoSans-VariableFont_wdth,wght.ttf", read("/src/assets/fonts/NotoSans-VariableFont_wdth,wght.ttf", encoding: none))
 #asset("assets/fonts/NotoSansMath-Regular.otf", read("/src/assets/fonts/NotoSansMath-Regular.otf", encoding: none))
 #asset("assets/fonts/FiraMath-Regular.otf", read("/src/assets/fonts/FiraMath-Regular.otf", encoding: none))
 #asset("assets/fonts/NewCMMath-Book.otf", read("/src/assets/fonts/NewCMMath-Book.otf", encoding: none))

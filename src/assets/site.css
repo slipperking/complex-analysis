@@ -1,4 +1,13 @@
 @font-face {
+  font-family: "Noto Sans";
+  src: url("fonts/NotoSans-VariableFont_wdth,wght.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62.5% 100%;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Noto Sans Math";
   src: url("fonts/NotoSansMath-Regular.otf") format("opentype");
   font-style: normal;
@@ -35,7 +44,7 @@
   --blue: #2563eb;
   --gold: #8a5a12;
   --mono: "Cascadia Mono", "Fira Code", Consolas, monospace;
-  --sans: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --sans: "Noto Sans", "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   --math:
     "Noto Sans Math",
     "Fira Math",
