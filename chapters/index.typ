@@ -4,6 +4,13 @@
 #route-folders.update(())
 #thm-counter.thm-counters.update((:))
 #thm-state.thm-stored.update(())
+#context {
+  let render-mode = render-mode.get()
+  typst-stored-figures.update(stored-figures => {
+    stored-figures.insert(render-mode, ())
+    stored-figures
+  })
+}
 
 #include "cover.typ"
 #set heading(numbering: "1.1")

@@ -90,11 +90,16 @@
   }
   canvas(..canvas-args, plot)
 }
-
+// store all figures within the wrapper into a state: "typst-stored-figures"
+#let typst-stored-figures = state("typst-stored-figures", (pdf: (), web: ()))
 #let figure-wrapper(..items, columns: auto) = context {
   let figures = items.pos()
   let column-count = if columns == auto { figures.len() } else { columns }
   if target() == "paged" {
+    typst-stored-figures.update(stored-figures => {
+      stored-figures.at("pdf") += figures
+      stored-figures
+    })
     place(
       top + center,
       float: true,
@@ -106,9 +111,15 @@
       ),
     )
   } else {
+    typst-stored-figures.update(stored-figures => {
+      stored-figures.at("web") += figures
+      stored-figures
+    })
+    // combine the figures
     let body = for fig in figures {
       fig
     }
+
     if target() == "html" or state("render-mode").get() == "web" {
       html.elem("div", attrs: (class: "figure-wrapper"), body)
     } else {

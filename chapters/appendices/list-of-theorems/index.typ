@@ -5,7 +5,6 @@
 #show: docs-appendix.with(
   title: "List of Theorems",
   route: "list-of-theorems",
-  description: "Collected theorem-like statements from the notes.",
 )
 
 #let theorem-entry-paged(web-thm, pdf-thm) = [
@@ -53,7 +52,7 @@
   thm.supplement != "Proof" and thm.supplement != "Solution" and thm.supplement != "Remark"
 }
 
-#let theorem-list() = context {
+#context {
   let web-thms = query(selector(<meta:thm-env-counter>).within(web-doc-label))
     .map(marker => marker.value)
     .filter(theorem-filter)
@@ -77,5 +76,3 @@
     }
   }
 }
-
-#theorem-list()
