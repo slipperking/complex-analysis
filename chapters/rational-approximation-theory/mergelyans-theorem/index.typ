@@ -88,7 +88,7 @@ Let $z = (f^(-1))(w)$. Then we have
 
 #lbl(
   proposition[
-    Let $a in CC$, $r > 0$, and suppose $K subset.eq D(a, r)$ is compact such that $extcomplex without K$ is connected and $diam(K) >= r / 2$. Then there is a family of holomorphic functions $cal(F) = {phi_zeta}_(zeta in D(a, r))$, where $forall zeta in D(a, r)$,
+    Let $a in CC$, $r > 0$, and suppose $K subset.double D(a, r)$ is compact such that $extcomplex without K$ is connected and $diam(K) >= r / 2$. Then there is a family of holomorphic functions $cal(F) = {phi_zeta}_(zeta in D(a, r))$, where $forall zeta in D(a, r)$,
     $
       phi_zeta:extcomplex without K -> CC,
     $
