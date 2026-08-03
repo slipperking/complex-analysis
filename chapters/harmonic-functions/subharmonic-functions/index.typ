@@ -140,7 +140,7 @@ By the Maximum Principle, we have the following characterization:
         // circle("end1", radius: 2pt, fill: black)
         // circle("end2", radius: 2pt, fill: black)
 
-        arc-through("end1", "a", "end2", stroke: 1.5pt, name: "arc", mark: (
+        arc-through("end1", "a", "end2", stroke: 2pt, name: "arc", mark: (
           end: (pos: 2%, symbol: "o", inset: 0%),
           start: (pos: 2%, symbol: "o", inset: 0%),
         ))
@@ -155,16 +155,19 @@ By the Maximum Principle, we have the following characterization:
           ),
           name: "eta-label-line",
         )
+        line((1, 1.5), "arc.40%", mark: (end: ">>", fill: black))
+        content((1, 1.5), math-rect($C$), anchor: "west", padding: 3pt)
         content(("eta-label-line.50%", 7pt, 90deg, "z_K"), math-rect($eta$))
         circle("a", radius: 2pt, fill: black)
         content("a", math-rect($a$), anchor: "south", padding: 3pt)
+        content((0, 0), math-rect($p$), anchor: "east", padding: 3pt)
       }),
       caption: [The construction of the arc subtending a positive angle on which $g(z) < M$. The striped region is $K$.],
     ),
     <fig:subharmonic-function-sub-mean-value-property-arc-construction>,
   )
 ])
-#todo[Finish drawing figure components.]
+// #todo[Finish drawing figure components.]
 #proof[
   + We first prove the forward direction (subharmonic #sym.arrow.double.long sub-mean-value property).
 
@@ -187,9 +190,25 @@ By the Maximum Principle, we have the following characterization:
     $
     which is an impossibility (the purpose of extracting a Jordan arc was to ensure a strict inequality). Therefore, $f$ must be subharmonic. #qedhere
 ]
-#theorem[
-  A real-valued function $f in C^2 (U)$ (where $U subset.eq CC$ is an open region) is subharmonic iff $laplacian f >= 0$ in $U$.
+#corollary[
+  Let $U subset.eq CC$ be an open region and let $f:U -> RR$ be holomorphic. Then $abs(f)$ is subharmonic.
 ]
+#proof[
+  Since $f$ satisfies the mean-value property on any disk $overline(D(z, epsilon))$ by @lem:holomorphic-mean-value-property, it follows that
+  $
+    abs(f(z)) = abs(1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii theta)) dtheta) <= 1 / (2 uppi) integral_0^(2 uppi) abs(f(z + epsilon ee^(ii theta))) dtheta.
+  $
+  Therefore, $abs(f)$ satisfies the sub-mean-value property and is subharmonic by @thm:subharmonic-function-sub-mean-value-property.
+]
+#remark[
+  This in no way implies $abs(f)$ is harmonic, clearly $f(z) = z$, $abs(f(z)) = abs(z)$ attains an average value on the boundary of any disk centered at $0$ that is strictly greater than its value at the center. (This applies to a wide variety of holomorphic functions.)
+]
+#lbl(
+  theorem[
+    A real-valued function $f in C^2 (U)$ (where $U subset.eq CC$ is an open region) is subharmonic iff $laplacian f >= 0$ in $U$.
+  ],
+  <thm:subharmonic-twice-continuously-differentiable-subharmonic-nonnegative-laplacian-equivalence>,
+)
 #proof[
   + Assume $f$ is subharmonic, we first show the nonnegativity of its Laplacian.
 
@@ -233,3 +252,8 @@ By the Maximum Principle, we have the following characterization:
     ]
 ]
 (Notice that convexity in the one-dimensional case for $C^2$ functions is equivalent to the condition that $f'' >= 0$ everywhere.)
+
+Here, we must alert the reader to an important difference between the properties of harmonic functions and subharmonic functions. In the former case, if we have a function $f$ which is continuous on $U$ and satisfies the mean-value property on every small disk therein, then $f$ is harmonic (and $C^oo$). This was proved in @thm:continuous-mean-value-property-solutions-are-harmonic. However, in the case of subharmonic functions, we have a continuous function $f$ which satisfies the sub-mean-value property on every small disk therein, but $f$ is not necessarily $C^2$ and the statement and application in @thm:subharmonic-twice-continuously-differentiable-subharmonic-nonnegative-laplacian-equivalence do not hold. There is also no "elliptic regularity" that holds for the general case of subharmonicity.
+#theorem[
+  Let $U subset.eq CC$ be a region. If $phi.alt: RR -> RR$ is convex and non-decreasing and $f: U -> RR$ is subharmonic, then $phi compose f$ is subharmonic.
+]

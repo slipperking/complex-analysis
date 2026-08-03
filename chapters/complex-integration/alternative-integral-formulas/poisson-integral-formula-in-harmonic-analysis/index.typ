@@ -86,7 +86,7 @@ We now establish that real-valued continuous functions satisfying the mean-value
     $ f(z_0) = 1 / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii t)) dt. $
     Then $f$ is harmonic on $U$.
   ],
-  <thm:mean-value-property-solutions-are-harmonic>,
+  <thm:continuous-mean-value-property-solutions-are-harmonic>,
 )
 
 #proof[
