@@ -180,7 +180,7 @@ By the Maximum Principle, we have the following characterization:
 
     Notice that $K$ is compact; for any sequence ${z_n}_n$ in $K$ that converges in $overline(D(p,r))$, since $g(z_n) = M$ for each $n$, by continuity, $g(z_oo) = M$ as well where $z_oo$ is the accumulation point. Then $D(p,r) without K$ is open and non-empty. Fix $z_K in partial K$. Then notice that $z_K$ is an accumulation point of $D(p,r) without K$, otherwise $K$ would contain a disk centered at $z_K$ and $z_K$ then wouldn't be a boundary point.
 
-    Let $eta' = op("dist") (z_K, partial D(p,r))$. Then $exists a in D(z_k, eta') inter (D(p,r) without K)$. Then letting $eta = abs(a - z_K)$, $overline(D(z_K, eta))$ lies within $D(p, r)$ since $eta < eta'$, and $partial D(z_K, eta) inter (D(p,r) without K)$ consists of a connected open arc $C$ containing $a$ subtending an angle $theta.alt$, on which $g(z) < M$. Then by the sub-mean-value property assumption,
+    Let $eta' = op("dist") (z_K, partial D(p,r))$. Then $exists a in D(z_k, eta') inter (D(p,r) without K)$. Then letting $eta = abs(a - z_K)$, $overline(D(z_K, eta))$ lies within $D(p, r)$ since $eta < eta'$, and $partial D(z_K, eta) inter (D(p,r) without K)$ consists of a connected open arc $C$ containing $a$ subtending an angle $theta.alt$, on which $g(z) < M$ (as described by @fig:subharmonic-function-sub-mean-value-property-arc-construction). Then by the sub-mean-value property assumption,
     $
       M &= f(z_K) - u(z_K) <= 1 / (2 uppi) integral_0^(2 uppi) f(z_K + eta ee^(ii theta)) dtheta - u(z_K) \
       &= 1 / (2 uppi) integral_0^(2 uppi) [f(z_K + eta ee^(ii theta)) - u(z_K + eta ee^(ii theta))] dtheta #tag[(by the harmonicity of $u$)]\
@@ -254,6 +254,86 @@ By the Maximum Principle, we have the following characterization:
 (Notice that convexity in the one-dimensional case for $C^2$ functions is equivalent to the condition that $f'' >= 0$ everywhere.)
 
 Here, we must alert the reader to an important difference between the properties of harmonic functions and subharmonic functions. In the former case, if we have a function $f$ which is continuous on $U$ and satisfies the mean-value property on every small disk therein, then $f$ is harmonic (and $C^oo$). This was proved in @thm:continuous-mean-value-property-solutions-are-harmonic. However, in the case of subharmonic functions, we have a continuous function $f$ which satisfies the sub-mean-value property on every small disk therein, but $f$ is not necessarily $C^2$ and the statement and application in @thm:subharmonic-twice-continuously-differentiable-subharmonic-nonnegative-laplacian-equivalence do not hold. There is also no "elliptic regularity" that holds for the general case of subharmonicity.
+#lbl(
+  theorem[Jensen's inequality][
+    Let $[a,b] subset.eq RR$ be an interval. If $phi.alt: RR -> RR$ is convex and $f: [a,b] -> RR$ is continuous,
+    then
+    $ phi.alt(1/(b-a) integral_a^b f(t) dt) <= 1/(b-a) integral_a^b phi.alt compose f(t) dt. $
+    In other words, $phi.alt([#[average of $f$ on $[a,b]$]]) <= [#[average of $phi.alt compose f$ on $[a,b]$]]$.
+  ],
+  <thm:jensens-inequality-convexity>,
+)
+#proof[
+  // For any two points $alpha, beta in RR$, let $psi : RR -> RR$ be a linear function satisfying $phi.alt(alpha) = psi(alpha)$ and $phi.alt(beta) = psi(beta)$. Concretely, we have $psi(t) = phi.alt(alpha) (t-beta) / (alpha-beta) + phi.alt(b) (t - alpha) / (beta - alpha)$.
+
+  // By the definition of convexity, we have for any $t in [alpha, beta])$,
+  // $ psi(t) >= phi.alt(t). $
+  Let the two points $alpha, beta in RR$ be arbitrary.
+
+  First assume that $phi.alt(x) = alpha x + beta$ is linear, then
+  $
+    phi.alt(1/(b - a) integral_a^b f(t) dt) & = alpha / (b-a) integral_a^b f(t) dt + beta \
+                                            & = 1 / (b-a) integral_a^b alpha f(t) dt + beta (integral_a^b dt) / (b - a) \
+                                            & = 1/ (b-a) integral_a^b (alpha f(t) + beta) dt \
+                                            & =1/(b-a) integral_a^b phi.alt compose f(t) dt.
+  $
+  Now assume the general case for $phi.alt$.
+
+  For any $x' in RR$, there exists a linear function $phi.alt_(x')$ such that $phi.alt_(x') (x) <= phi.alt(x)$ on $RR$ and $phi.alt(x') (x') = phi.alt(x')$. Then for simplicity define
+  $ f_"avg" = 1/(b - a) integral_a^b f(t) dt. $
+  Then letting $x' = f_"avg"$,
+  $
+    phi.alt(1/(b - a) integral_a^b f(t) dt) = phi.alt(f_"avg") &= phi.alt_(f_"avg") (f_"avg") = 1/(b-a) integral_a^b phi.alt_(f_"avg") compose f(t) dt \
+    &<= 1/(b-a) integral_a^b phi.alt compose f(t) dt. qedhere
+  $
+  // <= str
+]
 #theorem[
-  Let $U subset.eq CC$ be a region. If $phi.alt: RR -> RR$ is convex and non-decreasing and $f: U -> RR$ is subharmonic, then $phi compose f$ is subharmonic.
+  Let $U subset.eq CC$ be a region. If $phi.alt: RR -> RR$ is convex and non-decreasing and $f: U -> RR$ is subharmonic, then $phi.alt compose f$ is subharmonic.
+]
+#proof[
+  Let $overline(D(p, r)) subset.double U$ be arbitrary. It suffices from @thm:subharmonic-function-sub-mean-value-property to show that the mean-value property is satisfied thereon. Observe that
+  $
+    f(p) <= 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta.
+  $
+  Then, since $phi.alt$ is non-decreasing,
+  $
+    phi.alt compose f(p) & <= phi.alt(1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta) \
+    & <= 1 / (2 uppi) integral_0^(2 uppi) phi.alt compose f(p + r ee^(ii theta)) dtheta. #tag[(by @thm:jensens-inequality-convexity)]
+  $
+  Then the sub-mean-value property holds on an arbitrary disk and hence $phi.alt compose f$ is subharmonic.
+]
+#lbl(
+  theorem[Maximum Principle for Subharmonic Functions][
+    Let $U subset.eq CC$ be an open region and let $f in C^0 (U, RR)$ be subharmonic. Then if $exists z_0 in U$ such that for all $z in U$, $ f(z_0) >= f(z) $
+    holds, then $f$ is the constant function on $U$.
+  ],
+  <thm:maximum-principle-for-subharmonic-functions>,
+)
+Our proof will remain the same as @thm:maximum-modulus, aside from the sole difference that the sub-mean-value property will be used (in contrast to the mean-value property), which will not change the proof by any significant amount.
+#proof[
+  Assume that $z_0$ exists. We aim to show that the set
+  $ S = {z : f(z) = f(z_0), z in U} $
+  is all of $U$. This is equivalent to proving that $S$ is nonempty, open, and relatively closed in $U$ by the connectivity argument.
+
+  Nonemptiness follows directly from $z_0 in S$.
+
+  For any sequence ${z_n} in S$ converging to some $z_infinity in U$, by the continuity of $f$,
+  $ lim_(n -> oo) f(z_n) = f(lim_(n -> oo) z_n) = f(z_infinity) = f(z_0), $
+  and $z_infinity in S$. Thus, $S$ contains all of its accumulation points in $U$ and is closed.
+
+  Since $U$ is open, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq V$. By the sub-mean-value property, $forall 0 < epsilon < lambda$,
+  $
+    f(z) <= 1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii theta)) dtheta <= 1 / (2 uppi) integral_0^(2 uppi) f(z) dt = f(z),
+  $
+  forcing all inequalities to become inequalities:
+  $
+    f(z) = 1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii theta)) dtheta = 1 / (2 uppi) integral_0^(2 uppi) f(z) dt = f(z)
+  $
+  From the equality of the last two integrals,
+  $ integral_0^(2 uppi) [f(z) - f(z + epsilon ee^(ii t))] dt = 0. $
+  Since this integrand is strictly non-negative, it must vanish everywhere. Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$, giving the openness of $S$ in $U$. Therefore, $S = U$ by the connectivity argument (@thm:connected-topological-space-clopen-sets).
+]
+#remark[
+  Note that there is no corresponding "minimum" principle as with harmonic functions: subharmonicity is sufficiently restrictive in a "one-sided" way. If one were to instead define a "superharmonic function," there would not be a maximum principle but instead, only a minimum principle. Although this is a widely recognized definition, it is somewhat unnecessary for our purposes as any superharmonic function could be trivially made into a subharmonic function by negation (from $f$ to $z |-> -f(z)$).
 ]

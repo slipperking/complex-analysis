@@ -66,6 +66,8 @@ Generalizations of the differential and integral exist for multivariate function
 
 #definition[
   Let $U subset RR^n$ be open and let $f : U -> RR^m$. More generally, for $k in NN$, we write $f in C^k (U)$ iff all partial derivatives of $f$ of order $k$ exist and are continuous on $U$. If $K subset RR^n$ is compact, then $f in C^k (K)$ means that $f$ is $C^k$ on some open neighborhood of $K$. We write $f in C^oo (U)$ means that $f$ has derivatives of all orders and that every derivative is continuous. Equivalently, $f$ is infinitely differentiable; that is, infinitely continuously differentiable.
+
+  More formally, $C^k(U)$ itself is a function space, it is a collection of functions on which one can define additional structures (such as topologies, etc.). One will also write $C^k(U, RR)$ or $C^k(U, CC)$ to specify a codomain.
 ]
 
 There is a difference between differentiability and continuous differentiability:

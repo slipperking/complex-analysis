@@ -69,7 +69,7 @@ Let
 
 $ P(zeta, z) = (1 - abs(z)^2) / (2 uppi abs(1 - overline(z) zeta)^2) = (1 - abs(z)^2) / (2 uppi abs(zeta - z)^2), $
 
-known as the _Poisson kernel_. Then,
+known as the _Poisson kernel_ on $DD$. Then,
 
 #lbl($ u(z) = integral_0^(2 uppi) u(zeta) P(zeta, z) dt, wide abs(z)<1, $, <eq:poisson-integral-formula>)
 where $zeta = ee^(ii t)$. @eq:poisson-integral-formula is also known as the _Poisson Integral Formula_.
@@ -107,7 +107,7 @@ The expression
 
 $ P(zeta, z) = (abs(zeta)^2 - abs(z)^2) / (2 uppi abs(zeta - z)^2) $
 
-is a general form of the Poisson kernel. Then with $zeta = R ee^(ii t)$,
+is a general form of the Poisson kernel on a disk. Then with $zeta = R ee^(ii t)$,
 
 #lbl($ u(z) = integral_0^(2 uppi) u(zeta) P(zeta, z) dt. $, <eq:poisson-integral-formula-2>)
 
