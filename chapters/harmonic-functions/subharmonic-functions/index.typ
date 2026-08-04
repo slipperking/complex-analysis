@@ -412,9 +412,18 @@ We provide several important examples of barriers:
 #proof[
   Let $phi.alt : z mapsto (z - p) / (z - q)$ be a Möbius transformation mapping $p$ to $0$ and $q$ to $oo$. Note that by the theorem hypotheses, $q in.not overline(U)$. Each $z in L$ can be written as $z = p(1 - t) + q t$. Then for $z in L$, $phi.alt(z) = (t(q - p)) / ((1 - t)(p - q)) = t / (t - 1) <= 0$. Therefore, $phi.alt$ maps $L$ to $RR_(<= 0) union {oo}$ and maps $CC without L$ to $CC without (RR_(<= 0) union {1})$. The the branch cut of the square root coincides to the subtracted ray, then $ii psi$ biholomorphically maps $CC without L$ to
   $
-    ii sqrt(CC without (RR_(<= 0) union {1})) = ii {z in CC : Re z > 0} without {1} = HH^+ without {ii}.
+    ii sqrt(CC without (RR_(<= 0) union {1})) = ii ({z in CC : Re z > 0} without {1}) = HH^+ without {ii}.
   $
   Then $phi$ maps this region to $DD^* = DD without {0}$. It follows that
   $ -phi compose (ii psi(overline(U) without {p})) subset.eq DD^* $ and extends to $p$ continuously by $ -phi compose (ii psi(p)) = -phi(0) = 1. $
   Then by @thm:barrier-existence-for-bounded-region-at-point-of-furthest-modulus, we find that $b_DD(w) = Re w - 1$ is a barrier on $DD$, thus set $b:z |-> b_DD compose (-phi compose (ii psi(z)))$. By injectivity, we have @itm:barrier-exclusive-vanishing; @itm:barrier-continuity and @itm:barrier-non-positivity hold trivially. Lastly, subharmonicity (@itm:barrier-subharmonicity) is satisfied as $b$ is the real part of some holomorphic function.
 ]
+The exterior segment condition in @thm:barrier-exterior-segment yields barriers for a broad class of domains. In particular, any domain bounded by a $C^1$ Jordan curve admits a barrier at every point of its boundary (see below) though this regularity is sufficient but far from necessary. Elementary examples with corners, such as squares and rectangles, likewise admit a barrier at every boundary point, as they too satisfy the exterior segment condition.
+// insert proof of c1 stuff here
+#theorem[
+
+]
+#proof[
+
+]
+Conversely, it is immediate that @thm:barrier-exterior-segment does not apply to $DD^*$: at the origin there is no segment emanating from $0$ that remains disjoint from $DD^*$. We now provide a proof that there is no barrier for $DD^*$ at the origin.
