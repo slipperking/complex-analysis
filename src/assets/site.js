@@ -105,7 +105,7 @@
     }
   });
 
-  function fillTheoremLeaders(root) {
+  function fillReferenceLeaders(root) {
     root = root || document;
     if (!root.querySelectorAll) return;
     var ruler = document.createElement("span");
@@ -115,10 +115,10 @@
     var dotWidth = Math.max(1, ruler.getBoundingClientRect().width / 10);
     ruler.remove();
 
-    root.querySelectorAll(".theorem-list-entry").forEach(function (entry) {
-      var dots = entry.querySelector(".theorem-list-dots");
-      var marker = entry.querySelector(".theorem-list-end");
-      var page = entry.querySelector(".theorem-list-page");
+    root.querySelectorAll(".reference-list-entry").forEach(function (entry) {
+      var dots = entry.querySelector(".reference-list-dots");
+      var marker = entry.querySelector(".reference-list-end");
+      var page = entry.querySelector(".reference-list-page");
       if (!dots || !marker || !page) return;
 
       dots.textContent = "";
@@ -798,7 +798,7 @@
     function preparePreviewContent(root) {
       if (!root) return;
       upgradeMathLinks(root);
-      fillTheoremLeaders(root);
+      fillReferenceLeaders(root);
       setupLocalTocRowNavigation(root);
       if (setupReferenceTooltips.bindInto) {
         setupReferenceTooltips.bindInto(root);
@@ -1072,7 +1072,7 @@
     if (!root) return;
     upgradeMathLinks(root);
     normalizeDisplayMath(root);
-    fillTheoremLeaders(root);
+    fillReferenceLeaders(root);
     setupLocalTocRowNavigation(root);
     if (setupReferenceTooltips.bindInto) {
       setupReferenceTooltips.bindInto(root);
@@ -1144,13 +1144,13 @@
   addEventListener("afterprint", restoreSolutionsAfterPrint);
   addEventListener("beforeprint", applyPrintThemeOverride);
   addEventListener("afterprint", clearPrintThemeOverride);
-  fillTheoremLeaders(document);
+  fillReferenceLeaders(document);
   addEventListener("resize", function () {
-    fillTheoremLeaders(document);
+    fillReferenceLeaders(document);
     document.querySelectorAll(".display-math").forEach(placeEquationTagGroups);
   });
   addEventListener("load", function () {
-    fillTheoremLeaders(document);
+    fillReferenceLeaders(document);
     document.querySelectorAll(".display-math").forEach(placeEquationTagGroups);
   });
 })();

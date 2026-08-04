@@ -38,13 +38,13 @@
   let pdf-link-loc = if pdf-thm == none { web-thm.loc } else { pdf-thm.loc }
   let pdf-page = if pdf-thm == none { [?] } else { pdf-thm.loc.page() }
 
-  html.elem("p", attrs: (class: "theorem-list-entry"), {
-    link(web-thm.loc, html.elem("span", attrs: (class: "theorem-list-title"), {
+  html.elem("p", attrs: (class: "reference-list-entry"), {
+    link(web-thm.loc, html.elem("span", attrs: (class: "reference-list-title"), {
       theorem-heading(web-thm)
-      html.elem("span", attrs: (class: "theorem-list-end"), [])
+      html.elem("span", attrs: (class: "reference-list-end"), [])
     }))
-    html.elem("span", attrs: (class: "theorem-list-dots"), [])
-    link(pdf-link-loc, html.elem("span", attrs: (class: "theorem-list-page"), [#pdf-page]))
+    html.elem("span", attrs: (class: "reference-list-dots"), [])
+    link(pdf-link-loc, html.elem("span", attrs: (class: "reference-list-page"), [#pdf-page]))
   })
 }
 
@@ -61,7 +61,7 @@
     .filter(theorem-filter)
 
   if render-mode.get() == "web" {
-    html.elem("div", attrs: (id: "theorem-list", class: "theorem-list"), {
+    html.elem("div", attrs: (id: "reference-list", class: "reference-list"), {
       for i in range(web-thms.len()) {
         let web-thm = web-thms.at(i)
         let pdf-thm = pdf-thms.at(i, default: none)

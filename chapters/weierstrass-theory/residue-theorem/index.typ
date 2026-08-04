@@ -498,8 +498,8 @@ Residues are extremely important as they allow for simple evaluation of definite
 )
 
 #figure-wrapper(
-  [
-    #figure(
+  lbl(
+    figure(
       {
         let inner-rad = 1
         let outer-rad = 3.5
@@ -550,9 +550,9 @@ Residues are extremely important as they allow for simple evaluation of definite
         })
       },
       caption: [An indented wedge contour with orientation marked.],
-    )
-    <fig:indented-wedge-contour>
-  ],
+    ),
+    <fig:indented-wedge-contour>,
+  ),
 )
 #solution[to @ex:integral-x-alpha-1-x-beta-dx][
   Let $f(z) = z^alpha / (1 + z^beta)$ and let $-uppi < Arg(z) <= uppi$ in the principal branches of $z^alpha = ee^(alpha Log(z))$ and $z^beta = ee^(beta Log(z))$. Then except for at the zeros of $1 + z^beta$, $f$ is holomorphic.

@@ -8,11 +8,12 @@
 
 #let figure-entry-paged(web-fig, pdf-fig) = [
   #link(
-    pdf-fig.loc,
+    pdf-fig.location(),
     {
-      if pdf-fig.fields.keys().contains("label") {
-        ref(pdf-fig.label)
+      if pdf-fig.has("label") {
+        strong(ref(pdf-fig.label))
       }
+      [: #pdf-fig.caption.body]
       sym.wj
       sym.space.nobreak
       (
@@ -26,50 +27,65 @@
       sym.space.nobreak
       paged-link-with-html-indicator(
         link(
-          pdf-fig.loc,
-          [#pdf-fig.loc.page()],
+          pdf-fig.location(),
+          [#pdf-fig.location().page()],
         ),
-        web-fig.loc,
+        web-fig.location(),
       )
     },
   )\
 ]
 
-#let figure-entry-web(web-fig, pdf-fig) = {
-  let pdf-link-loc = if pdf-fig == none { web-fig.loc } else { pdf-fig.loc }
-  let pdf-page = if pdf-fig == none { [?] } else { pdf-fig.loc.page() }
-
-  html.elem("p", attrs: (class: "theorem-list-entry"), {
-    link(web-fig.loc, html.elem("span", attrs: (class: "theorem-list-title"), {
-      if web-fig.fields.keys().contains("label") {
-        ref(web-fig.label)
-      }
-      html.elem("span", attrs: (class: "theorem-list-end"), [])
-    }))
-    html.elem("span", attrs: (class: "theorem-list-dots"), [])
-    if pdf-fig.fields.keys().contains("label") {
-      link(ref(pdf-fig.label), html.elem("span", attrs: (class: "theorem-list-page"), [#pdf-page]))
-    }
+#let figure-link-options(web-fig, pdf-fig) = {
+  let pdf-fig = if pdf-fig == none { web-fig } else { pdf-fig }
+  html.elem("math", attrs: (class: "typst-multi-label-list"), {
+    link(pdf-fig.location(), [PDF])
+    link(web-fig.location(), [HTML])
   })
 }
 
-// #context {
-//   let web-figs = typst-stored-figures.get().web
-//   let pdf-figs = typst-stored-figures.get().pdf
+#let figure-entry-web(web-fig, pdf-fig) = {
+  let pdf-link-loc = if pdf-fig == none { web-fig.location() } else { pdf-fig.location() }
+  let pdf-page = if pdf-fig == none { [?] } else { pdf-fig.location().page() }
 
-//   if render-mode.get() == "web" {
-//     html.elem("div", attrs: (id: "theorem-list", class: "theorem-list"), {
-//       for i in range(web-figs.len()) {
-//         let web-fig = web-figs.at(i)
-//         let pdf-fig = pdf-figs.at(i, default: none)
-//         figure-entry-web(web-fig, pdf-fig)
-//       }
-//     })
-//   } else {
-//     for i in range(web-figs.len()) {
-//       let web-fig = web-figs.at(i)
-//       let pdf-fig = pdf-figs.at(i, default: none)
-//       figure-entry-paged(web-fig, pdf-fig)
-//     }
-//   }
-// }
+  html.elem("p", attrs: (class: "reference-list-entry"), {
+    html.elem("span", attrs: (class: "reference-list-title"), {
+      html.elem("span", attrs: (class: "reference-list-figure-label"), {
+        if web-fig.has("label") {
+          ref(web-fig.label)
+        }
+        figure-link-options(web-fig, pdf-fig)
+      })
+      html.elem("span", attrs: (class: "reference-list-caption"), [:  #web-fig.caption.body])
+      html.elem("span", attrs: (class: "reference-list-end"), [])
+    })
+    html.elem("span", attrs: (class: "reference-list-dots"), [])
+    link(pdf-link-loc, html.elem("span", attrs: (class: "reference-list-page"), [#pdf-page]))
+    figure-link-options(web-fig, pdf-fig)
+  })
+}
+
+#let figure-filter(fig) = fig.kind != "thm-env" and fig.caption != none and fig.has("label")
+
+#context {
+  // Querying figures is more reliable than accumulating the contents of
+  // figure-wrapper in state: a queried figure retains its label and location.
+  let web-figs = query(selector(figure).within(web-doc-label)).filter(figure-filter)
+  let pdf-figs = query(selector(figure).within(pdf-doc-label)).filter(figure-filter)
+
+  if render-mode.get() == "web" {
+    html.elem("div", attrs: (id: "figure-list", class: "reference-list"), {
+      for i in range(web-figs.len()) {
+        let web-fig = web-figs.at(i)
+        let pdf-fig = pdf-figs.at(i, default: none)
+        figure-entry-web(web-fig, pdf-fig)
+      }
+    })
+  } else {
+    for i in range(pdf-figs.len()) {
+      let pdf-fig = pdf-figs.at(i)
+      let web-fig = web-figs.at(i, default: pdf-fig)
+      figure-entry-paged(web-fig, pdf-fig)
+    }
+  }
+}

@@ -596,41 +596,45 @@ math {
   margin-bottom: 0;
 }
 
-.theorem-list-entry {
+.reference-list-entry {
   display: block;
   position: relative;
   margin: 0 0 0.35rem;
   line-height: 1.45;
 }
 
-.theorem-list-entry::after {
+.reference-list-entry::after {
   content: "";
   display: block;
   clear: both;
 }
 
-.pdf-theorem-data {
+.pdf-reference-data {
   display: none;
 }
 
-.theorem-list-link {
+.reference-list-link {
   color: var(--ink);
   text-decoration: none;
 }
 
-.theorem-list-title {
+.reference-list-title {
   font-weight: 650;
   white-space: normal;
 }
 
-.theorem-list-end {
+.reference-list-caption {
+  font-weight: 400;
+}
+
+.reference-list-end {
   display: inline-block;
   width: 0;
   height: 1em;
   vertical-align: baseline;
 }
 
-.theorem-list-dots {
+.reference-list-dots {
   display: inline;
   overflow: hidden;
   color: var(--muted);
@@ -638,13 +642,13 @@ math {
   white-space: nowrap;
 }
 
-.theorem-list-page {
+.reference-list-page {
   font-variant-numeric: tabular-nums;
   float: right;
   white-space: nowrap;
 }
 
-.theorem-list-pdf {
+.reference-list-pdf {
   position: absolute;
   top: 0;
   right: 0;
