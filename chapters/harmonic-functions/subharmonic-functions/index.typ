@@ -375,26 +375,25 @@ Although the definition of a barrier here is somewhat technical, it is the preci
 
 The way in which this helps rule out the case of @ex:dirichlet-problem-solution-dne-on-punctured-disk is by analyzing the existence of these barriers.
 
-We provide several examples of barriers:
+We provide several important examples of barriers:
 #lbl(
-  example[
-    Let $U = DD$ and $p = 1 in partial U$. Then show that $b(z) = Re z - 1$ is a barrier for $U$ at $p$.
+  theorem[
+    A barrier exists at every point $p in partial DD$ on $DD$ by $ b:z mapsto Re (z / p) - 1. $
   ],
-  <ex:barrier-unit-disk-x-minus-1>,
+  <thm:barrier-existence-for-unit-disk>,
 )
-#solution[to @ex:barrier-unit-disk-x-minus-1][
+#proof[
   Obviously @itm:barrier-continuity, @itm:barrier-exclusive-vanishing, and @itm:barrier-non-positivity are true. Moreover, $b$ is harmonic (real part of a holomorphic function) and thus subharmonic (proving @itm:barrier-subharmonicity).
 ]
-Therefore, barriers exist at every point for $U = DD$.
 #lbl(
-  example[
-    Let $U subset CC$ be a bounded region and let $p in partial U$ be the point with greatest modulus. Then $overline(U) subset.eq overline(D(0,abs(p)))$. Let $theta.alt = Arg p$, where $Arg$ is the principal branch (restricted to $[0, 2 uppi)$). Then show that
+  theorem[
+    Let $U subset CC$ be a bounded region and let $p in partial U$ be the point with greatest modulus. Then $overline(U) subset.eq overline(D(0,abs(p)))$. Let $theta.alt = Arg p$, where $Arg$ is the principal branch (restricted to $[0, 2 uppi)$). Then we have that
     $ f:z |-> Re(ee^(-ii theta.alt) z) - abs(p) $
     serves as a barrier for $U$ at $p$.
   ],
-  <ex:barrier-bounded-region-at-point-of-furthest-modulus>,
+  <thm:barrier-existence-for-bounded-region-at-point-of-furthest-modulus>,
 )
-#solution[to @ex:barrier-bounded-region-at-point-of-furthest-modulus][
+#proof[
   By the condition on $p$, $abs(ee^(-ii theta.alt) z) <= abs(p)$ must hold for all $z in overline(U)$, which implies @itm:barrier-non-positivity. For $f$ to vanish at $z$, we must have
   $
     Re(ee^(-ii theta.alt) z) = abs(p).
@@ -405,11 +404,17 @@ Therefore, barriers exist at every point for $U = DD$.
   theorem[
     Let $U subset.eq CC$ be open and let $p in partial U$. Assume there exists $q in CC without U$ and a closed line segment $L$ of positive length such that $ L inter overline(U) = {p}. $
     Then there exists a barrier for $U$ at $p$, given by
-    $ z mapsto sqrt((z - p) / (z - q)), $
-    where we utilize the principal branch square root.
+    $ b:z |-> Re[-phi compose (ii psi(z))] - 1, $
+    where $ phi(z) = (z - ii) / (z + ii) $ is the Cayley transform and $ psi(z) = sqrt((z - p) / (z - q)) $ utilizes the principal branch square root.
   ],
   <thm:barrier-exterior-segment>,
 )
 #proof[
-  Let $phi.alt : z mapsto (z - p) / (z - q)$ be a Möbius transformation mapping $p$ to $0$ and $q$ to $oo$. Note that by the theorem hypotheses, $q in.not overline(U)$. Each $z in L$ can be written as $z = p(1 - t) + q t$. Then for $z in L$, $phi.alt(z) = (t(q - p)) / ((1 - t)(p - q)) = t / (t - 1) <= 0$. Therefore, $phi.alt$ maps $L$ to $RR_(<= 0) union {oo}$.
+  Let $phi.alt : z mapsto (z - p) / (z - q)$ be a Möbius transformation mapping $p$ to $0$ and $q$ to $oo$. Note that by the theorem hypotheses, $q in.not overline(U)$. Each $z in L$ can be written as $z = p(1 - t) + q t$. Then for $z in L$, $phi.alt(z) = (t(q - p)) / ((1 - t)(p - q)) = t / (t - 1) <= 0$. Therefore, $phi.alt$ maps $L$ to $RR_(<= 0) union {oo}$ and maps $CC without L$ to $CC without (RR_(<= 0) union {1})$. The the branch cut of the square root coincides to the subtracted ray, then $ii psi$ biholomorphically maps $CC without L$ to
+  $
+    ii sqrt(CC without (RR_(<= 0) union {1})) = ii {z in CC : Re z > 0} without {1} = HH^+ without {ii}.
+  $
+  Then $phi$ maps this region to $DD^* = DD without {0}$. It follows that
+  $ -phi compose (ii psi(overline(U) without {p})) subset.eq DD^* $ and extends to $p$ continuously by $ -phi compose (ii psi(p)) = -phi(0) = 1. $
+  Then by @thm:barrier-existence-for-bounded-region-at-point-of-furthest-modulus, we find that $b_DD(w) = Re w - 1$ is a barrier on $DD$, thus set $b:z |-> b_DD compose (-phi compose (ii psi(z)))$. By injectivity, we have @itm:barrier-exclusive-vanishing; @itm:barrier-continuity and @itm:barrier-non-positivity hold trivially. Lastly, subharmonicity (@itm:barrier-subharmonicity) is satisfied as $b$ is the real part of some holomorphic function.
 ]
