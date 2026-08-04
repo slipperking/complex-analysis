@@ -262,7 +262,7 @@ Here, we must alert the reader to an important difference between the properties
     Let $[a,b] subset.eq RR$ be an interval. If $phi.alt: RR -> RR$ is convex and $f: [a,b] -> RR$ is continuous,
     then
     $ phi.alt(1/(b-a) integral_a^b f(t) dt) <= 1/(b-a) integral_a^b phi.alt compose f(t) dt. $
-    In other words, $phi.alt([#[average of $f$ on $[a,b]$]]) <= [#[average of $phi.alt compose f$ on $[a,b]$]]$.
+    In other words, $ phi.alt([#[average of $f$ on $[a,b]$]]) <= [#[average of $phi.alt compose f$ on $[a,b]$]]. $
   ],
   <thm:jensens-inequality-convexity>,
 )
@@ -361,13 +361,55 @@ The utility of using subharmonic functions, as opposed to harmonic or holomorphi
 Before venturing into the the proof-specific definitions of the Perron Method, we remark that subharmonicity is also preserved under addition and scaling by a positive constant.
 
 We next introduce the concept of a _barrier_ in the establishing of a condition on the boundary of a domain which will help us avoid the situation previously described in @ex:dirichlet-problem-solution-dne-on-punctured-disk (a situation leading to the insolvability of the Dirichlet problem).
-#definition[Barrier][
-  Let $U subset.double CC$ be an open region and let $p in partial U$ be arbitrary. Then a function $b:U -> RR$ is said to be a _barrier_ iff the following conditions are satisfied:
-  + $b in C(overline(U))$.
-  + $b$ is subharmonic in $U$.
-  + $b(p) = 0$ and $forall z in partial U without {p}$, $b(z) != 0$.
-  + $b$ is non-positive in $overline(U)$.
-]
+#lbl(
+  definition[Barrier][
+    Let $U subset.double CC$ be an open region and let $p in partial U$ be arbitrary. Then a function $b:overline(U) -> RR$ is said to be a _barrier_ iff the following conditions are satisfied:
+    + $b in C(overline(U))$. #enum-lbl(<itm:barrier-continuity>)
+    + $b$ is subharmonic in $U$. #enum-lbl(<itm:barrier-subharmonicity>)
+    + $b(p) = 0$ and $forall z in partial U without {p}$, $b(z) != 0$. #enum-lbl(<itm:barrier-exclusive-vanishing>)
+    + $b$ is non-positive in $overline(U)$.#enum-lbl(<itm:barrier-non-positivity>)
+  ],
+  <def:barrier>,
+)
 Although the definition of a barrier here is somewhat technical, it is the precise definition that will later allow for the construction of a solution to the Dirichlet problem.
 
 The way in which this helps rule out the case of @ex:dirichlet-problem-solution-dne-on-punctured-disk is by analyzing the existence of these barriers.
+
+We provide several examples of barriers:
+#lbl(
+  example[
+    Let $U = DD$ and $p = 1 in partial U$. Then show that $b(z) = Re z - 1$ is a barrier for $U$ at $p$.
+  ],
+  <ex:barrier-unit-disk-x-minus-1>,
+)
+#solution[to @ex:barrier-unit-disk-x-minus-1][
+  Obviously @itm:barrier-continuity, @itm:barrier-exclusive-vanishing, and @itm:barrier-non-positivity are true. Moreover, $b$ is harmonic (real part of a holomorphic function) and thus subharmonic (proving @itm:barrier-subharmonicity).
+]
+Therefore, barriers exist at every point for $U = DD$.
+#lbl(
+  example[
+    Let $U subset CC$ be a bounded region and let $p in partial U$ be the point with greatest modulus. Then $overline(U) subset.eq overline(D(0,abs(p)))$. Let $theta.alt = Arg p$, where $Arg$ is the principal branch (restricted to $[0, 2 uppi)$). Then show that
+    $ f:z |-> Re(ee^(-ii theta.alt) z) - abs(p) $
+    serves as a barrier for $U$ at $p$.
+  ],
+  <ex:barrier-bounded-region-at-point-of-furthest-modulus>,
+)
+#solution[to @ex:barrier-bounded-region-at-point-of-furthest-modulus][
+  By the condition on $p$, $abs(ee^(-ii theta.alt) z) <= abs(p)$ must hold for all $z in overline(U)$, which implies @itm:barrier-non-positivity. For $f$ to vanish at $z$, we must have
+  $
+    Re(ee^(-ii theta.alt) z) = abs(p).
+  $
+  Therefore, $Im(ee(-ii theta.alt) z) = 0$, which implies that $z = p$. Thus @itm:barrier-exclusive-vanishing is satisfied. Moreover, @itm:barrier-continuity trivially holds and @itm:barrier-subharmonicity holds by harmonicity (real part of a holomorphic function).
+]
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be open and let $p in partial U$. Assume there exists $q in CC without U$ and a closed line segment $L$ of positive length such that $ L inter overline(U) = {p}. $
+    Then there exists a barrier for $U$ at $p$, given by
+    $ z mapsto sqrt((z - p) / (z - q)), $
+    where we utilize the principal branch square root.
+  ],
+  <thm:barrier-exterior-segment>,
+)
+#proof[
+  Let $phi.alt : z mapsto (z - p) / (z - q)$ be a Möbius transformation mapping $p$ to $0$ and $q$ to $oo$. Note that by the theorem hypotheses, $q in.not overline(U)$. Each $z in L$ can be written as $z = p(1 - t) + q t$. Then for $z in L$, $phi.alt(z) = (t(q - p)) / ((1 - t)(p - q)) = t / (t - 1) <= 0$. Therefore, $phi.alt$ maps $L$ to $RR_(<= 0) union {oo}$.
+]
