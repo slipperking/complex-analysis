@@ -313,7 +313,7 @@ Here, we must alert the reader to an important difference between the properties
   ],
   <thm:maximum-principle-for-subharmonic-functions>,
 )
-Our proof will remain the same as @thm:maximum-modulus, aside from the sole difference that the sub-mean-value property will be used (in contrast to the mean-value property), which will not change the proof by any significant amount.
+Our proof will remain the same as @thm:maximum-modulus, aside from the sole difference that the sub-mean-value property will be used (in contrast to the mean-value property), which will turn out to be the sufficient condition (as opposed to the small circle mean-value property).
 #proof[
   Assume that $z_0$ exists. We aim to show that the set
   $ S = {z : f(z) = f(z_0) and z in U} $
@@ -418,12 +418,55 @@ We provide several important examples of barriers:
   $ -phi compose (ii psi(overline(U) without {p})) subset.eq DD^* $ and extends to $p$ continuously by $ -phi compose (ii psi(p)) = -phi(0) = 1. $
   Then by @thm:barrier-existence-for-bounded-region-at-point-of-furthest-modulus, we find that $b_DD(w) = Re w - 1$ is a barrier on $DD$, thus set $b:z |-> b_DD compose (-phi compose (ii psi(z)))$. By injectivity, we have @itm:barrier-exclusive-vanishing; @itm:barrier-continuity and @itm:barrier-non-positivity hold trivially. Lastly, subharmonicity (@itm:barrier-subharmonicity) is satisfied as $b$ is the real part of some holomorphic function.
 ]
-The exterior segment condition in @thm:barrier-exterior-segment yields barriers for a broad class of domains. In particular, any domain bounded by a $C^1$ Jordan curve admits a barrier at every point of its boundary (see below) though this regularity is sufficient but far from necessary. Elementary examples with corners, such as squares and rectangles, likewise admit a barrier at every boundary point, as they too satisfy the exterior segment condition.
-// insert proof of c1 stuff here
-#theorem[
-
-]
+The exterior segment condition in @thm:barrier-exterior-segment yields barriers for a broad class of domains. In particular, any domain bounded by a finite disjoint union of regular $C^1$ Jordan curves admits a barrier at every point of its boundary (see below), though this regularity is sufficient but far from necessary. Elementary examples with corners, such as squares and rectangles, likewise admit a barrier at every boundary point, as they too satisfy the exterior segment condition.
+#lbl(
+  theorem[
+    Let $U subset CC$ be a bounded region such that $partial U$ is a finite disjoint union of $C^1$ Jordan (simple, closed) curves. Then $U$ satisfies the exterior segment condition at every point of $partial U$. Consequently, $U$ admits a barrier at every point of its boundary.
+  ],
+  <thm:barrier-c1-boundary-exterior-segment>,
+)
 #proof[
+  Fix $p in partial U$, and let $gamma$ be a $C^1$ parameterization of the boundary component containing $p$ (with a nowhere-vanishing derivative), with $gamma(0) = p$. Define the transformation
+  $
+    phi.alt(w) = (overline(gamma'(0)) / abs(gamma'(0))) (w - p).
+  $
+  Choose $phi$ to be either $phi.alt$ or $w mapsto overline(phi.alt(w))$, so that $phi(U)$ lies locally above its boundary curve at $0$. Set $tilde(U) = phi(U)$ and $tilde(gamma) = phi compose gamma$. Then $tilde(gamma)(0) = 0$ and $tilde(gamma)'(0) = abs(gamma'(0)) in RR_(> 0)$. Write $tilde(gamma)(t) = u(t) + ii v(t)$. Thus $u'(0) > 0$ and $v'(0) = 0$.
 
+  By the inverse function theorem applied to $u$, there exists an open interval $(-delta, delta)$ centered at $0$ and an open interval $I$ such that $u: (-delta, delta) -> I$ is a $C^1$ bijection with a $C^1$ inverse $u^(-1): I -> (-delta, delta)$. Choose $a > 0$ such that $(-a, a) subset I$, and define
+  $
+    h(x) = v(u^(-1) (x)) quad (x in (-a, a)).
+  $
+  Then
+  $
+    tilde(gamma)(u^(-1) (x)) = x + ii h(x),
+  $
+  while $h(0) = 0$ and $h'(0) = (v'(0)) / (u'(0)) = 0$. Let
+  $
+    K = partial tilde(U) without tilde(gamma)((-delta, delta)).
+  $
+  Hence $K$ is a closed subset of the compact set $partial tilde(U)$, and is therefore compact. Since $0 in.not K$, the continuous function $z mapsto abs(z)$ attains a strictly positive minimum on $K$:
+  $
+    d = min_(z in K) abs(z) > 0.
+  $
+  Set $epsilon = 1 / 2 min{a, d}$. Then $D(0, epsilon)$ cannot meet $K$, and every point of this disk has real part in $(-a, a)$. Consequently,
+  $
+    partial tilde(U) inter D(0, epsilon) = {x + ii h(x) : x in (-a, a)} inter D(0, epsilon).
+  $
+  Thus
+  $
+    overline(tilde(U)) inter D(0, epsilon) subset.eq {x + ii y : y >= h(x)}.
+  $
+  Choose $0 < s < epsilon$. Since $h(0) = 0$, the line segment
+  $
+    L = {-ii t : 0 <= t <= s}
+  $
+  satisfies
+  $
+    L inter overline(tilde(U)) = {0}.
+  $
+  Applying $phi^(-1)$ to $L$ yields a closed line segment of positive length through $p$ whose remaining points lie in $CC without overline(U)$. Hence the exterior segment condition holds at $p$. Since $p$ was arbitrary, @thm:barrier-exterior-segment yields a barrier at every point of $partial U$.
 ]
 Conversely, it is immediate that @thm:barrier-exterior-segment does not apply to $DD^*$: at the origin there is no segment emanating from $0$ that remains disjoint from $DD^*$. We now provide a proof that there is no barrier for $DD^*$ at the origin.
+#proposition[
+  There exists no real-valued function $b in C(overline(DD))$ that serves as a barrier on $DD^* = DD without {0}$ at the origin.
+]
