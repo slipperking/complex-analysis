@@ -58,6 +58,7 @@ In preparation of the result, we first introduce the mean-value property of func
   $
   From the equality of the last two integrals,
   $ integral_0^(2 uppi) [abs(f(z)) - abs(f(z + epsilon ee^(ii t)))] dt = 0. $
+  #todo[Justify integrand vanishing by continuity.]
   Since this integrand is strictly non-negative, we have equality. Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$. Therefore, $S$ is open and $S = V$ as it is a nonempty clopen subset (@thm:connected-topological-space-clopen-sets). Since $V$ is nonempty and open, it has an accumulation point in $U$. It follows that $f(z) equiv f(z_0)$ over $U$ by the Identity Theorem (@thm:identity).
 ]
 

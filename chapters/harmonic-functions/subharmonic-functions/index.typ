@@ -267,10 +267,6 @@ Here, we must alert the reader to an important difference between the properties
   <thm:jensens-inequality-convexity>,
 )
 #proof[
-  // For any two points $alpha, beta in RR$, let $psi : RR -> RR$ be a linear function satisfying $phi.alt(alpha) = psi(alpha)$ and $phi.alt(beta) = psi(beta)$. Concretely, we have $psi(t) = phi.alt(alpha) (t-beta) / (alpha-beta) + phi.alt(b) (t - alpha) / (beta - alpha)$.
-
-  // By the definition of convexity, we have for any $t in [alpha, beta])$,
-  // $ psi(t) >= phi.alt(t). $
   Let the two points $alpha, beta in RR$ be arbitrary.
 
   First assume that $phi.alt(x) = alpha x + beta$ is linear, then
@@ -282,14 +278,13 @@ Here, we must alert the reader to an important difference between the properties
   $
   Now assume the general case for $phi.alt$.
 
-  For any $x' in RR$, there exists a linear function $phi.alt_(x')$ such that $phi.alt_(x') (x) <= phi.alt(x)$ on $RR$ and $phi.alt(x') (x') = phi.alt(x')$. Then for simplicity define
+  For any $x' in RR$, there exists a linear function $phi.alt_(x')$ such that $phi.alt_(x') (x) <= phi.alt(x)$ on $RR$ and $phi.alt_(x') (x') = phi.alt(x')$. Then for simplicity define
   $ f_"avg" = 1/(b - a) integral_a^b f(t) dt. $
   Then letting $x' = f_"avg"$,
   $
     phi.alt(1/(b - a) integral_a^b f(t) dt) = phi.alt(f_"avg") &= phi.alt_(f_"avg") (f_"avg") = 1/(b-a) integral_a^b phi.alt_(f_"avg") compose f(t) dt \
     &<= 1/(b-a) integral_a^b phi.alt compose f(t) dt. qedhere
   $
-  // <= str
 ]
 #theorem[
   Let $U subset.eq CC$ be a region. If $phi.alt: RR -> RR$ is convex and non-decreasing and $f: U -> RR$ is subharmonic, then $phi.alt compose f$ is subharmonic.
@@ -325,7 +320,7 @@ Our proof will remain the same as @thm:maximum-modulus, aside from the sole diff
   $ lim_(n -> oo) f(z_n) = f(lim_(n -> oo) z_n) = f(z_infinity) = f(z_0), $
   and $z_infinity in S$. Thus, $S$ contains all of its accumulation points in $U$ and is closed therein.
 
-  Since $U$ is open, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq V$. By the sub-mean-value property, $forall 0 < epsilon < lambda$,
+  Since $U$ is open, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq U$. By the sub-mean-value property, $forall 0 < epsilon < lambda$,
   $
     f(z) <= 1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii theta)) dtheta <= 1 / (2 uppi) integral_0^(2 uppi) f(z) dt = f(z),
   $
@@ -335,6 +330,7 @@ Our proof will remain the same as @thm:maximum-modulus, aside from the sole diff
   $
   From the equality of the last two integrals,
   $ integral_0^(2 uppi) [f(z) - f(z + epsilon ee^(ii t))] dt = 0. $
+  #todo[Justify integrand vanishing by continuity.]
   Since this integrand is strictly non-negative, it must vanish everywhere. Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$, giving the openness of $S$ in $U$. Therefore, $S = U$ by the connectivity argument (@thm:connected-topological-space-clopen-sets).
 ]
 #remark[
@@ -428,7 +424,7 @@ The exterior segment condition in @thm:barrier-exterior-segment yields barriers 
 #proof[
   Fix $p in partial U$, and let $gamma$ be a $C^1$ parameterization of the boundary component containing $p$ (with a nowhere-vanishing derivative), with $gamma(0) = p$. Define the transformation
   $
-    phi.alt(w) = (overline(gamma'(0)) / abs(gamma'(0))) (w - p).
+    phi.alt(w) = overline(gamma'(0)) / abs(gamma'(0)) (w - p).
   $
   Choose $phi$ to be either $phi.alt$ or $w mapsto overline(phi.alt(w))$, so that $phi(U)$ lies locally above its boundary curve at $0$. Set $tilde(U) = phi(U)$ and $tilde(gamma) = phi compose gamma$. Then $tilde(gamma)(0) = 0$ and $tilde(gamma)'(0) = abs(gamma'(0)) in RR_(> 0)$. Write $tilde(gamma)(t) = u(t) + ii v(t)$. Thus $u'(0) > 0$ and $v'(0) = 0$.
 
@@ -469,4 +465,28 @@ The exterior segment condition in @thm:barrier-exterior-segment yields barriers 
 Conversely, it is immediate that @thm:barrier-exterior-segment does not apply to $DD^*$: at the origin there is no segment emanating from $0$ that remains disjoint from $DD^*$. We now provide a proof that there is no barrier for $DD^*$ at the origin.
 #proposition[
   There exists no real-valued function $b in C(overline(DD))$ that serves as a barrier on $DD^* = DD without {0}$ at the origin.
+]
+#proof[
+  For contradiction, assume that such a barrier $b in C(overline(DD))$ exists. Let
+  $
+    hat(b)(z) = 1 / (2 uppi) integral_0^(2 uppi) b(z ee^(ii theta)) dtheta,
+  $
+  which is a radial function as
+  $
+    hat(b)(z ee^(ii theta.alt)) = 1 / (2 uppi) integral_0^(2 uppi) b(z ee^(ii theta + theta.alt)) dtheta = 1 / (2 uppi) integral_theta.alt^(2 uppi + theta.alt) b(z ee^(ii theta)) dtheta = hat(b)(z).
+  $
+  Moreover, $hat(b)(0) = b(0) = 0$ and nowhere else does $hat(b)$ vanish as $b < 0$ on each circle (proving @itm:barrier-exclusive-vanishing of @def:barrier). Continuity (@itm:barrier-continuity) and nonnegativity (@itm:barrier-non-positivity) are trivial. Lastly, to demonstrate the subharmonicity of $hat(b)$, consider an arbitrary point $z_0 in DD^*$. Then $exists r > 0$ such that $overline(D(z_0, r)) subset.double DD^*$ (and therefore for any $theta$, $overline(D(z_0 ee^(ii theta), r)) subset.double DD^*$),
+  $
+    hat(b)(z_0) & = 1 / (2 uppi) integral_0^(2 uppi) b(z_0 ee^(ii theta)) dtheta \
+    & <= 1 / (2 uppi) integral_0^(2 uppi) 1 / (2 uppi) integral_0^(2 uppi) b(z_0 ee^(ii theta) + r ee^(ii theta.alt)) dd(theta.alt) dtheta.
+  $
+  Let $tau = theta.alt - theta$, $dd(theta.alt) = dd(tau)$. Then
+  $
+    hat(b)(z_0) & <= 1 / (2 uppi) integral_0^(2 uppi) 1 / (2 uppi) integral_(-theta)^(2 uppi - theta) b((z_0 + r ee^(ii tau))ee^(ii theta)) dd(tau) dtheta \
+    &=1 / (2 uppi) integral_0^(2 uppi) [1 / (2 uppi) integral_0^(2 uppi) b((z_0 + r ee^(ii tau))ee^(ii theta)) dtheta] dd(tau) #tag[(by Fubini's Theorem)] \
+    &=1 / (2 uppi) integral_0^(2 uppi) hat(b)(z_0 + r ee^(ii tau)) dd(tau). #tag[(by definition of $hat(b)$)]
+  $
+  This shows that $hat(b)$ satisfies the sub-mean-value property @thm:subharmonic-function-sub-mean-value-property and is subharmonic.
+
+  Without loss of generality, assume $hat(b) equiv -1$ on $partial DD$ (this can easily be achieved by a dilation). We now show that such a rotationally-invariant barrier $hat(b)$ cannot exist.
 ]
