@@ -475,7 +475,7 @@ Conversely, it is immediate that @thm:barrier-exterior-segment does not apply to
   $
     hat(b)(z ee^(ii theta.alt)) = 1 / (2 uppi) integral_0^(2 uppi) b(z ee^(ii theta + theta.alt)) dtheta = 1 / (2 uppi) integral_theta.alt^(2 uppi + theta.alt) b(z ee^(ii theta)) dtheta = hat(b)(z).
   $
-  Moreover, $hat(b)(0) = b(0) = 0$ and nowhere else does $hat(b)$ vanish as $b < 0$ on each circle (proving @itm:barrier-exclusive-vanishing of @def:barrier). Continuity (@itm:barrier-continuity) and nonnegativity (@itm:barrier-non-positivity) are trivial. Lastly, to demonstrate the subharmonicity of $hat(b)$, consider an arbitrary point $z_0 in DD^*$. Then $exists r > 0$ such that $overline(D(z_0, r)) subset.double DD^*$ (and therefore for any $theta$, $overline(D(z_0 ee^(ii theta), r)) subset.double DD^*$),
+  Moreover, $hat(b)(0) = b(0) = 0$ and nowhere else does $hat(b)$ vanish as $b < 0$ on each circle (proving @itm:barrier-exclusive-vanishing of @def:barrier). Continuity (@itm:barrier-continuity) and non-positivity (@itm:barrier-non-positivity) are trivial. Lastly, to demonstrate the subharmonicity of $hat(b)$, consider an arbitrary point $z_0 in DD^*$. Then $exists r > 0$ such that $overline(D(z_0, r)) subset.double DD^*$ (and therefore for any $theta$, $overline(D(z_0 ee^(ii theta), r)) subset.double DD^*$),
   $
     hat(b)(z_0) & = 1 / (2 uppi) integral_0^(2 uppi) b(z_0 ee^(ii theta)) dtheta \
     & <= 1 / (2 uppi) integral_0^(2 uppi) 1 / (2 uppi) integral_0^(2 uppi) b(z_0 ee^(ii theta) + r ee^(ii theta.alt)) dd(theta.alt) dtheta.
@@ -486,7 +486,21 @@ Conversely, it is immediate that @thm:barrier-exterior-segment does not apply to
     &=1 / (2 uppi) integral_0^(2 uppi) [1 / (2 uppi) integral_0^(2 uppi) b((z_0 + r ee^(ii tau))ee^(ii theta)) dtheta] dd(tau) #tag[(by Fubini's Theorem)] \
     &=1 / (2 uppi) integral_0^(2 uppi) hat(b)(z_0 + r ee^(ii tau)) dd(tau). #tag[(by definition of $hat(b)$)]
   $
-  This shows that $hat(b)$ satisfies the sub-mean-value property @thm:subharmonic-function-sub-mean-value-property and is subharmonic.
+  This shows that $hat(b)$ satisfies the sub-mean-value property @thm:subharmonic-function-sub-mean-value-property and is subharmonic. Therefore it is a barrier at the origin for $DD^*$.
 
-  Without loss of generality, assume $hat(b) equiv -1$ on $partial DD$ (this can easily be achieved by a dilation). We now show that such a rotationally-invariant barrier $hat(b)$ cannot exist.
+  Without loss of generality, assume $hat(b) equiv -1$ on $partial DD$ (this can easily be achieved by scaling). We now show that such a rotationally-invariant barrier $hat(b)$ cannot exist.
+
+  For all $r in (0,1)$ consider the functions on $DD^*$ in the form of
+  $
+    phi_r (z) = (hat(b)(r) + 1) / (log r) log abs(z) - 1.
+  $
+  Moreover, since $log abs(z)$ is harmonic, it follows that $phi_r$ is harmonic. Therefore, let $psi equiv hat(b) - phi_r$, which is subharmonic. For $abs(z) = r$,
+  $ phi_r (z) = (hat(b)(r) + 1) - 1 = hat(b)(r) = hat(b)(z) ==> psi(partial D(0, r)) = {0} $
+  by rotational invariance. For $abs(z) = 1$,
+  $ phi_r (z) = (-1 + 1) / (log r) dot 0 - 1 = -1 = hat(b)(z) ==> psi(partial DD) = {0}. $
+  By the Maximum Principle, $ max_(abs(z) in (r,1)) psi_r (z) = max_(abs(z) in {r, 1}) psi_r (z) = 0. $
+  Therefore, for any $z in overline(DD) without D(0,r)$, $psi(z) <= 0$, meaning that $hat(b)(z) <= phi_r (z)$.
+
+  Let $r -> 0^+$. Then for any $z in overline(DD)^*$, $ hat(b)(z) <= lim_(r -> 0^+) phi_r (z) = -1. $
+  Now let $z -> 0$, which gives that $ hat(b)(0) <= -1 $ by continuity, which contradicts $hat(b)$ being a barrier (which would otherwise require $hat(b)(0) = 0$).
 ]
