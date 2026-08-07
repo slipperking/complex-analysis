@@ -398,7 +398,7 @@ We provide several important examples of barriers:
 ]
 #lbl(
   theorem[
-    Let $U subset.eq CC$ be open and let $p in partial U$. Assume there exists $q in CC without U$ and a closed line segment $L$ of positive length such that $ L inter overline(U) = {p}. $
+    Let $U subset.eq CC$ be open and let $p in partial U$. Assume there exists $q in CC without U$ and a closed line segment $L$ of positive length joining $p$ and $q$ such that $ L inter overline(U) = {p}. $
     Then there exists a barrier for $U$ at $p$, given by
     $ b:z |-> Re[-phi compose (ii psi(z))] - 1, $
     where $ phi(z) = (z - ii) / (z + ii) $ is the Cayley transform and $ psi(z) = sqrt((z - p) / (z - q)) $ utilizes the principal branch square root.
