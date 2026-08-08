@@ -498,7 +498,7 @@ Conversely, it is immediate that @thm:barrier-exterior-segment does not apply to
   $ phi_r (z) = (hat(b)(r) + 1) - 1 = hat(b)(r) = hat(b)(z) ==> psi(partial D(0, r)) = {0} $
   by rotational invariance. For $abs(z) = 1$,
   $ phi_r (z) = (-1 + 1) / (log r) dot 0 - 1 = -1 = hat(b)(z) ==> psi(partial DD) = {0}. $
-  By the Maximum Principle, $ max_(abs(z) in (r,1)) psi_r (z) = max_(abs(z) in {r, 1}) psi_r (z) = 0. $
+  By the Maximum Principle (@thm:maximum-principle-for-subharmonic-functions), $ max_(abs(z) in (r,1)) psi_r (z) = max_(abs(z) in {r, 1}) psi_r (z) = 0. $
   Therefore, for any $z in overline(DD) without D(0,r)$, $psi(z) <= 0$, meaning that $hat(b)(z) <= phi_r (z)$.
 
   Let $r -> 0^+$. Then for any $z in overline(DD)^*$, $ hat(b)(z) <= lim_(r -> 0^+) phi_r (z) = -1. $
