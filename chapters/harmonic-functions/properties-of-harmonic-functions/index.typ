@@ -23,7 +23,7 @@ As a refresher, we restate @thm:harmonic-conjugate-existence-on-a-disk:
   For each point $a in U$, there is a disk $D(a, r_a) subset U$ and a holomorphic function $f_a : D(a, r_a) -> CC$ such that $u equiv Re(f_a)$ on $D(a, r_a)$. Since $f_a$ is holomorphic, it is infinitely differentiable, and thus $u$ is infinitely differentiable on $D(a, r_a)$. Since $a in U$ was arbitrary, $u$ is infinitely differentiable on $U$.
 ]
 
-In @sec:poisson-integral-formula-in-harmonic-analysis and @sec:further-properties-of-holomorphic-functions, we proved the equivalence between $laplacian u equiv 0$ and the mean-value property on small circles. However, it is extremely important to understand that, when deriving harmonicity from the mean-value property, for a fixed point $z_0$, we do not need to consider all $epsilon > 0$ such that $overline(D(z_0, epsilon)) subset.double U$, but rather, it suffices to show the mean-value property holds for all $0< epsilon < epsilon'$ for some $epsilon'> 0$ (although after doing so, the assertion will hold for all unrestricted $epsilon$). In other words, we only need to verify the property holds locally. See the statement of @thm:continuous-mean-value-property-solutions-are-harmonic.
+In @sec:poisson-integral-formula-in-harmonic-analysis and @sec:further-properties-of-holomorphic-functions, we proved the equivalence between $laplacian u equiv 0$ and the _global mean-value property_, in which the identity holds on every disk compactly contained in the domain. However, to derive harmonicity it suffices to verify the _local mean-value property_: for each fixed point $z_0$, the identity need only hold for every $0<epsilon<epsilon'$ for some $epsilon'>0$. Once harmonicity follows, the global mean-value property follows as well. See @thm:continuous-mean-value-property-solutions-are-harmonic.
 
 Moreover, the statement of the maximum principle (@thm:maximum-principle-for-real-harmonic-functions) can be extended to:
 #lbl(
@@ -56,9 +56,9 @@ We have seen that many holomorphic properties have harmonic analogs. This is als
   <thm:schwarz-reflection-principle-harmonic>,
 )
 #proof[
-  Because satisfying the Laplace equation is equivalent to satisfying the mean-value property on small circles, it suffices to show that $tilde(u)$ satisfies the mean-value property on small circles (@thm:continuous-mean-value-property-solutions-are-harmonic).
+  Because satisfying the Laplace equation is equivalent to satisfying the global mean-value property, it suffices to show that $tilde(u)$ satisfies the local mean-value property (@thm:continuous-mean-value-property-solutions-are-harmonic).
 
-  + For all $z in U$, there exists $epsilon' > 0$ such that $overline(D(z, epsilon')) subset.double U$ (without crossing $RR$). Then for all $epsilon in (0,epsilon')$, $tilde(u)$ satisfies the mean-value property on $partial D(z,epsilon)$ since $u$ is harmonic.
+  + For all $z in U$, there exists $epsilon' > 0$ such that $overline(D(z, epsilon')) subset.double U$ (without crossing $RR$). Then for all $epsilon in (0,epsilon')$, $tilde(u)$ satisfies the local mean-value identity on $partial D(z,epsilon)$ since $u$ is harmonic.
   + For all $z in tilde(U)$, there exists $epsilon' > 0$ such that $overline(D(z, epsilon')) subset.double tilde(U)$ (without crossing $RR$). Then for all $epsilon in (0,epsilon')$, we get that
     $
       tilde(u)(z) & = -u(overline(z)) = - 1 / (2 uppi) integral_0^(2 uppi) u(overline(z) + epsilon ee^(ii theta)) dtheta \
@@ -66,7 +66,7 @@ We have seen that many holomorphic properties have harmonic analogs. This is als
                   & = 1 / (2 uppi) integral_0^(2 uppi) tilde(u)(z + epsilon ee^(-ii theta)) dtheta \
                   & = 1 / (2 uppi) integral_0^(2 uppi) tilde(u)(z + epsilon ee^(ii theta)) dtheta.
     $
-    Therefore, for all $epsilon in (0,epsilon')$, $tilde(u)$ satisfies the mean-value property on $partial D(z,epsilon)$.
+    Therefore, for all $epsilon in (0,epsilon')$, $tilde(u)$ satisfies the local mean-value identity on $partial D(z,epsilon)$.
   + For all $z in gamma$ (so $z = overline(z)$), for any $epsilon > 0$ such that
     $ overline(D(z, epsilon)) subset.double U union tilde(U) union gamma, $
     $
@@ -77,6 +77,6 @@ We have seen that many holomorphic properties have harmonic analogs. This is als
       &= 1 / (2 uppi) [integral_0^uppi u(z + epsilon ee^(ii theta)) dtheta - integral_0^uppi u(z + epsilon ee^(ii theta)) dtheta] \
       &= 0 = tilde(u)(z).
     $
-    Then $tilde(u)$ satisfies the mean-value property on $partial D(z,epsilon)$.
+    Then $tilde(u)$ satisfies the local mean-value identity on $partial D(z,epsilon)$.
   Then by @thm:continuous-mean-value-property-solutions-are-harmonic, $tilde(u)$ is harmonic.
 ]

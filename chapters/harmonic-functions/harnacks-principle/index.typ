@@ -20,11 +20,11 @@ First we provide a result that in many ways resembles @thm:weierstrass-convergen
   $
     lim_(n -> oo) 1 / (2 uppi) integral_0^(2 uppi) u_n (a + r ee^(ii theta)) dtheta = 1 / (2 uppi) integral_0^(2 uppi) u (a + r ee^(ii theta)) dtheta
   $
-  By the mean-value property,
+  By the global mean-value property,
   $
     1 / (2 uppi) integral_0^(2 uppi) u_n (a + r ee^(ii theta)) dtheta = u_n (a) ==> 1 / (2 uppi) integral_0^(2 uppi) u(a + r ee^(ii theta)) dtheta = u(a).
   $
-  Thus, $u$ is harmonic as it satisfies the mean-value property on all disks in $U$.
+  Thus, $u$ is harmonic as it satisfies the global mean-value property on all disks in $U$.
 ]
 #remark[
   We note here that the statement can be considerably relaxed by replacing locally uniform convergence with locally uniform boundedness and pointwise convergence. In this case, the exchange between the limit and integral is directly justifiable through Lebesgue's Dominated Convergence Theorem.
@@ -49,14 +49,14 @@ First we provide a result that in many ways resembles @thm:weierstrass-convergen
     u(z) &= 1 / (2 uppi) integral_0^(2 uppi) u(R ee^(ii t)) (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 dt \
     &<= 1 / (2 uppi) integral_0^(2 uppi) u(R ee^(ii t)) ((R + abs(z)) (R - abs(z))) / abs(R - abs(z))^2 dt #tag[(reverse triangle inequality)] \
     &<= (R + abs(z)) / (R - abs(z)) 1 / (2 uppi) integral_0^(2 uppi) u(R ee^(ii t)) dt \
-    &= (R + abs(z)) / (R - abs(z)) u(0). #tag[(mean-value property)]
+    &= (R + abs(z)) / (R - abs(z)) u(0). #tag[(global mean-value property)]
   $
   Similarly,
   $ (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 >= ((R + abs(z)) (R - abs(z))) / (R + abs(z))^2 = (R - abs(z)) / (R + abs(z)) $ by the triangle inequality, so therefore
   $
     u(z) >= (R - abs(z)) / (R + abs(z)) 1 / (2 uppi) integral_0^(2 uppi) u(R ee^(ii t)) dt = (R - abs(z)) / (R + abs(z)) u(0)
   $
-  by the mean-value property once more.
+  by the global mean-value property once more.
 
   Lastly, for nonzero $p$, a translation suffices to obtain @eq:harnack-inequality-statement from the $p=0$ case.
 ]

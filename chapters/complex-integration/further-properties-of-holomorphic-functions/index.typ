@@ -6,7 +6,7 @@
 )
 A useful corollary of @thm:cauchy-goursat-formula is the Maximum Modulus Principle.
 
-In preparation of the result, we first introduce the mean-value property of functions.
+In preparation for the result, we first introduce the _global mean-value property_ of holomorphic functions: the mean-value property holds on every disk compactly contained in the domain. The adjectives _global_ and _local_ are informal terminology adopted here for clarity; they are not necessarily standard in classical treatments.
 
 #lbl(
   lemma[
@@ -66,7 +66,7 @@ In preparation of the result, we first introduce the mean-value property of func
   If $f$ is holomorphic and non-constant on an open region $U subset.eq CC$, then for any compact set $K subset.double U$, the maximum of $f$ in $K$ lies on $partial K$. Otherwise, $f$ would attain a maximum at some $z in interior(K)$, and contradict the statement of @thm:maximum-modulus under the assumption of being non-constant.
 ]
 
-By nature of the proof, it follows that a similar theorem holds for any continuous function that satisfies the mean-value property.
+By nature of the proof, it follows that a similar theorem holds for any continuous function that satisfies the global mean-value property.
 
 #lbl(
   theorem[
@@ -104,9 +104,9 @@ By nature of the proof, it follows that a similar theorem holds for any continuo
   by the Fundamental Theorem of Calculus.
 ]
 
-Therefore, for any real harmonic function $u$ on an open region $U$, in each small disk $D subset.eq U$, there exists a holomorphic function $f: D -> CC$ such that $u equiv Re f$. Then taking the real part of both sides in @lem:holomorphic-mean-value-property on $f$, we find that $u$ satisfies the mean value-property as well.
+Therefore, for any real harmonic function $u$ on an open region $U$, in each small disk $D subset.eq U$, there exists a holomorphic function $f: D -> CC$ such that $u equiv Re f$. Then taking the real part of both sides in @lem:holomorphic-mean-value-property on $f$, we find that $u$ satisfies the global mean-value property as well.
 
-Because harmonic functions satisfy the mean-value property, @thm:maximum-principle-for-real-functions-satisfying-mean-value-property is equivalent to:
+Because harmonic functions satisfy the global mean-value property, @thm:maximum-principle-for-real-functions-satisfying-mean-value-property is equivalent to:
 
 #lbl(
   theorem[Maximum Principle for Harmonic Functions][

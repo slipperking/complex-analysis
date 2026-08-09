@@ -78,7 +78,7 @@ $ lim_(rho -> 1^-) sum_(n = -oo)^oo a_n ee^(ii n theta) rho^(abs(n)) = u(ee^(ii 
 
 Thus, for any continuous function $u$ on $partial DD$, its Fourier series is _Abel summable_ to $u$.
 
-We now establish that real-valued continuous functions satisfying the mean-value property are harmonic.
+We now establish that real-valued continuous functions satisfying the _local mean-value property_ are harmonic. Here, local means that for every $z_0 in U$, there is a disk $overline(D(z_0,lambda)) subset.double U$ such that the identity holds on every concentric disk $overline(D(z_0,epsilon))$ with $0<epsilon<=lambda$. As noted above, this use of _local_ is informal terminology adopted for clarity rather than necessarily standard classical terminology.
 
 #lbl(
   theorem[
@@ -92,5 +92,5 @@ We now establish that real-valued continuous functions satisfying the mean-value
 #proof[
   Fix $z_0 in U$ arbitrarily and choose $lambda > 0$ such that $overline(D(z_0, lambda)) subset.double U$. Because $f in C(partial D(z_0, lambda))$, @thm:dirichlet-problem-with-laplace-equation-solution guarantees the existence of a unique harmonic function $u$ on $D(z_0, lambda)$ satisfying $u equiv f$ on $partial D(z_0, lambda)$ with
   $ u(z) = integral_0^(2 uppi) f(zeta) P(zeta, z) dif tau. $
-  Define $psi = f - u$ on $overline(D(z_0, lambda))$. Then $psi$ is continuous, satisfies the mean-value property in $D(z_0, lambda)$, and vanishes on $partial D(z_0, lambda)$. By @thm:maximum-principle-for-real-functions-satisfying-mean-value-property, $psi equiv 0$ on $overline(D(z_0, lambda))$. Thus, $f equiv u$ on $overline(D(z_0, lambda))$, implying $f$ is harmonic at $z_0$. The arbitrariness of $z_0$ establishes harmonicity on $U$.
+  Define $psi = f - u$ on $overline(D(z_0, lambda))$. Then $psi$ is continuous, satisfies the local mean-value property in $D(z_0, lambda)$, and vanishes on $partial D(z_0, lambda)$. By @thm:maximum-principle-for-real-functions-satisfying-mean-value-property, $psi equiv 0$ on $overline(D(z_0, lambda))$. Thus, $f equiv u$ on $overline(D(z_0, lambda))$, implying $f$ is harmonic at $z_0$. The arbitrariness of $z_0$ establishes harmonicity on $U$.
 ]

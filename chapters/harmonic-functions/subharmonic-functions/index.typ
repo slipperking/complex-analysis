@@ -78,12 +78,12 @@ By the Maximum Principle, we have the following characterization:
   theorem[
     Let $f:U -> RR$ be continuous, where $U subset.eq CC$ is an open region. The following are equivalent:
     + $f$ is subharmonic on $U$.
-    + For each $overline(D(p, r)) subset.double U$,
+    + $f$ satisfies the _global sub-mean-value property_: for each $overline(D(p, r)) subset.double U$,
       #lbl(
         $ f(p) <= 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta. $,
         <eq:subharmonic-function-sub-mean-value-property>,
       )
-    + For each $p in U$, there exists $r_p > 0$ such that $overline(D(p,r_p)) subset.double U$ and, for every $0 < r < r_p$,
+    + $f$ satisfies the _local sub-mean-value property_: for each $p in U$, there exists $r_p > 0$ such that $overline(D(p,r_p)) subset.double U$ and, for every $0 < r < r_p$,
       $ f(p) <= 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta. $
   ],
   <thm:subharmonic-function-sub-mean-value-property>,
@@ -178,13 +178,13 @@ By the Maximum Principle, we have the following characterization:
     $
     Since the disk was arbitrary, the second condition holds for every valid radius, not merely for sufficiently small radii.
 
-  + The second condition trivially implies the third: for each $p in U$, choose any $r_p > 0$ such that $overline(D(p,r_p)) subset.double U$.
+  + The global sub-mean-value property trivially implies the local sub-mean-value property: for each $p in U$, choose any $r_p > 0$ such that $overline(D(p,r_p)) subset.double U$.
 
-  + Conversely, assume the third condition holds and that $f$ is not subharmonic. Then there exists a disk $overline(D(p,r)) subset.double U$ and a harmonic function $u: overline(D(p,r)) -> RR$ such that $u >= f$ on $partial D(p,r)$ but $u(z_0) < f(z_0)$ for some $z_0 in D(p,r)$. Let $g equiv f - u$.
+  + Conversely, assume the local sub-mean-value property holds and that $f$ is not subharmonic. Then there exists a disk $overline(D(p,r)) subset.double U$ and a harmonic function $u: overline(D(p,r)) -> RR$ such that $u >= f$ on $partial D(p,r)$ but $u(z_0) < f(z_0)$ for some $z_0 in D(p,r)$. Let $g equiv f - u$.
 
     Observe that $lr(g|)_(partial D(p,r)) <= 0$ whilst $g(z_0) > 0$. Let $M = max_(z in overline(D(p,r))) g(z)$, which exists by @thm:continuous-function-bounded-on-compact and the Extreme Value Theorem (@thm:extreme-value). Moreover, $K = {z in overline(D(p,r)) : g(z) = M}$ is not all of $D(p,r)$, because by continuity there exists some $delta$ such that for any $z in D(p,r) without overline(D(p,r-delta))$, $g(z) <= M/2$, since $g$ is non-positive on the boundary.
 
-    Notice that $K$ is compact; hence $D(p,r) without K$ is open and non-empty. Fix $z_K in partial K$. Then $z_K$ is an accumulation point of $D(p,r) without K$, otherwise $K$ would contain a disk centered at $z_K$ and $z_K$ would not be a boundary point. Let $eta' = op("dist")(z_K, partial D(p,r))$. By the local hypothesis at $z_K$, choose $r_(z_K)>0$ such that the sub-mean inequality holds at $z_K$ for every radius less than $r_(z_K)$. Choose
+    Notice that $K$ is compact; hence $D(p,r) without K$ is open and non-empty. Fix $z_K in partial K$. Then $z_K$ is an accumulation point of $D(p,r) without K$, otherwise $K$ would contain a disk centered at $z_K$ and $z_K$ would not be a boundary point. Let $eta' = op("dist")(z_K, partial D(p,r))$. By the local sub-mean-value property at $z_K$, choose $r_(z_K)>0$ such that the sub-mean inequality holds at $z_K$ for every radius less than $r_(z_K)$. Choose
     $
       a in D(z_K, min{eta', r_(z_K)}) inter (D(p,r) without K).
     $
@@ -202,11 +202,11 @@ By the Maximum Principle, we have the following characterization:
   Let $U subset.eq CC$ be an open region and let $f:U -> RR$ be holomorphic. Then $abs(f)$ is subharmonic.
 ]
 #proof[
-  Since $f$ satisfies the mean-value property on any disk $overline(D(z, epsilon))$ by @lem:holomorphic-mean-value-property, it follows that
+  Since $f$ satisfies the global mean-value property on any disk $overline(D(z, epsilon))$ by @lem:holomorphic-mean-value-property, it follows that
   $
     abs(f(z)) = abs(1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii theta)) dtheta) <= 1 / (2 uppi) integral_0^(2 uppi) abs(f(z + epsilon ee^(ii theta))) dtheta.
   $
-  Therefore, $abs(f)$ satisfies the sub-mean-value property and is subharmonic by @thm:subharmonic-function-sub-mean-value-property.
+  Therefore, $abs(f)$ satisfies the global sub-mean-value property and is subharmonic by @thm:subharmonic-function-sub-mean-value-property.
 ]
 #remark[
   This in no way implies $abs(f)$ is harmonic, clearly $f(z) = z$, $abs(f(z)) = abs(z)$ attains an average value on the boundary of any disk centered at $0$ that is strictly greater than its value at the center. (This applies to a wide variety of holomorphic functions.)
@@ -261,7 +261,7 @@ By the Maximum Principle, we have the following characterization:
 ]
 (Notice that convexity in the one-dimensional case for $C^2$ functions is equivalent to the condition that $f'' >= 0$ everywhere.)
 
-Here, we must alert the reader to an important difference between the properties of harmonic functions and subharmonic functions. In the former case, if we have a function $f$ which is continuous on $U$ and satisfies the mean-value property on every small disk therein, then $f$ is harmonic (and $C^oo$). This was proved in @thm:continuous-mean-value-property-solutions-are-harmonic. However, in the case of subharmonic functions, we have a continuous function $f$ which satisfies the sub-mean-value property on every small disk therein, but $f$ is not necessarily $C^2$ and the statement and application in @thm:subharmonic-twice-continuously-differentiable-subharmonic-nonnegative-laplacian-equivalence do not hold. There is also no "elliptic regularity" that holds for the general case of subharmonicity.
+Here, we must alert the reader to an important difference between harmonic and subharmonic functions. The local mean-value property implies harmonicity and therefore smoothness. The local sub-mean-value property likewise implies subharmonicity by @thm:subharmonic-function-sub-mean-value-property, and consequently the global sub-mean inequality, but it does not imply that the function is $C^2$. Thus the statement and application in @thm:subharmonic-twice-continuously-differentiable-subharmonic-nonnegative-laplacian-equivalence do not hold, and there is no analogous elliptic regularity for general subharmonic functions.
 #lbl(
   theorem[Jensen's inequality][
     Let $[a,b] subset.eq RR$ be an interval. If $phi.alt: RR -> RR$ is convex and $f: [a,b] -> RR$ is continuous,
@@ -295,7 +295,7 @@ Here, we must alert the reader to an important difference between the properties
   Let $U subset.eq CC$ be a region. If $phi.alt: RR -> RR$ is convex and non-decreasing and $f: U -> RR$ is subharmonic, then $phi.alt compose f$ is subharmonic.
 ]
 #proof[
-  Let $overline(D(p, r)) subset.double U$ be arbitrary. It suffices from @thm:subharmonic-function-sub-mean-value-property to show that the mean-value property is satisfied thereon. Observe that
+  Let $overline(D(p, r)) subset.double U$ be arbitrary. It suffices from @thm:subharmonic-function-sub-mean-value-property to show that the global sub-mean-value property is satisfied thereon. Observe that
   $
     f(p) <= 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta.
   $
@@ -304,7 +304,7 @@ Here, we must alert the reader to an important difference between the properties
     phi.alt compose f(p) & <= phi.alt(1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta) \
     & <= 1 / (2 uppi) integral_0^(2 uppi) phi.alt compose f(p + r ee^(ii theta)) dtheta. #tag[(by @thm:jensens-inequality-convexity)]
   $
-  Then the sub-mean-value property holds on an arbitrary disk and hence $phi.alt compose f$ is subharmonic.
+  Then the global sub-mean-value property holds on an arbitrary disk and hence $phi.alt compose f$ is subharmonic.
 ]
 #lbl(
   theorem[Maximum Principle for Subharmonic Functions][
@@ -313,7 +313,7 @@ Here, we must alert the reader to an important difference between the properties
   ],
   <thm:maximum-principle-for-subharmonic-functions>,
 )
-Our proof will remain the same as @thm:maximum-modulus, aside from the sole difference that the sub-mean-value property will be used (in contrast to the mean-value property), which will turn out to be the sufficient condition (as opposed to the small circle mean-value property).
+Our proof will remain the same as @thm:maximum-modulus, aside from the sole difference that the local sub-mean-value property will be used in place of the local mean-value property.
 #proof[
   Assume that $z_0$ exists. We aim to show that the set
   $ S = {z : f(z) = f(z_0) and z in U} $
@@ -325,7 +325,7 @@ Our proof will remain the same as @thm:maximum-modulus, aside from the sole diff
   $ lim_(n -> oo) f(z_n) = f(lim_(n -> oo) z_n) = f(z_infinity) = f(z_0), $
   and $z_infinity in S$. Thus, $S$ contains all of its accumulation points in $U$ and is closed therein.
 
-  Since $U$ is open, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq U$. By the sub-mean-value property, $forall 0 < epsilon < lambda$,
+  Since $U$ is open, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq U$. By the local sub-mean-value property, $forall 0 < epsilon < lambda$,
   $
     f(z) <= 1 / (2 uppi) integral_0^(2 uppi) f(z + epsilon ee^(ii theta)) dtheta <= 1 / (2 uppi) integral_0^(2 uppi) f(z) dt = f(z),
   $
@@ -351,7 +351,7 @@ The utility of using subharmonic functions, as opposed to harmonic or holomorphi
   <prop:subharmonic-pointwise-maximum-is-subharmonic>,
 )
 #proof[
-  By a simple application of the sub-mean-value-property on any disk $overline(D(z, r)) subset.double U$:
+  By a simple application of the global sub-mean-value property on any disk $overline(D(z, r)) subset.double U$:
   $
     phi(z) &<= max{1 / (2 uppi) integral_0^(2 uppi) f(z + r ee^(ii theta)) dtheta, 1 / (2 uppi) integral_0^(2 uppi) g(z + r ee^(ii theta)) dtheta} \
     &<= 1 / (2 uppi) integral_0^(2 uppi) max{f(z + r ee^(ii theta)) dtheta}, g(z + r ee^(ii theta)) dtheta}} dtheta \
@@ -491,7 +491,7 @@ Conversely, it is immediate that @thm:barrier-exterior-segment does not apply to
     &=1 / (2 uppi) integral_0^(2 uppi) [1 / (2 uppi) integral_0^(2 uppi) b((z_0 + r ee^(ii tau))ee^(ii theta)) dtheta] dd(tau) #tag[(by Fubini's Theorem)] \
     &=1 / (2 uppi) integral_0^(2 uppi) hat(b)(z_0 + r ee^(ii tau)) dd(tau). #tag[(by definition of $hat(b)$)]
   $
-  This shows that $hat(b)$ satisfies the sub-mean-value property @thm:subharmonic-function-sub-mean-value-property and is subharmonic. Therefore it is a barrier at the origin for $DD^*$.
+  This shows that $hat(b)$ satisfies the global sub-mean-value property @thm:subharmonic-function-sub-mean-value-property and is subharmonic. Therefore it is a barrier at the origin for $DD^*$.
 
   Without loss of generality, assume $hat(b) equiv -1$ on $partial DD$ (this can easily be achieved by scaling). We now show that such a rotationally-invariant barrier $hat(b)$ cannot exist.
 
