@@ -76,11 +76,15 @@ By the Maximum Principle, we have the following characterization:
 ]
 #lbl(
   theorem[
-    A continuous function $f:U -> RR$ (where $U subset.eq CC$ is an open region) is subharmonic iff for each $overline(D(p, r)) subset.double U$,
-    #lbl(
-      $ f(p) <= 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta. $,
-      <eq:subharmonic-function-sub-mean-value-property>,
-    )
+    Let $f:U -> RR$ be continuous, where $U subset.eq CC$ is an open region. The following are equivalent:
+    + $f$ is subharmonic on $U$.
+    + For each $overline(D(p, r)) subset.double U$,
+      #lbl(
+        $ f(p) <= 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta. $,
+        <eq:subharmonic-function-sub-mean-value-property>,
+      )
+    + For each $p in U$, there exists $r_p > 0$ such that $overline(D(p,r_p)) subset.double U$ and, for every $0 < r < r_p$,
+      $ f(p) <= 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta. $
   ],
   <thm:subharmonic-function-sub-mean-value-property>,
 )
@@ -140,9 +144,6 @@ By the Maximum Principle, we have the following characterization:
         intersections("arc-endpoints-test", "arc-circle", "partial-K")
         anchor("end1", "arc-endpoints-test.0")
         anchor("end2", "arc-endpoints-test.1")
-        // circle("end1", radius: 2pt, fill: black)
-        // circle("end2", radius: 2pt, fill: black)
-
         arc-through("end1", "a", "end2", stroke: 2pt, name: "arc", mark: (
           end: (pos: 2%, symbol: "o", inset: 0%),
           start: (pos: 2%, symbol: "o", inset: 0%),
@@ -170,28 +171,32 @@ By the Maximum Principle, we have the following characterization:
     <fig:subharmonic-function-sub-mean-value-property-arc-construction>,
   )
 ])
-// #todo[Finish drawing figure components.]
 #proof[
-  + We first prove the forward direction (subharmonic #sym.arrow.double.long sub-mean-value property).
-
-    For each $overline(D(p, r)) subset.double U$, by the Poisson Integral Formula, $exists! u in C(overline(D(p, r))) -> RR$ harmonic in $D(p, r)$ such that $lr(u|)_(partial D(p, r)) equiv lr(f|)_(partial D(p, r))$. By @prop:subharmonicity-weakened-to-continuity-on-boundary-harmonicity-in-interior, $f <= u$ in $D(p, r)$. Therefore, $ f(p) <= u(p) = 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta. $
-  + Conversely (sub-mean-value property #sym.arrow.double.long subharmonic), first assume @eq:subharmonic-function-sub-mean-value-property holds at all points and all valid radii such that $f$ is not subharmonic.
-
-    Then there exists a disk $overline(D(p, r)) subset.double U$ and a harmonic function $u: overline(D(p, r)) -> RR$ such that $u >= f$ on $partial D(p, r)$ but $u(z_0) < f(z_0)$ for some $z_0 in D(p, r)$. Now let $g equiv f - u$.
-
-    Observe that $lr(g|)_(partial D(p, r)) <= 0$ whilst $g(z_0) > 0$. Let $M = max_(z in overline(D(p, r))) g(z)$ (and by assumption $M >= g(z_0) > 0$), which exists by @thm:continuous-function-bounded-on-compact and the Extreme Value Theorem (@thm:extreme-value). Moreover, $K = {z in overline(D(p,r)) : g(z) = M}$ is not all of $D(p,r)$, because importantly, by continuity, there exists some $delta$ such that for any $z in D(p, r) without overline(D(p, r - delta))$, $g(z) <= M / 2$ (since $g$ is non-positive on the boundary).
-
-    Notice that $K$ is compact; for any sequence ${z_n}_n$ in $K$ that converges in $overline(D(p,r))$, since $g(z_n) = M$ for each $n$, by continuity, $g(z_oo) = M$ as well where $z_oo$ is the accumulation point. Then $D(p,r) without K$ is open and non-empty. Fix $z_K in partial K$. Then notice that $z_K$ is an accumulation point of $D(p,r) without K$, otherwise $K$ would contain a disk centered at $z_K$ and $z_K$ then wouldn't be a boundary point.
-
-    Let $eta' = op("dist") (z_K, partial D(p,r))$. Then $exists a in D(z_k, eta') inter (D(p,r) without K)$. Then letting $eta = abs(a - z_K)$, $overline(D(z_K, eta))$ lies within $D(p, r)$ since $eta < eta'$, and $partial D(z_K, eta) inter (D(p,r) without K)$ consists of a connected open arc $C$ containing $a$ subtending an angle $theta.alt$, on which $g(z) < M$ (as described by @fig:subharmonic-function-sub-mean-value-property-arc-construction). Then by the sub-mean-value property assumption,
+  + Assume first that $f$ is subharmonic. Let $overline(D(p,r)) subset.double U$ be arbitrary. By the Poisson Integral Formula, there exists a function $h in C(overline(D(p,r)))$ harmonic on $D(p,r)$ with $h equiv f$ on $partial D(p,r)$. By @prop:subharmonicity-weakened-to-continuity-on-boundary-harmonicity-in-interior, $f <= h$ on $D(p,r)$. Therefore,
     $
-      M &= f(z_K) - u(z_K) <= 1 / (2 uppi) integral_0^(2 uppi) f(z_K + eta ee^(ii theta)) dtheta - u(z_K) \
-      &= 1 / (2 uppi) integral_0^(2 uppi) [f(z_K + eta ee^(ii theta)) - u(z_K + eta ee^(ii theta))] dtheta #tag[(by the harmonicity of $u$)]\
-      &= 1 / (2 uppi) integral_0^(2 uppi) g(z_K + eta ee^(ii theta))\
-      &= 1 / (2 uppi) [integral_([0, 2 uppi] without C) g(z_K + eta ee^(ii theta)) dtheta + integral_C g(z_K + eta ee^(ii theta)) dtheta] \
-      & < 1 / (2 uppi) [(2 uppi - theta.alt) M + theta.alt M] = M,
+      f(p) <= h(p) = 1 / (2 uppi) integral_0^(2 uppi) f(p + r ee^(ii theta)) dtheta.
     $
-    which is an impossibility (the purpose of extracting a Jordan arc was to ensure a strict inequality). Therefore, $f$ must be subharmonic. #qedhere
+    Since the disk was arbitrary, the second condition holds for every valid radius, not merely for sufficiently small radii.
+
+  + The second condition trivially implies the third: for each $p in U$, choose any $r_p > 0$ such that $overline(D(p,r_p)) subset.double U$.
+
+  + Conversely, assume the third condition holds and that $f$ is not subharmonic. Then there exists a disk $overline(D(p,r)) subset.double U$ and a harmonic function $u: overline(D(p,r)) -> RR$ such that $u >= f$ on $partial D(p,r)$ but $u(z_0) < f(z_0)$ for some $z_0 in D(p,r)$. Let $g equiv f - u$.
+
+    Observe that $lr(g|)_(partial D(p,r)) <= 0$ whilst $g(z_0) > 0$. Let $M = max_(z in overline(D(p,r))) g(z)$, which exists by @thm:continuous-function-bounded-on-compact and the Extreme Value Theorem (@thm:extreme-value). Moreover, $K = {z in overline(D(p,r)) : g(z) = M}$ is not all of $D(p,r)$, because by continuity there exists some $delta$ such that for any $z in D(p,r) without overline(D(p,r-delta))$, $g(z) <= M/2$, since $g$ is non-positive on the boundary.
+
+    Notice that $K$ is compact; hence $D(p,r) without K$ is open and non-empty. Fix $z_K in partial K$. Then $z_K$ is an accumulation point of $D(p,r) without K$, otherwise $K$ would contain a disk centered at $z_K$ and $z_K$ would not be a boundary point. Let $eta' = op("dist")(z_K, partial D(p,r))$. By the local hypothesis at $z_K$, choose $r_(z_K)>0$ such that the sub-mean inequality holds at $z_K$ for every radius less than $r_(z_K)$. Choose
+    $
+      a in D(z_K, min{eta', r_(z_K)}) inter (D(p,r) without K).
+    $
+    Letting $eta = abs(a-z_K)$, $overline(D(z_K,eta))$ lies within $D(p,r)$, $eta < r_(z_K)$, and $partial D(z_K,eta) inter (D(p,r) without K)$ contains a connected open arc $C$ containing $a$ subtending an angle $theta.alt$, on which $g(z)<M$ (as described by @fig:subharmonic-function-sub-mean-value-property-arc-construction). Then by the local sub-mean-value property,
+    $
+      M &= f(z_K)-u(z_K) <= 1/(2 uppi) integral_0^(2 uppi) f(z_K+eta ee^(ii theta)) dtheta-u(z_K) \
+      &= 1/(2 uppi) integral_0^(2 uppi) [f(z_K+eta ee^(ii theta))-u(z_K+eta ee^(ii theta))] dtheta #tag[(by the harmonicity of $u$)] \
+      &= 1/(2 uppi) integral_0^(2 uppi) g(z_K+eta ee^(ii theta)) dtheta \
+      &= 1/(2 uppi) [integral_([0,2 uppi] without C) g(z_K+eta ee^(ii theta)) dtheta + integral_C g(z_K+eta ee^(ii theta)) dtheta] \
+      &< 1/(2 uppi) [(2 uppi-theta.alt)M+theta.alt M] = M,
+    $
+    which is impossible (the purpose of extracting a Jordan arc was to ensure a strict inequality). Therefore, $f$ is subharmonic. #qedhere
 ]
 #corollary[
   Let $U subset.eq CC$ be an open region and let $f:U -> RR$ be holomorphic. Then $abs(f)$ is subharmonic.
