@@ -6,12 +6,18 @@
 The method we provide here is due to Oskar Perron, which will subsequently apply to a large variety of curves (although it is not of highest possible generality, it will suffice for our general purposes).
 
 Similar to the Riemann Mapping Theorem, the solution here will also pertain largely to solving an extremal problem. Moreover, as a corollary to the problem, one also will obtain a proof of the Riemann Mapping Theorem (which in spirit, is much closer to the original proof of the mapping theorem).
-#theorem[Solution to the Dirichlet Problem][
-  Let $U$ be a bounded open region such that for each point $p in partial U$, there is a barrier $b_p : overline(U) -> RR$. Then $forall f in C(partial U, RR)$, $exists! u in C(overline(U), RR)$ harmonic in $U$ such that $u equiv f$ on $partial U$.
-]
+#lbl(
+  theorem[Solution to the Dirichlet Problem][
+    Let $U$ be a bounded open region such that for each point $p in partial U$, there is a barrier $b_p : overline(U) -> RR$. Then $forall f in C(partial U, RR)$, $exists! u in C(overline(U), RR)$ harmonic in $U$ such that $u equiv f$ on $partial U$.
+  ],
+  <thm:solution-to-the-dirichlet-problem>,
+)
 #proof[
   Let
-  $ S = {psi : psi "is subharmonic on" U "and" forall p in partial U, limsup_(z -> p \ z in U) psi(z) <= f(p)} $
+  #lbl(
+    $ S = {psi : psi "is subharmonic on" U "and" forall p in partial U, limsup_(z -> p \ z in U) psi(z) <= f(p)} $,
+    <eq:solution-to-the-dirichlet-problem-S-set>,
+  )
   By the compactness of $partial U$, $exists m in RR$ such that $f(z) >= m$ for any $z in partial U$. Then $(z mapsto m) in S$, meaning $S != emptyset$. Let $u:U -> RR$ be defined by
   $ u(z) = sup_(psi in S) psi(z). $
   It will turn out to be the case that $u$ is the precise solution for which we are searching, it remains to verify its harmonicity and extension to $f$.
@@ -46,7 +52,7 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
     The function $u$ is harmonic in $U$.
   ]
   #proof[
-    Let $overline(D(a,r)) subset.double U$ be arbitrary. Then for each $p in overline(D(a,r))$, since $u(p) = sup_(psi in S) psi(p)$, there is some sequence of functions ${psi_(p,n)}_n$ such that $lim_(n -> oo) psi_(p,n) (p) = u(p)$.
+    Let $overline(D(a,r)) subset.double U$ be arbitrary. Then for each $p in D(a,r)$, since $u(p) = sup_(psi in S) psi(p)$, there is some sequence of functions ${psi_(p,n)}_n$ such that $lim_(n -> oo) psi_(p,n) (p) = u(p)$.
 
     For $z in U$, define the function sequence ${Psi_(p,n)}_n$ of partial maximums $ Psi_(p,n) (z) = max_(k = 1)^n psi_(p,k) (z). $
     By @prop:subharmonic-pointwise-maximum-is-subharmonic, ${Psi_(p,n)}_n$ is a pointwise-increasing sequence of subharmonic functions on $U$.
@@ -64,13 +70,42 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
     $
     Then at $z$, $Phi_(p, n)$ also satisfies the local sub-mean-value property.
 
-    By @thm:subharmonic-function-sub-mean-value-property, $Phi_(p, n)$ is subharmonic. Moreover, by construction, both $Phi_(p, n)$ and $Psi_(p, n)$ are contained within $S$. Since $Psi_(p, 1) <= Psi_(p, 2) <= dots.c$, for $z in U without D(a,r)$, $Phi_(p, 1) (z) <= Phi_(p, 2) (z) <= dots.c$.
+    By @thm:subharmonic-function-sub-mean-value-property, $Phi_(p, n)$ is subharmonic. Moreover, by construction, both $Phi_(p, n)$ and $Psi_(p, n)$ are contained within $S$ (defined in @eq:solution-to-the-dirichlet-problem-S-set). Since $Psi_(p, 1) <= Psi_(p, 2) <= dots.c$, for $z in U without D(a,r)$, $Phi_(p, 1) (z) <= Phi_(p, 2) (z) <= dots.c$.
 
     Moreover, in $D(a,r)$, $forall n in NN$, $Phi_(p, n) - Phi_(p, n + 1)$ is harmonic (as it is equal to $phi_(p,n) - phi_(p, n+1)$) and is non-positive on the boundary. By the Maximum Principle (@thm:maximum-principle-for-real-harmonic-functions), it is non-positive everywhere in $overline(D(a,r))$. Therefore, $ Phi_(p, 1) <= Phi_(p, 2) <= Phi_(p, 3) <= dots.c $ throughout $U$. Since for each $n$,
     $
       psi_(p, n) (p) & <= Psi_(p, n) (p) <= Phi_(p, n) (p) <= u(p) #tag[(since $Phi_(p, n) in S$)]
     $
     and $lim_(n -> oo) psi_(p,n) (p) = u(p)$, it follows that $lim_(n -> oo) Phi_(p,n) (p) = u(p)$. We now aim to show that this limit holds not only at $p$ but also any arbitrary point $q in D(a,r)$.
+
+    Fix such $q$ and define similarly the sequence ${psi_(q, n)} subset.eq S$ such that $lim_(n -> oo) psi_(q,n) (q) = u(q)$. Now for each $n$, $z in U$, define
+    $
+      Lambda_n (z) = max({psi_(q, k) (z) : k in NN_(<= n)} union {psi_(p, k) (z) : k in NN_(<= n)}).
+    $
+    Then $Lambda_n$ is the maximum of finitely many subharmonic functions and hence subharmonic itself (@prop:subharmonic-pointwise-maximum-is-subharmonic). Moreover, (@eq:solution-to-the-dirichlet-problem-S-set) $Lambda_n in S$, ${Lambda_n}$ is pointwise-increasing in $U$, and for fixed $epsilon$ and sufficiently large $n$, $ psi_(q, n) (q) <= Lambda_n (q) < u(q) + epsilon. $
+    Taking $epsilon -> 0$ gives $ lim_(n -> oo) psi_(q,n) (q) = u(q) <= lim_(n -> oo) Lambda_n (q) <= u(q), $
+    meaning $lim_(n -> oo) Lambda_n (q) = u(q)$.
+
+    On $overline(D(a,r))$, the Poisson Integral Formula gives a solution $lambda_n in C(overline(D(a,r)))$ to the Dirichlet problem with $lr(Lambda_n|)_(partial D(a,r))$ such that $lambda_n$ is harmonic in $D(a,r)$. Then defining
+    $
+      Eta_n (z) = cases(Lambda_n (z) & quad "if" quad z in.not D(a,r), lambda_n (z) & quad "if" quad z in D(a,r)",")
+    $
+    $Eta_n$ is continuous and subsequently subharmonic by justification identical to that of $Phi_(p, n)$ (via the sub-mean-value property). Moreover, similar to the case of $Phi_(p, n)$, we have $Eta_n in S$ and $Eta_n <= u$, and
+    $ u(q) = lim_(n -> oo) psi_(q, n) (q) <= lim_(n -> oo) Lambda_n (q) <= lim_(n -> oo) Eta_n (q) <= u(q). $
+    By the Maximum Principle (@thm:maximum-principle-for-real-harmonic-functions, as with previously), $Eta_n - Eta_(n + 1)$ is harmonic in $D(a,r)$ and non-positive on the boundary and therefore non-positive throughout. Then ${Eta_n}_n$ is pointwise-increasing everywhere in $U$.
+
+    Both $Eta_n$ and $Phi_(p, n)$ are harmonic in $D(a,r)$ and by Harnack's Principle (@thm:harnacks-principle), $Phi_(p, n) arrows Phi_p$ and $Eta_n arrows Eta$ locally uniformly in this disk, where $Phi_p$ and $Eta$ are each either $oo$ or harmonic in the disk (the former is an impossibility since $Phi_(p, n), Eta_n <= u <= M$). Therefore the two sequences have harmonic limits in $D(a,r)$. By the discussion above, $Eta(q) = u(q)$ and $Phi_p (p) = u(p)$.
+
+    For every $n$, we have $Psi_(p,n) <= Lambda_n$ on $U$. On $partial D(a,r)$, this gives
+    $
+      phi_(p,n) = Psi_(p,n) <= Lambda_n = lambda_n.
+    $
+    Since $phi_(p,n)$ and $lambda_n$ are harmonic on $D(a,r)$, the Maximum Principle (@thm:maximum-principle-for-real-harmonic-functions) gives
+    $
+      phi_(p,n) <= lambda_n ==> Phi_(p, n) <= Eta_n ==> Phi_p <= Eta
+    $
+    throughout $D(a,r)$. Moreover, $Eta_n in S$, so $Eta_n <= u$ for every $n$; hence $Eta <= u$. Therefore, $Phi_p <= Eta <= u$ on $D(a,r)$. Then $Phi_p - Eta <= 0$ throughout $D(a,r)$ and $ u(p) = Phi_p (p) <= Eta(p) <= u(p) ==> Eta(p) = u(p), $
+    meaning $(Phi_p - Eta)(p) = 0$. By the Maximum Principle once more, $Phi_p equiv Eta$ in $D(a,r)$. Then since $Phi_p (q) = Eta(q) = u(q)$ and $q$ was arbitrary, $Phi_p equiv u$ throughout $D(a,r)$. Therefore, $u$ is harmonic on $D(a,r)$. Since $D(a,r)$ was arbitrary, $u$ is harmonic in $U$.
   ]
   #claim[
     The function $u$ extends continuously to $f$: for each $z in partial U$, $lim_(zeta -> z \ zeta in U) u(zeta) = f(z)$.
