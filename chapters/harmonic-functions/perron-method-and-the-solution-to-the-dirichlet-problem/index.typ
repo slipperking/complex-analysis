@@ -7,6 +7,38 @@ The method we provide here is due to Oskar Perron, which will subsequently apply
 
 Similar to the Riemann Mapping Theorem, the solution here will also pertain largely to solving an extremal problem. Moreover, as a corollary to the problem, one also will obtain a proof of the Riemann Mapping Theorem (which in spirit, is much closer to the original proof of the mapping theorem).
 #lbl(
+  proposition[Boundary Maximum Principle][
+    Let $U subset CC$ be a bounded region and $h:U -> RR$ be subharmonic. Suppose that there is some $A in RR$ such that
+    $
+      limsup_(z -> q \ z in U) h(z) <= A
+    $
+    for every $q in partial U$. Then $h <= A$ throughout $U$.
+  ],
+  <prop:subharmonic-boundary-maximum-principle>,
+)
+#proof[
+  For each $epsilon > 0$, define $ E_epsilon = {z in U : h(z) >= A + epsilon} subset.eq U. $
+  We aim to show that $E_epsilon = emptyset$, thus for contradiction, first assume otherwise.
+
+  Let $z in CC without E_epsilon$. If we are able to show that a neighborhood of $z$ lies in $CC without E_epsilon$, then $CC without E_epsilon$ is open and $E_epsilon$ is then closed.
+
+  + If $z in CC without overline(U)$, such a neighborhood holds trivially, in particular $exists V in.rev {z}$ open such that $V in CC without overline(U) subset.eq CC without E_epsilon$.
+
+  + If $z in partial U$, then $exists delta > 0$ such that for all $forall zeta in U$ with $abs(z - zeta) < delta$,
+    $ h(zeta) < limsup_(zeta -> z \ zeta in U) h(zeta) + epsilon <= A + epsilon $
+    by the definition of $limsup$, meaning that $U inter D(z, delta) subset.eq CC without E_epsilon$. Moreover, $D(z, delta) without U subset.eq CC without E_epsilon$ as well since $E_epsilon subset.eq U$. Therefore, $D(z, delta) subset.eq CC without E_epsilon$.
+
+  + If $z in U without E_epsilon$, then $h(z) < A + epsilon$. By continuity, there exists a neighborhood $V in.rev z$ on which $h < A + epsilon$ holds.
+
+  Therefore, $CC without E_epsilon$ is open; then $E_epsilon$ is closed in $CC$. Since $U$ is bounded, $E_epsilon$ is compact. Then $h$ attains a finite maximum $A'$ within $E_epsilon$ by continuity (by the Extreme Value Theorem, @thm:extreme-value) at some point $z$.
+
+  By definition of $E_epsilon$, $A' >= h(z) >= A + epsilon$ for $z in E_epsilon$. Outside of $E_epsilon$, $A' >= h$ continues to hold as $h < A + epsilon$. Therefore $A'$ is an absolute maximum of $h$ on all of $U$. By the Maximum Principle for subharmonic functions (@thm:maximum-principle-for-subharmonic-functions), $h equiv A' >= A + epsilon$ must be constant on $U$.
+
+  Therefore $forall q in partial U$, $limsup_(zeta -> q \ zeta in U) h(zeta) = A' > A$, which contradicts the hypothesis. Therefore, $E_epsilon$ must be the empty set.
+
+  Hence, for any $epsilon > 0$, $E_epsilon = emptyset$; which implies that $forall z in U$, $h(z) <= A$.
+]
+#lbl(
   theorem[Solution to the Dirichlet Problem][
     Let $U$ be a bounded open region such that for each point $p in partial U$, there is a barrier $b_p : overline(U) -> RR$. Then $forall f in C(partial U, RR)$, $exists! u in C(overline(U), RR)$ harmonic in $U$ such that $u equiv f$ on $partial U$.
   ],
@@ -18,35 +50,18 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
     $ S = {psi : psi "is subharmonic on" U "and" forall p in partial U, limsup_(z -> p \ z in U) psi(z) <= f(p)} $,
     <eq:solution-to-the-dirichlet-problem-S-set>,
   )
-  By the compactness of $partial U$, $exists m in RR$ such that $f(z) >= m$ for any $z in partial U$. Then $(z mapsto m) in S$, meaning $S != emptyset$. Let $u:U -> RR$ be defined by
+  By the compactness of $partial U$, let $m = min_(z in partial U) f(z)$ and $M = max_(z in partial U) f(z)$. Then $(z mapsto m) in S$, meaning $S != emptyset$. Let $u:U -> RR$ be defined by
   $ u(z) = sup_(psi in S) psi(z). $
   It will turn out to be the case that $u$ is the precise solution for which we are searching, it remains to verify its harmonicity and extension to $f$.
   #claim[
-    $exists M in RR$ (given by $sup_(z in partial U) f(z)$) such that $sup_(z in U) u(z) <= M$.
+    $sup_(z in U) u(z) <= M$.
   ]
   #proof[
-    Fix $psi in S$ and let $M = sup_(z in partial U) f(z)$ (which exists by compactness).
-
-    For each $epsilon > 0$, define $ E_epsilon = {z in U : psi(z) >= M + epsilon} subset.eq U. $
-    We aim to show that $E_epsilon = emptyset$, thus for contradiction, first assume otherwise.
-
-    Let $z in CC without E_epsilon$. If we are able to show that a neighborhood of $z$ lies in $CC without E_epsilon$, then $CC without E_epsilon$ is open and $E_epsilon$ is then closed.
-
-    + If $z in CC without overline(U)$, such a neighborhood holds trivially, in particular $exists V in.rev {z}$ open such that $V in CC without overline(U) subset.eq CC without E_epsilon$.
-
-    + If $z in partial U$, then $exists delta > 0$ such that for all $forall zeta in U$ with $abs(z - zeta) < delta$,
-      $ psi(zeta) < limsup_(zeta -> z \ zeta in U) psi(zeta) + epsilon <= f(z) + epsilon <= M + epsilon $
-      by the definition of $limsup$, meaning that $U inter D(z, delta) subset.eq CC without E_epsilon$. Moreover, $D(z, delta) without U subset.eq CC without E_epsilon$ as well since $E_epsilon subset.eq U$. Therefore, $D(z, delta) subset.eq CC without E_epsilon$.
-
-    + If $z in U without E_epsilon$, then $psi(z) < M + epsilon$. By continuity, there exists a neighborhood $V in.rev z$ on which $psi < M + epsilon$ holds.
-
-    Therefore, $CC without E_epsilon$ is open; then $E_epsilon$ is closed in $CC$. Since $U$ is bounded, $E_epsilon$ is compact. Then $psi$ attains a finite maximum $M'$ within $E_epsilon$ by continuity (by the Extreme Value Theorem, @thm:extreme-value) at some point $z$.
-
-    By definition of $E_epsilon$, $M' >= psi(z) >= M + epsilon$ for $z in E_epsilon$. Outside of $E_epsilon$, $M' >= psi$ continues to hold as $psi < M + epsilon$. Therefore $M'$ is an absolute maximum of $psi$ on all of $U$. By the Maximum Principle for subharmonic functions (@thm:maximum-principle-for-subharmonic-functions), $psi equiv M' >= M + epsilon$ must be constant on $U$.
-
-    Therefore $forall q in partial U$, $limsup_(zeta -> q \ zeta in U) psi(zeta) = M' > M >= f(q)$, which contradicts $psi in S$. Therefore, $E_epsilon$ must be the empty set.
-
-    Hence, for any $epsilon > 0$, $E_epsilon = emptyset$; which implies that $forall z in U$, $psi(z) <= M$. Since $psi$ was arbitrary, we have $u <= M$.
+    Let $psi in S$. Then for every $q in partial U$,
+    $
+      limsup_(z -> q \ z in U) psi(z) <= f(q) <= M.
+    $
+    By @prop:subharmonic-boundary-maximum-principle, $psi <= M$ on $U$. Taking the supremum over $psi in S$ gives $u <= M$.
   ]
   #claim[
     The function $u$ is harmonic in $U$.
@@ -111,6 +126,54 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
     The function $u$ extends continuously to $f$: for each $z in partial U$, $lim_(zeta -> z \ zeta in U) u(zeta) = f(z)$.
   ]
   #proof[
+    Fix $p in partial U$ and $epsilon > 0$, and let $b = b_p$ be a barrier at $p$.
 
+    By continuity of $f$, choose a relatively open neighborhood $V$ of $p$ in $partial U$ such that $ abs(f(p) - f(q)) < epsilon $ for every $q in V$ and $K = partial U without V$ is nonempty. Since $b < 0$ on the compact set $K$, let $eta = -max_(q in K) b(q) > 0$. Thus $b(q) <= -eta$ for every $q in K$. Set
+    $
+      C = max{1, (M - f(p) - epsilon) / eta} quad "and" quad D = max{1, (f(p) - epsilon - m) / eta}.
+    $
+    Then, for every $q in K$, if $(M - f(p) - epsilon) / eta > 1$,
+    $
+      M + C b(q) <= M - C eta <= f(p) + epsilon,
+    $
+    and if $C = 1$, we must have $(M - f(p) - epsilon) / eta <= 1$, implying
+    $ M - f(p) -epsilon <= eta <= -b(q) ==> M + C b (q) = M + b(q) <= f(p) + epsilon. $
+    Similarly, one derives $f(p) - epsilon <= m - D b(q)$.
+
+    Let $psi in S$ be arbitrary. The function $psi + C b$ is subharmonic. For $q in V$,
+    $
+      limsup_(zeta -> q \ zeta in U) (psi(zeta) + C b(zeta)) <= f(q) + C b(q) <= f(q) < f(p) + epsilon.
+    $
+    For $q in K$, we instead have
+    $
+      limsup_(zeta -> q \ zeta in U) (psi(zeta) + C b(zeta)) <= f(q) + C b(q) <= M + C b(q) <= f(p) + epsilon.
+    $
+    Hence, by the Boundary Maximum Principle (@prop:subharmonic-boundary-maximum-principle), $psi + C b <= f(p) + epsilon$ throughout $U$. Taking the supremum over $psi in S$,
+    $
+      sup_(psi in S) psi(z) + C b <= f(p) + epsilon ==> u(z) <= f(p) + epsilon - C b(z)
+    $
+    for every $z in U$. As $z -> p$ within $U$, $b(z) -> b(p) = 0$, so
+    $ limsup_(z -> p \ z in U) u(z) <= f(p) + epsilon -> f(p). $
+    as $epsilon -> 0$.
+
+    Define $chi(z) = f(p) - epsilon + D b(z)$.
+    This function is subharmonic. On $V$, we have
+    $
+      chi(q) <= f(p) - epsilon < f(q),
+    $
+    while on $K$, we have $chi(q) <= m <= f(q)$. Thus $chi in S$, and hence
+    $
+      u(z) >= chi(z) = f(p) - epsilon + D b(z).
+    $
+    Letting $z -> p$ within $U$ gives
+    $
+      liminf_(z -> p \ z in U) u(z) >= f(p) - epsilon -> f(p).
+    $
+    as $epsilon -> 0^+$. Therefore,
+    $
+      lim_(z -> p \ z in U) u(z) = f(p).
+    $
+    Since $p in partial U$ was arbitrary, $u$ extends continuously to $overline(U)$ by setting $u=f$ on $partial U$.
   ]
+  This completes the proof.
 ]
