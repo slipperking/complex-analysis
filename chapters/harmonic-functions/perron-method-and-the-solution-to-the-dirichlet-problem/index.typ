@@ -70,7 +70,7 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
     $
       psi_(p, n) (p) & <= Psi_(p, n) (p) <= Phi_(p, n) (p) <= u(p) #tag[(since $Phi_(p, n) in S$)]
     $
-    and $lim_(n -> oo) psi_(p,n) (p) = u(p)$, it follows that $lim_(n -> oo) {Phi_(p,n) (p) = u(p)$. We now aim to show that this limit holds not only at $p$ but also any arbitrary point $q in D(a,r)$.
+    and $lim_(n -> oo) psi_(p,n) (p) = u(p)$, it follows that $lim_(n -> oo) Phi_(p,n) (p) = u(p)$. We now aim to show that this limit holds not only at $p$ but also any arbitrary point $q in D(a,r)$.
   ]
   #claim[
     The function $u$ extends continuously to $f$: for each $z in partial U$, $lim_(zeta -> z \ zeta in U) u(zeta) = f(z)$.
