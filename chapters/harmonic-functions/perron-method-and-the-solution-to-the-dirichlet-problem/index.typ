@@ -123,7 +123,7 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
     meaning $(Phi_p - Eta)(p) = 0$. By the Maximum Principle once more, $Phi_p equiv Eta$ in $D(a,r)$. Then since $Phi_p (q) = Eta(q) = u(q)$ and $q$ was arbitrary, $Phi_p equiv u$ throughout $D(a,r)$. Therefore, $u$ is harmonic on $D(a,r)$. Since $D(a,r)$ was arbitrary, $u$ is harmonic in $U$.
   ]
   #claim[
-    The function $u$ extends continuously to $f$: for each $z in partial U$, $lim_(zeta -> z \ zeta in U) u(zeta) = f(z)$.
+    The function $u$ extends continuously to $f$: for each $p in partial U$, $lim_(z -> p \ z in U) u(z) = f(p)$.
   ]
   #proof[
     Fix $p in partial U$ and $epsilon > 0$, and let $b = b_p$ be a barrier at $p$.
@@ -154,16 +154,13 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
     $
     for every $z in U$. As $z -> p$ within $U$, $b(z) -> b(p) = 0$, so
     $ limsup_(z -> p \ z in U) u(z) <= f(p) + epsilon -> f(p). $
-    as $epsilon -> 0$.
-
-    Define $chi(z) = f(p) - epsilon + D b(z)$.
-    This function is subharmonic. On $V$, we have
+    as $epsilon -> 0^+$. Notice that $z mapsto f(p) - epsilon + D b(z)$ is subharmonic, and on $V$, we have
     $
-      chi(q) <= f(p) - epsilon < f(q),
+      f(p) - epsilon + D b(q) <= f(p) - epsilon < f(q),
     $
-    while on $K$, we have $chi(q) <= m <= f(q)$. Thus $chi in S$, and hence
+    while on $K$, we have $f(p) - epsilon + D b(q) <= m <= f(q)$. Thus $f(p) - epsilon + D b in S$, and hence
     $
-      u(z) >= chi(z) = f(p) - epsilon + D b(z).
+      u(z) >= f(p) - epsilon + D b(z) = f(p) - epsilon + D b(z).
     $
     Letting $z -> p$ within $U$ gives
     $
@@ -173,7 +170,7 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
     $
       lim_(z -> p \ z in U) u(z) = f(p).
     $
-    Since $p in partial U$ was arbitrary, $u$ extends continuously to $overline(U)$ by setting $u=f$ on $partial U$.
+    Since $p in partial U$ was arbitrary, $u$ extends continuously to $overline(U)$ by setting $u equiv f$ on $partial U$.
   ]
   This completes the proof.
 ]
