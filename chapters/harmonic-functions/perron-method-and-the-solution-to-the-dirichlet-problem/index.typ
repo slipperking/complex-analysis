@@ -26,7 +26,7 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
 
     Let $z in CC without E_epsilon$. If we are able to show that a neighborhood of $z$ lies in $CC without E_epsilon$, then $CC without E_epsilon$ is open and $E_epsilon$ is then closed.
 
-    + If $z in CC without overline(U)$, such a neighborhood holds trivially, in particular $exists V in.rev {z}$ open such that $V in CC without overline(U) subset,eq CC without E_epsilon$.
+    + If $z in CC without overline(U)$, such a neighborhood holds trivially, in particular $exists V in.rev {z}$ open such that $V in CC without overline(U) subset.eq CC without E_epsilon$.
 
     + If $z in partial U$, then $exists delta > 0$ such that for all $forall zeta in U$ with $abs(z - zeta) < delta$,
       $ psi(zeta) < limsup_(zeta -> z \ zeta in U) psi(zeta) + epsilon <= f(z) + epsilon <= M + epsilon $
@@ -46,7 +46,7 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
     The function $u$ is harmonic in $U$.
   ]
   #proof[
-    Let $overline(D(a,r)) subset.double U$ be arbitrary. Then for each $p in overline(D(a,r))$, since $u(p) = sup_(psi in S) psi(p)$, there is some sequence of functions ${psi_(p,k)}_k$ such that $lim_(k -> oo) psi_(p,k) (p) = u(p)$.
+    Let $overline(D(a,r)) subset.double U$ be arbitrary. Then for each $p in overline(D(a,r))$, since $u(p) = sup_(psi in S) psi(p)$, there is some sequence of functions ${psi_(p,n)}_n$ such that $lim_(n -> oo) psi_(p,n) (p) = u(p)$.
 
     For $z in U$, define the function sequence ${Psi_(p,n)}_n$ of partial maximums $ Psi_(p,n) (z) = max_(k = 1)^n psi_(p,k) (z). $
     By @prop:subharmonic-pointwise-maximum-is-subharmonic, ${Psi_(p,n)}_n$ is a pointwise-increasing sequence of subharmonic functions on $U$.
@@ -66,7 +66,11 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
 
     By @thm:subharmonic-function-sub-mean-value-property, $Phi_(p, n)$ is subharmonic. Moreover, by construction, both $Phi_(p, n)$ and $Psi_(p, n)$ are contained within $S$. Since $Psi_(p, 1) <= Psi_(p, 2) <= dots.c$, for $z in U without D(a,r)$, $Phi_(p, 1) (z) <= Phi_(p, 2) (z) <= dots.c$.
 
-    Moreover, in $D(a,r)$, $forall n in NN$, $Phi_(p, n) - Phi_(p, n + 1)$
+    Moreover, in $D(a,r)$, $forall n in NN$, $Phi_(p, n) - Phi_(p, n + 1)$ is harmonic (as it is equal to $phi_(p,n) - phi_(p, n+1)$) and is non-positive on the boundary. By the Maximum Principle (@thm:maximum-principle-for-real-harmonic-functions), it is non-positive everywhere in $overline(D(a,r))$. Therefore, $ Phi_(p, 1) <= Phi_(p, 2) <= Phi_(p, 3) <= dots.c $ throughout $U$. Since for each $n$,
+    $
+      psi_(p, n) (p) & <= Psi_(p, n) (p) <= Phi_(p, n) (p) <= u(p) #tag[(since $Phi_(p, n) in S$)]
+    $
+    and $lim_(n -> oo) psi_(p,n) (p) = u(p)$, it follows that $lim_(n -> oo) {Phi_(p,n) (p) = u(p)$. We now aim to show that this limit holds not only at $p$ but also any arbitrary point $q in D(a,r)$.
   ]
   #claim[
     The function $u$ extends continuously to $f$: for each $z in partial U$, $lim_(zeta -> z \ zeta in U) u(zeta) = f(z)$.
