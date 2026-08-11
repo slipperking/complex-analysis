@@ -22,9 +22,9 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
 
   Let $z in CC without E_epsilon$. If we are able to show that a neighborhood of $z$ lies in $CC without E_epsilon$, then $CC without E_epsilon$ is open and $E_epsilon$ is then closed.
 
-  + If $z in CC without overline(U)$, such a neighborhood holds trivially, in particular $exists V in.rev {z}$ open such that $V in CC without overline(U) subset.eq CC without E_epsilon$.
+  + If $z in CC without overline(U)$, such a neighborhood holds trivially, in particular $exists V in.rev z$ open such that $V subset.eq CC without overline(U) subset.eq CC without E_epsilon$.
 
-  + If $z in partial U$, then $exists delta > 0$ such that for all $forall zeta in U$ with $abs(z - zeta) < delta$,
+  + If $z in partial U$, then $exists delta > 0$ such that $forall zeta in U$ with $abs(z - zeta) < delta$,
     $ h(zeta) < limsup_(zeta -> z \ zeta in U) h(zeta) + epsilon <= A + epsilon $
     by the definition of $limsup$, meaning that $U inter D(z, delta) subset.eq CC without E_epsilon$. Moreover, $D(z, delta) without U subset.eq CC without E_epsilon$ as well since $E_epsilon subset.eq U$. Therefore, $D(z, delta) subset.eq CC without E_epsilon$.
 
