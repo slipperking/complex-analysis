@@ -221,7 +221,7 @@ By the Maximum Principle, we have the following characterization:
   + Assume $f$ is subharmonic, we first show the nonnegativity of its Laplacian.
 
     For the sake of contradiction, assume $exists z_0 in U$ such that $laplacian f (z_0) < 0$; then $exists epsilon' > 0$ such that $overline(D(z_0, epsilon')) subset.double U$ and $laplacian f < 0$ on $overline(D(z_0, epsilon'))$ (by continuity). By @thm:subharmonic-function-sub-mean-value-property, for each $0<epsilon< epsilon'$, $ f(z_0) <= 1 / (2 uppi) integral_0^(2 uppi) f(z_0 + epsilon ee^(ii theta)) dtheta. $
-    Define the right-hand side to be a function of $epsilon$, namely $M(epsilon)$; and let $M(0) = lim_(epsilon -> 0^+) M(epsilon) = u(z_0)$. Then
+    Define the right-hand side to be a function of $epsilon$, namely $M(epsilon)$; and let $M(0) = lim_(epsilon -> 0^+) M(epsilon) = f(z_0)$. Then
     #lbl(
       $ f(z_0) <= M(epsilon) $,
       <eq:subharmonic-twice-continuously-differentiable-subharmonic-laplacian-forward-implication-contradicted-expression>,
@@ -351,6 +351,7 @@ The utility of using subharmonic functions, as opposed to harmonic or holomorphi
   <prop:subharmonic-pointwise-maximum-is-subharmonic>,
 )
 #proof[
+  #todo[Show continuity.]
   By a simple application of the global sub-mean-value property on any disk $overline(D(z, r)) subset.double U$:
   $
     phi(z) &<= max{1 / (2 uppi) integral_0^(2 uppi) f(z + r ee^(ii theta)) dtheta, 1 / (2 uppi) integral_0^(2 uppi) g(z + r ee^(ii theta)) dtheta} \
@@ -388,7 +389,7 @@ We provide several important examples of barriers:
 ]
 #lbl(
   theorem[
-    Let $U subset CC$ be a bounded region and let $p in partial U$ be the point with greatest modulus. Then $overline(U) subset.eq overline(D(0,abs(p)))$. Let $theta.alt = Arg p$, where $Arg$ is the principal branch (restricted to $[0, 2 uppi)$). Then we have that
+    Let $U subset CC$ be a bounded region and let $p in partial U$ be a point with greatest modulus. Then $overline(U) subset.eq overline(D(0,abs(p)))$. Let $theta.alt = Arg p$, where $Arg$ is the principal branch (restricted to $[0, 2 uppi)$). Then we have that
     $ f:z |-> Re(ee^(-ii theta.alt) z) - abs(p) $
     serves as a barrier for $U$ at $p$.
   ],
@@ -399,7 +400,7 @@ We provide several important examples of barriers:
   $
     Re(ee^(-ii theta.alt) z) = abs(p).
   $
-  Therefore, $Im(ee(-ii theta.alt) z) = 0$, which implies that $z = p$. Thus @itm:barrier-exclusive-vanishing is satisfied. Moreover, @itm:barrier-continuity trivially holds and @itm:barrier-subharmonicity holds by harmonicity (real part of a holomorphic function).
+  Therefore, $Im(ee^(-ii theta.alt) z) = 0$, which implies that $z = p$. Thus @itm:barrier-exclusive-vanishing is satisfied. Moreover, @itm:barrier-continuity trivially holds and @itm:barrier-subharmonicity holds by harmonicity (real part of a holomorphic function).
 ]
 #lbl(
   theorem[
