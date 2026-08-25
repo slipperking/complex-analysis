@@ -80,7 +80,7 @@ Thus, the only biholomorphism between two annuli is a scaling, otherwise no such
 We now provide a conceptual proof of the Riemann Mapping Theorem based on the Dirichlet problem (which is in fact more historically aligned with the original approach from Riemann). We hope that the proof we provide generalizes easily into more complex domains for readers.
 #thm-state.thm-restate("thm:riemann-mapping")
 #proof[
-  First consider the case where $U$ is a bounded region whose boundary is $C^1$ and $0 in U$. Then there is a solution $u$ to the Dirichlet Problem (@thm:solution-to-the-dirichlet-problem) in $U$ with the continuous boundary function $z mapsto -log abs(z)$ (the barrier existence comes from @thm:barrier-c1-boundary-exterior-segment). Obviously, the function $u$ cannot be equivalent to $-log abs(z)$ in the interior since the latter would approach $oo$ at $0$. Let
+  First consider the case where $U$ is a bounded region whose boundary is sufficiently regular (in the sense that each point admits a barrier) and $0 in U$. Then there is a solution $u$ to the Dirichlet Problem (@thm:solution-to-the-dirichlet-problem) in $U$ with the continuous boundary function $z mapsto -log abs(z)$. Obviously, the function $u$ cannot be equivalent to $-log abs(z)$ in the interior since the latter would approach $oo$ at $0$. Let
   $
     Phi(z) = log abs(z) + u(z),
   $
@@ -140,4 +140,16 @@ We now provide a conceptual proof of the Riemann Mapping Theorem based on the Di
   Thus $N_(V_n)(F - w) = N_(V_n)(F) = 1$, where zeros are counted with multiplicity. Every zero of $F - w$ in all of $U$ belongs to $K_rho subset V_n$, so this is also the total number of solutions of $F(z) = w$ in $U$. Since $w$ was arbitrary, $F$ is bijective; the multiplicity statement also gives $F' != 0$, so $F:U -> DD$ is biholomorphic.
 
   //tbc: extension to a general domain
+  Now lift the regularity restriction upon $partial U$. Choose a compact exhaustion ${K_n}_n$ of $U$ such that $K_n subset.double interior(K_(n+1))$ for each $n$. Moreover, by selecting a single connected component for each $K_n$, we may assume that each set is connected. In fact, we claim that $U$ is exhaustible by polygons. Since the distance between each $partial K_(n+1)$ and $partial K_n$ is positive, we may use a grid (as in the proof of @prop:runge-simple-poles-and-removable-singularity-at-infinity) to find a polygon between the two sets, specifically letting
+  $ sigma_n = inf({abs(z_2 - z_1):z_2 in K_n and z_1 in CC without interior(K_(n+1))}), $
+  Then any square with a diagonal less than $sigma_n$ (e.g. $sigma_n sqrt(2) / 2$) that intersects $K_n$ cannot simultaneously intersect $CC without interior(K_(n+1))$ (otherwise the distance would be at most this value). Therefore the collection of compact squares
+  $ Q_n^((j,k)) = {x + ii y : j sigma_n / 2 <= x <= (j + 1) sigma_n / 2, k sigma_n / 2 <= y <= (k + 1) sigma_n / 2} $
+  in the form
+  $ cal(G)_n = {Q_n^((j,k)) : (j,k) in ZZ^2 "and" Q_n^((j,k)) inter K_n != emptyset} $
+  is a compact superset of $K_n$. Moreover, by the reason above, since each $Q_n^((j,k)) in cal(G)_n$ intersects $K_n$, it cannot intersect $CC without interior(K_(n+1))$. Therefore, $tilde(K_n) = union.big_(Q in cal(G)_n) Q$ is relatively compact in $interior(K_(n+1))$. Moreover, it can be shown that $K_n$ is relatively compact in $interior(tilde(K_n))$. Otherwise, $K_n$ must intersect $partial tilde(K_n)$ at some point $z$ in a constituent square $Q$, either at an edge or a corner. In the former case this would imply that the adjacent square (sharing the edge) would be contained in $cal(G)_n$, making it impossible for the aforementioned edge to lie on the boundary. In the latter case, three adjacent squares (sharing the corner) would also lie in $cal(G)_n$, which implies $z in.not partial tilde(K_n)$: a contradiction.
+
+  Therefore, $ K_n subset.double interior(tilde(K_n)) subset K_(n+1) subset.double interior(tilde(K_(n+1))) subset dots.c, $
+  and thus ${tilde(K_n)}$ compactly exhausts $U$. Each point of $partial tilde(K_n)$ has an exterior line segment by taking segments at an angle of $uppi / 4$ from the tangent. Hence, from the previous assertions, there exists a biholomorphism $F_n$ mapping $interior(tilde(K_n))$ to $DD$ mapping $0$ to $0$ with a positive derivative at $0$.
+
+
 ]
