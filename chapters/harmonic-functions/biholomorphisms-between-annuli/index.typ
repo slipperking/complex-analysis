@@ -149,7 +149,9 @@ We now provide a conceptual proof of the Riemann Mapping Theorem based on the Di
   is a compact superset of $K_n$. Moreover, by the reason above, since each $Q_n^((j,k)) in cal(G)_n$ intersects $K_n$, it cannot intersect $CC without interior(K_(n+1))$. Therefore, $tilde(K_n) = union.big_(Q in cal(G)_n) Q$ is relatively compact in $interior(K_(n+1))$. Moreover, it can be shown that $K_n$ is relatively compact in $interior(tilde(K_n))$. Otherwise, $K_n$ must intersect $partial tilde(K_n)$ at some point $z$ in a constituent square $Q$, either at an edge or a corner. In the former case this would imply that the adjacent square (sharing the edge) would be contained in $cal(G)_n$, making it impossible for the aforementioned edge to lie on the boundary. In the latter case, three adjacent squares (sharing the corner) would also lie in $cal(G)_n$, which implies $z in.not partial tilde(K_n)$: a contradiction.
 
   Therefore, $ K_n subset.double interior(tilde(K_n)) subset K_(n+1) subset.double interior(tilde(K_(n+1))) subset dots.c, $
-  and thus ${tilde(K_n)}$ compactly exhausts $U$. Each point of $partial tilde(K_n)$ has an exterior line segment by taking segments at an angle of $uppi / 4$ from the tangent. Hence, from the previous assertions, there exists a biholomorphism $F_n$ mapping $interior(tilde(K_n))$ to $DD$ mapping $0$ to $0$ with a positive derivative at $0$.
+  and thus ${tilde(K_n)}$ compactly exhausts $U$. Each point of $partial tilde(K_n)$ has an exterior line segment by taking segments at an angle of $uppi / 4$ from the tangent. Hence, from the previous assertions, there exists a biholomorphism $F_n$ mapping $interior(tilde(K_n))$ to $DD$ such that $F_n (0)=0$ and $F_n ' (0) in RR_(>0)$.
 
+  The sequence defined by ${F_n}_(n in NN)$ is uniformly bounded on the interior of $tilde(K_n)$ as $abs(F_n) <= 1$. Then by Montel's Theorem (@thm:montel), it is a normal family of holomorphic functions on
 
+  
 ]
