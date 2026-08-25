@@ -90,8 +90,8 @@ We now provide a conceptual proof of the Riemann Mapping Theorem based on the Di
 
   Let $psi(z) = u'_x (z) - ii u'_y (z)$, which is complex-harmonic ($laplacian psi equiv 0$). By elliptic regularity, $psi$ is $C^oo$, and moreover,
   $
-    pdv(, overline(z)) psi & equiv 1 / 2(pdv(, x) + ii pdv(, y))(u'_x - ii u'_y) \
-                           & equiv 1 / 2 (u''_(x x) + u''_(y y)) = 0.
+    pdv(psi, overline(z)) & equiv 1 / 2(pdv(, x) + ii pdv(, y))(u'_x - ii u'_y) \
+                          & equiv 1 / 2 (u''_(x x) + u''_(y y)) = 0.
   $
   Therefore, $psi$ is holomorphic on the simply connected set $U$, thus the function
   $
@@ -151,7 +151,9 @@ We now provide a conceptual proof of the Riemann Mapping Theorem based on the Di
   Therefore, $ K_n subset.double interior(tilde(K_n)) subset K_(n+1) subset.double interior(tilde(K_(n+1))) subset dots.c, $
   and thus ${tilde(K_n)}$ compactly exhausts $U$. Each point of $partial tilde(K_n)$ has an exterior line segment by taking segments at an angle of $uppi / 4$ from the tangent. Hence, from the previous assertions, there exists a biholomorphism $F_n$ mapping $interior(tilde(K_n))$ to $DD$ such that $F_n (0)=0$ and $F_n ' (0) in RR_(>0)$.
 
-  The sequence defined by ${F_n}_(n in NN)$ is uniformly bounded on the interior of $tilde(K_n)$ as $abs(F_n) <= 1$. Then by Montel's Theorem (@thm:montel), it is a normal family of holomorphic functions on
+  The family ${F_n}_(n >= m)$ satisfies $abs(F_n) <= 1$ on $interior(tilde(K)_m)$ for $n >= m$, hence it is uniformly bounded and therefore normal on $interior(tilde(K)_m)$ by Montel's Theorem (@thm:montel). We construct nested subsequences inductively. There exists a subsequence ${F_(n_(1,k))}_(k in NN)$ converging locally uniformly on $interior(tilde(K)_1)$. Given ${F_(n_(j,k))}_(k in NN)$ converging locally uniformly on $interior(tilde(K)_j)$, its tail with $n_(j,k) >= j+1$ is holomorphic and uniformly bounded on $interior(tilde(K)_(j+1))$, hence normal there, so after passing to a further subsequence ${F_(n_(j+1,k))}_(k in NN) subset.eq {F_(n_(j,k))}_(k in NN)$ we obtain local uniform convergence on $interior(tilde(K)_(j+1))$.
 
-  
+  Let $G_k = F_(n_(k,k))$ be the diagonal subsequence. Fix $j$. For $k >= j$, ${G_k}_(k >= j)$ is a subsequence of ${F_(n_(j,k))}_k$, so $G_k$ converges locally uniformly on $interior(tilde(K)_j)$ to a holomorphic limit $Psi_j : interior(tilde(K)_j) -> overline(DD)$ by Weierstrass (@thm:weierstrass-convergence). Since a convergent sequence has a single accumulation point, $evaluated(Psi_j)_(interior(tilde(K)_i)) = Psi_i$ for $i < j$. Hence the $Psi_j$ extend with exhaustion to a well-defined holomorphic $Psi : U -> overline(DD)$ given by $evaluated(Psi)_(interior(tilde(K)_j)) = Psi_j$, and $G_k -> Psi$ locally uniformly on $U$.
+
+
 ]
