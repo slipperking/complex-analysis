@@ -100,7 +100,7 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   $
   Observe that for any $n in ZZ$,
   $
-    integral_0^(2 uppi) ee^(ii n theta) dtheta = cases(2 uppi& quad "if" quad n = 0\,, evaluated(1 / (n ii) ee^(ii n theta))_0^(2 uppi) & quad "otherwise") = cases(2 pi& quad "if" n=0\,, 0 & quad "otherwise".)
+    integral_0^(2 uppi) ee^(ii n theta) dtheta = cases(2 uppi& quad "if" quad n = 0\,, evaluated(1 / (n ii) ee^(ii n theta))_0^(2 uppi) & quad "otherwise") = cases(2 uppi& quad "if" n=0\,, 0 & quad "otherwise".)
   $
   Thus, in the second term, only terms with $j=k$ persist. In the third term, since $j+1$ never vanishes, the entire third term vanishes as well.
 

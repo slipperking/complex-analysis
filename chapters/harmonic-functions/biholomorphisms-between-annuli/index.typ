@@ -80,5 +80,57 @@ Thus, the only biholomorphism between two annuli is a scaling, otherwise no such
 We now provide a conceptual proof of the Riemann Mapping Theorem based on the Dirichlet problem (which is in fact more historically aligned with the original approach from Riemann). We hope that the proof we provide generalizes easily into more complex domains for readers.
 #thm-state.thm-restate("thm:riemann-mapping")
 #proof[
-  First consider the case where $U$ is a bounded region whose boundary is $C^1$. Then there a solution to the Dirichlet Problem (@thm:solution-to-the-dirichlet-problem) in $U$ with the boundary function $z mapsto -log abs(z)$ (the barrier existence comes from @thm:barrier-c1-boundary-exterior-segment).
+  After a translation, we may take the distinguished point to be $0$. First suppose that $U$ is bounded, $0 in U$, and every point of $partial U$ is regular for the Dirichlet problem; in particular, this holds when $partial U$ is $C^1$ by @thm:barrier-c1-boundary-exterior-segment. By @thm:solution-to-the-dirichlet-problem, there is a harmonic function $u in C(overline(U))$ with boundary values $u(z) = -log abs(z)$ on $partial U$. Let
+  $
+    Phi(z) = log abs(z) + u(z),
+  $
+  so $Phi$ vanishes continuously on $partial U$ and approaches $-oo$ near $0$. For some $epsilon > 0$,
+  $ Phi(z) < 0 $
+  on $partial D(0, epsilon)$. The function $Phi$ is harmonic on $U without overline(D(0, epsilon))$, is zero on the part of its boundary contained in $partial U$, and is negative on its remaining boundary. The boundary maximum principle, followed by the strong maximum principle, therefore gives $Phi < 0$ throughout $U without {0}$.
+
+  Let $psi(z) = u'_x (z) - ii u'_y (z)$. Since $u$ is harmonic,
+  $
+    pdv(, overline(z)) psi & equiv 1 / 2(pdv(, x) + ii pdv(, y))(u'_x - ii u'_y) \
+                           & equiv 1 / 2 (u''_(x x) + u''_(y y)) = 0.
+  $
+  Thus $psi$ is holomorphic on the simply connected set $U$, and
+  $
+    f(z) = integral_0^z psi(zeta) dzeta + u(0)
+  $
+  is well-defined and satisfies $Re f = u$. Define
+  $ F(z) = z exp(f(z)). $
+  Then
+  $
+    abs(F(z)) = exp(Phi(z)) < 1
+  $
+  for $z != 0$, while $F(0) = 0$. Hence $F:U -> DD$ is holomorphic. It has precisely one zero, a simple zero at $0$, and $ F'(0) = evaluated(exp[f(z)](1 + z f'(z)))_(z = 0) = exp(u(0)) > 0. $
+  Moreover, $abs(F(z)) -> 1$ whenever $z -> partial U$ from within $U$ (see the properness argument as in the proof of @thm:annular-conformal-equivalence).
+
+  We next prove that every $w in DD$ is assumed exactly once. We aim to use the Argument Principle, but note that $F$ need not be holomorphic on a neighborhood of $overline(U)$, and hence we exhaust $U$ with compact sets. Choose $rho$ with $abs(w) < rho < 1$ and set
+  $
+    K_rho = {z in U : abs(F(z)) <= rho}.
+  $
+  The boundary behavior of $abs(F)$ shows that $K_rho subset.double U$ is compact. Choose a compact exhaustion ${L_n}$ of $U$ with $C^1$ boundaries, where $L_n = overline(V_n)$, each $V_n subset.double U$ is a relatively compact domain with piecewise $C^1$ boundary, and
+  $
+    L_n subset.double interior(L_(n+1)), quad union.big_(n=1)^oo L_n = U.
+  $
+  For all sufficiently large $n$, $K_rho subset.double V_n$, and hence $abs(F) > rho > abs(w)$ on $partial V_n$.
+
+  On $partial V_n$ we have $abs(w / F) < 1$. By compactness, the same inequality holds on some open neighborhood of $partial V_n$. Therefore, $1 - w / F$ attains values in $D(1,1) subset CC^*$ on this neighborhood and has a holomorphic principal branch logarithm there. Since
+  $
+    F(z) - w = F(z) (1 - w / (F(z))),
+  $
+  logarithmic differentiation gives
+  $
+    log(F(z) - w) = log(F(z)) + log(1 - w / (F(z)))\
+    (F'(z)) / (F(z) - w) - (F'(z)) / F(z) = (Log(1 - w / (F(z))))'.
+  $
+  Neither $F$ nor $F - w$ vanishes on $partial V_n$, so the Argument Principle (@thm:argument-principle-holomorphic) yields
+  $
+    N_(V_n)(F-w) - N_(V_n)(F) & = 1 / taui integral_(partial V_n) [(F'(z)) / (F(z) - w) - (F'(z)) / F(z)] dz \
+                              & = 1 / taui integral_(partial V_n) (Log(1 - w / (F(z))))' dz = 0.
+  $
+  Thus $N_(V_n)(F - w) = N_(V_n)(F) = 1$, where zeros are counted with multiplicity. Every zero of $F - w$ in all of $U$ belongs to $K_rho subset V_n$, so this is also the total number of solutions of $F(z) = w$ in $U$. Since $w$ was arbitrary, $F$ is bijective; the multiplicity statement also gives $F' != 0$, so $F:U -> DD$ is biholomorphic.
+
+  //tbc: extension to a general domain
 ]
