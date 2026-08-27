@@ -203,7 +203,7 @@ We now provide a conceptual proof of the Riemann Mapping Theorem based on the Di
 
   We claim that $H(DD) subset U$ rather than merely $H(DD) subset.eq overline(U)$. Fix $a in CC without U$. Every function $H_k - a$ is nonvanishing on $DD$; hence Hurwitz's Theorem (@thm:hurwitz-simple-case) implies that $H - a$ is either nonvanishing or identically zero. The latter is impossible because $H$ is nonconstant. Since $a$ was arbitrary, $H$ omits $CC without U$, proving the claim.#footnote[The Open Mapping Theorem alone is insufficient: it would only give $H(DD) subset.eq interior(overline(U))$, which may be strictly larger than $U$. For example, if $U$ is a slit disk such as $DD without RR_(<= 0)$, then $interior(overline(U)) = DD$.]
 
-  We may now pass to the limit in the inverse identities. Fix $w in DD$. Since $H(w) in U$, choose a compact neighborhood $H(w) in.rev L subset.double U$. Since $H_k (w) -> H(w)$, we have $H_k (w) in L$ for all sufficiently large $k$. Moreover, the exhaustion ensures that $L$ lies in the domain of $G_k$ for all sufficiently large $k$. Therefore,
+  We may now pass to the limit in the inverse identities. Fix $w in DD$. Since $H(w) in U$, choose a compact neighborhood $L in.rev H(w)$ (with $L subset.double U$). Since $H_k (w) -> H(w)$, we have $H_k (w) in L$ for all sufficiently large $k$. Moreover, the exhaustion ensures that $L$ lies in the domain of $G_k$ for all sufficiently large $k$. Therefore,
   $
     abs(G_k (H_k (w)) - Psi(H(w))) & <= abs(G_k (H_k (w)) - Psi(H_k (w))) \
                                    & quad "" + abs(Psi(H_k (w)) - Psi(H(w))) -> 0.
