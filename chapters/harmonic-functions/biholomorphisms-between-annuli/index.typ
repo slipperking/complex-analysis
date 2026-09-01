@@ -287,6 +287,9 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
     & = integral_U [(u'_xi)^2 +u u''_(xi xi) + (u'_eta)^2 +u u''_(eta eta)] dd(xi) and dd(eta) \
     & = integral_U [norm(grad u)^2 + u laplacian u] dd(xi) and dd(eta) = integral_U norm(grad u)^2 dd(xi) and dd(eta) > 0.
   $
+  #todo[
+    This needs justification, or a rework by exhaustion. We are not sure that $omega$ is $C^1$ on the closure.
+  ]
   The function $g(z) = u'_x (z) - ii u'_y (z)$ is holomorphic (verifiable by using $pdv(, overline(z))$). Choose a simple $C^1$ arc $L subset overline(U)$ joining $Gamma_1$ to $Gamma_0$, with its interior in $U$, which crosses $gamma$ non-tangentially exactly once and such that $U^* = U without L$ is simply connected. Fix $z_* in U^*$ and define
   $
     h(z) = u(z_*) + integral_(z_*)^z g(zeta) dzeta.
@@ -355,6 +358,8 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
 
   Note that if the two curves $Gamma'_0,Gamma'_1$ are not disjoint, then in some $2$-by-$2$ subgrid, exactly two opposite squares will be in $tilde(K)$ whilst the other two are not. Let $S$ be the set of grid vertices in $tilde(K)$. Then it follows that $ tilde(K) union union.big_(z in S) ["square of side length" 2 eta "centered at" z] $
   is a doubly connected polygonal (which can be considered to be generated with a grid of side length $eta$) compact set with two disjoint boundary curves. From $eta < epsilon / 4$, this set lies in $U$ (since the maximum distance between $S$ and this new set is $eta sqrt(2) < epsilon$). Since $eta < delta / 4$, no such problematic $2$-by-$2$ subgrid may exist. Thus by this procedure, by continuing to denote this new set with $tilde(K)$, we may assume $partial tilde(K)$ has two disjoint Jordan curve components.
+
+  #todo[Add a diagram to show how these touching corners are resolved by fabricating a finer grid.]
 
   For $z in Gamma'_0$, we must have
   $ abs(F(z)) > abs(w'). $
