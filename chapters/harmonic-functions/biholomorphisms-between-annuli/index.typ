@@ -261,7 +261,7 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   The Maximum Principle (@thm:maximum-principle-for-real-harmonic-functions) gives that $0 < u < 1$ throughout $U$. Consider the differential form
   $ omega = -u'_y dx + u'_x dy. $
   Since
-  $ dd(omega) = -u''_(y x) dy and dx + u'_(x y) dx and dy = 0, $
+  $ dd(omega) = -u''_(y y) dy and dx + u'_(x x) dx and dy = 0, $
   $omega$ is a closed differential form in $U$. Let $gamma$ be a positively oriented simple closed curve in $U$ winding once around $Gamma_1$, and set
   #lbl(
     $ T = -integral.cont_gamma omega. $,
@@ -356,12 +356,6 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   Note that if the two curves $Gamma'_0,Gamma'_1$ are not disjoint, then in some $2$-by-$2$ subgrid, exactly two opposite squares will be in $tilde(K)$ whilst the other two are not. Let $S$ be the set of grid vertices in $tilde(K)$. Then it follows that $ tilde(K) union union.big_(z in S) ["square of side length" 2 eta "centered at" z] $
   is a doubly connected polygonal (which can be considered to be generated with a grid of side length $eta$) compact set with two disjoint boundary curves. From $eta < epsilon / 4$, this set lies in $U$ (since the maximum distance between $S$ and this new set is $eta sqrt(2) < epsilon$). Since $eta < delta / 4$, no such problematic $2$-by-$2$ subgrid may exist. Thus by this procedure, by continuing to denote this new set with $tilde(K)$, we may assume $partial tilde(K)$ has two disjoint Jordan curve components.
 
-  // Since $F' / F equiv dv(, z) (alpha(1 - h)) equiv -alpha h' equiv -alpha g$,
-  // $
-  //   1 / taui integral.cont_gamma (F'(z)) / F(z) dz = -alpha / taui integral.cont_gamma g(z) dz = (alpha T) / (2 uppi) = 1.
-  // $
-  // Then choose two curves $gamma_1$, $gamma_2$ ($gamma_1 inter gamma_2 = emptyset$), both connecting $Gamma'_0$ and $Gamma'_1$, intersecting therewith at endpoints only, such that no solution $z$ to $F(z) = w'$ lies on $gamma_1$ or $gamma_2$.
-
   For $z in Gamma'_0$, we must have
   $ abs(F(z)) > abs(w'). $
   Indeed, the connected component $U inter jexterior(Gamma'_0)$ must map into exactly one of
@@ -378,7 +372,6 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   Therefore, $Re(1 - F(z) / w') > 0$, therefore implying that $Log(1 - F(z) / w')$ is holomorphic, and
   $ (F'(z)) / (F(z) - w') = dv(, z) Log(1 - F(z) / w') = eta'_1 (z) $
   is the derivative of some holomorphic function $eta_1$ in $V_1 supset.double Gamma'_1$.
-  // This one should be more idiosyncratic because the difference should no longer vanish when integrated, although am unsure as to how to show it winds once.
 
   Then the region $interior(tilde(K))$ may be split into two simply connected polygons with positively oriented Jordan boundaries $L_1,L_2$. Without loss of generality we may assume the solutions to $F(z) = w'$ do not lie on their shared boundary. The number of solutions to $F(z) = w'$ in $tilde(K)$, $n_(tilde(K)) (F - w')$ is the sum of the number of solutions in $jinterior(L_1)$ and $jinterior(L_2)$, and by the Argument Principle (@thm:argument-principle-holomorphic), this is equal to
   $
