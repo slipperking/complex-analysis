@@ -349,164 +349,166 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   $ {z in U : op("dist")(z, CC without U) > 1 / (N + n)} $
   containing $gamma$. Then ${U_n}$ exhaust $U$ (refer to the path-between-two-points argument as in the proof of @lem:simply-connected-polygonal-exhaustion), such that for each $n$, $overline(U_n) subset.double U_(n + 1)$ and $gamma subset U_n$. Then there exists a $n'$ such that $K subset.double U_n'$.
 
-  #lbl(
-    figure-wrapper([#figure(
-      canvas({
-        import cetz.draw: *
-        let dotted = (thickness: 0.5pt)
-        let square(center, half-side: 0.5) = {
-          scope({
-            translate(x: center.at(0), y: center.at(1))
-            line(
-              (-half-side, -half-side),
-              (-half-side, half-side),
-              (half-side, half-side),
-              (half-side, -half-side),
-              close: true,
-              stroke: dotted,
-              fill: black.transparentize(70%),
-            )
-          })
-        }
-        let centers = ()
-        let centers-exclude = (
-          (-3, 2),
-          (-2, 2),
-          (-3, 1),
-          (-3, 0),
-          (-3, -2),
-          (-3, -3),
-          (2, -3),
-          (1, -3),
-          (2, 2),
-          (1, 2),
-          (0, 1),
-          (0, 0),
-          (1, 0),
-          (1, -1),
-          (0, -1),
-          (-1, -1),
-        )
-        circle((0.5, 1.5), radius: 0.75, stroke: (dash: "dotted"))
-        for i in range(-3, 3) {
-          for j in range(-3, 3) {
-            if not centers-exclude.contains((i, j)) { centers.push((i, j)) }
+  #figure-wrapper(
+    lbl(
+      figure(
+        canvas({
+          import cetz.draw: *
+          let dotted = (thickness: 0.5pt)
+          let square(center, half-side: 0.5) = {
+            scope({
+              translate(x: center.at(0), y: center.at(1))
+              line(
+                (-half-side, -half-side),
+                (-half-side, half-side),
+                (half-side, half-side),
+                (half-side, -half-side),
+                close: true,
+                stroke: dotted,
+                fill: black.transparentize(70%),
+              )
+            })
           }
-        }
-
-        for center in centers {
-          square(center)
-        }
-        for center in centers {
-          if not centers.contains((center.at(0) + 1, center.at(1))) {
-            line((center.at(0) + 0.5, center.at(1) - 0.5), (center.at(0) + 0.5, center.at(1) + 0.5), stroke: 1.5pt)
-          }
-          if not centers.contains((center.at(0) - 1, center.at(1))) {
-            line((center.at(0) - 0.5, center.at(1) - 0.5), (center.at(0) - 0.5, center.at(1) + 0.5), stroke: 1.5pt)
-          }
-          if not centers.contains((center.at(0), center.at(1) + 1)) {
-            line((center.at(0) - 0.5, center.at(1) + 0.5), (center.at(0) + 0.5, center.at(1) + 0.5), stroke: 1.5pt)
-          }
-          if not centers.contains((center.at(0), center.at(1) - 1)) {
-            line((center.at(0) - 0.5, center.at(1) - 0.5), (center.at(0) + 0.5, center.at(1) - 0.5), stroke: 1.5pt)
-          }
-        }
-
-        translate(x: 3)
-        line((0.25, -0.5), (1.75, -0.5), mark: (end: (symbol: ">>", fill: black)), stroke: 2pt)
-        translate(x: 6)
-        let centers-transformed = ()
-        let pre-vertices = ()
-        for center in centers {
-          for i in range(-2, 3) {
-            for j in range(-2, 3) {
-              centers-transformed.push((5 * center.at(0) + i, 5 * center.at(1) + j))
-            }
-          }
-          for i in range(2) {
-            for j in range(2) {
-              centers-transformed.push((5 * center.at(0) + 2.5 + (i - 0.5), 5 * center.at(1) + 2.5 + (j - 0.5)))
-              centers-transformed.push((5 * center.at(0) - 2.5 + (i - 0.5), 5 * center.at(1) + 2.5 + (j - 0.5)))
-              centers-transformed.push((5 * center.at(0) + 2.5 + (i - 0.5), 5 * center.at(1) - 2.5 + (j - 0.5)))
-              centers-transformed.push((5 * center.at(0) - 2.5 + (i - 0.5), 5 * center.at(1) - 2.5 + (j - 0.5)))
-            }
-          }
+          let centers = ()
+          let centers-exclude = (
+            (-3, 2),
+            (-2, 2),
+            (-3, 1),
+            (-3, 0),
+            (-3, -2),
+            (-3, -3),
+            (2, -3),
+            (1, -3),
+            (2, 2),
+            (1, 2),
+            (0, 1),
+            (0, 0),
+            (1, 0),
+            (1, -1),
+            (0, -1),
+            (-1, -1),
+          )
           circle((0.5, 1.5), radius: 0.75, stroke: (dash: "dotted"))
-        }
-        let centers-transformed = ()
-
-        for center in centers {
-          let cx = 5 * center.at(0)
-          let cy = 5 * center.at(1)
-
-          for i in range(-2, 3) {
-            for j in range(-2, 3) {
-              centers-transformed.push((cx + i, cy + j))
+          for i in range(-3, 3) {
+            for j in range(-3, 3) {
+              if not centers-exclude.contains((i, j)) { centers.push((i, j)) }
             }
           }
 
-          for i in range(2) {
-            for j in range(2) {
-              centers-transformed.push((cx + 2 + i, cy + 2 + j))
-              centers-transformed.push((cx - 3 + i, cy + 2 + j))
-              centers-transformed.push((cx + 2 + i, cy - 3 + j))
-              centers-transformed.push((cx - 3 + i, cy - 3 + j))
+          for center in centers {
+            square(center)
+          }
+          for center in centers {
+            if not centers.contains((center.at(0) + 1, center.at(1))) {
+              line((center.at(0) + 0.5, center.at(1) - 0.5), (center.at(0) + 0.5, center.at(1) + 0.5), stroke: 1.5pt)
+            }
+            if not centers.contains((center.at(0) - 1, center.at(1))) {
+              line((center.at(0) - 0.5, center.at(1) - 0.5), (center.at(0) - 0.5, center.at(1) + 0.5), stroke: 1.5pt)
+            }
+            if not centers.contains((center.at(0), center.at(1) + 1)) {
+              line((center.at(0) - 0.5, center.at(1) + 0.5), (center.at(0) + 0.5, center.at(1) + 0.5), stroke: 1.5pt)
+            }
+            if not centers.contains((center.at(0), center.at(1) - 1)) {
+              line((center.at(0) - 0.5, center.at(1) - 0.5), (center.at(0) + 0.5, center.at(1) - 0.5), stroke: 1.5pt)
             }
           }
-        }
 
-        centers-transformed = centers-transformed.dedup()
+          translate(x: 3)
+          line((0.25, -0.5), (1.75, -0.5), mark: (end: (symbol: ">>", fill: black)), stroke: 2pt)
+          translate(x: 6)
+          let centers-transformed = ()
+          let pre-vertices = ()
+          for center in centers {
+            for i in range(-2, 3) {
+              for j in range(-2, 3) {
+                centers-transformed.push((5 * center.at(0) + i, 5 * center.at(1) + j))
+              }
+            }
+            for i in range(2) {
+              for j in range(2) {
+                centers-transformed.push((5 * center.at(0) + 2.5 + (i - 0.5), 5 * center.at(1) + 2.5 + (j - 0.5)))
+                centers-transformed.push((5 * center.at(0) - 2.5 + (i - 0.5), 5 * center.at(1) + 2.5 + (j - 0.5)))
+                centers-transformed.push((5 * center.at(0) + 2.5 + (i - 0.5), 5 * center.at(1) - 2.5 + (j - 0.5)))
+                centers-transformed.push((5 * center.at(0) - 2.5 + (i - 0.5), 5 * center.at(1) - 2.5 + (j - 0.5)))
+              }
+            }
+            circle((0.5, 1.5), radius: 0.75, stroke: (dash: "dotted"))
+          }
+          let centers-transformed = ()
 
-        for point in centers-transformed {
-          let x = point.at(0) / 5
-          let y = point.at(1) / 5
-          square((x, y), half-side: 0.1)
-        }
+          for center in centers {
+            let cx = 5 * center.at(0)
+            let cy = 5 * center.at(1)
 
-        for point in centers-transformed {
-          let px = point.at(0)
-          let py = point.at(1)
-          let x = px / 5
-          let y = py / 5
+            for i in range(-2, 3) {
+              for j in range(-2, 3) {
+                centers-transformed.push((cx + i, cy + j))
+              }
+            }
 
-          if not centers-transformed.contains((px + 1, py)) {
-            line(
-              (x + 0.1, y - 0.1),
-              (x + 0.1, y + 0.1),
-              stroke: 1.5pt,
-            )
+            for i in range(2) {
+              for j in range(2) {
+                centers-transformed.push((cx + 2 + i, cy + 2 + j))
+                centers-transformed.push((cx - 3 + i, cy + 2 + j))
+                centers-transformed.push((cx + 2 + i, cy - 3 + j))
+                centers-transformed.push((cx - 3 + i, cy - 3 + j))
+              }
+            }
           }
 
-          if not centers-transformed.contains((px - 1, py)) {
-            line(
-              (x - 0.1, y - 0.1),
-              (x - 0.1, y + 0.1),
-              stroke: 1.5pt,
-            )
+          centers-transformed = centers-transformed.dedup()
+
+          for point in centers-transformed {
+            let x = point.at(0) / 5
+            let y = point.at(1) / 5
+            square((x, y), half-side: 0.1)
           }
 
-          if not centers-transformed.contains((px, py + 1)) {
-            line(
-              (x - 0.1, y + 0.1),
-              (x + 0.1, y + 0.1),
-              stroke: 1.5pt,
-            )
-          }
+          for point in centers-transformed {
+            let px = point.at(0)
+            let py = point.at(1)
+            let x = px / 5
+            let y = py / 5
 
-          if not centers-transformed.contains((px, py - 1)) {
-            line(
-              (x - 0.1, y - 0.1),
-              (x + 0.1, y - 0.1),
-              stroke: 1.5pt,
-            )
+            if not centers-transformed.contains((px + 1, py)) {
+              line(
+                (x + 0.1, y - 0.1),
+                (x + 0.1, y + 0.1),
+                stroke: 1.5pt,
+              )
+            }
+
+            if not centers-transformed.contains((px - 1, py)) {
+              line(
+                (x - 0.1, y - 0.1),
+                (x - 0.1, y + 0.1),
+                stroke: 1.5pt,
+              )
+            }
+
+            if not centers-transformed.contains((px, py + 1)) {
+              line(
+                (x - 0.1, y + 0.1),
+                (x + 0.1, y + 0.1),
+                stroke: 1.5pt,
+              )
+            }
+
+            if not centers-transformed.contains((px, py - 1)) {
+              line(
+                (x - 0.1, y - 0.1),
+                (x + 0.1, y - 0.1),
+                stroke: 1.5pt,
+              )
+            }
           }
-        }
-      }),
-      caption: [
-        By choosing sufficiently small $eta divides delta$, we obtain a grid such that the boundary curves are disjoint.
-      ],
-    )]),
-    <fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution>,
+        }),
+        caption: [
+          By choosing sufficiently small $eta divides delta$, we obtain a grid such that the boundary curves are disjoint.
+        ],
+      ),
+      <fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution>,
+    ),
   )
 
   By the grid approximation method used in the proofs of @prop:runge-simple-poles-and-removable-singularity-at-infinity and @lem:simply-connected-polygonal-exhaustion, we may obtain a compact grid superset $tilde(K)$ of $overline(U_n')$ lying within $U$. We may assume it is connected by taking the unique component containing $overline(U_n')$.
