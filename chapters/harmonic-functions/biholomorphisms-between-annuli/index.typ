@@ -251,7 +251,7 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
     such that
     + Any sequence in $U$ with all accumulation points in $Gamma_0$ map to a sequence with all accumulation points in $partial D(0,R)$
     + Any sequence in $U$ with all accumulation points in $Gamma_1$ map to a sequence with all accumulation points in $partial DD$.
-    #todo[See if this can be $C^1$]
+    #todo[Either make $C^1$ with level curves or perhaps state the estimates that give $C^2$ to a harmonic functions, without proof.]
   ],
   <thm:doubly-connected-mapping-smooth-boundary>,
 )
@@ -288,7 +288,7 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
     & = integral_U [norm(grad u)^2 + u laplacian u] dd(xi) and dd(eta) = integral_U norm(grad u)^2 dd(xi) and dd(eta) > 0.
   $
   #todo[
-    This needs justification, or a rework by exhaustion. We are not sure that $omega$ is $C^1$ on the closure.
+    This needs justification, or a rework by exhaustion. We are not necessarily certain that $omega$ is $C^1$ on the closure without further analysis.
   ]
   The function $g(z) = u'_x (z) - ii u'_y (z)$ is holomorphic (verifiable by using $pdv(, overline(z))$). Choose a simple $C^1$ arc $L subset overline(U)$ joining $Gamma_1$ to $Gamma_0$, with its interior in $U$, which crosses $gamma$ non-tangentially exactly once and such that $U^* = U without L$ is simply connected. Fix $z_* in U^*$ and define
   $
@@ -349,6 +349,166 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   $ {z in U : op("dist")(z, CC without U) > 1 / (N + n)} $
   containing $gamma$. Then ${U_n}$ exhaust $U$ (refer to the path-between-two-points argument as in the proof of @lem:simply-connected-polygonal-exhaustion), such that for each $n$, $overline(U_n) subset.double U_(n + 1)$ and $gamma subset U_n$. Then there exists a $n'$ such that $K subset.double U_n'$.
 
+  #lbl(
+    figure-wrapper([#figure(
+      canvas({
+        import cetz.draw: *
+        let dotted = (thickness: 0.5pt)
+        let square(center, half-side: 0.5) = {
+          scope({
+            translate(x: center.at(0), y: center.at(1))
+            line(
+              (-half-side, -half-side),
+              (-half-side, half-side),
+              (half-side, half-side),
+              (half-side, -half-side),
+              close: true,
+              stroke: dotted,
+              fill: black.transparentize(70%),
+            )
+          })
+        }
+        let centers = ()
+        let centers-exclude = (
+          (-3, 2),
+          (-2, 2),
+          (-3, 1),
+          (-3, 0),
+          (-3, -2),
+          (-3, -3),
+          (2, -3),
+          (1, -3),
+          (2, 2),
+          (1, 2),
+          (0, 1),
+          (0, 0),
+          (1, 0),
+          (1, -1),
+          (0, -1),
+          (-1, -1),
+        )
+        circle((0.5, 1.5), radius: 0.75, stroke: (dash: "dotted"))
+        for i in range(-3, 3) {
+          for j in range(-3, 3) {
+            if not centers-exclude.contains((i, j)) { centers.push((i, j)) }
+          }
+        }
+
+        for center in centers {
+          square(center)
+        }
+        for center in centers {
+          if not centers.contains((center.at(0) + 1, center.at(1))) {
+            line((center.at(0) + 0.5, center.at(1) - 0.5), (center.at(0) + 0.5, center.at(1) + 0.5), stroke: 1.5pt)
+          }
+          if not centers.contains((center.at(0) - 1, center.at(1))) {
+            line((center.at(0) - 0.5, center.at(1) - 0.5), (center.at(0) - 0.5, center.at(1) + 0.5), stroke: 1.5pt)
+          }
+          if not centers.contains((center.at(0), center.at(1) + 1)) {
+            line((center.at(0) - 0.5, center.at(1) + 0.5), (center.at(0) + 0.5, center.at(1) + 0.5), stroke: 1.5pt)
+          }
+          if not centers.contains((center.at(0), center.at(1) - 1)) {
+            line((center.at(0) - 0.5, center.at(1) - 0.5), (center.at(0) + 0.5, center.at(1) - 0.5), stroke: 1.5pt)
+          }
+        }
+
+        translate(x: 3)
+        line((0.25, -0.5), (1.75, -0.5), mark: (end: (symbol: ">>", fill: black)), stroke: 2pt)
+        translate(x: 6)
+        let centers-transformed = ()
+        let pre-vertices = ()
+        for center in centers {
+          for i in range(-2, 3) {
+            for j in range(-2, 3) {
+              centers-transformed.push((5 * center.at(0) + i, 5 * center.at(1) + j))
+            }
+          }
+          for i in range(2) {
+            for j in range(2) {
+              centers-transformed.push((5 * center.at(0) + 2.5 + (i - 0.5), 5 * center.at(1) + 2.5 + (j - 0.5)))
+              centers-transformed.push((5 * center.at(0) - 2.5 + (i - 0.5), 5 * center.at(1) + 2.5 + (j - 0.5)))
+              centers-transformed.push((5 * center.at(0) + 2.5 + (i - 0.5), 5 * center.at(1) - 2.5 + (j - 0.5)))
+              centers-transformed.push((5 * center.at(0) - 2.5 + (i - 0.5), 5 * center.at(1) - 2.5 + (j - 0.5)))
+            }
+          }
+          circle((0.5, 1.5), radius: 0.75, stroke: (dash: "dotted"))
+        }
+        let centers-transformed = ()
+
+        for center in centers {
+          let cx = 5 * center.at(0)
+          let cy = 5 * center.at(1)
+
+          for i in range(-2, 3) {
+            for j in range(-2, 3) {
+              centers-transformed.push((cx + i, cy + j))
+            }
+          }
+
+          for i in range(2) {
+            for j in range(2) {
+              centers-transformed.push((cx + 2 + i, cy + 2 + j))
+              centers-transformed.push((cx - 3 + i, cy + 2 + j))
+              centers-transformed.push((cx + 2 + i, cy - 3 + j))
+              centers-transformed.push((cx - 3 + i, cy - 3 + j))
+            }
+          }
+        }
+
+        centers-transformed = centers-transformed.dedup()
+
+        for point in centers-transformed {
+          let x = point.at(0) / 5
+          let y = point.at(1) / 5
+          square((x, y), half-side: 0.1)
+        }
+
+        for point in centers-transformed {
+          let px = point.at(0)
+          let py = point.at(1)
+          let x = px / 5
+          let y = py / 5
+
+          if not centers-transformed.contains((px + 1, py)) {
+            line(
+              (x + 0.1, y - 0.1),
+              (x + 0.1, y + 0.1),
+              stroke: 1.5pt,
+            )
+          }
+
+          if not centers-transformed.contains((px - 1, py)) {
+            line(
+              (x - 0.1, y - 0.1),
+              (x - 0.1, y + 0.1),
+              stroke: 1.5pt,
+            )
+          }
+
+          if not centers-transformed.contains((px, py + 1)) {
+            line(
+              (x - 0.1, y + 0.1),
+              (x + 0.1, y + 0.1),
+              stroke: 1.5pt,
+            )
+          }
+
+          if not centers-transformed.contains((px, py - 1)) {
+            line(
+              (x - 0.1, y - 0.1),
+              (x + 0.1, y - 0.1),
+              stroke: 1.5pt,
+            )
+          }
+        }
+      }),
+      caption: [
+        By choosing sufficiently small $eta divides delta$, we obtain a grid such that the boundary curves are disjoint.
+      ],
+    )]),
+    <fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution>,
+  )
+
   By the grid approximation method used in the proofs of @prop:runge-simple-poles-and-removable-singularity-at-infinity and @lem:simply-connected-polygonal-exhaustion, we may obtain a compact grid superset $tilde(K)$ of $overline(U_n')$ lying within $U$. We may assume it is connected by taking the unique component containing $overline(U_n')$.
 
   There are two connected components $W_1$ and $W_2$ of the complement of $tilde(K)$ containing $jinterior(Gamma_1)$ and $jexterior(Gamma_0)$ respectively. Then any other "holes" aside from these two may be "filled in," by taking $CC without (W_1 union W_2)$. For brevity, continue to denote this new polygonal doubly connected compact set by $tilde(K)$ with a polygonal boundary $Gamma'_0 union Gamma'_1$, where $Gamma'_0$ is the outer curve and $Gamma'_1$ is the inner curve, both of which are piecewise $C^oo$.
@@ -356,10 +516,8 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   Let $epsilon = op("dist")(tilde(K), partial U)$ and let $delta$ be the side length of the square used in the grid constructing $tilde(K)$. Moreover, let $ eta = delta / (floor(4 max{1, delta / epsilon}) + 1). $
   It follows that the resultant value is a factor of $delta$, and satisfies $eta < delta / 4$ and $eta < epsilon / 4$.
 
-  Note that if the two curves $Gamma'_0,Gamma'_1$ are not disjoint, then in some $2$-by-$2$ subgrid, exactly two opposite squares will be in $tilde(K)$ whilst the other two are not. Let $S$ be the set of grid vertices in $tilde(K)$. Then it follows that $ tilde(K) union union.big_(z in S) ["square of side length" 2 eta "centered at" z] $
-  is a doubly connected polygonal (which can be considered to be generated with a grid of side length $eta$) compact set with two disjoint boundary curves. From $eta < epsilon / 4$, this set lies in $U$ (since the maximum distance between $S$ and this new set is $eta sqrt(2) < epsilon$). Since $eta < delta / 4$, no such problematic $2$-by-$2$ subgrid may exist. Thus by this procedure, by continuing to denote this new set with $tilde(K)$, we may assume $partial tilde(K)$ has two disjoint Jordan curve components.
-
-  #todo[Add a diagram to show how these touching corners are resolved by fabricating a finer grid.]
+  Note that if the two curves $Gamma'_0,Gamma'_1$ are not disjoint, then in some $2$-by-$2$ subgrid, exactly two opposite squares will be in $tilde(K)$ whilst the other two are not (refer to the circled area in @fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution). Let $S$ be the set of grid vertices in $tilde(K)$. Then it follows that $ tilde(K) union union.big_(z in S) ["square of side length" 2 eta "centered at" z] $
+  is a doubly connected polygonal (which can be considered to be generated with a grid of side length $eta$) compact set with two disjoint boundary curves. From $eta < epsilon / 4$, this set lies in $U$ (since the maximum distance between $S$ and this new set is $eta sqrt(2) < epsilon$). Since $eta < delta / 4$, no such problematic $2$-by-$2$ subgrid may exist, see @fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution. Thus by this procedure, by continuing to denote this new set with $tilde(K)$, we may assume $partial tilde(K)$ has two disjoint Jordan curve components.
 
   For $z in Gamma'_0$, we must have
   $ abs(F(z)) > abs(w'). $
