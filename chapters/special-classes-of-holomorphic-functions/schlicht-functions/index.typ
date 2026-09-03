@@ -180,7 +180,7 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   Moreover, the coefficient of $z^2$ in the expansion of $g$ can be obtained from
   $
     g(z) & = (w mapsto w / (1 - w / alpha)) compose f(z) \
-         & = f(z) sum_(n = 0)^oo (-f(z) / alpha)^n \
+         & = f(z) sum_(n = 0)^oo (f(z) / alpha)^n \
          & = (z + a_2 z^2 + Order(z^3)) (1 + z / alpha + a_2 / alpha z^2 + Order(z^3)) \
          & = z + (a_2 + 1 / alpha) z^2 + Order(z^3), \
   $
