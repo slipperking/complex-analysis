@@ -168,7 +168,22 @@ We will introduce two of the oldest results regarding schlicht functions, namely
 
 #lbl(
   theorem[Koebe Quarter Theorem][
-    If $f : DD -> CC$ is schlicht, then the image $f(DD)$ contains the open disk of radius $1 / 4$ centered at $f(0)$.
+    If $f : DD -> CC$ is schlicht with $f(z) = z + sum_(n=2)^oo a_n z^n$, then the image $f(DD)$ contains the open disk of radius $1 / 4$ centered at $f(0)$.
   ],
   <thm:koebe-quarter>,
 )
+#proof[
+  Construct a second function
+  $ g(z) = phi.alt compose f, $
+  where $phi.alt:w mapsto (alpha w) / (alpha - w)$ is a Möbius transformation, holomorphic everywhere outside $w = alpha$ (which $f$ does not attain). Since $phi.alt$ fixes the origin, satisfies $phi.alt'(0) = 1$, and is univalent, $g$ is schlicht.
+
+  Moreover, the coefficient of $z^2$ in the expansion of $g$ can be obtained from
+  $
+    g(z) & = (w mapsto w / (1 - w / alpha)) compose f(z) \
+         & = f(z) sum_(n = 0)^oo (-f(z) / alpha)^n \
+         & = (z + a_2 z^2 + Order(z^3)) (1 + z / alpha + a_2 / alpha z^2 + Order(z^3)) \
+         & = z + (a_2 + 1 / alpha) z^2 + Order(z^3), \
+  $
+  where @thm:schlicht-a-2-leq-2 applied to $g$ gives $abs(a_2 + 1 / alpha) <= 2$ and @thm:schlicht-a-2-leq-2 applied to $f$ gives $abs(a_2) <= 2$, therefore $ abs(a_2 + 1 / alpha) + abs(a_2) <= 4 ==> abs(1 / alpha) <= 4 => abs(alpha) >= 1/4. $
+  Then any omitted value must lie outside $D(0, 1/4)$, proving the result.
+]
