@@ -589,9 +589,9 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
 ]
 
 #remark[
-  Note that the theorem proof relied heavily on boundary regularity conditions, both smoothness and simplicity of the curves. One can also generalize these results by using exhaustion with locally uniform limits.
+  Note that the theorem proof relied principally on the smoothness and simplicity of the curves. One can also generalize these results by using exhaustion with locally uniform limits.
 
-  Moreover, one can obtain:
+  Moreover, one can further obtain:
 
   + If both components of $extcomplex without U$ are nondegenerate, then $U$ is biholomorphic to a unique annulus ${1 < abs(z) < R}$ with $R > 1$.
   + If exactly one complementary component is a single point, then $U$ is biholomorphic to the punctured disk $DD^*$; equivalently, after inversion, this is the case $R = oo$.

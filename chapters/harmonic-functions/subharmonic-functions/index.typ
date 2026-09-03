@@ -335,8 +335,9 @@ Our proof will remain the same as @thm:maximum-modulus, aside from the sole diff
   $
   From the equality of the last two integrals,
   $ integral_0^(2 uppi) [f(z) - f(z + epsilon ee^(ii t))] dt = 0. $
-  #todo[Justify integrand vanishing by continuity.]
-  Since this integrand is strictly non-negative, it must vanish everywhere. Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$, giving the openness of $S$ in $U$. Therefore, $S = U$ by the connectivity argument (@thm:connected-topological-space-clopen-sets).
+  Since this integrand is strictly non-negative and continuous, we have equality everywhere. Indeed, if not, there exists a $t_0$ at which the integrand is positive. Then the integrand is bounded below by a positive constant on a neighborhood of $t_0$ by continuity, giving a positive integral: a contradiction. Thus for any $t$, $f(z) = f(z + epsilon ee^(ii t))$.
+
+  Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$, giving the openness of $S$ in $U$. Therefore, $S = U$ by the connectivity argument (@thm:connected-topological-space-clopen-sets).
 ]
 #remark[
   Note that there is no corresponding "minimum" principle as with harmonic functions: subharmonicity is sufficiently restrictive in a "one-sided" way. If one were to instead define a "superharmonic function," there would not be a maximum principle but instead a sole minimum principle. Although this is a widely recognized definition, it is somewhat unnecessary for our purposes as any superharmonic function could be trivially made into a subharmonic function by negation (from $f$ to $z |-> -f(z)$).

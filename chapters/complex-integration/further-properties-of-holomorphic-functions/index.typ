@@ -58,8 +58,11 @@ In preparation for the result, we first introduce the _global mean-value propert
   $
   From the equality of the last two integrals,
   $ integral_0^(2 uppi) [abs(f(z)) - abs(f(z + epsilon ee^(ii t)))] dt = 0. $
-  #todo[Justify integrand vanishing by continuity.]
-  Since this integrand is strictly non-negative, we have equality. Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$. Therefore, $S$ is open and $S = V$ as it is a nonempty clopen subset (@thm:connected-topological-space-clopen-sets). Since $V$ is nonempty and open, it has an accumulation point in $U$. It follows that $f(z) equiv f(z_0)$ over $U$ by the Identity Theorem (@thm:identity).
+  Since this integrand is strictly non-negative and continuous, we have equality everywhere. Indeed, if not, there exists a $t_0$ at which the integrand is positive. Then the integrand is bounded below by a positive constant on a neighborhood of $t_0$ by continuity, giving a positive integral.
+
+  Thus we the integrand must have $abs(f(z)) = abs(f(z + epsilon ee^(ii t)))$ for all $t$.
+
+  Thus, $forall z in S$, $exists lambda > 0$ such that $D(z, lambda) subset.eq S$. In other words, every $z in S$ has an open neighborhood that also lies in $S$. Therefore, $S$ is open and $S = V$ as it is a nonempty clopen subset (@thm:connected-topological-space-clopen-sets). Since $V$ is nonempty and open, it has an accumulation point in $U$. It follows that $f(z) equiv f(z_0)$ over $U$ by the Identity Theorem (@thm:identity).
 ]
 
 #remark[
