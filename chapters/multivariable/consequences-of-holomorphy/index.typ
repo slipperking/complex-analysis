@@ -61,7 +61,6 @@ By the boundedness assumption for $f$, we have:
     &wide""<= product_(j=1)^n ((k_j !) / (r_j^(k_j))) sup_(bold(zeta) in product_(j=1)^n partial D(a_j, r_j)) abs(f (bold(zeta))),
   $
   since $epsilon_j <= r_j$ for all $j$.
-  #todo[Make iterated integral bounds align better (pdf)]
 ]
 
 Similar to the univariate case, there are Taylor expansions of holomorphic functions in several complex variables.

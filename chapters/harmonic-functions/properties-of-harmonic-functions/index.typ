@@ -16,9 +16,12 @@ As a refresher, we restate @thm:harmonic-conjugate-existence-on-a-disk:
   Letting $f = u + ii v$, where $v$ is given in @eq:conjugate-poisson-integral-formula suffices.
 ]
 
-#theorem[Elliptic Regularity][
-  Let $U subset.eq CC$ be a region. Then a harmonic function $u in C^2(U)$ is infinitely differentiable.
-]
+#lbl(
+  theorem[Elliptic Regularity][
+    Let $U subset.eq CC$ be a region. Then a harmonic function $u in C^2(U)$ is infinitely differentiable.
+  ],
+  <thm:harmonic-elliptic-regularity>,
+)
 #proof[
   For each point $a in U$, there is a disk $D(a, r_a) subset U$ and a holomorphic function $f_a : D(a, r_a) -> CC$ such that $u equiv Re(f_a)$ on $D(a, r_a)$. Since $f_a$ is holomorphic, it is infinitely differentiable, and thus $u$ is infinitely differentiable on $D(a, r_a)$. Since $a in U$ was arbitrary, $u$ is infinitely differentiable on $U$.
 ]

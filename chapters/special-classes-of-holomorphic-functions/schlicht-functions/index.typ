@@ -76,11 +76,14 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   Thus, there exist points in $U$ which map into $jinterior h(partial D(0,r))$, (hence map to points in the ellipse). Because $h$ maps connected sets to connected sets, and no point in $h(D(0,r))$ can map to $jinterior h(partial D(0,r))$ (as otherwise the set would be disconnected), therefore all points inside $A_r$ map into $jinterior h(partial D(0,r))$.
 ]
 
-#theorem[Area Principle][
-  If $f$ is schlicht and if
-  $ h(z) = 1/f(z) = 1/z+sum_(j=0)^oo b_j z^j, $
-  then $sum_(j=0)^oo j abs(b_j)^2 <= 1$.
-]
+#lbl(
+  theorem[Area Principle][
+    If $f$ is schlicht and if
+    $ h(z) = 1 / f(z) = 1 / z + sum_(j=0)^oo b_j z^j, $
+    then $sum_(j=0)^oo j abs(b_j)^2 <= 1$.
+  ],
+  <thm:schlicht-area-principle>,
+)
 #proof[
   By @lem:schlicht-inverse-annulus-image-in-ellipse, for sufficiently small $r>0$, $h(A_r)$ lies in an ellipse $E_r$ with a semi-major axis $ alpha = (1 / r + abs(b_1) eta) sqrt(1 + eta r^3) $ and a semi-minor axis $ beta = (1 / r - abs(b_1) eta) sqrt(1 + eta r^3). $ The area of the ellipse is given by $uppi alpha beta = uppi (1 / r^2 - abs(b_1)^2 eta^2) (1 + eta r^3)$. On the other hand,
   $
@@ -109,7 +112,8 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   As a result, we are hence left with
   $
     uppi/r^2 (1+eta r^3) & >= integral_r^1 (2 uppi rho^(-3) + 2uppi sum_(j=0)^oo j^2 abs(b_j)^2 rho^(2j-1)) dif rho \
-    & =evaluated(-uppi rho^(-2))_r^1 + uppi sum_(j=0)^oo j abs(b_j)^2 evaluated(rho^(2j))_r^1=uppi / r^2 - uppi + uppi sum_(j=0)^oo j abs(b_j)^2(1 - r^(2j)).
+                         & = evaluated(-uppi rho^(-2))_r^1 + uppi sum_(j=0)^oo j abs(b_j)^2 evaluated(rho^(2j))_r^1 \
+                         & = uppi / r^2 - uppi + uppi sum_(j=0)^oo j abs(b_j)^2(1 - r^(2j)).
   $
   Thus, $ 1 + eta r^3 >= sum_(j=0)^oo j abs(b_j)^2 (1-r^(2j)). $
   Since each term in the right-hand side is always positive, for any $N in NN$,
@@ -119,21 +123,47 @@ We will introduce two of the oldest results regarding schlicht functions, namely
   which holds for any $N$. Thus, letting $N -> oo$ gives the desired result.
 ]
 
-#theorem[
-  If $f$ is schlicht, then there exists a schlicht $g$ such that $g(z)^2 equiv f(z^2)$ on $DD$.
-]
+#lbl(
+  theorem[
+    If $f$ is schlicht, then there exists a schlicht $g$ such that $g(z)^2 equiv f(z^2)$ on $DD$.
+  ],
+  <thm:schlicht-existence-square>,
+)
 #proof[
+  We aim to show $f(z^2)$ has a holomorphic square root. Let $mu:z |-> f(z) / z$, satisfying that $mu(0) = 1$ and that $mu$ vanishes nowhere (because $f$ vanishes at $0$, it may not vanish elsewhere). Therefore, $mu(z)$ admits a holomorphic square root $r(z)$. Let
+  $ g(z) = z r(z^2) $
+  for $z in DD$. Then $g(0) = 0$, $g'(0) = 1$, and $g^2 equiv f compose (z mapsto z^2)$. We are left to show the univalence of $g$. Let $z_1, z_2 in DD$ such that $g(z_1) = g(z_2)$. Then $f(z_1^2) = f(z_2^2)$, so $z_1^2 = z_2^2$.
 
+  Then either $z_1 = z_2$ or $z_1 = -z_2$. Assume the latter case. Since $z_1^2 = z_1^2$, $r(z_1^2) = r(z_2^2)$, therefore
+  $ g(z_1) = z_1 r(z_1^2) = -z_2 r(z_2^2) = -g(z_2), $
+  a contradiction. Thus $z_1 = z_2$ and $g$ is schlicht.
 ]
 
 #lbl(
   theorem[
-    If $f : DD -> CC$ is schlicht and expands to $sum_(n=1)^oo a_n z^n$, then $abs(a_2) <= 2$.
+    If $f : DD -> CC$ is schlicht and expands to $z + sum_(n=2)^oo a_n z^n$, then $abs(a_2) <= 2$.
   ],
   <thm:schlicht-a-2-leq-2>,
 )
 #proof[
-
+  By @thm:schlicht-existence-square, there exists a schlicht function $g$ such that $g(z)^2 = f(z^2)$. Then there exists a unique Laurent series
+  $ 1 / g(z) = 1 / z + sum_(n = 0)^oo b_n z^n. $
+  By absolute convergence,
+  $ 1 / g(z)^2 = 1 / z^2 + (2 b_0) / z + (2 b_1 + b_0^2) + Order(z) = 1 / f(z^2). $
+  Since
+  $
+    1 / f(z^2) & = 1 / (sum_(n=1)^oo a_n z^(2n)) \
+               & = 1 / z^2 dot 1 / (1 + sum_(n=1) a_(n + 1) z^(2n)) \
+               & = 1 / z^2 dot 1 / (1 + a_2 z^2 + Order(z^4)) \
+               & = 1 / z^2 sum_(j=0)^oo (-a_2 z^2 + Order(z^4))^j \
+               & = 1 / z^2 (1 - a_2 z^2 + Order(z^4)) = 1 / z^2 - a_2 + Order(z^2) ,
+  $
+  by the uniqueness of the Laurent series, the coefficients must match; therefore $2 b_1 + b_0^2 = -a_2$ and $b_0 = 0$. By the Area Principle (@thm:schlicht-area-principle) applied to $1 \/ g$, we have
+  $
+    sum_(n=0)^oo n abs(b_n)^2 <= 1 ==> abs(b_1) <= 1,
+  $
+  and hence
+  $ abs(a_2) <= 2 abs(b_1) + abs(b_0)^2 <= 2. qedhere $
 ]
 
 #lbl(

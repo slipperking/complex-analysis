@@ -159,7 +159,7 @@
 #let _pages() = query(<page-meta>).map(it => it.value)
 #let _icon(name, path) = html.elem("img", attrs: (class: "icon", src: path, alt: name))
 
-#let _todo-description(body) = if body == none { [No description provided.] } else { body }
+#let _todo-description(body) = if body == none { [] } else { body }
 
 #let todo(..args) = context {
   assert(args.pos().len() <= 1, message: "todo accepts at most one content argument")
