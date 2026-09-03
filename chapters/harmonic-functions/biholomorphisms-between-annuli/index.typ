@@ -246,12 +246,11 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   theorem[
     Let $U subset CC$ be a bounded doubly connected region whose boundary is the disjoint union
     $ partial U = Gamma_0 union Gamma_1 $
-    of two $C^2$ Jordan curves, where $Gamma_0$ is the outer boundary component. Then there exists a unique number $R > 1$ and a biholomorphism
+    of two $C^1$ Jordan curves, where $Gamma_0$ is the outer boundary component. Then there exists a unique number $R > 1$ and a biholomorphism
     $ F : U -> {w in CC : 1 < abs(w) < R} $
     such that
     + Any sequence in $U$ with all accumulation points in $Gamma_0$ map to a sequence with all accumulation points in $partial D(0,R)$
     + Any sequence in $U$ with all accumulation points in $Gamma_1$ map to a sequence with all accumulation points in $partial DD$.
-    #todo[Either make $C^1$ with level curves or perhaps state the estimates that give $C^2$ to a harmonic functions, without proof.]
   ],
   <thm:doubly-connected-mapping-smooth-boundary>,
 )
@@ -267,29 +266,55 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
     $ T = -integral.cont_gamma omega. $,
     <eq:doubly-connected-harmonic-period>,
   )
-  Orient $partial U$ positively, so that $Gamma_1$ is traversed clockwise (and $Gamma_0$ is traversed counter-clockwise). Therefore,
+  // Orient $partial U$ positively, so that $Gamma_1$ is traversed clockwise (and $Gamma_0$ is traversed counter-clockwise). Therefore,
+  // $
+  //   (integral.cont.ccw_(gamma) + integral.cont.cw_(Gamma_1)) omega = integral_(Gamma_1 union gamma) omega = integral_(U inter jinterior(gamma)) dd(omega) = 0
+  // $
+  // by Green's Theorem. Then
+  // $ -integral.cont.ccw_gamma omega = integral.cont.cw_(Gamma_1) omega. $ Moreover, if $zeta = xi + ii eta$ traverses $partial U$ positively, then
+  // $ vu(n) abs(dzeta) = mat(0, 1; -1, 0) vec(dif xi, dif eta) = vec(dif eta, -dif xi) $
+  // faces the exterior of $partial U$, and hence
+  // $
+  //   nabla_(vu(n)) u(zeta) abs(dzeta) = grad u(zeta) dot vu(n) abs(dzeta) = u'_xi (zeta) dif eta - u'_eta (zeta) dif xi = omega.
+  // $
+  // Using $u equiv 0$ on $Gamma_0$, $u equiv 1$ on $Gamma_1$, and $laplacian u equiv 0$, we therefore obtain
+  // $
+  //   T & = -integral.cont_gamma omega = integral.cont_(Gamma_1) nabla_(vu(n)) u(zeta) abs(dzeta) \
+  //   & = integral.cont_(partial U) u(zeta) nabla_(vu(n)) u(zeta) abs(dzeta) \
+  //   & = integral.cont_(partial U) u(zeta) u'_xi (zeta) dif eta - u(zeta) u'_eta (zeta) dif xi \
+  //   & = integral_U [pdv((u u'_xi), xi) + pdv((u u'_eta), eta)] dd(xi) and dd(eta) \
+  //   & = integral_U [(u'_xi)^2 +u u''_(xi xi) + (u'_eta)^2 +u u''_(eta eta)] dd(xi) and dd(eta) \
+  //   & = integral_U [norm(grad u)^2 + u laplacian u] dd(xi) and dd(eta) = integral_U norm(grad u)^2 dd(xi) and dd(eta) > 0.
+  // $
+  Define the real function
   $
-    (integral.cont.ccw_(gamma) + integral.cont.cw_(Gamma_1)) omega = integral_(Gamma_1 union gamma) omega = integral_(U inter jinterior(gamma)) dd(omega) = 0
+    rho.alt(x) = cases(exp(-1 / x)&quad "if" quad x > 0, 0&quad "if" quad x <= 0).
   $
-  by Green's Theorem. Then
-  $ -integral.cont.ccw_gamma omega = integral.cont.cw_(Gamma_1) omega. $ Moreover, if $zeta = xi + ii eta$ traverses $partial U$ positively, then
-  $ vu(n) abs(dzeta) = mat(0, 1; -1, 0) vec(dif xi, dif eta) = vec(dif eta, -dif xi) $
-  faces the exterior of $partial U$, and hence
+  Observe that $rho.alt in C^oo (RR)$. Then for $0 < a < b < 1$, define the real function
   $
-    nabla_(vu(n)) u(zeta) abs(dzeta) = grad u(zeta) dot vu(n) abs(dzeta) = u'_xi (zeta) dif eta - u'_eta (zeta) dif xi = omega.
+    rho(x) equiv (rho.alt((x - a) / (b - a))) / (rho.alt((x - a) / (b - a)) + rho.alt((b - x) / (b - a)))
   $
-  Using $u equiv 0$ on $Gamma_0$, $u equiv 1$ on $Gamma_1$, and $laplacian u equiv 0$, we therefore obtain
+  is smooth in $C^oo$, vanishes for $x<=a$, is identically $1$ for $x >= b$, and has a positive derivative in $(a,b)$. Let $chi equiv rho compose u$, then on a relatively open annular neighborhood of $Gamma_0$ in $overline(U)$, $u < a$, so $chi equiv 0$ thereon, while on a relatively open annular neighborhood of $Gamma_1$ in $overline(U)$, $u > b$, so $chi equiv 1$ thereon. In each neighborhood, respectively choose Jordan curves $gamma_0 subset U$ and $gamma_1 subset U$, such that $gamma_1$ encloses $Gamma_1$ and is enclosed by $gamma$. Then $gamma_0^+ union gamma_1^-$ encloses a doubly connected region $W$ (as does $gamma union gamma_1$). Since $chi equiv 0$ in $gamma_0$ and $chi equiv 1$ in $gamma_1$, then $chi omega$ is $C^oo$ on a neighborhood of $overline(W)$ and thus Green's Theorem (@thm:complex-green) is applicable:
   $
-    T & = -integral.cont_gamma omega = integral.cont_(Gamma_1) nabla_(vu(n)) u(zeta) abs(dzeta) \
-    & = integral.cont_(partial U) u(zeta) nabla_(vu(n)) u(zeta) abs(dzeta) \
-    & = integral.cont_(partial U) u(zeta) u'_xi (zeta) dif eta - u(zeta) u'_eta (zeta) dif xi \
-    & = integral_U [pdv((u u'_xi), xi) + pdv((u u'_eta), eta)] dd(xi) and dd(eta) \
-    & = integral_U [(u'_xi)^2 +u u''_(xi xi) + (u'_eta)^2 +u u''_(eta eta)] dd(xi) and dd(eta) \
-    & = integral_U [norm(grad u)^2 + u laplacian u] dd(xi) and dd(eta) = integral_U norm(grad u)^2 dd(xi) and dd(eta) > 0.
+    integral.double_W dd(chi omega) = integral.cont.ccw_gamma_0 chi omega - integral.cont.ccw_gamma_1 chi omega = -integral.cont.ccw_gamma_1 omega = T,
   $
-  #todo[
-    This needs justification, or a rework by exhaustion. We are not necessarily certain that $omega$ is $C^1$ on the closure without further analysis.
-  ]
+  because
+  $
+    integral.cont.ccw_gamma omega - integral.cont.ccw_gamma_1 omega = integral.double_(jinterior gamma without overline(jinterior gamma_1)) dd(omega) = 0.
+  $
+  Thus,
+  $
+    T & = integral.double_W dd(chi omega) = integral.double_W dd(chi) and omega + chi dd(omega) \
+      & = integral.double_W dd(chi) and omega = integral.double_W rho' compose u dd(u) and omega \
+      & = integral.double_W rho' compose u (u'_x dx + u'_y dy) and (-u'_y dx + u'_x dy) \
+      & = integral.double_W rho' compose u norm(grad u)^2 dx and dy.
+  $
+  Let $ q(z) = rho' compose u(z) norm(grad u (z))^2. $
+  Suppose for contradiction that $q$ were nowhere positive. Then
+  $ norm(grad chi)^2 equiv (rho' compose u)^2 norm(grad u)^2 equiv q rho' compose u equiv 0. $
+  Then $grad chi equiv bold(0)$ throughout the connected region $U$, and is thus constant thereon. But $chi equiv 0$ on $Gamma_0$ and $chi equiv 1$ on $Gamma_1$: a contradiction. Therefore at some $z' in U$, $q(z') > 0$ (then $a <= u(z') <= b$, and by construction $z' in W$). By continuity, $exists epsilon > 0$ such that $forall z in D(z', epsilon) subset.eq W$, $ rho' compose u(z) norm(grad u(z))^2 >= (q(z')) / 2 > 0, $
+  implying from the nonnegativity of $q$, that $T >= (q(z')) / 2 uppi epsilon^2 > 0$. Hence $T > 0$.
+
   The function $g(z) = u'_x (z) - ii u'_y (z)$ is holomorphic (verifiable by using $pdv(, overline(z))$). Choose a simple $C^1$ arc $L subset overline(U)$ joining $Gamma_1$ to $Gamma_0$, with its interior in $U$, which crosses $gamma$ non-tangentially exactly once and such that $U^* = U without L$ is simply connected. Fix $z_* in U^*$ and define
   $
     h(z) = u(z_*) + integral_(z_*)^z g(zeta) dzeta.
@@ -417,7 +442,7 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
           line((0.25, -0.5), (1.75, -0.5), mark: (end: (symbol: ">>", fill: black)), stroke: 2pt)
           translate(x: 6)
           let centers-transformed = ()
-          let pre-vertices = ()
+
           for center in centers {
             for i in range(-2, 3) {
               for j in range(-2, 3) {
