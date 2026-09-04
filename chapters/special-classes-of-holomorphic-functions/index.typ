@@ -6,5 +6,6 @@
     #include "elliptic-functions/index.typ"
     #include "schlicht-functions/index.typ"
     #include "boundary-continuity-of-biholomorphisms/index.typ"
+    #include "hardy-spaces/index.typ"
   ],
 )

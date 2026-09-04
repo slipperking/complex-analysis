@@ -145,6 +145,7 @@ In practice, elliptic functions derived from the Jacobi formulation often have m
   ],
   <def:weierstrass-p-function>,
 )
+Note that it is not immediately apparent that $wp$ is periodic. If we add some $omega in Lambda$ to $z$, we do indeed see a summation in which each individual term does reoccur. Although without absolute convergence of the summation in which $1 / (z - omega)^2$ and $1 / omega^2$ are considered as separate terms, such a conclusion cannot be made. Instead, we proceed with differentiation.
 
 By @prop:weierstrass-p-function-convergence, @thm:weierstrass-convergence, $wp$ is well-defined and meromorphic on $CC$. By @thm:weierstrass-convergence, we can use termwise differentiation to get
 $

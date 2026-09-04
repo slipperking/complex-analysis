@@ -348,7 +348,7 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 
     #lbl(
       $
-        sup_(z in K) abs(f^((n)) (z)) <= c_n norm(f)_(L^1(V)),
+        sup_(z in K) abs(f^((n)) (z)) <= c_n norm(f)_(L^1 (V)),
       $,
       <eq:nth-derivative-bounded-L1-norm-statement>,
     )

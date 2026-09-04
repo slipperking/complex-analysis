@@ -2,9 +2,6 @@
 #show: docs-subchapter.with(
   title: [Schlicht Functions],
   route: "schlicht-functions",
-  children: [
-    #include "bieberbach-conjecture/index.typ"
-  ],
 )
 #definition[
   A holomorphic function $f : DD -> CC$ is called _schlicht_ iff it is univalent and satisfies $f(0) = 0$ and $f'(0) = 1$.
