@@ -453,7 +453,7 @@
   _standalone-page(page, main-class: "search-page", extra-scripts: ("assets/search-index.js",))[
     #html.elem("h1", attrs: (class: "page-title"), [Search])
     #html.elem("p", attrs: (class: "search-warning"), [
-      Search functionality is still experimental, and math expressions do not work well yet.
+      Search functionality is still experimental.
     ])
     #html.elem("p", attrs: (class: "search-summary", id: "search-summary"), [
       Enter a word or phrase to search the notes.

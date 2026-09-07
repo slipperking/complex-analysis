@@ -167,7 +167,7 @@ We will now study the construction of an entire function $f(z)$ via its zeros. W
   $
   The expression in @eq:weierstrass-elementary-factor is known as the $p$-th _Weierstrass elementary factor_.
 
-  By $epsilon--N$, for a fixed $R > 0$, $exists N in NN$ such that $forall n >= N$, $abs(a_n) > 2 R$. Consider the product $product_(n = N)^oo E_(p_n) (z / a_n)$. For $z in overline(D(0, R))$ and $n >= N$, we have $abs(z / a_n) <= 1 / 2$. The Taylor expansion
+  By $epsilon$--$N$, for a fixed $R > 0$, $exists N in NN$ such that $forall n >= N$, $abs(a_n) > 2 R$. Consider the product $product_(n = N)^oo E_(p_n) (z / a_n)$. For $z in overline(D(0, R))$ and $n >= N$, we have $abs(z / a_n) <= 1 / 2$. The Taylor expansion
   $
     log(1 - w) = -sum_(k = 1)^oo w^k / k
   $

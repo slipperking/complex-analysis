@@ -4,37 +4,29 @@ import json
 import re
 from pathlib import Path
 
-from bs4 import BeautifulSoup, Tag
+from lxml import etree, html
+from lxml.html import HtmlElement
 
 
-BLOCK_SELECTORS = [
-    "p",
-    "li:not([role='doc-endnote'])",
-    "h2",
-    "h3",
-    "h4",
-    "h5",
-    "h6",
-    "figcaption",
-    ".abstract",
-    ".recommendation",
-    ".display-math",
-    ".theorem-list-entry",
-    ".thm-head",
-    ".proof-head",
-]
-
-NOISE_SELECTORS = [
-    ".page-nav",
-    "sup[role='doc-backlink']",
-    ".typst-multi-label-list",
-    ".eq-tag",
-    ".equation-tag-group",
-    ".equation-tag-holder",
-    ".page-source-heading",
-    "script",
-    "style",
-]
+BLOCK_TAGS = {"p", "li", "h2", "h3", "h4", "h5", "h6", "figcaption"}
+BLOCK_CLASSES = {
+    "abstract",
+    "recommendation",
+    "display-math",
+    "theorem-list-entry",
+    "thm-head",
+    "proof-head",
+}
+COMPOSITE_BLOCK_CLASSES = {"abstract", "recommendation", "theorem-list-entry"}
+NOISE_TAGS = {"script", "style"}
+NOISE_CLASSES = {
+    "page-nav",
+    "typst-multi-label-list",
+    "eq-tag",
+    "equation-tag-group",
+    "equation-tag-holder",
+    "page-source-heading",
+}
 
 SKIP_PATHS = {
     "404.html",
@@ -52,65 +44,119 @@ def normalize_text(value: str) -> str:
     return normalize_whitespace(value).casefold()
 
 
-def clean_node_html(node: Tag) -> Tag | None:
-    soup = BeautifulSoup(str(node), "html.parser")
-    tag = soup.find()
-    if tag is None:
-      return None
-
-    for selector in NOISE_SELECTORS:
-        for match in tag.select(selector):
-            match.decompose()
-
-    return tag
+def node_classes(node: HtmlElement) -> set[str]:
+    return set((node.get("class") or "").split())
 
 
-def block_anchor(node: Tag, main: Tag) -> str:
-    current: Tag | None = node
+def is_block_node(node: HtmlElement) -> bool:
+    if node.tag == "li" and node.get("role") == "doc-endnote":
+        return False
+    return node.tag in BLOCK_TAGS or bool(BLOCK_CLASSES.intersection(node_classes(node)))
+
+
+def is_noise_node(node: HtmlElement) -> bool:
+    if node.tag == "sup" and node.get("role") == "doc-backlink":
+        return True
+    return node.tag in NOISE_TAGS or bool(NOISE_CLASSES.intersection(node_classes(node)))
+
+
+def is_structure_head(node: HtmlElement) -> bool:
+    return bool({"thm-head", "proof-head"}.intersection(node_classes(node)))
+
+
+def has_indexable_descendant(node: HtmlElement, noise_nodes: set[HtmlElement]) -> bool:
+    if node.tag != "li" and not COMPOSITE_BLOCK_CLASSES.intersection(node_classes(node)):
+        return False
+    return any(
+        child not in noise_nodes and is_block_node(child)
+        for child in node.iterdescendants()
+    )
+
+
+def node_text(node: HtmlElement, noise_nodes: set[HtmlElement]) -> str:
+    pieces: list[str] = []
+
+    def append_text(current: HtmlElement) -> None:
+        if current in noise_nodes:
+            return
+        if current.text:
+            pieces.append(current.text)
+        for child in current:
+            append_text(child)
+            if child.tail:
+                pieces.append(child.tail)
+
+    append_text(node)
+    return normalize_whitespace(" ".join(pieces))
+
+
+def block_anchor(node: HtmlElement, ordinal: int, used_anchors: set[str]) -> tuple[str, bool]:
+    if node.get("id"):
+        return str(node.get("id")), False
+
+    anchor = f"search-hit-{ordinal}"
+    suffix = 2
+    while anchor in used_anchors:
+        anchor = f"search-hit-{ordinal}-{suffix}"
+        suffix += 1
+
+    node.set("id", anchor)
+    used_anchors.add(anchor)
+    return anchor, True
+
+
+def block_context(
+    node: HtmlElement,
+    main: HtmlElement,
+    heading_context: str,
+    structural_contexts: dict[HtmlElement, str],
+) -> str:
+    current = node.getparent()
     while current is not None and current is not main:
-        if current.get("id"):
-            return str(current["id"])
-        current = current.parent if isinstance(current.parent, Tag) else None
+        classes = node_classes(current)
+        if "thm-box" in classes or "thm-proof" in classes:
+            if current not in structural_contexts:
+                head = next((child for child in current.iterdescendants() if is_structure_head(child)), None)
+                structural_contexts[current] = normalize_whitespace(" ".join(head.itertext())) if head is not None else ""
+            return structural_contexts[current]
+        current = current.getparent()
+    return heading_context
 
-    previous = node.find_previous(lambda tag: isinstance(tag, Tag) and tag.get("id"))
-    if isinstance(previous, Tag) and previous.get("id"):
-        return str(previous["id"])
 
-    return ""
+def block_kind(node: HtmlElement) -> str:
+    if node.tag in {"h2", "h3", "h4", "h5", "h6"}:
+        return "heading"
+    if "display-math" in node_classes(node):
+        return "math"
+    for parent in node.iterancestors():
+        classes = node_classes(parent)
+        if "thm-proof" in classes:
+            return "proof"
+        if "thm-box" in classes:
+            return "statement"
+    return "text"
 
 
-def block_record(node: Tag, main: Tag) -> dict[str, str] | None:
-    cleaned = clean_node_html(node)
-    if cleaned is None:
-        return None
-
-    text = normalize_whitespace(cleaned.get_text(" ", strip=True))
+def block_record(
+    node: HtmlElement,
+    main: HtmlElement,
+    anchor: str,
+    noise_nodes: set[HtmlElement],
+    heading_context: str,
+    structural_contexts: dict[HtmlElement, str],
+) -> dict[str, str] | None:
+    text = node_text(node, noise_nodes)
     if not text:
         return None
 
-    html = str(cleaned)
-    kind = "heading" if cleaned.name and cleaned.name.startswith("h") else "text"
     return {
-        "anchor": block_anchor(node, main),
-        "kind": kind,
-        "html": html,
+        "anchor": anchor,
+        "context": block_context(node, main, heading_context, structural_contexts),
+        "kind": block_kind(node),
+        "html": html.tostring(node, encoding="unicode") if any(child.tag == "math" for child in node.iter()) else "",
         "text": text,
         "textNormalized": normalize_text(text),
     }
-
-
-def dedupe_blocks(blocks: list[dict[str, str]]) -> list[dict[str, str]]:
-    unique: list[dict[str, str]] = []
-    seen: set[tuple[str, str, str]] = set()
-
-    for block in blocks:
-        key = (block["anchor"], block["kind"], block["textNormalized"])
-        if key in seen:
-            continue
-        seen.add(key)
-        unique.append(block)
-
-    return unique
 
 
 def collect_pages(dist_dir: Path) -> list[dict[str, object]]:
@@ -121,31 +167,56 @@ def collect_pages(dist_dir: Path) -> list[dict[str, object]]:
         if rel_path in SKIP_PATHS:
             continue
 
-        soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
-        main = soup.select_one("main.content")
+        document = html.parse(str(path))
+        root = document.getroot()
+        main = next(
+            (
+                node
+                for node in root.iter("main")
+                if "content" in node_classes(node)
+            ),
+            None,
+        )
         if main is None:
             continue
 
-        for selector in NOISE_SELECTORS:
-            for match in main.select(selector):
-                match.decompose()
-
-        title_node = main.select_one(".page-title")
-        title = normalize_whitespace(title_node.get_text(" ", strip=True) if title_node else "")
+        title_node = next(
+            (node for node in main.iterdescendants() if "page-title" in node_classes(node)),
+            None,
+        )
+        title = normalize_whitespace(" ".join(title_node.itertext()) if title_node is not None else "")
         if not title:
-            title_tag = soup.find("title")
-            title = normalize_whitespace(title_tag.get_text(" ", strip=True) if title_tag else "Untitled")
+            title_tag = next(root.iter("title"), None)
+            title = normalize_whitespace(" ".join(title_tag.itertext()) if title_tag is not None else "Untitled")
 
+        noise_nodes = {node for node in main.iterdescendants() if is_noise_node(node)}
+        used_anchors = {str(node.get("id")) for node in root.iter() if node.get("id")}
         blocks = []
-        for selector in BLOCK_SELECTORS:
-            for node in main.select(selector):
-                record = block_record(node, main)
-                if record is not None:
-                    blocks.append(record)
+        anchors_added = False
+        heading_context = ""
+        structural_contexts: dict[HtmlElement, str] = {}
+        block_nodes = (node for node in main.iterdescendants() if is_block_node(node))
+        for ordinal, node in enumerate(block_nodes, start=1):
+            if node in noise_nodes or any(parent in noise_nodes for parent in node.iterancestors()):
+                continue
+            if has_indexable_descendant(node, noise_nodes):
+                continue
+            if node.tag in {"h2", "h3", "h4", "h5", "h6"}:
+                heading_context = node_text(node, noise_nodes)
+            anchor, added = block_anchor(node, ordinal, used_anchors)
+            record = block_record(
+                node,
+                main,
+                anchor,
+                noise_nodes,
+                heading_context,
+                structural_contexts,
+            )
+            if record is not None:
+                blocks.append(record)
+                anchors_added = anchors_added or added
 
-        blocks = dedupe_blocks(blocks)
         route = "" if rel_path == "index.html" else rel_path.removesuffix("index.html").rstrip("/")
-        page_text = normalize_whitespace(main.get_text(" ", strip=True))
 
         pages.append(
             {
@@ -153,10 +224,16 @@ def collect_pages(dist_dir: Path) -> list[dict[str, object]]:
                 "titleNormalized": normalize_text(title),
                 "path": rel_path,
                 "route": route,
-                "textNormalized": normalize_text(page_text),
                 "blocks": blocks,
             }
         )
+
+        if anchors_added:
+            doctype = document.docinfo.doctype or "<!DOCTYPE html>"
+            path.write_text(
+                etree.tostring(root, encoding="unicode", method="html", doctype=doctype),
+                encoding="utf-8",
+            )
 
     return pages
 
