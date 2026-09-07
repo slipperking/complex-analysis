@@ -213,14 +213,14 @@ The subjects to be discussed here are relevant and preliminary to Nevanlinna the
 For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs(z) <= r) abs(f(z))$ (by the Maximum Modulus Principle in @thm:maximum-modulus).
 
 #definition[Growth Order of Entire Functions][
-  An entire function $f$ is said to be of _finite order_ if there exists $alpha, r_alpha in RR$ such that
+  An entire function $f$ is said to be of _finite order_ if there exists $alpha, r_alpha > 0$ such that
   $ M(r, f) <= exp(r^alpha), quad forall r > r_alpha, $
   or in loose terms, $f$ is of finite order if it grows at most exponentially for large $z$. The _order_ of $f$, or $rho(f)$ is defined to be the infimum of all $alpha$ satisfying the previous condition.
 ]
 
 #proposition[
-  Let $f$ be entire; then if there exist $a, b, alpha, r_(alpha, beta) > 0$ such that
-  $ M(r, f) <= exp(a r^alpha + b), quad forall r > r_(alpha, beta), $
+  Let $f$ be entire; then if there exist $a, b, alpha, r_(alpha, b) > 0$ such that
+  $ M(r, f) <= exp(a r^alpha + b), quad forall r > r_(alpha, b), $
   then $rho(f) <= alpha$.
 ]
 
@@ -237,23 +237,34 @@ For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs
 ]
 
 #theorem[
-  The order of an entire $f$ may be explicitly given by
-  $ rho(f) = limsup_(r -> infinity) (log (log M(r, f))) / (log r). $
+  The order of a non-constant entire function $f$ may be explicitly given by
+  $ rho(f) = limsup_(r -> oo) (log (log M(r, f))) / (log r). $
 ]
 
 #proof[
-  By assumption, we have $forall epsilon' > 0$, $exists 0 < epsilon < epsilon'$ (or simply just $forall epsilon > 0$ by the nature of the exponential) such that
-  $ M(r, f) <= exp(r^(rho(f) + epsilon)) $
-  for some $r'$ and any $r > r'$. Taking logarithms twice we have
+  By definition, $rho(f)$ is the infimum of all $alpha > 0$ for which there exists $r_alpha > 0$ such that
   $
-    (log (log M(r, f))) / (log r) <= limsup_(r -> infinity) (log (log M(r, f))) / (log r) <= rho(f) + epsilon -> rho(f)
+    M(r, f) <= exp(r^alpha), quad forall r > r_alpha.
   $
-  as $epsilon' -> 0$. Moreover, for any $epsilon > 0$, $r' > 0$, $exists r > r'$ such that
+  Let
+  $ L = limsup_(r -> oo) (log (log M(r, f))) / (log r). $
+  First suppose $rho(f) < oo$. Fix $epsilon > 0$. Since $rho(f)$ is the infimum, there is an $alpha$ satisfying this condition such that $rho(f) <= alpha < rho(f) + epsilon$.
+
+  Hence, for all sufficiently large $r$,
   $
-    M(r, f) > exp(r^(rho(f) - epsilon)) ==> limsup_(r -> infinity) (log (log M(r, f))) / (log r) >= rho(f) - epsilon -> rho(f)
+    M(r, f) <= exp(r^alpha) <= exp(r^(rho(f) + epsilon)),
   $
-  as $epsilon -> 0$. Therefore,
-  $ rho(f) <= limsup_(r -> infinity) (log (log M(r, f))) / (log r) <= rho(f). #qedhere $
+  and hence $L <= rho(f) + epsilon$. Letting $epsilon -> 0^+$ gives $L <= rho(f)$.
+
+  Conversely, suppose $0 < epsilon < rho(f)$ and let $beta = rho(f) - epsilon$. Since $beta < rho(f)$, this condition fails for $beta$. Thus, for every $R > 0$, there exists $r > R$ such that
+  $
+    M(r, f) > exp(r^beta) = exp(r^(rho(f) - epsilon)).
+  $
+  Thus this inequality holds along a sequence $r_j -> oo$, so $L >= rho(f) - epsilon$. Letting $epsilon -> 0^+$ gives $L >= rho(f)$.
+
+  If $rho(f) = 0$, then $L >= 0$ because $M(r, f) -> oo$ for a non-constant entire function, while the first half gives $L <= 0$. Therefore $L = rho(f)$.
+
+  Finally, if $rho(f) = oo$, then this condition fails for every $beta > 0$. The same argument gives $L >= beta$ for every $beta > 0$, and hence $L = oo = rho(f)$. #qedhere
 ]
 
 #lbl(
@@ -285,7 +296,7 @@ For an entire function $f$, let $M(r, f) = sup_(abs(z) = r) abs(f(z)) = sup_(abs
 
 The utility of $rho$ is that it gives implications on the rate of which the zeros of an entire function tend to $infinity$. The order for meromorphic functions is more general and is pertinent in Nevanlinna Theory (@sec:nevanlinna-theory). This is quantified technically by the convergence range of the sum given by
 $ sum_(n=1)^infinity 1 / abs(a_n)^(k+1), $
-where each $a_n$ is a zero. Specifically, the infimum of all such $k$ under which the prescribed sum converges correlates to this right. For example, let $a_n = n$ for each $n$. Then for any $k > 0$, the integral test gives the convergence of the series, while if $a_n = sqrt(a_n)$ (corresponding to a slower approach to $infinity$), the series converges for $k > 1$.
+where each $a_n$ is a zero. Specifically, the infimum of all such $k$ under which the prescribed sum converges correlates to this right. For example, let $a_n = n$ for each $n$. Then for any $k > 0$, the integral test gives the convergence of the series, while if $a_n = sqrt(n)$ (corresponding to a slower approach to $oo$), the series converges for $k > 1$.
 
 For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r)$ according to multiplicity.
 
@@ -345,16 +356,16 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
 )
 
 #proof[
-  By trivial definition, we have
-  $ M(2r, f) <= exp((2r)^(rho + epsilon)) $
-  for all $epsilon' > 0$ and some $0 < epsilon < epsilon'$. @lem:maximum-modulus-zero-counting-double-radius gives that for any $r > 0$,
+  For every $epsilon > 0$ and all sufficiently large $r$, the definition of order gives
+  $ M(2r, f) <= exp((2r)^(rho(f) + epsilon)). $
+  Also, @lem:maximum-modulus-zero-counting-double-radius gives
   $ log 2 dot n(r, 0, f) <= log M(2r, f). $
   Hence,
   $
     log 2 dot n(r, 0, f) <= (2r)^(rho(f) + epsilon) <==> (n(r, 0, f)) / r^(rho(f) + 2 epsilon) <= 1 / (log 2) 2^(rho(f) + epsilon) r^(-epsilon) -> 0^+
   $
-  as $r -> infinity$. Then for sufficiently large $r$, we have
-  $ n <= (n(r, 0, f)) / r^(rho(f) + 2 epsilon) <= 1 ==> n(r, 0, f) <= r^(rho(f) + 2 epsilon). $
+  as $r -> oo$. Hence, for sufficiently large $r$,
+  $ n(r, 0, f) <= r^(rho(f) + 2 epsilon). $
   For sufficiently large $k in NN$, by the ordering of zeros, it follows that
   $ k <= n(abs(a_k) + delta, 0, f) <= (abs(a_k) + delta)^(rho(f) + 2 epsilon) $
   for sufficiently small $delta$. As $delta -> 0^+$, we have
@@ -367,10 +378,10 @@ For the following discussions, let $n(r, 0, f)$ count the zeros of $f$ in $D(0,r
 
 Therefore, for any $r > 0$, the series
 $
-  sum_(k=1)^infinity abs(r / a_k)^(rho(f) + eta) <= sum_(k=1)^infinity abs(r / a_k)^(floor(rho) + 1) quad "for sufficiently small" eta
+  sum_(k = 1)^oo abs(r / a_k)^(floor(rho(f)) + 1)
 $
-converges. Then by the Weierstrass Factorization Theorem (@thm:weierstrass-factorization),
-$ f(z) = z^m ee^(phi(z)) product_(k=1)^infinity E_(floor(rho)) (z / a_k) $
+converges, because $floor(rho(f)) + 1 > rho(f)$ and @thm:entire-function-finite-order-zeros-summation-convergence applies with $eta = floor(rho(f)) + 1 - rho(f)$. Then by the Weierstrass Factorization Theorem (@thm:weierstrass-factorization),
+$ f(z) = z^m ee^(phi(z)) product_(k = 1)^oo E_(floor(rho(f))) (z / a_k) $
 locally uniformly converges on $CC$, where $phi$ is entire.
 
 #definition[
@@ -381,13 +392,16 @@ locally uniformly converges on $CC$, where $phi$ is entire.
 
 The conclusion of @thm:entire-function-finite-order-zeros-summation-convergence is that the rank of an entire function with finite order is finite. Moreover, the rank $<= floor(rho)$.
 
-#definition[
-  Let $f$ be entire of finite rank $p$. By the Weierstrass Factorization theorem (@thm:weierstrass-factorization),
-  $ f(z) = z^m ee^(phi(z)) product_(k=1)^infinity E_p (z / a_k). $
-  If $phi$ is a polynomial of degree $q$, then $f$ is said to be of finite _genus_ $mu = max{p, q}$.
-]
+#lbl(
+  definition[Weierstrass Canonical Factorization][
+    Let $f$ be entire of finite rank $p$. Using this rank in the Weierstrass Factorization theorem (@thm:weierstrass-factorization),
+    $ f(z) = z^m ee^(phi(z)) product_(k=1)^infinity E_p (z / a_k). $
+    If $phi$ is a polynomial of degree $q$, then $f$ is said to be of finite _genus_ $mu = max{p, q}$.
+  ],
+  <def:weierstrass-canonical-factorization>,
+)
 
-This particular Weierstrass factorization is the _Weierstrass canonical factorization_ of $f$ (the portion corresponding to the product of elementary factors itself is the _Weierstrass canonical product_). Now that we have indulged in the implications of $rho(f)$ to its zero distribution, we now turn to the function $phi$ in the exponential.
+This particular Weierstrass factorization (using the rank $p$) is the _Weierstrass canonical factorization_ of $f$ (the portion corresponding to the product of elementary factors itself is the _Weierstrass canonical product_). Now that we have indulged in the implications of $rho(f)$ to its zero distribution, we now turn to the function $phi$ in the exponential.
 
 #lbl(
   lemma[
@@ -403,7 +417,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
     abs(r^2 - overline(a_k) z) >= r^2 - abs(a_k) abs(z) > r^2 - r dot r/2 = r^2/2 \ ==> abs(a_k)^(p+1) abs(r^2 - overline(a_k) z)^(-p-1) < (2/r)^(p+1)
   $
   since $rho(f) >= 0$ by the logarithm formula. Now by definition of $rho(f)$, @lem:maximum-modulus-zero-counting-double-radius gives the estimate for sufficiently large $r$ and arbitrarily small $epsilon > 0$:
-  $ n(r, 0, f) r^(-p-1) <= (log M(2r, 0, f)) / (log 2) r^(-p-1) <= ((2r)^(rho(f) + epsilon) r^(-p-1)) / (log 2). $
+  $ n(r, 0, f) r^(-p - 1) <= (log M(2r, f)) / (log 2) r^(-p - 1) <= ((2r)^(rho(f) + epsilon) r^(-p - 1)) / (log 2). $
   Thus,
   $
     abs(sum_(k=1)^(n(r,0,f)) overline(a_k)^(p+1) (r^2 - overline(a_k) z)^(-p-1)) <= n(r, 0, f) (2/r)^(p+1) <= (r^(rho(f) + epsilon - p - 1) 2^(rho(f) + epsilon + p + 1)) / (log 2).
@@ -418,7 +432,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   theorem[
     Let $f$ be entire with $f(0) = 1$. Then for $p > rho(f) - 1$ ($p$ integer) and $z in CC$,
     $
-      lim_(r -> infinity) integral_0^(2 uppi) (r ee^(ii theta) log abs(f (r ee^(ii theta)))) / (r ee^(ii theta) - z)^(p+2) dif theta = 0.
+      lim_(r -> infinity) integral_0^(2 uppi) (r ee^(ii theta) log abs(f (r ee^(ii theta)))) / (r ee^(ii theta) - z)^(p + 2) dif theta = 0.
     $
   ],
   <thm:poisson-jensen-log-diff-integral-term>,
@@ -442,19 +456,19 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   where the last expression uses the inequality derived from Jensen's formula (@cor:jensens-inequality) on the remaining integral.
 
   Now by assumption, we have
-  $ log M(r, f) <= r^(rho + epsilon) $
+  $ log M(r, f) <= r^(rho(f) + epsilon) $
   for any $epsilon > 0$ and sufficiently large $r$. Hence,
   $
     abs(integral_0^(2 uppi) (r ee^(ii theta) log abs(f (r ee^(ii theta)))) / (r ee^(ii theta) - z)^(p+2) dif theta) <= 2^(p+4) r^(rho(f) + epsilon - p - 1) uppi = 2^(p+4) r^((rho(f) - p - 1) \/ 2) uppi
   $
-  at $epsilon = (p + 1 - rho(f)) / 2$. Then since $(rho(f) - p - 1) / 2 < 0$, the expression vanishes as $R -> infinity$.
+  at $epsilon = (p + 1 - rho(f)) / 2$. Then since $(rho(f) - p - 1) / 2 < 0$, the expression vanishes as $r -> oo$.
 ]
 
 #lbl(
   proposition[
     Let $f$ be entire, non-constant, and of finite order such that $f(0) = 1$. Let ${a_k}_(k in NN)$ be the zeros of $f$ counted according to multiplicities such that $abs(a_1) <= abs(a_2) <= abs(a_3) <= dots$. If $p > rho(f) - 1$ is an integer, then
-    $ dif^p / (dif z^p) ((f'(z)) / (f(z))) equiv -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1) $
-    for all $z in CC$.
+    $ dif^p / (dif z^p) ((f'(z)) / (f(z))) equiv -sum_(k = 1)^oo (p!) / (a_k - z)^(p + 1) $
+    for all $z in CC without {a_1, a_2, dots}$.
   ],
   <prop:entire-function-finite-order-log-diff-derivatives>,
 )
@@ -462,7 +476,7 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
 #proof[
   Let $r > 2 abs(z)$. By the Poisson--Jensen Formula (@thm:poisson-jensen-formula), at each non-singular point, we have (the kernel representation derived in @eq:poisson-kernel-general-form)
   $
-    Re log f(z) &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) Re ((r ee^(ii theta) + z) / (r ee^(ii theta) - z)) dif theta \
+    Re log f(z) &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f (r ee^(ii theta))) Re ((r ee^(ii theta) + z) / (r ee^(ii theta) - z)) dtheta \
     &wide""+ sum_(k=1)^(n(r,0,f)) Re log ((r(z - a_k)) / (r^2 - overline(a_k) z)).
   $
   For any holomorphic $g = u + ii v$, we have
@@ -492,8 +506,8 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
     Let $f$ be entire, non-constant, and of finite order $rho$ such that $f(0) = 1$. Let
     $ P(z) = product_(k=1)^infinity E_(op("rank") f) (z / a_k) $
     be the associated product. If $p > rho(f) - 1$ is an integer, then
-    $ dif^p / (dif z^p) ((P'(z)) / P(z)) equiv -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1) $
-    for all $z in CC$.
+    $ dif^p / (dif z^p) ((P'(z)) / P(z)) equiv -sum_(k = 1)^oo (p!) / (a_k - z)^(p + 1) $
+    for all $z in CC without {a_1, a_2, dots}$.
   ],
   <lem:entire-function-weierstrass-product-finite-order-log-diff-derivatives>,
 )
@@ -507,14 +521,16 @@ This particular Weierstrass factorization is the _Weierstrass canonical factoriz
   $
     dif^p / (dif z^p) ((P'_n (z)) / (P_n (z))) = -sum_(k=1)^n (p!) / (a_k - z)^(p+1) + dif^p / (dif z^p) sum_(j=1)^(op("rank") f) sum_(k=1)^n z^(j-1) / a_k^j.
   $
-  Since the polynomial in the rightmost term has degree at most $max j - 1 = op("rank") f - 1$, and because $p > floor(rho) - 1 >= op("rank") f - 1$, after $p$ derivatives each term of the expression vanishes. For an arbitrarily chosen compact $K subset CC$ avoiding $a_k$, some $N in NN$ such that $abs(a_k) >= max_(z in K) abs(z)$ for all $k > N$, we have $forall z in K$, $abs(a_k - z) <= abs(a_k) + abs(z) <= 2 abs(a_k)$. Then the convergence of
-  $ sum_(k=1)^infinity 1 / (2 abs(a_k)^(p+1)) $
+  Since the polynomial in the rightmost term has degree at most $max j - 1 = op("rank") f - 1$, and because $p > floor(rho) - 1 >= op("rank") f - 1$, after $p$ derivatives each term of the expression vanishes. For an arbitrarily chosen compact $K subset CC$ avoiding the zeros, choose $N in NN$ so that $abs(a_k) >= 2 max_(z in K) abs(z)$ for all $k > N$. Then, for $z in K$ and $k > N$,
+  $ abs(a_k - z) >= abs(a_k) - abs(z) >= abs(a_k) / 2. $
+  The convergence of
+  $ sum_(k = 1)^oo 2^(p + 1) / abs(a_k)^(p + 1) $
   from @thm:entire-function-finite-order-zeros-summation-convergence implies the absolute convergence of
-  $ sum_(k=1)^infinity 1 / (a_k - z)^(p+1) $
-  in $K$. Moreover, it can be shown that the uniform convergence of $P_n -> P$ (from the Weierstrass factorization) and $P'_n -> P'_n$ (by the Weierstrass Convergence Theorem, @thm:weierstrass-convergence) in $K$ implies that of $(P'(z)) / P(z)$. Hence, the Weierstrass Convergence Theorem implies that
+  $ sum_(k = 1)^oo 1 / (a_k - z)^(p + 1) $
+  uniformly in $K$. Moreover, the locally uniform convergence $P_n -> P$ implies $P'_n -> P'$ by the Weierstrass Convergence Theorem (@thm:weierstrass-convergence). Since $P$ is bounded away from zero on $K$, it follows that $P'_n / P_n -> P' / P$ locally uniformly away from the zeros. Applying the Weierstrass Convergence Theorem $p$ more times gives
   $
-    lim_(n -> infinity) dif^p / (dif z^p) ((P'_n (z)) / (P_n (z))) &= (P'(z)) / P(z) = -lim_(n -> infinity) sum_(k=1)^n (p!) / (a_k - z)^(p+1) \
-    &= -sum_(k=1)^infinity (p!) / (a_k - z)^(p+1). #qedhere
+    lim_(n -> oo) dif^p / (dif z^p) ((P'_n (z)) / (P_n (z))) &= dif^p / (dif z^p) ((P'(z)) / P(z)) = -lim_(n -> oo) sum_(k = 1)^n (p!) / (a_k - z)^(p + 1) \
+    &= -sum_(k = 1)^oo (p!) / (a_k - z)^(p + 1). #qedhere
   $
 ]
 
