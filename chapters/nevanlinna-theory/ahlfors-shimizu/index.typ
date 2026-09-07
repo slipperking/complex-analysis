@@ -289,8 +289,8 @@ Thus, $k$ measures the _chordal_ distance between points on the Riemann sphere, 
 Let $w = u + ii v$ be a point in the projected plane and let $dif u dif v$ be an area element on the plane. Then the corresponding area element on the sphere is equal to:
 $
   dif A_S & = norm(bold(sigma)'_u times bold(sigma)'_v) dif u dif v \
-  & = (dif u dif v) / (abs(w)^2 + 1)^4 norm(mat(2v^2-2u^2 + 2; -4v u; 4u) times mat(-4u v; 2u^2 - 2 v^2 + 2; 4v)) \
-  & = (4 dif u dif v) / (abs(w)^2 + 1)^4 norm(mat(-2u v^2 - 2u^3 - 2u; -2u^2 v - 2v^3 - 2v; 1 - (u^2 + v^2)^2)) = (4 dif u dif v) / (abs(w)^2 + 1)^3 norm(mat(-2u; -2v; 1 - abs(w)^2)) \
+  & = (dif u dif v) / (abs(w)^2 + 1)^4 norm(vec(2v^2-2u^2 + 2, -4v u, 4u) times vec(-4u v, 2u^2 - 2 v^2 + 2, 4v)) \
+  & = (4 dif u dif v) / (abs(w)^2 + 1)^4 norm(vec(-2u v^2 - 2u^3 - 2u, -2u^2 v - 2v^3 - 2v, 1 - (u^2 + v^2)^2)) = (4 dif u dif v) / (abs(w)^2 + 1)^3 norm(vec(-2u, -2v, 1 - abs(w)^2)) \
   & = (4 dif u dif v) / (abs(w)^2 + 1)^3 sqrt(2 abs(w)^2 + 1 + abs(w)^4) = (4 dif u dif v) / (abs(w)^2 + 1)^2
 $
 The surface area of a surface $E subset.eq S$ is given by
