@@ -20,11 +20,44 @@ In $DD$, we provide the following analogous formulation:
   <def:hardy-space>,
 )
 The $H^oo$ class is simply the space of bounded holomorphic functions on $DD$. Immediately, we have
-#theorem[
-  Any $f in H^oo$ can be factorized by
-  $ f(z) = F(z) B(z), $
-  where $B$ is a Blaschke Product (@thm:blaschke-product with an additional $z^m$ factor) and $F$ is a bounded, non-vanishing holomorphic function on $DD$ such that $norm(f)_(H^oo) = norm(F)_(H^oo)$.
-]
+#lbl(
+  theorem[
+    Any $f in H^oo$ can be factorized by
+    $ f(z) = F(z) B(z), $
+    where $B$ is a Blaschke Product (@thm:blaschke-product with an additional $z^m$ factor) constructed on the zeros of $f$; and $F$ is a bounded, non-vanishing holomorphic function on $DD$ such that $norm(f)_(H^oo) = norm(F)_(H^oo)$.
+  ],
+  <thm:blaschke-factorization-of-H-oo>,
+)
 #proof[
   The assertions follow immediately from an application of @lem:hardy-function-blaschke-condition and @cor:blaschke-product-factorization.
 ]
+In a series of papers published by Godfrey H. Hardy and F. Riesz, it was found that many of the properties of $H^oo$ functions apply to the weaker ($H^oo subset.eq H^p$) class of $H^p$ for finite $p$, including that of @thm:blaschke-factorization-of-H-oo.
+#todo()
+#lbl(
+  proposition[
+    For $p in (1, oo)$ and $f in H^p$, $abs(f)^p$ is subharmonic.
+  ],
+  <prop:hardy-modulus-power-is-subharmonic>,
+)
+#proof[
+  // @thm:jensens-inequality-convexity
+  For each point $z in DD without {z in DD: f(z) = 0}$, $log abs(f(z))$ is locally harmonic as it is the real part of a locally holomorphic function. Therefore, $z |-> exp[p log abs(f(z))]$
+
+  // Then on
+  // Observe that $exp$ is
+]
+#lbl(
+  lemma[Hardy][
+    For any $f in H^p$, where $p in RR_(>= 1) union {oo}$, for any two $0 < r_1 < r_2 < 1$,
+    $
+      integral_0^(2 uppi) abs(f(r_1 ee^(ii theta)))^p dtheta <= integral_0^(2 uppi) abs(f(r_2 ee^(ii theta)))^p dtheta.
+    $
+  ],
+  <lem:hardy-integral-increasing-in-radius>,
+)
+#proof[
+
+]
+// lemma, hardy, integral is increasing in r < 1,
+// proper subclass 1/(1-z)^(1/p), p branch
+//

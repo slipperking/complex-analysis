@@ -263,7 +263,7 @@ By the Maximum Principle, we have the following characterization:
 
 Here, we must alert the reader to an important difference between harmonic and subharmonic functions. The local mean-value property implies harmonicity and therefore smoothness. The local sub-mean-value property likewise implies subharmonicity by @thm:subharmonic-function-sub-mean-value-property, and consequently the global sub-mean inequality, but it does not imply that the function is $C^2$. Thus the statement and application in @thm:subharmonic-twice-continuously-differentiable-subharmonic-nonnegative-laplacian-equivalence do not hold, and there is no analogous elliptic regularity for general subharmonic functions.
 #lbl(
-  theorem[Jensen's inequality][
+  theorem[Jensen's Inequality][
     Let $[a,b] subset.eq RR$ be an interval. If $phi.alt: RR -> RR$ is convex and $f: [a,b] -> RR$ is continuous,
     then
     $ phi.alt(1/(b-a) integral_a^b f(t) dt) <= 1/(b-a) integral_a^b phi.alt compose f(t) dt. $
