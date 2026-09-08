@@ -106,7 +106,7 @@ As an immediate consequence, we have:
     $ sum_(n=1)^infinity (1 - abs(a_n)) $
     is convergent.
   ],
-  <lem:bounded-holomorphic-function-blaschke-condition>,
+  <lem:hardy-function-blaschke-condition>,
 )
 
 #proof[

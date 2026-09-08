@@ -4,7 +4,7 @@
   route: "hardy-spaces",
 )
 (The knowledge of measure spaces or measure theory will not be required for the understanding of this section, but rather for purely motivational purposes.)
-The definition of a Lebesgue space or $L^p$ space in real analysis approximately defines the $L_p (S, mu)$ space for a given set (a measure space) $(S, Sigma, mu)$ (for $1<=p<oo$), by $ L_p (S, mu) = {f : S -> CC "measurable" : norm(f)_(L^p (S, mu)) < oo}, $
+The definition of a Lebesgue space or $L^p$ space in real analysis approximately defines the $L^p (S, mu)$ space for a given set (a measure space) $(S, Sigma, mu)$ (for $1<=p<oo$), by $ L^p (S, mu) = {f : S -> CC "measurable" : norm(f)_(L^p (S, mu)) < oo}, $
 where the $L^p$ norm of $f$ is given by
 $ norm(f)_(L^p (S, mu)) = (integral_S abs(f)^p dd(mu))^(1 / p). $
 Moreover, $ norm(f)_(L^oo (S, mu)) = cases(op("ess. sup") abs(f) quad &"if" quad mu(S) = 0, 0 quad & "otherwise") $ (where $op("ess. sup")$ is the essential supremum, or the infimum of supremums over subsets of $S$ omitting a set of measure $0$).
@@ -19,3 +19,12 @@ In $DD$, we provide the following analogous formulation:
   ],
   <def:hardy-space>,
 )
+The $H^oo$ class is simply the space of bounded holomorphic functions on $DD$. Immediately, we have
+#theorem[
+  Any $f in H^oo$ can be factorized by
+  $ f(z) = F(z) B(z), $
+  where $B$ is a Blaschke Product (@thm:blaschke-product with an additional $z^m$ factor) and $F$ is a bounded, non-vanishing holomorphic function on $DD$ such that $norm(f)_(H^oo) = norm(F)_(H^oo)$.
+]
+#proof[
+  The assertions follow immediately from an application of @lem:hardy-function-blaschke-condition and @cor:blaschke-product-factorization.
+]
