@@ -72,7 +72,7 @@ $
   sum_(n = -oo)^oo a_n ee^(ii n theta) rho^(abs(n)) = 1 / (2 uppi) integral_0^(2 uppi) ((1 - rho^2) u(ee^(ii tau))) / (1 + rho^2 - 2 rho cos(theta - tau)) dif tau = u(rho ee^(ii theta)).
 $
 
-Furthermore, by the proof of @thm:dirichlet-problem-with-laplace-equation-solution (specifically @eq:dirichlet-problem-with-laplace-equation-solution-limit-to-boundary),
+Furthermore, by the proof of @thm:dirichlet-problem-with-laplace-equation-solution-disk (specifically @eq:dirichlet-problem-with-laplace-equation-solution-disk-limit-to-boundary),
 
 $ lim_(rho -> 1^-) sum_(n = -oo)^oo a_n ee^(ii n theta) rho^(abs(n)) = u(ee^(ii theta)). $
 
@@ -90,7 +90,7 @@ We now establish that real-valued continuous functions satisfying the _local mea
 )
 
 #proof[
-  Fix $z_0 in U$ arbitrarily and choose $lambda > 0$ such that $overline(D(z_0, lambda)) subset.double U$. Because $f in C(partial D(z_0, lambda))$, @thm:dirichlet-problem-with-laplace-equation-solution guarantees the existence of a unique harmonic function $u$ on $D(z_0, lambda)$ satisfying $u equiv f$ on $partial D(z_0, lambda)$ with
+  Fix $z_0 in U$ arbitrarily and choose $lambda > 0$ such that $overline(D(z_0, lambda)) subset.double U$. Because $f in C(partial D(z_0, lambda))$, @thm:dirichlet-problem-with-laplace-equation-solution-disk guarantees the existence of a unique harmonic function $u$ on $D(z_0, lambda)$ satisfying $u equiv f$ on $partial D(z_0, lambda)$ with
   $ u(z) = integral_0^(2 uppi) f(zeta) P(zeta, z) dif tau. $
   Define $psi = f - u$ on $overline(D(z_0, lambda))$. Then $psi$ is continuous, satisfies the local mean-value property in $D(z_0, lambda)$, and vanishes on $partial D(z_0, lambda)$. By @thm:maximum-principle-for-real-functions-satisfying-mean-value-property, $psi equiv 0$ on $overline(D(z_0, lambda))$. Thus, $f equiv u$ on $overline(D(z_0, lambda))$, implying $f$ is harmonic at $z_0$. The arbitrariness of $z_0$ establishes harmonicity on $U$.
 ]

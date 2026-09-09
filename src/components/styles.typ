@@ -10,7 +10,12 @@
 #let secondary-label-assignment-counter = state("secondary-label-assignment", 0)
 #let secondary-label-assignment-map = state("secondary-label-assignment-map", (:))
 
-#let explicit-label(a, b, prefix: "") = {
+#let explicit-label(..args, prefix: "") = {
+  let args = args.pos()
+  if (args.len() == 0) { panic("No explicit-label parameters were given") } else if (args.len() == 1) {
+    return args.first()
+  }
+  let (a, b) = args.slice(0, 2)
   let (body, original-label) = if type(b) == str or type(b) == label {
     (a, b)
   } else if type(a) == str or type(a) == label {

@@ -288,8 +288,32 @@ Here, we must alert the reader to an important difference between harmonic and s
   Then letting $x' = f_"avg"$,
   $
     phi.alt(1/(b - a) integral_a^b f(t) dt) = phi.alt(f_"avg") &= phi.alt_(f_"avg") (f_"avg") = 1/(b-a) integral_a^b phi.alt_(f_"avg") compose f(t) dt \
-    &<= 1/(b-a) integral_a^b phi.alt compose f(t) dt. qedhere
+    &<= 1/(b - a) integral_a^b phi.alt compose f(t) dt. qedhere
   $
+]
+Furthermore, we have the rather predictable generalization
+#lbl(
+  theorem[
+    Let $U subset.eq CC$ be a region and suppose $f:U -> RR$ is subharmonic. Let $phi.alt$ be non-decreasing and convex on a real connected superset of $f(U)$. Then $phi.alt compose f$ is subharmonic.
+  ],
+  <thm:composition-of-non-decreasing-convex-and-subharmonic-is-subharmonic>,
+)
+#proof[
+  Observe that by the sub-mean-value property, for any closed disk $overline(D(z, r)) subset.double U$,
+  #lbl(
+    $
+      (phi.alt compose f)(z) & <= phi.alt(1 / (2 uppi) integral_0^(2 uppi) f(z + r ee^(ii theta)) dtheta).
+    $,
+  )
+  Consider the function $h(theta) = f(z + r ee^(ii theta))$ where $h:[0, 2 uppi] -> RR$ is continuous. Then by @thm:jensens-inequality-convexity,
+  $ phi.alt([#[average of $h$ on $[0,2 uppi]$]]) <= [#[average of $phi.alt compose h$ on $[0,2 uppi]$]], $
+  giving that
+  $
+    (phi.alt compose f)(z) & <= phi.alt([#[average of $h$ on $[0,2 uppi]$]]) \
+                           & = [#[average of $phi.alt compose h$ on $[0,2 uppi]$]] \
+                           & <= 1 / (2 uppi) integral_0^(2 uppi) phi.alt compose f(z + r ee^(ii theta)) dtheta,
+  $
+  hence $phi.alt compose f$ satisfies the sub-mean-value property on each compact disk in $U$. Then $phi.alt compose f$ is subharmonic by @thm:subharmonic-function-sub-mean-value-property.
 ]
 #theorem[
   Let $U subset.eq CC$ be a region. If $phi.alt: RR -> RR$ is convex and non-decreasing and $f: U -> RR$ is subharmonic, then $phi.alt compose f$ is subharmonic.
