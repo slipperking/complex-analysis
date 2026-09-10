@@ -31,7 +31,7 @@ The $H^oo$ class is simply the space of bounded holomorphic functions on $DD$. I
 #proof[
   The assertions follow immediately from an application of @lem:hardy-function-blaschke-condition and @cor:blaschke-product-factorization.
 ]
-In a series of papers published by Godfrey H. Hardy and F. Riesz, it was found that many of the properties of $H^oo$ functions apply to the weaker ($H^oo subset.eq H^p$) class of $H^p$ for finite $p$, including that of @thm:blaschke-factorization-of-H-oo.
+In a series of papers published by Godfrey H. Hardy and Frigyes Riesz, it was found that many of the properties of $H^oo$ functions apply to the weaker ($H^oo subset.eq H^p$) class of $H^p$ for finite $p$, including that of @thm:blaschke-factorization-of-H-oo.
 #todo()
 #lbl(
   proposition[
@@ -66,9 +66,27 @@ In a series of papers published by Godfrey H. Hardy and F. Riesz, it was found t
   $
 ]
 #theorem[
-  For $0 < p_1 < p_2 <= oo$, $H^(p_2)$ is a proper subclass of $H^(p_1)$, $H^(p_2) subset.neq H^(p_2)$.
+  For $0 < p_1 < p_2 <= oo$, $H^(p_2)$ is a proper subclass of $H^(p_1)$: $ H^(p_2) subset.neq H^(p_2). $
 ]
+#proof[
+  We aim to prove the existence of some function $f$ which lies in $H^(p_1)$ but not $H^(p_2)$. The function we concern ourselves with is
+  $ f:z |-> (1 - z)^(-1 / p) = exp[-Log(1 - z) / p], $
+  for $z in DD$, where $Log$ is the principal branch logarithm and $p in (p_1, p_2)$ is fixed. The use of the principal branch is justified, as $z |-> 1 - z$ maps $DD$ to $D(1, 1) subset CC without R_(<= 0)$.
 
+  Since
+  $
+    integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_1) dtheta &= integral_0^(2 uppi) abs(1 - r ee^(ii theta))^(-p_1 / p) dtheta \
+    &<= integral_0^(2 uppi) abs(Im(1 - r ee^(ii theta)))^(-p_1 / p) dtheta \
+    &<= integral_0^(2 uppi) (r abs(sin theta))^(-p_1 / p) dtheta \
+    &= 4 r^(-p_1 / p) integral_0^(uppi / 2) (sin theta)^(-p_1 / p) dtheta,
+  $
+  and since $sin theta >= (2 theta) / uppi$ for $theta in [0, uppi / 2]$,
+  $
+    integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_1) dtheta &=4 (2 / uppi)^(-p_1 / p) r^(-p_1 / p) integral_0^(uppi / 2) theta^(-p_1 / p) dtheta \
+    &= 4 (2 / uppi)^(-p_1 / p) r^(-p_1 / p) evaluated(theta^(1 - p_1 / p))_0^(2 uppi) < oo quad "since" quad 1 - p_1 / p > 0.
+  $
+  This shows $f in H^(p_1)$. Moreover, since
+]
 // lemma, hardy, integral is increasing in r < 1,
 // proper subclass 1/(1-z)^(1/p), p branch
 //
