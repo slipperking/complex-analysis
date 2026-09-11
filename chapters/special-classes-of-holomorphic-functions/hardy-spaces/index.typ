@@ -4,6 +4,7 @@
   route: "hardy-spaces",
 )
 (The knowledge of measure spaces or measure theory will not be required for the understanding of this section, but rather for purely motivational purposes.)
+
 The definition of a Lebesgue space or $L^p$ space in real analysis approximately defines the $L^p (S, mu)$ space for a given set (a measure space) $(S, Sigma, mu)$ (for $1<=p<oo$), by $ L^p (S, mu) = {f : S -> CC "measurable" : norm(f)_(L^p (S, mu)) < oo}, $
 where the $L^p$ norm of $f$ is given by
 $ norm(f)_(L^p (S, mu)) = (integral_S abs(f)^p dd(mu))^(1 / p). $
@@ -73,7 +74,7 @@ In a series of papers published by Godfrey H. Hardy and Frigyes Riesz, it was fo
   $ f:z |-> (1 - z)^(-1 / p) = exp[-Log(1 - z) / p], $
   for $z in DD$, where $Log$ is the principal branch logarithm and $p in (p_1, p_2)$ is fixed. The use of the principal branch is justified, as $z |-> 1 - z$ maps $DD$ to $D(1, 1) subset CC without R_(<= 0)$.
 
-  Since
+  Since for any $r in (0,1)$,
   $
     integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_1) dtheta &= integral_0^(2 uppi) abs(1 - r ee^(ii theta))^(-p_1 / p) dtheta \
     &<= integral_0^(2 uppi) abs(Im(1 - r ee^(ii theta)))^(-p_1 / p) dtheta \
@@ -83,10 +84,45 @@ In a series of papers published by Godfrey H. Hardy and Frigyes Riesz, it was fo
   and since $sin theta >= (2 theta) / uppi$ for $theta in [0, uppi / 2]$,
   $
     integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_1) dtheta &=4 (2 / uppi)^(-p_1 / p) r^(-p_1 / p) integral_0^(uppi / 2) theta^(-p_1 / p) dtheta \
-    &= 4 (2 / uppi)^(-p_1 / p) r^(-p_1 / p) evaluated(theta^(1 - p_1 / p))_0^(2 uppi) < oo quad "since" quad 1 - p_1 / p > 0.
+    &= 4 (2 / uppi)^(-p_1 / p) r^(-p_1 / p) evaluated(theta^(1 - p_1 / p))_0^(uppi / 2) \
+    &=c r^(-p_1 / p) quad "since" quad 1 - p_1 / p > 0.
   $
-  This shows $f in H^(p_1)$. Moreover, since
+  Moreover, since $abs(f)$ is bounded on $overline(D(0, 1/2))$ by some constant $M$,
+  $
+    abs(integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_1) dtheta) <= max{2 uppi M^(p_1), sup_(r in (1/2, 1)) c r^(-p_1 / p)} <= max{2 uppi M^(p_1), c 2^(p_1 / p)} < oo,
+  $
+  we then have $f in H^(p_1)$. Moreover, observe that for all $r in (0, 1)$, if $p_2 != oo$,
+  $
+    integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_2) dtheta & = integral_0^(2 uppi) abs(1 - r ee^(ii theta))^(-p_2 / p) dtheta \
+    & >= integral_0^(2 uppi) (abs(Im(1 - r ee^(ii theta))) + abs(Re(1 - r ee^(ii theta))))^(-p_2 / p) dtheta \
+    & >= 2 integral_0^(uppi) [r (sin theta - cos theta) + 1]^(-p_2 / p) dtheta \
+    & = 2 integral_0^(uppi) [r (sin theta - cos theta) + 1]^(-p_2 / p) dtheta.
+  $
+  Since for any $r in (0,1)$, $theta in [0, uppi]$,
+  $ r (sin theta - cos theta) + 1 <= 1 - r + 2 theta, $
+  it follows that
+  $
+    integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_2) dtheta & = 2 integral_0^uppi (1 - r + 2 theta)^(-p_2 / p) dtheta \
+    & = evaluated(((1 - r + 2 theta)^(1 - p_2 / p)) / (1 - p_2 / p))_0^uppi \
+    & = ((1 - r + 2 uppi)^(1 - p_2 / p) - (1 - r)^(1 - p_2 / p)) / (1 - p_2 / p).
+  $
+  Taking the limit superior as $r -> 1^-$,
+  $
+    limsup_(r -> 1^-) integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_2) dtheta >= ((1 - r + 2 uppi)^(1 - p_2 / p) - (1 - r)^(1 - p_2 / p)) / (1 - p_2 / p) = oo
+  $
+  since $1 - p_2 / p < 0$ (if $p_2 = oo$ then this is trivial as $f$ is not bounded). Hence
+  $
+    (H^(p_1) in.rev) f in.not H^(p_2).
+  $
+  It suffices to show $H^(p_2) subset.neq H^(p_1)$ (the inclusion). This is already known for $p_2 = oo$, so assume $p_2 != oo$.
+
+  Assume an arbitrary $f in H^(p_2)$ and fix $r in (0,1)$. Let $phi.alt:RR_(>= 0) -> RR$ be given by $x |-> x^(p_2 / p_1)$. Let $g(theta) = abs(f(r ee^(ii theta)))^(p_1)$.
+
+  Then by holomorphy, $g in C([0, 2 uppi])$ and $phi.alt$ is convex since $p_2 / p_1$. Then
+  $
+    integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_1) dtheta &= 2 uppi [(1 / (2 uppi) integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_1) dtheta)^(p_2 / p_1)]^(p_1 / p_2) \
+    &= 2 uppi (phi.alt compose (#[average of $g$ in $[0, 2 uppi]$]))^(p_1 / p_2) \
+    &<= 2 uppi ((#[average of $phi.alt compose g$ in $[0, 2 uppi]$]))^(p_1 / p_2).
+  $
+  by application of Jensen's Inequality (@thm:jensens-inequality-convexity).
 ]
-// lemma, hardy, integral is increasing in r < 1,
-// proper subclass 1/(1-z)^(1/p), p branch
-//

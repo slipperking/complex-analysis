@@ -7,8 +7,10 @@
     arg
   }
 }
-#let canvas(..args) = {
-  potential-frame(cetz.canvas(..args))
+#let canvas(..args, debug-show: false) = {
+  if (sys.inputs.at("hide-figures", default: none) != "true" or debug-show) {
+    potential-frame(cetz.canvas(..args))
+  }
 }
 #let ray(body, dy: 0em, tag: none) = context {
   if target() != "paged" {
