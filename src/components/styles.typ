@@ -44,7 +44,6 @@
 }
 
 #let document-styles(doc, mode: "pdf") = {
-  show: layout-limiter.with(max-iterations: 5)
   show ref: it => {
     if type(it.target) == label {
       context {

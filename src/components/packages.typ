@@ -1,5 +1,7 @@
 //#import "@preview/ctheorems:1.1.3": *
-#import "@preview/layout-ltd:0.1.0": layout-limiter
+//
+// obsolete as 5 is no longer the max
+// #import "@preview/layout-ltd:0.1.0": layout-limiter
 #import "@preview/cetz:0.5.2"
 #import "@preview/cetz-plot:0.1.4" as cetz-plot
 #import "@preview/physica:0.9.8": *
