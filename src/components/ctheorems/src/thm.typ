@@ -463,11 +463,11 @@
     if state("render-mode").get() == "web" {
       html.elem("a", attrs: (class: "eq-tag"), t)
     } else {
-      let key = "pre-extra-diff-" + str(tag-metadata-counter.get().first())
+      let key = "tag-reserve-" + str(tag-metadata-counter.get().first())
       metadata((
         eq-tag: t,
         move: move,
-        pre-extra-diff: state(key),
+        reserve: state(key, 0pt),
       ))
     }
   }
@@ -619,44 +619,37 @@
       if (
         type(data.value) == dictionary
           and data.value.keys().contains("eq-tag")
-          and data.value.keys().contains("pre-extra-diff")
+          and data.value.keys().contains("reserve")
       ) {
         context {
-          let equation-numbering-metadata = query(
+          let gap = 0.4em
+          let quantum = 3pt
+          let tag-width = measure(data.value.eq-tag).width
+          let edge = query(
             selector(<thm-equation-numbering>).after(eq.location()),
           ).first()
-          let pos-numbering = equation-numbering-metadata.location().position()
-          let pre-extra-diff = data.value.pre-extra-diff.final() // hacky but we reuse data from previous passes
-          let dy = 0em
-          if pre-extra-diff == none {
-            pre-extra-diff = 0pt
-          }
-          let pos-here-x = here().position().x + pre-extra-diff
-          let width = measure(data.value.eq-tag).width
-          if (
-            equation-numbering-metadata.value.keys().contains("align")
-              and equation-numbering-metadata.value.align == "left"
-          ) {
-            move(dx: 0.4em, dy: dy, {
-              data.value.eq-tag
-            })
+
+          if edge.value.keys().contains("align") and edge.value.align == "left" {
+            move(dx: gap, data.value.eq-tag)
           } else {
-            let tag-start = pos-numbering.x - width
-            let diff = tag-start - pos-here-x
-            if (data.value.move) {
-              let raw-overlap = (-diff + 0.4em).to-absolute()
-              // if the marker/position metadata of numbering, minus width (so tag start) is before equation end (here), we add spaces after to add effective spaces
-              // otherwise do nothing
-              let extra-diff = calc.max(0pt, raw-overlap) // amount of space to add
-              extra-diff = calc.round(extra-diff * 3 / 1pt) * 1pt / 3 // help out convergence a bit
-              place(horizon, dx: diff + extra-diff, dy: dy, data.value.eq-tag)
-              // place(horizon, dx: diff + extra-diff + 2em, repr(extra-diff))
-              // place(horizon, dx: diff + extra-diff + 6em, repr(pre-extra-diff))
-              box(width: 2 * extra-diff, height: 0pt, stroke: none)
-              data.value.pre-extra-diff.update(extra-diff)
+            let previous-reserve = data.value.reserve.final()
+            let tag-start = edge.location().position().x - tag-width
+            if data.value.move {
+              // add a spacer of 2 reserve to shift equation to the left to avoid an overlap
+              let natural-end = here().position().x + previous-reserve
+              let required = (natural-end - tag-start + gap).to-absolute()
+              required = calc.max(0pt, required)
+              required = calc.ceil(required / quantum) * quantum
+
+              // never shrink reserve
+              let reserve = calc.max(previous-reserve, required)
+              let dx = tag-start - natural-end + reserve
+              place(horizon, dx: dx, data.value.eq-tag)
+              box(width: 2 * reserve, height: 0pt, stroke: none)
+              data.value.reserve.update(reserve)
             } else {
-              place(horizon, dx: diff, dy: dy, data.value.eq-tag)
-              data.value.pre-extra-diff.update(0pt)
+              let dx = tag-start - here().position().x
+              place(horizon, dx: dx, data.value.eq-tag)
             }
           }
         }

@@ -1,6 +1,7 @@
 #import "packages.typ": *
 #import "math.typ": *
 #import "theorems.typ": *
+#import "layout-limiter.typ": layout-limiter
 #import "../source.typ": *
 
 #let pdf-doc-label = <pdf-notes>
@@ -44,6 +45,7 @@
 }
 
 #let document-styles(doc, mode: "pdf") = {
+  show: layout-limiter.with(max-iterations: 20)
   show ref: it => {
     if type(it.target) == label {
       context {
