@@ -15,8 +15,7 @@ and [published website](https://slipperking.github.io/complex-analysis/).
 - The repository's modified Typst 0.15 compiler. On Windows, this is
   `typst.exe`.
 
-The patched compiler raises Typst's convergence limit from 5 to 25 passes so
-that the complete document can converge reliably.
+The patched compiler raises Typst's convergence limit from 5 to 25 passes and adds selector targets for references. 
 
 ## Building
 
@@ -57,6 +56,16 @@ when the input is omitted or has any value other than the string `true`.
 Individual canvases can be opted back in during a hidden-figure build with
 `canvas(debug-show: true, ...)`.
 
+To build with the older modified compiler that only raises the convergence
+limit, enable the legacy synthetic-label routing used by `lbl`:
+
+```powershell
+./typst.exe compile --features bundle,html --format bundle --package-path packages --input legacy-label-routing=true main.typ dist
+```
+
+In this compatibility mode, repeated PDF/HTML labels should continue to use
+`lbl`; ordinary labels shared by both outputs require the newer compiler.
+
 ## Project structure
 
 ```text
@@ -71,7 +80,8 @@ Individual canvases can be opted back in during a hidden-figure build with
 |   |-- components/
 |   |   |-- web.typ          # PDF/bundle orchestration and routed page helpers
 |   |   |-- styles.typ       # Shared PDF and web document styles
-|   |   |-- theorems.typ     # Theorem environments and cross-references
+|   |   |-- references.typ   # Cross-output labels and reference formatting
+|   |   |-- theorems.typ     # Theorem environments
 |   |   |-- graphics.typ     # CetZ helpers and figure collection
 |   |   |-- math.typ         # Project-wide mathematical helpers
 |   |   |-- packages.typ     # Typst package imports

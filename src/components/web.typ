@@ -1,4 +1,4 @@
-#import "styles.typ": document-styles, explicit-label, pdf-doc-label, web-doc-label
+#import "styles.typ": document-styles, explicit-label, pdf-scope-label, web-scope-label
 #import "theorems.typ": *
 #import "/src/source.typ" as source
 
@@ -361,7 +361,7 @@
 
 #let _cover-content(current) = source.web-cover(path => _href-from(current.path, path))
 
-#let _pdf-cover() = source.pdf-cover(outline-target: selector(heading).within(pdf-doc-label))
+#let _pdf-cover() = source.pdf-cover(outline-target: selector(heading).within(pdf-scope-label))
 
 #let _pdf-document(path: none) = context {
   let body = [
@@ -369,7 +369,7 @@
       #render-mode.update("pdf")
       #show: document-styles.with(mode: "pdf")
       #include "/chapters/index.typ"
-    ] #pdf-doc-label
+    ] #pdf-scope-label
   ]
 
   if path == none {
@@ -476,7 +476,7 @@
     heading-level: 1,
     description: none,
   )
-  let todos = query(selector(<todo-marker>).within(web-doc-label))
+  let todos = query(selector(<todo-marker>).within(web-scope-label))
 
   _standalone-page(page, main-class: "todo-page")[
     #html.elem("h1", attrs: (class: "page-title"), [Todos]) <sec:todo>
@@ -651,7 +651,7 @@
         _todo-page()
         _not-found-page()
         _redirect-404-page()
-      } #web-doc-label
+      } #web-scope-label
     ]
   } else {
     _pdf-document()

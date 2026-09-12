@@ -69,7 +69,7 @@ $
   abs(integral_(C_epsilon) beta(zeta) dzeta) &<= sum_(k=1)^n integral.cont_(partial D(a_k, epsilon)) abs(beta(zeta)) abs(dzeta) <= sum_(k=1)^n integral_0^(2 uppi) abs(beta(a_k + epsilon ee^(ii theta))) epsilon dtheta \
   &= n integral_0^(2 uppi) Order(epsilon^(alpha_k)) dtheta = Order(epsilon^(alpha_k)) -> 0. #tag[(by @eq:schwarz-christoffel-transformation-beta-singularity-order-expression)]
 $
-Hence, $integral.cont_Gamma beta(zeta) dzeta = 0$ for any piecewise $C^1$ Jordan curve $Gamma subset overline(HH^+)$, and the integral in <eq:schwarz-christoffel-transformation-statement> is path-independent for $z in overline(HH^+)$.
+Hence, $integral.cont_Gamma beta(zeta) dzeta = 0$ for any piecewise $C^1$ Jordan curve $Gamma subset overline(HH^+)$, and the integral in @eq:schwarz-christoffel-transformation-statement is path-independent for $z in overline(HH^+)$.
 
 The holomorphy of $f$ in $HH^+$ is equally evident: choosing the polygonal chain $0 -> ii -> z$ and applying $pdv(, overline(z))$ gives
 $

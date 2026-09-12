@@ -544,6 +544,22 @@
   separator: [. ],
 ))
 
+#let theorem-reference(reference, target) = context {
+  let citation = reference.fields().at("citation", default: none)
+  let supplement = if citation != none {
+    citation.supplement
+  } else {
+    reference.fields().at("supplement", default: none)
+  }
+  if supplement == auto {
+    supplement = none
+  }
+
+  let marker = query(selector(<meta:thm-env-counter>).after(target.location())).first()
+  let theorem = thm-stored.at(marker.location()).last()
+  (theorem.ref-fmt)(theorem + (ref-supplement: supplement))
+}
+
 
 /// Rules for styling theorem environments, references, proofs, etc.
 /// _Must appear at the beginning of the document._
@@ -576,41 +592,6 @@
     set block(breakable: true)
     set align(left)
     it.body
-  }
-
-  show ref: it => {
-    let targets = query(it.target)
-    if targets.len() == 0 {
-      return it
-    }
-    let target = if mode == "pdf" {
-      targets.first()
-    } else {
-      targets.last()
-    }
-
-    if target.func() != figure {
-      return it
-    }
-    if target.kind != "thm-env" {
-      return it
-    }
-
-    // let ref-supplement = it.element.supplement
-    // if it.citation.supplement != none {
-    //   ref-supplement = it.citation.supplement
-    // }
-
-    let ref-supplement = it.citation.supplement
-    // if (ref-supplement == none or ref-supplement == [] or (ref-supplement.has("text") and ref-supplement.text == "")) {
-    //   ref-supplement = none
-    // }
-
-    let loc = target.location()
-    let thms = query(selector(<meta:thm-env-counter>).after(loc))
-    let thmloc = thms.first().location()
-    let thm = thm-stored.at(thmloc).last()
-    return (thm.ref-fmt)(thm + (ref-supplement: ref-supplement))
   }
 
   show math.equation: eq => {

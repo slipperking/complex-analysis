@@ -70,8 +70,8 @@
 #context {
   // Querying figures is more reliable than accumulating the contents of
   // figure-wrapper in state: a queried figure retains its label and location.
-  let web-figs = query(selector(figure).within(web-doc-label)).filter(figure-filter)
-  let pdf-figs = query(selector(figure).within(pdf-doc-label)).filter(figure-filter)
+  let web-figs = query(selector(figure).within(web-scope-label)).filter(figure-filter)
+  let pdf-figs = query(selector(figure).within(pdf-scope-label)).filter(figure-filter)
 
   if render-mode.get() == "web" {
     html.elem("div", attrs: (id: "figure-list", class: "reference-list"), {
