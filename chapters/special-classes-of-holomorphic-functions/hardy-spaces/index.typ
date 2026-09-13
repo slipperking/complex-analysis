@@ -130,12 +130,30 @@ In a series of papers published by Godfrey H. Hardy and Frigyes Riesz, it was fo
   by application of Jensen's Inequality (@thm:jensens-inequality-convexity). This proves the inclusion.
 ]
 #theorem[
-  Fix $p > 0$. For any $f in H^p$ such that ${a_n}_(n in NN) subset CC^*$ are its zeros in order of increasing modulus, counting multiplicities; $f$ satisfies the Blaschke condition (refer to @thm:blaschke-product).
-]
+  Fix $p > 0$. For any $f in H^p$ such that ${a_n}_(n in NN) subset DD^*$ are its zeros in order of increasing modulus, counting multiplicities; $f$ satisfies the Blaschke condition (refer to @thm:blaschke-product).
+] <thm:hardy-function-satisfies-blaschke-condition>
 #proof[
-  By Jensen's Formula (@thm:jensens-formula), for each $r in (0,1)$,
+  By Jensen's Formula (@thm:jensens-formula), for each $k in NN$, for any $r in (abs(a_k), 1)$, $k <= n(r, 0, f)$, giving that
   $
-    log abs(f(0)) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta + sum_(n=1)^(n(r, 0, f)) log abs(a_n / r),
+    log abs(f(0)) &= 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta + sum_(j=1)^(n(r, 0, f)) log abs(a_j / r) \
+    &<= 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta + sum_(j=1)^k log abs(a_j / r),
+  $ <eq:hardy-function-satisfies-blaschke-condition-intermediate>
+  where $n(r, 0, f)$ counts the zeros of $f$ in $overline(D(0, r))$. Since $1 / t <= t^(p - 1)$ for $t >= 1$, integrating from $1$ to $x >= 1$, we have $ integral_1^x dt / t <= integral_1^x t^(p - 1) ==> log x <= 1 / p x^p - 1 / p < 1 / p x^p. $
+  For $x in (0, 1)$, the inequality continues to hold as the left-hand side is negative. Therefore, applying this to @eq:hardy-function-satisfies-blaschke-condition-intermediate, we have
   $
-  where $n(r, 0, f)$ counts the zeros of $f$ in $overline(D(0, r))$.
+    log abs(f(0)) &<= lim_(r -> 1^-) 1 / (2 uppi p) integral_0^(2 uppi) abs(f(r ee^(ii theta)))^p dtheta + sum_(j=1)^k log abs(a_j / r) \
+    & <= 1 / (2 uppi p) norm(f)_(H^p)^p + sum_(j=1)^k log abs(a_j).
+  $
+  Since $k$ was arbitrary, taking $k -> oo$,
+  $
+    sum_(j = 1)^oo log 1 / abs(a_j) <= 1 / (2 uppi p) norm(f)_(H^p)^p - log abs(f(0)).
+  $ <eq:hardy-function-satisfies-blaschke-condition-intermediate-2>
+  For $t >= 1$, $-1 <= -1 / t$, therefore for $x >= 1$
+  $
+    integral_1^x -dt <= integral_1^x -dt/t ==> 1 - x <= log 1 / x.
+  $
+  Similarly, for $x, t < 1$, we have $-1 > -1 / t$. Thus,
+  $ integral_x^1 -dt > integral_x^1 - dt / t ==> x - 1 > log x ==> 1 - x <= log 1 / x, $
+  which holds everywhere in $RR_(> 0)$. Then @eq:hardy-function-satisfies-blaschke-condition-intermediate-2 yields
+  $ sum_(j = 1)^oo (1 - abs(a_j)) <= 1 / (2 uppi p) norm(f)_(H^p)^p - log abs(f(0)) < oo. qedhere $
 ]
