@@ -24,7 +24,7 @@ The $H^oo$ class is simply the space of bounded holomorphic functions on $DD$. I
 #lbl(
   theorem[
     Any $f in H^oo$ can be factorized by
-    $ f(z) = F(z) B(z), $
+    $ f(z) = F(z) B(z), $ <eq:blaschke-factorization-of-H-oo>
     where $B$ is a Blaschke Product (@thm:blaschke-product with an additional $z^m$ factor) constructed on the zeros of $f$; and $F$ is a bounded, non-vanishing holomorphic function on $DD$ such that $norm(f)_(H^oo) = norm(F)_(H^oo)$.
   ],
   <thm:blaschke-factorization-of-H-oo>,
@@ -116,13 +116,26 @@ In a series of papers published by Godfrey H. Hardy and Frigyes Riesz, it was fo
   $
   It suffices to show $H^(p_2) subset.neq H^(p_1)$ (the inclusion). This is already known for $p_2 = oo$, so assume $p_2 != oo$.
 
-  Assume an arbitrary $f in H^(p_2)$ and fix $r in (0,1)$. Let $phi.alt:RR_(>= 0) -> RR$ be given by $x |-> x^(p_2 / p_1)$. Let $g(theta) = abs(f(r ee^(ii theta)))^(p_1)$.
+  Assume an arbitrary $f in H^(p_2)$. Then there exists $M > 0$ (independent of $r$) such that $forall r in (0,1)$,
+  $ integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_2) dtheta <= M. $
+  Let $phi.alt:RR_(>= 0) -> RR$ be given by $x |-> x^(p_2 / p_1)$. Let $g(theta) = abs(f(r ee^(ii theta)))^(p_1)$.
 
   Then by holomorphy, $g in C([0, 2 uppi])$ and $phi.alt$ is convex since $p_2 / p_1$. Then
   $
     integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_1) dtheta &= 2 uppi [(1 / (2 uppi) integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_1) dtheta)^(p_2 / p_1)]^(p_1 / p_2) \
-    &= 2 uppi (phi.alt compose (#[average of $g$ in $[0, 2 uppi]$]))^(p_1 / p_2) \
-    &<= 2 uppi ((#[average of $phi.alt compose g$ in $[0, 2 uppi]$]))^(p_1 / p_2).
+    &= 2 uppi [phi.alt compose (#[average of $g$ in $[0, 2 uppi]$])]^(p_1 / p_2) \
+    &<= 2 uppi [#[average of $phi.alt compose g$ in $[0, 2 uppi]$]]^(p_1 / p_2) \
+    &= 2 uppi [1 / (2 uppi) integral_0^(2 uppi) abs(f(r ee^(ii theta)))^(p_2) dtheta]^(p_1 / p_2) <= M (2 uppi)^(1 - p_1 / p_2).
   $
-  by application of Jensen's Inequality (@thm:jensens-inequality-convexity).
+  by application of Jensen's Inequality (@thm:jensens-inequality-convexity). This proves the inclusion.
+]
+#theorem[
+  Fix $p > 0$. For any $f in H^p$ such that ${a_n}_(n in NN) subset CC^*$ are its zeros in order of increasing modulus, counting multiplicities; $f$ satisfies the Blaschke condition (refer to @thm:blaschke-product).
+]
+#proof[
+  By Jensen's Formula (@thm:jensens-formula), for each $r in (0,1)$,
+  $
+    log abs(f(0)) = 1 / (2 uppi) integral_0^(2 uppi) log abs(f(r ee^(ii theta))) dtheta + sum_(n=1)^(n(r, 0, f)) log abs(a_n / r),
+  $
+  where $n(r, 0, f)$ counts the zeros of $f$ in $overline(D(0, r))$.
 ]

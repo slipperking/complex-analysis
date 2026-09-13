@@ -116,8 +116,8 @@ As an immediate consequence, we have:
                   & quad ""+ sum_(k=1)^(n(r,0,f)) log abs(a_k / r) <= log(M) + sum_(k=1)^(n(r,0,f)) log abs(a_k / r).
   $
   For any fixed positive integer $k$, choose $r$ such that $abs(a_k) < r < 1$. Then $n(r, 0, f) >= k$ and
-  $ sum_(k=1)^(n(r,0,f)) log abs(a_j / r) <= sum_(j=1)^k log abs(a_j / r), $
-  since each $log abs(a_j / r) < 0$ for $j = k+1, dots, n(r,0,f)$. Therefore,
+  $ sum_(j=1)^(n(r,0,f)) log abs(a_j / r) <= sum_(j=1)^k log abs(a_j / r), $
+  since each $log abs(a_j / r) < 0$ for $j <= n(r,0,f)$. Therefore,
   $ log abs(f(0)) <= log M + sum_(j=1)^k log abs(a_j / r) = log M + sum_(j=1)^k log abs(a_j) - k log r. $
   Rearranging,
   $ sum_(j=1)^k log abs(a_j) >= log abs(f(0)) - log M + k log r. $
