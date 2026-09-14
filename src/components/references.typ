@@ -168,8 +168,6 @@ and target.value.at("type", default: none) == "typst-enum-item-label"
   "math",
   {
     for target in targets {
-      // The browser code only consumes the href. A direct link avoids creating
-      // two additional references (and running their show rules) per source ref.
       html.elem("mtext", link(target, [link]), attrs: (class: "typst-multi-label"))
     }
   },
@@ -177,8 +175,6 @@ and target.value.at("type", default: none) == "typst-enum-item-label"
 )
 
 #let show-reference(reference, mode) = context {
-  // Resolve and format once here so theorem, equation, and enum behavior does
-  // not depend on a chain of later `show ref` rules seeing another ref element.
   let route = _reference-route(reference, mode)
   let target = _reference-element(reference, route)
   let formatted = _format-reference(reference, target)

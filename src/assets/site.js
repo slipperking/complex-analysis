@@ -275,11 +275,9 @@
   }
 
   function externalEquationTag(tag, anchor) {
-    if (tag.tagName && tag.tagName.toLowerCase() !== "a") {
-      tag._equationTagAnchor = anchor;
-      return tag;
-    }
-
+    // Convert the inline marker to a standalone HTML element before placing
+    // it in the overlay. Its contents may include links, so the marker itself
+    // must never be an anchor.
     var replacement = document.createElement("div");
     Array.from(tag.attributes).forEach(function (attr) {
       if (attr.name !== "href") {
@@ -907,8 +905,8 @@
         var rect = element.getBoundingClientRect();
 
         // Prevent drag on the bottom-right resize handle
-        var isResizeHandle = (event.clientX - rect.left >= rect.width - 24) && 
-                             (event.clientY - rect.top >= rect.height - 24);
+        var isResizeHandle = (event.clientX - rect.left >= rect.width - 24) &&
+          (event.clientY - rect.top >= rect.height - 24);
         if (isResizeHandle) return;
 
         obj.dragged = true;
