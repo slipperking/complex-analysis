@@ -22,7 +22,7 @@
   }
   let body = pad(top: 0em, $#body$)
 
-  mannot.core-mark(body, tag: tag, color: none, outset: (top: 0em), overlay: (width, height, color) => {
+  mannot.core-mark(body, tag: tag, color: none, mark-outset: (top: 0em), overlay: (width, height, color) => {
     place(bottom, dy: dy, math.stretch(sym.arrow, size: width))
   })
 }
