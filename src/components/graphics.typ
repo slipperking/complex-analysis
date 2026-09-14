@@ -1,4 +1,5 @@
 #import "packages.typ": *
+#import "web.typ": todo
 
 #let potential-frame(arg) = context {
   if target() != "paged" {
@@ -8,6 +9,9 @@
   }
 }
 #let canvas(..args, debug-show: false) = {
+  if debug-show {
+    todo[Argument `debug-show` should be disabled in final production.]
+  }
   if (sys.inputs.at("hide-figures", default: none) != "true" or debug-show) {
     potential-frame(cetz.canvas(..args))
   }
