@@ -17,9 +17,10 @@ In fact, it is almost always true that such an extension exists. We will give th
       canvas(
         {
           import cetz.draw: *
-          for offset in range(1, 100).map(x => 2 / x) {
+          for offset in range(1, 50).map(x => 2 / x) {
             line((offset, 2), (offset, 0), stroke: calc.clamp(0.05 + offset / 2, 0.05, 1) * 1pt)
           }
+          line((0, 0), (0, 2), (0.04, 2), (0.0, 4, 0), close: true, stroke: none, fill: black)
           line((0, 4), (0, 3), stroke: (dash: "dashed"))
           line((), (0, 0), (3, 0))
           line((), (4, 0), stroke: (dash: "dashed"))
