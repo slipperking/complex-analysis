@@ -106,7 +106,7 @@ As an immediate consequence, we have:
     $ sum_(n=1)^infinity (1 - abs(a_n)) $
     is convergent.
   ],
-  <lem:hardy-function-blaschke-condition>,
+  <lem:hardy-oo-function-blaschke-condition>,
 )
 
 #proof[
@@ -183,9 +183,9 @@ As an immediate consequence, we have:
 
 #proof[
   Let
-  $ F(z) = f(z) / (z^m product_(n=1)^infinity [-abs(a_k) / a_k phi_(a_n) (z)]). $
-  By construction, $F$ extends to its removable singularities to a holomorphic function that does not vanish. Because
-  $ sup_(z in DD) abs(z^m product_(n=1)^infinity [-abs(a_n) / a_n phi_(a_n) (z)]) <= 1, $
+  $ F(z) = f(z) / (z^m product_(n=1)^oo [-abs(a_k) / a_k phi_(a_n) (z)]), $
+  which is well-defined by @lem:hardy-oo-function-blaschke-condition and @thm:blaschke-product. By construction, $F$ extends to its removable singularities to a holomorphic function that does not vanish. Because
+  $ sup_(z in DD) abs(z^m product_(n=1)^oo [-abs(a_n) / a_n phi_(a_n) (z)]) <= 1, $
   it follows that
   #lbl(
     $
@@ -201,7 +201,7 @@ As an immediate consequence, we have:
   $
     sup_(z in DD) abs(f(z) / (z^m B_n (z))) &= sup_(z in DD without overline(D(0,r))) abs(f(z) / (z^m B_n (z))) \ &<= 1 / (r^m (1 - epsilon)) sup_(z in DD) abs(f(z)) -> 1 / (1 - epsilon) sup_(z in DD) abs(f(z))
   $
-  as $r -> 1^-$. Letting $epsilon -> 0^+$, $n -> infinity$ gives
+  as $r -> 1^-$. Letting $epsilon -> 0^+$, $n -> oo$ gives
   $ sup_(z in DD) abs(F(z)) <= sup_(z in DD) abs(f(z)), $
   which in conjunction with @eq:blaschke-product-factorization-supremum-inequalities, completes the final assertion.
 ]
