@@ -20,10 +20,9 @@ In fact, it is almost always true that such an extension exists. We will give th
           for offset in range(1, 50).map(x => 2 / x) {
             line((offset, 2), (offset, 0), stroke: calc.clamp(0.05 + offset / 2, 0.05, 1) * 1pt)
           }
-          line((0, 0), (0, 2), (0.04, 2), (0.04, 0), close: true, stroke: none, fill: black)
-          line((0, 4), (0, 3), stroke: (dash: "dashed"))
-          line((), (0, 0), (3, 0))
-          line((), (4, 0), stroke: (dash: "dashed"))
+          line((0, 0), (0, 2), (0.04, 2), (0.04, 0), close: true, stroke: none, fill: black) // the illusion of dense lines
+
+          line((0, 4), (4, 4), (4, 0), (0, 0), close: true)
         },
         debug-show: true,
       ),
@@ -32,7 +31,7 @@ In fact, it is almost always true that such an extension exists. We will give th
   ],
 )
 #example[
-  Let $ U = #[[open first quadrant]] without union.big_(n=1)^oo {ii t + 1 / n : t in [0, 1]} $ be an open, simply connected region with a comb-shaped boundary (@fig:simply-connected-region-with-comb-boundary). By the Riemann Mapping Theorem, it is conformally equivalent to $DD$ via some biholomorphism $f$. Then $f$ does not extend homeomorphically to the closed first quadrant.
+  Let $ U = {x + ii y : 0 < x, y < 2} without union.big_(n=1)^oo {ii t + 1 / n : t in [0, 1]} $ be an open, simply connected region with a comb-shaped boundary (@fig:simply-connected-region-with-comb-boundary). By the Riemann Mapping Theorem, it is conformally equivalent to $DD$ via some biholomorphism $f$. Then $f$ does not extend homeomorphically to the closed .
 ] <ex:fig:simply-connected-region-with-comb-boundary>
 #proof[
 

@@ -5,10 +5,16 @@
 )
 (The knowledge of measure spaces or measure theory will not be required for the understanding of this section, but rather for purely motivational purposes.)
 
-The definition of a Lebesgue space or $L^p$ space in real analysis approximately defines the $L^p (S, mu)$ space for a given set (a measure space) $(S, Sigma, mu)$ (for $1<=p<oo$), by $ L^p (S, mu) = {f : S -> CC "measurable" : norm(f)_(L^p (S, mu)) < oo}, $
+The definition of a Lebesgue space or $L^p$ space ($0 < p <= oo$) in real analysis approximately defines the $L^p (S, mu)$ space for a given space (a measure space) $(S, Sigma, mu)$ (for $1<=p<oo$), by $ L^p (S, mu) = {f : S -> CC "measurable" : norm(f)_(L^p (S, mu)) < oo}, $
 where the $L^p$ norm of $f$ is given by
-$ norm(f)_(L^p (S, mu)) = (integral_S abs(f)^p dd(mu))^(1 / p). $
-Moreover, $ norm(f)_(L^oo (S, mu)) = cases(op("ess. sup") abs(f) quad &"if" quad mu(S) = 0, 0 quad & "otherwise") $ (where $op("ess. sup")$ is the essential supremum, or the infimum of supremums over subsets of $S$ omitting a set of measure $0$).
+$
+  norm(f)_(L^p (S, mu)) = (integral_S abs(f)^p dd(mu))^(1 / p)
+$
+Moreover, $ norm(f)_(L^oo (S, mu)) = cases(op("ess. sup") abs(f) quad &"if" quad mu(S) = 0, 0 quad & "otherwise") $ (where $op("ess. sup")$ is the essential supremum, or the infimum of supremums over subsets of $S$ omitting a set of measure $0$). (There is also the notion of a normalized $L^p$ norm that has an additional factor $1 / mu(S)$ in front of the integral. In the case where we have a _probability space_, where $mu(S) = 1$, then the normalization gives the same as without.)
+
+Note that usually we are usually concerned only with the case where $p >= 1$, as strictly speaking, $norm(f)_(L^p)$ no longer satisfies the triangle inequality otherwise, although the same notation of a "norm" is still used for convenience.
+
+
 In $DD$, we provide the following (somewhat) analogous formulation:
 #lbl(
   definition[Hardy Space][

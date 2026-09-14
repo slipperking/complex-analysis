@@ -334,11 +334,9 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
   $
 
   By the continuity of $f$ at $z$, for any $epsilon > 0$, $exists delta > 0$ such that $abs(zeta-z) < delta ==> abs(f(zeta)-f(z)) < epsilon$. Then, for $abs(Delta z) < delta$,
-
   $
     abs(1 / (Delta z) integral_z^(z + Delta z) f(zeta) dzeta - f(z)) = abs(1 / (Delta z) integral_z^(z + Delta z) (f(zeta)-f(z)) dzeta) <= epsilon.
   $
-
   Thus, $F'(z)=f(z)$ for all $z in D$. Since $a$ was arbitrary, $f$ is holomorphic over $U$.
 ]
 
@@ -348,81 +346,59 @@ The following theorem, albeit originally proven by Cauchy in 1844, shows a funda
 
     #lbl(
       $
-        sup_(z in K) abs(f^((n)) (z)) <= c_n norm(f)_(L^1 (V)),
+        sup_(z in K) abs(f^((n)) (z)) <= c_n norm(f)_(L^1_"avg" (V)),
       $,
       <eq:nth-derivative-bounded-L1-norm-statement>,
     )
 
-    where $norm(f)_(L^p (V))$ denotes
-
+    where $norm(f)_(L^p_"avg" (V))$ denotes the (normalized) $L^p$ norm:
     $
-      (integral_V abs(f(z))^p dx and dy)^(1 / p).
+      norm(f)_(L^p_"avg" (V)) = (1 / (op("area")(V)) integral_V abs(f(z))^p dx and dy)^(1 / p).
     $
   ],
   <thm:nth-derivative-bounded-L1-norm>,
 )
-
 #proof[
   Let $phi in C^oo (CC)$ satisfy $supp(phi) subset V$ and be identically equal to $1$ over some open neighborhood $W$ of $K$ relatively compact in $V$. Since $f in C^oo (U)$, by the Cauchy--Pompeiu Theorem (@thm:pompeiu) on $f(z) phi(z) in C^oo (overline(U))$,
-
   $
     f(z) phi(z)=1 / taui (integral.cont_(partial U) (f(zeta) phi(zeta)) / (zeta-z) dzeta - integral_U pdv(f(zeta) phi(zeta), overline(zeta)) dot (dif overline(zeta) and dzeta) / (zeta-z)).
   $
-
   By the product rule,
-
   $
-    pdv(f(zeta) phi(zeta), overline(zeta))=pdv(phi(zeta), overline(zeta)) f(zeta),
+    pdv(f(zeta) phi(zeta), overline(zeta)) = pdv(phi(zeta), overline(zeta)) f(zeta),
   $
-
   and since $partial U subset CC without supp(phi)$, the first term vanishes, resulting in
-
   $
     f(z) phi(z) = -1 / taui integral_U pdv(phi(zeta), overline(zeta)) f(zeta) dot (dif overline(zeta) and dzeta) / (zeta-z).
   $
-
-  Let $K_1$ denote $supp(pdv(phi(zeta), overline(zeta)))$, and $forall z in K$, $phi(z)=1$. Therefore,
-
+  Let $K_1$ denote $supp(pdv(phi(zeta), overline(zeta)))$, and $forall z in K$, $phi(z) = 1$. Therefore,
   $
     f(z)=1 / taui integral_(K_1) f(zeta) dot pdv(phi(zeta), overline(zeta)) dot (dzeta and dif overline(zeta)) / (zeta-z).
   $
-
   We can differentiate within the integral as $f(zeta) dot pdv(phi(zeta), overline(zeta))$ is $C^oo$ and bounded over $K_1$, and thus the integrand is uniformly bounded by an integrable function independent of $zeta$:
-
   $
     f^((n)) (z)= (n!) / (2 uppi ii) integral_(K_1) f(zeta) dot pdv(phi(zeta), overline(zeta)) dot (dzeta and dif overline(zeta)) / ((zeta-z)^(n+1)),
   $
-
   and by the triangle inequality,
-
   $
     abs(f^((n)) (z)) <= (n!) / (2 uppi) integral_(K_1) abs(f(zeta)) abs(pdv(phi(zeta), overline(zeta))) abs(dzeta and dif overline(zeta)) / (abs(zeta-z)^(n+1)).
   $
-
   Notice that over $W$, $phi=1$, $phi'=0$, and is disjoint from $K_1$ (or that $W inter K_1 = emptyset$). Then, the distance between $W$ and $K$ is positive and the two are disjoint. Therefore, $exists M > 0$ such that
-
   $
     1 / (abs(zeta-z)) <= M,
   $
-
   and thus,
-
   $
     abs(pdv(phi(zeta), overline(zeta))) 1 / (abs(zeta-z)^(n+1))
   $
-
   can be bounded by a sequence ${c'_n}$, independent of $f$ and dependent only on $n$ and the sets $K$ and $V$. Then,
-
   $
-    abs(f^((n)) (z)) <= (n!) / (2 uppi) integral_(K_1) c'_n abs(f(zeta)) abs(dzeta and dif overline(zeta)) = (n!) / uppi integral_(K_1) c'_n abs(f(zeta)) abs(dx and dy).
+    abs(f^((n)) (z)) <= n! / (2 uppi) integral_(K_1) c'_n abs(f(zeta)) abs(dzeta and dif overline(zeta)) = n! / uppi integral_(K_1) c'_n abs(f(zeta)) abs(dx and dy).
   $
-
-  Because $K_1$ is compact, it has a finite area $op("area")(K_1)$, and we can define a new sequence $c_n=frac(n! c'_n op("area")(K_1), uppi, style: "horizontal")$ to find that
-
+  Because $V$ is relatively compact in $U$, it has a finite area $op("area")(V)$, and we can define a new sequence $c_n = frac(n! c'_n op("area")(V), uppi, style: "horizontal")$ to find that
   $
-    abs(f^((n)) (z)) <= c_n integral_(K_1) abs(f(zeta)) abs(dx and dy) <= c_n integral_V abs(f(zeta)) abs(dx and dy).
+    abs(f^((n)) (z)) <= c_n / (op("area")(V)) integral_K_1 abs(f(zeta)) abs(dx and dy) <= norm(f)_(L^1_"avg" (V)).
   $
-
   The problem now stands to prove that $phi(z)$ exists in the first place, which requires a topological argument to be later discussed in @thm:bump-function-existence.
 ]
 
@@ -499,10 +475,8 @@ The concept of analytic continuation and its consequent problems and properties 
   $
 
   which is convergent over $D(z_0, r)$. Then we can define
-
   $
-    tilde(f)(z)=phi(z) / ((z-z_0)^2)=sum_(j = 0)^oo a_(j+2) (z-z_0)^j
+    tilde(f)(z) = phi(z) / ((z-z_0)^2) = sum_(j = 0)^oo a_(j+2) (z-z_0)^j
   $
-
   over the same disk of convergence. Over the punctured disk, $tilde(f)(z)=f(z)$, and therefore $tilde(f)$ is an analytic continuation of $f$.
 ]
