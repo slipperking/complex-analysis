@@ -12,24 +12,26 @@ In fact, it is almost always true that such an extension exists. We will give th
 3. If $partial Omega_1$ and $partial Omega_2$ are real-analytic (the boundary is parameterizable by functions such that at every point, there is a power series expansion that converge to the function on a neighborhood), then $phi$ extends analytically past $partial Omega_1$ (@thm:osgood-taylor-caratheodory-real-analytic-boundaries).
 
 #figure-wrapper(
-  figure(
-    canvas(
-      {
-        import cetz.draw: *
-        for offset in range(1, 100).map(x => 2 / x) {
-          line((offset, 2), (offset, 0), stroke: calc.clamp(0.05 + offset / 2, 0.05, 1) * 1pt)
-        }
-        line((0, 4), (0, 3), stroke: (dash: "dashed"))
-        line((), (0, 0), (3, 0))
-        line((), (4, 0), stroke: (dash: "dashed"))
-      },
-      debug-show: true,
-    ),
-    caption: [The region $U$ with a comb-shaped boundary.],
-  ),
-) <fig:simply-connected-region-with-comb-boundary>
+  [
+    #figure(
+      canvas(
+        {
+          import cetz.draw: *
+          for offset in range(1, 100).map(x => 2 / x) {
+            line((offset, 2), (offset, 0), stroke: calc.clamp(0.05 + offset / 2, 0.05, 1) * 1pt)
+          }
+          line((0, 4), (0, 3), stroke: (dash: "dashed"))
+          line((), (0, 0), (3, 0))
+          line((), (4, 0), stroke: (dash: "dashed"))
+        },
+        debug-show: true,
+      ),
+      caption: [The region $U$ with a comb-shaped boundary.],
+    ) <fig:simply-connected-region-with-comb-boundary>
+  ],
+)
 #example[
-  Let $ U = #[[open first quadrant]] without union.big_(n=1)^oo {ii t + 1 / n : t in [0, 1]} $ be an open, simply connected region with a comb-shaped boundary (@fig:simply-connected-region-with-comb-boundary). By the Riemann Mapping Theorem, it is conformally equivalent to $DD$ via some biholomorphism $f$. Then $f$ does not extend both continuously and injectively to the first quadrant.
+  Let $ U = #[[open first quadrant]] without union.big_(n=1)^oo {ii t + 1 / n : t in [0, 1]} $ be an open, simply connected region with a comb-shaped boundary (@fig:simply-connected-region-with-comb-boundary). By the Riemann Mapping Theorem, it is conformally equivalent to $DD$ via some biholomorphism $f$. Then $f$ does not extend homeomorphically to the closed first quadrant.
 ] <ex:fig:simply-connected-region-with-comb-boundary>
 #proof[
 
