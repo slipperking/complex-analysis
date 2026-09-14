@@ -311,7 +311,7 @@ In a topological space $X$, a subset can be open, closed (the complement of some
 
 Connectivity intuitively means that a space cannot be split into two disjoint open subsets, but is not meaningful in terms of how points within the space relate to each other. In many geometric situations, the notion of _path-connectivity_ requires that any two points be joined by a continuous path. We will see that this more concrete condition forces the space to be topologically connected.
 
-#definition[
+#definition[Path Connectivity][
   A topological space $X$ is said to be _path-connected_ iff for any two points $a, b in X$, there is a continuous function $f:[0, 1] -> X$, where $[0, 1]$ is equipped with the metric topology and $f(0) = a, f(1) = b$.
 ]
 

@@ -17,24 +17,32 @@ In fact, it is almost always true that such an extension exists. We will give th
       canvas(
         {
           import cetz.draw: *
-          for offset in range(1, 50).map(x => 2 / x) {
-            line((offset, 2), (offset, 0), stroke: calc.clamp(0.05 + offset / 2, 0.05, 1) * 1pt)
+          for offset in range(1, 70).map(x => 4 / x) {
+            line((offset, 4), (offset, 0), stroke: calc.clamp(0.05 + offset / 4, 0.05, 1) * 1pt)
           }
-          line((0, 0), (0, 2), (0.04, 2), (0.04, 0), close: true, stroke: none, fill: black) // the illusion of dense lines
+          line((0, 0), (0, 4), (0.05, 4), (0.05, 0), close: true, stroke: none, fill: black) // the illusion of dense lines
 
-          line((0, 4), (4, 4), (4, 0), (0, 0), close: true)
+          line((0, 8), (8, 8), (8, 0), (0, 0), close: true)
         },
-        debug-show: true,
+        // debug-show: true,
       ),
       caption: [The region $U$ with a comb-shaped boundary.],
     ) <fig:simply-connected-region-with-comb-boundary>
   ],
 )
 #example[
-  Let $ U = {x + ii y : 0 < x, y < 2} without union.big_(n=1)^oo {ii t + 1 / n : t in [0, 1]} $ be an open, simply connected region with a comb-shaped boundary (@fig:simply-connected-region-with-comb-boundary). By the Riemann Mapping Theorem, it is conformally equivalent to $DD$ via some biholomorphism $f$. Then $f$ does not extend homeomorphically to the closed .
-] <ex:fig:simply-connected-region-with-comb-boundary>
+  Let $ U = {x + ii y : 0 < x, y < 2} without union.big_(n=1)^oo {ii t + 1 / n : t in [0, 1]} $ be an open, simply connected region with a comb-shaped boundary (@fig:simply-connected-region-with-comb-boundary). By the Riemann Mapping Theorem, it is conformally equivalent to $DD$ via some biholomorphism $f$. Then there is no homeomorphism $tilde(f) : overline(U) -> overline(DD)$ whose restriction to $U$ is $f$.
+] <ex:simply-connected-region-with-comb-boundary>
 #proof[
+  Suppose that such a homeomorphism $tilde(f)$ exists. Since $tilde(f)(U) = DD$ and $tilde(f)$ is bijective, it restricts to a homeomorphism from $partial U = overline(U) without U$ onto $partial DD = overline(DD) without DD$. Here
+  $
+    partial U & = {x + ii y : x in {0, 2}, y in [0, 2]} \
+              & quad "" union {x + ii y : x in [0, 2], y in {0, 2}} \
+              & wide "" union union.big_(n=1)^oo {ii t + 1 / n : t in [0, 1]}
+  $
+  Consider the comb "tooth" $L = {1 + ii t : t in [0, 1]}$. If its base point $1$ is removed from $partial U$, there is no path in the remaining boundary from $L without {1}$ to the rest of $partial U$, since $L$ meets the rest of the boundary only at $1$ (topologically, this is known as a "cut point"). Hence $partial U without {1}$ is not path-connected. However, removing $tilde(f)(1)$ from the circle $partial DD$ leaves an open, path-connected arc.
 
+  Then $evaluated(tilde(f))_(partial U without {1})$ is a homeomorphism. Let $z_1 in L without {1}$, $z_2 in partial U without L$ be two arbitrary points. Then there exists an arc in $partial DD without tilde(f)(1)$ joining $tilde(f)(z_1)$ and $tilde(f)(z_2)$. Then the image of this arc under $tilde(f)^(-1)$ is a path joining $z_1$ and $z_2$, a contradiction. Thus no such homeomorphism exists.
 ]
 
 #example[
