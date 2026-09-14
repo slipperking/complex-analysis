@@ -197,4 +197,8 @@ In a series of papers published by Godfrey H. Hardy and Frigyes Riesz, it was fo
   $
   Thus $F in H^p$ and $norm(F)_(H^p) <= norm(f)_(H^p)$. The reverse inequality follows from $f = B F$ and $abs(B) <= 1$ on $DD$, proving equality.
 ]
-// comment about shared zero sets, easy proof too
+#remark[
+  We would also like to state that two Hardy spaces $H^(p_1), H^(p_2)$ (which may be $oo$) share their zero sets: the sets
+  $ S_1 = {{z in DD : f(z) = 0} : f in H^(p_1)}, quad S_2 = {{z in DD : f(z) = 0} : f in H^(p_2)} $
+  are equal. Indeed, any $f in H^(p_1)$ has a zero set satisfying the Blaschke condition by @thm:hardy-function-blaschke-condition (the negligence of multiplicities is not substantial, as the series consists solely of positive terms). Then a Blaschke product $B$ may be constructed on this set, which lies in $H^(p_2)$.
+]

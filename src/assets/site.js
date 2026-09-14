@@ -168,6 +168,11 @@
     }, 0) / items.length;
   }
 
+  function equationTagTargetCenter(target, wrapperRect) {
+    var rect = target.getBoundingClientRect();
+    return rect.top - wrapperRect.top + rect.height / 2;
+  }
+
   function setMathSpaceWidth(space, width) {
     var value = Math.max(0, Math.ceil(width + 8)) + "px";
     space.setAttribute("width", value);
@@ -186,8 +191,8 @@
       if (anchors.length === 0) return;
 
       var top = anchors.reduce(function (sum, anchor) {
-        var rect = anchor.getBoundingClientRect();
-        return sum + rect.top - wrapperRect.top - (parseFloat(getComputedStyle(group).fontSize) || 0) / 2;
+        var target = anchor._equationTagVerticalTarget || anchor;
+        return sum + equationTagTargetCenter(target, wrapperRect);
       }, 0) / anchors.length;
 
       group.style.top = top + "px";
@@ -214,9 +219,9 @@
     var mathmlNs = "http://www.w3.org/1998/Math/MathML";
     var wrapperRect = wrapper.getBoundingClientRect();
     var items = tags.map(function (tag) {
-      var tagRect = tag.getBoundingClientRect();
       var isInsideMath = math.contains(tag);
       var anchor = tag;
+      var verticalTarget = isInsideMath ? (tag.closest("mtr") || math) : math;
 
       tag.classList.add("equation-tag");
 
@@ -237,10 +242,11 @@
       }
 
       tag._equationTagAnchor = anchor;
+      anchor._equationTagVerticalTarget = verticalTarget;
       return {
         tag: tag,
         anchor: anchor,
-        top: tagRect.top - wrapperRect.top + tagRect.height / 2 + wrapper.scrollTop
+        top: equationTagTargetCenter(verticalTarget, wrapperRect)
       };
     }).sort(function (a, b) {
       return a.top - b.top;
@@ -285,7 +291,11 @@
       }
     });
     replacement.classList.add("equation-tag");
-    replacement.innerHTML = tag.innerHTML;
+    var math = document.createElementNS("http://www.w3.org/1998/Math/MathML", "math");
+    while (tag.firstChild) {
+      math.appendChild(tag.firstChild);
+    }
+    replacement.appendChild(math);
     replacement._equationTagAnchor = anchor;
     tag.remove();
     return replacement;

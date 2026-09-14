@@ -464,7 +464,7 @@
       // Tags can contain references, which render as links in HTML. Wrapping
       // them in another link creates invalid nested anchors and lets the
       // browser split the tag into separate pieces.
-      html.elem("span", attrs: (class: "eq-tag"), t)
+      html.elem("mrow", attrs: (class: "eq-tag"), t)
     } else {
       let key = "tag-reserve-" + str(tag-metadata-counter.get().first())
       metadata((
