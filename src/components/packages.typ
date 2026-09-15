@@ -6,7 +6,7 @@
 #import "@preview/cetz-plot:0.1.4" as cetz-plot
 #import "@preview/physica:0.9.8": *
 #import "@preview/physica:0.9.8": va as Va, vb as Vb, vu as Vu
-#import "@preview/fancy-tiling:1.0.0": *
+#import "@preview/fancy-tiling:1.0.0" as fancy-tiling
 #import "@preview/mannot:0.4.0"
 // #import "@preview/fletcher:0.5.8"
 

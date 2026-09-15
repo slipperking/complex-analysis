@@ -25,6 +25,7 @@
 #include "differential-geometry/index.typ"
 #include "multivariable/index.typ"
 #include "special-classes-of-holomorphic-functions/index.typ"
+#include "hilbert-spaces-of-holomorphic-functions/index.typ"
 #include "connections-to-number-theory/index.typ"
 #include "analytic-continuation-and-riemann-surfaces/index.typ"
 #include "nevanlinna-theory/index.typ"

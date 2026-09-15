@@ -419,7 +419,7 @@ where $lambda_r$ employs the same definition as in @eq:dirac-delta-approximation
             }
           },
           stroke: 1pt,
-          fill: diagonal-stripes(
+          fill: fancy-tiling.diagonal-stripes(
             background-color: black.transparentize(100%),
             size: 3pt,
             angle: 45deg,
@@ -510,7 +510,7 @@ where $lambda_r$ employs the same definition as in @eq:dirac-delta-approximation
               }
             },
             stroke: 1pt,
-            fill: diagonal-stripes(
+            fill: fancy-tiling.diagonal-stripes(
               background-color: black.transparentize(100%),
               size: 3pt,
               angle: 45deg,
@@ -677,7 +677,7 @@ where $lambda_r$ employs the same definition as in @eq:dirac-delta-approximation
         canvas(length: 0.6cm, {
           import cetz.draw: *
           for region in visual-data.covered-disjoint-union-region-list {
-            catmull(..region, close: true, tension: 0.5, stroke: 0.2pt, fill: diagonal-stripes(
+            catmull(..region, close: true, tension: 0.5, stroke: 0.2pt, fill: fancy-tiling.diagonal-stripes(
               background-color: black.transparentize(100%),
               size: 2pt,
               angle: 45deg,

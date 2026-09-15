@@ -94,7 +94,7 @@ By the Maximum Principle, we have the following characterization:
       canvas({
         import cetz.draw: *
         circle((0, 0), radius: 5, name: "D(p,r)")
-        let hatch = diagonal-stripes(
+        let hatch = fancy-tiling.diagonal-stripes(
           background-color: black.transparentize(100%),
           size: 3pt,
           angle: 45deg,

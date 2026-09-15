@@ -67,7 +67,7 @@ In fact, it is almost always true that such an extension exists. We will give th
 
   Let $V = DD inter D(1, 1 / 2)$, which has a finite area. Since $phi$ is a biholomorphism, $phi(V) subset Omega_2$ also has a finite area (call this $M$) and is simply connected since its complement in $Omega_2$, $phi(DD without V)$, is connected.
 
-  #let hatch = diagonal-stripes(
+  #let hatch = fancy-tiling.diagonal-stripes(
     background-color: black.transparentize(100%),
     size: 3pt,
     angle: 45deg,
@@ -803,7 +803,7 @@ The second case pertaining to $C^oo$ boundaries will be proved later. We now ent
 )
 #figure-wrapper({
   let primary-shade = black.transparentize(60%)
-  let hatch = diagonal-stripes(
+  let hatch = fancy-tiling.diagonal-stripes(
     background-color: black.transparentize(100%),
     size: 3pt,
     angle: 45deg,
