@@ -203,11 +203,7 @@
 }
 
 #let theorem-heading(thm) = {
-  let head = [*#thm.supplement~#thm.number*]
-  if thm.name != none {
-    head += [~(#thm.name)]
-  }
-  head
+  theorem-toc-entry(thm)
 }
 
 #let _toc-entry(class, location, body, depth: 0) = html.elem(

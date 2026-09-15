@@ -82,7 +82,7 @@ In this compatibility mode, repeated PDF/HTML labels should continue to use
 |   |   |-- styles.typ       # Shared PDF and web document styles
 |   |   |-- references.typ   # Cross-output labels and reference formatting
 |   |   |-- theorems.typ     # Theorem environments
-|   |   |-- graphics.typ     # CetZ helpers and figure collection
+|   |   |-- graphics.typ     # CetZ and figure-layout helpers
 |   |   |-- math.typ         # Project-wide mathematical helpers
 |   |   |-- packages.typ     # Typst package imports
 |   |   `-- ctheorems/       # Local customized theorem implementation
