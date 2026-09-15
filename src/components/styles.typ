@@ -8,7 +8,7 @@
 #let equation-revoke = <typst-equation-revoke>
 
 #let document-styles(doc, mode: "pdf") = {
-  show: layout-limiter.with(max-iterations: 20)
+  show: layout-limiter.with(max-iterations: 10)
   show ref: it => show-reference(it, mode)
   show math.equation: it => {
     let label = it.fields().at("label", default: none)

@@ -8,6 +8,9 @@
 #let secondary-label-assignment-counter = state("secondary-label-assignment", 0)
 #let secondary-label-assignment-map = state("secondary-label-assignment-map", (:))
 
+#let reference-pass-through = metadata("reference-pass-through")
+#let reference-html-indicator = metadata("reference-html-indicator")
+
 #let explicit-label(..args, prefix: "") = {
   let args = args.pos()
   if args.len() == 0 {
@@ -43,73 +46,47 @@
   }
 }
 
-#let paged-link-with-html-indicator(base, html-link) = {
-  $#base^#text(link(html-link, $dagger.triple$ * 3), size: 0.8em)$
+#let _tagged-ref(target, tag: reference-pass-through, supplement: auto, form: "normal") = {
+  set bibliography(title: tag)
+  ref(target, supplement: supplement, form: form)
 }
 
-#let _target-selector(target) = if type(target) == label { selector(target) } else { target }
-#let _target-matches(target) = query(_target-selector(target))
+#let paged-link-with-html-indicator(base, html-target) = {
+  if legacy-label-routing {
+    return $#base^#text(link(html-target, $dagger.triple$ * 3), size: 0.8em)$
+  }
+  $#base^#text(_tagged-ref(html-target, tag: reference-html-indicator), size: 0.8em)$
+}
 
 #let _retarget-ref(reference, target) = {
-  ref(target, supplement: reference.supplement, form: reference.form)
+  _tagged-ref(
+    target,
+    supplement: reference.supplement,
+    form: reference.form,
+  )
 }
 
 #let _legacy-reference-route(target, mode) = {
   let labels = secondary-label-assignment-map.final().at(str(target), default: ())
-  let targets = labels
-    .map(candidate => {
-      let matches = _target-matches(candidate)
-      if matches.len() > 0 {
-        (label: candidate, location: matches.first().location())
-      } else {
-        none
-      }
-    })
-    .filter(target => target != none)
-  if targets.len() == 0 {
+  if labels.len() == 0 {
     return none
   }
 
   (
-    local: if mode == "web" { targets.last().label } else { targets.first().label },
-    element: none,
-    links: targets.map(target => target.location),
-    html: if targets.len() > 1 { targets.last().location } else { none },
+    local: if mode == "web" { labels.last() } else { labels.first() },
+    links: labels,
+    html: if labels.len() > 1 { labels.last() } else { none },
   )
 }
 
-#let _selector-reference-route(reference, mode) = {
-  let current-scope = if mode == "web" { web-scope-label } else { pdf-scope-label }
-  let current-element = reference.element
-  if current-element == none {
-    let current-matches = _target-matches(
-      selector(reference.target).within(current-scope),
-    )
-    current-element = if mode == "web" {
-      current-matches.last(default: none)
-    } else {
-      current-matches.first(default: none)
-    }
-  }
-
-  let counterpart-scope = if mode == "web" { pdf-scope-label } else { web-scope-label }
-  let counterpart-matches = _target-matches(
-    selector(reference.target).within(counterpart-scope),
-  )
-  let counterpart = if mode == "web" {
-    counterpart-matches.first(default: none)
-  } else {
-    counterpart-matches.last(default: none)
-  }
-  let pdf-element = if mode == "web" { counterpart } else { current-element }
-  let web-element = if mode == "web" { current-element } else { counterpart }
-  let links = (pdf-element, web-element).filter(element => element != none).map(element => element.location())
-
+#let _selector-reference-route(reference) = {
   (
     local: none,
-    element: current-element,
-    links: links,
-    html: if web-element != none { web-element.location() } else { none },
+    links: (
+      selector(reference.target).within(pdf-scope-label),
+      selector(reference.target).within(web-scope-label),
+    ),
+    html: selector(reference.target).within(web-scope-label),
   )
 }
 
@@ -119,26 +96,13 @@
   }
   if legacy-label-routing {
     _legacy-reference-route(reference.target, mode)
+  } else if reference.element == none {
+    // bibliography citations have label targets but no referenced document
+    // element, leave entirely to typst's native citation handling.
+    none
   } else {
-    let route = _selector-reference-route(reference, mode)
-    if route.links.len() == 0 and reference.element == none { none } else { route }
+    _selector-reference-route(reference)
   }
-}
-
-#let _reference-element(reference, route) = {
-  if reference.element != none {
-    return reference.element
-  }
-  if route != none and route.element != none {
-    return route.element
-  }
-
-  let matches = if route != none and route.local != none {
-    _target-matches(route.local)
-  } else {
-    _target-matches(reference.target)
-  }
-  if matches.len() == 1 { matches.first() } else { none }
 }
 
 #let _equation-reference(target) = {
@@ -167,16 +131,34 @@ and target.value.at("type", default: none) == "typst-enum-item-label"
 #let _reference-link-list(targets) = html.elem(
   "math",
   {
+    set bibliography(title: reference-pass-through)
     for target in targets {
-      html.elem("mtext", link(target, [link]), attrs: (class: "typst-multi-label"))
+      html.elem("mtext", ref(target), attrs: (class: "typst-multi-label"))
     }
   },
   attrs: (class: "typst-multi-label-list"),
 )
 
 #let show-reference(reference, mode) = context {
+  if bibliography.title == reference-pass-through {
+    let formatted = _format-reference(reference, reference.element)
+    if formatted != none {
+      return formatted
+    }
+    if reference.element == none {
+      return none
+    }
+    return reference
+  }
+  if bibliography.title == reference-html-indicator {
+    if reference.element == none {
+      return none
+    }
+    return link(reference.element.location(), $dagger.triple$ * 3)
+  }
+
   let route = _reference-route(reference, mode)
-  let target = _reference-element(reference, route)
+  let target = reference.element
   let formatted = _format-reference(reference, target)
   let visible = if formatted != none {
     formatted
