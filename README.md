@@ -42,12 +42,10 @@ assets, search index, and the downloadable PDF at `dist/pdf/notes.pdf`.
 `build-search-index.py` runs after the bundle exists by scanning the generated
 HTML, copying the search assets, and writing the index. A list of todos exist at the `/todo` subdirectory.
 
-The optional `hide-figures` input may be passed to skip drawings produced through the
-project's `canvas` helper (including `quick-plot`) while working on prose,
-equations, or layout:
+The optional `debug-build` input may be passed to skip drawings produced through the project's `canvas` helper (including `quick-plot`) while working on prose, equations, or layout; it also disables the generation of the List of Theorems and the List of Figures pages:
 
 ```powershell
-./typst.exe compile --features bundle,html --format bundle --package-path packages --input hide-figures=true main.typ dist
+./typst.exe compile --features bundle,html --format bundle --package-path packages --input debug-build=true main.typ dist
 ```
 
 This only shortens the Typst compilation step; preprocessing and search-index

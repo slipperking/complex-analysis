@@ -466,17 +466,19 @@
   /// -> bool
   move: true,
 ) = {
-  return {}
   tag-metadata-counter.step()
   context {
     if state("render-mode").get() == "web" {
       html.elem("mrow", attrs: (class: "eq-tag"), t)
     } else {
-      let key = "tag-reserve-" + str(tag-metadata-counter.get().first())
+      state("tag-reserves", ()).update(x => {
+        x.push(0pt)
+        x
+      })
       metadata((
         eq-tag: t,
         move: move,
-        reserve: state(key, 0pt),
+        reserve-idx: tag-metadata-counter.get().first() - 1,
       ))
     }
   }
@@ -609,7 +611,7 @@
       if (
         type(data.value) == dictionary
           and data.value.keys().contains("eq-tag")
-          and data.value.keys().contains("reserve")
+          and data.value.keys().contains("reserve-idx")
       ) {
         context {
           let gap = 0.4em
@@ -622,7 +624,7 @@
           if edge.value.keys().contains("align") and edge.value.align == "left" {
             move(dx: gap, data.value.eq-tag)
           } else {
-            let previous-reserve = data.value.reserve.final()
+            let previous-reserve = state("tag-reserves", ()).final().at(data.value.reserve-idx, default: 0pt)
             let tag-start = edge.location().position().x - tag-width
             if data.value.move {
               // add a spacer of 2 reserve to shift equation to the left to avoid an overlap
@@ -636,7 +638,10 @@
               let dx = tag-start - natural-end + reserve
               place(horizon, dx: dx, data.value.eq-tag)
               box(width: 2 * reserve, height: 0pt, stroke: none)
-              data.value.reserve.update(reserve)
+              state("tag-reserves", ()).update(reserves => {
+                reserves.at(data.value.reserve-idx) = reserve
+                reserves
+              })
             } else {
               let dx = tag-start - here().position().x
               place(horizon, dx: dx, data.value.eq-tag)

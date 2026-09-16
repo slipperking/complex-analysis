@@ -12,7 +12,7 @@
   if debug-show {
     todo[Argument `debug-show` should be disabled in final production.]
   }
-  if (sys.inputs.at("hide-figures", default: none) != "true" or debug-show) {
+  if (sys.inputs.at("debug-build", default: none) != "true" or debug-show) {
     potential-frame(cetz.canvas(..args))
   }
 }

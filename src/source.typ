@@ -24,7 +24,7 @@
     html.elem("div", attrs: (class: "abstract"), abstract)
     html.elem("div", attrs: (class: "recommendation"), web-view-recommendation)
     html.elem("p", attrs: (class: "download"), {
-      html.elem("a", attrs: (class: "button", href: href("pdf/notes.pdf")), [Download PDF])
+      html.elem("a", attrs: (class: "button", href: href("pdf/notes.pdf")), [View PDF])
     })
   })
 }
