@@ -9,8 +9,50 @@
 #let abstract = source.abstract
 
 #let render-mode = state("render-mode", "web")
-#let route-prefix = state("route-prefix", ())
-#let route-folders = state("route-folders", ())
+
+#let _route-tag-key = "typst-project-route"
+
+#let _tag-data() = {
+  let carrier = bibliography.title
+  if carrier != auto and carrier.func() == metadata and type(carrier.value) == dictionary {
+    carrier.value
+  } else {
+    (:)
+  }
+}
+
+#let _route-context() = {
+  let route = _tag-data().at(_route-tag-key, default: (:))
+  if type(route) != dictionary {
+    route = (:)
+  }
+  (
+    prefix: route.at("prefix", default: ()),
+    folders: route.at("folders", default: ()),
+  )
+}
+
+#let _route-scope(prefix: auto, folders: auto, body) = context {
+  let current = _route-context()
+  let next = (
+    prefix: if prefix == auto { current.prefix } else { prefix },
+    folders: if folders == auto { current.folders } else { folders },
+  )
+  let tags = _tag-data()
+  tags.insert(_route-tag-key, next)
+
+  show label("meta:" + _route-tag-key + "-scope"): it => {
+    set bibliography(title: metadata(tags))
+    it.body
+  }
+  [#block(body)#label("meta:" + _route-tag-key + "-scope")]
+}
+
+/// Apply a route prefix to `body`. Child page folders start at this prefix.
+#let route-prefix(prefix, body) = _route-scope(prefix: prefix, folders: (), body)
+
+/// Apply an exact inherited folder path to `body`.
+#let route-folders(folders, body) = _route-scope(folders: folders, body)
 
 #let _normalize-route(route) = {
   let value = route
@@ -137,16 +179,6 @@
 
   (page.heading-format)(number, title)
 }
-
-#let _set-route-folders(level, route) = route-folders.update(folders => {
-  let keep = calc.min(folders.len(), calc.max(0, level - 1))
-  let next = folders.slice(0, keep)
-  let segment = _route-segment(route)
-  if segment != none {
-    next.push(segment)
-  }
-  next
-})
 
 #let _page-heading(page) = {
   if page.label == none {
@@ -563,10 +595,15 @@
   body,
 ) = {
   assert(type(heading-format) == function, message: "heading-format must be a function")
-  _set-route-folders(level, route)
   context {
-    let mode = render-mode.get()
-    let route = _route-from-folders(route-prefix.get() + route-folders.get())
+    let route-context = _route-context()
+    let segment = _route-segment(route)
+    let folders = if segment == none {
+      route-context.folders
+    } else {
+      route-context.folders + (segment,)
+    }
+    let route = _route-from-folders(route-context.prefix + folders)
     let page = _page-info(
       title: title,
       route: route,
@@ -578,7 +615,7 @@
       label: label,
     )
 
-    if target() == "bundle" and mode == "web" {
+    let page-content = if target() == "bundle" and render-mode.get() == "web" {
       let page-body = if cover {
         _cover-content(page)
       } else if heading {
@@ -598,9 +635,11 @@
       }
       body
     }
-  }
-  if children != none {
-    children
+
+    page-content
+    if children != none {
+      route-folders(folders, children)
+    }
   }
 }
 

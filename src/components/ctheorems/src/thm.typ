@@ -357,12 +357,15 @@
   )
 
   if defer {
-    return number-update + [#context {
-      let loc = here()
-      let number-computed = _computed-number(number, numbering, counter, base)
-      let group = state("render-mode").get()
-      [#metadata(thm + (number: number-computed, loc: loc, group: group)) <meta:thm-env-counter>]
-    }]
+    return (
+      number-update
+        + [#context {
+          let loc = here()
+          let number-computed = _computed-number(number, numbering, counter, base)
+          let group = state("render-mode").get()
+          [#metadata(thm + (number: number-computed, loc: loc, group: group)) <meta:thm-env-counter>]
+        }]
+    )
   }
 
   return figure(
@@ -467,9 +470,6 @@
   tag-metadata-counter.step()
   context {
     if state("render-mode").get() == "web" {
-      // Tags can contain references, which render as links in HTML. Wrapping
-      // them in another link creates invalid nested anchors and lets the
-      // browser split the tag into separate pieces.
       html.elem("mrow", attrs: (class: "eq-tag"), t)
     } else {
       let key = "tag-reserve-" + str(tag-metadata-counter.get().first())
