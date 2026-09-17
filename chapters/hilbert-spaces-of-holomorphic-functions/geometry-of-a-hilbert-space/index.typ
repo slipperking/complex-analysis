@@ -175,9 +175,14 @@ The study of the Bergman space $A^2 (Omega)$ will become important later on as w
 ]
 (Recall that this was briefly mentioned in @sec:boundary-continuity-of-biholomorphisms; we have already proven the two other main cases, namely when the boundaries are merely Jordan and when the boundaries are real-analytic.)
 
-For the remainder of this section, we will develop general properties of Hilbert spaces. Note that in a Hilbert space closedness and boundedness do not necessarily imply compactness (recall that compactness is most generally defined by the notion of finite subcovers).
+For the remainder of this section, we will develop general properties of Hilbert spaces. Note that in a Hilbert space closedness and boundedness do not necessarily imply compactness (recall that compactness is most generally defined by the notion of finite subcovers), although compactness will always imply closedness and boundedness.
 #example[
-
+  Show that there exists a Hilbert space $H$ such that there is a closed, bounded#footnote[With respect to the induced topology from the metric space and the associated norm.] set $X subset.eq H$ that is not compact.
+] <ex:hilbert-space-closed-bounded-but-not-compact>
+#solution[to @ex:hilbert-space-closed-bounded-but-not-compact][
+  Let $H = DD$ with the inner product
+  $ chev(z_1, z_2) = sqrt([Re(z_1) Re(z_2)]^2 + [Im(z_1)Im(z_2)]^2). $
+  Then the associated norm $norm(dot)$ is simply the Euclidean distance. Then under the induced metric topology, $H subset.eq H$ is closed and bounded, but not compact, as it can be covered by the open cover ${D(0, 1 - 1 / n)}_(n = 2)^oo$, which does not admit a finite subcover.
 ]
 #theorem[
   Let $H$ be a Hilbert space.

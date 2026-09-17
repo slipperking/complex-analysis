@@ -96,7 +96,7 @@ A topology allows the definition and general conceptualization of continuity, co
   is an open set in $X$.
 ]
 
-For the case of metric spaces, this generalizes the epsilon--delta notion of continuity.
+For the case of metric spaces, this generalizes the $epsilon$--$delta$ notion of continuity.
 
 #example[
   Consider the function $f:RR -> RR$ defined by
@@ -179,7 +179,7 @@ $
   The pair $(X, tau_d)$ is the _topological space induced by the metric $d$_.
 ]
 
-We now justify a claim whose triviality we have taken for granted.
+Note that in most metric spaces, closedness and boundedness of sets do not generally give compactness. We now justify a claim whose triviality we have taken for granted.
 
 #proposition[
   Let $(X, d)$ be a metric space under the induced metric topology. Then for any open set $U subset.eq X$, any point $x in U$, there exists a ball $B(x, delta)$ ($delta > 0$) in $U$.

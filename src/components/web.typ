@@ -262,6 +262,9 @@
 }
 
 #let _local-toc(current) = context {
+  if sys.inputs.at("debug-build", default: none) == "true" {
+    return
+  }
   let doc-label = label("doc-" + current.id)
   let first-heading = _first-page-heading(current)
   let targets = query(selector(heading).within(doc-label).or(selector(<meta:thm-env-counter>)).within(doc-label))
