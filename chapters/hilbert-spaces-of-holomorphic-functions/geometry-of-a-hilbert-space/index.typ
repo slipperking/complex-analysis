@@ -10,10 +10,10 @@ The concept of a _vector space_ is an important one in linear algebra. However, 
   Let $V$ be a vector space over $CC$. Then a function $ chev(dot, dot) : V^2 -> CC $
   is said to be a _positive-definite nondegenerate Hermitian inner product_ iff
   + For any $v_1, v_2, w in V$, $chev(v_1 + v_2, w) = chev(v_1, w) + chev(w_2, w)$ (additivity in the first argument). #enum-lbl(<itm:inner-product-left-additivity>)
-  + For any $alpha in CC$, $v, w in V$, $chev(alpha v, w) = alpha chev(v, w)$ (linearity in the first argument) #enum-lbl(<itm:inner-product-left-linearity>)
-  + For any $v, w in V$, $chev(v, w) = overline(chev(w, v))$ (conjugate-symmetry) #enum-lbl(<itm:inner-product-conjugate-symmetry>)
-  + For any $v in V$, $chev(v, v) >= 0$ (semi-positive-definiteness) #enum-lbl(<itm:inner-product-semi-positive-definiteness>)
-  + For $v in V$, $chev(v, v) = 0$ iff $v = 0$ (nondegeneracy) #enum-lbl(<itm:inner-product-nondegeneracy>)
+  + For any $alpha in CC$, $v, w in V$, $chev(alpha v, w) = alpha chev(v, w)$ (linearity in the first argument). #enum-lbl(<itm:inner-product-left-linearity>)
+  + For any $v, w in V$, $chev(v, w) = overline(chev(w, v))$ (conjugate-symmetry). #enum-lbl(<itm:inner-product-conjugate-symmetry>)
+  + For any $v in V$, $chev(v, v) >= 0$. (semi-positive-definiteness) #enum-lbl(<itm:inner-product-semi-positive-definiteness>)
+  + For $v in V$, $chev(v, v) = 0$ iff $v = 0$ (nondegeneracy). #enum-lbl(<itm:inner-product-nondegeneracy>)
   Then the space $V$ together with the inner product is known as an _inner product space_.
 ] <def:inner-product>
 Note that @itm:inner-product-nondegeneracy and @itm:inner-product-semi-positive-definiteness, imply positive-definitness: for $v != 0$, $chev(v, v) > 0$.
@@ -45,7 +45,7 @@ The verification of the necessary properties is trivial.
 #example[
   Let $V = C([0,1], CC)$, with addition and multiplication defined as in the usual sense. Then if $f, g in V$, define
   $ chev(f, g) = integral_0^1 f(x) overline(g(x)) dx. $
-]
+] <ex:inner-product-C-0-1-CC>
 #proof[
   The verification of properties @itm:inner-product-left-additivity, @itm:inner-product-left-linearity, @itm:inner-product-conjugate-symmetry, @itm:inner-product-semi-positive-definiteness (in @def:inner-product) are somewhat trivial. The reverse implication of @itm:inner-product-distributivity is obvious. For $f in V$ such that
   $ chev(f, f) = 0 ==> integral_0^1 abs(f(x))^2 dx = 0, $
@@ -97,7 +97,7 @@ If the metric space is $RR$ under the standard Euclidean metric, then any Cauchy
 
 A metric space is said to be _complete_ iff all Cauchy sequences are complete. Intuitively, the set of rationals cannot be complete as there are accumulation points in $RR without QQ$ to which Cauchy sequences tend, so it is incomplete in the sense that potential accumulation points are not included. In most analytical settings, we are concerned only with vector space over complete scalar fields such as $RR$ or $CC$.
 #proposition[
-  Any finite-dimensional (in terms of linear independence) vector space $V$ over a complete scalar field $FF$ is complete with respect the metric space derived from _any_ inner-product norm.
+  Any finite-dimensional (in terms of linear independence) vector space $V$ over a complete scalar field $FF$ is complete with respect the metric space derived from _any_ (nondegenerate positive-definite Hermitian) inner-product norm.
 ]
 #proof[
   #todo[Finish this, and figure out how to do Gram--Schmidt (maybe an appendix for this)]
@@ -109,3 +109,68 @@ It is often convenient in analysis to take limits, and thus in most cases we are
 #definition[Hilbert Space][
   A complex vector space $V$ with a (nondegenerate) positive-definite Hermetian inner product $chev(dot, dot)$ is said to be a _Hilbert space_ iff it is complete under the associated norm $norm(dot)$.
 ]
+#example[
+  The vector space $CC^n$ with the inner product $ chev(vb(v), vb(w)) = sum_(k=1)^n v_k overline(w_k) $
+  is a Hilbert space, and the metric derived from the associated norm provides the standard sense of Euclidean distance:
+  $ norm(vb(v) - vb(w)) = sqrt(sum_(k=1)^n abs(v_k - w_k)^2). $
+]
+#example[Bergman Space][
+  Let $Omega subset.eq CC$ be an open region. Let $ A^2 (Omega) = {f "holomorphic on" Omega : integral.double_Omega abs(f(z))^2 dx dy < oo}. $
+  Then $A^2(Omega)$ is a vector space over $CC$ with the standard definition of addition and scalar multiplication. Then the inner product defined by
+  $
+    chev(f, g) = integral.double_Omega f(z) overline(g(z)) dx dy quad "where" quad z = x + ii y
+  $ <eq:hilbert-space-bergman-space-inner-product>
+  for any two $f, g in A^2(Omega)$ defines a Hilbert space with $A^2 (Omega)$.
+] <ex:hilbert-space-bergman-space>
+#proof[
+  Firstly, the inner product is well-defined as
+  $
+    abs(f(z) overline(g(z))) & <= 2 abs(f(z)) abs(g(z)) \
+                             & = abs(f(z))^2 + abs(g(z))^2 - (abs(f(z)) - abs(g(z)))^2 \
+                             & <= abs(f(z))^2 + abs(g(z))^2,
+  $
+  which provides the absolute convergence of @eq:hilbert-space-bergman-space-inner-product, and @itm:inner-product-nondegeneracy of @def:inner-product follows from the same logic as in @ex:inner-product-C-0-1-CC.
+  #claim[
+    For any $h in A^2(Omega)$, $w in Omega$, $exists r > 0$ such that $overline(D(z, r)) subset.double Omega$. For $0 < rho < r$, $ abs(h(z)) <= 1 / (r sqrt(uppi)) norm(h). $
+  ]
+  #proof[of the claim][
+    By the mean-value property,
+    $ h(z) & = 1 / (2 uppi) integral_0^(2 uppi) h(z + rho ee^(ii theta)) dtheta. $
+    Therefore,
+    $
+      1 / r^2 integral_0^r 2 rho h(z) dif rho &= 1 / r^2 integral_0^r 2 rho [1 / (2 uppi) integral_0^(2 uppi) h(z + rho ee^(ii theta)) dtheta] dif rho \
+      h(z) &= 1 / (uppi r^2) integral_0^r integral_0^(2 uppi) h(z + rho ee^(ii theta)) rho dtheta dif rho \
+      &= 1 / (uppi r^2) integral_D(z, r) h(zeta) dif xi and dif eta. #tag[(where $zeta = xi + ii eta$)]
+    $
+    Thus,
+    $ abs(h(z)) <= 1 / (uppi r^2) integral_D(z, r) abs(h(zeta)) dot 1 dif xi and dif eta. $
+    By the Cauchy--Schwarz Inequality ($integral abs(f g) <= sqrt(integral abs(f)^2)sqrt(integral abs(g)^2)$), we have
+    $
+      abs(h(z)) & <= 1 / (uppi r^2) sqrt(integral_D(z, r) abs(h(zeta))^2 dif xi and dif eta) sqrt(integral_D(z, r) dif xi and dif eta) \
+      & = 1 / (r sqrt(uppi)) norm(h). qedhere
+    $
+  ]
+  With the claim in mind, we now proceed to prove the completeness of the metric space.
+
+  Let $K subset.double Omega$ be arbitrary and let ${f_n}_(n in NN) subset.eq A^2 (Omega)$ be any Cauchy sequence in the inner product space. Then there is a $r > 0$ such that $forall z in K$, $overline(D(z, r)) subset.double Omega$. Then $forall epsilon >0$, $exists N > 0$ such that $forall m, n > N$, $norm(f_n - f_m) < epsilon / (sqrt(uppi) r)$. By the claim applied to $h equiv f_n - f_m in A^2 (Omega)$,
+  $ sup_(z in K) abs(f_n (z) - f_m (z)) <= 1 / (r sqrt(uppi)) norm(f_n - f_m) < epsilon, $
+  hence giving that ${f_n}$ uniformly converges in $K$. Since $K$ was arbitrary, ${f_n}$ locally uniformly converges in $Omega$, and converges by the Weierstrass Convergence Theorem (@thm:weierstrass-convergence) to a holomorphic function $f$ on $Omega$. It remains to show that $f in A^2 (Omega)$.
+
+  Observe that by uniform convergence of ${abs(f_n)^2}$ on any compact $K subset.double Omega$,
+  $
+    integral.double_K abs(f(z))^2 dif A = integral.double_K lim_(n -> oo) abs(f_n (z))^2 dif A = lim_(n -> oo) integral.double_K abs(f_n (z))^2 dif A
+  $
+  by uniform convergence on a compact set. Note that any Cauchy sequence is bounded: fixing $n$, then for all $m > N$
+  $ norm(f_n - f_m) < epsilon ==> norm(f_m) < norm(f_n) + epsilon $
+  by the reverse triangle inequality for metric spaces. Let
+  $ M = max({norm(f_n) + epsilon} union {norm(f_m) : m <= N}) $ Therefore,
+  $
+    integral.double_K abs(f(z))^2 dif A <= lim_(n -> oo) integral.double_Omega abs(f_n (z))^2 dif A = lim_(n -> oo) norm(f_n) <= M.
+  $
+  Therefore, $f in A^2 (Omega)$, proving completeness as any Cauchy sequence converges.
+]
+The study of the Bergman space $A^2 (Omega)$ will become important later on as we aim to prove the following:
+#quote(block: true)[
+  If $partial Omega_1$ and $Omega_2$ are $C^oo$ Jordan curves, then $phi$ extends continuously and injectively to $partial Omega_1$ and is $C^oo$ on $overline(Omega_1)$.
+]
+(Recall that this was briefly mentioned in @sec:boundary-continuity-of-biholomorphisms; we have already proven the two other main cases, namely when the boundaries are merely Jordan and when the boundaries are real-analytic.)

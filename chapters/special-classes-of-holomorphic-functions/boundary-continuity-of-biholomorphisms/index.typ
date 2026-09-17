@@ -2,14 +2,15 @@
 #show: docs-subchapter.with(
   title: [Boundary Continuity of Biholomorphisms],
   route: "boundary-continuity-of-biholomorphisms",
+  label: <sec:boundary-continuity-of-biholomorphisms>,
 )
 Suppose $Omega_1$ and $Omega_2$ are two regions in the complex plane such that there is a biholomorphism $phi$ from $Omega_1$ to $Omega_2$. Naturally, we are concerned about the existence of a continuous extension of $phi$ to $overline(Omega_1)$.
 
 In fact, it is almost always true that such an extension exists. We will give three examples of this phenomenon, each with increasing regularity assumptions on the boundaries $partial Omega_1$ and $partial Omega_2$:
 
 1. If $partial Omega_1$ and $partial Omega_2$ are two Jordan curves, then $phi$ (whose existence is given by the Riemann Mapping Theorem or @thm:riemann-mapping) extends homeomorphically to $partial Omega_1$ (@thm:osgood-taylor-caratheodory).
-2. If $partial Omega_1$ and $Omega_2$ are $C^oo$, then $phi$ extends continuously and injectively to $partial Omega_1$ and is $C^oo$ on $overline(Omega_1)$.
-3. If $partial Omega_1$ and $partial Omega_2$ are real-analytic (the boundary is parameterizable by functions such that at every point, there is a power series expansion that converge to the function on a neighborhood), then $phi$ extends analytically past $partial Omega_1$ (@thm:osgood-taylor-caratheodory-real-analytic-boundaries).
+2. If $partial Omega_1$ and $Omega_2$ are $C^oo$ Jordan curves, then $phi$ extends continuously and injectively to $partial Omega_1$ and is $C^oo$ on $overline(Omega_1)$.
+3. If $partial Omega_1$ and $partial Omega_2$ are real-analytic Jordan curves (the boundary is parameterizable by functions such that at every point, there is a power series expansion that converge to the function on a neighborhood), then $phi$ extends analytically past $partial Omega_1$ (@thm:osgood-taylor-caratheodory-real-analytic-boundaries).
 
 #figure-wrapper(
   [
