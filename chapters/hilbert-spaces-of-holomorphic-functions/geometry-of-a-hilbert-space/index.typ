@@ -47,9 +47,9 @@ The verification of the necessary properties is trivial.
 ]
 #proof[
   The verification of properties @itm:inner-product-left-additivity, @itm:inner-product-left-linearity, @itm:inner-product-conjugate-symmetry, @itm:inner-product-semi-positive-definiteness (in @def:inner-product) are somewhat trivial. The reverse implication of @itm:inner-product-distributivity is obvious. For $f in V$ such that
-  $ chev(f, f) = 0 ==> integral_0^1 f(x)^2 dx = 0, $
-  if $f(x') > 0$ at some $x' in (0,1)$, then for $x$ in some $delta$-neighborhood of $x'$, $f(x) > 1 / 2 f(x')$ by continuity, implying that
-  $ integral_0^1 f(x)^2 dx >= integral_(x'-delta)^(x'+delta) f(x) dx > delta f(x') > 0, $
+  $ chev(f, f) = 0 ==> integral_0^1 abs(f(x))^2 dx = 0, $
+  if $abs(f(x'))^2 > 0$ at some $x' in (0,1)$, then for $x$ in some $delta$-neighborhood of $x'$, $abs(f(x))^2 > 1 / 2 abs(f(x'))^2$ by continuity, implying that
+  $ integral_0^1 abs(f(x))^2 dx >= integral_(x'-delta)^(x'+delta) abs(f(x))^2 dx > delta abs(f(x'))^2 > 0, $
   which is impossible; thus $f equiv 0$ forcibly.
 ]
 #definition[Associated Norm][
