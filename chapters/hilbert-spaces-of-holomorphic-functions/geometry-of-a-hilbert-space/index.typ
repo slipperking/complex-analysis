@@ -174,3 +174,11 @@ The study of the Bergman space $A^2 (Omega)$ will become important later on as w
   If $partial Omega_1$ and $Omega_2$ are $C^oo$ Jordan curves, then $phi$ extends continuously and injectively to $partial Omega_1$ and is $C^oo$ on $overline(Omega_1)$.
 ]
 (Recall that this was briefly mentioned in @sec:boundary-continuity-of-biholomorphisms; we have already proven the two other main cases, namely when the boundaries are merely Jordan and when the boundaries are real-analytic.)
+
+For the remainder of this section, we will develop general properties of Hilbert spaces. Note that in a Hilbert space closedness and boundedness do not necessarily imply compactness (recall that compactness is most generally defined by the notion of finite subcovers).
+#example[
+
+]
+#theorem[
+  Let $H$ be a Hilbert space.
+]
