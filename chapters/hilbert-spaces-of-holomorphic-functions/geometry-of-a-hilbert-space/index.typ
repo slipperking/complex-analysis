@@ -13,9 +13,10 @@ The concept of a _vector space_ is an important one in linear algebra. However, 
   + For any $alpha in CC$, $v, w in V$, $chev(alpha v, w) = alpha chev(v, w)$ (linearity in the first argument) #enum-lbl(<itm:inner-product-left-linearity>)
   + For any $v, w in V$, $chev(v, w) = overline(chev(w, v))$ (conjugate-symmetry) #enum-lbl(<itm:inner-product-conjugate-symmetry>)
   + For any $v in V$, $chev(v, v) >= 0$ (semi-positive-definiteness) #enum-lbl(<itm:inner-product-semi-positive-definiteness>)
-  + For $v in V$, $chev(v, v) = 0$ iff $v = 0$ (non-degeneracy) #enum-lbl(<itm:inner-product-non-degeneracy>)
+  + For $v in V$, $chev(v, v) = 0$ iff $v = 0$ (nondegeneracy) #enum-lbl(<itm:inner-product-nondegeneracy>)
+  Then the space $V$ together with the inner product is known as an _inner product space_.
 ] <def:inner-product>
-Note that @itm:inner-product-non-degeneracy and @itm:inner-product-semi-positive-definiteness, imply positive-definitness: for $v != 0$, $chev(v, v) > 0$.
+Note that @itm:inner-product-nondegeneracy and @itm:inner-product-semi-positive-definiteness, imply positive-definitness: for $v != 0$, $chev(v, v) > 0$.
 #proposition[
   Let $V$ be a vector space over $CC$ and let $chev(dot, dot)$ be a positive-definite nondegenerate Hermetian inner product. Then for $v, v, w, w_1, w_2 in V$ and $alpha in CC$,
   + $chev(v, w_1 + w_2) = chev(v, w_1) + chev(v, w_2)$ (additivity in the second argument). #enum-lbl(<itm:inner-product-right-additivity>)
@@ -35,10 +36,10 @@ Note that @itm:inner-product-non-degeneracy and @itm:inner-product-semi-positive
   $
   Letting $alpha = 0$ on $chev(alpha v, v)$ gives @itm:inner-product-linearity-with-zero-vector, while @itm:inner-product-distributivity is a consequence of additivity.
 ]
-We provide examples of vector spaces and their corresponding non-degenerate Hermetian inner products:
+We provide examples of vector spaces and their corresponding nondegenerate Hermetian inner products:
 #example[
   Let $V = C^n$ ($n in NN$) be a vector space under the usual operations, and define $ chev(vb(v), vb(w)) = sum_(k=1)^n v_k overline(w_k), $
-  where $vb(v) = (v_1, dots, v_n)$ and $vb(w) = (w_1, dots, w_n)$ are vectors in $V$. Then $chev(dot, dot)$ is a non-degenerate Hermetian inner product (the verification of the properties are trivial).
+  where $vb(v) = (v_1, dots, v_n)$ and $vb(w) = (w_1, dots, w_n)$ are vectors in $V$. Then $chev(dot, dot)$ is a nondegenerate Hermetian inner product (the verification of the properties are trivial).
 ]
 The verification of the necessary properties is trivial.
 #example[
@@ -88,4 +89,23 @@ Then @thm:inner-product-cauchy-schwarz and @itm:inner-product-distributivity of 
   $
   Then taking the square root of both sides completes the proof.
 ]
-// comment abt metric definition needing this
+Then it follows that $d(v,w) = norm(v - w)$ can be used to define a metric as it satisfies all the properties of @def:metric. Along with $V$, the associated norm then defines a metric space. Then we can define the notion of convergence of sequences in the vector space.
+
+For a general metric space $(X,d)$, if for a sequence ${x_n}_(n in NN) subset.eq X$ such that $forall epsilon > 0$, $exists N in NN : forall m,n > N$, $d(x_n, x_m) < epsilon$; then ${x_n}$ is known as a _Cauchy sequence_.
+
+If the metric space is $RR$ under the standard Euclidean metric, then any Cauchy sequence is convergent. However, note that on other sets this is not necessarily true; if we consider the set of rationals $QQ$, we may choose a sequence ${x_n}$ where the $n$-th element is the first $n$ digits of the decimal expansion of $uppi$: $3, 3.1, 3.14, 3.141,...$; it follows trivially that ${x_n}$ is a Cauchy sequence, although it is not convergent in $QQ$ as the accumulation point $uppi in RR$ is not in $QQ$.
+
+A metric space is said to be _complete_ iff all Cauchy sequences are complete. Intuitively, the set of rationals cannot be complete as there are accumulation points in $RR without QQ$ to which Cauchy sequences tend, so it is incomplete in the sense that potential accumulation points are not included. In most analytical settings, we are concerned only with vector space over complete scalar fields such as $RR$ or $CC$.
+#proposition[
+  Any finite-dimensional (in terms of linear independence) vector space $V$ over a complete scalar field $FF$ is complete with respect the metric space derived from _any_ inner-product norm.
+]
+#proof[
+  #todo[Finish this, and figure out how to do Gram--Schmidt (maybe an appendix for this)]
+  #claim[
+
+  ]
+]
+It is often convenient in analysis to take limits, and thus in most cases we are concerned only with complete spaces. However, infinite-dimensional vector spaces do not need to be complete under any inner-product norm, and thus completeness must be then stated as a precursory condition before further analysis can be done. These conditions now motivate for the following definition.
+#definition[Hilbert Space][
+  A complex vector space $V$ with a (nondegenerate) positive-definite Hermetian inner product $chev(dot, dot)$ is said to be a _Hilbert space_ iff it is complete under the associated norm $norm(dot)$.
+]

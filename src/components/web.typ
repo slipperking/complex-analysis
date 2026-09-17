@@ -641,6 +641,9 @@
       route-folders(folders, children)
     }
   }
+  if level == 1 {
+    std.pagebreak()
+  }
 }
 
 #let _plain-heading-format(number, title) = if number != none { [#number #title] } else { [#title] }
