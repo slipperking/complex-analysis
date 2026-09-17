@@ -640,9 +640,9 @@
     if children != none {
       route-folders(folders, children)
     }
-  }
-  if level == 1 {
-    std.pagebreak()
+    if render-mode.get() == "pdf" and level == 1 {
+      std.pagebreak()
+    }
   }
 }
 
