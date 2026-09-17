@@ -64,6 +64,13 @@ limit, enable the legacy synthetic-label routing used by `lbl`:
 In this compatibility mode, repeated PDF/HTML labels should continue to use
 `lbl`; ordinary labels shared by both outputs require the newer compiler.
 
+### PDF Building Procedure
+It is also possible to emit only a PDF output in the generation. This can be advantageous as it compiles much faster and uses less memory, and is more optimal to write with. The command is then:
+
+```powershell
+./typst.exe compile --features bundle,html --package-path packages --input legacy-label-routing=true main.typ
+```
+
 ## Project structure
 
 ```text

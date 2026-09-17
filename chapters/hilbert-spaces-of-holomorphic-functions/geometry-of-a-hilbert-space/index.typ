@@ -20,6 +20,8 @@ Note that @itm:inner-product-non-degeneracy and @itm:inner-product-semi-positive
   Let $V$ be a vector space over $CC$ and let $chev(dot, dot)$ be a positive-definite nondegenerate Hermetian inner product. Then for $v, v, w, w_1, w_2 in V$ and $alpha in CC$,
   + $chev(v, w_1 + w_2) = chev(v, w_1) + chev(v, w_2)$ (additivity in the second argument). #enum-lbl(<itm:inner-product-right-additivity>)
   + $chev(v, alpha w) = overline(alpha) chev(v, w)$ (conjugate-linearity in the second argument). #enum-lbl(<itm:inner-product-right-conjugate-linearity>)
+  + $chev(v, 0) = chev(0, v) = 0$. #enum-lbl(<itm:inner-product-linearity-with-zero-vector>)
+  + $chev(v + w, v + w) = chev(v, v) + chev(w, w) + 2 Re chev(v, w)$. #enum-lbl(<itm:inner-product-distributivity>)
 ] <prop:inner-product-properties>
 #proof[
   Observe that @itm:inner-product-right-additivity holds since
@@ -31,9 +33,8 @@ Note that @itm:inner-product-non-degeneracy and @itm:inner-product-semi-positive
   $
     chev(v, alpha w) & = overline(chev(alpha w, v)) = overline(alpha chev(w, v)) = overline(alpha) chev(v, w).
   $
+  Letting $alpha = 0$ on $chev(alpha v, v)$ gives @itm:inner-product-linearity-with-zero-vector, while @itm:inner-product-distributivity is a consequence of additivity.
 ]
-Moreover,
-
 We provide examples of vector spaces and their corresponding non-degenerate Hermetian inner products:
 #example[
   Let $V = C^n$ ($n in NN$) be a vector space under the usual operations, and define $ chev(vb(v), vb(w)) = sum_(k=1)^n v_k overline(w_k), $
@@ -42,12 +43,49 @@ We provide examples of vector spaces and their corresponding non-degenerate Herm
 The verification of the necessary properties is trivial.
 #example[
   Let $V = C([0,1], CC)$, with addition and multiplication defined as in the usual sense. Then if $f, g in V$, define
-  $ f(x) overline(g(x)) dx. $
+  $ chev(f, g) = integral_0^1 f(x) overline(g(x)) dx. $
 ]
 #proof[
-  The verification of
+  The verification of properties @itm:inner-product-left-additivity, @itm:inner-product-left-linearity, @itm:inner-product-conjugate-symmetry, @itm:inner-product-semi-positive-definiteness (in @def:inner-product) are somewhat trivial. The reverse implication of @itm:inner-product-distributivity is obvious. For $f in V$ such that
+  $ chev(f, f) = 0 ==> integral_0^1 f(x)^2 dx = 0, $
+  if $f(x') > 0$ at some $x' in (0,1)$, then for $x$ in some $delta$-neighborhood of $x'$, $f(x) > 1 / 2 f(x')$ by continuity, implying that
+  $ integral_0^1 f(x)^2 dx >= integral_(x'-delta)^(x'+delta) f(x) dx > delta f(x') > 0, $
+  which is impossible; thus $f equiv 0$ forcibly.
 ]
-
-#definition[
-
+#definition[Associated Norm][
+  If $V$ is a vector space and $chev(dot, dot)$ is a nondegenerate positive-definite Hermitian inner product on $V$, then the _associated norm_ of some $v in V$ is given by $ norm(v) = sqrt(chev(v, v)). $
 ]
+#theorem[Cauchy--Schwarz Inequality][
+  If $V$ is a vector space and $chev(dot, dot)$ is a nondegenerate positive-definite Hermitian inner product on $V$, then for $v, w in V$,
+  $
+    abs(chev(v, w)) <= norm(v) dot norm(w).
+  $
+] <thm:inner-product-cauchy-schwarz>
+#proof[
+  We only need to consider cases when $v != 0$ and $w != 0$ (as these cases are already satisfied by @itm:inner-product-linearity-with-zero-vector of @prop:inner-product-properties).
+
+  By the positive-definiteness of the product,
+  $
+    0 & <= chev(v - chev(v, w) / norm(w)^2 w, v - chev(v, w) / norm(w)^2 w) \
+      & = chev(v, v)+ chev(chev(v, w) / norm(w)^2 w, chev(v, w) / norm(w)^2 w) + 2 Re chev(v, - chev(v, w) / norm(w)^2 w) \
+      & = norm(v)^2 + abs(chev(v, w) / norm(w)^2)^2 norm(w)^2 - 2 Re overline(chev(v, w)) / norm(w)^2 chev(v, w) \
+      & = norm(v)^2 - abs(chev(v, w))^2 / norm(w)^2,
+  $
+  implying that $ norm(v)^2 norm(w)^2 >= abs(chev(v, w))^2 ==> abs(chev(v, w)) <= norm(v) dot norm(w). qedhere $
+]
+Then @thm:inner-product-cauchy-schwarz and @itm:inner-product-distributivity of @prop:inner-product-properties are sufficient to imply the triangle inequality of the associated norm:
+#theorem[Triangle Inequality of the Associated Norm][
+  If $V$ is a vector space and $chev(dot, dot)$ is a nondegenerate positive-definite Hermitian inner product on $V$, then for $v, w in V$,
+  $ norm(v) + norm(w) >= norm(v + w). $
+]
+#proof[
+  By @itm:inner-product-distributivity of @prop:inner-product-properties and the Cauchy--Schwarz Inequality (@thm:inner-product-cauchy-schwarz),
+  $
+    norm(v + w)^2 & = norm(v)^2 + norm(w)^2 + 2 Re chev(v, w) \
+                  & <= norm(v)^2 + norm(w)^2 + 2 abs(chev(v, w)) \
+                  & <= norm(v)^2 + norm(w)^2 + 2 norm(v) dot norm(w) #tag[(by Cauchy--Schwarz)] \
+                  & = (norm(v) + norm(w))^2.
+  $
+  Then taking the square root of both sides completes the proof.
+]
+// comment abt metric definition needing this
