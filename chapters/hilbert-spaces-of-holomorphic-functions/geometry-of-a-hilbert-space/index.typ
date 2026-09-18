@@ -218,7 +218,7 @@ The following properties we define will be useful in serving as a replacement fo
   (More generally, the sum of the squares of the sides of a parallelogram is equal to the sum of the squares of the diagonals; see @fig:parallelogram-law)
 ]
 #proof[
-  By @itm:inner-product-distributivity of @itm:inner-product-properties,
+  By @itm:inner-product-distributivity of @prop:inner-product-properties,
   $
     norm(x + y)^2 = norm(x)^2 + norm(y)^2 + 2 Re chev(x, y)
   $
