@@ -260,7 +260,7 @@ The following properties we define will be useful in serving as a replacement fo
         line((min, "c", "d"), (min, "non-convex-bounds.0", "non-convex-bounds.1"))
         line("non-convex-bounds.0", "non-convex-bounds.1", stroke: (dash: "dashed"))
       },
-      debug-show: true,
+      // debug-show: true,
     ),
     caption: [A set which is convex (left) and one which is not (right).],
   ) <fig:convex-set>
@@ -275,12 +275,10 @@ Note that if $F subset.eq H$ is a vector space, then $F$ is trivially convex by 
 #definition[
   Let $H$ be a Hilbert space. A subspace $S subset.eq H$ is said to be orthogonal to a vector $x in H$ ($x perp S$) iff $forall y in S$, $x perp y$.
 ]
-#definition[
-  Let $x in H$, where $H$ is a Hilbert space, then define $x^perp = {y in H : x perp y}$. Then $x^perp$ is a subspace of $H$.
-]
 #definition[Orthogonal Complement][
-  Let $H$ be a Hilbert space and let $V subset.eq H$ be a subspace (a vector space). Then the _orthogonal complement_ of $V$, denoted $V^perp$, is the space of all #todo()
+  Let $x in H$, where $H$ is a Hilbert space, then for $x in H$, define the _orthogonal component_ of $x$ to be $x^perp = {y in H : x perp y}$. Let $V subset.eq H$ be a subset (not necessarily a vector space). Then the _orthogonal complement_ of $V$, given by $ V^perp = {x in H : forall y in H, x perp y}, $ is the space of vectors orthogonal to every vector in $V$.
 ]
+It is to verify that the orthogonal complement of a vector or set is always a vector space.
 #proposition[
   Let $H$ be a Hilbert space and let $F subset.eq H$ be a convex set. Let $m = inf_(x in F) norm(x)$. Then
   $ norm(x - y)^2 <= norm(x)^2 + norm(y)^2 - 4 m^2. #tag[(where $x,y in F$)] $
@@ -311,3 +309,10 @@ The following result shows how the convexity can be used in place of traditional
 
   Then $m ee^(ii theta_1) in F$ for some $theta_1$. If there is another point $m ee^(ii theta_2) in F$, then the straight segment between them lies in $F$ by convexity. This straight line must intersect $D(0, m)$, which is a contradiction.
 ]
+#proposition[
+  The intersection between any vector subspace $V$ of a Hilbert space $H$ and its orthogonal complement $V^perp$ is ${0}$.
+] <prop:V-V-perp-intersection-is-trivial>
+#proof[
+  For $x in V$ and $x in V^perp$ to be simultaneously true, we must have $chev(x, x) = norm(x)^2 = 0$, implying $x = 0$.
+]
+
