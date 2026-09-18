@@ -546,7 +546,7 @@
     var activeTrigger = null;
     var hideTimer = null;
 
-    var activePreviews = new Map(); // url -> previewObject
+    var activePreviews = new Map();
     var previewStack = [];
 
     function updatePreviewStack() {

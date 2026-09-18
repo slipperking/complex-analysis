@@ -16,6 +16,11 @@ SAMPLES_PER_LINE = 41
 BOUNDARY_SAMPLES = 121
 INSET_FACTOR = 0.999
 OUTPUT_SCALE = 2.3
+QUADRATURE_ORDER = 64
+
+quadrature_nodes, quadrature_weights = np.polynomial.legendre.leggauss(QUADRATURE_ORDER)
+quadrature_nodes = (quadrature_nodes + 1.0) / 2.0
+quadrature_weights /= 2.0
 
 Gamma = mp.gamma
 C_mp = 4 * mp.sqrt(2 * mp.pi) / (Gamma(mp.mpf(1)/4) ** 2)
@@ -70,6 +75,28 @@ def f_complex_upper(z0):
         I = mp.quad(integrand, [0, 1])
     return 2 * mp.sqrt(z0) * I
 
+def f_complex_upper_float(z0: complex):
+    """Evaluate the smooth interior integral without adaptive mp quadrature."""
+    if abs(z0) < 1e-14:
+        return 0j
+
+    split = 1.0 / math.sqrt(abs(z0))
+
+    def integrate_interval(start, end):
+        if end <= start:
+            return 0j
+        samples = start + (end - start) * quadrature_nodes
+        integrand = 1.0 / (
+            np.sqrt(samples * samples * z0 + 1.0) *
+            np.sqrt(samples * samples * z0 - 1.0)
+        )
+        return (end - start) * np.dot(quadrature_weights, integrand)
+
+    integral = integrate_interval(0.0, min(split, 1.0))
+    if split < 1.0:
+        integral += integrate_interval(split, 1.0)
+    return 2.0 * np.sqrt(z0) * integral
+
 def f_of_z0(z0):
     if isinstance(z0, (mp.mpc, mp.mpf)):
         re = float(mp.re(z0))
@@ -81,7 +108,7 @@ def f_of_z0(z0):
     if abs(im) < 1e-12:
         return f_real(re)
     else:
-        return f_complex_upper(z0)
+        return f_complex_upper_float(complex(z0))
 
 def F_of_w(w):
     w_mp = mp.mpc(complex(w)) if not isinstance(w, (mp.mpc, mp.mpf)) else w
