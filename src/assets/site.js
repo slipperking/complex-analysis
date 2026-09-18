@@ -547,6 +547,22 @@
     var hideTimer = null;
 
     var activePreviews = new Map(); // url -> previewObject
+    var previewStack = [];
+
+    function updatePreviewStack() {
+      previewStack.forEach(function (previewObj, index) {
+        previewObj.element.style.zIndex = String(45 + index);
+      });
+    }
+
+    function bringPreviewToFront(previewObj) {
+      var index = previewStack.indexOf(previewObj);
+      if (index !== -1) {
+        previewStack.splice(index, 1);
+      }
+      previewStack.push(previewObj);
+      updatePreviewStack();
+    }
 
     var previewResizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(function (entries) {
       for (var i = 0; i < entries.length; i++) {
@@ -897,6 +913,11 @@
           if (previewResizeObserver) {
             previewResizeObserver.unobserve(element);
           }
+          var stackIndex = previewStack.indexOf(obj);
+          if (stackIndex !== -1) {
+            previewStack.splice(stackIndex, 1);
+            updatePreviewStack();
+          }
           element.remove();
           activePreviews.delete(urlHref);
         }
@@ -910,6 +931,7 @@
 
       element.addEventListener("pointerdown", function (event) {
         if (event.button !== 0) return;
+        bringPreviewToFront(obj);
         if (event.target !== element) return; // Only drag on the padding/edges
 
         var rect = element.getBoundingClientRect();
@@ -955,6 +977,8 @@
       element.addEventListener("pointerup", stopPreviewDrag);
       element.addEventListener("pointercancel", stopPreviewDrag);
 
+      previewStack.push(obj);
+      updatePreviewStack();
       return obj;
     }
 
