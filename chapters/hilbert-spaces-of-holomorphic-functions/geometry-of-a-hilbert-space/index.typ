@@ -11,12 +11,14 @@ The concept of a _vector space_ is an important one in linear algebra. However, 
   is said to be a _positive-definite nondegenerate Hermitian inner product_ iff
   + For any $v_1, v_2, w in V$, $chev(v_1 + v_2, w) = chev(v_1, w) + chev(w_2, w)$ (additivity in the first argument). #enum-lbl(<itm:inner-product-left-additivity>)
   + For any $alpha in CC$, $v, w in V$, $chev(alpha v, w) = alpha chev(v, w)$ (linearity in the first argument). #enum-lbl(<itm:inner-product-left-linearity>)
-  + For any $v, w in V$, $chev(v, w) = overline(chev(w, v))$ (conjugate-symmetry). #enum-lbl(<itm:inner-product-conjugate-symmetry>)
+  + For any $v, w in V$, $chev(v, w) = overline(chev(w, v))$ (conjugate-symmetry/Hermetian). #enum-lbl(<itm:inner-product-conjugate-symmetry>)
   + For any $v in V$, $chev(v, v) >= 0$. (semi-positive-definiteness) #enum-lbl(<itm:inner-product-semi-positive-definiteness>)
   + For $v in V$, $chev(v, v) = 0$ iff $v = 0$ (nondegeneracy). #enum-lbl(<itm:inner-product-nondegeneracy>)
   Then the space $V$ together with the inner product is known as an _inner product space_.
 ] <def:inner-product>
 Note that @itm:inner-product-nondegeneracy and @itm:inner-product-semi-positive-definiteness, imply positive-definitness: for $v != 0$, $chev(v, v) > 0$.
+
+To avoid pedantry, for the proceeding passages, the use of "inner product" will assume positive-definiteness, nondegeneracy, and conjugate-symmetry.
 #proposition[
   Let $V$ be a vector space over $CC$ and let $chev(dot, dot)$ be a positive-definite nondegenerate Hermetian inner product. Then for $v, v, w, w_1, w_2 in V$ and $alpha in CC$,
   + $chev(v, w_1 + w_2) = chev(v, w_1) + chev(v, w_2)$ (additivity in the second argument). #enum-lbl(<itm:inner-product-right-additivity>)
@@ -184,6 +186,7 @@ For the remainder of this section, we will develop general properties of Hilbert
   $ chev(z_1, z_2) = sqrt([Re(z_1) Re(z_2)]^2 + [Im(z_1)Im(z_2)]^2). $
   Then the associated norm $norm(dot)$ is simply the Euclidean distance. Then under the induced metric topology, $H subset.eq H$ is closed and bounded, but not compact, as it can be covered by the open cover ${D(0, 1 - 1 / n)}_(n = 2)^oo$, which does not admit a finite subcover.
 ]
+The following properties we define will be useful in serving as a replacement for compactness:
 #definition[
 
 ]
@@ -211,6 +214,20 @@ For the remainder of this section, we will develop general properties of Hilbert
   ) <fig:parallelogram-law>
 ]
 #theorem[Parallelogram Law][
-  Let $H$ be a Hilbert space. Then for any $x, y in H$, $ 2 norm(x)^2 + 2 norm(y)^2 = norm(x+y)^2 + norm(x-y)^2. $
+  Let $H$ be an inner product space (or a Hilbert space). Then for any $x, y in H$, $ 2 norm(x)^2 + 2 norm(y)^2 = norm(x+y)^2 + norm(x-y)^2. $
   (More generally, the sum of the squares of the sides of a parallelogram is equal to the sum of the squares of the diagonals; see @fig:parallelogram-law)
+]
+#proof[
+  By @itm:inner-product-distributivity of @itm:inner-product-properties,
+  $
+    norm(x + y)^2 = norm(x)^2 + norm(y)^2 + 2 Re chev(x, y)
+  $
+  and
+  $
+    norm(x - y)^2 = norm(x)^2 + norm(y)^2 - 2 Re chev(x, y).
+  $
+  Adding the two equations gives the desired result.
+]
+#definition[Convexity][
+
 ]
