@@ -271,7 +271,7 @@
   }
   let doc-label = label("doc-" + current.id)
   let first-heading = _first-page-heading(current)
-  let targets = query(selector(heading).within(doc-label).or(selector(<meta:thm-env-counter>)).within(doc-label))
+  let targets = query(selector(heading).or(<meta:thm-env-counter>).within(doc-label))
 
   let entries = ()
   for el in targets {
