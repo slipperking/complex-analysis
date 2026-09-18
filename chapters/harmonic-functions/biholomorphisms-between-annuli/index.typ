@@ -260,7 +260,7 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   The Maximum Principle (@thm:maximum-principle-for-real-harmonic-functions) gives that $0 < u < 1$ throughout $U$. Consider the differential form
   $ omega = -u'_y dx + u'_x dy. $
   Since
-  $ dd(omega) = -u''_(y y) dy and dx + u'_(x x) dx and dy = 0, $
+  $ dd(omega) = -u''_(y y) dy and dx + u''_(x x) dx and dy = 0, $
   $omega$ is a closed differential form in $U$. Let $gamma$ be a positively oriented simple closed curve in $U$ winding once around $Gamma_1$, and set
   #lbl(
     $ T = -integral.cont_gamma omega. $,
