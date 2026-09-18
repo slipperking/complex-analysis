@@ -18,7 +18,7 @@ In fact, it is almost always true that such an extension exists. We will give th
       canvas(
         {
           import cetz.draw: *
-          for offset in range(1, 70).map(x => 4 / x) {
+          for offset in range(1, 100).map(x => 4 / x) {
             line((offset, 4), (offset, 0), stroke: calc.clamp(0.05 + offset / 4, 0.05, 1) * 1pt)
           }
           line((0, 0), (0, 4), (0.05, 4), (0.05, 0), close: true, stroke: none, fill: black) // the illusion of dense lines

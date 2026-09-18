@@ -179,7 +179,7 @@ The study of the Bergman space $A^2 (Omega)$ will become important later on as w
 
 For the remainder of this section, we will develop general properties of Hilbert spaces. Note that in a Hilbert space closedness and boundedness do not necessarily imply compactness (recall that compactness is most generally defined by the notion of finite subcovers), although compactness will always imply closedness and boundedness.
 #example[
-  Show that there exists a Hilbert space $H$ such that there is a closed, bounded#footnote[With respect to the induced topology from the metric space and the associated norm.] set $X subset.eq H$ that is not compact.
+  Show that there exists a Hilbert space $H$ such that there is a closed, bounded#footnote[With respect to the induced topology from the metric space and the associated norm.] set $S subset.eq H$ that is not compact.
 ] <ex:hilbert-space-closed-bounded-but-not-compact>
 #solution[to @ex:hilbert-space-closed-bounded-but-not-compact][
   Let $H = DD$ with the inner product
@@ -187,9 +187,6 @@ For the remainder of this section, we will develop general properties of Hilbert
   Then the associated norm $norm(dot)$ is simply the Euclidean distance. Then under the induced metric topology, $H subset.eq H$ is closed and bounded, but not compact, as it can be covered by the open cover ${D(0, 1 - 1 / n)}_(n = 2)^oo$, which does not admit a finite subcover.
 ]
 The following properties we define will be useful in serving as a replacement for compactness:
-#definition[
-
-]
 #figure-wrapper[
   #figure(
     canvas(
@@ -216,7 +213,7 @@ The following properties we define will be useful in serving as a replacement fo
 #theorem[Parallelogram Law][
   Let $H$ be an inner product space (or a Hilbert space). Then for any $x, y in H$, $ 2 norm(x)^2 + 2 norm(y)^2 = norm(x+y)^2 + norm(x-y)^2. $
   (More generally, the sum of the squares of the sides of a parallelogram is equal to the sum of the squares of the diagonals; see @fig:parallelogram-law)
-]
+] <thm:parallelogram-law>
 #proof[
   By @itm:inner-product-distributivity of @prop:inner-product-properties,
   $
@@ -228,6 +225,89 @@ The following properties we define will be useful in serving as a replacement fo
   $
   Adding the two equations gives the desired result.
 ]
+#figure-wrapper[
+  #figure(
+    canvas(
+      {
+        import cetz.draw: *
+        catmull(
+          (-3, 1),
+          (2, 3),
+          (1, -3),
+          (-2, -1.5),
+          close: true,
+        )
+        circle((1.6, 2.7), radius: 2pt, fill: black, name: "a")
+        circle((-1.7, -1), radius: 2pt, fill: black, name: "b")
+        line("a", "b")
+        translate(x: 5.5)
+        catmull(
+          (-2, 1),
+          (2, 3),
+          (0.5, 0),
+          (2, -3),
+          (-1.5, -1.5),
+          close: true,
+          name: "non-convex-reg",
+        )
+        circle((1.3, 2.3), radius: 2pt, fill: black, name: "c")
+        circle((1.7, -2.7), radius: 2pt, fill: black, name: "d")
+        hide(line("c", "d", name: "cd"))
+        intersections("non-convex-bounds", "cd", "non-convex-reg")
+        let max = (..args) => args.pos().fold((-10000, -10000, 0), (a, b) => if a.at(1) > b.at(1) { a } else { b })
+        let min = (..args) => args.pos().fold((10000, 10000, 0), (a, b) => if a.at(1) < b.at(1) { a } else { b })
+        line((max, "c", "d"), (max, "non-convex-bounds.0", "non-convex-bounds.1"))
+        line((min, "c", "d"), (min, "non-convex-bounds.0", "non-convex-bounds.1"))
+        line("non-convex-bounds.0", "non-convex-bounds.1", stroke: (dash: "dashed"))
+      },
+      debug-show: true,
+    ),
+    caption: [A set which is convex (left) and one which is not (right).],
+  ) <fig:convex-set>
+]
 #definition[Convexity][
+  A set $F$ in a Hilbert space $H$ is said to be _convex_ iff $forall x, y in F$ and $forall t in (0, 1)$, $x + t (y - x) in F$. In other words, convexity means that the straight line segment between any two points lies in the set (see @fig:convex-set).
+]
+Note that if $F subset.eq H$ is a vector space, then $F$ is trivially convex by the definition of a vector space.
+#definition[Orthogonality][
+  Two vectors $x,y$ in a Hilbert space $H$ are said to be _orthogonal_ ($x perp y$) iff their inner product is $0$.
+]
+#definition[
+  Let $H$ be a Hilbert space. A subspace $S subset.eq H$ is said to be orthogonal to a vector $x in H$ ($x perp S$) iff $forall y in S$, $x perp y$.
+]
+#definition[
+  Let $x in H$, where $H$ is a Hilbert space, then define $x^perp = {y in H : x perp y}$. Then $x^perp$ is a subspace of $H$.
+]
+#definition[Orthogonal Complement][
+  Let $H$ be a Hilbert space and let $V subset.eq H$ be a subspace (a vector space). Then the _orthogonal complement_ of $V$, denoted $V^perp$, is the space of all #todo()
+]
+#proposition[
+  Let $H$ be a Hilbert space and let $F subset.eq H$ be a convex set. Let $m = inf_(x in F) norm(x)$. Then
+  $ norm(x - y)^2 <= norm(x)^2 + norm(y)^2 - 4 m^2. #tag[(where $x,y in F$)] $
+] <prop:hilbert-space-convex-set-difference-norm-inequality>
+#proof[
+  By the Parallelogram Law (@thm:parallelogram-law),
+  $ norm(x - y)^2 = norm(x)^2 + norm(y)^2 - norm(x + y)^2 $
+  for any $x,y in F$. By convexity, the midpoint $(x + y) / 2 in F$, giving
+  $ norm((x + y) / 2)^2 >= m^2 ==> norm(x + y)^2 >= 4 m^2. $
+  Then $ norm(x - y)^2 <= norm(x)^2 + norm(y)^2 - 4 m^2. qedhere $
+]
+The following result shows how the convexity can be used in place of traditional compactness arguments:
+#proposition[
+  Let $F subset.eq H$ be a closed, convex set in a Hilbert space $H$ and let $m = inf_(x in F) norm(x)$. Then $exists! x' in F$ such that $norm(x') = m$.
+]
+#proof[
+  By the definition of infimum, either the infimum is attained (in which case we are done), or the infimum is an accumulation point in $RR_(>= 0)$ of norms of vectors in $F$. Assume the latter case. Then there is a sequence ${x_n}_(n in NN)$ such that $norm(x_n) -> m$. Then for all $epsilon > 0$, $exists N in NN$ such that $sup_(n > N) abs(norm(x_n)^2 - m^2) < epsilon / 4$. Then by @prop:hilbert-space-convex-set-difference-norm-inequality,
+  $ sup_(n, m > N) norm(x_n - x_m)^2 <= sup_(n, M > N) 2 norm(x_n)^2 + 2 norm(x_m)^2 - 4 m^2 < epsilon. $
+  Therefore, $x_n$ is a Cauchy sequence, and converges to some $x' in H$. Since $F$ is closed in $H$, $x' in F$. Moreover, by the reverse triangle inequality,
+  $ abs(norm(x') - norm(x_n)) <= norm(x' - x_n) -> 0 $
+  by convergence. Then $norm(x_n) -> norm(x')$, giving $norm(x') = m$.
 
+  To show that $x'$ is the unique element of least norm, assume $x'' in H$ is another vector with norm $m$. Then once again applying @prop:hilbert-space-convex-set-difference-norm-inequality,
+  $ norm(x' - x'') <= norm(x')^2 + norm(x'')^2 - 4 m^2 = 0 ==> x' = x''. qedhere $
+]
+#remark[
+  To make sense of uniqueness from a geometric viewpoint, we consider a closed convex set $F subset.eq H = CC$ with $m = min{abs(z) : z in F} > 0$. Then $D(0, m) inter F = emptyset$.
+
+  Then $m ee^(ii theta_1) in F$ for some $theta_1$. If there is another point $m ee^(ii theta_2) in F$, then the straight segment between them lies in $F$ by convexity. This straight line must intersect $D(0, m)$, which is a contradiction.
 ]
