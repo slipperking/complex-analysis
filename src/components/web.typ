@@ -224,7 +224,11 @@
 }
 
 #let _global-nav(current) = context {
-  let pages = _pages()
+  let pages = if outline.title != auto and outline.title.func() == metadata and type(outline.title.value) == array {
+    outline.title.value
+  } else {
+    _pages()
+  }
   html.elem("nav", attrs: (class: "global-nav", "aria-label": "Site navigation"), {
     html.elem("ul", {
       for page in pages {
@@ -297,6 +301,9 @@
 }
 
 #let _prev-next(current) = context {
+  if sys.inputs.at("debug-build", default: none) == "true" {
+    return
+  }
   let pages = _pages()
   let idx = pages.position(page => page.id == current.id)
   let prev = if idx != none and idx > 0 { pages.at(idx - 1) } else { none }
@@ -687,6 +694,8 @@
     render-mode.update("web")
     context [
       #{
+        // store all pages so they can be queried once only
+        set outline(title: metadata(_pages()))
         include "/chapters/index.typ"
         _search-page()
         _todo-page()

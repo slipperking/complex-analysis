@@ -184,6 +184,9 @@ For the remainder of this section, we will develop general properties of Hilbert
   $ chev(z_1, z_2) = sqrt([Re(z_1) Re(z_2)]^2 + [Im(z_1)Im(z_2)]^2). $
   Then the associated norm $norm(dot)$ is simply the Euclidean distance. Then under the induced metric topology, $H subset.eq H$ is closed and bounded, but not compact, as it can be covered by the open cover ${D(0, 1 - 1 / n)}_(n = 2)^oo$, which does not admit a finite subcover.
 ]
-#theorem[
-  Let $H$ be a Hilbert space.
+#definition[
+
+]
+#theorem[Parallelogram Law][
+  Let $H$ be a Hilbert space. Then for any $x, y in H$,
 ]
