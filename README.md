@@ -52,7 +52,7 @@ This only shortens the Typst compilation step; preprocessing and search-index
 generation are unchanged when they are needed. Figures are rendered normally
 when the input is omitted or has any value other than the string `true`.
 Individual canvases can be opted back in during a hidden-figure build with
-`canvas(debug-show: true, ...)`.
+`canvas(..., debug-show: true)`.
 
 To build with the older modified compiler that only raises the convergence
 limit, enable the legacy synthetic-label routing used by `lbl`:

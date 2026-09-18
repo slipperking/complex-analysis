@@ -187,6 +187,30 @@ For the remainder of this section, we will develop general properties of Hilbert
 #definition[
 
 ]
+#figure-wrapper[
+  #figure(
+    canvas(
+      {
+        import cetz.draw: *
+        set-style(mark: (fill: black))
+        let y = (7, 0)
+        let x = (2, 4)
+        line((0, 0), x, mark: (end: ">>"), name: "x")
+        line((0, 0), y, mark: (end: ">>"), name: "y")
+        line(y, (rel: x, to: y), x)
+        line((0, 0), (rel: x, to: y), mark: (end: ">>"), name: "x+y")
+        line(y, x, mark: (end: ">>"), name: "x-y")
+        content("x.75%", math-rect($ x $))
+        content("y.75%", math-rect($ y $))
+        content("x+y.75%", math-rect($ x + y $))
+        content("x-y.75%", math-rect($ x - y $))
+      },
+      // debug-show: true,
+    ),
+    caption: [A geometric visualization of the Parallelogram Law.],
+  ) <fig:parallelogram-law>
+]
 #theorem[Parallelogram Law][
-  Let $H$ be a Hilbert space. Then for any $x, y in H$,
+  Let $H$ be a Hilbert space. Then for any $x, y in H$, $ 2 norm(x)^2 + 2 norm(y)^2 = norm(x+y)^2 + norm(x-y)^2. $
+  (More generally, the sum of the squares of the sides of a parallelogram is equal to the sum of the squares of the diagonals; see @fig:parallelogram-law)
 ]
