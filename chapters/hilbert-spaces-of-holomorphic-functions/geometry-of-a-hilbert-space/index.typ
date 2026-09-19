@@ -278,7 +278,13 @@ Note that if $F subset.eq H$ is a vector space, then $F$ is trivially convex by 
 #definition[Orthogonal Complement][
   Let $x in H$, where $H$ is a Hilbert space, then for $x in H$, define the _orthogonal component_ of $x$ to be $x^perp = {y in H : x perp y}$. Let $V subset.eq H$ be a subset (not necessarily a vector space). Then the _orthogonal complement_ of $V$, given by $ V^perp = {x in H : forall y in H, x perp y}, $ is the space of vectors orthogonal to every vector in $V$.
 ]
-It is to verify that the orthogonal complement of a vector or set is always a vector space.
+It is simple to verify that the orthogonal complement of a vector or set is always a vector space.
+#definition[Vector Projection][
+  Let $y in H without {0}$, where $H$ is a Hilbert space. For any $x in H$, the projection of $x$ onto $y$ is the unique vector $lambda y$ (where $lambda$ is a scalar) such that $chev(x - lambda y, y) = 0$, which is given by
+  $ lambda y = chev(x, y) / norm(y)^2 y $
+  (immediate from additivity).
+]
+We can make geometric sense of this definition in the case where $chev(dot, dot)$ is the Euclidean dot product.
 #proposition[
   Let $H$ be a Hilbert space and let $F subset.eq H$ be a convex set. Let $m = inf_(x in F) norm(x)$. Then
   $ norm(x - y)^2 <= norm(x)^2 + norm(y)^2 - 4 m^2. #tag[(where $x,y in F$)] $
@@ -315,6 +321,35 @@ The following result shows how the convexity can be used in place of traditional
 #proof[
   For $x in V$ and $x in V^perp$ to be simultaneously true, we must have $chev(x, x) = norm(x)^2 = 0$, implying $x = 0$.
 ]
-#theorem[
-
+#theorem[Orthogonal Decomposition][
+  Let $K subset.eq H$ be a closed vector subspace. Then $forall x_0 in H$, $exists! x_1 in K : exists! x_2 in K^perp : x_0 = x_1 + x_2$. Moreover, $x_2 in x_0 + K = {x_0 + k : k in K}$ and is the unique element satisfying $norm(x_2) = inf_(x in x_0 + K) norm(x)$.
 ]
+#proof[
+  Observe that $x_0 + K$ is convex as $K$ is convex; then $exists! x_2 in x_0 + K$ attaining the least norm $m >= 0$ (by @prop:V-V-perp-intersection-is-trivial). Let $k_2 = x_2 - x_0 in K$ and let $x_1 = x_0 - x_2 = -k_2$. We claim that these are the desired values for $x_1, x_2$.
+
+  We obtain immediately that $x_1 in K$ since $k_2 in K$. For any $y in K$, projecting $x_2$ onto $y$ gives
+  $ op("proj")_y x_2 = chev(x_2, y) / norm(y)^2 y in K. $
+  #todo[Add potential figure]
+  Let $p = x_2 - op("proj")_y x_2 = x_0 + k_2 - op("proj")_y x_2 in x_0 + K$. By the minimality of $m$,
+  $
+    norm(x_2)^2 & <= norm(p)^2 = norm(x_2 - op("proj")_y x_2)^2 \
+                & = norm(x_2)^2 + norm(chev(x_2, y) / norm(y)^2 y)^2 - 2 Re chev(x_2, chev(x_2, y) / norm(y)^2 y) \
+                & = norm(x_2)^2 + abs(chev(x_2, y) / norm(y)^2)^2 norm(y)^2 - 2 abs(chev(x_2, y))^2 / norm(y)^2 \
+                & = norm(x_2)^2 - abs(chev(x_2, y))^2 / norm(y)^2 \
+                & <= norm(x_2)^2,
+  $
+  which means all inequalities are equalities, giving that $chev(x_2, y) = 0$. Since $y in K$ was arbitrary, $x_2$ is orthogonal to the entire vector space $K$, hence $x_2 in K^perp$.
+
+  If $x = x'_1 + x'_2$ is another decomposition, then
+  $
+    K in.rev x'_1 - x_1 = x_2 - x'_2 in K^perp.
+  $
+  Since $K inter K^perp = {0}$, the uniqueness follows.
+]
+#corollary[
+  The orthogonal complement of any closed proper subspace of a Hilbert space contains a nonzero element.
+]
+#proof[
+  Let the Hilbert space be $H$, let the subspace be $K$. Choose $x in H without K$. Then $x = x_1 + x_2$, where $x_1 in K$, $x_2 in K^perp$. Then $x_2 != 0$ as otherwise $x = x_1 in K$.
+]
+#todo[Linear functional]
