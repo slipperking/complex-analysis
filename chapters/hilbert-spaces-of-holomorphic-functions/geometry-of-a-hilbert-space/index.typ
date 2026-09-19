@@ -12,11 +12,11 @@ The concept of a _vector space_ is an important one in linear algebra. However, 
   + For any $v_1, v_2, w in V$, $chev(v_1 + v_2, w) = chev(v_1, w) + chev(w_2, w)$ (additivity in the first argument). #enum-lbl(<itm:inner-product-left-additivity>)
   + For any $alpha in CC$, $v, w in V$, $chev(alpha v, w) = alpha chev(v, w)$ (linearity in the first argument). #enum-lbl(<itm:inner-product-left-linearity>)
   + For any $v, w in V$, $chev(v, w) = overline(chev(w, v))$ (conjugate-symmetry/Hermetian). #enum-lbl(<itm:inner-product-conjugate-symmetry>)
-  + For any $v in V$, $chev(v, v) >= 0$. (semi-positive-definiteness) #enum-lbl(<itm:inner-product-semi-positive-definiteness>)
+  + For any $v in V$, $chev(v, v) >= 0$. (positive semi-definiteness) #enum-lbl(<itm:inner-product-positive-semi-definiteness>)
   + For $v in V$, $chev(v, v) = 0$ iff $v = 0$ (nondegeneracy). #enum-lbl(<itm:inner-product-nondegeneracy>)
   Then the space $V$ together with the inner product is known as an _inner product space_.
 ] <def:inner-product>
-Note that @itm:inner-product-nondegeneracy and @itm:inner-product-semi-positive-definiteness, imply positive-definitness: for $v != 0$, $chev(v, v) > 0$.
+Note that @itm:inner-product-nondegeneracy and @itm:inner-product-positive-semi-definiteness, imply positive-definitness: for $v != 0$, $chev(v, v) > 0$.
 
 To avoid pedantry, for the proceeding passages, the use of "inner product" will assume positive-definiteness, nondegeneracy, and conjugate-symmetry.
 #proposition[
@@ -49,7 +49,7 @@ The verification of the necessary properties is trivial.
   $ chev(f, g) = integral_0^1 f(x) overline(g(x)) dx. $
 ] <ex:inner-product-C-0-1-CC>
 #proof[
-  The verification of properties @itm:inner-product-left-additivity, @itm:inner-product-left-linearity, @itm:inner-product-conjugate-symmetry, @itm:inner-product-semi-positive-definiteness (in @def:inner-product) are somewhat trivial. The reverse implication of @itm:inner-product-distributivity is obvious. For $f in V$ such that
+  The verification of properties @itm:inner-product-left-additivity, @itm:inner-product-left-linearity, @itm:inner-product-conjugate-symmetry, @itm:inner-product-positive-semi-definiteness (in @def:inner-product) are somewhat trivial. The reverse implication of @itm:inner-product-distributivity is obvious. For $f in V$ such that
   $ chev(f, f) = 0 ==> integral_0^1 abs(f(x))^2 dx = 0, $
   if $abs(f(x'))^2 > 0$ at some $x' in (0,1)$, then for $x$ in some $delta$-neighborhood of $x'$, $abs(f(x))^2 > 1 / 2 abs(f(x'))^2$ by continuity, implying that
   $ integral_0^1 abs(f(x))^2 dx >= integral_(x'-delta)^(x'+delta) abs(f(x))^2 dx > delta abs(f(x'))^2 > 0, $
@@ -315,4 +315,6 @@ The following result shows how the convexity can be used in place of traditional
 #proof[
   For $x in V$ and $x in V^perp$ to be simultaneously true, we must have $chev(x, x) = norm(x)^2 = 0$, implying $x = 0$.
 ]
+#theorem[
 
+]
