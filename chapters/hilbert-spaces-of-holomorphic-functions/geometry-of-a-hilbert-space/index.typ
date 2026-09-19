@@ -323,7 +323,7 @@ The following result shows how the convexity can be used in place of traditional
 ]
 #theorem[Orthogonal Decomposition][
   Let $K subset.eq H$ be a closed vector subspace. Then $forall x_0 in H$, $exists! x_1 in K : exists! x_2 in K^perp : x_0 = x_1 + x_2$. Moreover, $x_2 in x_0 + K = {x_0 + k : k in K}$ and is the unique element satisfying $norm(x_2) = inf_(x in x_0 + K) norm(x)$.
-]
+] <thm:orthogonal-decomposition>
 #proof[
   Observe that $x_0 + K$ is convex as $K$ is convex; then $exists! x_2 in x_0 + K$ attaining the least norm $m >= 0$ (by @prop:V-V-perp-intersection-is-trivial). Let $k_2 = x_2 - x_0 in K$ and let $x_1 = x_0 - x_2 = -k_2$. We claim that these are the desired values for $x_1, x_2$.
 
@@ -350,6 +350,6 @@ The following result shows how the convexity can be used in place of traditional
   The orthogonal complement of any closed proper subspace of a Hilbert space contains a nonzero element.
 ]
 #proof[
-  Let the Hilbert space be $H$, let the subspace be $K$. Choose $x in H without K$. Then $x = x_1 + x_2$, where $x_1 in K$, $x_2 in K^perp$. Then $x_2 != 0$ as otherwise $x = x_1 in K$.
+  Let the Hilbert space be $H$, let the subspace be $K$. Choose $x in H without K$. Then $x = x_1 + x_2$, where $x_1 in K$, $x_2 in K^perp$ (by @thm:orthogonal-decomposition). Then $x_2 != 0$ as otherwise $x = x_1 in K$.
 ]
 #todo[Linear functional]
