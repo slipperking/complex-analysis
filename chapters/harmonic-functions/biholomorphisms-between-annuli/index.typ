@@ -546,11 +546,11 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   Note that if the two curves $Gamma'_0,Gamma'_1$ are not disjoint, then in some $2$-by-$2$ subgrid, exactly two opposite squares will be in $tilde(K)$ whilst the other two are not (refer to the circled area in @fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution). Let $S$ be the set of grid vertices in $tilde(K)$. Then it follows that $ tilde(K) union union.big_(z in S) ["square of side length" 2 eta "centered at" z] $
   is a doubly connected polygonal (which can be considered to be generated with a grid of side length $eta$) compact set with two disjoint boundary curves. From $eta < epsilon / 4$, this set lies in $U$ (since the maximum distance between $S$ and this new set is $eta sqrt(2) < epsilon$). Since $eta < delta / 4$, no such problematic $2$-by-$2$ subgrid may exist, see @fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution. Thus by this procedure, by continuing to denote this new set with $tilde(K)$, we may assume $partial tilde(K)$ has two disjoint Jordan curve components.
 
-  For $z in Gamma'_0$, we must have
-  $ abs(F(z)) > abs(w'). $
-  Indeed, the connected component $U inter jexterior(Gamma'_0)$ must map into exactly one of
+  Since the connected component $U inter jexterior(Gamma'_0)$ must map into exactly one of
   $ {w : abs(w) >= (R + abs(w')) / 2} quad "and" quad {w : abs(w) <= (1 + abs(w')) / 2} $
-  by continuity and the Intermediate Value Theorem, then the assertion follows since $abs(F(z)) -> R$ as $z -> Gamma_0$. Then on $Gamma'_0$, $abs(w' / F(z)) < 1$ and $Re [1 - w' / F(z)] > 0$. Moreover, this inequality will continue to hold on a neighborhood $V_0 supset.double Gamma$ by continuity. Since $Log$ is holomorphic on the right half-plane, we have that
+  by continuity and the Intermediate Value Theorem, then and since $abs(F(z)) -> R$ as $z -> Gamma_0$, it follows that for $z in Gamma'_0$
+  $ abs(F(z)) > abs(w'). $
+  Then on $Gamma'_0$, $abs(w' / F(z)) < 1$ and $Re [1 - w' / F(z)] > 0$. Moreover, this inequality will continue to hold on a neighborhood $V_0 supset.double Gamma$ by continuity. Since $Log$ is holomorphic on the right half-plane, we have that
   $
     & F(z) - w' = F(z) (1 - w' / F(z)) \
     & quad "" ==> (F'(z)) / (F(z) - w') - (F'(z)) / (F(z)) = dv(, z) Log(1 - w' / F(z)) = eta'_0 (z),
