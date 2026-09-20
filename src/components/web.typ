@@ -9,6 +9,7 @@
 #let abstract = source.abstract
 
 #let render-mode = state("render-mode", "web")
+#let html-only = sys.inputs.at("html-only", default: "false") == "true"
 
 #let _route-tag-key = "typst-project-route"
 
@@ -242,61 +243,10 @@
   theorem-toc-entry(thm)
 }
 
-#let _toc-entry(class, location, body, depth: 0) = html.elem(
-  "li",
-  attrs: (
-    class: class,
-    style: "--toc-depth: " + str(depth),
-  ),
-  {
-    link(location, body)
-  },
-)
-
-#let _heading-toc-entry(h, page) = {
-  let number = _heading-number(h)
-  let page-heading = _first-page-heading(page)
-  if page-heading != none and h.location() == page-heading.location() {
-    (page.heading-format)(number, h.body)
-  } else if number != none {
-    [#sym.section#number #h.body]
-  } else {
-    h.body
-  }
-}
-
-#let _local-toc(current) = context {
-  if sys.inputs.at("debug-build", default: none) == "true" {
-    return
-  }
-  let doc-label = label("doc-" + current.id)
-  let first-heading = _first-page-heading(current)
-  let targets = query(selector(heading).or(<meta:thm-env-counter>).within(doc-label))
-
-  let entries = ()
-  for el in targets {
-    if el.func() == heading {
-      entries.push((level: el.level, kind: "heading", loc: el.location(), body: _heading-toc-entry(el, current)))
-    } else {
-      let thm = el.value
-      entries.push((level: 3, kind: "theorem", loc: el.location(), body: theorem-toc-entry(thm)))
-    }
-  }
-  entries = entries.sorted(key: e => e.loc.position().page * 100000 + e.loc.position().y / 1pt) // establish hierarchy and sub-hierarchy
-
+#let _local-toc() = {
   html.elem("nav", attrs: (class: "local-toc", "aria-label": "On this page"), {
     html.elem("h2", [On This Page])
-    if entries.len() == 0 {
-      html.elem("p", attrs: (class: "muted"), [No entries yet.])
-    } else {
-      html.elem("ul", {
-        for entry in entries {
-          let depth = calc.max(0, entry.level - 2)
-          let cls = "toc-" + entry.kind
-          _toc-entry(cls, entry.loc, entry.body, depth: depth)
-        }
-      })
-    }
+    html.elem("ul", attrs: ("data-local-toc-list": "true"), [])
   })
 }
 
@@ -372,18 +322,20 @@
         _icon("Print", _asset-href(current.path, "assets/print.svg"))
       },
     )
-    html.elem(
-      "a",
-      attrs: (
-        class: "icon-button export-pdf-link",
-        href: _href-from(current.path, "pdf/notes.pdf"),
-        "aria-label": "Export PDF",
-        title: "Export PDF",
-      ),
-      {
-        _icon("Export PDF", _asset-href(current.path, "assets/download.svg"))
-      },
-    )
+    if not html-only {
+      html.elem(
+        "a",
+        attrs: (
+          class: "icon-button export-pdf-link",
+          href: _href-from(current.path, "pdf/notes.pdf"),
+          "aria-label": "Export PDF",
+          title: "Export PDF",
+        ),
+        {
+          _icon("Export PDF", _asset-href(current.path, "assets/download.svg"))
+        },
+      )
+    }
     html.elem("a", attrs: (class: "icon-button github-link", href: source-url, "aria-label": "GitHub source"), {
       _icon("GitHub", _asset-href(current.path, "assets/github.svg"))
     })
@@ -397,7 +349,10 @@
   })
 })
 
-#let _cover-content(current) = source.web-cover(path => _href-from(current.path, path))
+#let _cover-content(current) = source.web-cover(
+  path => _href-from(current.path, path),
+  show-pdf: not html-only,
+)
 
 #let _pdf-cover() = source.pdf-cover(outline-target: selector(heading).within(pdf-scope-label))
 
@@ -438,7 +393,7 @@
         #_prev-next(page)
       ]
       #html.elem("aside", attrs: (class: "sidebar-right"))[
-        #_local-toc(page)
+        #_local-toc()
       ]
     ]
     #html.elem("div", attrs: (class: "sidebar-backdrop", id: "sidebar-backdrop"))
@@ -463,7 +418,7 @@
         #body
       ]
       #html.elem("aside", attrs: (class: "sidebar-right"))[
-        #_local-toc(page)
+        #_local-toc()
       ]
     ]
     #html.elem("div", attrs: (class: "sidebar-backdrop", id: "sidebar-backdrop"))
@@ -689,7 +644,9 @@
 #let notes() = context {
   if target() == "bundle" {
     include "/src/assets/index.typ"
-    _pdf-document(path: "pdf/notes.pdf")
+    if not html-only {
+      _pdf-document(path: "pdf/notes.pdf")
+    }
 
     render-mode.update("web")
     context [

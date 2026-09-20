@@ -16,16 +16,18 @@
   }
 }
 
-#let web-cover(href) = {
+#let web-cover(href, show-pdf: true) = {
   html.elem("section", attrs: (class: "cover"), {
     html.elem("h1", title)
     html.elem("p", attrs: (class: "authors"), [by #join-oxford-commas(authors.map(smallcaps))])
     html.elem("p", attrs: (class: "date"), date)
     html.elem("div", attrs: (class: "abstract"), abstract)
     html.elem("div", attrs: (class: "recommendation"), web-view-recommendation)
-    html.elem("p", attrs: (class: "download"), {
-      html.elem("a", attrs: (class: "button", href: href("pdf/notes.pdf")), [View PDF])
-    })
+    if show-pdf {
+      html.elem("p", attrs: (class: "download"), {
+        html.elem("a", attrs: (class: "button", href: href("pdf/notes.pdf")), [View PDF])
+      })
+    }
   })
 }
 

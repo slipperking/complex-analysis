@@ -71,6 +71,19 @@ It is also possible to emit only a PDF output in the generation. This can be adv
 ./typst.exe compile --features bundle,html --package-path packages --input legacy-label-routing=true main.typ
 ```
 
+### HTML-only Building Procedure
+
+To emit the website bundle without also compiling the downloadable PDF, pass
+the `html-only` input:
+
+```powershell
+./typst.exe compile --features bundle,html --format bundle --package-path packages --input html-only=true main.typ dist
+python build-search-index.py
+```
+
+This omits `dist/pdf/notes.pdf` and the PDF links from the generated site. In
+this mode, reference tooltips contain only the in-page preview control.
+
 ## Project structure
 
 ```text

@@ -37,3 +37,16 @@ $
   <eq:test>,
 )
 #lorem(90)
+== Subchapter within the same page
+#solution[to @eq:test][
+  #lorem(10)
+  #proof[
+    #lorem(10)
+  ]
+  #theorem[Ah!][
+    #lorem(15)
+    #claim[
+      One plus one is two.
+    ]
+  ]
+]

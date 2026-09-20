@@ -5,6 +5,7 @@
 #let web-scope-label = <web-scope>
 
 #let legacy-label-routing = sys.inputs.at("legacy-label-routing", default: "false") == "true"
+#let html-only = sys.inputs.at("html-only", default: "false") == "true"
 #let secondary-label-assignment-counter = state("secondary-label-assignment", 0)
 #let secondary-label-assignment-map = state("secondary-label-assignment-map", (:))
 
@@ -80,13 +81,15 @@
 }
 
 #let _selector-reference-route(reference) = {
+  let web-target = selector(reference.target).within(web-scope-label)
   (
     local: none,
-    links: (
-      selector(reference.target).within(pdf-scope-label),
-      selector(reference.target).within(web-scope-label),
-    ),
-    html: selector(reference.target).within(web-scope-label),
+    links: if html-only {
+      (web-target,)
+    } else {
+      (selector(reference.target).within(pdf-scope-label), web-target)
+    },
+    html: web-target,
   )
 }
 
@@ -128,7 +131,7 @@ and target.value.at("type", default: none) == "typst-enum-item-label"
   }
 }
 
-#let _reference-link-list(targets) = html.elem(
+#let _reference-link-list(targets, preview-only: false) = html.elem(
   "math",
   {
     set bibliography(title: reference-pass-through)
@@ -136,7 +139,10 @@ and target.value.at("type", default: none) == "typst-enum-item-label"
       html.elem("mtext", ref(target), attrs: (class: "typst-multi-label"))
     }
   },
-  attrs: (class: "typst-multi-label-list"),
+  attrs: (
+    class: "typst-multi-label-list",
+    "data-preview-only": if preview-only { "true" } else { "false" },
+  ),
 )
 
 #let show-reference(reference, mode) = context {
@@ -172,7 +178,7 @@ and target.value.at("type", default: none) == "typst-enum-item-label"
     return visible
   }
   if mode == "web" {
-    visible + _reference-link-list(route.links)
+    visible + _reference-link-list(route.links, preview-only: html-only)
   } else if route.html != none {
     paged-link-with-html-indicator(visible, route.html)
   } else {

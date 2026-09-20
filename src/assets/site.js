@@ -519,9 +519,9 @@
     document.documentElement.dataset.theme = resolvedTheme(storedTheme);
   }
 
-  function tocDepthForHeading(heading) {
+  function tocDepthForHeading(heading, baseLevel) {
     var level = Number(heading.tagName.slice(1));
-    return Math.max(0, level - 2);
+    return Math.max(0, level - (baseLevel || 2));
   }
 
   function nearestHeadingDepth(node) {
@@ -534,6 +534,122 @@
       cursor = cursor.previousElementSibling;
     }
     return depth;
+  }
+
+  function theoremNestingDepth(node) {
+    var depth = 0;
+    var ancestor = node.parentElement && node.parentElement.closest(".thm-box, .thm-proof");
+    while (ancestor) {
+      depth += 1;
+      ancestor = ancestor.parentElement && ancestor.parentElement.closest(".thm-box, .thm-proof");
+    }
+    return depth;
+  }
+
+  function buildLocalToc(root) {
+    root = root || document;
+    if (!root.querySelectorAll) return;
+
+    var toc = root.querySelector(".local-toc");
+    var main = root.querySelector(".content");
+    if (!toc || !main || toc.dataset.generated === "true") return;
+
+    var list = toc.querySelector("[data-local-toc-list]");
+    if (!list) return;
+
+    function uniqueId(base) {
+      var candidate = base;
+      var suffix = 2;
+      while (document.getElementById(candidate)) {
+        candidate = base + "-" + suffix;
+        suffix += 1;
+      }
+      return candidate;
+    }
+
+    function ensureTargetId(target, index) {
+      if (target.id) return target.id;
+      target.id = uniqueId("local-toc-entry-" + (index + 1));
+      return target.id;
+    }
+
+    function stripNestedLinks(node) {
+      node.querySelectorAll(".typst-multi-label-list").forEach(function (hiddenLinks) {
+        hiddenLinks.remove();
+      });
+      node.querySelectorAll("a").forEach(function (nestedLink) {
+        var span = document.createElement("span");
+        while (nestedLink.firstChild) span.appendChild(nestedLink.firstChild);
+        nestedLink.replaceWith(span);
+      });
+    }
+
+    function trimFinalPeriod(node) {
+      var walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+      var textNodes = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+      for (var i = textNodes.length - 1; i >= 0; i -= 1) {
+        if (!textNodes[i].nodeValue.trim()) continue;
+        textNodes[i].nodeValue = textNodes[i].nodeValue.replace(/\.\s*$/, "");
+        break;
+      }
+    }
+
+    var pageSourceHeading = main.querySelector(".page-source-heading h2, .page-source-heading h3, .page-source-heading h4, .page-source-heading h5, .page-source-heading h6");
+    var pageTitle = main.querySelector(":scope > .page-title");
+    var headings = main.querySelectorAll("h2, h3, h4, h5, h6");
+    var baseHeadingLevel = Array.from(headings).reduce(function (lowest, heading) {
+      return Math.min(lowest, Number(heading.tagName.slice(1)));
+    }, 6);
+    var lastHeadingDepth = 0;
+    var targets = main.querySelectorAll("h2, h3, h4, h5, h6, .thm-box, .thm-proof");
+
+    targets.forEach(function (target, index) {
+      var isHeading = /^H[2-6]$/.test(target.tagName);
+      var source;
+      var depth;
+      var className;
+
+      if (isHeading) {
+        depth = tocDepthForHeading(target, baseHeadingLevel);
+        lastHeadingDepth = depth;
+        source = target === pageSourceHeading && pageTitle ? pageTitle : target;
+        className = "toc-heading";
+      } else {
+        depth = lastHeadingDepth + 1 + theoremNestingDepth(target);
+        source = target.querySelector(".thm-head, .proof-head");
+        className = "toc-theorem";
+      }
+
+      if (!source) return;
+
+      var item = document.createElement("li");
+      item.className = className;
+      item.style.setProperty("--toc-depth", String(depth));
+
+      var anchor = document.createElement("a");
+      anchor.href = "#" + encodeURIComponent(ensureTargetId(target, index));
+      var label = source.cloneNode(true);
+      label.removeAttribute("id");
+      label.removeAttribute("class");
+      stripNestedLinks(label);
+      if (!isHeading) trimFinalPeriod(label);
+      if (isHeading && target !== pageSourceHeading && /^\d+(?:\.\d+)*\s/.test(label.textContent.trim())) {
+        anchor.appendChild(document.createTextNode("§"));
+      }
+      while (label.firstChild) anchor.appendChild(label.firstChild);
+      item.appendChild(anchor);
+      list.appendChild(item);
+    });
+
+    if (!list.children.length) {
+      var empty = document.createElement("p");
+      empty.className = "muted";
+      empty.textContent = "No entries yet.";
+      list.replaceWith(empty);
+    }
+
+    toc.dataset.generated = "true";
   }
 
   function setupReferenceTooltips() {
@@ -616,17 +732,19 @@
       tooltip.style.top = Math.min(rect.bottom + gap, window.innerHeight - tipRect.height - 8) + "px";
     }
 
-    function showTooltip(trigger, linksData) {
+    function showTooltip(trigger, linksData, previewOnly) {
       clearHideTimer();
       activeTrigger = trigger;
       tooltip.textContent = "";
 
-      linksData.forEach(function (data) {
-        var item = document.createElement("a");
-        item.href = data.href;
-        item.textContent = data.label;
-        tooltip.appendChild(item);
-      });
+      if (!previewOnly) {
+        linksData.forEach(function (data) {
+          var item = document.createElement("a");
+          item.href = data.href;
+          item.textContent = data.label;
+          tooltip.appendChild(item);
+        });
+      }
 
       var previewHref = previewSourceUrl(linksData);
       if (previewHref) {
@@ -651,7 +769,7 @@
         tooltip.appendChild(previewButton);
       }
 
-      tooltip.hidden = linksData.length === 0;
+      tooltip.hidden = previewOnly ? !previewHref : linksData.length === 0;
       if (!tooltip.hidden) {
         placeTooltip(trigger);
       }
@@ -1047,6 +1165,7 @@
             label: linkLabel(link, index, links)
           };
         });
+        var previewOnly = source.dataset.previewOnly === "true";
 
         source.dataset.refTooltipProcessed = "true";
         source.remove();
@@ -1054,11 +1173,11 @@
         trigger.classList.add("ref-with-tooltip");
 
         trigger.addEventListener("mouseenter", function () {
-          showTooltip(trigger, linksData);
+          showTooltip(trigger, linksData, previewOnly);
         });
         trigger.addEventListener("mouseleave", scheduleHide);
         trigger.addEventListener("focus", function () {
-          showTooltip(trigger, linksData);
+          showTooltip(trigger, linksData, previewOnly);
         });
         trigger.addEventListener("blur", scheduleHide);
       });
@@ -1165,6 +1284,7 @@
 
   normalizeDisplayMath(document);
   setupGlobalNavCollapse();
+  buildLocalToc(document);
   setupLocalTocRowNavigation(document);
   whenDomReady(moveFootnotesAbovePageNav);
   upgradeMathLinks(document);
