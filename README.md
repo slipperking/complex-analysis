@@ -81,6 +81,13 @@ the `html-only` input:
 python build-search-index.py
 ```
 
+For an HTML-only debug build, pass both inputs (highly recommended when writing locally):
+
+```powershell
+./typst.exe compile --features bundle,html --format bundle --package-path packages --input html-only=true --input debug-build=true main.typ dist
+python build-search-index.py
+```
+
 This omits `dist/pdf/notes.pdf` and the PDF links from the generated site. In
 this mode, reference tooltips contain only the in-page preview control.
 
