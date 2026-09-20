@@ -20,7 +20,7 @@ Note that @itm:inner-product-nondegeneracy and @itm:inner-product-positive-semi-
 
 To avoid pedantry, for the proceeding passages, the use of "inner product" will assume positive-definiteness, nondegeneracy, and conjugate-symmetry.
 #proposition[
-  Let $V$ be a vector space over $CC$ and let $chev(dot, dot)$ be a positive-definite nondegenerate Hermetian inner product. Then for $v, v, w, w_1, w_2 in V$ and $alpha in CC$,
+  Let $V$ be a vector space over $CC$ and let $chev(dot, dot)$ be a positive-definite nondegenerate Hermetian inner product. Then for $v, w, w_1, w_2 in V$ and $alpha in CC$,
   + $chev(v, w_1 + w_2) = chev(v, w_1) + chev(v, w_2)$ (additivity in the second argument). #enum-lbl(<itm:inner-product-right-additivity>)
   + $chev(v, alpha w) = overline(alpha) chev(v, w)$ (conjugate-linearity in the second argument). #enum-lbl(<itm:inner-product-right-conjugate-linearity>)
   + $chev(v, 0) = chev(0, v) = 0$. #enum-lbl(<itm:inner-product-linearity-with-zero-vector>)
@@ -41,7 +41,7 @@ To avoid pedantry, for the proceeding passages, the use of "inner product" will 
 We provide examples of vector spaces and their corresponding nondegenerate Hermetian inner products:
 #example[
   Let $V = C^n$ ($n in NN$) be a vector space under the usual operations, and define $ chev(vb(v), vb(w)) = sum_(k=1)^n v_k overline(w_k), $
-  where $vb(v) = (v_1, dots, v_n)$ and $vb(w) = (w_1, dots, w_n)$ are vectors in $V$. Then $chev(dot, dot)$ is a nondegenerate Hermetian inner product (the verification of the properties are trivial).
+  where $vb(v) = (v_1, dots, v_n)$ and $vb(w) = (w_1, dots, w_n)$ are vectors in $V$. Then $chev(dot, dot)$ is a nondegenerate Hermetian inner product.
 ]
 The verification of the necessary properties is trivial.
 #example[
