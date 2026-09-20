@@ -371,11 +371,17 @@ In mathematical literature, "continuous" and "bounded" are often interchangeably
 #proof[
   (Denote the functional by $phi.alt$, the Hilbert space by $H$.)
 
-  1. Continuity implies boundedness.
+  1. Continuity implies boundedness (assume continuity).
 
-    Assume the boundedness does not hold. Then for any $C > 0$ there exists $x in H$ such that $abs(phi(x)) > C norm(x)$.
+    Assume the boundedness does not hold. Then for any $n > 0$ there exists $x in H$ such that
+    $
+      abs(phi(x)) > n norm(x) ==> abs(phi(x / (n norm(x)))) > 1. #tag[(by homogeneity)]
+    $
+    Therefore, $forall n in NN$, $exists x_n in H$ with $norm(x_n) = 1 / n$ such that $abs(phi(x_n)) > 1$; then $x_n -> x_oo = 0$. By continuity, $norm(phi.alt(x_n) - phi.alt(x_oo)) = norm(phi.alt(x_n)) -> 0$, is an impossibility, since $norm(phi.alt(x_n) - phi.alt(x_oo)) > 1$ for each $n in NN$.
+
+    Then by contradiction, boundedness must hold.
   + Boundedness implies continuity.
 
-    #lorem(20)
-  #lorem(20)
+    For any sequence ${x_n}_n subset.eq H$ converging to $x_oo in H$,
+    $ abs(phi(x_n) - phi(x_oo)) = abs(phi(x_n - x_oo)) <= C norm(x_n - x_oo) -> oo. qedhere $
 ]
