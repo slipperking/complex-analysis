@@ -239,9 +239,10 @@ By the Maximum Principle, we have the following characterization:
     (since $vu(n) abs(dzeta)$ points in the direction $uppi/2$ clockwise of $dzeta$), we obtain
     $
       2 uppi epsilon M'(epsilon) & = integral.cont.ccw_(partial D(z_0, epsilon)) f'_xi (zeta) dd(eta) - f'_eta (zeta) dd(xi) \
-      & = integral_(D(z_0, epsilon)) dd((f'_xi (zeta) dd(eta) - f'_eta (zeta) dd(xi))) \
-      & = integral_(D(z_0, epsilon)) f''_(xi xi) (zeta) dd(xi, eta, prod: and) - f''_(eta eta) (zeta) dd(eta, xi, prod: and) #tag[(by @thm:complex-green)] \
-      & = integral.double_(D(z_0, epsilon)) laplacian_zeta f(zeta) dd(A_zeta).
+                                 & = integral_(D(z_0, epsilon)) dd((f'_xi (zeta) dd(eta) - f'_eta (zeta) dd(xi))) \
+                                 & = integral_(D(z_0, epsilon)) f''_(xi xi) (zeta) dd(xi, eta, prod: and) \
+                                 & wide ""- f''_(eta eta) (zeta) dd(eta, xi, prod: and) #tag[(by @thm:complex-green)] \
+                                 & = integral.double_(D(z_0, epsilon)) laplacian_zeta f(zeta) dd(A_zeta).
     $
     Since $laplacian f < 0$ on $overline(D(z_0, epsilon'))$, we obtain that for each $epsilon in (0, epsilon')$, $M'(epsilon) < 0$, meaning that $M$ is a strictly decreasing function of $epsilon$. Therefore, for any such $epsilon$,
     $ f(z_0) = M(0) > M(epsilon), $ which is impossible since we previously have asserted that $f(z_0) <= M(epsilon)$ in @eq:subharmonic-twice-continuously-differentiable-subharmonic-laplacian-forward-implication-contradicted-expression. Thus, there exists no point $z_0 in U$ at which the Laplacian of $f$ is negative.
