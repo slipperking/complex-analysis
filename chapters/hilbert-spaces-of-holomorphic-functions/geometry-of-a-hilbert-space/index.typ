@@ -10,7 +10,7 @@ The concept of a _vector space_ is an important one in linear algebra. However, 
   Let $V$ be a vector space over $CC$. Then a function $ chev(dot, dot) : V^2 -> CC $
   is said to be a _positive-definite nondegenerate Hermitian inner product_ iff
   + For any $v_1, v_2, w in V$, $chev(v_1 + v_2, w) = chev(v_1, w) + chev(w_2, w)$ (additivity in the first argument). #enum-lbl(<itm:inner-product-left-additivity>)
-  + For any $alpha in CC$, $v, w in V$, $chev(alpha v, w) = alpha chev(v, w)$ (linearity in the first argument). #enum-lbl(<itm:inner-product-left-linearity>)
+  + For any $alpha in CC$, $v, w in V$, $chev(alpha v, w) = alpha chev(v, w)$ (homogeneity in the first argument). #enum-lbl(<itm:inner-product-left-homogeneity>)
   + For any $v, w in V$, $chev(v, w) = overline(chev(w, v))$ (conjugate-symmetry/Hermetian). #enum-lbl(<itm:inner-product-conjugate-symmetry>)
   + For any $v in V$, $chev(v, v) >= 0$. (positive semi-definiteness) #enum-lbl(<itm:inner-product-positive-semi-definiteness>)
   + For $v in V$, $chev(v, v) = 0$ iff $v = 0$ (nondegeneracy). #enum-lbl(<itm:inner-product-nondegeneracy>)
@@ -22,7 +22,7 @@ To avoid pedantry, for the proceeding passages, the use of "inner product" will 
 #proposition[
   Let $V$ be a vector space over $CC$ and let $chev(dot, dot)$ be a positive-definite nondegenerate Hermetian inner product. Then for $v, w, w_1, w_2 in V$ and $alpha in CC$,
   + $chev(v, w_1 + w_2) = chev(v, w_1) + chev(v, w_2)$ (additivity in the second argument). #enum-lbl(<itm:inner-product-right-additivity>)
-  + $chev(v, alpha w) = overline(alpha) chev(v, w)$ (conjugate-linearity in the second argument). #enum-lbl(<itm:inner-product-right-conjugate-linearity>)
+  + $chev(v, alpha w) = overline(alpha) chev(v, w)$ (conjugate-homogeneity in the second argument). #enum-lbl(<itm:inner-product-right-conjugate-homogeneity>)
   + $chev(v, 0) = chev(0, v) = 0$. #enum-lbl(<itm:inner-product-linearity-with-zero-vector>)
   + $chev(v + w, v + w) = chev(v, v) + chev(w, w) + 2 Re chev(v, w)$. #enum-lbl(<itm:inner-product-distributivity>)
 ] <prop:inner-product-properties>
@@ -32,7 +32,7 @@ To avoid pedantry, for the proceeding passages, the use of "inner product" will 
     chev(v, w_1 + w_2) & = overline(chev(w_1 + w_2, v)) \
                        & = overline(chev(w_1, v)) + overline(chev(w_2, v)) = chev(v, w_1) + chev(v, w_2)
   $
-  and conjugate-linearity (@itm:inner-product-right-conjugate-linearity) holds in the second argument since
+  and conjugate-homogeneity (@itm:inner-product-right-conjugate-homogeneity) holds in the second argument since
   $
     chev(v, alpha w) & = overline(chev(alpha w, v)) = overline(alpha chev(w, v)) = overline(alpha) chev(v, w).
   $
@@ -49,7 +49,7 @@ The verification of the necessary properties is trivial.
   $ chev(f, g) = integral_0^1 f(x) overline(g(x)) dx. $
 ] <ex:inner-product-C-0-1-CC>
 #proof[
-  The verification of properties @itm:inner-product-left-additivity, @itm:inner-product-left-linearity, @itm:inner-product-conjugate-symmetry, @itm:inner-product-positive-semi-definiteness (in @def:inner-product) are somewhat trivial. The reverse implication of @itm:inner-product-distributivity is obvious. For $f in V$ such that
+  The verification of properties @itm:inner-product-left-additivity, @itm:inner-product-left-homogeneity, @itm:inner-product-conjugate-symmetry, @itm:inner-product-positive-semi-definiteness (in @def:inner-product) are somewhat trivial. The reverse implication of @itm:inner-product-distributivity is obvious. For $f in V$ such that
   $ chev(f, f) = 0 ==> integral_0^1 abs(f(x))^2 dx = 0, $
   if $abs(f(x'))^2 > 0$ at some $x' in (0,1)$, then for $x$ in some $delta$-neighborhood of $x'$, $abs(f(x))^2 > 1 / 2 abs(f(x'))^2$ by continuity, implying that
   $ integral_0^1 abs(f(x))^2 dx >= integral_(x'-delta)^(x'+delta) abs(f(x))^2 dx > delta abs(f(x'))^2 > 0, $
@@ -352,4 +352,30 @@ The following result shows how the convexity can be used in place of traditional
 #proof[
   Let the Hilbert space be $H$, let the subspace be $K$. Choose $x in H without K$. Then $x = x_1 + x_2$, where $x_1 in K$, $x_2 in K^perp$ (by @thm:orthogonal-decomposition). Then $x_2 != 0$ as otherwise $x = x_1 in K$.
 ]
-#todo[Linear functional]
+#definition[Linear Functional][
+  Let $V$ be a vector space over a field $FF$. Then a _linear functional_ is a mapping
+  $ phi.alt : V -> FF $
+  that is linear: for $x, y in H$, $phi.alt(alpha x) = alpha phi.alt(x)$ (homogeneous) for $alpha in FF$ and $phi.alt(x + y) = phi(x) + phi(y)$ (additive).
+]
+(We will only consider the case if $V = H$ is a Hilbert space. Then linear functionals map to $CC$.)
+#definition[
+  Let $H$ be a Hilbert space. Then a linear functional $phi.alt$ on $H$ is _bounded_ iff $exists C > 0$ such that $ abs(phi.alt(x)) <= C norm(x). #tag[($forall x in H$)] $
+]
+#definition[
+  Let $H$ be a Hilbert space. Then a linear functional $phi.alt$ on $H$ is _continuous_ iff for any convergent sequence ${x_n} subset.eq H$ ($x_n -> x_oo in H$), $phi.alt(x_n) -> phi.alt(x_oo)$.
+]
+In mathematical literature, "continuous" and "bounded" are often interchangeably used:
+#theorem[
+  A linear functional on a Hilbert space is bounded iff it is continuous.
+]
+#proof[
+  (Denote the functional by $phi.alt$, the Hilbert space by $H$.)
+
+  1. Continuity implies boundedness.
+
+    Assume the boundedness does not hold. Then for any $C > 0$ there exists $x in H$ such that $abs(phi(x)) > C norm(x)$.
+  + Boundedness implies continuity.
+
+    #lorem(20)
+  #lorem(20)
+]
