@@ -68,8 +68,6 @@
 #let figure-filter(fig) = fig.kind != "thm-env" and fig.caption != none and fig.has("label")
 
 #context {
-  // Querying figures is more reliable than accumulating the contents of
-  // figure-wrapper in state: a queried figure retains its label and location.
   let web-figs = query(selector(figure).within(web-scope-label)).filter(figure-filter)
   let pdf-figs = query(selector(figure).within(pdf-scope-label)).filter(figure-filter)
 

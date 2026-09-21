@@ -156,8 +156,7 @@
 }
 
 #let _first-page-heading(page) = {
-  let headings = query(selector(heading).within(label("doc-" + page.id)))
-  if headings.len() > 0 { headings.first() } else { none }
+  query(selector(heading).within(label("doc-" + page.id))).first(default: none)
 }
 
 #let _heading-number(h) = {
@@ -189,7 +188,6 @@
   }
 }
 
-#let _pages() = query(<page-meta>).map(it => it.value)
 #let _icon(name, path) = html.elem("img", attrs: (class: "icon", src: path, alt: name))
 
 #let _todo-description(body) = if body == none { [] } else { body }
@@ -225,11 +223,7 @@
 }
 
 #let _global-nav(current) = context {
-  let pages = if outline.title != auto and outline.title.func() == metadata and type(outline.title.value) == array {
-    outline.title.value
-  } else {
-    _pages()
-  }
+  let pages = outline.title.value
   html.elem("nav", attrs: (class: "global-nav", "aria-label": "Site navigation"), {
     html.elem("ul", {
       for page in pages {
@@ -254,7 +248,8 @@
   if sys.inputs.at("debug-build", default: none) == "true" {
     return
   }
-  let pages = _pages()
+  let pages = outline.title.value
+
   let idx = pages.position(page => page.id == current.id)
   let prev = if idx != none and idx > 0 { pages.at(idx - 1) } else { none }
   let next = if idx != none and idx < pages.len() - 1 { pages.at(idx + 1) } else { none }
@@ -652,7 +647,7 @@
     context [
       #{
         // store all pages so they can be queried once only
-        set outline(title: metadata(_pages()))
+        set outline(title: metadata(query(<page-meta>).map(it => it.value)))
         include "/chapters/index.typ"
         _search-page()
         _todo-page()
