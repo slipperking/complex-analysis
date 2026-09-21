@@ -348,7 +348,7 @@ The following result shows how the convexity can be used in place of traditional
 ]
 #corollary[
   The orthogonal complement of any closed proper subspace of a Hilbert space contains a nonzero element.
-]
+] <cor:orthogonal-complement-of-closed-proper-subspace-contains-nonzero-element>
 #proof[
   Let the Hilbert space be $H$, let the subspace be $K$. Choose $x in H without K$. Then $x = x_1 + x_2$, where $x_1 in K$, $x_2 in K^perp$ (by @thm:orthogonal-decomposition). Then $x_2 != 0$ as otherwise $x = x_1 in K$.
 ]
@@ -356,7 +356,7 @@ The following result shows how the convexity can be used in place of traditional
   Let $V$ be a vector space over a field $FF$. Then a _linear functional_ is a mapping
   $ phi.alt : V -> FF $
   that is linear: for $x, y in H$, $phi.alt(alpha x) = alpha phi.alt(x)$ (homogeneous) for $alpha in FF$ and $phi.alt(x + y) = phi(x) + phi(y)$ (additive).
-]
+] <def:linear-functional>
 (We will only consider the case if $V = H$ is a Hilbert space. Then linear functionals map to $CC$.)
 #definition[
   Let $H$ be a Hilbert space. Then a linear functional $phi.alt$ on $H$ is _bounded_ iff $exists C > 0$ such that $ abs(phi.alt(x)) <= C norm(x). #tag[($forall x in H$)] $
@@ -384,4 +384,53 @@ In mathematical literature, "continuous" and "bounded" are often interchangeably
 
     For any sequence ${x_n}_n subset.eq H$ converging to $x_oo in H$,
     $ abs(phi(x_n) - phi(x_oo)) = abs(phi(x_n - x_oo)) <= C norm(x_n - x_oo) -> oo. qedhere $
+]
+#definition[Operator Norm][
+  For a bounded linear functional $phi.alt : H -> CC$, define its _operator norm_ $norm(phi.alt)$ to be the infimum of all such $C$'s in @def:linear-functional.
+]
+#proposition[
+  Let $H$ be a Hilbert space and fix $x_0 in H$. Then
+  $ phi.alt:x |-> chev(x, x_0)#tag[(for $x in H$)] $
+  is a bounded linear functional on $H$.
+]
+#proof[
+  The additivity and homogeneity are evident, and moreover, by Cauchy--Schwarz (@thm:inner-product-cauchy-schwarz),
+  $ abs(phi.alt(x)) <= norm(x_0)norm(x), $
+  giving boundedness.
+]
+#theorem[Riesz Representation Theorem][
+  Any bounded linear functional $phi.alt$ on a Hilbert space $H$ can be expressed in the form of
+  $ x |-> chev(x, x_0) quad "for all" quad x in H, $ <eq:riesz-representation>
+  where $x_0 in H$ is unique.
+] <thm:riesz-representation>
+#proof[
+  If $phi.alt equiv 0$, then letting $x_0 = 0$ gives the desired result. Otherwise let $ker phi.alt$ denote the _null space_ (or _kernel_) of $phi.alt$:
+  $ ker phi.alt = {x in H : phi.alt(x) = 0}. $
+  Then $ker phi.alt$ is trivially a (nonempty) vector subspace of $H$. Moreover, $ker phi.alt$ is closed in $H$; indeed, for any sequence ${k_n}_n subset ker phi.alt$ converging to $k_oo in H$,
+  $
+    abs(phi.alt(k_oo)) = abs(phi.alt(k_oo) - phi.alt(k_n)) = abs(phi.alt(k_oo - k_n)) <= norm(phi.alt) norm(k_oo - k_n) -> oo,
+  $
+  implying that $phi.alt(k_oo) = 0$; consequently, $k_oo in H$. \
+
+  There exists a $x_0 in ker phi.alt^perp$ such that $ phi(x_0) = chev(x_0, x_0) = norm(x_0). $
+  Indeed, $exists q in ker phi.alt^perp without {0}$ by @cor:orthogonal-complement-of-closed-proper-subspace-contains-nonzero-element; then letting
+  $
+    x_0 = overline(phi.alt(q)) / norm(q)^2 q in ker phi.alt^perp,
+  $
+  it follows that
+  $
+    phi.alt(x_0) = abs(phi.alt(q))^2 / norm(q)^2 = chev(overline(phi.alt(q)) / norm(q)^2 q, overline(phi.alt(q)) / norm(q)^2 q) = norm(x_0)^2,
+  $ <eq:riesz-representation-representative-maps-to-norm-squared>
+  and the assertion follows.
+
+  Then for any $x in H$, letting $y = phi.alt(x) / norm(x_0)^2 x_0 in ker phi.alt^perp$ gives
+  $
+    phi.alt(x - y) &= phi.alt(x) - phi.alt(y) = phi.alt(x) - phi.alt(x) / norm(x_0)^2 phi.alt(x_0)\
+    &= phi.alt(x) - phi.alt(x) / norm(x_0)^2 norm(x_0)^2 = 0. #tag[(by @eq:riesz-representation-representative-maps-to-norm-squared)]
+  $
+  Then $phi.alt(x - y) = 0$, implying $x - y in ker phi.alt^perp$, so $chev(x - y, x_0) = 0$, and
+  $ chev(x, x_0) = chev(x - y, x_0) + chev(y, x_0) = phi(x). $
+  If there exists another representative $x_1$ such that $phi.alt equiv chev(dot, x_1) equiv chev(dot, x_0)$, then
+  $ chev(x, x_1 - x_0) = 0. #tag[for all $x in H$] $
+  Letting $x = x_1 - x_0$ implies $x_1 - x_0 = 0$.
 ]
