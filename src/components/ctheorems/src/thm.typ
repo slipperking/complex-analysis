@@ -475,11 +475,11 @@
         x.push(0pt)
         x
       })
-      metadata((
+      box(metadata((
         eq-tag: t,
         move: move,
         reserve-idx: tag-metadata-counter.get().first() - 1,
-      ))
+      )))
     }
   }
 }
@@ -636,7 +636,7 @@
               // never shrink reserve
               let reserve = calc.max(previous-reserve, required)
               let dx = tag-start - natural-end + reserve
-              place(horizon, dx: dx, data.value.eq-tag)
+              place(bottom, dx: dx, data.value.eq-tag)
               box(width: 2 * reserve, height: 0pt, stroke: none)
               state("tag-reserves", ()).update(reserves => {
                 reserves.at(data.value.reserve-idx) = reserve
@@ -644,7 +644,7 @@
               })
             } else {
               let dx = tag-start - here().position().x
-              place(horizon, dx: dx, data.value.eq-tag)
+              place(bottom, dx: dx, data.value.eq-tag)
             }
           }
         }
