@@ -91,6 +91,18 @@ python build-search-index.py
 This omits `dist/pdf/notes.pdf` and the PDF links from the generated site. In
 this mode, reference tooltips contain only the in-page preview control.
 
+### VS Code Build Tasks
+
+Press `Ctrl+Shift+B` in VS Code to start the default `WATCHER: HTML only
+(debug)` task. Use the `Tasks: Run Task` command to choose another watcher or
+one-off compile task from `.vscode/tasks.json`. Each group contains combined
+bundle, PDF-only, and HTML-only variants with and without `debug-build=true`.
+
+Watcher tasks remain active and recompile after source changes. Stop one with
+the `Tasks: Terminate Task` command. These tasks run the Typst compiler only;
+run the preprocessing and search-index commands separately when those outputs
+need to be refreshed.
+
 ## Project structure
 
 ```text
