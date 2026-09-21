@@ -398,15 +398,20 @@ In mathematical literature, "continuous" and "bounded" are often interchangeably
   $ abs(phi.alt(x)) <= norm(x_0)norm(x), $
   giving boundedness.
 ]
+#definition[Kernel][
+  For any linear functional $phi.alt$ on a Hilbert space $H$, define its _null space_ or _kernel_ to be the set on which $phi.alt$ vanishes:
+  $ ker phi.alt = {x in H : phi.alt(x) = 0}. $
+  Moreover, $ker phi.alt$ is a vector subspace of $H$.
+]
 #theorem[Riesz Representation Theorem][
   Any bounded linear functional $phi.alt$ on a Hilbert space $H$ can be expressed in the form of
   $ x |-> chev(x, x_0) quad "for all" quad x in H, $ <eq:riesz-representation>
-  where $x_0 in H$ is unique.
+  where $x_0 in H$ is unique and lies in the orthogonal complement to the null space of $phi.alt$.
 ] <thm:riesz-representation>
 #proof[
-  If $phi.alt equiv 0$, then letting $x_0 = 0$ gives the desired result. Otherwise let $ker phi.alt$ denote the _null space_ (or _kernel_) of $phi.alt$:
-  $ ker phi.alt = {x in H : phi.alt(x) = 0}. $
-  Then $ker phi.alt$ is trivially a (nonempty) vector subspace of $H$. Moreover, $ker phi.alt$ is closed in $H$; indeed, for any sequence ${k_n}_n subset ker phi.alt$ converging to $k_oo in H$,
+  If $phi.alt equiv 0$, then letting $x_0 = 0$ gives the desired result.
+
+  Otherwise, observe that $ker phi.alt$ is closed in $H$; indeed, for any sequence ${k_n}_n subset ker phi.alt$ converging to $k_oo in H$,
   $
     abs(phi.alt(k_oo)) = abs(phi.alt(k_oo) - phi.alt(k_n)) = abs(phi.alt(k_oo - k_n)) <= norm(phi.alt) norm(k_oo - k_n) -> oo,
   $
@@ -433,4 +438,10 @@ In mathematical literature, "continuous" and "bounded" are often interchangeably
   If there exists another representative $x_1$ such that $phi.alt equiv chev(dot, x_1) equiv chev(dot, x_0)$, then
   $ chev(x, x_1 - x_0) = 0. #tag[for all $x in H$] $
   Letting $x = x_1 - x_0$ implies $x_1 - x_0 = 0$.
+]
+#corollary[
+  If $phi.alt$ is a continuous linear functional on a Hilbert space $H$, then the orthogonal complement to the null space of $phi.alt$ has dimension $1$.
+]
+#proof[
+  By the proof of @thm:riesz-representation, for any $q in ker phi.alt^perp without {0}$, the Riesz representer $x_0$ may be constructed by a scaling $q$ by a scalar $alpha_q in CC$. Then any $q in ker phi.alt^perp$ can be expressed as $x_0 / alpha_q$; then $phi.alt^perp$ is one-dimensional.
 ]
