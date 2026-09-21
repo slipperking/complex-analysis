@@ -155,10 +155,6 @@
   )
 }
 
-#let _first-page-heading(page) = {
-  query(selector(heading).within(label("doc-" + page.id))).first(default: none)
-}
-
 #let _heading-number(h) = {
   if h != none and h.numbering != none {
     counter(heading).display(at: h.location())
@@ -167,17 +163,78 @@
   }
 }
 
-#let _page-depth(page) = {
-  let h = _first-page-heading(page)
-  if h == none { 0 } else { calc.max(0, h.level - 1) }
+#let _site-data() = {
+  let carrier = outline.title
+  if carrier != auto and carrier.func() == metadata and type(carrier.value) == dictionary {
+    carrier.value
+  } else {
+    (:)
+  }
 }
 
-#let _page-label(page) = {
-  let h = _first-page-heading(page)
-  let number = _heading-number(h)
-  let title = if h != none { h.body } else { page.title }
+#let _page-entry(page) = {
+  let entries = _site-data().at("entries", default: (:))
+  let entry = entries.at(page.id, default: none)
+  if entry != none {
+    entry
+  } else {
+    (
+      label: (page.heading-format)(none, page.title),
+      depth: calc.max(0, page.heading-level - 1),
+      prev: none,
+      next: none,
+    )
+  }
+}
 
-  (page.heading-format)(number, title)
+#let _page-label(page) = _page-entry(page).label
+
+#let _build-site-data() = {
+  let records = query(
+    selector(heading).or(<page-meta>).or(<page-nav-meta>).within(web-scope-label),
+  )
+  let pages = ()
+  let nav = (:)
+  let last-heading = none
+
+  for record in records {
+    if record.func() == heading {
+      last-heading = record
+    } else if record.value.record == "page" {
+      pages.push(record.value.page)
+      last-heading = none
+    } else if record.value.record == "nav" {
+      let page = record.value.page
+      let source-heading = if record.value.has-heading { last-heading } else { none }
+      let number = _heading-number(source-heading)
+      let title = if source-heading != none { source-heading.body } else { page.title }
+
+      nav.insert(page.id, (
+        label: (page.heading-format)(number, title),
+        depth: if source-heading == none { 0 } else { calc.max(0, source-heading.level - 1) },
+      ))
+      last-heading = none
+    }
+  }
+
+  let entries = (:)
+  for (index, page) in pages.enumerate() {
+    let page-nav = nav.at(page.id, default: none)
+    if page-nav == none {
+      page-nav = (
+        label: (page.heading-format)(none, page.title),
+        depth: calc.max(0, page.heading-level - 1),
+      )
+    }
+    entries.insert(page.id, (
+      label: page-nav.label,
+      depth: page-nav.depth,
+      prev: if index > 0 { pages.at(index - 1) } else { none },
+      next: if index + 1 < pages.len() { pages.at(index + 1) } else { none },
+    ))
+  }
+
+  (pages: pages, entries: entries)
 }
 
 #let _page-heading(page) = {
@@ -208,8 +265,8 @@
   }
 }
 
-#let _nav-link(current, page) = context {
-  let depth = _page-depth(page)
+#let _nav-link(current, page, entry: none) = context {
+  let page-entry = if entry == none { _page-entry(page) } else { entry }
   let cls = (
     "nav-item",
     if page.id == current.id { "active" } else { none },
@@ -217,17 +274,19 @@
     .filter(x => x != none)
     .join(" ")
 
-  html.elem("li", attrs: (class: cls, style: "--depth: " + str(depth)), {
-    html.elem("a", attrs: (href: _href-from(current.path, page.path)), _page-label(page))
+  html.elem("li", attrs: (class: cls, style: "--depth: " + str(page-entry.depth)), {
+    html.elem("a", attrs: (href: _href-from(current.path, page.path)), page-entry.label)
   })
 }
 
 #let _global-nav(current) = context {
-  let pages = outline.title.value
+  let site-data = _site-data()
+  let pages = site-data.at("pages", default: ())
+  let entries = site-data.at("entries", default: (:))
   html.elem("nav", attrs: (class: "global-nav", "aria-label": "Site navigation"), {
     html.elem("ul", {
       for page in pages {
-        _nav-link(current, page)
+        _nav-link(current, page, entry: entries.at(page.id, default: none))
       }
     })
   })
@@ -248,11 +307,9 @@
   if sys.inputs.at("debug-build", default: none) == "true" {
     return
   }
-  let pages = outline.title.value
-
-  let idx = pages.position(page => page.id == current.id)
-  let prev = if idx != none and idx > 0 { pages.at(idx - 1) } else { none }
-  let next = if idx != none and idx < pages.len() - 1 { pages.at(idx + 1) } else { none }
+  let entry = _page-entry(current)
+  let prev = entry.prev
+  let next = entry.next
 
   html.elem("nav", attrs: (class: "page-nav", "aria-label": "Previous and next pages"), {
     if prev != none {
@@ -367,35 +424,39 @@
   }
 }
 
-#let _html-page(page, body) = [
-  #metadata(page) <page-meta>
-  #document(page.doc-path, title: [#_page-label(page) | #notes-title])[
-    #show: document-styles.with(mode: "web")
-    #counter(math.equation).update(0)
-    #thm-counter.thm-counters.update((:))
-    #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/site.css")))
-    #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/search.css")))
-    #_topbar(page)
-    #html.elem("div", attrs: (class: "layout"))[
-      #html.elem("aside", attrs: (class: "sidebar-left"))[
-        #_global-nav(page)
+#let _html-page(page, body) = {
+  let page-label = _page-label(page)
+  [
+    #metadata((record: "page", page: page)) <page-meta>
+    #document(page.doc-path, title: [#page-label | #notes-title])[
+      #show: document-styles.with(mode: "web")
+      #counter(math.equation).update(0)
+      #thm-counter.thm-counters.update((:))
+      #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/site.css")))
+      #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/search.css")))
+      #_topbar(page)
+      #html.elem("div", attrs: (class: "layout"))[
+        #html.elem("aside", attrs: (class: "sidebar-left"))[
+          #_global-nav(page)
+        ]
+        #html.elem("main", attrs: (class: "content", id: "main"))[
+          #if page.kind != "cover" {
+            html.elem("h1", attrs: (class: "page-title"), page-label)
+          }
+          #body
+          #_prev-next(page)
+        ]
+        #html.elem("aside", attrs: (class: "sidebar-right"))[
+          #_local-toc()
+        ]
       ]
-      #html.elem("main", attrs: (class: "content", id: "main"))[
-        #if page.kind != "cover" {
-          html.elem("h1", attrs: (class: "page-title"), _page-label(page))
-        }
-        #body
-        #_prev-next(page)
-      ]
-      #html.elem("aside", attrs: (class: "sidebar-right"))[
-        #_local-toc()
-      ]
+      #html.elem("div", attrs: (class: "sidebar-backdrop", id: "sidebar-backdrop"))
+      #html.elem("script", attrs: (src: _asset-href(page.path, "assets/site.js")), [])
+      #html.elem("script", attrs: (src: _asset-href(page.path, "assets/search.js")), [])
     ]
-    #html.elem("div", attrs: (class: "sidebar-backdrop", id: "sidebar-backdrop"))
-    #html.elem("script", attrs: (src: _asset-href(page.path, "assets/site.js")), [])
-    #html.elem("script", attrs: (src: _asset-href(page.path, "assets/search.js")), [])
-  ] #label("doc-" + page.id)
-]
+    #label("doc-" + page.id)
+  ]
+}
 
 #let _standalone-page(page, main-class: none, extra-scripts: (), body) = {
   let main-classes = ("content", main-class).filter(value => value != none).join(" ")
@@ -577,14 +638,21 @@
 
     let page-content = if target() == "bundle" and render-mode.get() == "web" {
       let page-body = if cover {
-        _cover-content(page)
+        [
+          #metadata((record: "nav", page: page, has-heading: false)) <page-nav-meta>
+          #_cover-content(page)
+        ]
       } else if heading {
         [
           #html.elem("div", attrs: (class: "page-source-heading"), _page-heading(page))
+          #metadata((record: "nav", page: page, has-heading: true)) <page-nav-meta>
           #body
         ]
       } else {
-        body
+        [
+          #metadata((record: "nav", page: page, has-heading: false)) <page-nav-meta>
+          #body
+        ]
       }
       _html-page(page, page-body)
     } else if cover {
@@ -646,8 +714,8 @@
     render-mode.update("web")
     context [
       #{
-        // store all pages so they can be queried once only
-        set outline(title: metadata(query(<page-meta>).map(it => it.value)))
+        // Store ordered pages and random-access navigation data from one query.
+        set outline(title: metadata(_build-site-data()))
         include "/chapters/index.typ"
         _search-page()
         _todo-page()
