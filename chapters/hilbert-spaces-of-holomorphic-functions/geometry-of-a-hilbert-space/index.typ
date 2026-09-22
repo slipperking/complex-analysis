@@ -387,12 +387,12 @@ In mathematical literature, "continuous" and "bounded" are often interchangeably
 ]
 #definition[Operator Norm][
   For a bounded linear functional $phi.alt : H -> CC$, define its _operator norm_ $norm(phi.alt)$ to be the infimum of all such $C$'s in @def:linear-functional.
-]
+] <def:operator-norm>
 #proposition[
   Let $H$ be a Hilbert space and fix $x_0 in H$. Then
   $ phi.alt:x |-> chev(x, x_0)#tag[(for $x in H$)] $
   is a bounded linear functional on $H$.
-]
+] <prop:inner-product-gives-bounded-functional>
 #proof[
   The additivity and homogeneity are evident, and moreover, by Cauchy--Schwarz (@thm:inner-product-cauchy-schwarz),
   $ abs(phi.alt(x)) <= norm(x_0)norm(x), $
