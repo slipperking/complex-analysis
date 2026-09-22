@@ -290,9 +290,9 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   $
     rho.alt(x) = cases(exp(-1 / x)&quad "if" quad x > 0, 0&quad "if" quad x <= 0).
   $
-  Observe that $rho.alt in C^oo (RR)$. Then for $0 < a < b < 1$, define the real function
+  Observe that $rho.alt in C^oo (RR)$. Then for $0 < a < b < 1$, the real function
   $
-    rho(x) equiv (rho.alt((x - a) / (b - a))) / (rho.alt((x - a) / (b - a)) + rho.alt((b - x) / (b - a)))
+    rho(x) = (rho.alt((x - a) / (b - a))) / (rho.alt((x - a) / (b - a)) + rho.alt((b - x) / (b - a))) #tag[where $x in RR$]
   $
   is smooth in $C^oo$, vanishes for $x<=a$, is identically $1$ for $x >= b$, and has a positive derivative in $(a,b)$. Let $chi equiv rho compose u$, then on a relatively open annular neighborhood of $Gamma_0$ in $overline(U)$, $u < a$, so $chi equiv 0$ thereon, while on a relatively open annular neighborhood of $Gamma_1$ in $overline(U)$, $u > b$, so $chi equiv 1$ thereon. In each neighborhood, respectively choose Jordan curves $gamma_0 subset U$ and $gamma_1 subset U$, such that $gamma_1$ encloses $Gamma_1$ and is enclosed by $gamma$. Then $gamma_0^+ union gamma_1^-$ encloses a doubly connected region $W$ (as does $gamma union gamma_1$). Since $chi equiv 0$ in $gamma_0$ and $chi equiv 1$ in $gamma_1$, then $chi omega$ is $C^oo$ on a neighborhood of $overline(W)$ and thus Green's Theorem (@thm:complex-green) is applicable:
   $
@@ -377,7 +377,7 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   #figure-wrapper(
     lbl(
       figure(
-        canvas({
+        canvas(length: 0.75cm, {
           import cetz.draw: *
           let dotted = (thickness: 0.5pt)
           let square(center, half-side: 0.5) = {
@@ -544,7 +544,7 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   It follows that the resultant value is a factor of $delta$, and satisfies $eta < delta / 4$ and $eta < epsilon / 4$.
 
   Note that if the two curves $Gamma'_0,Gamma'_1$ are not disjoint, then in some $2$-by-$2$ subgrid, exactly two opposite squares will be in $tilde(K)$ whilst the other two are not (refer to the circled area in @fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution). Let $S$ be the set of grid vertices in $tilde(K)$. Then it follows that $ tilde(K) union union.big_(z in S) ["square of side length" 2 eta "centered at" z] $
-  is a doubly connected polygonal (which can be considered to be generated with a grid of side length $eta$) compact set with two disjoint boundary curves. From $eta < epsilon / 4$, this set lies in $U$ (since the maximum distance between $S$ and this new set is $eta sqrt(2) < epsilon$). Since $eta < delta / 4$, no such problematic $2$-by-$2$ subgrid may exist, see @fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution. Thus by this procedure, by continuing to denote this new set with $tilde(K)$, we may assume $partial tilde(K)$ has two disjoint Jordan curve components.
+  is a doubly connected polygonal (which can be considered to be generated with a grid of side length $eta$) compact set with two disjoint boundary curves. From $eta < epsilon / 4$, this set lies in $U$ (since the maximum distance between the previous grid and this new set is $eta sqrt(2) < epsilon$). Since $eta < delta / 4$, no such problematic $2$-by-$2$ subgrid may exist, see @fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution. Thus by this procedure, by continuing to denote this new set with $tilde(K)$, we may assume $partial tilde(K)$ has two disjoint Jordan curve components.
 
   Since the connected component $U inter jexterior(Gamma'_0)$ must map into exactly one of
   $ {w : abs(w) >= (R + abs(w')) / 2} quad "and" quad {w : abs(w) <= (1 + abs(w')) / 2} $
