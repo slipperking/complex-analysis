@@ -78,6 +78,8 @@ Using these formulations, we now have
   $ sum_(nu = 1)^q Theta(a_nu, f) <= 2 ==> sum_(nu = 1)^oo Theta(a_nu, f) <= 2. #qedhere $
 ]
 
+Notice that the method we used to prove countability is the exact same as in @cor:bessels-inequality.
+
 #remark[
   Ahlfors' geometric formulation of the second fundamental theorem suggests that the value 2 in the inequality is connected to the Euler characteristic of the Riemann sphere via triangulation.
 ]

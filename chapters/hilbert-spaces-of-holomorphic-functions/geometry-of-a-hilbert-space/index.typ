@@ -275,6 +275,16 @@ Note that if $F subset.eq H$ is a vector space, then $F$ is trivially convex by 
 #definition[
   Let $H$ be a Hilbert space. A subspace $S subset.eq H$ is said to be orthogonal to a vector $x in H$ ($x perp S$) iff $forall y in S$, $x perp y$.
 ]
+Then rather intuitively, we have
+#theorem[
+  If $x in H$ is a vector in a Hilbert space, and $x = x_1 + x_2$ such that $x_1 perp x_2$, then $norm(x) = sqrt(norm(x_1)^2 + norm(x_2)^2)$
+] <thm:orthogonality-pythagorean>
+#proof[
+  This follows immediately from
+  $
+    chev(x, x) = chev(x_1 + x_2, x_1 + x_2) = norm(x_1)^2 + norm(x_2)^2 + 2 Re chev(x_1, x_2) = norm(x_1)^2 + norm(x_2)^2. qedhere
+  $
+]
 #definition[Orthogonal Complement][
   Let $x in H$, where $H$ is a Hilbert space, then for $x in H$, define the _orthogonal component_ of $x$ to be $x^perp = {y in H : x perp y}$. Let $V subset.eq H$ be a subset (not necessarily a vector space). Then the _orthogonal complement_ of $V$, given by $ V^perp = {x in H : forall y in H, x perp y}, $ is the space of vectors orthogonal to every vector in $V$.
 ]
@@ -352,6 +362,7 @@ The following result shows how the convexity can be used in place of traditional
 #proof[
   Let the Hilbert space be $H$, let the subspace be $K$. Choose $x in H without K$. Then $x = x_1 + x_2$, where $x_1 in K$, $x_2 in K^perp$ (by @thm:orthogonal-decomposition). Then $x_2 != 0$ as otherwise $x = x_1 in K$.
 ]
+
 #definition[Linear Functional][
   Let $V$ be a vector space over a field $FF$. Then a _linear functional_ is a mapping
   $ phi.alt : V -> FF $
