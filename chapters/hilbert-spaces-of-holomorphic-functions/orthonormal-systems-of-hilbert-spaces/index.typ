@@ -5,8 +5,8 @@
 )
 We first aim to provide a generalization of bases which will serve useful in generalizing vector spaces to infinite dimensions.
 #definition[Orthonormal System][
-  Let $H$ be a Hilbert space. Let $I$ be any (countable) set. A set ${u_n}_(n in I) subset.eq H$ is an _orthonormal system_ iff $forall n, m in I$,
-  $ chev(u_n, u_m) = delta_(n m) = cases(1 quad & "if" quad n = m, 0 quad & "if" quad n != m). $
+  Let $H$ be a Hilbert space. Let $I$ be any (countable) set. A set ${u_i}_(i in I) subset.eq H$ is an _orthonormal system_ iff $forall i, j in I$,
+  $ chev(u_i, u_j) = delta_(i j) = cases(1 quad & "if" quad i = j, 0 quad & "if" quad i != j). $
   We will consider only the cases where $I$ is finite or when $I$ is countably infinite ($I = NN$), although the generalization to uncountable sets follows in the same way.
 ]
 #definition[Completeness of an Orthonormal System][
@@ -54,27 +54,27 @@ The orthonormal then generalizes the concept of a "basis" for finite-dimensional
 ]
 Therefore, one then derives
 #corollary[Bessel's Inequality][
-  Let $H$ be a Hilbert space and let ${u_n}_(n in I)$ be an orthonormal system. Then for $x in H$,
-  $ sum_(n in I) abs(chev(x, u_k))^2 <= norm(x)^2, $
+  Let $H$ be a Hilbert space and let ${u_i}_(i in I)$ be an orthonormal system. Then for $x in H$,
+  $ sum_(i in I) abs(chev(x, u_i))^2 <= norm(x)^2, $
   where the left-hand side converges _unconditionally_: $exists S <= norm(x)^2$ such that for any $epsilon > 0$, $exists I' subset.eq I$ countable such that for all $(I supset.eq )I'' supset.eq I'$ countable,
-  $ abs(sum_(n in I'') abs(chev(x, u_n))^2 - S) < epsilon. $
-  Moreover, $x$ is orthogonal to all but countably many vectors in ${u_n}$.
+  $ abs(sum_(i in I'') abs(chev(x, u_i))^2 - S) < epsilon. $
+  Moreover, $x$ is orthogonal to all but countably many vectors in ${u_i}$.
 ] <cor:bessels-inequality>
 #proof[
   For each $m in NN$, let
   $
-    A_m = {u_n : abs(chev(x, u_n))^2 > 1 / m}.
+    A_m = {u in {u_i} : abs(chev(x, u))^2 > 1 / m}.
   $
   Then $A_m$ is a finite set, as otherwise
-  $ sum_(u_n in A_m) abs(chev(x, u_n_j))^2 = oo, $
+  $ sum_(u in A_m) abs(chev(x, u))^2 = oo, $
   contradicting @thm:norm-of-orthogonal-component-in-terms-of-vector-norm-and-product.
-  Let $A = union.big_(m in NN) A_m$, which is a countable set. Moreover, for any $u_n in.not A$, $abs(chev(x, u_n))^2 <= inf_(m in NN) 1 / m = 0$.
+  Let $A = union.big_(m in NN) A_m$, which is a countable set. Moreover, for any ${u_i} in.rev u in.not A$, $abs(chev(x, u))^2 <= inf_(m in NN) 1 / m = 0$.
 
-  Therefore only a countable number of vectors in ${u_n}_(n in I)$ are not orthogonal to $x$. Let $A$ be indexed by a sequence ${v_n}_(n in NN)$. By @thm:norm-of-orthogonal-component-in-terms-of-vector-norm-and-product,
-  $ sum_(n = 1)^oo abs(chev(x, u_n))^2 $
+  Therefore only a countable number of vectors in ${u_i}_(i in I)$ are not orthogonal to $x$. Let $A$ be indexed by a sequence ${v_n}_(n in NN)$. By @thm:norm-of-orthogonal-component-in-terms-of-vector-norm-and-product,
+  $ sum_(n = 1)^oo abs(chev(x, v_n))^2 $
   has all partial sums bounded by $norm(x)^2$; therefore the series converges to a limit $S <= norm(x)^2$.
 ]
 Then we may provide the following generalization of the Parseval's Theorem from Fourier analysis:
 #corollary[Riesz--Fischer][
-
+  Let $H$ be a Hilbert space and let ${u_i}_(i in I)$
 ]
