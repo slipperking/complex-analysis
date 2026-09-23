@@ -75,6 +75,14 @@ Therefore, one then derives
   has all partial sums bounded by $norm(x)^2$; therefore the series converges to a limit $S <= norm(x)^2$.
 ]
 Then we may provide the following generalization of the Parseval's Theorem from Fourier analysis:
-#corollary[Riesz--Fischer][
-  Let $H$ be a Hilbert space and let ${u_i}_(i in I)$
+#theorem[Riesz--Fischer][
+  Let $H$ be a Hilbert space and let ${u_i}_(i in I)$ be a complete orthonormal system. Then:
+  1. For any $x in H$, #enum-lbl(<itm:riesz-fischer-forward-implication>)
+  $ norm(x)^2 = sum_(i = I) abs(chev(x, u_i))^2. $
+  + For any complex set ${beta_i}_(i in I)$ such that $ sum_(i in I) abs(beta_i)^2 < oo, $
+    then $exists! x in X$ such that $forall i in I$, $chev(x, u_i) = beta_i$, and that #enum-lbl(<itm:riesz-fischer-converse>)
+    $ norm(x)^2 = sum_(i in I) abs(beta_i)^2. $
+] <cor:riesz-fischer>
+#proof[
+
 ]
