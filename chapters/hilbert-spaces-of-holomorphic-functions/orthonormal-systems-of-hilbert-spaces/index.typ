@@ -43,8 +43,8 @@ The orthonormal then generalizes the concept of a "basis" for finite-dimensional
   $
     norm(x - u) & = sqrt(norm(x)^2 + norm(u)^2 - 2 Re chev(x, u)) \
                 & = sqrt(
-                    norm(x)^2 & + sum_((j, k) in NN_(<= n)^2) chev(chev(x, u_j) u_j, chev(x, u_k) u_k) \
-                              & quad ""- 2 sum_(k = 1)^n Re chev(x, chev(x, u_k) u_k)
+                    norm(x)^2 + sum_((j, k) in NN_(<= n)^2) chev(chev(x, u_j) u_j, chev(x, u_k) u_k) \
+                    - 2 sum_(k = 1)^n Re chev(x, chev(x, u_k) u_k)
                   ) \
                 & = sqrt(
                     norm(x)^2 + sum_((j, k) in NN_(<= n)^2) chev(x, u_j)overline(chev(x, u_k)) delta_(j k) - 2 sum_(k = 1)^n abs(chev(x, u_k))^2
@@ -78,11 +78,43 @@ Then we may provide the following generalization of the Parseval's Theorem from 
 #theorem[Riesz--Fischer][
   Let $H$ be a Hilbert space and let ${u_i}_(i in I)$ be a complete orthonormal system. Then:
   1. For any $x in H$, #enum-lbl(<itm:riesz-fischer-parseval>)
-  $ norm(x)^2 = sum_(i = I) abs(chev(x, u_i))^2. $
+    $ norm(x)^2 = sum_(i = I) abs(chev(x, u_i))^2. $
   + For any complex collection ${beta_i}_(i in I)$ such that $ sum_(i in I) abs(beta_i)^2 < oo, $
     then $exists! x in H$ such that $forall i in I$, $chev(x, u_i) = beta_i$, and that #enum-lbl(<itm:riesz-fischer-converse>)
     $ norm(x)^2 = sum_(i in I) abs(beta_i)^2. $
 ] <cor:riesz-fischer>
-#proof[
+It is actually simpler to first prove @itm:riesz-fischer-converse.
+#proof[of @itm:riesz-fischer-converse of @cor:riesz-fischer][
+  #claim[
+    At most a countable number of ${beta_i}_(i in I)$ are nonzero.
+  ]
+  #proof[of the claim][
+    This is essentially the same argument as used before with @cor:bessels-inequality. For each $m in NN$, let
+    $ A_m = {beta in {beta_i}_(i in I) : abs(beta_i) > 1 / m}. $
+    Then $A_m$ is finite; otherwise $sum_(i in I) abs(beta_i)^2 lt.not oo$. Moreover the union of all $A_m$ for $m in NN$ is a countable set and contains all nonzero $beta_dot$'s.
+  ]
+  If $union.big_(m in NN) A_m$ is finite ${beta_i_j}_j$, then letting
+  $ x = sum_j beta_i_j u_i_j, $
+  we see that $chev(x, u_i_j) = beta_i_j$ and for all other $beta_i$'s, $beta_i = 0$, which proves $chev(x, u_i) = beta_i$ from orthogonality. Then in this case, the assertion $norm(x)^2 = sum_(i in I) abs(beta_i)^2$ follows from @thm:orthogonality-pythagorean.
 
+  If $union.big_m A_m$ is countable and indexed by ${beta_i_j}_(j in NN)$, then for any $K in NN$, let
+  $ x_K = sum_(j = 1)^K beta_i_j u_i_j. $
+  Then for $N >= M$,
+  $
+    norm(x_N - x_M) = norm(sum_(M + 1)^N beta_i_j u_i_j) = sum_(M + 1)^N abs(beta_i_j)^2 -> 0. #tag[(by @thm:orthogonality-pythagorean)]
+  $
+  Then ${x_K}_K$ is a Cauchy sequence and hence converges to some $x in H$:
+  $ x = sum_(j = 1)^oo beta_i_j u_i_j. $
+  Since $abs(norm(x) - norm(x_N)) <= norm(x - x_N) -> 0$, $norm(x_N)^2 -> norm(x)^2$. Moreover, by @thm:orthogonality-pythagorean,
+  $ norm(x_N)^2 = sum_(j = 1)^N abs(beta_i_j)^2 ==> norm(x)^2 = sum_(j = 1)^oo abs(beta_i_j)^2 $
+  by letting $N -> oo$.
+
+  // uniqueness
+]
+#proof[of @itm:riesz-fischer-parseval of @cor:riesz-fischer][
+  #lorem(3)
+  By Bessel's Inequality, we have
+  $ sum_(i in I) abs(chev(x, u_i))^2 <= norm(x)^2. $
+  By @itm:riesz-fischer-converse applied to $beta_i = chev(x, u_i)$, there exists a unique $tilde(x)$ such that
+  $ sum_(i in I) abs(chev(x, u_i))^2 = norm(tilde(x))^2 $
 ]

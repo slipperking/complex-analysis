@@ -56,7 +56,7 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
   #claim[
     $sup_(z in U) u(z) <= M$.
   ]
-  #proof[
+  #proof[of the claim][
     Let $psi in S$. Then for every $q in partial U$,
     $
       limsup_(z -> q \ z in U) psi(z) <= f(q) <= M.
@@ -66,7 +66,7 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
   #claim[
     The function $u$ is harmonic in $U$.
   ]
-  #proof[
+  #proof[of the claim][
     Let $overline(D(a,r)) subset.double U$ be arbitrary. Then for each $p in D(a,r)$, since $u(p) = sup_(psi in S) psi(p)$, there is some sequence of functions ${psi_(p,n)}_n$ such that $lim_(n -> oo) psi_(p,n) (p) = u(p)$.
 
     For $z in U$, define the function sequence ${Psi_(p,n)}_n$ of partial maximums $ Psi_(p,n) (z) = max_(k = 1)^n psi_(p,k) (z). $
@@ -125,7 +125,7 @@ Similar to the Riemann Mapping Theorem, the solution here will also pertain larg
   #claim[
     The function $u$ extends continuously to $f$: for each $p in partial U$, $lim_(z -> p \ z in U) u(z) = f(p)$.
   ]
-  #proof[
+  #proof[of the claim][
     Fix $p in partial U$ and $epsilon > 0$, and let $b = b_p$ be a barrier at $p$.
 
     By continuity of $f$, choose a relatively open neighborhood $V$ of $p$ in $partial U$ such that $ abs(f(p) - f(q)) < epsilon $ for every $q in V$ and $K = partial U without V$ is nonempty. Since $b < 0$ on the compact set $K$, let $eta = -max_(q in K) b(q) > 0$. Thus $b(q) <= -eta$ for every $q in K$. Set
