@@ -88,9 +88,9 @@ Then we may provide the following generalization of the Parseval's Theorem from 
   + For any complex collection ${beta_i}_(i in I)$ such that $ sum_(i in I) abs(beta_i)^2 < oo, $
     then $exists! x in H$ such that $forall i in I$, $chev(x, u_i) = beta_i$. Then #enum-lbl(<itm:riesz-fischer-converse>)
     $ norm(x)^2 = sum_(i in I) abs(beta_i)^2, quad x = sum_(i in I) beta_i u_i $
-] <cor:riesz-fischer>
+] <thm:riesz-fischer>
 It is actually simpler to first prove @itm:riesz-fischer-converse.
-#proof[of @itm:riesz-fischer-converse of @cor:riesz-fischer][
+#proof[of @itm:riesz-fischer-converse of @thm:riesz-fischer][
   #claim[
     At most a countable number of ${beta_i}_(i in I)$ are nonzero.
   ]
@@ -117,7 +117,7 @@ It is actually simpler to first prove @itm:riesz-fischer-converse.
 
   If there exists some other $tilde(x)$ satisfying $chev(tilde(x), u_i) = beta_i$, then $chev(x - tilde(x), u_i) = 0$ for each $i in I$. By the completeness of ${u_i}_(i in I)$, the only vector orthogonal to all vectors in the system is the zero vector, therefore $x - tilde(x) = 0 ==> x = tilde(x)$.
 ]
-#proof[of @itm:riesz-fischer-parseval of @cor:riesz-fischer][
+#proof[of @itm:riesz-fischer-parseval of @thm:riesz-fischer][
   By Bessel's Inequality, we have
   $ sum_(i in I) abs(chev(x, u_i))^2 <= norm(x)^2. $
   By @itm:riesz-fischer-converse applied to $beta_i = chev(x, u_i)$, $exists! tilde(x)$ such that $forall i in I$,
@@ -127,6 +127,12 @@ It is actually simpler to first prove @itm:riesz-fischer-converse.
   @eq:riesz-fischer-parseval-product-equivalences gives that for each $i in I$, $chev(x - tilde(x), u_i) = 0$. Then $x - tilde(x)$ is orthogonal to all vectors in a complete orthonormal system, and is therefore zero by definition. Thus $x = tilde(x)$, and by @eq:riesz-fischer-parseval-tilde-x, we have
   $ norm(x)^2 = sum_(i in I) abs(chev(x, u_i))^2. qedhere $
 ]
-#todo[
-  Mention fourier series perhaps
+#example[
+  Let $ell^2 = {{a_j}_(j in NN) L : sum_(j = 1)^oo abs(a_j)^2 < oo}$ denote the set of all absolutely square-summable complex sequences. Then for $alpha = {a_j}_j$, $beta = {b_j}_j$, define
+  $ chev(alpha, beta) = sum_(j = 1)^oo a_j overline(b_j). $
+  Then $ell^2$ is a vector space and a Hilbert space with $chev(dot, dot)$.
+] <ex:l2-space-is-hilbert>
+We will not immediately state a full proof. There is indeed an elegant method that uses the Riesz--Fischer Theorem (@thm:riesz-fischer), under the assumption that there exists any Hilbert space $H$ with a countable complete orthonormal system, which we will first assume and justify later (in fact, there are many such spaces, such as the Bergman space $A^2 (Omega)$ and the Hardy space $H^2$).
+#proof[of @ex:l2-space-is-hilbert (with assumptions)][
+  Let $H$ be a Hilbert space with a countable complete orthonormal system. For any $alpha = {a_j}^(j in NN) in ell^2$,
 ]
