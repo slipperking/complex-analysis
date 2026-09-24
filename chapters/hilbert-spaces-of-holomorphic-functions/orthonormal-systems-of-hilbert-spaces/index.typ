@@ -170,7 +170,16 @@ We will not immediately state a full proof. There is indeed an elegant method th
     ${z |-> sqrt(j + 1) / sqrt(uppi) z_j}_(j in 0)^oo$ is a countable complete orthonormal system for $berg$.
   ] <ex:bergman-space-orthonormal-system>
   #solution[to @ex:bergman-space-orthonormal-system][
-    #lorem(40)
-
+    For any $j$, $z mapsto z^j in berg$, so
+    $
+      oo > norm(z mapsto z^j) & = sqrt(integral.double_DD abs(z)^(2 j) dx dy) \
+                              & = sqrt(integral_0^1 integral_(-uppi)^uppi r^(2 j) r dtheta dr) \
+                              & = sqrt(2 uppi evaluated(r^(2 j + 2) / (2 j + 2))_0^1) = sqrt(uppi / (j + 1)).
+    $
+    Moreover, for $j != k$,
+    $
+      chev(z mapsto z^j, z mapsto z^k) &= integral.double_DD z^j overline(z)^k dx dy = integral_0^1 integral_(-uppi)^uppi r^j ee^(ii j theta) r^k ee^(-ii k theta) r dtheta dr \
+      & = integral_0^1 r^(j + k + 1) dr integral_(-uppi)^uppi ee^(ii theta (j - k)) dtheta.
+    $
   ]
 ]

@@ -273,6 +273,9 @@ On the contrary, for fixed $epsilon$, if we assume that $0<delta<= epsilon sqrt(
   $,
   <eq:riemann-zeta-function_remainingtwointegralshankelcontour>,
 )
+#todo[
+  Fix this, the integration bounds must be constant.
+]
 where the principal branch logarithm gives that $Arg(z) in (-uppi, uppi]$.  It is trivial to see that the bounding integrals (now independent of $delta$, as the integration bounds depend only on $epsilon$) are convergent for fixed $s$. Then Lebesgue's Dominated Convergence Theorem applies to @eq:riemann-zeta-function_remainingtwointegralshankelcontour as $delta -> 0^+$, resulting in
 #lbl(
   $
