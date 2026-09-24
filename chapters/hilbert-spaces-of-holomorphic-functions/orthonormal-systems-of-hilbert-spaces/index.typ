@@ -132,7 +132,7 @@ It is actually simpler to first prove @itm:riesz-fischer-converse.
   $ chev(alpha, beta) = sum_(j = 1)^oo alpha_j overline(beta_j). $
   Then $ell^2$ is a vector space and a Hilbert space with the inner product $chev(alpha, beta)_(ell^2) = sum_(j=1)^oo alpha_j overline(beta_j)$ and associated norm $norm(dot)_(ell^2)$.
 ] <ex:l2-space-is-hilbert>
-We will not immediately state a full proof. There is indeed an elegant method that uses the Riesz--Fischer Theorem (@thm:riesz-fischer), under the assumption that there exists any Hilbert space $H$ with an infinite countable complete orthonormal system, which we will first assume and justify later (in fact, there are many such spaces, such as the Bergman space $A^2 (Omega)$ and the Hardy space $H^2$).
+We will not immediately state a full proof. There is indeed an elegant method that uses the Riesz--Fischer Theorem (@thm:riesz-fischer), under the assumption that there exists any Hilbert space $H$ with an infinite countable complete orthonormal system, which we will first assume and justify later (in fact, there are many such spaces, such as the Bergman space $A^2 (DD)$ and the Hardy space $H^2$).
 #proof[of @ex:l2-space-is-hilbert (with assumptions)][
   The space $ell^2$ is trivially closed under scalar multiplication. To show additivity, or that
   $ {alpha_j}_j + {beta_j}_j = {alpha_j + beta_j}_j in ell^2 $
@@ -160,4 +160,16 @@ We will not immediately state a full proof. There is indeed an elegant method th
   by Riesz--Fischer (@thm:riesz-fischer).
 
   Therefore, since any Cauchy sequence ${alpha_n}_n$ in $ell^2$ gives a Cauchy sequence ${phi(alpha_n)}_n subset.eq H$ with a single accumulation point $x in H$; from $norm(phi(alpha_n) - x)_H < epsilon$ ($n > N$ for some $N$), we obtain $norm(phi^(-1)(phi(alpha_n) - x)) = norm(alpha_n - phi^(-1)(x)) < epsilon$. Therefore, ${alpha_n}_n$ converges to $phi^(-1)(x)$, and thus $ell^2$ is complete.
+]
+#[
+  #let berg = $A^2 (DD)$
+  #example[
+    Let $berg$ be the Bergman space on $DD$. With
+    $ chev(f, g) = integral.double_DD f(z) overline(g(z)) dx dy, $
+    $berg$ is a Hilbert space by @ex:hilbert-space-bergman-space. Then show that
+    ${z |-> z_j}_(j in 0)^oo$ is a countable complete orthonormal system for $berg$.
+  ] <ex:bergman-space-orthonormal-system>
+  #solution[to @ex:bergman-space-orthonormal-system][
+    #lorem(40)
+  ]
 ]

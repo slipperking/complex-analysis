@@ -493,15 +493,15 @@
     }
   }
 
-  function expandSolutionsForPrint() {
-    document.querySelectorAll("details.thm-solution").forEach(function (details) {
+  function expandProofsForPrint() {
+    document.querySelectorAll("details.thm-proof").forEach(function (details) {
       details.dataset.printWasOpen = details.open ? "true" : "false";
       details.open = true;
     });
   }
 
-  function restoreSolutionsAfterPrint() {
-    document.querySelectorAll("details.thm-solution").forEach(function (details) {
+  function restoreProofsAfterPrint() {
+    document.querySelectorAll("details.thm-proof").forEach(function (details) {
       var wasOpen = details.dataset.printWasOpen === "true";
       details.open = wasOpen;
       delete details.dataset.printWasOpen;
@@ -1292,8 +1292,8 @@
   setupMathLinkNavigation();
   setupPrintButton();
   setupSidebarScroll();
-  addEventListener("beforeprint", expandSolutionsForPrint);
-  addEventListener("afterprint", restoreSolutionsAfterPrint);
+  addEventListener("beforeprint", expandProofsForPrint);
+  addEventListener("afterprint", restoreProofsAfterPrint);
   addEventListener("beforeprint", applyPrintThemeOverride);
   addEventListener("afterprint", clearPrintThemeOverride);
   fillReferenceLeaders(document);

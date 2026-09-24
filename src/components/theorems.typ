@@ -35,11 +35,14 @@
   })
 }
 
-#let _html-proof-like-fmt(head, css-class, collapsible: false) = thm => {
+#let _html-proof-like-fmt(head, css-class, collapsible: false, expanded: false) = thm => {
   let title = (thm.title-fmt)([#head])
   if thm.name != none { title += [ #(thm.name-fmt)(thm.name)] }
   if collapsible {
-    html.elem("details", attrs: (class: "thm-proof thm-solution"), {
+    let classes = if css-class == "thm-proof" { "thm-proof" } else { "thm-proof " + css-class }
+    let attrs = (class: classes)
+    if expanded { attrs.insert("open", "") }
+    html.elem("details", attrs: attrs, {
       html.elem("summary", attrs: (class: "proof-head solution-head"), [#title.])
       proof-body-fmt(thm.body)
     })
@@ -99,7 +102,7 @@
   )
 }
 
-#let _wrap-proof(head, css-class, pdf-fmt, title-fmt, name-fmt, collapsible: false) = {
+#let _wrap-proof(head, css-class, pdf-fmt, title-fmt, name-fmt, collapsible: false, expanded: false) = {
   thm.with(
     supplement: head,
     numbering: none,
@@ -107,7 +110,7 @@
     name-fmt: name-fmt,
     fmt: thm => context {
       if _is-web-render() {
-        _html-proof-like-fmt(head, css-class, collapsible: collapsible)(thm)
+        _html-proof-like-fmt(head, css-class, collapsible: collapsible, expanded: expanded)(thm)
       } else {
         pdf-fmt(thm)
       }
@@ -136,7 +139,7 @@
 #let remark = _wrap("Remark", "thm-remark", thm-rem-fmt, emph, _remark-name-fmt, numbered: false, numbering: none)
 #let claim = _wrap("Claim", "thm-claim", thm-rem-fmt, emph, _remark-name-fmt, numbered: false, numbering: none)
 
-#let proof = _wrap-proof("Proof", "thm-proof", proof-pdf-fmt, emph, emph)
+#let proof = _wrap-proof("Proof", "thm-proof", proof-pdf-fmt, emph, emph, collapsible: true, expanded: true)
 #let solution = _wrap-proof("Solution", "thm-solution", proof-pdf-fmt, emph, emph, collapsible: true)
 
 #let theorem-toc-entry(thm) = {

@@ -1153,11 +1153,11 @@ figure svg {
     display: none !important;
   }
 
-  .thm-solution {
+  details.thm-proof {
     display: block;
   }
 
-  .thm-solution>* {
+  details.thm-proof>* {
     display: block;
   }
 
