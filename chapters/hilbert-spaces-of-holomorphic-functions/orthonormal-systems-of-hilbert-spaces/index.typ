@@ -167,9 +167,10 @@ We will not immediately state a full proof. There is indeed an elegant method th
     Let $berg$ be the Bergman space on $DD$. With
     $ chev(f, g) = integral.double_DD f(z) overline(g(z)) dx dy, $
     $berg$ is a Hilbert space by @ex:hilbert-space-bergman-space. Then show that
-    ${z |-> z_j}_(j in 0)^oo$ is a countable complete orthonormal system for $berg$.
+    ${z |-> sqrt(j + 1) / sqrt(uppi) z_j}_(j in 0)^oo$ is a countable complete orthonormal system for $berg$.
   ] <ex:bergman-space-orthonormal-system>
   #solution[to @ex:bergman-space-orthonormal-system][
     #lorem(40)
+
   ]
 ]
