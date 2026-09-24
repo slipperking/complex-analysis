@@ -179,7 +179,9 @@ We will not immediately state a full proof. There is indeed an elegant method th
     Moreover, for $j != k$,
     $
       chev(z mapsto z^j, z mapsto z^k) &= integral.double_DD z^j overline(z)^k dx dy = integral_0^1 integral_(-uppi)^uppi r^j ee^(ii j theta) r^k ee^(-ii k theta) r dtheta dr \
-      & = integral_0^1 r^(j + k + 1) dr integral_(-uppi)^uppi ee^(ii theta (j - k)) dtheta.
+      & = integral_0^1 r^(j + k + 1) dr integral_(-uppi)^uppi ee^(ii theta (j - k)) dtheta = 0.
     $
+    Therefore, the set ${z |-> sqrt(j + 1) / sqrt(uppi) z_j}_(j in 0)^oo$ satisfies the orthogonality condition, and $ chev(z |-> sqrt(j + 1) / sqrt(uppi) z_j, z |-> sqrt(j + 1) / sqrt(uppi) z_j) = 1 quad forall j in ZZ_(>= 0). $
+    Therefore it is an orthonormal system. Moreover, completeness follows naturally, because if there exists $f in A^2 (DD)$ such that $f perp z |-> sqrt(j + 1) / sqrt(uppi) z_j)$ for each $j$.
   ]
 ]
