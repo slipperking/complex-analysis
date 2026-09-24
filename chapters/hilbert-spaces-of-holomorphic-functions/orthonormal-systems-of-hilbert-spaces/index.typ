@@ -84,8 +84,8 @@ Then we may provide the following generalization of the Parseval's Theorem from 
 #theorem[Riesz--Fischer][
   Let $H$ be a Hilbert space and let ${u_i}_(i in I)$ be a complete orthonormal system. Then:
   1. For any $x in H$, #enum-lbl(<itm:riesz-fischer-parseval>)
-    $ norm(x)^2 = sum_(i = I) abs(chev(x, u_i))^2. $
-  + For any complex collection ${beta_i}_(i in I)$ such that $ sum_(i in I) abs(beta_i)^2 < oo, $
+    $ norm(x)^2 = sum_(i in I) abs(chev(x, u_i))^2. $
+  + Conversely, for any complex collection ${beta_i}_(i in I)$ such that $ sum_(i in I) abs(beta_i)^2 < oo, $
     then $exists! x in H$ such that $forall i in I$, $chev(x, u_i) = beta_i$. Then #enum-lbl(<itm:riesz-fischer-converse>)
     $ norm(x)^2 = sum_(i in I) abs(beta_i)^2, quad x = sum_(i in I) beta_i u_i $
 ] <thm:riesz-fischer>
@@ -128,11 +128,36 @@ It is actually simpler to first prove @itm:riesz-fischer-converse.
   $ norm(x)^2 = sum_(i in I) abs(chev(x, u_i))^2. qedhere $
 ]
 #example[
-  Let $ell^2 = {{a_j}_(j in NN) L : sum_(j = 1)^oo abs(a_j)^2 < oo}$ denote the set of all absolutely square-summable complex sequences. Then for $alpha = {a_j}_j$, $beta = {b_j}_j$, define
-  $ chev(alpha, beta) = sum_(j = 1)^oo a_j overline(b_j). $
-  Then $ell^2$ is a vector space and a Hilbert space with $chev(dot, dot)$.
+  Let $ell^2 = {{alpha_j}_(j in NN) L : sum_(j = 1)^oo abs(alpha_j)^2 < oo}$ denote the set of all square-summable complex sequences. Then for $alpha = {alpha_j}_j$, $beta = {beta_j}_j$, define
+  $ chev(alpha, beta) = sum_(j = 1)^oo alpha_j overline(beta_j). $
+  Then $ell^2$ is a vector space and a Hilbert space with the inner product $chev(alpha, beta)_(ell^2) = sum_(j=1)^oo alpha_j overline(beta_j)$ and associated norm $norm(dot)_(ell^2)$.
 ] <ex:l2-space-is-hilbert>
-We will not immediately state a full proof. There is indeed an elegant method that uses the Riesz--Fischer Theorem (@thm:riesz-fischer), under the assumption that there exists any Hilbert space $H$ with a countable complete orthonormal system, which we will first assume and justify later (in fact, there are many such spaces, such as the Bergman space $A^2 (Omega)$ and the Hardy space $H^2$).
+We will not immediately state a full proof. There is indeed an elegant method that uses the Riesz--Fischer Theorem (@thm:riesz-fischer), under the assumption that there exists any Hilbert space $H$ with an infinite countable complete orthonormal system, which we will first assume and justify later (in fact, there are many such spaces, such as the Bergman space $A^2 (Omega)$ and the Hardy space $H^2$).
 #proof[of @ex:l2-space-is-hilbert (with assumptions)][
-  Let $H$ be a Hilbert space with a countable complete orthonormal system. For any $alpha = {a_j}^(j in NN) in ell^2$,
+  The space $ell^2$ is trivially closed under scalar multiplication. To show additivity, or that
+  $ {alpha_j}_j + {beta_j}_j = {alpha_j + beta_j}_j in ell^2 $
+  holds, notice that
+  $
+    sum_(j = 1)^oo abs(alpha_j + beta_j)^2 <= 2 sum_(j = 1)^oo [abs(alpha_j)^2 + abs(beta_j)^2] #tag[(by @thm:parallelogram-law)]
+  $
+  Observe that the product is well defined by the Cauchy--Schwarz Inequality:
+  $
+    limsup_(N -> oo) abs(sum_(j=1)^N alpha_j overline(beta_j)) &<= limsup_(N -> oo) sum_(j=1)^N abs(alpha_j overline(beta_j)) \
+    &<= limsup_(N -> oo) sqrt(sum_(j=1)^N abs(alpha_j)^2) sqrt(sum_(j = 1)^N abs(beta_j)^2) = norm(alpha) norm(beta),
+  $
+  and convergence follows from the Monotone Convergence Theorem. The verification of the other properties is rather simple. Observe that the associated norm is
+  $ norm(alpha)_(ell^2) = sqrt(sum_(j = 1)^oo abs(alpha_j)^2). $
+  Let (using the assumption) $H$ be a Hilbert space (with $chev(dot, dot)_H$, $norm(dot)_H$) with an infinite countable complete orthonormal system ${u_j}_(j in NN)$. For any $alpha = {alpha_j}_(j in NN) in ell^2$, by the Riesz--Fischer Theorem (@thm:riesz-fischer), there is a single $x in H$ such that
+  $ x = sum_j alpha_j u_j, quad "and" quad chev(x, u_j)_H = alpha_j quad forall j in NN. $
+  Then the map
+  $ phi : ell^2 -> H quad "given by" quad phi: alpha |-> sum_j alpha_j u_j $
+  is a bijection: the inverse is given by
+  $ phi^(-1): x |-> {chev(x, u_j)_H}_(j in NN). $
+  The vector structure of $H$ is preserved under $phi$. Moreover, $phi$ is trivially additive and homogeneous, thus linear.
+
+  Therefore, it remains to show that the space $ell^2$ is complete under the associated norm. Observe that $phi$ is an isometry (norm-preserving) since
+  $ norm(x)^2 = sum_(j = 1)^oo abs(chev(x, u_j)_H)^2 = norm({chev(x, u_j)_H}_(j in NN))^2 $
+  by Riesz--Fischer (@thm:riesz-fischer).
+
+  Therefore, since any Cauchy sequence ${alpha_n}_n$ in $ell^2$ gives a Cauchy sequence ${phi(alpha_n)}_n subset.eq H$ with a single accumulation point $x in H$; from $norm(phi(alpha_n) - x)_H < epsilon$ ($n > N$ for some $N$), we obtain $norm(phi^(-1)(phi(alpha_n) - x)) = norm(alpha_n - phi^(-1)(x)) < epsilon$. Therefore, ${alpha_n}_n$ converges to $phi^(-1)(x)$, and thus $ell^2$ is complete.
 ]
