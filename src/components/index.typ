@@ -2,6 +2,7 @@
 #import "packages.typ" as _packages
 #import "graphics.typ": *
 #import "styles.typ": document-styles, explicit-label
+#import "references.typ": explicit-ref, eref, explicit-ref-target, etarget
 #import "theorems.typ" as _thm
 #import "web.typ" as _web
 #import "math.typ": *

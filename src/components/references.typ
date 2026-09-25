@@ -11,6 +11,34 @@
 
 #let reference-pass-through = metadata("reference-pass-through")
 #let reference-html-indicator = metadata("reference-html-indicator")
+#let reference-explicit-text = metadata("reference-explicit-text")
+#let explicit-ref-target-type = "typst-explicit-ref-target"
+
+/// Link `body` to `target` while retaining the usual cross-output reference
+/// links, HTML preview tooltip, and paged HTML indicator.
+///
+/// ```typ
+/// #explicit-ref(<eq:example>)[by ($ast$)]
+/// ```
+#let explicit-ref(..args) = {
+  let args = args.pos()
+  assert(args.len() == 2, message: "explicit-ref-target requires a body argument and a label (in any order)")
+  let target
+  let body
+  if (type(args.first()) == label) {
+    target = args.first()
+    body = args.last()
+  } else if (type(args.last()) == label) {
+    target = args.last()
+    body = args.first()
+  } else { panic("one of the arguments must be a label type. To turn a string into a label, call the label function.") }
+  assert(type(target) == label, message: "explicit-ref target must be a label")
+  set bibliography(title: reference-explicit-text)
+  ref(target, supplement: body)
+}
+
+/// Shorthand for `explicit-ref`.
+#let eref = explicit-ref
 
 #let explicit-label(..args, prefix: "") = {
   let args = args.pos()
@@ -46,6 +74,36 @@
     })
   }
 }
+
+/// Give `body` a reference target without labeling a labelable element in the
+/// body itself. This is useful for equations with a manual tag that should not
+/// receive the project's automatic equation number.
+///
+/// ```typ
+/// #explicit-ref-target(<eq:example>)[
+///   $ a = b #tag[$(*)$] $
+/// ]
+/// ```
+#let explicit-ref-target(..args) = {
+  let args = args.pos()
+  assert(args.len() == 2, message: "explicit-ref-target requires a body argument and a label (in any order)")
+  let target
+  let body
+  if (type(args.first()) == label) {
+    target = args.first()
+    body = args.last()
+  } else if (type(args.last()) == label) {
+    target = args.last()
+    body = args.first()
+  } else { panic("one of the arguments must be a label type. To turn a string into a label, call the label function.") }
+  [
+    #explicit-label(metadata((type: explicit-ref-target-type)), target)
+    #body
+  ]
+}
+
+/// Shorthand for `explicit-ref-target`.
+#let etarget = explicit-ref-target
 
 #let _tagged-ref(target, tag: reference-pass-through, supplement: auto, form: "normal") = {
   set bibliography(title: tag)
@@ -117,6 +175,10 @@
 and type(target.value) == dictionary
 and target.value.at("type", default: none) == "typst-enum-item-label"
 
+#let _explicit-ref-target(target) = target.func() == metadata
+and type(target.value) == dictionary
+and target.value.at("type", default: none) == explicit-ref-target-type
+
 #let _format-reference(reference, target) = {
   if target == none {
     none
@@ -126,6 +188,8 @@ and target.value.at("type", default: none) == "typst-enum-item-label"
     theorem-reference(reference, target)
   } else if _enum-label(target) {
     link(target.location(), [Part~#numbering("1.1", ..counter("typst-enum").at(target.location()))])
+  } else if _explicit-ref-target(target) {
+    link(target.location(), [Reference])
   } else {
     none
   }
@@ -145,6 +209,18 @@ and target.value.at("type", default: none) == "typst-enum-item-label"
   ),
 )
 
+#let _decorate-reference(visible, route, mode) = {
+  if route == none {
+    visible
+  } else if mode == "web" {
+    visible + _reference-link-list(route.links, preview-only: html-only)
+  } else if route.html != none {
+    paged-link-with-html-indicator(visible, route.html)
+  } else {
+    visible
+  }
+}
+
 #let show-reference(reference, mode) = context {
   if bibliography.title == reference-pass-through {
     let formatted = _format-reference(reference, reference.element)
@@ -163,6 +239,23 @@ and target.value.at("type", default: none) == "typst-enum-item-label"
     return link(reference.element.location(), $dagger.triple$ * 3)
   }
 
+  if bibliography.title == reference-explicit-text {
+    let route = _reference-route(reference, mode)
+    let destination = if route != none and route.local != none {
+      route.local
+    } else if reference.element != none {
+      reference.element.location()
+    } else {
+      none
+    }
+    let visible = if destination == none {
+      reference
+    } else {
+      link(destination, reference.supplement)
+    }
+    return _decorate-reference(visible, route, mode)
+  }
+
   let route = _reference-route(reference, mode)
   let target = reference.element
   let formatted = _format-reference(reference, target)
@@ -174,14 +267,5 @@ and target.value.at("type", default: none) == "typst-enum-item-label"
     reference
   }
 
-  if route == none {
-    return visible
-  }
-  if mode == "web" {
-    visible + _reference-link-list(route.links, preview-only: html-only)
-  } else if route.html != none {
-    paged-link-with-html-indicator(visible, route.html)
-  } else {
-    visible
-  }
+  _decorate-reference(visible, route, mode)
 }

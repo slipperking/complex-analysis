@@ -15,12 +15,19 @@ $ phi.alt : f (in berg) |-> f(z_0) (in CC) $
 is a linear functional on $berg$: it very clearly satisfies linearity. Then by the Riesz Representation Theorem (@thm:riesz-representation), there as a unique $k_(z_0) in berg$, dependent on $z_0$ but not $f in berg$, such that
 $ f(z_0) = phi.alt(f) = chev(f, k_(z_0)). #tag[(for all $f in berg$)] $
 Then
-$
-  f(z_0) = integral.double_Omega f(zeta) overline(k_(z_0)) (zeta) dif xi dif eta.
-$
-#definition[Bergman Kernel][
-  Let $Omega$ be an open region, define the _Bergman kernel_ to be a complex function $K(z, w)$ of two variables in $berg$, given by $K(z, w) = overline(k_z (w))$, where $k_z (w)$ is the unique Riesz representer for the linear functional $f mapsto f(z)$
+#etarget(<eq:bergman-integral-formula>)[
+  $
+    f(z_0) = integral.double_Omega f(zeta) overline(k_(z_0)) (zeta) dif xi dif eta. #tag[(#sym.ast.op)]
+  $
 ]
-#theorem[Conjugate-symmetry of $K(z, w)$][
+#let berg-t = eref(<eq:bergman-integral-formula>)[#math-markup[(#sym.ast.op)]]
+#definition[Bergman Kernel][
+  Let $Omega$ be an open region, define the _Bergman kernel_ to be a complex function $K_Omega (z, w)$ of two variables in $berg$, given by $K_Omega (z, w) = overline(k_z (w))$, where $k_z (w)$ is the unique Riesz representer for the linear functional $f mapsto f(z)$
+]
+#theorem[Conjugate-symmetry of the Bergman Kernel][
   For any $z, w in Omega$,
+  $ K_Omega (z, w) = overline(K_Omega (w, z)). $
+]
+#proof[
+  By the integral representation in #berg-t,
 ]

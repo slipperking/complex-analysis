@@ -26,6 +26,8 @@
   reset-heading-scoped-counters()
 }
 
+#let math-markup(x) = math.equation([#x])
+
 #let vb(x) = Vb(math.upright(x))
 #let vu(x) = Vu(vb(x))
 #let va(x) = Va(vb(x))

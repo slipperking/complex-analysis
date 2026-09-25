@@ -189,6 +189,9 @@ The limit expression of @eq:ahlfors-shimizu-derivation-convergent-integral is wr
   <thm:nevanlinna-first-fundamental-theorem-ahlfors-shimizu>,
 )
 
+#let a-ref = eref(<eq:ahlfors-shimizu-characteristic-invariance>)[#math-markup[(a)]]
+#let b-ref = eref(<eq:ahlfors-shimizu-counting-invariance>)[#math-markup[(b)]]
+#let c-ref = eref(<eq:ahlfors-shimizu-proximity-invariance>)[#math-markup[(c)]]
 #proof[
   For $a != oo$, consider the Möbius transformation $W=(1 + overline(a) w) / (w - a)$, where $w = f(z)$, and denote the function $W = F(z)$. Then
   $
@@ -200,9 +203,17 @@ The limit expression of @eq:ahlfors-shimizu-derivation-convergent-integral is wr
   $
   In other words, $f^sharp equiv F^sharp$ (where $f^sharp = (2 abs(f')) / (1 + abs(f)^2)$ is the spherical derivative as in @def:sphericalderivative), implying that
   $ A(r,f) = 1/(4 uppi) integral.double_(D(0,r)) f^sharp (z)^2 dif A = 1/(4 uppi) integral.double_(D(0,r)) F^sharp (z)^2 dif A = A(r,F), $ and consequently,
-  $ T_0(r,f) = integral_0^r A(t,f) / t dt = integral_0^r A(t,F) / t dt = T_0(r,F).#tag[(a)] $
+  #etarget(
+    $
+      T_0(r,f) = integral_0^r A(t,f) / t dt = integral_0^r A(t,F) / t dt = T_0(r,F).#tag[(a)]
+    $,
+    <eq:ahlfors-shimizu-characteristic-invariance>,
+  )
   If $z$ is a solution to $f(z) = a$ of order $k$, then $1+ overline(a)w = 1+ abs(a)^2 >= 1$. Then $W = F(z)$ has a pole of order $k$. Thus,
-  $ N(r,F) equiv N(r,a,f).#tag[(b)] $
+  #etarget(
+    $ N(r,F) equiv N(r,a,f).#tag[(b)] $,
+    <eq:ahlfors-shimizu-counting-invariance>,
+  )
   From ($dagger$), since $k(w,a) = (2 abs(w-a)) / sqrt((1+abs(w)^2)(1+abs(a)^2))$,
   $
     f^sharp (z) = F^sharp (z) = k(w,a)^2 (abs(a)^2 + 1) / (2 abs(w-a)^2) = (abs(F'(z)) k(w,a)^2) / 2,
@@ -210,11 +221,14 @@ The limit expression of @eq:ahlfors-shimizu-derivation-convergent-integral is wr
   we arrive at
   $ k(w,a) = 2/sqrt(1+abs(W)^2) = k(W,oo). $
   Then,
-  $
-    m_0(r, a, f) & = integral_0^(2 uppi) log(1/k(f(r ee^(ii theta)), a)) dtheta \
-                 & = integral_0^(2 uppi) log(1/k(F(r ee^(ii theta)), oo)) dtheta = m_0(r, F).#tag[(c)]
-  $
-  Use (a), (b), and (c), and apply @thm:nevanlinna-first-fundamental-theorem-ahlfors-shimizu-simple-case to $F$.
+  #etarget(
+    $
+      m_0(r, a, f) & = integral_0^(2 uppi) log(1/k(f(r ee^(ii theta)), a)) dtheta \
+                   & = integral_0^(2 uppi) log(1/k(F(r ee^(ii theta)), oo)) dtheta = m_0(r, F).#tag[(c)]
+    $,
+    <eq:ahlfors-shimizu-proximity-invariance>,
+  )
+  Use #a-ref, #b-ref, and #c-ref, and apply @thm:nevanlinna-first-fundamental-theorem-ahlfors-shimizu-simple-case to $F$.
   1. If $f(0) != a (!= oo)$, since $F(0) = (1 + overline(a) f(0)) / (f(0)-a)$ is finite,
     $
       T_0(r, F) & = N(r, F) + m_0(r, F) - m_0(0, F) \
@@ -308,7 +322,7 @@ or the area of the image of $f$ on the Riemann sphere, counted according to mult
 
 (Observe the similarity between the first integral of $(star.stroked)$ and the Lusin Area Theorem (@thm:lusin-area)!)
 
-This completes the geometric explanation for the invariances of (a), (b), and (c) in the proof of @thm:nevanlinna-first-fundamental-theorem-ahlfors-shimizu. The covered area and chordal distance are invariant under rotations of $S$. In particular, we rotate the spherical point of $a$ to the north pole $(0, 0, 1)$ corresponding to $oo$.
+This completes the geometric explanation for the invariances of #a-ref, #b-ref, and #c-ref in the proof of @thm:nevanlinna-first-fundamental-theorem-ahlfors-shimizu. The covered area and chordal distance are invariant under rotations of $S$. In particular, we rotate the spherical point of $a$ to the north pole $(0, 0, 1)$ corresponding to $oo$.
 
 #remark[
   It is noteworthy that the original Ahlfors--Shimizu formulation uses the Riemann sphere centered at $(0,0, 1\/ 2)$ with diameter $1$, which yields a slightly different proximity function (without the $\/2$ factor) and spherical derivative (without the factor of 2). (Note that the characteristic _does not change_ as the amount a function covers the extended plane (or either sphere) is independent on the size of this sphere).
