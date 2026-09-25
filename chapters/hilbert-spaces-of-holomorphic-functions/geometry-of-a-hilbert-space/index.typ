@@ -116,7 +116,7 @@ It is often convenient in analysis to take limits, and thus in most cases we are
   is a Hilbert space, and the metric derived from the associated norm provides the standard sense of Euclidean distance:
   $ norm(vb(v) - vb(w)) = sqrt(sum_(k=1)^n abs(v_k - w_k)^2). $
 ]
-#example[Bergman Space][
+#example(restate: true, restate-keys: "ex:bergman-space")[Bergman Space][
   Let $Omega subset.eq CC$ be an open region. Let $ A^2 (Omega) = {f "holomorphic on" Omega : integral.double_Omega abs(f(z))^2 dx dy < oo}. $
   Then $A^2(Omega)$ is a vector space over $CC$ with the standard definition of addition and scalar multiplication. Then the inner product defined by
   $

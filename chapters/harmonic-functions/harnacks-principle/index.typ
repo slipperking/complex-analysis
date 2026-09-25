@@ -47,7 +47,8 @@ First we provide a result that in many ways resembles @thm:weierstrass-convergen
   By the Poisson Integral Formula (@eq:poisson-integral-formula), we have that
   $
     u(z) &= 1 / (2 uppi) integral_0^(2 uppi) u(R ee^(ii t)) (R^2 - abs(z)^2) / abs(R ee^(ii t) - z)^2 dt \
-    &<= 1 / (2 uppi) integral_0^(2 uppi) u(R ee^(ii t)) ((R + abs(z)) (R - abs(z))) / abs(R - abs(z))^2 dt #tag[(reverse triangle inequality)] \
+    & wide #[(reverse triangle inequality)]
+    &<= 1 / (2 uppi) integral_0^(2 uppi) u(R ee^(ii t)) ((R + abs(z)) (R - abs(z))) / abs(R - abs(z))^2 dt \
     &<= (R + abs(z)) / (R - abs(z)) 1 / (2 uppi) integral_0^(2 uppi) u(R ee^(ii t)) dt \
     &= (R + abs(z)) / (R - abs(z)) u(0). #tag[(global mean-value property)]
   $
