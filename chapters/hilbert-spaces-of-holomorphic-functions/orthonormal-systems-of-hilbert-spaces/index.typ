@@ -194,3 +194,4 @@ We will not immediately state a full proof. In proving completeness, one could o
   ]
 ]
 (Then one could use this space in @ex:l2-space-is-hilbert.)
+// subspace having complete system stuff

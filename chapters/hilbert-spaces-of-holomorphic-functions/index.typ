@@ -5,5 +5,6 @@
   children: [
     #include "geometry-of-a-hilbert-space/index.typ"
     #include "orthonormal-systems-of-hilbert-spaces/index.typ"
+    #include "bergman-kernel/index.typ"
   ],
 )
