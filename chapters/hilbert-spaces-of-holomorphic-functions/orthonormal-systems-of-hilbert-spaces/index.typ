@@ -132,7 +132,7 @@ It is actually simpler to first prove @itm:riesz-fischer-converse.
   $ chev(alpha, beta) = sum_(j = 1)^oo alpha_j overline(beta_j). $
   Then $ell^2$ is a vector space and a Hilbert space with the inner product $chev(alpha, beta)_(ell^2) = sum_(j=1)^oo alpha_j overline(beta_j)$ and associated norm $norm(dot)_(ell^2)$.
 ] <ex:l2-space-is-hilbert>
-We will not immediately state a full proof. There is indeed an elegant method that uses the Riesz--Fischer Theorem (@thm:riesz-fischer), under the assumption that there exists any Hilbert space $H$ with an infinite countable complete orthonormal system, which we will first assume and justify later (in fact, there are many such spaces, such as the Bergman space $A^2 (DD)$ and the Hardy space $H^2$).
+We will not immediately state a full proof. In proving completeness, one could obviously write out the Cauchy sequences and prove that they converge. However, there is indeed an elegant method that uses the Riesz--Fischer Theorem (@thm:riesz-fischer), under the assumption that there exists any Hilbert space $H$ with an infinite countable complete orthonormal system, which we will first assume and justify later (in fact, there are many such spaces, such as the Bergman space $A^2 (DD)$ and the Hardy space $H^2$).
 #proof[of @ex:l2-space-is-hilbert (with assumptions)][
   The space $ell^2$ is trivially closed under scalar multiplication. To show additivity, or that
   $ {alpha_j}_j + {beta_j}_j = {alpha_j + beta_j}_j in ell^2 $
@@ -167,21 +167,30 @@ We will not immediately state a full proof. There is indeed an elegant method th
     Let $berg$ be the Bergman space on $DD$. With
     $ chev(f, g) = integral.double_DD f(z) overline(g(z)) dx dy, $
     $berg$ is a Hilbert space by @ex:hilbert-space-bergman-space. Then show that
-    ${z |-> sqrt(j + 1) / sqrt(uppi) z_j}_(j in 0)^oo$ is a countable complete orthonormal system for $berg$.
+    ${z |-> sqrt(j + 1) / sqrt(uppi) z^j}_(j in 0)^oo$ is a countable complete orthonormal system for $berg$.
   ] <ex:bergman-space-orthonormal-system>
   #solution[to @ex:bergman-space-orthonormal-system][
     For any $j$, $z mapsto z^j in berg$, so
     $
-      oo > norm(z mapsto z^j) & = sqrt(integral.double_DD abs(z)^(2 j) dx dy) \
-                              & = sqrt(integral_0^1 integral_(-uppi)^uppi r^(2 j) r dtheta dr) \
-                              & = sqrt(2 uppi evaluated(r^(2 j + 2) / (2 j + 2))_0^1) = sqrt(uppi / (j + 1)).
+      oo > norm(z mapsto z^j) & = sqrt(integral.double_DD abs(z)^(2 j) dx dy) = sqrt(integral_0^1 integral_(-uppi)^uppi r^(2 j) r dtheta dr) \
+      & = sqrt(2 uppi evaluated(r^(2 j + 2) / (2 j + 2))_0^1) = sqrt(uppi / (j + 1)).
     $
     Moreover, for $j != k$,
     $
       chev(z mapsto z^j, z mapsto z^k) &= integral.double_DD z^j overline(z)^k dx dy = integral_0^1 integral_(-uppi)^uppi r^j ee^(ii j theta) r^k ee^(-ii k theta) r dtheta dr \
       & = integral_0^1 r^(j + k + 1) dr integral_(-uppi)^uppi ee^(ii theta (j - k)) dtheta = 0.
     $
-    Therefore, the set ${z |-> sqrt(j + 1) / sqrt(uppi) z_j}_(j in 0)^oo$ satisfies the orthogonality condition, and $ chev(z |-> sqrt(j + 1) / sqrt(uppi) z_j, z |-> sqrt(j + 1) / sqrt(uppi) z_j) = 1 quad forall j in ZZ_(>= 0). $
-    Therefore it is an orthonormal system. Moreover, completeness follows naturally, because if there exists $f in A^2 (DD)$ such that $f perp z |-> sqrt(j + 1) / sqrt(uppi) z_j)$ for each $j$.
+    Therefore, the set ${z |-> sqrt(j + 1) / sqrt(uppi) z^j}_(j in 0)^oo$ satisfies the orthogonality condition, and $ chev(z |-> sqrt(j + 1) / sqrt(uppi) z^j, z |-> sqrt(j + 1) / sqrt(uppi) z^j) = 1 quad forall j in ZZ_(>= 0). $
+    Therefore it is an orthonormal system. Moreover, completeness follows naturally, because if there exists $f in A^2 (DD)$ such that $f perp z |-> sqrt(j + 1) / sqrt(uppi) z^j$ for each $j$, then writing $f(z) = sum_(n = 0)^oo a_n z^n$, we get
+    $
+      chev(f, z |-> sqrt(j + 1) / sqrt(uppi) z^j) &= 0 = integral.double_DD (sum_(n = 0)^oo a_n z^n) overline((sqrt(j + 1) / sqrt(uppi) z^j)) dx dy \
+      & = sqrt(j + 1) / sqrt(uppi) integral_0^1 integral_(-uppi)^uppi sum_(n = 0)^oo a_n r^(n + j + 1) ee^(ii (n - j) theta) dtheta dr \
+      & wide #[(uniform convergence in $theta$)] \
+      & = sqrt(j + 1) / sqrt(uppi) integral_0^1 sum_(n = 0)^oo integral_(-uppi)^uppi a_n r^(n + j + 1) ee^(ii (n - j) theta) dtheta dr \
+      &= sqrt(j + 1) / sqrt(uppi) integral_0^1 sum_(n = 0)^oo a_n r^(n + j + 1) cases(evaluated(ee^(ii (n - j) theta) / (ii (n - j)))_(-uppi)^uppi & "if" n != j, 2 uppi & "if" n = j) dr \
+      &= 2 sqrt(uppi(j + 1)) integral_0^1 a_j r^(2j + 1) dr = a_j sqrt(uppi / (j + 1)),
+    $
+    meaning that for each $j in ZZ_(>= 0)$, $a_j = 0$; then the only function orthogonal to every function in the system is the zero function.
   ]
 ]
+(Then one could use this space in @ex:l2-space-is-hilbert.)
