@@ -132,10 +132,11 @@ It is often convenient in analysis to take limits, and thus in most cases we are
                              & <= abs(f(z))^2 + abs(g(z))^2,
   $
   which provides the absolute convergence of @eq:hilbert-space-bergman-space-inner-product, and @itm:inner-product-nondegeneracy of @def:inner-product follows from the same logic as in @ex:inner-product-C-0-1-CC.
-  #claim[
-    For any $h in A^2(Omega)$, $w in Omega$, $exists r > 0$ such that $overline(D(z, r)) subset.double Omega$. For $0 < rho < r$, $ abs(h(z)) <= 1 / (r sqrt(uppi)) norm(h). $
-  ]
-  #proof[of the claim][
+  #proposition[
+    For any $h in A^2(Omega)$ and any $forall z in Omega$, then whenever $r > 0$ such that $overline(D(z, r)) subset.double Omega$,
+    $ abs(h(z)) <= 1 / (r sqrt(uppi)) norm(h). $
+  ] <prop:bergman-space-function-bounded-by-norm-in-compact-set>
+  #proof[of @prop:bergman-space-function-bounded-by-norm-in-compact-set][
     By the mean-value property,
     $ h(z) & = 1 / (2 uppi) integral_0^(2 uppi) h(z + rho ee^(ii theta)) dtheta. $
     Therefore,
@@ -152,9 +153,9 @@ It is often convenient in analysis to take limits, and thus in most cases we are
       & = 1 / (r sqrt(uppi)) norm(h). qedhere
     $
   ]
-  With the claim in mind, we now proceed to prove the completeness of the metric space.
+  With @prop:bergman-space-function-bounded-by-norm-in-compact-set in mind, we now proceed to prove the completeness of the metric space.
 
-  Let $K subset.double Omega$ be arbitrary and let ${f_n}_(n in NN) subset.eq A^2 (Omega)$ be any Cauchy sequence in the inner product space. Then there is a $r > 0$ such that $forall z in K$, $overline(D(z, r)) subset.double Omega$. Then $forall epsilon >0$, $exists N > 0$ such that $forall m, n > N$, $norm(f_n - f_m) < epsilon / (sqrt(uppi) r)$. By the claim applied to $h equiv f_n - f_m in A^2 (Omega)$,
+  Let $K subset.double Omega$ be arbitrary and let ${f_n}_(n in NN) subset.eq A^2 (Omega)$ be any Cauchy sequence in the inner product space. Then there is a $r > 0$ such that $forall z in K$, $overline(D(z, r)) subset.double Omega$. Then $forall epsilon >0$, $exists N > 0$ such that $forall m, n > N$, $norm(f_n - f_m) < epsilon / (sqrt(uppi) r)$. By @prop:bergman-space-function-bounded-by-norm-in-compact-set applied to $h equiv f_n - f_m in A^2 (Omega)$,
   $ sup_(z in K) abs(f_n (z) - f_m (z)) <= 1 / (r sqrt(uppi)) norm(f_n - f_m) < epsilon, $
   hence giving that ${f_n}$ uniformly converges in $K$. Since $K$ was arbitrary, ${f_n}$ locally uniformly converges in $Omega$, and converges by the Weierstrass Convergence Theorem (@thm:weierstrass-convergence) to a holomorphic function $f$ on $Omega$. It remains to show that $f in A^2 (Omega)$.
 
