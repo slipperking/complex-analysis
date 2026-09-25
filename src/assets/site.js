@@ -7,6 +7,7 @@
   var assetIcon = document.querySelector(".icon");
   var storedTheme = localStorage.getItem("theme") || "auto";
   var printThemeOverrideActive = false;
+  var proofPrintOverrideActive = false;
   var THEME_ICON_FILES = {
     light: "sun.svg",
     dark: "moon.svg",
@@ -493,7 +494,49 @@
     }
   }
 
+  function setupProofCollapsePersistence() {
+    var proofs = Array.from(document.querySelectorAll("details.thm-proof"));
+    if (proofs.length === 0) return;
+
+    var pagePath = window.location.pathname.replace(/\/index\.html$/, "/");
+    var storageKey = "proofOpen:" + pagePath;
+    var savedState = null;
+
+    try {
+      savedState = sessionStorage.getItem(storageKey);
+    } catch (_error) {
+      // The native details controls still work when storage is unavailable.
+    }
+
+    if (savedState !== null) {
+      proofs.forEach(function (details, index) {
+        var savedOpen = savedState.charAt(index);
+        if (savedOpen === "0" || savedOpen === "1") {
+          details.open = savedOpen === "1";
+        }
+      });
+    }
+
+    function saveProofStates() {
+      if (proofPrintOverrideActive) return;
+      var state = proofs.map(function (details) {
+        return details.open ? "1" : "0";
+      }).join("");
+
+      try {
+        sessionStorage.setItem(storageKey, state);
+      } catch (_error) {
+        // Keep proof toggles usable even when storage is unavailable.
+      }
+    }
+
+    proofs.forEach(function (details) {
+      details.addEventListener("toggle", saveProofStates);
+    });
+  }
+
   function expandProofsForPrint() {
+    proofPrintOverrideActive = true;
     document.querySelectorAll("details.thm-proof").forEach(function (details) {
       details.dataset.printWasOpen = details.open ? "true" : "false";
       details.open = true;
@@ -506,6 +549,9 @@
       details.open = wasOpen;
       delete details.dataset.printWasOpen;
     });
+    setTimeout(function () {
+      proofPrintOverrideActive = false;
+    }, 0);
   }
 
   function applyPrintThemeOverride() {
@@ -1292,6 +1338,7 @@
   setupMathLinkNavigation();
   setupPrintButton();
   setupSidebarScroll();
+  setupProofCollapsePersistence();
   addEventListener("beforeprint", expandProofsForPrint);
   addEventListener("afterprint", restoreProofsAfterPrint);
   addEventListener("beforeprint", applyPrintThemeOverride);
