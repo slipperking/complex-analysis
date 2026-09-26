@@ -18,14 +18,14 @@ Then
 $
   f(z_0) = integral.double_Omega f(zeta) overline(k_(z_0) (zeta)) dif xi dif eta. #tag[(where $zeta = xi + ii eta$)]
 $
-#let berg-t = eref(<eq:bergman-integral-formula>)[#math-markup[(#sym.ast.op)]]
+#let berg-t = math-markup(eref(<eq:bergman-integral-formula>)[(#sym.ast.op)])
 #definition[Bergman Kernel][
   Let $Omega$ be an open region, define the _Bergman kernel_ to be a complex function $K_Omega (z, w)$ of two variables in $berg$, given by $K_Omega (z, w) = overline(k_z (w))$, where $k_z (w)$ is the unique Riesz representer for the linear functional $f mapsto f(z)$.
 ]
 Then the previous equation is simply
 #etarget(<eq:bergman-integral-formula>)[
   $
-    f(z_0) = integral.double_Omega f(zeta) K_Omega (z_0, zeta) dif xi dif eta. #tag[(#sym.ast.op)]
+    f(z_0) = integral.double_Omega f(zeta) K_Omega (z_0, zeta) dif xi dif eta. #tag[#math-markup(link-wrap: true)[(#sym.ast.op)]]
   $
 ]
 #theorem[Conjugate-symmetry of the Bergman Kernel][
@@ -54,4 +54,14 @@ Moreover, certain properties of the Bergman kernel that we have discussed previo
     f(z) = integral.double_Omega f(zeta) tilde(K)(z, zeta) dif xi dif eta,
   $
   then $tilde(K) equiv K_Omega$ on $Omega^2$.
+] <thm:bergman-kernel-property-uniqueness>
+#proof[
+  Let $f$ be the Bergman kernel $zeta mapsto K_Omega (zeta, w)$ (holomorphic in the left argument by @cor:bergman-kernel-left-holomorphy). Then $forall z, w in Omega$,
+  $
+    K_Omega (z, w) & = integral.double_Omega K_Omega (zeta, w) tilde(K)(z, zeta) dif xi dif eta \
+    & = overline(integral.double_Omega overline(tilde(K)(z, zeta)) K_Omega (w, zeta) dif xi dif eta) #tag[(by @thm:bergman-kernel-conjugate-symmetry)]\
+    & = overline(tilde(K)(z, w)),
+  $
+  where the last step uses #berg-t and the holomorphy of $tilde(K)$ in the second argument. Therefore, $overline(K_Omega (w, z)) = overline(tilde(K)(z, w)) ==> K_Omega equiv tilde(K)$ on $Omega^2$.
 ]
+Therefore, in the search of a Bergman kernel for a specified domain, if one can construct a function satisfying the properties outlined in @thm:bergman-kernel-property-uniqueness, then one can ascertain that it is the Bergman kernel.

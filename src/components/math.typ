@@ -26,7 +26,11 @@
   reset-heading-scoped-counters()
 }
 
-#let math-markup(x) = math.equation([#x])
+#let math-markup(x, link-wrap: false) = context {
+  if link-wrap and state("render-mode").get() == "web" {
+    link(here(), math.equation([#x]))
+  } else { math.equation([#x]) }
+}
 
 #let vb(x) = Vb(math.upright(x))
 #let vu(x) = Vu(vb(x))
