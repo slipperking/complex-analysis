@@ -144,7 +144,7 @@ It is actually simpler to first prove @itm:riesz-fischer-converse.
   Therefore, there exists a (finite) linear combination of orthonormal vectors in ${u_i}$ lying in any open ball centered at $x$ (by the arbitrariness of $epsilon$).
 ]
 #remark[
-  The necessity of using closure or density comes from the observation that $span$ appertains only to finite linear combinations, whereas in most cases we need a colloquial sense of "countably infinite linear combinations."
+  The necessity of using closure or density comes from the observation that $span$ appertains only to finite linear combinations, whereas in most cases we need a complete description of "countably infinite linear combinations."
 ]
 #example[
   Let $ell^2 = {{alpha_j}_(j in NN) L : sum_(j = 1)^oo abs(alpha_j)^2 < oo}$ denote the set of all square-summable complex sequences. Then for $alpha = {alpha_j}_j$, $beta = {beta_j}_j$, define
@@ -214,7 +214,7 @@ We will not immediately state a full proof. In proving completeness, one could o
 ]
 (Then one could use this space in @ex:l2-space-is-hilbert.)
 
-We then conclude with the following technical result. (We conclude with the following technical result. The proof does use Zorn's lemma to obtain a maximal orthonormal set, so its format requires standard axiomatic set-theoretic concepts. However, due to countability, we do not require the Axiom of Choice; a fully constructive proof can be given using only countable methods.)
+We then conclude with the following technical result. (The proof does use Zorn's lemma to obtain a maximal orthonormal set, so its format requires standard axiomatic set-theoretic concepts. However, due to countability, we do not require the Axiom of Choice; a fully constructive proof can be given using only countable methods.)
 
 To begin, we begin with the following definition:
 #definition[Separability][
