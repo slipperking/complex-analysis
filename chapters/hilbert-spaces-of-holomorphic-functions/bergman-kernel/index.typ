@@ -65,3 +65,9 @@ Moreover, certain properties of the Bergman kernel that we have discussed previo
   where the last step uses #berg-t and the holomorphy of $tilde(K)$ in the second argument. Therefore, $overline(K_Omega (w, z)) = overline(tilde(K)(z, w)) ==> K_Omega equiv tilde(K)$ on $Omega^2$.
 ]
 Therefore, in the search of a Bergman kernel for a specified domain, if one can construct a function satisfying the properties outlined in @thm:bergman-kernel-property-uniqueness, then one can ascertain that it is the Bergman kernel.
+#theorem[
+  Let $A^2(Omega)$ be the Bergman space of square-integrable functions on any open region $Omega subset.eq CC$. Then $A^2(Omega)$ has a complete countable orthonormal system.
+]
+#proof[
+  (A reader who has learned measure theory could note: since $L^2(Omega)$ is separable)
+]

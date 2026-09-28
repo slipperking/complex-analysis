@@ -213,17 +213,29 @@ We will not immediately state a full proof. In proving completeness, one could o
   ]
 ]
 (Then one could use this space in @ex:l2-space-is-hilbert.)
-
-We then conclude with the following technical result. (The proof does use Zorn's lemma to obtain a maximal orthonormal set, so its format requires standard axiomatic set-theoretic concepts. However, due to countability, we do not require the Axiom of Choice; a fully constructive proof can be given using only countable methods.)
-
-To begin, we begin with the following definition:
 #definition[Separability][
   A metric space $(X, d)$ is said to be _separable_ iff it has a countable dense subset.
 ]
+We then conclude with the following technical result. (The proof does use Zorn's lemma to obtain a maximal orthonormal set, so its format requires standard axiomatic set-theoretic concepts. However, due to countability, we do not require the Axiom of Choice; a fully constructive proof can be given using only countable methods.)
 #theorem[
-  Let $H$ be a Hilbert space and let $K subset.eq H$ be a Hilbert subspace. If $H$ has a complete orthonormal system, then so does $K$.
-]
+  Let $H$ be a Hilbert space and let $K subset.eq H$ be a Hilbert subspace. If $H$ has a countable complete orthonormal system, then so does $K$.
+] <thm:hilbert-subspace-of-space-with-countable-complete-orthonormal-system>
 #proof[
   //
-  Firstly, any Hilbert space is separable: letting ${u_j}_(j in NN_(<= K))$ ($K in NN union {oo}$) be the complete orthonormal system, the subset ${alpha u_j : alpha in QQ, j in NN_(<= K)}$ is countable (as the maximum possible cardinality $NN^2$ is countable).
+  Firstly, any Hilbert space is separable: letting ${u_j}_(j in NN_(< K))$ ($K in NN union {oo}$) be the complete orthonormal system, the subset
+  $ {sum_(j = 1)^k alpha_j u_j : j in NN_(<= k), alpha_j in QQ, k in NN_(< K)}, $
+  whose cardinality does not exceed that of $NN^2 times QQ$, is a countable set.
+
+  Moreover, we can show that it is dense in $H$: $forall x in H$, we know from the proof Riesz--Fischer (@thm:riesz-fischer) that it can be written as
+  $ x = sum_(j in NN_(< K)) beta_j u_j, wide (beta_j = chev(x, u_j)), $
+  which may be approximated with an error under $epsilon / 2$ by
+  $sum_(j = 1)^k beta_j u_j$. By the density of rationals, each $beta_j$ may be approximated by some $alpha_j$, such that $Re alpha_j, Im alpha_j in QQ$, such that $abs(alpha_j - beta_j) < epsilon / (2 k).$ Then
+  $
+    abs(x - sum_(j=1)^k alpha_j u_j) <= abs(x - sum_(j=1)^k beta_j u_j) + abs(sum_(j=1)^k (beta - alpha_j) u_j) < epsilon.
+  $
+  Since $sum_(j=1)^k alpha_j u_j$ lies in the relevant subset, the density follows from the arbitrariness of $epsilon$.
+
+  Hence $H$ is separable.
+
+  Now letting
 ]
