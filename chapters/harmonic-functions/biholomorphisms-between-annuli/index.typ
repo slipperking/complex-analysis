@@ -593,9 +593,16 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
 
   Moreover, one can further obtain:
 
-  + If both components of $extcomplex without U$ are nondegenerate, then $U$ is biholomorphic to a unique annulus ${1 < abs(z) < R}$ with $R > 1$.
-  + If exactly one complementary component is a single point, then $U$ is biholomorphic to the punctured disk $DD^*$; equivalently, after inversion, this is the case $R = oo$.
-  + If both complementary components are single points, then $U$ is biholomorphic to $CC^*$.
+  + If both components of $extcomplex without U$ are nondegenerate, then $U$ is biholomorphic to a unique annulus ${1 < abs(z) < R}$ with $R > 1$. (In this case one would use an exhaustion method as we did in the proof of the simply connected Riemann Mapping Theorem within this section)
+  + If exactly one complementary component is a single point, then $U$ is biholomorphic to the punctured disk $DD^*$; equivalently, after inversion, this essentially gives $R = oo$.
+
+    #proof[
+      Letting the relevant point be $z_0$, we find that $U union {z_0}$ is a simply connected nonempty region $V subset.neq CC$. Then by the Riemann Mapping Theorem (@thm:riemann-mapping) provides a biholomorphism $phi$ between $V$ and $DD$ such that $phi(z_0) = 0$, then restricting $phi$ to $U$ completes this assertion.
+    ]
+  + If both complementary components are single points (one of which being $oo$), then $U$ is biholomorphic to $CC^*$.
+    #proof[
+      The region is in the form of $CC without {z_0}$. Then simply take $phi:z -> z - z_0$ to be the biholomorphism.
+    ]
 
   For a region $U$ satisfying the first case, define $mod U = mod A = 1 / (2 uppi) log R$, where $A$ is the unique normalized annular region with inner radius $1$ and outer radius $R$ such that a biholomorphism exists mapping $A$ to $U$. Thus, this ratio is not only a classification of annuli but also nondegenerate doubly connected regions.
 ]

@@ -55,6 +55,9 @@ The verification of the necessary properties is trivial.
   $ integral_0^1 abs(f(x))^2 dx >= integral_(x'-delta)^(x'+delta) abs(f(x))^2 dx > delta abs(f(x'))^2 > 0, $
   which is impossible; thus $f equiv 0$ forcibly.
 ]
+#todo[
+  Define isometry, and give an example (need to figure out Gram Schmidt first) giving an isometric isomorphism between a finite-dim vector space and the Euclidean space.
+]
 #definition[Associated Norm][
   If $V$ is a vector space and $chev(dot, dot)$ is a nondegenerate positive-definite Hermitian inner product on $V$, then the _associated norm_ of some $v in V$ is given by $ norm(v) = sqrt(chev(v, v)). $
 ]
