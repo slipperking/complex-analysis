@@ -14,7 +14,7 @@ We first aim to provide a generalization of bases which will serve useful in gen
 ]
 The definition of completeness is intuitive: it means that there is no other nonzero vector that can be appended to the system while maintaining the orthogonality condition.
 
-The orthonormal then generalizes the concept of a "basis" for finite-dimensional vector spaces. Firstly, we give the following result:
+The orthonormal then generalizes the concept of a "basis" for finite-dimensional vector spaces. This will be made explicit in #todo().
 #theorem[
   Let ${u_k}_(k=1)^n$ be a finite orthonormal system in a Hilbert space $H$. Let $U$ be the span of the system. The distance between a vector $x in H$ and $U$, $inf_(v in U) norm(x - v)$, is given by
   $ norm(x - u) = sqrt(norm(x)^2 - sum_(k=1)^n abs(chev(x, u_k))^2) $
@@ -84,7 +84,8 @@ Then we may provide the following generalization of the Parseval's Theorem from 
 #theorem[Riesz--Fischer][
   Let $H$ be a Hilbert space and let ${u_i}_(i in I)$ be a complete orthonormal system. Then:
   1. For any $x in H$, #enum-lbl(<itm:riesz-fischer-parseval>)
-    $ norm(x)^2 = sum_(i in I) abs(chev(x, u_i))^2. $
+    $ norm(x)^2 = sum_(i in I) abs(chev(x, u_i))^2, $
+    and $ x = sum_(i in I) chev(x, u_i) u_i. $
   + Conversely, for any complex collection ${beta_i}_(i in I)$ such that $ sum_(i in I) abs(beta_i)^2 < oo, $
     then $exists! x in H$ such that $forall i in I$, $chev(x, u_i) = beta_i$. Then #enum-lbl(<itm:riesz-fischer-converse>)
     $ norm(x)^2 = sum_(i in I) abs(beta_i)^2, quad x = sum_(i in I) beta_i u_i $
@@ -126,6 +127,24 @@ It is actually simpler to first prove @itm:riesz-fischer-converse.
   $ norm(tilde(x))^2 = sum_(i in I) abs(chev(x, u_i))^2. $ <eq:riesz-fischer-parseval-tilde-x>
   @eq:riesz-fischer-parseval-product-equivalences gives that for each $i in I$, $chev(x - tilde(x), u_i) = 0$. Then $x - tilde(x)$ is orthogonal to all vectors in a complete orthonormal system, and is therefore zero by definition. Thus $x = tilde(x)$, and by @eq:riesz-fischer-parseval-tilde-x, we have
   $ norm(x)^2 = sum_(i in I) abs(chev(x, u_i))^2. qedhere $
+]
+#corollary[
+  Let $H$ be a Hilbert space such that there exists a complete orthonormal system ${u_i}_(i in I)$. Then $span{u_i}_(i in I)$ is dense in $H$, or in other words:
+  $ overline(span{u_i}_i) = H. $
+]
+#proof[
+  By Riesz--Fischer (@thm:riesz-fischer), any $x in H$,
+  $ x = sum_i chev(x, u_i) u_i, $
+  implying that for any $forall epsilon > 0$, $exists I' subset.eq I$ countable such that $forall I'' supset.eq I'$ countable,
+  $ norm(sum_(i in I'') chev(x, u_i) u_i - x) < epsilon / 2. $
+  Moreover, $exists I''' subset.eq I'$ finite such that
+  $ norm(sum_(i in I''') chev(x, u_i) u_i - sum_(i in I'') chev(x, u_i) u_i) < epsilon / 2, $
+  implying that
+  $ norm(sum_(i in I''') chev(x, u_i) u_i - x) < epsilon. $
+  Therefore, there exists a (finite) linear combination of orthonormal vectors in ${u_i}$ lying in any open ball centered at $x$ (by the arbitrariness of $epsilon$).
+]
+#remark[
+  The necessity of using closure or density comes from the observation that $span$ appertains only to finite linear combinations, whereas in most cases we need a colloquial sense of "countably infinite linear combinations."
 ]
 #example[
   Let $ell^2 = {{alpha_j}_(j in NN) L : sum_(j = 1)^oo abs(alpha_j)^2 < oo}$ denote the set of all square-summable complex sequences. Then for $alpha = {alpha_j}_j$, $beta = {beta_j}_j$, define
@@ -194,4 +213,17 @@ We will not immediately state a full proof. In proving completeness, one could o
   ]
 ]
 (Then one could use this space in @ex:l2-space-is-hilbert.)
-// subspace having complete system stuff
+
+We then conclude with the following technical result. (We conclude with the following technical result. The proof does use Zorn's lemma to obtain a maximal orthonormal set, so its format requires standard axiomatic set-theoretic concepts. However, due to countability, we do not require the Axiom of Choice; a fully constructive proof can be given using only countable methods.)
+
+To begin, we begin with the following definition:
+#definition[Separability][
+  A metric space $(X, d)$ is said to be _separable_ iff it has a countable dense subset.
+]
+#theorem[
+  Let $H$ be a Hilbert space and let $K subset.eq H$ be a Hilbert subspace. If $H$ has a complete orthonormal system, then so does $K$.
+]
+#proof[
+  //
+  Firstly, any Hilbert space is separable: letting ${u_j}_(j in NN_(<= K))$ ($K in NN union {oo}$) be the complete orthonormal system, the subset ${alpha u_j : alpha in QQ, j in NN_(<= K)}$ is countable (as the maximum possible cardinality $NN^2$ is countable).
+]

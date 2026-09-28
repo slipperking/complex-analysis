@@ -133,7 +133,7 @@ The counterexample we now provide due to~@gamelin2001, we provide the constructi
 ]
 
 #proof[
-  Let $S = {s_k}_(k in NN)$ be a countably dense set of points in $DD$ (use a bijection $NN -> QQ$ and Cantor's pairing function $NN -> NN^2$ to get a surjection $NN -> QQ^2 inter DD$).
+  Let $S = {s_k}_(k in NN)$ be a countable dense set of points in $DD$ (use a bijection $NN -> QQ$ and Cantor's pairing function $NN -> NN^2$ to get a surjection $NN -> QQ^2 inter DD$).
 
   Fix $0 < epsilon' < 1$. Let $z_1 = s_1$ and $r_1 = epsilon / 2 < epsilon'$, $r_1^2 < 1 / 2$. For each $k in NN$, let $z_k$ be the first to be the first point in the dense sequence $S$ such that
   $

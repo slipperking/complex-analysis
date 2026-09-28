@@ -60,6 +60,7 @@
 #let length = math.op("length")
 #let jinterior = math.op("int")
 #let jexterior = math.op("ext")
+#let span = math.op("span")
 #let wp = $pee$
 #let chev(..args) = $lr(chevron.l #args.pos().join($,$) chevron.r)$
 

@@ -7,7 +7,7 @@
 ]
 
 #let web-view-recommendation = [
-  For the best web viewing experience, we recommend using a Mozilla-based browser such as Firefox. This will be subject to change as browsers improve their MathML support.
+  For the best web viewing experience, we recommend using a Mozilla-based browser such as Firefox. This will be subject to change as browsers improve their MathML support. (For instance, displayed overlines will not stretch)
 ]
 
 #let join-oxford-commas(v) = {

@@ -68,7 +68,7 @@ The following theorem is important in many areas of mathematical analysis and ha
 #proof[
   We will first prove the sufficiency of uniform boundedness and uniform equicontinuity. Let ${f_n}_(n in NN)$ be any sequence in $cal(F)$. By the uniform boundedness of $cal(F)$, there exists a constant $M > 0$ such that $abs(f_n (z)) <= M$ for all $z in K$ and all $n in NN$.
 
-  Let ${zeta_k}_(k in NN)$ be a countably dense subset of $K$. By the Bolzano--Weierstrass Theorem (@thm:bolzano-weierstrass), there exists a subsequence of ${f_n}_(n in NN)$, namely ${f_(n_(1,j))}_(j in NN)$, such that ${f_(n_(1,j)) (zeta_1)}_(j in NN)$ is convergent. The set ${f_(n_(1,j)) (zeta_2)}_(j in NN)$ is also bounded by $M$, and hence, by the Bolzano--Weierstrass Theorem, it too has a convergent subsequence ${f_(n_(2,j)) (zeta_2)}_(j in NN)$. Similarly, there exists a subsequence of ${f_(n_(2,j))}_(j in NN)$, namely ${f_(n_(3,j))}_(j in NN)$, such that ${f_(n_(3,j)) (zeta_3)}_(j in NN)$ is convergent.
+  Let ${zeta_k}_(k in NN)$ be a countable dense subset of $K$. By the Bolzano--Weierstrass Theorem (@thm:bolzano-weierstrass), there exists a subsequence of ${f_n}_(n in NN)$, namely ${f_(n_(1,j))}_(j in NN)$, such that ${f_(n_(1,j)) (zeta_1)}_(j in NN)$ is convergent. The set ${f_(n_(1,j)) (zeta_2)}_(j in NN)$ is also bounded by $M$, and hence, by the Bolzano--Weierstrass Theorem, it too has a convergent subsequence ${f_(n_(2,j)) (zeta_2)}_(j in NN)$. Similarly, there exists a subsequence of ${f_(n_(2,j))}_(j in NN)$, namely ${f_(n_(3,j))}_(j in NN)$, such that ${f_(n_(3,j)) (zeta_3)}_(j in NN)$ is convergent.
 
   By the method of construction, we have:
   #lbl(

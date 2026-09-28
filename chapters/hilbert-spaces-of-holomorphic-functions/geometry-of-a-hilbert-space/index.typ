@@ -58,6 +58,9 @@ The verification of the necessary properties is trivial.
 #todo[
   Define isometry, and give an example (need to figure out Gram Schmidt first) giving an isometric isomorphism between a finite-dim vector space and the Euclidean space.
 ]
+#definition[
+  A
+]
 #definition[Associated Norm][
   If $V$ is a vector space and $chev(dot, dot)$ is a nondegenerate positive-definite Hermitian inner product on $V$, then the _associated norm_ of some $v in V$ is given by $ norm(v) = sqrt(chev(v, v)). $
 ]
