@@ -2,6 +2,9 @@
 #show: docs-subchapter.with(
   title: [Geometry of a Hilbert Space],
   route: "geometry-of-a-hilbert-space",
+  children: [
+    #include "gram-schmidt-process/index.typ"
+  ],
 )
 
 The concept of a _vector space_ is an important one in linear algebra. However, its definition itself does not actually imply that the "vectors" are tuples of values of finite dimension. As a matter of fact the term "vector" is a very general one. Developments in the 20th century have rigorously defined vectors with infinite dimensions.
@@ -55,15 +58,31 @@ The verification of the necessary properties is trivial.
   $ integral_0^1 abs(f(x))^2 dx >= integral_(x'-delta)^(x'+delta) abs(f(x))^2 dx > delta abs(f(x'))^2 > 0, $
   which is impossible; thus $f equiv 0$ forcibly.
 ]
-#todo[
-  Define isometry, and give an example (need to figure out Gram Schmidt first) giving an isometric isomorphism between a finite-dim vector space and the Euclidean space.
-]
-#definition[
-  A
-]
 #definition[Associated Norm][
   If $V$ is a vector space and $chev(dot, dot)$ is a nondegenerate positive-definite Hermitian inner product on $V$, then the _associated norm_ of some $v in V$ is given by $ norm(v) = sqrt(chev(v, v)). $
 ]
+#definition[Isometry][
+  Let $V$ and $W$ be inner product spaces over the same scalar field, with inner products $chev(dot, dot)_V$ and $chev(dot, dot)_W$, respectively. A linear map $T : V -> W$ is an _isometry_ iff
+  $ chev(T(v), T(w))_W = chev(v, w)_V quad "for all" quad v, w in V. $
+  In particular, $T$ preserves norms and distances.
+] <def:inner-product-space-isometry>
+#definition[Isomorphism][
+  Let $V$ and $W$ be vector spaces over the same scalar field. A linear bijection $T : V -> W$ is an _isomorphism_.
+] <def:vector-space-isomorphism>
+#example[
+  Show that every $n$-dimensional (by linear independence) complex inner product space is isometrically isomorphic to $CC^n$ equipped with the Euclidean (Hermitian) inner product
+  $ chev(vb(z), vb(w))_(CC^n) = sum_(k=1)^n z_k overline(w_k). $
+] <ex:finite-dimensional-inner-product-space-isometrically-isomorphic-to-euclidean-space>
+#solution[to @ex:finite-dimensional-inner-product-space-isometrically-isomorphic-to-euclidean-space][
+  Let $V$ be the $n$-dimensional complex inner product space. By @cor:finite-dimensional-inner-product-space-has-orthonormal-basis, $V$ has an orthonormal basis ${e_1, dots, e_n}$. Define
+  $ T : V -> CC^n, quad T(v) = (chev(v, e_1)_V, dots, chev(v, e_n)_V). $
+  The map $T$ is linear and bijective, since
+  $ v = sum_(k=1)^n chev(v, e_k)_V e_k. $
+  Moreover, for any $v, w in V$,
+  $ chev(T(v), T(w))_(CC^n) = sum_(k=1)^n chev(v, e_k)_V overline(chev(w, e_k)_V) = chev(v, w)_V. $
+  Thus $T$ is an isometric isomorphism.
+]
+(The same construction shows that every $n$-dimensional real inner product space is isometrically isomorphic to $RR^n$ with its usual Euclidean dot product.)
 #theorem[Cauchy--Schwarz Inequality][
   If $V$ is a vector space and $chev(dot, dot)$ is a nondegenerate positive-definite Hermitian inner product on $V$, then for $v, w in V$,
   $
@@ -105,7 +124,7 @@ If the metric space is $RR$ under the standard Euclidean metric, then any Cauchy
 
 A metric space is said to be _complete_ iff all Cauchy sequences are complete. Intuitively, the set of rationals cannot be complete as there are accumulation points in $RR without QQ$ to which Cauchy sequences tend, so it is incomplete in the sense that potential accumulation points are not included. In most analytical settings, we are concerned only with vector space over complete scalar fields such as $RR$ or $CC$.
 #proposition[
-  Any finite-dimensional (in terms of linear independence) vector space $V$ over a complete scalar field $FF$ is complete with respect the metric space derived from _any_ (nondegenerate positive-definite Hermitian) inner-product norm.
+  Any finite-dimensional vector space $V$ over a complete scalar field $FF$ is complete with respect the metric space derived from _any_ (nondegenerate positive-definite Hermitian) inner-product norm.
 ]
 #proof[
   #todo[Finish this, and figure out how to do Gram--Schmidt (maybe an appendix for this)]

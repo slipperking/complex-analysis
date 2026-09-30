@@ -174,7 +174,7 @@ We will not immediately state a full proof. In proving completeness, one could o
   $ phi^(-1): x |-> {chev(x, u_j)_H}_(j in NN). $
   The vector structure of $H$ is preserved under $phi$. Moreover, $phi$ is trivially additive and homogeneous, thus linear.
 
-  Therefore, it remains to show that the space $ell^2$ is complete under the associated norm. Observe that $phi$ is an isometry (norm-preserving) since
+  Therefore, it remains to show that the space $ell^2$ is complete under the associated norm. Observe that $phi$ preserves norms, since
   $ norm(x)^2 = sum_(j = 1)^oo abs(chev(x, u_j)_H)^2 = norm({chev(x, u_j)_H}_(j in NN))^2 $
   by Riesz--Fischer (@thm:riesz-fischer).
 
