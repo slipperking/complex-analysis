@@ -94,3 +94,4 @@ is the component of $v_k$ in all the previously constructed directions; and subt
 #proof[
   Choose any basis ${v_k}_(k=1)^n$ and apply @thm:gram-schmidt-process. The resulting orthonormal set has the same span as the original basis.
 ]
+(Note that when we begin considering countably infinite orthonormal systems in the proceeding section, the same process of Gram--Schmidt is still valid, the reader can independently verify this claim.)

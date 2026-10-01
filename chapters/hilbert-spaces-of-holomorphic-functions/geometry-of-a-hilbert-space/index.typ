@@ -118,6 +118,20 @@ Then @thm:inner-product-cauchy-schwarz and @itm:inner-product-distributivity of 
 ]
 Then it follows that $d(v,w) = norm(v - w)$ can be used to define a metric as it satisfies all the properties of @def:metric. Along with $V$, the associated norm then defines a metric space. Then we can define the notion of convergence of sequences in the vector space.
 
+#theorem[Continuity of the Inner Product][
+  Let $V$ be an inner product space. If $x_n -> x$ and $y_n -> y$ with respect to the associated norm, then
+  $ chev(x_n, y_n) -> chev(x, y). $
+  Equivalently, the map $chev(dot, dot): V times V -> CC$ is jointly continuous.
+] <thm:inner-product-continuity>
+#proof[
+  Since every convergent sequence is bounded, there is some $M > 0$ such that $norm(y_n) <= M$ for every $n$. By the Cauchy--Schwarz Inequality (@thm:inner-product-cauchy-schwarz), for sufficiently large $N$
+  $
+    abs(chev(x_n, y_n) - chev(x, y)) & = abs(chev(x_n - x, y_n) + chev(x, y_n - y)) \
+                                     & <= norm(x_n - x) norm(y_n) + norm(x) norm(y_n - y) \
+                                     & <= (norm(y) + epsilon) norm(x_n - x) + norm(x) norm(y_n - y) -> 0. qedhere
+  $
+]
+
 For a general metric space $(X,d)$, if for a sequence ${x_n}_(n in NN) subset.eq X$ such that $forall epsilon > 0$, $exists N in NN : forall m,n > N$, $d(x_n, x_m) < epsilon$; then ${x_n}$ is known as a _Cauchy sequence_.
 
 If the metric space is $RR$ under the standard Euclidean metric, then any Cauchy sequence is convergent. However, note that on other sets this is not necessarily true; if we consider the set of rationals $QQ$, we may choose a sequence ${x_n}$ where the $n$-th element is the first $n$ digits of the decimal expansion of $uppi$: $3, 3.1, 3.14, 3.141,...$; it follows trivially that ${x_n}$ is a Cauchy sequence, although it is not convergent in $QQ$ as the accumulation point $uppi in RR$ is not in $QQ$.
@@ -125,7 +139,7 @@ If the metric space is $RR$ under the standard Euclidean metric, then any Cauchy
 A metric space is said to be _complete_ iff all Cauchy sequences are complete. Intuitively, the set of rationals cannot be complete as there are accumulation points in $RR without QQ$ to which Cauchy sequences tend, so it is incomplete in the sense that potential accumulation points are not included. In most analytical settings, we are concerned only with vector space over complete scalar fields such as $RR$ or $CC$.
 #proposition[
   Any finite-dimensional vector space $V$ over a complete field $FF$ is complete with respect the metric space derived from _any_ (nondegenerate positive-definite Hermitian) inner-product norm.
-]
+] <prop:completeness-of-finite-dim-vector-space>
 #proof[
   Let ${e_j}_(j=1)^n$ be an orthonormal basis for $V$, obtained by the Gram--Schmidt process (see @sec:gram-schmidt-process), and fix a particular inner product $chev(dot, dot)$ and associated norm $norm(dot)$. Then for any Cauchy sequence ${v_k}_(k in NN)$, writing for each $k$: $ v_k = sum_(j = 1)^n v_k^((j)) e_j, $
   if
@@ -305,7 +319,7 @@ Note that if $F subset.eq H$ is a vector space, then $F$ is trivially convex by 
   Two vectors $x,y$ in a Hilbert space $H$ are said to be _orthogonal_ ($x perp y$) iff their inner product is $0$.
 ]
 #definition[
-  Let $H$ be a Hilbert space. A subspace $S subset.eq H$ is said to be orthogonal to a vector $x in H$ ($x perp S$) iff $forall y in S$, $x perp y$.
+  Let $H$ be a Hilbert space. A subspace $S subset.eq H$ is said to be orthogonal to a vector $x in H$ (denoted by $x perp S$) iff $forall y in S$, $x perp y$.
 ]
 Then rather intuitively, we have
 #theorem[

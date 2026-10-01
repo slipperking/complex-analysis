@@ -216,26 +216,49 @@ We will not immediately state a full proof. In proving completeness, one could o
 #definition[Separability][
   A metric space $(X, d)$ is said to be _separable_ iff it has a countable dense subset.
 ]
+#proposition[
+  A Hilbert space $H$ is separable iff it has a complete countable orthonormal system.
+]
+#proof[
+  1. (Forward implication)
+
+    Let $S subset.eq H$ be a countable dense subset. Then describing $S$ with a sequence ${s_j}$, we may then construct another sequence ${u_j}_j$ recursively:
+
+    - Let $u_1$ be the first nonzero element $s_k_1$ in ${s_j}$.
+    - Assuming a linearly independent set ${u_j}_(j<k)$, choose $u_k$ to be the first nonzero element in ${s_j}$ not in $span{u_j}_(j<k)$.
+    - If such a $u_k$ ever does not exist, then end the process thereat. In this case $span{u_j}_(j < k)$ already densely spans $H$, is complete by @prop:completeness-of-finite-dim-vector-space, and consequently hence spans $H$.
+
+    Then ${u_j}_j$ densely spans $H$. Applying the Gram--Schmidt process then gives an orthonormal system which also densely spans $H$, namely ${e_j}_j$.
+
+    Suppose, for contradiction, that there exists a nonzero $x in H$ such
+    that $x perp e_j$ for every $j$. Then $x perp span{e_j}_j$.
+
+    Since $span{e_j}_j$ is dense in $H$, there exists a sequence
+    ${y_n} subset.eq span{e_j}_j$ such that $y_n -> x$. By continuity of
+    the inner product (@thm:inner-product-continuity),
+    $
+      norm(x)^2 = chev(x, x) = lim_(n -> oo) chev(x, y_n) = 0,
+    $
+    because $chev(x, y_n) = 0$ for every $n$. Hence $x = 0$, contradicting
+    our choice of $x$. Therefore ${e_j}_j$ is complete.
+  + (Converse)
+
+    Letting ${e_j}_(j in NN_(< K))$ ($K in NN union {oo}$) be the complete orthonormal system, the subset
+    $ {sum_(j = 1)^k alpha_j e_j : j in NN_(<= k), alpha_j in QQ, k in NN_(< K)}, $
+    whose cardinality does not exceed that of $NN^2 times QQ$, is a countable set.
+
+    Moreover, we can show that it is dense in $H$: $forall x in H$, we know from the proof Riesz--Fischer (@thm:riesz-fischer) that it can be written as
+    $ x = sum_(j in NN_(< K)) beta_j e_j, wide (beta_j = chev(x, e_j)), $
+    which may be approximated with an error under $epsilon / 2$ by
+    $sum_(j = 1)^k beta_j e_j$. By the density of rationals, each $beta_j$ may be approximated by some $alpha_j$, such that $Re alpha_j, Im alpha_j in QQ$, such that $abs(alpha_j - beta_j) < epsilon / (2 k).$ Then
+    $
+      norm(x - sum_(j=1)^k alpha_j e_j) <= norm(x - sum_(j=1)^k beta_j e_j) + norm(sum_(j=1)^k (beta_j - alpha_j) e_j) < epsilon.
+    $
+    Since $sum_(j=1)^k alpha_j e_j$ lies in the relevant subset, the density follows from the arbitrariness of $epsilon$. #qedhere
+]
 We then conclude with the following technical result. (The proof does use Zorn's lemma to obtain a maximal orthonormal set, so its format requires standard axiomatic set-theoretic concepts. However, due to countability, we do not require the Axiom of Choice; a fully constructive proof can be given using only countable methods.)
 #theorem[
   Let $H$ be a Hilbert space and let $K subset.eq H$ be a Hilbert subspace. If $H$ has a countable complete orthonormal system, then so does $K$.
 ] <thm:hilbert-subspace-of-space-with-countable-complete-orthonormal-system>
 #proof[
-  //
-  Firstly, any Hilbert space with a complete countable orthonormal system is separable: letting ${e_j}_(j in NN_(< K))$ ($K in NN union {oo}$) be the complete orthonormal system, the subset
-  $ {sum_(j = 1)^k alpha_j e_j : j in NN_(<= k), alpha_j in QQ, k in NN_(< K)}, $
-  whose cardinality does not exceed that of $NN^2 times QQ$, is a countable set.
-
-  Moreover, we can show that it is dense in $H$: $forall x in H$, we know from the proof Riesz--Fischer (@thm:riesz-fischer) that it can be written as
-  $ x = sum_(j in NN_(< K)) beta_j e_j, wide (beta_j = chev(x, e_j)), $
-  which may be approximated with an error under $epsilon / 2$ by
-  $sum_(j = 1)^k beta_j e_j$. By the density of rationals, each $beta_j$ may be approximated by some $alpha_j$, such that $Re alpha_j, Im alpha_j in QQ$, such that $abs(alpha_j - beta_j) < epsilon / (2 k).$ Then
-  $
-    abs(x - sum_(j=1)^k alpha_j e_j) <= abs(x - sum_(j=1)^k beta_j e_j) + abs(sum_(j=1)^k (beta - alpha_j) e_j) < epsilon.
-  $
-  Since $sum_(j=1)^k alpha_j e_j$ lies in the relevant subset, the density follows from the arbitrariness of $epsilon$.
-
-  Hence $H$ is separable.
-
-  Now letting
 ]
