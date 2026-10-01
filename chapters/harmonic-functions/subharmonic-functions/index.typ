@@ -42,7 +42,7 @@ The remainder of this section will be dedicated to introducing the concepts and 
   ],
   <def:subharmonicity>,
 )
-At first glance, the definition may seem a little bloated. However, we aim to provide sufficient intuition. Firstly, the one-dimensional analog of a harmonic function $u$ is one satisfying $dv(u, x, 2) equiv 0 ==> dv(u, x) equiv a ==> u(x) = a x + b$. Consider an arbitrary continuous function $f: I -> RR$, where $I subset.eq RR$ is an open connected set. Then the analogous scenario is: $f$ is subharmonic iff: for any $a, b in I$ and any harmonic (linear) function such that $f(a) <= u(a)$ and $f(b) <= u(b)$, it follows that $f(x) <= u(x)$ for all $x in (a,b)$. This is the criteria for convexity. Therefore, subharmonicity is a higher-dimension generalization of convexity.
+At first glance, the definition may seem a little bloated. However, we aim to provide sufficient intuition. Firstly, the one-dimensional analog of a harmonic function $u$ is one satisfying $dv(u, x, 2) equiv 0 ==> dv(u, x) equiv a ==> u(x) = a x + b$. Consider an arbitrary continuous function $f: I -> RR$, where $I subset.eq RR$ is an open connected set. Then the analogous scenario is: $f$ is subharmonic iff: for any $a, b in I$ and any harmonic (affine) function such that $f(a) <= u(a)$ and $f(b) <= u(b)$, it follows that $f(x) <= u(x)$ for all $x in (a,b)$. This is the criteria for convexity. Therefore, subharmonicity is a higher-dimension generalization of convexity.
 
 Additionally, we note that the harmonicity of $u : overline(D(p, r)) -> RR$ can be weakened to simply $D(p,r)$ with continuity up to $partial D(p,r)$:
 #lbl(
@@ -284,7 +284,7 @@ Here, we must alert the reader to an important difference between harmonic and s
   $
   Now assume the general case for $phi.alt$.
 
-  For any $x' in RR$, there exists a linear function $phi.alt_(x')$ such that $phi.alt_(x') (x) <= phi.alt(x)$ on $RR$ and $phi.alt_(x') (x') = phi.alt(x')$. Then for simplicity define
+  For any $x' in RR$, there exists an affine function $phi.alt_(x')$ such that $phi.alt_(x') (x) <= phi.alt(x)$ on $RR$ and $phi.alt_(x') (x') = phi.alt(x')$. Then for simplicity define
   $ f_"avg" = 1/(b - a) integral_a^b f(t) dt. $
   Then letting $x' = f_"avg"$,
   $

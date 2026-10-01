@@ -5,8 +5,8 @@
 )
 We first aim to provide a generalization of bases which will serve useful in generalizing vector spaces to infinite dimensions.
 #definition[Orthonormal System][
-  Let $H$ be a Hilbert space. Let $I$ be any set. A set ${u_i}_(i in I) subset.eq H$ is an _orthonormal system_ iff $forall i, j in I$,
-  $ chev(u_i, u_j) = delta_(i j) = cases(1 quad & "if" quad i = j, 0 quad & "if" quad i != j). $
+  Let $H$ be a Hilbert space. Let $I$ be any set. A set ${e_i}_(i in I) subset.eq H$ is an _orthonormal system_ iff $forall i, j in I$,
+  $ chev(e_i, e_j) = delta_(i j) = cases(1 quad & "if" quad i = j, 0 quad & "if" quad i != j). $
   Generally one is concerned only with the cases where $I$ is finite or when $I$ is countably infinite ($I = NN$), although here we will consider the generalization to uncountable sets as it follows in the same way.
 ]
 #definition[Completeness of an Orthonormal System][
@@ -14,22 +14,22 @@ We first aim to provide a generalization of bases which will serve useful in gen
 ]
 The definition of completeness is intuitive: it means that there is no other nonzero vector that can be appended to the system while maintaining the orthogonality condition.
 
-The orthonormal then generalizes the concept of a "basis" for finite-dimensional vector spaces. This will be made explicit in #todo().
+The orthonormal then generalizes the concept of a "basis" for finite-dimensional vector spaces. This will be made explicit in @cor:hilbert-space-complete-orthonormal-system-dense-in-space.
 #theorem[
-  Let ${u_k}_(k=1)^n$ be a finite orthonormal system in a Hilbert space $H$. Let $U$ be the span of the system. The distance between a vector $x in H$ and $U$, $inf_(v in U) norm(x - v)$, is given by
-  $ norm(x - u) = sqrt(norm(x)^2 - sum_(k=1)^n abs(chev(x, u_k))^2) $
+  Let ${e_k}_(k=1)^n$ be a finite orthonormal system in a Hilbert space $H$. Let $U$ be the span of the system. The distance between a vector $x in H$ and $U$, $inf_(v in U) norm(x - v)$, is given by
+  $ norm(x - u) = sqrt(norm(x)^2 - sum_(k=1)^n abs(chev(x, e_k))^2) $
   where $u in U$ is the unique value that attains this minimal distance.
 ] <thm:norm-of-orthogonal-component-in-terms-of-vector-norm-and-product>
 #proof[
   Let
   $
-    u = sum_(k = 1)^n chev(x, u_k) u_k in U.
+    u = sum_(k = 1)^n chev(x, e_k) e_k in U.
   $
   We aim to show this choice of $u$ is optimized. Firstly, we show $x - u$ is orthogonal to $U$. For any $j in NN_(<= n)$,
   $
-    chev(x - u, u_j) & = chev(x, u_j) - chev(sum_(k = 1)^n chev(x, u_k) u_k, u_j) \
-                     & = chev(x, u_j) - sum_(k = 1)^n chev(x, u_k) chev(u_k, u_j) \
-                     & = chev(x, u_j) - sum_(k = 1)^n chev(x, u_k) delta_(k j) = 0.
+    chev(x - u, e_j) & = chev(x, e_j) - chev(sum_(k = 1)^n chev(x, e_k) e_k, e_j) \
+                     & = chev(x, e_j) - sum_(k = 1)^n chev(x, e_k) chev(e_k, e_j) \
+                     & = chev(x, e_j) - sum_(k = 1)^n chev(x, e_k) delta_(k j) = 0.
   $
   Moreover, for any $v in U$, by @thm:orthogonal-decomposition, since $x - v - (x - u) in U$, the orthogonal decomposition of $x - v = a + b$ (where $a in U, b in U^perp$) is uniquely determined by $a = u - v$, $b = x - u$.
 
@@ -43,52 +43,52 @@ The orthonormal then generalizes the concept of a "basis" for finite-dimensional
   $
     norm(x - u) & = sqrt(norm(x)^2 + norm(u)^2 - 2 Re chev(x, u)) \
                 & = sqrt(
-                    norm(x)^2 + sum_((j, k) in NN_(<= n)^2) chev(chev(x, u_j) u_j, chev(x, u_k) u_k) \
-                    - 2 sum_(k = 1)^n Re chev(x, chev(x, u_k) u_k)
+                    norm(x)^2 + sum_((j, k) in NN_(<= n)^2) chev(chev(x, e_j) e_j, chev(x, e_k) e_k) \
+                    - 2 sum_(k = 1)^n Re chev(x, chev(x, e_k) e_k)
                   ) \
                 & = sqrt(
-                    norm(x)^2 + sum_((j, k) in NN_(<= n)^2) chev(x, u_j)overline(chev(x, u_k)) delta_(j k) - 2 sum_(k = 1)^n abs(chev(x, u_k))^2
+                    norm(x)^2 + sum_((j, k) in NN_(<= n)^2) chev(x, e_j)overline(chev(x, e_k)) delta_(j k) - 2 sum_(k = 1)^n abs(chev(x, e_k))^2
                   ) \
-                & = sqrt(norm(x)^2 - sum_(k=1)^n abs(chev(x, u_k))^2). qedhere
+                & = sqrt(norm(x)^2 - sum_(k=1)^n abs(chev(x, e_k))^2). qedhere
   $
 ]
 Therefore, one then derives
 #corollary[Bessel's Inequality][
-  Let $H$ be a Hilbert space and let ${u_i}_(i in I)$ be an orthonormal system. Then for $x in H$,
-  $ sum_(i in I) abs(chev(x, u_i))^2 <= norm(x)^2, $
+  Let $H$ be a Hilbert space and let ${e_i}_(i in I)$ be an orthonormal system. Then for $x in H$,
+  $ sum_(i in I) abs(chev(x, e_i))^2 <= norm(x)^2, $
   where the left-hand side converges _unconditionally_: $exists S <= norm(x)^2$ such that for any $epsilon > 0$, $exists I' subset.eq I$ countable such that for all $(I supset.eq )I'' supset.eq I'$ countable,
-  $ abs(sum_(i in I'') abs(chev(x, u_i))^2 - S) < epsilon. $
-  Moreover, $x$ is orthogonal to all but countably many vectors in ${u_i}$.
+  $ abs(sum_(i in I'') abs(chev(x, e_i))^2 - S) < epsilon. $
+  Moreover, $x$ is orthogonal to all but countably many vectors in ${e_i}$.
 ] <cor:bessels-inequality>
 #proof[
   For each $m in NN$, let
   $
-    A_m = {u in {u_i}_i : abs(chev(x, u))^2 > 1 / m}.
+    A_m = {e in {e_i}_i : abs(chev(x, e))^2 > 1 / m}.
   $
   Then $A_m$ is a finite set, as otherwise
-  $ sum_(u in A_m) abs(chev(x, u))^2 = oo, $
+  $ sum_(e in A_m) abs(chev(x, e))^2 = oo, $
   contradicting @thm:norm-of-orthogonal-component-in-terms-of-vector-norm-and-product.
-  Let $A = union.big_(m in NN) A_m$, which is a countable set. Moreover, for any ${u_i} in.rev u in.not A$, $abs(chev(x, u))^2 <= inf_(m in NN) 1 / m = 0$.
+  Let $A = union.big_(m in NN) A_m$, which is a countable set. Moreover, for any ${e_i} in.rev e in.not A$, $abs(chev(x, e))^2 <= inf_(m in NN) 1 / m = 0$.
 
-  Therefore only a countable number of vectors in ${u_i}_(i in I)$ are not orthogonal to $x$. Let $A$ be indexed by a sequence ${v_n}_(n in NN) = {u_i_n}_(n in NN)$. By @thm:norm-of-orthogonal-component-in-terms-of-vector-norm-and-product,
+  Therefore only a countable number of vectors in ${e_i}_(i in I)$ are not orthogonal to $x$. Let $A$ be indexed by a sequence ${v_n}_(n in NN) = {e_i_n}_(n in NN)$. By @thm:norm-of-orthogonal-component-in-terms-of-vector-norm-and-product,
   $ sum_(n = 1)^oo abs(chev(x, v_n))^2 $
   has all partial sums bounded by $norm(x)^2$; therefore the series converges to a limit $S <= norm(x)^2$ by the Monotone Convergence Theorem.
 
   Since $sum_(n = 1)^oo abs(chev(x, v_n))^2 = S$, for any $epsilon > 0$, $exists N in NN$ such that for all $k >= N$, $abs(sum_(n = 1)^k abs(chev(x, v_n))^2 - S) < epsilon$. Then let $I' = {i_n}_(n=1)^N$. Then for any $I'' supset.eq I'$ countable,
-  $ sum_(i in I') abs(chev(x, u_i))^2 <= sum_(i in I'') abs(chev(x, u_i))^2 <= S, $
+  $ sum_(i in I') abs(chev(x, e_i))^2 <= sum_(i in I'') abs(chev(x, e_i))^2 <= S, $
   which implies
-  $ epsilon > abs(S - sum_(i in I')^k abs(chev(x, u_i))^2) >= abs(S - sum_(i in I'') abs(chev(x, u_i))^2) >= 0 $
+  $ epsilon > abs(S - sum_(i in I')^k abs(chev(x, e_i))^2) >= abs(S - sum_(i in I'') abs(chev(x, e_i))^2) >= 0 $
   and the assertion follows.
 ]
 Then we may provide the following generalization of the Parseval's Theorem from Fourier analysis:
 #theorem[Riesz--Fischer][
-  Let $H$ be a Hilbert space and let ${u_i}_(i in I)$ be a complete orthonormal system. Then:
+  Let $H$ be a Hilbert space and let ${e_i}_(i in I)$ be a complete orthonormal system. Then:
   1. For any $x in H$, #enum-lbl(<itm:riesz-fischer-parseval>)
-    $ norm(x)^2 = sum_(i in I) abs(chev(x, u_i))^2, $
-    and $ x = sum_(i in I) chev(x, u_i) u_i. $
+    $ norm(x)^2 = sum_(i in I) abs(chev(x, e_i))^2, $
+    and $ x = sum_(i in I) chev(x, e_i) e_i. $
   + Conversely, for any complex collection ${beta_i}_(i in I)$ such that $ sum_(i in I) abs(beta_i)^2 < oo, $
-    then $exists! x in H$ such that $forall i in I$, $chev(x, u_i) = beta_i$. Then #enum-lbl(<itm:riesz-fischer-converse>)
-    $ norm(x)^2 = sum_(i in I) abs(beta_i)^2, quad x = sum_(i in I) beta_i u_i $
+    then $exists! x in H$ such that $forall i in I$, $chev(x, e_i) = beta_i$. Then #enum-lbl(<itm:riesz-fischer-converse>)
+    $ norm(x)^2 = sum_(i in I) abs(beta_i)^2, quad x = sum_(i in I) beta_i e_i $
 ] <thm:riesz-fischer>
 It is actually simpler to first prove @itm:riesz-fischer-converse.
 #proof[of @itm:riesz-fischer-converse of @thm:riesz-fischer][
@@ -101,47 +101,47 @@ It is actually simpler to first prove @itm:riesz-fischer-converse.
     Then $A_m$ is finite; otherwise $sum_(i in I) abs(beta_i)^2 lt.not oo$. Moreover the union of all $A_m$ for $m in NN$ is a countable set and contains all nonzero $beta_dot$'s.
   ]
   If $union.big_(m in NN) A_m$ is finite ${beta_i_j}_j$, then letting
-  $ x = sum_j beta_i_j u_i_j, $
-  we see that $chev(x, u_i_j) = beta_i_j$ and for all other $beta_i$'s, $beta_i = 0$, which proves $chev(x, u_i) = beta_i$ from orthogonality. Then in this case, the assertion $norm(x)^2 = sum_(i in I) abs(beta_i)^2$ follows from @thm:orthogonality-pythagorean.
+  $ x = sum_j beta_i_j e_i_j, $
+  we see that $chev(x, e_i_j) = beta_i_j$ and for all other $beta_i$'s, $beta_i = 0$, which proves $chev(x, e_i) = beta_i$ from orthogonality. Then in this case, the assertion $norm(x)^2 = sum_(i in I) abs(beta_i)^2$ follows from @thm:orthogonality-pythagorean.
 
   If $union.big_m A_m$ is countable and indexed by ${beta_i_j}_(j in NN)$, then for any $K in NN$, let
-  $ x_K = sum_(j = 1)^K beta_i_j u_i_j. $
+  $ x_K = sum_(j = 1)^K beta_i_j e_i_j. $
   Then for $N >= M$,
   $
-    norm(x_N - x_M)^2 = norm(sum_(M + 1)^N beta_i_j u_i_j)^2 = sum_(M + 1)^N abs(beta_i_j)^2 -> 0. #tag[(by @thm:orthogonality-pythagorean)]
+    norm(x_N - x_M)^2 = norm(sum_(M + 1)^N beta_i_j e_i_j)^2 = sum_(M + 1)^N abs(beta_i_j)^2 -> 0. #tag[(by @thm:orthogonality-pythagorean)]
   $
   Then ${x_K}_K$ is a Cauchy sequence and hence converges to some $x in H$:
-  $ x = sum_(j = 1)^oo beta_i_j u_i_j. $
+  $ x = sum_(j = 1)^oo beta_i_j e_i_j. $
   Since $abs(norm(x) - norm(x_N)) <= norm(x - x_N) -> 0$, $norm(x_N)^2 -> norm(x)^2$. Moreover, by @thm:orthogonality-pythagorean,
   $ norm(x_N)^2 = sum_(j = 1)^N abs(beta_i_j)^2 ==> norm(x)^2 = sum_(j = 1)^oo abs(beta_i_j)^2 $
   by letting $N -> oo$.
 
-  If there exists some other $tilde(x)$ satisfying $chev(tilde(x), u_i) = beta_i$, then $chev(x - tilde(x), u_i) = 0$ for each $i in I$. By the completeness of ${u_i}_(i in I)$, the only vector orthogonal to all vectors in the system is the zero vector, therefore $x - tilde(x) = 0 ==> x = tilde(x)$.
+  If there exists some other $tilde(x)$ satisfying $chev(tilde(x), e_i) = beta_i$, then $chev(x - tilde(x), e_i) = 0$ for each $i in I$. By the completeness of ${e_i}_(i in I)$, the only vector orthogonal to all vectors in the system is the zero vector, therefore $x - tilde(x) = 0 ==> x = tilde(x)$.
 ]
 #proof[of @itm:riesz-fischer-parseval of @thm:riesz-fischer][
   By Bessel's Inequality, we have
-  $ sum_(i in I) abs(chev(x, u_i))^2 <= norm(x)^2. $
-  By @itm:riesz-fischer-converse applied to $beta_i = chev(x, u_i)$, $exists! tilde(x)$ such that $forall i in I$,
-  $ chev(tilde(x), u_i) = chev(x, u_i), $ <eq:riesz-fischer-parseval-product-equivalences>
-  given by $tilde(x) = sum_(i = I) chev(x, u_i) u_i$. Then for this $tilde(x)$,
-  $ norm(tilde(x))^2 = sum_(i in I) abs(chev(x, u_i))^2. $ <eq:riesz-fischer-parseval-tilde-x>
-  @eq:riesz-fischer-parseval-product-equivalences gives that for each $i in I$, $chev(x - tilde(x), u_i) = 0$. Then $x - tilde(x)$ is orthogonal to all vectors in a complete orthonormal system, and is therefore zero by definition. Thus $x = tilde(x)$, and by @eq:riesz-fischer-parseval-tilde-x, we have
-  $ norm(x)^2 = sum_(i in I) abs(chev(x, u_i))^2. qedhere $
+  $ sum_(i in I) abs(chev(x, e_i))^2 <= norm(x)^2. $
+  By @itm:riesz-fischer-converse applied to $beta_i = chev(x, e_i)$, $exists! tilde(x)$ such that $forall i in I$,
+  $ chev(tilde(x), e_i) = chev(x, e_i), $ <eq:riesz-fischer-parseval-product-equivalences>
+  given by $tilde(x) = sum_(i = I) chev(x, e_i) e_i$. Then for this $tilde(x)$,
+  $ norm(tilde(x))^2 = sum_(i in I) abs(chev(x, e_i))^2. $ <eq:riesz-fischer-parseval-tilde-x>
+  @eq:riesz-fischer-parseval-product-equivalences gives that for each $i in I$, $chev(x - tilde(x), e_i) = 0$. Then $x - tilde(x)$ is orthogonal to all vectors in a complete orthonormal system, and is therefore zero by definition. Thus $x = tilde(x)$, and by @eq:riesz-fischer-parseval-tilde-x, we have
+  $ norm(x)^2 = sum_(i in I) abs(chev(x, e_i))^2. qedhere $
 ]
 #corollary[
-  Let $H$ be a Hilbert space such that there exists a complete orthonormal system ${u_i}_(i in I)$. Then $span{u_i}_(i in I)$ is dense in $H$, or in other words:
-  $ overline(span{u_i}_i) = H. $
-]
+  Let $H$ be a Hilbert space such that there exists a complete orthonormal system ${e_i}_(i in I)$. Then $span{e_i}_(i in I)$ is dense in $H$, or in other words:
+  $ overline(span{e_i}_i) = H. $
+] <cor:hilbert-space-complete-orthonormal-system-dense-in-space>
 #proof[
   By Riesz--Fischer (@thm:riesz-fischer), any $x in H$,
-  $ x = sum_i chev(x, u_i) u_i, $
+  $ x = sum_i chev(x, e_i) e_i, $
   implying that for any $forall epsilon > 0$, $exists I' subset.eq I$ countable such that $forall I'' supset.eq I'$ countable,
-  $ norm(sum_(i in I'') chev(x, u_i) u_i - x) < epsilon / 2. $
+  $ norm(sum_(i in I'') chev(x, e_i) e_i - x) < epsilon / 2. $
   Moreover, $exists I''' subset.eq I'$ finite such that
-  $ norm(sum_(i in I''') chev(x, u_i) u_i - sum_(i in I'') chev(x, u_i) u_i) < epsilon / 2, $
+  $ norm(sum_(i in I''') chev(x, e_i) e_i - sum_(i in I'') chev(x, e_i) e_i) < epsilon / 2, $
   implying that
-  $ norm(sum_(i in I''') chev(x, u_i) u_i - x) < epsilon. $
-  Therefore, there exists a (finite) linear combination of orthonormal vectors in ${u_i}$ lying in any open ball centered at $x$ (by the arbitrariness of $epsilon$).
+  $ norm(sum_(i in I''') chev(x, e_i) e_i - x) < epsilon. $
+  Therefore, there exists a (finite) linear combination of orthonormal vectors in ${e_i}$ lying in any open ball centered at $x$ (by the arbitrariness of $epsilon$).
 ]
 #remark[
   The necessity of using closure or density comes from the observation that $span$ appertains only to finite linear combinations, whereas in most cases we need a complete description of "countably infinite linear combinations."
@@ -166,16 +166,16 @@ We will not immediately state a full proof. In proving completeness, one could o
   $
   and convergence follows from the Monotone Convergence Theorem. The verification of the other properties is rather simple. Observe that the associated norm is
   $ norm(alpha)_(ell^2) = sqrt(sum_(j = 1)^oo abs(alpha_j)^2). $
-  Let (using the assumption) $H$ be a Hilbert space (with $chev(dot, dot)_H$, $norm(dot)_H$) with an infinite countable complete orthonormal system ${u_j}_(j in NN)$. For any $alpha = {alpha_j}_(j in NN) in ell^2$, by the Riesz--Fischer Theorem (@thm:riesz-fischer), there is a single $x in H$ such that
-  $ x = sum_j alpha_j u_j, quad "and" quad chev(x, u_j)_H = alpha_j quad forall j in NN. $
+  Let (using the assumption) $H$ be a Hilbert space (with $chev(dot, dot)_H$, $norm(dot)_H$) with an infinite countable complete orthonormal system ${e_j}_(j in NN)$. For any $alpha = {alpha_j}_(j in NN) in ell^2$, by the Riesz--Fischer Theorem (@thm:riesz-fischer), there is a single $x in H$ such that
+  $ x = sum_j alpha_j e_j, quad "and" quad chev(x, e_j)_H = alpha_j quad forall j in NN. $
   Then the map
-  $ phi : ell^2 -> H quad "given by" quad phi: alpha |-> sum_j alpha_j u_j $
+  $ phi : ell^2 -> H quad "given by" quad phi: alpha |-> sum_j alpha_j e_j $
   is a bijection: the inverse is given by
-  $ phi^(-1): x |-> {chev(x, u_j)_H}_(j in NN). $
+  $ phi^(-1): x |-> {chev(x, e_j)_H}_(j in NN). $
   The vector structure of $H$ is preserved under $phi$. Moreover, $phi$ is trivially additive and homogeneous, thus linear.
 
   Therefore, it remains to show that the space $ell^2$ is complete under the associated norm. Observe that $phi$ preserves norms, since
-  $ norm(x)^2 = sum_(j = 1)^oo abs(chev(x, u_j)_H)^2 = norm({chev(x, u_j)_H}_(j in NN))^2 $
+  $ norm(x)^2 = sum_(j = 1)^oo abs(chev(x, e_j)_H)^2 = norm({chev(x, e_j)_H}_(j in NN))^2 $
   by Riesz--Fischer (@thm:riesz-fischer).
 
   Therefore, since any Cauchy sequence ${alpha_n}_n$ in $ell^2$ gives a Cauchy sequence ${phi(alpha_n)}_n subset.eq H$ with a single accumulation point $x in H$; from $norm(phi(alpha_n) - x)_H < epsilon$ ($n > N$ for some $N$), we obtain $norm(phi^(-1)(phi(alpha_n) - x)) = norm(alpha_n - phi^(-1)(x)) < epsilon$. Therefore, ${alpha_n}_n$ converges to $phi^(-1)(x)$, and thus $ell^2$ is complete.
@@ -222,18 +222,18 @@ We then conclude with the following technical result. (The proof does use Zorn's
 ] <thm:hilbert-subspace-of-space-with-countable-complete-orthonormal-system>
 #proof[
   //
-  Firstly, any Hilbert space is separable: letting ${u_j}_(j in NN_(< K))$ ($K in NN union {oo}$) be the complete orthonormal system, the subset
-  $ {sum_(j = 1)^k alpha_j u_j : j in NN_(<= k), alpha_j in QQ, k in NN_(< K)}, $
+  Firstly, any Hilbert space with a complete countable orthonormal system is separable: letting ${e_j}_(j in NN_(< K))$ ($K in NN union {oo}$) be the complete orthonormal system, the subset
+  $ {sum_(j = 1)^k alpha_j e_j : j in NN_(<= k), alpha_j in QQ, k in NN_(< K)}, $
   whose cardinality does not exceed that of $NN^2 times QQ$, is a countable set.
 
   Moreover, we can show that it is dense in $H$: $forall x in H$, we know from the proof Riesz--Fischer (@thm:riesz-fischer) that it can be written as
-  $ x = sum_(j in NN_(< K)) beta_j u_j, wide (beta_j = chev(x, u_j)), $
+  $ x = sum_(j in NN_(< K)) beta_j e_j, wide (beta_j = chev(x, e_j)), $
   which may be approximated with an error under $epsilon / 2$ by
-  $sum_(j = 1)^k beta_j u_j$. By the density of rationals, each $beta_j$ may be approximated by some $alpha_j$, such that $Re alpha_j, Im alpha_j in QQ$, such that $abs(alpha_j - beta_j) < epsilon / (2 k).$ Then
+  $sum_(j = 1)^k beta_j e_j$. By the density of rationals, each $beta_j$ may be approximated by some $alpha_j$, such that $Re alpha_j, Im alpha_j in QQ$, such that $abs(alpha_j - beta_j) < epsilon / (2 k).$ Then
   $
-    abs(x - sum_(j=1)^k alpha_j u_j) <= abs(x - sum_(j=1)^k beta_j u_j) + abs(sum_(j=1)^k (beta - alpha_j) u_j) < epsilon.
+    abs(x - sum_(j=1)^k alpha_j e_j) <= abs(x - sum_(j=1)^k beta_j e_j) + abs(sum_(j=1)^k (beta - alpha_j) e_j) < epsilon.
   $
-  Since $sum_(j=1)^k alpha_j u_j$ lies in the relevant subset, the density follows from the arbitrariness of $epsilon$.
+  Since $sum_(j=1)^k alpha_j e_j$ lies in the relevant subset, the density follows from the arbitrariness of $epsilon$.
 
   Hence $H$ is separable.
 

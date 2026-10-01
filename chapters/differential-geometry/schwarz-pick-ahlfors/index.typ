@@ -189,7 +189,7 @@ The preceding examples show that if the omitted set is sufficiently "large" (in 
 )
 
 #proof[
-  Without loss of generality, we may assume that ${0, 1} subset.eq CC without U$ (if not, a linear transformation $z |-> (z - xi_1)/(xi_2 - xi_1)$ where $xi_1, xi_2 in CC without U$ are distinct will suffice to transform $U$ to such a region).
+  Without loss of generality, we may assume that ${0, 1} subset.eq CC without U$ (if not, an affine complex transformation $z |-> (z - xi_1)/(xi_2 - xi_1)$ where $xi_1, xi_2 in CC without U$ are distinct will suffice to transform $U$ to such a region).
 
   Define a regular metric with
   #lbl(

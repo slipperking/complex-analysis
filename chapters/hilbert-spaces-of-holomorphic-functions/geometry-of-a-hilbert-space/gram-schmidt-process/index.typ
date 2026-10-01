@@ -2,6 +2,7 @@
 #show: docs-subsubchapter.with(
   title: [The Gram--Schmidt Process],
   route: "gram-schmidt-process",
+  label: <sec:gram-schmidt-process>,
 )
 
 The Gram--Schmidt process replaces a finite linearly independent set with an orthonormal set having the same span. This makes it possible to choose coordinates that respect the geometry induced by an inner product.
@@ -35,11 +36,11 @@ We can verify that the dimensionality is unique to a vector space and independen
 ]
 
 #definition[
-  Let $V$ be an inner product space. A finite set ${u_k}_(k=1)^n subset.eq V$ is _orthogonal_ iff
-  $ chev(e_j, u_k) = 0 quad "whenever" quad j != k. $
+  Let $V$ be an inner product space. A finite set ${e_k}_(k=1)^n subset.eq V$ is _orthogonal_ iff
+  $ chev(e_j, e_k) = 0 quad "whenever" quad j != k. $
   It is _orthonormal_ iff
-  $ chev(e_j, u_k) = delta_(j k) = cases(1 & quad"if"quad j = k, 0 & quad"if"quad j != k). $
-  Equivalently, an orthonormal set is an orthogonal set in which $norm(u_k) = 1$ for every $k$.
+  $ chev(e_j, e_k) = delta_(j k) = cases(1 & quad"if"quad j = k, 0 & quad"if"quad j != k). $
+  Equivalently, an orthonormal set is an orthogonal set in which $norm(e_k) = 1$ for every $k$.
 ] <def:finite-orthonormal-set>
 
 #definition[Orthonormal Basis][
@@ -84,7 +85,7 @@ $ chev(v, e_j) = sum_(k=1)^n a_k chev(e_k, e_j) = a_j. $
   by induction.
 ]
 
-Tjhe recursive construction in @thm:gram-schmidt-process is called the _Gram--Schmidt process_. At each stage, the sum
+The recursive construction in @thm:gram-schmidt-process is called the _Gram--Schmidt process_. At each stage, the sum
 $ sum_(j=1)^(k-1) chev(v_k, e_j)e_j $
 is the component of $v_k$ in all the previously constructed directions; and subtracting it leaves the nonzero vector $u_k$ orthogonal to all preceding directions.
 #corollary[

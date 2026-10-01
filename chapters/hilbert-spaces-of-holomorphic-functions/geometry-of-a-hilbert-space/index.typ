@@ -124,13 +124,19 @@ If the metric space is $RR$ under the standard Euclidean metric, then any Cauchy
 
 A metric space is said to be _complete_ iff all Cauchy sequences are complete. Intuitively, the set of rationals cannot be complete as there are accumulation points in $RR without QQ$ to which Cauchy sequences tend, so it is incomplete in the sense that potential accumulation points are not included. In most analytical settings, we are concerned only with vector space over complete scalar fields such as $RR$ or $CC$.
 #proposition[
-  Any finite-dimensional vector space $V$ over a complete scalar field $FF$ is complete with respect the metric space derived from _any_ (nondegenerate positive-definite Hermitian) inner-product norm.
+  Any finite-dimensional vector space $V$ over a complete field $FF$ is complete with respect the metric space derived from _any_ (nondegenerate positive-definite Hermitian) inner-product norm.
 ]
 #proof[
-  #todo[Finish this, and figure out how to do Gram--Schmidt (maybe an appendix for this)]
-  #claim[
+  Let ${e_j}_(j=1)^n$ be an orthonormal basis for $V$, obtained by the Gram--Schmidt process (see @sec:gram-schmidt-process), and fix a particular inner product $chev(dot, dot)$ and associated norm $norm(dot)$. Then for any Cauchy sequence ${v_k}_(k in NN)$, writing for each $k$: $ v_k = sum_(j = 1)^n v_k^((j)) e_j, $
+  if
+  $ norm(v_k - v_l) = norm(sum_(j = 1)^n (v_k^((j)) - v_l^((j))) e_j) < epsilon, $
+  it follows that for each $j$, each ${v_k^((j))}_k$ is a Cauchy sequence, and converges by the completeness of $FF$ to a value $v^((j))$.
 
-  ]
+  Moreover, $forall epsilon$, exists $N in NN$ such that $forall k > N, j in NN_(<= n)$, $abs(v_k^((j)) - v^((j))) < epsilon / n$.
+
+  Let $v = sum_(j = 1)^n v^((j)) e_j$. For any $k > N$,
+  $ norm(v_k - v) <= sum_(j = 1)^n norm(v_k^((j)) - v_l^((j))) < epsilon. $
+  Thus, under any inner product, any Cauchy sequence in $V$ converges.
 ]
 It is often convenient in analysis to take limits, and thus in most cases we are concerned only with complete spaces. However, infinite-dimensional vector spaces do not need to be complete under any inner-product norm, and thus completeness must be then stated as a precursory condition before further analysis can be done. These conditions now motivate for the following definition.
 #definition[Hilbert Space][
