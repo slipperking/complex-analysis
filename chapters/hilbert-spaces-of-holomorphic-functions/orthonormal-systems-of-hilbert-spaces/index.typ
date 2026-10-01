@@ -218,7 +218,7 @@ We will not immediately state a full proof. In proving completeness, one could o
 ]
 #proposition[
   A Hilbert space $H$ is separable iff it has a complete countable orthonormal system.
-]
+] <prop:hilbert-space-separable-equiv-having-complete-countable-orthonormal-system>
 #proof[
   1. (Forward implication)
 
@@ -256,9 +256,15 @@ We will not immediately state a full proof. In proving completeness, one could o
     $
     Since $sum_(j=1)^k alpha_j e_j$ lies in the relevant subset, the density follows from the arbitrariness of $epsilon$. #qedhere
 ]
-We then conclude with the following technical result. (The proof does use Zorn's lemma to obtain a maximal orthonormal set, so its format requires standard axiomatic set-theoretic concepts. However, due to countability, we do not require the Axiom of Choice; a fully constructive proof can be given using only countable methods.)
+We then conclude with the following technical result. /* The proof does use Zorn's lemma to obtain a maximal orthonormal set, so its format requires standard axiomatic set-theoretic concepts. However, due to countability, we do not require the Axiom of Choice; a fully constructive proof can be given using only countable methods. */
 #theorem[
-  Let $H$ be a Hilbert space and let $K subset.eq H$ be a Hilbert subspace. If $H$ has a countable complete orthonormal system, then so does $K$.
+  Let $H$ be a separable Hilbert space and let $K subset.eq H$ be a Hilbert subspace. Then $K$ is separable.
 ] <thm:hilbert-subspace-of-space-with-countable-complete-orthonormal-system>
 #proof[
+  By @prop:hilbert-space-separable-equiv-having-complete-countable-orthonormal-system, $H$ has a complete countable orthonormal basis ${e_j}_j$.
+  Projecting each $e_j$ onto $K$ by using the orthogonal decomposition (@thm:orthogonal-decomposition) gives a set ${u_j}$ in $K$.
+
+  In fact, this set is dense in $K$: for any $epsilon > 0, x in K$, there exists $y in span{e_j}_j$ such that $norm(y - x) < epsilon$. Projecting $y - x$ onto $K$ gives a vector $v$ satisfying $norm(v) <= norm(y - x)$ (triangle inequality), and moreover, $v = y_p - x$ (where $y_p$ is the projection of $y$ onto $K$). Moreover, $y_p$ is a linear combination of elements in ${u_j}$, and is within $epsilon$ from $x$. Then the density follows from arbitrariness.
+
+  Then $K$ is separable.
 ]
