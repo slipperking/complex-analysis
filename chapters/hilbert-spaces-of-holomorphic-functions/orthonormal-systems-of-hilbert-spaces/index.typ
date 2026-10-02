@@ -261,10 +261,9 @@ We then conclude with the following technical result. /* The proof does use Zorn
   Let $H$ be a separable Hilbert space and let $K subset.eq H$ be a Hilbert subspace. Then $K$ is separable.
 ] <thm:hilbert-subspace-of-space-with-countable-complete-orthonormal-system>
 #proof[
-  By @prop:hilbert-space-separable-equiv-having-complete-countable-orthonormal-system, $H$ has a complete countable orthonormal basis ${e_j}_j$.
-  Projecting each $e_j$ onto $K$ by using the orthogonal decomposition (@thm:orthogonal-decomposition) gives a set ${u_j}$ in $K$.
+  By @prop:hilbert-space-separable-equiv-having-complete-countable-orthonormal-system, $H$ has a complete countable orthonormal basis ${e_j}_j$. Projecting each $e_j$ onto $K$ by using the orthogonal decomposition (@thm:orthogonal-decomposition) gives a set ${u_j}$ in $K$.
 
-  In fact, this set is dense in $K$: for any $epsilon > 0, x in K$, there exists $y in span{e_j}_j$ such that $norm(y - x) < epsilon$. Projecting $y - x$ onto $K$ gives a vector $v$ satisfying $norm(v) <= norm(y - x)$ (triangle inequality), and moreover, $v = y_p - x$ (where $y_p$ is the projection of $y$ onto $K$). Moreover, $y_p$ is a linear combination of elements in ${u_j}$, and is within $epsilon$ from $x$. Then the density follows from arbitrariness.
+  In fact, the span of ${u_j}$ is dense in $K$: for any $epsilon > 0, x in K$, there exists $y in span{e_j}_j$ such that $norm(y - x) < epsilon$. Projecting $y - x$ onto $K$ gives a vector $v$ satisfying $norm(v) <= norm(y - x)$ (by @thm:orthogonality-pythagorean, the Pythagorean theorem); and moreover, $v = y_p - x$ (where $y_p$ is the projection of $y$ onto $K$). Moreover, $y_p$ is a linear combination of elements in ${u_j}$, and is within $epsilon$ from $x$. Then the density follows from arbitrariness.
 
   Then $K$ is separable.
 ]
