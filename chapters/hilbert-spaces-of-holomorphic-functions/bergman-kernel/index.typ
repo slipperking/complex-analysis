@@ -67,7 +67,13 @@ Moreover, certain properties of the Bergman kernel that we have discussed previo
 Therefore, in the search of a Bergman kernel for a specified domain, if one can construct a function satisfying the properties outlined in @thm:bergman-kernel-property-uniqueness, then one can ascertain that it is the Bergman kernel.
 #theorem[
   Let $A^2(Omega)$ be the Bergman space of square-integrable functions on any open region $Omega subset.eq CC$. Then $A^2(Omega)$ has a complete countable orthonormal system ${e_j}$.
-]
+] <thm:bergman-space-complete-countable-orthonormal-system-existence>
+There are several approaches to prove this theorem. We provide the complex-analytic method:
 #proof[
-  (A reader who has learned measure theory could note: since $L^2(Omega)$ is separable)
+  #lorem(1)
+
+  Exhaust $Omega$ by compact sets ${K_n}_(n in NN)$, such that $K_n subset.double$
+]
+#proof[(Alternative)][
+  A reader who has learned measure theory could note that $L^2(Omega)$ is a separable Hilbert space, and by @thm:hilbert-subspace-of-space-with-countable-complete-orthonormal-system, $A^2(Omega)$ is separable and has a complete countable orthonormal system by @prop:hilbert-space-separable-equiv-having-complete-countable-orthonormal-system.
 ]

@@ -94,12 +94,14 @@ Therefore, two annuli are conformally equivalent iff they have the same conforma
 )
 We now provide a conceptual proof of the Riemann Mapping Theorem based on the Dirichlet problem (which is in fact more historically aligned with the original approach from Riemann). We hope that the proof we provide generalizes easily into more complex domains for readers.
 #lbl(
-  lemma[
-    Let $U subset.eq CC$ be an open, nonempty, simply connected region and fix $z_0 in U$. There is a sequence ${U_n}_(n in NN)$ of bounded simply connected polygonal domains such that
+  lemma[Polygonal Grid Exhaustion][
+    Let $U subset.eq CC$ be a region and fix $z_0 in U$. There is a sequence ${U_n}_(n in NN)$ of bounded, connected grid regions, each the interior of a finite union of closed squares from a square grid (and hence polygonal, with finitely many complement components), such that
     $ z_0 in U_1, quad overline(U_n) subset.double U_(n + 1), quad union.big_(n in NN) U_n = U. $
     Moreover, every point of $partial U_n$ satisfies the exterior segment condition in @thm:barrier-exterior-segment.
+
+    If $U$ is $q$-connected, then the domains $U_n$ may all be chosen to be $q$-connected. Equivalently, each $U_n$ has precisely $q - 1$ holes, or $q$ holes in $extcomplex$.
   ],
-  <lem:simply-connected-polygonal-exhaustion>,
+  <lem:polygonal-exhaustion>,
 )
 #proof[
   If $U = CC$, the interiors of the closed squares centered at $z_0$ with side lengths $2 n$ already give the required exhaustion. Suppose therefore that $U != CC$. For $z in CC$, define
@@ -121,7 +123,7 @@ We now provide a conceptual proof of the Riemann Mapping Theorem based on the Di
   for every $0 <= t <= 1$. Hence $gamma([0, 1]) subset E_n$, which places $z$ in the same component of $E_n$ as $z_0$. Thus $z in K_n$, proving $union.big_(n in NN) K_n = U$.
 
   Set
-  $ sigma_n = inf({abs(z_2 - z_1) : z_2 in K_n and z_1 in CC without interior(K_(n + 1))}), $
+  $ sigma_n = min(1 / (n + 1), inf({abs(z_2 - z_1) : z_2 in K_n and z_1 in CC without interior(K_(n + 1))})), $
   which is positive because $K_n subset.double interior(K_(n + 1))$. Consider the grid of compact squares
   $ Q_n^((j, k)) = {x + ii y : j sigma_n / 2 <= x <= (j + 1) sigma_n / 2, k sigma_n / 2 <= y <= (k + 1) sigma_n / 2} $
   and let
@@ -133,21 +135,29 @@ We now provide a conceptual proof of the Riemann Mapping Theorem based on the Di
   In fact, $K_n subset.double interior(tilde(K_n))$. Otherwise, some $z in K_n$ would lie on $partial tilde(K_n)$. If $z in partial tilde(K_n)$ lay on the side of some square, the square adjacent across that edge would also meet $K_n$ at $z$ and would belong to $cal(G)_n$, so the edge (interior) could not lie on the boundary. At a grid vertex, every adjacent square containing $z$ would likewise belong to $cal(G)_n$, again contradicting $z in partial tilde(K_n)$. Thus
   $ K_n subset.double interior(tilde(K_n)) subset K_(n + 1) subset.double interior(tilde(K_(n + 1))). $
 
-  The interior of $tilde(K_n)$ may fail to be simply connected because the grid union can surround holes. Then let $W_n$ be the component of $extcomplex without tilde(K_n)$ containing $oo$, and define the filled hull
-  $ P_n = extcomplex without W_n. $
-  Thus $P_n$ consists of $tilde(K_n)$ together with every bounded component of $CC without tilde(K_n)$, effectively "filling in the holes."
+  Let $V_n$ be the connected component of $interior(tilde(K_n))$ containing $K_n$. This is well-defined because $K_n$ is connected and lies in $interior(tilde(K_n))$. Furthermore,
+  $ overline(V_n) subset.eq tilde(K_n) subset K_(n + 1) subset V_(n + 1). $
+  Thus ${V_n}$ is a nested exhaustion of $U$. Each $V_n$ is the interior component of a finite union of grid squares, so it is a bounded polygonal domain and has only finitely many complementary components. This proves the assertion for an arbitrary region, without any restriction on the number of holes of $U$.
 
-  We claim that $P_n subset.double U$. Since $U$ is simply connected, $extcomplex without U$ is connected. It contains $oo$ and is disjoint from $tilde(K_n) subset U$, so it lies entirely in $W_n$. Taking complements gives $P_n subset U$; since $P_n$ is compact, $P_n subset.double U$.
+  Now suppose that $U$ is $q$-connected, and write $C_0, dots.c, C_(q - 1)$ for the connected components of $extcomplex without U$, with $oo in C_0$. After omitting finitely many further terms, the sets $C_0, dots.c, C_(q - 1)$ lie in distinct components of $extcomplex without overline(V_n)$. To see this, fix $j != k$ and suppose that $C_j$ and $C_k$ were never separated. For each $n$, let $Y_n$ be the component of $extcomplex without overline(V_n)$ containing both of them. Since $overline(V_n) subset V_(n + 1)$, $overline(Y_(n + 1)) subset.eq overline(Y_n)$. It follows that
+  $ C_j union C_k subset.eq Y = inter.big_n overline(Y_n). $
+  On the other hand, if $z in U$, then $z in V_N$ for some $N$ because ${V_n}$ exhausts $U$; then $z in V_n$ and $z in.not overline(Y_n)$ for $n > N$ by inclusion. Therefore,
+  $
+    Y subset.eq extcomplex without union.big_(n > N) V_n = extcomplex without U.
+  $
+  We have thus found a connected subset of $extcomplex without U$ containing both $C_j$ and $C_k$, which is impossible because they are distinct connected components. Hence every pair is separated at some $N_(j, k)$. Then since $forall n > N_(j, k)$, $extcomplex without overline(V_n) subset.eq extcomplex without overline(V_N_(j, k))$, for such $n$ the pair is still separated.
 
-  Filling holes preserves compact nesting, so
-  $ P_n subset.double interior(P_(n + 1)). $
-  Set $U_n = interior(P_n)$. Because
-  $ K_n subset interior(tilde(K_n)) subset U_n subset P_n subset U $
-  and $union.big_(n in NN) K_n = U$, we have $union.big_(n in NN) U_n = U$. The complement of $U_n$ in the extended plane is connected, so $U_n$ is simply connected. Its boundary is polygonal because filling holes only removes some boundary components of the finite grid union.
+  Then discarding the first $max_(0 <= j < k < q) N_(j, k)$ initial terms of ${V_n}$ ensures each $C_j$ lies in separate components.
 
-  Finally, every point of $partial U_n$ admits an exterior line segment: at an edge choose a segment pointing into the exterior half-plane, and at a vertex choose one lying in an exterior sector. This concludes the proof.
+  For each $0<= j < q$ and $n in NN$, let $W_(n,j)$ be the component of $extcomplex without overline(V_n)$ containing $C_j$. By the preceding paragraph, these $q$ components are distinct. Fill every potential other complementary component by setting
+  $ P_n = extcomplex without union.big_(j=0)^(q - 1) W_(n,j), quad U_n = interior(P_n). $
+  Then $P_n$ is obtained from $overline(V_n)$ by filling precisely the holes which do not correspond to components of $extcomplex without U$. Additionally, $P_n subset.double U$: every point outside $U$ belongs to some $C_j subset W_(n,j)$, and the set $P_n$ is compact. Moreover,
+  $ overline(U_n) = P_n subset.double U_(n + 1) $
+  since $overline(W_(n+1, j)) subset.double W_(n, j)$. Also $V_n subset.eq U_n$, and therefore ${U_n}$ exhausts $U$. By construction, each $U_n$ is $q$-connected.
+
+  Finally, every point of $partial U_n$ admits an exterior line segment: at an edge choose a segment pointing into the exterior half-plane; and at a vertex between two segments, choose an outward-pointing segment angled $uppi / 4$ from each segment.
 ]
-
+#todo[Check over generalization]
 #thm-state.thm-restate("thm:riemann-mapping")
 #proof[
   First consider the case where $U$ is a bounded region whose boundary is sufficiently regular (in the sense that each point admits a barrier) and $0 in U$. Then there is a solution $u$ to the Dirichlet Problem (@thm:solution-to-the-dirichlet-problem) in $U$ with the continuous boundary function $z mapsto -log abs(z)$. Obviously, the function $u$ cannot be equivalent to $-log abs(z)$ in the interior since the latter would approach $oo$ at $0$. Let
@@ -177,7 +187,7 @@ We now provide a conceptual proof of the Riemann Mapping Theorem based on the Di
 
   We next prove that every $w in DD$ is assumed exactly once. We aim to use the Argument Principle, but note that $F$ need not be holomorphic on a neighborhood of $overline(U)$, and hence we exhaust $U$ with compact sets. Choose $rho$ with $abs(w) < rho < 1$ and set
   $ K_rho = {z in U : abs(F(z)) <= rho}. $
-  Since $overline(D(0, rho)) subset.double DD$ is compact and $K_rho = F^(-1)(overline(D(0, rho)))$, properness gives that $K_rho subset.double U$ is compact. By @lem:simply-connected-polygonal-exhaustion, choose a polygonal exhaustion ${V_n}_(n in NN)$ of $U$. For all sufficiently large $n$, $K_rho subset.double V_n$, and hence $abs(F) > rho > abs(w)$ on $partial V_n$.
+  Since $overline(D(0, rho)) subset.double DD$ is compact and $K_rho = F^(-1)(overline(D(0, rho)))$, properness gives that $K_rho subset.double U$ is compact. By @lem:polygonal-exhaustion, choose a polygonal exhaustion ${V_n}_(n in NN)$ of $U$. For all sufficiently large $n$, $K_rho subset.double V_n$, and hence $abs(F) > rho > abs(w)$ on $partial V_n$.
 
   On $partial V_n$ we have $abs(w / F) < 1$. By compactness, the same inequality holds on some open neighborhood of $partial V_n$. Therefore, $1 - w / F$ attains values in $D(1, 1) subset CC^*$ on this neighborhood and $eta = Log(1 - w / F)$ is holomorphic there (using the principal branch). Since
   $ F(z) - w = F(z) (1 - w / F(z)), $
@@ -192,7 +202,7 @@ We now provide a conceptual proof of the Riemann Mapping Theorem based on the Di
   $
   Thus $n_(V_n) (F - w) = n_(V_n) (F) = 1$, where zeros are counted with multiplicity. Every zero of $F - w$ in all of $U$ belongs to $K_rho subset V_n$, so this is also the total number of solutions of $F(z) = w$ in $U$. Since $w$ was arbitrary, $F$ is bijective; the multiplicity statement also gives $F' != 0$, so $F : U -> DD$ is biholomorphic.
 
-  Now lift the regularity restriction upon $partial U$. By @lem:simply-connected-polygonal-exhaustion, choose a nested exhaustion ${U_n}_(n in NN)$ of $U$ by simply connected polygonal domains with $0 in U_1$. Every point of $partial U_n$ satisfies the exterior segment condition, so the regular-boundary case gives a biholomorphism $F_n : U_n -> DD$ such that $F_n (0) = 0$ and $F_n ' (0) in RR_(>0)$.
+  Now lift the regularity restriction upon $partial U$. By @lem:polygonal-exhaustion, choose a nested exhaustion ${U_n}_(n in NN)$ of $U$ by simply connected polygonal domains with $0 in U_1$. Every point of $partial U_n$ satisfies the exterior segment condition, so the regular-boundary case gives a biholomorphism $F_n : U_n -> DD$ such that $F_n (0) = 0$ and $F_n ' (0) in RR_(>0)$.
 
   For fixed $m$, the tail ${F_n}_(n >= m)$ is defined and bounded by $1$ on $U_m$, so it is normal there by Montel's Theorem (@thm:montel). We construct nested subsequences inductively.
 
@@ -372,7 +382,7 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
 
   Recall $gamma$ to be a Jordan curve in $U$, winding once around $Gamma_1$. Now choose a $N in NN$ such that $op("dist")(gamma, CC without U) > 1 / N$. Then for $n in NN$, let $U_n$ be the connected component of
   $ {z in U : op("dist")(z, CC without U) > 1 / (N + n)} $
-  containing $gamma$. Then ${U_n}$ exhaust $U$ (refer to the path-between-two-points argument as in the proof of @lem:simply-connected-polygonal-exhaustion), such that for each $n$, $overline(U_n) subset.double U_(n + 1)$ and $gamma subset U_n$. Then there exists a $n'$ such that $K subset.double U_n'$.
+  containing $gamma$. Then ${U_n}$ exhaust $U$ (refer to the path-between-two-points argument as in the proof of @lem:polygonal-exhaustion), such that for each $n$, $overline(U_n) subset.double U_(n + 1)$ and $gamma subset U_n$. Then there exists a $n'$ such that $K subset.double U_n'$.
 
   #figure-wrapper(
     lbl(
@@ -536,7 +546,7 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
     ),
   )
 
-  By the grid approximation method used in the proofs of @prop:runge-simple-poles-and-removable-singularity-at-infinity and @lem:simply-connected-polygonal-exhaustion, we may obtain a compact grid superset $tilde(K)$ of $overline(U_n')$ lying within $U$. We may assume it is connected by taking the unique component containing $overline(U_n')$.
+  By the grid approximation method used in the proofs of @prop:runge-simple-poles-and-removable-singularity-at-infinity and @lem:polygonal-exhaustion, we may obtain a compact grid superset $tilde(K)$ of $overline(U_n')$ lying within $U$. We may assume it is connected by taking the unique component containing $overline(U_n')$.
 
   There are two connected components $W_1$ and $W_2$ of the complement of $tilde(K)$ containing $jinterior(Gamma_1)$ and $jexterior(Gamma_0)$ respectively. Then any other "holes" aside from these two may be "filled in," by taking $CC without (W_1 union W_2)$. For brevity, continue to denote this new polygonal doubly connected compact set by $tilde(K)$ with a polygonal boundary $Gamma'_0 union Gamma'_1$, where $Gamma'_0$ is the outer curve and $Gamma'_1$ is the inner curve, both of which are piecewise $C^oo$.
 
