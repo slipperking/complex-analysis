@@ -28,7 +28,7 @@ The following result should shed light upon why such a classification exists:
     + For any sequence ${z_j}_(j in NN) subset A_1$ whose accumulation points are all in $partial DD$, $w_j = phi.alt(z_j)$ has accumulation points in $partial DD$; and for any sequence ${z_j}_(j in NN) subset A_1$ with accumulation points all in $partial D(0, R_1)$, $w_j = phi.alt(z_j)$ has all accumulation points in $partial D(0, R_2)$.
     + For any sequence ${z_j}_(j in NN) subset A_1$ whose accumulation points are all in $partial DD$, $w_j = phi.alt(z_j)$ has accumulation points in $D(0, R_2)$; and for any sequence ${z_j}_(j in NN) subset A_1$ with accumulation points all in $partial D(0, R_1)$, $w_j = phi.alt(z_j)$ has all accumulation points in $partial DD$.
   ]
-  #proof[
+  #proof[of the claim][
     First we must show that for any $z_j -> partial A_1$ (not necessarily convergent but rather simply that $abs(z_j)$ has all accumulation points in ${1, R_1}$), $w_j$ has all its accumulation points in $partial A_2$.
 
     This general scenario is obtained from a property known as _properness_ (of $phi.alt$): for any compact $K subset.double A_2$, its preimage ($phi.alt^(-1)(K)$ is compact). Obviously properness is true as $phi.alt^(-1)$ is continuous (in general, any homeomorphism is proper) and maps a compact set (here $K$) to a compact set.
@@ -93,71 +93,259 @@ Therefore, two annuli are conformally equivalent iff they have the same conforma
   <thm:holomorphic-automorphism-group-of-annulus>,
 )
 We now provide a conceptual proof of the Riemann Mapping Theorem based on the Dirichlet problem (which is in fact more historically aligned with the original approach from Riemann). We hope that the proof we provide generalizes easily into more complex domains for readers.
-#lbl(
-  lemma[Polygonal Grid Exhaustion][
-    Let $U subset.eq CC$ be a region and fix $z_0 in U$. There is a sequence ${U_n}_(n in NN)$ of bounded, connected grid regions, each the interior of a finite union of closed squares from a square grid (and hence polygonal, with finitely many complement components), such that
-    $ z_0 in U_1, quad overline(U_n) subset.double U_(n + 1), quad union.big_(n in NN) U_n = U. $
-    Moreover, every point of $partial U_n$ satisfies the exterior segment condition in @thm:barrier-exterior-segment.
+#lemma[Polygonal Grid Exhaustion][
+  Let $U subset.eq CC$ be a region. There is a sequence ${U_n}_(n in NN)$ of bounded, connected grid regions, each the interior of a finite union of closed squares from a square grid (and hence polygonal, with finitely many complement components), such that
+  $ overline(U_n) subset.double U_(n + 1), quad union.big_(n in NN) U_n = U. $
+  Moreover, every connected component of $partial U_n$ is a polygonal Jordan curve, and every point of $partial U_n$ satisfies the exterior segment condition in @thm:barrier-exterior-segment.
 
-    If $U$ is $q$-connected, then the domains $U_n$ may all be chosen to be $q$-connected. Equivalently, each $U_n$ has precisely $q - 1$ holes, or $q$ holes in $extcomplex$.
-  ],
-  <lem:polygonal-exhaustion>,
-)
+  If $U$ is $q$-connected, then the domains $U_n$ may all be chosen to be $q$-connected. Equivalently, each $U_n$ has precisely $q - 1$ holes, or $q$ holes in $extcomplex$.
+] <lem:polygonal-exhaustion>
 #proof[
+  Choose $z_0 in U$.
   If $U = CC$, the interiors of the closed squares centered at $z_0$ with side lengths $2 n$ already give the required exhaustion. Suppose therefore that $U != CC$. For $z in CC$, define
   $ delta(z) = inf({abs(z - a) : a in CC without U}). $
-  The triangle inequality gives $abs(delta(z) - delta(zeta)) <= abs(z - zeta)$, so $delta$ is continuous. Choose $n_0 in NN$ such that $abs(z_0) < n_0$ and $1 / n_0 < delta(z_0)$, and for each $n in NN$ set
-  $ E_n = {z in CC : abs(z) <= n_0 + n "and" delta(z) >= 1 / (n_0 + n)}. $
-  Each $E_n$ is closed because $delta$ is continuous and bounded because $abs(z) <= n_0 + n$; hence $E_n$ is compact. Moreover, if $z in E_n$, then
-  $ abs(z) <= n_0 + n < n_0 + n + 1 quad "and" quad delta(z) >= 1 / (n_0 + n) > 1 / (n_0 + n + 1). $
-  Both inequalities are strict for the defining bounds of $E_(n + 1)$, so continuity of $abs(dot.c)$ and $delta$ gives $E_n subset interior(E_(n + 1))$.
+  #claim[
+    There is a compact connected exhaustion ${K_n}_(n in NN)$ of $U$ such that $K_n subset.double interior(K_(n + 1))$.
+  ]
+  #proof[of the claim][
+    The triangle inequality gives $abs(delta(z) - delta(zeta)) <= abs(z - zeta)$, so $delta$ is continuous. Choose $n_0 in NN$ such that $abs(z_0) < n_0$ and $1 / n_0 < delta(z_0)$, and set
+    $ E_n = {z in CC : abs(z) <= n_0 + n "and" delta(z) >= 1 / (n_0 + n)}. $
+    Each $E_n$ is compact. Moreover, the two defining inequalities for $E_n$ are strict relative to the bounds defining $E_(n + 1)$, so $E_n subset interior(E_(n + 1))$.
 
-  Let $K_n$ be the connected component of $E_n$ containing $z_0$. This component exists because the choice of $n_0$ places $z_0$ in $interior(E_n)$ for every $n$, and it is compact because every component of a compact set is closed. Since $K_n$ is connected, contains $z_0$, and lies in $E_n subset interior(E_(n + 1))$, it is contained in $K_(n + 1)$ (as $K_n$ lies in the connected component of $E_(n+1)$ containing $z_0$).
+    Let $K_n$ be the connected component of $E_n$ containing $z_0$. It is compact, and $K_n subset K_(n + 1)$. In fact, if $z in K_n$, then some disk $D(z,r)$ lies in $E_(n + 1)$. The connected set $K_n union D(z,r)$ contains $z_0$, so it lies in $K_(n + 1)$. Hence a neighborhood of $K_n$ lies in $K_(n + 1)$ and $K_n subset.double interior(K_(n + 1))$.
 
-  In fact, $K_n subset interior(K_(n + 1))$: for each $z in K_n$, since $exists r$ such that $D(z,r) subset.eq E_(n + 1)$. Then $K_n union D(z,r)$ is a connected subset of $interior(E_(n + 1))$, so it lies entirely in $K_(n + 1)$ (as this is the maximal connected subset containing $z_0$). Then a neighborhood of $K_n$ lies in $K_(n+1)$, so $K_n subset.double interior(K_(n + 1))$.
+    Finally, fix $z in U$ and choose a path $gamma : [0,1] -> U$ from $z_0$ to $z$. Its image is compact, so
+    $ M = max_(0 <= t <= 1) abs(gamma(t)) < oo quad "and" quad m = min_(0 <= t <= 1) delta(gamma(t)) > 0. $
+    For sufficiently large $n$, $n_0+n>M$ and $1/(n_0+n)<m$, whence $gamma([0,1]) subset E_n$. Thus $z in K_n$, proving $union.big_n K_n=U$.
+  ]
 
-  Finally, the sets $K_n$ exhaust $U$. Given $z in U$, choose a path $gamma : [0, 1] -> U$ from $z_0$ to $z$. Its image is a compact subset of $U$, so
-  $ M = max_(0 <= t <= 1) abs(gamma(t)) < oo quad "and" quad m = min_(0 <= t <= 1) delta(gamma(t)) > 0. $
-  Choose $n$ sufficiently large so that $n_0 + n > M$ and $1 / (n_0 + n) < m$ (i.e., $n > max(M, 1 / m) - n_0$). Then
-  $ abs(gamma(t)) < n_0 + n quad "and" quad delta(gamma(t)) > 1 / (n_0 + n) $
-  for every $0 <= t <= 1$. Hence $gamma([0, 1]) subset E_n$, which places $z$ in the same component of $E_n$ as $z_0$. Thus $z in K_n$, proving $union.big_(n in NN) K_n = U$.
+  #claim[
+    The region $U$ admits a nested exhaustion ${A_n}_(n in NN)$ by bounded connected grid regions with finitely many complementary components.
+  ]
+  #proof[of the claim][
+    Set
+    $ sigma_n = inf({abs(z_2-z_1) : z_2 in K_n "and" z_1 in CC without interior(K_(n+1))}) > 0. $
+    Consider the grid of compact squares
+    $ Q_n^((j,k)) = {x+ii y : j sigma_n/2 <= x <= (j+1)sigma_n/2, k sigma_n/2 <= y <= (k+1)sigma_n/2} $
+    and let
+    $ cal(G)_n = {Q_n^((j,k)) : (j,k) in ZZ^2 "and" Q_n^((j,k)) inter K_n != emptyset}. $
+    This collection is finite. Each square has diagonal $sigma_n/sqrt(2)<sigma_n$, so
+    $ tilde(K_n)=union.big_(Q in cal(G)_n)Q $
+    is a compact superset of $K_n$ contained in $interior(K_(n+1))$.
 
-  Set
-  $ sigma_n = min(1 / (n + 1), inf({abs(z_2 - z_1) : z_2 in K_n and z_1 in CC without interior(K_(n + 1))})), $
-  which is positive because $K_n subset.double interior(K_(n + 1))$. Consider the grid of compact squares
-  $ Q_n^((j, k)) = {x + ii y : j sigma_n / 2 <= x <= (j + 1) sigma_n / 2, k sigma_n / 2 <= y <= (k + 1) sigma_n / 2} $
-  and let
-  $ cal(G)_n = {Q_n^((j, k)) : (j, k) in ZZ^2 "and" Q_n^((j, k)) inter K_n != emptyset}. $
-  This collection is finite because $K_n$ is compact. Each square has diagonal $sigma_n / sqrt(2) < sigma_n$; hence no square in $cal(G)_n$ can meet $CC without interior(K_(n + 1))$. Therefore,
-  $ tilde(K_n) = union.big_(Q in cal(G)_n) Q $
-  is a compact superset of $K_n$ contained in $interior(K_(n + 1))$.
+    Furthermore, $K_n subset.double interior(tilde(K_n))$. Indeed, if a point of $K_n$ lay on a grid edge or vertex of $partial tilde(K_n)$, every square adjacent across that edge or at that vertex would also meet $K_n$ and hence belong to $cal(G)_n$, a contradiction. Let $A_n$ be the connected component of $interior(tilde(K_n))$ containing $K_n$. Then
+    $ overline(A_n) subset.eq tilde(K_n) subset K_(n+1) subset.double A_(n+1). $
+    Thus ${A_n}$ is the required grid exhaustion.
+  ]
 
-  In fact, $K_n subset.double interior(tilde(K_n))$. Otherwise, some $z in K_n$ would lie on $partial tilde(K_n)$. If $z in partial tilde(K_n)$ lay on the side of some square, the square adjacent across that edge would also meet $K_n$ at $z$ and would belong to $cal(G)_n$, so the edge (interior) could not lie on the boundary. At a grid vertex, every adjacent square containing $z$ would likewise belong to $cal(G)_n$, again contradicting $z in partial tilde(K_n)$. Thus
-  $ K_n subset.double interior(tilde(K_n)) subset K_(n + 1) subset.double interior(tilde(K_(n + 1))). $
+  #claim[
+    The grid exhaustion may be chosen so that every boundary component is a polygonal Jordan curve and distinct boundary components are disjoint.
+  ]
+  #proof[of the claim][
+    We resolve the possible "pinches" (see @fig:polygonal-exhaustion-grid-corner-touch-resolution) in each $overline(A_n)$. Let
+    $ epsilon_n = op("dist")(overline(A_n), CC without A_(n+1)) $
+    and let $delta_n$ be the side length of the square used in the grid constructing $overline(A_n)$. Moreover, let
+    $ eta_n = delta_n / (floor(4 max{1, delta_n / epsilon_n}) + 1). $
+    It follows that the resultant value is a factor of $delta_n$, and satisfies $eta_n < delta_n / 4$ and $eta_n < epsilon_n / 4$.
 
-  Let $V_n$ be the connected component of $interior(tilde(K_n))$ containing $K_n$. This is well-defined because $K_n$ is connected and lies in $interior(tilde(K_n))$. Furthermore,
-  $ overline(V_n) subset.eq tilde(K_n) subset K_(n + 1) subset V_(n + 1). $
-  Thus ${V_n}$ is a nested exhaustion of $U$. Each $V_n$ is the interior component of a finite union of grid squares, so it is a bounded polygonal domain and has only finitely many complementary components. This proves the assertion for an arbitrary region, without any restriction on the number of holes of $U$.
+    #figure-wrapper(
+      lbl(
+        figure(
+          canvas(length: 0.75cm, {
+            import cetz.draw: *
+            let dotted = (thickness: 0.5pt)
+            let square(center, half-side: 0.5) = {
+              scope({
+                translate(x: center.at(0), y: center.at(1))
+                line(
+                  (-half-side, -half-side),
+                  (-half-side, half-side),
+                  (half-side, half-side),
+                  (half-side, -half-side),
+                  close: true,
+                  stroke: dotted,
+                  fill: black.transparentize(70%),
+                )
+              })
+            }
+            let centers = ()
+            let centers-exclude = (
+              (-3, 2),
+              (-2, 2),
+              (-3, 1),
+              (-3, 0),
+              (-3, -2),
+              (-3, -3),
+              (2, -3),
+              (1, -3),
+              (2, 2),
+              (1, 2),
+              (0, 1),
+              (0, 0),
+              (1, 0),
+              (1, -1),
+              (0, -1),
+              (-1, -1),
+            )
+            circle((0.5, 1.5), radius: 0.75, stroke: (dash: "dotted"))
+            for i in range(-3, 3) {
+              for j in range(-3, 3) {
+                if not centers-exclude.contains((i, j)) { centers.push((i, j)) }
+              }
+            }
 
-  Now suppose that $U$ is $q$-connected, and write $C_0, dots.c, C_(q - 1)$ for the connected components of $extcomplex without U$, with $oo in C_0$. After omitting finitely many further terms, the sets $C_0, dots.c, C_(q - 1)$ lie in distinct components of $extcomplex without overline(V_n)$. To see this, fix $j != k$ and suppose that $C_j$ and $C_k$ were never separated. For each $n$, let $Y_n$ be the component of $extcomplex without overline(V_n)$ containing both of them. Since $overline(V_n) subset V_(n + 1)$, $overline(Y_(n + 1)) subset.eq overline(Y_n)$. It follows that
-  $ C_j union C_k subset.eq Y = inter.big_n overline(Y_n). $
-  On the other hand, if $z in U$, then $z in V_N$ for some $N$ because ${V_n}$ exhausts $U$; then $z in V_n$ and $z in.not overline(Y_n)$ for $n > N$ by inclusion. Therefore,
-  $
-    Y subset.eq extcomplex without union.big_(n > N) V_n = extcomplex without U.
-  $
-  We have thus found a connected subset of $extcomplex without U$ containing both $C_j$ and $C_k$, which is impossible because they are distinct connected components. Hence every pair is separated at some $N_(j, k)$. Then since $forall n > N_(j, k)$, $extcomplex without overline(V_n) subset.eq extcomplex without overline(V_N_(j, k))$, for such $n$ the pair is still separated.
+            for center in centers {
+              square(center)
+            }
+            for center in centers {
+              if not centers.contains((center.at(0) + 1, center.at(1))) {
+                line((center.at(0) + 0.5, center.at(1) - 0.5), (center.at(0) + 0.5, center.at(1) + 0.5), stroke: 1.5pt)
+              }
+              if not centers.contains((center.at(0) - 1, center.at(1))) {
+                line((center.at(0) - 0.5, center.at(1) - 0.5), (center.at(0) - 0.5, center.at(1) + 0.5), stroke: 1.5pt)
+              }
+              if not centers.contains((center.at(0), center.at(1) + 1)) {
+                line((center.at(0) - 0.5, center.at(1) + 0.5), (center.at(0) + 0.5, center.at(1) + 0.5), stroke: 1.5pt)
+              }
+              if not centers.contains((center.at(0), center.at(1) - 1)) {
+                line((center.at(0) - 0.5, center.at(1) - 0.5), (center.at(0) + 0.5, center.at(1) - 0.5), stroke: 1.5pt)
+              }
+            }
 
-  Then discarding the first $max_(0 <= j < k < q) N_(j, k)$ initial terms of ${V_n}$ ensures each $C_j$ lies in separate components.
+            translate(x: 3)
+            line((0.25, -0.5), (1.75, -0.5), mark: (end: (symbol: ">>", fill: black)), stroke: 2pt)
+            translate(x: 6)
+            let centers-transformed = ()
 
-  For each $0<= j < q$ and $n in NN$, let $W_(n,j)$ be the component of $extcomplex without overline(V_n)$ containing $C_j$. By the preceding paragraph, these $q$ components are distinct. Fill every potential other complementary component by setting
-  $ P_n = extcomplex without union.big_(j=0)^(q - 1) W_(n,j), quad U_n = interior(P_n). $
-  Then $P_n$ is obtained from $overline(V_n)$ by filling precisely the holes which do not correspond to components of $extcomplex without U$. Additionally, $P_n subset.double U$: every point outside $U$ belongs to some $C_j subset W_(n,j)$, and the set $P_n$ is compact. Moreover,
-  $ overline(U_n) = P_n subset.double U_(n + 1) $
-  since $overline(W_(n+1, j)) subset.double W_(n, j)$. Also $V_n subset.eq U_n$, and therefore ${U_n}$ exhausts $U$. By construction, each $U_n$ is $q$-connected.
+            for center in centers {
+              for i in range(-2, 3) {
+                for j in range(-2, 3) {
+                  centers-transformed.push((5 * center.at(0) + i, 5 * center.at(1) + j))
+                }
+              }
+              for i in range(2) {
+                for j in range(2) {
+                  centers-transformed.push((5 * center.at(0) + 2.5 + (i - 0.5), 5 * center.at(1) + 2.5 + (j - 0.5)))
+                  centers-transformed.push((5 * center.at(0) - 2.5 + (i - 0.5), 5 * center.at(1) + 2.5 + (j - 0.5)))
+                  centers-transformed.push((5 * center.at(0) + 2.5 + (i - 0.5), 5 * center.at(1) - 2.5 + (j - 0.5)))
+                  centers-transformed.push((5 * center.at(0) - 2.5 + (i - 0.5), 5 * center.at(1) - 2.5 + (j - 0.5)))
+                }
+              }
+              circle((0.5, 1.5), radius: 0.75, stroke: (dash: "dotted"))
+            }
+            let centers-transformed = ()
 
-  Finally, every point of $partial U_n$ admits an exterior line segment: at an edge choose a segment pointing into the exterior half-plane; and at a vertex between two segments, choose an outward-pointing segment angled $uppi / 4$ from each segment.
+            for center in centers {
+              let cx = 5 * center.at(0)
+              let cy = 5 * center.at(1)
+
+              for i in range(-2, 3) {
+                for j in range(-2, 3) {
+                  centers-transformed.push((cx + i, cy + j))
+                }
+              }
+
+              for i in range(2) {
+                for j in range(2) {
+                  centers-transformed.push((cx + 2 + i, cy + 2 + j))
+                  centers-transformed.push((cx - 3 + i, cy + 2 + j))
+                  centers-transformed.push((cx + 2 + i, cy - 3 + j))
+                  centers-transformed.push((cx - 3 + i, cy - 3 + j))
+                }
+              }
+            }
+
+            centers-transformed = centers-transformed.dedup()
+
+            for point in centers-transformed {
+              let x = point.at(0) / 5
+              let y = point.at(1) / 5
+              square((x, y), half-side: 0.1)
+            }
+
+            for point in centers-transformed {
+              let px = point.at(0)
+              let py = point.at(1)
+              let x = px / 5
+              let y = py / 5
+
+              if not centers-transformed.contains((px + 1, py)) {
+                line(
+                  (x + 0.1, y - 0.1),
+                  (x + 0.1, y + 0.1),
+                  stroke: 1.5pt,
+                )
+              }
+
+              if not centers-transformed.contains((px - 1, py)) {
+                line(
+                  (x - 0.1, y - 0.1),
+                  (x - 0.1, y + 0.1),
+                  stroke: 1.5pt,
+                )
+              }
+
+              if not centers-transformed.contains((px, py + 1)) {
+                line(
+                  (x - 0.1, y + 0.1),
+                  (x + 0.1, y + 0.1),
+                  stroke: 1.5pt,
+                )
+              }
+
+              if not centers-transformed.contains((px, py - 1)) {
+                line(
+                  (x - 0.1, y - 0.1),
+                  (x + 0.1, y - 0.1),
+                  stroke: 1.5pt,
+                )
+              }
+            }
+          }),
+          caption: [
+            By choosing sufficiently small $eta divides delta$, we obtain a grid such that the boundary curves are disjoint.
+          ],
+        ),
+        <fig:polygonal-exhaustion-grid-corner-touch-resolution>,
+      ),
+    )
+    Note that if a boundary component of $overline(A_n)$ is not a Jordan curve, then in some $2$-by-$2$ subgrid, exactly two opposite squares will be in $overline(A_n)$ whilst the other two are not (refer to the circled area in @fig:polygonal-exhaustion-grid-corner-touch-resolution). Let $S_n$ be the set of grid vertices in $overline(A_n)$. Then
+    $ R_n = overline(A_n) union union.big_(z in S_n) ["square of side length" 2 eta_n "centered at" z] $
+    is a connected polygonal compact set (which can be considered to be generated with a grid of side length $eta_n$) whose boundary curves are disjoint. From $eta_n < epsilon_n / 4$, this set lies in $A_(n+1)$, since the maximum distance between the previous grid and this new set is $eta_n sqrt(2) < epsilon_n$. Since $eta_n < delta_n / 4$, no such problematic $2$-by-$2$ subgrid may exist. Thus, setting $V_n=interior(R_n)$, we obtain
+    $ overline(V_n)=R_n subset.double V_(n+1). $
+    The regions ${V_n}$ still exhaust $U$, and every component of $partial V_n$ is a polygonal Jordan curve.
+  ]
+
+  If $U$ has arbitrarily many holes, set $U_n=V_n$; this proves the first assertion. It remains to preserve a prescribed finite connectivity.
+
+  #claim[
+    If $U$ is $q$-connected, the grid regions may all be chosen $q$-connected.
+  ]
+  #proof[of the claim][
+    Write $C_0,dots.c,C_(q-1)$ for the components of $extcomplex without U$, with $oo in C_0$. After omitting finitely many terms, the $C_j$ lie in distinct components of $extcomplex without overline(V_n)$. Indeed, fix $j!=k$ and suppose they were never separated. If $Y_n$ denotes the component of $extcomplex without overline(V_n)$ containing both, then the sets $overline(Y_n)$ are decreasing compact connected sets and
+    $ C_j union C_k subset.eq Y=inter.big_n overline(Y_n). $
+    If $z in U$, then $z in V_N$ for some $N$ and hence $z in.not overline(Y_n)$ for $n>N$. Therefore $Y subset.eq extcomplex without U$, contradicting that $C_j$ and $C_k$ are distinct components. Every pair is thus separated at some finite stage; since there are finitely many pairs, one common tail separates them all.
+
+    Let $W_(n,j)$ be the component of $extcomplex without overline(V_n)$ containing $C_j$, and fill every other complementary component by setting
+    $ P_n=extcomplex without union.big_(j=0)^(q-1)W_(n,j), quad U_n=interior(P_n). $
+    Then $P_n subset.double U$: every point outside $U$ belongs to some $C_j subset W_(n,j)$, while $P_n$ is compact. The previous claim ensures that the boundary components of $V_n$ can be assumed to be pairwise disjoint, and filling components only removes some of those boundary curves. Hence $extcomplex without U_n$ has exactly the $q$ components corresponding to $W_(n,0),dots.c,W_(n,q-1)$.
+
+    Finally, $overline(W_(n+1,j)) subset.eq W_(n,j)$. Indeed,
+    $ overline(W_(n+1,j)) subset.eq extcomplex without V_(n+1) subset.eq extcomplex without overline(V_n), $
+    and the left-hand side is connected and contains $C_j$, so it lies in the component $W_(n,j)$. Since there are only finitely many $j$,
+    $ union.big_j overline(W_(n+1,j)) subset.eq union.big_j W_(n,j). $
+    Taking complements gives
+    $ P_n subset.eq extcomplex without union.big_j overline(W_(n+1,j)) = interior(P_(n+1)) = U_(n+1). $
+    Since $P_n$ is compact, $P_n subset.double U_(n+1)$. Also $V_n subset.eq U_n$, so ${U_n}$ exhausts $U$.
+  ]
+
+  #claim[
+    Every point of $partial U_n$ satisfies the exterior segment condition.
+  ]
+  #proof[of the claim][
+    Notice that each connected boundary component a polygonal Jordan curve. At an interior point of an edge, choose a short segment in the exterior half-plane. At a vertex, of the four generating grid squares around it, at least one of them is not in $U_n$; then choose the segment between the vertex and the center of this square. In either case the segment meets $overline(U_n)$ only at its initial point.
+  ]
 ]
-#todo[Check over generalization]
 #thm-state.thm-restate("thm:riemann-mapping")
 #proof[
   First consider the case where $U$ is a bounded region whose boundary is sufficiently regular (in the sense that each point admits a barrier) and $0 in U$. Then there is a solution $u$ to the Dirichlet Problem (@thm:solution-to-the-dirichlet-problem) in $U$ with the continuous boundary function $z mapsto -log abs(z)$. Obviously, the function $u$ cannot be equivalent to $-log abs(z)$ in the interior since the latter would approach $oo$ at $0$. Let
@@ -202,7 +390,7 @@ We now provide a conceptual proof of the Riemann Mapping Theorem based on the Di
   $
   Thus $n_(V_n) (F - w) = n_(V_n) (F) = 1$, where zeros are counted with multiplicity. Every zero of $F - w$ in all of $U$ belongs to $K_rho subset V_n$, so this is also the total number of solutions of $F(z) = w$ in $U$. Since $w$ was arbitrary, $F$ is bijective; the multiplicity statement also gives $F' != 0$, so $F : U -> DD$ is biholomorphic.
 
-  Now lift the regularity restriction upon $partial U$. By @lem:polygonal-exhaustion, choose a nested exhaustion ${U_n}_(n in NN)$ of $U$ by simply connected polygonal domains with $0 in U_1$. Every point of $partial U_n$ satisfies the exterior segment condition, so the regular-boundary case gives a biholomorphism $F_n : U_n -> DD$ such that $F_n (0) = 0$ and $F_n ' (0) in RR_(>0)$.
+  Now lift the regularity restriction upon $partial U$. By @lem:polygonal-exhaustion, choose a nested exhaustion ${U_n}_(n in NN)$ of $U$ by simply connected polygonal domains. After discarding finitely many initial terms, assume $0 in U_1$. Every point of $partial U_n$ satisfies the exterior segment condition, so the regular-boundary case gives a biholomorphism $F_n : U_n -> DD$ such that $F_n (0) = 0$ and $F_n ' (0) in RR_(>0)$.
 
   For fixed $m$, the tail ${F_n}_(n >= m)$ is defined and bounded by $1$ on $U_m$, so it is normal there by Montel's Theorem (@thm:montel). We construct nested subsequences inductively.
 
@@ -380,181 +568,10 @@ We now turn to the first multiply connected case. A region $U subset extcomplex$
   $ {z in CC : F(z) = w} subset.eq F^(-1)({w in CC : (1 + abs(w')) / 2 < abs(w) < (R + abs(w')) / 2}), $
   it is also true that all solutions to $F(z) = w$ lie in $interior(K)$.
 
-  Recall $gamma$ to be a Jordan curve in $U$, winding once around $Gamma_1$. Now choose a $N in NN$ such that $op("dist")(gamma, CC without U) > 1 / N$. Then for $n in NN$, let $U_n$ be the connected component of
-  $ {z in U : op("dist")(z, CC without U) > 1 / (N + n)} $
-  containing $gamma$. Then ${U_n}$ exhaust $U$ (refer to the path-between-two-points argument as in the proof of @lem:polygonal-exhaustion), such that for each $n$, $overline(U_n) subset.double U_(n + 1)$ and $gamma subset U_n$. Then there exists a $n'$ such that $K subset.double U_n'$.
+  By @lem:polygonal-exhaustion, choose an exhaustion ${D_n}_(n in NN)$ of $U$ by doubly connected grid regions whose two boundary components are disjoint polygonal Jordan curves. Since $K subset.double U$ is compact, choose $n'$ such that $K subset.double D_(n')$, and set $tilde(K)=overline(D_(n'))$. Write
+  $ partial tilde(K)=Gamma'_0 union Gamma'_1, $
+  where $Gamma'_0$ is the outer boundary curve and $Gamma'_1$ is the inner boundary curve corresponding respectively to $Gamma_0$ and $Gamma_1$. Both curves are piecewise $C^oo$.
 
-  #figure-wrapper(
-    lbl(
-      figure(
-        canvas(length: 0.75cm, {
-          import cetz.draw: *
-          let dotted = (thickness: 0.5pt)
-          let square(center, half-side: 0.5) = {
-            scope({
-              translate(x: center.at(0), y: center.at(1))
-              line(
-                (-half-side, -half-side),
-                (-half-side, half-side),
-                (half-side, half-side),
-                (half-side, -half-side),
-                close: true,
-                stroke: dotted,
-                fill: black.transparentize(70%),
-              )
-            })
-          }
-          let centers = ()
-          let centers-exclude = (
-            (-3, 2),
-            (-2, 2),
-            (-3, 1),
-            (-3, 0),
-            (-3, -2),
-            (-3, -3),
-            (2, -3),
-            (1, -3),
-            (2, 2),
-            (1, 2),
-            (0, 1),
-            (0, 0),
-            (1, 0),
-            (1, -1),
-            (0, -1),
-            (-1, -1),
-          )
-          circle((0.5, 1.5), radius: 0.75, stroke: (dash: "dotted"))
-          for i in range(-3, 3) {
-            for j in range(-3, 3) {
-              if not centers-exclude.contains((i, j)) { centers.push((i, j)) }
-            }
-          }
-
-          for center in centers {
-            square(center)
-          }
-          for center in centers {
-            if not centers.contains((center.at(0) + 1, center.at(1))) {
-              line((center.at(0) + 0.5, center.at(1) - 0.5), (center.at(0) + 0.5, center.at(1) + 0.5), stroke: 1.5pt)
-            }
-            if not centers.contains((center.at(0) - 1, center.at(1))) {
-              line((center.at(0) - 0.5, center.at(1) - 0.5), (center.at(0) - 0.5, center.at(1) + 0.5), stroke: 1.5pt)
-            }
-            if not centers.contains((center.at(0), center.at(1) + 1)) {
-              line((center.at(0) - 0.5, center.at(1) + 0.5), (center.at(0) + 0.5, center.at(1) + 0.5), stroke: 1.5pt)
-            }
-            if not centers.contains((center.at(0), center.at(1) - 1)) {
-              line((center.at(0) - 0.5, center.at(1) - 0.5), (center.at(0) + 0.5, center.at(1) - 0.5), stroke: 1.5pt)
-            }
-          }
-
-          translate(x: 3)
-          line((0.25, -0.5), (1.75, -0.5), mark: (end: (symbol: ">>", fill: black)), stroke: 2pt)
-          translate(x: 6)
-          let centers-transformed = ()
-
-          for center in centers {
-            for i in range(-2, 3) {
-              for j in range(-2, 3) {
-                centers-transformed.push((5 * center.at(0) + i, 5 * center.at(1) + j))
-              }
-            }
-            for i in range(2) {
-              for j in range(2) {
-                centers-transformed.push((5 * center.at(0) + 2.5 + (i - 0.5), 5 * center.at(1) + 2.5 + (j - 0.5)))
-                centers-transformed.push((5 * center.at(0) - 2.5 + (i - 0.5), 5 * center.at(1) + 2.5 + (j - 0.5)))
-                centers-transformed.push((5 * center.at(0) + 2.5 + (i - 0.5), 5 * center.at(1) - 2.5 + (j - 0.5)))
-                centers-transformed.push((5 * center.at(0) - 2.5 + (i - 0.5), 5 * center.at(1) - 2.5 + (j - 0.5)))
-              }
-            }
-            circle((0.5, 1.5), radius: 0.75, stroke: (dash: "dotted"))
-          }
-          let centers-transformed = ()
-
-          for center in centers {
-            let cx = 5 * center.at(0)
-            let cy = 5 * center.at(1)
-
-            for i in range(-2, 3) {
-              for j in range(-2, 3) {
-                centers-transformed.push((cx + i, cy + j))
-              }
-            }
-
-            for i in range(2) {
-              for j in range(2) {
-                centers-transformed.push((cx + 2 + i, cy + 2 + j))
-                centers-transformed.push((cx - 3 + i, cy + 2 + j))
-                centers-transformed.push((cx + 2 + i, cy - 3 + j))
-                centers-transformed.push((cx - 3 + i, cy - 3 + j))
-              }
-            }
-          }
-
-          centers-transformed = centers-transformed.dedup()
-
-          for point in centers-transformed {
-            let x = point.at(0) / 5
-            let y = point.at(1) / 5
-            square((x, y), half-side: 0.1)
-          }
-
-          for point in centers-transformed {
-            let px = point.at(0)
-            let py = point.at(1)
-            let x = px / 5
-            let y = py / 5
-
-            if not centers-transformed.contains((px + 1, py)) {
-              line(
-                (x + 0.1, y - 0.1),
-                (x + 0.1, y + 0.1),
-                stroke: 1.5pt,
-              )
-            }
-
-            if not centers-transformed.contains((px - 1, py)) {
-              line(
-                (x - 0.1, y - 0.1),
-                (x - 0.1, y + 0.1),
-                stroke: 1.5pt,
-              )
-            }
-
-            if not centers-transformed.contains((px, py + 1)) {
-              line(
-                (x - 0.1, y + 0.1),
-                (x + 0.1, y + 0.1),
-                stroke: 1.5pt,
-              )
-            }
-
-            if not centers-transformed.contains((px, py - 1)) {
-              line(
-                (x - 0.1, y - 0.1),
-                (x + 0.1, y - 0.1),
-                stroke: 1.5pt,
-              )
-            }
-          }
-        }),
-        caption: [
-          By choosing sufficiently small $eta divides delta$, we obtain a grid such that the boundary curves are disjoint.
-        ],
-      ),
-      <fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution>,
-    ),
-  )
-
-  By the grid approximation method used in the proofs of @prop:runge-simple-poles-and-removable-singularity-at-infinity and @lem:polygonal-exhaustion, we may obtain a compact grid superset $tilde(K)$ of $overline(U_n')$ lying within $U$. We may assume it is connected by taking the unique component containing $overline(U_n')$.
-
-  There are two connected components $W_1$ and $W_2$ of the complement of $tilde(K)$ containing $jinterior(Gamma_1)$ and $jexterior(Gamma_0)$ respectively. Then any other "holes" aside from these two may be "filled in," by taking $CC without (W_1 union W_2)$. For brevity, continue to denote this new polygonal doubly connected compact set by $tilde(K)$ with a polygonal boundary $Gamma'_0 union Gamma'_1$, where $Gamma'_0$ is the outer curve and $Gamma'_1$ is the inner curve, both of which are piecewise $C^oo$.
-
-  Let $epsilon = op("dist")(tilde(K), partial U)$ and let $delta$ be the side length of the square used in the grid constructing $tilde(K)$. Moreover, let $ eta = delta / (floor(4 max{1, delta / epsilon}) + 1). $
-  It follows that the resultant value is a factor of $delta$, and satisfies $eta < delta / 4$ and $eta < epsilon / 4$.
-
-  Note that if the two curves $Gamma'_0,Gamma'_1$ are not disjoint, then in some $2$-by-$2$ subgrid, exactly two opposite squares will be in $tilde(K)$ whilst the other two are not (refer to the circled area in @fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution). Let $S$ be the set of grid vertices in $tilde(K)$. Then it follows that $ tilde(K) union union.big_(z in S) ["square of side length" 2 eta "centered at" z] $
-  is a doubly connected polygonal (which can be considered to be generated with a grid of side length $eta$) compact set with two disjoint boundary curves. From $eta < epsilon / 4$, this set lies in $U$ (since the maximum distance between the previous grid and this new set is $eta sqrt(2) < epsilon$). Since $eta < delta / 4$, no such problematic $2$-by-$2$ subgrid may exist, see @fig:doubly-connected-mapping-smooth-boundary-grid-corner-touch-resolution. Thus by this procedure, by continuing to denote this new set with $tilde(K)$, we may assume $partial tilde(K)$ has two disjoint Jordan curve components.
 
   Since the connected component $U inter jexterior(Gamma'_0)$ must map into exactly one of
   $ {w : abs(w) >= (R + abs(w')) / 2} quad "and" quad {w : abs(w) <= (1 + abs(w')) / 2} $
