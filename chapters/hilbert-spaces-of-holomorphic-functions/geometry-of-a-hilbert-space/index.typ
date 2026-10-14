@@ -200,7 +200,7 @@ It is often convenient in analysis to take limits, and thus in most cases we are
   ]
   With @prop:bergman-space-function-bounded-by-norm-in-compact-set in mind, we now proceed to prove the completeness of the metric space.
 
-  Let $K subset.double Omega$ be arbitrary and let ${f_n}_(n in NN) subset.eq A^2 (Omega)$ be any Cauchy sequence in the inner product space. Then there is a $r > 0$ such that $forall z in K$, $overline(D(z, r)) subset.double Omega$. Then $forall epsilon >0$, $exists N > 0$ such that $forall m, n > N$, $norm(f_n - f_m) < epsilon / (sqrt(uppi) r)$. By @prop:bergman-space-function-bounded-by-norm-in-compact-set applied to $h equiv f_n - f_m in A^2 (Omega)$,
+  Let $K subset.double Omega$ be arbitrary and let ${f_n}_(n in NN) subset.eq A^2 (Omega)$ be any Cauchy sequence in the inner product space. Then there is a $r > 0$ such that $forall z in K$, $overline(D(z, r)) subset.double Omega$. Then $forall epsilon >0$, $exists N > 0$ such that $forall m, n > N$, $norm(f_n - f_m) < epsilon r sqrt(uppi)$. By @prop:bergman-space-function-bounded-by-norm-in-compact-set applied to $h equiv f_n - f_m in A^2 (Omega)$,
   $ sup_(z in K) abs(f_n (z) - f_m (z)) <= 1 / (r sqrt(uppi)) norm(f_n - f_m) < epsilon, $
   hence giving that ${f_n}$ uniformly converges in $K$. Since $K$ was arbitrary, ${f_n}$ locally uniformly converges in $Omega$, and converges by the Weierstrass Convergence Theorem (@thm:weierstrass-convergence) to a holomorphic function $f$ on $Omega$. It remains to show that $f in A^2 (Omega)$.
 
@@ -213,7 +213,7 @@ It is often convenient in analysis to take limits, and thus in most cases we are
   by the reverse triangle inequality for metric spaces. Let
   $ M = max({norm(f_n) + epsilon} union {norm(f_m) : m <= N}) $ Therefore,
   $
-    integral.double_K abs(f(z))^2 dif A <= lim_(n -> oo) integral.double_Omega abs(f_n (z))^2 dif A = lim_(n -> oo) norm(f_n) <= M.
+    integral.double_K abs(f(z))^2 dif A <= lim_(n -> oo) integral.double_Omega abs(f_n (z))^2 dif A = lim_(n -> oo) norm(f_n)^2 <= M^2.
   $
   Therefore, $f in A^2 (Omega)$, proving completeness as any Cauchy sequence converges.
 ]

@@ -60,9 +60,9 @@ Moreover, certain properties of the Bergman kernel that we have discussed previo
   $
     K (z, w) & = integral.double_Omega K (zeta, w) tilde(K)(z, zeta) dif xi dif eta \
     & = overline(integral.double_Omega overline(tilde(K)(z, zeta)) K (w, zeta) dif xi dif eta) #tag[(by @thm:bergman-kernel-conjugate-symmetry)]\
-    & = overline(tilde(K)(z, w)),
+    & = overline(overline(tilde(K)(z, w))),
   $
-  where the last step uses #berg-t and the holomorphy of $tilde(K)$ in the second argument. Therefore, $overline(K (w, z)) = overline(tilde(K)(z, w)) ==> K equiv tilde(K)$ on $Omega^2$.
+  where the last step uses #berg-t and $zeta |-> overline(tilde(K)(z,zeta)) in berg$. Therefore, $K(z, w) = tilde(K)(z, w) ==> K equiv tilde(K)$ on $Omega^2$.
 ]
 Therefore, in the search of a Bergman kernel for a specified domain, if one can construct a function satisfying the properties outlined in @thm:bergman-kernel-property-uniqueness, then one can ascertain that it is the Bergman kernel.
 #theorem[
@@ -133,9 +133,9 @@ Therefore, in the search of a Bergman kernel for a specified domain, if one can 
   for every $f in berg$. Define $S = overline(span{k_z_n}_n)$, which is Hilbert space in $berg$. Suppose $f in S^perp$. Then for any $n in NN$, $ f(z_n) = chev(f, k_z_n) = 0. $
   Because ${z_n}$ has an accumulation point in $Omega$ and $f(z_n) = 0$ for each $n$, by the Identity Theorem (@thm:identity), $f equiv 0$. Then $S^perp = {0}$. Since $S$ is closed, any $f in berg$ can be decomposed, by @thm:orthogonal-decomposition, into $f_1 + f_2$, where $f_1 in S$ and $f_2 in S^perp = {0}$. Then $f in S$, implying $berg = S$; then $k_z_n$ densely spans $berg$.
 
-  For any $f in berg$ for any $epsilon > 0$, choose $ tilde(f) = sum_(j = 1)^l c_j k_z_n_j $ such that $norm(tilde(f) - f) < epsilon / 2$. Letting $tilde(c_j) in QQ + ii QQ$ be chosen such that $ abs(c_j - tilde(c_j)) < epsilon / (2 l max_j norm(k_z_n_j)) $ and letting $ doubletilde(f) = sum_(j=1)^l tilde(c_j) k_z_n_j, $ we see that
+  For any $f in berg$ for any $epsilon > 0$, choose $ tilde(f) = sum_(j = 1)^l c_j k_z_n_j $ such that $norm(tilde(f) - f) < epsilon / 2$. Letting $tilde(c_j) in QQ + ii QQ$ be chosen such that $ abs(c_j - tilde(c_j)) < epsilon / (2 l max{1, max_j norm(k_z_n_j)}) $ and letting $ doubletilde(f) = sum_(j=1)^l tilde(c_j) k_z_n_j, $ we see that
   $
-    norm(tilde(f) - doubletilde(f)) = norm(sum_(j = 1)^l (c_j - tilde(c_j)) k_z_n_j) <= sum_(j = 1)^l epsilon / (2 l max_j norm(k_z_n_j)) norm(k_z_n_j) <= epsilon / 2,
+    norm(tilde(f) - doubletilde(f)) = norm(sum_(j = 1)^l (c_j - tilde(c_j)) k_z_n_j) <= sum_(j = 1)^l epsilon / (2 l max{1, max_j norm(k_z_n_j)}) norm(k_z_n_j) <= epsilon / 2,
   $
   whence $ norm(f - doubletilde(f)) <= norm(tilde(f) - f) + norm(tilde(f) - doubletilde(f)) < epsilon. $
   Therefore, any $f in berg$ can be arbitrarily approximated by an element in
