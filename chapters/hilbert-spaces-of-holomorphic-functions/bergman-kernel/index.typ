@@ -12,7 +12,7 @@ $
 $
 Moreover, the mapping $phi.alt$ between $berg$ and $CC$ given by
 $ phi.alt : f (in berg) |-> f(z_0) (in CC) $
-is a bounded linear functional on $berg$: linearity is trivial and boundedness follows from @ @prop:bergman-space-function-bounded-by-norm-in-compact-set. Then by the Riesz Representation Theorem (@thm:riesz-representation), there as a unique $k_(z_0) in berg$, dependent on $z_0$ but not $f in berg$, such that
+is a bounded linear functional on $berg$: linearity is trivial and boundedness follows from @prop:bergman-space-function-bounded-by-norm-in-compact-set. Then by the Riesz Representation Theorem (@thm:riesz-representation), there as a unique $k_(z_0) in berg$, dependent on $z_0$ but not $f in berg$, such that
 $ f(z_0) = phi.alt(f) = chev(f, k_(z_0)). #tag[(for all $f in berg$)] $
 Then
 $
@@ -20,49 +20,49 @@ $
 $
 #let berg-t = math-markup(eref(<eq:bergman-integral-formula>)[(#sym.ast.op)])
 #definition[Bergman Kernel][
-  Let $Omega$ be an open region, define the _Bergman kernel_ to be a complex function $K_Omega (z, w)$ of two variables in $berg$, given by $K_Omega (z, w) = overline(k_z (w))$, where $k_z (w)$ is the unique Riesz representer for the linear functional $f mapsto f(z)$.
+  Let $Omega$ be an open region, define the _Bergman kernel_ to be a complex function $K (z, w)$ of two variables in $berg$, given by $K (z, w) = overline(k_z (w))$, where $k_z (w)$ is the unique Riesz representer for the linear functional $f mapsto f(z)$.
 ]
 Then the previous equation is simply
 #etarget(<eq:bergman-integral-formula>)[
   $
-    f(z_0) = integral.double_Omega f(zeta) K_Omega (z_0, zeta) dif xi dif eta. #tag[#math-markup(link-wrap: true)[(#sym.ast.op)]]
+    f(z_0) = integral.double_Omega f(zeta) K (z_0, zeta) dif xi dif eta. #tag[#math-markup(link-wrap: true)[(#sym.ast.op)]]
   $
 ]
 #theorem[Conjugate-symmetry of the Bergman Kernel][
   For any $z, w in Omega$,
-  $ K_Omega (z, w) = overline(K_Omega (w, z)). $
+  $ K (z, w) = overline(K (w, z)). $
 ] <thm:bergman-kernel-conjugate-symmetry>
 #proof[
-  By the integral representation in #berg-t, $forall z, w in Omega$, letting $f = z |-> overline(K_Omega (w, z)) = k_w (z)$,
+  By the integral representation in #berg-t, $forall z, w in Omega$, letting $f = z |-> overline(K (w, z)) = k_w (z)$,
   $
-    overline(K_Omega (w, z)) & = k_w (z) = integral.double_Omega k_w (zeta) overline(k_z (zeta)) dif xi dif eta \
-    & = overline(integral.double_Omega k_z (zeta) overline(k_w (zeta)) dif xi dif eta) \
-    & = overline(k_z (w)) = overline(overline(K_Omega (z, w))) = K_Omega (z, w), #tag[(by #berg-t)]
+    overline(K (w, z)) & = k_w (z) = integral.double_Omega k_w (zeta) overline(k_z (zeta)) dif xi dif eta \
+                       & = overline(integral.double_Omega k_z (zeta) overline(k_w (zeta)) dif xi dif eta) \
+                       & = overline(k_z (w)) = overline(overline(K (z, w))) = K (z, w), #tag[(by #berg-t)]
   $
   proving the assertion.
 ]
 #corollary[
-  The Bergman Kernel $K_Omega (z, w)$ is holomorphic in the first argument: $pdv(, overline(z)) K_Omega (z, w) = 0$ for all $z in Omega$.
+  The Bergman Kernel $K (z, w)$ is holomorphic in the first argument: $pdv(, overline(z)) K (z, w) = 0$ for all $z in Omega$.
 ] <cor:bergman-kernel-left-holomorphy>
 #proof[
-  Since $overline(K_Omega (w,z)) = k_w (z)$ is holomorphic in $z$, it follows from @thm:bergman-kernel-conjugate-symmetry that $K_Omega (z, w)$ is holomorphic in $z$.
+  Since $overline(K (w,z)) = k_w (z)$ is holomorphic in $z$, it follows from @thm:bergman-kernel-conjugate-symmetry that $K (z, w)$ is holomorphic in $z$.
 ]
 Moreover, certain properties of the Bergman kernel that we have discussed previously uniquely determine the Bergman kernel:
-#theorem[
+#theorem[Reproducing Property of $K (dot, dot)$][
   If $tilde(K) : Omega^2 -> CC$ satisfies $w mapsto overline(tilde(K)(z, w)) in berg$ for each $z in Omega$, and if for all $f in berg$,
   $
     f(z) = integral.double_Omega f(zeta) tilde(K)(z, zeta) dif xi dif eta,
   $
-  then $tilde(K) equiv K_Omega$ on $Omega^2$.
+  then $tilde(K) equiv K$ on $Omega^2$.
 ] <thm:bergman-kernel-property-uniqueness>
 #proof[
-  Let $f$ be the Bergman kernel $zeta mapsto K_Omega (zeta, w)$ (holomorphic in the left argument by @cor:bergman-kernel-left-holomorphy). Then $forall z, w in Omega$,
+  Let $f$ be the Bergman kernel $zeta mapsto K (zeta, w)$ (holomorphic in the left argument by @cor:bergman-kernel-left-holomorphy). Then $forall z, w in Omega$,
   $
-    K_Omega (z, w) & = integral.double_Omega K_Omega (zeta, w) tilde(K)(z, zeta) dif xi dif eta \
-    & = overline(integral.double_Omega overline(tilde(K)(z, zeta)) K_Omega (w, zeta) dif xi dif eta) #tag[(by @thm:bergman-kernel-conjugate-symmetry)]\
+    K (z, w) & = integral.double_Omega K (zeta, w) tilde(K)(z, zeta) dif xi dif eta \
+    & = overline(integral.double_Omega overline(tilde(K)(z, zeta)) K (w, zeta) dif xi dif eta) #tag[(by @thm:bergman-kernel-conjugate-symmetry)]\
     & = overline(tilde(K)(z, w)),
   $
-  where the last step uses #berg-t and the holomorphy of $tilde(K)$ in the second argument. Therefore, $overline(K_Omega (w, z)) = overline(tilde(K)(z, w)) ==> K_Omega equiv tilde(K)$ on $Omega^2$.
+  where the last step uses #berg-t and the holomorphy of $tilde(K)$ in the second argument. Therefore, $overline(K (w, z)) = overline(tilde(K)(z, w)) ==> K equiv tilde(K)$ on $Omega^2$.
 ]
 Therefore, in the search of a Bergman kernel for a specified domain, if one can construct a function satisfying the properties outlined in @thm:bergman-kernel-property-uniqueness, then one can ascertain that it is the Bergman kernel.
 #theorem[
@@ -126,12 +126,22 @@ Therefore, in the search of a Bergman kernel for a specified domain, if one can 
   $
     Omega inter (QQ + ii QQ) = {z_n}_(n in NN) subset.eq Omega,
   $
-  such that $overline({z_n}_n) supset.eq overline(Omega)$, or in other words ${z_n}_n$ is countable dense in $Omega$. For each fixed $n in NN$, $f |-> f(z_n)$ is a bounded linear functional by  @prop:bergman-space-function-bounded-by-norm-in-compact-set. Then let $k_(z_n) in A^2(Omega)$ be its unique Riesz representer, so that
+  such that $overline({z_n}_n) = overline(Omega)$, or in other words ${z_n}_n$ is countable dense in $Omega$. For each fixed $n in NN$, $f |-> f(z_n)$ is a bounded linear functional by  @prop:bergman-space-function-bounded-by-norm-in-compact-set. Then let $k_(z_n) in A^2(Omega)$ be its unique Riesz representer, so that
   $
     f(z_n) = chev(f, k_(z_n))
   $
-  for every $f in A^2(Omega)$. // Proceed showing that if f is orthogonal to all, then f is 0
-  #todo()
+  for every $f in berg$. Define $S = overline(span{k_z_n}_n)$, which is Hilbert space in $berg$. Suppose $f in S^perp$. Then for any $n in NN$, $ f(z_n) = chev(f, k_z_n) = 0. $
+  Because ${z_n}$ has an accumulation point in $Omega$ and $f(z_n) = 0$ for each $n$, by the Identity Theorem (@thm:identity), $f equiv 0$. Then $S^perp = {0}$. Since $S$ is closed, any $f in berg$ can be decomposed, by @thm:orthogonal-decomposition, into $f_1 + f_2$, where $f_1 in S$ and $f_2 in S^perp = {0}$. Then $f in S$, implying $berg = S$; then $k_z_n$ densely spans $berg$.
+
+  For any $f in berg$ for any $epsilon > 0$, choose $ tilde(f) = sum_(j = 1)^l c_j k_z_n_j $ such that $norm(tilde(f) - f) < epsilon / 2$. Letting $tilde(c_j) in QQ + ii QQ$ be chosen such that $ abs(c_j - tilde(c_j)) < epsilon / (2 l max_j norm(k_z_n_j)) $ and letting $ doubletilde(f) = sum_(j=1)^l tilde(c_j) k_z_n_j, $ we see that
+  $
+    norm(tilde(f) - doubletilde(f)) = norm(sum_(j = 1)^l (c_j - tilde(c_j)) k_z_n_j) <= sum_(j = 1)^l epsilon / (2 l max_j norm(k_z_n_j)) norm(k_z_n_j) <= epsilon / 2,
+  $
+  whence $ norm(f - doubletilde(f)) <= norm(tilde(f) - f) + norm(tilde(f) - doubletilde(f)) < epsilon. $
+  Therefore, any $f in berg$ can be arbitrarily approximated by an element in
+  $ {sum_(j = 1)^l tilde(c_j) k_z_n_j : l in NN, (forall j in NN_(<= l)) n_j in NN, c_j in QQ + ii QQ}, $
+  which is countable (see equivalent justification in the proof of @prop:hilbert-space-separable-equiv-having-complete-countable-orthonormal-system; essentially the set $union.big_(l = 1)^oo NN^l times (QQ + ii QQ)^l$ is countable). Therefore @prop:hilbert-space-separable-equiv-having-complete-countable-orthonormal-system implies, from separability, the existence of a complete countable orthonormal system.
+  #todo[Checks]
 ]
 #proof[(Alternative)][
   A reader who has learned measure theory could note that $L^2(Omega)$ is a separable Hilbert space, and by @thm:hilbert-subspace-of-space-with-countable-complete-orthonormal-system, $A^2(Omega)$ is separable and has a complete countable orthonormal system by @prop:hilbert-space-separable-equiv-having-complete-countable-orthonormal-system.

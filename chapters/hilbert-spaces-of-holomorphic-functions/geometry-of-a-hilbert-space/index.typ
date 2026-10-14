@@ -355,7 +355,7 @@ We can make geometric sense of this definition in the case where $chev(dot, dot)
 The following result shows how the convexity can be used in place of traditional compactness arguments:
 #proposition[
   Let $F subset.eq H$ be a closed, convex set in a Hilbert space $H$ and let $m = inf_(x in F) norm(x)$. Then $exists! x' in F$ such that $norm(x') = m$.
-]
+] <prop:hilbert-space-subset-least-norm-attainment>
 #proof[
   By the definition of infimum, either the infimum is attained (in which case we are done), or the infimum is an accumulation point in $RR_(>= 0)$ of norms of vectors in $F$. Assume the latter case. Then there is a sequence ${x_n}_(n in NN)$ such that $norm(x_n) -> m$. Then for all $epsilon > 0$, $exists N in NN$ such that $sup_(n > N) abs(norm(x_n)^2 - m^2) < epsilon / 4$. Then by @prop:hilbert-space-convex-set-difference-norm-inequality,
   $ sup_(n, m > N) norm(x_n - x_m)^2 <= sup_(n, M > N) 2 norm(x_n)^2 + 2 norm(x_m)^2 - 4 m^2 < epsilon. $
@@ -381,7 +381,7 @@ The following result shows how the convexity can be used in place of traditional
   Let $K subset.eq H$ be a closed vector subspace of a Hilbert space $H$. Then $forall x_0 in H$, $exists! x_1 in K : exists! x_2 in K^perp : x_0 = x_1 + x_2$. Moreover, $x_2 in x_0 + K = {x_0 + k : k in K}$ and is the unique element satisfying $norm(x_2) = inf_(x in x_0 + K) norm(x)$.
 ] <thm:orthogonal-decomposition>
 #proof[
-  Observe that $x_0 + K$ is convex as $K$ is convex; then $exists! x_2 in x_0 + K$ attaining the least norm $m >= 0$ (by @prop:V-V-perp-intersection-is-trivial). Let $k_2 = x_2 - x_0 in K$ and let $x_1 = x_0 - x_2 = -k_2$. We claim that these are the desired values for $x_1, x_2$.
+  Observe that $x_0 + K$ is convex as $K$ is convex; then $exists! x_2 in x_0 + K$ attaining the least norm $m >= 0$ (by @prop:hilbert-space-subset-least-norm-attainment). Let $k_2 = x_2 - x_0 in K$ and let $x_1 = x_0 - x_2 = -k_2$. We claim that these are the desired values for $x_1, x_2$.
 
   We obtain immediately that $x_1 in K$ since $k_2 in K$. For any $y in K$, projecting $x_2$ onto $y$ gives
   $ op("proj")_y x_2 = chev(x_2, y) / norm(y)^2 y in K. $

@@ -243,18 +243,20 @@ We will not immediately state a full proof. In proving completeness, one could o
     our choice of $x$. Therefore ${e_j}_j$ is complete.
   + (Converse)
 
-    Letting ${e_j}_(j in NN_(< K))$ ($K in NN union {oo}$) be the complete orthonormal system, the subset
-    $ {sum_(j = 1)^k alpha_j e_j : j in NN_(<= k), alpha_j in QQ, k in NN_(< K)}, $
-    whose cardinality does not exceed that of $NN^2 times QQ$, is a countable set.
+    Letting ${e_j}_(j in NN_(< K))$ ($K in NN union {oo}$) be the complete orthonormal system, the set
+    $
+      S = {sum_(j = 1)^k alpha_j e_i_j : k in NN_(< K), (forall j in NN_(<= k)) i_j in NN_(< K), alpha_j in QQ + ii QQ},
+    $
+    is a countable set. Indeed, for each fixed $k$, the cardinality of $ {sum_(j = 1)^k alpha_j e_i_j : forall j in NN_(<= k), i_j in NN_(< K), alpha_j in QQ + ii QQ} $ does not exceed that of $NN_(<K)^k times (QQ + ii QQ)^k$, which is countable. Then the union of all such sets for $k in NN_(<K)$ is a countable union of countable sets, hence countable.
 
     Moreover, we can show that it is dense in $H$: $forall x in H$, we know from the proof Riesz--Fischer (@thm:riesz-fischer) that it can be written as
     $ x = sum_(j in NN_(< K)) beta_j e_j, wide (beta_j = chev(x, e_j)), $
     which may be approximated with an error under $epsilon / 2$ by
-    $sum_(j = 1)^k beta_j e_j$. By the density of rationals, each $beta_j$ may be approximated by some $alpha_j$, such that $Re alpha_j, Im alpha_j in QQ$, such that $abs(alpha_j - beta_j) < epsilon / (2 k).$ Then
+    $sum_(j = 1)^k beta_j e_j$. By the density of rationals, each $beta_j$ may be approximated by some $alpha_j in QQ + ii QQ$, such that $abs(alpha_j - beta_j) < epsilon / (2 k).$ Then
     $
       norm(x - sum_(j=1)^k alpha_j e_j) <= norm(x - sum_(j=1)^k beta_j e_j) + norm(sum_(j=1)^k (beta_j - alpha_j) e_j) < epsilon.
     $
-    Since $sum_(j=1)^k alpha_j e_j$ lies in the relevant subset, the density follows from the arbitrariness of $epsilon$. #qedhere
+    Since $sum_(j=1)^k alpha_j e_j$ lies in $S$, the density follows from the arbitrariness of $epsilon$. #qedhere
 ]
 We then conclude with the following technical result. /* The proof does use Zorn's lemma to obtain a maximal orthonormal set, so its format requires standard axiomatic set-theoretic concepts. However, due to countability, we do not require the Axiom of Choice; a fully constructive proof can be given using only countable methods. */
 #theorem[
