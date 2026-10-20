@@ -146,3 +146,10 @@ Therefore, in the search of a Bergman kernel for a specified domain, if one can 
 #proof[(Alternative)][
   A reader who has learned measure theory could note that $L^2(Omega)$ is a separable Hilbert space, and by @thm:hilbert-subspace-of-space-with-countable-complete-orthonormal-system, $A^2(Omega)$ is separable and has a complete countable orthonormal system by @prop:hilbert-space-separable-equiv-having-complete-countable-orthonormal-system.
 ]
+#proposition[
+  If $Omega subset.eq CC$ is a region and ${e_j}_(j in NN)$ is a countable complete orthonormal system with respect to $A^2 (Omega)$, for any $z in Omega$,
+  $
+    norm({e_j (z)}_j)_(ell^2) = sum_(j = 1)^oo abs(e_j (z))^2 = sup_(f in A^2(Omega) \ norm(f)_(A^2(Omega)) <= 1) abs(f(z))^2
+  $
+  converges locally uniformly in $Omega$.
+]

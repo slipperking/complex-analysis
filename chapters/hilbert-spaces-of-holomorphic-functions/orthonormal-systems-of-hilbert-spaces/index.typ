@@ -147,7 +147,7 @@ It is actually simpler to first prove @itm:riesz-fischer-converse.
   The necessity of using closure or density comes from the observation that $span$ appertains only to finite linear combinations, whereas in most cases we need a complete description of "countably infinite linear combinations."
 ]
 #example[
-  Let $ell^2 = {{alpha_j}_(j in NN) L : sum_(j = 1)^oo abs(alpha_j)^2 < oo}$ denote the set of all square-summable complex sequences. Then for $alpha = {alpha_j}_j$, $beta = {beta_j}_j$, define
+  Let $ell^2 = {{alpha_j}_(j in NN) : sum_(j = 1)^oo abs(alpha_j)^2 < oo}$ denote the set of all square-summable complex sequences. Then for $alpha = {alpha_j}_j$, $beta = {beta_j}_j$, define
   $ chev(alpha, beta) = sum_(j = 1)^oo alpha_j overline(beta_j). $
   Then $ell^2$ is a vector space and a Hilbert space with the inner product $chev(alpha, beta)_(ell^2) = sum_(j=1)^oo alpha_j overline(beta_j)$ and associated norm $norm(dot)_(ell^2)$.
 ] <ex:l2-space-is-hilbert>
@@ -213,6 +213,25 @@ We will not immediately state a full proof. In proving completeness, one could o
   ]
 ]
 (Then one could use this space in @ex:l2-space-is-hilbert.)
+#lemma[
+  For any $ell^2$ sequence ${alpha_j}_(j in NN)$,
+  $
+    norm({alpha_j}_j) = sup_({beta_j}_j in ell^2 \ norm({beta_j}_j) <= 1) abs(chev({alpha_j}_j, {beta_j}_j)),
+  $
+  In other words,
+  $
+    sqrt(sum_(j = 1)^oo abs(alpha_j)^2) = sup_({beta_j}_j in ell^2 \ norm({beta_j}_j) <= 1) abs(sum_(j = 1)^oo alpha_j overline(beta_j))
+  $
+] <lem:l2-hilbert-space-norm-supremum-of-product>
+#proof[
+  For all ${beta_j}_j$ satisfying the condition in the supremum, by Cauchy--Schwarz (@thm:inner-product-cauchy-schwarz),
+  $ abs(chev({alpha_j}_j, {beta_j}_j)) <= norm({alpha_j}_j) norm({beta_j}_j) <= norm({alpha_j}_j). $
+  Taking the supremum on both sides,
+  $
+    norm({alpha_j}_j) >= sup_({beta_j}_j in ell^2 \ norm({beta_j}_j) <= 1) abs(chev({alpha_j}_j, {beta_j}_j)),
+  $
+  and equality holds since the value is attained for ${beta_j}_j = {alpha_j}_j$.
+]
 #definition[Separability][
   A metric space $(X, d)$ is said to be _separable_ iff it has a countable dense subset.
 ]
