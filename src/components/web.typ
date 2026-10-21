@@ -76,6 +76,8 @@
   }
 }
 
+#let _section-label(segment) = if segment == none { none } else { label("sec:" + segment) }
+
 #let _route-from-folders(folders) = {
   if folders.len() == 0 {
     "/"
@@ -608,7 +610,7 @@
 
 #let _docs-page(
   title: none,
-  route: none,
+  route: auto,
   kind: "section",
   level: 1,
   heading-format: (number, title) => if number != none { [#number #title] } else { [#title] },
@@ -616,13 +618,15 @@
   cover: false,
   heading: true,
   children: none,
-  label: none,
+  label: auto,
   body,
 ) = {
   assert(type(heading-format) == function, message: "heading-format must be a function")
+  assert(route != auto, message: "docs page needs a route")
   context {
     let route-context = _route-context()
     let segment = _route-segment(route)
+    let page-label = if label == auto { _section-label(segment) } else { label }
     let folders = if segment == none {
       route-context.folders
     } else {
@@ -637,7 +641,7 @@
       heading-level: level,
       heading-format: heading-format,
       description: description,
-      label: label,
+      label: page-label,
     )
 
     let page-content = if target() == "bundle" and render-mode.get() == "web" {
