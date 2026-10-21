@@ -221,7 +221,13 @@ and target.value.at("type", default: none) == explicit-ref-target-type
   }
 }
 
-#let show-reference(reference, mode) = context {
+#let show-reference(reference, mode, todo: none) = context {
+  // Reserve the literal label so `@todo` renders an inline todo.
+  if reference.target == <todo> {
+    assert(type(todo) == function, message: "the todo reference label requires a todo renderer")
+    return todo(block: false)
+  }
+
   if bibliography.title == reference-pass-through {
     let formatted = _format-reference(reference, reference.element)
     if formatted != none {

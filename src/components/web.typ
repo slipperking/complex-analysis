@@ -249,14 +249,18 @@
 
 #let _todo-description(body) = if body == none { [] } else { body }
 
-#let todo(..args) = context {
+/// Mark an open task. Set `block: false` to keep the callout inline.
+#let todo(..args, block: true) = context {
   assert(args.pos().len() <= 1, message: "todo accepts at most one content argument")
+  assert(type(block) == bool, message: "todo's block argument must be a boolean")
   let body = args.pos().first(default: none)
   let description = _todo-description(body)
   if render-mode.get() == "web" {
+    let tag = if block { "aside" } else { "span" }
+    let class = if block { "todo-callout" } else { "todo-callout todo-inline" }
     [
       #metadata((description: description)) <todo-marker>
-      #html.elem("aside", attrs: (class: "todo-callout", role: "note", "aria-label": "Todo"), {
+      #html.elem(tag, attrs: (class: class, role: "note", "aria-label": "Todo"), {
         link(<sec:todo>, html.elem("em", attrs: (class: "proof-head"), [Todo.]))
         sym.space.nobreak
         html.elem("span", attrs: (class: "todo-callout-description"), description)
@@ -412,7 +416,7 @@
   let body = [
     #[
       #render-mode.update("pdf")
-      #show: document-styles.with(mode: "pdf")
+      #show: document-styles.with(mode: "pdf", todo: todo)
       #include "/chapters/index.typ"
     ] #pdf-scope-label
   ]
@@ -429,7 +433,7 @@
   [
     #metadata((record: "page", page: page)) <page-meta>
     #document(page.doc-path, title: [#page-label | #notes-title])[
-      #show: document-styles.with(mode: "web")
+      #show: document-styles.with(mode: "web", todo: todo)
       #counter(math.equation).update(0)
       #thm-counter.thm-counters.update((:))
       #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/site.css")))
@@ -462,7 +466,7 @@
   let main-classes = ("content", main-class).filter(value => value != none).join(" ")
 
   document(page.doc-path, title: [#page.title | #notes-title])[
-    #show: document-styles.with(mode: "web")
+    #show: document-styles.with(mode: "web", todo: todo)
     #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/site.css")))
     #html.elem("link", attrs: (rel: "stylesheet", href: _asset-href(page.path, "assets/search.css")))
     #_topbar(page)

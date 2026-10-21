@@ -7,9 +7,9 @@
 
 #let equation-revoke = <typst-equation-revoke>
 
-#let document-styles(doc, mode: "pdf") = {
+#let document-styles(doc, mode: "pdf", todo: none) = {
   show: layout-limiter.with(max-iterations: 15)
-  show ref: it => show-reference(it, mode)
+  show ref: it => show-reference(it, mode, todo: todo)
   show math.equation: it => {
     let label = it.fields().at("label", default: none)
     if label != none and label != equation-revoke {

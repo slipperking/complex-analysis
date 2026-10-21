@@ -151,5 +151,5 @@ The group of holomorphic automorphisms on $DD$, or $Aut(DD)$, is also a subgroup
   which corresponds to the product $mat(a, b; c, d) mat(e, f; g, h)$.
 ]
 
-We have now introduced three of the most important regions in complex analysis: $DD$, $CC$, and $extcomplex$. Their importance will be later explained by the Uniformization Theorem (@ thm:uniformization).
+We have now introduced three of the most important regions in complex analysis: $DD$, $CC$, and $extcomplex$. Their importance will be later explained by the Uniformization Theorem (@todo /* thm:uniformization */).
 #todo[Resolve reference]
