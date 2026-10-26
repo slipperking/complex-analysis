@@ -2,7 +2,7 @@
 #import "packages.typ" as _packages
 #import "graphics.typ": *
 #import "styles.typ": document-styles, explicit-label
-#import "references.typ": explicit-ref, eref, explicit-ref-target, etarget
+#import "references.typ": eref, etarget, explicit-ref, explicit-ref-target
 #import "theorems.typ" as _thm
 #import "web.typ" as _web
 #import "math.typ": *
@@ -40,6 +40,7 @@
 #let docs-subsubchapter = _web.docs-subsubchapter
 #let docs-appendix = _web.docs-appendix
 #let docs-backmatter = _web.docs-backmatter
+#let dargs = _web.dargs
 #let todo = _web.todo
 
 #let lbl = explicit-label
