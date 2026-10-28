@@ -62,7 +62,7 @@ A compact set $K subset.double CC$ is a _continuum_ if it is connected, $CC with
 
 #lbl(
   proposition[
-    Let $K subset.double CC$ be a continuum. Then $gamma(K) = abs(f'(oo))$ where $f: extcomplex without K -> DD$ is a biholomorphism satisfying $f(oo) = 0$ (i. e. the maximal $abs(f'(oo))$ in the supremum of the definition of analytic capacity is attained when $f$ is biholomorphic).
+    Let $K subset.double CC$ be a continuum. Then $gamma(K) = abs(f'(oo))$ where $f: extcomplex without K -> DD$ is a biholomorphism satisfying $f(oo) = 0$ (i.e. the maximal $abs(f'(oo))$ in the supremum of the definition of analytic capacity is attained when $f$ is biholomorphic).
   ],
   <prop:analytic-capacity_continuum_biholomorphism>,
 )
