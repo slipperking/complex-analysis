@@ -2,7 +2,7 @@
 #import "packages.typ" as _packages
 #import "graphics.typ": *
 #import "styles.typ": document-styles, explicit-label
-#import "references.typ": eref, etarget, explicit-ref, explicit-ref-target
+#import "references.typ": explicit-ref, eref, explicit-ref-target, etarget
 #import "theorems.typ" as _thm
 #import "web.typ" as _web
 #import "math.typ": *
@@ -32,7 +32,6 @@
 #let authors = _web.authors
 #let date = _web.date
 #let source-url = _web.source-url
-#let abstract = _web.abstract
 #let docs-cover = _web.docs-cover
 #let docs-frontmatter = _web.docs-frontmatter
 #let docs-chapter = _web.docs-chapter

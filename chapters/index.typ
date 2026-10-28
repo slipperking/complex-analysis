@@ -31,7 +31,7 @@
 #route-prefix(("appendices",))[
   #include "appendices/index.typ"
 
-  #docs-backmatter(title: [Bibliography], route: "bibliography")[
+  #docs-backmatter(title: [Bibliography], route: "bibliography", break-after: false)[
     #set bibliography(title: auto)
     #context bibliography("/references.bib", full: true, group: state("render-mode").get())
   ]

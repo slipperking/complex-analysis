@@ -30,7 +30,7 @@ search-index generation:
 
 ```powershell
 python scripts/build.py
-./typst.exe compile --features bundle,html --format bundle --package-path packages main.typ dist
+./typst.exe compile --features bundle,html --format bundle --package-path packages --font-path src/assets/fonts main.typ dist
 python build-search-index.py
 ```
 
@@ -45,7 +45,7 @@ HTML, copying the search assets, and writing the index. A list of todos exist at
 The optional `debug-build` input may be passed to skip drawings produced through the project's `canvas` helper (including `quick-plot`) while working on prose, equations, or layout; it also disables the generation of the List of Theorems and the List of Figures pages:
 
 ```powershell
-./typst.exe compile --features bundle,html --format bundle --package-path packages --input debug-build=true main.typ dist
+./typst.exe compile --features bundle,html --format bundle --package-path packages --font-path src/assets/fonts --input debug-build=true main.typ dist
 ```
 
 This only shortens the Typst compilation step; preprocessing and search-index
@@ -58,7 +58,7 @@ To build with the older modified compiler that only raises the convergence
 limit, enable the legacy synthetic-label routing used by `lbl`:
 
 ```powershell
-./typst.exe compile --features bundle,html --format bundle --package-path packages --input legacy-label-routing=true main.typ dist
+./typst.exe compile --features bundle,html --format bundle --package-path packages --font-path src/assets/fonts --input legacy-label-routing=true main.typ dist
 ```
 
 In this compatibility mode, repeated PDF/HTML labels should continue to use
@@ -68,8 +68,23 @@ In this compatibility mode, repeated PDF/HTML labels should continue to use
 It is also possible to emit only a PDF output in the generation. This can be advantageous as it compiles much faster and uses less memory, and is more optimal to write with. The command is then:
 
 ```powershell
-./typst.exe compile --features bundle,html --package-path packages --input legacy-label-routing=true main.typ
+./typst.exe compile --features bundle,html --package-path packages --font-path src/assets/fonts --input legacy-label-routing=true main.typ
 ```
+
+### PDF typography
+
+PDF output uses the website's Lato and Lete Sans Math typography by default.
+The standard build commands include the repository font path so the matching
+local font sources are available to Typst. To restore Typst's traditional book
+typography, select the `book` text-font mode:
+
+```powershell
+./typst.exe compile --features bundle,html --package-path packages --font-path src/assets/fonts --input text-font=book --input legacy-label-routing=true main.typ notes-book-fonts.pdf
+```
+
+The accepted values are `web` (the default) and `book`. The Typst-compatible
+font files in `src/assets/fonts/typst/` are derived from the same font families
+used by the website.
 
 ### HTML-only Building Procedure
 
@@ -77,14 +92,14 @@ To emit the website bundle without also compiling the downloadable PDF, pass
 the `html-only` input:
 
 ```powershell
-./typst.exe compile --features bundle,html --format bundle --package-path packages --input html-only=true main.typ dist
+./typst.exe compile --features bundle,html --format bundle --package-path packages --font-path src/assets/fonts --input html-only=true main.typ dist
 python build-search-index.py
 ```
 
 For an HTML-only debug build, pass both inputs (highly recommended when writing locally):
 
 ```powershell
-./typst.exe compile --features bundle,html --format bundle --package-path packages --input html-only=true --input debug-build=true main.typ dist
+./typst.exe compile --features bundle,html --format bundle --package-path packages --font-path src/assets/fonts --input html-only=true --input debug-build=true main.typ dist
 python build-search-index.py
 ```
 
@@ -110,10 +125,11 @@ need to be refreshed.
 |-- main.typ                 # Build entry point; calls notes()
 |-- lib.typ                  # Shared public imports used by chapters
 |-- chapters/                # Hierarchical mathematical content and routes
+|   |-- cover.typ            # Web and PDF cover designs
 |   |-- index.typ            # Chapter order, numbering, and bibliography
 |   `-- appendices/          # Table of figures and theorem list
 |-- src/
-|   |-- source.typ           # Title, authors, abstract, cover, and source URL
+|   |-- source.typ           # Title, authors, date, and source URL
 |   |-- components/
 |   |   |-- web.typ          # PDF/bundle orchestration and routed page helpers
 |   |   |-- styles.typ       # Shared PDF and web document styles
