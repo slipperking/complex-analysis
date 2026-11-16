@@ -476,7 +476,8 @@ In mathematical literature, "continuous" and "bounded" are often interchangeably
   $
   implying that $phi.alt(k_oo) = 0$; consequently, $k_oo in H$. \
 
-  There exists a $x_0 in ker phi.alt^perp$ such that $ phi(x_0) = chev(x_0, x_0) = norm(x_0). $
+  There exists a $x_0 in ker phi.alt^perp$ such that
+  $ phi.alt(x_0) = chev(x_0, x_0) = norm(x_0). $
   Indeed, $exists q in ker phi.alt^perp without {0}$ by @cor:orthogonal-complement-of-closed-proper-subspace-contains-nonzero-element; then letting
   $
     x_0 = overline(phi.alt(q)) / norm(q)^2 q in ker phi.alt^perp,
