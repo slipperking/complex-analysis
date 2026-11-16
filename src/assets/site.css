@@ -256,8 +256,10 @@ math .math-link {
 }
 
 .topbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 20;
   display: flex;
   align-items: center;
@@ -328,6 +330,7 @@ math .math-link {
   gap: 2rem;
   align-items: start;
   min-height: calc(100vh - var(--topbar-height));
+  margin-top: var(--topbar-height);
   padding: 0 1.6rem 2.5rem;
 }
 
@@ -931,10 +934,22 @@ math {
   line-height: 1.55;
 }
 
+.ref-preview-page {
+  width: min(46rem, calc(100vw - 2rem));
+  height: min(32rem, calc(100vh - var(--topbar-height) - 1.7rem));
+  padding: 0.45rem;
+  overflow: hidden;
+}
+
+.ref-preview-page .ref-preview-content {
+  width: 100%;
+  height: 100%;
+}
+
 .ref-preview-frame {
   display: block;
   width: 100%;
-  height: min(32rem, calc(100vh - var(--topbar-height) - 4rem));
+  height: 100%;
   border: 0;
   border-radius: 2px;
   background: var(--paper);
@@ -1309,6 +1324,7 @@ figure svg {
 
   .layout {
     display: block;
+    margin-top: 0;
   }
 
   .content {
