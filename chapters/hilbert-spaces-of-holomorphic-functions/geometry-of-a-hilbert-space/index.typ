@@ -472,7 +472,7 @@ In mathematical literature, "continuous" and "bounded" are often interchangeably
 
   Otherwise, observe that $ker phi.alt$ is closed in $H$; indeed, for any sequence ${k_n}_n subset ker phi.alt$ converging to $k_oo in H$,
   $
-    abs(phi.alt(k_oo)) = abs(phi.alt(k_oo) - phi.alt(k_n)) = abs(phi.alt(k_oo - k_n)) <= norm(phi.alt) norm(k_oo - k_n) -> oo,
+    abs(phi.alt(k_oo)) = abs(phi.alt(k_oo) - phi.alt(k_n)) = abs(phi.alt(k_oo - k_n)) <= norm(phi.alt) norm(k_oo - k_n) -> 0,
   $
   implying that $phi.alt(k_oo) = 0$; consequently, $k_oo in H$. \
 
